@@ -2,67 +2,115 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
   <displayName>Windows Defender Application Guard</displayName>
-  <description>Configuration pour Windows Defender Application Guard</description>
+  <description>Activer Windows Defender Application Guard en mode Entreprise</description>
   <resources>
     <stringTable>
         <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
-        <string id="AppHVSI_AllowAppHVSI_DisplayName">Activer/Désactiver Windows Defender Application Guard (WDAG)</string>
-        <string id="AppHVSI_AllowAppHVSI_Explain">Cette stratégie active l’isolation d’applications à l’aide de Windows Defender Application Guard.
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Activer Windows Defender Application Guard en mode Entreprise</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Ce paramètre de stratégie permet l'isolation de l'application via Windows Defender Application Guard (Application Guard).
 
-Windows Defender Application Guard utilise l’hyperviseur Windows pour exécuter les applications dans un environnement virtualisé. Lorsque les applications sont configurées pour utiliser la sécurité basée sur la virtualisation, le comportement d’un utilisateur non approuvé lors de l’utilisation de ces applications, ainsi que les vulnérabilités de ces applications, ne peuvent en aucun cas compromettre le noyau et les autres applications en cours d’exécution à l’extérieur de l’environnement virtualisé.
-Avant d’activer cette stratégie, vous devez définir des listes de sites approuvés par l’entreprise, configurables via la stratégie d’isolation du réseau (insérer le lien vers une stratégie de réseau spécifique). La configuration de la liste des sites d’entreprise garantit que seuls les sites n’appartenant pas à l’entreprise s’ouvrent dans l’environnement virtualisé.
-Remarque : pour verrouiller un système, vérifiez que les fonctionnalités de sécurité Device Guard sont activées en plus de l’isolation d’applications. Reportez-vous à la documentation pour connaître la configuration requise verrouiller un système de manière sécurisée.
+Application Guard utilise l'hyperviseur Windows pour créer un environnement virtualisé pour des applications configurées pour utiliser l'isolation de sécurité basée sur la virtualisation. Pendant l'isolation, les interactions incorrectes d'utilisateurs et les vulnérabilités d'applications ne peuvent pas compromettre le noyau ni d'autres applications exécutées hors de l'environnement virtualisé.
+
+Si vous activez ce paramètre, Application Guard sera activé pour votre organisation.
         </string>
         <string id="AppHVSI_ClipboardSettings_DisplayName">Configurer les paramètres du Presse-papiers de Windows Defender Application Guard</string>
-        <string id="AppHVSI_ClipboardSettings_Explain">Spécifie le comportement des opérations de Presse-papiers en cas d’utilisation de l’isolation d’applications avec Windows Defender Application Guard.
+        <string id="AppHVSI_ClipboardSettings_Explain">Ce paramètre de stratégie vous permet de déterminer comment le Presse-papiers se comporte dans Windows Defender Application Guard (Application Guard).
 
-Les administrateurs peuvent choisir d’effectuer les opérations suivantes :-
-Interdire totalement la fonctionnalité de Presse-papiers lorsque la sécurité basée sur la virtualisation est activée 
-Activer la copie de certains types de contenu de la session isolée vers l’hôte 
-Activer la copie de certains types de contenu de l’hôte vers la session isolée.
+Si vous activez ce paramètre, vous devez choisir entre les deux comportements suivants :
 
-Remarque : nous recommandons aux administrateurs de pas activer la copie du contenu de l’hôte vers la session isolée. Cela signifierait qu’une session compromise isolée pourrait accéder au Presse-papiers de l’hôte et à son contenu.
+     - Désactiver complètement la fonctionnalité de Presse-papiers entre l'hôte et Application Guard
+
+     - Permettre au Presse-papiers de copier du contenu depuis Application Guard vers l'hôte
+
+     - Permettre au Presse-Papiers de copier du contenu depuis l'hôte vers Application Guard.
+
+REMARQUE
+Nous vous recommandons de ne pas autoriser la copie depuis l'hôte vers Application Guard. Si vous activez cette fonctionnalité, une session potentiellement compromise d'Application Guard aura accès au Presse-papiers de le périphérique hôte et au contenu de ce dernier.
+
+Si vous choisissez d'activer la copie, vous pouvez également choisir le type de contenu qui peut être copié en utilisant les options de contenu ::
+
+     - 1. Autoriser la copie de texte.
+
+     - 2. Autoriser la copie d'images.
+
+     - 3. Autoriser la copie de texte et d'images.
+
+Si vous désactivez ce paramètre ou si vous ne le configurez pas, toutes les fonctionnalités de Presse-papiers seront désactivées dans Application Guard.
         </string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Bloquer les opérations de Presse-papiers(par défaut)</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Activer l’opération du Presse-papiers à partir de la session isolée vers l’hôte</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Activer l’opération du Presse-papiers à partir d’un hôte vers la session isolée</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Activer l’opération du Presse-papiers dans les deux sens</string>
         <string id="AppHVSI_PrintingSettings_DisplayName">Configurer les paramètres d’impression Windows Defender Application Guard</string>
-        <string id="AppHVSI_PrintingSettings_Explain">Si l’option Activer l’impression au format XPS est sélectionnée, les utilisateurs peuvent imprimer les documents au format XPS depuis le conteneur.
-Si l’option Activer l’impression au format PDF est sélectionnée, les utilisateurs peuvent imprimer les documents au format PDF depuis le conteneur.
-Si l’option Activer l’impression vers les imprimantes locales est sélectionnée, les utilisateurs peuvent imprimer les documents depuis le conteneur sur une imprimante connectée localement.
-Si l’option Activer l’impression vers des imprimantes réseau existantes est sélectionnée, les utilisateurs peuvent imprimer des documents depuis le conteneur isolé sur les imprimantes réseau existantes. Les utilisateurs ne peuvent pas accéder aux nouvelles imprimantes réseau.
-        </string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Bloquer les sites web d’entreprise pour charger le contenu non entreprise dans IE et Edge</string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Lorsque cette option est activée, le trafic réseau Internet Explorer et Microsoft Edge vers des sites n’appartenant pas à l’entreprise qui ne peut pas être lancé depuis un conteneur Windows Defender Application Guard sera bloqué.
+        <string id="AppHVSI_PrintingSettings_Explain">Ce paramètre de stratégie vous permet de déterminer comment la fonctionnalité d'impression se comporte dans Windows Defender Application Guard (Application Guard).
 
-Lorsqu’elle est désactivée, le trafic réseau vers des sites n’appartenant pas à l’entreprise qui ne peut pas être lancé depuis un conteneur Windows Defender Application Guard sera restitué sur l’hôte.
+Si vous activez ce paramètre, vous devez choisir un ou plusieurs des comportements suivants :
+
+     - Désactiver toutes les fonctionnalités d'impression dans Application Guard.
+
+     - Autoriser l'impression sur des imprimantes réseau existantes.
+
+     - Autoriser l'impression sur des imprimantes locales.
+
+     - Autoriser l'impression en PDF, permettre à des personnes d'imprimer en PDF et d'enregistrer le fichier résultant sur l'hôte.
+
+     - Autoriser l'impression en XPS, permettre à des personnes d'imprimer en PDF et d'enregistrer le fichier résultant sur l'hôte.
+
+Si vous ne configurez pas ce paramètre ou si vous le désactivez, toutes les fonctionnalités d'impression sont désactivées dans Application Guard.
         </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Empêcher les sites web d’entreprise de charger du contenu non entreprise dans Microsoft Edge et Internet Explorer</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Ce paramètre de stratégie vous permet de déterminer si des sites web peuvent charger du contenu non entreprise dans Microsoft Edge et Internet Explorer.
+
+Si vous activez ce paramètre, le contenu non entreprise incorporé à des sites d'entreprise ne peut plus s'ouvrir dans Internet Explorer ou Microsoft Edge en dehors de Windows Defender Application Guard.
+
+Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les sites non entreprise peuvent s'ouvrir en dehors du conteneur Windows Defender Application Guard, directement dans Internet Explorer et Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowPersistence_DisplayName">Autoriser la persistance des données pour Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowPersistence_Explain">Ce paramètre de stratégie vous permet de décider si les données doivent être conservées dans plusieurs sessions dans Windows Defender Application Guard (Application Guard).
+
+        Si vous activez ce paramètre, Application Guard enregistre les fichiers et d'autres éléments téléchargés par les utilisateurs (tels que des cookies, des favoris, etc.) pour une utilisation dans des sessions futures d'Application Guard.
+
+             REMARQUE
+             Si vous activez ce paramètre, vous pouvez toujours supprimer les données d'un utilisateur d'un périphérique spécifique à l'aide de la commande Reset-ApplicationGuard PowerShell. L'exécution de cette commande supprime toutes les données de l'employé, peu importe la configuration et peut conduire à la perte des données pour l'employé.
+
+        Si vous désactivez ou ne configurez pas ce paramètre, Application Guard supprime toutes les données utilisateur dans le conteneur d'Application Guard.
+        </string>
+        <string id="AppHVSI_AuditApplicationGuard_DisplayName">Permettre les événements d'audit dans Windows Defender Application Guard</string>
+        <string id="AppHVSI_AuditApplicationGuard_Explain">Ce paramètre de stratégie vous permet de déterminer si des événements d'audit peuvent être collectés depuis Windows Defender Application Guard (Application Guard).
+
+        Si vous activez ce paramètre,, Application Guard hérite de ses stratégies d'audit depuis Microsoft Edge et commence à auditer des événements système spécifiquement pour Application Guard.
+
+             REMARQUE
+             Les journaux collectés sont disponibles pour révision dans Microsoft Edge, en dehors d'Application Guard.
+
+        Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les journaux d'événements d'audit ne sont pas collectés pour Application Guard.</string>
     </stringTable>
     <presentationTable>
       <presentation id="AppHVSIClipboardSettings_Presentation">
-        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Sélectionnez une option :</dropdownList>
-        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Spécifie ce qui est autorisé pour le comportement du Presse-papiers lorsque ces dernières sont activées (en décimale) :
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Paramètre de comportement du Presse-papiers.</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Options du contenu du Presse-papiers.
         </decimalTextBox>
-        <text>Cette valeur est un masque de bits qui contrôle le type de fichiers pouvant être utilisé pour les opérations de Presse-papiers.
-
-b0001 - fichier TEXTE
-b0010 - fichier bitmap
-b0011 - les fichiers TEXTE et bitmap sont pris en charge
-        </text>
       </presentation>
       <presentation id="AppHVSIPrintingSettings_Presentation">
-        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Spécifie les imprimantes activées (en décimale) :
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Types d'impression autorisés dans Application Guard.
         </decimalTextBox>
-        <text>Cette valeur est un masque de bits qui contrôle les imprimantes activées dans la session isolée    
-b0000 - Impression désactivée
-b0001 - Activer l’impression au format XPS (valeur par défaut)
-b0010 - Activer l’impression au format PDF
-b0100 - Activer l’impression vers les imprimantes locales
-b1000 - Activer l’impression vers les imprimantes réseau existantes
-
-Par exemple :
-Si les imprimantes locales et XPS sont activées, la valeur devient b0001 | b0100, ce qui est b0101 (décimal 5)
+        <text>Pour déterminer quels types d'impression autoriser, vous devez choisir :
+     - 0. Désactiver toutes les fonctionnalités d'impression.
+     - 1. Autoriser uniquement l'impression au format XPS.
+     - 2. Autoriser uniquement l'impression au format PDF.
+     - 3. Autoriser uniquement l'impression aux formats PDF et XPS.
+     - 4. Autoriser uniquement l'impression en local.
+     - 5. Autoriser l'impression en local et au format XPS.
+     - 6. Autoriser l'impression en local et au format PDF.
+     - 7. Autoriser l'impression en local, et aux formats PDF et XPS.
+     - 8. N'autoriser que l'impression en réseau.
+     - 9. Autoriser l'impression en réseau et au format XPS.
+     - 10. Autoriser l'impression réseau et au format PDF.
+     - 11. Autoriser l'impression en réseau, et aux formats PDF et XPS.
+     - 12. Autoriser l'impression en réseau et en local.
+     - 13. Autoriser l'impression en réseau, en local et au format XPS.
+     - 14. Autoriser l'impression en réseau, en local et au format PDF.
+     - 15. Autoriser tous les types d'impression.
         </text>
       </presentation>
     </presentationTable>

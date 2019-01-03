@@ -7,15 +7,15 @@
     <stringTable>
       <string id="W32TIME_CONFIG_EXPLAIN">Ez a házirend-beállítás lehetővé teszi a Windows időszolgáltatás (W32time) óraszinkronizálási és általános értékeinek megadását a tartományvezérlők számára, beleértve az írásvédett tartományvezérlőket (RODC) is.
 
-Ha engedélyezi ezt a házirend-beállítást, a W32time szolgáltatás az itt megadott beállításokat használja a célgépeken. Egyéb esetben a szolgáltatás a célgépeken a helyileg konfigurált beállítási értékeket használja.
+A házirend-beállítás engedélyezése esetén a célszámítógépeken található W32time szolgáltatás az itt felsorolt beállításokat használja. Máskülönben a célszámítógépeken található szolgáltatás helyben megadott beállítási értékeket használ.
 
-Az egyedi paraméterekről, a paraméterértékek kombinációiról, valamint a jelölők definícióiról további részleteket talál a következő címen: https://go.microsoft.com/fwlink/?linkid=847809.
+Az egyedi paraméterekről, a paraméterértékek kombinációiról, valamint a jelzők definícióiról további részleteket talál a következő címen: https://go.microsoft.com/fwlink/?linkid=847809.
 
         FrequencyCorrectRate
 Ez a paraméter szabályozza, hogy milyen sebességgel korrigálja a W32time a helyi óra frekvenciáját. A kisebb értékek lassabb korrekciót jelentenek, míg a nagyobb értékek gyakoribb korrekcióval járnak. Alapérték: 4 (skaláris).
 
         HoldPeriod
-Ez a paraméter azt jelzi, hogy hány következetes időmintát kell kapnia az ügyfélszámítógépnek egymás után ahhoz, hogy egymást követő időmintákat lehetséges tüskeként értékeljen. Alapérték: 5 5
+Ez a paraméter azt jelzi, hogy hány következetes időmintát kell kapnia az ügyfélszámítógépnek egymás után ahhoz, hogy egymást követő időmintákat lehetséges tüskékként értékeljen. Alapérték: 5
 
         LargePhaseOffset
 Ha egy időminta és az ügyfélszámítógép helyi órája között az eltérés nagyobb, mint a LargePhaseOffset paraméterben megadott érték, azt a rendszer a helyi óra jelentős eltérésének, más szóval tüskének tekinti. Alapérték: 50 000 000 darab 100 nanomásodperc (ns) hosszú egység, ami öt másodperc.
@@ -44,7 +44,7 @@ Ez a paraméter azt az időt adja meg, ameddig a W32time a korrekciók között 
         Általános paraméterek:
 
         AnnounceFlags
-Ez a paraméter egy bitmaszk érték, amely az időszolgáltatás rendelkezésre állásának NetLogon szolgáltatáson keresztüli hirdetésének módját szabályozza. Alapérték: 0x0a hexadecimális
+Ez a paraméter egy bitmaszk érték, amely az időszolgáltatás rendelkezésre állásának NetLogon szolgáltatáson keresztüli hirdetésének módját szabályozza. Alapérték: 0x0a hexadecimális.
 
         EventLogFlags
 Ez a paraméter azokat a speciális eseményeket szabályozza, amelyek feljegyezhetők az Eseménynapló rendszernaplójába. Alapérték: 0x02 hexadecimális bitmaszk.
@@ -65,7 +65,10 @@ Ez a paraméter azt a maximális időt jelzi másodpercben, ameddig egy rendszer
 Ez a paraméter szabályozza, hogy a tartományvezérlő válaszol-e a régebbi hitelesítési protokollokat használó időszinkronizálási kérésekre. Engedélyezése esetén (ha értéke 1), a tartományvezérlő nem válaszol az ilyen protokollokat használó kérésekre. Alapérték: logikai 0.
 
         UtilizeSslTimeData
-Ez a paraméter szabályozza, hogy a W32time másodlagos bemenetként használja-e a gépen zajló SSL-forgalomból számított időadatokat a helyi óra helyesbítéséhez. Alapérték: logikai 1
+Ez a paraméter szabályozza, hogy a W32time másodlagos bemenetként használja-e a gépen zajló SSL-forgalomból számított időadatokat a helyi óra helyesbítéséhez. Alapérték: logikai 1.
+
+        ClockAdjustmentAuditLimit
+Ez a paraméter határozza meg azt a legkisebb helyióra-állítást, amely a W32time szolgáltatás eseménynaplójában naplózható a célszámítógépen. Alapérték: 800 darab/millió (PPM).
 
         RODC-paraméterek:
 
@@ -164,6 +167,7 @@ Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, akkor a szám�
         <decimalTextBox refId="W32TIME_ClockHoldoverPeriod" defaultValue="7800">Óra pontosságmegőrzési időköze</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">Biztonságos időszinkronizálási kérések igénylése</decimalTextBox>
         <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">SSL-időadatok használata</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ClockAdjustmentAuditLimit" defaultValue="800">ClockAdjustmentAuditLimit</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">Láncbejegyzés időkorlátja</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">Láncbejegyzések maximális száma</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">Lánc-állomásbejegyzések maximális száma</decimalTextBox>

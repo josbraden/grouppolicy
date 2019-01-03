@@ -94,6 +94,15 @@ Hvis du deaktiverer denne policyinnstillingen, hindrer Windows Hello for bedrift
 
 Obs!  Deaktivering av denne policyen hindrer bruk av biometriske bevegelser på enheten for alle kontotyper.
         </string>
+        <string id="MSPassport_EnablePinRecovery">Bruk gjenoppretting av PIN-kode</string>
+        <string id="MSPassport_EnablePinRecoveryExplain">Gjenoppretting av PIN-kode gjør at en bruker kan endre en glemt PIN-kode ved å bruke tjenesten for gjenoppretting av PIN-kode for Windows Hello for bedrifter, uten å miste noen tilknyttede legitimasjoner eller sertifikater, inkludert eventuelle nøkler som er knyttet til brukerens personlige kontoer på enheten. Den Azure-baserte tjenesten for gjenoppretting av PIN-kode oppnår dette ved å kryptere en hemmelighet for gjenoppretting som lagres på enheten, og den trenger både tjenesten for gjenoppretting av PIN-kode og enheten for å dekryptere. Gjenoppretting av PIN-kode krever at brukeren utfører godkjenning med flere faktorer til Azure Active Directory.
+
+Hvis du aktiverer denne policyinnstillingen, bruker Windows Hello for bedrifter tjenesten for gjenoppretting av PIN-kode.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, blir hemmeligheten for gjenoppretting av PIN-kode verken opprettet eller lagret i Windows. Hvis brukere glemmer PIN-koden, må de slette den eksisterende PIN-koden og opprette en ny, og de må registrere seg på nytt i alle tjenester som den gamle PIN-koden gav dem tilgang til.
+
+Obs! Denne policyen gjelder bare for enheter som er registrert i Azure Active Directory.
+        </string>
         <string id="MSPassport_UseRemote">Bruke telefonpålogging</string>
         <string id="MSPassport_UseRemoteExplain">Bruk denne policyinnstillingen til å konfigurere bruk av telefonpålogging. Telefonpålogging gjør det mulig å bruke en bærbar, registrert enhet som assistentenhet for skrivebordsgodkjenning. Telefonpålogging krever at både PC-en og telefonen er registrert med samme Azure AD-leier. I tillegg må telefonen være registrert i Windows Hello for bedrifter.
 
@@ -105,10 +114,53 @@ Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, blir tele
         <string id="WHFB_UseCertificateForOnPremAuthExplain">Bruk denne policyinnstillingen til å konfigurere Windows Hello for bedrifter for å registrere en pålogging som brukes til lokal godkjenning.
 
 Hvis du aktiverer denne policyinnstillingen, registrerer Windows Hello for bedrifter et påloggingssertifikat som brukes til lokal godkjenning.
-		
+
 Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, registrerer Windows Hello for bedrifter en nøkkel som brukes til lokal godkjenning.
 
 OBS! Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen og aktiverer policyinnstillingen Bruk Windows Hello for bedrifter, krever miljøet én eller flere Windows Server 2016-domenekontrollere å hindre at godkjenning av Windows Hello for bedrifter mislykkes.
+        </string>
+        <!-- Explain text for device unlock policy -->
+        <string id="MSPassport_UseDeviceUnlock">Konfigurer opplåsingsfaktorer for enhet</string>
+        <string id="MSPassport_UseDeviceUnlock_Explain">Konfigurer en kommadelt liste over GUID-er for legitimasjonsleverandører, for eksempel GUID-er for ansikts- og fingeravtrykkleverandører, som skal brukes som første og andre faktor for opplåsing. Hvis den klarerte signalleverandøren er angitt som en av faktorene for opplåsing, må du også konfigurere en kommadelt liste over signalregler i form av et XML-skjema for hver signaltype som skal godkjennes.
+
+Hvis du aktiverer denne policyinnstillingen, må brukeren bruke én faktor fra hver liste for å låse opp.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, kan brukere fortsette å låse opp med eksisterende alternativer for opplåsing.
+
+Hvis du vil ha mer informasjon, kan du se https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for dynamic lock policy -->
+        <string id="MSPassport_UseDynamicLock">Konfigurer dynamiske låsefaktorer</string>
+        <string id="MSPassport_UseDynamicLock_Explain">Konfigurer en liste over signalregler i XML-format, atskilt med komma, for hver signaltype.
+
+Hvis du aktiverer denne policyinnstillingen og signalleverandørens GUID også er oppført som en av de to faktorene for opplåsing, evalueres disse signalreglene for å oppdage brukerens fravær og låse enheten automatisk.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, kan brukerne fortsette å låse med de eksisterende alternativene.
+
+Hvis du vil ha mer informasjon, kan du se https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for smart card emulation policy -->
+        <string id="MSPassport_DisableSmartCardNode">Deaktiver smartkortemulering</string>
+        <string id="MSPassport_DisableSmartCardNodeExplain">Windows Hello for bedrifter tilbyr automatisk smartkortemulering for kompatibilitet med smartkortaktiverte programmer.
+
+Hvis du aktiverte denne policyinnstillingen, klargjør Windows Hello for bedrifter legitimasjon for Windows Hello for bedrifter som ikke er kompatibel med smartkortprogrammer.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, klargjør Windows Hello for bedrifter legitimasjon for Windows Hello for bedrifter som er kompatibel med smartkortprogrammer.
+
+OBS! Denne policyen påvirker legitimasjon for Windows Hello for bedrifter ved opprettelse. Legitimasjon opprettet før denne policyen ble opprettet, fortsetter å tilby smartkortemulering. Hvis du vil endre en eksisterende legitimasjon, må du aktivere denne policyinnstillingen og velge "Jeg har glemt PIN-koden" fra Innstillinger.
+        </string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNode">Tillat opplisting av emulerte smartkort for alle brukere</string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNodeExplain">Windows hindrer brukere på den samme datamaskinen i å liste opp klargjort legitimasjon for Windows Hello for bedrifter for andre brukere.
+
+Hvis du aktiverer denne policyinnstillingen, tillater Windows alle brukere på datamaskinen å liste opp all legitimasjon for Windows Hello for bedrifter, men fortsatt kreve at hver bruker legger inn sine egne faktorer for godkjenning.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, tillater ikke Windows opplistingen av klargjort legitimasjon for Windows Hello for bedrifter for andre brukere på den samme enheten.
+
+Denne policyinnstillingen ble utviklet for en enkelt bruker som har registrert privilegert og ikke-privilegert legitimasjon på en enkelt enhet. Brukeren eier begge legitimasjonene, som gjør at de kan logge på ved å bruke ikke-privilegert legitimasjon, men kan utføre opphøyde oppgaver uten å logge av.
+
+Denne policyinnstillingen er ikke kompatibel med legitimasjoner for Windows Hello for bedrifter når Deaktiver smartkortemulering er aktivert.
+
+Windows krever en omstart når du tar i bruk denne innstillingen på en datamaskin.
         </string>
     </stringTable>
     <presentationTable>
@@ -136,11 +188,30 @@ OBS! Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen og ak
       <presentation id="MSPassport_PINExpirationControl">
         <decimalTextBox refId="MSPassport_PINExpirationDataType" spin="true" spinStep="1" defaultvalue="0">PIN-kodeutløp</decimalTextBox>
       </presentation>
-	  <presentation id="MSPassport_ExcludeSecurityDevicesControl">
-		<text>Ikke bruk følgende sikkerhetsenheter:</text>
-		<checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
-	  </presentation>
-
+      <presentation id="MSPassport_ExcludeSecurityDevicesControl">
+        <text>Ikke bruk følgende sikkerhetsenheter:</text>
+        <checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
+      </presentation>
+      <presentation id="MSPassport_UseDeviceUnlock_Control">
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupA">
+            <label>Lås opp legitimasjonstjenesten først</label>
+            <defaultValue>{D6886603-9D2F-4EB2-B667-1971041FA96B},{8AF662BF-65A0-4D0A-A540-A338A999D36F},{BEC09223-B018-416D-A0AC-523971B639F5}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupB">
+            <label>Lås deretter opp legitimasjonstjenestene</label>
+            <defaultValue>{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD},{D6886603-9D2F-4EB2-B667-1971041FA96B}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_Plugins">
+            <label>Signalregler fra enhetsopplåsing</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Authentication" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
+      <presentation id="MSPassport_UseDynamicLock_Control">
+        <textBox refId="MSPassport_UseDynamicLock_Plugins">
+            <label>Signalregler fra dynamisk låsing</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Dynamic Lock" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
     </presentationTable>
   </resources>
 </policyDefinitionResources>

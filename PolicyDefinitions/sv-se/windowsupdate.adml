@@ -145,17 +145,17 @@ Om statusen är Inte konfigurerad så är inte användningen av automatiska uppd
         Anmärkning: Alternativet "Ladda ned filer utan URL:er i metadata om en alternativ nedladdningsserver har angetts" används endast om "Alternativ nedladdningsserver" anges.
 
         Anmärkning: Den här principinställningen stöds inte på Windows RT, och om den anges har den ingen effekt på Windows RT-datorer.</string>
-      <string id="DetectionFrequency_Help">Anger vilka timmar som ska användas för att avgöra väntetid innan sökning görs efter tillgängliga uppdateringar. Exakt väntetid avgörs genom att de timmar som anges här används, minus mellan 0 och 20 procent av de timmar som anges. Om den här principen till exempel används för att ange att sökning ska ske var 20:e timme kommer alla klienter som den här principen tillämpas på att söka efter uppdateringar mellan var 16:e och var 20:e timme.
+      <string id="DetectionFrequency_Help">Anger antalet timmar Windows använder för att avgöra väntetiden innan en sökning görs efter tillgängliga uppdateringar. Den exakta väntetiden är summan av det angivna värdet och ett slumpmässigt värde mellan 0 och 4 timmar.
 
-Om status är Aktiverad sker sökning efter tillgängliga uppdateringar enligt det intervall som anges.
+        Om status är Aktiverad söker Windows efter tillgängliga uppdateringar enligt specificerat intervall.
 
-Om status är Inaktiverad eller Inte konfigurerad sker sökning efter tillgängliga uppdateringar var 22:e timme (standardvärde).
+        Om status är Inaktiverad eller Inte konfigurerad söker Windows efter tillgängliga uppdateringar enligt standardintervallet 22 timmar.
 
-Obs! Inställningen "Ange sökväg till tjänsten Microsoft Update på intranätet" måste vara aktiverad för att den här principen ska ha någon effekt.
+        Obs! Inställningen "Ange sökväg till tjänsten Microsoft Update på intranätet" måste vara aktiverad för att den här principen ska ha någon effekt.
 
-Obs! Om principen Konfigurera Automatiska uppdateringar är inaktiverad har den här principen ingen verkan.
+        Obs! Om principen "Konfigurera Automatiska uppdateringar" är inaktiverad har den här principen ingen effekt.
 
-Obs! Den här principinställningen stöds inte på Windows RT. Den här principinställningen har ingen inverkan på Windows RT-datorer.</string>
+        Obs! Den här principen stöds inte på Windows RT, och om den anges har den ingen effekt på Windows RT-datorer.</string>
       <string id="DetectionFrequency_Title">Frekvens för sökning efter automatiska uppdateringar</string>
       <string id="ElevateNonAdmins_Help">Med den här principinställningen kan du reglera om andra användare än administratörer ska få uppdateringsmeddelanden baserat på principinställningen Konfigurera automatiska uppdateringar.
 
@@ -303,23 +303,45 @@ Obs! Den här principinställningen stöds inte på Windows RT. Den här princip
 Om du aktiverar den här principen inaktiveras den funktionen och det kan innebära att anslutningen till offentliga tjänster som Windows Store slutar fungera.
 
 Obs! Den här principen gäller endast när datorn är konfigurerad för att ansluta till en uppdateringstjänst på intranätet med principen "Ange sökväg till tjänsten Microsoft Update på intranätet".</string>
-      <string id="DeferUpdateCat">Skjut upp Windows-uppdateringar</string>
-      <string id="CurrentBranchFeatureUpdates">Current Branch</string>
-      <string id="BusinessReadyFeatureUpdates">Current Branch for Business</string>
-      <string id="DeferFeatureUpdates_Title">Välj när funktionsuppdateringar tas emot</string>
-      <string id="DeferFeatureUpdates_Help">Aktivera den här principen om du vill ange vilken typ av funktionsuppdateringar du vill ta emot och när.
+      <string id="DeferUpdateCat">Windows Update för företag</string>
+      <string id="ManagePreviewBuilds_Title">Hantera förhandsversioner</string>
+      <string id="ManagePreviewBuilds_Help">Om du väljer Inaktivera förhandsversioner hindras förhandsversioner från att installeras på enheten. Detta hindrar även användare från att gå med i Windows Insider Program via Inställningar -&gt; Uppdatering och säkerhet.
 
-Branch-beredskapsnivån för varje ny Windows 10-funktionsuppdatering sätts först till Current Branch (CB) och används av organisationer för initial distribution. När Microsoft har verifierat att funktionsuppdateringen är lämplig för företagsdistribution sätts den till Branch-beredskapsnivån Current Branch for Business (CBB).
+Om du väljer Inaktivera förhandsversioner när nästa version är offentlig installeras förhandsversioner fram till nästa offentliga Windows-version blir tillgänglig. Därefter hindras förhandsversioner från att installeras. Det här alternativet är också ett smidigt sätt att avregistrera enheten från förhandsversionsprogrammet. 
 
-Du kan skjuta upp funktionsuppdateringar i upp till 365 dagar.
+Om du väljer Aktivera förhandsversioner installeras förhandsversioner på enheten. Användarna kan ladda ned och installera förhandsversioner av Windows på sina enheter genom att gå med i Windows Insider Program via Inställningar -&gt; Uppdatering och säkerhet -&gt; Windows Insider Program. Administratörer kan också använda andra principer för att hantera inställningarna för förhandsversioner åt användarna när det här värdet har angetts.</string>
+      <string id="DisablePreviewBuilds">Inaktivera förhandsversioner</string>
+      <string id="DisablePreviewBuildsAndOptOut">Inaktivera förhandsversioner när nästa version är offentlig</string>
+      <string id="EnablePreviewBuilds">Aktivera förhandsversioner</string>
+      <string id="PreviewBuildFastFeatureUpdates">Förhandsversion - Snabba testgruppen</string>
+      <string id="PreviewBuildSlowFeatureUpdates">Förhandsversion - Långsamma testgruppen</string>
+      <string id="ReleasePreviewBranchFeatureUpdates">Release Preview-testgruppen</string>
+      <string id="SemiAnnualChannelTargetedFeatureUpdates">Semi-Annual Channel (Targeted)</string>
+      <string id="SemiAnnualChannelFeatureUpdates">Semi-Annual Channel</string>
+      <string id="DeferFeatureUpdates_Title">Välj när förhandsversioner och funktionsuppdateringar tas emot</string>
+      <string id="DeferFeatureUpdates_Help">Aktivera den här principen om du vill ange på vilken nivå du vill ta emot förhandsversioner eller funktionsuppdateringar och när.
 
-Om du inte vill ta emot funktionsuppdateringar den schemalagda tiden kan du tillfälligt pausa funktionsuppdateringar. Då pausas de i 60 dagar eller tills du rensar fältet för startdatum.
+* Förhandsversion - Snabba testgruppen: Enheter på den här nivån är bland de första att få nya versioner av Windows med funktioner som ännu inte släppts till allmänheten. Välj den här nivån om du vill delta i ett tidigt skede och lämna feedback till Microsoft om problem du stöter på eller lämna förslag på nya funktioner.
+* Förhandsversion - Långsamma testgruppen: Enheter på den här nivån får nya versioner av Windows innan de släpps till allmänheten, men i en långsammare takt än den snabba testgruppen vilket innebär att buggar har åtgärdats och ändringar gjorts sedan tidigare förhandsversioner.
+* Release Preview-testgruppen: Enheter på den här nivån får versioner av Windows precis innan Microsoft släpper dem till allmänheten.
+* Semi-Annual Channel (riktad): Enheter på den här nivån får funktionsuppdateringar när de släpps till allmänheten.
+* Semi-Annual Channel: Enheter på den här nivån får funktionsuppdateringar när de betecknas som Semi-Annual Channel. Detta sker vanligtvis 4 månader efter Semi-Annual Channel (riktad), vilket indikerar att Microsoft, oberoende programvaruleverantörer (ISV:er), partner och kunder anser att en version är redo att implementeras i deras organisationer.
 
-Rensa fältet för startdatum om du vill återuppta funktionsuppdateringar som pausats.
+När du väljer en förhandsversionsnivå:
+    - Du kan skjuta upp att ta emot förhandsversioner i 14 dagar.
+    - Om du inte vill ta emot förhandsversioner den schemalagda tiden kan du tillfälligt pausa dem. Då pausas de i 35 dagar från och med den starttid du anger.
+    - Rensa fältet för startdatum om du vill återuppta förhandsversioner som pausats.
 
-Om du inaktiverar eller låter bli att konfigurera principen kommer Windows Update inte att ändra sin uppdateringsprocess.
+För att kunna gå med i en förhandsversionsnivå krävs att telemetrinivån anges till 2 eller högre och att din domän är registrerad i insider.windows.com. Mer information om förhandsversioner hittar du på: https://aka.ms/wipforbiz
 
-Obs! Den här principen har ingen effekt om principen Tillåt telemetri är inställd på 0.</string>
+När du väljer Current Branch eller Current Branch for Business:
+    - Du kan skjuta upp funktionsuppdateringar i upp till 365 dagar.
+    - Om du inte vill ta emot funktionsuppdateringar den schemalagda tiden kan du tillfälligt pausa dem. Då pausas de i 35 dagar från och med den starttid du anger.
+    - Rensa fältet för startdatum om du vill återuppta funktionsuppdateringar som pausats.
+
+Du måste minst ha telemetrinivå 1 för att kunna konfigurera funktionsuppdateringar.
+
+Om du inaktiverar eller låter bli att konfigurera principen kommer Windows Update inte att ändra sin uppdateringsprocess.</string>
       <string id="DeferQualityUpdates_Title">Välj när kvalitetsuppdateringar tas emot</string>
       <string id="DeferQualityUpdates_Help">Aktivera den här principen om du vill ange när du vill ta emot kvalitetsuppdateringar.
 
@@ -488,14 +510,14 @@ Om du inaktiverar eller låter bli att konfigurera den här principen används s
       <string id="RestartWarnMins15">15</string>
       <string id="RestartWarnMins30">30</string>
       <string id="RestartWarnMins60">60</string>
-      <string id="EngagedRestartTransitionSchedule_Title">Definiera övergång till att användaren behöver schemalägga omstart och meddelandeschema för uppdateringar</string>
-      <string id="EngagedRestartTransitionSchedule_Help">Aktivera den här principen för att reglera tidsperioden innan en övergång görs från automatisk omstart schemalagd utanför aktiva timmar till att användaren behöver schemalägga omstarten. Tidsperioden kan vara mellan 2 och 30 dagar från det att omstarten blir väntande.
+      <string id="EngagedRestartTransitionSchedule_Title">Definiera övergång till Interaktiv omstart och meddelandeschema för uppdateringar</string>
+      <string id="EngagedRestartTransitionSchedule_Help">Aktivera den här principen för att reglera tidsperioden innan en övergång görs från automatisk omstart schemalagd utanför aktiva timmar till Interaktiv omstart som kräver att användaren schemalägger omstarten. Tidsperioden kan vara mellan 2 och 30 dagar från det att omstarten blir väntande.
 
-Du kan ange antalet dagar en användare kan snooza påminnelser om att denne behöver schemalägga en omstart. Snoozeperioden kan vara mellan 1 och 3 dagar.
+Du kan ange antalet dagar en användare kan snooza påminnelser om Interaktiv omstart. Snoozeperioden kan vara mellan 1 och 3 dagar.
 
-Du kan ange tidsgränsen i dagar innan en väntande omstart automatiskt schemaläggs och körs utanför aktiva timmar. Tidsgränsen kan vara mellan 2 och 30 dagar från det att omstarten blir väntande. Om du konfigurerar den här principen övergår den väntande omstarten från automatisk omstart till att användaren behöver schemalägga omstarten till att automatiskt utföras inom den angivna perioden.
+Du kan ange tidsgränsen i dagar innan en väntande omstart automatiskt schemaläggs och körs utanför aktiva timmar. Tidsgränsen kan vara mellan 2 och 30 dagar från det att omstarten blir väntande. Om du konfigurerar den här principen övergår den väntande omstarten från automatisk omstart till Interaktiv omstart (användaren behöver schemalägga omstarten) till att utföras automatiskt inom den angivna perioden.
 
-Om ingen tidsgräns anges, eller tidsgränsen sätts till 0, görs ingen automatisk omstart utan användaren behöver schemalägga omstarten.
+Om ingen tidsgräns anges, eller tidsgränsen sätts till 0, görs ingen automatisk omstart utan Interaktiv omstart krävs (användaren behöver schemalägga omstarten).
 
 Om du inaktiverar eller låter bli att konfigurera den här principen används standardinställningarna.
 
@@ -541,6 +563,14 @@ Om någon av följande principer konfigureras har den här principen ingen effek
       <string id="SetEDURestart_Title">Uppdatera energiprincipen för omstarter med vagnar</string>
       <string id="SetEDURestart_Help">Om du aktiverar den här principen för EDU-enheter som står på vagnar under natten görs ingen energikontroll för att säkerställa att omstarter sker den schemalagda installationstiden.</string>
 
+      <string id="AllowAutoWindowsUpdateDownloadOverMeteredNetwork_Title">Tillåt uppdateringar att laddas ned automatiskt med anslutningar med datapriser</string>
+      <string id="AllowAutoWindowsUpdateDownloadOverMeteredNetwork_Help">Om den här policyn godkänns så laddas uppdateringar ned automatiskt, även med anslutningar med datapriser (avgifter kan tillkomma)</string>
+
+      <string id="DisableDualScan_Title">Tillåt inte att principer för uppskjutande av uppdateringar initierar sökningar i Windows Update</string>
+      <string id="DisableDualScan_Help">Aktivera den här principen om du inte vill tillåta att principer för uppskjutande av uppdateringar initierar sökningar i Windows Update.
+
+Om den här principen är inaktiverad eller inte konfigurerad kan Windows Update-klienten initiera automatiska sökningar i Windows Update när principer för uppskjutande av uppdateringar är aktiverade.</string>
+
     </stringTable>
 
     <presentationTable>
@@ -553,6 +583,13 @@ Om någon av följande principer konfigureras har den här principen ingen effek
         <checkBox refId="AutoUpdateAutomaticMaintenanceEnabled" defaultChecked="false">Installera vid automatiskt underhåll</checkBox>
         <dropdownList refId="AutoUpdateSchDay" defaultItem="0">Schemalagd installationsdag:  </dropdownList>
         <dropdownList refId="AutoUpdateSchTime" defaultItem="3">Schemalagd installationstid:</dropdownList>
+        <text>Om du har valt ”4 – Hämta automatiskt och schemalägg installationen” för din schemalagda installationsdag och angett ett schema har du också möjlighet att begränsa uppdateringen till varje vecka, varannan vecka eller varje månad med alternativen nedan:</text>
+        <checkBox refId="AutoUpdateSchEveryWeek" defaultChecked="true">Varje vecka</checkBox>
+        <checkBox refId="AutoUpdateSchFirstWeek" defaultChecked="false">Första veckan i månaden</checkBox>
+        <checkBox refId="AutoUpdateSchSecondWeek" defaultChecked="false">Andra veckan i månaden</checkBox>
+        <checkBox refId="AutoUpdateSchThirdWeek" defaultChecked="false">Tredje veckan i månaden</checkBox>
+        <checkBox refId="AutoUpdateSchFourthWeek" defaultChecked="false">Fjärde veckan i månaden</checkBox>
+        <text> </text>
         <checkBox refId="AllowMUUpdateServiceId" defaultChecked="false">Installera uppdateringar för andra Microsoft-produkter</checkBox>
       </presentation>
       <presentation id="CorpWuURL">
@@ -601,20 +638,23 @@ Om någon av följande principer konfigureras har den här principen ingen effek
         <text>så här mycket tid att spara sitt</text>
         <decimalTextBox refId="AlwaysAutoRebootAtScheduledTime_Minutes" defaultValue="15">arbete (minuter):  </decimalTextBox>
       </presentation>
+      <presentation id="ManagePreviewBuilds">
+        <dropdownList refId="ManagePreviewBuildsId" noSort="true" defaultItem="2">Ange beteende för mottagande av förhandsversioner:</dropdownList>
+      </presentation>
       <presentation id="DeferFeatureUpdates">
-        <dropdownList refId="BranchReadinessLevelId" noSort="true" defaultItem="0">Välj Branch-beredskapsnivån för de funktionsuppdateringar du vill ta emot:</dropdownList>
-        <decimalTextBox refId="DeferFeatureUpdatesPeriodId" defaultValue="0">När en funktionsuppdatering släpps, skjut upp den i följande antal dagar:</decimalTextBox>
+        <dropdownList refId="BranchReadinessLevelId" noSort="true" defaultItem="0">Välj Windows-beredskapsnivån för de uppdateringar du vill ta emot:</dropdownList>
+        <decimalTextBox refId="DeferFeatureUpdatesPeriodId" defaultValue="0">När en förhandsversion eller funktionsuppdatering släpps, skjut upp den i följande antal dagar:</decimalTextBox>
         <textBox refId="PauseFeatureUpdatesStartId">
-          <label>Pausa funktionsuppdateringar</label>
+          <label>Pausa förhandsversioner eller funktionsuppdateringar med början:</label>
         </textBox>
-        <text>(exempel på formatet åååå-mm-dd: 2016-09-16)</text>
+        <text>(format åååå-mm-dd, exempel: 2016-10-30)</text>
       </presentation>
       <presentation id="DeferQualityUpdates">
         <decimalTextBox refId="DeferQualityUpdatesPeriodId" defaultValue="0">När en kvalitetsuppdatering släpps, skjut upp den i följande antal dagar:</decimalTextBox>
         <textBox refId="PauseQualityUpdatesStartId">
           <label>Pausa kvalitetsuppdateringar</label>
         </textBox>
-        <text>(exempel på formatet åååå-mm-dd: 2016-09-16)</text>
+        <text>(format åååå-mm-dd, exempel: 2016-10-30)</text>
       </presentation>
       <presentation id="ActiveHours_Title">
         <text>Aktiva timmar</text>
@@ -643,9 +683,9 @@ Om någon av följande principer konfigureras har den här principen ingen effek
         <dropdownList refId="RestartWarn" noSort="true" defaultItem="0">Varning (minuter): </dropdownList>
       </presentation>
       <presentation id="EngagedRestartTransitionSchedule_Title">
-        <text>Ange tidsperioden innan övergång görs från automatisk omstart till att användaren behöver schemalägga omstart:</text>
+        <text>Ange tidsperioden innan övergång görs från automatisk omstart till Interaktiv omstart (användaren behöver schemalägga omstart):</text>
         <dropdownList refId="EngagedRestartTransitionSchedule" noSort="true" defaultItem="5">Övergång (dagar): </dropdownList>
-        <text>Ange snoozetiden för påminnelser om att användaren behöver schemalägga omstart:</text>
+        <text>Ange snoozetiden för påminnelser om Interaktiv omstart:</text>
         <dropdownList refId="EngagedRestartSnoozeSchedule" noSort="true" defaultItem="2">Snooze (dagar):     </dropdownList>
         <text>Ange tidsgränsen innan en väntande omstart görs automatiskt utanför aktiva timmar:</text>
         <dropdownList refId="EngagedRestartDeadline" noSort="true" defaultItem="0">Tidsgräns (dagar):  </dropdownList>

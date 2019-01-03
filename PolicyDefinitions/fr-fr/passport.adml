@@ -94,6 +94,15 @@ Si vous désactivez ce paramètre de stratégie, Windows Hello Entreprise empêc
 
 REMARQUE : la désactivation de cette stratégie empêche l’utilisateur d’utiliser des données biométriques sur l’appareil pour tous les types de compte.
         </string>
+        <string id="MSPassport_EnablePinRecovery">Utiliser la récupération du code PIN</string>
+        <string id="MSPassport_EnablePinRecoveryExplain">La récupération du code PIN permet à un utilisateur de modifier un code PIN oublié à l'aide du service de récupération de code PIN de Windows Hello Entreprise sans perdre aucune information d'identification associée ni aucun certificat, notamment les clés associées aux comptes personnels de l'utilisateur sur l'appareil. Pour ce faire, le service de récupération du code PIN Azure chiffre un secret de récupération, qui est stocké sur l'appareil et nécessite à la fois le service de récupération du code PIN et l'appareil pour le déchiffrement. Pour récupérer le code PIN, l'utilisateur doit procéder à une authentification multi-facteur Azure Active Directory.
+
+Si vous activez ce paramètre de stratégie, Windows Hello Entreprise utilise le service de récupération de code PIN. 
+
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, Windows ne crée et n'enregistre pas de secret de récupération de code PIN. Si l'utilisateur oublie son code PIN, il doit supprimer le code PIN existant et en créer un autre, puis il doit se réinscrire auprès des services auxquels l'ancien code PIN fourni lui donnait accès.
+
+REMARQUE : cette stratégie ne s'applique qu'aux appareils enregistrés auprès d'Azure Active Directory.
+        </string>
         <string id="MSPassport_UseRemote">Utiliser les informations d’identification du téléphone</string>
         <string id="MSPassport_UseRemoteExplain">Utilisez ce paramètre de stratégie pour configurer l’utilisation des informations d’identification du téléphone. Les informations d’identification du téléphone permettent à un téléphone d’être utilisé comme appareil mobile pour l’authentification du Bureau. Les informations d’identification du téléphone exigent que le PC et le téléphone soient enregistrés avec le même client Azure AD. Le téléphone doit également être inscrit dans Windows Hello Entreprise.
 
@@ -102,13 +111,56 @@ Si vous activez ce paramètre de stratégie, les informations d’identification
 Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les informations d’identification du téléphone sont désactivées, empêchant ainsi l’utilisation d’un téléphone en tant qu’appareil mobile pour l’authentification du Bureau.
         </string>
         <!-- Explain Text for UseCertificateForOnPremAuth -->
-        <string id="WHFB_UseCertificateForOnPremAuthExplain">Utilisez ce paramètre de stratégie pour configurer Windows Hello Entreprise et inscrire un certificat de connexion qui sera utilisé pour l’authentification locale.
+        <string id="WHFB_UseCertificateForOnPremAuthExplain">Utilisez ce paramètre de stratégie pour configurer Windows Hello Entreprise et inscrire un certificat de connexion qui sera utilisé pour l'authentification locale.
 
-Si vous activez ce paramètre de stratégie, Windows Hello Entreprise inscrit un certificat de connexion qui sera utilisé pour l’authentification locale.
-		
-Si vous désactivez ou que vous ne configurez pas ce paramètre de stratégie, Windows Hello Entreprise inscrit une clé qui sera utilisée pour l’authentification locale.
+Si vous activez ce paramètre de stratégie, Windows Hello Entreprise inscrit un certificat de connexion qui sera utilisé pour l'authentification locale.
 
-REMARQUE : la désactivation ou la non-configuration de ce paramètre de stratégie et l’activation du paramètre de stratégie « Utiliser Windows Hello Entreprise » exige que l’environnement dispose d’au moins un contrôleur de domaine Windows Server 2016 afin d’éviter que l’authentification Windows Hello Entreprise n’échoue.
+Si vous désactivez ou que vous ne configurez pas ce paramètre de stratégie, Windows Hello Entreprise inscrit une clé qui sera utilisée pour l'authentification locale.
+
+REMARQUE : la désactivation ou la non-configuration de ce paramètre de stratégie et l'activation du paramètre de stratégie « Utiliser Windows Hello Entreprise » exige que l'environnement dispose d'au moins un contrôleur de domaine Windows Server 2016 afin d'éviter que l'authentification Windows Hello Entreprise n'échoue.
+        </string>
+        <!-- Explain text for device unlock policy -->
+        <string id="MSPassport_UseDeviceUnlock">Configurer les facteurs de déverrouillage de l’appareil</string>
+        <string id="MSPassport_UseDeviceUnlock_Explain">Configurez une liste séparée par des virgules des GUID des fournisseurs d’informations d’identification, par exemple des GUID de fournisseur de type visage et empreinte digitale, à utiliser comme premier et deuxième facteurs de déverrouillage. Si le fournisseur de signal de confiance est indiqué comme l’un des facteurs de déverrouillage, vous devez également configurer une liste séparée par des virgules des règles de signal au format xml pour chaque type de signal à vérifier.
+
+Si vous activez ce paramètre de stratégie, l’utilisateur devra utiliser un facteur de chaque liste pour procéder au déverrouillage.
+
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, les utilisateurs peuvent continuer à déverrouiller à l’aide des options de déverrouillage existantes.
+
+Pour plus d'informations, voir : https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for dynamic lock policy -->
+        <string id="MSPassport_UseDynamicLock">Configurer les facteurs de verrouillage dynamique</string>
+        <string id="MSPassport_UseDynamicLock_Explain">Configurez une liste séparée par des virgules pour les règles de signal, avec un fichier XML par signal.
+
+Si ce paramètre de stratégie est activé, ces règles de signal seront évaluées pour détecter l'absence de l'utilisateur et automatiquement verrouiller l'appareil.
+
+Si ce paramètre de stratégie est désactivé ou n'est pas configuré, les utilisateurs pourront continuer à utiliser les options de déverrouillage existantes.
+
+Pour plus d'informations, voir : https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for smart card emulation policy -->
+        <string id="MSPassport_DisableSmartCardNode">Désactiver l'émulation de la carte à puce</string>
+        <string id="MSPassport_DisableSmartCardNodeExplain">Windows Hello Entreprise fournit automatiquement une émulation de carte à puce en vue de la compatibilité avec les applications équipées d'une carte à puce.
+
+Si vous activez ce paramètre de politique, Windows Hello Entreprise fournit des identifiants Windows Hello Entreprise qui ne sont pas compatibles avec les applications de cartes à puce.
+
+Si vous désactivez ou ne configurez pas ce paramètre de politique, Windows Hello Entreprise fournit des identifiants Windows Hello Entreprise compatibles avec les applications de cartes à puce.
+
+REMARQUE : cette politique a un impact sur les identifiants Windows Hello Entreprise au moment de leur création. Les identifiants créés avant la mise en application de cette politique continuent de fournir une émulation de carte à puce. Pour modifier des identifiants existants, activez ce paramètre de politique et sélectionnez « J'ai oublié mon code PIN » dans Paramètres.
+        </string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNode">Autoriser l'énumération d'une carte à puce émulée pour tous les utilisateurs</string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNodeExplain">Windows empêche les utilisateurs d'un même ordinateur d'énumérer des identifiants Windows Entreprise fournis pour tous les utilisateurs.
+
+Si vous activez ce paramètre de politique, Windows permet à tous les utilisateurs de l'ordinateur d'énumérer tous les identifiants Windows Hello Entreprise mais exige de chaque utilisateur qu'il fournisse ses propres facteurs d'authentification.
+
+Si vous désactivez ou ne configurez pas ce paramètre de politique, Windows ne permet pas l'énumération des identifiants Windows Hello Entreprise fournis pour les autres utilisateurs du même appareil.
+
+Ce paramètre de politique est conçu pour un seul utilisateur qui a inscrit des identifiants dotés de privilèges et sans privilège sur un appareil. L'utilisateur détient les deux identifiants, ce qui lui permet de se connecter à l'aide des identifiants sans privilège, tout en réalisant des tâches avec élévation sans se déconnecter.
+
+Ce paramètre de politique est incompatible avec les identifiants Windows Hello Entreprise fournis lorsque l'option « Désactiver l'émulation de la carte à puce » est activée.
+
+Windows requiert un redémarrage une fois ce paramètre appliqué à votre ordinateur.
         </string>
     </stringTable>
     <presentationTable>
@@ -136,11 +188,30 @@ REMARQUE : la désactivation ou la non-configuration de ce paramètre de straté
       <presentation id="MSPassport_PINExpirationControl">
         <decimalTextBox refId="MSPassport_PINExpirationDataType" spin="true" spinStep="1" defaultvalue="0">Expiration du code PIN</decimalTextBox>
       </presentation>
-	  <presentation id="MSPassport_ExcludeSecurityDevicesControl">
-		<text>Ne pas utiliser les périphériques de sécurité suivants :</text>
-		<checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
-	  </presentation>
-
+      <presentation id="MSPassport_ExcludeSecurityDevicesControl">
+        <text>Ne pas utiliser les périphériques de sécurité suivants :</text>
+        <checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
+      </presentation>
+      <presentation id="MSPassport_UseDeviceUnlock_Control">
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupA">
+            <label>Fournisseurs d'informations d'identification pour le premier facteur de déverrouillage</label>
+            <defaultValue>{D6886603-9D2F-4EB2-B667-1971041FA96B},{8AF662BF-65A0-4D0A-A540-A338A999D36F},{BEC09223-B018-416D-A0AC-523971B639F5}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupB">
+            <label>Fournisseurs d'informations d'identification pour le second facteur de déverrouillage</label>
+            <defaultValue>{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD},{D6886603-9D2F-4EB2-B667-1971041FA96B}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_Plugins">
+            <label>Règles de signal pour le déverrouillage de l'appareil</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Authentication" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
+      <presentation id="MSPassport_UseDynamicLock_Control">
+        <textBox refId="MSPassport_UseDynamicLock_Plugins">
+            <label>Règles de signal pour le verrouillage dynamique</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Dynamic Lock" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
     </presentationTable>
   </resources>
 </policyDefinitionResources>

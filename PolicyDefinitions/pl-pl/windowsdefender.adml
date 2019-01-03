@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Program antywirusowy Windows Defender</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Wykluczenia</string>
+    <string id="ExploitGuard">Windows Defender Exploit Guard</string>
+    <string id="ExploitGuard_ASR">Zmniejszanie obszaru ataków</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Kontrolowany dostęp do folderu</string>
+    <string id="ExploitGuard_NetworkProtection">Ochrona sieci</string>
     <string id="NetworkRealtimeInspection">System inspekcji sieci</string>
     <string id="NetworkRealtimeInspection_Exclusions">Wykluczenia</string>
     <string id="Quarantine">Kwarantanna</string>
@@ -26,7 +30,18 @@
     Jeśli wyłączysz to ustawienie, usługa ochrony przed złośliwym kodem będzie ładowana jako zadanie z niskim priorytetem.</string>
 
     <string id="DisableAutoExclusions">Wyłącz automatyczne wykluczenia</string>
-    <string id="DisableAutoExclusions_Explain">Umożliwia administratorowi określenie, czy należy wyłączyć funkcję automatycznych wykluczeń dla wersji serwera.</string>
+    <string id="DisableAutoExclusions_Explain">
+        Umożliwia administratorowi określenie, czy należy wyłączyć funkcję automatycznych wykluczeń dla wersji serwera.
+
+        Wyłączone (wartość domyślna):
+        Usługa Windows Defender będzie wykluczać ze skanowania wstępnie zdefiniowaną listę ścieżek w celu zwiększenia wydajności.
+
+        Włączone:
+        Usługa Windows Defender nie będzie wykluczać ze skanowania wstępnie zdefiniowanej listy ścieżek. W pewnych sytuacjach może to mieć wpływ na wydajność komputera.
+
+        Nieskonfigurowane:
+        Takie samo działanie jak w przypadku wartości Wyłączone.
+    </string>
     <string id="DisableAntiSpyware">Wyłącz usługę Endpoint Protection</string>
     <string id="DisableAntiSpyware_Explain">To ustawienie zasad powoduje wyłączenie usługi Endpoint Protection.
 
@@ -725,16 +740,22 @@ Jeśli wyłączysz to ustawienie lub go nie skonfigurujesz, dodatkowy tekst nie 
     <string id="MpCloudBlockLevel_Explain">
       To ustawienie zasad umożliwia określenie, jak agresywnie Program antywirusowy Windows Defender będzie blokować i skanować podejrzane pliki.
 
-      Jeśli to ustawienie będzie włączone, funkcja Program antywirusowy Windows Defender będzie agresywniej identyfikować podejrzane pliki do blokowania i skanowania; w przeciwnym razie będzie działać mniej agresywnie, przez co blokowanie i skanowanie będzie odbywać się rzadziej. 
+      Jeśli to ustawienie będzie włączone, Program antywirusowy Windows Defender będzie agresywniej identyfikować podejrzane pliki do blokowania i skanowania; w przeciwnym razie będzie działać mniej agresywnie, przez co blokowanie i skanowanie będzie odbywać się rzadziej. 
       
       Aby uzyskać więcej informacji dotyczących konkretnych obsługiwanych wartości, zobacz witrynę z dokumentacją Programu antywirusowego Windows Defender.
 
       Uwaga: do działania tej funkcji wymagane jest włączenie ustawienia Dołącz do społeczności Microsoft MAPS.
 
       Dostępne opcje:
-      (0x0) Domyślny poziom blokowania Programu antywirusowego Windows Defender
-      (0x2) Wysoki poziom blokowania      
+      (0x0) Domyślny poziom blokowania usługi Windows Defender.
+      (0x2) Wysoki poziom blokowania — agresywne blokowanie nieznanych plików przy jednoczesnej optymalizacji wydajności klienta (większa szansa fałszywych trafień).
+      (0x4) Bardzo wysoki poziom blokowania — agresywne blokowanie nieznanych plików i stosowanie dodatkowych środków ochrony (możliwy wpływ na wydajność klienta).
+      (0x6) Poziom blokowania „Zero tolerancji” — blokowanie wszystkich nieznanych plików wykonywalnych.
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Domyślny poziom blokowania Programu antywirusowego Windows Defender</string>
+    <string id="MpCloudBlockLevel_High_Level">Wysoki poziom blokowania</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Bardzo wysoki poziom blokowania</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Poziom blokowania „Zero tolerancji”</string>
     <string id="MpBafsExtendedTimeout">Konfiguruj rozszerzone sprawdzanie w chmurze</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Ta funkcja umożliwia Programowi antywirusowemu Windows Defender zablokowanie podejrzanego pliku na maksymalnie 60 sekund i przeskanowanie go w chmurze w celu zagwarantowania, że jest bezpieczny.
@@ -745,8 +766,133 @@ Jeśli wyłączysz to ustawienie lub go nie skonfigurujesz, dodatkowy tekst nie 
 
       Uwaga: ta funkcja zależy od trzech innych ustawień usługi MAPS — Skonfiguruj funkcję „Blokuj przy pierwszym napotkaniu”, Dołącz do społeczności Microsoft MAPS oraz Wysyłaj próbki plików, jeśli potrzebna jest dalsza analiza — które muszą być włączone.
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Domyślny poziom blokowania Programu antywirusowego Windows Defender</string>
-    <string id="MpCloudBlockLevel_High_Level">Wysoki poziom blokowania</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Uniemożliwia użytkownikom i aplikacjom dostęp do niebezpiecznych witryn internetowych</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Włącz lub wyłącz ochronę sieci za pomocą funkcji Windows Defender Exploit Guard, aby uniemożliwić pracownikom użycie jakiejkolwiek aplikacji w celu uzyskania dostępu do niebezpiecznych domen, w których mogą być hostowane fałszywe witryny wyłudzające informacje, witryny zawierające programy wykorzystujące luki oraz inna złośliwa zawartość internetowa.
+
+        Włączone:
+        Określ tryb w sekcji Opcje:
+        - Blokuj: użytkownicy i aplikacje nie będą mogli uzyskiwać dostępu do niebezpiecznych domen.
+        - Inspekcja: użytkownicy i aplikacje mogą łączyć się z niebezpiecznymi domenami, ale jeśli ta funkcja zablokowałaby dostęp, gdyby to ustawienie miało wartość Blokuj, rekord tego zdarzenia będzie widoczny w usłudze Windows Defender Security Center.
+
+        Wyłączone:
+        Użytkownicy i aplikacje będą mogli uzyskiwać dostęp do niebezpiecznych domen.
+
+        Nieskonfigurowane:
+        Takie samo działanie jak w przypadku wartości Wyłączone.
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Wyklucz pliki i ścieżki z reguł funkcji Zmniejszanie obszaru ataków</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Wyklucz pliki i ścieżki z reguł funkcji Zmniejszanie obszaru ataków (ASR).
+
+        Włączone:
+        W sekcji Opcje określ foldery lub pliki i zasoby, które mają być wykluczane z reguł funkcji ASR.
+        Każda reguła w nowym wierszu jako para nazwa-wartość:
+        - Kolumna nazw: Wprowadź ścieżkę do folderu lub w pełni kwalifikowaną nazwę zasobu. Na przykład wartość „"C:\Windows"” spowoduje wykluczenie wszystkich plików w tym katalogu, a wartość „"C:\Windows\Aplikacja.exe"” spowoduje tylko wykluczenie konkretnego pliku w tym folderze.
+        - Kolumna wartości: wprowadź wartość „"0"” dla każdego elementu.
+
+        Wyłączone:
+        Do reguł funkcji ASR nie będą stosowane wykluczenia.
+
+        Nieskonfigurowane:
+        Takie samo działanie jak w przypadku wartości Wyłączone.
+
+        Reguły funkcji ASR można skonfigurować w ustawieniu zasad grupy Konfiguruj reguły zmniejszania obszaru ataków.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Konfiguruj reguły funkcji Zmniejszanie obszaru ataków</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    Ustaw stan każdej reguły funkcji Zmniejszanie obszaru ataków (ASR).
+
+        Po włączeniu tego ustawienia w sekcji Opcje możesz ustawić dla każdej reguły jeden z poniższych stanów:
+        - Blokuj: reguła będzie stosowana.
+        - Inspekcja: jeśli reguła normalnie spowodowałaby powstanie zdarzenia, zostanie ono zarejestrowane (mimo że reguła nie zostanie w rzeczywistości zastosowana).
+        - Wyłączona: reguła nie zostanie zastosowana.
+
+        Włączone:
+        Określ stan każdej reguły funkcji ASR w sekcji Opcje tego ustawienia.
+        Wprowadź każdą regułę w nowym wierszu jako parę nazwa-wartość:
+        - Kolumna nazw: wprowadź prawidłowy identyfikator reguły funkcji ASR.
+        - Kolumna wartości: wprowadź identyfikator stanu, który chcesz określić dla skojarzonej reguły.
+
+        W kolumnie wartości można używać następujących identyfikatorów stanu:
+        - XXXXX (Blokuj)
+        - YYYYY (Wyłączona)
+        - ZZZZZ (Inspekcja)
+
+        Wyłączone:
+        Nie będą konfigurowane reguły funkcji ASR.
+
+        Nieskonfigurowane:
+        Takie samo działanie jak w przypadku wartości Wyłączone.
+
+        Foldery lub pliki i zasoby można wykluczać w ustawieniu zasad grupy Wyklucz foldery lub pliki i zasoby.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Konfiguruj kontrolowany dostęp do folderu</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Włącz lub wyłącz kontrolowany dostęp do folderu dla niezaufanych aplikacji.
+
+        Włączone:
+        Niezaufane aplikacje nie mogą modyfikować ani usuwać plików w chronionych folderach, takich jak folder Dokumenty.
+
+        Wyłączone:
+        Wszystkie aplikacje mogą modyfikować i usuwać pliki w chronionych folderach, takich jak folder Dokumenty.
+
+        Tryb inspekcji:
+        Aplikacje, które w przypadku włączenia tego ustawienia byłyby traktowane jako „niezaufane”, mogą modyfikować i usuwać pliki w chronionych folderach, jednak każde takie zdarzenie będzie rejestrowane w dzienniku zdarzeń systemu Windows.
+
+        Nieskonfigurowane:
+        Takie samo działanie jak w przypadku wartości Wyłączone.
+
+        Program antywirusowy Windows Defender automatycznie ustala, które aplikacje mogą być zaufane. Dodatkowe zaufane aplikacje możesz dodać w ustawieniu zasad grupy Konfiguruj dozwolone aplikacje.
+
+        Domyślne foldery systemu są chronione automatycznie, ale możesz dodać foldery, używając ustawienia zasad grupy Konfiguruj chronione foldery.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Wyłącz (domyślne)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Zablokuj</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Tryb inspekcji</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Konfiguruj dozwolone aplikacje</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Dodaj kolejne aplikacje, które mają być traktowane jako „zaufane” przez funkcję kontrolowanego dostępu do folderu.
+
+        Te aplikacje mogą modyfikować i usuwać pliki w folderach chronionych przez funkcję kontrolowanego dostępu do folderu.
+
+        Program antywirusowy Windows Defender automatycznie ustala, które aplikacje mają być zaufane. Możesz skonfigurować to ustawienie, aby dodać więcej aplikacji.
+
+        Włączone:
+        Określ dodatkowe dozwolone aplikacje w sekcji Opcje.
+
+        Wyłączone:
+        Do listy zaufanych aplikacji nie zostaną dodane żadne dodatkowe aplikacje.
+
+        Nieskonfigurowane:
+        Takie samo działanie jak w przypadku wartości Wyłączone.
+
+        Funkcję kontrolowanego dostępu do folderu możesz włączyć w ustawieniu zasad grupy Konfiguruj kontrolowany dostęp do folderu.
+
+        Domyślne foldery systemu są chronione automatycznie, ale możesz dodać foldery, używając ustawienia zasad grupy Konfiguruj chronione foldery.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Konfiguruj chronione foldery</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Określ dodatkowe foldery, które mają być chronione przez funkcję dostępu do chronionych folderów.
+
+        Niezaufane aplikacje nie mogą modyfikować ani usuwać plików w tych folderach.
+
+        Domyślne foldery systemu są chronione automatycznie, ale możesz dodać kolejne foldery.
+        Lista domyślnych folderów systemu, które są chronione, jest widoczna w usłudze Windows Defender Security Center.
+
+        Włączone:
+        Określ w sekcji Opcje dodatkowe foldery, które mają być chronione.
+
+        Wyłączone:
+        Nie będą chronione żadne dodatkowe foldery.
+
+        Nieskonfigurowane:
+        Takie samo działanie jak w przypadku wartości Wyłączone.
+
+        Funkcję kontrolowanego dostępu do folderu możesz włączyć w ustawieniu zasad grupy Konfiguruj kontrolowany dostęp do folderu.
+
+        Program antywirusowy Windows Defender automatycznie ustala, które aplikacje mogą być zaufane. Dodatkowe zaufane aplikacje możesz skonfigurować w ustawieniu zasad grupy Konfiguruj dozwolone aplikacje.
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1039,24 @@ Jeśli wyłączysz to ustawienie lub go nie skonfigurujesz, dodatkowy tekst nie 
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Określ czas rozszerzonego sprawdzania w chmurze (w sekundach)</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">Konfiguruj funkcję ochrony folderów</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Wykluczenia z reguł funkcji ASR:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Ustaw stan każdej reguły funkcji ASR:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Wprowadź aplikacje, które mają być traktowane jako zaufane:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Wprowadź foldery, które mają być chronione:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

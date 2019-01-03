@@ -28,13 +28,14 @@ Nota: durante l'installazione di BitLocker potrebbe verificarsi l'inizializzazio
 
 Nota: questa impostazione dei criteri è applicabile solo ai computer che eseguono Windows Server 2008 o Windows Vista.
 
-In un computer con un TPM (Trusted Platform Module) compatibile è possibile utilizzare due tipi di autenticazione all'avvio per garantire una protezione aggiuntiva per i dati crittografati. Il primo tipo di autenticazione richiede agli utenti di inserire un'unità flash USB contenente una chiave di avvio all'avvio del computer. Il secondo tipo richiede agli utenti di inserire un codice PIN di avvio composto da un minimo di 6 e un massimo di 20 cifre.
+In un computer con un TPM (Trusted Platform Module) compatibile è possibile utilizzare due tipi di autenticazione all'avvio per garantire una protezione aggiuntiva per i dati crittografati. Il primo tipo di autenticazione richiede agli utenti di inserire un'unità flash USB contenente una chiave di avvio all'avvio del computer. Il secondo tipo richiede agli utenti di inserire un codice PIN di avvio composto da un minimo di 4 e un massimo di 20 cifre.
 
 Nei computer senza un TPM compatibile è necessaria un'unità flash USB contenente una chiave di avvio. Senza un TPM, i dati crittografati tramite BitLocker vengono protetti soltanto dal materiale della chiave nell'unità flash USB.
 
 Se si abilita questa impostazione dei criteri, la procedura guidata visualizzerà la pagina per consentire all'utente di configurare opzioni di avvio avanzate per BitLocker. È possibile configurare ulteriormente le opzioni relative alle impostazioni per i computer con e senza un TPM.
 
 Se si disabilita o non si configura questa impostazione dei criteri, la configurazione guidata BitLocker visualizzerà i passaggi di base che consentono agli utenti di attivare BitLocker nei computer con un TPM. In questa procedura di base non è possibile configurare chiavi o PIN di avvio aggiuntivi.
+
 </string>
 
       <string id="ConfigureStartupUsage_Name">Richiedi autenticazione aggiuntiva all'avvio (Windows Server 2008 e Windows Vista)</string>
@@ -375,11 +376,14 @@ L'impostazione che controlla il debugger di avvio (0x16000010) verrà sempre con
 
 
       <string id="MinimumPINLength_Name">Configura lunghezza minima PIN per l'avvio</string>
-      <string id="MinimumPINLength_Help">Questa impostazione dei criteri consente di configurare la lunghezza minima per il PIN di avvio di un TPM (Trusted Platform Module). Questa impostazione dei criteri viene applicata quando si abilita BitLocker. Il PIN di avvio deve contenere almeno 6 e non più di 20 cifre.
+      <string id="MinimumPINLength_Help">
+          Questa impostazione dei criteri consente di configurare la lunghezza minima per il PIN di avvio di un TPM (Trusted Platform Module). Questa impostazione dei criteri viene applicata quando si abilita BitLocker. Il PIN di avvio deve contenere almeno 4 e non più di 20 cifre.
 
-Se si abilita questa impostazione dei criteri, sarà possibile richiedere un numero minimo di cifre da utilizzare per l'impostazione del PIN di avvio.
+          Se abiliti questa impostazione dei criteri, puoi richiedere un numero minimo di cifre da utilizzare per l'impostazione del PIN di avvio.
 
-Se si disabilita o non si configura questa impostazione dei criteri, gli utenti potranno configurare un PIN di avvio di qualsiasi lunghezza compresa tra 6 e 20 cifre.
+          Se disabiliti o non configuri questa impostazione dei criteri, gli utenti potranno configurare un PIN di avvio di qualsiasi lunghezza compresa tra 6 e 20 cifre.
+
+          NOTA: se la lunghezza minima del PIN è impostata su meno di 6 cifre, Windows tenta di aggiornare il periodo di blocco del TPM 2.0 su un valore superiore a quello predefinito quando un PIN viene cambiato. Se l'operazione ha esito positivo, Windows reimposta il periodo di blocco del TPM nuovamente sul valore predefinito quando il TPM viene reimpostato.
 
       </string>
 

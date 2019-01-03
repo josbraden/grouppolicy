@@ -145,17 +145,17 @@
         注意: 仅当设置了“备用下载服务器”时才会使用“下载没有 Url 的文件...”选项。
 
         注意: Windows RT 不支持此策略。在 Windows RT 电脑上设置此策略不起任何作用。</string>
-      <string id="DetectionFrequency_Help">指定 Windows 确定在检查可用更新前等待的时间(小时)。使用此处指定的小时数减去零到百分之二十的指定小时数，可以确定确切的等待时间。例如，如果使用此策略指定检测频率为 20 小时，则应用此策略的所有客户端将以 16 到 20 小时之间的任何时间为间隔检查更新。
+      <string id="DetectionFrequency_Help">指定 Windows 确定在检查可用更新前等待的时间(小时)。确切的等待时间是具体值和 0-4 小时之间的随机变量的总和。
 
-如果将状态设置为“启用”，Windows 将以指定的间隔检查可用更新。
+        如果将状态设置为“启用”，Windows 将以指定的间隔检查可用更新。
 
-如果将状态设置为“禁用”或“未配置”，Windows 将以 22 小时作为默认间隔检查可用更新。
+        如果将状态设置为“禁用”或“未配置”，Windows 将以 22 小时作为默认间隔检查可用更新。
 
-注意: 若要使此策略起作用，必须启用“指定 Intranet Microsoft 更新服务位置”设置。
+        注意: 若要使此策略起作用，必须启用“指定 Intranet Microsoft 更新服务位置”设置。
 
-注意：如果“配置自动更新”策略被禁用，则此策略不起作用。
+        注意: 如果“配置自动更新”策略被禁用，则此策略不起作用。
 
-注意: 在 Windows RT 上不支持此策略。设置此策略对 Windows RT 电脑没有任何影响。</string>
+        注意: 在 Windows RT 上不支持此策略。设置此策略对 Windows RT 电脑没有任何影响。</string>
       <string id="DetectionFrequency_Title">自动更新检测频率</string>
       <string id="ElevateNonAdmins_Help">使用此策略设置，可以控制非管理员用户是否基于“配置自动更新”策略设置接收更新通知。
 
@@ -303,23 +303,45 @@
 启用此策略将禁用该功能，并且可能会导致 Windows 应用商店等公共服务连接中断。
 
 注意：只有当配置此电脑使用“指定 Intranet Microsoft 更新服务位置”策略连接 Intranet 更新服务时才适用此策略。</string>
-      <string id="DeferUpdateCat">延迟 Windows 更新</string>
-      <string id="CurrentBranchFeatureUpdates">Current Branch</string>
-      <string id="BusinessReadyFeatureUpdates">Current Branch for Business</string>
-      <string id="DeferFeatureUpdates_Title">选择何时接收功能更新</string>
-      <string id="DeferFeatureUpdates_Help">启用此策略可指定何时接收什么类型的功能更新。
+      <string id="DeferUpdateCat">适用于企业的 Windows 更新</string>
+      <string id="ManagePreviewBuilds_Title">管理预览版</string>
+      <string id="ManagePreviewBuilds_Help">选择“禁用预览版”将阻止预览版在此设备上安装。这将阻止用户选择加入 Windows 预览体验计划，方法是“设置”-&gt;“更新和安全”。
 
-每个新的 Windows 10 功能更新的分支就绪级别一开始可以被认为是 "Current Branch" (CB)发布，组织将使用它进行初始部署。在 Microsoft 确认可以考虑将功能更新用于企业部署后，就会宣布其分支就绪级别为“Current Branch for Business”(CBB)。
+选择“下个发行版本上市后禁用预览版”，将在下一个 Windows 版本上市后阻止安装预览版。如果你的设备被设置为安装预览版，且你希望正常退出设备进行外部测试，此选项很有用。此选项将一直提供预览版，直到设备要更新到下一个发行版本。
 
-最多可以延迟接收功能更新 365 天。
+选择“启用预览版”将支持在设备上安装预览版。用户可以在其设备上下载并安装 Windows 预览版，方法是通过“设置”-&gt;“更新和安全”-&gt;“Windows 预览体验计划”加入计划。设置此值后，管理员还可以使用其他策略代表用户来管理外部测试版设置。</string>
+      <string id="DisablePreviewBuilds">禁用预览版</string>
+      <string id="DisablePreviewBuildsAndOptOut">下个发行版本上市后禁用预览版</string>
+      <string id="EnablePreviewBuilds">启用预览版</string>
+      <string id="PreviewBuildFastFeatureUpdates">预览版 - 快</string>
+      <string id="PreviewBuildSlowFeatureUpdates">预览版 - 慢</string>
+      <string id="ReleasePreviewBranchFeatureUpdates">版本预览</string>
+      <string id="SemiAnnualChannelTargetedFeatureUpdates">半年频道(定向)</string>
+      <string id="SemiAnnualChannelFeatureUpdates">半年频道</string>
+      <string id="DeferFeatureUpdates_Title">选择何时接收预览版和功能更新</string>
+      <string id="DeferFeatureUpdates_Help">启用此策略，以指定何时接收何种级别的预览版或功能更新。
 
-若要防止按计划时间接收功能更新，可以临时暂停功能更新。这种暂停的有效时间为 60 天，除非你清除开始日期字段。
+* 预览版 - 快: 设为该级别的设备将最先收到功能尚未向公众提供的 Windows 的新内部版本。选择“快”可参与发现并向 Microsoft 报告错误，以及提供关于新功能的建议。
+* 预览版 - 慢: 设为该级别的设备将在向公众提供 Windows 的新内部版本前收到该 Windows 新内部版本，但是节奏较设为“快”的设备慢，并带有较早的内部版本中的变更和修复。
+* Release Preview: 在 Microsoft 即将公众发布 Windows 的内部版本前收到 Windows 的该内部版本。
+* 半年频道(定向): 在向公众发布功能更新后收到该功能更新。
+* 半年频道: 功能更新会在将其声明为半年频道后获得。该声明通常会在半年频道(定向)后约 4 个月发布，表明 Microsoft、独立软件提供商(ISV)、合作伙伴以及客户认为该版本已准备就绪，可用于广泛部署。
 
-若要继续接收已暂停的功能更新，请清除开始日期字段。
+当选择预览版时:
+    - 你最长可以延迟接收预览版 14 天。
+    - 若要避免按其计划时间接收预览版，你可以临时暂停接收。暂停将从提供的起始时间起持续 35 天有效。
+    - 若要继续接收已暂停的功能更新，请清除起始日期字段。
 
-如果禁用或不配置此策略，Windows 更新不会改变其行为。
+预览版注册要求遥测级别的设置值不得低于 2 且已在 insider.windows.com 注册域。有关预览版的其他信息，请查阅: https://aka.ms/wipforbiz
 
-注意: 如果“允许遥测”策略设置为 0，则此策略不起作用。</string>
+当选择 Current Branch 或 Current Branch for Business 时:
+    - 你最长可以延迟接收功能更新 365 天。
+    - 若要避免按计划时间接收功能更新，可以临时暂停功能更新。暂停将从提供的起始时间起持续 35 天有效。
+    - 若要继续接收已暂停的功能更新，请清除起始日期字段。
+
+若要配置功能更新，你的“遥测级别”设置值不得低于 1。
+
+如果禁用或者不配置该策略，则 Windows 更新不会改变其行为。</string>
       <string id="DeferQualityUpdates_Title">选择何时接收质量更新</string>
       <string id="DeferQualityUpdates_Help">启用此策略可指定何时接收质量更新。
 
@@ -541,6 +563,14 @@
       <string id="SetEDURestart_Title">更新针对电脑车重启的电源策略</string>
       <string id="SetEDURestart_Help">对于整夜保留在电脑车上的 EDU 设备，启用此策略将跳过电源检查以便确保更新重启将在计划的安装时间外发生。</string>
 
+      <string id="AllowAutoWindowsUpdateDownloadOverMeteredNetwork_Title">允许通过按流量计费的连接自动下载更新</string>
+      <string id="AllowAutoWindowsUpdateDownloadOverMeteredNetwork_Help">启用该政策将自动下载更新，即使通过按流量计费的数据连接也是如此(可能会收费)</string>
+
+      <string id="DisableDualScan_Title">不允许更新延期策略对 Windows 更新执行扫描</string>
+      <string id="DisableDualScan_Help">启用此策略以禁止更新延期策略对 Windows 更新执行扫描。
+
+如果此策略已禁用或未配置，则 Windows 更新客户端可能会对 Windows 更新启动自动扫描，同时启用更新延期策略。</string>
+
     </stringTable>
 
     <presentationTable>
@@ -553,6 +583,13 @@
         <checkBox refId="AutoUpdateAutomaticMaintenanceEnabled" defaultChecked="false">自动维护期间执行安装</checkBox>
         <dropdownList refId="AutoUpdateSchDay" defaultItem="0">计划安装日期：  </dropdownList>
         <dropdownList refId="AutoUpdateSchTime" defaultItem="3">计划安装时间： </dropdownList>
+        <text>如果你为计划安装日期选择了“4 – 自动下载并计划安装”并指定了计划，则你还可以使用下面的选项，选择将更新限制为每周、每两周或每月一次:</text>
+        <checkBox refId="AutoUpdateSchEveryWeek" defaultChecked="true">每周</checkBox>
+        <checkBox refId="AutoUpdateSchFirstWeek" defaultChecked="false">一月中的第一周</checkBox>
+        <checkBox refId="AutoUpdateSchSecondWeek" defaultChecked="false">一月中的第二周</checkBox>
+        <checkBox refId="AutoUpdateSchThirdWeek" defaultChecked="false">一月中的第三周</checkBox>
+        <checkBox refId="AutoUpdateSchFourthWeek" defaultChecked="false">一月中的第四周</checkBox>
+        <text> </text>
         <checkBox refId="AllowMUUpdateServiceId" defaultChecked="false">安装其他 Microsoft 产品的更新</checkBox>
       </presentation>
       <presentation id="CorpWuURL">
@@ -601,20 +638,23 @@
         <text>足够时间保存其</text>
         <decimalTextBox refId="AlwaysAutoRebootAtScheduledTime_Minutes" defaultValue="15">工作（分钟）：  </decimalTextBox>
       </presentation>
+      <presentation id="ManagePreviewBuilds">
+        <dropdownList refId="ManagePreviewBuildsId" noSort="true" defaultItem="2">设置接收预览版的行为:</dropdownList>
+      </presentation>
       <presentation id="DeferFeatureUpdates">
-        <dropdownList refId="BranchReadinessLevelId" noSort="true" defaultItem="0">选择要接收的功能更新的分支就绪级别:</dropdownList>
-        <decimalTextBox refId="DeferFeatureUpdatesPeriodId" defaultValue="0">在功能更新发布后，延迟以下天数后再接收它:</decimalTextBox>
+        <dropdownList refId="BranchReadinessLevelId" noSort="true" defaultItem="0">选择要接收更新的 Windows 就绪级别:</dropdownList>
+        <decimalTextBox refId="DeferFeatureUpdatesPeriodId" defaultValue="0">在预览版或功能更新发布后，延迟以下天数后再予以接收:</decimalTextBox>
         <textBox refId="PauseFeatureUpdatesStartId">
-          <label>开始暂停功能更新</label>
+          <label>开始暂停预览版或功能更新:</label>
         </textBox>
-        <text>(格式: yyyy-mm-dd，示例: 2016-09-16)</text>
+        <text>(格式: yyyy-mm-dd，示例: 2016-10-30)</text>
       </presentation>
       <presentation id="DeferQualityUpdates">
         <decimalTextBox refId="DeferQualityUpdatesPeriodId" defaultValue="0">在质量更新发布后，延迟以下天数后再接收它:</decimalTextBox>
         <textBox refId="PauseQualityUpdatesStartId">
           <label>开始暂停质量更新</label>
         </textBox>
-        <text>(格式: yyyy-mm-dd，示例: 2016-09-16)</text>
+        <text>(格式: yyyy-mm-dd，示例: 2016-10-30)</text>
       </presentation>
       <presentation id="ActiveHours_Title">
         <text>使用时段</text>

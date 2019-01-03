@@ -1,43 +1,113 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0">
-  <displayName>Delivery Optimization GP</displayName>
-  <description>This file describes the Delivery Optimization GP settings</description>
+  <displayName>傳遞最佳化 GP</displayName>
+  <description>此檔案描述傳遞最佳化 GP 設定</description>
   <resources>
     <stringTable>
-      <string id="DeliveryOptimizationCat">Delivery Optimization</string>
-      <string id="DownloadMode">Download Mode</string>
-      <string id="DownloadMode_Help">Set this policy to configure the use of Windows Update Delivery Optimization in downloads of Windows Apps and Updates. Available mode are: 0=disable  1=peers on same NAT only 2=Local Network / Private Peering (PCs in the same domain by default) 3= Internet Peering</string>
-      <string id="DownloadMode_None">None</string>
-      <string id="DownloadMode_Lan">LAN</string>
-      <string id="DownloadMode_Group">Group</string>
-      <string id="DownloadMode_Internet">Internet</string>
-      <string id="GroupId">Group ID</string>
-      <string id="GroupId_Help">Set this policy to specify an arbitrary group ID that the device belongs to. Use this if you need to: 1. Limit the #of devices participating in peering in a domain network with many users. 2. Create a single group for Local Network Peering for branches that are on different domains or are not on the same NAT. Note: this is a best effort optimization and should not be relied on for an authentication of identity. You must use a GUID as the group ID.</string>
-      <string id="MaxUploadBandwidth">Max Upload Bandwidth</string>
-      <string id="MaxUploadBandwidth_Help">Set this policy to define a cap for the upload bandwidth a device will utilize across all concurrent upload activity via Delivery Optimization (set in KB/s)</string>
-      <string id="MaxCacheSize">Max Cache Size</string>
-      <string id="MaxCacheSize_Help">Set this policy to define the max cache size Delivery Optimization can utilize, as a percentage of available disk space.</string>
-      <string id="MaxCacheAge">Max Cache Age</string>
-      <string id="MaxCacheAge_Help">Set this policy to define the max time that each file is held in the Delivery Optimization cache.</string>
+      <string id="DeliveryOptimizationCat">傳遞最佳化</string>
+      <string id="DownloadMode">下載模式</string>
+      <string id="DownloadMode_Help">指定「傳遞最佳化」在下載 Windows Update 更新、App 與 App 更新時可以使用的下載方式。下列清單顯示支援的值: 0=僅限 HTTP (無對等互連)。1=HTTP 混合 (具有相同 NAT 後方之對等互連)。2=HTTP 混合 (具有跨私人群組的對等互連)。根據預設值，對等互連會發生在相同 Active Directory 站台 (若存在) 或相同網域中的裝置上。選取此選項時，對等互連將會跨越 NAT。若要建立自訂群組，請使用「群組識別碼」並搭配「模式 2」。3=HTTP 混合 (具有網際網路對等互連)。99=簡單下載模式 (不含對等互連)。「傳遞最佳化」只會使用 HTTP 來下載，而且不會嘗試聯繫「傳遞最佳化」雲端服務。100=略過模式。不使用「傳遞最佳化」，而改為使用 BITS。</string>
+      <string id="DownloadMode_CdnOnly">僅限 HTTP (0)</string>
+      <string id="DownloadMode_Lan">LAN (1)</string>
+      <string id="DownloadMode_Group">群組 (2)</string>
+      <string id="DownloadMode_Internet">網際網路 (3)</string>
+      <string id="DownloadMode_Simple">簡單 (99)</string>
+      <string id="DownloadMode_Bypass">略過 (100)</string>
+      <string id="GroupId">群組識別碼</string>
+      <string id="GroupId_Help">「群組識別碼」必須以 GUID 的形式設定。此原則可指定裝置所屬的任意群組識別碼。若需要為位於不同網域或並非位於相同 LAN 的分公司建立「區域網路對等互連」的單一群組，請使用此設定。注意: 這是效率最佳的最佳化，而且您不應該仰賴此功能來進行身分識別驗證。</string>
+      <string id="MaxUploadBandwidth">上傳頻寬上限 (KB/秒)</string>
+      <string id="MaxUploadBandwidth_Help">以 KB/秒的方式指定「傳遞最佳化」跨所有並行上傳活動使用的上傳頻寬上限。預設值 0 (零) 允許不受限制的使用，其中系統會動態為上傳進行最佳化，以便將所使用的上傳頻寬降到最低。</string>
+      <string id="MaxCacheSize">快取大小上限 (百分比)</string>
+      <string id="MaxCacheSize_Help">以可用磁碟空間百分比的方式 (1-100) 指定「傳遞最佳化」可以使用的快取大小上限。</string>
+      <string id="AbsoluteMaxCacheSize">快取大小上限的絕對大小 (GB)</string>
+      <string id="AbsoluteMaxCacheSize_Help">以 GB 為單位指定「傳遞最佳化」快取的大小上限。此原則會覆寫 DOMaxCacheSize 原則。0 (零) 的值表示「無限制的」快取; 當裝置磁碟空間不足時，「傳遞最佳化」將會清除快取。</string>
+      <string id="MaxCacheAge">快取留存時間上限 (秒)</string>
+      <string id="MaxCacheAge_Help">指定每個檔案在順利下載後要保留在「傳遞最佳化」快取中的時間長度上限 (秒)。0 (零) 的值表示「不限制」;「傳遞最佳化」會將檔案保留在快取中較長的時間，並讓這些檔案可供上傳到其他裝置 (只要未超出快取大小)。</string>
+      <string id="MonthlyUploadDataCap">每月資料上傳上限 (GB)</string>
+      <string id="MonthlyUploadDataCap_Help">指定每個行事曆月份允許「傳遞最佳化」上傳到網際網路同儕節點的總位元組上限 (GB)。值 0 (零) 表示「無限制」; 若設定為 0，不會套用每月上傳限制。</string>
+      <string id="MinBackgroundQos">背景 QoS 下限 (KB/秒)</string>
+      <string id="MinBackgroundQos_Help">以「KB/秒」為單位指定背景下載的下載 QoS (服務品質或速度) 下限。此原則會影響同儕節點與 HTTP 來源的混合。「傳遞最佳化」會補足 HTTP 來源的下載，以達到指定的 QoS 值下限。</string>
+      <string id="ModifyCacheDrive">修改快取磁碟機</string>
+      <string id="ModifyCacheDrive_Help">指定「傳遞最佳化」應該為其快取使用的磁碟機。根據預設值，會使用 %SystemDrive% 來存放快取。您可以使用環境變數、磁碟機代號或使用完整路徑來指定磁碟機位置。</string>
+      <string id="MaxDownloadBandwidth">下載頻寬上限 (KB/秒)</string>
+      <string id="MaxDownloadBandwidth_Help">指定裝置使用「傳遞最佳化」在所有並行下載活動中可使用的最大下載頻寬 (以 KB/秒為單位設定)。預設值 0 (零) 表示「傳遞最佳化」將動態調整以使用可用的頻寬來下載。</string>
+      <string id="PercentageMaxDownloadBandwidth">下載頻寬上限 (百分比)</string>
+      <string id="PercentageMaxDownloadBandwidth_Help">以可用下載頻寬百分比的形式指定「傳遞最佳化」在所有並行下載活動中使用的最大下載頻寬。預設值 0 (零) 表示「傳遞最佳化」將動態調整以使用可用的頻寬來下載。</string>
+      <string id="MinFileSizeToCache">對等快取內容檔案大小下限 (MB)</string>
+      <string id="MinFileSizeToCache_Help">指定若要使用「對等快取」所需啟用的內容檔案大小下限 (MB)。建議的值: 1 MB 到 100000 MB。</string>
+      <string id="AllowVPNPeerCaching">當裝置透過 VPN 連線時啟用對等快取</string>
+      <string id="AllowVPNPeerCaching_Help">指定 [True] 以允許裝置在透過 VPN 連線到網域網路時參與「對等快取」。這表示裝置可以從其他網域網路裝置下載或上傳到其他網域網路裝置，不論裝置是使用 VPN 或公司網域網路。</string>
+      <string id="MinRAMAllowedToPeer">啟用對等快取所需的 RAM 容量下限 (含) (GB)</string>
+      <string id="MinRAMAllowedToPeer_Help">指定使用「對等快取」所需具備的 RAM 大小下限 (GB)。例如，若設定的下限是 1 GB，則系統將允許具有 1 GB 或更多 RAM 的裝置使用「對等快取」。建議的值: 1 GB 到 4 GB。</string>
+      <string id="MinDiskSizeAllowedToPeer">允許使用對等快取的磁碟大小下限 (GB)</string>
+      <string id="MinDiskSizeAllowedToPeer_Help">指定裝置使用「對等快取」所需具備的磁碟大小下限 (以 GB 表示的容量)。將會使用雲端服務所設定的預設值。建議的值: 64 GB 到 256 GB。注意: 若已設定 DOMoidfyCacheDrive 原則，磁碟大小檢查將套用至此原則所指定的新工作目錄。</string>
+      <string id="MinBatteryPercentageAllowedToUpload">當裝置使用電池時若未低於設定的電池電量 (百分比) 即允許上傳</string>
+      <string id="MinBatteryPercentageAllowedToUpload_Help">指定介於 1 到 100 之間的任何數值 (單位為百分比)，以允許裝置在使用 DC 電源 (電池) 時上傳資料到區域網路和群組同儕節點。若電池電量低於設定的電量下限，就會自動暫停上傳。建議的設定值是電池電量未低於 40 (代表 40%) 即允許上傳。無論此原則如何設定，裝置使用電池時都能從同儕節點下載資料。值 0 表示「無限制」; 將使用雲端服務所設定的預設值。</string>
     </stringTable>
     <presentationTable>
       <presentation id="DownloadMode">
-        <dropdownList defaultItem="1" refId="DownloadMode">Download Mode:</dropdownList>
+        <dropdownList defaultItem="1" noSort="true" refId="DownloadMode">下載模式:</dropdownList>
       </presentation>
       <presentation id="GroupId">
         <textBox refId="GroupId">
-          <label>Group ID:</label>
+          <label>群組識別碼:</label>
         </textBox>
       </presentation>
       <presentation id="MaxUploadBandwidth">
-        <decimalTextBox defaultItem="0" refId="MaxUploadBandwidth">Max Upload Bandwidth:</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="MaxUploadBandwidth">最大上傳頻寬 (KB/秒):</decimalTextBox>
+        <text>預設值是 0 (無限制)</text>
       </presentation>
       <presentation id="MaxCacheSize">
-        <decimalTextBox defaultItem="20" refId="MaxCacheSize">Max Cache Size:</decimalTextBox>
-        <text>Range is 0 to 100</text>
+        <decimalTextBox defaultValue="20" refId="MaxCacheSize">快取大小上限 (百分比):</decimalTextBox>
+        <text>預設值是 20%</text>
+      </presentation>
+      <presentation id="AbsoluteMaxCacheSize">
+        <decimalTextBox defaultValue="10" refId="AbsoluteMaxCacheSize">快取大小上限的絕對大小 (GB):</decimalTextBox>
+        <text>預設值是 10GB</text>
       </presentation>
       <presentation id="MaxCacheAge">
-        <decimalTextBox MaxCacheAge="0" refId="MaxCacheAge">Max Cache Age:</decimalTextBox>
+        <decimalTextBox defaultValue="259200" refId="MaxCacheAge">快取留存時間上限 (秒):</decimalTextBox>
+        <text>預設值是 3 天</text>
+      </presentation>
+      <presentation id="MonthlyUploadDataCap">
+        <decimalTextBox defaultValue="20" refId="MonthlyUploadDataCap">每月資料上傳上限 (GB):</decimalTextBox>
+        <text>預設值是 20GB</text>
+      </presentation>
+      <presentation id="MinBackgroundQos">
+        <decimalTextBox defaultValue="500" refId="MinBackgroundQos">背景 QoS 下限 (KB/秒):</decimalTextBox>
+        <text>預設值是 500KB/秒</text>
+      </presentation>
+      <presentation id="ModifyCacheDrive">
+        <textBox refId="ModifyCacheDrive">
+          <label>修改快取磁碟機:</label>
+        </textBox>
+      </presentation>
+      <presentation id="MaxDownloadBandwidth">
+        <decimalTextBox defaultValue="0" refId="MaxDownloadBandwidth">下載頻寬上限 (KB/秒):</decimalTextBox>
+        <text>預設值是 0 (無限制)</text>
+      </presentation>
+      <presentation id="PercentageMaxDownloadBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxDownloadBandwidth">下載頻寬上限 (百分比):</decimalTextBox>
+        <text>預設值是 0 (無限制)</text>
+      </presentation>
+      <presentation id="MinFileSizeToCache">
+        <decimalTextBox defaultValue="100" refId="MinFileSizeToCache">對等快取內容檔案大小下限 (MB):</decimalTextBox>
+        <text>預設值是 100MB</text>
+      </presentation>
+      <presentation id="AllowVPNPeerCaching">
+        <checkBox defaultChecked="false" refId="AllowVPNPeerCaching">當裝置透過 VPN 連線時啟用對等快取</checkBox>
+      </presentation>
+      <presentation id="MinRAMAllowedToPeer">
+        <decimalTextBox defaultValue="4" refId="MinRAMAllowedToPeer">啟用對等快取所需的 RAM 容量下限 (含) (GB):</decimalTextBox>
+        <text>預設值是 4GB</text>
+      </presentation>
+      <presentation id="MinDiskSizeAllowedToPeer">
+        <decimalTextBox defaultValue="32" refId="MinDiskSizeAllowedToPeer">允許使用對等快取的磁碟大小下限 (GB):</decimalTextBox>
+        <text>預設值是 32GB</text>
+      </presentation>
+      <presentation id="MinBatteryPercentageAllowedToUpload">
+        <decimalTextBox defaultValue="0" refId="MinBatteryPercentageAllowedToUpload">電池電量下限 (百分比):</decimalTextBox>
+        <text>預設值是 0 (無限制)</text>
       </presentation>
     </presentationTable>
   </resources>

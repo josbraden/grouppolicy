@@ -2,67 +2,115 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
   <displayName>Windows Defender Application Guard</displayName>
-  <description>Konfigurasjon for Windows Defender Application Guard</description>
+  <description>Aktiver Windows Defender Application Guard i Organisasjonsmodus</description>
   <resources>
     <stringTable>
         <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
-        <string id="AppHVSI_AllowAppHVSI_DisplayName">Aktivere/deaktivere Windows Defender Application Guard (WDAG)</string>
-        <string id="AppHVSI_AllowAppHVSI_Explain">Denne policyen aktiverer applikasjonsisolasjon ved hjelp av Windows Defender Application Guard.
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Aktiver Windows Defender Application Guard i Organisasjonsmodus</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Denne policyinnstillingen aktiverer applikasjonsisolering gjennom Windows Defender Application Guard (Application Guard).
 
-Windows Defender Application Guard bruker Windows Hypervisor til å starte applikasjoner i et virtualisert miljø. Når applikasjoner er konfigurert til å bruke virtualiseringsbasert sikkerhetsisolasjon, kan ikke uklarert brukeratferd under bruk av disse applikasjonene og sårbarheter i applikasjonene utsette kjernen og andre applikasjoner som kjører utenfor det virtualiserte miljøet, for risiko.
-Før du aktiverer denne policyen, må du angi lister over nettsteder som er klarert av organisasjonen. Du kan opprette disse listene ved å bruke isolasjonspolicyen for nettverk (sett inn kobling til spesifikk nettverkspolicy). Listene sørger for at bare private nettsteder åpnes i det virtualiserte miljøet.
-Merknad: Hvis du vil låse et system, sørger du for både Device Guard-sikkerhetsfunksjoner og applikasjonsisolasjon for applikasjoner er aktivert. En fullstendig liste over kravene som må oppfylles for at et system skal låses på en sikker måte, finner du i dokumentasjonen.
+Application Guard bruker Windows Hypervisor til å opprette et virtualisert miljø for apper som er konfigurert til å bruke virtualiseringsbasert sikkerhetsisolasjon. I isolasjon kan ikke uriktige brukersamhandlinger og appsårbarheter utsette kjernen eller andre apper som kjører uten for det virtualiserte miljøet, for fare.
+
+Hvis du aktiverer denne innstillingen, er Application Guard aktivert for organisasjonen din.
         </string>
         <string id="AppHVSI_ClipboardSettings_DisplayName">Konfigurere utklippstavleinnstillinger for Windows Defender Application Guard</string>
-        <string id="AppHVSI_ClipboardSettings_Explain">Angir utklippstavlens virkemåte når du bruker applikasjonsisolering med Windows Defender Application Guard.
+        <string id="AppHVSI_ClipboardSettings_Explain">Med denne policyinnstillingen kan du bestemme hvordan utklippstavlen fungerer i Windows Defender Application Guard (Application Guard).
 
-Administratorer kan:
-deaktivere utklippstavlefunksjonen helt når virtualiseringssikkerhet er aktivert
-aktivere kopiering av et visst innhold fra en isolert økt til vertsdatamaskinen
-aktivere kopiering av et visst innhold fra vertsdatamaskinen til den isolerte økten
+Hvis du aktiverer denne innstillingen, må du velge fra følgende virkemåter:
 
-Obs: Vi anbefaler at administratorer ikke aktiverer kopiering av innhold fra vertsdatamaskinen til den isolerte økten. Dette ville bety at en risikoutsatt isolert økt kunne få tilgang til vertsdatamaskinens utklippstavle og innholdet på den.
+     – Deaktiver utklippstavlefunksjonen helt mellom verten og Application Guard
+
+     – Aktiver utklippstavlen til å kopiere innhold fra Application Guard til verten
+
+     – Aktiver utklippstavlen til å kopiere innhold fra verten til Application Guard
+
+OBS! 
+Vi anbefaler at du ikke aktiverer kopiering fra verten til Application Guard. Hvis du aktiverer denne funksjonen, får en potensielt truet Application Guard-økt tilgang til vertsenhetens utklippstavle og innholdet dens.
+
+Hvis du velger å aktivere kopiering, må du også velge typen som kan kopieres, ved å bruke innholdsalternativene:
+
+     – 1. Tillater tekstkopiering.
+
+     – 2. Tillater bildekopiering.
+
+     - 3. Tillater både tekst- og bildekopiering.
+
+Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, er alle utklippstavlefunksjoner deaktivert i Application Guard.
         </string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Blokker utklippstavleoperasjoner (standard)</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Aktiver utklippstavleoperasjon fra en isolert økt til verten</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Aktiver utklippstavleoperasjon fra en vert til den isolerte økten</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Aktiver utklippstavleoperasjon i begge retninger</string>
-        <string id="AppHVSI_PrintingSettings_DisplayName">Konfigurere utskriftsinnstillinger for Windows Defender Application Guard</string>
-        <string id="AppHVSI_PrintingSettings_Explain">Hvis Aktiver utskrift til XPS er valgt, kan brukere skrive ut dokumenter fra beholderen til XPS-format.
-Hvis Aktiver utskrift til PDF er valgt, kan brukere skrive ut dokumenter fra beholderen til PDF-format.
-Hvis Aktiver utskrift til lokale skrivere er valgt, kan brukere skrive ut dokumenter fra beholderen til en lokalt tilkoblet skriver.
-Hvis Aktiver utskrift til eksisterende nettverksskrivere er valgt, kan brukere skrive ut dokumenter fra den isolerte beholderen ved hjelp av de eksisterende nettverksskriverne. Brukere kan ikke søke etter nye nettverksskrivere.
-        </string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Blokkere organisasjonsnettsteder for å laste inn privat innhold i IE og Edge</string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Hvis innstillingen aktiveres, blokkeres all nettverkstrafikk i Internet Explorer og Microsoft Edge til private nettsteder som ikke kan starte i en Windows Defender Application Guard-beholder.
+        <string id="AppHVSI_PrintingSettings_DisplayName">Konfigurer utskriftsinnstillinger for Windows Defender Application Guard</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Med denne policyinnstillingen kan du bestemme hvordan utskriftsfunksjonen fungerer i Windows Defender Application Guard (Application Guard).
 
-Hvis innstillingen deaktiveres, gjengis all nettverkstrafikk til private områder som ikke kan starte i en Windows Defender Application Guard-beholder, på vertsdatamaskinen .
+Hvis du aktiverer denne innstillingen, må du velge én eller mange av følgende virkemåter:
+
+     – Deaktiver alle utskriftsfunksjoner i Application Guard.
+
+     – Aktiver utskrift til eksisterende nettverksskrivere.
+
+     – Aktiver utskrift til lokale skrivere.
+
+     – Aktiver utskrift til PDF, tillater at personer skriver ut som PDF og lagrer resultatfilen på verten.
+
+     – Aktiver utskrift til XPS, tillater at personer skriver ut som XPS og lagrer resultatfilen på verten.
+
+Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, er alle utskriftsfunksjoner deaktivert i Application Guard.
         </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Hindre virksomhetsnettsteder fra å laste inn ikke-virksomhetsinnhold i Microsoft Edge og Internet Explorer</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Med denne policyinnstillingen kan du bestemme om nettsteder kan laste inn ikke-virksomhetsinnhold i Microsoft Edge og Internet Explorer.
+
+Hvis du aktiverer denne innstillingen, hindres ikke-virksomhetsinnhold innebygd på virksomhetsnettsteder fra å åpne i Internet Explorer eller Microsoft Edge utenfor Windows Defender Application Guard.
+
+Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, kan ikke-virksomhetsnettsteder åpnes utenfor Windows Defender Application Guard-beholderen, direkte i Internet Explorer og Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowPersistence_DisplayName">Tillat databevaring for Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowPersistence_Explain">Med denne policyinnstillingen kan du bestemme om data skal beholdes på tvers av ulike økter i Windows Defender Application Guard (Application Guard).
+
+        Hvis du aktiverer denne innstillingen, lagrer Application Guard brukernedlastede filer og andre elementer (som informasjonskapsler, Favoritter og lignende) til bruk i fremtidige Application Guard-økter.
+
+             OBS! 
+             Hvis du aktiverer denne innstillingen, kan du fortsatt slette en brukers data fra en bestemt enhet ved å bruke Reset-ApplicationGuard PowerShell-kommandoen. Hvis du kjører denne kommandoen, slettes alle medarbeiderdata, uavhengig av konfigurasjonen, og det kan medføre tap av data for medarbeideren.
+
+        Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, sletter Application Guard alle brukerdata i Application Guard-beholderen.
+        </string>
+        <string id="AppHVSI_AuditApplicationGuard_DisplayName">Tillat overvåkingshendelser i Windows Defender Application Guard</string>
+        <string id="AppHVSI_AuditApplicationGuard_Explain">Med denne policyinnstillingen kan du bestemme om overvåkingshendelser kan samles inn fra Windows Defender Application Guard (Application Guard).
+
+        Hvis du aktiverer denne innstillingen, arver Application Guard overvåkingspolicyene fra Microsoft Edge og starter overvåking av systemhendelser spesielt for Application Guard.
+
+             OBS!
+             Innsamlede logger er tilgjengelige for gjennomgang i Microsoft Edge utenfor Application Guard.
+
+        Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, samles ikke hendelseslogger for Application Guard inn.</string>
     </stringTable>
     <presentationTable>
       <presentation id="AppHVSIClipboardSettings_Presentation">
-        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Velg et alternativ:</dropdownList>
-        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Angir hvordan utklippstavlen kan brukes, når utklippstavleoperasjoner er aktivert (i desimalformat):
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Innstillinger for utklippstavlevirkemåte.</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Alternativer for utklippstavleinnhold.
         </decimalTextBox>
-        <text>Denne verdien er en bitmaske som kontrollerer hvilke filtyper som kan brukes til utklippstavleoperasjoner:
-
-b0001 – tekstfil
-b0010 – punktgrafikkfil
-b0011 – både tekst- og punktgrafikkfiler støttes
-        </text>
       </presentation>
       <presentation id="AppHVSIPrintingSettings_Presentation">
-        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Angir hvilke skrivere som aktiveres (i desimalformat)
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Tillatte utskriftstyper i Application Guard.
         </decimalTextBox>
-        <text>Denne verdien er en bitmaske som kontrollerer hvilke skrivere som aktiveres i en isolert økt    
-b0000 – Utskrift er deaktivert
-b0001 – Aktiver utskrift til XPS (standard)
-b0010 – Aktiver utskrift til PDF
-b0100 – Aktiver utskrift på lokale skrivere
-b1000 – Aktiver utskrift til eksisterende nettverksskrivere
-
-Eksempel:
-Hvis XPS-skrivere og lokale skrivere er aktivert, blir verdien b0001 | b0100, som er b0101 (desimal 5)
+        <text>Hvis du vil bestemme hvilke typer utskrifter du vil tillate, må du velge:
+     – 0. Deaktiverer alle utskriftsfunksjoner.
+     – 1. Aktiverer bare XPS-utskrift.
+     – 2. Aktiverer bare PDF-utskrift.
+     – 3. Aktiverer både PDF- og XPS-utskrift.
+     – 4. Aktiverer bare lokal utskrift.
+     – 5. Aktiverer både lokal utskrift og XPS-utskrift.
+     – 6. Aktiverer både lokal utskrift og PDF-utskrift.
+     – 7. Aktiverer lokal utskrift samt PDF- og XPS-utskrift.
+     – 8. Aktiverer bare nettverksutskrift.
+     – 9. Aktiverer både nettverks- og XPS-utskrift.
+     – 10. Aktiverer både nettverks- og PDF-utskrift.
+     – 11. Aktiverer nettverks-, PDF- og XPS-utskrift.
+     – 12. Aktiverer både nettverksutskrift og lokal utskrift.
+     – 13. Aktiverer lokal utskrift samt nettverks- og XPS-utskrift.
+     – 14. Aktiverer lokal utskrift samt nettverks- og PDF-utskrift.
+     – 15. Aktiverer alle typer utskrift.
         </text>
       </presentation>
     </presentationTable>

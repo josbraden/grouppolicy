@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Windows Defender Antivirus</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Udeladelser</string>
+    <string id="ExploitGuard">Windows Defender Exploit Guard</string>
+    <string id="ExploitGuard_ASR">Mindskelse af angrebsoverfladen</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Kontrolleret mappeadgang</string>
+    <string id="ExploitGuard_NetworkProtection">Netværksbeskyttelse</string>
     <string id="NetworkRealtimeInspection">Network Inspection System</string>
     <string id="NetworkRealtimeInspection_Exclusions">Udeladelser</string>
     <string id="Quarantine">Karantæne</string>
@@ -26,7 +30,18 @@ Hvis du aktiverer eller undlader at konfigurere denne politikindstilling, indlæ
 Hvis du deaktiverer denne politikindstilling, indlæses antimalwaretjenesten som en opgave med lav prioritet.</string>
 
     <string id="DisableAutoExclusions">Slå automatiske udeladelser fra</string>
-    <string id="DisableAutoExclusions_Explain">Giver en administrator mulighed for at angive, om funktionen til automatiske udeladelser skal slås fra for server-SKU'er.</string>
+    <string id="DisableAutoExclusions_Explain">
+        Tillader, at en administrator kan angive, om automatiske undtagelser for server-SKU'er skal deaktiveres.
+
+        Deaktiveret (standard):
+        Windows Defender undtager den foruddefinerede liste over stier fra scanninger for at forbedre ydeevnen.
+
+        Aktiveret:
+        Windows Defender undtager ikke den foruddefinerede liste over stier fra scanninger. Dette kan have negativ virkning på maskinens ydeevne i visse scenarier.
+
+        Ikke konfigureret:
+        Samme som Deaktiveret.
+    </string>
     <string id="DisableAntiSpyware">Deaktiver Endpoint Protection</string>
     <string id="DisableAntiSpyware_Explain">Denne politikindstilling deaktiverer Endpoint Protection.
 
@@ -723,18 +738,24 @@ Hvis du aktiverer denne politikindstilling, vises den yderligere tekst, der er a
 Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vises der ingen yderligere tekst.</string>
     <string id="MpCloudBlockLevel">Vælg skybeskyttelsesniveau</string>
     <string id="MpCloudBlockLevel_Explain">
-      Denne politikindstilling bestemmer, hvor aggressiv Windows Defender Antivirus skal være ved blokering og scanning af mistænkelige filer.
+      Denne politikindstilling bestemmer, hvor aggressivt Windows Defender Antivirus blokerer og scanner mistænkelige filer.
 
-      Hvis indstillingen er slået til, vil Windows Defender Antivirus være mere aggressiv ved identifikation af mistænkelige filer, der skal blokeres og scannes. Ellers vil programmet være mindre aggressivt og derfor blokere og scanne sjældnere. 
+      Hvis indstillingen er aktiveret, er Windows Defender Antivirus mere aggressiv med at blokere og scanne mistænkelige filer. Hvis den er deaktiveret, er Windows Defender Antivirus ikke lige så aggressiv og blokerer og scanner derfor ikke mistænkelige filer lige så ofte. 
       
-      På websitet med dokumentation til Windows Defender Antivirus finder du flere oplysninger om bestemte værdier, der understøttes.
+      Der er flere oplysninger om, hvilke værdier der understøttes, på dokumentationswebsitet for Windows Defender Antivirus.
 
-      Bemærk! Denne funktion kræver, at indstillingen "Deltag i Microsoft MAPS" er slået til, for at kunne fungere.
+      Bemærk! For at denne indstilling skal fungere, skal indstillingen "Deltag i Microsoft MAPS" aktiveres.
 
-      Følgende indstillinger er gyldige:
-      (0x0) Standardblokeringsniveau i Windows Defender Antivirus
-      (0x2) Højeste blokeringsniveau      
+      Mulige indstillinger:
+      (0x0) Standardblokeringsniveau i Windows Defender
+      (0x2) Højt blokeringsniveau – blokerer aggressivt ukendte filer, samtidig med at ydeevnen optimeres (større risiko for falske positiver)
+      (0x4) Højt+ blokeringsniveau – blokerer aggressivt ukendte filer og anvender yderligere sikkerhedsforanstaltninger (kan påvirke ydeevnen)
+      (0x6) Nultolerance – blokerer alle ukendte eksekverbare filer
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Standardblokeringsniveau i Windows Defender Antivirus</string>
+    <string id="MpCloudBlockLevel_High_Level">Højt blokeringsniveau</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Højt+ blokeringsniveau</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Nultolerance</string>
     <string id="MpBafsExtendedTimeout">Konfigurer udvidet skykontrol</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Denne funktion giver Windows Defender Antivirus mulighed for at blokere en mistænkelig fil i op til 60 sekunder og scanne den i clouden for at kontrollere, at den er sikker.
@@ -745,8 +766,138 @@ Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vise
 
       Bemærk! Denne funktion afhænger af, at tre andre MAPS-indstillinger er slået til "Konfigurer funktionen 'Bloker, når den ses første gang'", "Deltag i Microsoft MAPS" og "Send fileksempler, når der kræves yderligere analyse".
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Standardblokeringsniveau i Windows Defender Antivirus</string>
-    <string id="MpCloudBlockLevel_High_Level">Højt blokeringsniveau</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Forbyd, at brugere og apps går til farlige websites</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Aktivér eller deaktiver Windows Defender Exploit Guard-netværksbeskyttelsen for at forhindre brugerne i at bruge applikationer til at oprette forbindelse til farlige domæner, som kan hoste phishing-svindel, websites, som udnytter sårbarheder, og andet skadeligt indhold på internettet.
+
+    Aktiveret:
+    Angiv en tilstand i afsnittet Indstillinger:
+    - Bloker: Brugere og applikationer kan ikke oprette forbindelse til farlige domæner.
+    - Overvåg: Brugere og applikationer kan oprette forbindelse til farlige domæner, men der logges en post i hændelsesloggen, hvis forbindelsen ville være blevet blokeret med tilstanden Bloker.
+
+    Deaktiveret:
+    Brugere og applikationer blokeres ikke i at oprette forbindelse til farlige domæner.
+
+    Ikke konfigureret:
+    Samme som Deaktiveret.
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Undtag filer og stier fra regler for at mindske angrebsoverfladen (ASR-regler)</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Undtag filer og stier fra regler for at mindske angrebsoverfladen (ASR-regler).
+
+    Aktiveret:
+    Angiv mapper eller filer og ressourcer, som skal undtages fra ASR-regler, i afsnittet Indstillinger.
+    Angiv hver regel på en ny linje i form af et navne/værdi-par:
+    - Kolonnen Navn: Angiv en mappesti eller et fuldstændigt ressourcenavn. Eksempel: ""C:\Windows"" undtager alle filer i den mappe. ""C:\Windows\App.exe"" undtager kun den specifikke fil i den angivne mappe.
+    - Kolonnen Værdi: Angiv ""0"" for hvert element
+
+    Deaktiveret:
+    Der anvendes ingen undtagelser i ASR-reglerne.
+
+    Ikke konfigureret:
+    Samme som Deaktiveret.
+
+    Du kan konfigurere ASR-regler i gruppepolitikindstillingen Konfigurer regler for at mindske angrebsoverfladen.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Konfigurer regler for at mindske angrebsoverfladen</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    Angiv tilstanden for hver regel for at mindske angrebsoverfladen (ASR-regel).
+
+    Når du aktiverer denne indstilling, kan du sætte hver regel til følgende tilstande i afsnittet Indstillinger:
+    - Bloker: Reglen anvendes.
+    - Overvåg: Hvis en regel normalt ville forårsage en hændelse, registreres den (selv om reglen rent faktisk ikke normalt vil blive anvendt).
+    - Fra: Reglen anvendes ikke.
+
+    Aktiveret:
+    Angiv tilstanden for hver ASR-regel under afsnittet Indstillinger for denne indstilling.
+    Angiv hver regel på en ny linje i form af et navne/værdi-par:
+    - Kolonnen Navn: Angiv et gyldigt id for ASR-reglen.
+    - Kolonnen Værdi: Angiv status-id'et, som relaterer til den tilstand, du vil specificere for den tilknyttede regel.
+
+    Følgende status-id'er kan bruges i kolonnen Værdi:
+    - 1 (Bloker)
+    - 0 (Fra)
+    - 2 (Overvåg)
+    
+    Eksempel:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    Deaktiveret:
+    Ingen ASR-regler konfigureres.
+
+    Ikke konfigureret:
+    Samme som Deaktiveret.
+
+    Du kan undtage mapper eller filer og ressourcer i gruppepolitikindstillingen "Undtag mapper eller filer og ressourcer".
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Konfigurer kontrolleret mappeadgang</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Aktivér eller deaktiver kontrolleret mappeadgang efter applikationer, der ikke er tillid til. 
+
+    Bloker:
+    Applikationer, som der ikke er tillid til, kan ikke ændre eller slette filer i beskyttede mapper, f.eks. mappen Dokumenter.
+
+    Deaktiveret:
+    Alle applikationer kan ændre eller slette filer i beskyttede mapper, f.eks. mappen Dokumenter.
+
+    Overvåg:
+    Applikationer, der normalt betragtes som "upålidelige", hvis indstillingen er Aktiveret, kan stadig ændre eller slette filer i beskyttede mapper, men hver hændelse logges i hændelsesloggen for Windows.
+
+    Ikke konfigureret:
+    Samme som Deaktiveret.
+
+    Windows Defender Antivirus fastslår automatisk, hvilke applikationer der er tillid til. Du kan tilføje yderligere applikationer, der er tillid til, i gruppepolitikindstillingen Konfigurer tilladte applikationer.
+
+    Standardsystemmapper beskyttes automatisk, men du kan tilføje yderligere mapper i gruppepolitikindstillingen Konfigurer beskyttede mapper.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Deaktiver (standard)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Bloker</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Overvåg</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Konfigurer tilladte applikationer</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Tilføj yderligere applikationer, der skal betragtes som pålidelige i kontrolleret mappeadgang.
+
+    Disse applikationer har tilladelse til at ændre eller slette filer i mapper med kontrolleret adgang.
+
+    Windows Defender Antivirus fastslår automatisk, hvilke applikationer der er tillid til. Du kan konfigurere indstillingen ved at tilføje yderligere applikationer.
+
+    Aktiveret: 
+    Angiv yderligere tilladte applikationer i afsnittet Indstillinger.
+
+    Deaktiveret:
+    Der føjes ingen yderligere applikationer til listen over applikationer, der er tillid til.
+
+    Ikke konfigureret:
+    Samme som Deaktiveret.
+
+    Du kan aktivere kontrolleret mappeadgang i gruppepolitikindstillingen Konfigurer kontrolleret mappeadgang.
+
+    Standardsystemmapper beskyttes automatisk, men du kan tilføje yderligere mapper i gruppepolitikindstillingen Konfigurer beskyttede mapper.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Konfigurer beskyttede mapper</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Angiv yderligere mapper, der skal beskyttes ved hjælp af funktionen til beskyttet mappeadgang.
+
+    Filer i disse mapper kan ikke ændres eller slettes af applikationer, der ikke er tillid til.
+
+    Standardsystemmapper beskyttes automatisk. Du kan konfigurere denne indstilling for at tilføje yderligere mapper. 
+    Listen over standardsystemmapper, der er beskyttet, vises i Windows Defender Security Center.
+
+    Aktiveret:
+    Angiv yderligere mapper, der skal beskyttes, i afsnittet Indstillinger.
+
+    Deaktiveret:
+    Ingen yderligere mapper beskyttes.
+
+    Ikke konfigureret:
+    Samme som Deaktiveret.
+
+    Du kan aktivere kontrolleret mappeadgang i gruppepolitikindstillingen Konfigurer kontrolleret mappeadgang.
+
+    Windows Defender Antivirus fastslår automatisk, hvilke applikationer der er tillid til. Du kan tilføje yderligere applikationer i gruppepolitikindstillingen Konfigurer tilladte applikationer.
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@ Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vise
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Angiv den udvidede skykontroltid i sekunder</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">Konfigurer funktionen, som beskytter mine mapper</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Undtagelser fra ASR-regler:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Angiv tilstand for hver ASR-regel:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Angiv de applikationer, som skal anses for pålidelige:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Angiv de mapper, der skal beskyttes:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

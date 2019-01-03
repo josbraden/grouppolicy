@@ -2,67 +2,115 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
   <displayName>Application Guard в Защитнике Windows</displayName>
-  <description>Настройка параметров Application Guard в Защитнике Windows</description>
+  <description>Включить Application Guard в Защитнике Windows в режиме предприятия</description>
   <resources>
     <stringTable>
         <string id="AppHVSICat_DisplayName">Application Guard в Защитнике Windows</string>
-        <string id="AppHVSI_AllowAppHVSI_DisplayName">Включение и выключение Application Guard в Защитнике Windows (WDAG)</string>
-        <string id="AppHVSI_AllowAppHVSI_Explain">Эта политика включает изоляцию приложений с использованием Application Guard в Защитнике Windows.
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Включить Application Guard в Защитнике Windows в режиме предприятия</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Этот параметр политики включает изоляцию приложений с использованием Application Guard в Защитнике Windows (Application Guard).
 
-Application Guard в Защитнике Windows с помощью низкоуровневой оболочки Windows запускает приложения в виртуализированной среде. Когда в приложениях включено использование изоляции на базе виртуализованной системы безопасности, опасное поведение пользователя при работе с такими приложениями, а также уязвимости в них не смогут поставить под угрозу ядро и другие приложения, выполняемые вне виртуализированной среды.
-Перед тем как включить эту политику, необходимо определить списки доверенных корпоративных сайтов и настроить их с помощью политики изоляции сети (вставить ссылку на конкретную политику использования сети). Это нужно для того, чтобы в виртуализированной среде открывались только некорпоративные сайты.
-Примечание. Чтобы можно было блокировать систему, должны быть включены функции защиты Device Guard и изоляции для приложений. Все требования к безопасному блокированию системы см. в документации.
+Application Guard с помощью низкоуровневой оболочки Windows создает виртуализированную среду для приложений, настроенных на использование изоляции на базе виртуализированной системы безопасности. В режиме изоляции неправильные действия пользователя и уязвимости приложений не смогут поставить под угрозу ядро и другие приложения, выполняемые вне виртуализированной среды.
+
+Если активировать этот параметр, для организации будет включен Application Guard.
         </string>
         <string id="AppHVSI_ClipboardSettings_DisplayName">Настройка параметров буфера обмена Application Guard в Защитнике Windows</string>
-        <string id="AppHVSI_ClipboardSettings_Explain">Задаются параметры поведения буфера обмена при включенной изоляции приложений с помощью Application Guard в Защитнике Windows.
+        <string id="AppHVSI_ClipboardSettings_Explain">Этот параметр политики позволяет выбрать поведение буфера обмена в Application Guard в Защитнике Windows (Application Guard).
 
-Администраторы могут:
-полностью заблокировать функции буфера обмена при включенной безопасной виртуализации;
-разрешить копирование определенных типов содержимого из изолированного сеанса на главный компьютер;
-разрешить копирование определенных типов содержимого с главного компьютера в изолированный сеанс.
+Если включить этот параметр, необходимо выбрать одно из следующих поведений:
 
-Примечание. Мы не советуем администраторам разрешать копирование содержимого с главного компьютера в изолированный сеанс, поскольку к буферу обмена главного компьютера и его содержимому может получить доступ опасный изолированный сеанс.
+     - полное отключение функций буфера обмена между узлом и Application Guard;
+
+     - предоставление буферу обмена разрешений на копирование содержимого из Application Guard на узел;
+
+     - предоставление буферу обмена разрешений на копирование содержимого с узла в Application Guard.
+
+ПРИМЕЧАНИЕ
+Не рекомендуется включать копирование данных с узла в Application Guard. Если активировать эту функцию, потенциально скомпрометированный сеанс Application Guard получит доступ к буферу обмена главного устройства и его содержимому.
+
+Если включить копирование, с помощью параметров содержимого также необходимо выбрать тип содержимого, которое можно копировать.
+
+     - 1. Разрешение копирования текста.
+
+     - 2. Разрешение копирования изображений.
+
+     - 3. Разрешение копирования текста и изображений.
+
+Если отключить или не настроить этот параметр, в Application Guard будут отключены все функции буфера обмена.
         </string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Блокировать операции буфера обмена (по умолчанию)</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Разрешить операции буфера обмена из изолированного сеанса на узел</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Разрешить операции буфера обмена с узла в изолированный сеанс</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Включить операции буфера обмена в обоих направлениях</string>
         <string id="AppHVSI_PrintingSettings_DisplayName">Настройка параметров печати Application Guard в Защитнике Windows</string>
-        <string id="AppHVSI_PrintingSettings_Explain">Если выбран вариант "Печать в формате XPS", пользователи могут печатать документы из контейнера в формате XPS.
-Если выбран вариант "Печать в формате PDF", пользователи могут печатать документы из контейнера в формате PDF..
-Если выбран вариант "Печать на локальных принтерах", пользователи могут печатать документы из контейнера на локально подключенных принтерах.
-Если выбран вариант "Печать на имеющихся сетевых принтерах", пользователи могут печатать документы из изолированного контейнера на имеющихся сетевых принтерах, при этом они не могут находить новые сетевые принтеры.
-        </string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Блокирование загрузки некорпоративного содержимого на корпоративных веб-сайтах в IE и Edge</string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Когда этот параметр включен, блокируется любой сетевой трафик в Internet Explorer и Microsoft Edge на некорпоративные сайты, которые не запускаются в контейнере Application Guard в Защитнике Windows.
+        <string id="AppHVSI_PrintingSettings_Explain">Этот параметр политики позволяет настроить функции печати в Application Guard в Защитнике Windows (Application Guard).
 
-Когда этот параметр выключен, сетевой трафик на некорпоративные сайты, которые не запускаются в контейнере Application Guard в Защитнике Windows, обрабатывается на главном компьютере.
+Если включить этот параметр, необходимо выбрать одно или несколько следующих поведений:
+
+     - полное отключение функций печати в Application Guard;
+
+     - включение печати на имеющихся сетевых принтерах;
+
+     - включение печати на локальных принтерах;
+
+     - включение печати в формате PDF с сохранением полученного файла на узле;
+
+     - включение печати в формате XPS с сохранением полученного файла на узле.
+
+Если отключить или не настроить этот параметр, в Application Guard будут отключены все функции печати.
         </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Запрет на загрузку некорпоративного содержимого на корпоративных веб-сайтах в Microsoft Edge и Internet Explorer</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Этот параметр политики позволяет указать, могут ли веб-сайты загружать некорпоративное содержимое в Microsoft Edge и Internet Explorer.
+
+Если этот параметр включен, некорпоративное содержимое, внедренное на корпоративных сайтах, не может открываться в Internet Explorer и Microsoft Edge за пределами Application Guard в Защитнике Windows.
+
+Если отключить или не настроить этот параметр, сайты с некорпоративным содержимым могут открываться за пределами контейнера Application Guard в Защитнике Windows непосредственно в Internet Explorer и Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowPersistence_DisplayName">Разрешение сохранения данных для Application Guard в Защитнике Windows</string>
+        <string id="AppHVSI_AllowPersistence_Explain">Этот параметр политики позволяет указать, сохранять ли данные в различных сеансах в Application Guard в Защитнике Windows (Application Guard).
+
+        Если включить этот параметр, Application Guard сохраняет скачанные пользователем файлы и другие элементы (например, файлы cookie, избранное и т. д.) для дальнейшего использования в сеансах Application Guard.
+
+             ПРИМЕЧАНИЕ
+             Если включить этот параметр, вы все еще сможете удалить данные пользователя с определенного устройства с помощью команды PowerShell Reset-ApplicationGuard. Ее выполнение приводит к удалению всех данных сотрудников вне зависимости от конфигурации и может вызвать потерю данных сотрудником.
+
+        Если отключить или не настроить этот параметр, Application Guard удалит все данные пользователей в контейнере Application Guard.
+        </string>
+        <string id="AppHVSI_AuditApplicationGuard_DisplayName">Разрешение событий аудита в Application Guard в Защитнике Windows</string>
+        <string id="AppHVSI_AuditApplicationGuard_Explain">Этот параметр политики позволяет указать, можно ли собирать события аудита из Application Guard в Защитнике Windows (Application Guard).
+
+        Если этот параметр включен, Application Guard наследует политики аудита из Microsoft Edge и начинает аудит системных событий, предназначенных для Application Guard.
+
+             ПРИМЕЧАНИЕ
+             Собранные журналы можно просматривать в Microsoft Edge за пределами Application Guard.
+
+        Если отключить или не настроить этот параметр, журналы событий аудита не собираются для Application Guard.</string>
     </stringTable>
     <presentationTable>
       <presentation id="AppHVSIClipboardSettings_Presentation">
-        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Выберите параметр:</dropdownList>
-        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Указывается, что разрешено для поведения буфера обмена, когда операции буфера обмена включены (в десятичной системе):
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Настройка поведения буфера обмена.</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Параметры содержимого буфера обмена.
         </decimalTextBox>
-        <text>Это значение является битовой маской, определяющей типы файлов, для которых можно выполнять операции буфера обмена:
-
-b0001 — текстовый файл
-b0010 — файл точечного рисунка
-b0011 — текстовый файл и файл точечного рисунка
-        </text>
       </presentation>
       <presentation id="AppHVSIPrintingSettings_Presentation">
-        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Указываются включенные принтеры (в десятичной системе)
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Разрешенные типы печати в Application Guard.
         </decimalTextBox>
-        <text>Это значение является битовой маской, определяющей принтеры, доступные для изолированного сеанса    
-b0000 — печать отключена
-b0001 — печать в формате XPS (по умолчанию)
-b0010 — печать в формате PDF
-b0100 — печать на локальных принтерах
-b1000 — печать на имеющихся сетевых принтерах
-
-Например:
-если включена печать в формате XPS и печать на локальных принтерах, значение будет таким — b0001 | b0100, то есть b0101 (в десятичной системе — 5)
+        <text>Чтобы выбрать доступные типы печати, необходимо выбрать один из указанных ниже вариантов.
+     - 0. Отключение всех функций печати.
+     - 1. Включение печати только в формате XPS.
+     - 2. Включение печати только в формате PDF.
+     - 3. Включение печати в форматах PDF и XPS.
+     - 4. Включение только локальной печати.
+     - 5. Включение локальной печати и печати в формате XPS.
+     - 6. Включение локальной печати и печати в формате PDF.
+     - 7. Включение локальной печати, а также печати в форматах PDF и XPS.
+     - 8. Включение только сетевой печати.
+     - 9. Включение сетевой печати и печати в формате XPS.
+     - 10. Включение сетевой печати и печати в формате PDF.
+     - 11. Включение сетевой печати, а также печати в форматах PDF и XPS.
+     - 12. Включение сетевой и локальной печати.
+     - 13. Включение сетевой и локальной печати, а также печати в формате XPS.
+     - 14. Включение сетевой и локальной печати, а также печати в формате PDF.
+     - 15. Включение всех функций печати.
         </text>
       </presentation>
     </presentationTable>

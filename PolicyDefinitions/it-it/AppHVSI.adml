@@ -2,67 +2,115 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
   <displayName>Windows Defender Application Guard</displayName>
-  <description>Configurazione per Windows Defender Application Guard</description>
+  <description>Attiva Windows Defender Application Guard in modalità Enterprise</description>
   <resources>
     <stringTable>
         <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
-        <string id="AppHVSI_AllowAppHVSI_DisplayName">Attiva/Disattiva Windows Defender Application Guard (WDAG)</string>
-        <string id="AppHVSI_AllowAppHVSI_Explain">Questo criterio consente di attivare l'isolamento delle applicazioni usando Windows Defender Application Guard.
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Attiva Windows Defender Application Guard in modalità Enterprise</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Questa impostazione di criteri abilita l'isolamento delle applicazioni mediante Windows Defender Application Guard (Application Guard).
 
-Windows Defender Application Guard utilizza Windows Hypervisor per avviare le applicazioni in un ambiente virtualizzato. Quando le applicazioni sono configurate per l'utilizzo dell'isolamento tramite la sicurezza basata sulla virtualizzazione, il comportamento non attendibile dell'utente durante l'uso di queste applicazioni e le vulnerabilità in queste applicazioni non possono comportare la compromissione del kernel e di altre applicazioni in esecuzione al di fuori dell'ambiente virtualizzato.
-Prima di abilitare questo criterio, devi definire gli elenchi dei siti attendibili aziendali. Tali elenchi possono essere configurati tramite il criterio Isolamento rete (inserire il link allo specifico criterio di rete). In tal modo si garantisce che solo i siti non aziendali possano essere aperti all'interno dell'ambiente virtualizzato.
-Nota: il blocco di un sistema assicura che oltre all'isolamento delle applicazioni siano attivate anche le funzionalità di sicurezza di Device Guard per le applicazioni. Fai riferimento alla documentazione per un set completo di requisiti per bloccare un sistema in modo sicuro.
+Application Guard usa Windows Hypervisor per creare un ambiente virtualizzato per le app configurate per l'utilizzo di isolamento tramite sicurezza virtualizzata. Durante l'isolamento, interazioni dell'utente improprie e vulnerabilità delle app non possono compromettere il kernel o qualsiasi altra app in esecuzione all'esterno dell'ambiente virtualizzato.
+
+Se abiliti questa impostazione, Application Guard viene attivato per la tua organizzazione.
         </string>
         <string id="AppHVSI_ClipboardSettings_DisplayName">Configura le impostazioni Appunti di Windows Defender Application Guard</string>
-        <string id="AppHVSI_ClipboardSettings_Explain">Specifica il comportamento degli Appunti quando è in uso l'isolamento delle applicazioni con Windows Defender Application Guard.
+        <string id="AppHVSI_ClipboardSettings_Explain">Questa impostazione di criteri consente di definire il comportamento degli Appunti quando si utilizza Windows Defender Application Guard (Application Guard).
 
-L'amministratore può effettuare le seguenti operazioni:
-Disabilitare completamente la funzionalità Appunti quando è abilitata la sicurezza basata su virtualizzazione.
-Abilitare la copia di determinati contenuti dal computer host alla sessione isolata.
-Abilitare la copia di determinati contenuti dal computer host alla sessione isolata.
+Se abiliti questa impostazione, devi scegliere uno dei seguenti comportamenti:
 
-Nota: è consigliabile che gli amministratori non abilitino la copia dei contenuti dal computer host alla sessione isolata. Ciò implica che una sessione isolata compromessa possa accedere agli Appunti del computer host e al relativo contenuto.
+     - Disabilita completamente la funzionalità degli Appunti tra l'host e Application Guard
+
+     - Abilita la copia del contenuto degli Appunti da Application Guard all'host
+
+     - Abilita la copia del contenuto degli Appunti dall'host ad Application Guard.
+
+NOTA
+È consigliabile non abilitare la copia dall'host ad Application Guard. Se abiliti questa funzionalità, una sessione di Application Guard potenzialmente compromessa avrà accesso agli Appunti del dispositivo host e al relativo contenuto.
+
+Se scegli di abilitare la copia, devi anche scegliere il tipo di contenuto che è possibile copiare, utilizzando le opzioni relative al contenuto:
+
+     - 1. Consenti copia del testo.
+
+     - 2. Consenti copia delle immagini.
+
+     - 3. Consenti copia del testo e delle immagini.
+
+Se disabiliti o non configuri questa impostazione, la funzionalità degli Appunti viene disattivata del tutto in Application Guard.
         </string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Blocca operazioni con gli Appunti (predefinito)</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Abilita operazioni con gli Appunti da una sessione isolata all'host</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Abilita operazioni con gli Appunti da un host alla sessione isolata</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Abilita operazioni con gli Appunti in entrambe le direzioni</string>
         <string id="AppHVSI_PrintingSettings_DisplayName">Configura impostazioni di stampa di Windows Defender Application Guard</string>
-        <string id="AppHVSI_PrintingSettings_Explain">Se è selezionato Abilita stampa su XPS, gli utenti possono stampare documenti dall'interno del contenitore nel formato XPS.
-Se è selezionato Abilita stampa su PDF, gli utenti possono stampare documenti dall'interno del contenitore nel formato PDF.
-Se è selezionato Abilita stampa su stampanti locali, gli utenti possono stampare documenti dall'interno del contenitore su una stampante collegata al computer locale.
-Se è selezionato Abilita stampa su stampanti di rete esistenti, gli utenti possono stampare documenti dall'interno del contenitore isolato usando le stampanti di rete esistenti. Gli utenti non possono cercare nuove stampanti di rete.
-        </string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Blocca siti Web aziendali per il caricamento di contenuti non aziendali in IE ed Edge</string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Se disabilitata, blocca il traffico di rete di Internet Explorer e Microsoft Edge verso siti non aziendali che non possono essere avviati in un contenitore Windows Defender Application Guard.
+        <string id="AppHVSI_PrintingSettings_Explain">Questa impostazione di criteri consente di definire il comportamento della funzionalità di stampa quando si usa Windows Defender Application Guard (Application Guard).
 
-Se disabilitata, esegue, sul computer host, il rendering del traffico di rete verso i siti non aziendali che non possono essere avviati in un contenitore Windows Defender Application Guard.
+Se abiliti questa impostazione, devi scegliere uno o più dei seguenti comportamenti:
+
+     - Disabilita tutte le funzionalità di stampa in Application Guard.
+
+     - Abilita la stampa sulle stampanti di rete esistenti.
+
+     - Abilita la stampa sulle stampanti locali.
+
+     - Abilita la stampa su PDF, consenti agli utenti di stampare su PDF e salvare il file creato sull'host.
+
+     - Abilita la stampa su XPS, consenti agli utenti di stampare su XPS e salvare il file creato sull'host.
+
+Se disabiliti o non configuri questa impostazione, la funzionalità di stampa viene disattivata del tutto in Application Guard.
         </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Impedisci ai siti Web aziendali di caricare contenuto non aziendale in Microsoft Edge e Internet Explorer</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Questa impostazione dei criteri consente di specificare se i siti Web possono caricare contenuto non aziendale in Microsoft Edge e Internet Explorer.
+
+Se abiliti questa impostazione, il contenuto non aziendale incorporato nei siti aziendali non può più essere aperto in Internet Explorer o Microsoft Edge all'esterno di Windows Defender Application Guard.
+
+Se disabiliti o non configuri questa impostazione, i siti non aziendali possono essere aperti all'esterno del contenitore Windows Defender Application Guard direttamente in Internet Explorer e Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowPersistence_DisplayName">Consenti persistenza dei dati per Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowPersistence_Explain">Questa impostazione di criteri consente di definire la persistenza dei dati in diverse sessioni quando si usa Windows Defender Application Guard (Application Guard).
+
+        Se abiliti questa impostazione, Application Guard salva i file e altri elementi (ad esempio, cookie, Preferiti e così via) scaricati dall'utente per utilizzarli in sessioni future di Application Guard.
+
+             NOTA
+             Se abiliti questa impostazione, puoi comunque eliminare i dati di un utente da un dispositivo specifico mediante il comando di PowerShell Reset-ApplicationGuard. L'esecuzione di questo comando elimina tutti i dati dei dipendenti, indipendentemente dalla configurazione e può causare la perdita dei dati per il dipendente.
+
+        Se disabiliti o non configuri questa impostazione, Application Guard elimina tutti i dati degli utenti all'interno del contenitore Application Guard.
+        </string>
+        <string id="AppHVSI_AuditApplicationGuard_DisplayName">Consenti eventi di controllo in Windows Defender Application Guard</string>
+        <string id="AppHVSI_AuditApplicationGuard_Explain">Questa impostazione dei criteri consente di specificare se Windows Defender Application Guard (Application Guard) può raccogliere gli eventi di controllo.
+
+        Se abiliti questa impostazione, Application Guard eredita i suoi criteri di controllo da Microsoft Edge e inizia a controllare gli eventi di sistema specificatamente per Application Guard.
+
+             NOTA
+             I log raccolti sono disponibili per la revisione in Microsoft Edge, all'esterno di Application Guard.
+
+        Se disabiliti o non configuri questa impostazione,  i log degli eventi di controllo non vengono raccolti per Application Guard.</string>
     </stringTable>
     <presentationTable>
       <presentation id="AppHVSIClipboardSettings_Presentation">
-        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Seleziona un'opzione:</dropdownList>
-        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Specifica il comportamento con gli Appunti autorizzato quando le operazioni con gli Appunti sono abilitate (in decimali):
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Impostazioni comportamento degli Appunti.</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Opzioni del contenuto degli Appunti.
         </decimalTextBox>
-        <text>Questo valore è una maschera di bit che controlla i tipi di file supportati che è possibile utilizzare per le operazioni con gli Appunti:
-
-b0001 - file di testo
-b0010 - File bitmap
-b0011 - Sono supportati sia i file di testo che bitmap
-        </text>
       </presentation>
       <presentation id="AppHVSIPrintingSettings_Presentation">
-        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Specifica quali stampanti sono abilitate (in decimali)
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Tipi di stampa supportati in Application Guard.
         </decimalTextBox>
-        <text>Questo valore è una maschera di bit che controlla le stampanti abilitate in una sessione isolata    
-b0000 - La stampa è disabilitata
-b0001 - Abilita stampa su XPS (Default)
-b0010 - Abilita stampa su PDF
-b0100 - Abilita stampa su stampanti locali
-b1000 - Abilita stampa su stampanti di rete esistenti
-
-Ad esempio:
-se sono abilitate le stampanti XPS e Locale, il valore diventerà b0001 | b0100, che è b0101 (decimale 5)
+        <text>Per determinare quali tipi di stampa consentire, devi scegliere:
+     - 0. Disabilita tutte le funzionalità di stampa.
+     - 1. Abilita solo stampa su XPS.
+     - 2. Abilita solo stampa su PDF.
+     - 3. Abilita stampa su PDF e XPS.
+     - 4. Abilita solo stampa locale.
+     - 5. Abilita stampa locale e su XPS.
+     - 6. Abilita stampa locale e su PDF.
+     - 7. Abilita stampa locale, su PDF e XPS.
+     - 8. Abilita solo stampa di rete.
+     - 9. Abilita stampa di rete e su XPS.
+     - 10. Abilita stampa di rete e su PDF.
+     - 11. Abilita stampa di rete, su PDF e XPS.
+     - 12. Abilita stampa di rete e locale.
+     - 13. Abilita stampa di rete, locale e su XPS.
+     - 14. Abilita stampa di rete, locale e su PDF.
+     - 15. Abilita tutti i tipi di stampa.
         </text>
       </presentation>
     </presentationTable>

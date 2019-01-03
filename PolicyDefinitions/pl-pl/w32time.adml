@@ -15,13 +15,13 @@ Aby uzyskać więcej szczegółowych informacji dotyczących poszczególnych par
 Ten parametr określa, jak często usługa W32time koryguje częstotliwość zegara lokalnego. Przy mniejszych wartościach korekty są rzadsze, a przy większych — częstsze. Wartość domyślna: 4 (wartość skalarna).
 
         HoldPeriod
-Ten parametr wskazuje, ile spójnych próbek czasu komputer kliencki musi odebrać pod rząd, aby kolejne próbki czasu były oceniane jako potencjalne wahania czasu. Wartość domyślna: 5.
+Ten parametr wskazuje, ile spójnych próbek czasu komputer kliencki musi odebrać pod rząd, aby kolejne próbki czasu były oceniane jako potencjalne wahania czasu. Wartość domyślna: 5
 
         LargePhaseOffset
-Jeśli próbki czasu różnią się od wartości zegara lokalnego komputera klienckiego o więcej niż wynosi wartość parametru LargePhaseOffset, zegar lokalny jest uznawany za podlegający znacznemu odchyleniu, a więc próbki są uznawane za wahania. Wartość domyślna: 50 000 000 jednostek po 100 nanosekund (ns), czyli 5 sekund.
+Jeśli próbki czasu różnią się od wartości zegara lokalnego komputera klienckiego o więcej niż wynosi wartość parametru LargePhaseOffset, są uznawane za wahania. Wartość domyślna: 50 000 000 jednostek po 100 nanosekund (ns), czyli 5 sekund.
 
         MaxAllowedPhaseOffset
-W przypadku odebrania odpowiedzi o odchyleniu czasowym większym niż wartość tego parametru usługa W32time natychmiast ustawia dla zegara lokalnego komputera klienckiego godzinę, która jest akceptowana jako dokładna, z serwera protokołu Network Time Protocol (NTP). Jeśli odchylenie czasowe jest mniejsze niż ta wartość, zegar lokalny komputera klienckiego jest korygowany stopniowo. Wartość domyślna: 300 sekund.
+W przypadku odebrania odpowiedzi o odchyleniu czasowym większym niż wartość tego parametru, usługa W32time natychmiast ustawia dla zegara lokalnego komputera klienckiego godzinę, która jest akceptowana jako dokładna, z serwera protokołu Network Time Protocol (NTP). Jeśli odchylenie czasowe jest mniejsze niż ta wartość, zegar lokalny komputera klienckiego jest korygowany stopniowo. Wartość domyślna: 300 sekund.
 
         MaxNegPhaseCorrection
 W przypadku odebrania próbki czasu wskazującej czas w przeszłości (w porównaniu z zegarem lokalnym komputera klienckiego) o różnicy czasu większej niż wartość parametru MaxNegPhaseCorrection próbka czasu zostaje odrzucona. Wartość domyślna: 172 800 sekund.
@@ -67,6 +67,9 @@ Ten parametr określa, czy kontroler domeny będzie odpowiadał na żądania syn
         UtilizeSslTimeData
 Ten parametr określa, czy usługa W32time będzie używać danych czasu obliczonych na podstawie ruchu SSL na komputerze jako dodatkowych danych wejściowych podczas korygowania zegara lokalnego. Wartość domyślna: 1 (wartość logiczna; włączone).
 
+        ClockAdjustmentAuditLimit
+Ten parametr określa najmniejsze korekty lokalnego zegara, jakie mogą być rejestrowane w dziennika zdarzeń usługi W32time na komputerze docelowym. Wartość domyślna: 800 części na milion (PPM).
+
         Parametry kontrolera RODC:
 
         ChainEntryTimeout
@@ -79,7 +82,7 @@ Ten parametr określa maksymalną dozwoloną liczbę wpisów w tabeli łańcucha
 Ten parametr określa maksymalną dozwoloną liczbę wpisów w tabeli łańcucha dla określonego hosta. Wartość domyślna: 4 wpisy.
 
         ChainDisable
-Ten parametr określa, czy mechanizm tworzenia łańcucha jest wyłączony, czy nie. Jeśli tworzenie łańcucha jest wyłączone (wartość równa 0), kontroler RODC może być synchronizowany z dowolnym kontrolerem domeny, ale hosty, których hasła nie są buforowane na kontrolerze RODC, nie będą mogły być synchronizowane z kontrolerem RODC. Wartość domyślna: 0 (wartość logiczna).
+Ten parametr określa, czy mechanizm tworzenia łańcucha jest wyłączony, czy nie. Jeśli tworzenie łańcucha jest wyłączone (wartość równa 0), kontroler RODC może być synchronizowany z dowolnym kontrolerem domeny, ale hosty, których hasła nie są buforowane na kontrolerze RODC, nie mogą być synchronizowane z kontrolerem RODC. Wartość domyślna: 0 (wartość logiczna).
 
         ChainLoggingRate
 Ten parametr określa częstotliwość rejestrowania w dzienniku systemu w Podglądzie zdarzeń zdarzenia wskazującego liczbę pomyślnych i niepomyślnych prób utworzenia łańcucha. Wartość domyślna: 30 minut.
@@ -164,6 +167,7 @@ Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane,
         <decimalTextBox refId="W32TIME_ClockHoldoverPeriod" defaultValue="7800">ClockHoldoverPeriod</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
         <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ClockAdjustmentAuditLimit" defaultValue="800">ClockAdjustmentAuditLimit</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

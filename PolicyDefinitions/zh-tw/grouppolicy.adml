@@ -11,6 +11,32 @@
       <string id="FontMitigation_On">封鎖未受信任的字型並記錄事件</string>
       <string id="FontMitigation_Off">不封鎖未受信任的字型</string>
       <string id="FontMitigation_Audit">記錄事件，而不封鎖未受信任的字型</string>
+	  
+	  <string id="ProcessMitigationOptions_List">處理程序安全防護選項</string>
+      <string id="ProcessMitigationOptions_List_Help">
+        此安全性功能提供覆寫個別處理程序 MitigationOptions 設定的方式。這可以用來加強一些應用程式特定安全性原則。應用程式名稱是以 [值] 名稱的方式指定，包含副檔名。[值] 是以位元欄位的方式指定，包含特定位置中的一系列旗標。位元可設定為 0 (強制關閉設定)、1 (強制開啟設定) 或 ? (設定在 GPO 評估前保留其現有值)。可辨識的位元位置包括:
+
+        PROCESS_CREATION_MITIGATION_POLICY_DEP_ENABLE (0x00000001)
+        針對子處理程序啟用資料執行防止 (DEP)
+
+        PROCESS_CREATION_MITIGATION_POLICY_DEP_ATL_THUNK_ENABLE (0x00000002)
+        針對子處理程序啟用 DEP-ATL Thunk 模擬。DEP-ATL Thunk 模擬會造成系統攔截來自 Active Template Library (ATL) Thunk 層的 NX 錯誤。
+
+        PROCESS_CREATION_MITIGATION_POLICY_SEHOP_ENABLE (0x00000004)
+        針對子處理程序啟用結構化例外狀況處理常式覆寫保護 (SEHOP)。SEHOP 會封鎖使用結構化例外狀況處理常式 (SEH) 覆寫技術的惡意探索。
+
+        PROCESS_CREATION_MITIGATION_POLICY_FORCE_RELOCATE_IMAGES_ALWAYS_ON (0x00000100)
+        強制的位址空間配置隨機載入 (ASLR) 原則會透過似乎於載入時發生映像基底衝突的方式，強制重訂不相容於動態基底之映像的基底。若需要重新配置，將不會載入不具備基底重新配置區段的映像。
+
+        PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_ON (0x00010000)
+        PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_OFF (0x00020000)
+        由下而上的隨機載入原則 (包含堆疊隨機載入選項) 會造成使用隨機位置做為最低使用者位址。
+
+        例如，若要啟用 PROCESS_CREATION_MITIGATION_POLICY_DEP_ENABLE 與 PROCESS_CREATION_MITIGATION_POLICY_FORCE_RELOCATE_IMAGES_ALWAYS_ON，請停用 PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_OFF，並將所有其他選項保留為其預設值，指定下列值：
+        ???????????????0???????1???????1
+
+        將此處未指定的旗標設定為 ? 以外的任何值會導致未定義的行為。	  
+</string>
 
       <string id="ResetDfsClientInfoDuringRefreshPolicy">啟用原則重新整理期間的 AD/DFS 網域控制站同步</string>
       <string id="ResetDfsClientInfoDuringRefreshPolicy_Help">啟用這個設定會讓群組原則用戶端連線到 DFS 共用的網域控制站，這個網域控制站與 Active Directory 使用的網域控制站相同。
@@ -24,6 +50,37 @@
 
 
 </string>
+      <string id="EnableCDP">在此裝置上繼續體驗</string>
+      <string id="EnableCDP_Help">
+此原則設定決定是否允許 Windows 裝置參與跨裝置體驗 (繼續體驗)。
+
+若啟用此原則設定，此 Windows 裝置將可由屬於相同使用者的其他 Windows 裝置探索，而且可以參與跨裝置體驗。
+
+若停用此原則設定，此 Windows 裝置將無法由其他裝置探索，而且無法參與跨裝置體驗。
+
+若未設定此原則設定，預設行為取決於 Windows 版本。對此原則所做的變更將在重新開機之後生效。
+      </string>
+      <string id="EnableAppUriHandlers">設定透過 App URI 處理常式進行 Web 對 App 連結</string>
+      <string id="EnableAppUriHandlers_Help">
+此原則設定決定 Windows 是否支援透過 App URI 處理常式進行 Web 對 App 連結。
+
+啟用此原則設定將會啟用 Web 對 App 連結，使應用程式可透過 http(s) URI 啟動。
+
+停用此原則將會停用 Web 對 App 連結，以致將由預設瀏覽器開啟 http(s) URI 而不會啟動相關聯的應用程式。
+
+若未設定此原則設定，預設行為取決於 Windows 版本。對此原則所做的變更將在重新開機之後生效。
+      </string>
+      <string id="Fonts">字型</string>
+      <string id="EnableFontProviders">啟用字型提供者</string>
+      <string id="EnableFontProviders_Help">
+        此原則設定決定 Windows 是否能從線上字型提供者下載字型與字型類別目錄資料。
+        
+        若啟用此原則設定，Windows 會定期查詢線上字型提供者以判斷是否有新的字型類別目錄可用。Windows 可能也會視需要下載字型資料以設定文字格式或轉譯文字。
+        
+        若停用此原則設定，Windows 不會連線到線上字型提供者，而只會列舉本機安裝的字型。
+      
+        若未設定此原則設定，預設行為取決於 Windows 版本。對此原則所做的變更將在重新開機之後生效。
+      </string>
       <string id="EnableLogonOptimization">設定群組原則快取</string>
       <string id="EnableLogonOptimization_Help">
         
@@ -491,6 +548,12 @@ RSoP 記錄已套用到用戶端電腦的原則群組設定資訊。這些資訊
     <presentationTable>
       <presentation id="Font_List">
         <dropdownList refId="FontMitigation_DL" defaultItem="0" noSort="true">緩和選項</dropdownList>
+      </presentation>
+      <presentation id="ProcessMitigationOptions_List">
+        <listBox refId="ProcessMitigationOptionsList">處理程序安全防護選項</listBox>
+      </presentation>
+      <presentation id="FontProvidersPolicy">
+        <dropdownList refId="FontProvidersOption" noSort="true" defaultItem="0">必須允許「Windows 字型快取服務」從線上提供者下載字型與字型類別目錄資料。</dropdownList>
       </presentation>
       <presentation id="SyncModeThreshold">
         <decimalTextBox refId="SyncModeSlowLinkThreshold1" defaultValue="500">低速連結值:[數字欄位] 毫秒</decimalTextBox>

@@ -94,6 +94,15 @@ Jeśli to ustawienie zasad zostanie wyłączone, usługa Windows Hello dla firm 
 
 UWAGA: Wyłączenie tego ustawienia zasad uniemożliwi użytkownikom używanie gestów biometrycznych na urządzeniu dla każdego typu konta.
         </string>
+        <string id="MSPassport_EnablePinRecovery">Użyj odzyskiwania kodu PIN</string>
+        <string id="MSPassport_EnablePinRecoveryExplain">Ustawienie Odzyskiwanie kodu PIN umożliwia użytkownikowi zmianę zapomnianego kodu PIN przy użyciu usługi odzyskiwania kodu PIN funkcji Windows Hello dla firm, bez utraty skojarzonych poświadczeń i certyfikatów, w tym kluczy skojarzonych z kontami osobistymi użytkowników na urządzeniu. Aby było to możliwe, oparta na platformie Azure usługa odzyskiwania kodu PIN szyfruje wpis tajny odzyskiwania, który jest przechowywany na urządzeniu, a do odszyfrowania go potrzebna jest zarówno usługa odzyskiwania kodu PIN, jak i urządzenie. Ustawienie Odzyskiwanie kodu PIN wymaga, aby użytkownik wykonał uwierzytelnianie wieloskładnikowe w usłudze Azure Active Directory.
+
+Jeśli włączysz to ustawienie zasad, funkcja Windows Hello dla firm będzie używać usługi odzyskiwania kodu PIN. 
+
+Jeśli wyłączysz to ustawienie zasad albo go nie skonfigurujesz, system Windows nie utworzy ani nie będzie przechowywał wpisu tajnego odzyskiwania kodu PIN. Jeśli użytkownik zapomni swojego kodu PIN, będzie musiał usunąć istniejący kod PIN i utworzyć nowy, a ponadto będzie musiał zarejestrować się ponownie we wszystkich usługach, do których uzyskiwał dostęp za pomocą starego kodu PIN.
+
+UWAGA: Ta zasada ma zastosowanie tylko do urządzeń zarejestrowanych w usłudze Azure Active Directory.
+        </string>
         <string id="MSPassport_UseRemote">Użyj logowania za pomocą telefonu</string>
         <string id="MSPassport_UseRemoteExplain">To ustawienie zasad pozwala skonfigurować korzystanie z funkcji logowania za pomocą telefonu. Funkcja logowania za pomocą telefonu umożliwia użycie telefonu jako urządzenia towarzyszącego podczas uwierzytelniania na komputerze. Funkcja logowania za pomocą telefonu wymaga, aby komputer i telefon były zarejestrowane w tej samej dzierżawie usługi Azure AD. Ponadto telefon musi być zarejestrowany w usłudze Windows Hello dla firm.
 
@@ -105,10 +114,53 @@ Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane,
         <string id="WHFB_UseCertificateForOnPremAuthExplain">To ustawienie zasad umożliwia skonfigurowanie funkcji Windows Hello dla firm w taki sposób, aby rejestrowała certyfikat logowania używany na potrzeby uwierzytelniania lokalnego.
 
 Jeśli to ustawienie zasad zostanie włączone, funkcja Windows Hello dla firm będzie rejestrować certyfikat logowania używany na potrzeby uwierzytelniania lokalnego.
-		
+
 Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, funkcja Windows Hello dla firm będzie rejestrować klucz używany na potrzeby uwierzytelniania lokalnego.
 
 UWAGA: Wyłączenie lub nieskonfigurowanie tego ustawienia zasad i włączenie ustawienia zasad „Użyj funkcji Windows Hello dla firm” wymaga co najmniej jednego kontrolera domeny z systemem Windows Server 2016 w używanym środowisku. W przeciwnym razie uwierzytelnianie za pomocą funkcji Windows Hello dla firm nie powiedzie się.
+        </string>
+        <!-- Explain text for device unlock policy -->
+        <string id="MSPassport_UseDeviceUnlock">Konfiguruj składniki odblokowania urządzenia</string>
+        <string id="MSPassport_UseDeviceUnlock_Explain">Skonfiguruj listę rozdzielanych przecinkami identyfikatorów GUID dostawców poświadczeń, takich jak identyfikatory GUID dostawców twarzy i odcisków palców, do użycia w charakterze pierwszego i drugiego składnika odblokowania. Jeśli zaufany dostawca sygnałów zostanie określony jako jeden ze składników odblokowania, musisz także skonfigurować listę rozdzielanych przecinkami reguł sygnałów w formie kodu XML dla każdego typu sygnałów do zweryfikowania.
+
+Jeśli włączysz to ustawienie zasad, użytkownik będzie musiał użyć jednego składnika z każdej listy, aby pomyślnie odblokować urządzenie.
+
+Jeśli wyłączysz to ustawienie zasad albo go nie skonfigurujesz, użytkownicy nadal będą mogli odblokowywać urządzenie za pomocą dotychczas używanych opcji odblokowania.
+
+Aby uzyskać więcej informacji, zobacz https://go.microsoft.com/fwlink/?linkid=849684.
+        </string>
+        <!-- Explain text for dynamic lock policy -->
+        <string id="MSPassport_UseDynamicLock">Konfiguruj składniki blokowania dynamicznego</string>
+        <string id="MSPassport_UseDynamicLock_Explain">Skonfiguruj listę rozdzielanych przecinkami reguł sygnałów w formie kodu XML dla każdego typu sygnałów.
+
+Jeśli włączysz to ustawienie zasad, te reguły sygnałów będą przetwarzane w celu wykrycia nieobecności użytkownika i automatycznego zablokowania urządzenia.
+
+Jeśli wyłączysz to ustawienie zasad albo go nie skonfigurujesz, użytkownicy nadal będą mogli blokować urządzenie za pomocą istniejących opcji blokowania.
+
+Aby uzyskać więcej informacji, zobacz https://go.microsoft.com/fwlink/?linkid=849684.
+        </string>
+        <!-- Explain text for smart card emulation policy -->
+        <string id="MSPassport_DisableSmartCardNode">Wyłącz emulację karty inteligentnej</string>
+        <string id="MSPassport_DisableSmartCardNodeExplain">Funkcja Windows Hello dla firm automatycznie dostarcza emulację karty inteligentnej w celu zapewnienia zgodności z aplikacjami obsługującymi karty inteligentne.
+
+Jeśli włączysz to ustawienie zasad, funkcja Windows Hello dla firm zainicjuje obsługę poświadczeń funkcji Windows Hello dla firm, które nie są zgodne z aplikacjami kart inteligentnych.
+
+Jeśli wyłączysz to ustawienie zasad albo go nie skonfigurujesz, funkcja Windows Hello dla firm zainicjuje obsługę poświadczeń funkcji Windows Hello dla firm, które są zgodne z aplikacjami kart inteligentnych.
+
+UWAGA: Ta zasada ma wpływ na poświadczenia funkcji Windows Hello dla firm w chwili ich tworzenia. Poświadczenia utworzone przed zastosowaniem tej zasady nadal będą dostarczać emulację karty inteligentnej. Aby zmienić istniejące poświadczenia, włącz to ustawienie zasad i wybierz pozycję „Nie pamiętam mojego numeru PIN” w obszarze Ustawienia.
+        </string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNode">Zezwalaj na wyliczanie emulowanej karty inteligentnej dla wszystkich użytkowników</string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNodeExplain">System Windows uniemożliwia użytkownikom jednego komputera wyliczanie poświadczeń funkcji Windows Hello dla firm, których obsługa została zainicjowana, dla innych użytkowników.
+
+Jeśli włączysz to ustawienie zasad, system Windows będzie zezwalał wszystkim użytkownikom komputera na wyliczanie wszystkich poświadczeń funkcji Windows Hello dla firm, ale nadal będzie wymagał, aby każdy użytkownik podawał własne składniki w celu uwierzytelnienia.
+
+Jeśli wyłączysz to ustawienie zasad albo go nie skonfigurujesz, system Windows nie będzie zezwalał na wyliczanie poświadczeń funkcji Windows Hello dla firm, których obsługa została zainicjowana, dla innych użytkowników tego samego urządzenia.
+
+To ustawienie zasad jest przeznaczone dla jednego użytkownika, który został zarejestrowany na jednym urządzeniu jako użytkownik uprzywilejowany i nieuprzywilejowany. Taki użytkownik posiada poświadczenia obu typów, co umożliwia mu zalogowanie się za pomocą poświadczeń nieuprzywilejowanych i wykonywanie zadań wymagających podwyższonego poziomu uprawnień bez wylogowywania się.
+
+To ustawienie zasad jest niezgodne z poświadczeniami funkcji Windows Hello dla firm, których obsługa została zainicjowana, gdy było włączone ustawienie Wyłącz emulację karty inteligentnej.
+
+Po zastosowaniu tego ustawienia do komputera system Windows wymaga ponownego rozruchu.
         </string>
     </stringTable>
     <presentationTable>
@@ -136,11 +188,30 @@ UWAGA: Wyłączenie lub nieskonfigurowanie tego ustawienia zasad i włączenie u
       <presentation id="MSPassport_PINExpirationControl">
         <decimalTextBox refId="MSPassport_PINExpirationDataType" spin="true" spinStep="1" defaultvalue="0">Wygasanie numerów PIN</decimalTextBox>
       </presentation>
-	  <presentation id="MSPassport_ExcludeSecurityDevicesControl">
-		<text>Nie używaj następujących urządzeń zabezpieczeń:</text>
-		<checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
-	  </presentation>
-
+      <presentation id="MSPassport_ExcludeSecurityDevicesControl">
+        <text>Nie używaj następujących urządzeń zabezpieczeń:</text>
+        <checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
+      </presentation>
+      <presentation id="MSPassport_UseDeviceUnlock_Control">
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupA">
+            <label>Dostawcy poświadczeń pierwszego składnika odblokowania</label>
+            <defaultValue>{D6886603-9D2F-4EB2-B667-1971041FA96B},{8AF662BF-65A0-4D0A-A540-A338A999D36F},{BEC09223-B018-416D-A0AC-523971B639F5}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupB">
+            <label>Dostawcy poświadczeń drugiego składnika odblokowania</label>
+            <defaultValue>{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD},{D6886603-9D2F-4EB2-B667-1971041FA96B}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_Plugins">
+            <label>Reguły sygnałów do odblokowywania urządzenia</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Authentication" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
+      <presentation id="MSPassport_UseDynamicLock_Control">
+        <textBox refId="MSPassport_UseDynamicLock_Plugins">
+            <label>Reguły sygnałów do blokowania dynamicznego</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Dynamic Lock" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
     </presentationTable>
   </resources>
 </policyDefinitionResources>

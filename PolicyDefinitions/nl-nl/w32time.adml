@@ -44,7 +44,7 @@ Deze parameter duidt op de hoeveelheid tijd dat W32time tussen correcties wacht 
         Algemene parameters:
 
         AnnounceFlags
-Deze parameter is een bitmask-waarde die bepaalt hoe de beschikbaarheid van de tijdservice wordt bekendgemaakt via NetLogon. Standaard: 0x0-a hexadecimaal
+Deze parameter is een bitmask-waarde die bepaalt hoe de beschikbaarheid van de tijdservice wordt bekendgemaakt via NetLogon. Standaard: 0x0een hexadecimaal
 
         EventLogFlags
 Deze parameter bepaalt speciale gebeurtenissen die kunnen worden geregistreerd in het logboekbestand van het Logboeken-systeem. Standaard: 0x02 hexadecimale bitmask.
@@ -62,10 +62,13 @@ Deze parameter bepaalt het minimale polling-interval, waarmee de minimale hoevee
 Deze parameter duidt op het maximale aantal seconden dat een systeemklok nominaal accuraat kan blijven zonder te synchroniseren met een tijdbron. Als deze tijdperiode voorbijgaat zonder dat W32time nieuwe voorbeelden van zijn invoerproviders heeft gekregen, start W32time opnieuw detectie van tijdbronnen. Standaard: 7800 seconden.
 
         RequireSecureTimeSyncRequests
-Deze parameter bepaalt of de DC wel of niet reageert op tijdsynchronisatieaanvragen die oudere authenticatieprotocollen gebruiken. Indien ingeschakeld (op 1 ingesteld), reageert de DC niet op aanvragen die dergelijke protocollen gebruiken. Standaard: 0 Booleaans.
+Deze parameter bepaalt of de DC wel of niet reageert op tijdsynchronsatieaanvragen die oudere authenticatieprotocollen gebruiken. Indien ingeschakeld (op 1 ingesteld), reageert de DC niet op aanvragen die dergelijke protocollen gebruiken. Standaard: 0 Booleaans.
 
         UtilizeSslTimeData
-Deze parameter bepaalt of W32time tijdgegevens gebruikt die worden berekend op grond van SSL-verkeer op de machine als extra invoer voor correctie van de lokale klok. Standaard: 1 (ingeschakeld) Booleaans
+Deze parameter bepaalt of W32time tijdgegevens gebruikt die worden berekend op grond van SSL-verkeer op de machine als extra invoer voor correctie van de lokale klok.  Standaard: 1 (ingeschakeld) Booleaans
+
+        ClockAdjustmentAuditLimit
+Deze parameter geeft de kleinste aanpassingen van de lokale klok aan die op de doelmachine in het gebeurtenissenlogboek van de W32time-service mogen worden geregistreerd. Standaard: 800 Parts per million (PPM).
 
         RODC parameters:
 
@@ -164,6 +167,7 @@ Als u deze beleidsinstelling uitschakelt of niet configureert, kan uw computer g
         <decimalTextBox refId="W32TIME_ClockHoldoverPeriod" defaultValue="7800">ClockHoldoverPeriod</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
         <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ClockAdjustmentAuditLimit" defaultValue="800">ClockAdjustmentAuditLimit</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

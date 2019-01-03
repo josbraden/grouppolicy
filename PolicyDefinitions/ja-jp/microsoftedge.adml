@@ -11,6 +11,8 @@
       <string id="SUPPORTED_INTERNET_BROWSER_WIN10V1511_DisplayName">Microsoft Edge on Windows 10 Version 1511 以降</string>
       <string id="SUPPORTED_INTERNET_BROWSER_WIN10V1607_DisplayName">Microsoft Edge on Windows 10 Version 1607 以降</string>
       <string id="SUPPORTED_INTERNET_BROWSER_WIN10V1703_DisplayName">Microsoft Edge on Windows 10 Version 1703 以降</string>
+      <string id="SUPPORTED_INTERNET_BROWSER_WIN10RS3RELEASE_DisplayName">Microsoft Edge on Windows 10 Version 1709 以降</string>
+      <string id="SUPPORTED_INTERNET_BROWSER_RS3_DisplayName">Microsoft Edge on Windows 10 Version 1708 以降</string>
       <string id="InternetBrowser_DisplayName">Microsoft Edge</string>
       <string id="InternetBrowser_ExplainCat">Microsoft Edge カテゴリ</string>
 
@@ -41,6 +43,15 @@
 この設定を有効にした場合は、[スタート ページを構成する] 設定で構成されているスタート ページをロックできません。つまり、ユーザーがスタート ページを変更できるようになります。
 
 この設定を無効にした場合または構成しなかった場合、ユーザーは [スタート ページを構成する] 設定で構成されているスタート ページを変更できません。スタート ページはロックされた状態で維持されます。</string>
+      <string id="LockdownFavorites">Microsoft Edge 上のお気に入りを変更できないようにする</string>
+      <string id="LockdownFavorites_Explain">このポリシー設定では、従業員が Microsoft Edge でお気に入りリストを追加、インポート、並べ替え、または編集できるかどうかを決定します。
+
+この設定を有効にした場合、従業員はお気に入りリストの内容を追加、インポート、または変更できません。この一環として、[お気に入りの保存]、[インポート設定]、コンテキスト メニュー項目 ([新しいフォルダーの作成] など) はすべてオフになります。
+
+重要
+この設定と [Internet Explorer と Microsoft Edge の間でお気に入りの同期状態を維持する] 設定の両方を有効にしないでください。両方の設定を有効にすると、従業員のお気に入りは Internet Explorer と Microsoft Edge 間で同期しなくなります。
+
+この設定を無効にするか構成しない場合 (既定)、従業員はお気に入りリストの追加、インポート、変更を行うことができます。</string>
 
       <string id="AllowAddressBarDropdown">アドレス バーのドロップダウン リスト候補を許可する</string>
       <string id="AllowAddressBarDropdown_Explain">このポリシー設定では、Microsoft Edge でアドレス バーのドロップダウン機能が利用できるかどうかを指定できます。Microsoft Edge から Microsoft サービスへのネットワーク接続を最小限に抑えるには、この設定を無効にすることをお勧めします。
@@ -127,6 +138,21 @@
 この設定を無効にした場合、Microsoft Edge の新しいタブには空白のページが表示されます。この設定を使用する場合、従業員は設定を変更できません。
 
 この設定を構成しなかった場合は、新しいタブに表示するページの種類を従業員が選択できます。</string>
+      <string id="ConfiguredFavorites">お気に入りのプロビジョニング</string>
+      <string id="ConfiguredFavorites_Explain">このポリシー設定では、従業員に表示されるお気に入りの既定のセットを構成できます。従業員は、これらのプロビジョニングされたお気に入りを変更、並べ替え、移動、エクスポート、または削除できません。
+
+この設定を有効にした場合は、お気に入りの URL とお気に入りフォルダーを設定し、ユーザーのお気に入りリスト (ハブまたはお気に入りバー上) の上部に表示できます。ユーザーのお気に入りは、これらのプロビジョニングされたお気に入りの後に表示されます。
+
+重要
+この設定と [Internet Explorer と Microsoft Edge の間でお気に入りの同期状態を維持する] 設定の両方を有効にしないでください。両方の設定を有効にすると、従業員のお気に入りは Internet Explorer と Microsoft Edge 間で同期しなくなります。
+
+この設定を無効にするか構成しない場合 (既定)、従業員にはハブまたはお気に入りバーで設定したお気に入りが表示されます。</string>
+      <string id="AlwaysEnableBooksLibrary">Microsoft Edge に書籍ライブラリを常に表示する</string>
+      <string id="AlwaysEnableBooksLibrary_Explain">このポリシー設定では、Windows 設定の [国または地域] 領域で構成したデバイスの国または地域設定に関係なく、[書籍] タブを表示するかどうかを決定できます。
+ 
+この設定を有効にした場合、Microsoft Edge はデバイスの国または地域に関係なく書籍ライブラリを表示します。
+ 
+この設定を無効にするか構成しない場合、Microsoft Edge にはサポートされる国または地域でのみ書籍ライブラリが表示されます。</string>
       <string id="Cookies">Cookie の構成</string>
       <string id="Cookies_Explain">この設定では、Cookie の処理方法を構成できます。
 
@@ -278,6 +304,17 @@
 
     <!-- Presentation -->
     <presentationTable>
+      <presentation id="ConfiguredFavorites_Presentation">
+        <textBox refId="ConfiguredFavoritesPrompt">
+          <label>お気に入り (HTML 形式) をプロビジョニングするためのデータをすべて含むファイルを指す URL を指定します。お気に入りのセットを Edge からエクスポートし、その HTML ファイルを使用してユーザー コンピューターをプロビジョニングできます。
+
+URL は次のように指定できます
+1. HTTP の場所: http://localhost:8080/URLs.html
+2. ローカル ネットワーク: \\network\shares\URLs.html
+3. ローカル ファイル: file:///c:\\Users\\&lt;user&gt;\\Documents\\URLs.html または C:\\Users\\&lt;user&gt;\\Documents\\URLs.html
+          </label>
+        </textBox>
+      </presentation>
       <presentation id="EnterpriseModeSiteList_Presentation">
         <textBox refId="EnterSiteListPrompt">
           <label>エンタープライズ モード IE の Web サイト一覧の場所 (URL) を入力してください</label>

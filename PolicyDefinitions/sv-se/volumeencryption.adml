@@ -28,13 +28,14 @@ Obs! TPM-initiering kan krävas under BitLocker-konfigurationen. Aktivera princi
 
 Obs! Den här principen gäller bara datorer som kör Windows Server 2008 eller Windows Vista.
 
-På datorer med en kompatibel TPM (Trusted Platform Module) kan två metoder användas under starten för ytterligare skydd av krypterade data. När datorn startas kan användaren uppmanas sätta i ett USB-flashminne med en startnyckel. Användaren måste även ange en PIN-kod på mellan 6 och 20 siffror.
+På datorer med en kompatibel TPM (Trusted Platform Module) kan två metoder användas under starten för ytterligare skydd av krypterade data. När datorn startas kan användaren uppmanas sätta i ett USB-flashminne med en startnyckel. Användaren måste även ange en PIN-kod på mellan 4 och 20 siffror.
 
 USB-flashminnen med startnycklar måste användas på datorer som saknar kompatibel TPM (Trusted Platform Module). Utan TPM skyddas BitLocker-krypterade data endast av nyckeln på USB-flashminnet.
 
 Om du aktiverar den här principinställningen visas en sida i guiden där användaren kan konfigurera avancerade startalternativ för BitLocker. Du kan konfigurera fler alternativ för datorer med och utan TPM.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen visas grundläggande steg i BitLocker-installationsguiden där användaren kan aktivera BitLocker på datorer med TPM. I den grundläggande guiden går det inte att konfigurera någon ytterligare startnyckel eller start-PIN-kod.
+
 </string>
 
       <string id="ConfigureStartupUsage_Name">Kräv ytterligare autentisering vid start (Windows Server 2008 och Windows Vista)</string>
@@ -375,11 +376,14 @@ Inställningen som styr avlusningen vid start (0x16000010) verifieras alltid och
 
 
       <string id="MinimumPINLength_Name">Konfigurera minsta PIN-kodslängd för start</string>
-      <string id="MinimumPINLength_Help">Du kan använda den här principinställningen för att konfigurera en minimilängd för start-PIN-koden för en betrodd plattformsmodul (TPM). Principinställningen tillämpas när du aktiverar BitLocker. Start-PIN-koden måste innehålla minst 6 siffror men inte fler än 20.
+      <string id="MinimumPINLength_Help">
+          Du kan använda den här principinställningen för att konfigurera en minimilängd för start-PIN-koden för en Trusted Platform Module (TPM). Principinställningen tillämpas när du aktiverar BitLocker. Start-PIN-koden måste innehålla minst 4 men inte fler än 20 siffror.
 
-Om du aktiverar den här principinställningen kan du kräva att ett minsta antal siffror ska användas när start-PIN-koden anges.
+          Om du aktiverar den här principinställningen kan du kräva att ett minsta antal siffror ska användas när start-PIN-koden anges.
 
-Om du inaktiverar eller låter bli att konfigurera principinställningen kan användarna konfigurera en start-PIN-kod av valfri längd, bestående av mellan 6 och 20 siffror.
+          Om du inaktiverar eller låter bli att konfigurera principinställningen kan användarna konfigurera en start-PIN-kod av valfri längd, bestående av mellan 6 och 20 siffror.
+
+          OBS! Om minimilängden för PIN-koden är mindre än 6 siffror försöker Windows uppdatera TPM 2.0-utelåsningsperioden till ett större värde än standardvärdet när en PIN-kod ändras. Om det lyckas kommer Windows endast att återställa TPM-utelåsningsperioden till standardvärdet om TPM återställs.
 
       </string>
 

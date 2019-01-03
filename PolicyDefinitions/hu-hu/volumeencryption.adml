@@ -28,13 +28,14 @@ Megjegyzés: Előfordulhat, hogy a platformmegbízhatósági modul (TPM) inicial
 
 Megjegyzés: Ez a házirend csak a Windows Server 2008 vagy a Windows Vista operációs rendszer futtató számítógépekre vonatkozik.
 
-Kompatibilis platformmegbízhatósági modult (TPM) tartalmazó számítógépen két hitelesítési módszer használható az induláskor a titkosított adatok bővített védelmére. A számítógép az indításkor megkövetelheti, hogy a felhasználó indítókulcsot tartalmazó USB flash meghajtót helyezzen be. A rendszer megkövetelheti a felhasználóktól egy 6-20 számjegyű indító PIN-kód megadását is.
+Kompatibilis platformmegbízhatósági modult (TPM) tartalmazó számítógépen két hitelesítési módszer használható az induláskor a titkosított adatok bővített védelmére. A számítógép az indításkor megkövetelheti, hogy a felhasználó indítókulcsot tartalmazó USB flash meghajtót helyezzen be. A rendszer megkövetelheti a felhasználóktól egy 4-20 számjegyű indító PIN-kód megadását is.
 
 Az indítókulcsot tartalmazó USB flash meghajtók a kompatibilis TPM modul nélküli számítógépeken szükségesek. TPM nélkül a BitLocker által titkosított adatokat kizárólag az adott USB flash meghajtón tárolt kulcsanyag védi.
 
 Ha engedélyezi ezt a házirend-beállítást, a varázsló megjeleníti a BitLocker speciális indítási beállításait tartalmazó oldalt a felhasználó számára. További beállítások érhetők el a TPM modullal rendelkező és nem rendelkező számítógépekhez.
 
-Ha letiltja, vagy nem konfigurálja ezt a házirend-beállítást, a BitLocker telepítővarázsló megjeleníti az alapvető lépéseket ahhoz, hogy a felhasználó bekapcsolja a BitLocker titkosítást a platformmegbízhatósági modullal rendelkező számítógépeken. Ebben az alapszintű varázslóban nem lehet további indítókulcsot vagy indító PIN-kódot konfigurálni.
+Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, a BitLocker telepítővarázsló megjeleníti az alapvető lépéseket ahhoz, hogy a felhasználó bekapcsolja a BitLocker titkosítást a platformmegbízhatósági modullal rendelkező számítógépeken. Ebben az alapszintű varázslóban nem lehet további indítókulcsot vagy indító PIN-kódot konfigurálni.
+
 </string>
 
       <string id="ConfigureStartupUsage_Name">További hitelesítés megkövetelése indításkor (Windows Server 2008 és Windows Vista esetében)</string>
@@ -373,11 +374,14 @@ A rendszerindítási hibakeresést vezérlő beállítás (0x16000010) érvénye
 
 
       <string id="MinimumPINLength_Name">Az indításkor szükséges PIN-kód minimális hosszának beállítása</string>
-      <string id="MinimumPINLength_Help">Ezzel a házirend-beállítással beállíthatja a platformmegbízhatósági modul (TPM) indító PIN-kódjának minimális hosszát. Ezt a házirend-beállítást a rendszer a BitLocker bekapcsolásakor alkalmazza. Az indító PIN-kód legalább 6, legfeljebb 20 számjegyből állhat.
+      <string id="MinimumPINLength_Help">
+          Ezzel a házirend-beállítással konfigurálhatja a platformmegbízhatósági modul (TPM) indító PIN-kódjának minimális hosszát. A házirend-beállítást a rendszer a BitLocker bekapcsolásakor alkalmazza. Az indító PIN-kódnak legalább 4 és legfeljebb 20 számjegyből kell állnia.
 
-Ha engedélyezi ezt a házirend-beállítást, akkor beállíthat egy ettől eltérő minimális hosszat az indító PIN-kódhoz.
+          Ha engedélyezi a házirend-beállítást, kötelezővé teheti egy minimális számú számjegy használatát az indító PIN-kód beállításakor.
 
-Ha letiltja vagy nem konfigurálja a házirend-beállítást, az indító PIN-kód 6 és 20 számjegy között tetszőleges hosszúságú lehet.
+          Ha letiltja vagy nem konfigurálja a házirend-beállítást, a felhasználók 6 és 20 számjegy között tetszőleges hosszúságú indító PIN-kódot állíthatnak be.
+
+          MEGJEGYZÉS: Ha 6 számjegynél kisebb minimális PIN-kód hosszúságot állít be, a Windows úgy próbálja meg módosítani a TPM 2.0 zárolási periódust, hogy az a PIN-kód módosításakor nagyobb legyen, mint az alapérték. Ha ez sikerül, a Windows csak akkor állítja vissza az alapértékre a TPM zárolási periódust, ha a TPM-et alaphelyzetbe állítják.
 
       </string>
 

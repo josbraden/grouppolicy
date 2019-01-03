@@ -94,6 +94,15 @@ Se desativar esta definição de política, o Windows Hello para Empresas impede
 
 NOTA: Desativar esta política impede o utilizador de utilizar gestos biométricos no dispositivo em todo o tipo de contas.
         </string>
+        <string id="MSPassport_EnablePinRecovery">Utilize a Recuperação do PIN</string>
+        <string id="MSPassport_EnablePinRecoveryExplain">A recuperação do PIN permite que um utilizador altere um PIN esquecido utilizando o serviço de recuperação do Windows Hello para Empresas sem perder quaisquer credenciais ou certificados associados, incluindo quaisquer chaves associadas às contas pessoais do utilizador no dispositivo. Para o conseguir, este serviço de recuperação de PIN baseado no Azure encripta um segredo de reparação que é armazenado no dispositivo e requer que o serviço de recuperação do PIN e o dispositivo sejam desencriptados. A recuperação do PIN requer que o utilizador efetue uma autenticação de vários fatores no Azure Active Directory.
+
+Se ativar esta definição de política, o Windows Hello para Empresas utiliza o serviço de recuperação do PIN. 
+
+Se desativar ou não configurar esta definição de política, o Windows não cria nem armazena o segredo de recuperação do PIN. Se o utilizador esquecer o seu PIN, tem de eliminar o seu PIN atual e criar um novo e terá de voltar a registar-se em quaisquer serviços aos quais o PIN antigo concedesse acesso.
+
+NOTA: Esta política apenas é aplicável a dispositivos que estejam registados no Azure Active Directory.
+        </string>
         <string id="MSPassport_UseRemote">Utilizar início de sessão por telefone</string>
         <string id="MSPassport_UseRemoteExplain">Utilize esta definição de política para configurar a utilização do início de sessão por telefone. O início de sessão por telefone oferece a capacidade de um telemóvel ser utilizado como dispositivo complementar para autenticação no ambiente de trabalho. O início de sessão por telefone requer que o PC e o telemóvel estejam registados com o mesmo inquilino do Azure AD. Além disso, o telemóvel tem de estar inscrito no Windows Hello para Empresas.
 
@@ -105,10 +114,53 @@ Se desativar ou não configurar esta definição de política, o início de sess
         <string id="WHFB_UseCertificateForOnPremAuthExplain">Utilize esta definição de política para configurar o Windows Hello para Empresas para inscrever um certificado de início de sessão utilizado para autenticação no local.
 
 Se ativar esta definição de política, o Windows Hello para Empresas inscreve um certificado de início de sessão que é utilizado para autenticação no local.
-		
+
 Se desativar ou não configurar esta definição de política, o Windows Hello para Empresas inscreve uma chave que é utilizada para autenticação no local.
 
 NOTA: Desativar ou não configurar esta definição de política e ativar a definição de política "Utilizar o Windows Hello para Empresas" requer que o ambiente possua um ou mais controladores de domínio do Windows Server 2016 para impedir que a autenticação do Windows Hello para Empresas falhe.
+        </string>
+        <!-- Explain text for device unlock policy -->
+        <string id="MSPassport_UseDeviceUnlock">Configurar fatores de desbloqueio de dispositivos</string>
+        <string id="MSPassport_UseDeviceUnlock_Explain">Configure uma lista separada por vírgulas de GUIDs de fornecedor de credenciais, como GUID de fornecedor de face e impressão digital, a utilizar como primeiro e segundo fatores de desbloqueio. Se o fornecedor de sinal fidedigno estiver configurado como um dos fatores de desbloqueio, deverá igualmente configurar uma lista separada por vírgulas de regras de sinal em formato xml para cada tipo de sinal a verificar.
+
+Se ativar esta definição de política, o utilizador terá de utilizar um fator de cada lista para desbloquear com êxito.
+
+Se desativar ou não configurar esta definição de política, os utilizadores continuam a poder desbloquear com as opções de desbloqueio atuais.
+
+Para obter mais informações, consulte: https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for dynamic lock policy -->
+        <string id="MSPassport_UseDynamicLock">Configurar fatores de desbloqueio dinâmicos</string>
+        <string id="MSPassport_UseDynamicLock_Explain">Configure uma lista separada por vírgulas de regras de sinal em formato xml para cada tipo de sinal.
+
+Se ativar esta definição de política, estas regras de sinal serão avaliadas para detetar a ausência do utilizador e bloquear o dispositivo automaticamente.
+
+Se desativar ou não configurar esta definição de política, os utilizadores continuam a poder bloquear com as opções de bloqueio atuais.
+
+Para obter mais informações, consulte: https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for smart card emulation policy -->
+        <string id="MSPassport_DisableSmartCardNode">Desativar emulação de smart card</string>
+        <string id="MSPassport_DisableSmartCardNodeExplain">O Windows Hello para Empresas fornece automaticamente emulação de smart card para compatibilidade com aplicações com capacidade para utilizar smart card.
+
+Se ativar esta definição de política, o Windows Hello para Empresas fornece credenciais do Windows Hello para Empresas que não são compatíveis com aplicações para smart card.
+
+Se desativar esta definição de política ou não a configurar, o Windows Hello para Empresas fornece credenciais do Windows Hello para Empresas que são compatíveis com aplicações para smart card.
+
+NOTA: Esta política afeta credenciais do Windows Hello para Empresas aquando da criação. As credenciais criadas antes da aplicação desta política continuam a fornecer emulação de smart card. Para alterar uma credencial existente, ative esta definição de política e selecione "Esqueci-me do PIN", em Definições.
+        </string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNode">Permitir enumeração de smart card emulado para todos os utilizadores</string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNodeExplain">O Windows impede que os utilizadores no mesmo computador enumerem a outros utilizadores as credenciais do Windows Hello para Empresas fornecidas.
+
+Se ativar esta definição de política, o Windows permite que todos os utilizadores do computador enumerem todas as credenciais do Windows Hello para Empresas, mas continua a ser necessário que cada utilizador forneça os seus próprios fatores de autenticação.
+
+Se desativar esta definição de política ou não a configurar, o Windows não permite a enumeração a outros utilizadores no mesmo dispositivo das credenciais do Windows Hello para Empresas fornecidas.
+
+Esta definição de política foi concebida para um único utilizador que tenha efetuado a inscrição com e sem privilégios num único dispositivo. O utilizador é proprietário de ambas as credenciais, o que lhe permite iniciar sessão utilizando credenciais sem privilégios, mas é possível realizar tarefas de nível elevado sem ter de terminar sessão.
+
+Esta definição de política é incompatível com as credenciais do Windows Hello para Empresas fornecidas quando a opção "Desativar emulação de smart card" está ativada.
+
+O Windows necessita de ser reiniciado após ter aplicado esta definição ao computador.
         </string>
     </stringTable>
     <presentationTable>
@@ -136,11 +188,30 @@ NOTA: Desativar ou não configurar esta definição de política e ativar a defi
       <presentation id="MSPassport_PINExpirationControl">
         <decimalTextBox refId="MSPassport_PINExpirationDataType" spin="true" spinStep="1" defaultvalue="0">Expiração do PIN</decimalTextBox>
       </presentation>
-	  <presentation id="MSPassport_ExcludeSecurityDevicesControl">
-		<text>Não utilize os seguintes dispositivos de segurança:</text>
-		<checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
-	  </presentation>
-
+      <presentation id="MSPassport_ExcludeSecurityDevicesControl">
+        <text>Não utilize os seguintes dispositivos de segurança:</text>
+        <checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
+      </presentation>
+      <presentation id="MSPassport_UseDeviceUnlock_Control">
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupA">
+            <label>Fornecedores de credenciais de primeiro fator de desbloqueio</label>
+            <defaultValue>{D6886603-9D2F-4EB2-B667-1971041FA96B},{8AF662BF-65A0-4D0A-A540-A338A999D36F},{BEC09223-B018-416D-A0AC-523971B639F5}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupB">
+            <label>Fornecedores de credenciais de segundo fator de desbloqueio</label>
+            <defaultValue>{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD},{D6886603-9D2F-4EB2-B667-1971041FA96B}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_Plugins">
+            <label>Regras de sinal para desbloqueio do dispositivo</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Authentication" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
+      <presentation id="MSPassport_UseDynamicLock_Control">
+        <textBox refId="MSPassport_UseDynamicLock_Plugins">
+            <label>Regras de sinal para bloqueio dinâmico</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Dynamic Lock" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
     </presentationTable>
   </resources>
 </policyDefinitionResources>

@@ -51,6 +51,23 @@ Windows 10 の診断データ設定は、Windows オペレーティング シス
       <string id="DisableEnterpriseAuthProxy_2">認証済みプロキシの使用を無効にする</string>
       <string id="DisableEnterpriseAuthProxy_Explain">このポリシー設定は、Windows 10 で接続ユーザー エクスペリエンスとテレメトリ サービスが自動的に認証済みプロキシを使用して Microsoft にデータを返送するのをブロックします。このポリシー設定を無効にするか構成しないと、接続ユーザー エクスペリエンスとテレメトリ サービスは自動的に認証済みプロキシを使用してデータを Microsoft に返送します。このポリシーを有効にすると、接続ユーザー エクスペリエンスとテレメトリ サービスは認証済みプロキシを自動的に使用しなくなります。</string>
 
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">拡張レベルの診断データを Windows Analytics の最小要件に制限する</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">Windows Analytics による収集を有効にする</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">Windows Analytics による収集を無効にする</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_Explain">このポリシー設定と [利用統計情報の許可] ポリシー設定を組み合わせることで、Windows Analytics サービスを使ってマイクロソフトに特定の診断データのセットを送信し、IT に関する洞察を得ることができます。
+
+この動作を有効にするには、次の 2 つの手順を完了してください。
+
+    1. このポリシー設定を有効にする
+    2. [利用統計情報の許可] をレベル 2 (拡張) に設定する
+
+これらのポリシー設定を構成すると、基本レベルの診断データの他に、Windows Analytics が必要とする追加のイベントもマイクロソフトに送信されます。対象となるイベントは https://go.microsoft.com/fwlink/?linkid=847594 に記載されています。
+
+このポリシーを構成せずに、[利用統計情報の許可] ポリシーで拡張レベルの診断データを有効にした場合も、追加の拡張レベルの利用統計情報データの他に、Windows Analytics に必要なイベントが送信されます。この設定は、マイクロソフトに送信する診断データのレベルがフル、基本、またはセキュリティに構成されているコンピューターには影響しません。
+
+このポリシー設定を無効にするか構成しない場合は、マイクロソフトに送信される診断データのレベルは [利用統計情報の許可] ポリシーによって決まります。
+      </string>
+
     </stringTable>
     <presentationTable>
       <presentation id="AllowTelemetry">
@@ -71,6 +88,9 @@ Windows 10 の診断データ設定は、Windows オペレーティング シス
       </presentation>
       <presentation id="DisableEnterpriseAuthProxy">
         <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="LimitEnhancedDiagnosticDataWindowsAnalytics">
+        <dropdownList refId="LimitEnhancedDiagnosticDataWindowsAnalytics" noSort="true" defaultItem="0"></dropdownList>
       </presentation>
     </presentationTable>
   </resources>

@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Windows Defender Antivirus</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Esclusioni</string>
+    <string id="ExploitGuard">Windows Defender Exploit Guard</string>
+    <string id="ExploitGuard_ASR">Riduzione superficie di attacco</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Accesso alle cartelle controllato</string>
+    <string id="ExploitGuard_NetworkProtection">Protezione della rete</string>
     <string id="NetworkRealtimeInspection">Network Inspection System</string>
     <string id="NetworkRealtimeInspection_Exclusions">Esclusioni</string>
     <string id="Quarantine">Quarantena</string>
@@ -26,7 +30,18 @@ Se si abilita o non si configura questa impostazione dei criteri, il servizio an
 Se si disabilita questa impostazione dei criteri, il servizio antimalware verrà caricato come attività con priorità bassa.</string>
 
     <string id="DisableAutoExclusions">Disattiva le esclusioni automatiche</string>
-    <string id="DisableAutoExclusions_Explain">Consente a un amministratore di specificare se deve essere disattivata la funzionalità delle esclusioni automatiche per le SKU server.</string>
+    <string id="DisableAutoExclusions_Explain">
+        Consente all'amministratore di specificare se la funzionalità delle esclusioni automatiche per le SKU server deve essere disattivata.
+
+        Disabilitato (valore predefinito):
+        Windows Defender esclude dall'analisi l'elenco predefinito di percorsi per migliorare le prestazioni.
+
+        Abilitato:
+        Windows Defender non esclude dall'analisi l'elenco predefinito di percorsi. Può influire sulle prestazioni del computer in alcuni scenari.
+
+        Non configurato:
+        Come Disabilitato.
+    </string>
     <string id="DisableAntiSpyware">Disattiva Endpoint Protection</string>
     <string id="DisableAntiSpyware_Explain">Questa impostazione dei criteri disabilita Endpoint Protection.
 
@@ -723,18 +738,24 @@ Se si abilita questa impostazione dei criteri, verrà visualizzato il testo aggi
 Se si disabilita o non si configura questa impostazione dei criteri, non verrà visualizzato alcun testo aggiuntivo.</string>
     <string id="MpCloudBlockLevel">Seleziona livello di protezione su cloud</string>
     <string id="MpCloudBlockLevel_Explain">
-      Questa impostazione dei criteri determina l'aggressività di Windows Defender Antivirus nel bloccare e scansionare file sospetti.
+      Questa impostazione dei criteri determina l'aggressività di Windows Defender Antivirus nel bloccare e analizzare i file sospetti.
 
-      Se questa impostazione è abilitata, Windows Defender Antivirus sarà più aggressivo nell'identificare file sospetti da bloccare e scansionare; in caso contrario, sarà meno aggressivo e pertanto bloccherà e scansionerà con minore frequenza. 
+      Se questa impostazione è abilitata, Windows Defender Antivirus sarà più aggressivo nell'identificare file sospetti da bloccare e analizzare; in caso contrario, sarà meno aggressivo e pertanto bloccherà e analizzerà con minore frequenza. 
       
-      Per maggiori informazioni su valori specifici supportati, consultare il sito della documentazione di Windows Defender Antivirus.
+      Per maggiori informazioni su valori specifici supportati, consulta il sito della documentazione di Windows Defender Antivirus.
 
       Nota: affinché questa funzionalità sia operativa, deve essere abilitata l'impostazione "Partecipa a Microsoft MAPS".
 
       Le possibili opzioni sono:
-      (0x0) Livello di blocco Windows Defender Antivirus predefinito
-      (0x2) Livello blocco elevato      
+      (0x0) Livello blocco Windows Defender Antivirus predefinito
+      (0x2) Livello blocco Elevato: blocca in modo aggressivo gli eseguibili sconosciuti mentre ottimizza le prestazioni del client (maggiore possibilità di falsi positivi)
+      (0x4) Livello blocco Più elevato: blocca in modo aggressivo gli eseguibili sconosciuti e applica le misure di protezione aggiuntive (potrebbe influire sulle prestazioni del client)
+      (0x6) Livello blocco Nessuna tolleranza: blocca tutti gli eseguibili sconosciuti
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Livello di blocco Windows Defender Antivirus predefinito</string>
+    <string id="MpCloudBlockLevel_High_Level">Livello blocco elevato</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Livello blocco Più elevato</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Livello blocco Nessuna tolleranza</string>
     <string id="MpBafsExtendedTimeout">Configura controllo cloud esteso</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Questa funzionalità consente a Windows Defender Antivirus di bloccare un file sospetto per un massimo di 60 secondi e scansionarlo nel cloud per garantire che sia sicuro.
@@ -745,8 +766,138 @@ Se si disabilita o non si configura questa impostazione dei criteri, non verrà 
 
       Nota: questa funzionalità dipende da altre tre impostazioni MAPS - "Configura la funzionalità 'Blocco al primo rilevamento'; "Partecipa a Microsoft MAPS"; "Invia campioni di file se sono necessarie ulteriori analisi" devono essere tutte abilitate.
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Livello di blocco Windows Defender Antivirus predefinito</string>
-    <string id="MpCloudBlockLevel_High_Level">Livello blocco elevato</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Impedisci a utenti e app di accedere a siti Web pericolosi</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Abilita o disabilita la protezione di rete Windows Defender Exploit Guard per impedire ai dipendenti l'uso delle applicazioni per accedere a domini pericolosi che potrebbero ospitare tentativi di phishing, a siti di host per exploit e ad altro contenuto dannoso su Internet.
+
+    Abilitato:
+        Specifica la modalità nella sezione Opzioni:
+    -Blocca: gli utenti e le applicazioni non potranno accedere ai domini pericolosi
+    -Modalità Controllo: gli utenti e le applicazioni possono collegarsi ai domini pericolosi, tuttavia se l'accesso venisse bloccato qualora la funzionalità fosse impostata su Blocca, viene registrato un record dell'evento nei registri eventi.
+
+    Disabilitato:
+    Gli utenti e le applicazioni non saranno bloccati e potranno connettersi ai domini pericolosi.
+
+    Non configurato:
+    Come Disabilitato.
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Escludi file e percorsi dalle regole Riduzione superficie di attacco</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Escludi file e percorsi dalle regole Attack Surface Reduction (ASR).
+
+    Abilitato:
+    Specifica le cartelle o i file e le risorse che devono essere esclusi dalle regole Attack Surface Reduction nella sezione Opzioni.
+    Specifica ogni regola su una riga nuova come coppia nome-valore:
+    - Colonna Nome: immetti il percorso di una cartella o il nome completo della risorsa. Ad esempio, ""C:\Windows"" esclude tutti i file di quella directory. ""C:\Windows\App.exe"" esclude solo lo specifico file di quella cartella
+    - Colonna Valore: immetti ""0"" per ogni elemento
+
+    Disabilitato:
+    Nessuna esclusione viene applicata alle regole Attack Surface Reduction.
+
+    Non configurato:
+    Come Disabilitato.
+
+    Puoi configurare le regole Attack Surface Reduction nell'impostazione dei criteri di gruppo Configura regole Attack Surface Reduction.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Configura regole Riduzione superficie di attacco</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    Imposta lo stato per ogni regola Attack Surface Reduction (ASR).
+
+    Dopo aver abilitato l'impostazione puoi impostare ogni regola sui seguenti valori nella sezione Opzioni:
+    - Blocca: la regola viene applicata
+    - Modalità Controllo: se la regola normalmente causasse un evento, verrebbe registrata (non effettivamente applicata)
+    - Disattiva: la regola non viene applicata
+
+    Abilitato:
+    Specifica lo stato di ogni regola Attack Surface Reduction nella sezione Opzioni per questa impostazione.
+    Specifica ogni regola su una riga nuova come coppia nome-valore:
+    - Colonna Nome: immetti un ID regola Attack Surface Reduction valido
+    - Colonna Valore: immetti l'ID relativo allo stato che vuoi specificare per la regola associata
+
+    Nella colonna Valore sono consentiti i seguenti ID stato:
+    - 1 (Blocca)
+    - 0 (Disattiva)
+    - 2 (Controllo)
+    
+    Esempio:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    Disabilitato:
+    Nessuna regola Attack Surface Reduction viene configurata.
+
+    Non configurato:
+    Come Disabilitato.
+
+    Puoi escludere cartelle o file e risorse nell'impostazione dei criteri di gruppo Escludi cartelle o file e risorse.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Configura accesso controllato alle cartelle</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Abilita o disabilita l'accesso controllato alle cartelle per le applicazioni non attendibili. 
+
+    Blocca:
+    Le applicazioni non attendibili non possono modificare o eliminare i file nelle cartelle protette, ad esempio la cartella Documenti.
+
+    Disabilitato:
+    Tutte le applicazioni possono modificare o eliminare i file nelle cartelle protette, ad esempio la cartella Documenti.
+
+    Modalità Controllo:
+    Le applicazioni che normalmente verrebbero considerate ""non attendibili"" se l'impostazione fosse Abilitato sono comunque in grado di modificare o eliminare i file nelle cartelle protette, ma ogni evento viene registrato nel registro eventi di Windows.
+
+    Non configurato:
+    Come Disabilitato.
+
+    Windows Defender Antivirus determina automaticamente quali applicazioni possono essere considerate attendibili. Puoi aggiungere altre applicazioni attendibili nell'impostazione dei criteri di gruppo Configura applicazioni consentite.
+
+    Le cartelle di sistema predefinite sono controllate automaticamente, ma puoi aggiungere cartelle nell'impostazione dei criteri di gruppo Configura cartelle protette.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Disabilita (valore predefinito)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Blocca</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Modalità Controllo</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Configura applicazioni consentite</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Aggiungi altre applicazioni che devono essere considerate "attendibili" dall'accesso controllato alle cartelle.
+
+    Queste applicazioni possono modificare o eliminare i file nelle cartelle con accesso controllato.
+
+    Windows Defender Antivirus determina automaticamente quali applicazioni possono essere considerate attendibili. Puoi configurare l'impostazione per aggiungere altre applicazioni.
+
+    Abilitato:
+        Specifica altre applicazioni consentite nella sezione Opzioni.
+
+    Disabilitato:
+    Nessuna applicazione viene aggiunta all'elenco delle applicazioni attendibili.
+
+    Non configurato:
+    Come Disabilitato.
+
+    Puoi abilitare l'accesso controllato alle cartelle nell'impostazione dei criteri di gruppo Configura accesso controllato alle cartelle.
+
+    Le cartelle di sistema predefinite sono controllate automaticamente, ma puoi aggiungere cartelle nell'impostazione dei criteri di gruppo Configura cartelle protette.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Configura cartelle protette</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Specifica altre cartelle che devono essere controllate dalla funzionalità di accesso controllato alle cartelle.
+
+    I file in queste cartelle non possono essere modificati o eliminati dalle applicazioni non attendibili.
+
+    Le cartelle di sistema predefinite sono protette automaticamente. Puoi configurare questa impostazione per aggiungere altre cartelle. 
+    L'elenco delle cartelle di sistema predefinite protette è riportato in Windows Defender Security Center.
+
+    Abilitato:
+    Specifica le altre cartelle che devono essere protette nella sezione Opzioni.
+
+    Disabilitato:
+    Nessun'altra cartella viene protetta.
+
+    Non configurato:
+    Come Disabilitato.
+
+    Puoi abilitare l'accesso controllato alle cartelle nell'impostazione di Criteri di gruppo Configura accesso controllato alle cartelle.
+
+    Windows Defender Antivirus determina automaticamente quali applicazioni possono essere considerate attendibili. Puoi aggiungere altre applicazioni attendibili nell'impostazione di Criteri di gruppo Configura applicazioni consentite.
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@ Se si disabilita o non si configura questa impostazione dei criteri, non verrà 
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Specifica il tempo di controllo su cloud esteso in secondi</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">Configura la funzionalità di controllo delle cartelle</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Esclusioni dalle regole Riduzione superficie di attacco:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Imposta lo stato per ogni regola Riduzione superficie di attacco:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Immetti le applicazioni che devono essere considerate attendibili:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Immetti le cartelle che devono essere controllate:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

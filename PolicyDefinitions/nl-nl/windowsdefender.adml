@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Windows Defender Antivirus</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Uitsluitingen</string>
+    <string id="ExploitGuard">Windows Defender Exploit Guard</string>
+    <string id="ExploitGuard_ASR">Beveiligingsrisico voor aanvallen beperken</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Controlled Folder Access</string>
+    <string id="ExploitGuard_NetworkProtection">Netwerkbeveiliging</string>
     <string id="NetworkRealtimeInspection">Netwerkinspectiesysteem</string>
     <string id="NetworkRealtimeInspection_Exclusions">Uitsluitingen</string>
     <string id="Quarantine">Quarantaine</string>
@@ -26,7 +30,18 @@
     Als u deze instelling uitschakelt, wordt de antimalwareservice als taak met een lage prioriteit geladen.</string>
 
     <string id="DisableAutoExclusions">Automatische uitsluitingen uitschakelen</string>
-    <string id="DisableAutoExclusions_Explain">Hiermee kan een administrator instellen of de functie Automatische uitsluitingen voor Server SKU's moet worden uitgeschakeld.</string>
+    <string id="DisableAutoExclusions_Explain">
+        Hiermee kan een systeembeheerder opgeven of de functie Automatische uitsluitingen voor Server-SKU's moet worden uitgeschakeld.
+
+        Uitgeschakeld (standaard):
+        Windows Defender sluit een vooraf gedefinieerde lijst paden uit van de scan om de prestaties te verbeteren.
+
+        Ingeschakeld:
+        Windows Defender sluit niets uit voor scans. Hierdoor kan de machine in sommige scenario's trager werken.
+
+        Niet geconfigureerd:
+        Hetzelfde als Uitgeschakeld.
+    </string>
     <string id="DisableAntiSpyware">Endpoint Protection uitschakelen</string>
     <string id="DisableAntiSpyware_Explain">Met deze beleidsinstelling wordt Endpoint Protection uitgeschakeld.
 
@@ -723,18 +738,24 @@ Als u deze instelling inschakelt, wordt de opgegeven extra tekst weergegeven.
 Als u deze instelling uitschakelt of niet configureert, wordt er geen extra tekst weergegeven.</string>
     <string id="MpCloudBlockLevel">Cloudbeveiligingsniveau selecteren</string>
     <string id="MpCloudBlockLevel_Explain">
-      Met deze beleidsinstelling bepaalt u hoe agressief Windows Defender Antivirus verdachte bestanden blokkeert en scant.
+      Deze beleidsinstelling bepaalt hoe agressief Windows Defender Antivirus verdachte bestanden blokkeert en scant.
 
-      Als deze instelling is ingeschakeld, is Windows Defender Antivirus agressiever bij het herkennen van verdachte bestanden die moeten worden geblokkeerd en gescand. Anders is de controle minder agressief en worden verdachte bestanden minder vaak geblokkeerd en gescand. 
+      Als deze instelling is ingeschakeld, treedt Windows Defender Antivirus agressiever op tegen verdachte bestanden; anders wordt er minder agressief opgetreden en wordt er minder geblokkeerd en gescand. 
       
-      Raadpleeg de documentatiesite van Windows Defender Antivirus voor meer informatie over specifieke waarden die worden ondersteund.
+      Meer informatie over bepaalde ondersteunde waarden vindt u op de documentatiesite van Windows Defender Antivirus.
 
       Opmerking: voor deze functie moet de instelling 'Aan Microsoft MAPS toevoegen' zijn ingeschakeld.
 
-      Mogelijke opties zijn:
-      (0x0) Standaardblokkeringsniveau van Windows Defender Antivirus
-      (0x2) Hoog blokkeringsniveau      
+      Opties zijn:
+      (0x0) Standaard blokkeerniveau van Windows Defender
+      (0x2) Hoog blokkeringsniveau - onbekende bestanden agressief blokkeren en tegelijkertijd de prestaties van de client verbeteren (grotere kans op vals-positieven)
+      (0x4) Hoog+ blokkeringsniveau – onbekende bestanden agressief blokkeren en extra beveiligingsmaatregelen nemen (kan de client trager maken)
+      (0x6) Zero-tolerance blokkeringsniveau – alle onbekende uitvoerbare bestanden blokkeren
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Standaardblokkeringsniveau van Windows Defender Antivirus</string>
+    <string id="MpCloudBlockLevel_High_Level">Hoog blokkeringsniveau</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Hoog+ blokkeringsniveau</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Zero-tolerance blokkeringsniveau</string>
     <string id="MpBafsExtendedTimeout">Verlengde controle in de cloud configureren</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Met deze functie kan Windows Defender Antivirus een verdacht bestand tot 60 seconden blokkeren en in de cloud scannen om te controleren of het veilig is.
@@ -745,8 +766,138 @@ Als u deze instelling uitschakelt of niet configureert, wordt er geen extra teks
 
       Opmerking: deze functie is afhankelijk van drie andere MAPS-instellingen, die allemaal moeten zijn ingeschakeld: De functie 'Blokkeren bij eerste detectie' configureren, Aan Microsoft MAPS toevoegen en Bestandssamples verzenden wanneer verdere analyse is vereist.
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Standaardblokkeringsniveau van Windows Defender Antivirus</string>
-    <string id="MpCloudBlockLevel_High_Level">Hoog blokkeringsniveau</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Voorkomen dat gebruikers en apps toegang krijgen tot gevaarlijke websites</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Windows Defender Exploit Guard-netwerkbeveiliging in- of uitschakelen om te voorkomen dat medewerkers toepassingen gebruiken om toegang te krijgen tot gevaarlijke domeinen waarop mogelijk oplichting via phishing plaatsvindt, tot sites waar exploits worden gehost en tot andere schadelijke inhoud op internet.
+
+    Ingeschakeld:
+    Geef de modus op in het gedeelte Opties:
+    - Blokkeren: gebruikers en toepassingen krijgen geen toegang tot gevaarlijke domeinen.
+    - Controlemodus: gebruikers en toepassingen kunnen verbinding maken met gevaarlijke domeinen, maar als deze functie de toegang zou hebben geblokkeerd als Blokkeren was ingesteld, wordt de gebeurtenis geregistreerd in de gebeurtenislogboeken.
+
+    Uitgeschakeld:
+    Gebruikers en toepassingen worden niet geblokkeerd en kunnen verbinding maken met gevaarlijke domeinen.
+
+    Niet geconfigureerd:
+    Hetzelfde als Uitgeschakeld.
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Bestanden en paden uitsluiten van regels om het beveiligingsrisico voor aanvallen te beperken</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Bestanden en paden uitsluiten van ASR-regels (Attack Surface Reduction, beveiligingsrisico voor aanvallen beperken).
+
+    Ingeschakeld:
+    Geef de mappen of bestanden en bronnen op die moeten worden uitgesloten van ASR-regels in het gedeelte Opties.
+    Voer elke regel op een nieuwe regel in als een naam-waardepaar:
+    - Kolom Naam: voer een pad naar een map in of voer een volledig gekwalificeerde bronnaam in. Voorbeeld: Met ""C:\Windows"" worden alle bestanden in die map uitgesloten. Met ""C:\Windows\App.exe"" wordt alleen dat specifieke bestand in die specifieke map uitgesloten.
+    - Kolom Waarde: Voer ""0"" in voor elk item.
+
+    Uitgeschakeld:
+    Er worden geen uitsluitingen toegepast op de ASR-regels.
+
+    Niet geconfigureerd:
+    Hetzelfde als Uitgeschakeld.
+
+    U kunt ASR-regels configureren bij de groepsbeleidsinstelling Regels voor beperking van beveiligingsrisico voor aanvallen configureren.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Regels om beveiligingsrisico voor aanvallen te beperken</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    De status instellen voor elke ASR-regel (Attack Surface Reduction, beveiligingsrisico voor aanvallen beperken).
+
+    Nadat u deze instelling hebt ingeschakeld, kunt u elke regel onder Opties instellen:
+    - Blokkeren: de regel wordt toegepast.
+    - Controlemodus: als de regel normaal gesproken een gebeurtenis zou veroorzaken, wordt deze geregistreerd (hoewel de regel feitelijk niet wordt toegepast).
+    - Uit: de regel wordt niet toegepast.
+
+    Ingeschakeld:
+    Geef de status op voor elke ASR-regel in het gedeelte Opties voor deze instelling.
+    Voer elke regel op een nieuwe regel in als een naam-waardepaar:
+    - Kolom Naam: voer een geldige id voor de ASR-regel in.
+    - Kolom Waarde: voer de status-id in die betrekking heeft op de status die u wilt opgeven voor de bijbehorende regel.
+
+    De volgende status-id's zijn in de kolom Waarde toegestaan:
+    - 1 (Blokkeren)
+    - 0 (Uit)
+    - 2 (Controle)
+    
+    Voorbeeld:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    Uitgeschakeld:
+    Er worden geen ASR-regels geconfigureerd.
+
+    Niet geconfigureerd:
+    Hetzelfde als Uitgeschakeld.
+
+    U kunt mappen of bestanden en bronnen uitsluiten bij de groepsbeleidsinstelling Exclude files and paths from Attack Surface Reduction Rules.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Gecontroleerde mappentoegang configureren</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Gecontroleerde mappentoegang in- of uitschakelen voor niet-vertrouwde toepassingen.
+
+    Blokkeren:
+    Niet-vertrouwde toepassingen kunnen geen bestanden in beveiligde mappen (bijvoorbeeld de map Documenten) wijzigen of verwijderen.
+
+    Uitgeschakeld:
+    Alle toepassingen kunnen bestanden in beveiligde mappen (bijvoorbeeld de map Documenten) wijzigen of verwijderen.
+
+    Controlemodus:
+    Toepassingen die normaal gesproken 'niet vertrouwd' worden als de instelling Ingeschakeld was, kunnen nog steeds bestanden in beveiligde mappen wijzigen of verwijderen. Elke gebeurtenis wordt echter geregistreerd in het Windows-gebeurtenislogboek.
+
+    Niet geconfigureerd:
+    Hetzelfde als Uitgeschakeld.
+
+    In Windows Defender Antivirus wordt automatisch bepaald welke toepassingen kunnen worden vertrouwd. U kunt zelf vertrouwde toepassingen toevoegen bij de groepsbeleidsinstelling Configured Allowed Applications.
+
+    Standaardsysteemmappen worden automatisch bewaakt, maar u kunt mappen toevoegen bij de groepsbeleidsinstelling Beveiligde mappen configureren.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Uitschakelen (standaard)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Blokkeren</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Controlemodus</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Toegestane toepassingen configureren</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Extra toepassingen toevoegen die door gecontroleerde mappentoegang moeten worden beschouwd als 'vertrouwd'.
+
+    Met deze toepassingen mogen bestanden in mappen van gecontroleerde mappentoegang worden gewijzigd of verwijderd.
+
+    In Windows Defender Antivirus wordt automatisch bepaald welke toepassingen moeten worden vertrouwd. U kunt deze instelling zelf configureren om extra toepassingen toe te voegen.
+
+    Ingeschakeld:
+    Extra toegestane toepassingen toevoegen in het gedeelte Opties.
+
+    Uitgeschakeld:
+    Er worden geen extra toepassingen toegevoegd aan de lijst met vertrouwde toepassingen.
+
+    Niet geconfigureerd:
+    Hetzelfde als Uitgeschakeld.
+
+    U kunt gecontroleerde mappentoegang inschakelen bij de groepsbeleidsinstelling Gecontroleerde mappentoegang configureren.
+
+    Standaardsysteemmappen worden automatisch bewaakt, maar u kunt mappen toevoegen bij de groepsbeleidsinstelling Beveiligde mappen configureren.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Beveiligde mappen configureren</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Extra mappen opgeven die met gecontroleerde mappentoegang moeten worden bewaakt.
+
+    Bestanden in deze mappen kunnen niet worden gewijzigd of verwijderd door niet-vertrouwde toepassingen.
+
+    Standaardsysteemmappen worden automatisch beveiligd. U kunt deze instelling configureren om extra mappen toe te voegen.
+    De lijst met beveiligde standaardsysteemmappen wordt weergegeven in het Windows Defender-beveiligingscentrum.
+
+    Ingeschakeld:
+    Geef in het gedeelte Opties extra mappen op die moeten worden beveiligd.
+
+    Uitgeschakeld:
+    Er worden geen extra mappen beveiligd.
+
+    Niet geconfigureerd:
+    Hetzelfde als Uitgeschakeld.
+
+    U kunt gecontroleerde mappentoegang inschakelen bij de groepsbeleidsinstelling Gecontroleerde mappentoegang configureren.
+
+    In Windows Defender Antivirus wordt automatisch bepaald welke toepassingen kunnen worden vertrouwd. U kunt extra vertrouwde toepassingen toevoegen bij de groepsbeleidsinstelling Toegestane toepassingen configureren.
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@ Als u deze instelling uitschakelt of niet configureert, wordt er geen extra teks
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Geef de verlengde tijd voor controle in de cloud op in seconden</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">De functie Mappen bewaken configureren</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Uitsluitingen van ASR-regels:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Stel de status voor elke ASR-regel in:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Voer de toepassingen in die moeten worden vertrouwd:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Voer de mappen in die moeten worden bewaakt:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

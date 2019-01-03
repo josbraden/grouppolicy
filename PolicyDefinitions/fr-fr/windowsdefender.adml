@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Antivirus Windows Defender</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Exclusions</string>
+    <string id="ExploitGuard">Windows Defender Exploit Guard</string>
+    <string id="ExploitGuard_ASR">Réduction de la vulnérabilité aux attaques</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Dispositif d’accès contrôlé aux dossiers</string>
+    <string id="ExploitGuard_NetworkProtection">Protection du réseau</string>
     <string id="NetworkRealtimeInspection">Système NIS (Network Inspection System)</string>
     <string id="NetworkRealtimeInspection_Exclusions">Exclusions</string>
     <string id="Quarantine">Quarantaine</string>
@@ -26,7 +30,18 @@ Si vous activez ou ne configurez pas ce paramètre, le service anti-programme ma
 Si vous désactivez ce paramètre, le service anti-programme malveillant est chargé comme une tâche de priorité basse.</string>
 
     <string id="DisableAutoExclusions">Désactiver les exclusions automatiques</string>
-    <string id="DisableAutoExclusions_Explain">Permet à un administrateur de spécifier si la fonctionnalité Exclusions automatiques pour les serveurs SKU doit être désactivée.</string>
+    <string id="DisableAutoExclusions_Explain">
+        Autorise un administrateur à spécifier si la fonctionnalité Exclusions automatiques pour les serveurs SKU doit être désactivée.
+
+        Désactivé (par défaut) :
+        Windows Defender exclura de l'analyse la liste prédéfinie des chemins pour améliorer les performances.
+
+        Activé :
+        Windows Defender n'exclura pas de l'analyse la liste prédéfinie des chemins. Cela peut avoir un impact sur les performances de l'ordinateur dans certains cas.
+
+        Non configuré :
+        Identique à Désactivé.
+    </string>
     <string id="DisableAntiSpyware">Désactiver Endpoint Protection</string>
     <string id="DisableAntiSpyware_Explain">Ce paramètre de stratégie désactive Endpoint Protection.
 
@@ -723,18 +738,24 @@ Si vous activez ce paramètre, le texte supplémentaire spécifié est affiché.
 Si vous désactivez ou ne configurez pas ce paramètre, aucun texte supplémentaire n’est affiché.</string>
     <string id="MpCloudBlockLevel">Sélectionner un niveau de protection du cloud</string>
     <string id="MpCloudBlockLevel_Explain">
-      Ce paramètre de stratégie détermine l’agressivité de l’antivirus Windows Defender dans l’analyse et le blocage des fichiers suspects.
+      Ce paramètre de stratégie détermine combien Antivirus Windows Defender peut se montrer agressif pour ce qui est de bloquer et d'analyser les fichiers suspects.
 
-      Si ce paramètre est activé, l’antivirus Windows Defender sera plus agressif lors de l’identification des fichiers suspects à bloquer et à analyser. Dans le cas contraire, il sera moins agressif et procèdera à des analyses et à des blocages moins fréquents. 
+      Si ce paramètre est activé, Windows Defender Antivirus sera plus agressif lorsqu'il identifiera des fichiers suspects à bloquer et à analyser ; sinon, il sera moins agressif et par conséquent, il en bloquera et analysera dans une moindre mesure. 
       
-      Pour plus d’informations sur les valeurs spécifiques prises en charge, consultez le site de documentation de l’antivirus Windows Defender.
+      Pour plus d’informations sur les valeurs spécifiques prises en charge, voir le site contenant la documentation sur l’Antivirus Windows Defender.
 
-      Remarque : le paramètre Rejoindre Microsoft MAPS doit être activé pour que cette fonctionnalité fonctionne.
+      Remarque : Cette fonctionnalité requiert l'activation du paramètre Rejoindre Microsoft MAPS.
 
-      Options possibles :
-      (0x0) Niveau de blocage par défaut de l’antivirus Windows Defender
-      (0x2) Niveau de blocage élevé      
+      Les options possibles sont :
+      (0x0) Le niveau de blocage par défaut de Windows Defender
+      (0x2) Le niveau de blocage élevé : bloque les fichiers inconnus de manière agressive tout en optimisant les performances du client (accroît les chances de faux positifs)
+      (0x4) Niveau de blocage très élevé : bloque les fichiers inconnus de manière agressive et applique des mesures de protection complémentaires (susceptibles d'avoir un impact sur les performances du client)
+      (0x6) Niveau de blocage Tolérance zéro : bloque tous les fichiers inconnus exécutables
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Niveau de blocage par défaut de l’antivirus Windows Defender</string>
+    <string id="MpCloudBlockLevel_High_Level">Niveau de blocage élevé</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Niveau de blocage très élevé</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Niveau de blocage Tolérance zéro</string>
     <string id="MpBafsExtendedTimeout">Configurer la vérification du cloud étendue</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Cette fonctionnalité permet à l’antivirus Windows Defender de bloquer un fichier suspect pendant 60 secondes au plus et de l’analyser dans le cloud pour s’assurer qu’il est sûr.
@@ -745,8 +766,138 @@ Si vous désactivez ou ne configurez pas ce paramètre, aucun texte supplémenta
 
       Remarque : cette fonctionnalité dépend de trois autres paramètres MAPS : Configurer la fonctionnalité « Bloquer à la première consultation », Rejoindre Microsoft MAPS et Envoyer des exemples de fichier lorsqu’une analyse supplémentaire est nécessaire. Tous les trois doivent être activés.
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Niveau de blocage par défaut de l’antivirus Windows Defender</string>
-    <string id="MpCloudBlockLevel_High_Level">Niveau de blocage élevé</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Empêche les utilisateurs et les applications d'accéder à des sites Web dangereux</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Active ou désactive la protection de réseau Windows Defender Exploit Guard pour empêcher les employés d'utiliser des applications permettant d'accéder à des domaines dangereux (pouvant héberger des sites Web de hameçonnage, exploiter un hébergement…) et à d'autres contenus malveillants d'Internet.
+
+        Activé :
+        Spécifier le mode dans la section Option :
+        -Bloquer : Les utilisateurs et les applications ne pourront pas accéder à des domaines dangereux
+        -Audit : Les utilisateurs et les applications peuvent se connecter à des domaines dangereux. Toutefois, dans les cas où cette fonctionnalité bloque l'accès lorsque le paramètre Bloquer est activé, un rapport sur l'événement s'affiche dans le centre de sécurité Windows Defender.
+
+        Désactivé :
+        Les utilisateurs et les applications pourront se connecter librement à des domaines dangereux.
+
+        Non configuré :
+        Identique à Désactivé.
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Exclure les fichiers et les chemins des règles de réduction de la vulnérabilité aux attaques</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Exclure des fichiers et des chemins des règles de réduction de la vulnérabilité aux attaques.
+
+        Activé :
+        Spécifier les dossiers ou les fichiers et ressources qui devraient être exclus des règles de réduction de la vulnérabilité aux attaques dans la section Options.
+        Saisir chaque règle sur une nouvelle ligne en tant que paire nom-valeur :
+        - Colonne Nom : saisir un chemin d'accès au dossier ou un nom de ressource complet. Par exemple, ""C :\Windows"" exclura tous les fichiers de ce répertoire. ""C :\Windows\App.exe"" exclura seulement ce fichier spécifique dans ce dossier spécifique
+        - Colonne Valeur : saisir ""0"" pour chaque élément
+
+        Désactivé :
+        Aucune exclusion ne sera appliquée aux règles de réduction de la vulnérabilité aux attaques.
+
+        Non configuré :
+        Identique à Désactivé.
+
+        Vous pouvez configurer des règles de réduction de la vulnérabilité aux attaques dans le paramètre de stratégie de groupe Configurer les règles de réduction de la vulnérabilité aux attaques.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Configurer les règles de réduction de la vulnérabilité aux attaques</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    Définissez l'état de chaque règle de réduction de la vulnérabilité aux attaques.
+
+        Après l'activation de ce paramètre, vous pouvez définir chaque règle comme suit dans la section Options :
+        - Refuser : la règle sera appliquée
+        - Audit : la règle sera enregistrée dans le cas où elle entraînerait habituellement un événement (la règle ne sera cependant pas appliquée)
+        - Désactivé : la règle ne sera pas appliquée
+
+        Activé :
+        Spécifiez l'état de chaque règle de réduction de la vulnérabilité aux attaques dans la section Options de ce paramètre.
+        Saisissez chaque règle sur une nouvelle ligne en tant que paire nom-valeur :
+        - colonne Nom : saisissez un ID valide de règle de réduction de la vulnérabilité aux attaques
+        - colonne Valeur : saisissez l'ID de l'état qui lie l'état que vous souhaitez spécifier pour la règle associée
+
+        Les ID de l'état suivants sont autorisés dans la colonne Valeur :
+        - 1 (Refuser)
+        - 0 (Désactivé)
+        - 2 (Audit)
+    
+    Example:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    Désactivé :
+        Aucune règle de réduction de la vulnérabilité aux attaques ne sera configurée.
+
+        Non configuré :
+        Identique à Désactivé.
+
+        Vous pouvez exclure des dossiers ou fichiers et des ressources dans le paramètre de stratégie de groupe Exclure des dossiers ou fichiers et des ressources.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Configurer le contrôle d'accès aux dossiers</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Activez ou désactivez le contrôle d'accès aux dossiers par des applications non approuvées.
+
+        Activé :
+        Les applications non approuvées ne peuvent pas modifier ou supprimer les fichiers qui se trouvent dans des dossiers protégés, tels que le dossier Documents.
+
+        Désactivé :
+        Toutes les applications peuvent modifier ou supprimer les fichiers qui se trouvent dans des dossiers protégés, tels que le dossier Documents.
+
+        Mode audit :
+        Les applications qui seraient habituellement considérées comme « non approuvées » si le paramètre était Activé pourront toujours modifier ou supprimer les fichiers qui se trouvent dans des dossiers protégés. Cependant, chaque événement sera enregistré dans le journal des événements de Windows.
+
+        Non configuré :
+        Identique à Désactivé.
+
+        L'antivirus Windows Defender détermine automatiquement les applications qui peuvent être approuvées. Vous pouvez ajouter des applications approuvées supplémentaires dans le paramètre de stratégie de groupe Configurer les applications autorisées.
+
+        Les dossiers système par défaut sont automatiquement protégés, mais vous pouvez ajouter des dossiers dans le paramètre de stratégie de groupe Configurer les dossiers protégés.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Désactiver (par défaut)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Refuser</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Mode audit</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Configurer les applications autorisées</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Ajoutez les applications supplémentaires qui devraient être considérées comme « approuvées » par la fonctionnalité de contrôle d'accès aux dossiers.
+
+        Ces applications sont autorisées à modifier ou à supprimer les fichiers qui se trouvent dans des dossiers dont l'accès est contrôlé.
+
+         L'antivirus Windows Defender détermine automatiquement quelles applications devraient être approuvées. Vous pouvez configurer ce paramètre pour ajouter des applications supplémentaires.
+
+        Activé :
+        Spécifiez les applications autorisées supplémentaires dans la section Options.
+
+        Désactivé :
+        Aucune application supplémentaire ne sera ajoutée à la liste approuvée.
+
+        Non configuré :
+        Identique à Désactivé.
+
+        Vous pouvez activer le contrôle d'accès aux dossiers dans le paramètre de stratégie de groupe Configurer le contrôle d'accès aux dossiers.
+
+        Les dossiers système par défaut sont automatiquement protégés, mais vous pouvez ajouter des dossiers approuvés dans le paramètre de stratégie de groupe Configurer les dossiers protégés.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Configurer des dossiers protégés</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Spécifiez les dossiers supplémentaires qui devraient être protégés par la fonctionnalité de protection d'accès aux dossiers.
+
+    Les fichiers dans ces dossiers ne peuvent pas être modifiés ou supprimés par des applications non approuvées.
+
+    Les dossiers système par défaut sont automatiquement protégés. Vous pouvez configurer ce paramètre pour ajouter des dossiers supplémentaires. 
+    La liste de dossiers système par défaut protégés est affichée dans le Centre de sécurité Windows Defender.
+
+    Activé :
+    Spécifiez les dossiers supplémentaires qui devraient être protégés dans la section Options.
+
+    Désactivé :
+    Aucun dossier supplémentaire ne sera protégé.
+
+    Non configuré :
+    Identique à Désactivé.
+
+    Vous pouvez activer le contrôle d'accès aux dossiers dans le paramètre de stratégie de groupe Configurer le contrôle d'accès aux dossiers.
+
+    L'antivirus Windows Defender détermine automatiquement les applications qui peuvent être approuvées. Vous pouvez ajouter des applications approuvées dans le paramètre de stratégie de groupe Configurer les applications approuvées. 
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@ Si vous désactivez ou ne configurez pas ce paramètre, aucun texte supplémenta
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Spécifier la durée de vérification du cloud étendue en secondes</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">Configuration de la fonctionnalité de protection des dossiers</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Exclusions de règles de récupération automatique du système (ASR) :</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Configurez le mode pour chaque règle de récupération automatique du système (ASR) :</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Saisissez les applications qui devraient être approuvées :</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Saisissez les dossiers qui devraient être protégés :</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

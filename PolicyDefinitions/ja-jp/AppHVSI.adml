@@ -2,67 +2,115 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
   <displayName>Windows Defender Application Guard</displayName>
-  <description>Windows Defender Application Guard の構成</description>
+  <description>Windows Defender Application Guard をエンタープライズ モードでオンにします</description>
   <resources>
     <stringTable>
         <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
-        <string id="AppHVSI_AllowAppHVSI_DisplayName">Windows Defender Application Guard (WDAG) をオン/オフにします</string>
-        <string id="AppHVSI_AllowAppHVSI_Explain">このポリシーは、Windows Defender Application Guard を使用したアプリケーション分離を有効にします。
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Windows Defender Application Guard をエンタープライズ モードでオンにします</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">このポリシーは、Windows Defender Application Guard (Application Guard) を使用したアプリケーション分離を有効にします。
 
-Windows Defender Application Guard は、Windows ハイパーバイザーを使用して、仮想化された環境でアプリケーションを実行します。アプリケーションが仮想化ベースのセキュリティ分離を使用するように構成されていれば、それらのアプリケーションの使用時における未信頼のユーザー動作や、それらのアプリケーション内の脆弱性によって、仮想化環境の外部で実行されているカーネルやその他のアプリケーションが侵害されることはありません。
-このポリシーを有効にする前に、エンタープライズの信頼済みサイトのリストを定義する必要があります。これらのリストは、ネットワーキング分離ポリシーを使用して設定できます (特定のネットワーキング ポリシーにリストを挿入します)。これによって、非エンタープライズ サイトだけが仮想化環境内で開かれるようになります。
-注意: システムをロック ダウンするには、アプリケーションに対し、Device Guard セキュリティ機能とアプリケーション分離の両方を有効にする必要があります。システムを安全にロック ダウンするための詳細な要件については、ドキュメントを参照してください。
+Application Guard は、Windows ハイパーバイザーを使用して、仮想化ベースのセキュリティ分離を使用するように構成されたアプリ用に仮想化環境を作成します。分離されていれば、不適切なユーザー操作やアプリケーションの脆弱性によって、仮想化環境の外部で実行されているカーネルやその他のアプリケーションが侵害されることはありません。
+
+この設定を有効にする場合、Application Guard は組織に対して有効になります。
         </string>
         <string id="AppHVSI_ClipboardSettings_DisplayName">Windows Defender Application Guard のクリップボード設定を構成します</string>
-        <string id="AppHVSI_ClipboardSettings_Explain">Windows Defender Application Guard でアプリケーション分離を使用する場合は、クリップボードの動作を指定します。
+        <string id="AppHVSI_ClipboardSettings_Explain">このポリシー設定では、Windows Defender Application Guard (Application Guard) 内でのクリップボードの動作を決定できます。
 
-管理者は以下の設定を指定できます:
-仮想化セキュリティが有効になっている場合には、クリップボード機能を完全に無効にする。
-特定のコンテンツを、分離セッションからホスト コンピューターへコピーできるようにする。
-特定のコンテンツを、ホスト コンピューターから分離セッションへコピーできるようにする。
+この設定を有効にした場合、以下の動作から選択する必要があります。
 
-注意: ホスト コンピューターから分離セッションへのコンテンツ コピーを有効にすることはお勧めしません。これを有効にすると、セキュリティ侵害された分離セッションからホスト コンピューターのクリップボードやコンテンツにアクセスできるようになる可能性があります。
+     - ホストと Application Guard の間のクリップボード機能を完全に無効にする。
+
+     - Application Guard からホストに内容をコピーできるようにクリップボードを有効にする。
+
+     - ホストから Application Guard に内容をコピーできるようにクリップボードを有効にする。
+
+注意
+ホストから Application Guard へのコピーは有効にしないことをお勧めします。この機能を有効にすると、侵害を受けた可能性のある Application Guard セッションがホスト デバイスのクリップボードとその内容にアクセスできることになります。
+
+コピーを有効にする場合は、次の内容オプションを使用して、コピーできる内容の種類も選択する必要があります。
+
+     - 1. テキストのコピーを許可する。
+
+     - 2. イメージのコピーを許可する。
+
+     - 3. テキストとイメージの両方のコピーを許可する。
+
+この設定を無効にした場合、または構成しなかった場合、すべてのクリップボード機能は Application Guard で無効です。
         </string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">クリップボードの操作をブロックする (既定)</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">分離セッションからホストへのクリップボード操作を有効にする</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">ホストから分離セッションへのクリップボード操作を有効にする</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">双方向のクリップボード操作を有効にする</string>
         <string id="AppHVSI_PrintingSettings_DisplayName">Windows Defender Application Guard の印刷設定を構成します</string>
-        <string id="AppHVSI_PrintingSettings_Explain">"XPS への印刷を有効にする" を選択すると、ユーザーはコンテナー内から XPS 形式にドキュメントを印刷できます。
-"PDF への印刷を有効にする" を選択すると、ユーザーはコンテナー内から PDF 形式にドキュメントを印刷できます。
-"ローカル プリンターへの印刷を有効にする" を選択すると、ユーザーはコンテナー内からローカルに接続されたプリンターにドキュメントを印刷できます。
-"既存のネットワーク プリンターへの印刷を有効にする" を選択すると、ユーザーは既存のネットワーク プリンターを使用して分離されたコンテナー内からドキュメントを印刷できます。ユーザーは新しいネットワーク プリンターを参照することはできません。
-        </string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">IE および Edge の非エンタープライズ コンテンツをエンタープライズ Web サイトに読み込まない</string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">有効にした場合、Windows Defender Application Guard のコンテナー内では起動できない非エンタープライズ サイトに対する Internet Explorer と Microsoft Edge のネットワーク トラフィックは、すべてブロックされます。
+        <string id="AppHVSI_PrintingSettings_Explain">このポリシー設定では、Windows Defender Application Guard (Application Guard) 内での印刷機能の動作を決定できます。
 
-無効にした場合、Windows Defender Application Guard のコンテナー内では起動できない非エンタープライズ サイトへのネットワーク トラフィックは、すべてホスト コンピューター上にレンダリングされます。
+この設定を有効にした場合、以下の動作から 1 つ以上選択する必要があります。
+
+     - Application Guard のすべての印刷機能を無効にする。
+
+     - 既存のネットワーク プリンターでの印刷を有効にする。
+
+     - ローカル プリンターでの印刷を有効にする。
+
+     - PDF への印刷を有効にする。ユーザーが PDF として印刷し、結果のファイルをホストに保存できるようにする。
+
+     - XPS への印刷を有効にする。ユーザーが XPS として印刷し、結果のファイルをホストに保存できるようにする。
+
+この設定を無効にした場合、または構成しなかった場合、すべての印刷機能は Application Guard で無効です。
         </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Microsoft Edge および Internet Explorer でエンタープライズ Web サイトが非エンタープライズ コンテンツを読み込まないようにする</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">このポリシー設定では、Microsoft Edge および Internet Explorer で Web サイトが非エンタープライズ コンテンツを読み込むことができるかどうかを決定できます。
+
+この設定を有効にした場合、エンタープライズ サイトに組み込まれた非エンタープライズ コンテンツは Windows Defender Application Guard 外部の Internet Explorer または Microsoft Edge で開きません。
+
+この設定を無効にした場合、または構成しなかった場合、非エンタープライズ サイトは Windows Defender Application Guard コンテナーの外部の Internet Explorer および Microsoft Edge で直接開くことができます。
+        </string>
+        <string id="AppHVSI_AllowPersistence_DisplayName">Windows Defender Application Guard のデータ永続化を許可する</string>
+        <string id="AppHVSI_AllowPersistence_Explain">このポリシー設定では、Windows Defender Application Guard (Application Guard) の異なるセッション間でデータを永続化するかどうかを決定できます。
+
+        この設定を有効にした場合、Application Guard では、ユーザー ダウンロード ファイルやその他の項目 (Cookie、お気に入りなど) を将来の Application Guard セッションで使用するために保存します。
+
+             注意
+             この設定を有効にしていても、Reset-ApplicationGuard PowerShell コマンドを使用すると、特定のデバイスからユーザーのデータを削除できます。このコマンドを実行すると、構成に関係なくすべての従業員のデータが削除され、従業員のデータが損失するおそれがあります。
+
+        この設定を無効にした場合、または構成しなかった場合、Application Guard によって Application Guard コンテナー内のすべてのユーザー データが削除されます。
+        </string>
+        <string id="AppHVSI_AuditApplicationGuard_DisplayName">Windows Defender Application Guard の監査イベントを許可する</string>
+        <string id="AppHVSI_AuditApplicationGuard_Explain">このポリシー設定では、Windows Defender Application Guard (Application Guard) から監査イベントを収集できるかどうかを決定できます。
+
+        この設定を有効にした場合、Application Guard は Microsoft Edge から監査ポリシーを継承し、Application Guard 専用のシステム イベントの監査を開始します。
+
+             注意
+             収集されたログは Application Guard 外部の Microsoft Edge で確認できます。
+
+        この設定を無効にした場合、または構成しなかった場合、Application Guard に関する監査イベントログは収集されません。</string>
     </stringTable>
     <presentationTable>
       <presentation id="AppHVSIClipboardSettings_Presentation">
-        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">オプションを選択してください:</dropdownList>
-        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">クリップボード操作が有効なときに許可するクリップボード動作を指定します (10 進数で):
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">クリップボードの動作の設定。</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">クリップボードの内容のオプション。
         </decimalTextBox>
-        <text>この値は、クリップボード操作に対して使用できるファイルの種類を制御するビットマスクです:
-
-b0001 - テキスト ファイル
-b0010 - ビットマップ ファイル
-b0011 - テキスト ファイルとビットマップ ファイルの両方がサポートされます
-        </text>
       </presentation>
       <presentation id="AppHVSIPrintingSettings_Presentation">
-        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">有効にするプリンターを指定します (10 進数で)
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">許可されている Application Guard の印刷の種類。
         </decimalTextBox>
-        <text>この値は、分離セッションで有効なプリンターを制御するビットマスクです
-b0000 - 印刷は無効です
-b0001 - XPS への印刷を有効にします (既定)
-b0010 - PDF への印刷を有効にします
-b0100 - ローカル プリンターへの印刷を有効にします
-b1000 - 既存のネットワーク プリンターへの印刷を有効にします
-
-例:
-XPS とローカル プリンターが有効な場合、値は 0001 | b0101 になり、これは b0100 (10 進数の 5) です
+        <text>許可する印刷の種類を決定するには、以下を選択する必要があります。
+     - 0. すべての印刷機能を無効にする。
+     - 1. XPS 印刷のみを有効にする。
+     - 2. PDF 印刷のみを有効にする。
+     - 3. PDF 印刷と XPS 印刷の両方を有効にする。
+     - 4. ローカル印刷のみを有効にする。
+     - 5. ローカル印刷と XPS 印刷の両方を有効にする。
+     - 6. ローカル印刷と PDF 印刷の両方を有効にする。
+     - 7. ローカル印刷、PDF 印刷、および XPS 印刷を有効にする。
+     - 8. ネットワーク印刷のみを有効にする。
+     - 9. ネットワーク印刷と XPS 印刷の両方を有効にする。
+     - 10. ネットワーク印刷と PDF 印刷の両方を有効にする。
+     - 11. ネットワーク印刷、PDF 印刷、および XPS 印刷を有効にする。
+     - 12. ネットワーク印刷とローカル印刷の両方を有効にする。
+     - 13. ネットワーク印刷、ローカル印刷、および XPS 印刷を有効にする。
+     - 14. ネットワーク印刷、ローカル印刷、および PDF 印刷を有効にする。
+     - 15. すべての印刷を有効にする。
         </text>
       </presentation>
     </presentationTable>

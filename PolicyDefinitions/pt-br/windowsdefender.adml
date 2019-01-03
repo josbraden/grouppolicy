@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Windows Defender Antivirus</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Exclusões</string>
+    <string id="ExploitGuard">Windows Defender Exploit Guard</string>
+    <string id="ExploitGuard_ASR">Redução da Superfície de Ataque</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Acesso a Pastas Controladas</string>
+    <string id="ExploitGuard_NetworkProtection">Proteção de Rede</string>
     <string id="NetworkRealtimeInspection">Sistema de Inspeção de Rede</string>
     <string id="NetworkRealtimeInspection_Exclusions">Exclusões</string>
     <string id="Quarantine">Quarentena</string>
@@ -26,7 +30,18 @@ Se você habilitar ou não definir essa configuração, o serviço antimalware s
 Se você desabilitar essa configuração, o serviço antimalware será carregado como uma tarefa de prioridade baixa.</string>
 
     <string id="DisableAutoExclusions">Desativar Exclusões Automáticas</string>
-    <string id="DisableAutoExclusions_Explain">Permite que um administrador especifique se o recurso Exclusões Automáticas para SKUs do Servidor deve ser desativado.</string>
+    <string id="DisableAutoExclusions_Explain">
+        Permite a um administrador especificar se o recurso de Exclusões Automáticas para SKUs do Servidor deve ser desativado.
+
+        Desabilitado (Padrão):
+        O Windows Defender excluirá a lista predefinida de caminhos da análise para melhorar o desempenho.
+
+        Habilitado:
+        O Windows Defender não excluirá a lista predefinida de caminhos de análises. Isso pode afetar o desempenho do computador em alguns cenários.
+
+        Não configurado:
+        O mesmo que Desabilitado.
+    </string>
     <string id="DisableAntiSpyware">Desativar o Endpoint Protection</string>
     <string id="DisableAntiSpyware_Explain">Esta configuração de política desativa o Endpoint Protection.
 
@@ -732,9 +747,15 @@ Se você desabilitar ou não definir essa configuração, nenhum texto adicional
       Observação: esse recurso requer que a configuração "Ingressar no Microsoft MAPS" esteja habilitada para funcionar.
 
       As possíveis opções são:
-      (0x0) Nível de bloqueio padrão do Windows Defender Antivirus
-      (0x2) Nível de bloqueio alto      
+      (0x0) Nível de bloqueio padrão do Windows Defender
+      (0x2) Nível de bloqueio alto – bloquear agressivamente desconhecidos , otimizando o desempenho do cliente (maior chance de falsos positivos)
+      (0x4) Nível de bloqueio mais alto – bloquear agressivamente desconhecidos e aplicar medidas de proteção adicionais (pode afetar o desempenho do cliente)
+      (0x6) Nível de bloqueio Tolerância zero – bloquear todos os executáveis desconhecidos
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Nível de bloqueio padrão do Windows Defender Antivirus</string>
+    <string id="MpCloudBlockLevel_High_Level">Nível de bloqueio alto</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Nível de bloqueio mais alto</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Nível de bloqueio Tolerância zero</string>
     <string id="MpBafsExtendedTimeout">Configurar a verificação de nuvem estendida</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Este recurso permite ao Windows Defender Antivirus bloquear um arquivo suspeito por até 60 segundos e examiná-lo na nuvem para verificar se ele é seguro.
@@ -745,8 +766,138 @@ Se você desabilitar ou não definir essa configuração, nenhum texto adicional
 
       Observação: esse recurso depende que três outras configurações do MAPS estejam habilitadas: "Configurar o recurso 'Bloquear à Primeira Vista'", "Ingressar no Microsoft MAPS"; "Enviar amostras de arquivo quando outra análise for necessária".
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Nível de bloqueio padrão do Windows Defender Antivirus</string>
-    <string id="MpCloudBlockLevel_High_Level">Nível de bloqueio alto</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Impedir que usuários e apps acessem sites perigosos</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Habilite ou desabilite a proteção de rede do Windows Defender Exploit Guard para impedir que os funcionários usem qualquer aplicativo para acessar domínios perigosos que podem promover golpes de phishing, sites de ataques de exploit e outro conteúdo mal-intencionado na Internet.
+
+    Habilitado:
+    Especifique o modo na seção Opções:
+    -Bloquear: os usuários e aplicativos não poderão acessar domínios perigosos
+    -Modo de Auditoria: os usuários e aplicativos podem se conectar a domínios perigosos, mas se esse recurso tiver acesso bloqueado se configurado para Bloquear, um registro do evento estará nos logs de eventos.
+
+    Desabilitado:
+    Os usuários e aplicativos não serão impedidos de conectar-se a domínios perigosos.
+
+    Não configurado:
+    O mesmo que Desabilitado.
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Excluir arquivos e caminhos de Regras de Redução da Superfície de Ataque</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Exclua arquivos e caminhos de regras ASR (Attack Surface Reduction).
+
+    Habilitado:
+    Especifique as pastas ou os arquivos e recursos que devem ser excluídos das regras ASR na seção Opções.
+    Insira cada regra em uma nova linha como um par de nome-valor:
+    - Coluna Nome: insira um caminho de pasta ou um nome de recurso totalmente qualificado. Por exemplo, ""C:\Windows"" excluirá todos os arquivos nesse diretório. ""C:\Windows\App.exe"" excluirá somente esse arquivo específico nessa pasta específica
+    - Coluna Valor: insira ""0"" para cada item
+
+    Desabilitado:
+    Nenhuma exclusão será aplicada às regras ASR.
+
+    Não configurado:
+    O mesmo que Desabilitado.
+
+    Você pode configurar as regras ASR na configuração de política de grupo Configurar Regras de Attack Surface Reduction.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Configurar Regras de Redução da Superfície de Ataque</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    Defina o estado para cada regra ASR (Attack Surface Reduction).
+
+    Depois de habilitar essa configuração, você pode configurar cada regra para o seguinte na seção Opções:
+    - Bloquear: a regra será aplicada
+    - Modo de Auditoria: se a regra normalmente causaria um evento, ela será registrada (embora a regra não seja realmente aplicada)
+    - Desativada: a regra não será aplicada
+
+    Habilitado:
+    Especifique o estado para cada regra ASR na seção Opções dessa configuração.
+    Insira cada regra em uma nova linha como um par de nome-valor:
+    - Coluna Nome: insira uma ID de regra ASR válida
+    - Coluna Valor: insira a ID de status relacionada ao estado que você quer especificar para a regra associada
+
+    As IDs de status a seguir são permitidas na coluna Valor:
+    - 1 (Bloquear)
+    - 0 (Desativada)
+    - 2 (Auditar)
+    
+    Exemplo:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    Desabilitado:
+    Nenhuma regra ASR será configurada.
+
+    Não configurado:
+    O mesmo que Desabilitado.
+
+    Você pode excluir pastas ou arquivos na configuração de política de grupo ""Excluir arquivos e caminhos das Regras de Attack Surface Reduction"".
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Configurar Acesso controlado a pastas</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Habilite ou desabilite o acesso controlado a pastas para aplicativos não confiáveis. 
+
+    Habilitado:
+    Aplicativos não confiáveis não podem modificar ou excluir arquivos em pastas protegidas, como a pasta Documentos.
+
+    Desabilitado:
+    Todos os aplicativos podem modificar ou excluir arquivos em pastas protegidas, como a pasta Documentos.
+
+    Modo de Auditoria:
+    Os aplicativos que seriam normalmente considerados “não confiáveis” com essa configuração habilitada ainda poderiam modificar ou excluir arquivos em pastas protegidas. No entanto, cada evento será registrado no log de eventos do Windows.
+
+    Não configurado:
+    O mesmo que Desabilitado.
+
+    O Windows Defender Antivírus determina automaticamente quais aplicativos são confiáveis. Você pode adicionar aplicativos confiáveis na configuração de política de grupo Configurar aplicativos permitidos.
+
+    As pastas padrão do sistema são protegidas automaticamente, mas você pode adicionar pastas na configuração de política de grupo Configurar pastas protegidas.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Desabilitar (Padrão)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Bloquear</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Modo de Auditoria</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Configurar aplicativos permitidos</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Adicione aplicativos que devem ser considerados “confiáveis” pelo acesso a pastas controladas.
+
+    Esses aplicativos podem modificar ou excluir arquivos em pastas com acesso controlado.
+
+    O Windows Defender Antivírus determina automaticamente quais aplicativos são confiáveis. Você pode definir essa configuração para adicionar mais aplicativos.
+
+    Habilitado:
+    Especifique aplicativos adicionais permitidos na seção Opções.
+
+    Desabilitado:
+        Nenhum aplicativo adicional será adicionado à lista confiável.
+
+    Não configurado:
+    O mesmo que Desabilitado.
+
+    Você pode habilitar o acesso a pastas controladas na configuração de política de grupo Configurar acesso controlado a pastas.
+
+    As pastas padrão do sistema são protegidas automaticamente, mas você pode adicionar pastas na configuração de política de grupo Configurar pastas protegidas.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Configurar pastas protegidas</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Especifique pastas adicionais que devem ser protegidas pelo recurso Acesso controlado a pastas.
+
+    Os arquivos nessas pastas não podem ser modificados ou excluídos por aplicativos não confiáveis.
+
+    As pastas padrão do sistema são protegidas automaticamente. Você pode definir essa configuração para adicionar mais pastas. 
+    A lista de pastas padrão do sistema que são protegidas é mostrada na Central de Segurança do Windows Defender.
+
+    Habilitado:
+    Especifique as pastas adicionais que devem ser protegidas na seção Opções.
+
+    Desabilitado:
+    Nenhuma pasta adicional será protegida.
+
+    Não configurado:
+    O mesmo que Desabilitado.
+
+    Você pode habilitar o acesso a pastas controladas na configuração de política de grupo Configurar acesso controlado a pastas.
+
+    O Windows Defender Antivírus determina automaticamente quais aplicativos são confiáveis. Você pode adicionar mais aplicativos confiáveis na configuração de política de grupo Configurar aplicativos permitidos.
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@ Se você desabilitar ou não definir essa configuração, nenhum texto adicional
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Especificar o tempo da verificação de nuvem estendida em segundos</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">Configurar o recurso proteger minhas pastas</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Exclusões das regras ASR:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Defina o estado para cada regra ASR:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Insira os aplicativos que devem ser confiáveis:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Insira as pastas que devem ser protegidas:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

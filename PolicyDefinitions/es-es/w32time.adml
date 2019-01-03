@@ -7,18 +7,18 @@
     <stringTable>
       <string id="W32TIME_CONFIG_EXPLAIN">Esta configuración de directiva permite especificar valores generales y de sincronización de reloj para el Servicio Hora de Windows (W32time) para controladores de dominio, incluidos los RODC.
 
-Si se habilita esta configuración de directiva, el servicio W32time de los equipos de destino usa la configuración que se proporciona aquí. De lo contrario, el servicio de los equipos de destino usa los valores de configuración establecidos de forma local.
+Si se habilita esta configuración de directiva, el servicio W32time de las máquinas de destino usa la configuración que se proporciona aquí. De lo contrario, el servicio de las máquinas de destino usa los valores de configuración establecidos de forma local.
 
-Para obtener más detalles sobre parámetros individuales, combinaciones de valores de parámetros y definiciones de marcas, consulta https://go.microsoft.com/fwlink/?linkid=847809.
+Para conocer más detalles sobre parámetros individuales, combinaciones de valores de parámetros y definiciones de marcas, consulta https://go.microsoft.com/fwlink/?linkid=847809.
 
         FrequencyCorrectRate
 Este parámetro controla la velocidad a la que W32time corrige la frecuencia del reloj local. Los valores más bajos generan correcciones más lentas y los valores más altos generan correcciones más frecuentes. Valor predeterminado: 4 (escalar).
 
         HoldPeriod
-Este parámetro indica cuántas muestras de hora coherentes seguidas debe recibir el equipo cliente antes de evaluar las muestras de hora subsiguientes como posibles aumentos. Valor predeterminado: 5.
+Este parámetro indica cuántas muestras de hora precisas seguidas debe recibir el equipo cliente antes de evaluar las muestras de hora subsiguientes como posibles aumentos. Valor predeterminado: 5
 
         LargePhaseOffset
-Si una muestra de hora tiene una variación respecto al reloj local del equipo cliente superior a LargePhaseOffset, se considera que el reloj local se ha desviado considerablemente (es decir, ha aumentado). Valor predeterminado: 50 000 000 unidades de 100 nanosegundos (ns), lo que equivale a 5 segundos.
+Si una muestra de hora tiene una variación respecto del reloj local del equipo cliente superior a LargePhaseOffset, se considera que el reloj local se ha desviado considerablemente (es decir, ha aumentado). Valor predeterminado: 50 000 000 unidades de 100 nanosegundos (ns), lo que equivale a 5 segundos.
 
         MaxAllowedPhaseOffset
 Si se recibe una respuesta que tiene una diferencia horaria superior al valor de este parámetro, W32time establece de inmediato el reloj local del equipo cliente en la hora que se acepte como precisa proveniente del servidor de Protocolo de tiempo de redes (NTP). Si la diferencia horaria es inferior a este valor, el reloj local del equipo cliente se corrige de forma gradual. Valor predeterminado: 300 segundos.
@@ -30,30 +30,30 @@ Si se recibe una muestra de hora que indica una hora en el pasado (respecto al r
 Si se recibe una muestra de hora que indica una hora en el futuro (respecto al reloj local del equipo cliente) con una diferencia horaria superior al valor de MaxPosPhaseCorrection, la muestra de hora se descarta. Valor predeterminado: 172 800 segundos.
 
         PhaseCorrectRate
-Este parámetro controla la velocidad con la que W32time corrige la diferencia del reloj local del equipo cliente para que coincida con las muestras de hora del servidor NTP que se aceptan como precisas. Los valores más bajos hacen que el reloj se corrija con más lentitud y los valores más altos hacen que el reloj se corrija con más rapidez. Valor predeterminado: 7 (escalar).
+Este parámetro controla la velocidad con que W32time corrige la diferencia del reloj local del equipo cliente para que coincida con las muestras de hora del servidor NTP que se aceptan como precisas. Los valores más bajos hacen que el reloj se corrija con más lentitud; los valores más altos hacen que el reloj se corrija con más rapidez. Valor predeterminado: 7 (escalar).
 
         PollAdjustFactor
-Este parámetro controla la velocidad con la que W32time cambia los intervalos de sondeo. Cuando las respuestas se consideran precisas, el intervalo de sondeo se extiende de manera automática. Cuando las respuestas se consideran inexactas, el intervalo de sondeo se acorta de manera automática. Valor predeterminado: 5 (escalar).
+Este parámetro controla la velocidad con que W32time cambia los intervalos de sondeo. Cuando las respuestas se consideran precisas, el intervalo de sondeo se extiende de manera automática. Cuando las respuestas se consideran inexactas, el intervalo de sondeo se acorta de manera automática. Valor predeterminado: 5 (escalar).
 
         SpikeWatchPeriod
 Este parámetro especifica la cantidad de tiempo que se reciben muestras con una diferencia horaria superior a LargePhaseOffset antes de aceptar tales muestras como precisas. SpikeWatchPeriod se usa junto con HoldPeriod para eliminar muestras de hora esporádicas e inexactas devueltas por equipos del mismo nivel. Valor predeterminado: 900 segundos.
 
         UpdateInterval
-Este parámetro especifica la cantidad de tiempo que W32time espera entre correcciones cuando el reloj se corrige de manera gradual. Cuando realiza una corrección gradual, el servicio efectúa un ligero ajuste en el reloj, espera esta cantidad de tiempo y, a continuación, comprueba si es necesario otro ajuste, hasta completar la corrección. Valor predeterminado: 100 unidades de 1/100 de segundo, lo que equivale a 1 segundo.
+Este parámetro especifica la cantidad de tiempo que W32time espera entre correcciones cuando el reloj se corrige de manera gradual. Cuando realiza una corrección gradual, el servicio efectúa un ligero ajuste del reloj, espera esta cantidad de tiempo y luego comprueba si es necesario otro ajuste, hasta completar la corrección. Valor predeterminado: 100 unidades de 1/100 de segundo, lo que equivale a 1 segundo.
 
         Parámetros generales:
 
         AnnounceFlags
-Este parámetro es un valor de máscara de bits que controla el modo en que la disponibilidad del servicio de hora se anuncia a través de NetLogon. Valor predeterminado: 0x0a hexadecimal
+Este parámetro es un valor de máscara de bits que controla el modo en que la disponibilidad del servicio de hora se anuncia a través de NetLogon. Valor predeterminado: 0x0a hexadecimal.
 
         EventLogFlags
 Este parámetro controla eventos especiales que pueden registrarse en el registro del sistema del Visor de eventos. Valor predeterminado: 0x02 máscara de bits hexadecimal.
 
         LocalClockDispersion
-Este parámetro indica el error máximo en segundos que el servidor NTP notifica a los clientes que solicitan una muestra de hora (se aplica solo cuando el servidor NTP usa la hora del reloj CMOS local). Valor predeterminado: 10 segundos.
+Este parámetro indica el error máximo en segundos que el servidor NTP notifica a los clientes que solicitan una muestra de hora. (Se aplica solo cuando el servidor NTP usa la hora del reloj CMOS local). Valor predeterminado: 10 segundos.
 
         MaxPollInterval
-Este parámetro controla el intervalo de sondeo máximo, que define la cantidad máxima de tiempo entre sondeos de un equipo del mismo nivel. Valor predeterminado: 10 en logaritmo de base 2, lo que equivale a 1024 segundos (no se debe establecer en un valor superior a 15).
+Este parámetro controla el intervalo de sondeo máximo, que define la cantidad máxima de tiempo entre sondeos de un equipo del mismo nivel. Valor predeterminado: 10 en logaritmo de base 2, lo que equivale a 1024 segundos. (No se debe establecer en un valor superior a 15).
 
         MinPollInterval
 Este parámetro controla el intervalo de sondeo mínimo que define la cantidad mínima de tiempo entre sondeos de un equipo del mismo nivel. Valor predeterminado: 6 en logaritmo de base 2, lo que equivale a 64 segundos.
@@ -65,7 +65,10 @@ Este parámetro indica la cantidad máxima de segundos que un reloj del sistema 
 Este parámetro controla si el controlador de dominio responderá solicitudes de sincronización de hora que usan protocolos de autenticación anteriores. Si se habilita (establecido en 1), el controlador de dominio no responderá a las solicitudes que usen esos protocolos. Valor predeterminado: 0 booleano.
 
         UtilizeSslTimeData
-Este parámetro controla si W32time usará datos de hora calculados a partir del tráfico SSL en la máquina como entrada adicional para corregir el reloj local. Valor predeterminado: 1 (habilitado) booleano.
+Este parámetro controla si W32time usará datos de hora procesados del tráfico SSL en la máquina como entrada adicional para corregir el reloj local. Valor predeterminado: 1 booleano.
+
+        ClockAdjustmentAuditLimit
+Este parámetro especifica los ajustes de reloj local más pequeños que pueden registrarse en el registro de eventos del servicio W32time en la máquina de destino. Valor predeterminado 800 parte por millón (ppm).
 
         Parámetros de RODC:
 
@@ -164,6 +167,7 @@ Si deshabilita o no establece esta configuración de directiva, el equipo no pue
         <decimalTextBox refId="W32TIME_ClockHoldoverPeriod" defaultValue="7800">ClockHoldoverPeriod</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
         <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ClockAdjustmentAuditLimit" defaultValue="800">ClockAdjustmentAuditLimit</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

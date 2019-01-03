@@ -94,6 +94,15 @@
 
 注意: 禁用此策略将在所有帐户类型的设备上阻止使用生物特征手势。
         </string>
+        <string id="MSPassport_EnablePinRecovery">使用PIN恢复</string>
+        <string id="MSPassport_EnablePinRecoveryExplain">PIN 恢复允许用户在忘记 PIN 时，使用 Windows Hello 企业版PIN恢复服务更换一个新的 PIN，而不会丢失任何相关凭据或证书，包括设备上与用户个人账户相关联的任何密钥。为达到这一目的，基于 Azure 的 PIN 恢复服务将存储在设备上的恢复机密加密，要求 PIN 恢复服务和设备均解密。PIN 恢复要求用户对 Azure Active Directory 进行多因子身份验证。
+
+如果启用此策略设置，Windows Hello 企业版將使用 PIN 恢复服务。
+
+如果禁用或不配置此策略设置，Windows 则不创建或存储 PIN 恢复机密。若用户忘记 PIN，则需删除已有 PIN 并创建新 PIN，对任何使用旧 PIN 进行访问的服务将需要重新注册。
+
+注意：此政策仅适用于注册到 Azure Active Directory 的设备。
+        </string>
         <string id="MSPassport_UseRemote">使用手机登录</string>
         <string id="MSPassport_UseRemoteExplain">使用此策略设置可以配置手机登录的使用。手机登录使手机可用作桌面身份验证的配套设备。手机登录要求电脑和手机已注册到同一个 Azure AD 租户。此外，手机必须已在 Windows Hello 企业版中注册。
 
@@ -105,10 +114,53 @@
         <string id="WHFB_UseCertificateForOnPremAuthExplain">使用此策略设置可配置 Windows Hello 企业版，以注册用于本地身份验证的登录证书。
 
 如果启用此策略设置，Windows Hello 企业版将注册用于本地身份验证的登录证书。
-		
+
 如果禁用或未配置此策略设置，Windows Hello 企业版将注册用于本地身份验证的密钥。
 
 注意: 禁用或不配置此策略设置并启用“使用 Windows Hello 企业版”策略设置要求环境具有一个或多个 Windows Server 2016 域控制器，以防止 Windows Hello 企业版身份验证失败。
+        </string>
+        <!-- Explain text for device unlock policy -->
+        <string id="MSPassport_UseDeviceUnlock">配置设备解锁凭据</string>
+        <string id="MSPassport_UseDeviceUnlock_Explain">配置要用作第一和第二解锁因子的凭据提供商 GUID （例如面部和指纹提供商 GUID）的逗号分隔列表。如果将受信任的信号提供商指定为解锁因子之一，则还应以 xml 的形式为要验证的每种信号类型配置信号规则的逗号分隔列表。
+
+如果启用此策略设置，用户将必须使用每个列表中的一个因子才能成功解锁。
+
+如果禁用或未配置此策略设置，用户可使用现有解锁选项继续解锁。
+
+更多信息请访问：https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for dynamic lock policy -->
+        <string id="MSPassport_UseDynamicLock">配置动态锁定凭据</string>
+        <string id="MSPassport_UseDynamicLock_Explain">以 xml 的形式为每个信号类型配置一个使用逗号隔开的信号规则列表。
+
+如果启用此策略设置，这些信号规则将被评估以检测用户是否存在并自动锁定设备。
+
+如果禁用或未配置此策略设置，用户可以继续使用现有锁定选项锁定。
+
+更多信息请访问：https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for smart card emulation policy -->
+        <string id="MSPassport_DisableSmartCardNode">关闭智能卡仿真</string>
+        <string id="MSPassport_DisableSmartCardNodeExplain">Windows Hello 企业版会自动提供智能卡仿真以兼容启用智能卡的应用程序。
+
+如果启用此策略设置，则 Windows Hello 企业版会预配与智能卡应用程序不兼容的 Windows Hello 企业版凭据。
+
+如果禁用或未配置此策略设置，则 Windows Hello 企业版会预配与智能卡应用程序兼容的 Windows Hello 企业版凭据。
+
+注意: 此策略创建后会影响 Windows Hello 企业版凭据。在应用此策略之前创建的凭据可继续提供智能卡仿真。若要更改现有凭据，请启用此策略设置，然后从“设置”中选择“我忘记了我的 PIN”。
+        </string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNode">允许为所有用户枚举仿真智能卡</string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNodeExplain">Windows 会阻止同一台计算机上的用户为其他用户枚举预配的 Windows Hello 企业版凭据。
+
+如果启用此策略设置，则 Windows 会允许计算机上的所有用户枚举所有 Windows Hello 企业版凭据，但仍要求每位用户提供自己的因素以进行身份验证。
+
+如果禁用或未配置此策略设置，则 Windows 不会允许为同一台设备上的其他用户枚举预配的 Windows Hello 企业版凭据。
+
+此策略设置专用于在单个设备上注册为特权用户和非特权用户的单个用户。此类用户同时拥有两种凭据，既可使用非特权凭据进行登录，也可无需注销而执行提升任务。
+
+此策略设置与启用“关闭智能卡仿真”时预配的 Windows Hello 企业版凭据不兼容。
+
+为计算机应用此设置之后，Windows 需要重新启动。
         </string>
     </stringTable>
     <presentationTable>
@@ -136,11 +188,30 @@
       <presentation id="MSPassport_PINExpirationControl">
         <decimalTextBox refId="MSPassport_PINExpirationDataType" spin="true" spinStep="1" defaultvalue="0">PIN 过期时间</decimalTextBox>
       </presentation>
-	  <presentation id="MSPassport_ExcludeSecurityDevicesControl">
-		<text>不要使用以下安全设备:</text>
-		<checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
-	  </presentation>
-
+      <presentation id="MSPassport_ExcludeSecurityDevicesControl">
+        <text>不要使用以下安全设备:</text>
+        <checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
+      </presentation>
+      <presentation id="MSPassport_UseDeviceUnlock_Control">
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupA">
+            <label>第一重解锁凭据提供程序</label>
+            <defaultValue>{D6886603-9D2F-4EB2-B667-1971041FA96B}、{8AF662BF-65A0-4D0A-A540-A338A999D36F}、{BEC09223-B018-416D-A0AC-523971B639F5}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupB">
+            <label>第二重解锁凭据提供程序</label>
+            <defaultValue>{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD}、{D6886603-9D2F-4EB2-B667-1971041FA96B}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_Plugins">
+            <label>设备解锁信号规则</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Authentication" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
+      <presentation id="MSPassport_UseDynamicLock_Control">
+        <textBox refId="MSPassport_UseDynamicLock_Plugins">
+            <label>动态锁信号规则</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Dynamic Lock" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
     </presentationTable>
   </resources>
 </policyDefinitionResources>

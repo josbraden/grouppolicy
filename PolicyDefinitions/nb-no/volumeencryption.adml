@@ -26,15 +26,16 @@ Obs! Det kan hende at TPM-initialisering (Trusted Platform Module) forekommer un
 
       <string id="ConfigureStartupUsage_Help">Med denne policyinnstillingen kan du angi om installasjonsveiviseren for BitLocker-stasjonskryptering skal kunne konfigurere en ekstra godkjenningsmetode som skal kreves hver gang datamaskinen startes. Denne policyinnstillingen brukes når du aktiverer BitLocker.
 
-Obs!  Denne policyen gjelder bare for datamaskiner som kjører Windows Server 2008 eller Windows Vista.
+Obs! Denne policyen gjelder bare for datamaskiner som kjører Windows Server 2008 eller Windows Vista.
 
-På en datamaskin med en kompatibel TPM-modul (Trusted Platform Module) kan to godkjenningsmetoder brukes ved oppstart for å gi ekstra beskyttelse for krypterte data. Når datamaskinen starter, kan den be brukerne om å sette inn en USB-flash-stasjon som inneholder en oppstartsnøkkel. Den kan også be brukerne om å skrive inn en PIN-oppstartskode på 6–20 sifre.
+På en datamaskin med en kompatibel TPM-modul (Trusted Platform Module) kan to godkjenningsmetoder brukes ved oppstart for å gi ekstra beskyttelse for krypterte data. Når datamaskinen starter, kan den be brukerne om å sette inn en USB-flash-stasjon som inneholder en oppstartsnøkkel. Den kan også be brukerne om å skrive inn en PIN-oppstartskode på 4–20 sifre.
 
 En USB-flash-stasjon som inneholder en oppstartsnøkkel, kreves på datamaskiner uten en kompatibel TPM-modul. Uten en TPM-modul beskyttes BitLocker-krypterte data bare av nøkkelmaterialet på denne USB-flash-stasjonen.
 
 Hvis du aktiverer denne policyinnstillingen, viser veiviseren den siden som tillater at brukeren konfigurerer avanserte oppstartsalternativer for BitLocker. Du kan også angi policyinnstillingsalternativer for datamaskiner med og uten en TPM-modul.
 
 Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, viser installasjonsveiviseren for BitLocker grunnleggende trinn som gjør at brukere kan aktivere BitLocker på datamaskiner med en TPM. I denne grunnleggende veiviseren kan det ikke konfigureres noen ekstra oppstartsnøkkel eller PIN-oppstartskode.
+
 </string>
 
       <string id="ConfigureStartupUsage_Name">Krev ekstra godkjenning ved oppstart (Windows Server 2008 og Windows Vista)</string>
@@ -375,11 +376,14 @@ Policyinnstillingen som styrer oppstartsfeilsøking (0x16000010), blir alltid va
 
 
       <string id="MinimumPINLength_Name">Konfigurer minimum PIN-lengde for oppstart</string>
-      <string id="MinimumPINLength_Help">Med denne policyinnstillingen kan du konfigurere en minimumslengde for en PIN-kode for oppstart for en TPM (Trusted Platform Module). Denne policyinnstillingen brukes når du aktiverer BitLocker. PIN-koden for oppstart må ha en minimumslengde på fire sifre, og den kan være på maksimalt 20 sifre.
+      <string id="MinimumPINLength_Help">
+          Med denne policyinnstillingen kan du konfigurere en minimumslengde for en oppstarts-PIN-kode for en TPM (Trusted Platform Module). Denne policyinnstillingen tas i bruk når du aktiverer BitLocker. Oppstarts-PIN-koden må ha en minimumslengde på fire sifre og en maksimumslengde på 20 sifre.
 
-Hvis du aktiverer denne policyinnstillingen, kan du kreve at et minimum antall sifre brukes ved angivelse av PIN-koden for oppstart.
+          Hvis du aktiverer denne policyinnstillingen, kan du kreve at det brukes et minimum antall sifre når oppstarts-PIN-koden angis.
 
-Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, kan brukerne konfigurere en PIN-kode for oppstart fra fire til 20 sifre.
+          Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, kan brukerne velge en oppstarts-PIN-kode på 6–20 sifre.
+
+          MERK: Hvis minimumslengden for PIN-koder settes til mindre enn seks sifre, prøver Windows å sette TPM 2.0-låseperioden til lengre enn standard når en PIN-kode endres. Hvis dette lykkes, tilbakestiller Windows TPM-låseperioden til standard bare hvis TPM tilbakestilles.
 
       </string>
 

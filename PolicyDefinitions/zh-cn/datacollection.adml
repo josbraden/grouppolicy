@@ -51,6 +51,23 @@ Windows 10 诊断数据设置适用于 Windows 操作系统和 Windows 附带的
       <string id="DisableEnterpriseAuthProxy_2">禁止使用经验证的代理</string>
       <string id="DisableEnterpriseAuthProxy_Explain">此策略设置阻止“已连接的用户体验和遥测”服务在 Windows 10 上自动使用经验证的代理将数据发送回 Microsoft。如果禁用或未配置此策略设置，“已连接的用户体验和遥测”服务将自动使用经验证的代理将数据发送回 Microsoft。启用此策略将阻止“已连接的用户体验和遥测”服务自动使用经验证的代理。</string>
 
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">将增强诊断数据限制为 Windows 分析所需的最低水平</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">启用 Windows 分析集合</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">禁用 Windows 分析集合</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_Explain">此策略设置与“允许遥测”策略设置一起，可以让组织通过 Windows 分析服务向 Microsoft 发送一组特定的诊断数据以获得 IT 见解。
+
+要启用此行为，必须完成两个步骤:
+
+    1. 启用此策略设置
+    2. 将“允许遥测”设置为级别 2 (增强)
+
+在配置这些策略设置时，会将“基本”级别的诊断数据加上 Windows 分析所需的附加事件发送至 Microsoft。这些事件记录在此处: https://go.microsoft.com/fwlink/?linkid=847594。
+
+如果在“允许遥测”策略中启用“增强诊断数据”并且不配置此策略，则也会发送 Windows 分析所需的事件加上附加的“增强”级别的遥测数据。此设置不影响配置为向 Microsoft 发送“完全”、“基本”或“安全”级别诊断数据的计算机。
+
+如果禁用或不配置此策略设置，则发送至 Microsoft 的诊断数据的级别由“允许遥测”策略确定。
+      </string>
+
     </stringTable>
     <presentationTable>
       <presentation id="AllowTelemetry">
@@ -71,6 +88,9 @@ Windows 10 诊断数据设置适用于 Windows 操作系统和 Windows 附带的
       </presentation>
       <presentation id="DisableEnterpriseAuthProxy">
         <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="LimitEnhancedDiagnosticDataWindowsAnalytics">
+        <dropdownList refId="LimitEnhancedDiagnosticDataWindowsAnalytics" noSort="true" defaultItem="0"></dropdownList>
       </presentation>
     </presentationTable>
   </resources>

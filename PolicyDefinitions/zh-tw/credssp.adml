@@ -156,18 +156,39 @@ TERMSRV/*.humanresources.fabrikam.com 在 .humanresources.fabrikam.com 所有電
 
 這個原則設定可以和 [允許委派已儲存的認證] 原則設定一起搭配使用，用以定義特定伺服器的例外狀況，否則會在 [允許委派已儲存的認證] 伺服器清單允許使用萬用字元。</string>
       <string id="RestrictedRemoteAdministration">限制委派認證給遠端伺服器</string>
-      <string id="RestrictedRemoteAdministration_Explain">在受限模式下執行時，參與的應用程式不會將認證公開給遠端電腦 (無論委派方法為何)。受限模式可以限制存取位於目標電腦以外之其他伺服器或網路上的資源，因為未委派認證。
+      <string id="RestrictedRemoteAdministration_Explain">在「受限的系統管理」或 Remote Credential Guard 模式中執行時，參與的應用程式不會將登入的認證或提供的認證公開給遠端主機。因為未委派認證，所以「受限的系統管理」可以限制存取位於遠端主機以外之其他伺服器或網路上的資源。Remote Credential Guard 會將所有要求重新導向回用戶端裝置，因此不會限制存取資源。
 
 參與的應用程式:
 遠端桌面用戶端
 
-如果您啟用這個原則設定，則會強制使用受限模式，且參與的應用程式不會將認證委派給遠端電腦。
+若啟用此原則設定，則支援下列選項:
+ 
+限制認證委派: 參與的應用程式必須使用「受限的系統管理」或 Remote Credential Guard，才能連線到遠端主機。
+ 
+要求使用 Remote Credential Guard: 參與的應用程式必須使用 Remote Credential Guard，才能連線到遠端主機。
+ 
+要求使用受限的系統管理: 參與的應用程式必須使用「受限的系統管理」，才能連線到遠端主機。
 
-如果您停用或未設定這個原則設定，則不會強制使用受限模式，且參與的應用程式可以將認證委派給遠端電腦。
+若停用或未設定此原則設定，則不會強制使用「受限的系統管理」和 Remote Credential Guard 模式，而且參與的應用程式可以將認證委派給遠端裝置。
 
-注意: 若要停用大多數的認證委派，只要修改 [系統管理範本] 設定 (位於 [電腦設定\系統管理範本\系統\認證委派])，在「認證安全性支援提供者」(CredSSP) 中拒絕委派就可以了。</string>
+注意: 若要停用大多數的認證委派，只要透過修改 [系統管理範本] 設定 (位於 [電腦設定\系統管理範本\系統\認證委派]) 以在「認證安全性支援提供者」(CredSSP) 中拒絕委派即可。
+
+注意: 在 Windows 8.1 與 Windows Server 2012 R2 上，不論選擇的模式為何，只要啟用此原則就會強制使用「受限的系統管理」模式。這些版本不支援 Remote Credential Guard。
+</string>
       <string id="SUPPORTED_VISTA">Windows Vista</string>
+      <string id="PreferRemoteCredentialGuard">限制認證委派</string>
+      <string id="RequireRemoteCredentialGuard">要求使用 Remote Credential Guard</string>
+      <string id="RequireRestrictedAdmin">要求使用受限的系統管理</string>
+      <string id="AllowProtectedCreds">遠端主機允許委派不可匯出的認證</string>
+      <string id="AllowProtectedCreds_Explain">遠端主機允許委派不可匯出的認證
+
+使用認證委派時，裝置會將可匯出版本的認證提供給遠端主機。這會讓使用者暴露在遠端主機上攻擊者偷取認證的風險下。
+
+若啟用此原則設定，主機支援「受限的系統管理」或 Remote Credential Guard 模式。
+
+若停用或未設定此原則設定，則不支援「受限的系統管理」和 Remote Credential Guard 模式。使用者一律需要將其認證傳遞給主機。</string>
     </stringTable>
+    
     <presentationTable>
       <presentation id="AllowDefaultCredentials">
         <listBox refId="AllowDefaultCredentials_Name">新增伺服器到清單:</listBox>
@@ -205,6 +226,12 @@ TERMSRV/*.humanresources.fabrikam.com 在 .humanresources.fabrikam.com 所有電
         <listBox refId="DenySavedCredentials_Name">新增伺服器到清單:</listBox>
         <checkBox refId="ConcatenateDefaults_DSC" defaultChecked="true">使用以上的輸入串連 OS 預設值</checkBox>
       </presentation>
+      <presentation id="RestrictedRemoteAdministration">
+        <dropdownList refId="RestrictedRemoteAdministrationDrop" defaultItem="0">使用下列受限模式:</dropdownList>
+      </presentation>
+      <presentation id="AllowProtectedCreds">
+      </presentation>
     </presentationTable>
+    
   </resources>
 </policyDefinitionResources>

@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Windows Defender Antivirus</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Utelatelser</string>
+    <string id="ExploitGuard">Windows Defender Exploit Guard</string>
+    <string id="ExploitGuard_ASR">Redusert angrepsoverflate</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Kontrollert mappetilgang</string>
+    <string id="ExploitGuard_NetworkProtection">Nettverksbeskyttelse</string>
     <string id="NetworkRealtimeInspection">Nettverksinspeksjonssystem</string>
     <string id="NetworkRealtimeInspection_Exclusions">Utelatelser</string>
     <string id="Quarantine">Karantene</string>
@@ -26,7 +30,18 @@
     Hvis du deaktiverer denne innstillingen, lastes tjenesten for beskyttelse mot skadelig programvare som en oppgave med lav prioritet.</string>
 
     <string id="DisableAutoExclusions">Slå av automatiske utelatelser</string>
-    <string id="DisableAutoExclusions_Explain">Lar administrator angi om funksjonen for automatiske utelatelser for lagerstyringsenheter (SKU) for server skal slås av.</string>
+    <string id="DisableAutoExclusions_Explain">
+        Lar en administrator angi om funksjonen for automatiske utelatelser for lagerstyringsenheter (SKU) for server skal deaktiveres.
+
+        Deaktivert (standard):
+        Windows Defender utelater forhåndsdefinert liste over baner fra skanningen for å forbedre ytelsen.
+
+        Aktivert:
+        Windows Defender utelater ikke forhåndsdefinert liste over baner fra skanninger. Dette kan påvirke maskinytelsen i enkelte scenarioer.
+
+        Ikke konfigurert:
+        Samme som Deaktivert.
+    </string>
     <string id="DisableAntiSpyware">Deaktiver Endpoint Protection</string>
     <string id="DisableAntiSpyware_Explain">Denne policyinnstillingen deaktiverer Endpoint Protection.
 
@@ -725,16 +740,22 @@ Hvis du deaktiverer denne innstillingen, brukes bare elementer som er definert a
     <string id="MpCloudBlockLevel_Explain">
       Denne policyinnstillingen bestemmer hvor aggressiv Windows Defender Antivirus skal være ved blokkering og skanning av mistenkelige filer.
 
-      Hvis denne innstillingen er aktivert, vil Windows Defender Antivirus være mer aggressiv ved identifisering av mistenkelige filer som skal blokkeres eller skannes. Ellers vil programmet være mindre aggressivt og derfor blokkere og skanne sjeldnere.
+      Hvis denne innstillingen er aktivert, vil Windows Defender Antivirus være mer aggressiv ved identifisering av mistenkelige filer som skal blokkeres eller skannes. Ellers vil programmet være mindre aggressivt og derfor blokkere og skanne sjeldnere. 
       
-      Du kan finne mer informasjon om bestemte verdier som støttes, på nettstedet med dokumentasjon for Windows Defender Antivirus.
+       Du kan finne mer informasjon om bestemte verdier som støttes, på nettstedet med dokumentasjon for Windows Defender Antivirus.
 
-      Obs!  Denne funksjonen krever at innstillingen Bli med i Microsoft MAPS er aktivert for å kunne fungere.
+      Obs! Denne funksjonen krever at innstillingen Bli med i Microsoft MAPS er aktivert for å kunne fungere.
 
       Mulige alternativer er:
-      (0x0) Standardblokkeringsnivå i Windows Defender Antivirus
-      (0x2) Høyt blokkeringsnivå      
+      (0x0) Standardblokkeringsnivå i Windows Defender
+      (0x2) Høyt blokkeringsnivå – blokkerer aggressivt ukjente mens det optimaliserer klientytelse (større mulighet for falske positiver)
+      (0x4) Høyt+ blokkeringsnivå – blokkerer aggressivt ukjente og tar i bruke ekstra beskyttelsestiltak (kan påvirke klientytelse)
+      (0x6) Blokkeringsnivå med nulltoleranse – blokkerer alle ukjente kjørbare filer
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Standardblokkeringsnivå i Windows Defender Antivirus</string>
+    <string id="MpCloudBlockLevel_High_Level">Høyt blokkeringsnivå</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Høyt+ blokkeringsnivå</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Blokkeringsnivå med nulltoleranse</string>
     <string id="MpBafsExtendedTimeout">Konfigurer utvidet skykontroll</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Denne funksjonen gir Windows Defender Antivirus mulighet til å blokkere en mistenkelig fil i opptil 60 sekunder, og skanne den i skyen for å kontrollere at den er sikker.
@@ -745,8 +766,138 @@ Hvis du deaktiverer denne innstillingen, brukes bare elementer som er definert a
 
       Obs!  Denne funksjonen er avhengig av at tre andre MAPS-innstillinger er aktivert: Konfigurer funksjonen Blokker ved første kontakt, Bli med i Microsoft MAPS og Send fileksempler når det kreves videre analyse.
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Standardblokkeringsnivå i Windows Defender Antivirus</string>
-    <string id="MpCloudBlockLevel_High_Level">Høyt blokkeringsnivå</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Hindrer brukere og apper fra å åpne farlige nettsteder</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Aktiver eller deaktiver Windows Defender Exploit Guard nettverksbeskyttelse for å hindre medarbeidere fra å bruke apper til å åpne farlige domener som kan være vert for phishing, utnyttende nettsteder og annet skadelig innhold på Internett.
+
+        Aktivert:
+        Angi modusen i Alternativer-delen:
+        – Blokker: Brukere og apper vil ikke kunne åpne farlige domener
+        – Overvåk: Brukere og apper kan koble til farlige domener, men hvis denne funksjonen har blokkert tilgang hvis den ble angitt til Blokker, vises en oppføringen av hendelsen i Windows Defender Sikkerhetssenter
+
+        Deaktivert:
+        Brukere og apper vil ikke være blokkert fra å koble til farlige domener.
+
+        Ikke konfigurert:
+        Samme som Deaktivert.
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Utelat filer og baner fra Attack Surface Reduction-regler</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Utelat filer og baner fra ASR-regler (Attack Surface Reduction).
+
+        Aktivert:
+        Angi mappene eller filene og ressursene som skal utelates fra ASR-reglene, i Alternativer-delen.
+        Angi hver regel på en ny linje som et navn-verdi-par:
+        – Navn-kolonne: Angi en mappebane eller et fullstendig kvalifisert ressursnavn. ""C:\Windows"" vil for eksempel utelate alle filer i den katalogen. ""C:\Windows\App.exe"" vil bare utelate den bestemte filen i den bestemte mappen
+        – Verdi-kolonne: Angi ""0"" for hvert element
+
+        Deaktivert:
+        Ingen utelatelser blir tatt i bruk i ASR-reglene.
+
+        Ikke konfigurert:
+        Samme som Deaktivert.
+
+        Du kan konfigurere ASR-regler i gruppepolicyinnstillingen Konfigurer Attack Surface Reduction-regler.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Konfigurer Attack Surface Reduction-regler</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    Angi statusen for hver ASR-regel (Attack Surface Reduction).
+
+        Når du har aktivert denne innstillingen, kan du angi hver regel for følgende i Alternativer-delen:
+    – Blokker: Regelen blir tatt i bruk
+        – Overvåk: Hvis regelen normalt forårsaker en hendelse, blir den registrert (selv om regelen faktisk ikke blir tatt i bruk)
+        – Av: Regelen blir ikke tatt i bruk
+
+        Aktivert:
+        Angi statusen for hver ASR-regel under Alternativer-delen for denne innstillingen.
+        Angi hver regel på en ny linje som et navn-verdi-par:
+        – Navn-kolonne: Angi en gyldig ID for ASR-regel
+        – Verdi-kolonne: Angi status-ID-en som er knyttet til statusen du vil angi for den tilknyttede regelen
+
+        Følgende status-ID-er er tillatt under verdi-kolonnen:
+        – 1 (Blokker)
+        – 0 (Av)
+        – 2 (Overvåk)
+
+    Eksempel:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    Deaktivert:
+    Ingen ASR-regler blir konfigurert.
+
+        Ikke konfigurert:
+        Samme som Deaktivert.
+
+        Du kan utelate mapper eller filer og ressurser i gruppepolicyinnstillingen Utelat mapper eller filer og ressurser.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Konfigurer kontrollert mappetilgang</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Aktiver eller deaktiver kontrollert mappetilgang av apper som ikke er klarert.
+
+    Aktivert:
+    Apper som ikke er klarert, kan ikke endre eller slette filer i beskyttede mapper, for eksempel Dokumenter-mappen.
+
+    Deaktivert:
+    Alle apper kan endre eller slette filer i beskyttede mapper, for eksempel Dokumenter-mappen.
+
+    Overvåkingsmodus:
+        Apper som normalt ville vært ansett som ikke klarert hvis innstillingen var Aktivert, vil fortsatt kunne endre eller slette filer i beskyttede mapper. Hver hendelse blir imidlertid registrert i hendelsesloggen i Windows.
+
+    Ikke konfigurert:
+    Samme som Deaktivert.
+
+    Windows Defender Antivirus fastsetter automatisk hvilke apper som kan klareres. Du kan legge til flere klarerte apper i gruppepolicyinnstillingen Konfigurer tillatte apper.
+
+    Standard systemmapper beskyttes automatisk, men du kan legge til mapper i gruppepolicyinnstillingen Konfigurer beskyttede mapper.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Deaktiver (standard)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Blokker</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Overvåkingsmodus</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Konfigurer tillatte apper</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Legg til flere apper som skal anses klarert av kontrollert mappetilgang.
+
+    Disse appene kan endre eller slette filer i kontrollert mappetilgang-mapper.
+
+    Windows Defender Antivirus fastsetter automatisk hvilke apper som skal klareres. Du kan konfigurere denne innstillingen for å legge til flere apper.
+
+    Aktivert:
+    Angi flere tillatte apper i Alternativer-delen.
+
+    Deaktivert:
+    Ingen flere apper blir lagt til på den klarerte listen.
+
+    Ikke konfigurert:
+    Samme som Deaktivert.
+
+    Du kan aktivere kontrollert mappetilgang i gruppepolicyinnstillingen Konfigurer kontrollert mappetilgang.
+
+    Standard systemmapper beskyttes automatisk, men du kan legge til mapper i gruppepolicyinnstillingen Konfigurer beskyttede mapper.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Konfigurer beskyttede mapper</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Angi flere mapper som skal beskyttes av beskyttet mappetilgang-funksjonen.
+
+        Filer i disse mappene kan ikke endres eller slettes av apper som ikke er klarert.
+
+        Standard systemmapper beskyttes automatisk. Du kan konfigurere denne innstillingen for å legge til flere mapper.
+        Listen over standard systemmapper som beskyttes, vises i Windows Defender Sikkerhetssenter.
+
+        Aktivert:
+        Angi flere mapper som skal beskyttes i Alternativer-delen.
+
+        Deaktivert:
+        Ingen flere mapper beskyttes.
+
+        Ikke konfigurert:
+        Samme som Deaktivert.
+
+        Du kan aktivere kontrollert mappetilgang i gruppepolicyinnstillingen Konfigurer kontrollert mappetilgang.
+
+        Windows Defender Antivirus fastsetter automatisk hvilke apper som kan klareres. Du kan legge til flere klarerte apper i gruppepolicyinnstillingen Konfigurer tillatte apper.
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@ Hvis du deaktiverer denne innstillingen, brukes bare elementer som er definert a
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Angi den utvidede skykontrolltiden i sekunder</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">Konfigurer funksjonen for å beskytte mappene mine</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Utelatelser fra ASR-regler:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Angi statusen for hver ASR-regel:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Angi appene som skal klareres:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Angi mappene som skal beskyttes:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

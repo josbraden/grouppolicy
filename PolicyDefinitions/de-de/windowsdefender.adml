@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Windows Defender Antivirus</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Ausschlüsse</string>
+    <string id="ExploitGuard">Windows Defender Exploit Guard</string>
+    <string id="ExploitGuard_ASR">Verringerung der Angriffsfläche</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Überwachter Ordnerzugriff</string>
+    <string id="ExploitGuard_NetworkProtection">Netzwerkschutz</string>
     <string id="NetworkRealtimeInspection">Netzwerkinspektionssystem</string>
     <string id="NetworkRealtimeInspection_Exclusions">Ausschlüsse</string>
     <string id="Quarantine">Quarantäne</string>
@@ -26,7 +30,18 @@ Wenn Sie diese Einstellung aktivieren oder nicht konfigurieren, wird der AntiMal
 Wenn Sie diese Einstellung deaktivieren, wird der AntiMalware-Dienst als Aufgabe mit niedriger Priorität geladen.</string>
 
     <string id="DisableAutoExclusions">Automatische Ausschlüsse deaktivieren</string>
-    <string id="DisableAutoExclusions_Explain">Ermöglicht es einem Administrator anzugeben, ob die Funktion für automatische Ausschlüsse für Server-SKUs deaktiviert werden soll.</string>
+    <string id="DisableAutoExclusions_Explain">
+        Ermöglicht einem Administrator, anzugeben, ob das Feature "Automatische Ausschlüsse" für Server-SKUs deaktiviert werden soll.
+
+        Deaktiviert (Standard):
+        Windows Defender schließt eine vordefinierte Pfadliste aus der Überprüfung aus, um die Leistung zu verbessern.
+
+        Aktiviert:
+        Windows Defender schließt keine vordefinierte Pfadliste aus Überprüfungen aus. Dies kann sich in einigen Szenarien auf die Leistung des Computers auswirken.
+
+        Nicht konfiguriert:
+        Identisch mit "Deaktiviert".
+    </string>
     <string id="DisableAntiSpyware">Endpoint Protection deaktivieren</string>
     <string id="DisableAntiSpyware_Explain">Durch diese Richtlinieneinstellung wird Endpoint Protection deaktiviert.
 
@@ -727,14 +742,20 @@ Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, wird kein zus�
 
       Wenn die Einstellung aktiviert ist, geht Windows Defender Antivirus bei der Erkennung verdächtiger Dateien, die blockiert und überprüft werden müssen, aggressiver vor. Andernfalls ist das Verhalten weniger aggressiv, sodass Dateien seltener blockiert und überprüft werden. 
       
-      Weitere Informationen zu spezifischen unterstützten Werten finden Sie auf der Website mit der Dokumentation zu Windows Defender Antivirus.
+      Weitere Informationen zu unterstützten Werten finden Sie auf der Website mit der Dokumentation zu Windows Defender Antivirus.
 
       Hinweis: Damit dieses Feature unterstützt wird, muss die Einstellung für den Beitritt zu Microsoft MAPS aktiviert sein.
 
       Mögliche Optionen:
-      (0x0) Standardmäßige Windows Defender Antivirus-Blockierungsstufe
-      (0x2) Hohe Blockierungsstufe      
+      (0x0) Standardmäßige Windows Defender-Blockierungsstufe
+      (0x2) Hohe Blockierungsstufe – unbekannte Dateien bei gleichzeitiger Optimierung der Clientleistung aggressiv blockieren (höhere Wahrscheinlichkeit falsch positiver Ergebnisse)
+      (0x4) Extrahohe Blockierungsstufe – unbekannte Dateien aggressiv blockieren und zusätzliche Schutzmaßnahmen anwenden (kann sich auf die Clientleistung auswirken)
+      (0x6) Blockierungsstufe mit Null-Toleranz – alle unbekannten ausführbaren Dateien blockieren
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Standardmäßige Windows Defender Antivirus-Blockierungsstufe</string>
+    <string id="MpCloudBlockLevel_High_Level">Hohe Blockierungsstufe</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Extrahohe Blockierungsstufe</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Blockierungsstufe mit Null-Toleranz</string>
     <string id="MpBafsExtendedTimeout">Erweiterte Cloudüberprüfung konfigurieren</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Mit diesem Feature kann eine verdächtige Datei von Windows Defender Antivirus bis zu 60 Sekunden blockiert und in der Cloud auf ihre Sicherheit überprüft werden.
@@ -745,8 +766,138 @@ Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, wird kein zus�
 
       Hinweis: Dieses Feature ist von drei weiteren MAPS-Einstellungen abhängig, die alle aktiviert sein müssen: "Feature 'Bei erster Anzeige blockieren' konfigurieren", "Microsoft MAPS beitreten" und "Dateibeispiele senden, wenn eine weitere Analyse erforderlich ist".
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Standardmäßige Windows Defender Antivirus-Blockierungsstufe</string>
-    <string id="MpCloudBlockLevel_High_Level">Hohe Blockierungsstufe</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Benutzer- und App-Zugriff auf gefährliche Websites verhindern</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Aktivieren oder deaktivieren Sie den Windows Defender Exploit Guard-Netzwerkschutz, um Mitarbeiter daran zu hindern, über Anwendungen auf gefährliche Domänen zuzugreifen, von denen Internetgefahren wie Onlinephishing, Exploit-Angriffe oder andere schädliche Inhalte ausgehen können.
+
+    Aktiviert:
+    Geben Sie den Modus im Abschnitt "Optionen" an:
+    – Blockieren: Benutzer und Anwendungen können nicht auf gefährliche Domänen zugreifen.
+    – Überwachungsmodus: Benutzer und Anwendungen können eine Verbindung mit gefährlichen Domänen herstellen. Hätte das Feature den Zugriff bei Auswahl von "Blockieren" jedoch blockiert, wäre ein entsprechender Ereigniseintrag in den Ereignisprotokollen enthalten.
+
+    Deaktiviert:
+    Benutzer und Anwendungen werden nicht daran gehindert, eine Verbindung mit gefährlichen Domänen herzustellen.
+
+    Nicht konfiguriert:
+    Identisch mit "Deaktiviert".
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Dateien und Pfade aus Regeln zur Verringerung der Angriffsfläche ausschließen</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Schließen Sie Dateien und Pfade aus Regeln zur Verringerung der Angriffsfläche (Attack Surface Reduction, ASR) aus.
+
+    Aktiviert:
+    Geben Sie die Ordner oder Dateien und Ressourcen, die aus ASR-Regeln ausgeschlossen werden sollen, im Abschnitt "Optionen" an.
+    Geben Sie jede Regel als Name/Wert-Paar in eine neue Zeile ein:
+    – Namensspalte: Geben Sie einen Ordnerpfad oder einen vollqualifizierten Ressourcennamen ein. Durch "C:\Windows" werden z. B. alle Dateien des betreffenden Verzeichnisses ausgeschlossen. Durch "C:\Windows\App.exe" wird nur die genannte Datei in dem genannten Ordner ausgeschlossen.
+    – Wertespalte: Geben Sie "0" für jedes Element ein.
+
+    Deaktiviert:
+    Es werden keine Ausschlüsse auf ASR-Regeln angewendet.
+
+    Nicht konfiguriert:
+    Identisch mit "Deaktiviert".
+
+    Sie können ASR-Regeln in der Gruppenrichtlinieneinstellung unter "Regeln zur Verringerung der Angriffsfläche konfigurieren" festlegen.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Regeln zur Verringerung der Angriffsfläche konfigurieren</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    Legen Sie den Zustand der einzelnen Regeln zur Verringerung der Angriffsfläche (Attack Surface Reduction, ASR) fest.
+
+    Nach dem Aktivieren dieser Einstellung können Sie die einzelnen Regeln im Abschnitt "Optionen" wie folgt festlegen:
+    – Blockieren: Die Regel wird angewendet.
+    – Überwachungsmodus: Wenn die Regel normalerweise ein Ereignis auslösen würde, wird sie aufgezeichnet (obwohl die Regel tatsächlich nicht angewendet wird).
+    – Aus: Die Regel wird nicht angewendet.
+
+    Aktiviert:
+    Geben Sie den Zustand der einzelnen ASR-Regeln im Abschnitt "Optionen" für diese Einstellung an.
+    Geben Sie jede Regel als Name/Wert-Paar in eine neue Zeile ein:
+    – Namensspalte: Geben Sie eine gültige ID für die ASR-Regel ein.
+    – Wertespalte: Geben Sie die Status-ID ein, die sich auf den Zustand bezieht, den Sie für die zugeordnete Regel angeben möchten.
+
+    Die folgenden Status-IDs sind in der Wertespalte zulässig:
+    – 1 (Blockieren)
+    – 0 (Aus)
+    – 2 (Überwachen)
+    
+    Beispiel:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    Deaktiviert:
+    Es werden keine ASR-Regeln konfiguriert.
+
+    Nicht konfiguriert:
+    Identisch mit "Deaktiviert".
+
+    Sie können Ordner oder Dateien in der Gruppenrichtlinieneinstellung "Dateien und Pfade aus Regeln zur Verringerung der Angriffsfläche ausschließen" ausschließen.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Überwachten Ordnerzugriff konfigurieren</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Aktivieren oder deaktivieren Sie den überwachten Ordnerzugriff durch nicht vertrauenswürdige Anwendungen. 
+
+    Blockieren:
+    Dateien in geschützten Ordnern (z. B. im Ordner "Dokumente") können durch nicht vertrauenswürdige Anwendungen weder geändert noch gelöscht werden.
+
+    Deaktiviert:
+    Dateien in geschützten Ordnern (z. B. im Ordner "Dokumente") können von allen Anwendungen geändert oder gelöscht werden.
+
+    Überwachungsmodus:
+    Anwendungen, die normalerweise als "nicht vertrauenswürdig" eingestuft worden wären, wenn die Einstellung "Aktiviert" gelautet hätte, können Dateien in geschützten Ordnern weiterhin ändern oder löschen. Jedes dieser Ereignisse wird jedoch im Windows-Ereignisprotokoll aufgezeichnet.
+
+    Nicht konfiguriert:
+    Identisch mit "Deaktiviert".
+
+    Windows Defender Antivirus ermittelt automatisch, welche Anwendungen vertrauenswürdig sind. Sie können zusätzliche vertrauenswürdige Anwendungen in der Gruppenrichtlinieneinstellung "Zulässige Anwendungen konfigurieren" hinzufügen.
+
+    Standardsystemordner werden automatisch überwacht, Sie können außerdem weitere Ordner in der Gruppenrichtlinieneinstellung "Geschützte Ordner konfigurieren" hinzufügen.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Deaktivieren (Standard)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Blockieren</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Überwachungsmodus</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Zulässige Anwendungen konfigurieren</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Fügen Sie zusätzliche Anwendungen hinzu, die vom überwachten Ordnerzugriff als "vertrauenswürdig" eingestuft werden sollen.
+
+    Diese Anwendungen können Dateien in Ordnern mit überwachtem Ordnerzugriff ändern oder löschen.
+
+    Windows Defender Antivirus ermittelt automatisch, welche Anwendungen vertrauenswürdig sind. Sie können diese Einstellung so konfigurieren, dass zusätzliche Anwendungen hinzugefügt werden.
+
+    Aktiviert:
+    Geben Sie zusätzliche zulässige Anwendungen im Abschnitt "Optionen" an.
+
+    Deaktiviert:
+    Der Liste vertrauenswürdiger Anwendungen werden keine zusätzlichen Anwendungen hinzugefügt.
+
+    Nicht konfiguriert:
+    Identisch mit "Deaktiviert".
+
+    Sie können den überwachten Orderzugriff in der Gruppenrichtlinieneinstellung "Überwachten Ordnerzugriff konfigurieren" aktivieren.
+
+    Standardsystemordner werden automatisch überwacht, Sie können außerdem weitere Ordner in der Gruppenrichtlinieneinstellung "Geschützte Ordner konfigurieren" hinzufügen.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Geschützte Ordner konfigurieren</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Geben Sie zusätzliche Ordner an, die vom Feature für geschützten Ordnerzugriff überwacht werden sollen.
+
+    Dateien in diesen Ordnern können von nicht vertrauenswürdigen Anwendungen weder geändert noch gelöscht werden.
+
+    Standardsystemordner sind automatisch geschützt. Sie können diese Einstellung für das Hinzufügen zusätzlicher Ordner konfigurieren.
+    Die Liste der geschützten Standardsystemordner wird im Windows Defender Security Center angezeigt.
+
+    Aktiviert:
+    Geben Sie zusätzliche Ordner, die geschützt werden sollen, im Abschnitt "Optionen" an.
+
+    Deaktiviert:
+    Es werden keine zusätzlichen Ordner geschützt.
+
+    Nicht konfiguriert:
+    Identisch mit "Deaktiviert".
+
+    Sie können den überwachten Ordnerzugriff in der Gruppenrichtlinieneinstellung "Überwachten Ordnerzugriff konfigurieren" aktivieren.
+
+    Windows Defender Antivirus ermittelt automatisch, welche Anwendungen vertrauenswürdig sind. Sie können zusätzliche vertrauenswürdige Anwendungen in der Gruppenrichtlinieneinstellung "Zulässige Anwendungen konfigurieren" hinzufügen.
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@ Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, wird kein zus�
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Verlängerung für die erweiterte Cloudüberprüfung in Sekunden:</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">Feature zum Überwachen eigener Ordner konfigurieren</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Ausschlüsse von ASR-Regeln:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Zustand für jede ASR-Regel festlegen:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Geben Sie die Anwendungen ein, denen vertraut werden soll:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Geben Sie die Ordner ein, die überwacht werden sollen:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

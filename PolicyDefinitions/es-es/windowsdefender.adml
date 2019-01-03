@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Antivirus de Windows Defender</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Exclusiones</string>
+    <string id="ExploitGuard">Protección contra vulnerabilidades de seguridad de Windows Defender</string>
+    <string id="ExploitGuard_ASR">Reducir la superficie de ataque</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Acceso a la carpeta controlado</string>
+    <string id="ExploitGuard_NetworkProtection">Protección de red</string>
     <string id="NetworkRealtimeInspection">Sistema de inspección de red</string>
     <string id="NetworkRealtimeInspection_Exclusions">Exclusiones</string>
     <string id="Quarantine">Cuarentena</string>
@@ -26,7 +30,18 @@ Si habilita o no establece esta configuración, el servicio antimalware se carga
 Si deshabilita esta configuración, el servicio antimalware se cargará como una tarea de prioridad baja.</string>
 
     <string id="DisableAutoExclusions">Desactivar las exclusiones automáticas</string>
-    <string id="DisableAutoExclusions_Explain">Permite a un administrador especificar si la característica de exclusiones automáticas para SKU de servidor debe desactivarse.</string>
+    <string id="DisableAutoExclusions_Explain">
+        Permite a un administrador especificar si debe desactivarse la característica Exclusiones automáticas para las SKU del servidor.
+
+        Deshabilitado (predeterminado):
+        Windows Defender excluirá una lista predefinida de rutas de acceso de los exámenes para mejorar el rendimiento.
+
+        Habilitado:
+        Windows Defender no excluirá ninguna lista predefinida de rutas de acceso de los exámenes. Esta opción puede afectar al rendimiento del equipo en algunos escenarios.
+
+        No configurado:
+        Lo mismo que Deshabilitado.
+    </string>
     <string id="DisableAntiSpyware">Desactivar Endpoint Protection</string>
     <string id="DisableAntiSpyware_Explain">Esta configuración de directiva desactiva Endpoint Protection.
 
@@ -727,14 +742,20 @@ Si deshabilita o no establece esta configuración, no se mostrará ningún texto
 
       Si esta configuración está activada, Antivirus de Windows Defender será más agresivo al identificar archivos sospechosos que se deben bloquear y examinar; de lo contrario, será menos agresivo y, por tanto, bloqueará y examinará archivos con menos frecuencia. 
       
-      Para obtener más información sobre los valores específicos que se admiten, consulta el sitio de la documentación de Antivirus de Windows Defender.
+      Para obtener más información sobre los valores específicos compatibles, consulta el sitio de la documentación de Antivirus de Windows Defender.
 
-      Nota: esta característica requiere que la configuración "Únete a Microsoft MAPS" esté habilitada para funcionar.
+      Nota: esta característica necesita que la configuración "Únete a Microsoft MAPS" esté habilitada para funcionar.
 
       Las opciones posibles son:
-      (0x0) Nivel de bloqueo predeterminado de Antivirus de Windows Defender
-      (0x2) Nivel de bloqueo alto      
+      (0x0) Nivel de bloqueo predeterminado de Windows Defender
+      (0x2) Nivel de bloqueo alto: bloquea objetos desconocidos de manera agresiva a la vez que optimiza el rendimiento del cliente (más posibilidades de falsos positivos).
+      (0x4) Nivel de bloqueo alto+: bloquea objetos desconocidos de manera agresiva y aplica medidas de protección adicionales (puede afectar al rendimiento del cliente).
+      (0x6) Nivel de bloqueo con tolerancia cero: bloquea todos los ejecutables desconocidos.
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Nivel de bloqueo predeterminado de Antivirus de Windows Defender</string>
+    <string id="MpCloudBlockLevel_High_Level">Nivel de bloqueo alto</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Nivel de bloqueo alto+</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Nivel de bloqueo de cero tolerancia</string>
     <string id="MpBafsExtendedTimeout">Configura la comprobación de la nube extendida</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Esta característica permite que Antivirus de Windows Defender bloquee un archivo sospechoso durante un máximo de 60 segundos y lo examine en la nube para comprobar que es seguro.
@@ -745,8 +766,138 @@ Si deshabilita o no establece esta configuración, no se mostrará ningún texto
 
       Nota: esta característica depende de otras tres opciones de configuración de MAPS: característica "Bloqueo a primera vista"; "Únete a Microsoft MAPS"; "Enviar muestras de archivos cuando se requieran más análisis" (todas ellas deben estar activadas).
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Nivel de bloqueo predeterminado de Antivirus de Windows Defender</string>
-    <string id="MpCloudBlockLevel_High_Level">Nivel de bloqueo alto</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Impedir que los usuarios y las aplicaciones tengan acceso a sitios Web peligrosos</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Habilita o deshabilita la protección de red de Protección contra vulnerabilidades de seguridad de Windows Defender para impedir que los empleados usen cualquier aplicación para acceder a dominios peligrosos que puedan hospedar fraudes por suplantación de identidad (phishing), sitios que hospeden vulnerabilidades y otro tipo de contenido malintencionado en Internet.
+
+    Habilitado:
+    Especifica el modo en la sección Opciones:
+    -Bloquear: los usuarios y las aplicaciones no podrán acceder a sitios peligrosos.
+    -Modo auditoría: los usuarios y las aplicaciones pueden conectarse a dominios peligrosos. Sin embargo, si esta característica bloquea el acceso porque se la ha establecido en Bloquear, se almacenará un registro del evento en los registros de eventos.
+
+    Deshabilitado:
+    No se impedirá que los usuarios y las aplicaciones se conecten a sitios peligrosos.
+
+    No configurado:
+    Lo mismo que Deshabilitado.
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Excluir archivos y las rutas de acceso de las reglas de reducción de la superficie de ataque</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Excluye archivos y rutas de acceso de las reglas de Attack Surface Reduction (ASR).
+
+    Habilitado:
+    Especifica las carpetas o los archivos y los recursos que deben excluirse de las reglas de ASR en la sección Opciones.
+    Especifica cada regla en una línea nueva como un par nombre-valor:
+    - Columna Nombre: escribe una ruta de acceso de carpeta o un nombre de recurso completo. Por ejemplo, ""C:\Windows"" excluirá todos los archivos de ese directorio. ""C:\Windows\App.exe"" excluirá solo ese archivo específico de esa carpeta específica.
+    - Columna Valor: escribe ""0"" para cada elemento.
+
+    Deshabilitado:
+    No se aplicará ninguna exclusión a las reglas de ASR.
+
+    No configurado:
+    Lo mismo que Deshabilitado.
+
+    Puedes configurar las reglas de ASR en la opción de GP para configurar reglas de Attack Surface Reduction.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Configurar reglas de reducción de la superficie de ataque</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    Establece el estado para cada regla de Attack Surface Reduction (ASR).
+
+    Después de habilitar esta configuración, puedes establecer las siguientes opciones para cada regla en la sección Opciones:
+    - Bloquear: se aplicará la regla.
+    - Modo auditoría: si la regla suele generar un evento, se registrará (aunque la regla no se aplicará realmente).
+    - Desactivar: no se aplicará la regla.
+
+    Habilitado:
+    Especifica el estado de cada regla de ASR en la sección Opciones para esta configuración.
+    Escribe cada regla en una línea nueva como un par nombre-valor:
+    - Columna Nombre: indica un id. de regla de ASR válido.
+    - Columna Valor: indica el id. de estado que hace referencia al estado que quieres especificar para la regla asociada.
+
+    Se permiten los siguientes id. de estado en la columna Valor:
+    - 1 (Bloquear)
+    - 0 (Desactivar)
+    - 2 (Auditar)
+    
+    Ejemplo:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    Deshabilitado:
+    No se configurarán reglas de ASR.
+
+    No configurado:
+    Lo mismo que Deshabilitado.
+
+    Puedes excluir carpetas o archivos en la opción de GP para excluir archivos y rutas de acceso de las reglas de Attack Surface Reduction.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Configurar Acceso controlado a carpeta</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Habilita o deshabilita el acceso controlado a carpetas para las aplicaciones que no son de confianza. 
+
+    Bloquear:
+    Las aplicaciones que no son de confianza no pueden modificar ni eliminar archivos de carpetas protegidas, como la carpeta Documentos.
+
+    Deshabilitado:
+    Todas las aplicaciones pueden modificar o eliminar archivos de carpetas protegidas, como la carpeta Documentos.
+
+    Modo auditoría:
+    Las aplicaciones que normalmente se considerarían ""no de confianza"" si la opción estuviera habilitada podrán modificar o eliminar archivos de carpetas protegidas. Sin embargo, cada evento se registrará en el registro de eventos de Windows.
+
+    No configurado:
+    Lo mismo que Deshabilitado.
+
+    El Antivirus de Windows Defender determina automáticamente qué aplicaciones son de confianza. Puedes agregar aplicaciones de confianza adicionales en la opción de GP Configurar aplicaciones permitidas.
+
+    Las carpetas del sistema predeterminadas se protegen automáticamente, pero puedes agregar carpetas en la opción de GP Configurar carpetas protegidas.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Deshabilitar (predeterminado)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Bloquear</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Modo auditoría</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Configurar aplicaciones permitidas</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Agrega aplicaciones adicionales que la característica Acceso controlado a carpetas deba considerar "de confianza".
+
+    Estas aplicaciones pueden modificar o eliminar archivos de las carpetas de acceso controlado a carpetas.
+
+    El Antivirus de Windows Defender determina automáticamente qué aplicaciones son de confianza. Puedes configurar esta opción para agregar aplicaciones adicionales.
+
+    Habilitado: 
+    Especifica aplicaciones permitidas adicionales en la sección Opciones.
+
+    Deshabilitado:
+    No se agregará ninguna aplicación adicional a la lista de confianza.
+
+    No configurado:
+    Lo mismo que Deshabilitado.
+
+    Puedes habilitar el acceso controlado a carpetas en la opción de GP Configurar el acceso controlado a carpetas.
+
+    Las carpetas del sistema predeterminadas se protegen automáticamente, pero puedes agregar carpetas en la configuración de GP Configurar carpetas protegidas.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Configurar carpetas protegidas</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Especifica carpetas adicionales que deba proteger la característica Acceso controlado a carpetas.
+
+    Las aplicaciones que no son de confianza no pueden modificar ni eliminar los archivos de estas carpetas.
+
+    Las carpetas del sistema predeterminadas se protegen automáticamente. Puedes configurar esta opción para agregar carpetas adicionales. 
+    La lista de carpetas del sistema predeterminadas protegidas se muestra en el Centro de seguridad de Windows Defender.
+
+    Habilitado:
+    Especifica carpetas adicionales que se deben proteger en la sección Opciones.
+
+    Deshabilitado:
+    No se protegerá ninguna carpeta adicional.
+
+    No configurado:
+    Lo mismo que Deshabilitado.
+
+    Puedes habilitar el acceso controlado a carpetas en la opción de GP Configurar el acceso controlado a carpetas.
+
+    El Antivirus de Windows Defender determina automáticamente qué aplicaciones son de confianza. Puedes agregar aplicaciones de confianza adicionales en la opción de GP Configurar aplicaciones permitidas.
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@ Si deshabilita o no establece esta configuración, no se mostrará ningún texto
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Especifica el tiempo de comprobación de la nube extendido en segundos</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">Configurar la característica Proteger mis carpetas</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Exclusiones de reglas de ASR:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Establecer el estado para cada regla de ASR:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Escriba las aplicaciones que deben ser de confianza:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Especifica las carpetas que deben protegerse:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

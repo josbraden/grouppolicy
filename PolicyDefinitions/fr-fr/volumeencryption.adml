@@ -26,9 +26,9 @@ Remarque : l’initialisation du module de plateforme sécurisée peut être n�
 
       <string id="ConfigureStartupUsage_Help">Ce paramètre de stratégie vous permet d’indiquer si l’Assistant Installation du chiffrement de lecteur BitLocker peut configurer une méthode d’authentification supplémentaire qui est demandée à chaque démarrage de l’ordinateur. Ce paramètre de stratégie est appliqué lorsque vous activez BitLocker.
 
-Remarque : ce paramètre de stratégie n’est applicable qu’aux ordinateurs Windows Server 2008 et Windows Vista.
+Remarque : ce paramètre de stratégie n’est applicable qu’aux ordinateurs Windows Server 2008 et Windows Vista.
 
-Sur un ordinateur avec un module de plateforme sécurisée, deux méthodes d’authentification peuvent être utilisées au démarrage pour offrir une protection renforcée des données chiffrées. Lorsque l’ordinateur démarre, il peut demander à l’utilisateur d’insérer un lecteur flash USB contenant une clé de démarrage. Il peut également demander à l’utilisateur d’entrer un code PIN de démarrage constitué de 6 à 20 chiffres.
+Sur un ordinateur avec un module de plateforme sécurisée, deux méthodes d’authentification peuvent être utilisées au démarrage pour offrir une protection renforcée des données chiffrées. Lorsque l’ordinateur démarre, il peut demander à l’utilisateur d’insérer un lecteur flash USB contenant une clé de démarrage. Il peut également demander à l’utilisateur d’entrer un code PIN de démarrage constitué de 4 à 20 chiffres.
 
 Un lecteur flash USB contenant une clé de démarrage est nécessaire sur les ordinateurs sans module de plateforme sécurisée compatible. Sans module de plateforme sécurisée, les données chiffrées par BitLocker sont protégées seulement par le support de gestion des clés qui se trouve sur ce lecteur flash USB.
 
@@ -373,11 +373,14 @@ Le paramètre qui contrôle le débogage du démarrage (0x16000010) sera toujour
 
 
       <string id="MinimumPINLength_Name">Configurer la longueur minimale du code PIN de démarrage</string>
-      <string id="MinimumPINLength_Help">Ce paramètre de stratégie permet de configurer la longueur minimale du code PIN de démarrage du module de plateforme sécurisée. Ce paramètre est appliqué lorsque vous activez BitLocker. Le code PIN de démarrage doit comporter entre 6 et 20 chiffres.
+      <string id="MinimumPINLength_Help">
+          Ce paramètre de stratégie vous permet de configurer la longueur minimale pour le code PIN de démarrage d'un module de plateforme sécurisée (TPM). Ce paramètre de stratégie est appliqué lorsque vous activez BitLocker. Le code PIN de démarrage doit comporter entre 4 et 20 chiffres.
 
-Si vous activez ce paramètre de stratégie, vous pouvez préciser le nombre minimal de chiffres que l’utilisateur doit entrer lorsqu’il définit le code PIN de démarrage.
+          Si vous activez ce paramètre de stratégie, vous pouvez exiger le nombre minimal de chiffres à entrer pour définir le code PIN de démarrage.
 
-Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les utilisateurs peuvent définir un code PIN comportant entre 6 et 20 chiffres.
+          Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les utilisateurs peuvent définir un code PIN comportant entre 6 et 20 chiffres.
+
+          REMARQUE : si le code PIN comporte moins de 6 chiffres, Windows tentera de réinitialiser la période de verrouillage du TPM 2.0 de manière à ce qu'elle soit supérieure à la valeur par défaut lorsqu’un code PIN est modifié. Si l'opération réussit, Windows ne réinitialisera la période de verrouillage du TPM à la valeur par défaut que si le TPM est réinitialisé.
 
       </string>
 

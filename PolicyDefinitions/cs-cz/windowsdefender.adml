@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Antivirová ochrana v programu Windows Defender</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Vyloučení</string>
+    <string id="ExploitGuard">Ochrana Exploit Guard v programu Windows Defender</string>
+    <string id="ExploitGuard_ASR">Omezení prostoru pro útok</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Řízený přístup ke složkám</string>
+    <string id="ExploitGuard_NetworkProtection">Ochrana sítě</string>
     <string id="NetworkRealtimeInspection">Systém kontroly sítě</string>
     <string id="NetworkRealtimeInspection_Exclusions">Vyloučení</string>
     <string id="Quarantine">Karanténa</string>
@@ -26,7 +30,18 @@ Pokud toto nastavení povolíte nebo nenakonfigurujete, bude antimalwarová slu�
 Pokud toto nastavení zakážete, bude antimalwarová služba zaváděna jako úloha s nízkou prioritou.</string>
 
     <string id="DisableAutoExclusions">Vypnout automatická vyloučení</string>
-    <string id="DisableAutoExclusions_Explain">Umožňuje správci nastavit, jestli se má vypnout funkce Automatická vyloučení pro serverové skladové jednotky (SKU).</string>
+    <string id="DisableAutoExclusions_Explain">
+        Umožňuje správci určit, jestli se má vypnout funkce Automatická vyloučení pro serverové skladové jednotky (SKU).
+
+        Zakázáno (výchozí):
+        Program Windows Defender vyloučí při kontrole předdefinovaný seznam cest za účelem zlepšení výkonu.
+
+        Povoleno:
+        Program Windows Defender nevyloučí při kontrolách předdefinovaný seznam cest. To může mít při určitých scénářích dopad na výkon počítače.
+
+        Nenakonfigurováno:
+        Stejné jako možnost Zakázáno.
+    </string>
     <string id="DisableAntiSpyware">Vypnout Endpoint Protection</string>
     <string id="DisableAntiSpyware_Explain">Toto nastavení zásad vypne Endpoint Protection.
 
@@ -723,18 +738,24 @@ Pokud toto nastavení povolíte, bude zobrazen další zadaný text.
 Pokud toto nastavení zakážete nebo nenakonfigurujete, žádný další text zobrazen nebude.</string>
     <string id="MpCloudBlockLevel">Vybrat úroveň ochrany cloudu</string>
     <string id="MpCloudBlockLevel_Explain">
-      Toto nastavení zásad určuje, jak intenzivně bude Antivirová ochrana v programu Windows Defender blokovat a kontrolovat podezřelé soubory.
+      Toto nastavení zásad určuje, jak intenzivně bude Antivirová ochrana v programu Windows Defender blokovat a kontrolovat podezřelé soubory.
 
-      Pokud je toto nastavení zapnuté, Antivirová ochrana v programu Windows Defender bude při identifikaci podezřelých souborů pro blokování a kontrolu agresivnější. Pokud je vypnuté, bude méně agresivní a k blokování a kontrolám bude docházet méně často. 
+      Pokud je toto nastavení zapnuté, bude Antivirová ochrana v programu Windows Defender při identifikaci podezřelých souborů pro blokování a kontrolu agresivnější. Pokud je vypnuté, bude méně agresivní a k blokování a kontrolám bude docházet méně často.
       
-      Více informací o konkrétních podporovaných hodnotách naleznete na webu s dokumentací o Antivirové ochraně v programu Windows Defender.
+      Další informace o konkrétních podporovaných hodnotách najdete na webu s dokumentací o Antivirové ochraně v programu Windows Defender.
 
-      Poznámka: Aby tato funkce fungovala, musí být povoleno nastavení „Připojit se ke komunitě Microsoft MAPS“.
+      Poznámka: Aby tato funkce fungovala, musí být povoleno nastavení Připojit se ke komunitě Microsoft MAPS.
 
       Možnosti jsou:
-      (0x0) Výchozí úroveň blokování Antivirové ochrany v programu Windows Defender
-      (0x2) Vysoká úroveň blokování      
+      (0x0) Výchozí úroveň blokování v programu Windows Defender
+      (0x2) Vysoká úroveň blokování – intenzivní blokování neznámých souborů při současné optimalizaci výkonu klientského počítače (vyšší pravděpodobnost falešně pozitivních výsledků)
+      (0x4) Velmi vysoká úroveň blokování – intenzivní blokování neznámých souborů a použití dalších ochranných opatření (může mít dopad na výkon klientského počítače)
+      (0x6) Úroveň blokování s nulovou tolerancí – blokování všech neznámých spustitelných souborů
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Výchozí úroveň blokování Antivirové ochrany v programu Windows Defender</string>
+    <string id="MpCloudBlockLevel_High_Level">Vysoká úroveň blokování</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Velmi vysoká úroveň blokování</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Úroveň blokování s nulovou tolerancí</string>
     <string id="MpBafsExtendedTimeout">Konfigurovat prodlouženou kontrolu cloudu</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Tato funkce dovoluje Antivirové ochraně v programu Windows Defender zablokovat podezřelý soubor až na 60 sekund a zkontrolovat ho v cloudu, aby se ujistil, že je bezpečný.
@@ -745,8 +766,138 @@ Pokud toto nastavení zakážete nebo nenakonfigurujete, žádný další text z
 
       Poznámka: Tato funkce závisí na třech dalších nastaveních MAPS – Je nutné povolit nastavení „Konfigurovat funkci Blokovat při prvním zobrazení“, „Připojit se ke komunitě Microsoft MAPS“ a „Posílat vzorky souborů, pokud se vyžaduje další analýza“.
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Výchozí úroveň blokování Antivirové ochrany v programu Windows Defender</string>
-    <string id="MpCloudBlockLevel_High_Level">Vysoká úroveň blokování</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Zabránit uživatelům a aplikacím v přístupu na nebezpečné weby</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Povolením nebo zakázáním Ochrany Exploit Guard v programu Windows Defender v síti určíte, jestli se má zaměstnancům bránit, aby pomocí jakékoli aplikace přistupovali do nebezpečných domén, které můžou sloužit jako hostitelé pro phishingové podvody, podvodné weby a další škodlivý obsah na internetu.
+
+        Povoleno:
+        V části Možnosti určete režim:
+        - Blokovat: Uživatelé a aplikace nebudou mít přístup k nebezpečným doménám.
+        - Režim auditování: Uživatelé a aplikace se budou moct připojit k nebezpečným doménám. Pokud by ale tato funkce při nastaveném režimu Blokovat přístup zablokovala, objeví se záznam příslušné události v protokolech událostí.
+
+        Zakázáno:
+        Pro uživatele a aplikace se nebude připojení k nebezpečným doménám blokovat.
+
+        Nenakonfigurováno:
+        Stejné jako možnost Zakázáno.
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Vyloučit soubory a cesty z pravidel Omezení prostoru pro útok</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Umožňuje vyloučit soubory a cesty z pravidel Attack Surface Reduction (ASR).
+
+        Povoleno:
+        V části Možnosti určete složky, soubory nebo prostředky, které mají být vyloučeny z pravidel Attack Surface Reduction.
+        Každé pravidlo zadejte na nový řádek jako párovou specifikaci název-hodnota:
+        - Sloupec s názvem: Zadejte cestu ke složce nebo plně kvalifikovaný název prostředku. Například zadání „C:\Windows“ vyloučí všechny soubory v tomto adresáři. Zadání „C:\Windows\App.exe“ vyloučí jen tento konkrétní soubor v této konkrétní složce.
+        - Sloupec s hodnotou: U všech položek zadejte „0“.
+
+        Zakázáno:
+        Nepoužijí se žádná vyloučení z pravidel Attack Surface Reduction.
+
+        Nenakonfigurováno:
+        Stejné jako možnost Zakázáno.
+
+        Pravidla Attack Surface Reduction můžete konfigurovat v zásadách skupiny pro konfiguraci pravidel Attack Surface Reduction.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Konfigurovat pravidla Omezení prostoru pro útok</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    Nastavte stav pro každé pravidlo Attack Surface Reduction (ASR).
+
+        Pokud povolíte toto nastavení, můžete v části Možnosti nastavit každé pravidlo následujícím způsobem:
+        - Blokovat: Pravidlo bude použito.
+        - Režim auditování: Pokud by pravidlo za normálních okolností vygenerovalo událost, bude tato událost zaznamenána (i když se pravidlo ve skutečnosti nepoužije).
+        - Vypnuto: Pravidlo nebude použito.
+
+        Povoleno:
+        V části Možnosti tohoto nastavení určete stav každého pravidla Attack Surface Reduction.
+        Každé pravidlo zadejte na nový řádek jako párovou specifikaci název-hodnota:
+        - Sloupec s názvem: Zadejte platné ID pravidla Attack Surface Reduction.
+        - Sloupec s hodnotou: Zadejte ID stavu pro odpovídající stav, který chcete určit pro přidružené pravidlo.
+
+        Ve sloupci s hodnotou jsou povolena následující ID stavu:
+    - 1 (blokování)
+    - 0 (vypnuto)
+    - 2 (audit)
+    
+    Příklad:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    Zakázáno:
+        Nebudou nakonfigurována žádná pravidla Attack Surface Reduction.
+
+        Nenakonfigurováno:
+        Stejné jako možnost Zakázáno.
+
+        Složky, soubory a prostředky můžete vyloučit v zásadách skupiny v nastavení Vyloučit soubory a cesty z pravidel Attack Surface Reduction.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Konfigurovat řízený přístup ke složkám</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Povolte nebo zakažte nedůvěryhodným aplikacím řízený přístup ke složkám.
+
+        Blokovat:
+        Nedůvěryhodné aplikace nemůžou upravovat a odstraňovat soubory v chráněných složkách, například ve složce Dokumenty.
+
+        Zakázáno:
+        Všechny aplikace můžou upravovat a odstraňovat soubory v chráněných složkách, například ve složce Dokumenty.
+
+        Režim auditování:
+        Aplikace, které by při nastavení Povoleno byly považovány za nedůvěryhodné, budou i nadále moct upravovat nebo odstraňovat soubory v chráněných složkách. Každá událost však bude zaznamenána do protokolu událostí systému Windows.
+
+        Nenakonfigurováno:
+        Stejné jako možnost Zakázáno.
+
+        Antivirová ochrana v programu Windows Defender automaticky určuje, které aplikace jsou důvěryhodné. Další důvěryhodné aplikace můžete přidat v zásadách skupiny v nastavení Konfigurovat povolené aplikace.
+
+        Výchozí systémové složky jsou chráněny automaticky, můžete ale přidat další složky v zásadách skupiny v nastavení Konfigurovat chráněné složky.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Zakázat (výchozí)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Blokovat</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Režim auditování</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Konfigurovat povolené aplikace</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Přidejte další aplikace, které může Řízený přístup ke složkám považovat za důvěryhodné.
+
+        Tyto aplikace můžou upravovat a odstraňovat soubory ve složkách s řízeným přístupem ke složkám.
+
+        Antivirová ochrana v programu Windows Defender automaticky určuje, které aplikace jsou důvěryhodné. Konfigurací tohoto nastavení můžete přidat další aplikace.
+
+        Povoleno:
+        V části Možnosti určete další povolené aplikace.
+
+        Zakázáno:
+        Do seznamu důvěryhodných aplikací nebudou přidány žádné další aplikace.
+
+        Nenakonfigurováno:
+        Stejné jako možnost Zakázáno.
+
+        Řízený přístup ke složkám můžete povolit v zásadách skupiny v nastavení Konfigurovat řízený přístup ke složkám.
+
+        Výchozí systémové složky jsou chráněny automaticky, můžete ale přidat další složky v zásadách skupiny v nastavení Konfigurovat chráněné složky.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Nakonfigurovat chráněné složky</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Určete další složky, které mají být chráněny funkcí Řízený přístup ke složkám.
+
+        Soubory v těchto složkách nemůžou být upravovány ani odstraněny nedůvěryhodnými aplikacemi.
+
+        Výchozí systémové složky jsou chráněny automaticky. Konfigurací tohoto nastavení můžete přidat další složky.
+        Seznam výchozích systémových složek, které jsou chráněny, najdete v Centru zabezpečení v programu Windows Defender.
+
+        Povoleno:
+        V části Možnosti určete další složky, které mají být chráněny.
+
+        Zakázáno:
+        Nebudou chráněny žádné další složky.
+
+        Nenakonfigurováno:
+        Stejné jako možnost Zakázáno.
+
+        Řízený přístup ke složkám můžete povolit v zásadách skupiny v nastavení Konfigurovat řízený přístup ke složkám
+
+        Antivirová ochrana v programu Windows Defender automaticky určuje, které aplikace jsou důvěryhodné. Další důvěryhodné aplikace můžete přidat v zásadách skupiny v nastavení Konfigurovat povolené aplikace.
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@ Pokud toto nastavení zakážete nebo nenakonfigurujete, žádný další text z
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Zadejte prodlouženou dobu kontroly cloudu v sekundách</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">Konfigurovat funkci Ochrana mých složek</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Vyloučení z pravidel Omezení prostoru pro útok (ASR):</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Nastavte stav pro každé pravidlo Omezení prostoru pro útok (ASR):</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Zadejte aplikace, které mají být důvěryhodné:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Zadejte složky, které mají být chráněny:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

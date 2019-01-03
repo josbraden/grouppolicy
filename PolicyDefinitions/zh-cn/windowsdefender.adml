@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Windows Defender 防病毒程序</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">排除项</string>
+    <string id="ExploitGuard">Windows Defender 攻击防护</string>
+    <string id="ExploitGuard_ASR">攻击面减少</string>
+    <string id="ExploitGuard_ControlledFolderAccess">受控制文件夹的访问</string>
+    <string id="ExploitGuard_NetworkProtection">网络保护</string>
     <string id="NetworkRealtimeInspection">网络检查系统</string>
     <string id="NetworkRealtimeInspection_Exclusions">排除项</string>
     <string id="Quarantine">隔离</string>
@@ -26,7 +30,18 @@
 如果禁用此设置，则反恶意软件服务会作为低优先级任务加载。</string>
 
     <string id="DisableAutoExclusions">关闭自动排除项</string>
-    <string id="DisableAutoExclusions_Explain">允许管理员指定是否应对服务器 SKU 关闭自动排除项功能。</string>
+    <string id="DisableAutoExclusions_Explain">
+        允许管理员指定是否应对服务器 SKU 关闭自动排除项功能。
+
+        禁用(默认):
+        Windows Defender 将从扫描范围中排除预定义的路径列表，以提高性能。
+
+        启用:
+        Windows Defender 不会从扫描范围中排除预定义的路径列表。在某些情况下，这可能影响计算机性能。
+
+        未配置:
+        与“禁用”相同。
+    </string>
     <string id="DisableAntiSpyware">关闭 Endpoint Protection</string>
     <string id="DisableAntiSpyware_Explain">此策略设置关闭 Endpoint Protection。
 
@@ -723,18 +738,24 @@
     如果禁用或未配置此设置，则不会显示附加文本。</string>
     <string id="MpCloudBlockLevel">选择云保护级别</string>
     <string id="MpCloudBlockLevel_Explain">
-      此策略设置确定 Windows Defender 防病毒程序在阻止和扫描可疑文件时的攻击程度如何。
+      此策略设置确定 Windows Defender 防病毒在阻止和扫描可疑文件时的攻击程度如何。
 
-      如果启用此设置，Windows Defender 防病毒程序在发现要阻止和扫描的可疑文件时将更积极；否则，其攻击性会减弱，并以更低的频率进行阻止和扫描。
+        如果启用此设置，Windows Defender 防病毒在发现要阻止和扫描的可疑文件时将更积极；否则，其攻击性会减弱，并以更低的频率进行阻止和扫描。
       
-      有关支持的特定值的详细信息，请参阅 Windows Defender 防病毒程序文档网站。
+      有关支持的特定值的详细信息，请参阅 Windows Defender 防病毒文档网站。
 
-      注意: 需要启用“加入 Microsoft MAPS”设置，此功能才会起作用。
+       注意: 需要启用“加入 Microsoft MAPS”设置，此功能才会起作用。
 
       可能的选项有:
-      (0x0)默认 Windows Defender 防病毒程序阻止级别
-      (0x2)高阻止级别      
+      (0x0) 默认 Windows Defender 阻止级别
+      (0x2) 高阻止级别 - 积极阻止未知文件，同时优化客户端性能(误报可能性更大)
+      (0x4) 高+ 阻止级别 – 积极阻止未知文件并应用其他保护措施(可能影响客户端性能)
+      (0x6) 零容忍阻止级别 – 阻止所有未知的可执行文件
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">默认 Windows Defender 防病毒程序阻止级别</string>
+    <string id="MpCloudBlockLevel_High_Level">高阻止级别</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">高+ 阻止级别</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">零容忍阻止级别</string>
     <string id="MpBafsExtendedTimeout">配置扩展的云检查</string>
     <string id="MpBafsExtendedTimeout_Explain">
       此功能允许 Windows Defender 防病毒程序阻止某个可疑文件最长 60 秒，并且在云中进行扫描以确保其安全。
@@ -745,8 +766,138 @@
 
       注意: 此功能取决于另外三项 MAPS 设置 -“配置‘首次看到时阻止’功能”、“加入 Microsoft MAPS”和“需要进一步分析时发送文件示例”，它们都需要启用。
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">默认 Windows Defender 防病毒程序阻止级别</string>
-    <string id="MpCloudBlockLevel_High_Level">高阻止级别</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">阻止用户和应用访问危险网站</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    启用或禁用 Windows Defender 攻击防护网络保护，可以防止员工使用任何应用程序访问可能承载网络钓鱼的危险域、承载攻击的网站，以及 Internet 上的其他恶意内容。
+
+    启用:
+    在“选项”部分指定模式:
+    - 阻止: 用户和应用程序将无法访问危险域
+    - 审核模式: 用户和应用程序可以连接到危险域，但如果此功能在设置为“阻止”时曾阻止访问，则事件日志中将有一条事件记录。
+
+    禁用:
+    将不会阻止用户和应用程序连接到危险域。
+
+    未配置:
+    与“禁用”相同。
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">从攻击面减少规则中排除文件和路径</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    从攻击面减少(ASR)规则中排除文件和路径。
+
+    启用:
+    在“选项”部分指定应从 ASR 规则中排除的文件夹或文件和资源。
+    以名称-值对形式在一个新行中输入各个规则:
+    - 名称列: 输入文件夹路径或完全限定的资源名称。例如，“C:\Windows”将排除该目录中的所有文件。“C:\Windows\App.exe”将只排除该特定文件夹中的特定文件
+    - 值列: 为每一项输入“0”
+
+    禁用:
+    将不对 ASR 规则应用排除。
+
+    未配置:
+    与“禁用”相同。
+
+    你可以在“配置攻击面减少规则”GP 设置中配置 ASR 规则。
+    </string>
+    <string id="ExploitGuard_ASR_Rules">配置攻击面减少规则</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    设置每个攻击面减少(ASR)规则的状态。
+
+    启用此设置后，你可以在“选项”部分将每个规则设置为以下各项:
+    - 阻止: 将应用规则
+    - 审核模式: 如果规则正常地触发事件，则事件将被记录(虽然实际上将不应用规则)
+    - 关闭: 将不应用规则
+
+    启用:
+    在“选项”部分下面为此设置指定每个 ASR 规则的状态。
+    以名称-值对形式在一个新行中输入各个规则:
+    - 名称列: 输入有效的 ASR 规则 ID
+    - 值列: 输入与要为关联规则指定的状态相关的状态 ID
+
+    值列中允许使用以下状态 ID:
+    - 1 (阻止)
+    - 0 (关闭)
+    - 2 (审核)
+    
+    示例:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    禁用:
+    将不配置 ASR 规则。
+
+    未配置:
+    与“禁用”相同。
+
+    你可以在“从攻击面减少规则中排除文件和路径”GP 设置中排除文件夹或文件。
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">配置受控文件夹访问权限</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    针对不受信任的应用程序启用或禁用受控文件夹访问权限。
+
+    阻止:
+    不受信任的应用程序无法修改或删除受保护文件夹内的文件，如“文档”文件夹。
+
+    禁用:
+    所有应用程序均可修改或删除受保护文件夹内的文件，如“文档”文件夹。
+
+    审核模式:
+    在设置为“启用”时正常被视为“不受信任”的应用程序仍然可以修改或删除受保护文件夹内的文件。但是，每个事件都将被记录在 Windows 事件日志中。
+
+    未配置:
+    与“禁用”相同。
+
+    Windows Defender 防病毒自动确定哪些应用程序可以信任。你可以在“配置允许的应用程序”GP 设置中添加其他受信任的应用程序。
+
+    默认的系统文件夹自动受保护，不过你可以在“配置受保护文件夹”GP 设置中添加文件夹。
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">禁用(默认)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">阻止</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">审核模式</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">配置允许的应用程序</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    根据受控文件夹访问权限添加其他应被视为“受信任”的应用程序。
+
+    允许这些应用程序修改或删除“受控文件夹访问权限”文件夹内的文件。
+
+    Windows Defender 防病毒自动确定应该信任哪些应用程序。你可以配置此设置以添加其他应用程序。
+
+    启用: 
+    在“选项”部分指定其他允许的应用程序。
+
+    禁用:
+    其他应用程序将不会添加到受信任列表。
+
+    未配置:
+    与“禁用”相同。
+
+    你可以在“配置受控文件夹访问权限”GP 设置中启用受控文件夹访问权限。
+
+    默认的系统文件夹自动受保护，不过你可以在“配置受保护文件夹”GP 设置中添加文件夹。
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">配置受保护的文件夹</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    指定其他应该受到受控文件夹访问权限功能保护的文件夹。
+
+    这些文件夹内的文件不能被不受信任的应用程序修改或删除。
+
+    默认的系统文件夹自动受保护。你可以配置此设置以添加其他文件夹。
+    受保护的默认系统文件夹的列表在 Windows Defender 安全中心显示。
+
+    启用:
+    在“选项”部分指定其他应受保护的文件夹。
+
+    禁用:
+    没有其他文件夹受到保护。
+
+    未配置:
+    与“禁用”相同。
+
+    你可以在“配置受控文件夹访问权限”GP 设置中启用受控文件夹访问权限。
+
+    Windows Defender 防病毒自动确定哪些应用程序可以信任。你可以在“配置允许的应用程序”GP 设置中添加其他受信任的应用程序。
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">以秒为单位指定延长的云检查时间</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">配置“保护我的文件夹”功能</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">从 ASR 规则中排除:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">为每个 ASR 规则设置状态:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">输入应该受信任的应用程序:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">输入应受保护的文件夹名称:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>

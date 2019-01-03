@@ -28,13 +28,14 @@ Uwaga: podczas instalacji funkcji BitLocker może być konieczne zainicjowanie m
 
 Uwaga: ta zasada dotyczy tylko komputerów z systemem Windows Server 2008 lub Windows Vista.
 
-Na komputerze ze zgodnym modułem TPM przy uruchamianiu można użyć dwóch metod uwierzytelniania, aby zapewnić dodatkową ochronę szyfrowanych danych. Po uruchomieniu komputera użytkownik musi podłączyć dysk flash USB zawierający klucz uruchomienia. Można też wymagać od użytkowników wprowadzenia osobistego numeru identyfikacyjnego (PIN) o długości od 6 do 20 cyfr.
+Na komputerze ze zgodnym modułem TPM przy uruchamianiu można użyć dwóch metod uwierzytelniania, aby zapewnić dodatkową ochronę szyfrowanych danych. Po uruchomieniu komputera użytkownik musi podłączyć dysk flash USB zawierający klucz uruchomienia. Można też wymagać od użytkowników wprowadzenia osobistego numeru identyfikacyjnego (PIN) o długości od 4 do 20 cyfr.
 
 Dysk flash USB zawierający klucz uruchomienia jest potrzebny na komputerach bez zgodnego modułu TPM. Bez modułu TPM dane zaszyfrowane funkcją BitLocker są chronione tylko kluczem znajdującym się na tym dysku flash USB.
 
-Jeśli włączysz to ustawienie zasad, Kreator wyświetli stronę umożliwiającą użytkownikowi skonfigurowanie zaawansowanych opcji uruchamiania dla funkcji BitLocker. Można też skonfigurować kolejne opcje ustawień dla komputerów z modułem TPM i bez niego.
+Jeśli to ustawienie zasad zostanie włączone, Kreator wyświetli stronę umożliwiającą użytkownikowi skonfigurowanie zaawansowanych opcji uruchamiania dla funkcji BitLocker. Można też skonfigurować kolejne opcje ustawień dla komputerów z modułem TPM i bez niego.
 
-Jeśli wyłączysz to ustawienie zasad albo go nie skonfigurujesz, w Kreatorze instalacji funkcji BitLocker zostaną wyświetlone podstawowe kroki umożliwiające użytkownikom włączenie funkcji BitLocker na komputerach z modułem TPM. W tym podstawowym kreatorze nie można skonfigurować dodatkowego klucza ani kodu PIN uruchomienia.
+Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, w Kreatorze instalacji funkcji BitLocker zostaną wyświetlone podstawowe kroki umożliwiające użytkownikom włączenie funkcji BitLocker na komputerach z modułem TPM. W tym podstawowym kreatorze nie można skonfigurować dodatkowego klucza ani numeru PIN uruchomienia.
+
 </string>
 
       <string id="ConfigureStartupUsage_Name">Wymagaj dodatkowego uwierzytelniania przy uruchamianiu (systemy Windows Server 2008 i Windows Vista)</string>
@@ -375,11 +376,14 @@ Ustawienie sterujące debugowaniem rozruchu (0x16000010) jest zawsze weryfikowan
 
 
       <string id="MinimumPINLength_Name">Konfiguruj minimalną długość numeru PIN uruchomienia</string>
-      <string id="MinimumPINLength_Help">To ustawienie zasad umożliwia skonfigurowanie minimalnej długości kodu PIN uruchomienia modułu TPM. Jest ono stosowane po włączeniu funkcji BitLocker. Minimalna długość kodu PIN uruchomienia to 6 cyfr, a maksymalna to 20 cyfr.
+      <string id="MinimumPINLength_Help">
+          To ustawienie zasad umożliwia skonfigurowanie minimalnej długości kodu PIN uruchomienia modułu TPM. Jest ono stosowane po włączeniu funkcji BitLocker. Minimalna długość kodu PIN uruchomienia to 4 cyfry, a maksymalna to 20 cyfr.
 
-Jeśli włączysz to ustawienie zasad, będzie można wymagać użycia minimalnej liczby cyfr podczas ustawiania kodu PIN uruchomienia.
+          Jeśli włączysz to ustawienie zasad, będzie można wymagać użycia minimalnej liczby cyfr podczas ustawiania kodu PIN uruchomienia.
 
-Jeśli wyłączysz to ustawienie zasad albo go nie skonfigurujesz, użytkownicy będą mogli skonfigurować kod PIN uruchomienia o dowolnej długości z zakresu od 6 do 20 cyfr.
+          Jeśli wyłączysz to ustawienie zasad albo go nie skonfigurujesz, użytkownicy będą mogli skonfigurować kod PIN uruchomienia o dowolnej długości z zakresu od 6 do 20 cyfr.
+
+          UWAGA: Jeśli minimalna długość kodu PIN będzie mniejsza niż 6 cyfr, w przypadku zmiany kodu PIN system Windows podejmie próbę zaktualizowania okresu blokady modułu TPM 2.0, tak aby był dłuższy niż domyślny. W przypadku sukcesu, jeśli moduł TPM zostanie zresetowany, system Windows zresetuje tylko okres blokady modułu TPM do wartości domyślnej.
 
       </string>
 

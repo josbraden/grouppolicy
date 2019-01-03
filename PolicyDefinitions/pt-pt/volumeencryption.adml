@@ -28,13 +28,14 @@ Nota: poderá ocorrer uma inicialização do TPM (Trusted Platform Module) duran
 
 Nota: esta política só é aplicável a computadores com o Windows Server 2008 ou Windows Vista.
 
-Num computador com um TPM (Trusted Platform Module) compatível, é possível utilizar dois métodos de autenticação no arranque para fornecer proteção adicional para dados encriptados. Quando é iniciado, o computador pode pedir aos utilizadores que insiram uma pen USB com uma chave de arranque. Também pode pedir aos utilizadores que introduzam um número de identificação pessoal (PIN) de arranque com 6 a 20 dígitos.
+Num computador com um TPM (Trusted Platform Module) compatível, é possível utilizar dois tipos de autenticação no arranque para fornecer proteção adicional para dados encriptados. Quando é iniciado, o computador pode pedir aos utilizadores que insiram uma pen USB com uma chave de arranque. Também pode pedir aos utilizadores que introduzam um número de identificação pessoal (PIN) de arranque com 4 a 20 dígitos.
 
 Uma pen USB que contenha uma chave de arranque é necessária em computadores sem um TPM compatível. Sem um TPM, os dados encriptados pelo BitLocker são protegidos apenas pelo material de chave nesta pen USB.
 
 Se ativar esta definição de política, o assistente apresentará a página que permite ao utilizador configurar opões de arranque avançadas para o BitLocker. As opções de definição podem ser alvo de configuração adicional para computadores com e sem um TPM.
 
 Se desativar ou não configurar esta definição de política, o assistente de configuração do BitLocker apresentará passos básicos que permitem aos utilizadores ativar o BitLocker em computadores com um TPM. Neste assistente básico, não é possível configurar uma chave ou um PIN de arranque adicional.
+
 </string>
 
       <string id="ConfigureStartupUsage_Name">Exigir autenticação adicional no arranque (Windows Server 2008 e Windows Vista)</string>
@@ -375,11 +376,14 @@ A definição que controla a depuração do arranque (0x16000010) será sempre v
 
 
       <string id="MinimumPINLength_Name">Configurar o comprimento mínimo do PIN para o arranque</string>
-      <string id="MinimumPINLength_Help">Esta definição de política permite-lhe configurar um comprimento mínimo para um PIN de arranque do TPM (Trusted Platform Module). Esta definição de política é aplicada quando o BitLocker é ativado. O PIN de arranque tem de ter um comprimento mínimo de 6 dígitos e pode ter um comprimento máximo de 20 dígitos.
+      <string id="MinimumPINLength_Help">
+          Esta definição de política permite-lhe configurar um comprimento mínimo para um PIN de arranque do TPM (Trusted Platform Module). Esta definição de política é aplicada quando o BitLocker é ativado. O PIN de arranque tem de ter um comprimento mínimo de 4 dígitos e pode ter um comprimento máximo de 20 dígitos.
 
-Se ativar esta definição de política, poderá exigir que seja utilizado um número mínimo de dígitos aquando da definição do PIN de arranque.
+          Se ativar esta definição de política, poderá exigir que seja utilizado um número mínimo de dígitos aquando da definição do PIN de arranque.
 
-Se desativar ou não configurar esta definição de política, os utilizadores poderão configurar um PIN de arranque com qualquer comprimento entre 6 e 20 dígitos.
+          Se desativar ou não configurar esta definição de política, os utilizadores poderão configurar um PIN de arranque com qualquer comprimento entre 6 e 20 dígitos.
+
+          NOTA: Se o comprimento mínimo do PIN for definido para menos de 6 dígitos, o Windows tentará atualizar o período de bloqueio do TPM 2.0 de modo a que seja superior à predefinição quando um PIN for alterado. Se for efetuado com êxito, o Windows apenas volta a repor a predefinição do período de bloqueio do TPM se o TPM for reposto.
 
       </string>
 

@@ -94,6 +94,15 @@ Als u deze beleidsinstelling uitschakelt, is het gebruik van biometrische elemen
 
 OPMERKING: als u deze beleidsinstelling uitschakelt, kunnen er voor geen enkel accounttype biometrische elementen worden gebruikt op het apparaat.
         </string>
+        <string id="MSPassport_EnablePinRecovery">Gebruik Herstel pincode</string>
+        <string id="MSPassport_EnablePinRecoveryExplain">Met Herstel pincode kan een gebruiker een vergeten pincode wijzigen met de pincodeherstelservice van Windows Hello voor Bedrijven, zonder de bijbehorende aanmeldingsgegevens of certificaten te verliezen, inclusief sleutels die mogelijk zijn gekoppeld met de persoonlijke accounts van de gebruiker op het apparaat. Hiervoor versleutelt de Azure-gebaseerde pincodeherstelservice een herstelgeheim, dat wordt opgeslagen op het apparaat. Hiervoor zijn zowel de pincodeherstelservice als het te ontsleutelen apparaat nodig. Voor pincodeherstel moet de gebruiker Multi-Factor Authentication bij Azure Active Directory uitvoeren.
+
+Als u deze beleidsinstelling inschakelt, gebruikt Windows Hello voor Bedrijven de pincodeherstelservice.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, maakt Windows geen geheim voor pincodeherstel en slaat het ook geen geheim op. Als de gebruiker zijn pincode vergeet, moet die zijn bestaande pincode verwijderen en een nieuwe maken. Vervolgens moet hij zich opnieuw registreren bij de services waarvoor die met de oude pincode toegang had.
+
+OPMERKING: dit beleid geldt alleen voor apparaten die zijn geregistreerd bij Azure Active Directory.
+        </string>
         <string id="MSPassport_UseRemote">Telefonische aanmelding gebruiken</string>
         <string id="MSPassport_UseRemoteExplain">Gebruik deze beleidsinstelling om het gebruik van telefonische aanmelding te configureren. Met telefonische aanmelding kan een telefoon worden gebruikt als secundair apparaat voor bureaubladverificatie. Voor telefonische aanmelding is vereist dat zowel de pc als de telefoon is geregistreerd bij dezelfde Azure AD-tenant. Daarnaast moet de telefoon zijn geregistreerd bij Windows Hello voor Bedrijven.
 
@@ -109,6 +118,49 @@ Als u deze beleidsinstelling inschakelt, wordt er voor Windows Hello voor Bedrij
 Als u deze beleidsinstelling uitschakelt of niet configureert, wordt er voor Windows Hello voor Bedrijven een sleutel geregistreerd die wordt gebruikt voor on-premises authenticatie.
 
 OPMERKING: als u deze beleidsinstelling uitschakelt of niet configureert, en de beleidsinstelling 'Windows Hello voor Bedrijven gebruiken' inschakelt, moet er in de omgeving een of meer Windows Server 2016-domeincontrollers zijn om te voorkomen dat de Windows Hello voor Bedrijven-authenticatie mislukt.
+        </string>
+        <!-- Explain text for device unlock policy -->
+        <string id="MSPassport_UseDeviceUnlock">Apparaatontgrendelingsfactoren configureren</string>
+        <string id="MSPassport_UseDeviceUnlock_Explain">Configureer een door komma's gescheiden lijst met referentieprovider-GUID's, zoals provider-GUID's voor gezichts- of vingerafdrukherkenning, die als eerste en tweede ontgrendelingsfactor moeten worden gebruikt. Als de vertrouwde signaalprovider is opgegeven als een van de ontgrendelingsfactoren, moet u eveneens een door komma's gescheiden lijst met signaalregels in XML-vorm configureren voor elk signaaltype dat moet worden geverifieerd.
+
+Als u deze beleidsinstelling inschakelt, moet de gebruiker één factor uit elke lijst gebruiken om te ontgrendelen.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, kunnen gebruikers de bestaande ontgrendelingsopties blijven gebruiken voor het ontgrendelen.
+
+Zie voor meer informatie: https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for dynamic lock policy -->
+        <string id="MSPassport_UseDynamicLock">Dynamische vergrendelingsfactoren configureren</string>
+        <string id="MSPassport_UseDynamicLock_Explain">Configureer een door komma's gescheiden lijst met signaalregels in XML-vorm voor elk signaaltype.
+
+Als u deze beleidsinstelling inschakelt, worden deze signaalregels geëvalueerd om de afwezigheid van een gebruiker te detecteren en het apparaat automatisch te vergrendelen.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, kunnen gebruikers de bestaande vergrendelingsopties blijven gebruiken.
+
+Zie voor meer informatie: https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for smart card emulation policy -->
+        <string id="MSPassport_DisableSmartCardNode">Smartcardemulatie uitschakelen</string>
+        <string id="MSPassport_DisableSmartCardNodeExplain">Windows Hello voor Bedrijven biedt automatisch smartcardemulatie voor compatibiliteit met smartcard-toepassingen.
+
+Als u deze beleidsinstelling inschakelt, zijn de referenties voor Windows Hello voor Bedrijven niet compatibel met smartcard-toepassingen.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, zijn de referenties voor Windows Hello voor Bedrijven wel compatibel met smartcard-toepassingen.
+
+OPMERKING: Dit beleid heeft betrekking op de referenties van Windows Hello voor Bedrijven op het moment van maken. Referenties worden gemaakt voordat de toepassing van dit bepleid doorgaat met het aanbieden van smartcardemulatie. Als u bestaande referenties wilt wijzigen, schakelt u deze beleidsinstelling in en selecteert u 'Ik ben mijn pincode vergeten' bij Instellingen.
+        </string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNode">Inventarisatie van geëmuleerde smartcard voor alle gebruikers toestaan</string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNodeExplain">Windows voorkomt dat gebruikers op dezelfde computer referenties van Windows Hello voor Bedrijven kunnen inventariseren voor andere gebruikers.
+
+Als u deze beleidsinstelling inschakelt, mogen alle gebruikers van de computer alle referenties voor Windows Hello voor Bedrijven inventariseren, maar moet elke gebruiker wel zijn eigen verificatiefactoren verstrekken.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, mag de inventarisering van ingerichte referenties voor Windows Hello voor Bedrijven niet worden gebruikt voor andere gebruikers op hetzelfde apparaat.
+
+Deze beleidsinstelling is bedoeld voor een individuele gebruiker die met en zonder rechten is geregistreerd op één apparaat. De gebruiker is de eigenaar van beide referenties, waardoor hij of zij zich met referenties zonder rechten kan aanmelden, maar toch taken van een hoger niveau kan uitvoeren zonder zich te hoeven afmelden.
+
+Deze beleidsinstelling is niet compatibel met referenties voor Windows Hello voor Bedrijven wanneer 'Smartcardemulatie uitschakelen' is ingeschakeld.
+
+Als u deze instelling op een computer toepast, moet Windows opnieuw worden opgestart.
         </string>
     </stringTable>
     <presentationTable>
@@ -136,11 +188,30 @@ OPMERKING: als u deze beleidsinstelling uitschakelt of niet configureert, en de 
       <presentation id="MSPassport_PINExpirationControl">
         <decimalTextBox refId="MSPassport_PINExpirationDataType" spin="true" spinStep="1" defaultvalue="0">Verloopdatum van pincode</decimalTextBox>
       </presentation>
-	  <presentation id="MSPassport_ExcludeSecurityDevicesControl">
-		<text>De volgende beveiligingsapparaten niet gebruiken:</text>
-		<checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
-	  </presentation>
-
+      <presentation id="MSPassport_ExcludeSecurityDevicesControl">
+        <text>De volgende beveiligingsapparaten niet gebruiken:</text>
+        <checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
+      </presentation>
+      <presentation id="MSPassport_UseDeviceUnlock_Control">
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupA">
+            <label>Eerste ontgrendelingsfactor referentieproviders</label>
+            <defaultValue>{D6886603-9D2F-4EB2-B667-1971041FA96B},{8AF662BF-65A0-4D0A-A540-A338A999D36F},{BEC09223-B018-416D-A0AC-523971B639F5}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupB">
+            <label>Tweede ontgrendelingsfactor referentieproviders</label>
+            <defaultValue>{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD},{D6886603-9D2F-4EB2-B667-1971041FA96B}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_Plugins">
+            <label>Signaalregels voor apparaat ontgrendelen</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Authentication" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
+      <presentation id="MSPassport_UseDynamicLock_Control">
+        <textBox refId="MSPassport_UseDynamicLock_Plugins">
+            <label>Signaalregels voor dynamisch vergrendelen</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Dynamic Lock" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
     </presentationTable>
   </resources>
 </policyDefinitionResources>

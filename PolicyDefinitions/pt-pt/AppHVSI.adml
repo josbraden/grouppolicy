@@ -2,67 +2,115 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
   <displayName>Windows Defender Application Guard</displayName>
-  <description>Configuração do Windows Defender Application Guard</description>
+  <description>Ligar o Windows Defender Application Guard em Modo Empresarial</description>
   <resources>
     <stringTable>
         <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
-        <string id="AppHVSI_AllowAppHVSI_DisplayName">Ligar/Desligar o Windows Defender Application Guard (WDAG)</string>
-        <string id="AppHVSI_AllowAppHVSI_Explain">Esta política ativa o isolamento de aplicações utilizando o Windows Defender Application Guard.
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Ligar o Windows Defender Application Guard em Modo Empresarial</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Esta definição de política ativa o isolamento de aplicações através do Windows Defender Application Guard (Application Guard).
 
-O Windows Defender Application Guard utiliza o Windows Hypervisor para iniciar aplicações num ambiente virtualizado. Quando as aplicações são configuradas para utilizar a virtualização com base no isolamento de segurança, nem o comportamento do utilizador não fidedigno ao utilizar estas aplicações, nem as vulnerabilidades nessas aplicações podem comprometer o kernel e outras aplicações em execução fora do ambiente virtualizado.
-Antes de ativar esta política, tem de definir listas de sites empresariais fidedignos e estas podem ser configuradas através da utilização da política de isolamento de Rede (inserir ligação à política de rede específica). Garantem que apenas são abertos os sites não empresariais no ambiente virtualizado.
-Nota: Para bloquear um sistema, certifique-se de que as funcionalidades de segurança do Device Guard e de isolamento de aplicações estão ambas ativadas. Consulte a documentação para conhecer um conjunto completo de requisitos para bloquear um sistema de forma segura.
+O Application Guard utiliza o Hipervisor do Windows para criar um ambiente virtualizado para aplicações que estão configuradas para utilizar isolamento de segurança com base em virtualização. Durante o isolamento, as interações inadequadas dos utilizadores e as vulnerabilidades das aplicações não podem comprometer o kernel ou quaisquer outras aplicações em execução fora do ambiente virtualizado.
+
+Caso ative esta definição, o Application Guard é ativado para a sua organização.
         </string>
         <string id="AppHVSI_ClipboardSettings_DisplayName">Configurar definições da área de transferência do Windows Defender Application Guard</string>
-        <string id="AppHVSI_ClipboardSettings_Explain">Especifica o comportamento da área de transferência ao utilizar o isolamento de aplicações com o Windows Defender Application Guard.
+        <string id="AppHVSI_ClipboardSettings_Explain">Esta definição de política permite-lhe escolher o comportamento da área de transferência enquanto estiver a utilizar o Windows Defender Application Guard (Application Guard).
 
-Os administradores podem:
-Desativar completamente a funcionalidade de área de transferência quando a Segurança de Virtualização está ativada.
-Ativar a cópia de alguns conteúdos de uma sessão isolada para o computador anfitrião.
-Ativar a cópia de alguns conteúdos do computador anfitrião para a sessão isolada.
+Caso ative esta definição, tem de escolher a partir dos seguintes comportamentos:
 
-Nota: Recomendamos que os administradores não ativem a cópia de conteúdo do computador anfitrião para a sessão isolada. Isto faria com que uma sessão isolada comprometida pudesse aceder à área de transferência do computador anfitrião e ao respetivo conteúdo.
+     - Desativar completamente a funcionalidade da área de transferência entre o sistema anfitrião e o Application Guard
+
+     - Ativar a área de transferência para copiar conteúdos do Application Guard para o sistema anfitrião
+
+     - Ativar a área de transferência para copiar conteúdos do sistema anfitrião para o Application Guard.
+
+NOTA
+É recomendado que não ative a cópia do sistema anfitrião para o Application Guard. Caso ative esta funcionalidade, uma sessão Application Guard potencialmente comprometida terá acesso à área de transferência do dispositivo anfitrião e ao respetivo conteúdo.
+
+Caso escolha ativar a opção para copiar, tem também de escolher o tipo de conteúdo que pode ser copiado, utilizando as opções de conteúdo:
+
+     - 1. Permite copiar texto.
+
+     - 2. Permite copiar imagens.
+
+     - 3. Permite copiar texto e imagens.
+
+Caso desative ou não configure esta definição, todas as funcionalidades da área de transferência são desativadas no Application Guard.
         </string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Bloquear as operações (padrão) da área de transferência</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Ativar a operação da área de transferência de uma sessão isolada para um anfitrião</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Ativar a operação da área de transferência de um anfitrião para a sessão isolada</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Ativar a operação da área de transferência em ambas as direções</string>
-        <string id="AppHVSI_PrintingSettings_DisplayName">Configurar Definições de Impressão do Windows Defender Application Guard</string>
-        <string id="AppHVSI_PrintingSettings_Explain">Se a opção para ativar a impressão para XPS estiver selecionada, os utilizadores podem imprimir documentos a partir do contentor para o formato XPS.
-Se a opção para ativar a impressão para PDF estiver selecionada, os utilizadores podem imprimir documentos a partir do contentor para o formato PDF.
-Se a opção para ativar a impressão para impressoras locais estiver selecionada, os utilizadores podem imprimir documentos a partir do contentor para uma impressora ligada localmente.
-Se a opção para ativar a impressão em impressoras de rede existentes estiver selecionada, os utilizadores podem imprimir documentos a partir do contentor isolado utilizando as impressoras de rede existentes. Os utilizadores não podem procurar novas impressoras de rede.
-        </string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Bloquear sites Empresariais para carregar conteúdos não Empresariais no IE e Edge</string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Se estiver ativada, esta opção bloqueia qualquer tráfego de rede do Internet Explorer e Microsoft Edge para sites não empresariais em que não seja possível iniciar num contentor do Windows Defender Application Guard.
+        <string id="AppHVSI_PrintingSettings_DisplayName">Configurar definições de impressão do Windows Defender Application Guard</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Esta definição de política permite-lhe escolher o comportamento da funcionalidade impressão enquanto estiver a utilizar o Windows Defender Application Guard (Application Guard).
 
-Se estiver desativada, esta opção processa no computador anfitrião qualquer tráfego de rede para sites não empresariais em que não seja possível iniciar num contentor do Windows Defender Application Guard.
+Caso ative esta definição, tem de escolher um ou vários dos seguintes comportamentos:
+
+     - Desativar todas as funcionalidades de impressão no Application Guard.
+
+     - Ativar a impressão para impressoras de rede existentes.
+
+     - Ativar a impressão para impressoras locais.
+
+     - Ativar a impressão para PDF; permite às pessoas imprimir como PDF e guardar o ficheiro resultante no sistema anfitrião.
+
+     - Ativar a impressão para XPS; permite às pessoas imprimir como XPS e guardar o ficheiro resultante no sistema anfitrião.
+
+Caso desative ou não configure esta definição, todas as funcionalidades de impressão são desativadas no Application Guard.
         </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Impedir que sites empresariais carreguem conteúdos não empresariais no Microsoft Edge e Internet Explorer</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Esta definição de política permite-lhe decidir se os sites podem carregar conteúdos não empresariais no Microsoft Edge e Internet Explorer.
+
+Caso ative esta definição, os conteúdos não empresariais incorporados em sites empresariais são impedidos de abrir no Internet Explorer ou Microsoft Edge fora do Windows Defender Application Guard.
+
+Caso desative ou não configure esta definição, os sites não empresariais podem abrir fora do contentor do Windows Defender Application Guard, diretamente no Internet Explorer e Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowPersistence_DisplayName">Permitir persistência de dados para o Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowPersistence_Explain">Esta definição de política permite-lhe decidir se os dados devem persistir em diferentes sessões no Windows Defender Application Guard (Application Guard).
+
+        Caso ative esta definição, o Application Guard guarda ficheiros transferidos pelo utilizador e outros itens (tais como cookies, Favoritos, entre outros) para utilização em futuras sessões Application Guard.
+
+             NOTA
+             Caso ative esta definição, pode ainda eliminar os dados de um utilizador de um dispositivo específico utilizando o comando PowerShell Reset-ApplicationGuard. A execução deste comando elimina todos os dados do colaborador, independentemente da configuração, e pode resultar na perda de dados para o colaborador.
+
+        Caso desative ou não configure esta definição, o Application Guard elimina todos os dados do utilizador no contentor do Application Guard.
+        </string>
+        <string id="AppHVSI_AuditApplicationGuard_DisplayName">Permitir eventos de auditoria no Windows Defender Application Guard</string>
+        <string id="AppHVSI_AuditApplicationGuard_Explain">Esta definição de política permite-lhe decidir se os eventos de auditoria podem ser recolhidos a partir do Windows Defender Application Guard (Application Guard).
+
+        Caso ative esta definição, o Application Guard herda as respetivas políticas de auditoria do Microsoft Edge e começa a auditar eventos dos sistemas especificamente para o Application Guard.
+
+             NOTA
+             Os registos recolhidos estão disponíveis para análise no Microsoft Edge, fora do Application Guard.
+
+        Caso desative ou não configure esta definição, os registos de eventos de auditoria não são recolhidos para o Application Guard.</string>
     </stringTable>
     <presentationTable>
       <presentation id="AppHVSIClipboardSettings_Presentation">
-        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Selecione uma Opção:</dropdownList>
-        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Especifica o que é permitido para o comportamento da área de transferência quando as operações desta área estão ativadas (decimal):
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Definição do comportamento da área de transferência.</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Opções do conteúdo da área de transferência.
         </decimalTextBox>
-        <text>Este valor é uma máscara de bits que controla os tipos de ficheiro que podem ser utilizados para operações da área de transferência:
-
-b0001 - Ficheiro de TEXTO
-b0010 - Ficheiro de Mapa de bits
-b0011 - São suportados ficheiros de TEXTO e de Mapa de bits
-        </text>
       </presentation>
       <presentation id="AppHVSIPrintingSettings_Presentation">
-        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Especifica as impressoras que são ativadas (decimal)
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Tipos de impressões permitidas no Application Guard.
         </decimalTextBox>
-        <text>Este valor é uma máscara de bits que controla que impressoras são ativadas numa sessão isolada    
-b0000 - A impressão está desativada
-b0001 - Ativar a Impressão XPS (Predefinição)
-b0010 - Ativar a Impressão para PDF
-b0100 - Ativar a Impressão para Impressoras Locais
-b1000 - Ativar a Impressão para impressoras de Rede existentes
-
-Por exemplo:
-Se as impressoras XPS e Local estiverem ativadas, o valor passará a ser b0001 | b0100, ou seja, b0101 (decimal 5)
+        <text>Para determinar quais os tipos de impressão a permitir, tem de escolher:
+     - 0. Desativa todas as funcionalidades de impressão.
+     - 1. Ativa apenas a impressão para XPS.
+     - 2. Ativa apenas a impressão para PDF.
+     - 3. Ativa a impressão para PDF e XPS.
+     - 4. Ativa apenas a impressão local.
+     - 5. Ativa a impressão local e para XPS.
+     - 6. Ativa a impressão local e para PDF.
+     - 7. Ativa a impressão local, para PDF e XPS.
+     - 8. Ativa apenas a impressão de rede.
+     - 9. Ativa a impressão de rede e para XPS.
+     - 10. Ativa a impressão de rede e para PDF.
+     - 11. Ativa a impressão de rede, para PDF e XPS.
+     - 12. Ativa a impressão de rede e local.
+     - 13. Ativa a impressão de rede, local e para XPS.
+     - 14. Ativa a impressão de rede, local e para PDF.
+     - 15. Ativa todos os tipos de impressão.
         </text>
       </presentation>
     </presentationTable>

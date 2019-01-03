@@ -2,67 +2,115 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
   <displayName>Windows Defender Application Guard</displayName>
-  <description>Konfiguracja funkcji Windows Defender Application Guard</description>
+  <description>Włącz funkcję Windows Defender Application Guard w trybie przedsiębiorstwa</description>
   <resources>
     <stringTable>
         <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
-        <string id="AppHVSI_AllowAppHVSI_DisplayName">Włącz/wyłącz funkcję Windows Defender Application Guard (WDAG)</string>
-        <string id="AppHVSI_AllowAppHVSI_Explain">Ta zasada włącza izolację aplikacji przy użyciu funkcji Windows Defender Application Guard.
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Włącz funkcję Windows Defender Application Guard w trybie przedsiębiorstwa</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">To ustawienie zasad umożliwia izolowanie aplikacji za pomocą funkcji Windows Defender Application Guard (Application Guard).
 
-Funkcja Windows Defender Application Guard uruchamia aplikacje w środowisku zwirtualizowanym, korzystając z funkcji hypervisor systemu Windows. Gdy aplikacje są skonfigurowane do używania izolacji zabezpieczeń opartej na wirtualizacji, działania niezaufanych użytkowników podczas używania tych aplikacji oraz luki w zabezpieczeniach tych aplikacji nie mogą złamać zabezpieczeń jądra ani innych aplikacji uruchomionych poza tym środowiskiem zwirtualizowanym.
-Przed włączeniem tej zasady musisz zdefiniować listy zaufanych witryn przedsiębiorstwa. Te listy można skonfigurować, używając zasad izolacji sieci (wstaw link do określonej zasady dotyczącej sieci). Umożliwi to zagwarantowanie, że w środowisku zwirtualizowanym będą otwierane tylko witryny spoza przedsiębiorstwa.
-Uwaga: Aby zablokować system, włącz dla aplikacji zarówno funkcje zabezpieczeń funkcji Device Guard, jak i izolację aplikacji. Pełny zestaw wymagań, których spełnienie jest konieczne do bezpiecznego zablokowania systemu, można znaleźć w dokumentacji.
+Funkcja Application Guard używa funkcji hypervisor systemu Windows do tworzenia zwirtualizowanego środowiska dla aplikacji, które są skonfigurowane do używania izolacji zabezpieczeń opartej na wirtualizacji. Gdy aplikacja jest izolowana, niepoprawne interakcje z użytkownikami oraz luki w zabezpieczeniach aplikacji nie mogą spowodować naruszenia zabezpieczeń jądra ani innych aplikacji, które działają poza zwirtualizowanym środowiskiem.
+
+Jeśli włączysz to ustawienie, funkcja Application Guard zostanie włączona w Twojej organizacji.
         </string>
         <string id="AppHVSI_ClipboardSettings_DisplayName">Konfiguruj ustawienia schowka funkcji Windows Defender Application Guard</string>
-        <string id="AppHVSI_ClipboardSettings_Explain">Określa zachowanie schowka, gdy jest używana izolacja aplikacji oraz funkcja Windows Defender Application Guard.
+        <string id="AppHVSI_ClipboardSettings_Explain">To ustawienie zasad umożliwia określenie, jak będzie zachowywał się schowek, gdy będzie używany w funkcji Windows Defender Application Guard (Application Guard).
 
-Administratorzy mogą:
-Całkowicie wyłączyć funkcje schowka, gdy są włączone zabezpieczenia wirtualizacji.
-Włączyć kopiowanie pewnej zawartości z sesji izolowanej na komputer-host.
-Włączyć kopiowanie pewnej zawartości z komputera-hosta do sesji izolowanej.
+Po włączeniu tego ustawienia musisz dokonać wyboru spośród następujących zachowań:
 
-Uwaga: Zalecamy, aby administratorzy nie włączali kopiowania zawartości z komputera-hosta do sesji izolowanej. Mogłoby to spowodować, że izolowana sesja, której zabezpieczenia zostały złamane, mogłaby uzyskać dostęp do schowka komputera-hosta i przechowywanej na nim zawartości.
+     - Całkowicie wyłącz funkcjonalność schowka między hostem i funkcją Application Guard.
+
+     - Włącz możliwość korzystania ze schowka w celu kopiowania zawartości z funkcji Application Guard na hosta.
+
+     - Włącz możliwość korzystania ze schowka w celu kopiowania zawartości z hosta do funkcji Application Guard.
+
+UWAGA
+Zalecamy, aby nie włączać możliwości kopiowania z hosta do funkcji Application Guard. Jeśli ją włączysz, sesja funkcji Application Guard, której zabezpieczenia mogły zostać naruszone, będzie mieć dostęp do schowka urządzenia i jego zawartości.
+
+Jeśli wybierzesz opcję włączenia kopiowania, trzeba będzie także wybrać typ zawartości, którą będzie można kopiować, używając opcji zawartości:
+
+     - 1. Zezwala na kopiowanie tekstu.
+
+     - 2. Zezwala na kopiowanie obrazów.
+
+     - 3. Zezwala na kopiowanie tekstu i obrazów.
+
+Jeśli wyłączysz to ustawienie albo go nie skonfigurujesz, wszystkie funkcje schowka będą wyłączone w funkcji Application Guard.
         </string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Blokuj operacje z użyciem schowka (domyślnie)</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Włącz operacje z użyciem schowka z sesji izolowanej do hosta</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Włącz operacje z użyciem schowka z hosta do sesji izolowanej</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Włącz operacje z użyciem schowka w obu kierunkach</string>
         <string id="AppHVSI_PrintingSettings_DisplayName">Konfiguruj ustawienia drukowania funkcji Windows Defender Application Guard</string>
-        <string id="AppHVSI_PrintingSettings_Explain">W przypadku wyboru opcji Włącz drukowanie do pliku XPS użytkownicy mogą drukować dokumenty z poziomu kontenera do pliku w formacie XPS.
-W przypadku wyboru opcji Włącz drukowanie do pliku PDF użytkownicy mogą drukować dokumenty z poziomu kontenera do pliku w formacie PDF.
-W przypadku wyboru opcji Włącz drukowanie na drukarkach lokalnych użytkownicy mogą drukować dokumenty z poziomu kontenera na drukarce podłączonej lokalnie.
-W przypadku wyboru opcji Włącz drukowanie na istniejących drukarkach sieciowych użytkownicy mogą używać istniejących drukarek sieciowych do drukowania dokumentów z poziomu izolowanego kontenera. Nie jest możliwe dodawanie nowych drukarek sieciowych.
-        </string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Blokuj witrynom internetowym przedsiębiorstwa możliwość ładowania zawartości spoza przedsiębiorstwa w przeglądarkach IE i Edge</string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Jeśli to ustawienie zostanie włączone, cały ruch sieciowy generowany przez przeglądarki Internet Explorer i Microsoft Edge skierowany do witryn spoza przedsiębiorstwa, których nie można uruchomić w kontenerze funkcji Windows Defender Application Guard, będzie blokowany.
+        <string id="AppHVSI_PrintingSettings_Explain">To ustawienie zasad umożliwia określenie, w jaki sposób funkcja drukowania zachowuje się, gdy jest używana w funkcji Windows Defender Application Guard (Application Guard).
 
-Jeśli to ustawienie zostanie wyłączone, ruch sieciowy skierowany do witryn spoza przedsiębiorstwa, których nie można uruchomić w kontenerze funkcji Windows Defender Application Guard, będzie renderowany na komputerze-hoście.
+W przypadku włączenia tego ustawienia konieczne jest wybranie co najmniej jednego z poniższych zachowań:
+
+     - Wyłącz wszystkie funkcje drukowania w funkcji Application Guard.
+
+     - Włącz drukowanie na istniejących drukarkach sieciowych.
+
+     - Włącz drukowanie na drukarkach lokalnych.
+
+     - Włącz drukowanie do plików PDF, co umożliwi użytkownikom drukowanie do plików PDF i zapisywanie wynikowych plików na hoście.
+
+     - Włącz drukowanie do plików XPS, co umożliwi użytkownikom drukowanie do plików XPS i zapisywanie wynikowych plików na hoście.
+
+Jeśli wyłączysz to ustawienie albo go nie skonfigurujesz, wszystkie funkcje drukowania będą wyłączone w funkcji Application Guard.
         </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Uniemożliwiaj witrynom internetowym przedsiębiorstwa ładowanie zawartości spoza przedsiębiorstwa w przeglądarkach Microsoft Edge i Internet Explorer</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">To ustawienie zasad umożliwia określenie, czy witryny internetowe mogą ładować zawartość spoza przedsiębiorstwa w przeglądarkach Microsoft Edge i Internet Explorer.
+
+Jeśli włączysz to ustawienie, zawartość spoza organizacji osadzona w witrynach organizacji przestanie być otwierana w przeglądarkach Internet Explorer i Microsoft Edge poza funkcją Windows Defender Application Guard.
+
+Jeśli wyłączysz to ustawienie albo go nie skonfigurujesz, witryny spoza przedsiębiorstwa będą mogły być otwierane poza kontenerem funkcji Windows Defender Application Guard, bezpośrednio w przeglądarkach Internet Explorer i Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowPersistence_DisplayName">Zezwalaj na utrwalanie danych dla funkcji Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowPersistence_Explain">To ustawienie zasad umożliwia określenie, czy dane mają być utrwalane, dzięki czemu będzie można używać ich w różnych sesjach w funkcji Windows Defender Application Guard (Application Guard).
+
+        Jeśli włączysz to ustawienie, funkcja Application Guard będzie zapisywać pliki pobrane przez użytkownika oraz inne elementy (pliki cookie, ulubione itp.) w celu użycia ich w przyszłych sesjach funkcji Application Guard.
+
+             UWAGA
+             Jeśli włączysz to ustawienie, nadal będzie można usuwać dowolne dane użytkownika za pomocą polecenia Reset-ApplicationGuard programu PowerShell. Uruchomienie tego polecenia spowoduje usunięcie wszystkich danych pracownika, niezależnie od konfiguracji, i może spowodować utratę danych pracownika.
+
+        Jeśli wyłączysz to ustawienie albo go nie skonfigurujesz, funkcja Application Guard będzie usuwać wszystkie dane użytkownika z kontenera funkcji Application Guard.
+        </string>
+        <string id="AppHVSI_AuditApplicationGuard_DisplayName">Zezwalaj na inspekcję zdarzeń w funkcji Windows Defender Application Guard</string>
+        <string id="AppHVSI_AuditApplicationGuard_Explain">To ustawienie zasad umożliwia określenie, czy można zbierać dane inspekcji zdarzeń z funkcji Windows Defender Application Guard (Application Guard).
+
+        Jeśli włączysz to ustawienie, funkcja Application Guard będzie dziedziczyć zasady inspekcji z przeglądarki Microsoft Edge i zacznie wykonywać inspekcję zdarzeń systemowych specjalnie dla funkcji Application Guard.
+
+             UWAGA
+             Zebrane dzienniki można przejrzeć w przeglądarce Microsoft Edge poza funkcją Application Guard.
+
+        Jeśli wyłączysz to ustawienie albo go nie skonfigurujesz, dzienniki zdarzeń inspekcji nie będą zbierane dla funkcji Application Guard.</string>
     </stringTable>
     <presentationTable>
       <presentation id="AppHVSIClipboardSettings_Presentation">
-        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Wybierz opcję:</dropdownList>
-        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Określa, co jest dozwolone w operacjach z użyciem schowka, gdy są one włączone (zapis dziesiętny):
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Ustawienie zachowania schowka.</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Opcje zawartości schowka.
         </decimalTextBox>
-        <text>Ta wartość jest maską bitów określającą, których typów plików można używać w operacjach z użyciem schowka:
-
-b0001 — plik tekstowy
-b0010 — plik mapy bitowej
-b0011 — obsługiwane są oba typy plików
-        </text>
       </presentation>
       <presentation id="AppHVSIPrintingSettings_Presentation">
-        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Określa, które drukarki są włączone (zapis dziesiętny)
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Dozwolone typy drukowania w funkcji Application Guard.
         </decimalTextBox>
-        <text>Ta wartość jest maską bitów określającą, które drukarki są włączone w sesji izolowanej. 
-b0000 — drukowanie jest wyłączone
-b0001 — włącz drukowanie do pliku XPS (domyślne)
-b0010 — włącz drukowanie do pliku PDF
-b0100 — włącz drukowanie na drukarkach lokalnych
-b1000 — włącz drukowanie na istniejących drukarkach sieciowych
-
-Na przykład:
-W przypadku włączenia opcji XPS i drukarek lokalnych wartością będzie b0001 | b0100, czyli b0101 (w zapisie dziesiętnym 5).
+        <text>Aby ustalić, jakie typy drukowania powinny być dozwolone, dokonaj wyboru spośród poniższych opcji:
+     - 0. Wyłącza wszystkie funkcje drukowania.
+     - 1. Włącza tylko drukowanie do plików XPS.
+     - 2. Włącza tylko drukowanie do plików PDF.
+     - 3. Włącza drukowanie do plików PDF i XPS.
+     - 4. Włącza tylko drukowanie lokalne.
+     - 5. Włącza drukowanie lokalne i do plików XPS.
+     - 6. Włącza drukowanie lokalne i do plików PDF.
+     - 7. Włącza drukowanie lokalne oraz do plików PDF i XPS.
+     - 8. Włącza tylko drukowanie sieciowe.
+     - 9. Włącza drukowanie sieciowe i do plików XPS.
+     - 10. Włącza drukowanie sieciowe i do plików PDF.
+     - 11. Włącza drukowanie sieciowe oraz do plików PDF i XPS.
+     - 12. Włącza drukowanie sieciowe i lokalne.
+     - 13. Włącza drukowanie sieciowe i lokalne oraz do plików XPS.
+     - 14. Włącza drukowanie sieciowe i lokalne oraz do plików PDF.
+     - 15. Włącza wszystkie opcje drukowania.
         </text>
       </presentation>
     </presentationTable>

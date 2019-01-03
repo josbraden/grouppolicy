@@ -26,15 +26,16 @@ Opmerking: initialisatie van Trusted Platform Module (TPM) kan plaatsvinden tijd
 
       <string id="ConfigureStartupUsage_Help">Met deze beleidsinstelling kunt u opgeven of in de wizard Setup van BitLocker-stationsversleuteling een extra verificatiemethode kan worden geconfigureerd die is vereist telkens als de computer wordt opgestart. Deze beleidsinstelling wordt toegepast wanneer u BitLocker inschakelt.
 
-Opmerking: deze beleidsinstelling is alleen van applicatie op computers met Windows Server 2008 of Windows Vista.
+Opmerking: deze beleidsinstelling is alleen van toepassing op computers met Windows Server 2008 of Windows Vista.
 
-Op een computer met een compatibele TPM (Trusted Platform Module) kunnen bij het opstarten twee verificatiemethoden worden gebruikt om extra beveiliging voor versleutelde gegevens te bieden. Wanneer de computer wordt opgestart, kan deze vereisen dat gebruikers een USB flash drive met een opstartsleutel plaatsen. Het kan ook vereisen dat gebruikers een persoonlijk identificatienummer (PIN) van 6 tot 20 cijfers invoeren.
+Op een computer met een compatibele TPM (Trusted Platform Module) kunnen bij het opstarten twee verificatiemethoden worden gebruikt om extra beveiliging voor versleutelde gegevens te bieden. Wanneer de computer wordt opgestart, kan deze vereisen dat gebruikers een USB flash drive met een opstartsleutel plaatsen. Het kan ook vereisen dat gebruikers een persoonlijk identificatienummer (PIN) van 4 tot 20 cijfers invoeren.
 
 Op computers zonder compatibele TPM (Trusted Platform Module) is een USB-flashstation met een opstartsleutel nodig. Zonder TPM worden door BitLocker versleutelde gegevens uitsluitend beveiligd door het sleutelmateriaal op dit USB-flashstation.
 
 Als u deze beleidsinstelling inschakelt, wordt de wizardpagina weergegeven waarmee de gebruiker geavanceerde opstartopties voor BitLocker kan configureren. U kunt ook andere opties voor computers met en zonder TPM-hardware configureren.
 
 Als u deze beleidsinstelling uitschakelt of niet configureert, zal de installatiewizard van BitLocker de fundamentele stappen weergeven die het mogelijk maken dat gebruikers BitLocker aanzetten op computers met een TPM. In deze eenvoudige wizard kan geen extra opstartsleutel of opstartpincode worden geconfigureerd.
+
 </string>
 
       <string id="ConfigureStartupUsage_Name">Extra authenticatie vereisen bij opstarten (Windows Server 2008 and Windows Vista)</string>
@@ -373,11 +374,14 @@ De instelling die debugging bij opstarten controleert (0x16000010) wordt altijd 
 
 
       <string id="MinimumPINLength_Name">Minimale lengte opstartpincode configureren</string>
-      <string id="MinimumPINLength_Help">Met deze beleidsinstelling kunt u een minimumlengte configureren voor een TPM-opstartpincode (Trusted Platform Module). Deze beleidsinstelling wordt toegepast wanneer u BitLocker inschakelt. De opstartpincode moet uit minimaal 6 cijfers en maximaal 20 cijfers bestaan.
+      <string id="MinimumPINLength_Help">
+          Met deze beleidsinstelling kunt u een minimumlengte configureren voor een TPM-opstartpincode (Trusted Platform Module). Deze beleidsinstelling wordt toegepast wanneer u BitLocker inschakelt. De opstartpincode moet uit minimaal 4 cijfers en maximaal 20 cijfers bestaan.
 
-Als u deze beleidsinstelling inschakelt, kunt u opgeven dat er een minimaal aantal cijfers moet worden gebruikt bij het instellen van de opstartpincode.
+          Als u deze beleidsinstelling inschakelt, kunt u opgeven dat er een minimaal aantal cijfers moet worden gebruikt bij het instellen van de opstartpincode.
 
-Als u deze beleidsinstelling uitschakelt of niet configureert, kunnen gebruikers een opstartpincode configureren met een lengte tussen 6 en 20 cijfers.
+          Als u deze beleidsinstelling uitschakelt of niet configureert, kunnen gebruikers een opstartpincode configureren met een lengte tussen 6 en 20 cijfers.
+
+          OPMERKING: als de minimumpincodelengte op minder dan 6 cijfers wordt ingesteld, wordt geprobeerd om de TPM 2.0-vergrendelingsperiode hoger in te stellen dan de standaardwaarde wanneer een pincode wordt gewijzigd. Als dit slaagt, wordt de TPM-vergrendelingsperiode teruggezet op de standaardwaarde als de TPM opnieuw wordt ingesteld.
 
       </string>
 

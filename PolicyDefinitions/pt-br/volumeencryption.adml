@@ -28,13 +28,13 @@ Observação: a inicialização do TPM (Trusted Platform Module) pode ocorrer du
 
 Observação: essa política só é aplicável aos computadores executando o Windows Server 2008 ou o Windows Vista.
 
-Em um computador com um TPM compatível, dois métodos de autenticação podem ser usados na inicialização para oferecer proteção adicional de dados criptografados. Quando o computador é iniciado, ele pode exigir que os usuários insiram um pen drive que contém uma chave de inicialização. Ele também pode exigir que os usuários insiram um PIN (número de identificação pessoal) de inicialização de 6 a 20 dígitos.
+Em um computador com um TPM compatível, dois métodos de autenticação podem ser usados na inicialização para oferecer proteção adicional de dados criptografados. Quando o computador é iniciado, ele pode exigir que os usuários insiram um pen drive que contém uma chave de inicialização. Ele também pode exigir que os usuários insiram um PIN (número de identificação pessoal) de inicialização de 4 a 20 dígitos.
 
-Um pen drive que contém uma chave de inicialização é necessária em computadores que não possuem um TPM compatível. Sem um TPM, os dados criptografados por BitLocker são protegidos apenas pelo material da chave contido no pen drive.
+Um pen drive que contém uma chave de inicialização é necessário em computadores que não possuem um TPM compatível. Sem um TPM, os dados criptografados por BitLocker são protegidos apenas pelo material da chave contido no pen drive.
 
-Se você habilitar essa configuração de política, o assistente exibirá a página para permitir que o usuário configure opções avançadas de inicialização do BitLocker. Você pode definir mais opções de configuração para computadores com e sem TPM.
+Se você habilitar essa configuração de política, o assistente mostrará a página para permitir que o usuário configure opções de inicialização avançada para o BitLocker. Você pode configurar mais opções para computadores com ou sem TPM.
 
-Se você desabilitar ou não definir essa configuração de política, o Assistente para Instalação do BitLocker exibirá etapas básicas que permitem ao usuário ativar o BitLocker em computadores com TPM. Nesse assistente básico, não é possível configurar chaves ou PINs de inicialização adicionais.
+Se você desabilitar ou não definir essa configuração de política, o assistente de configuração do BitLocker mostrará as etapas básicas que permitem que os usuários ativem o BitLocker em computadores com TPM. Nesse assistente básico, não será possível configurar uma chave ou um PIN de inicialização adicional.
 </string>
 
       <string id="ConfigureStartupUsage_Name">Exigir autenticação adicional na inicialização (Windows Server 2008 e Windows Vista)</string>
@@ -375,11 +375,14 @@ A configuração que controla a depuração de inicialização (0x16000010) semp
 
 
       <string id="MinimumPINLength_Name">Configurar tamanho mínimo do PIN para inicialização</string>
-      <string id="MinimumPINLength_Help">Essa configuração de política permite configurar um tamanho mínimo para um PIN de inicialização do TPM. Essa configuração de política é aplicada ao ativar o BitLocker. O PIN de inicialização deve ter um tamanho mínimo de 6 dígitos e pode ter um tamanho máximo de 20 dígitos.
+      <string id="MinimumPINLength_Help">
+          Essa configuração de política permite configurar um tamanho mínimo para um PIN de inicialização do TPM. Essa configuração de política é aplicada ao ativar o BitLocker. O PIN de inicialização deve ter um tamanho mínimo de 4 dígitos e pode ter um tamanho máximo de 20 dígitos.
 
-Se você habilitar essa configuração de política, poderá exigir um número mínimo de dígitos a serem usados ao configurar o PIN de inicialização.
+          Se você habilitar essa configuração de política, poderá exigir um número mínimo de dígitos a serem usados ao configurar o PIN de inicialização.
 
-Se você desabilitar ou não definir essa configuração de política, os usuários poderão configurar um PIN de inicialização com tamanho entre 6 e 20 dígitos.
+          Se você desabilitar ou não definir essa configuração de política, os usuários poderão configurar um PIN de inicialização com tamanho entre 6 e 20 dígitos.
+
+          OBSERVAÇÃO: se o tamanho mínimo do PIN for definido abaixo de 6 dígitos, o Windows tentará atualizar o período de bloqueio do TPM 2.0 acima do padrão quando um PIN for alterado. Se bem-sucedido, o Windows redefinirá o período de bloqueio do TPM para o padrão somente se o TPM for redefinido.
 
       </string>
 

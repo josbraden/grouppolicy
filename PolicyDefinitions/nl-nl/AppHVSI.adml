@@ -2,67 +2,115 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
   <displayName>Windows Defender Application Guard</displayName>
-  <description>Configuratie voor Windows Defender Application Guard</description>
+  <description>Windows Defender Application Guard in Enterprise-modus inschakelen</description>
   <resources>
     <stringTable>
         <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
-        <string id="AppHVSI_AllowAppHVSI_DisplayName">Windows Defender Application Guard (WDAG) in-/uitschakelen</string>
-        <string id="AppHVSI_AllowAppHVSI_Explain">Met dit beleid wordt applicatie-isolatie ingeschakeld met behulp van Windows Defender Application Guard.
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Windows Defender Application Guard in Enterprise-modus inschakelen</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Met deze beleidsinstelling kunnen toepassingen worden geïsoleerd via Windows Defender Application Guard (Application Guard).
 
-In Windows Defender Application Guard wordt de Windows Hypervisor gebruikt om applicaties te starten in een gevirtualiseerde omgeving. Wanneer applicaties zijn geconfigureerd voor het gebruik van beveiligingsisolatie op basis van virtualisatie, kan niet-vertrouwd gedrag van gebruikers tijdens het gebruik van deze applicaties, en kwetsbaarheden binnen die applicaties, geen gevaar opleveren voor de kernel en andere applicaties die buiten de gevirtualiseerde omgeving worden uitgevoerd.
-Voordat u dit beleid inschakelt, moet u lijsten maken met door de onderneming vertrouwde sites. Deze lijsten kunt u instellen met behulp van het beleid voor netwerkisolatie (koppeling invoegen naar het specifieke netwerkbeleid). Het beleid zorgt ervoor dat alleen niet-ondernemingssites kunnen worden geopend binnen de gevirtualiseerde omgeving.
-Opmerking: als u een systeem vergrendelt, moet u ervoor zorgen dat beveiligingsfuncties van Device Guard en applicatie-isolatie voor applicaties beide zijn ingeschakeld. Zie de documentatie voor een volledige lijst met vereisten voor het veilig vergrendelen van een systeem.
+Application Guard gebruikt Windows Hypervisor om een gevirtualiseerde omgeving te maken voor apps die zijn geconfigureerd voor gebruik van op virtualisatie gebaseerde isolatie voor beveiliging. Wanneer apps zijn geïsoleerd, kunnen ze niet worden misbruikt om de kernel of andere apps buiten de gevirtualiseerde omgeving te beschadigen.
+
+Als u deze instelling inschakelt, wordt Application Guard voor uw organisatie ingeschakeld.
         </string>
         <string id="AppHVSI_ClipboardSettings_DisplayName">Klembordinstellingen voor Windows Defender Application Guard configureren</string>
-        <string id="AppHVSI_ClipboardSettings_Explain">Hiermee wordt het gedrag van het Klembord opgegeven wanneer applicatie-isolatie wordt gebruikt in Windows Defender Application Guard.
+        <string id="AppHVSI_ClipboardSettings_Explain">Met deze beleidsinstelling bepaalt u hoe het Klembord werkt in Windows Defender Application Guard (Application Guard).
 
-Beheerders kunnen:
-Klembord-functionaliteit in het geheel uitschakelen wanneer Virtualization Security is ingeschakeld.
-Het kopiëren van bepaalde typen inhoud van een geïsoleerde sessie naar de hostcomputer toestaan.
-Het kopiëren van bepaalde typen inhoud van de hostcomputer naar de geïsoleerde sessie toestaan.
+Als u deze instelling inschakelt, moet u kiezen uit de volgende opties:
 
-Opmerking: Administrators wordt aangeraden het kopiëren van inhoud van de hostcomputer naar de geïsoleerde sessie niet toe te staan. Anders zou een geïsoleerde sessie die wordt aangevallen, toegang hebben tot het Klembord van de hostcomputer en de inhoud van het Klembord.
+     - Klembordfunctionaliteit tussen de host en Application Guard volledig uitschakelen
+
+     - Het Klembord inhoud van Application Guard naar de host laten kopiëren
+
+     - Het Klembord inhoud van de host naar Application Guard laten kopiëren.
+
+OPMERKING
+Het is raadzaam kopiëren van de host naar Application Guard niet in te schakelen. Als u deze functionaliteit inschakelt, krijgt een mogelijk besmette Application Guard-sessie toegang tot het Klembord en de bijbehorende inhoud van het hostapparaat.
+
+Als u ervoor kiest kopiëren in te schakelen, moet u ook kiezen welk type inhoud mag worden gekopieerd, aan de hand van de opties voor inhoud:
+
+     - 1. Tekst kopiëren toegestaan.
+
+     - 2. Afbeeldingen kopiëren toegestaan.
+
+     - 3. Tekst én afbeeldingen kopiëren toegestaan.
+
+Als u deze instelling uitschakelt of niet configureert, wordt de Klembordfunctionaliteit uitgeschakeld in Application Guard.
         </string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Klembord-bewerkingen blokkeren (standaard)</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Klembord-bewerking van een geïsoleerde sessie naar de host inschakelen</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Klembord-bewerking van een host naar de geïsoleerde sessie inschakelen</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Klembord-bewerking in beide richtingen inschakelen</string>
         <string id="AppHVSI_PrintingSettings_DisplayName">Afdrukinstellingen voor Windows Defender Application Guard configureren</string>
-        <string id="AppHVSI_PrintingSettings_Explain">Als Afdrukken naar XPS inschakelen is geselecteerd, kunnen gebruikers documenten afdrukken vanuit de container naar de XPS-indeling.
-Als Afdrukken naar PDF inschakelen is geselecteerd, kunnen gebruikers documenten afdrukken vanuit de container naar de PDF-indeling.
-Als Afdrukken naar lokale printers inschakelen is geselecteerd, kunnen gebruikers documenten afdrukken vanuit de container naar een lokaal aangesloten printer.
-Als Afdrukken naar bestaande netwerkprinters inschakelen is geselecteerd, kunnen gebruikers met behulp van de bestaande netwerkprinters documenten afdrukken vanuit de geïsoleerde container. Gebruikers kunnen niet zoeken naar nieuwe netwerkprinters.
-        </string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Enterprise-websites geen niet-Enterprise inhoud laten weergeven in IE en Edge</string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Als u dit beleid inschakelt, wordt al het Internet Explorer- en Microsoft Edge-netwerkverkeer geblokkeerd naar niet-bedrijfssites die niet kunnen worden gestart in een Windows Defender Application Guard-container.
+        <string id="AppHVSI_PrintingSettings_Explain">Met deze beleidsinstelling kunt u bepalen hoe de afdrukfunctionaliteit werkt in Windows Defender Application Guard (Application Guard).
 
-Als u dit beleid uitschakelt, wordt op de hostcomputer al het netwerkverkeer toegestaan naar niet-bedrijfssites die niet kunnen worden gestart in een Windows Defender Application Guard-container.
+Als u deze instelling inschakelt, moet u een of meer van de volgende opties kiezen:
+
+     - Alle afdrukfunctionaliteit in Application Guard uitschakelen.
+
+     - Afdrukken op bestaande netwerkprinters inschakelen.
+
+     - Afdrukken op lokale printers inschakelen.
+
+     - Afdrukken naar PDF inschakelen; hiermee kunnen gebruikers als PDF afdrukken en het resulterende bestand op de host opslaan.
+
+     - Afdrukken naar XPS inschakelen; hiermee kunnen gebruikers als XPS afdrukken en het resulterende bestand op de host opslaan.
+
+Als u deze instelling uitschakelt of niet configureert, wordt alle afdrukfunctionaliteit in Application Guard uitgeschakeld.
         </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Voorkomen dat Enterprise-websites niet-Enterprise-inhoud laden in Microsoft Edge en Internet Explorer</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Met deze beleidsinstelling kunt u bepalen of websites niet-Enterprise inhoud mogen laden in Microsoft Edge en Internet Explorer.
+
+Als u deze beleidsinstelling inschakelt, wordt niet-Enterprise inhoud die is ingesloten op enterprise-sites niet geopend in Internet Explorer of Microsoft Edge buiten Windows Defender Application Guard.
+
+Als u deze instelling uitschakelt of niet configureert, kunnen niet-Enterprise sites buiten de container van Windows Defender Application Guard worden geopend, direct in Internet Explorer en Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowPersistence_DisplayName">Datapersistentie voor Windows Defender Application Guard toestaan</string>
+        <string id="AppHVSI_AllowPersistence_Explain">Met deze beleidsinstelling kunt u bepalen of gegevens in verschillende sessies in Windows Defender Application Guard (Application Guard) mogen blijven bestaan.
+
+        Als u deze instelling inschakelt, slaat Application Guard door de gebruiker gedownloade bestanden en andere items op (zoals cookies, Favorieten, en dergelijke) voor gebruik in toekomstige Application Guard-sessies.
+
+             OPMERKING
+             Als u deze instelling inschakelt, kunt u de gebruikersgegevens nog steeds verwijderen van een specifiek apparaat, via de opdracht Reset-ApplicationGuard PowerShell. Als u deze opdracht uitvoert, worden alle medewerkersgegevens verwijderd, ongeacht de configuratie, wat dus tot gegevensverlies van de medewerker kan leiden.
+
+        Als u deze instelling uitschakelt of niet configureert, verwijdert Application Guard alle gebruikersgegevens binnen de Application Guard-container.
+        </string>
+        <string id="AppHVSI_AuditApplicationGuard_DisplayName">Controlegebeurtenissen in Windows Defender Application Guard toestaan</string>
+        <string id="AppHVSI_AuditApplicationGuard_Explain">Met deze beleidsinstelling kunt u bepalen of controlegebeurtenissen van Windows Defender Application Guard (Application Guard) mogen worden verzameld.
+
+	Als u deze beleidsinstelling inschakelt, krijgt Application Guard zijn controlebeleid van Microsoft Edge en begint het met de controle van systeemgebeurtenissen specifiek voor Application Guard.
+
+	OPMERKING
+	Verzamelde logboekbestanden zijn ter beoordeling beschikbaar op Microsoft Edge, buiten Application Guard.
+
+	Als u deze instelling uitschakelt of niet configureert, worden voor Application Guard geen controlegebeurtenislogboeken verzameld.</string>
     </stringTable>
     <presentationTable>
       <presentation id="AppHVSIClipboardSettings_Presentation">
-        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Selecteer een optie:</dropdownList>
-        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Hiermee geeft u op welk Klembord-gedrag is toegestaan wanneer Klembord-bewerkingen zijn ingeschakeld (in decimalen):
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">De werking van Klembord instellen.</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Opties voor inhoud van Klembord.
         </decimalTextBox>
-        <text>Deze waarde is een bitmasker waarmee wordt bepaald welke bestandstypen kunnen worden gebruik voor Klembord-bewerkingen:
-
-b0001 - TEKST-bestand
-b0010 - Bitmap-bestand
-b0011 - zowel TEKST- als Bitmap-bestanden worden ondersteund
-        </text>
       </presentation>
       <presentation id="AppHVSIPrintingSettings_Presentation">
-        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Hiermee geeft u op welke printers zijn ingeschakeld (in decimalen).
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Toegestane afdruktypen in Application Guard.
         </decimalTextBox>
-        <text>Deze waarde is een bitmasker waarmee wordt bepaald welke printers worden ingeschakeld in een geïsoleerde sessie.    
-b0000 - Afdrukken is uitgeschakeld
-b0001 - Afdrukken naar XPS inschakelen (Standaard)
-b0010 - Afdrukken naar PDF inschakelen
-b0100 - Afdrukken naar lokale printers inschakelen
-b1000 - Afdrukken naar bestaande netwerkprinters inschakelen
-
-Voorbeeld:
-Als XPS en lokale printers zijn ingeschakeld, wordt de waarde b0001 | b0100, hetgeen b0101 is (decimaal 5).
+        <text>Om te bepalen welke typen afdrukken zijn toegestaan, kiest u:
+     - 0. Schakelt alle afdrukfunctionaliteit uit.
+     - 1. Alleen XPS afdrukken.
+     - 2. Alleen PDF afdrukken.
+     - 3. PDF én XPS afdrukken toegestaan.
+     - 4. Alleen lokaal afdrukken toegestaan.
+     - 5. Lokaal en XPS afdrukken toegestaan.
+     - 6. Lokaal en PDF afdrukken toegestaan.
+     - 7. Lokaal, PDF en XPS afdrukken toegestaan.
+     - 8. Alleen netwerk afdrukken.
+     - 9. Netwerk en XPS afdrukken toegestaan.
+     - 10. Netwerk en PDF afdrukken toegestaan
+     - 11. Netwerk PDF en XPS afdrukken toegestaan.
+     - 12. Netwerk en lokaal afdrukken toegestaan.
+     - 13. Netwerk, lokaal en XPS afdrukken toegestaan.
+     - 14. Netwerk, lokaal en PDF afdrukken toegestaan.
+     - 15. Alle afdrukken toegestaan.
         </text>
       </presentation>
     </presentationTable>

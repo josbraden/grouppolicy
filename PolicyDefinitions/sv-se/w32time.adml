@@ -5,7 +5,7 @@
   <description>ange beskrivning här</description>
   <resources>
     <stringTable>
-      <string id="W32TIME_CONFIG_EXPLAIN">Med den här principinställningen kan du ange värdena för Klockdisciplin och Allmän för tjänsten Windows Time (W32time) för domänkontrollanter. Det gäller även skrivskyddade domänkontrollanter.
+      <string id="W32TIME_CONFIG_EXPLAIN">Med den här principinställningen kan du ange värdena för Klockdisciplin och Allmän för tjänsten Windows Time (W32time) för domänkontrollanter. Det gäller även skrivskyddade domänkontrollanter (RODC).
 
 Om den här principinställningen är aktiverad använder W32time-tjänsten på måldatorerna inställningarna som anges här. I annat fall använder tjänsten på måldatorerna lokalt konfigurerade inställningar.
 
@@ -24,7 +24,7 @@ Om en tidssampling skiljer sig från klientdatorns lokala klocka med mer än Lar
 Om ett svar tas emot med en tidsvariation som överstiger det här parametervärdet ställer W32time in klientdatorns lokala klocka omedelbart på den tid som anses vara den rätta från NTP-servern (Network Time Protocol). Om tidsvariationen understiger det här värdet korrigeras klientdatorns lokala klocka gradvis. Standard: 300 sekunder.
 
         MaxNegPhaseCorrection
-Om en tidssampling tas emot och indikerar en tid i framtiden (jämfört med klientdatorns lokala klocka) med en tidsskillnad som överstiger värdet på MaxPosPhaseCorrection tas ingen hänsyn till samplingen. Standard: 172 800 sekunder.
+Om en tidssampling tas emot och indikerar en tid i det förflutna (jämfört med klientdatorns lokala klocka) med en tidsskillnad som överstiger värdet på MaxNegPhaseCorrection tas ingen hänsyn till samplingen. Standard: 172 800 sekunder.
 
         MaxPosPhaseCorrection
 Om en tidssampling tas emot och indikerar en tid i framtiden (jämfört med klientdatorns lokala klocka) med en tidsskillnad som överstiger värdet på MaxPosPhaseCorrection tas ingen hänsyn till samplingen. Standard: 172 800 sekunder.
@@ -65,7 +65,10 @@ Den här parametern indikerar det maximala antalet sekunder en systemklocka kan 
 Den här parametern bestämmer huruvida domänkontrollanten svarar på tidssynkroniseringsbegäranden med äldre autentiseringsprotokoll eller inte. Om den är aktiverad (har värdet 1) svarar domänkontrollanten inte på begäranden som görs med sådana protokoll. Standard: 0 (boolesk).
 
         UtilizeSslTimeData
-Den här parametern bestämmer huruvida W32time använder tidsdata som beräknats utifrån SSL-trafik på datorn som ytterligare indata för korrigering av den lokala klockan. Standard: 1 (d.v.s. aktiverad) boolesk
+Den här parametern bestämmer huruvida W32time använder tidsdata som beräknats utifrån SSL-trafik på datorn som ytterligare indata för korrigering av den lokala klockan. Standard: 1 (d.v.s. aktiverad)
+
+        ClockAdjustmentAuditLimit
+Den här parametern anger de minsta lokala klockjusteringarna som kan loggas i W32time-tjänstens händelselogg på måldatorn. Standard: 800 ppm (parts per million).
 
         RODC-parametrar:
 
@@ -164,6 +167,7 @@ Om du inaktiverar eller inte konfigurerar den här principinställningen kan dat
         <decimalTextBox refId="W32TIME_ClockHoldoverPeriod" defaultValue="7800">ClockHoldoverPeriod</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
         <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ClockAdjustmentAuditLimit" defaultValue="800">ClockAdjustmentAuditLimit</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

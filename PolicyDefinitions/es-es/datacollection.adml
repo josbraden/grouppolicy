@@ -51,6 +51,23 @@ Si deshabilitas o no configuras esta configuración de directiva, Microsoft no p
       <string id="DisableEnterpriseAuthProxy_2">Deshabilitar el uso del proxy autenticado</string>
       <string id="DisableEnterpriseAuthProxy_Explain">Esta configuración de directiva bloquea el servicio de Experiencia del usuario y telemetría asociadas para evitar que use automáticamente un proxy autenticado para enviar datos de vuelta a Microsoft en Windows 10. Si se deshabilita o no se establece esta configuración de directiva, el servicio de Experiencia del usuario y telemetría asociadas usará automáticamente un proxy autenticado para enviar datos de vuelta a Microsoft. Si se habilita esta directiva, se bloqueará el servicio de Experiencia del usuario y telemetría asociadas para evitar que use un proxy autenticado.</string>
 
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">Limitar los datos de diagnóstico de nivel Mejorado al valor mínimo requerido por Windows Analytics</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">Habilitar la recopilación de análisis de Windows</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">Deshabilitar la recopilación de análisis de Windows</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_Explain">Esta configuración de directiva, en combinación con la configuración de directiva Permitir telemetría, permite a las organizaciones enviar a Microsoft un conjunto específico de datos de diagnóstico para disponer de información detallada de TI a través de los servicios Windows Analytics.
+
+Para habilitar este comportamiento, debes completar dos pasos:
+
+    1. Habilitar esta configuración de directiva
+    2. Establecer Permitir Telemetría en el nivel 2 (Mejorado)
+
+Si estableces estas configuraciones de directiva, se envían a Microsoft datos de diagnóstico de nivel Básico, junto con eventos adicionales necesarios para Windows Analytics. Dichos eventos se documentan aquí: https://go.microsoft.com/fwlink/?linkid=847594.
+
+Si habilitas los datos de diagnóstico de nivel Mejorado en la directiva Permitir Telemetría, pero no configuras esta directiva, también se enviarán los eventos necesarios para Windows Analytics, así como datos adicionales de telemetría de nivel Mejorado. Esta configuración no tiene efecto alguno en los equipos configurados para enviar a Microsoft datos de diagnóstico de nivel Completo, Básico o Seguridad.
+
+Si deshabilitas o no estableces esta configuración de directiva, el nivel de los datos de diagnóstico enviados a Microsoft se determina mediante la directiva Permitir telemetría.
+      </string>
+
     </stringTable>
     <presentationTable>
       <presentation id="AllowTelemetry">
@@ -71,6 +88,9 @@ Si deshabilitas o no configuras esta configuración de directiva, Microsoft no p
       </presentation>
       <presentation id="DisableEnterpriseAuthProxy">
         <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="LimitEnhancedDiagnosticDataWindowsAnalytics">
+        <dropdownList refId="LimitEnhancedDiagnosticDataWindowsAnalytics" noSort="true" defaultItem="0"></dropdownList>
       </presentation>
     </presentationTable>
   </resources>

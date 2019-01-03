@@ -2,67 +2,115 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
   <displayName>Windows Defender Application Guard</displayName>
-  <description>Konfiguration für Windows Defender Application Guard</description>
+  <description>Windows Defender Application Guard im Unternehmensmodus aktivieren</description>
   <resources>
     <stringTable>
         <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
-        <string id="AppHVSI_AllowAppHVSI_DisplayName">Windows Defender Application Guard (WDAG) aktivieren/deaktivieren</string>
-        <string id="AppHVSI_AllowAppHVSI_Explain">Durch diese Richtlinie wird die Anwendungsisolation unter Verwendung von Windows Defender Application Guard aktiviert.
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Windows Defender Application Guard im Unternehmensmodus aktivieren</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Mit dieser Richtlinieneinstellung wird die Anwendungsisolation durch Windows Defender Application Guard (Application Guard) aktiviert.
 
-Windows Defender Application Guard nutzt Windows-Hypervisor, um Anwendungen in einer virtualisierten Umgebung zu starten. Wenn Anwendungen für die Verwendung der virtualisierungsbasierten Sicherheitsisolation konfiguriert sind, können nicht vertrauenswürdiges Benutzerverhalten bei Verwendung dieser Anwendungen sowie Sicherheitsrisiken in diesen Anwendungen nicht zur Kompromittierung des Kernels und anderer Anwendungen führen, die außerhalb der virtualisierten Umgebung ausgeführt werden.
-Bevor Sie diese Richtlinie aktivieren, müssen Sie Listen vertrauenswürdiger Unternehmenswebsites definieren, die über die Richtlinie für die Netzwerkisolation eingerichtet werden können (Link zur spezifischen Netzwerkrichtlinie einfügen). Sie stellen sicher, dass nur Nicht-Unternehmenswebsites innerhalb der virtualisierten Umgebung geöffnet werden.
-Hinweis: Wenn Sie ein System sperren möchten, vergewissern Sie sich, dass Device Guard-Sicherheitsfeatures und zusätzlich die Anwendungsisolation für Anwendungen aktiviert sind. Informationen zu den vollständigen Anforderungen zum sicheren Sperren eines Systems finden Sie in der Dokumentation.
+Application Guard nutzt Windows-Hypervisor zum Erstellen einer virtualisierten Umgebung für Apps, die für die Verwendung der virtualisierungsbasierten Sicherheitsisolation konfiguriert sind. Während der Isolation sind der Kernel und andere Apps, die außerhalb der virtualisierten Umgebung ausgeführt werden, geschützt, d. h., sie sind nicht durch unsachgemäße Benutzerinteraktionen und Schwachstellen in Apps gefährdet.
+
+Wenn Sie diese Einstellung aktivieren, wird Application Guard für Ihre Organisation aktiviert.
         </string>
         <string id="AppHVSI_ClipboardSettings_DisplayName">Zwischenablageeinstellungen für Windows Defender Application Guard konfigurieren</string>
-        <string id="AppHVSI_ClipboardSettings_Explain">Gibt an, wie sich die Zwischenablage bei Verwendung der Anwendungsisolation mit Windows Defender Application Guard verhält.
+        <string id="AppHVSI_ClipboardSettings_Explain">Mit dieser Richtlinieneinstellung können Sie bestimmen, wie sich die Zwischenablage in Windows Defender Application Guard (Application Guard) verhält.
 
-Administratoren können
-Zwischenablagefunktionen vollständig deaktivieren, wenn die Virtualisierungssicherheit aktiviert ist.
-das Kopieren bestimmter Inhalte aus einer isolierten Sitzung auf den Hostcomputer aktivieren.
-das Kopieren bestimmter Inhalte vom Hostcomputer in eine isolierte Sitzung aktivieren.
+Wenn Sie diese Einstellung aktivieren, müssen Sie unter folgenden Verhaltensweisen auswählen:
 
-Hinweis: Administratoren wird davon abgeraten, das Kopieren von Inhalten vom Hostcomputer in die isolierte Sitzung zu aktivieren. Dies würde bedeuten, dass von einer kompromittierten isolierten Sitzung auf die Zwischenablage des Hostcomputers sowie auf die darin abgelegten Inhalte zugegriffen werden könnte.
+     – Zwischenablagefunktion zwischen Host und Application Guard vollständig deaktivieren
+
+     – Zwischenablage zum Kopieren von Inhalten von Application Guard zum Host verwenden
+
+     – Zwischenablage zum Kopieren von Inhalten vom Host zu Application Guard verwenden
+
+HINWEIS
+Es wird davon abgeraten, das Kopieren vom Host zu Application Guard zu aktivieren. Wenn Sie diese Funktion aktivieren, kann von einer potenziell gefährdeten Application Guard-Sitzung auf die Zwischenablage des Hostgeräts und auf deren Inhalte zugegriffen werden.
+
+Wenn Sie das Kopieren zulassen, müssen Sie zusätzlich auswählen, welcher Inhaltstyp kopiert werden kann. Verwenden Sie folgende Inhaltsoptionen:
+
+     – 1. Lässt das Kopieren von Text zu.
+
+     – 2. Lässt das Kopieren von Bildern zu.
+
+     – 3. Lässt das Kopieren von Text und Bildern zu.
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, werden sämtliche Zwischenablagefunktionen in Application Guard deaktiviert.
         </string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Zwischenablagevorgänge blockieren (Standard)</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Zwischenablagevorgänge von einer isolierten Sitzung zum Host aktivieren</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Zwischenablagevorgänge von einem Host zur isolierten Sitzung aktivieren</string>
         <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Bidirektionale Zwischenablagevorgänge aktivieren</string>
         <string id="AppHVSI_PrintingSettings_DisplayName">Druckeinstellungen für Windows Defender Application Guard konfigurieren</string>
-        <string id="AppHVSI_PrintingSettings_Explain">Bei Auswahl von "Drucken in XPS aktivieren" können Benutzer Dokumente innerhalb des Containers im XPS-Format drucken.
-Bei Auswahl von "Drucken in PDF aktivieren" können Benutzer Dokumente innerhalb des Containers im PDF-Format drucken.
-Bei Auswahl von "Drucken auf lokalen Druckern aktivieren" können Benutzer Dokumente innerhalb des Containers auf einem lokal angeschlossenen Drucker drucken.
-Bei Auswahl von "Drucken auf vorhandenen Netzwerkdruckern aktivieren" können Benutzer die vorhandenen Netzwerkdrucker verwenden, um Dokumente innerhalb des isolierten Containers zu drucken. Benutzer können nicht nach neuen Netzwerkdruckern suchen.
-        </string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Unternehmenswebsites am Laden von Nicht-Unternehmensinhalten in Internet Explorer und Edge hindern</string>
-        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Falls aktiviert, wird Netzwerkdatenverkehr von Internet Explorer und Microsoft Edge zu Nicht-Unternehmenswebsites blockiert, die nicht in einem Windows Defender Application Guard-Container gestartet werden können.
+        <string id="AppHVSI_PrintingSettings_Explain">Mit dieser Richtlinieneinstellung können Sie bestimmen, wie sich die Druckfunktion in Windows Defender Application Guard (Application Guard) verhält.
 
-Falls deaktiviert, wird Netzwerkdatenverkehr zu Nicht-Unternehmenswebsites, die nicht in einem Windows Defender Application Guard-Container gestartet werden können, auf dem Hostcomputer gerendert.
+Wenn Sie diese Einstellung aktivieren, müssen Sie mindestens eine der folgenden Verhaltensweisen auswählen:
+
+     – Druckfunktion in Application Guard vollständig deaktivieren
+
+     – Drucken auf vorhandenen Netzwerkdruckern aktivieren
+
+     – Drucken auf lokalen Druckern aktivieren
+
+     – Drucken im PDF-Format aktivieren. Benutzer können Inhalte in PDF-Dateien ausgeben und die resultierende Datei auf dem Host speichern.
+
+     – Drucken im XPS-Format aktivieren. Benutzer können Inhalte in XPS-Dateien ausgeben und die resultierende Datei auf dem Host speichern.
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, werden sämtliche Druckfunktionen in Application Guard deaktiviert.
         </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Unternehmenswebsites am Laden von Nicht-Unternehmensinhalten in Internet Explorer und Microsoft Edge hindern</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Mit dieser Richtlinieneinstellung können Sie bestimmen, ob Nicht-Unternehmensinhalte von Websites in Microsoft Edge und Internet Explorer geladen werden können.
+
+Wenn Sie diese Einstellung aktivieren, werden in Unternehmenswebsites eingebettete Nicht-Unternehmensinhalte außerhalb von Windows Defender Application Guard nicht mehr in Internet Explorer oder Microsoft Edge geöffnet.
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, können Nicht-Unternehmenswebsites außerhalb des Windows Defender Application Guard-Containers direkt in Internet Explorer und Microsoft Edge geöffnet werden.
+        </string>
+        <string id="AppHVSI_AllowPersistence_DisplayName">Datenpersistenz für Windows Defender Application Guard zulassen</string>
+        <string id="AppHVSI_AllowPersistence_Explain">Mit dieser Richtlinieneinstellung können Sie bestimmen, ob Daten über verschiedene Sitzungen in Windows Defender Application Guard (Application Guard) beibehalten werden sollen.
+
+        Wenn Sie diese Einstellung aktivieren, werden von Benutzern heruntergeladene Dateien und andere Objekte (Cookies, Favoriten usw.) für die Verwendung in zukünftigen Application Guard-Sitzungen von Application Guard gespeichert.
+
+             HINWEIS
+             Wenn Sie diese Einstellung aktivieren, können Sie mit dem PowerShell-Befehl Reset-ApplicationGuard weiterhin Benutzerdaten von einem bestimmten Gerät löschen. Durch das Ausführen des Befehls werden alle Daten des Mitarbeiters unabhängig von der Konfiguration gelöscht, was zu einem Datenverlust für den Mitarbeiter führen kann.
+
+        Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, werden alle Benutzerdaten innerhalb des Application Guard-Containers von Application Guard gelöscht.
+        </string>
+        <string id="AppHVSI_AuditApplicationGuard_DisplayName">Überwachungsereignisse in Windows Defender Application Guard zulassen</string>
+        <string id="AppHVSI_AuditApplicationGuard_Explain">Mit dieser Richtlinieneinstellung können Sie bestimmen, ob Überwachungsereignisse von Windows Defender Application Guard (Application Guard) erfasst werden dürfen.
+
+        Wenn Sie diese Einstellung aktivieren, werden die Überwachungsrichtlinien von Microsoft Edge für Application Guard übernommen und die Überwachung von Systemereignissen gestartet, die sich spezifisch auf Application Guard beziehen.
+
+             HINWEIS
+             Die erfassten Protokolle können außerhalb von Application Guard in Microsoft Edge überprüft werden.
+
+        Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, werden keine Überwachungsereignisprotokolle für Application Guard erfasst.</string>
     </stringTable>
     <presentationTable>
       <presentation id="AppHVSIClipboardSettings_Presentation">
-        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Wählen Sie eine Option aus:</dropdownList>
-        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Gibt an, welches Verhalten der Zwischenablage zulässig ist, wenn Zwischenablagevorgänge aktiviert sind (Dezimalwert):
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Einstellung für das Verhalten der Zwischenablage</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Optionen für den Inhalt der Zwischenablage
         </decimalTextBox>
-        <text>Dieser Wert ist eine Bitmaske, die steuert, welche Dateitypen für Zwischenablagevorgänge verwendet werden können:
-
-b0001 – TEXT-Datei
-b0010 – Bitmapdatei
-b0011 – sowohl TEXT- als auch Bitmapdateien werden unterstützt.
-        </text>
       </presentation>
       <presentation id="AppHVSIPrintingSettings_Presentation">
-        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Gibt an, welche Drucker aktiviert sind (Dezimalwert).
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">In Application Guard zulässige Drucktypen
         </decimalTextBox>
-        <text>Dieser Wert ist eine Bitmaske, die steuert, welche Drucker in einer isolierten Sitzung aktiviert sind.    
-b0000 – Das Drucken ist deaktiviert.
-b0001 – Drucken in XPS aktivieren (Standard)
-b0010 – Drucken in PDF aktivieren
-b0100 – Drucken auf lokalen Druckern aktivieren
-b1000 – Drucken auf vorhandenen Netzwerkdruckern aktivieren
-
-Beispiel:
-Wenn XPS und lokale Drucker aktiviert sind, wird der Wert zu b0001 | b0100, was b0101 (Dezimalwert 5) entspricht.
+        <text>Wählen Sie unter folgenden Optionen aus, um die zulässigen Druckarten zu bestimmen:
+     – 0. Deaktiviert alle Druckfunktionen.
+     – 1. Aktiviert nur den XPS-Druck.
+     – 2. Aktiviert nur den PDF-Druck.
+     – 3. Aktiviert sowohl den PDF- als auch den XPS-Druck.
+     – 4. Aktiviert nur den lokalen Druck.
+     – 5. Aktiviert sowohl den lokalen als auch den XPS-Druck.
+     – 6. Aktiviert sowohl den lokalen als auch den PDF-Druck.
+     – 7. Aktiviert den lokalen, PDF- und XPS-Druck.
+     – 8. Aktiviert nur den Netzwerkdruck.
+     – 9. Aktiviert sowohl den Netzwerk- als auch den XPS-Druck.
+     – 10. Aktiviert sowohl den Netzwerk- als auch den PDF-Druck.
+     – 11. Aktiviert den Netzwerk-, PDF- und XPS-Druck.
+     – 12. Aktiviert sowohl den Netzwerk- als auch den lokalen Druck.
+     – 13. Aktiviert den Netzwerk-, lokalen und XPS-Druck.
+     – 14. Aktiviert den Netzwerk-, lokalen und PDF-Druck.
+     – 15. Aktiviert alle Druckfunktionen.
         </text>
       </presentation>
     </presentationTable>

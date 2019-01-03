@@ -24,17 +24,18 @@ Nota: puede producirse la inicialización del Módulo de plataforma segura (TPM)
       <string id="ActiveDirectoryBackupDropDown_1">Contraseñas de recuperación y paquetes de claves</string>
       <string id="ActiveDirectoryBackupDropDown_2">Solo contraseñas de recuperación</string>
 
-      <string id="ConfigureStartupUsage_Help">Esta configuración de directiva te permite controlar si el asistente para la configuración del Cifrado de unidad BitLocker podrá configurar un método de autenticación adicional que se solicite cada vez que se inicie el equipo. Esta configuración de directiva se aplica al activar BitLocker.
+      <string id="ConfigureStartupUsage_Help">Esta configuración de directiva le permite controlar si el asistente para la configuración del Cifrado de unidad BitLocker podrá configurar un método de autenticación adicional que se solicite cada vez que se inicie el equipo. Esta configuración de directiva se aplica al activar BitLocker.
 
 Nota: esta directiva se aplica solo a equipos que ejecutan Windows Server 2008 o Windows Vista.
 
-En un equipo con un Módulo de plataforma segura (TPM) compatible, se pueden usar dos métodos de autenticación de inicio para ofrecer una protección adicional de los datos cifrados. El equipo, cuando se inicia, puede solicitar a los usuarios que inserten una unidad flash USB que contenga una clave de inicio. También puedes solicitar a los usuarios que escriban un número de identificación personal (PIN) de inicio de entre 6 y 20 dígitos.
+En un equipo con un Módulo de plataforma segura (TPM) compatible, se pueden usar dos métodos de autenticación de inicio para ofrecer una protección adicional de los datos cifrados. El equipo, cuando se inicia, puede solicitar a los usuarios que inserten una unidad flash USB que contenga una clave de inicio. También puede solicitar a los usuarios que escriban un número de identificación personal (PIN) de inicio de entre 4 y 20 dígitos.
 
 En equipos sin un TPM compatible, será necesaria una unidad flash USB que contenga una clave de inicio. Sin un TPM, los datos cifrados mediante BitLocker solo están protegidos por el material de clave de esta unidad flash USB.
 
-Si habilitas esta configuración de directiva, el asistente mostrará la página para permitir que el usuario configure opciones de inicio avanzadas para BitLocker. También puedes establecer estas opciones de configuración para equipos con y sin un TPM.
+Si habilita esta configuración de directiva, el asistente mostrará la página para permitir que el usuario configure opciones de inicio avanzadas para BitLocker. También puede establecer estas opciones de configuración para equipos con y sin un TPM.
 
-Si deshabilitas o no estableces esta configuración de directiva, el asistente para la instalación de BitLocker mostrará los pasos básicos que permiten a los usuarios activar BitLocker en equipos con un TPM. En este asistente básico, no puede configurarse ninguna clave de inicio o PIN de inicio adicional.
+Si deshabilita o no establece esta configuración de directiva, el asistente para la instalación de BitLocker mostrará los pasos básicos que permiten a los usuarios activar BitLocker en equipos con un TPM. En este asistente básico, no puede configurarse ninguna clave de inicio o PIN de inicio adicional.
+
 </string>
 
       <string id="ConfigureStartupUsage_Name">Requerir autenticación adicional al iniciar (Windows Server 2008 y Windows Vista)</string>
@@ -375,11 +376,14 @@ El valor que controla la depuración del arranque (0x16000010) siempre se compru
 
 
       <string id="MinimumPINLength_Name">Configurar longitud mínima de PIN para el inicio</string>
-      <string id="MinimumPINLength_Help">Esta configuración de directiva te permite configurar una longitud mínima para un PIN de inicio del Módulo de plataforma segura (TPM). Esta configuración de directiva se aplica al activar BitLocker. El PIN de inicio debe tener una longitud mínima de 6 dígitos y una longitud máxima de 20 dígitos.
+      <string id="MinimumPINLength_Help">
+          Esta configuración de directiva te permite configurar una longitud mínima para un PIN de inicio del Módulo de plataforma segura (TPM). Esta configuración de directiva se aplica al activar BitLocker. El PIN de inicio debe tener una longitud mínima de 4 dígitos y puede tener una longitud máxima de 20 dígitos.
 
 Si habilitas esta configuración de directiva, puedes requerir que se use un número mínimo de dígitos al establecer el PIN de inicio.
 
 Si deshabilitas o no estableces esta configuración de directiva, los usuarios podrán configurar un PIN de inicio de cualquier longitud entre 6 y 20 dígitos.
+
+          NOTA: Si se establece una longitud mínima del PIN de menos de 6 dígitos, Windows intentará actualizar el periodo de bloqueo del TPM 2.0 para que sea más largo que el predeterminado al cambiar el PIN. Si se realiza correctamente, Windows solo restablecerá el periodo de bloqueo del TPM al predeterminado si se restablece el TPM.
 
       </string>
 

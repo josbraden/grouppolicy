@@ -94,6 +94,15 @@ Si deshabilitas esta configuración de directiva, Windows Hello para empresas im
 
 NOTA: si deshabilitas esta directiva, el usuario no podrá usar gestos de biometría en el dispositivo para todos los tipos de cuenta.
         </string>
+        <string id="MSPassport_EnablePinRecovery">Recuperación PIN de uso</string>
+        <string id="MSPassport_EnablePinRecoveryExplain">La recuperación de PIN permite que el usuario cambie un PIN que olvidó con el servicio de recuperación de PIN de Windows Hello para empresas, sin perder las credenciales ni los certificados asociados, incluidas las claves asociadas a las cuentas personales del usuario en el dispositivo. Para conseguir esto, el servicio de recuperación de PIN basado en Azure cifra un secreto de recuperación, que se almacena en el dispositivo. La recuperación de PIN requiere que el usuario realice una autenticación multifactor en Azure Active Directory.
+
+Si habilitas la configuración de esta directiva, Windows Hello for Business usará el servicio de recuperación de PIN. 
+
+Si deshabilitas o no configuras esta directiva, Windows no creará ni almacenará el secreto de recuperación del PIN. Si el usuario olvida su PIN, podrá eliminar el PIN existente y crear otro nuevo, pero tendrá que volver a registrarse en todos los servicios a los que accedía con el PIN antiguo.
+
+NOTA: Esta directiva solo es aplicable a dispositivos que están registrados con Azure Active Directory.
+        </string>
         <string id="MSPassport_UseRemote">Usa inicio de sesión en el teléfono</string>
         <string id="MSPassport_UseRemoteExplain">Usa esta configuración de directiva para configurar el uso de inicio de sesión en el teléfono. Inicio de sesión en el teléfono ofrece la capacidad de un teléfono para que se use como dispositivo complementario para la autenticación de escritorio. Inicio de sesión en el teléfono necesita que tanto el equipo como el teléfono estén registrados con el mismo inquilino de Azure AD. Además, el teléfono debe estar inscrito en Windows Hello para empresas.
 
@@ -102,13 +111,56 @@ Si habilitas esta configuración de directiva, se habilitará inicio de sesión 
 Si deshabilitas o no estableces esta configuración de directiva, se deshabilitará inicio de sesión en el teléfono y no se podrá usar un teléfono como dispositivo complementario para la autenticación de escritorio.
         </string>
         <!-- Explain Text for UseCertificateForOnPremAuth -->
-        <string id="WHFB_UseCertificateForOnPremAuthExplain">Usa este ajuste de directivas para configurar Windows Hello para empresas con el fin de inscribir un certificado de inicio de sesión empleado para la autenticación local.
+        <string id="WHFB_UseCertificateForOnPremAuthExplain">Usa esta configuración de directiva para configurar Windows Hello para empresas con el fin de inscribir un certificado de inicio de sesión empleado para la autenticación local.
 
-Si habilitas este ajuste de directivas, Windows Hello para empresas inscribe un certificado de inicio de sesión que se usa para la autenticación local.
-		
-Si deshabilitas o no configuras este ajuste de directivas, Windows Hello para empresas inscribe una clave que se usa para la autenticación local.
+Si habilitas esta configuración de directiva, Windows Hello para empresas inscribe un certificado de inicio de sesión que se usa para la autenticación local.
 
-NOTA: Si se deshabilita o no configura este ajuste de directivas y se habilita el ajuste "Usa Windows Hello para empresas", el entorno debe tener uno o más controladores de dominio de Windows Server 2016 para evitar que se produzca un error en la autenticación de Windows Hello para empresas.
+Si deshabilitas o no estableces esta configuración de directiva, Windows Hello para empresas inscribe una clave que se usa para la autenticación local.
+
+NOTA: Si se deshabilita o no se establece esta configuración de directiva y se habilita "Usa Windows Hello para empresas", el entorno debe tener uno o más controladores de dominio de Windows Server 2016 para evitar que se produzca un error en la autenticación de Windows Hello para empresas.
+        </string>
+        <!-- Explain text for device unlock policy -->
+        <string id="MSPassport_UseDeviceUnlock">Configurar factores de desbloqueo de dispositivo</string>
+        <string id="MSPassport_UseDeviceUnlock_Explain">Configura una lista de valores separados por comas con los GUID de proveedores de credenciales, como los GUID de proveedores de reconocimiento facial y de huellas digitales, para usar como primer y segundo factor de desbloqueo. Si el proveedor de señal de confianza se especifica como uno de los factores de desbloqueo, también debes configurar una lista independiente de reglas de señal como valores separados por comas con formato XML para cada tipo de señal que se va a comprobar.
+
+Si habilitas esta configuración de directiva, el usuario tendrá que usar un factor de cada lista para realizar correctamente el desbloqueo.
+
+Si la deshabilitas o no la estableces, los usuarios pueden seguir usando las opciones de desbloqueo existentes.
+
+Para obtener más información, consulta https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for dynamic lock policy -->
+        <string id="MSPassport_UseDynamicLock">Configurar factores de bloqueo dinámico</string>
+        <string id="MSPassport_UseDynamicLock_Explain">Configura una lista de reglas de señal separadas por comas con formato XML para cada tipo de señal.
+
+Si habilitas esta configuración de directiva, estas reglas de señal se evaluarán para detectar la ausencia del usuario y bloquear el dispositivo automáticamente.
+
+Si deshabilitas o no estableces esta configuración de directiva, los usuarios podrán seguir bloqueando el dispositivo con las opciones de bloqueo existentes.
+
+Para obtener más información, consulta https://go.microsoft.com/fwlink/?linkid=849684
+        </string>
+        <!-- Explain text for smart card emulation policy -->
+        <string id="MSPassport_DisableSmartCardNode">Desactivar la emulación de tarjeta inteligente</string>
+        <string id="MSPassport_DisableSmartCardNodeExplain">Windows Hello para empresas proporciona de forma automática la emulación de tarjetas inteligentes para que puedas usar aquellas aplicaciones que tengan la tarjeta inteligente habilitada.
+
+Si habilitas esta configuración de directiva, Windows Hello para empresas te proporcionará unas credenciales de Windows Hello para empresas que no son compatibles con las aplicaciones que usan la tarjeta inteligente.
+
+Si deshabilitas o no configuras esta configuración de directiva, Windows Hello para empresas te proporcionará unas credenciales de Windows Hello para empresas que son compatibles con las aplicaciones que usan la tarjeta inteligente.
+
+NOTA: esta directiva se aplicará en las credenciales de Windows Hello para empresas en el momento de su creación. Recuerda que las credenciales que se crearon antes de aplicar esta directiva seguirán proporcionando la emulación de tarjetas inteligentes. Para cambiar las credenciales existentes, habilita esta configuración de directiva y selecciona "Olvidé mi PIN" en el apartado Configuración.
+        </string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNode">Permitir la enumeración de tarjeta inteligente emulado para todos los usuarios</string>
+        <string id="MSPassport_AllowAllUserAccessToSmartCardNodeExplain">Windows evita que los usuarios que usan el mismo equipo enumeren las credenciales de Windows Hello para empresas que se proporcionaron a otros usuarios.
+
+Si habilitas esta configuración de directiva, Windows permitirá que todos los usuarios del equipo enumeren todas las credenciales de Windows Hello para empresas, pero aún así seguirá siendo necesario que cada usuario proporcione sus propias fases de autenticación.
+
+Si deshabilitas o no configuras esta configuración de directiva, Windows no permitirá la enumeración de las credenciales de Windows Hello para empresas que se proporcionaron a otros usuarios en el mismo dispositivo.
+
+Esta configuración de directiva está diseñada para que la use un solo usuario que se haya inscrito con o sin privilegios en un dispositivo. Este usuario tendrá ambas credenciales, lo que le permitirá iniciar sesión usando credenciales sin privilegios y realizar tareas que requieran privilegios elevados sin tener que cerrar la sesión.
+
+Esta configuración de directiva no es compatible con las credenciales de Windows Hello para empresas que se proporcionaron al habilitar la opción "Desactivar la emulación de tarjetas inteligentes".
+
+Una vez apliques esta configuración en un equipo, tendrás que reiniciar Windows.
         </string>
     </stringTable>
     <presentationTable>
@@ -136,11 +188,30 @@ NOTA: Si se deshabilita o no configura este ajuste de directivas y se habilita e
       <presentation id="MSPassport_PINExpirationControl">
         <decimalTextBox refId="MSPassport_PINExpirationDataType" spin="true" spinStep="1" defaultvalue="0">Expiración de PIN</decimalTextBox>
       </presentation>
-	  <presentation id="MSPassport_ExcludeSecurityDevicesControl">
-		<text>No usar los siguientes dispositivos de seguridad:</text>
-		<checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
-	  </presentation>
-
+      <presentation id="MSPassport_ExcludeSecurityDevicesControl">
+        <text>No usar los siguientes dispositivos de seguridad:</text>
+        <checkBox refId="MSPassport_ExcludeTPM12DataType" defaultChecked="false">TPM 1.2</checkBox>
+      </presentation>
+      <presentation id="MSPassport_UseDeviceUnlock_Control">
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupA">
+            <label>Desbloquear primero los proveedores de credenciales de factor</label>
+            <defaultValue>{D6886603-9D2F-4EB2-B667-1971041FA96B},{8AF662BF-65A0-4D0A-A540-A338A999D36F},{BEC09223-B018-416D-A0AC-523971B639F5}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_GroupB">
+            <label>Desbloquear segundo proveedores de credenciales de factor</label>
+            <defaultValue>{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD},{D6886603-9D2F-4EB2-B667-1971041FA96B}</defaultValue>
+        </textBox>
+        <textBox refId="MSPassport_UseDeviceUnlock_Plugins">
+            <label>Desbloquear las reglas de la señal de dispositivo</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Authentication" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
+      <presentation id="MSPassport_UseDynamicLock_Control">
+        <textBox refId="MSPassport_UseDynamicLock_Plugins">
+            <label>Reglas de señal de bloqueo dinámico</label>
+            <defaultValue><![CDATA[<rule schemaVersion="1.0"> <signal type="bluetooth" scenario="Dynamic Lock" classOfDevice="512" rssiMin="-10" rssiMaxDelta="-10"/> </rule>]]> </defaultValue>
+        </textBox>
+      </presentation>
     </presentationTable>
   </resources>
 </policyDefinitionResources>

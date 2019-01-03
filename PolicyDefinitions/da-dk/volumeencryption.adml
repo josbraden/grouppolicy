@@ -24,17 +24,18 @@ Bemærk! Initialisering af TPM (Trusted Platform Module) finder muligvis ikke st
       <string id="ActiveDirectoryBackupDropDown_1">Genoprettelsesadgangskoder og nøglepakker</string>
       <string id="ActiveDirectoryBackupDropDown_2">Kun genoprettelsesadgangskoder</string>
 
-      <string id="ConfigureStartupUsage_Help">Ved hjælp af denne politikindstilling kan du styre, om guiden Konfiguration af BitLocker-drevkryptering skal kunne oprette yderligere en godkendelsesmetode, som skal angives, hver gang computeren starter. Denne politikindstilling anvendes, når du slår BitLocker til.
+      <string id="ConfigureStartupUsage_Help">Ved hjælp af denne politikindstilling kan du styre, om guiden Konfiguration af BitLocker-drevkryptering skal kunne oprette yderligere en godkendelsesmetode, som skal angives, hver gang computeren starter. Denne politikindstilling anvendes, når du aktiverer BitLocker.
 
 Bemærk! Denne politikindstilling gælder kun computere, som kører Windows Server 2008 eller Windows Vista.
 
-På en computer med et kompatibelt TPM (Trusted Platform Module) kan der bruges to godkendelsesmetoder ved start til at beskytte krypterede data yderligere. Når computeren starter, kan brugeren blive bedt om at indsætte et USB-flashdrev, der indeholder en startnøgle. Brugeren skal evt. også angive en startpinkode på mellem 6 og 20 cifre.
+På en computer med et kompatibelt TPM-modul (Trusted Platform Module) kan der bruges to godkendelsesmetoder ved start til at beskytte krypterede data yderligere. Når computeren starter, kan brugeren blive bedt om at indsætte et USB-flashdrev, der indeholder en startnøgle. Brugeren skal evt. også angive en startpinkode på mellem 4 og 20 cifre.
 
-Hvis en computer ikke indeholder et kompatibelt TPM-modul, kræves der et USB-flashdrev med en startnøgle. Uden et TPM er BitLocker-krypterede data kun beskyttet af nøglematerialet på USB-flashdrevet.
+Hvis en computer ikke indeholder et kompatibelt TPM-modul, kræves der et USB-flashdrev med en startnøgle. Uden et TPM-modul er BitLocker-krypterede data kun beskyttet af nøglematerialet på USB-flashdrevet.
 
-Hvis du aktiverer denne politikindstilling, vises siden i guiden, så brugeren kan konfigurere avancerede startindstillinger for BitLocker. Du kan desuden konfigurere indstillinger for computere med eller uden et TPM.
+Hvis du aktiverer politikindstillingen, vises siden i guiden, så brugeren kan konfigurere avancerede startindstillinger for BitLocker. Du kan desuden konfigurere indstillinger for computere med eller uden TPM.
 
-Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vil konfigurationsguiden til BitLocker vise de grundlæggende trin, der gør det muligt for brugere at slå BitLocker til på computere med et TPM. I denne grundlæggende guide kan der ikke konfigureres en ekstra startnøgle eller en startpinkode.
+Hvis du deaktiverer eller undlader at konfigurere politikindstillingen, vil konfigurationsguiden til BitLocker vise de grundlæggende trin, der gør det muligt for brugere at aktivere BitLocker på computere med TPM. I denne grundlæggende guide kan der ikke konfigureres en ekstra startnøgle eller en startpinkode.
+
 </string>
 
       <string id="ConfigureStartupUsage_Name">Kræv yderligere godkendelse ved start (Windows Server 2008 og Windows Vista)</string>
@@ -375,11 +376,14 @@ Den indstilling, der styrer startfejlfinding (0x16000010), bliver altid validere
 
 
       <string id="MinimumPINLength_Name">Konfigurer minimumpinkodelængde for start</string>
-      <string id="MinimumPINLength_Help">Med denne politikindstilling kan du konfigurere en minimumlængde for en startpinkode for TPM (Trusted Platform Module). Denne politikindstilling anvendes, når du slår BitLocker til. Startpinkoden skal have en minimumlængde på 6 cifre og kan have en maksimumlængde på 20 cifre.
+      <string id="MinimumPINLength_Help">
+          Med denne politikindstilling kan du konfigurere en minimumslængde for en startpinkode for TPM (Trusted Platform Module) Politikindstillingen anvendes, når du slår BitLocker til Startpinkoden skal have en minimumslængde på 4 cifre og kan have en maksimumslængde på 20 cifre.
 
-Hvis du aktiverer denne politikindstilling, kan du kræve et antal cifre, der som minimum skal bruges, når startpinkoden indstilles.
+          Hvis du aktiverer denne politikindstilling, kan du kræve et antal cifre, der som minimum skal bruges, når startpinkoden indstilles.
 
-Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kan brugere konfigurere en startpinkode med en længde på mellem 6 og 20 cifre.
+          Hvis du deaktiverer eller undlader at konfigurere politikindstillingen, kan brugere konfigurere en startpinkode med en længde på mellem 6 og 20 cifre.
+
+          Bemærk! Hvis minimumslængden for en pinkode er angivet til under 6 cifre, forsøger Windows at opdatere TPM 2.0-spærringsperioden, så den er længere end standardværdien, når en pinkode ændres. Hvis det lykkes, vil Windows kun nulstille TPM-spærringsperioden til standardværdien, hvis TPM'en nulstilles.
 
       </string>
 

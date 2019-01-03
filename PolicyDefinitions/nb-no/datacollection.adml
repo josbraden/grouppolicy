@@ -51,6 +51,23 @@ Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, kan ikke 
       <string id="DisableEnterpriseAuthProxy_2">Deaktiver bruk av Godkjent proxy</string>
       <string id="DisableEnterpriseAuthProxy_Explain">Denne policyinnstillingen hindrer at tjenesten Tilkoblet brukeropplevelse og telemetri bruker en godkjent proxy automatisk til å sende data tilbake til Microsoft på Windows 10. Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, bruker tjenesten Tilkoblet brukeropplevelse og telemetri automatisk en godkjent proxy til å sende data tilbake til Microsoft. Hvis du aktiverer denne policyen, hindres tjenesten Tilkoblet brukeropplevelse og telemetri i å bruke en godkjent proxy automatisk.</string>
 
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">Begrens utvidede diagnosedata til det som minimum kreves av Windows Analytics</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">Aktiver Windows Analytics-innsamling</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">Deaktiver Windows Analytics-innsamling</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_Explain">Denne policyinnstillingen, sammen med Tillat telemetri-policyinnstillingen, lar organisasjoner sende Microsoft et spesifikt sett med diagnosedata for IT-innsikt via Windows Analytics-tjenester.
+
+Hvis du vil aktivere denne virkemåten, må du fullføre to trinn:
+
+    1. Aktiver denne policyinnstillingen
+    2. Sett Tillat telemetri til nivå 2 (utvidet)
+
+Når du konfigurerer disse policyinnstillingene, vil et grunnleggende nivå med analysedata samt tilleggshendelser som kreves for Windows Analytics, bli sendt til Microsoft. Disse hendelsene er dokumentert her: https://go.microsoft.com/fwlink/?linkid=847594.
+
+Aktivering av Utvidede diagnosedata i Tillat telemetri-policyen i kombinasjon med å ikke konfigurere denne policyen, vil også sende de påkrevde hendelsene for Windows Analytics, samt ekstra telemetridata for nivået Utvidet. Denne innstillingen har ingen innvirkning på datamaskiner som er konfigurert til å sende diagnosedata på nivået Full, Grunnleggende eller Sikkerhet til Microsoft.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, vil nivået for diagnosedata som sendes til Microsoft, bli bestemt av Tillat telemetri-policyen.
+      </string>
+
     </stringTable>
     <presentationTable>
       <presentation id="AllowTelemetry">
@@ -71,6 +88,9 @@ Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, kan ikke 
       </presentation>
       <presentation id="DisableEnterpriseAuthProxy">
         <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="LimitEnhancedDiagnosticDataWindowsAnalytics">
+        <dropdownList refId="LimitEnhancedDiagnosticDataWindowsAnalytics" noSort="true" defaultItem="0"></dropdownList>
       </presentation>
     </presentationTable>
   </resources>

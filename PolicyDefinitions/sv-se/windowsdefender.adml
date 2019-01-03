@@ -6,6 +6,10 @@
     <string id="AntiSpywareDefender">Windows Defender Antivirus</string>
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Undantag</string>
+    <string id="ExploitGuard">Windows Defender Exploit Guard</string>
+    <string id="ExploitGuard_ASR">Minskning av attackytan</string>
+    <string id="ExploitGuard_ControlledFolderAccess">Reglerad mappåtkomst</string>
+    <string id="ExploitGuard_NetworkProtection">Nätverksskydd</string>
     <string id="NetworkRealtimeInspection">Kontrollsystem för nätverk</string>
     <string id="NetworkRealtimeInspection_Exclusions">Undantag</string>
     <string id="Quarantine">Karantän</string>
@@ -26,7 +30,18 @@ Om du aktiverar eller låter bli att konfigurera den här inställningen läses 
 Om du inaktiverar den här inställningen läses tjänsten för program mot skadlig kod in som en aktivitet med låg prioritet.</string>
 
     <string id="DisableAutoExclusions">Inaktivera automatiska undantag</string>
-    <string id="DisableAutoExclusions_Explain">Tillåter att en administratör kan ange om automatiska undantag för server-SKU:er ska inaktiveras.</string>
+    <string id="DisableAutoExclusions_Explain">
+        Tillåter att en administratör kan ange om automatiska undantag för server-SKU:er ska inaktiveras.
+
+        Inaktiverad (standard):
+        Windows Defender undantar den fördefinierade listan med sökvägar från att genomsökas för att förbättra prestanda.
+
+        Aktiverad:
+        Windows Defender undantar inte den fördefinierade listan med sökvägar från att genomsökas. Detta kan påverka datorns prestanda i vissa scenarier.
+
+        Inte konfigurerad:
+        Samma som Inaktiverad.
+    </string>
     <string id="DisableAntiSpyware">Inaktivera Endpoint Protection</string>
     <string id="DisableAntiSpyware_Explain">Med den här principinställningen inaktiveras Endpoint Protection.
 
@@ -732,9 +747,15 @@ Om du inaktiverar eller låter bli att konfigurera den här inställningen visas
       Obs! För att den här inställningen ska fungera måste inställningen "Gå med i Microsoft MAPS" aktiveras.
 
       Möjliga alternativ är:
-      (0x0) Standardblockeringsnivå i Windows Defender Antivirus
-      (0x2) Hög blockeringsnivå      
+      (0x0) Standardblockeringsnivå i Windows Defender
+      (0x2) Hög blockeringsnivå – blockerar aggressivt okända filer samtidigt som prestanda optimeras (större risk för falsk positiv identifiering)
+      (0x4) Hög+ blockeringsnivå – blockerar aggressivt okända filer och vidtar ytterligare säkerhetsåtgärder (kan påverka prestanda)
+      (0x6) Nolltolerans – blockerar alla okända körbara filer
     </string>
+    <string id="MpCloudBlockLevel_Default_Level">Standardblockeringsnivå i Windows Defender Antivirus</string>
+    <string id="MpCloudBlockLevel_High_Level">Hög blockeringsnivå</string>
+    <string id="MpCloudBlockLevel_High_Plus_Level">Hög+ blockeringsnivå</string>
+    <string id="MpCloudBlockLevel_Zero_Tolerance_Level">Nolltolerans</string>
     <string id="MpBafsExtendedTimeout">Konfigurera extra molnkontroll</string>
     <string id="MpBafsExtendedTimeout_Explain">
       Den här funktionen gör att Windows Defender Antivirus kan blockera en misstänkt fil i upp till 60 sekunder och söka igenom den i molnet för att försäkra sig om att den är säker att använda.
@@ -745,8 +766,138 @@ Om du inaktiverar eller låter bli att konfigurera den här inställningen visas
 
       Obs! För att den här funktionen ska fungera måste följande tre MAPS-inställningar aktiveras: "Konfigurera funktionen Blockera när det först påträffas", "Gå med i Microsoft MAPS" och "Skicka filprover när vidare analys krävs".
     </string>
-    <string id="MpCloudBlockLevel_Default_Level">Standardblockeringsnivå i Windows Defender Antivirus</string>
-    <string id="MpCloudBlockLevel_High_Level">Hög blockeringsnivå</string>    
+    <string id="ExploitGuard_EnableNetworkProtection">Hindra användare och appar från att gå till farliga webbplatser</string>
+    <string id="ExploitGuard_EnableNetworkProtection_Explain">
+    Aktivera eller inaktivera Windows Defender Exploit Guard-nätverksskyddet för att hindra användare och program från att ansluta till farliga domäner som kan hysa nätfiskekod, webbplatser som utnyttjar sårbarheter och annat skadligt innehåll på Internet.
+
+    Aktiverad:
+    Ange ett läge i avsnittet Alternativ:
+    - Blockera: Användare och program kan inte ansluta till farliga domäner.
+    - Granska: Användare och program kan ansluta till farliga domäner, men en händelse loggas i händelseloggarna om anslutningen skulle ha blockerats med läget Blockera.
+
+    Inaktiverad:
+    Användare och program hindras inte från att ansluta till farliga domäner.
+
+    Inte konfigurerad:
+    Samma som Inaktiverad.
+    </string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions">Undanta filer och sökvägar från regler för minskning av attackytan (ASR-regler)</string>
+    <string id="ExploitGuard_ASR_ASROnlyExclusions_Explain">
+    Undanta filer och sökvägar från regler för minskning av attackytan (ASR-regler).
+
+    Aktiverad:
+    Ange mappar eller filer och resurser som ska undantas från ASR-regler i avsnittet Alternativ.
+    Ange varje regel på en ny rad i form av ett namn/värde-par:
+    - Kolumnen Namn: Ange en mappsökväg eller ett fullständigt resursnamn. Exempel: ""C:\Windows"" undantar alla filer i den mappen. ""C:\Windows\App.exe"" undantar endast den specifika filen i den angivna mappen.
+    - Kolumnen Värde: Ange ""0"" för alla poster.
+
+    Inaktiverad:
+    Inga undantag tillämpas i ASR-reglerna.
+
+    Inte konfigurerad:
+    Samma som Inaktiverad.
+
+    Du kan konfigurera ASR-regler i grupprincipinställningen Konfigurera regler för minskning av attackytan.
+    </string>
+    <string id="ExploitGuard_ASR_Rules">Konfigurera regler för minskning av attackytan</string>
+    <string id="ExploitGuard_ASR_Rules_Explain">
+    Ange tillståndet för varje regel för minskning av attackytan (ASR-regel).
+
+    När du aktiverar den här inställningen kan du sätta varje regel till följande lägen i avsnittet Alternativ:
+    - Blockera: Regeln tillämpas.
+    - Granska: Regeln tillämpas inte, men en händelse loggas i de fall då regeln skulle ha tillämpats med läget Blockera.
+    - Av: Regeln tillämpas inte.
+
+    Aktiverad:
+    Ange tillståndet för varje ASR-regel under avsnittet Alternativ för den här inställningen.
+    Ange varje regel på en ny rad i form av ett namn/värde-par:
+    - Kolumnen Namn: Ange ett giltigt ID för ASR-regeln.
+    - Kolumnen Värde: Ange status-ID:t som relaterar till tillståndet du vill specificera för den associerade regeln.
+
+    Följande status-ID:n kan användas i kolumnen Värde:
+    - 1 (Blockera)
+    - 0 (Av)
+    - 2 (Granska)
+    
+    Exempel:
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            0
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            1
+    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx            2
+
+    Inaktiverad:
+    Inga ASR-regler konfigureras.
+
+    Inte konfigurerad:
+    Samma som Inaktiverad.
+
+    Du kan undanta mappar eller filer i grupprincipen Undanta filer och sökvägar från regler för minskning av attackytan (ASR-regler).
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Konfigurera reglerad mappåtkomst</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
+    Aktivera eller inaktivera reglerad mappåtkomst för program som inte är betrodda. 
+
+    Blockera:
+    Program som inte är betrodda kan inte ändra eller ta bort filer i skyddade mappar, t.ex. mappen Dokument.
+
+    Inaktiverad:
+    Alla program kan ändra eller ta bort filer i skyddade mappar, t.ex. mappen Dokument.
+
+    Granska:
+    Program som normalt betraktas som icke betrodda med inställningen Aktiverad kan fortfarande ändra eller ta bort filer i skyddade mappar, men varje händelse loggas i händelseloggen för Windows.
+
+    Inte konfigurerad:
+    Samma som Inaktiverad.
+
+    Windows Defender Antivirus fastställer automatiskt vilka program som är betrodda. Du kan lägga till ytterligare betrodda program i grupprincipinställningen Konfigurera tillåtna program.
+
+    Standardsystemmappar skyddas automatiskt, men du kan lägga till ytterligare mappar i grupprincipinställningen Konfigurera skyddade mappar.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Inaktivera (standard)</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Blockera</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Granska</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Konfigurera tillåtna program</string>
+    <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
+    Lägg till ytterligare program som ska betraktas som betrodda av reglerad mappåtkomst.
+
+    De här programmen tillåts ändra eller ta bort filer i mappar som skyddas av reglerad mappåtkomst.
+
+    Windows Defender Antivirus fastställer automatiskt vilka program som är betrodda. Du kan lägga till ytterligare betrodda program i den här inställningen.
+
+    Aktiverad: 
+    Ange ytterligare program som du vill tillåta i avsnittet Alternativ.
+
+    Inaktiverad:
+    Inga ytterligare program läggs till i listan över betrodda program.
+
+    Inte konfigurerad:
+    Samma som Inaktiverad.
+
+    Du kan aktivera reglerad mappåtkomst i grupprincipinställningen Konfigurera reglerad mappåtkomst.
+
+    Standardsystemmappar skyddas automatiskt, men du kan lägga till ytterligare mappar i grupprincipinställningen Konfigurera skyddade mappar.
+    </string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Konfigurera skyddade mappar</string>
+    <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
+    Ange ytterligare mappar som ska skyddas av funktionen Reglerad mappåtkomst.
+
+    Program som inte är betrodda kan inte ändra eller ta bort filer i de här mapparna.
+
+    Standardsystemmappar skyddas automatiskt. Du kan lägga till ytterligare mappar i den här inställningen. 
+    Listan över standardsystemmappar som skyddas kan ses i Windows Defender Säkerhetscenter.
+
+    Aktiverad:
+    Ange ytterligare mappar som ska skyddas i avsnittet Alternativ.
+
+    Inaktiverad:
+    Inga ytterligare mappar skyddas.
+
+    Inte konfigurerad:
+    Samma som Inaktiverad.
+
+    Du kan aktivera reglerad mappåtkomst i grupprincipinställningen Konfigurera reglerad mappåtkomst.
+
+    Windows Defender Antivirus fastställer automatiskt vilka program som är betrodda. Du kan lägga till ytterligare betrodda program i grupprincipinställningen Konfigurera tillåtna program.
+    </string>
     </stringTable>
     <presentationTable>
     <presentation id="ProxyBypass">
@@ -893,6 +1044,24 @@ Om du inaktiverar eller låter bli att konfigurera den här inställningen visas
     <presentation id="MpBafsExtendedTimeout">
      <decimalTextBox refId="MpBafsExtendedTimeout" defaultValue="0">Ange tiden i sekunder för den extra molnkontrollen</decimalTextBox>
     </presentation>
-    </presentationTable>
+    <presentation id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">
+        <dropdownList refId="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess" noSort="true" defaultItem="0">Konfigurera funktionen för att skydda dina mappar</dropdownList>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_ASROnlyExclusions">
+        <listBox refId="ExploitGuard_ASR_ASROnlyExclusions">Undantag från ASR-regler:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ASR_Rules">
+        <listBox refId="ExploitGuard_ASR_Rules">Ange tillstånd för varje ASR-regel:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_AllowedApplications">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_AllowedApplications">Ange programmen som ska anses vara betrodda:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">
+        <listBox refId="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Ange mapparna som ska skyddas:</listBox>
+    </presentation>
+    <presentation id="ExploitGuard_EnableNetworkProtection">
+        <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+   </presentationTable>
 </resources>
 </policyDefinitionResources>
