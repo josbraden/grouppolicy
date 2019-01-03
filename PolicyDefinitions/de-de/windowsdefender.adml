@@ -834,27 +834,61 @@ Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, wird kein zus�
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Überwachten Ordnerzugriff konfigurieren</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    Aktivieren oder deaktivieren Sie den überwachten Ordnerzugriff durch nicht vertrauenswürdige Anwendungen. 
+    Aktiviert oder deaktiviert den überwachten Ordnerzugriff für nicht vertrauenswürdige Anwendungen. Folgende Versuche nicht vertrauenswürdiger Apps können blockiert, überwacht oder zugelassen werden:
+    – Dateien in geschützten Ordnern, wie dem Dokumentordner, ändern oder löschen
+    – Auf Datenträgersektoren schreiben
+
+    Sie können auch nur Schreibvorgänge auf Datenträgersektoren blockieren oder überwachen, das Ändern oder Löschen von Dateien in geschützten Ordnern aber weiterhin zulassen.
+
+    Windows Defender Antivirus bestimmt automatisch, welche Anwendungen vertrauenswürdig sind. In der GP-Einstellung "Zulässige Anwendungen konfigurieren" können Sie zusätzliche vertrauenswürdige Anwendungen hinzufügen.
+    Standardsystemordner werden automatisch geschützt, in der GP-Einstellung "Geschützte Ordner konfigurieren" können Sie jedoch Ordner hinzufügen.
 
     Blockieren:
-    Dateien in geschützten Ordnern (z. B. im Ordner "Dokumente") können durch nicht vertrauenswürdige Anwendungen weder geändert noch gelöscht werden.
+    Folgende Versuche nicht vertrauenswürdiger Apps werden blockiert:
+    – Dateien in geschützten Ordnern ändern oder löschen
+    – Auf Datenträgersektoren schreiben
+    Die blockierten Aktionen werden vom Windows-Ereignisprotokoll unter "Anwendungs- und Dienstprotokolle &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1123" aufgezeichnet.
+
 
     Deaktiviert:
-    Dateien in geschützten Ordnern (z. B. im Ordner "Dokumente") können von allen Anwendungen geändert oder gelöscht werden.
+    Folgende Versuche nicht vertrauenswürdiger Apps werden nicht blockiert und dürfen ausgeführt werden:
+    – Dateien in geschützten Ordnern ändern oder löschen
+    – Auf Datenträgersektoren schreiben
+    Diese Versuche werden nicht im Windows-Ereignisprotokoll aufgezeichnet.
+
 
     Überwachungsmodus:
-    Anwendungen, die normalerweise als "nicht vertrauenswürdig" eingestuft worden wären, wenn die Einstellung "Aktiviert" gelautet hätte, können Dateien in geschützten Ordnern weiterhin ändern oder löschen. Jedes dieser Ereignisse wird jedoch im Windows-Ereignisprotokoll aufgezeichnet.
+    Folgende Versuche nicht vertrauenswürdiger Apps werden nicht blockiert und dürfen ausgeführt werden:
+    – Dateien in geschützten Ordnern ändern oder löschen
+    – Auf Datenträgersektoren schreiben
+    Diese Versuche werden vom Windows-Ereignisprotokoll unter "Anwendungs- und Dienstprotokolle &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1124" aufgezeichnet.
+
+
+    Nur Datenträgeränderungen blockieren:
+    Folgende Versuche nicht vertrauenswürdiger Apps werden blockiert:
+    – Auf Datenträgersektoren schreiben
+    Diese Versuche werden vom Windows-Ereignisprotokoll unter "Anwendungs- und Dienstprotokolle &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1123" aufgezeichnet.
+
+    Folgende Versuche nicht vertrauenswürdiger Apps werden nicht blockiert und dürfen ausgeführt werden:
+    – Dateien in geschützten Ordnern ändern oder löschen
+    Diese Versuche werden nicht im Windows-Ereignisprotokoll aufgezeichnet.
+
+
+    Nur Datenträgeränderungen überwachen:
+    Folgende Versuche nicht vertrauenswürdiger Apps werden nicht blockiert und dürfen ausgeführt werden:
+    – Auf Datenträgersektoren schreiben
+    – Dateien in geschützten Ordnern ändern oder löschen
+    Nur Schreibversuche auf geschützten Datenträgersektoren werden im Windows-Ereignisprotokoll (unter "Anwendungs- und Dienstprotokolle &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1124") aufgezeichnet.
+    Versuche, Dateien in geschützten Ordnern zu ändern oder zu löschen, werden nicht aufgezeichnet.
 
     Nicht konfiguriert:
     Identisch mit "Deaktiviert".
-
-    Windows Defender Antivirus ermittelt automatisch, welche Anwendungen vertrauenswürdig sind. Sie können zusätzliche vertrauenswürdige Anwendungen in der Gruppenrichtlinieneinstellung "Zulässige Anwendungen konfigurieren" hinzufügen.
-
-    Standardsystemordner werden automatisch überwacht, Sie können außerdem weitere Ordner in der Gruppenrichtlinieneinstellung "Geschützte Ordner konfigurieren" hinzufügen.
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Deaktivieren (Standard)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Blockieren</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Überwachungsmodus</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">Nur Datenträgeränderungen blockieren</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">Nur Datenträgeränderungen überwachen</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Zulässige Anwendungen konfigurieren</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     Fügen Sie zusätzliche Anwendungen hinzu, die vom überwachten Ordnerzugriff als "vertrauenswürdig" eingestuft werden sollen.

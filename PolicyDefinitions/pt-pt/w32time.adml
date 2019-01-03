@@ -5,41 +5,41 @@
   <description>introduza a descrição aqui</description>
   <resources>
     <stringTable>
-      <string id="W32TIME_CONFIG_EXPLAIN">Esta definição de política permite especificar valores de Disciplina de Relógio e Geral para o serviço Hora do Windows (W32time) para controladores de domínio, incluindo RODCs.
+      <string id="W32TIME_CONFIG_EXPLAIN">Esta definição de política permite especificar valores de disciplina de Relógio e Geral para o serviço Hora do Windows (W32time) para controladores de domínio, incluindo RODCs.
 
-Se ativar esta definição de política, o Serviço W32time em computadores de destino utiliza as definições fornecidas aqui. Caso contrário, o serviço nos computadores de destino utiliza os valores das definições configuradas localmente.
+Se ativar esta definição de política, o Serviço W32time em computadores de destino utiliza as definições fornecidas aqui. Caso contrário, o serviço em computadores de destino utiliza os valores de definição configurados localmente.
 
 Para obter mais informações sobre parâmetros individuais, combinações de valores de parâmetros e definições de sinalizadores, consulte https://go.microsoft.com/fwlink/?linkid=847809.
 
         FrequencyCorrectRate
-Este parâmetro controla a regularidade com que o W32time corrige a frequência do relógio local. Os valores mais baixos dão origem a correções mais lentas; os valores mais altos dão origem a correções mais frequentes. Predefinição: 4 (escalar).
+Este parâmetro controla a regularidade com que o W32time corrige a frequência do relógio local. Valores inferiores dão origem a correções mais lentas; valores superiores dão origem a correções mais frequentes. Predefinição: 4 (escalar).
 
         HoldPeriod
-Este parâmetro indica quantas amostras de hora consistentes o computador cliente tem de receber em série para que as amostras de hora subsequentes sejam avaliadas como potenciais picos. Predefinição: 5
+Este parâmetro indica quantas amostras de hora consistentes o computador cliente tem de receber em série para que amostras de hora subsequentes sejam avaliadas como potenciais picos. Predefinição: 5
 
         LargePhaseOffset
-Se uma amostra de hora difere do relógio local do computador cliente em mais de LargePhaseOffset, considera-se que o relógio local se desviou consideravelmente ou, por outras palavras, teve um pico. Predefinição: 50.000.000 unidades de 100 nanossegundos (ns) ou 5 segundos.
+Se uma amostra de hora for diferente do relógio local do computador cliente num valor superior ao de LargePhaseOffset, considera-se que o relógio local se desviou consideravelmente ou, por outras palavras, atingiu um pico. Predefinição: 50.000.000 unidades de 100 nanossegundos (ns), que são 5 segundos.
 
         MaxAllowedPhaseOffset
 Se for recebida uma resposta que tenha uma variação horária superior a este valor de parâmetro, o W32time define imediatamente o relógio local do computador cliente com a hora aceite como certa do servidor NTP (Network Time Protocol). Se a variação horária for inferior a este valor, o relógio local do computador cliente será corrigido gradualmente. Predefinição: 300 segundos.
 
         MaxNegPhaseCorrection
-Se for recebida uma amostra de hora que indique uma hora passada (em comparação com o relógio local do computador cliente) e tenha uma diferença horária superior ao valor de MaxNegPhaseCorrection, a amostra de hora será eliminada. Predefinição: 172.800 segundos.
+Se for recebida uma amostra de hora que indique uma hora no passado (em comparação com o relógio local do computador cliente) e tenha uma diferença horária superior ao valor de MaxNegPhaseCorrection, a amostra de hora será eliminada. Predefinição: 172.800 segundos.
 
         MaxPosPhaseCorrection
 Se for recebida uma amostra de hora que indique uma hora no futuro (em comparação com o relógio local do computador cliente) e tenha uma diferença horária superior ao valor de MaxPosPhaseCorrection, a amostra de hora será eliminada. Predefinição: 172.800 segundos.
 
         PhaseCorrectRate
-Este parâmetro controla a rapidez com que o W32time corrige a diferença do relógio local do computador cliente de forma a coincidir com as amostras de hora aceites como precisas do servidor NTP. Os valores mais baixos fazem com que o relógio seja corrigido mais lentamente; os valores mais altos fazem com que o relógio seja corrigido mais rapidamente. Predefinição: 7 (escalar).
+Este parâmetro controla a rapidez com que o W32time corrige a diferença do relógio local do computador cliente de forma a coincidir com as amostras de hora aceites como precisas do servidor NTP. Valores inferiores fazem com que o relógio seja corrigido mais lentamente; valores superiores fazem com que o relógio seja corrigido mais rapidamente. Predefinição: 7 (escalar).
 
         PollAdjustFactor
-Este parâmetro controla a rapidez com que o W32time altera os intervalos de consulta. Quando as respostas são consideradas precisas, o intervalo de consulta é automaticamente expandido. Quando as respostas são consideradas incorretas, o intervalo de consulta é automaticamente reduzido. Predefinição: 5 (escalar).
+Este parâmetro controla a rapidez com que o W32time altera os intervalos de consulta. Quando as respostas são consideradas precisas, o intervalo de consulta é automaticamente expandido. Quando as respostas são consideradas imprecisas, o intervalo de consulta é automaticamente encurtado. Predefinição: 5 (escalar).
 
         SpikeWatchPeriod
-Este parâmetro especifica o período de tempo em que são recebidas amostras com um desvio de tempo superior a LargePhaseOffset, antes de estas amostras serem aceites como precisas. SpikeWatchPeriod é utilizado em conjunto com HoldPeriod para ajudar a eliminar amostras de hora não precisas e esporádicas, devolvidas por um elemento da rede. Predefinição: 900 segundos.
+Este parâmetro especifica o período de tempo em que são recebidas amostras com um desvio de tempo superior a LargePhaseOffset antes de serem aceites como precisas. SpikeWatchPeriod é utilizado em conjunto com HoldPeriod para ajudar a eliminar amostras de hora não precisas e esporádicas devolvidas por um elemento da rede. Predefinição: 900 segundos.
 
         UpdateInterval
-Este parâmetro especifica o período de tempo que o W32time aguarda entre correções quando o relógio está a ser corrigido gradualmente. Quando efetua uma correção gradual, o serviço ajusta ligeiramente o relógio, aguarda este período de tempo e, em seguida, verifica se é necessário outro ajuste, até à conclusão da correção. Predefinição: 100 unidades de 1/100 de segundo ou 1 segundo.
+Este parâmetro especifica o período de tempo que o W32time aguarda entre correções quando o relógio está a ser corrigido gradualmente. Quando efetua uma correção gradual, o serviço ajusta ligeiramente o relógio, aguarda este período de tempo e, em seguida, verifica se é necessário outro ajuste, até à conclusão da correção. Predefinição: 100 unidades de 1/100 de segundo, que corresponde a 1 segundo.
 
         Parâmetros gerais:
 
@@ -47,33 +47,33 @@ Este parâmetro especifica o período de tempo que o W32time aguarda entre corre
 Este parâmetro é um valor de máscara de bits que controla o modo como a disponibilidade do serviço de hora é anunciada através de NetLogon. Predefinição: 0x0a hexadecimal.
 
         EventLogFlags
-Este parâmetro controla eventos especiais que poderão ser registados no registo do Sistema do Visualizador de Eventos. Predefinição: 0x02, máscara de bits hexadecimal
+Este parâmetro controla eventos especiais que poderão ser registados no registo do Sistema do Visualizador de Eventos. Predefinição: 0x02 máscara de bits hexadecimal.
 
         LocalClockDispersion
-Este parâmetro indica o erro máximo em segundos que é reportado pelo servidor NTP a clientes que solicitem uma amostra de hora. (Aplica-se apenas quando o servidor NTP utiliza a hora do relógio CMOS local.) Predefinição: 10 segundos.
+Este parâmetro indica o erro máximo em segundos que é reportado pelo servidor NTP a clientes que estejam a pedir uma amostra de hora. (Aplica-se apenas quando o servidor NTP utiliza a hora do relógio CMOS local.) Predefinição: 10 segundos.
 
         MaxPollInterval
-Este parâmetro controla o intervalo de consulta máximo, que define o período de tempo máximo entre consultas de um elemento da rede. Predefinição: 10 na base logarítmica 2, que corresponde a 1024 segundos. (Não deve ser superior a 15.)
+Este parâmetro controla o intervalo de consulta máximo, que define o período de tempo máximo entre consultas de um elemento da rede. Predefinição: 10 logaritmo de base 2, que corresponde a 1024 segundos. (Não deve ser superior a 15.)
 
         MinPollInterval
-Este parâmetro controla o intervalo de consulta mínimo, que define o período de tempo mínimo entre consultas de um elemento da rede. Predefinição: 6 na base logarítmica 2, que corresponde a 64 segundos.
+Este parâmetro controla o intervalo de consulta mínimo, que define o período de tempo mínimo entre consultas de um elemento da rede. Predefinição: 6 logaritmo de base 2, que corresponde a 64 segundos.
 
         ClockHoldoverPeriod
-Este parâmetro indica o número máximo de segundos que o relógio do sistema consegue manter a exatidão sem sincronizar com uma origem de hora. Se este período de tempo passar sem que o W32time obtenha novas amostras a partir de qualquer um dos fornecedores de dados, o W32time inicia uma nova deteção de origens de hora. Predefinição: 7800 segundos. 
+Este parâmetro indica o número máximo de segundos que o relógio do sistema consegue manter a exatidão sem sincronização com uma origem de hora. Se este período de tempo passar sem que o W32time obtenha novas amostras a partir de qualquer um dos fornecedores de entrada, o W32time inicia uma nova deteção de origens de hora. Predefinição: 7800 segundos.
 
         RequireSecureTimeSyncRequests
-Este parâmetro controla se o DC responderá ou não a pedidos de sincronização de hora que utilizem protocolos de autenticação mais antigos. Se ativado (definido como 1), o DC não responderá a pedidos que utilizem tais protocolos. Predefinição: 0 Booleano.
+Este parâmetro controla se o DC responderá ou não a pedidos de sincronização de hora que utilizem protocolos de autenticação mais antigos. Se ativado (definido como 1), o DC não responderá a pedidos que utilizem tais protocolos. Predefinição: 0 booleano.
 
         UtilizeSslTimeData
-Este parâmetro controla se o W32time utiliza dados de hora calculados a partir de tráfego SSL na máquina como dados adicionais para corrigir o relógio local. Predefinição: 1 Booleano (ativado)
+Este parâmetro controla se o W32time utiliza dados de hora calculados a partir de tráfego SSL na máquina como dados adicionais para corrigir o relógio local. Predefinição: 1 booleano (ativado)
 
         ClockAdjustmentAuditLimit
-Este parâmetro especifica os ajustes de relógio local mais pequenos que possam ser registados no registo de eventos do serviço W32time no computador de destino. Predefinição: 800 partes por milhão (PPM).
+Este parâmetro especifica os ajustes mais pequenos do relógio local que podem ser registados no registo de eventos do serviço W32time na máquina de destino. Predefinição: 800 Partes por milhão (PPM).
 
         Parâmetros RODC:
 
         ChainEntryTimeout
-Este parâmetro especifica o período de tempo máximo que uma entrada pode permanecer na tabela de encadeamento antes de ser considerada expirada. As entradas expiradas poderão ser removidas após o processamento do pedido ou resposta seguinte. Predefinição: 16 segundos.
+Este parâmetro especifica o período de tempo máximo que uma entrada pode permanecer na tabela de encadeamento antes de ser considerada expirada. As entradas expiradas poderão ser removidas quando o pedido ou resposta seguinte for processado. Predefinição: 16 segundos.
 
         ChainMaxEntries
 Este parâmetro controla o número máximo de entradas permitidas na tabela de encadeamento. Se a tabela de encadeamento estiver cheia e não for possível remover entradas expiradas, qualquer pedido recebido será eliminado. Predefinição: 128 entradas.
@@ -82,7 +82,7 @@ Este parâmetro controla o número máximo de entradas permitidas na tabela de e
 Este parâmetro controla o número máximo de entradas permitidas na tabela de encadeamento para um determinado sistema anfitrião. Predefinição: 4 entradas.
 
         ChainDisable
-Este parâmetro controla se o mecanismo de encadeamento está ou não desativado. Se o encadeamento estiver desativado (definido como 0), o RODC poderá sincronizar com qualquer controlador de domínio, mas os sistemas anfitrião que não possuam as respetivas palavras-passe em cache no RODC não conseguirão sincronizar com o RODC. Predefinição: 0 Booleano.
+Este parâmetro controla se o mecanismo de encadeamento está desativado. Se o encadeamento estiver desativado (definido como 0), o RODC poderá sincronizar com qualquer controlador de domínio, mas os sistemas anfitrião que não tenham as palavras-passe em cache no RODC não conseguirão sincronizar com o RODC. Predefinição: 0 booleano.
 
         ChainLoggingRate
 Este parâmetro controla a frequência com que um evento que indica o número de tentativas de encadeamento com e sem êxito é registado no registo do Sistema do Visualizador de Eventos. Predefinição: 30 minutos.

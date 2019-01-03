@@ -829,27 +829,61 @@ Jeśli wyłączysz to ustawienie lub go nie skonfigurujesz, dodatkowy tekst nie 
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Konfiguruj kontrolowany dostęp do folderu</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    Włącz lub wyłącz kontrolowany dostęp do folderu dla niezaufanych aplikacji.
+    Włącz lub wyłącz kontrolowany dostęp do folderu dla niezaufanych aplikacji. Możesz określić, że podejmowane przez niezaufane aplikacje próby wykonania wymienionych poniżej operacji mają być blokowane, poddawane inspekcji lub dozwolone.
+    - Modyfikowanie lub usuwanie plików w folderach chronionych, takich jak folder Dokumenty.
+    - Zapisywanie w sektorach dysku.
 
-        Włączone:
-        Niezaufane aplikacje nie mogą modyfikować ani usuwać plików w chronionych folderach, takich jak folder Dokumenty.
+    Możesz także określić, że tylko operacje zapisu w sektorach dysku mają być blokowane lub poddawane inspekcji, a modyfikowanie lub usuwanie plików w folderach chronionych ma być dozwolone.
 
-        Wyłączone:
-        Wszystkie aplikacje mogą modyfikować i usuwać pliki w chronionych folderach, takich jak folder Dokumenty.
+    Program antywirusowy Windows Defender automatycznie ustala, które aplikacje można traktować jako zaufane. Możesz dodać kolejne zaufane aplikacje, używając ustawienia zasad grupy Konfiguruj dozwolone aplikacje.
+    Domyślne foldery systemu są chronione automatycznie, ale możesz dodać foldery, używając ustawienia zasad grupy Konfiguruj chronione foldery.
 
-        Tryb inspekcji:
-        Aplikacje, które w przypadku włączenia tego ustawienia byłyby traktowane jako „niezaufane”, mogą modyfikować i usuwać pliki w chronionych folderach, jednak każde takie zdarzenie będzie rejestrowane w dzienniku zdarzeń systemu Windows.
+    Blokuj:
+    Będą blokowane następujące operacje:
+    - Podejmowane przez niezaufane aplikacje próby modyfikowania lub usuwania plików w folderach chronionych.
+    - Podejmowane przez niezaufane aplikacje próby wykonywania zapisów w sektorach dysków.
+    Te zdarzenia blokowania będą rejestrowane w dzienniku zdarzeń systemu Windows w obszarze Dzienniki aplikacji i usług &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operacyjne &gt; Identyfikator 1123.
 
-        Nieskonfigurowane:
-        Takie samo działanie jak w przypadku wartości Wyłączone.
 
-        Program antywirusowy Windows Defender automatycznie ustala, które aplikacje mogą być zaufane. Dodatkowe zaufane aplikacje możesz dodać w ustawieniu zasad grupy Konfiguruj dozwolone aplikacje.
+    Wyłączone:
+    Wymienione poniżej operacje nie będą blokowane i będzie można je wykonywać:
+    - Podejmowane przez niezaufane aplikacje próby modyfikowania lub usuwania plików w folderach chronionych.
+    - Podejmowane przez niezaufane aplikacje próby wykonywania zapisów w sektorach dysków.
+    Te próby nie będą rejestrowane w dzienniku zdarzeń systemu Windows.
 
-        Domyślne foldery systemu są chronione automatycznie, ale możesz dodać foldery, używając ustawienia zasad grupy Konfiguruj chronione foldery.
+
+    Tryb inspekcji:
+    Wymienione poniżej operacje nie będą blokowane i będzie można je wykonywać:
+    - Podejmowane przez niezaufane aplikacje próby modyfikowania lub usuwania plików w folderach chronionych.
+    - Podejmowane przez niezaufane aplikacje próby wykonywania zapisów w sektorach dysków.
+    Te próby będą rejestrowane w dzienniku zdarzeń systemu Windows w obszarze Dzienniki aplikacji i usług &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operacyjne &gt; Identyfikator 1124.
+
+
+    Blokuj tylko modyfikacje dysku:
+    Będą blokowane następujące operacje:
+    - Podejmowane przez niezaufane aplikacje próby wykonywania zapisów w sektorach dysków.
+    Te próby będą rejestrowane w dzienniku zdarzeń systemu Windows w obszarze Dzienniki aplikacji i usług &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operacyjne &gt; Identyfikator 1123.
+
+    Wymienione poniżej operacje nie będą blokowane i będzie można je wykonywać:
+    - Podejmowane przez niezaufane aplikacje próby modyfikowania lub usuwania plików w folderach chronionych.
+    Te próby nie będą rejestrowane w dzienniku zdarzeń systemu Windows.
+
+
+    Poddawaj inspekcji tylko modyfikacje dysku:
+    Wymienione poniżej operacje nie będą blokowane i będzie można je wykonywać:
+    - Podejmowane przez niezaufane aplikacje próby wykonywania zapisów w sektorach dysków.
+    - Podejmowane przez niezaufane aplikacje próby modyfikowania lub usuwania plików w folderach chronionych.
+    Tylko próby zapisu w chronionych sektorach dysku będą rejestrowane w dzienniku zdarzeń systemu Windows (w obszarze Dzienniki aplikacji i usług &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operacyjne &gt; Identyfikator 1124).
+    Próby modyfikowania lub usuwania plików w folderach chronionych nie będą rejestrowane.
+
+    Nieskonfigurowane:
+    Takie samo działanie jak w przypadku wartości Wyłączone.
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Wyłącz (domyślne)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Zablokuj</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Tryb inspekcji</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">Blokuj tylko modyfikacje dysku</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">Poddawaj inspekcji tylko modyfikacje dysku</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Konfiguruj dozwolone aplikacje</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     Dodaj kolejne aplikacje, które mają być traktowane jako „zaufane” przez funkcję kontrolowanego dostępu do folderu.

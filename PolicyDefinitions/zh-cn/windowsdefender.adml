@@ -834,27 +834,61 @@
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">配置受控文件夹访问权限</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    针对不受信任的应用程序启用或禁用受控文件夹访问权限。
+    针对不受信任的应用程序启用或禁用受控文件夹访问权限。你可以选择阻止、审核或允许不受信任的应用进行以下尝试:
+    - 修改或删除受保护文件夹内的文件，如“文档”文件夹
+    - 写入磁盘扇区
+
+    你也可以选择仅阻止或审核对磁盘扇区进行的写入，同时仍允许修改或删除受保护文件夹中的文件。
+
+    Windows Defender 防病毒会自动确定可以信任哪些应用程序。你可以在“配置允许的应用程序”GP 设置中添加其他受信任的应用程序。
+    默认的系统文件夹自动受保护，不过你可以在“配置受保护的文件夹”GP 设置中添加文件夹。
 
     阻止:
-    不受信任的应用程序无法修改或删除受保护文件夹内的文件，如“文档”文件夹。
+    将阻止以下操作:
+    - 不受信任的应用尝试修改或删除受保护文件夹中的文件
+    - 不受信任的应用尝试写入磁盘扇区
+    Windows 事件日志将在“应用程序和服务日志”&gt; "Microsoft" &gt; "Windows" &gt; "Windows Defender" &gt;“可操作”&gt; "ID 1123" 下记录这些阻止操作。
 
-    禁用:
-    所有应用程序均可修改或删除受保护文件夹内的文件，如“文档”文件夹。
+
+    已禁用:
+    以下操作将不会被阻止，并被允许运行:
+    - 不受信任的应用尝试修改或删除受保护文件夹中的文件
+    - 不受信任的应用尝试写入磁盘扇区
+    这些尝试将不会记录在 Windows 事件日志中。
+
 
     审核模式:
-    在设置为“启用”时正常被视为“不受信任”的应用程序仍然可以修改或删除受保护文件夹内的文件。但是，每个事件都将被记录在 Windows 事件日志中。
+    以下操作将不会被阻止，并被允许运行:
+    - 不受信任的应用尝试修改或删除受保护文件夹中的文件
+    - 不受信任的应用尝试写入磁盘扇区
+    Windows 事件日志将在“应用程序和服务日志”&gt; "Microsoft" &gt; "Windows" &gt; "Windows Defender" &gt;“可操作”&gt; "ID 1124" 下面记录这些尝试。
+
+
+    仅阻止磁盘修改:
+    将阻止以下操作:
+    - 不受信任的应用尝试写入磁盘扇区
+    Windows 事件日志将在“应用程序和服务日志”&gt; "Microsoft" &gt; "Windows" &gt; "Windows Defender" &gt;“可操作”&gt; "ID 1123" 下面记录这些尝试。
+
+    以下操作将不会被阻止，并被允许运行:
+    - 不受信任的应用尝试修改或删除受保护文件夹中的文件
+    这些尝试将不会记录在 Windows 事件日志中。
+
+
+    仅审核磁盘修改:
+    以下操作将不会被阻止，并被允许运行:
+    - 不受信任的应用尝试写入磁盘扇区
+    - 不受信任的应用尝试修改或删除受保护文件夹中的文件
+    只有尝试写入受保护的磁盘扇区的操作才会记录到 Windows 事件日志中(在“应用程序和服务日志”&gt; "Microsoft" &gt; "Windows" &gt; "Windows Defender" &gt;“可操作”&gt; "ID 1124" 下)。
+    将不会记录尝试修改或删除受保护文件夹中的文件的操作。
 
     未配置:
-    与“禁用”相同。
-
-    Windows Defender 防病毒自动确定哪些应用程序可以信任。你可以在“配置允许的应用程序”GP 设置中添加其他受信任的应用程序。
-
-    默认的系统文件夹自动受保护，不过你可以在“配置受保护文件夹”GP 设置中添加文件夹。
+    同“已禁用”。
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">禁用(默认)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">阻止</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">审核模式</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">仅阻止磁盘修改</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">仅审核磁盘修改</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">配置允许的应用程序</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     根据受控文件夹访问权限添加其他应被视为“受信任”的应用程序。

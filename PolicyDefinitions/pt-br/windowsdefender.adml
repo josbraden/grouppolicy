@@ -834,27 +834,61 @@ Se você desabilitar ou não definir essa configuração, nenhum texto adicional
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Configurar Acesso controlado a pastas</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    Habilite ou desabilite o acesso controlado a pastas para aplicativos não confiáveis. 
+    Habilite ou desabilite o acesso controlado a pastas para aplicativos não confiáveis. Você pode optar por bloquear, auditor ou permitir tentativas de aplicativos não confiáveis de:
+    - Modificar ou excluir arquivos em pastas protegidas, como a pasta Documentos
+    - Grava rem setores do disco
 
-    Habilitado:
-    Aplicativos não confiáveis não podem modificar ou excluir arquivos em pastas protegidas, como a pasta Documentos.
+    Você também pode optar por bloquear ou auditor gravações em setores do disco e ainda permitir a modificação ou exclusão de arquivos em pastas protegidas.
+
+    O Windows Defender Antivírus determina automaticamente quais aplicativos podem ser confiáveis. Você pode adicionar mais aplicativos confiáveis na configuração de política de grupo Configurar aplicativos permitidos.
+    As pastas padrão do sistema são protegidas automaticamente, mas você pode adicionar pastas na configuração de política de grupo Configurar pastas protegidas.
+
+    Bloquear:
+    O seguinte será bloqueado:
+    - Tentativas de aplicativos não confiáveis de modificar ou excluir arquivos em pastas protegidas
+    - Tentativas de aplicativos não confiáveis de gravar em setores do disco
+    O log de eventos do Windows registrará esses bloqueios em Logs de Aplicativos e Serviços &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operacional &gt; ID 1123.
+
 
     Desabilitado:
-    Todos os aplicativos podem modificar ou excluir arquivos em pastas protegidas, como a pasta Documentos.
+    O seguinte não será bloqueado e autorizado a executar:
+    - Tentativas de aplicativos não confiáveis de modificar ou excluir arquivos em pastas protegidas
+    - Tentativas de aplicativos não confiáveis de gravar em setores do disco
+    Essas tentativas não serão registradas no log de eventos do Windows.
+
 
     Modo de Auditoria:
-    Os aplicativos que seriam normalmente considerados “não confiáveis” com essa configuração habilitada ainda poderiam modificar ou excluir arquivos em pastas protegidas. No entanto, cada evento será registrado no log de eventos do Windows.
+    O seguinte não será bloqueado e será autorizado a executar:
+    - Tentativas de aplicativos não confiáveis de modificar ou excluir arquivos em pastas protegidas
+    - Tentativas de aplicativos não confiáveis de gravar em setores do disco
+    O log de eventos do Windows registrará essas tentativas em Logs de Aplicativos e Serviços &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operacional &gt; ID 1124.
+
+
+    Bloquear somente a modificação de disco:
+    O seguinte será bloqueado:
+    - Tentativas de aplicativos não confiáveis de gravar em setores de disco
+    O log de eventos do Windows registrará essas tentativas em Logs de Aplicativos e Serviços &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operacional &gt; ID 1123.
+
+    O seguinte não será bloqueado e será autorizado a executar:
+    - Tentativas de aplicativos não confiáveis de modificar ou excluir arquivos em pastas protegidas
+    Essas tentativas não serão registradas no log de eventos do Windows.
+
+
+    Auditar somente modificação de disco:
+    O seguinte não será bloqueado e será autorizado a executar:
+    - Tentativas de aplicativos não confiáveis de gravar em setores do disco
+    - Tentativas de aplicativos não confiáveis de modificar ou excluir arquivos em pastas protegidas
+    Somente tentativas de gravar em setores protegidos do disco serão registradas no log de eventos do Windows (em Logs de Aplicativos e Serviços &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operacional &gt; ID 1124).
+    Tentativas de modificar ou excluir arquivos em pastas protegidas não serão registradas.
 
     Não configurado:
     O mesmo que Desabilitado.
-
-    O Windows Defender Antivírus determina automaticamente quais aplicativos são confiáveis. Você pode adicionar aplicativos confiáveis na configuração de política de grupo Configurar aplicativos permitidos.
-
-    As pastas padrão do sistema são protegidas automaticamente, mas você pode adicionar pastas na configuração de política de grupo Configurar pastas protegidas.
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Desabilitar (Padrão)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Bloquear</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Modo de Auditoria</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">Bloquear somente modificação de disco</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">Auditar somente modificação de disco</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Configurar aplicativos permitidos</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     Adicione aplicativos que devem ser considerados “confiáveis” pelo acesso a pastas controladas.

@@ -32,7 +32,11 @@
       <string id="MaxDownloadBandwidth">Largura de Banda Máxima para Download (em KB/s)</string>
       <string id="MaxDownloadBandwidth_Help">Especifica a largura de banda máxima para download em Quilobytes/segundo que o dispositivo pode usar em todas as atividades de download simultâneas usando a Otimização de Entrega. O valor padrão 0 (zero) significa que a Otimização de Entrega é ajustada dinamicamente para usar a largura de banda disponível para downloads.</string>
       <string id="PercentageMaxDownloadBandwidth">Largura de Banda Máxima para Download (percentual)</string>
-      <string id="PercentageMaxDownloadBandwidth_Help">Especifica a largura de banda de download máxima que a Otimização de Entrega usa em todas as atividades de download simultâneas como uma porcentagem da largura de banda de download disponível. O valor padrão 0 (zero) significa que a Otimização de Entrega se ajusta dinamicamente para usar a largura de banda disponível para downloads.</string>
+      <string id="PercentageMaxDownloadBandwidth_Help">Especifica a largura de banda máxima para download que a Otimização de Entrega usa em todas as atividades de download simultâneas como uma porcentagem da largura de banda disponível para download. O valor padrão 0 (zero) significa que a Otimização de Entrega se ajusta dinamicamente para usar a largura de banda disponível para downloads. Essa política foi substituída e será removida na próxima versão. Use Largura de Banda Máxima para Download em Primeiro Plano (em porcentagem) ou Largura de Banda Máxima para Download em Segundo Plano (em porcentagem).</string>
+      <string id="PercentageMaxBackgroundBandwidth">Largura de Banda Máxima para Download em Segundo Plano (porcentagem)</string>
+      <string id="PercentageMaxBackgroundBandwidth_Help">Especifica a largura de banda máxima para download em segundo plano que a Otimização de Entrega usa em todas as atividades de download simultâneas como uma porcentagem da largura de banda de download disponível. O valor padrão 0 (zero) significa que a Otimização de Entrega se ajusta dinamicamente para usar a largura de banda disponível para downloads em segundo plano.</string>
+      <string id="PercentageMaxForegroundBandwidth">Largura de Banda Máxima para Download em Primeiro Plano (porcentagem)</string>
+      <string id="PercentageMaxForegroundBandwidth_Help">Especifica a largura de banda máxima para download em primeiro plano que a Otimização de Entrega usa em todas as atividades de download simultâneas como uma porcentagem da largura de banda de download disponível. O valor padrão 0 (zero) significa que a Otimização de Entrega se ajusta dinamicamente para usar a largura de banda disponível para downloads em primeiro plano.</string>
       <string id="MinFileSizeToCache">Tamanho de Arquivo Mínimo para Conteúdo de Cache de Sistemas Pares (em MB)</string>
       <string id="MinFileSizeToCache_Help">Especifica o tamanho mínimo de arquivo de conteúdo em MB permitido para usar o Cache de Sistemas Pares. Valores recomendados: 1 MB a 100000 MB.</string>
       <string id="AllowVPNPeerCaching">Permitir Cache de Sistemas Pares enquanto o dispositivo estiver conectado por meio da VPN</string>
@@ -43,6 +47,60 @@
       <string id="MinDiskSizeAllowedToPeer_Help">Especifica o tamanho mínimo em disco necessário (capacidade em GB) para o dispositivo usar o Cache de Sistemas Pares. O valor padrão definido para o serviço de nuvem será usado. Valores recomendados: 64 GB a 256 GB. Observação: se a política DOMoidfyCacheDrive estiver definida, a verificação de tamanho de disco será aplicada a um novo diretório de trabalho especificado por esta política.</string>
       <string id="MinBatteryPercentageAllowedToUpload">Permitir uploads enquanto o dispositivo está consumindo energia da bateria abaixo do Nível da bateria (percentual) definido</string>
       <string id="MinBatteryPercentageAllowedToUpload_Help">Especifique qualquer valor entre 1 e 100 (em porcentagem) para permitir que o dispositivo carregue dados para pares da Rede Local e do Grupo enquanto estiver consumindo energia CC (Bateria). Os uploads serão pausados automaticamente quando o nível da bateria ficar abaixo do nível mínimo da bateria definido. O valor recomendado para definir se você permitirá upload quando estiver consumindo energia da bateria é 40 (para 40%). O dispositivo pode baixar de pares enquanto estiver consumindo energia da bateria, independentemente desta política. O valor 0 significa "ilimitado"; O valor padrão definido para o serviço de nuvem será usado.</string>
+      <string id="GroupIdSource">Selecione a fonte de IDs de Grupo</string>
+      <string id="GroupIdSource_Help">Defina esta política para restringir a seleção de pares a uma fonte específica. 
+      
+As opções disponíveis são: 
+
+1 = Site do AD.
+
+2 = SID de domínio autenticado.
+
+3 = ID de opções de DHCP.
+
+4 = Sufixo DNS. 
+
+Quando configurado, o ID de grupo será atribuído automaticamente da fonte selecionada. Se você definir esta política, a política GroupID será ignorada. 
+      
+As opções definidas nesta política aplicam-se apenas ao modo de download do Grupo (2). Se Grupo (2) não estiver configurado como modo de download, esta política será ignorada. 
+
+Para a opção 3, ID de opções de DHCP, o cliente consultará a ID de opções de DHCP 234 e usará o valor GUID retornado como o ID de grupo.</string>
+      <string id="DelayBackgroundDownloadFromHttp">Atrasar o download em segundo plano de http (em segundos)</string>
+      <string id="DelayBackgroundDownloadFromHttp_Help">Esta política permite que você atrase o uso de uma fonte HTTP em um download em segundo plano que tenha permissão para usar P2P. Depois que o atraso máximo for atingido, o download será retomado usando HTTP, baixando todo o conteúdo ou complementando os bytes que não foram baixados dos Pares. Observe que um download que estiver aguardando fontes pares parecerá estar paralisado para o usuário final. O valor recomendado é de 1 hora (3600).</string>
+      <string id="DelayForegroundDownloadFromHttp">Atrasar o download em primeiro plano de http (em segundos)</string>
+      <string id="DelayForegroundDownloadFromHttp_Help">Esta política permite que você atrase o uso de uma fonte HTTP em um download em primeiro plano (interativa) que tenha permissão para usar P2P. Depois que o atraso máximo for atingido, o download será retomado usando HTTP, baixando todo o conteúdo ou complementando os bytes que não foram baixados dos Pares. Observe que um download que estiver aguardando fontes pares parecerá estar paralisado para o usuário final. O valor recomendado é de 1 minuto (60).</string>
+      <string id="RestrictPeerSelectionBy">Selecione um método para restringir a Seleção de Par</string>
+      <string id="RestrictPeerSelectionBy_Help">Configure essa política para restringir a seleção do par por meio da opção selecionada. As opções disponíveis são: 1 = Máscara de sub-rede (mais opções serão adicionadas em uma versão futura). Opção 1 (Máscara de sub-rede) aplica-se a LAN no Modo Download (1) e a Grupo (2).</string>
+      <string id="RestrictPeerSelectionBy_None">Nenhum</string>
+      <string id="RestrictPeerSelectionBy_Subnet">Sub-rede</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth">Definir Horário Comercial para Limitar a Largura de Banda para Download em Segundo Plano</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth_Help">Especifica a largura de banda máxima para download em segundo plano que a Otimização de Entrega usa dentro e fora do horário comercial em todas as atividades de download simultâneas como uma porcentagem da largura de banda para download disponível.</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth">Definir Horário Comercial para Limitar a Largura de Banda para Download em Primeiro Plano</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth_Help">Especifica a largura de banda máxima para download em primeiro plano que a Otimização de Entrega usa dentro e fora do horário comercial em todas as atividades de download simultâneas como uma porcentagem da largura de banda para download disponível.</string>
+      <string id="Time1AM">01:00</string>
+      <string id="Time1PM">13:00</string>
+      <string id="Time2AM">02:00</string>
+      <string id="Time2PM">14:00</string>
+      <string id="Time3AM">03:00</string>
+      <string id="Time3PM">15:00</string>
+      <string id="Time4AM">04:00</string>
+      <string id="Time4PM">16:00</string>
+      <string id="Time5AM">05:00</string>
+      <string id="Time5PM">17:00</string>
+      <string id="Time6AM">06:00</string>
+      <string id="Time6PM">18:00</string>
+      <string id="Time7AM">07:00</string>
+      <string id="Time7PM">19:00</string>
+      <string id="Time8AM">08:00</string>
+      <string id="Time8PM">20:00</string>
+      <string id="Time9AM">09:00</string>
+      <string id="Time9PM">21:00</string>
+      <string id="Time10AM">10:00</string>
+      <string id="Time10PM">22:00</string>
+      <string id="Time11AM">11:00</string>
+      <string id="Time11PM">23:00</string>
+      <string id="Time12AM">00:00</string>
+      <string id="Time12PM">12:00</string>
     </stringTable>
     <presentationTable>
       <presentation id="DownloadMode">
@@ -90,6 +148,14 @@
         <decimalTextBox defaultValue="0" refId="PercentageMaxDownloadBandwidth">Largura de Banda Máxima para Download (Percentual):</decimalTextBox>
         <text>O valor padrão é 0 (ilimitado)</text>
       </presentation>
+      <presentation id="PercentageMaxBackgroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxBackgroundBandwidth">Largura de Banda Máxima para Download em Segundo Plano (Porcentagem):</decimalTextBox>
+        <text>O valor padrão é 0 (ilimitado)</text>
+      </presentation>
+      <presentation id="PercentageMaxForegroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxForegroundBandwidth">Largura de Banda Máxima para Download em Primeiro Plano (Porcentagem):</decimalTextBox>
+        <text>O valor padrão é 0 (ilimitado)</text>
+      </presentation>
       <presentation id="MinFileSizeToCache">
         <decimalTextBox defaultValue="100" refId="MinFileSizeToCache">Tamanho de Arquivo Mínimo para Conteúdo de Cache de Sistemas Pares (em MB):</decimalTextBox>
         <text>O valor padrão é 100 MB</text>
@@ -107,6 +173,49 @@
       </presentation>
       <presentation id="MinBatteryPercentageAllowedToUpload">
         <decimalTextBox defaultValue="0" refId="MinBatteryPercentageAllowedToUpload">Nível mínimo da bateria (percentual):</decimalTextBox>
+        <text>O valor padrão é 0 (ilimitado)</text>
+      </presentation>
+      <presentation id="GroupIdSource">
+        <decimalTextBox defaultValue="0" refId="GroupIdSource">fonte de IDs de Grupo:</decimalTextBox>
+        <text>O valor padrão é 0 dias (indefinido)</text>
+      </presentation>
+      <presentation id="DelayBackgroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayBackgroundDownloadFromHttp">Atrasar o download em segundo plano de http (em segundos):</decimalTextBox>
+        <text>O valor padrão é 0 (sem atraso)</text>
+      </presentation>
+      <presentation id="DelayForegroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayForegroundDownloadFromHttp">Atrasar o download em primeiro plano de http (em segundos):</decimalTextBox>
+        <text>O valor padrão é 0 (sem atraso)</text>
+      </presentation>
+      <presentation id="RestrictPeerSelectionBy">
+        <dropdownList defaultItem="0" noSort="true" refId="RestrictPeerSelectionBy">Restringir Seleção de Par Por:</dropdownList>
+      </presentation>
+      <presentation id="SetHoursToLimitBackgroundDownloadBandwidth">
+        <text/>
+        <text>Definir Horário Comercial para Limitar a Largura de Banda para Download em Segundo Plano:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthFrom">De:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthTo">A:</dropdownList>
+        <text/>
+        <text>Largura de Banda Máxima para Download em Segundo Plano (porcentagem) durante o Horário Comercial:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthIn"/>
+        <text>O valor padrão é 0 (ilimitado)</text>
+        <text/>
+        <text>Largura de Banda Máxima para Download em Segundo Plano (porcentagem) fora do Horário Comercial:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthOut"/>
+        <text>O valor padrão é 0 (ilimitado)</text>
+      </presentation>
+      <presentation id="SetHoursToLimitForegroundDownloadBandwidth">
+        <text/>
+        <text>Definir Horário Comercial para Limitar a Largura de Banda para Download em Primeiro Plano:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthFrom">De:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthTo">A:</dropdownList>
+        <text/>
+        <text>Largura de Banda Máxima para Download em Primeiro Plano (porcentagem) durante o Horário Comercial:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthIn"/>
+        <text>O valor padrão é 0 (ilimitado)</text>
+        <text/>
+        <text>Largura de Banda Máxima para Download em Primeiro Plano (porcentagem) fora do Horário Comercial:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthOut"/>
         <text>O valor padrão é 0 (ilimitado)</text>
       </presentation>
     </presentationTable>

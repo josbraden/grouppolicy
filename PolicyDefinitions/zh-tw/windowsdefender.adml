@@ -834,27 +834,61 @@
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">設定受控資料夾存取權</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    針對不受信任的應用程式啟用或停用受控資料夾存取權。
+    針對不受信任的應用程式啟用或停用受控資料夾存取權。您可以選擇封鎖、稽核或允許不受信任的應用程式嘗試執行下列動作:
+    - 修改或刪除受保護資料夾 (例如 [文件] 資料夾) 中的檔案
+    - 寫入磁碟磁區
+
+    您也可以選擇只封鎖或稽核寫入磁碟磁區，同時仍允許修改或刪除受保護資料夾中的檔案。
+
+    Windows Defender 防毒軟體會自動判斷哪些應用程式可信任。您可以在 [設定允許的應用程式] GP 設定中新增其他信任的應用程式。
+    預設系統資料夾會自動受到保護，但您可以在 [設定受保護的資料夾] GP 設定中新增資料夾。
 
     封鎖:
-    不受信任的應用程式無法修改或刪除受保護的資料夾 (例如 [文件] 資料夾) 中的檔案。
+    下列動作會遭到封鎖:
+    - 不受信任的應用程式嘗試修改或刪除受保護資料夾中的檔案
+    - 不受信任的應用程式嘗試寫入磁碟磁區
+    Windows事件記錄檔會將這些封鎖記錄在 [應用程式及服務記錄檔] &gt; [Microsoft] &gt; [Windows] &gt; [Windows Defender] &gt; [操作] &gt; [識別碼 1123]。
+
 
     停用:
-    所有應用程式都可以修改或刪除受保護的資料夾 (例如 [文件] 資料夾) 中的檔案。
+    下列動作不會遭到封鎖，可以執行:
+    -不受信任的應用程式嘗試修改或刪除受保護資料夾中的檔案
+    -不受信任的應用程式嘗試寫入磁碟磁區
+    這些嘗試不會記錄在 Windows 事件記錄檔中。
+
 
     稽核模式:
-    若此設定為 [啟用]，則正常狀況下應被視為「不受信任」的應用程式將仍然能夠修改或刪除受保護的資料夾中的檔案。但每次事件都會記錄在 Windows 事件記錄檔中。
+    下列動作不會遭到封鎖，可以執行:
+    -不受信任的應用程式嘗試修改或刪除受保護資料夾中的檔案
+    -不受信任的應用程式嘗試寫入磁碟磁區
+    Windows 事件記錄檔會將這些封鎖記錄在 [應用程式及服務記錄檔] &gt; [Microsoft] &gt; [Windows] &gt; [Windows Defender] &gt; [操作] &gt; [識別碼 1124]。
+
+
+    只封鎖磁碟修改:
+    下列動作會遭到封鎖:
+    -不受信任的應用程式嘗試寫入磁碟磁區
+    Windows 事件記錄檔會將這些封鎖記錄在 [應用程式及服務記錄檔] &gt; [Microsoft] &gt; [Windows] &gt; [Windows Defender] &gt; [操作] &gt; [識別碼 1123]。
+
+    下列動作不會遭到封鎖，可以執行:
+    -不受信任的應用程式嘗試修改或刪除受保護資料夾中的檔案
+    這些嘗試不會記錄在 Windows 事件記錄檔中。
+
+
+    只稽核磁碟修改:
+    下列動作不會遭到封鎖，可以執行:
+    -不受信任的應用程式嘗試寫入磁碟磁區
+    -不受信任的應用程式嘗試修改或刪除受保護資料夾中的檔案
+    只有嘗試寫入受保護的磁碟磁區才會記錄在 Windows 事件記錄檔 (於 [應用程式及服務記錄檔] &gt; [Microsoft] &gt; [Windows] &gt; [Windows Defender] &gt; [操作] &gt; [識別碼 1124])。
+    嘗試修改或刪除受保護資料夾中的檔案將不會留下記錄。
 
     未設定:
     與 [停用] 同。
-
-    Windows Defender 防毒軟體會自動判斷哪些應用程式可信任。在 [設定允許的應用程式] GP 設定中可新增其他受到信任的應用程式。
-
-    預設的系統資料夾會自動受到防護，但您可以在 [設定受保護的資料夾] GP 設定中新增資料夾。
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">停用 (預設值)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">封鎖</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">稽核模式</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">只封鎖磁碟修改</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">只稽核磁碟修改</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">設定允許的應用程式</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     針對受控資料夾存取權新增其他應視為「受信任」的應用程式。

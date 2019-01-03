@@ -834,27 +834,61 @@ Om du inaktiverar eller låter bli att konfigurera den här inställningen visas
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Konfigurera reglerad mappåtkomst</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    Aktivera eller inaktivera reglerad mappåtkomst för program som inte är betrodda. 
+    Aktivera eller inaktivera reglerad mappåtkomst för icke betrodda program. Du kan välja att blockera, granska eller tillåta följande för icke betrodda program:
+    - Ändra eller ta bort filer i skyddade mappar, t.ex. mappen Dokument
+    - Skriva till disksektorer
+
+    Du kan också välja att endast blockera eller granska skrivningar till disksektorer, och tillåta att filer i skyddade mappar ändras eller tas bort.
+
+    Windows Defender Antivirus fastställer automatiskt vilka program som är betrodda. Du kan lägga till ytterligare betrodda program i grupprincipinställningen Konfigurera tillåtna program.
+    Standardsystemmappar skyddas automatiskt, men du kan lägga till ytterligare mappar i grupprincipinställningen Konfigurera skyddade mappar.
 
     Blockera:
-    Program som inte är betrodda kan inte ändra eller ta bort filer i skyddade mappar, t.ex. mappen Dokument.
+    Följande blockeras:
+    - Alla försök av icke betrodda program att ändra eller ta bort filer i skyddade mappar
+    - Alla försök av icke betrodda program att skriva till disksektorer
+    Alla försök som blockeras loggas av Windows-händelseloggen under Program- och tjänstloggar &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1123.
+
 
     Inaktiverad:
-    Alla program kan ändra eller ta bort filer i skyddade mappar, t.ex. mappen Dokument.
+    Följande blockeras inte och tillåts köras:
+    - Alla försök av icke betrodda program att ändra eller ta bort filer i skyddade mappar
+    - Alla försök av icke betrodda program att skriva till disksektorer
+    Dessa försök loggas inte av Windows-händelseloggen.
+
 
     Granska:
-    Program som normalt betraktas som icke betrodda med inställningen Aktiverad kan fortfarande ändra eller ta bort filer i skyddade mappar, men varje händelse loggas i händelseloggen för Windows.
+    Följande blockeras inte och tillåts köras:
+    - Alla försök av icke betrodda program att ändra eller ta bort filer i skyddade mappar
+    - Alla försök av icke betrodda program att skriva till disksektorer
+    Dessa försök loggas av Windows-händelseloggen under Program- och tjänstloggar &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1124.
+
+
+    Blockera endast diskändringar:
+    Följande blockeras:
+    - Alla försök av icke betrodda program att skriva till disksektorer
+    Dessa försök loggas av Windows-händelseloggen under Program- och tjänstloggar &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1123.
+
+    Följande blockeras inte och tillåts köras:
+    - Alla försök av icke betrodda program att ändra eller ta bort filer i skyddade mappar
+    Dessa försök loggas inte av Windows-händelseloggen.
+
+
+    Granska endast diskändringar:
+    Följande blockeras inte och tillåts köras:
+    - Alla försök av icke betrodda program att skriva till disksektorer
+    - Alla försök av icke betrodda program att ändra eller ta bort filer i skyddade mappar
+    Endast försök att skriva till skyddade disksektorer loggas av Windows-händelseloggen (under Program- och tjänstloggar &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1124).
+    Försök att ändra eller ta bort filer i skyddade mappar loggas inte.
 
     Inte konfigurerad:
     Samma som Inaktiverad.
-
-    Windows Defender Antivirus fastställer automatiskt vilka program som är betrodda. Du kan lägga till ytterligare betrodda program i grupprincipinställningen Konfigurera tillåtna program.
-
-    Standardsystemmappar skyddas automatiskt, men du kan lägga till ytterligare mappar i grupprincipinställningen Konfigurera skyddade mappar.
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Inaktivera (standard)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Blockera</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Granska</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">Blockera endast diskändringar</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">Granska endast diskändringar</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Konfigurera tillåtna program</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     Lägg till ytterligare program som ska betraktas som betrodda av reglerad mappåtkomst.

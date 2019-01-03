@@ -186,6 +186,25 @@ Bei Verwendung der Delegierung von Anmeldeinformationen stellen Geräte eine exp
 Wenn Sie die Richtlinieneinstellung aktivieren, unterstützt der Host den eingeschränkte Verwaltungsmodus oder Remote Credential Guard-Modus.
 
 Wenn Sie die Richtlinieneinstellung deaktivieren oder nicht konfigurieren, werden der eingeschränkte Verwaltungsmodus und Remote Credential Guard-Modus nicht unterstützt, und der Benutzer muss seine Anmeldeinformationen immer an den Host übergeben.</string>
+      <string id="AllowEncryptionOracle">Encryption Oracle Remediation</string>
+      <string id="AllowEncryptionOracle_Explain">Encryption Oracle Remediation
+
+This policy setting applies to applications using the CredSSP component (for example: Remote Desktop Connection).
+
+Some versions of the CredSSP protocol are vulnerable to an encryption oracle attack against the client.  This policy controls compatibility with vulnerable clients and servers.  This policy allows you to set the level of protection desired for the encryption oracle vulnerability.
+
+If you enable this policy setting, CredSSP version support will be selected based on the following options:
+
+Force Updated Clients: Client applications which use CredSSP will not be able to fall back to the insecure versions and services using CredSSP will not accept unpatched clients. Note: this setting should not be deployed until all remote hosts support the newest version.
+
+Mitigated: Client applications which use CredSSP will not be able to fall back to the insecure version but services using CredSSP will accept unpatched clients. See the link below for important information about the risk posed by remaining unpatched clients.
+
+Vulnerable: Client applications which use CredSSP will expose the remote servers to attacks by supporting fall back to the insecure versions and services using CredSSP will accept unpatched clients.
+
+For more information about the vulnerability and servicing requirements for protection, see https://go.microsoft.com/fwlink/?linkid=866660</string>
+      <string id="AllowEncryptionOracle_Force">Force Updated Clients</string>
+      <string id="AllowEncryptionOracle_Secure">Mitigated</string>
+      <string id="AllowEncryptionOracle_Allow">Vulnerable</string>
     </stringTable>
     
     <presentationTable>
@@ -229,6 +248,9 @@ Wenn Sie die Richtlinieneinstellung deaktivieren oder nicht konfigurieren, werde
         <dropdownList refId="RestrictedRemoteAdministrationDrop" defaultItem="0">Verwenden Sie den folgenden eingeschränkten Modus:</dropdownList>
       </presentation>
       <presentation id="AllowProtectedCreds">
+      </presentation>
+      <presentation id="AllowEncryptionOracle">
+        <dropdownList refId="AllowEncryptionOracleDrop" defaultItem="1">Protection Level:</dropdownList>
       </presentation>
     </presentationTable>
     

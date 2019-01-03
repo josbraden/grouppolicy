@@ -834,27 +834,61 @@ Si deshabilita o no establece esta configuración, no se mostrará ningún texto
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Configurar Acceso controlado a carpeta</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    Habilita o deshabilita el acceso controlado a carpetas para las aplicaciones que no son de confianza. 
+    Habilitar o deshabilitar el acceso controlado a carpetas para aplicaciones que no son de confianza. Puedes elegir bloquear, auditar o permitir los intentos que realizan las aplicaciones que no son de confianza para:
+    - Modificar o eliminar archivos en carpetas protegidas, como la carpeta Documentos
+    - Escribir en sectores del disco
+
+    También puedes elegir bloquear o auditar solamente la escritura en los sectores del disco, pero seguir permitiendo la modificación o la eliminación de archivos en las carpetas protegidas.
+
+    El Antivirus de Windows Defender determina automáticamente qué aplicaciones pueden considerarse de confianza. Puedes agregar aplicaciones de confianza adicionales en la opción de directiva de grupo Configurar aplicaciones permitidas.
+    Las carpetas del sistema predeterminadas se protegen automáticamente, pero puedes agregar carpetas en la opción de directiva de grupo Configurar carpetas protegidas.
 
     Bloquear:
-    Las aplicaciones que no son de confianza no pueden modificar ni eliminar archivos de carpetas protegidas, como la carpeta Documentos.
+    Se bloquearán los siguientes elementos:
+    - Intentos de las aplicaciones que no son de confianza para modificar o eliminar archivos de carpetas protegidas
+    - Intentos de las aplicaciones que no son de confianza para escribir en los sectores del disco
+    El registro de eventos de Windows registrará estos bloqueos en Registros de aplicaciones y servicios &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operativo &gt; Id. 1123.
+
 
     Deshabilitado:
-    Todas las aplicaciones pueden modificar o eliminar archivos de carpetas protegidas, como la carpeta Documentos.
+    No se bloquearán y se podrán ejecutar los siguientes elementos:
+    - Intentos de las aplicaciones que no son de confianza para modificar o eliminar archivos de carpetas protegidas
+    - Intentos de las aplicaciones que no son de confianza para escribir en los sectores del disco
+    Estos intentos no se registrarán en el registro de eventos de Windows.
+
 
     Modo auditoría:
-    Las aplicaciones que normalmente se considerarían ""no de confianza"" si la opción estuviera habilitada podrán modificar o eliminar archivos de carpetas protegidas. Sin embargo, cada evento se registrará en el registro de eventos de Windows.
+    No se bloquearán y se podrán ejecutar los siguientes elementos:
+    - Intentos de las aplicaciones que no son de confianza para modificar o eliminar archivos de carpetas protegidas
+    - Intentos de las aplicaciones que no son de confianza para escribir en los sectores del disco
+    El registro de eventos de Windows registrará estos intentos en Registros de aplicaciones y servicios &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operativo &gt; Id. 1124.
+
+
+    Bloquear solo la modificación del disco:
+    Se bloquearán los siguientes elementos:
+    - Intentos de las aplicaciones que no son de confianza para escribir en los sectores del disco
+    El registro de eventos de Windows registrará estos intentos en Registros de aplicaciones y servicios &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operativo &gt; Id. 1123.
+
+    No se bloquearán y se podrán ejecutar los siguientes elementos:
+    - Intentos de las aplicaciones que no son de confianza para modificar o eliminar archivos de carpetas protegidas
+    Estos intentos no se registrarán en el registro de eventos de Windows.
+
+
+    Auditar solo la modificación del disco:
+    No se bloquearán y se podrán ejecutar los siguientes elementos:
+    - Intentos de las aplicaciones que no son de confianza para escribir en los sectores del disco
+    - Intentos de las aplicaciones que no son de confianza para modificar o eliminar archivos de carpetas protegidas
+    Solo los intentos de escritura en los sectores del disco protegidos se registrarán en el registro de eventos de Windows (en Registros de aplicaciones y servicios &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operativo &gt; Id. 1124).
+    No se registrarán los intentos de modificación o eliminación de archivos de carpetas protegidas.
 
     No configurado:
-    Lo mismo que Deshabilitado.
-
-    El Antivirus de Windows Defender determina automáticamente qué aplicaciones son de confianza. Puedes agregar aplicaciones de confianza adicionales en la opción de GP Configurar aplicaciones permitidas.
-
-    Las carpetas del sistema predeterminadas se protegen automáticamente, pero puedes agregar carpetas en la opción de GP Configurar carpetas protegidas.
+    Igual que Deshabilitado.
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Deshabilitar (predeterminado)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Bloquear</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Modo auditoría</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">Bloquear solo la modificación del disco</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">Auditar solo la modificación del disco</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Configurar aplicaciones permitidas</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     Agrega aplicaciones adicionales que la característica Acceso controlado a carpetas deba considerar "de confianza".

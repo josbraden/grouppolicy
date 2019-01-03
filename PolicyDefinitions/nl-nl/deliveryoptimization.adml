@@ -32,7 +32,11 @@
       <string id="MaxDownloadBandwidth">Maximale downloadbandbreedte (in kB/s)</string>
       <string id="MaxDownloadBandwidth_Help">Hiermee wordt de maximale downloadbandbreedte opgegeven die een apparaat mag gebruiken voor alle gelijktijdige downloadactiviteiten via Delivery Optimization (in kB/s). De standaardwaarde 0 (nul) betekent dat Delivery Optimization dynamisch wordt aangepast zodat de beschikbare bandbreedte wordt gebruikt voor downloads.</string>
       <string id="PercentageMaxDownloadBandwidth">Maximale downloadbandbreedte (percentage)</string>
-      <string id="PercentageMaxDownloadBandwidth_Help">De maximale bandbreedte voor downloaden die door Delivery Optimization wordt gebruikt voor alle gelijktijdige downloadactiviteiten als een percentage van de beschikbare downloadbandbreedte. De standaardwaarde 0 (nul) betekent dat Delivery Optimization dynamische aanpassingen toepast om de beschikbare bandbreedte voor downloads te gebruiken.</string>
+      <string id="PercentageMaxDownloadBandwidth_Help">Dit is de maximale downloadbandbreedte die in Delivery Optimization wordt gebruikt voor alle gelijktijdige downloadactiviteiten, als percentage van de beschikbare downloadbandbreedte. De standaardwaarde 0 (nul) geeft aan dat Delivery Optimization dynamisch wordt aangepast, zodat de beschikbare bandbreedte wordt gebruikt voor downloads. Dit beleid is afgeschaft en wordt in de volgende release verwijderd. Gebruik in plaats daarvan Maximale bandbreedte voor voorgronddownloads (percentage) of Maximale bandbreedte voor achtergronddownloads (percentage).</string>
+      <string id="PercentageMaxBackgroundBandwidth">Maximale bandbreedte voor downloaden op achtergrond (percentage)</string>
+      <string id="PercentageMaxBackgroundBandwidth_Help">De maximale bandbreedte voor downloaden op de achtergrond die door Delivery Optimization wordt gebruikt voor alle gelijktijdige downloadactiviteiten, als percentage van de beschikbare downloadbandbreedte. De standaardwaarde 0 (nul) betekent dat Delivery Optimization dynamische aanpassingen toepast om de beschikbare bandbreedte voor achtergronddownloads te gebruiken.</string>
+      <string id="PercentageMaxForegroundBandwidth">Maximale bandbreedte voor downloaden op voorgrond (percentage)</string>
+      <string id="PercentageMaxForegroundBandwidth_Help">De maximale bandbreedte voor downloaden op de voorgrond die door Delivery Optimization wordt gebruikt voor alle gelijktijdige downloadactiviteiten, als percentage van de beschikbare downloadbandbreedte. De standaardwaarde 0 (nul) betekent dat Delivery Optimization dynamische aanpassingen toepast om de beschikbare bandbreedte voor voorgronddownloads te gebruiken.</string>
       <string id="MinFileSizeToCache">Minimale bestandsgrootte voor inhoud van peer-caching (in MB)</string>
       <string id="MinFileSizeToCache_Help">Hiermee wordt de minimale bestandsgrootte van inhoud in MB opgegeven die peer-caching kan gebruiken. Aanbevolen waarden: 1 MB tot 100000 MB.</string>
       <string id="AllowVPNPeerCaching">Peer-caching toestaan terwijl het apparaat een verbinding maakt via VPN</string>
@@ -43,6 +47,60 @@
       <string id="MinDiskSizeAllowedToPeer_Help">Hiermee wordt de vereiste minimumgrootte van de schijf (capaciteit in GB) opgegeven waarmee het apparaat gebruik kan maken van peer-caching. De ingestelde standaardwaarde van de cloudservice wordt gebruikt. Aanbevolen waarden: 64 GB tot 256 GB. Opmerking: als de beleidsinstelling DOMoidfyCacheDrive van kracht is, is de controle van de schijfgrootte van toepassing op de nieuwe werkmap die in deze beleidsinstelling is opgegeven.</string>
       <string id="MinBatteryPercentageAllowedToUpload">Uploads toestaan terwijl het apparaat alleen op de batterij loopt terwijl er een batterijniveau (percentage) is ingesteld</string>
       <string id="MinBatteryPercentageAllowedToUpload_Help">Geef een waarde op tussen 1 en 100 (in percentage) om het apparaat toe te staan om gegevens naar LAN- en groepspeers te uploaden op stroom van de batterij. Uploads worden automatisch onderbroken wanneer het batterijniveau onder een ingesteld minimumniveau komt. De aanbevolen waarde die u kunt instellen als u uploads op batterijstroom wilt toestaan, is 40 (voor 40%). Het apparaat kan vanaf peers op batterijstroom downloaden, ongeacht dit beleid. De waarde 0 betekent 'niet-beperkt'; de ingestelde standaardwaarde voor de cloudservice zal worden gebruikt.</string>
+      <string id="GroupIdSource">Selecteer de bron van groeps-id's</string>
+      <string id="GroupIdSource_Help">Stel dit beleid in om de selectie van peers te beperken tot een specifieke bron. 
+      
+Beschikbare opties: 
+
+1 = AD-site
+
+2 = SID geauthenticeerd domein
+
+3 = DHCP-optie-id
+
+4 = DNS-achtervoegsel. 
+
+Als dit beleid is ingesteld, wordt de groeps-id automatisch toegewezen op basis van de geselecteerde bron en wordt het GroupID-beleid genegeerd.  
+      
+De opties die via dit beleid worden ingesteld zijn alleen van toepassing op de downloadmodus Groep (2). Als Groep (2) niet is ingesteld als downloadmodus, wordt het beleid genegeerd. 
+
+Bij optie 3 (DHCP-optie-id) gebruikt de client voor de groeps-id de GUID-waarde die is geretourneerd door DHCP-optie-id 234 op te vragen.</string>
+      <string id="DelayBackgroundDownloadFromHttp">Download op de achtergrond via HTTP vertragen (in seconden)</string>
+      <string id="DelayBackgroundDownloadFromHttp_Help">Met deze beleidsinstelling kunt u het gebruik van een HTTP-bron vertragen voor een download op de achtergrond waarvoor P2P is toegestaan. Wanneer de maximale vertraging is bereikt, wordt de download hervat via HTTP, waarbij ofwel de volledige nettolading wordt gedownload of het resterende aantal bytes wordt opgehaald dat eerder niet van peers kon worden gedownload. Houd er rekening mee dat een download die op peerbronnen wacht, voor de eindgebruiker lijkt te zijn vastgelopen. De aanbevolen waarde is 1 uur (3600 seconden).</string>
+      <string id="DelayForegroundDownloadFromHttp">Download op de voorgrond via HTTP vertragen (in seconden)</string>
+      <string id="DelayForegroundDownloadFromHttp_Help">Met dit beleid kunt u het gebruik van een HTTP-bron vertragen tijdens een voorgronddownload (interactief) waarvoor P2P mag worden gebruikt. Nadat de maximale vertraging is verstreken, wordt de download hervat via HTTP. Hierbij wordt de gehele nettolading gedownload of worden de bytes aangevuld die niet konden worden gedownload van peers. Downloads die in afwachting zijn van peer-bronnen, lijken te zijn vastgelopen voor eindgebruikers. De aanbevolen waarde is 1 minuut (60).</string>
+      <string id="RestrictPeerSelectionBy">Een methode selecteren om peerselectie te beperken</string>
+      <string id="RestrictPeerSelectionBy_Help">Stel dit beleid in om de selectie van peers te beperken via de geselecteerde optie. Beschikbare opties: 1 = subnetmasker (meer opties worden toegevoegd in een toekomstige release). Optie 1 (subnetmasker) is van toepassing op zowel Downloadmodus-LAN (1) als Groep (2).</string>
+      <string id="RestrictPeerSelectionBy_None">Geen</string>
+      <string id="RestrictPeerSelectionBy_Subnet">Subnet</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth">Kantooruren instellen om de bandbreedte voor downloaden op de achtergrond te beperken</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth_Help">De maximale bandbreedte voor downloaden op de achtergrond die buiten en tijdens kantooruren door Delivery Optimization wordt gebruikt voor alle gelijktijdige downloadactiviteiten, als percentage van de beschikbare downloadbandbreedte. </string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth">Kantooruren instellen om de bandbreedte voor downloaden op de voorgrond te beperken</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth_Help">De maximale bandbreedte voor downloaden op de voorgrond die buiten en tijdens kantooruren door Delivery Optimization wordt gebruikt voor alle gelijktijdige downloadactiviteiten, als percentage van de beschikbare downloadbandbreedte. </string>
+      <string id="Time1AM">1:00 uur</string>
+      <string id="Time1PM">13:00 uur</string>
+      <string id="Time2AM">2:00 uur</string>
+      <string id="Time2PM">14:00 uur</string>
+      <string id="Time3AM">3:00 uur</string>
+      <string id="Time3PM">15:00 uur</string>
+      <string id="Time4AM">4:00 uur</string>
+      <string id="Time4PM">16:00 uur</string>
+      <string id="Time5AM">5:00 uur</string>
+      <string id="Time5PM">17:00 uur</string>
+      <string id="Time6AM">6:00 uur</string>
+      <string id="Time6PM">18:00 uur</string>
+      <string id="Time7AM">7:00 uur</string>
+      <string id="Time7PM">19:00 uur</string>
+      <string id="Time8AM">8:00 uur</string>
+      <string id="Time8PM">20:00 uur</string>
+      <string id="Time9AM">9:00 uur</string>
+      <string id="Time9PM">21:00 uur</string>
+      <string id="Time10AM">10:00 uur</string>
+      <string id="Time10PM">22:00 uur</string>
+      <string id="Time11AM">11:00 uur</string>
+      <string id="Time11PM">23:00 uur</string>
+      <string id="Time12AM">12:00 uur</string>
+      <string id="Time12PM">00:00 uur</string>
     </stringTable>
     <presentationTable>
       <presentation id="DownloadMode">
@@ -90,6 +148,14 @@
         <decimalTextBox defaultValue="0" refId="PercentageMaxDownloadBandwidth">Maximale downloadbandbreedte (percentage):</decimalTextBox>
         <text>De standaardwaarde is 0 (onbeperkt)</text>
       </presentation>
+      <presentation id="PercentageMaxBackgroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxBackgroundBandwidth">Maximale bandbreedte voor downloaden op achtergrond (percentage):</decimalTextBox>
+        <text>De standaardwaarde is 0 (onbeperkt)</text>
+      </presentation>
+      <presentation id="PercentageMaxForegroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxForegroundBandwidth">Maximale bandbreedte voor downloaden op voorgrond (percentage):</decimalTextBox>
+        <text>De standaardwaarde is 0 (onbeperkt)</text>
+      </presentation>
       <presentation id="MinFileSizeToCache">
         <decimalTextBox defaultValue="100" refId="MinFileSizeToCache">Minimale bestandsgrootte voor inhoud van peer-caching (in MB):</decimalTextBox>
         <text>De standaardwaarde is 100 MB</text>
@@ -107,6 +173,49 @@
       </presentation>
       <presentation id="MinBatteryPercentageAllowedToUpload">
         <decimalTextBox defaultValue="0" refId="MinBatteryPercentageAllowedToUpload">Minimale batterijniveau (percentage):</decimalTextBox>
+        <text>De standaardwaarde is 0 (onbeperkt)</text>
+      </presentation>
+      <presentation id="GroupIdSource">
+        <decimalTextBox defaultValue="0" refId="GroupIdSource">bron van groeps-id's:</decimalTextBox>
+        <text>De standaardwaarde is 0 (niet ingesteld)</text>
+      </presentation>
+      <presentation id="DelayBackgroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayBackgroundDownloadFromHttp">Download op de achtergrond via HTTP vertragen (in seconden):</decimalTextBox>
+        <text>De standaardwaarde is 0 (geen vertraging)</text>
+      </presentation>
+      <presentation id="DelayForegroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayForegroundDownloadFromHttp">Download op de voorgrond via HTTP vertragen (in seconden):</decimalTextBox>
+        <text>De standaardwaarde is 0 (geen vertraging)</text>
+      </presentation>
+      <presentation id="RestrictPeerSelectionBy">
+        <dropdownList defaultItem="0" noSort="true" refId="RestrictPeerSelectionBy">Peerselectie beperken tot:</dropdownList>
+      </presentation>
+      <presentation id="SetHoursToLimitBackgroundDownloadBandwidth">
+        <text/>
+        <text>Kantooruren instellen om de bandbreedte voor downloaden op de achtergrond te beperken:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthFrom">Van:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthTo">Tot:</dropdownList>
+        <text/>
+        <text>Maximale bandbreedte voor downloaden op de achtergrond (percentage) tijdens kantooruren:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthIn"/>
+        <text>De standaardwaarde is 0 (onbeperkt)</text>
+        <text/>
+        <text>Maximale bandbreedte voor downloaden op de achtergrond (percentage) buiten kantooruren:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthOut"/>
+        <text>De standaardwaarde is 0 (onbeperkt)</text>
+      </presentation>
+      <presentation id="SetHoursToLimitForegroundDownloadBandwidth">
+        <text/>
+        <text>Kantooruren instellen om de bandbreedte voor downloaden op de voorgrond te beperken:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthFrom">Van:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthTo">Tot:</dropdownList>
+        <text/>
+        <text>Maximale bandbreedte voor downloaden op de voorgrond (percentage) tijdens kantooruren:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthIn"/>
+        <text>De standaardwaarde is 0 (onbeperkt)</text>
+        <text/>
+        <text>Maximale bandbreedte voor downloaden op de voorgrond (percentage) buiten kantooruren:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthOut"/>
         <text>De standaardwaarde is 0 (onbeperkt)</text>
       </presentation>
     </presentationTable>

@@ -834,27 +834,61 @@
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">フォルダー アクセスの制御を構成する</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    信頼されていないアプリケーションに対するフォルダー アクセスの制御を有効または無効にします。
+    信頼されていないアプリケーションに対するフォルダー アクセスの制御を有効または無効にします。信頼されていないアプリケーションによる次の操作をブロックするか、監査するか、許可するかを選択できます。
+    - ドキュメント フォルダーなどの保護されているフォルダー内のファイルの変更または削除
+    - ディスク セクターへの書き込み
 
-    ブロック:
-    信頼されていないアプリケーションは、ドキュメント フォルダーなどの保護されているフォルダー内のファイルを変更または削除できません。
-
-    無効:
-    すべてのアプリケーションは、ドキュメント フォルダーなどの保護されているフォルダー内のファイルを変更または削除できます。
-
-    監査モード:
-    設定が [有効] の場合、通常は ""信頼されていない"" と見なされるアプリケーションも、保護されたフォルダー内のファイルを変更または削除できますが、各イベントは Windows のイベント ログに記録されます。
-
-    未構成:
-    無効と同じです。
+    ディスク セクターへの書き込みだけをブロックまたは監査し、保護されているフォルダー内のファイルの変更または削除を許可することもできます。
 
     Windows Defender ウイルス対策は、信頼できるアプリケーションを自動的に判断します。許可されているアプリケーションを構成する GP 設定で、信頼されているアプリケーションを追加できます。
-
     既定のシステム フォルダーは自動的に保護されますが、保護されているフォルダーを構成する GP 設定でフォルダーを追加できます。
+
+    ブロック:
+    次の操作がブロックされます。
+    - 信頼されていないアプリケーションによる、保護されているフォルダー内のファイルを変更または削除する試み
+    - 信頼されていないアプリケーションによる、ディスク セクターへの書き込みの試み
+    Windows イベント ログは、これらのブロックを [アプリケーションとサービス ログ] &gt; [Microsoft] &gt; [Windows] &gt; [Windows Defender] &gt; [使用可能] &gt; [ID 1123] に記録します。
+
+
+    無効:
+    次の操作はブロックされず、実行が許可されます。
+    - 信頼されていないアプリケーションによる、保護されているフォルダー内のファイルを変更または削除する試み
+    - 信頼されていないアプリケーションによる、ディスク セクターへの書き込みの試み
+    これらの試みは Windows イベント ログに記録されません。
+
+
+    監査モード:
+    次の操作はブロックされず、実行が許可されます。
+    - 信頼されていないアプリケーションによる、保護されているフォルダー内のファイルを変更または削除する試み
+    - 信頼されていないアプリケーションによる、ディスク セクターへの書き込みの試み
+    Windows イベント ログは、これらの試みを [アプリケーションとサービス ログ] &gt; [Microsoft] &gt; [Windows] &gt; [Windows Defender] &gt; [使用可能] &gt; [ID 1124] に記録します。
+
+
+    ディスクの変更のみをブロック:
+    次の操作がブロックされます。
+    - 信頼されていないアプリケーションによる、ディスク セクターへの書き込みの試み
+    Windows イベント ログは、これらの試みを [アプリケーションとサービス ログ] &gt; [Microsoft] &gt; [Windows] &gt; [Windows Defender] &gt; [使用可能] &gt; [ID 1123] に記録します。
+
+    次の操作はブロックされず、実行が許可されます。
+    - 信頼されていないアプリケーションによる、保護されているフォルダー内のファイルを変更または削除する試み
+    これらの試みは Windows イベント ログに記録されません。
+
+
+    ディスクの変更のみを監査:
+    次の操作はブロックされず、実行が許可されます。
+    - 信頼されていないアプリケーションによる、ディスク セクターへの書き込みの試み
+    - 信頼されていないアプリケーションによる、保護されているフォルダー内のファイルを変更または削除する試み
+    保護されているディスク セクターへの書き込みの試みのみが、Windows イベント ログ ([アプリケーションとサービス ログ] &gt; [Microsoft] &gt; [Windows] &gt; [Windows Defender] &gt; [使用可能] &gt; [ID 1124]) に記録されます。
+    保護されているフォルダー内のファイルを変更または削除する試みは、記録されません。
+
+    未構成:
+    [無効] と同じです。
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">無効 (既定)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">ブロック</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">監査モード</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">ディスクの変更のみをブロック</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">ディスクの変更のみを監査</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">許可されているアプリケーションを構成します</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     フォルダー アクセスの制御によって "信頼されている" と見なされるアプリケーションを追加します。

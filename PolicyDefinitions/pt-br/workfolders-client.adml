@@ -15,20 +15,27 @@ Se você desabilitar ou não configurar essa política, as Pastas de Trabalho us
       
       </string>
       <string id="Pol_UserEnableWorkFolders">Especificar configurações de Pastas de Trabalho</string>
-      <string id="Pol_UserEnableWorkFolders_Help">Essa configuração de política especifica o servidor de Pastas Trabalho para os usuários afetados, bem como se os usuários têm ou não permissão para alterar configurações ao configurar Pastas de Trabalho em um computador que faça parte de um domínio.
+      <string id="Pol_UserEnableWorkFolders_Help">Esta configuração de política especifica o servidor de Pastas Trabalho para os usuários afetados, bem como se os usuários têm ou não permissão para alterar configurações ao configurar Pastas de Trabalho em um computador que faça parte de um domínio.
 
-Se você desabilitar essa configuração de política, os usuários afetados receberão as configurações de Pastas de Trabalho quando entrarem em um computador que faça parte de um domínio. 
+Se você habilitar esta configuração de política, os usuários afetados receberão configurações de Pastas de Trabalho quando se conectarem em um PC associado a um domínio. e essa política for desabilitada ou não for configurada, nenhuma configuração de Pastas de Trabalho será especificada para os usuários afetados, embora eles possam configurar manualmente as Pastas de Trabalho usando o item Painel de Controle de Pastas de Trabalho.
 
 A "URL de Pastas de Trabalho" pode especificar a URL usada pela organização para a descoberta de Pastas de Trabalho ou a URL específica do servidor de arquivos que armazena os dados dos usuários afetados.
 
 O "Caminho Local das Pastas de Trabalho" especifica a pasta local usada no computador cliente para sincronizar arquivos. Esse caminho pode conter variáveis de ambiente. Observação: para essa configuração entrar em vigor, uma "URL de Pastas de Trabalho" válida também deve ser especificada.
+  
+A opção “Preferência de acesso a arquivos por demanda” controla se o acesso a arquivos por demanda deve ser habilitado. Quando é habilitado, o usuário controla quais arquivos nas Pastas de Trabalho estão disponíveis offline em um PC determinado. Os outros arquivos nas Pastas de Trabalho sempre estão visíveis e não ocupam nenhum espaço no PC, mas o usuário prevista estar conectado à Internet para acessá-los.
 
-A opção "Forçar configuração automática" determina que as Pastas de Trabalho devem ser configuradas automaticamente sem perguntar aos usuários. Isso impede que os usuários optem por não usar as Pastas de Trabalho no computador. Também evita que eles especifiquem manualmente a pasta local onde as Pastas de Trabalho armazenam arquivos. Por padrão, as Pastas de Trabalho são armazenadas na pasta "%USERPROFILE%\Pastas de Trabalho". Se essa opção não for especificada, os usuários deverão usar o item Painel de Controle de Pastas de Trabalho nos seus computadores para configurar Pastas de Trabalho.
-   
-Se essa política for desabilitada ou não for configurada, nenhuma configuração de Pastas de Trabalho será especificada para os usuários afetados, embora eles possam configurar manualmente as Pastas de Trabalho usando o item Painel de Controle de Pastas de Trabalho.
+Se esta configuração de política for habilitada, o acesso a arquivos por demanda é habilitado.
+Se esta configuração de política for desabilitada, o acesso a arquivos por demanda é desabilitado e será necessário ter espaço de armazenamento suficiente para armazenar todos os arquivos de usuário que são necessários em cada um dos seus PCs.
+Se você especificar a opção de Usuário ou não configurar esta política, o usuário decidirá se o acesso a arquivos por demanda deve ser habilitado ou não. No entanto, se a política de configuração Forçar configuração automática estiver habilitada, as Pastas de Trabalho são configuradas automaticamente com o acesso a arquivos por demanda habilitado.
+
+A opção "Forçar configuração automática" especifica que as Pastas de Trabalho devem ser configuradas automaticamente, sem avisar os usuários. Isto evita que os usuários optem por não usar as Pastas de Trabalho no computador; além disso, também evita que eles especifiquem manualmente a pasta local na qual as Pastas de Trabalho armazenam os arquivos. As Pastas de Trabalho são armazenadas por padrão na pasta "%USERPROFILE%\Work Folders". Se esta opção não for especificada, os usuários devem usar o item do Painel de Controle Pastas de Trabalho nos seus computadores para configurar as Pastas de Trabalho.
       </string>
       <string id="Pol_UserEnableTokenBroker">Permite o uso do Agente de Tokens para autenticação do AD FS</string>
       <string id="Pol_UserEnableTokenBroker_Help">Esta política especifica se as Pastas de Trabalho devem usar o Agente de Tokens para autenticação interativa do AD FS, em vez do próprio fluxo de tokens OAuth2 usado em versões anteriores.</string>
+      <string id="Pol_GhostingPreference_Enabled">Habilitar (recomendado)</string>
+      <string id="Pol_GhostingPreference_Disabled">Desabilitar</string>
+      <string id="Pol_GhostingPreference_UserDefined">Opção do usuário</string>
     </stringTable>
     <presentationTable>
       <presentation id="Pol_EnableWorkFolders">
@@ -39,6 +46,8 @@ Se essa política for desabilitada ou não for configurada, nenhuma configuraç�
         <textBox refId="Lbl_LocalFolderPath_Edit">
           <label>Caminho Local das Pastas de Trabalho: </label>
         </textBox>
+        <text> </text>
+        <dropdownList refId="Lbl_GhostingPreference_Enum" noSort="true" defaultItem="0">Preferência de acesso a arquivo por demanda:</dropdownList>        
         <text> </text>
         <checkBox refId="Lbl_AutoProvision_Chk" defaultChecked="false">Forçar configuração automática</checkBox>
       </presentation>

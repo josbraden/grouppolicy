@@ -187,6 +187,25 @@ Remote Credential Guard を要求する: 参加アプリケーションは Remot
 このポリシー設定を有効にした場合、ホストは制限付き管理モードまたは Remote Credential Guard モードをサポートします。
 
 このポリシー設定を無効にするか、構成しなかった場合、制限付き管理モードと Remote Credential Guard モードはサポートされません。ユーザーは常に資格情報をホストに渡す必要があります。</string>
+      <string id="AllowEncryptionOracle">Encryption Oracle Remediation</string>
+      <string id="AllowEncryptionOracle_Explain">Encryption Oracle Remediation
+
+This policy setting applies to applications using the CredSSP component (for example: Remote Desktop Connection).
+
+Some versions of the CredSSP protocol are vulnerable to an encryption oracle attack against the client.  This policy controls compatibility with vulnerable clients and servers.  This policy allows you to set the level of protection desired for the encryption oracle vulnerability.
+
+If you enable this policy setting, CredSSP version support will be selected based on the following options:
+
+Force Updated Clients: Client applications which use CredSSP will not be able to fall back to the insecure versions and services using CredSSP will not accept unpatched clients. Note: this setting should not be deployed until all remote hosts support the newest version.
+
+Mitigated: Client applications which use CredSSP will not be able to fall back to the insecure version but services using CredSSP will accept unpatched clients. See the link below for important information about the risk posed by remaining unpatched clients.
+
+Vulnerable: Client applications which use CredSSP will expose the remote servers to attacks by supporting fall back to the insecure versions and services using CredSSP will accept unpatched clients.
+
+For more information about the vulnerability and servicing requirements for protection, see https://go.microsoft.com/fwlink/?linkid=866660</string>
+      <string id="AllowEncryptionOracle_Force">Force Updated Clients</string>
+      <string id="AllowEncryptionOracle_Secure">Mitigated</string>
+      <string id="AllowEncryptionOracle_Allow">Vulnerable</string>
     </stringTable>
     
     <presentationTable>
@@ -230,6 +249,9 @@ Remote Credential Guard を要求する: 参加アプリケーションは Remot
         <dropdownList refId="RestrictedRemoteAdministrationDrop" defaultItem="0">次の制限付きモードを使用する:</dropdownList>
       </presentation>
       <presentation id="AllowProtectedCreds">
+      </presentation>
+      <presentation id="AllowEncryptionOracle">
+        <dropdownList refId="AllowEncryptionOracleDrop" defaultItem="1">Protection Level:</dropdownList>
       </presentation>
     </presentationTable>
     

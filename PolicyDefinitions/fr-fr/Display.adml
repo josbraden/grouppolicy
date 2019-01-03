@@ -26,6 +26,26 @@ Si vous désactivez ou si vous ne configurez pas ce paramètre de stratégie, la
 Si la mise à l'échelle PPP GDI est configurée pour l'activation ou la désactivation d'une application, l'application sera désactivée.</string>
       <string id="DisplayTurnOnGdiDPIScaling">Activer GdiDPIScaling pour les applications</string>
       <string id="DisplayTurnOffGdiDPIScaling">Désactiver GdiDPIScaling pour les applications</string>
+      <string id="DisplayPerProcessSystemDpiSettingsHelp">La prise en charge DPI système par processus est une fonctionnalité de compatibilité des applications pour les applications de bureau qui ne bénéficient pas d'un rendu correct après la modification d’un facteur d’échelle d’affichage (DPI). En cas de modification du facteur d’échelle d'affichage de l'affichage principal (ce qui peut se produire lorsque vous connectez ou déconnectez un écran qui présente un autre facteur d’échelle d'affichage (DPI), lorsque vous vous connectez à distance à partir d’un appareil présentant un autre facteur d’échelle d'affichage ou lorsque vous modifiez manuellement le facteur d’échelle d'affichage), de nombreuses applications de bureau peuvent s'afficher floues. Les applications de bureau qui n’ont pas été mises à jour pour s’afficher correctement dans ce scénario seront floues jusqu'à ce que l’utilisateur se déconnecte, puis revienne dans Windows. 
+
+Lorsque vous activez cette stratégie, certaines applications floues sont nettes après un redémarrage, sans que l’utilisateur doive se déconnecter, puis revenir dans Windows. 
+
+Prenez les éléments suivants en compte :
+
+La prise en charge DPI système par processus ne permet d’améliorer que le rendu des applications de bureau qui sont placées sur l’écran principal. Certaines applications de bureau peuvent encore être floues sur les écrans secondaires qui présentent d'autres facteurs d’échelle d'affichage. 
+
+La prise en charge DPI système par processus ne fonctionne pas pour toutes les applications, car certaines applications plus anciennes bureau seront toujours floues sur les écrans haute résolution. 
+
+Dans certains cas, vous pouvez voir un comportement étrange dans certaines applications de bureau. Si cela se produit, la prise en charge DPI système par processus doit être désactivée.
+
+L’activation de ce paramètre vous permet de spécifier la valeur par défaut au niveau du système pour les applications de bureau, ainsi que des remplacements par application. Si vous désactivez ou ne configurez pas ce paramètre, la prise en charge DPI système par processus ne s’applique à aucun processus sur le système.
+
+</string>
+      <string id="DisplayPerProcessSystemDpiSettings">Paramètres de configuration de la prise en charge DPI système par processus</string>
+      <string id="DisplayGlobalPerProcessSystemDpiEnable">Activer</string>
+      <string id="DisplayGlobalPerProcessSystemDpiDisable">Désactiver</string>
+      <string id="DisplayEnablePerProcessSystemDpiSettings">Activer la prise en charge DPI système par processus pour les applications</string>
+      <string id="DisplayDisablePerProcessSystemDpiSettings">Désactiver la prise en charge DPI système par processus pour les applications</string>
     </stringTable>
     <presentationTable>
       <presentation id="DisplayTurnOnGdiDPIScaling">
@@ -36,6 +56,15 @@ Si la mise à l'échelle PPP GDI est configurée pour l'activation ou la désact
       <presentation id="DisplayTurnOffGdiDPIScaling">
         <textBox refId="DisplayTurnOffGdiDPIScalingPrompt">
           <label>Désactivez la mise à l'échelle PPP GDI pour les applications suivantes. Utilisez le chemin complet de l'application ou le nom du fichier et l'extension de l'application. Séparez les applications à l'aide d'un point-virgule.</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisplayPerProcessSystemDpiSettings">
+        <dropdownList refId="DisplayGlobalPerProcessSystemDpiSettings" noSort="true" defaultItem="0">Activez ou désactivez la prise en charge DPI système par processus pour toutes les applications.</dropdownList>
+        <textBox refId="DisplayEnablePerProcessSystemDpiSettings">
+          <label>Activez la prise en charge DPI système par processus pour les applications suivantes. Utilisez le chemin d'accès complet de l’application ou le nom et l’extension de l’application. Séparez les applications par un point-virgule.</label>
+        </textBox>
+        <textBox refId="DisplayDisablePerProcessSystemDpiSettings">
+          <label>Désactivez la prise en charge DPI système par processus pour les applications suivantes. Utilisez le chemin d'accès complet de l’application ou le nom et l’extension de l’application. Séparez les applications par un point-virgule.</label>
         </textBox>
       </presentation>
     </presentationTable>

@@ -32,7 +32,11 @@
       <string id="MaxDownloadBandwidth">Maksimal nedlastingsbåndbredde (i kB/s)</string>
       <string id="MaxDownloadBandwidth_Help">Angir den maksimale båndbredden i kilobyte/sekund som enheten kan bruke for alle samtidige nedlastingsaktiviteter via Leveringsoptimalisering. Standardverdien 0 (null) betyr at Leveringsoptimalisering justeres dynamisk for å bruke den tilgjengelige båndbredden for nedlastinger.</string>
       <string id="PercentageMaxDownloadBandwidth">Maksimal nedlastingsbåndbredde (i prosent)</string>
-      <string id="PercentageMaxDownloadBandwidth_Help">Angir den maksimale båndbredden for nedlasting som Leveringsoptimalisering bruker for alle nedlastingsaktiviteter, i form av en prosentandel av den tilgengelige nedlastingsbåndbredden. Standardverdien 0 (null) betyr at Leveringsoptimalisering justeres dynamisk for å bruke den tilgjengelige båndbredden for nedlastinger.</string>
+      <string id="PercentageMaxDownloadBandwidth_Help">Angir den maksimale nedlastingsbåndbredden som Leveringsoptimalisering bruker på tvers av alle nedlastingsaktiviteter, som en prosent av tilgjengelig nedlastingsbåndbredde. Standardverdien 0 (null) betyr at Leveringsoptimalisering justeres til å bruke tilgjengelig båndbredde for nedlastinger. Denne policyen er avskrevet og blir fjernet i neste versjon. Bruk i stedet maksimal båndbredde for forgrunnsnedlasting (prosent) eller maksimal båndbredde for bakgrunnsnedlasting (prosent).</string>
+      <string id="PercentageMaxBackgroundBandwidth">Maksimal båndbredde for nedlasting i bakgrunnen (prosentandel)</string>
+      <string id="PercentageMaxBackgroundBandwidth_Help">Spesifiserer den maksimale båndbredden for nedlastning i bakgrunnen som Leveringsoptimalisering bruker på tvers av alle samtidige nedlastningsaktiviteter, som en prosentandel av tilgjengelig nedlastingsbåndbredde. Standardverdien 0 (null) betyr at Leveringsoptimalisering på en dynamisk måte justerer bruken av den tilgjengelige båndbredden for nedlasting i bakgrunnen.</string>
+      <string id="PercentageMaxForegroundBandwidth">Maksimal båndbredde for nedlasting i forgrunnen (prosentandel)</string>
+      <string id="PercentageMaxForegroundBandwidth_Help">Spesifiserer den maksimale båndbredden for nedlastning i forgrunnen som Leveringsoptimalisering bruker på tvers av alle samtidige nedlastningsaktiviteter, som en prosentandel av tilgjengelig nedlastingsbåndbredde. Standardverdien 0 (null) betyr at Leveringsoptimalisering på en dynamisk måte justerer bruken av den tilgjengelige båndbredden for nedlasting i forgrunnen.</string>
       <string id="MinFileSizeToCache">Minimum innholdsfilstørrelse for Nodebufring (i MB)</string>
       <string id="MinFileSizeToCache_Help">Angir minimumsstørrelse i MB for innholdsfiler som kan bruke nodebufring. Anbefalte verdier: 1 MB til 100000 MB.</string>
       <string id="AllowVPNPeerCaching">Aktiver Nodebufring mens enheten kobler til via VPN</string>
@@ -43,6 +47,60 @@
       <string id="MinDiskSizeAllowedToPeer_Help">Angir minimum diskstørrelse (kapasitet i GB) for enheter for at de skal kunne bruke nodebufring. Skytjenestens angitte standardverdi blir brukt. Anbefalte verdier: 64 GB til 256 GB. Obs! Hvis policyen DOMoidfyCacheDrive er angitt, gjelder diskstørrelseskontrollen for den nye arbeidsmappen som er angitt av denne policyen.</string>
       <string id="MinBatteryPercentageAllowedToUpload">Tillat opplastinger mens enheten går på batteristrøm under angitt batterinivå (i prosent)</string>
       <string id="MinBatteryPercentageAllowedToUpload_Help">Angi en verdi mellom 1 og 100 (i prosent) for å tillate at enheten laster opp data til LAN- og gruppenoder mens den går på likestrøm (batteri). Opplastinger stanses midlertidig automatisk når batterinivået faller under angitt minimum batterinivå. Den anbefalte verdien å sette hvis du tillater opplastinger på batteridrift er 40 (for 40 %). Enheten kan laste ned fra noder mens den går på batteristrøm uavhengig av denne policyen. Verdien 0 betyr ikke ubegrenset. Den angitte standardverdien for skytjenesten vil bli brukt.</string>
+      <string id="GroupIdSource">Velg kilden for gruppe-ID-er</string>
+      <string id="GroupIdSource_Help">Angi denne policyen for å begrense nodeutvalg til en bestemt kilde. 
+      
+Alternativene er: 
+
+1 = AD-område.
+
+2 = SID for godkjent domene.
+
+3 = ID for DHCP-alternativ.
+
+4 = DNS-suffiks. 
+
+Når den er angitt, tilordnes gruppe-ID-en automatisk fra den valgte kilden. Hvis du angir denne policyen, ignoreres GroupID-policyen. 
+      
+Alternativene som er angitt i denne policyen, gjelder bare for nedlastingsmodus Gruppe (2). Hvis Gruppe (2) ikke er angitt som nedlastingsmodus, ignoreres denne policyen. 
+
+For alternativ 3 – ID for DHCP-alternativ vil klienten sende forespørselen 234 for ID for DHCP-alternativ og bruke den returnerte GUID-verdien som gruppe-ID.</string>
+      <string id="DelayBackgroundDownloadFromHttp">Forsinkelse av bakgrunnsnedlasting fra http (i sek)</string>
+      <string id="DelayBackgroundDownloadFromHttp_Help">Med denne policyen kan du utsette bruken av en HTTP-kilde i en bakgrunnsnedlasting som har tillatelse til å bruke P2P. Når du har nådd maksimal forsinkelse, gjenopptas nedlastingen ved hjelp av HTTP, enten ved å laste ned hele nyttelasten eller ved å supplerer byte som ikke kan lastes ned fra motparter. Legg merke til at en nedlasting som venter på motpartkilder, vises som fastlåst for sluttbrukeren. Anbefalt verdi er 1 time (3600).</string>
+      <string id="DelayForegroundDownloadFromHttp">Forsinkelse av forgrunnsnedlasting fra http (i sek)</string>
+      <string id="DelayForegroundDownloadFromHttp_Help">Med denne policyen kan du utsette bruken av en HTTP-kilde i en forgrunnsnedlasting (interaktiv) som har tillatelse til å bruke P2P. Når du har nådd maksimal forsinkelse, gjenopptas nedlastingen ved hjelp av HTTP, enten ved å laste ned hele nyttelasten eller ved å supplere byte som ikke kan lastes ned fra motparter. Legg merke til at en nedlasting som venter på motpartkilder, vises som fastlåst for sluttbrukeren. Anbefalt verdi er 1 minutt (60).</string>
+      <string id="RestrictPeerSelectionBy">Velg en metode for å begrense valg av motpart</string>
+      <string id="RestrictPeerSelectionBy_Help">Konfigurer denne policyen for å begrense motpartvalg via valgt alternativ. Alternativene er: 1 = nettverksmaske (flere alternativer blir lagt til i en fremtidig versjon). Alternativ 1 (nettverksmaske) gjelder både Nedlastingsmodus LAN (1) og Gruppe (2).</string>
+      <string id="RestrictPeerSelectionBy_None">Ingen</string>
+      <string id="RestrictPeerSelectionBy_Subnet">Delnett</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth">Angi arbeidstid for å begrense båndbredde for bakgrunnsnedlasting</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth_Help">Angir maksimal båndbredde for bakgrunnsnedlasting som bruker leveringsoptimalisering under og utenfor vanlig arbeidstid på tvers av alle samtidige nedlastingsaktiviteter som en prosent av tilgjengelig nedlastingsbåndbredde.</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth">Angi arbeidstid for å begrense båndbredde for forgrunnsnedlasting</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth_Help">Angir maksimal båndbredde for forgrunnsnedlasting som bruker leveringsoptimalisering under og utenfor vanlig arbeidstid på tvers av alle samtidige nedlastingsaktiviteter som en prosent av tilgjengelig nedlastingsbåndbredde.</string>
+      <string id="Time1AM">01:00</string>
+      <string id="Time1PM">13:00</string>
+      <string id="Time2AM">02:00</string>
+      <string id="Time2PM">14:00</string>
+      <string id="Time3AM">03:00</string>
+      <string id="Time3PM">15:00</string>
+      <string id="Time4AM">04:00</string>
+      <string id="Time4PM">16:00</string>
+      <string id="Time5AM">05:00</string>
+      <string id="Time5PM">17:00</string>
+      <string id="Time6AM">06:00</string>
+      <string id="Time6PM">18:00</string>
+      <string id="Time7AM">07:00</string>
+      <string id="Time7PM">19:00</string>
+      <string id="Time8AM">08:00</string>
+      <string id="Time8PM">20:00</string>
+      <string id="Time9AM">09:00</string>
+      <string id="Time9PM">21:00</string>
+      <string id="Time10AM">10:00</string>
+      <string id="Time10PM">22:00</string>
+      <string id="Time11AM">11:00</string>
+      <string id="Time11PM">23:00</string>
+      <string id="Time12AM">12:00</string>
+      <string id="Time12PM">24:00</string>
     </stringTable>
     <presentationTable>
       <presentation id="DownloadMode">
@@ -90,6 +148,14 @@
         <decimalTextBox defaultValue="0" refId="PercentageMaxDownloadBandwidth">Maksimal nedlastingsbåndbredde (i prosent):</decimalTextBox>
         <text>Standardverdien er 0 (ubegrenset).</text>
       </presentation>
+      <presentation id="PercentageMaxBackgroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxBackgroundBandwidth">Maksimal båndbredde for nedlasting i bakgrunnen (prosentandel):</decimalTextBox>
+        <text>Standardverdien er 0 (ubegrenset).</text>
+      </presentation>
+      <presentation id="PercentageMaxForegroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxForegroundBandwidth">Maksimal båndbredde for nedlasting i forgrunnen (prosentandel):</decimalTextBox>
+        <text>Standardverdien 0 (ubegrenset)</text>
+      </presentation>
       <presentation id="MinFileSizeToCache">
         <decimalTextBox defaultValue="100" refId="MinFileSizeToCache">Minimum innholdsfilstørrelse for Nodebufring (i MB):</decimalTextBox>
         <text>Standardverdien er 100 MB.</text>
@@ -107,7 +173,50 @@
       </presentation>
       <presentation id="MinBatteryPercentageAllowedToUpload">
         <decimalTextBox defaultValue="0" refId="MinBatteryPercentageAllowedToUpload">Minimum batterinivå (i prosent):</decimalTextBox>
-        <text>Standardverdien er 0 (ubegrenset).</text>
+        <text>Standardverdien er 0 (ubegrenset)</text>
+      </presentation>
+      <presentation id="GroupIdSource">
+        <decimalTextBox defaultValue="0" refId="GroupIdSource">kilder for gruppe-ID-er:</decimalTextBox>
+        <text>Standardverdien er 0 (fjern)</text>
+      </presentation>
+      <presentation id="DelayBackgroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayBackgroundDownloadFromHttp">Forsinkelse av bakgrunnsnedlasting fra http (i sek)</decimalTextBox>
+        <text>Standardverdien er 0 (ingen forsinkelse)</text>
+      </presentation>
+      <presentation id="DelayForegroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayForegroundDownloadFromHttp">Forsinkelse av forgrunnsnedlasting fra http (i sek)</decimalTextBox>
+        <text>Standardverdien er 0 (ingen forsinkelse)</text>
+      </presentation>
+      <presentation id="RestrictPeerSelectionBy">
+        <dropdownList defaultItem="0" noSort="true" refId="RestrictPeerSelectionBy">Begrens valg av motpart med:</dropdownList>
+      </presentation>
+      <presentation id="SetHoursToLimitBackgroundDownloadBandwidth">
+        <text/>
+        <text>Angi arbeidstid for å begrense båndbredde for bakgrunnsnedlasting:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthFrom">Fra:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthTo">Til:</dropdownList>
+        <text/>
+        <text>Maksimal båndbredde for bakgrunnsnedlasting (prosent) i åpningstiden:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthIn"/>
+        <text>Standardverdien er 0 (ubegrenset)</text>
+        <text/>
+        <text>Maksimal båndbredde for bakgrunnsnedlasting (prosent) utenom åpningstiden:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthOut"/>
+        <text>Standardverdien er 0 (ubegrenset)</text>
+      </presentation>
+      <presentation id="SetHoursToLimitForegroundDownloadBandwidth">
+        <text/>
+        <text>Angi arbeidstid for å begrense båndbredde for forgrunnsnedlasting:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthFrom">Fra:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthTo">Til:</dropdownList>
+        <text/>
+        <text>Maksimal båndbredde for forgrunnsnedlasting (prosent) i åpningstiden:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthIn"/>
+        <text>Standardverdien er 0 (ubegrenset)</text>
+        <text/>
+        <text>Maksimal båndbredde for forgrunnsnedlasting (prosent) utenom åpningstiden:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthOut"/>
+        <text>Standardverdien er 0 (ubegrenset)</text>
       </presentation>
     </presentationTable>
   </resources>

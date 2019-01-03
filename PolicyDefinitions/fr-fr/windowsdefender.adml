@@ -834,27 +834,61 @@ Si vous désactivez ou ne configurez pas ce paramètre, aucun texte supplémenta
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Configurer le contrôle d'accès aux dossiers</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    Activez ou désactivez le contrôle d'accès aux dossiers par des applications non approuvées.
+    Active ou désactive l’accès contrôlé aux dossiers pour les applications non approuvées. Vous pouvez choisir de bloquer, d’auditer ou d’autoriser les tentatives par des applications non approuvées pour :
+    - modifier ou supprimer des fichiers dans des dossiers protégés, tels que le dossier Documents ;
+    - écrire dans des secteurs de disque.
 
-        Activé :
-        Les applications non approuvées ne peuvent pas modifier ou supprimer les fichiers qui se trouvent dans des dossiers protégés, tels que le dossier Documents.
+    Vous pouvez également choisir de ne bloquer ou n’auditer que les écritures dans des secteurs de disque tout en permettant la modification ou la suppression de fichiers dans des dossiers protégés.
 
-        Désactivé :
-        Toutes les applications peuvent modifier ou supprimer les fichiers qui se trouvent dans des dossiers protégés, tels que le dossier Documents.
+    L’Antivirus Windows Defender détermine automatiquement les applications qui peuvent être approuvées. Vous pouvez ajouter des applications approuvées dans le paramètre de stratégie de groupe Configurer des applications approuvées.
+    Les dossiers système par défaut sont automatiquement protégés, mais vous pouvez ajouter des dossiers dans le paramètre de stratégie Configurer des dossiers protégés.
 
-        Mode audit :
-        Les applications qui seraient habituellement considérées comme « non approuvées » si le paramètre était Activé pourront toujours modifier ou supprimer les fichiers qui se trouvent dans des dossiers protégés. Cependant, chaque événement sera enregistré dans le journal des événements de Windows.
+    Bloquer :
+    Les opérations suivantes sont bloquées :
+    - Tentatives par des applications non approuvées de modifier ou supprimer des fichiers dans des dossiers protégés
+    -Tentatives par des applications non approuvées d’écrire dans des secteurs de disque
+    Le journal des événements Windows enregistre ces blocages sous Journaux des applications et des services &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Opérationnel &gt; ID 1123.
 
-        Non configuré :
-        Identique à Désactivé.
 
-        L'antivirus Windows Defender détermine automatiquement les applications qui peuvent être approuvées. Vous pouvez ajouter des applications approuvées supplémentaires dans le paramètre de stratégie de groupe Configurer les applications autorisées.
+    Désactivé :
+    Les opérations suivantes ne sont pas bloquées et sont autorisées à s’exécuter :
+    - Tentatives par des applications non approuvées de modifier ou supprimer des fichiers dans des dossiers protégés
+    - Tentatives par des applications non approuvées d’écrire dans des secteurs de disque
+    Ces tentatives ne sont pas enregistrées dans le journal des événements Windows.
 
-        Les dossiers système par défaut sont automatiquement protégés, mais vous pouvez ajouter des dossiers dans le paramètre de stratégie de groupe Configurer les dossiers protégés.
+
+    Mode audit :
+    Les opérations suivantes ne sont pas bloquées et sont autorisées à s’exécuter :
+    - Tentatives par des applications non approuvées de modifier ou supprimer des fichiers dans des dossiers protégés
+    - Tentatives par des applications non approuvées d’écrire dans des secteurs de disque
+    Le journal des événements Windows enregistre ces tentatives sous Journaux des applications et des services &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Opérationnel &gt; ID 1124.
+
+
+    Bloquer la modification du disque uniquement :
+    Les opérations suivantes sont bloquées :
+    - Tentatives par des applications non approuvées d’écrire dans des secteurs de disque
+    Le journal des événements Windows enregistre ces tentatives sous Journaux des applications et des services &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Opérationnel &gt; ID 1123.
+
+    Les opérations suivantes ne sont pas bloquées et sont autorisées à s’exécuter :
+    - Tentatives par des applications non approuvées de modifier ou supprimer des fichiers dans des dossiers protégés
+    Ces tentatives ne sont pas enregistrées dans le journal des événements Windows.
+
+
+    Auditer la modification du disque uniquement :
+    Les opérations suivantes ne sont pas bloquées et sont autorisées à s’exécuter :
+    - Tentatives par des applications non approuvées d’écrire dans des secteurs de disque
+    - Tentatives par des applications non approuvées de modifier ou supprimer des fichiers dans des dossiers protégés
+    Seules les tentatives d’écrire dans des secteurs de disque protégé sont enregistrées dans le journal des événements Windows (sous Journaux des applications et des services &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Opérationnel &gt; ID 1124).
+    Les tentatives de modification ou de suppression des fichiers dans des dossiers protégés ne sont pas enregistrées.
+
+    Non configuré :
+    Identique à Désactivé.
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Désactiver (par défaut)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Refuser</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Mode audit</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">Ne bloquer que la modification du disque</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">N'auditer que la modification du disque</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Configurer les applications autorisées</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     Ajoutez les applications supplémentaires qui devraient être considérées comme « approuvées » par la fonctionnalité de contrôle d'accès aux dossiers.

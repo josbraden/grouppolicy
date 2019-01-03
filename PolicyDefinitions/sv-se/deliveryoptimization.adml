@@ -32,7 +32,11 @@
       <string id="MaxDownloadBandwidth">Maximal bandbredd för nedladdning (i kB/s)</string>
       <string id="MaxDownloadBandwidth_Help">Anger den maximala bandbredd för nedladdning (i kB/s) som enheten kan använda bland all samtidig nedladdning via Leveransoptimering. Standardvärdet 0 (noll) innebär att Leveransoptimering justeras dynamiskt till att använda den tillgängliga bandbredden för nedladdning.</string>
       <string id="PercentageMaxDownloadBandwidth">Maximal bandbredd för nedladdning (i procent)</string>
-      <string id="PercentageMaxDownloadBandwidth_Help">Anger den maximala bandbredd för nedladdning som Leveransoptimering kan använda bland all samtidig nedladdning (som en procentandel av den tillgängliga bandbredden för nedladdning). Standardvärdet 0 (noll) innebär att Leveransoptimering justeras dynamiskt till att använda den tillgängliga bandbredden för nedladdning.</string>
+      <string id="PercentageMaxDownloadBandwidth_Help">Anger den maximala bandbredd för nedladdning som Leveransoptimering kan använda bland all samtidig nedladdning (som en procentandel av den tillgängliga bandbredden för nedladdning). Standardvärdet 0 (noll) innebär att Leveransoptimering justeras dynamiskt till att använda den tillgängliga bandbredden för nedladdning. Den här principen kommer att dras tillbaka och försvinner i nästa version. Använd Maximal bandbredd för förgrundsnedladdning (i procent) eller Maximal bandbredd för bakgrundsnedladdning (i procent) i stället.</string>
+      <string id="PercentageMaxBackgroundBandwidth">Maximal bandbredd för bakgrundsnedladdning (i procent)</string>
+      <string id="PercentageMaxBackgroundBandwidth_Help">Anger den maximala bandbredd för bakgrundsnedladdning som Leveransoptimering kan använda bland all samtidig nedladdning (som en procentandel av den tillgängliga bandbredden för nedladdning). Standardvärdet 0 (noll) innebär att Leveransoptimering justeras dynamiskt till att använda den tillgängliga bandbredden för bakgrundsnedladdning.</string>
+      <string id="PercentageMaxForegroundBandwidth">Maximal bandbredd för förgrundsnedladdning (i procent)</string>
+      <string id="PercentageMaxForegroundBandwidth_Help">Anger den maximala bandbredd för förgrundsnedladdning som Leveransoptimering kan använda bland all samtidig nedladdning (som en procentandel av den tillgängliga bandbredden för nedladdning). Standardvärdet 0 (noll) innebär att Leveransoptimering justeras dynamiskt till att använda den tillgängliga bandbredden för förgrundsnedladdning.</string>
       <string id="MinFileSizeToCache">Minsta innehållsfilstorlek för att använda peer-cachelagring (i MB)</string>
       <string id="MinFileSizeToCache_Help">Anger den minsta innehållsfilstorleken i MB som krävs för att använda peer-cachelagring. Rekommenderade värden: 1 MB till 100000 MB.</string>
       <string id="AllowVPNPeerCaching">Aktivera peer-cachelagring när enheten ansluter via VPN</string>
@@ -43,6 +47,60 @@
       <string id="MinDiskSizeAllowedToPeer_Help">Anger den minsta diskstorleken (i GB) som krävs för att enheten ska kunna använda peer-cachelagring. Molntjänstens standardvärde används. Rekommenderade värden: 64 GB till 256 GB. Obs! Om DOMoidfyCacheDrive-principen har angetts gäller diskstorlekskontrollen den nya arbetskatalogen som angetts i den här principen.</string>
       <string id="MinBatteryPercentageAllowedToUpload">Tillåt uppladdningar från enheten vid batteridrift under angiven batterinivå (i procent)</string>
       <string id="MinBatteryPercentageAllowedToUpload_Help">Ange ett värde mellan 1 och 100 (i procent) för att tillåta enheten ladda upp data till LAN och grupp-peers vid batteridrift. Uppladdningar pausas automatiskt när batterinivån understiger den lägsta batterinivå som angetts. Det rekommenderade värdet för att tillåta uppladdningar vid batteridrift är 40 (för 40 %). Enheten kan ladda ned från peers vid batteridrift oavsett den här principen. Värdet 0 innebär "obegränsat", det vill säga molntjänstens standardvärde används.</string>
+      <string id="GroupIdSource">Välj källa för grupp-ID:n</string>
+      <string id="GroupIdSource_Help">Ange den här principen om du vill begränsa peer-urvalet till en viss källa. 
+      
+Tillgängliga alternativ: 
+
+1 = AD-plats.
+
+2 = SID för autentiserad domän.
+
+3 = Alternativ-ID för DHCP.
+
+4 = DNS-suffix. 
+
+När du har ställt in principen tilldelas grupp-ID:t automatiskt från den valda källan. Om du ställer in den här principen används inte GroupID-principen. 
+      
+Alternativen i den här principen gäller endast nedladdningsläget Grupp (2). Den här principen har alltså ingen funktion om Grupp (2) inte används som nedladdningsläge. 
+
+För alternativ 3 (Alternativ-ID för DHCP) efterfrågar klienten alternativ-ID 234 för DHCP och använder sedan det returnerade GUID-värdet som grupp-ID.</string>
+      <string id="DelayBackgroundDownloadFromHttp">Fördröj bakgrundsnedladdning från http (i sek)</string>
+      <string id="DelayBackgroundDownloadFromHttp_Help">Med den här principen kan du fördröja användningen av en HTTP-källa i bakgrundsnedladdningar som tillåts använda P2P. När den maximala fördröjningen har nåtts återupptas nedladdningen från HTTP. Då laddas antingen hela lasten ned eller de byte som inte kunde laddas ned från peer-källor. Observera att en nedladdning som väntar på peer-källor ser ut som att den har fastnat för slutanvändaren. Rekommenderat värde: 3600 (1 timme).</string>
+      <string id="DelayForegroundDownloadFromHttp">Fördröj förgrundsnedladdning från http (i sek)</string>
+      <string id="DelayForegroundDownloadFromHttp_Help">Med den här principen kan du fördröja användningen av en HTTP-källa i förgrundsnedladdningar (interaktiva nedladdningar) som tillåts använda P2P. När den maximala fördröjningen har nåtts återupptas nedladdningen från HTTP. Då laddas antingen hela lasten ned eller de byte som inte kunde laddas ned från peer-källor. Observera att en nedladdning som väntar på peer-källor ser ut som att den har fastnat för slutanvändaren. Rekommenderat värde: 60 (1 minut).</string>
+      <string id="RestrictPeerSelectionBy">Välj metod för att begränsa peer-urval</string>
+      <string id="RestrictPeerSelectionBy_Help">Ange den här principen om du vill begränsa peer-urvalet med det valda alternativet. Tillgängliga alternativ: 1 = Nätmask (fler alternativ tillkommer i en framtida version). Alternativ 1 (Nätmask) gäller både nedladdningsläget LAN (1) och Grupp (2).</string>
+      <string id="RestrictPeerSelectionBy_None">Inget</string>
+      <string id="RestrictPeerSelectionBy_Subnet">Undernät</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth">Ange arbetstiden för att begränsa bandbredden för bakgrundsnedladdning</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth_Help">Anger den maximala bandbredd för bakgrundsnedladdning som Leveransoptimering kan använda under och efter arbetstid bland all samtidig nedladdning (som en procentandel av den tillgängliga bandbredden för nedladdning).</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth">Ange arbetstiden för att begränsa bandbredden för förgrundsnedladdning</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth_Help">Anger den maximala bandbredd för förgrundsnedladdning som Leveransoptimering kan använda under och efter arbetstid bland all samtidig nedladdning (som en procentandel av den tillgängliga bandbredden för nedladdning).</string>
+      <string id="Time1AM">01:00</string>
+      <string id="Time1PM">13:00</string>
+      <string id="Time2AM">02:00</string>
+      <string id="Time2PM">14:00</string>
+      <string id="Time3AM">03:00</string>
+      <string id="Time3PM">15:00</string>
+      <string id="Time4AM">04:00</string>
+      <string id="Time4PM">16:00</string>
+      <string id="Time5AM">05:00</string>
+      <string id="Time5PM">17:00</string>
+      <string id="Time6AM">06:00</string>
+      <string id="Time6PM">18:00</string>
+      <string id="Time7AM">07:00</string>
+      <string id="Time7PM">19:00</string>
+      <string id="Time8AM">08:00</string>
+      <string id="Time8PM">20:00</string>
+      <string id="Time9AM">09:00</string>
+      <string id="Time9PM">21:00</string>
+      <string id="Time10AM">10:00</string>
+      <string id="Time10PM">22:00</string>
+      <string id="Time11AM">11:00</string>
+      <string id="Time11PM">23:00</string>
+      <string id="Time12AM">00:00</string>
+      <string id="Time12PM">12:00</string>
     </stringTable>
     <presentationTable>
       <presentation id="DownloadMode">
@@ -90,6 +148,14 @@
         <decimalTextBox defaultValue="0" refId="PercentageMaxDownloadBandwidth">Maximal bandbredd för nedladdning (procentandel):</decimalTextBox>
         <text>Standardvärdet är 0 (obegränsat)</text>
       </presentation>
+      <presentation id="PercentageMaxBackgroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxBackgroundBandwidth">Maximal bandbredd för bakgrundsnedladdning (i procent):</decimalTextBox>
+        <text>Standardvärdet är 0 (obegränsat)</text>
+      </presentation>
+      <presentation id="PercentageMaxForegroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxForegroundBandwidth">Maximal bandbredd för förgrundsnedladdning (i procent):</decimalTextBox>
+        <text>Standardvärdet är 0 (obegränsat)</text>
+      </presentation>
       <presentation id="MinFileSizeToCache">
         <decimalTextBox defaultValue="100" refId="MinFileSizeToCache">Minsta innehållsfilstorlek för att använda peer-cachelagring (i MB):</decimalTextBox>
         <text>Standardvärdet är 100 MB</text>
@@ -107,6 +173,49 @@
       </presentation>
       <presentation id="MinBatteryPercentageAllowedToUpload">
         <decimalTextBox defaultValue="0" refId="MinBatteryPercentageAllowedToUpload">Lägsta batterinivå (i procent):</decimalTextBox>
+        <text>Standardvärdet är 0 (obegränsat)</text>
+      </presentation>
+      <presentation id="GroupIdSource">
+        <decimalTextBox defaultValue="0" refId="GroupIdSource">källa för grupp-ID:n:</decimalTextBox>
+        <text>Standardvärdet är 0 (ej angivet)</text>
+      </presentation>
+      <presentation id="DelayBackgroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayBackgroundDownloadFromHttp">Fördröj bakgrundsnedladdning från http (i sek):</decimalTextBox>
+        <text>Standardvärdet är 0 (ingen fördröjning)</text>
+      </presentation>
+      <presentation id="DelayForegroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayForegroundDownloadFromHttp">Fördröj förgrundsnedladdning från http (i sek):</decimalTextBox>
+        <text>Standardvärdet är 0 (ingen fördröjning)</text>
+      </presentation>
+      <presentation id="RestrictPeerSelectionBy">
+        <dropdownList defaultItem="0" noSort="true" refId="RestrictPeerSelectionBy">Begränsa peer-urvalet med:</dropdownList>
+      </presentation>
+      <presentation id="SetHoursToLimitBackgroundDownloadBandwidth">
+        <text/>
+        <text>Ange arbetstiden för att begränsa bandbredden för bakgrundsnedladdning:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthFrom">Från:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthTo">Till:</dropdownList>
+        <text/>
+        <text>Maximal bandbredd (i procent) för bakgrundsnedladdning under arbetstid:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthIn"/>
+        <text>Standardvärdet är 0 (obegränsat)</text>
+        <text/>
+        <text>Maximal bandbredd (i procent) för bakgrundsnedladdning efter arbetstid:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthOut"/>
+        <text>Standardvärdet är 0 (obegränsat)</text>
+      </presentation>
+      <presentation id="SetHoursToLimitForegroundDownloadBandwidth">
+        <text/>
+        <text>Ange arbetstiden för att begränsa bandbredden för förgrundsnedladdning:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthFrom">Från:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthTo">Till:</dropdownList>
+        <text/>
+        <text>Maximal bandbredd (i procent) för förgrundsnedladdning under arbetstid:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthIn"/>
+        <text>Standardvärdet är 0 (obegränsat)</text>
+        <text/>
+        <text>Maximal bandbredd (i procent) för förgrundsnedladdning efter arbetstid:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthOut"/>
         <text>Standardvärdet är 0 (obegränsat)</text>
       </presentation>
     </presentationTable>

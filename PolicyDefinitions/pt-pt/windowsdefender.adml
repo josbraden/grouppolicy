@@ -7,7 +7,7 @@
     <string id="AntiSpyware">Endpoint Protection</string>
     <string id="Exclusions">Exclusões</string>
     <string id="ExploitGuard">Windows Defender Exploit Guard</string>
-    <string id="ExploitGuard_ASR">Attack Surface Reduction</string>
+    <string id="ExploitGuard_ASR">Redução de Superfície de Ataque</string>
     <string id="ExploitGuard_ControlledFolderAccess">Acesso Controlado a Pastas</string>
     <string id="ExploitGuard_NetworkProtection">Proteção da Rede</string>
     <string id="NetworkRealtimeInspection">Sistema de Inspeção de Rede</string>
@@ -799,7 +799,7 @@ Se desativar ou não configurar esta definição, não será apresentado qualque
 
     Pode configurar regras de ASR na definição de GP para Configurar regras de Attack Surface Reduction.
     </string>
-    <string id="ExploitGuard_ASR_Rules">Configurar regras de Attack Surface Reduction</string>
+    <string id="ExploitGuard_ASR_Rules">Configurar regras de Redução de Superfície de Ataque</string>
     <string id="ExploitGuard_ASR_Rules_Explain">
     Defina o estado para cada regra de Attack Surface Reduction (ASR).
 
@@ -834,27 +834,61 @@ Se desativar ou não configurar esta definição, não será apresentado qualque
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Configurar Acesso controlado a pastas</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    Ative ou desative o acesso controlado a pastas para aplicações não fidedignas.
+    Ative ou desative o acesso controlado a pastas para aplicações não fidedignas. Pode optar por bloquear, efetuar auditoria ou permitir tentativas de aplicações não fidedignas para:
+    - Modificar ou eliminar ficheiros em pastas protegidas, como a pasta Documentos
+    - Escrever em setores do disco
+
+    Também pode optar por bloquear ou efetuar auditoria apenas a escrita em setores do disco, mantendo a permissão para modificação ou eliminação de ficheiros em pastas protegidas.
+
+    O Antivírus do Windows Defender determina automaticamente que aplicações podem ser consideradas fidedignas. Pode adicionar aplicações fidedignas na definição de GP para Configurar aplicações permitidas.
+    As pastas predefinidas do sistema são protegidas automaticamente, mas pode adicionar pastas na definição de GP de configuração de pastas protegidas.
 
     Bloquear:
-    As aplicações não fidedignas não podem modificar ou eliminar ficheiros em pastas protegidas, como a pasta Documentos.
+    O seguinte será bloqueado:
+    - Tentativas de aplicações não fidedignas para modificar ou eliminar ficheiros em pastas protegidas
+    - Tentativas de aplicações não fidedignas para escrever em setores do disco
+    O registo de eventos do Windows registará estes bloqueios nos Registos de Serviços e Aplicações &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1123.
+
 
     Desativado:
-    Todas as aplicações podem modificar ou eliminar ficheiros em pastas protegidas, como a pasta Documentos.
+    O seguinte não será bloqueado e a respetiva execução será autorizada:
+    - Tentativas de aplicações não fidedignas para modificar ou eliminar ficheiros em pastas protegidas
+    - Tentativas de aplicações não fidedignas para escrever em setores do disco
+    Estas tentativas não serão registadas no registo de eventos do Windows.
+
 
     Modo de Auditoria:
-    Aplicações que normalmente seriam consideradas ""não fidedignas"", caso a definição fosse Ativado, ainda poderão modificar ou eliminar ficheiros em pastas protegidas. Contudo, cada evento será registado no registo de eventos do Windows.
+    O seguinte não será bloqueado e a respetiva execução será autorizada:
+    - Tentativas de aplicações não fidedignas para modificar ou eliminar ficheiros em pastas protegidas
+    - Tentativas de aplicações não fidedignas para escrever em setores do disco
+    O registo de eventos do Windows registará estes bloqueios nos Registos de Serviços e Aplicações &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1124.
+
+
+    Bloquear apenas modificação do disco:
+    O seguinte será bloqueado:
+    - Tentativas de aplicações não fidedignas para escrever em setores do disco
+    O registo de eventos do Windows registará estes bloqueios nos Registos de Serviços e Aplicações &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1123.
+
+    O seguinte não será bloqueado e a respetiva execução será autorizada:
+    - Tentativas de aplicações não fidedignas para modificar ou eliminar ficheiros em pastas protegidas
+    Estas tentativas não serão registadas no registo de eventos do Windows.
+
+
+    Apenas efetuar auditoria a modificações do disco:
+    O seguinte não será bloqueado e a respetiva execução será autorizada:
+    - Tentativas de aplicações não fidedignas para escrever em setores do disco
+    - Tentativas de aplicações não fidedignas para modificar ou eliminar ficheiros em pastas protegidas
+    Apenas as tentativas para escrever em setores de disco protegidos serão registadas no registo de eventos do Windows (em Registos de Serviços e Aplicações &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1124).
+    Tentativas de modificar ou eliminar ficheiros em pastas protegidas não serão registadas.
 
     Não configurado:
     O mesmo que Desativado.
-
-    O Antivírus do Windows Defender determina automaticamente que aplicações podem ser consideradas fidedignas. Pode adicionar aplicações fidedignas na definição de GP de configuração de aplicações permitidas.
-
-    As pastas predefinidas do sistema são protegidas automaticamente, mas pode adicionar pastas na definição de GP de configuração de pastas protegidas.
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Desativar (Predefinição)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Bloquear</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Modo de Auditoria</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">Bloquear apenas modificação do disco</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">Apenas efetuar auditoria a modificações do disco</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Configurar aplicações permitidas</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     Adicione aplicações que devam ser consideradas "fidedignas" pelo acesso controlado a pastas.

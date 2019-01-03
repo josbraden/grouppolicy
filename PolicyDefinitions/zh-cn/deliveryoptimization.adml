@@ -32,7 +32,11 @@
       <string id="MaxDownloadBandwidth">最大下载带宽(以 KB/s 为单位)</string>
       <string id="MaxDownloadBandwidth_Help">指定设备可通过传递优化在所有并发下载活动中使用的最大下载带宽(以 KB/s 为单位)。默认值为 0 (零)表示传递优化将进行动态调整以使用可用带宽进行下载。</string>
       <string id="PercentageMaxDownloadBandwidth">最大下载带宽(%)</string>
-      <string id="PercentageMaxDownloadBandwidth_Help">以可用下载带宽的百分比形式指定传递优化在所有并发下载活动中可以使用的最大下载带宽。默认值为 0 (零)表示传递优化可进行动态调整以使用可用带宽进行下载。</string>
+      <string id="PercentageMaxDownloadBandwidth_Help">以可用下载带宽的百分比形式指定传递优化在所有并发下载活动中使用的最大下载带宽。默认值 0 (零)表示传递优化将进行动态调整以使用可用带宽进行下载。此策略已弃用并且将在下一版本中删除。请改用最大前台下载带宽(百分比)或最大后台下载带宽(百分比)。</string>
+      <string id="PercentageMaxBackgroundBandwidth">最大后台下载带宽(百分比)</string>
+      <string id="PercentageMaxBackgroundBandwidth_Help">以可用下载带宽的百分比形式指定传递优化在所有并发下载活动中可以使用的最大后台下载带宽。默认值为 0 (零)表示传递优化可进行动态调整以使用可用带宽进行后台下载。</string>
+      <string id="PercentageMaxForegroundBandwidth">最大前台下载带宽(百分比)</string>
+      <string id="PercentageMaxForegroundBandwidth_Help">以可用下载带宽的百分比形式指定传递优化在所有并发下载活动中可以使用的最大前台下载带宽。默认值为 0 (零)表示传递优化可进行动态调整以使用可用带宽进行前台下载。</string>
       <string id="MinFileSizeToCache">最小对等缓存内容文件大小(以 MB 为单位)</string>
       <string id="MinFileSizeToCache_Help">指定使用对等缓存所需启用的最小内容文件大小(以 MB 为单位)。建议值: 1 MB 到 100000 MB。</string>
       <string id="AllowVPNPeerCaching">当设备通过 VPN 连接时启用对等缓存</string>
@@ -43,6 +47,60 @@
       <string id="MinDiskSizeAllowedToPeer_Help">指定设备使用对等缓存所需的最小磁盘大小(以 GB 为单位容量)。将使用云服务集默认值。建议值: 64 GB 到 256 GB。注意: 如果设置了 DOMoidfyCacheDrive 策略，则磁盘大小检查将应用于此策略指定的新工作目录。</string>
       <string id="MinBatteryPercentageAllowedToUpload">设备在由电池供电，且电池剩余电量高于设定的百分比时允许上传</string>
       <string id="MinBatteryPercentageAllowedToUpload_Help">指定 1 到 100 之间的任意值(作为百分比)，允许设备在连接直流电源(电池)时将数据上传到 LAN 和组对等端。当电池剩余电量低于设置的最低电池剩余电量时，上传会自动暂停。如果你要允许电池供电时进行上传，建议将值设为 40 (即 40%)。无论此策略如何设置，设备在由电池供电时都可从对等端下载数据。如果此值设为 0 则意味着“无限制”；将使用云服务设置的默认值。</string>
+      <string id="GroupIdSource">选择组 ID 的源</string>
+      <string id="GroupIdSource_Help">设置此策略可将对等选择限制为特定源。
+      
+可用的选项有: 
+
+1 = AD 站点。
+
+2 = 经过身份验证的域 SID。
+
+3 = DHCP 选项 ID。
+
+4 = DNS 后缀。
+
+设置后，将自动从选定的源分配组 ID。如果设置此策略，将忽略 GroupID 策略。
+      
+此策略中设置的选项仅适用于组(2)下载模式。如果组(2)未设置为下载模式，则将忽略此策略。
+
+对于选项 3 - DHCP 选项 ID，客户端将查询 DHCP 选项 ID 234，并使用返回的 GUID 值作为组 ID。</string>
+      <string id="DelayBackgroundDownloadFromHttp">延迟 http 的后台下载(以秒为单位)</string>
+      <string id="DelayBackgroundDownloadFromHttp_Help">通过此策略，你可以在允许使用 P2P 的后台下载中延迟使用 HTTP 源。达到最大延迟后，将会恢复使用 HTTP 下载，下载整个有效负载或者从对等方补充无法下载的字节。请注意，正在等待对等来源的下载将对最终用户显示为处于阻塞状态。建议的值为 1 小时(3600)。</string>
+      <string id="DelayForegroundDownloadFromHttp">延迟 http 的前台下载(以秒为单位)</string>
+      <string id="DelayForegroundDownloadFromHttp_Help">通过此策略，你可以在允许使用 P2P 的前台(交互)下载中延迟使用 HTTP 源。达到最大延迟后，下载将恢复使用 HTTP，此时会下载整个有效负载或者补充无法从对等方下载的字节。请注意: 正在等待对等来源的下载将对最终用户显示为处于卡顿状态。建议的值为 1 分钟(60)。</string>
+      <string id="RestrictPeerSelectionBy">选择一种方法来限制对等方选择</string>
+      <string id="RestrictPeerSelectionBy_Help">设置此策略以通过所选的选项限制对等选择。可用选项为: 1 = 子网掩码(将在将来版本中添加更多选项)。选项 1 (子网掩码)适用于下载模式 LAN (1)和组(2)。</string>
+      <string id="RestrictPeerSelectionBy_None">无</string>
+      <string id="RestrictPeerSelectionBy_Subnet">子网</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth">设置工作时间以限制后台下载带宽</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth_Help">以可用下载带宽百分比形式指定传递优化在工作时间内外跨所有并发下载活动使用的最大后台下载带宽。</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth">设置工作时间以限制前台下载带宽</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth_Help">以可用下载带宽百分比形式指定传递优化在工作时间内外跨所有并发下载活动使用的最大前台下载带宽。</string>
+      <string id="Time1AM">上午 1 点</string>
+      <string id="Time1PM">下午 1 点</string>
+      <string id="Time2AM">上午 2 点</string>
+      <string id="Time2PM">下午 2 点</string>
+      <string id="Time3AM">上午 3 点</string>
+      <string id="Time3PM">下午 3 点</string>
+      <string id="Time4AM">上午 4 点</string>
+      <string id="Time4PM">下午 4 点</string>
+      <string id="Time5AM">上午 5 点</string>
+      <string id="Time5PM">下午 5 点</string>
+      <string id="Time6AM">上午 6 点</string>
+      <string id="Time6PM">下午 6 点</string>
+      <string id="Time7AM">上午 7 点</string>
+      <string id="Time7PM">下午 7 点</string>
+      <string id="Time8AM">上午 8 点</string>
+      <string id="Time8PM">下午 8 点</string>
+      <string id="Time9AM">上午 9 点</string>
+      <string id="Time9PM">下午 9 点</string>
+      <string id="Time10AM">上午 10 点</string>
+      <string id="Time10PM">下午 10 点</string>
+      <string id="Time11AM">上午 11 点</string>
+      <string id="Time11PM">下午 11 点</string>
+      <string id="Time12AM">上午 12 点</string>
+      <string id="Time12PM">下午 12 点</string>
     </stringTable>
     <presentationTable>
       <presentation id="DownloadMode">
@@ -90,6 +148,14 @@
         <decimalTextBox defaultValue="0" refId="PercentageMaxDownloadBandwidth">最大下载带宽(%):</decimalTextBox>
         <text>默认值为 0 (无限制)</text>
       </presentation>
+      <presentation id="PercentageMaxBackgroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxBackgroundBandwidth">最大后台下载带宽(百分比):</decimalTextBox>
+        <text>默认值为 0 (无限制)</text>
+      </presentation>
+      <presentation id="PercentageMaxForegroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxForegroundBandwidth">最大前台下载带宽(百分比):</decimalTextBox>
+        <text>默认值为 0 (无限制)</text>
+      </presentation>
       <presentation id="MinFileSizeToCache">
         <decimalTextBox defaultValue="100" refId="MinFileSizeToCache">最小对等缓存内容文件大小(以 MB 为单位):</decimalTextBox>
         <text>默认值为 100MB</text>
@@ -107,6 +173,49 @@
       </presentation>
       <presentation id="MinBatteryPercentageAllowedToUpload">
         <decimalTextBox defaultValue="0" refId="MinBatteryPercentageAllowedToUpload">最低电池剩余电量(%):</decimalTextBox>
+        <text>默认值为 0 (无限制)</text>
+      </presentation>
+      <presentation id="GroupIdSource">
+        <decimalTextBox defaultValue="0" refId="GroupIdSource">组 ID 的源:</decimalTextBox>
+        <text>默认值为 0 (未设置)</text>
+      </presentation>
+      <presentation id="DelayBackgroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayBackgroundDownloadFromHttp">延迟 http 的后台下载(以秒为单位):</decimalTextBox>
+        <text>默认值为 0 (无延迟)</text>
+      </presentation>
+      <presentation id="DelayForegroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayForegroundDownloadFromHttp">延迟 http 的前台下载(以秒为单位):</decimalTextBox>
+        <text>默认值为 0 (无延迟)</text>
+      </presentation>
+      <presentation id="RestrictPeerSelectionBy">
+        <dropdownList defaultItem="0" noSort="true" refId="RestrictPeerSelectionBy">通过以下方式限制对等方选择:</dropdownList>
+      </presentation>
+      <presentation id="SetHoursToLimitBackgroundDownloadBandwidth">
+        <text/>
+        <text>设置工作时间以限制后台下载带宽:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthFrom">从:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthTo">到:</dropdownList>
+        <text/>
+        <text>工作时间内的最大后台下载带宽(百分比):</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthIn"/>
+        <text>默认值为 0 (无限制)</text>
+        <text/>
+        <text>工作时间之外的最大后台下载带宽(百分比):</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthOut"/>
+        <text>默认值为 0 (无限制)</text>
+      </presentation>
+      <presentation id="SetHoursToLimitForegroundDownloadBandwidth">
+        <text/>
+        <text>设置工作时间以限制前台下载带宽:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthFrom">从:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthTo">到:</dropdownList>
+        <text/>
+        <text>工作时间内的最大前台下载带宽(百分比):</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthIn"/>
+        <text>默认值为 0 (无限制)</text>
+        <text/>
+        <text>工作时间之外的最大前台下载带宽(百分比):</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthOut"/>
         <text>默认值为 0 (无限制)</text>
       </presentation>
     </presentationTable>

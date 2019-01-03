@@ -834,27 +834,57 @@ Se si disabilita o non si configura questa impostazione dei criteri, non verrà 
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Configura accesso controllato alle cartelle</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    Abilita o disabilita l'accesso controllato alle cartelle per le applicazioni non attendibili. 
+    Attiva o disattiva l'accesso alle cartelle controllato per le applicazioni non attendibili. È possibile scegliere di bloccare, controllo o consentire tentativi da applicazioni non attendibili per:
+    -Modificare o eliminare i file nelle cartelle protette, ad esempio la cartella documenti
+    -Scrivere i settori del disco
 
-    Blocca:
-    Le applicazioni non attendibili non possono modificare o eliminare i file nelle cartelle protette, ad esempio la cartella Documenti.
+È inoltre possibile scegliere di blocco solo o controllo scrive in settori del disco consentendo comunque la modifica o eliminazione di file nelle cartelle protette.
 
-    Disabilitato:
-    Tutte le applicazioni possono modificare o eliminare i file nelle cartelle protette, ad esempio la cartella Documenti.
+Windows Defender Antivirus determina automaticamente quali applicazioni possono essere considerate attendibili. È possibile aggiungere altre applicazioni attendibili nell'impostazione configura applicazioni consentite criteri di gruppo.
+    Cartelle di sistema predefinite sono protette automaticamente, ma è possibile aggiungere cartelle nell'impostazione dei criteri di gruppo di cartelle Configura protetto.
 
-    Modalità Controllo:
-    Le applicazioni che normalmente verrebbero considerate ""non attendibili"" se l'impostazione fosse Abilitato sono comunque in grado di modificare o eliminare i file nelle cartelle protette, ma ogni evento viene registrato nel registro eventi di Windows.
+Blocco:
+    Verrà bloccati le operazioni seguenti:
+    -Tentativi da applicazioni non attendibili di modificare o eliminare i file nelle cartelle protette
+    -Tentativi da applicazioni non attendibili in cui scrivere i settori del disco
+    Registro eventi di Windows registrerà i blocchi in registri applicazioni e servizi &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; 1123 ID.
 
-    Non configurato:
-    Come Disabilitato.
+Disattivato:
+    Di seguito non verranno bloccati e verrà consentita l'esecuzione di:
+    -Tentativi da applicazioni non attendibili di modificare o eliminare i file nelle cartelle protette
+    -Tentativi da applicazioni non attendibili in cui scrivere i settori del disco
+    I seguenti tentativi non verranno registrati nel registro eventi di Windows.
 
-    Windows Defender Antivirus determina automaticamente quali applicazioni possono essere considerate attendibili. Puoi aggiungere altre applicazioni attendibili nell'impostazione dei criteri di gruppo Configura applicazioni consentite.
+Modalità controllo:
+    Di seguito non verranno bloccati e verrà consentita l'esecuzione di:
+    -Tentativi da applicazioni non attendibili di modificare o eliminare i file nelle cartelle protette
+    -Tentativi da applicazioni non attendibili in cui scrivere i settori del disco
+    Registro eventi di Windows registrerà i tentativi di accesso in registri applicazioni e servizi &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; 1124 ID.
 
-    Le cartelle di sistema predefinite sono controllate automaticamente, ma puoi aggiungere cartelle nell'impostazione dei criteri di gruppo Configura cartelle protette.
+Modifica solo del blocco disco:
+    Verrà bloccati le operazioni seguenti:
+    -Tentativi da applicazioni non attendibili in cui scrivere i settori del disco
+    Registro eventi di Windows registrerà i tentativi di accesso in registri applicazioni e servizi &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; 1123 ID.
+
+Di seguito non verranno bloccati e verrà consentita l'esecuzione di:
+    -Tentativi da applicazioni non attendibili di modificare o eliminare i file nelle cartelle protette
+    I seguenti tentativi non verranno registrati nel registro eventi di Windows.
+
+Solo la modifica del disco di controllo:
+    Di seguito non verranno bloccati e verrà consentita l'esecuzione di:
+    -Tentativi da applicazioni non attendibili in cui scrivere i settori del disco
+    -Tentativi da applicazioni non attendibili di modificare o eliminare i file nelle cartelle protette
+    Solo un tentativo di scrivere i settori del disco protetto verrà registrato nel registro eventi di Windows (in registri applicazioni e servizi &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Operational &gt; ID 1124).
+    Tentativo di modificare o eliminare i file nelle cartelle protette non verranno registrato.
+
+Non configurato:
+    Come disabilitato.
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Disabilita (valore predefinito)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Blocca</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Modalità Controllo</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">Blocca solo la modifica del disco</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">Controlla solo la modifica del disco</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Configura applicazioni consentite</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     Aggiungi altre applicazioni che devono essere considerate "attendibili" dall'accesso controllato alle cartelle.

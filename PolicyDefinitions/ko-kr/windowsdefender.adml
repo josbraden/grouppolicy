@@ -834,27 +834,58 @@
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">제어된 폴더 액세스 구성</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    신뢰할 수 없는 응용 프로그램에 대한 제어된 폴더 액세스를 사용하거나 사용하지 않도록 설정합니다. 
+    신뢰할 수 없는 응용 프로그램에 대한 제어된 폴더 액세스를 사용하거나 사용하지 않도록 설정합니다. 신뢰할 수 없는 앱의 시도를 차단, 감사 또는 허용하도록 선택할 수 있습니다.
+    -문서 폴더와 같은 보호된 폴더의 파일을 수정하거나 삭제할 수 없습니다
+    -디스크 섹터에 쓰기
 
-    차단:
-    신뢰할 수 없는 응용 프로그램은 문서 폴더와 같은 보호된 폴더의 파일을 수정하거나 삭제할 수 없습니다.
-
-    사용 안 함:
-    모든 응용 프로그램은 문서 폴더와 같은 보호된 폴더의 파일을 수정하거나 삭제할 수 있습니다.
-
-    감사 모드:
-    설정이 사용 가능으로 설정되었다면 일반적으로 "신뢰할 수 없음"으로 간주되었을 응용 프로그램은 여전히 보호된 폴더에서 파일을 수정하거나 삭제할 수 있지만, 각 이벤트는 Windows 이벤트 로그에 기록됩니다.
-
-    구성되지 않음:
-    사용 안 함과 동일.
+    보호된 폴더에서 파일을 수정하거나 삭제하는 것은 허용하면서 디스크 섹터에 쓰기만 차단하거나 감사하도록 선택할 수도 있습니다.
 
     Windows Defender 바이러스 백신은 신뢰할 수 있는 응용 프로그램을 자동으로 결정합니다. 허용된 응용 프로그램 구성 GP 설정에서 신뢰할 수 있는 응용 프로그램을 추가할 수 있습니다.
+    기본 시스템 폴더는 자동으로 보호되지만 보호된 폴더 구성 GP 설정에서 폴더를 추가할 수 있습니다.
 
-    기본 시스템 폴더는 자동으로 보호되지만, 보호된 폴더 구성 GP 설정에서 폴더를 추가할 수 있습니다.
+    차단:
+    다음 작업이 차단됩니다.
+    -신뢰할 수 없는 앱에서 보호된 폴더의 파일 수정 또는 삭제 시도.
+    -신뢰할 수 없는 앱에서 디스크 섹터에 쓰기 시도
+    Windows 이벤트 로그는 이러한 차단을 응용 프로그램 및 서비스 로그 &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; 작업 &gt; ID 1123에 로그합니다.
+
+    사용 안 함:
+    다음 작업은 차단되지 않으며 실행이 허용됩니다.
+    -신뢰할 수 없는 앱에서 보호된 폴더의 파일 수정 또는 삭제 시도.
+    -신뢰할 수 없는 앱에서 디스크 섹터에 쓰기 시도
+    이러한 시도는 Windows 이벤트 로그에 기록 되지 않습니다.
+
+감사 모드:
+    다음 작업은 차단되지 않으며 실행이 허용됩니다.
+    -신뢰할 수 없는 앱에서 보호된 폴더의 파일 수정 또는 삭제 시도.
+    -신뢰할 수 없는 앱에서 디스크 섹터에 쓰기 시도.
+    Windows 이벤트 로그는 이러한 시도를 응용 프로그램 및 서비스 로그 &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; 작업 &gt; 1124 ID에 로그합니다.
+
+    디스크 수정만 차단:
+    다음 작업이 차단됩니다.
+    -신뢰할 수 없는 앱에서 디스크 섹터에 쓰기 시도
+    Windows 이벤트 로그는 이러한 시도를 응용 프로그램 및 서비스 로그 &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; 작업 &gt; 1124 ID에 로그합니다.
+
+    다음 작업은 차단되지 않으며 실행이 허용됩니다.
+    -신뢰할 수 없는 앱에서 보호된 폴더의 파일 수정 또는 삭제 시도.
+    이러한 시도는 Windows 이벤트 로그에 기록되지 않습니다.
+
+
+    디스크 수정만 감사:
+    다음 작업은 차단되지 않으며 실행이 허용됩니다.
+    -신뢰할 수 없는 앱에서 디스크 섹터에 쓰기 시도
+    -신뢰할 수 없는 앱에서 보호된 폴더의 파일 수정 또는 삭제 시도
+    Windows 이벤트 로그는 (응용 프로그램 및 서비스 로그 &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; 작업 &gt; ID 1124에) 보호된 디스크 섹터에 쓰기 시도만 로그합니다.
+    보호 된 폴더의 파일을 수정하거나 삭제하려는 시도는 기록되지 않습니다.
+
+구성 되지 않음:
+    사용 안 함과 동일.
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">사용 안 함(기본값)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">차단</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">감사 모드</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">디스크 수정만 차단</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">디스크 수정만 감사</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">허용된 응용 프로그램 구성</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     제어된 폴더 액세스에 의해 "신뢰할 수 있음"으로 간주된 다른 응용 프로그램을 추가합니다.

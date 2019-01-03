@@ -834,27 +834,61 @@ Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vise
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess">Konfigurer kontrolleret mappeadgang</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Explain">
-    Aktivér eller deaktiver kontrolleret mappeadgang efter applikationer, der ikke er tillid til. 
+    Aktivér eller deaktiver styret mappeadgang for upålidelige applikationer. Du kan vælge at blokere, overvåge eller tillade forsøg fra upålidelige apps på at:
+    - Ændre eller slette filer i beskyttede mapper, for eksempel mappen Dokumenter
+    - Skrive til disksektorer
+
+    Du kan også vælge kun at blokere eller overvåge skrivning til disksektorer, mens du stadig tillader ændring eller sletning af filer i beskyttede mapper.
+
+    Windows Defender Antivirus afgør automatisk, hvilke applikationer der er pålidelige. Du kan tilføje yderligere pålidelige applikationer ved hjælp af gruppepolitikindstillingen Konfigurer tilladte applikationer.
+    Systemets standardmapper beskyttes automatisk, men du kan tilføje mapper ved hjælp af gruppepolitikindstillingen Konfigurer beskyttede mapper.
 
     Bloker:
-    Applikationer, som der ikke er tillid til, kan ikke ændre eller slette filer i beskyttede mapper, f.eks. mappen Dokumenter.
+    Følgende blokeres:
+    - Forsøg fra upålidelige apps på at ændre eller slette filer i beskyttede mapper
+    - Forsøg fra upålidelige apps på at skrive til disksektorer
+    Windows-hændelsesloggen registrerer disse blokeringer under Logfiler for programmer og tjenester &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Funktionel &gt; ID 1123.
+
 
     Deaktiveret:
-    Alle applikationer kan ændre eller slette filer i beskyttede mapper, f.eks. mappen Dokumenter.
+    Følgende bliver ikke blokeret og har tilladelse til at køre:
+    - Forsøg fra upålidelige apps på at ændre eller slette filer i beskyttede mapper
+    - Forsøg fra upålidelige apps på at skrive til disksektorer
+    Disse forsøg registreres ikke i Windows-hændelsesloggen.
 
-    Overvåg:
-    Applikationer, der normalt betragtes som "upålidelige", hvis indstillingen er Aktiveret, kan stadig ændre eller slette filer i beskyttede mapper, men hver hændelse logges i hændelsesloggen for Windows.
+
+    Overvågningstilstand:
+    Følgende bliver ikke blokeret og har tilladelse til at køre:
+    - Forsøg fra upålidelige apps på at ændre eller slette filer i beskyttede mapper
+    - Forsøg fra upålidelige apps på at skrive til disksektorer
+    Windows-hændelsesloggen registrerer disse forsøg under Logfiler for programmer og tjenester &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Funktionel &gt; ID 1124.
+
+
+    Bloker kun diskændring:
+    Følgende bliver blokeret:
+    - Forsøg fra upålidelige apps på at skrive til disksektorer
+    Windows-hændelsesloggen registrerer disse blokeringer under Logfiler for programmer og tjenester &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Funktionel &gt; ID 1123.
+
+    Følgende bliver ikke blokeret og har tilladelse til at køre:
+    - Forsøg fra upålidelige apps på at ændre eller slette filer i beskyttede mapper
+    Disse forsøg registreres ikke i Windows-hændelsesloggen.
+
+
+    Overvåg kun diskændring:
+    Følgende bliver ikke blokeret og har tilladelse til at køre:
+    - Forsøg fra upålidelige apps på at skrive til disksektorer
+    - Forsøg fra upålidelige apps på at ændre eller slette filer i beskyttede mapper
+    Kun forsøg på at skrive til beskyttede disksektorer registreres i Windows-hændelsesloggen (under Logfiler for programmer og tjenester &gt; Microsoft &gt; Windows &gt; Windows Defender &gt; Funktionel &gt; ID 1124).
+    Forsøg på et ændre eller slette filer i beskyttede mapper registreres ikke.
 
     Ikke konfigureret:
-    Samme som Deaktiveret.
-
-    Windows Defender Antivirus fastslår automatisk, hvilke applikationer der er tillid til. Du kan tilføje yderligere applikationer, der er tillid til, i gruppepolitikindstillingen Konfigurer tilladte applikationer.
-
-    Standardsystemmapper beskyttes automatisk, men du kan tilføje yderligere mapper i gruppepolitikindstillingen Konfigurer beskyttede mapper.
+    Samme som deaktiveret.
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Disable">Deaktiver (standard)</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Block">Bloker</string>
     <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_Audit">Overvåg</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_BlockDiskModifications">Bloker kun diskændring</string>
+    <string id="ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess_AuditDiskModifications">Overvåg kun diskændring</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications">Konfigurer tilladte applikationer</string>
     <string id="ExploitGuard_ControlledFolderAccess_AllowedApplications_Explain">
     Tilføj yderligere applikationer, der skal betragtes som pålidelige i kontrolleret mappeadgang.

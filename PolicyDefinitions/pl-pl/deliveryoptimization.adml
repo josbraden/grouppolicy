@@ -32,7 +32,11 @@
       <string id="MaxDownloadBandwidth">Maksymalna przepustowość pobierania (w KB/s)</string>
       <string id="MaxDownloadBandwidth_Help">Określa maksymalną przepustowość pobierania (w kilobajtach na sekundę) urządzenia dla wszystkich równoczesnych operacji pobierania w ramach funkcji optymalizacji dostarczania. Wartością domyślną jest 0 (zero), co oznacza, że funkcja optymalizacji dostarczania będzie dynamicznie korzystać z dostępnej przepustowości na potrzeby pobierania.</string>
       <string id="PercentageMaxDownloadBandwidth">Maksymalna przepustowość pobierania (w procentach)</string>
-      <string id="PercentageMaxDownloadBandwidth_Help">Określa maksymalną przepustowość pobierania funkcji optymalizacji dostarczania dla wszystkich równoczesnych operacji pobierania jako procent dostępnej przepustowości pobierania. Wartością domyślną jest 0 (zero), co oznacza, że funkcja optymalizacji dostarczania będzie dynamicznie korzystać z dostępnej przepustowości na potrzeby pobierania.</string>
+      <string id="PercentageMaxDownloadBandwidth_Help">Określa maksymalną przepustowość pobierania używaną przez usługę Optymalizacja dostarczania dla wszystkich równoczesnych operacji pobierania jako procent dostępnej przepustowości pobierania. Wartością domyślną jest 0 (zero), co oznacza, że usługa Optymalizacja dostarczania będzie dynamicznie korzystać z dostępnej przepustowości na potrzeby pobierania. Ta zasada jest przestarzała i zostanie usunięta w przyszłym wydaniu. Użyj zamiast niej zasady Maksymalna przepustowość pobierania na pierwszym planie (w procentach) lub Maksymalna przepustowość pobierania w tle (w procentach).</string>
+      <string id="PercentageMaxBackgroundBandwidth">Maksymalna przepustowość pobierania w tle (w procentach)</string>
+      <string id="PercentageMaxBackgroundBandwidth_Help">Określa maksymalną przepustowość pobierania w tle usługi Optymalizacja dostarczania dla wszystkich równoczesnych operacji pobierania jako procent dostępnej przepustowości pobierania. Wartością domyślną jest 0 (zero), co oznacza, że usługa Optymalizacja dostarczania będzie dynamicznie korzystać z dostępnej przepustowości na potrzeby pobierania w tle.</string>
+      <string id="PercentageMaxForegroundBandwidth">Maksymalna przepustowość pobierania na pierwszym planie (w procentach)</string>
+      <string id="PercentageMaxForegroundBandwidth_Help">Określa maksymalną przepustowość pobierania na pierwszym planie usługi Optymalizacja dostarczania dla wszystkich równoczesnych operacji pobierania jako procent dostępnej przepustowości pobierania. Wartością domyślną jest 0 (zero), co oznacza, że usługa Optymalizacja dostarczania będzie dynamicznie korzystać z dostępnej przepustowości na potrzeby pobierania na pierwszym planie.</string>
       <string id="MinFileSizeToCache">Minimalny rozmiar pliku zawartości buforowania równorzędnego (w MB)</string>
       <string id="MinFileSizeToCache_Help">Określa minimalny rozmiar pliku zawartości w MB, dla którego można używać buforowania równorzędnego. Zalecane wartości: od 1 MB do 100000 MB.</string>
       <string id="AllowVPNPeerCaching">Włącz buforowanie równorzędne, gdy urządzenie łączy się przez VPN</string>
@@ -43,6 +47,60 @@
       <string id="MinDiskSizeAllowedToPeer_Help">Określa minimalny rozmiar dysku (pojemność w GB) wymagany, aby urządzenie mogło korzystać z buforowania równorzędnego. Zostanie użyta wartość domyślna ustawiona przez usługę w chmurze. Zalecane wartości: od 64 GB do 256 GB. Uwaga: jeśli zostanie włączone ustawienie zasad „Modyfikuj dysk pamięci podręcznej” usługi Optymalizacja dostarczania, sprawdzany będzie rozmiar dysku w nowym katalogu roboczym określonym w tym ustawieniu zasad.</string>
       <string id="MinBatteryPercentageAllowedToUpload">Zezwalaj na przekazywanie, gdy urządzenie jest zasilane z baterii, dopóki poziom naładowania baterii jest większy niż ustawiony (w procentach)</string>
       <string id="MinBatteryPercentageAllowedToUpload_Help">Określ dowolną wartość z zakresu od 1 do 100 (w procentach), aby umożliwić urządzeniu przekazywanie danych do sieci LAN i urządzeń równorzędnych w grupie podczas zasilania prądem stałym (z baterii). Przekazywanie będzie automatycznie wstrzymywane, gdy poziom naładowania baterii spadnie poniżej ustawionego minimalnego poziomu naładowania baterii. W przypadku zezwolenia na przekazywanie podczas zasilania z baterii zaleca się ustawienie wartości równej 40 (odpowiada 40%). Urządzenie może pobierać z urządzeń równorzędnych podczas zasilania z baterii niezależnie od tej zasady. Wartość 0 oznacza „brak limitu”; będzie używana domyślna wartość ustawiona w usłudze w chmurze.</string>
+      <string id="GroupIdSource">Wybierz źródło identyfikatorów grup</string>
+      <string id="GroupIdSource_Help">Ustaw tę zasadę, aby ograniczyć możliwość wyboru elementu równorzędnego do określonego źródła. 
+      
+Dostępne opcje: 
+
+1 = Lokacja usługi AD.
+
+2 = Identyfikator SID uwierzytelnionej domeny.
+
+3 = Identyfikator opcji protokołu DHCP.
+
+4 = Sufiks DNS. 
+
+Po ustawieniu tej zasady identyfikator grupy będzie przypisywany automatycznie z wybranego źródła. Jeśli ustawisz tę zasadę, zasada GroupID będzie ignorowana. 
+      
+Opcje ustawione w tej zasadzie dotyczą tylko trybu pobierania Grupa (2). Jeśli ustawienie Tryb pobierania będzie mieć wartość inną niż Grupa (2), ta zasada będzie ignorowana. 
+
+W przypadku opcji 3 (Identyfikator opcji protokołu DHCP) klient będzie badał identyfikator opcji protokołu DHCP 234 i będzie używał zwróconej wartości identyfikatora GUID jako identyfikatora grupy.</string>
+      <string id="DelayBackgroundDownloadFromHttp">Opóźnij pobieranie w tle ze źródła HTTP (w sekundach)</string>
+      <string id="DelayBackgroundDownloadFromHttp_Help">Ta zasada umożliwia opóźnienie użycia źródła HTTP w operacji pobierania w tle, w której jest dozwolone używanie protokołu P2P. Po osiągnięciu maksymalnego opóźnienia zostanie wznowione pobieranie przy użyciu protokołu HTTP i zostanie pobrany cały ładunek albo bajty, których nie można było pobrać z węzłów równorzędnych. Należy pamiętać, że operacja pobierania oczekująca na źródła równorzędne będzie dla użytkownika końcowego sprawiać wrażenie zablokowanej. Zalecana wartość to 1 godzina (3600).</string>
+      <string id="DelayForegroundDownloadFromHttp">Opóźnij pobieranie na pierwszym planie ze źródła HTTP (w sekundach)</string>
+      <string id="DelayForegroundDownloadFromHttp_Help">Ta zasada umożliwia opóźnienie użycia źródła HTTP w operacji pobierania na pierwszym planie (interakcyjne), w której jest dozwolone używanie protokołu P2P. Po osiągnięciu maksymalnego opóźnienia zostanie wznowione pobieranie przy użyciu protokołu HTTP i zostanie pobrany cały ładunek albo bajty, których nie można było pobrać z węzłów równorzędnych. Należy pamiętać, że operacja pobierania oczekująca na źródła równorzędne będzie dla użytkownika końcowego sprawiać wrażenie zablokowanej. Zalecana wartość to 1 minuta (60).</string>
+      <string id="RestrictPeerSelectionBy">Wybierz metodę ograniczania wyboru węzła równorzędnego</string>
+      <string id="RestrictPeerSelectionBy_Help">Ustaw tę zasadę, aby ograniczyć możliwość wyboru węzła równorzędnego za pośrednictwem wybranej opcji. Dostępne opcje: 1 = Maska podsieci (kolejne opcje zostaną dodane w przyszłym wydaniu). Opcja 1 (Maska podsieci) dotyczy zarówno trybu pobierania Sieć LAN (1), jak i Grupa (2).</string>
+      <string id="RestrictPeerSelectionBy_None">Brak</string>
+      <string id="RestrictPeerSelectionBy_Subnet">Podsieć</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth">Ustaw godziny pracy, aby ograniczyć przepustowość pobierania w tle</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth_Help">Określa maksymalną przepustowość pobierania w tle używaną przez usługę Optymalizacja dostarczania w trakcie i poza godzinami pracy dla wszystkich równoczesnych operacji pobierania jako procent dostępnej przepustowości pobierania.</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth">Ustaw godziny pracy, aby ograniczyć przepustowość pobierania na pierwszym planie</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth_Help">Określa maksymalną przepustowość pobierania na pierwszym planie używaną przez usługę Optymalizacja dostarczania w trakcie i poza godzinami pracy dla wszystkich równoczesnych operacji pobierania jako procent dostępnej przepustowości pobierania.</string>
+      <string id="Time1AM">01:00:00</string>
+      <string id="Time1PM">13:00:00</string>
+      <string id="Time2AM">02:00:00</string>
+      <string id="Time2PM">14:00:00</string>
+      <string id="Time3AM">03:00:00</string>
+      <string id="Time3PM">15:00:00</string>
+      <string id="Time4AM">04:00:00</string>
+      <string id="Time4PM">16:00:00</string>
+      <string id="Time5AM">05:00:00</string>
+      <string id="Time5PM">17:00:00</string>
+      <string id="Time6AM">06:00:00</string>
+      <string id="Time6PM">18:00:00</string>
+      <string id="Time7AM">07:00:00</string>
+      <string id="Time7PM">19:00:00</string>
+      <string id="Time8AM">08:00:00</string>
+      <string id="Time8PM">20:00:00</string>
+      <string id="Time9AM">09:00:00</string>
+      <string id="Time9PM">21:00:00</string>
+      <string id="Time10AM">10:00:00</string>
+      <string id="Time10PM">22:00:00</string>
+      <string id="Time11AM">11:00:00</string>
+      <string id="Time11PM">23:00:00</string>
+      <string id="Time12AM">00:00:00</string>
+      <string id="Time12PM">12:00:00</string>
     </stringTable>
     <presentationTable>
       <presentation id="DownloadMode">
@@ -90,6 +148,14 @@
         <decimalTextBox defaultValue="0" refId="PercentageMaxDownloadBandwidth">Maksymalna przepustowość pobierania (w procentach):</decimalTextBox>
         <text>Wartością domyślną jest 0 (brak limitu)</text>
       </presentation>
+      <presentation id="PercentageMaxBackgroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxBackgroundBandwidth">Maksymalna przepustowość pobierania w tle (w procentach):</decimalTextBox>
+        <text>Wartość domyślna to 0 (brak limitu)</text>
+      </presentation>
+      <presentation id="PercentageMaxForegroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxForegroundBandwidth">Maksymalna przepustowość pobierania na pierwszym planie (w procentach):</decimalTextBox>
+        <text>Wartość domyślna to 0 (brak limitu)</text>
+      </presentation>
       <presentation id="MinFileSizeToCache">
         <decimalTextBox defaultValue="100" refId="MinFileSizeToCache">Minimalny rozmiar pliku zawartości buforowania równorzędnego (w MB):</decimalTextBox>
         <text>Wartość domyślna to 100 MB</text>
@@ -107,6 +173,49 @@
       </presentation>
       <presentation id="MinBatteryPercentageAllowedToUpload">
         <decimalTextBox defaultValue="0" refId="MinBatteryPercentageAllowedToUpload">Minimalny poziom naładowania baterii (w procentach):</decimalTextBox>
+        <text>Wartość domyślna to 0 (brak limitu)</text>
+      </presentation>
+      <presentation id="GroupIdSource">
+        <decimalTextBox defaultValue="0" refId="GroupIdSource">źródło identyfikatorów grup:</decimalTextBox>
+        <text>Wartość domyślna to 0 (nie ustawiono)</text>
+      </presentation>
+      <presentation id="DelayBackgroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayBackgroundDownloadFromHttp">Opóźnij pobieranie w tle ze źródła HTTP (w sekundach):</decimalTextBox>
+        <text>Wartość domyślna to 0 (brak opóźnienia)</text>
+      </presentation>
+      <presentation id="DelayForegroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayForegroundDownloadFromHttp">Opóźnij pobieranie na pierwszym planie ze źródła HTTP (w sekundach):</decimalTextBox>
+        <text>Wartość domyślna to 0 (brak opóźnienia)</text>
+      </presentation>
+      <presentation id="RestrictPeerSelectionBy">
+        <dropdownList defaultItem="0" noSort="true" refId="RestrictPeerSelectionBy">Ogranicz wybór węzłów równorzędnych według:</dropdownList>
+      </presentation>
+      <presentation id="SetHoursToLimitBackgroundDownloadBandwidth">
+        <text/>
+        <text>Ustaw godziny pracy, aby ograniczyć przepustowość pobierania w tle:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthFrom">Od:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthTo">Do:</dropdownList>
+        <text/>
+        <text>Maksymalna przepustowość pobierania w tle (w procentach) w trakcie godzin pracy:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthIn"/>
+        <text>Wartość domyślna to 0 (brak limitu)</text>
+        <text/>
+        <text>Maksymalna przepustowość pobierania w tle (w procentach) poza godzinami pracy:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthOut"/>
+        <text>Wartość domyślna to 0 (brak limitu)</text>
+      </presentation>
+      <presentation id="SetHoursToLimitForegroundDownloadBandwidth">
+        <text/>
+        <text>Ustaw godziny pracy, aby ograniczyć przepustowość pobierania na pierwszym planie:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthFrom">Od:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthTo">Do:</dropdownList>
+        <text/>
+        <text>Maksymalna przepustowość pobierania na pierwszym planie (w procentach) w trakcie godzin pracy:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthIn"/>
+        <text>Wartość domyślna to 0 (brak limitu)</text>
+        <text/>
+        <text>Maksymalna przepustowość pobierania na pierwszym planie (w procentach) poza godzinami pracy:</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthOut"/>
         <text>Wartość domyślna to 0 (brak limitu)</text>
       </presentation>
     </presentationTable>
