@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Zde zadejte zobrazovaný název.</displayName>
+  <description>Zde zadejte popis.</description>
+  <resources>
+    <stringTable>
+      <string id="DNS_Client">Klient DNS</string>
+      <string id="DNS_Domain">Přípona DNS podle připojení</string>
+      <string id="DNS_Domain_Help">Určuje příponu DNS specifickou pro připojení. Toto nastavení nahrazuje přípony DNS specifické pro připojení nastavené v počítačích, pro které je toto nastavení použito, a to jak u počítačů konfigurovaných místně, tak u počítačů konfigurovaných pomocí protokolu DHCP.
+
+Upozornění: Přípona DNS specifická pro připojení určená tímto nastavením je platná pro všechna síťová připojení používaná počítači s více adresami, pro které je toto nastavení použito.
+
+Chcete-li toto nastavení použít, klikněte na přepínač Povoleno a do pole zadejte řetězcovou hodnotu představující příponu DNS.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí své místní parametry nebo parametry nakonfigurované pomocí protokolu DHCP.</string>
+      <string id="DNS_NameServer">Servery DNS</string>
+      <string id="DNS_NameServer_Help">Definuje servery DNS, kterým počítač odešle dotazy při pokusu o překlad názvů.
+
+Upozornění: Seznam serverů DNS definovaný v tomto nastavení nahrazuje servery DNS konfigurované místně i pomocí protokolu DHCP. Seznam serverů DNS je platný pro všechna síťová připojení používaná počítači s více adresami, pro které platí toto nastavení.
+
+Chcete-li toto nastavení použít, klikněte na přepínač Povoleno a do pole zadejte seznam adres IP oddělených mezerami (v tečkovém desítkovém formátu). Jestliže toto nastavení povolíte, je nutné zadat alespoň jednu adresu IP.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí své místní parametry nebo parametry nakonfigurované pomocí protokolu DHCP.</string>
+      <string id="DNS_PrimaryDnsSuffix">Přípona primárního serveru DNS</string>
+      <string id="DNS_PrimaryDnsSuffix_Help">Určuje primární příponu DNS pro všechny počítače ovlivněné tímto nastavením. Primární přípona DNS je používána při registraci názvů a překladu názvů službou DNS.
+
+Toto nastavení umožňuje zadávat primární příponu DNS pro skupinu počítačů a zabraňuje uživatelům, včetně správců, v jejích změnách.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, bude každý počítač používat svou místní primární příponu DNS, což je obvykle název DNS domény služby Active Directory, ke které je připojen. Správci však mohou ke změně primární přípony DNS počítače použít panel Systém v Ovládacích panelech.
+
+Chcete-li použít toto nastavení, zadejte do textového pole celou primární příponu DNS, kterou chcete přidělit. Primární přípona DNS je například microsoft.com.
+
+Toto nastavení nezakáže dialogové okno Přípona DNS a název počítače pro rozhraní NetBIOS, pomocí něhož správci mění primární příponu DNS počítače. Pokud však správci příponu zadají, bude ignorována, jestliže je povoleno toto nastavení.
+
+Důležité: Změny v tomto nastavení budou mít vliv až po restartování systému Windows ve všech počítačích, kterých se toto nastavení týká.
+
+Poznámka: Chcete-li změnit primární příponu DNS počítače jinak než pomocí tohoto nastavení, klikněte v Ovládacích panelech na panel Systém, na kartě Identifikace v síti klikněte na tlačítka Vlastnosti a Další a potom zadejte příponu do pole Primární přípona DNS tohoto počítače.
+
+Další informace o službě DNS naleznete v tématu nápovědy Služba DNS (Domain Name System).</string>
+      <string id="DNS_RegisterAdapterName">Registrovat záznamy DNS pomocí přípony DNS specifické pro připojení</string>
+      <string id="DNS_RegisterAdapterName_Help">Určuje, zda může počítač provádějící dynamickou registraci registrovat záznamy o prostředcích ukazatele a adresy nejen pomocí zřetězení názvu počítače a primární přípony DNS, ale i pomocí zřetězení názvu počítače a přípony DNS specifické pro připojení.
+
+Upozornění: Povolíte-li toto nastavení skupiny, bude platné pro všechna síťová připojení používaná počítači s více adresami, pro které je toto nastavení použito.
+
+Ve výchozím nastavení klient DNS provádějící dynamickou registraci DNS zaregistruje záznamy o prostředcích ukazatele a adresy pomocí zřetězení názvu počítače a primární přípony DNS. Při zřetězení názvu počítače, jako je například mujpocitac, a primární přípony DNS microsoft.cz bude výsledkem řetězec mujpocitac.microsoft.cz.
+
+Pokud by bylo povoleno toto nastavení, mohl by počítač záznamy o prostředcích ukazatele a adresy zaregistrovat nejen pomocí primární přípony DNS, ale i pomocí přípony DNS specifické pro připojení. Při registraci záznamů o prostředcích ukazatele a adresy by například mohlo být použito zřetězení názvu počítače mujpocitac a přípony DNS specifické pro připojení pripojeniVPN, takže výsledný řetězec by byl mujpocitac.pripojeniVPN. Jestliže je v počítači, pro který platí toto nastavení, zakázána dynamická registrace DNS, počítač se bez ohledu na hodnotu tohoto nastavení nepokusí o dynamickou registraci záznamů o prostředcích ukazatele a adresy obsahující zřetězení názvu počítače a přípony DNS specifické pro připojení. Pokud je dynamická registrace DNS zakázána u konkrétního síťového připojení počítače, pro který platí toto nastavení, počítač se bez ohledu na hodnotu tohoto nastavení nepokusí v daném síťovém připojení o dynamickou registraci záznamů o prostředcích ukazatele a adresy obsahující zřetězení názvu počítače a přípony DNS specifické pro připojení.
+
+Pokud je toto nastavení zakázáno, nebude klient DNS registrovat záznamy o prostředcích ukazatele a adresy pomocí přípony DNS specifické pro připojení.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="DNS_RegisterReverseLookup">Registrovat záznamy PTR</string>
+      <string id="DNS_RegisterReverseLookup_DoNotRegister">Neregistrovat</string>
+      <string id="DNS_RegisterReverseLookup_Help">Určuje, zda je povolena registrace záznamů o prostředcích ukazatele u počítačů, pro které platí tato zásada.
+
+Ve výchozím nastavení se klienti DNS, kteří jsou nakonfigurováni k provádění dynamické registrace DNS, pokusí zaregistrovat záznam o prostředku ukazatele, pouze pokud úspěšně zaregistrovali odpovídající záznam o prostředku adresy. Záznam o prostředku adresy (A) připojí název hostitele DNS k adrese IP hostitele a záznam o prostředku ukazatele (PTR) připojí adresu IP hostitele k názvu hostitele DNS
+
+Chcete-li toto nastavení povolit, klikněte na přepínač Povoleno a vyberte jednu z následujících hodnot:
+
+Neregistrovat – počítače se nikdy nepokusí provést registraci záznamů o prostředcích ukazatele.
+
+Registrovat – počítače se pokusí zaregistrovat záznamy o prostředcích ukazatele bez ohledu na to, zda registrace záznamů o prostředcích adresy proběhla úspěšně.
+
+Pouze při úspěšné registraci záznamu o adrese – počítače se pokusí zaregistrovat záznamy prostředků ukazatele, pouze pokud byla úspěšná registrace odpovídajících záznamů o prostředcích adresy.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="DNS_RegisterReverseLookup_Register">Registrovat</string>
+      <string id="DNS_RegisterReverseLookup_RegisterOnlyIfASucceeds">Registrovat pouze při úspěšné registraci záznamu o adrese </string>
+      <string id="DNS_RegistrationEnabled">Dynamická aktualizace</string>
+      <string id="DNS_RegistrationEnabled_Help">Určuje, zda je povolena dynamická aktualizace.
+
+Počítače, u kterých je nakonfigurována dynamická aktualizace, automaticky registrují a aktualizují své záznamy o prostředcích DNS pomocí serveru DNS.
+
+Pokud toto nastavení povolíte, budou moci počítače, pro které se toto nastavení použije, používat dynamickou registraci DNS u všech svých síťových připojení, v závislosti na konfiguraci jednotlivých připojení. Aby bylo možné povolit dynamickou registraci DNS pro konkrétní síťové připojení, je nutnou a postačující podmínkou, aby konfigurace počítače i konfigurace připojení umožňovaly dynamickou registraci DNS. Toto nastavení řídí vlastnost počítače řídící dynamickou registraci DNS. Pokud toto nastavení povolíte, bude možné nastavit dynamickou aktualizaci pro každé síťové připojení zvlášť.
+
+Pokud toto nastavení zakážete, nebudou smět počítače, pro které se toto nastavení použije, používat dynamickou registraci DNS u žádného ze svých síťových připojení, bez ohledu na konfiguraci jednotlivých síťových připojení.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="DNS_RegistrationOverwritesInConflict">Nahradit konfliktní adresy</string>
+      <string id="DNS_RegistrationOverwritesInConflict_Help">Určuje, zda klient DNS, který se pokusí zaregistrovat svůj záznam o prostředku adresy, přepíše existující záznam o prostředku adresy nebo záznamy obsahující konfliktní IP adresy.
+
+Toto nastavení je určeno pro počítače, které registrují záznamy o prostředcích adresy v zónách DNS, jež nepodporují zabezpečenou dynamickou aktualizaci. Zabezpečená dynamická aktualizace zachovává vlastnictví záznamů o prostředcích a neumožňuje klientům DNS přepsat záznamy, které jsou zaregistrovány jinými počítači.
+
+Během dynamické aktualizace zóny, která nepoužívá zabezpečenou dynamickou aktualizaci, může klient DNS zjistit, že existující záznam o prostředku adresy přidružuje název hostitele DNS klienta k adrese IP jiného počítače. Podle výchozí konfigurace se klient DNS pokusí nahradit existující záznam o prostředku adresy záznamem, který přidružuje název DNS k adrese IP klienta.
+
+Pokud nastavení povolíte, budou se klienti DNS během dynamické aktualizace pokoušet nahradit konfliktní záznamy o prostředcích adresy (A).
+
+Pokud toto nastavení zakážete, bude klient DNS stále provádět dynamickou aktualizaci záznamů o prostředcích adresy, ale pokud se pokusí aktualizovat záznamy o prostředcích adresy obsahující konflikty, aktualizace se nezdaří a do protokolu Prohlížeče událostí bude zaznamenána chyba.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="DNS_RegistrationRefreshInterval">Interval aktualizace registrace</string>
+      <string id="DNS_RegistrationRefreshInterval_Help">Určuje interval aktualizace registrace pro záznamy o prostředcích ukazatele a adresy u počítačů, pro které platí toto nastavení. Toto nastavení může být použito pouze pro počítače, které používají dynamickou aktualizaci.
+
+Počítače se systémem Windows 2000 Professional a Windows XP Professional, které jsou nakonfigurovány tak, aby prováděly dynamickou registraci DNS pro záznamy o prostředcích ukazatele a adresy, pravidelně znovu registrují své záznamy pomocí serverů DNS, i v případě, že se údaje těchto záznamů nezměnily. Tato opětovná registrace je nutná proto, aby bylo serverům DNS, které jsou nakonfigurovány k automatickému odebrání (úklidu) zastaralých záznamů, oznámeno, že tyto záznamy jsou aktuální a mají být v databázi zachovány.
+
+Upozornění: Pokud jsou záznamy o prostředcích DNS registrovány v zónách, ve kterých je povolen úklid, neměla by hodnota tohoto nastavení být větší, než je interval aktualizace nakonfigurovaný pro tyto zóny. Pokud nastavíte interval aktualizace registrace delší než interval aktualizace pro zóny DNS, může dojít k nežádoucímu odstranění záznamů o prostředcích adresy a ukazatele.
+
+Chcete-li zadat interval aktualizace registrace, klikněte na přepínač Povoleno a zadejte hodnotu větší než 1800. Hodnota pro interval aktualizace registrace se zadává v sekundách, takže například hodnota 3600 je 60 minut).
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="DNS_RegistrationTtl">Hodnota TTL nastavená v záznamech A a PTR</string>
+      <string id="DNS_RegistrationTtl_Help">Určuje hodnotu TTL (Time-To-Live) v záznamech o prostředcích ukazatele a adresy registrovaných počítači, pro které platí toto nastavení.
+
+Chcete-li určit hodnotu TTL, klikněte na přepínač Povoleno a zadejte hodnotu v sekundách (hodnota 900 například představuje 15 minut).
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači.</string>
+      <string id="DNS_SearchList">Seznam hledání přípon DNS</string>
+      <string id="DNS_SearchList_Help">Určuje přípony DNS, které budou připojeny k neúplnému jednomístnému názvu před odesláním dotazu DNS na tento název.
+
+Neúplný jednomístný název neobsahuje tečky, jako například priklad. Tím se liší od úplného názvu domény, jako je například priklad.microsoft.cz.
+
+Pokud je toto nastavení povoleno a uživatel odešle dotaz na jednomístný název, například priklad, přiřadí místní klient DNS před odesláním dotazu na server DNS k tomuto názvu příponu, například microsoft.cz, takže bude odeslán výsledný dotaz priklad.microsoft.cz.
+
+Pokud toto nastavení povolíte, budete moci určit přípony DNS, které chcete připojit před odesláním dotazu na neúplný jednomístný název. Hodnoty přípon DNS lze v tomto nastavení zadat pomocí řetězců oddělených čárkami, například microsoft.cz,serverua.microsoft.cz,office.microsoft.cz. Ke každému odeslanému dotazu je připojena jedna přípona DNS. Pokud je dotaz neúspěšný, bude přípona dotazu, který se nezdařil, nahrazena novou příponou DNS, a bude odeslán nový dotaz. Hodnoty jsou používány v pořadí, v jakém jsou zobrazeny v řetězci, počínaje hodnotou zcela vlevo.
+
+Jestliže toto nastavení povolíte, je nutné zadat alespoň jednu příponu.
+
+Pokud toto nastavení zakážete, bude do neúplných dotazů připojena primární přípona DNS a přípony DNS specifické pro síťové připojení.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="DNS_UpdateSecurityLevel">Aktualizovat úroveň zabezpečení</string>
+      <string id="DNS_UpdateSecurityLevel_Help">Určuje, zda počítače ovlivněné tímto nastavením používají k registraci záznamů DNS zabezpečenou dynamickou aktualizaci nebo standardní dynamickou aktualizaci.
+
+Chcete-li toto nastavení povolit, klikněte na přepínač Povoleno a vyberte jednu z následujících hodnot:
+
+Nezabezpečené následované zabezpečenými – pokud zvolíte tuto možnost, odešle počítač zabezpečené dynamické aktualizace, pouze pokud jsou odmítnuty nezabezpečené dynamické aktualizace.
+
+Pouze nezabezpečené – pokud zvolíte tuto možnost, odešle počítač pouze nezabezpečené dynamické aktualizace.
+
+Pouze zabezpečené – pokud zvolíte tuto možnost, odešle počítač pouze zabezpečené dynamické aktualizace.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="DNS_UpdateSecurityLevel_OnlySecure">Pouze zabezpečené</string>
+      <string id="DNS_UpdateSecurityLevel_OnlyUnsecure">Pouze nezabezpečené</string>
+      <string id="DNS_UpdateSecurityLevel_UnsecureFollowedBySecure">Nezabezpečené následované zabezpečenými</string>
+      <string id="DNS_UpdateTopLevelDomainZones">Aktualizovat zóny domén nejvyšší úrovně</string>
+      <string id="DNS_UpdateTopLevelDomainZones_Help">Určuje, zda počítače, pro které platí toto nastavení, mohou odesílat dynamické aktualizace pro zóny s jednomístným názvem, označované také jako zóny domén nejvyšší úrovně, například cz.
+
+Ve výchozím nastavení klient DNS nakonfigurovaný k provádění dynamické aktualizace DNS odešle dynamické aktualizace pro zónu DNS, která je autoritativní pro záznamy o prostředcích DNS, pokud autoritativní zóna není zónou domény nejvyšší úrovně nebo kořenovou zónou.
+
+Pokud je toto nastavení povoleno, budou počítače, pro které tato zásada platí, odesílat dynamické aktualizace do všech zón, jež jsou autoritativní pro záznamy o prostředcích, které počítač potřebuje aktualizovat, kromě kořenové zóny.
+
+Pokud je toto nastavení zakázáno, nebudou počítače, pro které tato zásada platí, odesílat dynamické aktualizace do kořenových nebo doménových zón nejvyšší úrovně, jež jsou autoritativní pro záznamy o prostředcích, které počítač potřebuje aktualizovat.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="DNS_UseDomainNameDevolution">Zobecňování primární přípony DNS</string>
+      <string id="DNS_UseDomainNameDevolution_Help">Určuje, zda klient DNS provede v procesu překladu názvů zobecňování primární přípony DNS.
+
+Pokud uživatel odešle dotaz na jednomístný název, například priklad, přiřadí místní klient DNS před odesláním dotazu na server DNS k tomuto názvu příponu, například microsoft.cz, takže bude odeslán výsledný dotaz priklad.microsoft.cz.
+
+Není-li zadán seznam vyhledávání přípon DNS, připojí klient DNS k jednomístnému názvu primární příponu DNS. Pokud se tento dotaz nezdaří, bude k novému dotazu připojena přípona DNS specifická pro připojení. Pokud nebude přeložen název v žádném z těchto dotazů, zobecní klient primární příponu DNS počítače (vypustí část primární přípony DNS, která je zcela vlevo), připojí tuto zobecněnou příponu k jednomístnému názvu a odešle nový dotaz na server DNS.
+
+Jestliže je například k jednomístnému názvu neukončenému tečkou priklad připojena primární přípona DNS ooo.aaa.microsoft.cz a dotaz DNS na priklad.ooo.aaa.microsoft.cz se nezdaří, zobecní klient primární příponu DNS (vypustí část, která je zcela vlevo) až na zadanou úroveň zobecnění a odešle dotaz na priklad.aaa.microsoft.cz. Jestliže se nezdaří ani tento dotaz, bude opět provedeno zobecnění přípony (pokud se nachází na zadané úrovni zobecnění) a je zadán dotaz na priklad.microsoft.cz. Pokud se tento dotaz nezdaří, bude se pokračovat ve zobecňování (pokud se nachází na zadané úrovni zobecnění) a je zadán dotaz na priklad.microsoft.cz. Primární příponu DNS nelze zobecňovat dále než na úroveň zobecnění.
+
+Pokud je povoleno toto nastavení s odpovídající úrovní zobecnění, budou se klienti DNS v počítačích, pro které toto nastavení platí, pokoušet přeložit názvy, které vznikly zřetězením jednomístných názvů určených k přeložení a zobecněné primární přípony DNS.
+
+Pokud je toto nastavení zakázáno, nebudou se klienti DNS v počítačích, pro které toto nastavení platí, pokoušet přeložit názvy, které vznikly zřetězením jednomístných názvů určených k přeložení a zobecněné primární přípony DNS.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="DNS_DomainNameDevolutionLevel">Úroveň zobecňování primární přípony DNS</string>
+      <string id="DNS_DomainNameDevolutionLevel_Help">Nastavení této zásady určuje úroveň zobecňování primární přípony DNS (Domain Name System), která bude použita klienty DNS, pokud provedou zobecňování primární přípony DNS v procesu překladu názvů. Je-li povoleno zobecňování přípony DNS, je část primární přípony DNS zcela vlevo vypuštěna při každém úspěšném dotazu, pokud se nezdaří dotaz na název, ke kterému byla primární přípona DNS připojena. Úroveň zobecňování ukazuje minimální počet částí, které musí být přidány k řetězci dotazu po zobecnění primární přípony DNS.
+
+Pokud uživatel odešle dotaz na jednomístný název, například priklad, přiřadí místní klient DNS před odesláním dotazu na server DNS k tomuto názvu například příponu microsoft.cz. V tomto případě je výsledkem dotaz priklad.microsoft.cz.
+ 
+Není-li zadán seznam vyhledávání přípon DNS, připojí klient DNS k jednomístnému názvu primární příponu DNS. Pokud se tento dotaz nezdaří, bude pro nový dotaz připojena přípona DNS specifická pro připojení. Pokud nebude přeložen název v žádném z těchto dotazů, zobecní klient primární příponu DNS počítače, připojí tuto zobecněnou primární příponu DNS k jednomístnému názvu a odešle na server DNS nový dotaz.
+
+Je-li například primární přípona DNS aaa.bbb.ccc.microsoft.cz připojena k jednomístnému názvu „priklad“ (který na konci nemá tečku) a pokud je zobecnění přípony DNS povoleno s nastavenou úrovní 3, budou provedeny následující dotazy:
+
+Priklad.aaa.bbb.ccc.ddd.microsoft.cz (Pokud se tento dotaz nezdaří, bude pro další dotaz zobecněna primární přípona DNS na bbb.ccc.ddd.microsoft.cz.)
+
+Priklad.bbb.ccc.ddd.microsoft.cz (Pokud se tento dotaz nezdaří, bude pro další dotaz zobecněna primární přípona DNS na ccc.ddd.microsoft.cz.)
+
+Priklad.ccc.ddd.microsoft.cz (Pokud se tento dotaz nezdaří, bude pro další dotaz zobecněna primární přípona DNS na ddd.microsoft.cz.)
+
+Priklad.ddd.microsoft.cz (Pokud se tento dotaz nezdaří, nebudou provedeny žádné další dotazy, protože úroveň zobecnění je nastavena na hodnotu 3 a primární přípona DNS obsahuje 3 části.)
+
+Pokud toto nastavení povolíte, budou se klienti DNS v počítačích, pro které toto nastavení platí, pokoušet přeložit názvy, které vznikly zřetězením jednomístných názvů určených k přeložení a zobecněné primární přípony DNS. Klienti DNS budou zobecňovat primární příponu DNS při každém dotazu, dokud nedojde k úspěšnému překladu názvu, dosažení úrovně zobecnění zadané v tomto nastavení, nebo dokud nebude primární přípona DNS tvořena dvěma částmi.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, nebudou se klienti DNS v počítačích, pro které toto nastavení platí, pokoušet přeložit názvy, které vznikly zřetězením jednomístných názvů určených k přeložení a zobecněné primární přípony DNS. Pokud existuje kořenová doména doménové struktury, nejsou nakonfigurovány žádné seznamy hledání a je zadán dotaz na jednomístný název a klient DNS bude dále zobecňován na kořenovou doménu doménové struktury, dokud nebude název úspěšně identifikován.</string>
+      <string id="DNS_TurnOffMulticast">Vypnout protokol Multicast Name Resolution</string>
+      <string id="DNS_TurnOffMulticast_Help">Protokol LLMNR (Local Link Multicast Name Resolution) je sekundární protokol překladu názvů. Klientský počítač odesílá pomocí protokolu Multicast dotazy prostřednictvím jediné podsítě Local Link. Jiný klient ve stejné podsíti může na tyto dotazy odpovídat, pokud je i pro tento počítač povolen protokol LLMNR. Protokol LLMNR umožňuje překlad názvů v situacích, ve kterých není běžný překlad pomocí serveru DNS možný.
+
+Pokud toto nastavení povolíte, překlad názvů pomocí protokolu Multicast (LLMNR) bude zakázán na všech síťových adaptérech, kromě těch, které nejsou nakonfigurovány.
+
+Pokud toto nastavení zakážete, překlad názvů pomocí protokolu Multicast (LLMNR) bude povolen na všech síťových adaptérech, kromě těch, které nejsou nakonfigurovány.
+
+Pokud toto nastavení nenakonfigurujete, překlad názvů pomocí protokolu Multicast (LLMNR) bude povolen na všech síťových adaptérech, kromě těch, které nejsou nakonfigurovány.</string>
+      <string id="DNS_AppendToMultiLabelName">Povolit příponu DNS připojenou k dotazům na neúplné vícemístné názvy</string>
+      <string id="DNS_AppendToMultiLabelName_Help">Tato možnost určuje, zda počítače, na které se toto nastavení vztahuje, mohou před odesláním dalších dotazů DNS připojit k neúplnému vícemístnému názvu přípony, pokud dotaz na původní název není úspěšný.
+
+Název, který obsahuje tečky, ale není ukončen tečkou, se nazývá neúplný vícemístný název, například server.corp. Úplný název by byl ukončen tečkou, například server.corp.contoso.com..
+
+Pokud toto nastavení povolíte, bude možné k neúplnému vícemístnému názvu připojit příponu, pokud dotaz na původní název není úspěšný. Například dotaz na neúplný vícemístný název pro server.corp bude nejdříve zjišťovat klient DNS. Pokud bude dotaz úspěšný, klientovi se vrátí odpověď. Pokud nebude dotaz úspěšný, k neúplnému vícemístnému názvu budou připojeny přípony DNS nakonfigurované pro počítač pro dotazy. Tyto přípony mohou být odvozeny z kombinace primární přípony domény místního klienta DNS, přípony domény specifické pro připojení nebo seznamu vyhledávání přípon DNS.
+
+Pokud například místní klient DNS obdrží dotaz na server.corp a primární přípona domény je nakonfigurována jako contoso.com, klient DNS s tímto nastavením odešle dotaz na server.corp.contoso.com., pokud není dotaz na původní název úspěšný. 
+
+Pokud toto nastavení zakážete, k neúplnému vícemístnému názvu nebudou připojeny žádné přípony, pokud dotaz na původní název není úspěšný. 
+
+Pokud toto nastavení nenakonfigurujete, počítače použijí pro rozhodnutí o chování dotazu při neúplných vícemístných názvech konfiguraci místního klienta DNS.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="DNS_Domain">
+        <textBox refId="DNS_DomainLabel">
+          <label>Přípona DNS:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_NameServer">
+        <textBox refId="DNS_NameServerLabel">
+          <label>Adresy IP:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_PrimaryDnsSuffix">
+        <textBox refId="DNS_PrimaryDnsSuffixBox">
+          <label>Zadejte příponu primárního serveru DNS:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_RegisterReverseLookup">
+        <dropdownList refId="DNS_RegisterReverseLookup_Box" defaultItem="0">Registrovat záznamy PTR:</dropdownList>
+      </presentation>
+      <presentation id="DNS_RegistrationRefreshInterval">
+        <decimalTextBox refId="DNS_RegistrationRefreshIntervalLabel" defaultValue="1800" spinStep="100">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_DomainNameDevolutionLevel">
+        <decimalTextBox refId="DNS_DomainNameDevolutionLevelLabel" defaultValue="2" spinStep="1">Nastavit úroveň zobecňování primární přípony DNS</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_RegistrationTtl">
+        <decimalTextBox refId="DNS_RegistrationTtlLabel" defaultValue="600" spinStep="100">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_SearchList">
+        <textBox refId="DNS_SearchListLabel">
+          <label>Přípony DNS:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_UpdateSecurityLevel">
+        <dropdownList refId="DNS_UpdateSecurityLevel_Box" defaultItem="2">Aktualizovat úroveň zabezpečení:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

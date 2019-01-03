@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>kirjoita näyttönimi tähän</displayName>
+  <description>kirjoita kuvaus tähän</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Tällä käytäntöasetuksella hallitaan TPM-omistajatietojen AD DS (Active Directory -toimialueen palvelut) -varmuuskopiota. 
+
+TPM-turvapiirin omistajan tiedot sisältävät TPM-omistajan salasanan hajautusarvon. Vain TPM-turvapiirin omistaja voi suorittaa tiettyjä TPM-komentoja. Tämä hajautusarvo valtuuttaa TPM-turvapiirin suorittamaan näitä komentoja. 
+
+Jos tämä käytäntöasetus otetaan käyttöön, TPM-omistajan tiedot varmuuskopioidaan automaattisesti ja huomaamattomasti AD DS:ään, kun käytät Windowsia TPM-omistajan salasanan määrittämiseen tai muuttamiseen. 
+
+Jos valitset TPM-varmuuskopiointia AD DS:ään edellyttävän asetuksen, TPM-turvapiirin omistajan salasanaa ei voi määrittää tai muuttaa, ellei tietokonetta ole yhdistetty toimialueeseen ja ellei AD DS -varmuuskopiointi onnistu. Tämä asetus on valittu oletusarvoisesti, mikä auttaa varmistamaan, että TPM-omistajan tiedot ovat käytettävissä. Muutoin AD DS -varmuuskopiointia yritetään, mutta verkkovirheet tai muut varmuuskopiointivirheet eivät vaikuta TPM-hallintaan. Varmuuskopiointia ei yritetä automaattisesti uudelleen. TPM-omistajan tietoja ei ehkä ole tallennettu AD DS:ään BitLocker-asetusten määrittämisen aikana.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, TPM-omistajan tietoja ei varmuuskopioida AD DS:ään. 
+
+Huomautus: Sinun on määritettävä toimialueen asianmukaiset rakennelaajennukset ja käytönvalvonnan asetukset, ennen kuin AD DS -varmuuskopiointi voi onnistua. Lisätietoja Active Directory -toimialueen palvelujen määrittämisestä TPM:ää varten on online-ohjeissa.
+
+Huomautus: TPM-turvapiiriä ei voi käyttää BitLocker-asemansalauksen ja muiden sovellusten tehostettujen suojausominaisuuksien tarjoamiseen, ellei omistajaa ensin määritetä. Jos haluat ottaa TPM:n omistukseen omistajan salasanan avulla, suorita Tpm.msc ja valitse TPM:n alustaminen.
+
+Huomautus: Jos TPM-omistajan tiedot katoavat tai eivät ole käytettävissä, voit hallita TPM-turvapiiriä rajoitetusti suorittamalla Tpm.msc-sovelluksen paikallisessa tietokoneessa.</string>
+      <string id="ActiveDirectoryBackup_Name">Ota käyttöön TPM-varmuuskopiointi Active Directory -toimialueen palveluihin</string>
+      <string id="BlockedCommandsList_Help">Tämän käytäntöasetuksen avulla voit hallita ryhmäkäytäntöluetteloa, jossa ovat Windowsin estämät TPM-turvapiirin komennot.
+
+Jos otat tämän käytäntöasetuksen käyttöön, Windows estää määritettyjen komentojen lähettämisen tietokoneen TPM-turvapiirille. Jokaisella TPM-komennolla on oma komentonumeronsa. Esimerkiksi komento 129 on TPM_OwnerReadInternalPub, ja komento 170 on TPM_FieldUpgrade. Jos haluat nähdä TPM-komentojen numerot, käynnistä Tpm.msc ja siirry sen Komentojen hallinta -osioon.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Windows pystyy estämään ainoastaan paikallisissa tai oletusluetteloissa määritetyt TPM-komennot. Estettävien TPM-komentojen oletusluettelo on määritetty Windowsissa etukäteen. Jos haluat tarkastella oletusluetteloa, käynnistä Tpm.msc, siirry sen Komentojen hallinta -osaan ja tee Oletusestoluettelossa-sarake näkyväksi. Estettävien TPM-komentojen paikallinen luettelo määritetään ryhmäkäytännön ulkopuolella suorittamalla Tpm.msc-sovellus tai Win32_Tpm-liittymän komentosarjojen avulla. Katso myös estettävien TPM-komentojen oletusluetteloiden ja paikallisten luetteloiden pakottamiseen tai ohittamiseen liittyviä käytäntöasetuksia.</string>
+      <string id="BlockedCommandsList_Name">Määritä estettävien TPM-komentojen luettelo</string>
+      <string id="IgnoreDefaultList_Help">Tämän käytäntöasetuksen avulla voit pakottaa käyttöön tai ohittaa tietokoneen TPM (Trusted Platform Module) -turvapiirin estettävien komentojen oletusluettelon.
+
+Jos otat tämän käytäntöasetuksen käyttöön, Windows ohittaa tietokoneen estettävien TPM-komentojen oletusluettelon ja estää vain ryhmäkäytännössä tai paikallisessa luettelossa määritetyt komennot. 
+
+Windows on määrittänyt estettävien TPM-komentojen oletusluettelon etukäteen. Jos haluat tarkastella oletusluetteloa, käynnistä Tpm.msc, siirry sen Komentojen hallinta -osaan ja tee Oletusestoluettelossa-sarake näkyväksi. Estettävien TPM-komentojen paikallinen luettelo määritetään ryhmäkäytännön ulkopuolella suorittamalla Tpm.msc tai Win32_Tpm-liittymän komentosarjojen avulla. Tarkastele liittyvää käytäntöasetusta, jotta voit määrittää estettävien TPM-komentojen ryhmäkäytäntöluettelon.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Windows estää ryhmäkäytäntöluettelossa ja paikallisissa luetteloissa määritettyjen estettävien TPM-komentojen lisäksi myös oletusluettelossa määritetyt TPM-komennot. </string>
+      <string id="IgnoreDefaultList_Name">Ohita estettävien TPM-komentojen oletusluettelo</string>
+      <string id="IgnoreLocalList_Help">Tämän käytäntöasetuksen avulla voit pakottaa käyttöön tai ohittaa tietokoneen TPM-turvapiirin komentojen paikallisen luettelon.
+
+Jos otat tämän käytäntöasetuksen käyttöön, Windows ohittaa tietokoneen estettävien TPM-komentojen paikallisen luettelon ja estää vain ryhmäkäytännössä tai oletusluettelossa määritetyt TPM-komennot.
+
+Estettävien TPM-komentojen paikallinen luettelo määritetään ryhmäkäytännön ulkopuolella suorittamalla Tpm.msc-sovellus tai Win32_Tpm-liittymän komentosarjojen avulla. Estettävien TPM-komentojen oletusluettelo on määritetty Windowsissa etukäteen. Katso myös estettävien TPM-komentojen ryhmäkäytäntöluettelon määrityksen käytäntöasetusta. 
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Windows estää ryhmäkäytäntö- ja oletusluetteloissa määritettyjen komentojen lisäksi myös paikallisessa luettelossa määritetyt TPM-komennot.</string>
+      <string id="IgnoreLocalList_Name">Ohita estettävien TPM-komentojen paikallinen luettelo</string>
+      <string id="TPMCategory">TPM-turvapiiripalvelut</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Edellytä TPM-varmuuskopiointia AD DS:ään</checkBox>
+        <text/>
+        <text>Jos asetus on valittu, TPM-omistajasalasanaa ei voi määrittää tai muuttaa, </text>
+        <text>jos varmuuskopiointi epäonnistuu (suositeltu oletusasetus).</text>
+        <text/>
+        <text>Jos asetusta ei ole valittu, TPM-omistajan salasanan voi määrittää tai muuttaa,</text>
+        <text>vaikka varmuuskopiointi epäonnistuu. Varmuuskopiointia ei yritetä automaattisesti uudelleen.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Määritä estettävät komennot lisäämällä niiden numerot luetteloon.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">Estettävien TPM-komentojen luettelo:</listBox>
+        <text>Jos haluat estää esimerkiksi komennot TPM_OwnerReadInternalPub</text>
+        <text>ja TPM_FieldUpgrade, lisää luetteloon numerot 129 ja 170.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

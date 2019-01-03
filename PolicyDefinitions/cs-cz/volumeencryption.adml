@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Zde zadejte zobrazovaný název.</displayName>
+  <description>Zde zadejte popis.</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Nastavení této zásady umožňuje spravovat zálohování informací pro obnovení nástroje BDE (BitLocker Drive Encryption) prováděné službou Active Directory Domain Services (AD DS). To nabízí metodu obnovení dat pomocí nástroje BitLocker určenou pro správu, aby se zabránilo ztrátě dat z důvodu nedostatku klíčových informací. Tato zásada platí pouze pro počítače se systémem Windows Server 2008 nebo Windows Vista.
+
+Pokud toto nastavení povolíte, informace pro obnovení nástroje BitLocker budou automaticky zálohovány v bezobslužném režimu do adresáře služby Active Directory Domain Services, je-li nástroj BitLocker v počítači zapnut. Nastavení této zásady je použito, když povolíte nástroj BitLocker.
+
+Poznámka: Předtím, než budete moci úspěšně provést zálohování do adresáře AD DS, musíte nastavit vhodná rozšíření schématu a přístupová práva v doméně. Další informace o nastavení zálohy AD DS pro nástroj BitLocker naleznete v průvodci nasazením nástroje BitLocker Drive Encryption na webu Microsoft TechNet.
+
+Informace pro obnovení nástroje BitLocker zahrnují heslo obnovení a data jedinečného identifikátoru. Můžete rovněž zahrnout balíček, který obsahuje šifrovací klíč jednotky chráněné nástrojem BitLocker. Tento balíček s klíčem je zabezpečen jedním nebo více hesly pro obnovení a může pomoci s provedením specializovaného obnovení, je-li zničen nebo poškozen disk.
+
+Pokud vyberete možnost Požadovat zálohování nástroje BitLocker do adresáře AD DS, nebude možné zapnout nástroj BitLocker, dokud nebude počítač připojen k doméně a nebude úspěšně provedeno zálohování informací pro obnovení nástrojem BitLocker službou AD DS. Tato možnost je vybrána ve výchozím nastavení, což umožňuje lepší zajištění možnosti obnovení pomocí nástroje BitLocker. Pokud je tato možnost vybrána, je proveden pokus o zálohování AD DS, ale chyby síťových ani jiných záloh nezabrání v instalaci nástroje BitLocker. Nedojde automaticky k novému pokusu o zálohování a je možné, že heslo pro obnovení nebude uloženo v adresáři AD DS během instalace nástroje BitLocker.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, žádné informace pro obnovení nástroje BitLocker nebudou zálohovány do adresáře AD DS.
+
+Poznámka: Během instalace nástroje BitLocker může být nutná inicializace čipu TPM. Chcete-li zároveň zajistit zálohování informací o čipu TPM, povolte nastavení zásad Zapnout zálohování čipu TPM službou AD DS ve složce Systém\Služby TPM\.
+</string>
+      <string id="ActiveDirectoryBackup_Name">Ukládat informace pro obnovení nástroje BitLocker do úložiště služby Active Directory Domain Services (Windows Server 2008 a Windows Vista)</string>
+      <string id="ActiveDirectoryBackupDropDown_1">Hesla obnovení a balíčky s klíči</string>
+      <string id="ActiveDirectoryBackupDropDown_2">Pouze hesla obnovení</string>
+      
+      <string id="ConfigureStartupUsage_Help">Nastavení této zásady umožňuje určovat, bude-li Průvodce nastavením nástroje BitLocker Drive Encryption umožňovat nastavení další metody ověření vyžadované při každém spuštění počítače. Nastavení této zásady je použito při zapnutí nástroje BitLocker.
+        
+Poznámka: Tato zásada platí pouze pro počítače se systémem Windows Server 2008 nebo Windows Vista.
+
+V počítači s kompatibilním čipem TPM mohu fungovat dva způsoby ověření při spuštění za účelem vyšší ochrany šifrovaných dat. Počítač může při spuštění požadovat vložení jednotky USB Flash obsahující spouštěcí klíč. Zároveň může požadovat zadání spouštěcího PIN (Personal Identification Number) kódu o délce 4 až 20 číslic.
+
+V počítačích bez kompatibilního čipu TPM je třeba mít jednotku USB Flash obsahující spouštěcí klíč. Bez čipu TPM jsou data šifrovaná nástrojem BitLocker chráněna pouze klíčem na jednotce USB Flash.
+
+Pokud toto nastavení povolíte, průvodce zobrazí stránku umožňující konfiguraci pokročilých možností spuštění nástroje BitLocker. Navíc můžete konfigurovat možnosti nastavení pro počítače s čipem TPM a bez něj.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, Průvodce nastavením nástroje BitLocker zobrazí základní postup, který umožní uživatelům povolit nástroj BitLocker v počítačích s čipem TPM. V tomto základním průvodci nelze konfigurovat žádný dodatečný spouštěcí klíč nebo spouštěcí PIN kód.
+</string>
+      
+      <string id="ConfigureStartupUsage_Name">Požadovat při spuštění další ověřování (Windows Server 2008 a Windows Vista)</string>
+      <string id="ConfigureAdvancedStartup_Name">Požadovat při spuštění další ověřování</string>
+      
+      <string id="ConfigureAdvancedStartup_Help">Nastavení této zásady umožňuje nakonfigurovat, zda bude nástroj BitLocker vyžadovat další ověřování vždy při spuštění počítače a zda používáte nástroj BitLocker s čipem TPM nebo bez něj. Nastavení této zásady je použito při zapnutém nástroji BitLocker.
+
+Poznámka: Při spuštění lze vyžadovat pouze jednu z dalších možností ověřování. V opačném případě dojde k chybě zásady.
+
+Pokud chcete nástroj BitLocker používat v počítači bez čipu TPM, zaškrtněte políčko Povolit nástroj BitLocker bez kompatibilního čipu TPM. V tomto režimu je ke spuštění vyžadována jednotka USB a informace o klíči použité k zašifrování jednotky jsou uloženy na jednotce USB. Když je jednotka USB s klíčem připojena k počítači, bude přístup k jednotce ověřen a jednotka bude dostupná. Pokud by došlo k tomu, že jednotka USB s klíčem bude ztracena nebo nebude k dispozici, bude potřeba pro přístup k jednotce použít jednu z možností obnovení nástroje BitLocker.
+
+V počítači s kompatibilním čipem TPM lze při spuštění použít jeden ze čtyř typů metod ověřování k zajištění vyšší úrovně zabezpečení pro šifrovaná data. Při spuštění počítače lze pro ověření používat pouze čip TPM. Lze však také vyžadovat vložení jednotky USB Flash obsahující spouštěcí klíč, zadání 4 až 20místného PIN kódu, nebo použití obou těchto možností.
+
+Pokud nastavení této zásady povolíte, budou moci uživatelé nakonfigurovat pokročilé možnosti spuštění v průvodci nastavením nástroje BitLocker.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, mohou uživatelé v počítačích s čipem konfigurovat pouze základní možnosti.
+
+Poznámka: Pokud chcete vyžadovat používání spouštěcího PIN kódu a jednotky USB Flash, je nutné nakonfigurovat nastavení nástroje BitLocker pomocí nástroje příkazového řádku manage-bde místo průvodce nastavením nástroje BitLocker Drive Encryption.
+
+</string>
+
+      <string id="ConfigureTPMPINKeyUsageDropDown_Optional">Povolit spouštěcí klíč a PIN kód s čipem TPM</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Require">Vyžadovat spouštěcí klíč a PIN kód s čipem TPM</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Disallow">Nepovolovat spouštěcí klíč a PIN kód s čipem TPM</string>
+
+      <string id="ConfigureTPMUsageDropDown_Optional">Povolit čip TPM</string>
+      <string id="ConfigureTPMUsageDropDown_Require">Vyžadovat čip TPM</string>
+      <string id="ConfigureTPMUsageDropDown_Disallow">Nepovolovat čip TPM</string>
+
+      <string id="ConfigurePINUsageDropDown_Optional">Povolit spouštěcí PIN kód s čipem TPM</string>
+      <string id="ConfigurePINUsageDropDown_Require">Vyžadovat spouštěcí PIN kód s čipem TPM</string>
+      <string id="ConfigurePINUsageDropDown_Disallow">Nepovolovat spouštěcí PIN kód s čipem TPM</string>
+
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Optional">Povolit spouštěcí klíč s čipem TPM</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Require">Vyžadovat spouštěcí klíč s čipem TPM</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Disallow">Nepovolovat spouštěcí klíč s čipem TPM</string>
+
+
+      <string id="ConfigureRecoveryUsage_Help">Nastavení této zásady umožňuje určit, zda bude moci průvodce nastavením nástroje BitLocker Drive Encryption zobrazit a určit možnosti obnovení nástrojem BitLocker. Tato zásada platí pouze pro počítače se systémem Windows Server 2008 nebo Windows Vista. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker.
+
+K odemčení dat šifrovaných pomocí nástroje BitLocker v případě, že chybí požadované informace spouštěcího klíče, lze použít dvě možnosti obnovení. Uživatel může buď zadat 48místné numerické heslo pro obnovení nebo vložit jednotku USB Flash obsahující 256bitový obnovovací klíč.
+
+Pokud nastavení této zásady povolíte, můžete nakonfigurovat možnosti, které průvodce instalací zobrazí uživatelům pro obnovení šifrovaných dat nástrojem BitLocker. Na jednotku USB Flash bude 48místné heslo obnovení uloženo jako textový soubor a 256bitový klíč obnovení jako skrytý soubor. Do složky bude 48místné heslo obnovení uloženo jako textový soubor. Při tisku bude 48místné heslo pro obnovení odesláno na výchozí tiskárnu. Například nepovolení 48místného hesla obnovení zabrání uživatelům v možnosti tisku nebo uložení informací pro obnovení do složky.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, Průvodce nastavením nástroje BitLocker dá uživatelům k dispozici informace o způsobech uložení možností obnovení.
+
+Poznámka: Pokud je během instalace nástroje BitLocker nutná inicializace čipu TPM, informace o vlastníkovi čipu TPM budou uloženy nebo vytištěny s informacemi pro obnovení nástroje BitLocker.
+
+Poznámka: 48místné heslo obnovení nebude dostupné v režimu kompatibilním se standardem FIPS.
+
+Důležité: Nastavení této zásady nabízí metodu obnovení dat šifrovaných nástrojem BitLocker určenou pro správu, aby se zabránilo ztrátě dat z důvodu nedostatků informací o klíči. Pokud nepovolíte obě uživatelské možnosti obnovení, je potřeba povolit nastavení zásady Ukládat informace pro obnovení nástroje BitLocker do úložiště služby Active Directory Domain Services (Windows Server 2008 a Windows Vista), aby se zabránilo chybě zásady.
+
+      </string>
+      
+      <string id="ConfigureRecoveryUsage_Name">Zvolit, jakým způsobem mohou uživatelé obnovit jednotky chráněné nástrojem BitLocker (Windows Server 2008 a Windows Vista)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Require">Požadovat heslo obnovení (výchozí)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Disallow">Nepovolit heslo pro obnovení</string>
+
+      <string id="ConfigureRecoveryKeyUsageDropDown_Require">Požadovat klíč obnovení (výchozí)</string>
+      <string id="ConfigureRecoveryKeyUsageDropDown_Disallow">Nepovolit obnovovací klíč</string>
+
+
+      <string id="OSRecoveryUsage_Name">Zvolit, jakým způsobem lze obnovit jednotky operačního systému chráněné nástrojem BitLocker</string>
+      
+      <string id="OSRecoveryUsage_Help">Nastavení této zásady umožňuje řídit, jakým způsobem jsou obnovovány jednotky operačního systému chráněné nástrojem BitLocker v případě, že chybí požadované informace spouštěcího klíče. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker.
+
+Zaškrtávací políčko Povolit agenty obnovování dat založené na certifikátu umožňuje určit, zda lze agenta obnovování dat použít pro jednotky operačních systémů chráněných nástrojem BitLocker. Aby bylo možné agenta obnovování dat použít, je nutné ho přidat z položky Zásady veřejných klíčů v Konzole pro správu zásad skupiny nebo v Editoru místních zásad skupiny. Další informace o přidávání agentů obnovování dat naleznete v průvodci nasazení k nástroji BitLocker Drive Encryption na webu Microsoft TechNet.
+
+V nastavení Konfigurovat pro uživatele úložiště informací obnovení nástroje BitLocker vyberte, zda mají či nemají uživatelé povoleno generovat 48místné heslo pro obnovení nebo 256bitový obnovovací klíč, nebo zda je po nich generování požadováno.
+
+Výběrem možnosti Vynechat možnosti obnovení v průvodci nastavením nástroje BitLocker zabráníte uživatelům ve specifikování možností obnovení, když pro jednotku nástroj BitLocker povolí. To znamená, že nebudete moci zadat, jaké možnosti obnovení se mají používat, když je povolen nástroj BitLocker. Možnosti obnovení nástroje BitLocker pro danou jednotku jsou určeny nastavením zásad.
+
+V nastavení Ukládat informace obnovení nástroje BitLocker do úložiště služby AD DS zvolte, které informace obnovení nástroje BitLocker se mají ukládat v úložišti služby AD DS pro jednotky operačních systémů. Pokud vyberete možnost Zálohovat hesla pro obnovení a balíčky s klíči, budou se v úložišti služby AD DS ukládat hesla nástroje BitLocker pro obnovení i balíčky s klíčem. Ukládání balíčků s klíčem podporuje obnovování dat z jednotky, která byla fyzicky poškozena. Jestliže vyberete možnost Zálohovat pouze hesla pro obnovení, bude v úložišti služby AD DS uloženo pouze heslo pro obnovení.
+
+Zaškrtnutím políčka Nepovolit nástroj BitLocker, dokud nebudou informace pro obnovení uloženy do úložiště služby AD DS pro jednotky operačního systému můžete uživatelům zabránit v povolení nástroje BitLocker, pokud počítač nebude připojen k doméně a nebudou úspěšně zazálohovány informace nástroje BitLocker pro obnovení do úložiště služby AD DS.
+
+Poznámka: Pokud nebude zaškrtnuto políčko Nepovolit nástroj BitLocker, dokud nebudou informace pro obnovení uloženy do úložiště služby AD DS pro jednotky operačního systému, bude automaticky vygenerováno heslo pro obnovení.
+
+Jestliže nastavení této zásady povolíte, můžete určit, jaké metody budou mít uživatelé k dispozici pro obnovení dat z jednotek operačních systémů chráněných nástrojem BitLocker.
+
+Jestliže nastavení této zásady zakážete nebo nenakonfigurujete, budou pro obnovení nástrojem BitLocker podporovány výchozí možnosti obnovení. Ve výchozím nastavení je povolen agent DRA, uživatel může určit možnosti obnovení uvedením hesla pro obnovení a obnovovacího klíče a informace obnovení nejsou zazálohovány do úložiště služby AD DS.
+
+</string>
+      
+      <string id="OSRecoveryPasswordUsageDropDown_Require">Vyžadovat 48místné heslo pro obnovení</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Allow">Povolit 48místné heslo pro obnovení</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Disallow">Nepovolovat 48místné heslo pro obnovení</string>
+
+      <string id="OSRecoveryKeyUsageDropDown_Require">Vyžadovat 256bitový obnovovací klíč</string>
+      <string id="OSRecoveryKeyUsageDropDown_Disallow">Nepovolovat 256bitový obnovovací klíč</string>
+      <string id="OSRecoveryKeyUsageDropDown_Allow">Povolit 256bitový obnovovací klíč</string>
+
+      <string id="FDVRecoveryUsage_Name">Zvolit, jakým způsobem lze obnovit pevné jednotky chráněné nástrojem BitLocker</string>
+      <string id="FDVRecoveryUsage_Help">Nastavení této zásady umožňuje řídit, jakým způsobem jsou obnovovány pevné datové jednotky chráněné nástrojem BitLocker v případě, že chybí požadovaná pověření. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker.
+
+Zaškrtávací políčko Povolit agenty obnovování dat umožňuje určit, zda lze agenta obnovování dat použít pro pevné datové jednotky chráněné nástrojem BitLocker. Aby bylo možné agenta obnovování dat použít, je nutné ho přidat z položky Zásady veřejných klíčů v Konzole pro správu zásad skupiny nebo v Editoru místních zásad skupiny. Další informace o přidávání agentů obnovování dat naleznete v průvodci nasazením k nástroji BitLocker Drive Encryption na webu Microsoft TechNet.
+
+V nastavení Konfigurovat pro uživatele úložiště informací obnovení nástroje BitLocker vyberte, zda mají či nemají uživatelé povoleno generovat 48místné heslo pro obnovení nebo 256bitový obnovovací klíč, nebo zda je po nich generování požadováno.
+
+Výběrem možnosti Vynechat možnosti obnovení v průvodci nastavením nástroje BitLocker zabráníte uživatelům ve specifikování možností obnovení, když pro jednotku nástroj BitLocker povolí. To znamená, že nebudete moci zadat, jaké možnosti obnovení se mají používat, když je povolen nástroj BitLocker. Možnosti obnovení nástroje BitLocker pro danou jednotku jsou určeny nastavením zásad.
+
+V nastavení Ukládat informace obnovení nástroje BitLocker do úložiště služby AD DS zvolte, které informace obnovení nástroje BitLocker se mají ukládat v úložišti služby AD DS pro jednotky operačních systémů. Pokud vyberete možnost Zálohovat hesla pro obnovení a balíčky s klíči, budou se v úložišti služby AD DS ukládat hesla nástroje BitLocker pro obnovení i balíčky s klíčem. Ukládání balíčků s klíčem podporuje obnovování dat z jednotky, která byla fyzicky poškozena. Jestliže vyberete možnost Zálohovat pouze hesla pro obnovení, bude v úložišti služby AD DS uloženo pouze heslo pro obnovení.
+
+Zaškrtnutím políčka Nepovolit nástroj BitLocker, dokud nebudou informace pro obnovení uloženy do úložiště služby AD DS pro pevné datové jednotky můžete uživatelům zabránit v povolení nástroje BitLocker, pokud počítač nebude připojen k doméně a nebudou úspěšně zazálohovány informace nástroje BitLocker pro obnovení do úložiště služby AD DS.
+
+Poznámka: Pokud nebude zaškrtnuto políčko Nepovolit nástroj BitLocker, dokud nebudou informace pro obnovení uloženy do úložiště služby AD DS pro pevné datové jednotky, bude automaticky vygenerováno heslo pro obnovení.
+
+Jestliže nastavení této zásady povolíte, můžete určit, jaké metody budou mít uživatelé k dispozici pro obnovení dat z pevných datových jednotek chráněných nástrojem BitLocker.
+
+Jestliže nastavení této zásady zakážete nebo nenakonfigurujete, budou pro obnovení nástrojem BitLocker podporovány výchozí možnosti obnovení. Ve výchozím nastavení je povolen agent DRA, uživatel může určit možnosti obnovení uvedením hesla pro obnovení a obnovovacího klíče a informace obnovení nejsou zazálohovány do úložiště služby AD DS.
+
+</string>
+      
+      <string id="FDVRecoveryPasswordUsageDropDown_Require">Vyžadovat 48místné heslo pro obnovení</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Allow">Povolit 48místné heslo pro obnovení</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Disallow">Nepovolovat 48místné heslo pro obnovení</string>
+
+      <string id="FDVRecoveryKeyUsageDropDown_Require">Vyžadovat 256bitový obnovovací klíč</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Disallow">Nepovolovat 256bitový obnovovací klíč</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Allow">Povolit 256bitový obnovovací klíč</string>
+
+      <string id="RDVRecoveryUsage_Name">Zvolit, jakým způsobem lze obnovit vyměnitelné jednotky chráněné nástrojem BitLocker</string>
+      
+      <string id="RDVRecoveryUsage_Help">Nastavení této zásady umožňuje řídit, jakým způsobem jsou obnovovány vyměnitelné datové jednotky chráněné nástrojem BitLocker v případě, že chybí požadovaná pověření. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker.
+
+Zaškrtávací políčko Povolit agenty obnovování dat umožňuje určit, zda lze agenta obnovování dat použít pro vyměnitelné datové jednotky chráněné nástrojem BitLocker. Aby bylo možné agenta obnovování dat použít, je nutné ho přidat z položky Zásady veřejných klíčů v Konzole pro správu zásad skupiny nebo v Editoru místních zásad skupiny. Další informace o přidávání agentů obnovování dat naleznete v průvodci nasazením k nástroji BitLocker Drive Encryption na webu Microsoft TechNet.
+
+V nastavení Konfigurovat pro uživatele úložiště informací obnovení nástroje BitLocker vyberte, zda mají či nemají uživatelé povoleno generovat 48místné heslo pro obnovení nebo 256bitový obnovovací klíč, nebo zda je po nich generování požadováno.
+
+Výběrem možnosti Vynechat možnosti obnovení v průvodci nastavením nástroje BitLocker zabráníte uživatelům ve specifikování možností obnovení, když pro jednotku nástroj BitLocker povolí. To znamená, že nebudete moci zadat, jaké možnosti obnovení se mají používat, když je povolen nástroj BitLocker Možnosti obnovení nástroje BitLocker pro danou jednotku jsou určeny nastavením zásad.
+
+V nastavení Ukládat informace obnovení nástroje BitLocker do úložiště služby AD DS zvolte, které informace obnovení nástroje BitLocker se mají ukládat v úložišti služby AD DS pro vyměnitelné jednotky. Pokud vyberete možnost Zálohovat hesla pro obnovení a balíčky s klíči, budou se v úložišti služby AD DS ukládat hesla nástroje BitLocker pro obnovení i balíčky s klíčem. Jestliže vyberete možnost Zálohovat pouze hesla pro obnovení, bude v úložišti služby AD DS uloženo pouze heslo pro obnovení.
+
+Zaškrtnutím políčka Nepovolit nástroj BitLocker, dokud nebudou informace pro obnovení uloženy do úložiště služby AD DS pro jednotky operačního systému můžete uživatelům zabránit v povolení nástroje BitLocker, pokud počítač nebude připojen k doméně a nebudou úspěšně zazálohovány informace nástroje BitLocker pro obnovení do úložiště služby AD DS.
+
+Poznámka: Pokud nebude zaškrtnuto políčko Nepovolit nástroj BitLocker, dokud nebudou informace pro obnovení uloženy do úložiště služby AD DS pro pevné datové jednotky, bude automaticky vygenerováno heslo pro obnovení.
+
+Jestliže nastavení této zásady povolíte, můžete určit, jaké metody budou mít uživatelé k dispozici pro obnovení dat z vyměnitelných datových jednotek chráněných nástrojem BitLocker.
+
+Jestliže nastavení této zásady zakážete nebo nenakonfigurujete, budou pro obnovení nástrojem BitLocker podporovány výchozí možnosti obnovení. Ve výchozím nastavení je povolen agent DRA, uživatel může určit možnosti obnovení uvedením hesla pro obnovení a obnovovacího klíče a informace obnovení nejsou zazálohovány do úložiště služby AD DS.
+      </string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Require">Vyžadovat 48místné heslo pro obnovení</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Allow">Povolit 48místné heslo pro obnovení</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Disallow">Nepovolovat 48místné heslo pro obnovení</string>
+
+      <string id="RDVRecoveryKeyUsageDropDown_Require">Vyžadovat 256bitový obnovovací klíč</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Disallow">Nepovolovat 256bitový obnovovací klíč</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Allow">Povolit 256bitový obnovovací klíč</string>
+      
+      
+      <string id="ConfigureRecoveryFolder_Help">Nastavení této zásady umožňuje zadat výchozí cestu, která bude zobrazena, když Průvodce nastavením nástroje BitLocker Drive Encryption vyzve uživatele k zadání umístění složky, do které bude uloženo heslo pro obnovení. Nastavení této zásady je použito při zapnutí nástroje BitLocker.
+
+Pokud toto nastavení povolíte, můžete zadat cestu, která bude použita jako výchozí umístění složky, když uživatel zvolí možnost uložení hesla obnovení do složky. Můžete zadat plně kvalifikovanou cestu, nebo můžete do cesty zahrnout proměnné prostředí cílového počítače. Pokud zadaná cesta není platná, Průvodce nastavením nástroje BitLocker zobrazí složku nejvyšší úrovně.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, Průvodce nastavením nástroje BitLocker zobrazí složku nejvyšší úrovně, když uživatel zvolí možnost uložení hesla pro obnovení do složky.
+
+Poznámka: Nastavení této zásady nezabrání uživatelům v uložení hesla pro obnovení do jiné složky.
+
+</string>
+      
+      <string id="ConfigureRecoveryFolder_Name">Zvolit výchozí složku hesla pro obnovení</string>
+
+      <string id="EncryptionMethod_Help">Toto nastavení umožňuje nakonfigurovat algoritmus a sílu šifrování používané nástrojem BitLocker Drive Encryption. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker. Změna šifrovací metody nemá žádný efekt, pokud je již jednotka šifrována nebo pokud šifrování probíhá. Další informace o metodách šifrování k dispozici naleznete v průvodci nasazením k nástroji BitLocker Drive Encryption na webu Microsoft TechNet.
+        
+Pokud nastavení této zásady povolíte, budete moci zvolit algoritmus šifrování a sílu šifrovacího klíče, které má nástroj BitLocker používat k šifrování jednotek.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, nástroj BitLocker bude používat výchozí metodu 128bitového šifrování AES s difuzorem (výchozí) nebo šifrovací metodu určenou instalačním skriptem.
+
+      </string>
+      <string id="EncryptionMethod_Name">Zvolit metodu šifrování jednotky a sílu šifrování</string>
+      <string id="EncryptionMethodDropDown_AES128Diffuser_Name">128bitové AES s difuzorem (výchozí)</string>
+      <string id="EncryptionMethodDropDown_AES256Diffuser_Name">256bitové AES s difuzorem</string>
+      <string id="EncryptionMethodDropDown_AES128_Name">128bitové AES</string>
+      <string id="EncryptionMethodDropDown_AES256_Name">256bitové AES</string>
+      
+      <string id="FVECategory">Šifrování jednotky pomocí služby BitLocker</string>
+      <string id="PlatformValidation_Help">Nastavení této zásady umožňuje konfigurovat, jak čip TPM hardwaru zabezpečení v počítači zabezpečí šifrovací klíč nástroje BitLocker. Nastavení této zásady se neuplatní, pokud počítač neobsahuje kompatibilní čip TPM nebo pokud byl nástroj BitLocker již spuštěn s ochranou klíčem TPM.
+
+Pokud toto nastavení povolíte před zapnutím nástroje BitLocker, můžete konfigurovat součásti spuštění počítače, které čip TPM ověří před odemknutím přístupu k jednotce operačního systému šifrovaného nástrojem BitLocker. Pokud se některá z těchto komponent změní během doby, kdy je zapnutá ochrana nástrojem BitLocker, čip TPM neuvolní šifrovací klíč k odemknutí jednotky a počítač místo toho zobrazí konzolu Obnovení nástroje BitLocker a bude vyžadovat, zda je nutné k odemčení jednotky nutné zadat heslo pro obnovení nebo obnovovací klíč.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, čip TPM použije výchozí profil ověření platformy nebo profil ověření platformy určený skriptem instalace. Profil ověření platformy se skládá ze sady indexů registru PCR (Platform Configuration Register) v rozsahu od 0 do 23. Výchozí profil ověření platformy zabezpečí šifrovací klíč proti změnám Core Root of Trust of Measurement (CRTM), systému BIOS, rozšíření platformy (PCR 0), kódu komponenty ROM (PCR 2), kódu hlavního spouštěcím záznamu (PCR 4), spouštěcího sektoru systému NTFS (PCR 8), spouštěcího bloku systému NTFS (PCR 9), správce spouštění systému (PCR 10) a kontroly přístupu k nástroji BitLocker (PCR 11). Popisy nastavení PCR pro počítače, které používají rozhraní EFI (Extensible Firmware Interface), se liší od nastavení PCR popisovaných pro počítače využívající standardní systém BIOS. Úplný seznam nastavení PCR pro rozhraní EFI a standardní systém BIOS naleznete v Průvodci nasazením k nástroji BitLocker Drive Encryption na webu Microsoft TechNet.
+
+Upozornění: Změna výchozího profilu ověření platformy ovlivní zabezpečení a možnost správy počítače. Citlivost nástroje BitLocker na změny platformy (škodlivé nebo autorizované) se zvyšuje nebo snižuje podle zahrnutí nebo vyloučení indexů registru PCR.
+      </string>
+      
+      <string id="PlatformValidation_Name">Konfigurovat profil ověření platformy čipu TPM</string>
+
+      <string id="MorBehavior_Help">Nastavení této zásady řídí zvýšení výkonu při restartování počítače při zvýšení rizika odhalení tajných klíčů nástroje BitLocker. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker. Tajné klíče nástroje BitLocker obsahují klíčový materiál, který slouží k šifrování dat. Nastavení této zásady se použije pouze tehdy, je-li povolena ochrana nástrojem BitLocker.
+
+Pokud toto nastavení povolíte, nebude při restartování počítače přepsána paměť. Zamezením přepisu paměti se může zlepšit výkon při restartování, ale zvýší se riziko odhalení tajných klíčů nástroje BitLocker.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, budou při restartování počítače odebrány tajné klíče nástroje BitLocker z paměti.
+
+      </string>
+      <string id="MorBehavior_Name">Zakázat přepsání paměti při restartování</string>
+
+      <string id="FVEOSCategory">Jednotky operačního systému</string>
+      <string id="FVEFDVCategory">Pevné datové jednotky</string>
+      <string id="FVERDVCategory">Vyměnitelné datové jednotky</string>
+
+      <string id="IdentificationField_Name">Zadat jedinečné identifikátory pro organizaci</string>
+      <string id="IdentificationField_Help">Nastavení této zásady umožňuje přidružit jedinečné identifikátory organizace k nové jednotce, pro kterou je povolena ochrana nástrojem BitLocker. Tyto identifikátory jsou uloženy jako pole identifikace a povolené pole identifikace. Pole identifikace umožňuje přidružit k jednotkám chráněným pomocí nástroje BitLocker jedinečný identifikátor organizace. Tento identifikátor je automaticky přidán k novým jednotkám chráněným pomocí nástroje BitLocker a lze je aktualizovat na existujících jednotkách chráněných nástrojem BitLocker pomocí nástroje příkazového řádku Manage-BDE. Pole identifikace je vyžadováno pro správu agentů obnovování dat založených na certifikátech uložených na jednotkách chráněných pomocí nástroje BitLocker a pro potenciální aktualizace čtečky BitLocker To Go. Nástroj BitLocker bude spravovat a aktualizovat agenty obnovování dat pouze v případě, že pole identifikace na jednotce odpovídá hodnotě nakonfigurované v poli identifikace. Podobně platí, že bude nástroj BitLocker aktualizovat čtečku BitLocker To Go pouze v případě, že pole identifikace na jednotce odpovídá hodnotě nakonfigurované pro pole identifikace.
+
+Povolené pole identifikace se používá v kombinaci s nastavením zásad Odepřít přístup pro zápis k vyměnitelným jednotkám nechráněným nástrojem BitLocker, což umožňuje lépe řídit použití vyměnitelných jednotek v organizaci. Jedná se o seznam polí identifikace oddělených čárkou z vaší nebo externí organizace.
+
+Pole identifikace na existujících jednotkách lze nakonfigurovat pomocí nástroje manage-BDE.exe.
+
+Pokud nastavení této zásady povolíte, můžete nakonfigurovat pole identifikace na jednotce chráněné nástrojem BitLocker a všechny povolená pole identifikace používaná ve vaší organizaci.
+
+Pokud je jednotka chráněná nástrojem BitLocker připojena k jinému počítače s povolenou ochranou pomocí nástroje BitLocker, bude pomocí pole identifikace a povoleného pole identifikace určeno, zda se jedná o jednotku externí organizace.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, nebude pole identifikace požadováno.
+
+Poznámka: Pole identifikace jsou nutná pro správu agentů obnovování dat založených na certifikátech na jednotkách chráněných pomocí nástroje BitLocker. Nástroj BitLocker bude spravovat a aktualizovat agenty obnovování dat založené na certifikátu v případě, že na jednotce existuje pole identifikace identické s hodnotou nakonfigurovanou v počítači. Pole identifikace může být libovolná hodnota o maximální délce 260 znaků.
+
+      </string>
+
+      
+      <string id="UserCertificateOID_Name">Ověřit dodržování předpisů pro použití certifikátů čipové karty</string>
+     <string id="UserCertificateOID_Help">Nastavení této zásady umožňuje přidružit identifikátor objektu z certifikátu čipové karty k jednotce chráněné nástrojem BitLocker. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker.
+
+Identifikátor objektu je určen v rozšířeném použití klíče (EKU) certifikátu. Nástroj BitLocker může identifikovat certifikáty, které lze použít k ověření certifikátu uživatele na jednotce chráněné nástrojem BitLocker, a to porovnáním identifikátoru objektu v certifikátu s identifikátorem objektu, který je definován tímto nastavením zásady.
+
+Výchozí identifikátor objektu je 1.3.6.1.4.1.311.67.1.1
+
+Poznámka: Nástroj BitLocker nepožaduje, aby měl certifikát atribut EKU, pokud je však pro certifikát nakonfigurován, musí být nastaven na identifikátor objektu (OID) odpovídající identifikátoru OID konfigurovanému pro nástroj BitLocker.
+
+Pokud nastavení této zásady povolíte, musí se identifikátor objektu uvedený v poli Identifikátor objektu shodovat s identifikátorem objektu v certifikátu čipové karty.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, je použit výchozí identifikátor objektu.
+
+     </string>
+
+       <string id="OSActiveDirectoryBackupDropDown_1">Ukládat hesla pro obnovení a balíčky s klíči</string>
+      <string id="OSActiveDirectoryBackupDropDown_2">Ukládat pouze hesla pro obnovení</string>
+
+      
+      <string id="MinimumPINLength_Name">Konfigurovat minimální délku PIN kódu pro spuštění</string>
+      <string id="MinimumPINLength_Help">Nastavení této zásady umožňuje nakonfigurovat minimální délku spouštěcího PIN kódu čipu TPM. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker. Spouštěcí PIN kód musí být minimálně 4místný a maximálně 20místný.
+
+Pokud nastavení této zásady povolíte, můžete při nastavování spouštěcího PIN kódu vyžadovat minimální počet číslic.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, mohou uživatelé nakonfigurovat spouštěcí PIN kód v délce od 4 do 20 číslic.
+
+      </string>
+
+      <string id="OSAllowDRA_Name">Povolit agenty obnovování dat založené na certifikátu</string>
+          
+      <string id="FDVDenyWriteAccess_Name">Odepřít přístup pro zápis k pevným jednotkám nechráněným nástrojem BitLocker</string>
+      <string id="FDVDenyWriteAccess_Help">Nastavení této zásady určuje, zda je pro pevné datové jednotky vyžadována ochrana nástrojem BitLocker, aby byly v počítači pro čtení i zápis. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker.
+
+Pokud nastavení této zásady povolíte, budou všechny pevné datové jednotky, které nejsou chráněny nástrojem BitLocker, připojeny v režimu jen pro čtení. Pokud je jednotka chráněna nástrojem BitLocker, bude připojena v režimu pro čtení i zápis.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, budou všechny datové jednotky v počítači připojeny v režimu pro čtení i zápis.
+
+      </string>
+
+      <string id="FDVPassphrase_Name">Konfigurovat použití hesel pro pevné datové jednotky</string>
+      <string id="FDVPassphrase_Help">Nastavení této zásady určuje, zda je vyžadováno heslo k odblokování pevných datových jednotek chráněných nástrojem BitLocker. Pokud se rozhodnete, že povolíte používání hesla, můžete vyžadovat, aby se heslo využívalo, vynutit požadavky na složitost hesla a nakonfigurovat minimální délku hesla. Aby bylo nastavení požadavku na složitost hesla platné, musí být povoleno nastavení zásad skupiny Heslo musí splňovat požadavky na složitost v nastavení Konfigurace počítače\Nastavení systému Windows\Nastavení zabezpečení\Zásady účtů\Zásady hesla\.
+        
+Poznámka: Toto nastavení je vynucováno při zapnutí nástroje BitLocker, nikoli při odemykání svazku. Nástroj BitLocker povolí odemčení jednotky s jakýmikoli ochranami, které jsou k dispozici na jednotce.
+
+Pokud nastavení této zásady povolíte, mohou uživatelé nakonfigurovat heslo splňující požadavky, které definujete. Chcete-li vyžadovat použití hesla, vyberte možnost Vyžadovat heslo pro pevnou datovou jednotku. Pokud chcete pro heslo vynucovat požadavky na složitost, vyberte možnost Vyžadovat složitost hesel.
+
+Pokud je nastavena možnost Vyžadovat složitost hesel a je povolen nástroj BitLocker, je nutné k ověření složitosti hesla připojení k řadiči domény. Pokud je nastavena možnost Povolit složitost hesel, bude proveden pokus o připojení k řadiči domény, aby bylo možné ověřit, zda složitost hesla odpovídá pravidlům nastaveným zásadou. Pokud však žádné řadiče domény nejsou nalezeny, bude heslo akceptováno bez ohledu na skutečnou složitost hesla a jednotka bude za účelem ochrany šifrována pomocí tohoto hesla. Pokud je nastavena možnost Nepovolovat složitost hesel, nebude prováděno žádné ověřování složitosti hesel.
+
+Hesla musí mít minimálně 8 znaků. Chcete-li pro heslo nakonfigurovat větší minimální délku, zadejte požadovaný počet znaků do pole Minimální délka hesla.
+
+Pokud nastavení této zásady zakážete, nebude moci uživatel použít heslo.
+
+Pokud nastavení této zásady nenakonfigurujete, bude pro hesla podporováno výchozí nastavení, to znamená, že nebude vyžadována složitost hesla a heslo bude muset mít minimální délku 8 znaků.
+
+Poznámka: Pokud je povolen režim kompatibility se standardem FIPS, nelze hesla používat. To, zda je režim kompatibility se standardem FIPS povolen, určuje nastavení zásady Kryptografický modul systému: Pro šifrování, algoritmus hash a podepisování používat algoritmus kompatibilní s FIPS v nastavení Konfigurace počítače\Nastavení systému Windows\Nastavení zabezpečení\Místní zásady\Možnosti zabezpečení.
+
+</string>
+
+      <string id="PassphraseComplexityDropDown_2">Povolit složitost hesel</string>
+      <string id="PassphraseComplexityDropDown_0">Nepovolovat složitost hesel</string>
+      <string id="PassphraseComplexityDropDown_1">Vyžadovat složitost hesel</string>
+      
+      <string id="FDVActiveDirectoryBackupDropDown_1">Zálohovat hesla pro obnovení a balíčky s klíči</string>
+      <string id="FDVActiveDirectoryBackupDropDown_2">Zálohovat pouze hesla pro obnovení</string>
+
+      
+      <string id="FDVHybrid_Name">Povolit přístup k pevným datovým jednotkám chráněným nástrojem BitLocker z předchozích verzí systému Windows</string>
+      <string id="FDVHybrid_Help">Nastavení této zásady konfiguruje, zda lze odemknout pevné datové jednotky formátované se systémem souborů FAT a zobrazit je v počítačích s operačním systémem Windows Server 2008, Windows Vista, Windows XP s aktualizací Service Pack 3 (SP3) nebo Windows XP s aktualizací Service Pack 2 (SP2).
+
+Pokud je nastavení této zásady povoleno nebo není nakonfigurováno, lze pevné datové jednotky formátované systémem souborů FAT v počítačích s operačním systémem Windows Server 2008, Windows Vista, Windows XP SP3 či Windows XP SP2 odemknout a zobrazit jejich obsah. Tyto operační systémy mají k jednotkám chráněným nástrojem BitLocker oprávnění jen pro čtení.
+
+Pokud je nastavení této zásady povoleno, můžete zaškrtnutím políčka Neinstalovat čtečku BitLocker To Go na pevných jednotkách naformátovaných systémem souborů FAT zabránit uživatelům ve spuštění čtečky BitLocker To Go na pevných jednotkách. Jestliže je čtečkou BitLocker To Go (bitlockertogo.exe) vybavena jednotka, která nemá specifikováno pole identifikace, nebo pokud je pro jednotku zadáno stejné pole identifikace, jako je zadáno v nastavení zásady Zadat jedinečné identifikátory pro organizaci, zobrazí se uživateli výzva k aktualizaci nástroje BitLocker a čtečka BitLocker To Go bude odstraněna z jednotky. Za těchto podmínek musí být v počítači nainstalována čtečka BitLocker To Go, aby bylo možné odemknout pevnou jednotku v počítačích s operačním systémem Windows Server 2008, Windows Vista, Windows XP SP3 či Windows XP SP2. Jestliže toto políčko zaškrtnuto není, bude čtečka BitLocker To Go nainstalována na pevné jednotce, aby mohli uživatelé odemknout jednotku v počítačích se systémem Windows Server 2008, Windows Vista, Windows XP SP3 či Windows XP SP2, ve kterých není nainstalována čtečka BitLocker To Go.
+
+Pokud je nastavení této zásady zakázáno, nelze pevné datové jednotky naformátované systémem souborů FAT chráněné pomocí nástroje BitLocker v počítačích se systémem Windows Server 2008, Windows Vista, Windows XP SP3 či Windows XP SP2 odemknout. Čtečka Bitlockertogo.exe nebude nainstalována.
+
+Poznámka: Nastavení této zásady se nevztahuje na jednotky, které jsou naformátovány systémem souborů NTFS.
+
+      </string>
+
+      
+      <string id="FDVAllowDRA_Name">Povolit agenty obnovování dat založené na certifikátu</string>
+      
+      <string id="FDVConfigureSmartCard_Name">Konfigurovat použití čipových karet na pevných datových jednotkách</string>
+      <string id="FDVConfigureSmartCard_Help">Nastavení této zásady umožňuje určit, zda lze používat čipové karty k ověření uživatelského přístupu k pevným datovým jednotkám v počítači chráněným nástrojem BitLocker.
+
+Pokud nastavení této zásady povolíte, lze používat čipové karty k ověření uživatelského přístupu k jednotce. Ověřování pomocí čipových karet lze vyžadovat zaškrtnutím políčka Požadovat používání čipových karet na pevných datových jednotkách.
+
+Poznámka: Toto nastavení je vynucováno při zapnutí nástroje BitLocker, nikoli při odemykání jednotky. Nástroj BitLocker povolí odemčení jednotky s jakýmikoli ochranami, které jsou k dispozici na jednotce.
+
+Pokud nastavení této zásady zakážete, nebudou mít uživatelé povoleno používat čipové karty k ověření přístupu k pevným datovým jednotkám chráněným nástrojem BitLocker.
+
+Pokud nastavení této zásady nenakonfigurujete, lze používat čipové karty k ověření uživatelského přístupu k jednotce chráněné nástrojem BitLocker.
+
+      </string>
+      
+      <string id="RDVPassphrase_Name">Konfigurovat použití hesel pro vyměnitelné datové jednotky</string>
+      <string id="RDVPassphrase_Help">Nastavení této zásady určuje, zda je vyžadováno heslo k odblokování vyměnitelných datových jednotek chráněných nástrojem BitLocker. Pokud se rozhodnete, že povolíte používání hesla, můžete vyžadovat, aby se heslo využívalo, vynutit požadavky na složitost hesla a nakonfigurovat minimální délku hesla. Aby bylo nastavení požadavku na složitost hesla platné, musí být povoleno nastavení zásad skupiny Heslo musí splňovat požadavky na složitost v nastavení Konfigurace počítače\Nastavení systému Windows\Nastavení zabezpečení\Zásady účtů\Zásady hesla\.
+
+Poznámka: Toto nastavení je vynucováno při zapnutí nástroje BitLocker, nikoli při odemykání svazku. Nástroj BitLocker povolí odemčení jednotky s jakýmikoli ochranami, které jsou k dispozici na jednotce.
+
+Pokud nastavení této zásady povolíte, mohou uživatelé nakonfigurovat heslo splňující požadavky, které definujete. Chcete-li vyžadovat použití hesla, vyberte možnost Vyžadovat heslo pro vyměnitelnou datovou jednotku. Pokud chcete pro heslo vynucovat požadavky na složitost, vyberte možnost Vyžadovat složitost hesel.
+
+Pokud je nastavena možnost Vyžadovat složitost hesel a je povolen nástroj BitLocker, je nutné k ověření složitosti hesla připojení k řadiči domény. Pokud je nastavena možnost Povolit složitost hesel, bude proveden pokus o připojení k řadiči domény, aby bylo možné ověřit, zda složitost hesla odpovídá pravidlům nastaveným zásadou. Pokud však žádné řadiče domény nejsou nalezeny, bude heslo akceptováno bez ohledu na skutečnou složitost hesla a jednotka bude za účelem ochrany šifrována pomocí tohoto hesla. Pokud je nastavena možnost Nepovolovat složitost hesel, nebude prováděno žádné ověřování složitosti hesel.
+
+Hesla musí mít minimálně 8 znaků. Chcete-li pro heslo nakonfigurovat větší minimální délku, zadejte požadovaný počet znaků do pole Minimální délka hesla.
+
+Pokud nastavení této zásady zakážete, nebude moci uživatel použít heslo.
+
+Pokud nastavení této zásady nenakonfigurujete, bude pro hesla podporováno výchozí nastavení, to znamená, že nebude vyžadována složitost hesla a heslo bude muset mít minimální délku 8 znaků.
+
+Poznámka: Pokud je povolen režim kompatibility se standardem FIPS, nelze hesla používat. To, zda je režim kompatibility se standardem FIPS povolen, určuje nastavení zásady Kryptografický modul systému: Pro šifrování, algoritmus hash a podepisování používat algoritmus kompatibilní s FIPS v nastavení Konfigurace počítače\Nastavení systému Windows\Nastavení zabezpečení\Místní zásady\Možnosti zabezpečení.
+
+      </string>
+
+      <string id="RDVDenyWriteAccess_Name">Odepřít přístup pro zápis k vyměnitelným jednotkám nechráněným nástrojem BitLocker</string>
+      <string id="RDVDenyWriteAccess_Help">Nastavení této zásady konfiguruje, zda je vyžadována ochrana nástrojem BitLocker, aby mohl počítač zapisovat data na vyměnitelnou datovou jednotku.
+
+Pokud nastavení této zásady povolíte, budou všechny vyměnitelné datové jednotky, které nejsou chráněny nástrojem BitLocker, připojeny v režimu jen pro čtení. Pokud je jednotka chráněna nástrojem BitLocker, bude připojena v režimu pro čtení i zápis.
+
+Jestliže je vybrána možnost Nepovolovat oprávnění k zápisu u zařízení nakonfigurovaných v jiné organizaci, budou mít oprávnění k zápisu pouze jednotky s poli identifikace odpovídajícími polím identifikace počítače. V případě přístupu k vyměnitelné datové jednotce bude zjištěno platné pole identifikace a povolená pole identifikace. Tato pole jsou definována nastavením zásady Zadat jedinečné identifikátory pro organizaci.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, budou všechny vyměnitelné datové jednotky v počítači připojeny v režimu pro čtení i zápis.
+
+Poznámka: Nastavení této zásady lze přepsat nastavením zásady v nastavení Konfigurace uživatele\Šablony pro správu\Systém\Přístup k vyměnitelnému úložišti. Jestliže je povoleno nastavení zásady Vyměnitelné disky: Odepřít přístup pro zápis, bude nastavení této zásady ignorováno.
+
+      </string>
+
+      <string id="RDVConfigureBDE_Name">Řídit použití nástroje BitLocker na vyměnitelných jednotkách</string>
+      <string id="RDVConfigureBDE_Help">Nastavení této zásady řídí používání nástroje BitLocker na vyměnitelných datových jednotkách. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker.
+
+Pokud je nastavení této zásady povoleno, můžete vybrat nastavení vlastnosti, které určuje, jak mohou uživatelé nástroj BitLocker nakonfigurovat. Pomocí možnosti Povolit uživatelům použít ochranu nástrojem BitLocker na vyměnitelných datových jednotkách můžete uživatelům povolit spuštění průvodce nastavením nástroje BitLocker na vyměnitelných datových jednotkách. Zvolením možnosti Povolit uživatelům pozastavit a dešifrovat ochranu nástrojem BitLocker na vyměnitelných datových jednotkách můžete uživatelům povolit odebrání ochrany nástrojem BitLocker Drive Encryption z jednotky nebo pozastavení šifrování v průběhu údržby. Další informace o pozastavení ochrany nástrojem BitLocker naleznete v průvodci nasazením k nástroji BitLocker Drive Encryption na webu Microsoft TechNet.
+
+Pokud nastavení této zásady nenakonfigurujete, budou moci uživatelé používat nástroj BitLocker na vyměnitelných diskových jednotkách.
+
+Pokud nastavení této zásady zakážete, nebudou moci uživatelé na vyměnitelných diskových jednotkách nástroj BitLocker používat.
+
+      </string>
+
+
+      <string id="RDVActiveDirectoryBackupDropDown_1">Zálohovat hesla pro obnovení a balíčky s klíči</string>
+      <string id="RDVActiveDirectoryBackupDropDown_2">Zálohovat pouze hesla pro obnovení</string>
+
+      <string id="RDVHybrid_Name">Povolit přístup k vyměnitelným datovým jednotkám chráněným nástrojem BitLocker z předchozích verzí systému Windows</string>
+      <string id="RDVHybrid_Help">Nastavení této zásady konfiguruje, zda lze odemknout vyměnitelné datové jednotky formátované se systémem souborů FAT a zobrazit je v počítačích s operačním systémem Windows Server 2008, Windows Vista, Windows XP s aktualizací Service Pack 3 (SP3) nebo Windows XP s aktualizací Service Pack 2 (SP2).
+
+Pokud je nastavení této zásady povoleno nebo není nakonfigurováno, lze vyměnitelné datové jednotky formátované systémem souborů FAT v počítačích s operačním systémem Windows Server 2008, Windows Vista, Windows XP SP3 či Windows XP SP2 odemknout a zobrazit jejich obsah. Tyto operační systémy mají k jednotkám chráněným nástrojem BitLocker oprávnění jen pro čtení.
+
+Pokud je nastavení této zásady povoleno, můžete zaškrtnutím políčka Neinstalovat čtečku BitLocker To Go na vyměnitelných jednotkách naformátovaných systémem souborů FAT zabránit uživatelům ve spuštění čtečky BitLocker To Go na vyměnitelných jednotkách. Jestliže je čtečkou BitLocker To Go (bitlockertogo.exe) vybavena jednotka, která nemá specifikováno pole identifikace, nebo pokud je pro jednotku zadáno stejné pole identifikace, jako je zadáno v nastavení zásady Zadat jedinečné identifikátory pro organizaci, zobrazí se uživateli výzva k aktualizaci nástroje BitLocker a čtečka BitLocker To Go bude odstraněna z jednotky. Za těchto podmínek musí být v počítači nainstalována čtečka BitLocker To Go, aby bylo možné odemknout vyměnitelnou jednotku v počítačích s operačním systémem Windows Server 2008, Windows Vista, Windows XP SP3 či Windows XP SP2. Jestliže toto políčko zaškrtnuto není, bude čtečka BitLocker To Go nainstalována na vyměnitelné jednotce, aby mohli uživatelé odemknout jednotku v počítačích se systémem Windows Server 2008, Windows Vista, Windows XP SP3 či Windows XP SP2, ve kterých není nainstalována čtečka BitLocker To Go.
+
+Pokud je nastavení této zásady zakázáno, nelze vyměnitelné datové jednotky naformátované systémem souborů FAT chráněné pomocí nástroje BitLocker v počítačích se systémem Windows Server 2008, Windows Vista, Windows XP SP3 či Windows XP SP2 odemknout. Čtečka Bitlockertogo.exe nebude nainstalována.
+
+Poznámka: Nastavení této zásady se nevztahuje na jednotky, které jsou naformátovány systémem souborů NTFS.
+
+      </string>
+
+      <string id="RDVAllowDRA_Name">Povolit agenty obnovování dat založené na certifikátu</string>
+ 
+      <string id="RDVConfigureSmartCard_Name">Konfigurovat použití čipových karet na vyměnitelných datových jednotkách</string>
+      <string id="RDVConfigureSmartCard_Help">Nastavení této zásady umožňuje určit, zda lze používat čipové karty k ověření uživatelského přístupu k vyměnitelným datovým jednotkám v počítači chráněným nástrojem BitLocker.
+
+Pokud nastavení této zásady povolíte, lze používat čipové karty k ověření uživatelského přístupu k jednotce. Ověřování pomocí čipových karet lze vyžadovat zaškrtnutím políčka Požadovat používání čipových karet na vyměnitelných datových jednotkách.
+
+Poznámka: Toto nastavení je vynucováno při zapnutí nástroje BitLocker, nikoli při odemykání jednotky. Nástroj BitLocker povolí odemčení jednotky s jakýmikoli ochranami, které jsou k dispozici na jednotce.
+
+Pokud nastavení této zásady zakážete, nebudou mít uživatelé povoleno používat čipové karty k ověření přístupu k vyměnitelným datovým jednotkám chráněným nástrojem BitLocker.
+
+Pokud nastavení této zásady nenakonfigurujete, budou čipové karty k dispozici pro ověření uživatelského přístupu k vyměnitelné datové jednotce chráněné nástrojem BitLocker.
+
+      </string>
+
+      <string id="EnhancedPIN_Name">Povolit rozšířené PIN kódy pro spuštění</string>
+      <string id="EnhancedPIN_Help">Toto nastavení umožňuje nakonfigurovat, zda se budou s nástrojem BitLocker používat rozšířené spouštěcí PIN kódy.
+
+Rozšířené spouštěcí PIN kódy umožňují používat různé znaky, včetně velkých a malých písmen, symbolů, čísel a mezer. Nastavení této zásady je použito, pokud je spuštěn nástroj BitLocker.
+
+Pokud nastavení této zásady povolíte, budou všechny nové spouštěcí PIN kódy nástroje BitLocker rozšířené PIN kódy.
+
+Poznámka: Ne všechny počítače musí podporovat rozšířené PIN kódy v prostředí PXE (preboot execution environment). Doporučujeme, aby uživatelé provedli kontrolu systému během instalace nástroje BitLocker.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, nebudou rozšířené PIN kódy použity.
+
+      </string>
+
+</stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Požadovat zálohování nástroje BitLocker do adresáře AD DS.</checkBox>
+        <text>Pokud je tato možnost vybrána, nelze zapnout nástroj BitLocker, nezdaří-li se zálohování (doporučená výchozí hodnota). </text>
+        <text>Pokud není tato možnost vybrána, lze zapnout nástroj BitLocker, i když se zálohování nezdaří. Další pokus o zálohování se automaticky neprovádí.</text>
+        <dropdownList refId="ActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Vyberte informace pro obnovení nástroje BitLocker, které chcete uložit:</dropdownList>
+        <text/>
+        <text>Heslo pro obnovení je 48místné číslo, které umožňuje odemknout přístup k jednotce chráněné pomocí nástroje BitLocker.</text>
+        <text>Balíček s klíčem obsahuje šifrovací klíč nástroje BitLocker pro jednotku zabezpečený jedním či více hesly pro obnovení.</text>
+	    	<text>Balíčky s klíči mohou pomoci provádět obnovování zvláštními způsoby v případě, že je disk poškozen. </text>
+      </presentation>
+      
+      <presentation id="ConfigureStartupUsage_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Povolit nástroj BitLocker bez kompatibilního čipu TPM</checkBox>
+        <text>(vyžaduje spouštěcí klíč na jednotce USB Flash)</text>
+        <text>Nastavení pro počítače s čipem TPM:</text>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurovat spouštěcí klíč čipu TPM:</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurovat spouštěcí PIN kód čipu TPM:</dropdownList>
+        <text>Důležité: Pokud budete vyžadovat spouštěcí klíč, nesmíte povolit spouštěcí PIN kód. </text>
+        <text>Pokud budete vyžadovat spouštěcí PIN kód, nesmíte povolit spouštěcí klíč. V opačném případě dojde k chybě zásad.</text>
+        <text>Poznámka: Nepovolujte spouštěcí PIN kód i spouštěcí klíč pro skrytí rozšířené stránky v počítači s čipem TPM.</text>
+      </presentation>
+
+      <presentation id="ConfigureAdvancedStartup_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Povolit nástroj BitLocker bez kompatibilního čipu TPM</checkBox>
+        <text>(vyžaduje spouštěcí klíč na jednotce USB Flash)</text>
+        <text>Nastavení pro počítače s čipem TPM:</text>
+        <dropdownList refId="ConfigureTPMUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurovat spuštění čipu TPM:</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurovat spouštěcí PIN kód čipu TPM:</dropdownList>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurovat spouštěcí klíč čipu TPM:</dropdownList>
+        <dropdownList refId="ConfigureTPMPINKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurovat spouštěcí klíč a PIN kód čipu TPM:</dropdownList>
+        <text/>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryUsage_Name">
+        <text>Důležité: Chcete-li zamezit ztrátě dat, musíte mít připraven způsob obnovení nástroje šifrovacích klíčů nástroje BitLocker. Pokud nepovolíte obě možnosti obnovení uvedené níže, musíte povolit zálohování informací obnovení nástroje BitLocker do úložiště služby AD DS. V opačném případě dojde k chybě zásad.</text>
+        <dropdownList refId="ConfigureRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurovat 48místné heslo pro obnovení:</dropdownList>
+        <dropdownList refId="ConfigureRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurovat 256bitový obnovovací klíč:</dropdownList>
+        <text>Poznámka: Pokud nepovolíte heslo pro obnovení a budete vyžadovat obnovovací klíč, nebudou moci uživatelé povolit nástroj BitLocker bez uložení na jednotku USB.</text>
+        <text/>
+      </presentation>
+
+      <presentation id="OSRecoveryUsage_Name">
+        <checkBox refId="OSAllowDRA_Name" defaultChecked="true">Povolit agenta obnovování dat</checkBox>
+        <text>Konfigurovat pro uživatele úložiště informací obnovení nástroje BitLocker:</text>
+        <dropdownList refId="OSRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="OSRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="OSHideRecoveryPage_Name" defaultChecked="false">Vynechat možnosti obnovení v průvodci nastavením nástroje BitLocker</checkBox>
+        <checkBox refId="OSActiveDirectoryBackup_Name" defaultChecked="true">Ukládat informace obnovení nástroje BitLocker do úložiště služby AD DS pro jednotky operačního systému</checkBox>
+        <dropdownList refId="OSActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Konfigurovat ukládání informací pro obnovení nástroje BitLocker do úložiště služby AD DS:</dropdownList>
+        <checkBox refId="OSRequireActiveDirectoryBackup_Name">Nepovolit nástroj BitLocker, dokud nebudou informace pro obnovení uloženy do úložiště služby AD DS pro jednotky operačního systému</checkBox>
+       </presentation>
+
+      <presentation id="FDVRecoveryUsage_Name">
+        <checkBox refId="FDVAllowDRA_Name" defaultChecked="true">Povolit agenta obnovování dat</checkBox>
+        <text>Konfigurovat pro uživatele úložiště informací obnovení nástroje BitLocker:</text>
+        <dropdownList refId="FDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="FDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="FDVHideRecoveryPage_Name" defaultChecked="false">Vynechat možnosti obnovení v průvodci nastavením nástroje BitLocker</checkBox>
+        <checkBox refId="FDVActiveDirectoryBackup_Name" defaultChecked="true">Ukládat informace obnovení nástroje BitLocker do úložiště služby AD DS pro pevné datové jednotky</checkBox>
+        <dropdownList refId="FDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Konfigurovat ukládání informací pro obnovení nástroje BitLocker do úložiště služby AD DS:</dropdownList>
+        <checkBox refId="FDVRequireActiveDirectoryBackup_Name">Nepovolit nástroj BitLocker, dokud nebudou informace pro obnovení uloženy do úložiště služby AD DS pro pevné datové jednotky</checkBox>
+      </presentation>
+
+      <presentation id="RDVRecoveryUsage_Name">
+        <checkBox refId="RDVAllowDRA_Name" defaultChecked="true">Povolit agenta obnovování dat</checkBox>
+        <text>Konfigurovat pro uživatele úložiště informací obnovení nástroje BitLocker:</text>
+        <dropdownList refId="RDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="RDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="RDVHideRecoveryPage_Name" defaultChecked="false">Vynechat možnosti obnovení v průvodci nastavením nástroje BitLocker</checkBox>
+        <checkBox refId="RDVActiveDirectoryBackup_Name" defaultChecked="true">Ukládat informace obnovení nástroje BitLocker do úložiště služby AD DS pro vyměnitelné datové jednotky</checkBox> 
+        <dropdownList refId="RDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Konfigurovat ukládání informací pro obnovení nástroje BitLocker do úložiště služby AD DS:</dropdownList>
+        <checkBox refId="RDVRequireActiveDirectoryBackup_Name">Nepovolit nástroj BitLocker, dokud nebudou informace pro obnovení uloženy do úložiště služby AD DS pro vyměnitelné datové jednotky</checkBox>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryFolder_Name">
+        <textBox refId="ConfigureRecoveryFolderPath_Input">
+          <label>Konfigurovat výchozí cestu ke složce:</label>
+          <defaultValue/>
+        </textBox>
+        <text>Zadejte plně kvalifikovanou cestu nebo do cesty zahrňte proměnné prostředí počítače. </text>
+        <text>Například můžete zadat "\\server\backupfolder" nebo "%SecureDriveEnvironmentVariable%\backupfolder".</text>
+        <text>Poznámka: Uživatel bude mít ve všech případech možnost vybrat jinou složku pro uložení hesla obnovení.</text>
+        <text/>
+      </presentation>
+      
+      
+      <presentation id="EncryptionMethod_Name">
+        <dropdownList refId="EncryptionMethodDropDown_Name" noSort="true" defaultItem="0">Vyberte šifrovací metodu:</dropdownList>
+      </presentation>
+      
+      <presentation id="PlatformValidation_Name">
+        <text>Profil ověření platformy se skládá ze sady indexů PCR. Každý index registru PCR je přidružený ke komponentám, které se spustí při spuštění systému Windows.</text>
+        <text>Pomocí zaškrtávacích políček níže zvolte indexy PCR, které chcete zahrnout do profilu. </text>
+        <text>Při změně tohoto nastavení postupujte opatrně.</text>
+        <text>Doporučujeme pro indexy PCR použít výchozí nastavení 0, 2, 4, 5, 8, 9, 10 a 11.</text>
+        <text>K tomu, aby se ochrana nástrojem BitLocker projevila, musíte zahrnout index registru č. 11.</text>
+
+        <text>Další informace o výhodách a rizicích spojených se změnou výchozího profilu ověření platformy TPM naleznete v online dokumentaci.</text>
+        
+        <checkBox refId="PlatformValidation_Setting0" defaultChecked="true">PCR 0: Core Root of Trust of Measurement (CRTM), systém BIOS a rozšíření platformy</checkBox>
+        <checkBox refId="PlatformValidation_Setting1">PCR 1: Konfigurace a data platformy a základní desky</checkBox>
+        <checkBox refId="PlatformValidation_Setting2" defaultChecked="true">PCR 2: Kód komponenty ROM</checkBox>
+        <checkBox refId="PlatformValidation_Setting3">PCR 3: Konfigurace a data komponenty ROM</checkBox>
+        <checkBox refId="PlatformValidation_Setting4" defaultChecked="true">PCR 4: Kód hlavního spouštěcího záznamu (MBR)</checkBox>
+        <checkBox refId="PlatformValidation_Setting5" defaultChecked="true">PCR 5: Tabulka oddílů hlavního spouštěcího záznamu (MBR)</checkBox>
+        <checkBox refId="PlatformValidation_Setting6">PCR 6: Události přechodu stavu a probuzení</checkBox>
+        <checkBox refId="PlatformValidation_Setting7">PCR 7: Vyhrazeno pro výrobce počítače</checkBox>
+        <checkBox refId="PlatformValidation_Setting8" defaultChecked="true">PCR 8: Spouštěcí sektor systému NTFS</checkBox>
+        <checkBox refId="PlatformValidation_Setting9" defaultChecked="true">PCR 9: Spouštěcí blok systému NTFS</checkBox>
+        <checkBox refId="PlatformValidation_Setting10" defaultChecked="true">PCR 10: Správce spouštění systému</checkBox>
+        <checkBox refId="PlatformValidation_Setting11" defaultChecked="true">PCR 11: Řízení přístupu k nástroji BitLocker</checkBox>
+        <checkBox refId="PlatformValidation_Setting12">PCR 12: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting13">PCR 13: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting14">PCR 14: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting15">PCR 15: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting16">PCR 16: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting17">PCR 17: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting18">PCR 18: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting19">PCR 19: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting20">PCR 20: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting21">PCR 21: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting22">PCR 22: Pro budoucí použití</checkBox>
+        <checkBox refId="PlatformValidation_Setting23">PCR 23: Pro budoucí použití</checkBox>
+      </presentation>
+      
+      <presentation id="MorBehavior_Name">
+     
+      </presentation>
+
+      <presentation id="IdentificationField">
+        <textBox refId="IdentificationField">
+          <label>Pole identifikace nástroje BitLocker:</label>
+        </textBox>
+        <textBox refId="SecIdentificationField">
+          <label>Povolené pole identifikace nástroje BitLocker:</label>
+        </textBox>
+      </presentation>
+
+      <presentation id="UserCertificateOID">
+        <textBox refId="UserCertificateOID">
+          <label>Identifikátor objektu:</label>
+          <defaultValue>1.3.6.1.4.1.311.67.1.1</defaultValue>
+        </textBox>
+        </presentation>
+
+     <presentation id="MinimumPINLength">
+        <decimalTextBox refId="MinPINLength" defaultValue="4">Minimální počet znaků:</decimalTextBox>
+      </presentation>
+      
+     <presentation id="FDVPassphrase_Name">
+        <checkBox refId="FDVRequirePassphrase">Vyžadovat heslo pro pevnou datovou jednotku</checkBox>
+        <dropdownList refId="FDVPassphraseComplexity" noSort="true" defaultItem="0">Konfigurovat složitost hesla pro pevné datové jednotky:</dropdownList>
+        <decimalTextBox refId="FDVMinPassphraseLength" defaultValue="8">Minimální délka hesla pro pevnou datovou jednotku:</decimalTextBox>
+       <text>Poznámka: Je nutné povolit nastavení zásad Heslo musí splňovat požadavky na složitost, aby se nastavení složitosti hesel projevilo.</text>
+      </presentation>
+
+       <presentation id="FDVConfigureSmartCard">
+        <checkBox refId="FDVRequireSmartCard_Name">Požadovat používání čipových karet na pevných datových jednotkách</checkBox>
+      </presentation>
+
+     <presentation id="RDVPassphrase_Name">
+        <checkBox refId="RDVRequirePassphrase">Vyžadovat heslo pro vyměnitelnou datovou jednotku</checkBox>
+       <dropdownList refId="RDVPassphraseComplexity" noSort="true" defaultItem="0">Konfigurovat složitost hesla pro vyměnitelné datové jednotky:</dropdownList>
+        <decimalTextBox refId="RDVMinPassphraseLength" defaultValue="8">Minimální délka hesla pro vyměnitelnou datovou jednotku:</decimalTextBox>
+<text>Poznámka: Je nutné povolit nastavení zásad Heslo musí splňovat požadavky na složitost, aby se nastavení složitosti hesel projevilo.</text>
+      </presentation>
+
+      <presentation id="RDVConfigureBDE">
+        <checkBox refId="RDVAllowBDE_Name" noSort="true" defaultChecked="true">Povolit uživatelům použít ochranu nástrojem BitLocker na vyměnitelných datových jednotkách</checkBox>
+        <checkBox refId="RDVDisableBDE_Name" noSort="true" defaultChecked="true">Povolit uživatelům pozastavit a dešifrovat ochranu nástrojem BitLocker na vyměnitelných datových jednotkách</checkBox>
+      </presentation>
+
+      <presentation id="RDVDenyWriteAccess">
+        <checkBox refId="RDVCrossOrg" noSort="true" defaultChecked="false">Nepovolovat oprávnění k zápisu u zařízení nakonfigurovaných v jiné organizaci</checkBox>
+      </presentation>
+
+
+      <presentation id="RDVConfigureSmartCard">
+        <checkBox refId="RDVRequireSmartCard_Name" noSort="true" defaultItem="0">Vyžadovat použití čipových karet na vyměnitelných datových jednotkách</checkBox>
+        </presentation>
+          
+      <presentation id="EnhancedPIN">
+
+      </presentation>
+
+      <presentation id="FDVDiscoveryVolumeType">
+        <checkBox refId="FDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">Neinstalovat čtečku BitLocker To Go na pevných jednotkách naformátovaných systémem souborů FAT</checkBox>
+      </presentation>
+
+      <presentation id="RDVDiscoveryVolumeType">
+        <checkBox refId="RDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">Neinstalovat čtečku BitLocker To Go na vyměnitelných jednotkách naformátovaných systémem souborů FAT</checkBox>
+      </presentation>
+
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

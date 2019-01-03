@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Kerberos 設定</displayName>
+  <description>Kerberos 驗證通訊協定的組態設定。</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">使用樹系搜尋順序</string>
+      <string id="forestsearch_explain">這個原則設定會定義 Kerberos 用戶端在嘗試解析二部服務主要名稱 (SPN) 時會搜尋的信任樹系清單。
+
+如果啟用這個原則設定，Kerberos 用戶端在無法解析二部分 SPN 時，會搜尋這個清單中的樹系。如果找到相符的項目，Kerberos 用戶端會要求適當網域的轉介票證。
+
+如果停用或未設定這個原則設定，則 Kerberos 用戶端不會搜尋所列樹系來解析 SPN。如果 Kerberos 用戶端因為找不到名稱而無法解析 SPN，就可能使用 NTLM 驗證。</string>
+      <string id="hosttorealm">定義主機名稱與 Kerberos 領域對應</string>
+      <string id="hosttorealm_explain">這個原則設定可讓您指定會對應到 Kerberos 領域的 DNS 主機名稱和 DNS 尾碼。
+
+如果啟用這個原則設定，您可以檢視及變更對應到 Kerberos 領域 (由群組原則定義) 的 DNS 主機名稱和 DNS 尾碼清單。若要檢視對應清單，請啟用原則設定，然後按一下 [顯示] 按鈕。若要新增對應，請啟用原則設定並記下語法，然後按一下 [顯示]。在 [顯示內容] 對話方塊的 [值名稱] 欄中，輸入領域名稱。在 [值] 欄中輸入使用適當語法格式的 DNS 主機名稱和 DNS 尾碼的清單。若要從清單中移除對應，請按一下要移除的對應項目，然後按 DELETE 鍵。若要編輯對應，請從清單中移除目前的項目，然後新增一個具有不同參數的新項目。
+
+如果停用這個原則設定，會刪除由群組原則所定義的主機名稱與 Kerberos 領域對應清單。
+
+如果未設定這個原則設定，則系統將使用本機登錄中所定義的主機名稱與 Kerberos 領域對應 (如果有的話)。</string>
+      <string id="MitRealms">定義可在內部操控的 Kerberos V5 領域設定</string>
+      <string id="MitRealms_explain">這個原則設定會設定 Kerberos 用戶端，讓它可以依這個原則設定的定義，以可交互作用的 Kerberos V5 領域進行驗證。
+      
+如果啟用這個原則設定，您可以檢視及變更可交互作用的 Kerberos V5 領域清單及其設定。若要檢視可交互作用的 Kerberos V5 領域清單，請啟用原則設定，然後按一下 [顯示] 按鈕。若要新增可交互作用的 Kerberos V5 領域，請啟用原則設定並記下語法，然後按一下 [顯示]。在 [顯示內容] 對話方塊的 [值名稱] 欄中，輸入可交互作用的 Kerberos V5 領域名稱。在 [值] 欄中，使用適當語法格式，輸入領域旗標和 KDC 主機的主機名稱。若要從清單中移除可交互作用的 Kerberos V5 領域 [值名稱] 或 [值] 項目，請按一下該項目，然後按 DELETE 鍵。若要編輯對應，請從清單中移除目前的項目，然後新增一個具有不同參數的新項目。
+
+如果停用這個原則設定，會刪除由群組原則所定義之可交互作用的 Kerberos V5 領域設定。
+
+如果未設定這個原則設定，則系統將使用本機登錄中所定義之可交互作用的 Kerberos V5 領域設定 (如果有的話)。</string>
+      <string id="ValidateKDC">要求嚴格的 KDC 驗證</string>
+      <string id="ValidateKDC_explain">這個原則設定會控制 Kerberos 用戶端在驗證 KDC 憑證時的行為。
+      
+如果啟用這個原則設定，Kerberos 用戶端會要求 KDC 的 X.509 憑證在擴充金鑰使用方法 (EKU) 延伸中必須包含 KDC 金鑰目的物件識別碼，而且 KDC 的 X.509 憑證必須包含符合網域 DNS 名稱的 dNSName subjectAltName (SAN) 延伸。如果電腦已加入網域，Kerberos 用戶端會要求 KDC 的 X.509 憑證必須由 NTAUTH 存放區中的憑證授權單位 (CA) 簽署。如果電腦未加入網域，則 Kerberos 用戶端會允許在 KDC 之 X.509 憑證的路徑驗證中，使用智慧卡上的根 CA 憑證。
+
+如果停用或未設定個原則設定，則 Kerberos 用戶端只會要求 KDC 憑證在 EKU 延伸中必須包含「伺服器驗證」目的物件識別碼。
+</string>
+      <string id="StrictTarget">對遠端程序呼叫要求嚴格的目標 SPN 比對</string>
+      <string id="StrictTarget_explain">當應用程式嘗試用 NULL 值做為服務主要名稱 (SPN) 來與這部伺服器建立遠端程序呼叫 (RPC) 時，執行 Windows 7 的電腦會產生 SPN 以嘗試使用 Kerberos。這個原則設定可讓您設定這部伺服器，使 Kerberos 可以將內含這個由系統產生之 SPN 的票證解密。
+
+如果啟用這個原則設定，只有以 LocalSystem 或 NetworkService 身分執行的服務能夠接受這些連線。以 LocalSystem 或 NetworkService 以外識別執行的服務可能無法通過驗證。
+
+如果停用或未設定這個原則設定，則任何服務都能夠使用這個系統產生的 SPN 接受連入連線。</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">定義主機名稱與領域對應:</listBox>
+        <text></text>
+        <text>語法:</text>
+        <text>輸入 Kerberos 領域名稱做為 [值名稱]。</text>
+        <text>輸入主機名稱和 DNS 尾碼 (您想要</text>
+        <text>對應至 Kerberos 領域的那些) 以做為 [值]。若要新增多個</text>
+        <text>名稱，請以 ";" 分隔項目。</text>
+        <text></text>
+        <text>注意: 若要指定 DNS 尾碼，請於項目之前加上句點 '.'。</text>
+        <text>若為主機名稱項目，請不要加上前置的句點 '.'。</text>
+        <text></text>
+        <text>例如:</text>
+        <text>值名稱:MICROSOFT.COM</text>
+        <text>值:.microsoft.com; .ms.com; computer1.fabrikam.com;</text>
+        <text></text>
+        <text>在上述範例中。所有含</text>
+        <text>*.microsoft.com 或 *.ms.com 之 DNS 尾碼的主體，都將對應至</text>
+        <text>MICROSOFT.COM Kerberos 領域。此外，主機名稱</text>
+        <text>computer1.fabrikam.com 也會對應至 </text>
+        <text>MICROSOFT.COM Kerberos 領域。</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">定義可在內部操控的 Kerberos V5 領域設定:</listBox>
+        <text></text>
+        <text>語法:</text>
+        <text>輸入可在內部操控的 Kerberos V5 領域名稱做為 [值名稱]。</text>
+        <text>輸入 KDC 的領域旗標和主機名稱以做為</text>
+        <text>[值]。在領域旗標前後括上下列</text>
+        <text>標記 &lt;f&gt; &lt;/f&gt;。在 KDC 清單前後括上標記 &lt;k&gt; &lt;/k&gt;</text>
+        <text>若要新增多個 KDC 名稱，請以</text>
+        <text>分號 ";" 分隔項目。</text>
+        <text></text>
+        <text>例如:</text>
+        <text>值名稱:TEST.COM</text>
+        <text>值:&lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>其他範例:</text>
+        <text>值名稱:REALM.FABRIKAM.COM</text>
+        <text>值:&lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">模式:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>要搜尋的樹系</label>
+        </textBox>
+        <text>語法:</text>
+        <text>輸入啟用這個原則後要搜尋的樹系清單。</text>
+        <text>使用完整網域名稱 (FQDN) 命名格式。</text>
+        <text>用分號 ";" 隔開多個搜尋項目。</text>
+        <text>詳細資料:</text>
+        <text>不必列示目前樹系，因為樹系搜尋順序會先使用通用類別目錄，然後再依所列順序搜尋。</text>
+        <text>您不必個別列出樹系中的所有網域。</text>
+        <text>如果列出信任樹系，就會搜尋該樹系中的所有網域。</text>
+        <text>為獲得最佳效能，請依可能成功的順序列示樹系。 </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>indtast det viste navn her</displayName>
+  <description>indtast beskrivelsen her</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Denne politikindstilling giver dig mulighed for at administrere Active Directory-domænetjenestens sikkerhedskopi af genoprettelsesoplysningerne til BitLocker-drevkryptering. Herved får du en administrativ metode til genoprettelse af data, som er krypteret af BitLocker, og kan forhindre datatab som følge af manglende nøgleoplysninger. Denne politik kan kun anvendes på computere, der kører Windows Server 2008 eller Windows Vista.
+
+Hvis du aktiverer denne politikindstilling, sikkerhedskopieres BitLocker-genoprettelsesoplysningerne automatisk og uden meddelelse til Active Directory-domænetjenesten, når BitLocker aktiveres på computeren. Denne politikindstilling aktiveres, når du slår BitLocker til.
+
+Bemærk! Du skal først oprette passende skemaudvidelser og adgangskontrolindstillinger på domænet, inden Active Directory-domænetjenestens sikkerhedskopiering kan fuldføres. Du kan finde flere oplysninger om, hvordan du installerer Active Directory-domænetjenesten til BitLocker, i BitLocker Drive Encryption Deployment Guide, på Microsoft TechNet.
+
+BitLocker-genoprettelsesoplysninger omfatter genoprettelsesadgangskode og visse entydige id-data. Du kan også medtage en pakke, der indeholder en BitLocker-beskyttet diskenheds krypteringsnøgle. Denne nøglepakke sikres af en eller flere genoprettelsesadgangskoder, og den kan hjælpe med at udføre særlig genoprettelse, hvis disken er beskadiget. 
+
+Hvis du vælger "Kræv BitLocker-sikkerhedskopiering til Active Directory-domænetjenester", kan BitLocker ikke aktiveres, medmindre computeren er tilsluttet domænet, og Active Directory-domænetjenestens sikkerhedskopiering fuldføres. Indstillingen er valgt som standard, da det sikrer, at der kan foretages BitLocker-genoprettelse. Ellers bliver det forsøgt foretaget en sikkerhedskopiering af Active Directory-domænetjenesten, men fejl på netværket eller andre fejl i sikkerhedskopieringen har ikke indflydelse på BitLocker-konfigurationen.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, sikkerhedskopieres BitLocker-genoprettelsesoplysninger ikke til Active Directory-domænetjenesterne.
+
+Bemærk! TPM (Trusted Platform Module) skal muligvis initialiseres under konfigurationen af BitLocker. Slå politikindstillingen "Aktiver TPM-sikkerhedskopiering til Active Directory-domænetjenester" til under "System\Trusted Platform Module Services\" for at sikre, at TPM-oplysningerne også sikkerhedskopieres.
+</string>
+      <string id="ActiveDirectoryBackup_Name">Gem BitLocker-genoprettelsesoplysninger i Active Directory-domænetjenester (Windows Server 2008 og Windows Vista)</string>
+      <string id="ActiveDirectoryBackupDropDown_1">Genoprettelsesadgangskoder og nøglepakker</string>
+      <string id="ActiveDirectoryBackupDropDown_2">Kun genoprettelsesadgangskoder</string>
+      
+      <string id="ConfigureStartupUsage_Help">Ved hjælp af denne politikindstilling kan du styre, om guiden Installation af BitLocker-drevkryptering skal kunne oprette yderligere en godkendelsesmetode, som skal angives, hver gang computeren starter. Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+\Bemærk! Denne politikindstilling gælder kun computere, som kører Windows Server 2008 eller Windows Vista.
+
+\På en computer med et kompatibelt TPM (Trusted Platform Module), kan der bruges to typer startgodkendelse for at beskytte krypterede data yderligere. Når computeren starter, kan brugeren blive bedt om at indsætte et USB-flashdrev, der indeholder en startnøgle. Brugeren skal evt. også angive en startpinkode på mellem 4 og 20 cifre. 
+
+Hvis en computer ikke indeholder et kompatibelt TPM, kræves der et USB-flashdrev med en startnøgle. Uden TPM er BitLocker-krypterede data kun beskyttet af nøglematerialet på USB-flashdrevet.
+
+Hvis du aktiverer politikindstillingen, vises siden i guiden, så brugeren kan konfigurere avancerede startindstillinger for BitLocker. Du kan desuden konfigurere indstillinger for computere med eller uden TPM.
+
+Hvis du deaktiverer eller undlader at konfigurere politikindstillingen, vil installationsguiden til BitLocker vise de grundlæggende trin, der gør det muligt for brugere at aktivere BitLocker på computere med TPM. I denne grundlæggende guide kan der ikke konfigureres en ekstra startnøgle eller en startpinkode.
+</string>
+      
+      <string id="ConfigureStartupUsage_Name">Kræv yderligere godkendelse ved start (Windows Server 2008 og Windows Vista)</string>
+      <string id="ConfigureAdvancedStartup_Name">Kræv yderligere godkendelse ved start</string>
+      
+      <string id="ConfigureAdvancedStartup_Help">Med denne politikindstilling kan du konfigurere, om BitLocker kræver yderligere godkendelse, hver gang computeren starter, og om du skal bruge BitLocker med eller uden et TPM-modul (Trusted Platform Module). Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+Bemærk! Kun én af de ekstra godkendelsesindstillinger kan kræves ved start, ellers opstår der en fejl i politikken.
+
+Hvis du vil bruge BitLocker på en computer uden TPM, skal du markere afkrydsningsfeltet "Tillad BitLocker uden en kompatibel TPM". I denne tilstand kræver opstarten et USB-drev, og nøgleoplysningerne, som bruges til at kryptere drevet, gemmes på  USB-drevet, hvorved der oprettes en USB-nøgle. Når USB-nøglen indsættes, godkendes adgangen til drevet, hvorefter der er adgang til drevet. Hvis USB-nøglen forsvinder eller ikke er tilgængelig, skal du bruge en af BitLocker-genoprettelsesindstillingerne til at få adgang til drevet.
+
+På en computer med et kompatibelt TPM-modul kan der bruges fire godkendelsesmetoder ved opstart til at beskytte krypterede data yderligere. Når computeren starter, kan den bruge TPM til godkendelse alene, eller den kan kræve, at der også indsættes et USB-flashdrev, som indeholder en startnøgle, at der angives en pinkode på mellem 4 og 20 cifre, eller begge dele.
+
+Hvis du aktiverer denne politikindstilling, kan brugere konfigurere avancerede startindstillinger i installationsguiden til BitLocker.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kan brugere kun konfigurere grundlæggende indstillinger på computere med et TPM-modul.
+
+Bemærk! Hvis du vil kræve, at der bruges en start-pinkode og et USB-flashdrev, skal du konfigurere BitLocker-indstillinger ved hjælp af kommandolinjeværktøjet manage-bde i stedet for guiden til installation af BitLocker-drevkryptering.
+
+</string>
+
+      <string id="ConfigureTPMPINKeyUsageDropDown_Optional">Tillad startnøgle og pinkode med TPM</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Require">Kræv startnøgle og pinkode med TPM</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Disallow">Tillad ikke startnøgle og pinkode med TPM</string>
+
+      <string id="ConfigureTPMUsageDropDown_Optional">Tillad TPM</string>
+      <string id="ConfigureTPMUsageDropDown_Require">Kræv TPM</string>
+      <string id="ConfigureTPMUsageDropDown_Disallow">Tillad ikke TPM</string>
+
+      <string id="ConfigurePINUsageDropDown_Optional">Tillad startpinkode med TPM</string>
+      <string id="ConfigurePINUsageDropDown_Require">Kræv startpinkode med TPM</string>
+      <string id="ConfigurePINUsageDropDown_Disallow">Tillad ikke startpinkode med TPM</string>
+
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Optional">Tillad startnøgle med TPM</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Require">Kræv startnøgle med TPM</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Disallow">Tillad ikke startnøgle med TPM</string>
+
+
+      <string id="ConfigureRecoveryUsage_Help">Med denne politikindstilling kan du styre, om installationsguiden til BitLocker-drevkryptering skal kunne vise og angive genoprettelsesindstillinger til BitLocker. Denne politik gælder kun computere, der kører Windows Server 2008 eller Windows Vista. Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+To genoprettelsesindstillinger kan låse op for adgangen til BitLocker-krypterede data, hvis de krævede startnøgleoplysninger mangler. Brugeren kan enten skrive en tilfældig numerisk genoprettelsesadgangskode på 48 cifre eller indsætte et USB-flashdrev, der indeholder en 256-bit genoprettelsesnøgle.
+
+Hvis du aktiverer politikindstillingen, kan du konfigurere de indstillinger, som vises i installationsguiden til genoprettelse af krypterede data i BitLocker. Hvis du vælger at gemme på et USB-flashdrev, gemmes den 48-cifrede genoprettelsesadgangskode som en tekstfil og 256-bit genoprettelsesnøglen som en skjult fil. Hvis du gemmer i en mappe, bliver den 48-cifrede genoprettelsesadgangskode gemt som en tekstfil. Hvis du udskriver, udskrives den 48-cifrede genoprettelsesadgangskode på standardprinteren. Hvis du f.eks. ikke tillader den 48-cifrede genoprettelsesadgangskode, kan brugere ikke udskrive eller gemme genoprettelsesoplysninger i en mappe
+
+Bemærk! Hvis TPM skal initialiseres under konfigurationen af BitLocker, bliver TPM-ejeroplysningerne gemt eller udskrevet med BitLocker-genoprettelsesoplysninger. Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vises der i installationsguiden til BitLocker metoder til at gemme genoprettelsesindstillinger.
+
+Bemærk! Hvis TPM skal initialiseres under konfigurationen af BitLocker, bliver TPM-ejeroplysningerne gemt eller udskrevet med BitLocker-genoprettelsesoplysninger.
+
+Bemærk! Den 48-cifrede genoprettelsesadgangskode er ikke tilgængelig i FIPS-kompatibilitetstilstand. 
+
+Vigtigt! Denne politikindstilling giver dig en administrativ metode til genoprettelse af data, som er krypteret af BitLocker, og en måde at undgå tab af data på som følge af manglende oplysninger om nøgler. Hvis du vælger, at begge genoprettelsesindstillinger ikke skal tillades, skal du aktivere politikindstillingen "Gem BitLocker-genoprettelsesoplysninger i Active Directory-domænetjenester (Windows Server 2008 og Windows Vista)". Ellers opstår der en fejl i politikken.
+
+      </string>
+      
+      <string id="ConfigureRecoveryUsage_Name">Vælg, hvordan brugere kan genoprette BitLocker-beskyttede drev (Windows Server 2008 og Windows Vista)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Require">Kræv genoprettelsesadgangskode (standard)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Disallow">Tillad ikke genoprettelsesadgangskode</string>
+
+      <string id="ConfigureRecoveryKeyUsageDropDown_Require">Kræv genoprettelsesnøgle (standard)</string>
+      <string id="ConfigureRecoveryKeyUsageDropDown_Disallow">Tillad ikke genoprettelsesnøgle</string>
+
+
+      <string id="OSRecoveryUsage_Name">Vælg, hvordan BitLocker-beskyttede operativsystemdrev kan genoprettes</string>
+      
+      <string id="OSRecoveryUsage_Help">Med denne politikindstilling kan du styre, hvordan BitLocker-beskyttede operativsystemdrev genoprettes, hvis de krævede startnøgleoplysninger mangler. Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+Afkrydsningsfeltet "Tillad betroet bruger til genoprettelse af certifikatbaserede data" bruges til at angive, om en betroet bruger til genoprettelse af data kan bruges til BitLocker-beskyttede operativsystemdrev. Inden en betroet bruger til genoprettelse af data kan bruges, skal brugeren tilføjes fra elementet Politikker for offentlige nøgler i enten Group Policy Management Console eller Lokal editor til gruppepolitikobjekter. Du kan finde flere oplysninger om tilføjelse af betroede brugere til genoprettelse af data i installationsvejledningen BitLocker Drive Encryption Deployment Guide på Microsoft TechNet.
+
+I "Konfigurer brugerlagrede data fra BitLocker-genoprettelsesoplysninger" skal du vælge, om det er tilladt, krævet eller ikke tilladt for brugere at oprette en genoprettelsesadgangskode på 48 cifre eller en genoprettelsesnøgle på 256 bit.
+
+Vælg "Udelad genoprettelsesindstillinger i guiden til installation af BitLocker" for at forhindre brugere i at angive genoprettelsesindstillinger, når de aktiverer BitLocker på et drev. Dette betyder, at du ikke kan angive, hvilken genoprettelsesindstilling der skal bruges, når du aktiverer BitLocker; i stedet for bestemmes BitLocker-genoprettelsesoplysninger for drevet af politikindstillingen.
+
+I "Gem BitLocker-genoprettelsesoplysninger i Active Directory-domænetjenester" skal du vælge, hvilke BitLocker-genoprettelsesoplysninger der skal gemmes i Active Directory-domænetjenester for operativsystemdrevene. Hvis du vælger "Sikkerhedskopier genoprettelsesadgangskode og nøglepakke", gemmes både BitLocker-genoprettelsesadgangskoden og nøglepakken i Active Directory-domænetjenester. Lagring af nøglepakken understøtter genoprettelse af data fra et drev, som er fysisk beskadiget. Hvis du vælger "Sikkerhedskopier kun genoprettelsesadgangskode", er det kun genoprettelsesadgangskoden, som gemmes i Active Directory-domænetjenesten.
+
+Marker afkrydsningsfeltet "Aktiver ikke BitLocker, før genoprettelsesoplysninger er gemt i Active Directory-domænetjenesten for operativsystemdrev", hvis du vil forhindre brugere i at aktivere BitLocker, medmindre computeren har forbindelse til domænet, og sikkerhedskopieringen af BitLocker-genoprettelsesoplysninger til Active Directory lykkes.
+
+Bemærk! Hvis afkrydsningsfeltet "Aktiver ikke BitLocker, før genoprettelsesoplysninger er gemt i Active Directory-domænetjenesten for operativsystemdrev" er markeret, oprettes der automatisk en genoprettelsesadgangskode.
+
+Hvis du aktiverer denne politikindstilling, kan du styre, hvilke metoder til genoprettelse af data fra BitLocker-beskyttede operativsystemdrev der skal være tilgængelige for brugere.
+
+Hvis denne politikindstilling deaktiveres eller ikke konfigureres, understøttes standardgenoprettelsesindstillingerne for BitLocker-genoprettelse. Som standard er en DRA tilladt, genoprettelsesindstillingerne, herunder genoprettelsesadgangskode og genoprettelsesnøgle, kan angives af brugeren, og genoprettelsesoplysninger sikkerhedskopieres ikke til Active Directory-domænetjenesten.
+
+</string>
+      
+      <string id="OSRecoveryPasswordUsageDropDown_Require">Kræv 48-cifret genoprettelsesadgangskode</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Allow">Tillad 48-cifret genoprettelsesadgangskode</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Disallow">Tillad ikke 48-cifret genoprettelsesadgangskode</string>
+
+      <string id="OSRecoveryKeyUsageDropDown_Require">Kræv 256-bit genoprettelsesnøgle</string>
+      <string id="OSRecoveryKeyUsageDropDown_Disallow">Tillad ikke 256-bit genoprettelsesnøgle</string>
+      <string id="OSRecoveryKeyUsageDropDown_Allow">Tillad 256-bit genoprettelsesnøgle</string>
+
+      <string id="FDVRecoveryUsage_Name">Vælg, hvordan BitLocker-beskyttede permanente drev kan genoprettes</string>
+      <string id="FDVRecoveryUsage_Help">Med denne politikindstilling kan du styre, hvordan BitLocker-beskyttede permanente drev genoprettes, hvis de krævede legitimationsoplysninger mangler. Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+Afkrydsningsfeltet "Tillad betroet bruger til genoprettelse af data" bruges til at angive, om en betroet bruger til genoprettelse af data kan bruges til BitLocker-beskyttede permanente datadrev. Inden en betroet bruger til genoprettelse af data kan bruges, skal brugeren tilføjes fra elementet Politikker for offentlige nøgler i enten Group Policy Management Console eller Lokal editor til gruppepolitikobjekter. Du kan finde flere oplysninger om tilføjelse af betroede brugere til genoprettelse af data i installationsvejledningen BitLocker Drive Encryption Deployment Guide på Microsoft TechNet.
+
+I "Konfigurer brugerlagrede data fra BitLocker-genoprettelsesoplysninger" skal du vælge, om det er tilladt, krævet eller ikke tilladt for brugere at oprette en genoprettelsesadgangskode på 48 cifre eller en genoprettelsesnøgle på 256 bit.
+
+Vælg "Udelad genoprettelsesindstillinger i guiden til installation af BitLocker" for at forhindre brugere i at angive genoprettelsesindstillinger, når de aktiverer BitLocker på et drev. Dette betyder, at du ikke kan angive, hvilken genoprettelsesindstilling der skal bruges, når du aktiverer BitLocker; i stedet for bestemmes BitLocker-genoprettelsesoplysninger for drevet af politikindstillingen.
+
+I "Gem BitLocker-genoprettelsesoplysninger i Active Directory-domænetjenester" skal du vælge, hvilke BitLocker-genoprettelsesoplysninger der skal gemmes i Active Directory-domænetjenester for permanente drev. Hvis du vælger "Sikkerhedskopier genoprettelsesadgangskode og nøglepakke", gemmes både BitLocker-genoprettelsesadgangskoden og nøglepakken i Active Directory-domænetjenester. Lagring af nøglepakken understøtter genoprettelse af data fra et drev, som er fysisk beskadiget. Hvis du vælger "Sikkerhedskopier kun genoprettelsesadgangskode", er det kun genoprettelsesadgangskoden, som gemmes i Active Directory-domænetjenesten.
+
+Marker afkrydsningsfeltet "Aktiver ikke BitLocker, før genoprettelsesoplysninger er gemt i Active Directory-domænetjenesten for permanente datadrev", hvis du vil forhindre brugere i at aktivere BitLocker, medmindre computeren har forbindelse til domænet, og sikkerhedskopieringen af BitLocker-genoprettelsesoplysninger til Active Directory lykkes.
+
+Bemærk! Hvis afkrydsningsfeltet "Aktiver ikke BitLocker, før genoprettelsesoplysninger er gemt i Active Directory-domænetjenesten for permanente datadrev" er markeret, oprettes der automatisk en genoprettelsesadgangskode.
+
+Hvis du aktiverer denne politikindstilling, kan du styre, hvilke metoder til genoprettelse af data fra BitLocker-beskyttede permanente datadrev der skal være tilgængelige for brugere.
+
+Hvis denne politikindstilling ikke konfigureres eller deaktiveres, understøttes standardgenoprettelsesindstillingerne for BitLocker-genoprettelse. Som standard er en DRA tilladt, genoprettelsesindstillingerne, herunder genoprettelsesadgangskode og genoprettelsesnøgle, kan angives af brugeren, og genoprettelsesoplysninger sikkerhedskopieres ikke til Active Directory-domænetjenesten.
+
+</string>
+      
+      <string id="FDVRecoveryPasswordUsageDropDown_Require">Kræv 48-cifret genoprettelsesadgangskode</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Allow">Tillad 48-cifret genoprettelsesadgangskode</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Disallow">Tillad ikke 48-cifret genoprettelsesadgangskode</string>
+
+      <string id="FDVRecoveryKeyUsageDropDown_Require">Kræv 256-bit genoprettelsesnøgle</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Disallow">Tillad ikke 256-bit genoprettelsesnøgle</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Allow">Tillad 256-bit genoprettelsesnøgle</string>
+
+      <string id="RDVRecoveryUsage_Name">Vælg, hvordan BitLocker-beskyttede flytbare drev kan genoprettes</string>
+      
+      <string id="RDVRecoveryUsage_Help">Med denne politikindstilling kan du styre, hvordan BitLocker-beskyttede flytbare drevdrev genoprettes, hvis de krævede legitimationsoplysninger mangler. Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+Afkrydsningsfeltet "Tillad betroet bruger til genoprettelse af certifikatbaserede data" bruges til at angive, om en betroet bruger til genoprettelse af data kan bruges til BitLocker-beskyttede flytbare datadrev. Inden en betroet bruger til genoprettelse af data kan bruges, skal brugeren tilføjes fra elementet Politikker for offentlige nøgler i enten Group Policy Management Console eller Lokal editor til gruppepolitikobjekter. Du kan finde flere oplysninger om tilføjelse af betroede brugere til genoprettelse af data i installationsvejledningen BitLocker Drive Encryption Deployment Guide på Microsoft TechNet.
+
+I "Konfigurer brugerlagrede data fra BitLocker-genoprettelsesoplysninger" skal du vælge, om det er tilladt, krævet eller ikke tilladt for brugere at oprette en genoprettelsesadgangskode på 48 cifre eller en genoprettelsesnøgle på 256 bit.
+
+Vælg "Udelad genoprettelsesindstillinger i guiden til installation af BitLocker" for at forhindre brugere i at angive genoprettelsesindstillinger, når de aktiverer BitLocker på et drev. Dette betyder, at du ikke kan angive, hvilken genoprettelsesindstilling der skal bruges, når du aktiverer BitLocker; i stedet for bestemmes BitLocker-genoprettelsesoplysninger for drevet af politikindstillingen.
+
+I "Gem BitLocker-genoprettelsesoplysninger i Active Directory-domænetjenester" skal du vælge, hvilke BitLocker-genoprettelsesoplysninger der skal gemmes i Active Directory-domænetjenester for flytbare datadrev. Hvis du vælger "Sikkerhedskopier genoprettelsesadgangskode og nøglepakke", gemmes både BitLocker-genoprettelsesadgangskoden og nøglepakken i Active Directory-domænetjenester. Hvis du vælger "Sikkerhedskopier kun genoprettelsesadgangskode", er det kun genoprettelsesadgangskoden, som gemmes i Active Directory-domænetjenesten.
+
+Marker afkrydsningsfeltet "Aktiver ikke BitLocker, før genoprettelsesoplysninger er gemt i Active Directory-domænetjenesten for flytbare datadrev", hvis du vil forhindre brugere i at aktivere BitLocker, medmindre computeren har forbindelse til domænet, og sikkerhedskopieringen af BitLocker-genoprettelsesoplysninger til Active Directory lykkes.
+
+Bemærk! Hvis afkrydsningsfeltet "Aktiver ikke BitLocker, før genoprettelsesoplysninger er gemt i Active Directory-domænetjenesten for flytbare datadrev" er markeret, oprettes der automatisk en genoprettelsesadgangskode.
+
+Hvis du aktiverer denne politikindstilling, kan du styre, hvilke metoder til genoprettelse af data fra BitLocker-beskyttede flytbare datadrev der skal være tilgængelige for brugere.
+
+Hvis denne politikindstilling ikke konfigureres eller deaktiveres, understøttes standardgenoprettelsesindstillingerne for BitLocker-genoprettelse. Som standard er en DRA tilladt, genoprettelsesindstillingerne, herunder genoprettelsesadgangskode og genoprettelsesnøgle, kan angives af brugeren, og genoprettelsesoplysninger sikkerhedskopieres ikke til Active Directory-domænetjenesten.
+      </string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Require">Kræv 48-cifret genoprettelsesadgangskode</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Allow">Tillad 48-cifret genoprettelsesadgangskode</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Disallow">Tillad ikke 48-cifret genoprettelsesadgangskode</string>
+
+      <string id="RDVRecoveryKeyUsageDropDown_Require">Kræv 256-bit genoprettelsesnøgle</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Disallow">Tillad ikke 256-bit genoprettelsesnøgle</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Allow">Tillad 256-bit genoprettelsesnøgle</string>
+      
+      
+      <string id="ConfigureRecoveryFolder_Help">Denne politikindstilling giver dig mulighed for at angive den standardsti, der vises, når installationsguiden til BitLocker-drevkryptering beder brugeren om at angive placeringen af en mappe, som genoprettelsesadgangskoden skal gemmes i. Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+Hvis du aktiverer denne politikindstilling, kan du angive den sti, der bruges som standardplacering for mappen, når brugeren vælger denne indstilling for at gemme genoprettelsesadgangskoden i en mappe. Du kan enten angive den fulde sti eller medtage destinationscomputerens miljøvariabler i stien. Hvis stien ikke er gyldig, viser installationsguiden til BitLocker computerens mappevisning på øverste niveau. 
+
+Hvis du deaktiverer eller underlader at konfigurere denne politikindstilling, viser installationsguiden til BitLocker computerens mappevisning på øverste niveau, når brugeren vælger at gemme genoprettelsesadgangskoden i en mappe.
+
+Bemærk! Brugeren kan i alle tilfælde vælge andre mapper, som genoprettelsesadgangskoden skal gemmes i.
+
+</string>
+      
+      <string id="ConfigureRecoveryFolder_Name">Vælg standardmappe til genoprettelsesadgangskode</string>
+
+      <string id="EncryptionMethod_Help">Denne politikindstilling giver dig mulighed for at konfigurere den krypteringsgrad og nøglestørrelse, der bruges af BitLocker-drevkryptering. Denne politikindstilling anvendes, når du aktiverer BitLocker. Hvis drevet allerede er krypteret, eller hvis kryptering er i gang, har det ingen effekt at ændre krypteringsmetoden. Du kan finde flere oplysninger om de tilgængelige krypteringsmetoder i BitLocker Drive Encryption Deployment Guide på Microsoft TechNet.
+
+Hvis du aktiverer denne politikindstilling, kan du vælge en krypteringsalgoritme og nøglekrypteringsgrad for BitLocker, som skal bruges til at kryptere drev.
+
+Hvis du deaktiverer eller underlader at konfigurere denne politikindstilling, bruger BitLocker standardkrypteringsmetoden for AES 128-bit med diffuser, eller det bruger den krypteringsmetode, der er angivet i den lokale administrators installationsscript. 
+
+      </string>
+      <string id="EncryptionMethod_Name">Vælg drevkrypteringsmetode og -krypteringsgrad</string>
+      <string id="EncryptionMethodDropDown_AES128Diffuser_Name">AES 128-bit med diffuser (standard)</string>
+      <string id="EncryptionMethodDropDown_AES256Diffuser_Name">AES 256-bit med diffuser</string>
+      <string id="EncryptionMethodDropDown_AES128_Name">AES 128 bit</string>
+      <string id="EncryptionMethodDropDown_AES256_Name">AES 256 bit</string>
+      
+      <string id="FVECategory">BitLocker-drevkryptering</string>
+      <string id="PlatformValidation_Help">Denne politikindstilling giver dig mulighed for at konfigurere, hvordan computerens TPM-sikkerhedshardware (Trusted Platform Module) sikrer BitLocker-krypteringsnøglen. Denne politikindstilling gælder ikke, hvis computeren ikke har et kompatibelt TPM-modul, eller hvis BitLocker allerede er blevet aktiveret med TPM-beskyttelse.
+
+Hvis du aktiverer denne politikindstilling, inden du aktiverer BitLocker, kan du konfigurere de startkomponenter, som TPM validerer, inden der låses op for adgang til det BitLocker-krypterede operativsystemdrev. Hvis nogle af disse komponenter ændres, mens BitLocker-beskyttelse er aktiveret, frigiver TPM ikke krypteringsnøglen, som kan låse drevet op, men computeren viser i stedet BitLocker-genoprettelseskonsollen og kræver, at enten genoprettelsesadgangskoden eller genoprettelsesnøglen angives, så drevet kan låses op.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, bruger TPM standardplatformvalideringsprofilen eller den platformvalideringsprofil, der er angivet i installationsscriptet. En standardplatformvalideringsprofil består af et sæt PCR-indekser (Platform Configuration Register) i området fra 0 til 23. Standardplatformvalideringsprofilen sikrer krypteringsnøglen mod ændringer i CRTM (Core Root of Trust of Measurement), BIOS og PCR 0 (Platform Extensions), PCR 2 (Option ROM Code), PCR 4 (MBR, Master Boot Record), PCR 8 (NTFS-startsektor), PCR 9 (NTFS-startblok), PCR 10 (Boot Manager) og PCR 11 (BitLocker-adgangskontrol). BitLocker Drive Encryption Deployment Guide på Microsoft TechNet indeholder en komplet liste over PCR-indstillinger for både EFI og standard-BIOS.
+
+Advarsel! Hvis der vælges en anden profil end standardplatformprofilen, påvirker det sikkerheden og administrationen af computeren. BitLockers følsomhed over for platformændringer (skadelige eller godkendte) øges eller mindskes, afhængigt af om PCR'er henholdsvis medtages eller udelades. 
+      </string>
+      
+      <string id="PlatformValidation_Name">Konfigurer TPM-profilen til validering af platforme</string>
+
+      <string id="MorBehavior_Help">Denne politikindstilling styrer ydeevnen i forbindelse med genstart af computeren, men øger risikoen for afsløring af BitLocker-hemmeligheder. Denne politikindstilling anvendes, når du aktiverer BitLocker. BitLocker-hemmeligheder omfatter nøglemateriale, der bruges til kryptering af data. Politikindstillingen anvendes kun, når BitLocker-beskyttelse er aktiveret. 
+
+Hvis du aktiverer denne politikindstilling, overskrives hukommelsen ikke ved genstart af computeren. Hvis du forhindrer overskrivning af hukommelsen, forbedres ydeevnen i forbindelse med genstart muligvis, men risikoen for afsløring af BitLocker-hemmeligheder øges.
+
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, fjernes BitLocker-hemmeligheder fra hukommelsen, når computeren genstarter.
+
+      </string>
+      <string id="MorBehavior_Name">Undgå overskrivning af hukommelse ved genstart</string>
+
+      <string id="FVEOSCategory">Operativsystemdrev</string>
+      <string id="FVEFDVCategory">Permanente datadrev</string>
+      <string id="FVERDVCategory">Flytbare datadrev</string>
+
+      <string id="IdentificationField_Name">Skaf de entydige id'er til din virksomhed</string>
+      <string id="IdentificationField_Help">Med denne politikindstilling kan du knytte entydige organistions-id'er til et nyt drev, som er aktiveret med BitLocker. Disse id'er gemmes som identifikationsfeltet og det tilladte identifikationsfelt. Med identifikationsfeltet kan du knytte et entydig organisations-id til BitLocker-beskyttede drev. Dette id føjes automatisk til nye BitLocker-beskyttede drev og kan opdateres på eksisterende BitLocker-beskyttede drev med kommandolinjeværktøjet Manage-BDE. Der kræves et identifikationsfelt til administration af certifikatbaserede betroede brugere til genoprettelse af data på BitLocker-beskyttede drev og til potentielle opdateringer til BitLocker To Go-læseren. BitLocker kan kun administrere og opdatere betroede brugere til genoprettelse af data, når identifikationsfeltet på drevet svarer til den værdi, der er konfigureret i identifikationsfeltet. På samme måde kan BitLocker kun opdatere BitLocker To Go-læseren, når identifikationsfeltet på drevet svarer til den værdi, der er konfigureret for identifikationsfeltet.
+
+Det tilladte identifikationsfelt bruges i sammenhæng med politikindstillingen "Nægt skriveadgang til flytbare drev, som ikke er beskyttet af BitLocker", hvor det er med til at styre brugen af flytbare drev i organisationen. Det er en kommasepareret liste over identifikationsfelter fra organisationen eller andre, eksterne organisationer.
+
+Du kan konfigurere identifikationsfelterne på eksisterende drev ved hjælp af manage-BDE.exe.
+
+Hvis du aktiverer denne politikindstilling, kan du konfigurere identifikationsfeltet på det BitLocker-beskyttede drev og eventuelle tilladte identifikationsfelter, som bruges af organisationen.
+
+Når et BitLocker-beskyttet drev er monteret på en anden BitLocker-aktiveret computer, bruges identifikationsfeltet og det tilladte identifikationsfelt til at bestemme, om drevet er fra en ekstern organisation.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kræves identifikationsfeltet ikke.
+
+Bemærk! Der kræves identifikationsfelter til administration af certifikatbaserede betroede brugere til genoprettelse af data på BitLocker-beskyttede drev. BitLocker kan kun administrere og opdatere certifikatbaserede betroede brugere til genoprettelse af data, når identifikationsfeltet findes på et drev og er identisk med den værdi, der er konfigureret på computeren. Identifikationsfeltet kan have en hvilken som helst værdi op til 260 tegn.
+
+      </string>
+
+      
+      <string id="UserCertificateOID_Name">Valider overholdelse af regler for brug af chipkortcertifikat</string>
+     <string id="UserCertificateOID_Help">Med denne politikindstilling kan du knytte et objekt-id fra et chipkortcertifikat til et BitLocker-beskyttet drev. Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+Objekt-id'et angives i den udvidede nøgleanvendelse for et certifikat. BitLocker kan identificere, hvilke certifikater der kan bruges til at godkende et brugercertifikat til et BitLocker-beskyttet drev ved at sammenligne objekt-id'et i certifikatet med det objekt-id, der er defineret af denne politikindstilling.
+
+Standard objekt-id'et 1.3.6.1.4.1.311.67.1.1
+
+Bemærk!  BitLocker kræver ikke, at et certifikat har en attribut for udvidet nøgleanvendelse, men hvis der er konfigureret en for certifikatet, skal den indstilles til et objekt-id, der stemmer overens med det objekt-id, der er konfigureret for BitLocker.
+
+Hvis du aktiverer denne politikindstilling, skal det objekt-id, der er angivet i feltet "Objekt-id", stemme overens med objekt-id'et i chipkortcertifikatet.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, bruges der et standardobjekt-id.
+
+     </string>
+
+       <string id="OSActiveDirectoryBackupDropDown_1">Gem genoprettelsesadgangskoder og nøglepakker</string>
+      <string id="OSActiveDirectoryBackupDropDown_2">Gem kun genoprettelsesadgangskoder</string>
+
+      
+      <string id="MinimumPINLength_Name">Konfigurer minimumpinkodelængde for start</string>
+      <string id="MinimumPINLength_Help">Med denne politikindstilling kan du konfigurere en minimumlængde for en startpinkode for TPM (Trusted Platform Module). Denne politikindstilling anvendes, når du aktiverer BitLocker. Startpinkoden skal have en minimumlængde på fire cifre og kan have en maksimumlængde på 20 cifre.
+
+Hvis du aktiverer denne politikindstilling, kan du kræve et antal cifre, der som minimum skal bruges, når startpinkoden indstilles.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kan brugere konfigurere en startpinkode med en længde på mellem fire og 20 cifre.
+
+      </string>
+
+      <string id="OSAllowDRA_Name">Tillad certifikatbaserede betroede brugere til genoprettelse af data</string>
+          
+      <string id="FDVDenyWriteAccess_Name">Nægt adgang til permanente drev, som ikke er beskyttet af BitLocker</string>
+      <string id="FDVDenyWriteAccess_Help">Denne politikindstilling bestemmer, om der kræves BitLocker-beskyttelse, for at der kan skrives til permanente datadrev på en computer. Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+Hvis du aktiverer denne politikindstilling, monteres alle permanente datadrev, som ikke er BitLocker-beskyttede, som skrivebeskyttede. Hvis drevet er beskyttet af BitLocker, monteres det med læse- og skriverettigheder.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, monteres alle permanente datadrev på computeren med læse- og skriverettigheder.
+
+      </string>
+
+      <string id="FDVPassphrase_Name">Konfigurer brugen af adgangskoder for permanente datadrev</string>
+      <string id="FDVPassphrase_Help">Denne politikindstilling angiver, om der kræves en adgangskode til at låse Bitlocker-beskyttede permanente datadrev op. Hvis du vælger at tillade brugen af en adgangskode, kan du kræve, at der bruges en adgangskode, gennemtvinge krav om adgangskodekompleksitet og konfigurere en minimumlængde for adgangskoden. Indstillingen for kompleksitetskravet træder først i kraft, når gruppepolitikindstillingen "Adgangskoden skal opfylde kompleksitetskravene", som findes i Computerkonfiguration\Windows-indstillinger\Sikkerhedsindstillinger\Kontopolitikker\Adgangskodepolitik\, er aktiveret.
+
+Bemærk! Disse indstillinger gennemtvinges, når BitLocker slås til, og ikke når en diskenhed låses op. BitLocker tillader, at et drev låses op med en hvilken som helst af de tilgængelige beskyttere på drevet.
+
+Hvis du aktiverer denne politikindstilling, kan brugere konfigurere en adgangskode, som opfylder de krav, du definerer. Hvis du vil kræve, at der bruges en adgangskode, skal du vælge "Kræv adgangskode til permanente datadrev". Hvis du vil gennemtvinge kompleksitetskrav for adgangskoden, skal du vælge "Kræv adgangskodekompleksitet".
+
+Når du vælger "Kræv adgangskodekompleksitet", skal der bruges en forbindelse til en domænecontroller, når BitLocker er aktiveret for at validere adgangskodens kompleksitet. Når du vælger "Tillad adgangskodekompleksitet", gøres der forsøg på at oprette en forbindelse til en domænecontroller for at validere, om kompleksiteten overholder de regler, der er angivet af politikken, men selvom der ikke findes nogen domænecontrollere, bliver adgangskoden stadig accepteret, uanset den faktiske adgangskodekompleksitet, og drevet krypteres med denne adgangskode som beskytter. Når du vælger "Tillad ikke adgangskodekompleksitet", foretages der ingen validering af adgangskodens kompleksitet.
+
+Adgangskoder skal være på mindst otte tegn. Hvis du vil konfigurere en større minimumlængde for adgangskoden, skal du angive det ønskede antal tegn i feltet "Minimumlængde for adgangskode".
+
+Hvis du deaktiverer denne politikindstilling, kan brugeren ikke bruge adgangskoden.
+
+Hvis du ikke konfigurerer denne politikindstilling, understøttes adgangskoder med standardindstillingerne, som ikke omfatter krav til adgangskodekompleksitet og kun kræver otte tegn.
+
+Bemærk! Der kan ikke bruges adgangskoder, hvis overholdelse af FIPS-standarder er aktiveret. Politikindstillingen "Systemkryptografi: Brug FIPS-kompatibelt til kryptering, hashing og signering" i Computerkonfiguration\Windows-indstillinger\Sikkerhedsindstillinger\Lokale politikker\Sikkerhedsindstillinger angiver, om overholdelse af FIPS-standarder er aktiveret.
+
+</string>
+
+      <string id="PassphraseComplexityDropDown_2">Tillad adgangskodekompleksitet</string>
+      <string id="PassphraseComplexityDropDown_0">Tillad ikke adgangskodekompleksitet</string>
+      <string id="PassphraseComplexityDropDown_1">Kræv adgangskodekompleksitet</string>
+      
+      <string id="FDVActiveDirectoryBackupDropDown_1">Sikkerhedskopier genoprettelsesadgangskoder og nøglepakker</string>
+      <string id="FDVActiveDirectoryBackupDropDown_2">Sikkerhedskopier kun genoprettelsesadgangskoder</string>
+
+      
+      <string id="FDVHybrid_Name">Tillad adgang til BitLocker-beskyttede permanente datadrev fra tidligere versioner af Windows</string>
+      <string id="FDVHybrid_Help">Denne politikindstilling konfigurerer, om permanente datadrev, som er formateret med FAT-filsystemet, kan låses op og ses på computere, der kører operativsystemerne Windows Server 2008, Windows Vista, Windows XP med Service Pack 3 (SP3) eller Windows XP med Service Pack 2 (SP2).
+
+Hvis denne politikindstilling aktiveres eller ikke konfigureres, kan permanente datadrev, som er formateret med FAT-filsystemet, låses op på computere, der kører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, og deres indhold kan ses. Disse operativsystemer har skrivebeskyttet adgang til BitLocker-beskyttede drev.
+
+Når denne politikindstilling er aktiveret, skal du markere afkrydsningsfeltet "Installer ikke BitLocker To Go-læser på permanente drev med FAT-formatering" for at undgå, at brugere kører BitLocker To Go-læser fra deres permanente drev. Hvis BitLocker To Go-læser (bitlockertogo.exe) findes på et drev, som ikke har et angivet identifikationsfelt, eller hvis drevet har samme identifikationsfelt som angivet i politikindstillingen "Skaf de entydige id'er til din virksomhed", bliver brugeren bedt om at opdatere BitLocker, og BitLocker To Go-læser slettes fra drevet. I denne situation skal BitLocker To Go-læser være installeret på computeren, hvis det permanente drev skal kunne låses op på computere, som kører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Hvis dette afkrydsningsfelt ikke er markeret, installeres BitLocker To Go-læser på det permanente drev, så brugere kan låse drevet op på computere, der kører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, som BitLocker To Go-læser ikke er installeret på.
+
+Hvis denne politikindstilling deaktiveres, kan permanente datadrev, som er formateret med FAT-filsystemet, og som er BitLocker-beskyttede, ikke låses op på computere, der kører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Bitlockertogo.exe installeres ikke.
+
+Bemærk! Denne politikindstilling gælder ikke for drev, som er formateret med NTFS-filsystemet.
+
+      </string>
+
+      
+      <string id="FDVAllowDRA_Name">Tillad certifikatbaserede betroede brugere til genoprettelse af data</string>
+      
+      <string id="FDVConfigureSmartCard_Name">Konfigurer brug af chipkort på permanente datadrev</string>
+      <string id="FDVConfigureSmartCard_Help">Med denne politikindstilling kan du angive, om chipkort skal kunne bruges til at godkende brugeradgang til BitLocker-beskyttede permanente datadrev på en computer.
+
+Hvis du aktiverer denne politikindstilling, kan chipkort bruges til at godkende brugeradgang til drevet. Du kan kræve en godkendelse af chipkortet ved at markere afkrydsningsfeltet "Kræv brug af chipkort på permanente datadrev".
+
+Bemærk! Disse indstillinger gennemtvinges, når BitLocker slås til, og ikke når et drev låses op. BitLocker tillader, at et drev låses op med en af de tilgængelige beskyttere på drevet.
+
+Hvis du deaktiverer denne politikindstilling, kan brugere ikke bruge chipkort til godkendelse af deres adgang til BitLocker-beskyttede permanente datadrev.
+
+Hvis du ikke konfigurerer denne politikindstilling, kan chipkort bruges til at godkende brugeradgang til et BitLocker-beskyttet drev.
+
+      </string>
+      
+      <string id="RDVPassphrase_Name">Konfigurer brugen af adgangskoder for flytbare datadrev</string>
+      <string id="RDVPassphrase_Help">Denne politikindstilling angiver, om der kræves en adgangskode til at låse Bitlocker-beskyttede flytbare datadrev op. Hvis du vælger at tillade brugen af en adgangskode, kan du kræve, at der bruges en adgangskode, gennemtvinge kompleksitetskrav og konfigurere en minimumlængde. Indstillingen for kompleksitetskravet træder først i kraft, når gruppepolitikindstillingen "Adgangskoden skal opfylde kompleksitetskravene", som findes i Computerkonfiguration\Windows-indstillinger\Sikkerhedsindstillinger\Kontopolitikker\Adgangskodepolitik\, er aktiveret.
+
+Bemærk! Disse indstillinger gennemtvinges, når BitLocker slås til, og ikke når en diskenhed låses op. BitLocker tillader, at et drev låses op med en hvilken som helst af de tilgængelige beskyttere på drevet.
+
+Hvis du aktiverer denne politikindstilling, kan brugere konfigurere en adgangskode, som opfylder de krav, du definerer. Hvis du vil kræve, at der bruges en adgangskode, skal du vælge "Kræv adgangskode til flytbare datadrev". Hvis du vil gennemtvinge kompleksitetskrav for adgangskoden, skal du vælge "Kræv adgangskodekompleksitet".
+
+Når du vælger "Kræv adgangskodekompleksitet", skal der bruges en forbindelse til en domænecontroller, når BitLocker er aktiveret for at validere adgangskodens kompleksitet. Når du vælger "Tillad adgangskodekompleksitet", gøres der forsøg på at oprette en forbindelse til en domænecontroller for at validere, om kompleksiteten overholder de regler, der er angivet af politikken, men selvom der ikke findes nogen domænecontrollere, bliver adgangskoden stadig accepteret, uanset den faktiske adgangskodekompleksitet, og drevet krypteres med denne adgangskode som beskytter. Når du vælger "Tillad ikke adgangskodekompleksitet", foretages der ingen validering af adgangskodens kompleksitet.
+
+Adgangskoder skal være på mindst otte tegn. Hvis du vil konfigurere en større minimumlængde for adgangskoden, skal du angive det ønskede antal tegn i feltet "Minimumlængde for adgangskode".
+
+Hvis du deaktiverer denne politikindstilling, kan brugeren ikke bruge adgangskoden.
+
+Hvis du ikke konfigurerer denne politikindstilling, understøttes adgangskoder med standardindstillingerne, som ikke omfatter krav til adgangskodekompleksitet og kun kræver otte tegn.
+
+Bemærk! Der kan ikke bruges adgangskoder, hvis overholdelse af FIPS-standarder er aktiveret. Politikindstillingen "Systemkryptografi: Brug FIPS-kompatibelt til kryptering, hashing og signering" i Computerkonfiguration\Windows-indstillinger\Sikkerhedsindstillinger\Lokale politikker\Sikkerhedsindstillinger angiver, om overholdelse af FIPS-standarder er aktiveret.
+
+      </string>
+
+      <string id="RDVDenyWriteAccess_Name">Nægt adgang til flytbare drev, som ikke er beskyttet af BitLocker</string>
+      <string id="RDVDenyWriteAccess_Help">Denne politikindstilling konfigurerer, om der skal kræves BitLocker-beskyttelse, for at en computer skal kunne skrive data til et flytbart datadrev.
+
+Hvis du aktiverer denne politikindstilling, monteres alle flytbare datadrev, som ikke er BitLocker-beskyttede, som skrivebeskyttede. Hvis drevet er beskyttet af BitLocker, monteres det med læse- og skriverettigheder.
+
+Hvis indstillingen "Nægt skriveadgang til enheder, som er konfigureret i en anden virksomhed" er valgt, er det kun drev med identifikationsfelter, som svarer til computerens identifikationsfelter, som får skriveadgang. Når et flytbart datadrev åbnes, kontrolleres det for gyldigt identifikationsfelt og tilladte identifikationsfelter. Disse felter defineres af politikindstillingen "Skaf de entydige id'er til din virksomhed".
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, monteres alle flytbare datadrev på computeren med læse- og skriverettigheder.
+
+Bemærk! Denne politikindstilling kan tilsidesættes af politikindstillingerne under Brugerkonfiguration\Administrative skabeloner\System\Adgang til flytbar lagring. Hvis politikindstillingen "Flytbare diske: Nægt skriveadgang" er aktiveret, bliver denne politikindstilling ignoreret.
+
+      </string>
+
+      <string id="RDVConfigureBDE_Name">Styr brugen af BitLocker på flytbare drev</string>
+      <string id="RDVConfigureBDE_Help">Denne politikindstilling styrer brugen af BitLocker på flytbare datadrev. Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+Når denne politikindstilling er aktiveret, kan du vælge egenskabsindstillinger, som styrer, hvordan brugere kan konfigurere BitLocker. Vælg "Tillad brugere at anvende BitLocker-beskyttelse på flytbare datadrev" for at give brugeren tilladelse til at køre BitLocker-installationsguiden på et flytbart datadrev. Vælg "Tillad brugere at afbryde og dekryptere BitLocker-beskyttelse på flytbare datadrev" for at give brugeren tilladelse til at fjerne BitLocker-drevkryptering fra drevet eller afbryde krypteringen under vedligeholdelse. Du kan finde flere oplysninger om afbrydelse af BitLocker-beskyttelse i installationsvejledningen BitLocker Drive Encryption Deployment Guide på Microsoft TechNet.
+
+Hvis du ikke konfigurerer denne politikindstilling, kan brugere bruge BitLocker på flytbare diskdrev.
+
+Hvis du deaktiverer denne politikindstilling, kan brugere ikke bruge BitLocker på flytbare diskdrev.
+
+      </string>
+
+
+      <string id="RDVActiveDirectoryBackupDropDown_1">Sikkerhedskopier genoprettelsesadgangskoder og nøglepakker</string>
+      <string id="RDVActiveDirectoryBackupDropDown_2">Sikkerhedskopier kun genoprettelsesadgangskoder</string>
+
+      <string id="RDVHybrid_Name">Tillad adgang til BitLocker-beskyttede flytbare datadrev fra tidligere versioner af Windows</string>
+      <string id="RDVHybrid_Help">Denne politikindstilling konfigurerer, om flytbare datadrev, som er formateret med FAT-filsystemet, kan låses op og ses på computere, der kører operativsystemerne Windows Server 2008, Windows Vista, Windows XP med Service Pack 3 (SP3) eller Windows XP med Service Pack 2 (SP2).
+
+Hvis denne politikindstilling aktiveres eller ikke konfigureres, kan flytbare datadrev, som er formateret med FAT-filsystemet, låses op på computere, der kører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, og deres indhold kan ses. Disse operativsystemer har skrivebeskyttet adgang til BitLocker-beskyttede drev.
+
+Når denne politikindstilling er aktiveret, skal du markere afkrydsningsfeltet "Installer ikke BitLocker To Go-læser på flytbare drev med FAT-formatering" for at undgå, at brugere kører BitLocker To Go-læser fra deres flytbare drev. Hvis BitLocker To Go-læser (bitlockertogo.exe) findes på et drev, som ikke har et angivet identifikationsfelt, eller hvis drevet har samme identifikationsfelt som angivet i politikindstillingen "Skaf de entydige id'er til din virksomhed", bliver brugeren bedt om at opdatere BitLocker, og BitLocker To Go-læser slettes fra drevet. I denne situation skal BitLocker To Go-læser være installeret på computeren, hvis det flytbare drev skal kunne låses op på computere, som kører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Hvis dette afkrydsningsfelt ikke er markeret, installeres BitLocker To Go-læser på det flytbare drev, så brugere kan låse drevet op på computere, der kører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, som BitLocker To Go-læser ikke er installeret på.
+
+Hvis denne politikindstilling deaktiveres, kan flytbare datadrev, som er formateret med FAT-filsystemet, og som er BitLocker-beskyttede, ikke låses op på computere, der kører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Bitlockertogo.exe installeres ikke.
+
+Bemærk! Denne politikindstilling gælder ikke for drev, som er formateret med NTFS-filsystemet.
+
+      </string>
+
+      <string id="RDVAllowDRA_Name">Tillad certifikatbaserede betroede brugere til genoprettelse af data</string>
+ 
+      <string id="RDVConfigureSmartCard_Name">Konfigurer brug af chipkort på flytbare datadrev</string>
+      <string id="RDVConfigureSmartCard_Help">Med denne politikindstilling kan du angive, om chipkort skal kunne bruges til at godkende brugeradgang til BitLocker-beskyttede flytbare datadrev på en computer.
+
+Hvis du aktiverer denne politikindstilling, kan chipkort bruges til at godkende brugeradgang til drevet. Du kan kræve en godkendelse af chipkortet ved at markere afkrydsningsfeltet "Kræv brug af chipkort på flytbare datadrev".
+
+Bemærk! Disse indstillinger gennemtvinges, når BitLocker slås til, og ikke når et drev låses op. BitLocker tillader, at et drev låses op med en af de tilgængelige beskyttere på drevet.
+
+Hvis du deaktiverer denne politikindstilling, kan brugere ikke bruge chipkort til godkendelse af deres adgang til BitLocker-beskyttede flytbare datadrev.
+
+Hvis du ikke konfigurerer denne politikindstilling, kan chipkort bruges til at godkende brugeradgang til et BitLocker-beskyttet flytbart datadrev.
+
+      </string>
+
+      <string id="EnhancedPIN_Name">Tillad udvidede pinkoder til start</string>
+      <string id="EnhancedPIN_Help">Med denne politikindstilling kan du konfigurere, om der skal bruges udvidede startpinkoder med BitLocker.
+
+Udvidede startpinkoder gør det muligt at bruge tegn, herunder store og små bogstaver, symboler, tal og mellemrum. Denne politikindstilling anvendes, når du aktiverer BitLocker.
+
+Hvis du aktiverer denne politikindstilling, er alle nye BitLocker-startpinkoder udvidede pinkoder.
+
+Bemærk!  Ikke alle computere understøtter udvidede pinkoder i pre-boot-miljøet. Det anbefales på det kraftigste at køre systemkontrol under BitLocker-installation.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, bruges der ikke udvidede pinkoder.
+
+      </string>
+
+</stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Kræv BitLocker-sikkerhedskopiering til Active Directory-domænetjenester</checkBox>
+        <text>Hvis indstillingen vælges, kan BitLocker ikke slås til, hvis sikkerhedskopieringen mislykkes (anbefalet standardindstilling). </text>
+        <text>Hvis indstillingen ikke vælges, kan BitLocker slås til, selvom sikkerhedskopieringen mislykkes. Sikkerhedskopieringen forsøges ikke automatisk igen.</text>
+        <dropdownList refId="ActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Vælg de BitLocker-genoprettelsesoplysninger, der skal gemmes:</dropdownList>
+        <text/>
+        <text>En genoprettelsesadgangskode er et tal på 48 cifre, som låser op for adgang til et BitLocker-beskyttet drev.</text>
+        <text>En nøglepakke indeholder et drevs BitLocker-krypteringsnøgle, som er sikret med en eller flere genoprettelsesadgangskoder</text>
+	    	<text>Nøglepakker kan være med til at udføre særlig genoprettelse, når disken er beskadiget eller på anden måde har lidt overlast. </text>
+      </presentation>
+      
+      <presentation id="ConfigureStartupUsage_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Tillad BitLocker uden en kompatibel TPM</checkBox>
+        <text>(kræver en startnøgle på et USB-flashdrev)</text>
+        <text>Indstillinger for computere med TPM:</text>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurer TPM-startnøgle:</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurer TPM-startpinkode:</dropdownList>
+        <text>Vigtigt! Hvis du kræver brug af startnøglen, må du ikke tillade brug af startpinkoden. </text>
+        <text>Hvis du kræver brug af startpinkoden, må du ikke tillade brug af startnøglen. Ellers opstår der en fejl i politikken.</text>
+        <text>Bemærk! Tillad ikke både startpinkode- og startnøgleindstillinger for at skjule den avancerede side på en computer med en TPM.</text>
+      </presentation>
+
+      <presentation id="ConfigureAdvancedStartup_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Tillad BitLocker uden en kompatibel TPM</checkBox>
+        <text>(kræver en startnøgle på et USB-flashdrev)</text>
+        <text>Indstillinger for computere med TPM:</text>
+        <dropdownList refId="ConfigureTPMUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurer TPM-start:</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurer TPM-startpinkode:</dropdownList>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurer TPM-startnøgle:</dropdownList>
+        <dropdownList refId="ConfigureTPMPINKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurer TPM-startnøgle og -pinkode:</dropdownList>
+        <text/>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryUsage_Name">
+        <text>Vigtigt! Hvis du vil forhindre datatab, skal du have en måde at genoprette BitLocker-krypteringsnøgler på. Hvis du ikke tillader begge genoprettelsesindstillinger nedenfor, skal du aktivere sikkerhedskopiering af BitLocker-genoprettelsesoplysninger til Active Directory-domænetjenester. Ellers opstår der en fejl i politikken.</text>
+        <dropdownList refId="ConfigureRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurer 48-cifret genoprettelsesadgangskode:</dropdownList>
+        <dropdownList refId="ConfigureRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurer 256-bit genoprettelsesnøgle:</dropdownList>
+        <text>Bemærk! Hvis du ikke tillader genoprettelsesadgangskoden og kræver genoprettelsesnøglen, kan brugere aktivere BitLocker uden at gemme til USB.</text>
+        <text/>
+      </presentation>
+
+      <presentation id="OSRecoveryUsage_Name">
+        <checkBox refId="OSAllowDRA_Name" defaultChecked="true">Tillad betroet bruger til genoprettelse af data</checkBox>
+        <text>Konfigurer brugerlagring af BitLocker-genoprettelsesoplysninger:</text>
+        <dropdownList refId="OSRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="OSRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="OSHideRecoveryPage_Name" defaultChecked="false">Udelad genoprettelsesindstillinger i installationsguiden til BitLocker</checkBox>
+        <checkBox refId="OSActiveDirectoryBackup_Name" defaultChecked="true">Gem BitLocker-genoprettelsesoplysninger til Active Directory-domænetjenester for operativsystemdrev</checkBox>
+        <dropdownList refId="OSActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Konfigurer lagring af BitLocker-genoprettelsesoplysninger til Active Directory-domænetjenester:</dropdownList>
+        <checkBox refId="OSRequireActiveDirectoryBackup_Name">Aktiver ikke BitLocker, før genoprettelsesoplysninger er gemt til Active Directory-domænetjenester for operativsystemdrev</checkBox>
+       </presentation>
+
+      <presentation id="FDVRecoveryUsage_Name">
+        <checkBox refId="FDVAllowDRA_Name" defaultChecked="true">Tillad betroet bruger til genoprettelse af data</checkBox>
+        <text>Konfigurer brugerlagring af BitLocker-genoprettelsesoplysninger:</text>
+        <dropdownList refId="FDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="FDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="FDVHideRecoveryPage_Name" defaultChecked="false">Udelad genoprettelsesindstillinger i guiden til installation af BitLocker</checkBox>
+        <checkBox refId="FDVActiveDirectoryBackup_Name" defaultChecked="true">Gem BitLocker-genoprettelsesoplysninger til Active Directory-domænetjenester for permanente datadrev</checkBox>
+        <dropdownList refId="FDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Konfigurer lagring af BitLocker-genoprettelsesoplysninger til Active Directory-domænetjenester:</dropdownList>
+        <checkBox refId="FDVRequireActiveDirectoryBackup_Name">Aktiver ikke BitLocker, før genoprettelsesoplysninger er gemt til Active Directory-domænetjenester for permanente datadrev</checkBox>
+      </presentation>
+
+      <presentation id="RDVRecoveryUsage_Name">
+        <checkBox refId="RDVAllowDRA_Name" defaultChecked="true">Tillad betroet bruger til genoprettelse af data</checkBox>
+        <text>Konfigurer brugerlagring af BitLocker-genoprettelsesoplysninger:</text>
+        <dropdownList refId="RDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="RDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="RDVHideRecoveryPage_Name" defaultChecked="false">Udelad genoprettelsesindstillinger i guiden til installation af BitLocker</checkBox>
+        <checkBox refId="RDVActiveDirectoryBackup_Name" defaultChecked="true">Gem BitLocker-genoprettelsesoplysninger til Active Directory-domænetjenester for flytbare datadrev</checkBox> 
+        <dropdownList refId="RDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Konfigurer lagring af BitLocker-genoprettelsesoplysninger til Active Directory-domænetjenester:</dropdownList>
+        <checkBox refId="RDVRequireActiveDirectoryBackup_Name">Aktiver ikke BitLocker, før genoprettelsesoplysninger er gemt til Active Directory-domænetjenester for flytbare datadrev</checkBox>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryFolder_Name">
+        <textBox refId="ConfigureRecoveryFolderPath_Input">
+          <label>Konfigurer standardmappestien:</label>
+          <defaultValue/>
+        </textBox>
+        <text>Angiv en fuld sti, eller medtag computerens miljøvariabler i stien. </text>
+        <text>Angiv f.eks. "\\server\sikkerhedskopimappe" eller "%SecureDriveEnvironmentVariable%\sikkerhedskopimappe"</text>
+        <text>Bemærk! Brugeren vil under alle omstændigheder kunne vælge andre mapper, som adgangskoden kan gemmes i.</text>
+        <text/>
+      </presentation>
+      
+      
+      <presentation id="EncryptionMethod_Name">
+        <dropdownList refId="EncryptionMethodDropDown_Name" noSort="true" defaultItem="0">Vælg krypteringsmetode:</dropdownList>
+      </presentation>
+      
+      <presentation id="PlatformValidation_Name">
+        <text>A platformvalideringsprofil består af et sæt af indekser til platformkonfigurationsregistre (Platform Configuration Register – PCR). Det enkelte PCR-indeks er knyttet til komponenter, der køres, når Windows startes.</text>
+        <text>Brug afkrydsningsfelterne nedenfor til at vælge, hvilke PCR-indekser der skal medtages i profilen. </text>
+        <text>Vær forsigtig, når denne indstilling ændres.</text>
+        <text>Standardprofilen for PCR 0, 2, 4, 5, 8, 9, 10 og 11 anbefales.</text>
+        <text>Du skal medtage PCR 11, for at BitLocker-beskyttelsen kan træde i kraft.</text>
+
+        <text>Du kan finde flere oplysninger om fordele og ulemper ved at ændre standardvalideringsprofilen for TPM i onlinedokumentationen.</text>
+        
+        <checkBox refId="PlatformValidation_Setting0" defaultChecked="true">Platformskonfigurationsregister 0: CRTM (Core Root of Trust of Measurement), BIOS og Platform Extensions</checkBox>
+        <checkBox refId="PlatformValidation_Setting1">Platformskonfigurationsregister 1: Konfiguration af platform og bundkort samt data</checkBox>
+        <checkBox refId="PlatformValidation_Setting2" defaultChecked="true">Platformskonfigurationsregister 2: Valgfri ROM-kode</checkBox>
+        <checkBox refId="PlatformValidation_Setting3">Platformskonfigurationsregister 3: Valgfri ROM-konfiguration og data</checkBox>
+        <checkBox refId="PlatformValidation_Setting4" defaultChecked="true">Platformskonfigurationsregister 4: MBR-kode (Master Boot Record)</checkBox>
+        <checkBox refId="PlatformValidation_Setting5" defaultChecked="true">Platformskonfigurationsregister 5: MBR-partitionstabel (Master Boot Record)</checkBox>
+        <checkBox refId="PlatformValidation_Setting6">Platformskonfigurationsregister 6: Tilstandsovergang og vækkehændelser</checkBox>
+        <checkBox refId="PlatformValidation_Setting7">Platformskonfigurationsregister 7: Specifik for computerproducent</checkBox>
+        <checkBox refId="PlatformValidation_Setting8" defaultChecked="true">Platformskonfigurationsregister 8: NTFS-startsektor</checkBox>
+        <checkBox refId="PlatformValidation_Setting9" defaultChecked="true">Platformskonfigurationsregister 9: NTFS-startblok</checkBox>
+        <checkBox refId="PlatformValidation_Setting10" defaultChecked="true">Platformskonfigurationsregister 10: Boot Manager</checkBox>
+        <checkBox refId="PlatformValidation_Setting11" defaultChecked="true">Platformskonfigurationsregister 11: BitLocker-adgangskontrol</checkBox>
+        <checkBox refId="PlatformValidation_Setting12">Platformskonfigurationsregister 12: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting13">Platformskonfigurationsregister 13: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting14">Platformskonfigurationsregister 14: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting15">Platformskonfigurationsregister 15: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting16">Platformskonfigurationsregister 16: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting17">Platformskonfigurationsregister 17: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting18">Platformskonfigurationsregister 18: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting19">Platformskonfigurationsregister 19: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting20">Platformskonfigurationsregister 20: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting21">Platformskonfigurationsregister 21: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting22">Platformskonfigurationsregister 22: Reserveret til fremtidig brug</checkBox>
+        <checkBox refId="PlatformValidation_Setting23">Platformskonfigurationsregister 23: Reserveret til fremtidig brug</checkBox>
+      </presentation>
+      
+      <presentation id="MorBehavior_Name">
+     
+      </presentation>
+
+      <presentation id="IdentificationField">
+        <textBox refId="IdentificationField">
+          <label>Feltet Konfigurer BitLocker-id:</label>
+        </textBox>
+        <textBox refId="SecIdentificationField">
+          <label>Tilladt Konfigurer BitLocker-id-felt:</label>
+        </textBox>
+      </presentation>
+
+      <presentation id="UserCertificateOID">
+        <textBox refId="UserCertificateOID">
+          <label>Objekt-id:</label>
+          <defaultValue>1.3.6.1.4.1.311.67.1.1</defaultValue>
+        </textBox>
+        </presentation>
+
+     <presentation id="MinimumPINLength">
+        <decimalTextBox refId="MinPINLength" defaultValue="4">Minimum antal tegn:</decimalTextBox>
+      </presentation>
+      
+     <presentation id="FDVPassphrase_Name">
+        <checkBox refId="FDVRequirePassphrase">Kræv adgangskode til permanente datadrev</checkBox>
+        <dropdownList refId="FDVPassphraseComplexity" noSort="true" defaultItem="0">Konfigurer adgangskodekompleksitet for permanente datadrev:</dropdownList>
+        <decimalTextBox refId="FDVMinPassphraseLength" defaultValue="8">Minimumlængde på adgangskode til permanente datadrev:</decimalTextBox>
+       <text>Bemærk! Du skal aktivere politikindstillingen "Adgangskoden skal opfylde kompleksitetskrav", for at indstillingen for adgangskodekompleksitet kan træde i kraft.</text>
+      </presentation>
+
+       <presentation id="FDVConfigureSmartCard">
+        <checkBox refId="FDVRequireSmartCard_Name">Kræv brug af chipkort på permanente datadrev</checkBox>
+      </presentation>
+
+     <presentation id="RDVPassphrase_Name">
+        <checkBox refId="RDVRequirePassphrase">Kræv adgangskode til flytbare datadrev</checkBox>
+       <dropdownList refId="RDVPassphraseComplexity" noSort="true" defaultItem="0">Konfigurer adgangskodekompleksitet for flytbare datadrev:</dropdownList>
+        <decimalTextBox refId="RDVMinPassphraseLength" defaultValue="8">Minimumlængde på adgangskode til flytbare datadrev:</decimalTextBox>
+<text>Bemærk! Du skal aktivere politikindstillingen "Adgangskoden skal opfylde kompleksitetskrav", for at indstillingen for adgangskodekompleksitet kan træde i kraft.</text>
+      </presentation>
+
+      <presentation id="RDVConfigureBDE">
+        <checkBox refId="RDVAllowBDE_Name" noSort="true" defaultChecked="true">Tillad brugere at anvende BitLocker-beskyttelse på flytbare datadrev</checkBox>
+        <checkBox refId="RDVDisableBDE_Name" noSort="true" defaultChecked="true">Tillad brugere at afbryde og dekryptere BitLocker-beskyttelse på flytbare datadrev</checkBox>
+      </presentation>
+
+      <presentation id="RDVDenyWriteAccess">
+        <checkBox refId="RDVCrossOrg" noSort="true" defaultChecked="false">Tillad ikke skriveadgang for enheder, som er konfigureret i en anden virksomhed</checkBox>
+      </presentation>
+
+
+      <presentation id="RDVConfigureSmartCard">
+        <checkBox refId="RDVRequireSmartCard_Name" noSort="true" defaultItem="0">Kræv brug af chipkort på flytbare datadrev</checkBox>
+        </presentation>
+          
+      <presentation id="EnhancedPIN">
+
+      </presentation>
+
+      <presentation id="FDVDiscoveryVolumeType">
+        <checkBox refId="FDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">Installer ikke BitLocker To Go-læser på permanente drev med FAT-formatering</checkBox>
+      </presentation>
+
+      <presentation id="RDVDiscoveryVolumeType">
+        <checkBox refId="RDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">Installer ikke BitLocker To Go-læser på flytbare drev med FAT-formatering</checkBox>
+      </presentation>
+
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

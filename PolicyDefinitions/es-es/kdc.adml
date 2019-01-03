@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Configuración de KDC</displayName>
+  <description>Valores de configuración del centro de distribución de claves de Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Usar orden de búsqueda en bosques</string>
+      <string id="forestsearch_explain">Esta configuración de directiva define la lista de bosques de confianza que el Centro de distribución de claves (KDC) busca al intentar resolver nombres principales de servicio (SPN) de dos partes.
+
+Si habilita esta configuración de directiva, el KDC buscará los bosques en esta lista si no puede resolver un SPN de dos partes en el bosque local. La búsqueda en el bosque se realiza mediante sugerencias de catálogos globales o de sufijos de nombre. Si se encuentra una coincidencia, el KDC devolverá al cliente un vale de referencia para el dominio apropiado.
+
+Si deshabilita o no configura esta configuración de directiva, el KDC no buscará los bosques enumerados para resolver el SPN. Si el KDC no puede resolver el SPN porque no se encuentra el nombre, se debe utilizar la autenticación NTLM.
+
+Para asegurarse de que el comportamiento es coherente, esta configuración de directiva debe ser compatible y establecerse de manera idéntica en todos los controladores de dominio del dominio.</string>
+      <string id="emitlili">Proporcionar información acerca de los inicios de sesión anteriores a los equipos cliente</string>
+      <string id="emitlili_explain">Esta configuración de directiva determina si el controlador de dominio debe proporcionar información acerca de los inicios de sesión anteriores a los equipos cliente.
+
+Si habilita esta configuración de directiva, el controlador de dominio proporciona el mensaje de información acerca de los inicios de sesión anteriores.
+
+Para que el Inicio de sesión en Windows saque provecho de esta característica, es necesario habilitar la configuración de directiva "Mostrar información acerca de inicios de sesión anteriores durante inicio de sesión de usuario" ubicada en el nodo Opciones de inicio de sesión de Windows en Componentes de Windows.
+
+Si deshabilita o no establece esta configuración de directiva, el controlador de dominio no proporcionará información acerca de los inicios de sesión anteriores a menos que la configuración de directiva "Mostrar información acerca de inicios de sesión previos durante inicio de sesión de usuario" esté habilitada.
+
+Nota: solo se proporcionará información acerca de los inicios de sesión anteriores si el nivel funcional del dominio es Windows Server 2008. En dominios con un nivel funcional de Windows Server 2003, Windows 2000 nativo o Windows 2000 mixto, los controladores de dominio no podrán proporcionar información acerca de los inicios de sesión anteriores y, al habilitar esta configuración de directiva, no ocurrirá nada.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Modo:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Bosques en los que buscar</label>
+        </textBox>
+        <text>Sintaxis:</text>
+        <text>Escriba la lista de bosques en los que buscar cuando esté habilitada esta directiva.</text>
+        <text>Use el formato de nombre de dominio completo (FQDN).</text>
+        <text>Separe varias entradas de búsqueda mediante punto y coma (";").</text>
+        <text>Detalles:</text>
+        <text>No hace falta incluir en la lista el bosque actual porque el orden de búsqueda en bosques usa primero el catálogo global y después en el orden de la lista.</text>
+        <text>No es necesario incluir en la lista por separado todos los dominios del bosque.</text>
+        <text>Si se incluye en la lista un bosque de confianza, se buscará en todos los dominios de ese bosque.</text>
+        <text>Para mejorar el rendimiento, ordene los bosques en la lista según la probabilidad de que la búsqueda tenga éxito.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

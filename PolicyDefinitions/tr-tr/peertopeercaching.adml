@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache, istemcilerin içeriği barından sunucudan almak zorunda kalmak yerine şube ofis içinden almalarını sağlar. Dağıtım moduna bağlı olarak, içerik şube ofis içindeki diğer istemcilerden veya şubedeki bir barındırılan önbellek sunucusundan alınabilir. İstemci yalnızca sunucu tarafından yetki verilmişse şu içinden içerik alabilir. BranchCache kullanılması, şube ofislerinizi veri merkezine veya genel merkeze bağlayan geniş alan ağı (WAN) bağlantısı maliyetlerini azaltır ve şube ofise önceden karşıdan yüklenmiş içeriğin karşıdan yüklenme hızlarını artırır.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">BranchCache'i aç</string>
+
+            <string id="WBC_Enable_Help">Bu ilke ayarı istemci bilgisayarda BranchCache'in etkinleştirilmiş olup olmadığını belirtir. BranchCache, şube ofisleri veri merkezine veya genel merkeze bağlayan geniş alan ağı (WAN) bağlantısı kullanımını azaltır ve şube ofise önceden karşıdan yüklenmiş içeriğe erişme hızlarını artırır. BranchCache bunu, bir şube ofisteki bilgisayarların, BranchCache'in etkin olduğu intranet sunucularından gelen dosyaları ve HTTP trafiğini önbelleğe almalarını ve sonra dosyaları şube içindeki diğer bilgisayarlarlar güvenli bir şekilde paylaşmalarını sağlayarak yapar. Şube ofisteki bilgisayarlar şubedeki barındırılan bir sunucudan (Barındırılan Önbellek modunu kullanırken veya şubedeki diğer istemci bilgisayarlardan (Dağıtılmış Önbellek modunu kullanırken) içerik alabilir. Önbelleğe alınan içeriğe erişmek için, bilgisayarın kaynak sunucudaki içeriğe erişme izinleri olmalıdır.
+
+WAN bant genişliğinin düşük ve gecikmenin yüksek olduğu ve merkez ofisteki sunucularda bulunan aynı verilere erişmesi gereken çok sayıda istemci bilgisayar bulunan şube ofislerdeki bilgisayarlarda bu ilke ayarını etkinleştirin.
+
+Bu ilke ayarını etkinleştirirseniz, BranchCache açılır. Bu ilke ayarının etkili olması için, BranchCache özelliğini istemci bilgisayara da yüklemeniz gerekir.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız, BranchCache kapatılır.
+            </string>
+
+            <string id="WBC_Cache_Percent">İstemci bilgisayar önbelleği için kullanılan disk alanı yüzdesini ayarla</string>
+
+            <string id="WBC_Cache_Percent_Help">Bu ilke ayarı, BranchCache ile alınan içeriğin önbelleğe alınması için adanan toplam disk alanı yüzdesinin varsayılan değerini değiştirir. Bu içerik, istekte bulunan ve sunucu tarafından içeriğe erişme yetkisi verilmiş olan diğer istemci bilgisayarların kullanımına açılır.
+
+Bu ilke ayarını etkinleştirirseniz, önbellek için ayrılacak toplam disk alanı yüzdesini yapılandırabilirsiniz.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız, önbellek istemci bilgisayardaki toplam disk alanının yüzde 5'i olarak ayarlanır.
+            </string>
+
+            <string id="WBC_HostedCache_Location">BranchCache Barındırılan Önbellek modunu ayarla</string>
+
+            <string id="WBC_HostedCache_Location_Help">Bu ilke ayarı, istemci bilgisayarın Barındırılan Önbellek modunu kullanıp kullanmayacağını ve kullanırsa BranchCache sunucusunun adresinin ne olduğu belirtir. Barındırılan önbellek modu, istemci bilgisayarın şube ofis için merkezi (barındırılan) önbellek işlevi gören bir BranchCache sunucusundan içerik almasını sağlar. Barındırılan Önbellek modunu kullanırken, BranchCache kullanan istemci bilgisayarlar tarafından karşıdan yüklenen içerik BranchCache sunucusuna gönderilir, sonra da sunucu şube ofisteki BranchCache kullanan diğer bilgisayarlar için merkezi önbellek olarak hizmet verir. İstemci bilgisayarlar BranchCache sunucusuyla iletişim kurmak için Güvenli Yuva Katmanı (SSL) kullanır.
+
+Bu ilke ayarını kullanmak için, BranchCache sunucusunun adresini belirtmeniz ve bu adresin ve BranchCache sunucusunun sertifikasında belirtilen sunucunun Tam Etki Alanı Adı (FQDN) ile eşleşmesi gerekir. Ek olarak, BranchCache sunucusunun sertifika kökünün istemci bilgisayarın güvenilen kök deposunda bulunması gerekir.
+
+Bu ilke ayarını etkinleştirir ve barındırılan önbellek için geçerli bir konum belirtirseniz, Barındırılan Önbellek modu açılır. Bu ilke ayarının etkili olması için, "BranchCache'i aç" ilke ayarını da etkinleştirmeniz gerekir.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız, Barındırılan Önbellek modu kapatılır.
+            </string>
+
+            <string id="WBC_Distributed_Enable">BranchCache Dağıtılmış Önbellek modunu ayarla</string>
+
+            <string id="WBC_Distributed_Enable_Help">Bu ilke ayarı, istemci bilgisayarın Dağıtılmış Önbellek modunu kullanıp kullanmayacağını belirtir. Bu BranchCache modu, bir istemci bilgisayarın şube ofisteki diğer istemci bilgisayarlar tarafından karşıdan yüklenen ve önbelleğe alınan içeriği almasını sağlar. Şubedeki diğer bilgisayarda önbelleğe alınmış içeriğe erişmek için, bilgisayarın kaynak sunucudaki içeriğe erişme izinleri olmalıdır.
+
+Bu ilke ayarı Dağıtılmış Önbellek modunun kullanılıp kullanılmayacağını belirtir. Barındırılan önbellek işlevi gören bir sunucu bulunmayan şube ofislerde BranchCache'i kullanırken bu ilke ayarını etkinleştirin.
+
+Bu ilke ayarını etkinleştirirseniz, Dağıtılmış Önbellek modu kullanılır. Bu ilke ayarının etkili olması için, "BranchCache'i aç" ilke ayarını da etkinleştirmeniz gerekir.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız, Dağıtılmış Önbellek modu kapatılır.
+            </string>
+
+            <string id="WBC_SMB_Enable">Ağ dosyaları için BranchCache'i yapılandır</string>
+
+            <string id="WBC_SMB_Enable_Help">Bu ilke ayarı, üzerine çıkıldığında şubedeki istemci bilgisayarlar tarafından ağ dosyalarının önbelleğe alınması gereken varsayılan gidiş dönüş ağ gecikmesi değerini değiştirir. Ağ dosyaları için BranchCache bir şube ofisteki bilgisayarların, BranchCache'in etkin olduğu intranet sunucularından gelen verileri önbelleğe almalarını ve sonra dosyaları şube içindeki diğer bilgisayarlarla güvenli bir şekilde paylaşmalarını sağlar. Şube ofiste önbelleğe alınabilen içerik türlerinden biri Sunucu İleti Bloğu (SMB) protokolünü kullanan ağ dosyalarıdır.
+
+Varsayılan olarak, geniş alan ağı (WAN) bağlantısının gidiş dönüş ağ gecikmesi 80 ms üzerinde olduğunda ağ dosyaları şube ofiste önbelleğe alınır. Bilgisayarlara karşıdan yüklenen dosyaları her zaman şube ofiste önbelleğe almak için, ağ gecikmesi değerini 0 olarak ayarlayın. Ağ dosyalarının şubede önbelleğe alınmasını devre dışı bırakmak için, gecikme değerini çok yüksek bir değere ayarlayın.
+
+Bu ilke ayarını etkinleştirirseniz, üzerine çıkıldığında ağ dosyalarının şu ofisteki istemci bilgisayarlarda önbelleğe alınması gereken gidiş dönüş ağ gecikmesini yapılandırabilirsiniz.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız, geniş alan ağı (WAN) bağlantısının gidiş dönüş ağ gecikmesi 80 ms üzerinde olduğunda istemci bilgisayarlar ağ dosyalarını önbelleğe alır.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>İstemci Bilgisayar Önbelleği konumunu girin</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Barındırılan önbelleğin konumunu girin</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Üzerine çıkıldığında ağ dosyalarının şube ofiste önbelleğe alınması gereken gidiş dönüş ağ gecikmesi değerini milisaniye olarak girin</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

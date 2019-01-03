@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>digite o nome para exibição aqui</displayName>
+  <description>digite a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="MaxGPOScriptWaitPolicy">Tempo de espera máximo para scripts de Diretiva de Grupo</string>
+      <string id="MaxGPOScriptWaitPolicy_Help">Determina por quanto tempo o sistema espera que os scripts aplicados pela Diretiva de Grupo sejam executados.
+
+Esta configuração limita o tempo total permitido para que a execução de todos os scripts de logon, logoff, inicialização e desligamento aplicados pela Diretiva de Grupo sejam concluídos. Se a execução dos scripts não tiver terminado quando o tempo especificado acabar, o sistema interromperá o processamento do script e registrará um evento de erro.
+
+Por padrão, o sistema permite que o conjunto combinado de scripts seja executado por até 600 segundos (10 minutos), mas você pode usar essa configuração para ajustar esse intervalo.
+
+Para usar essa configuração, na caixa Segundos, digite de 1 a 32.000 como o número de segundos que você deseja que o sistema espere a conclusão do conjunto de scripts. Para instruir o sistema a aguardar até que os scripts sejam concluídos, independentemente do tempo necessário para isso, digite 0.
+
+Esse intervalo é particularmente importante quando outras tarefas do sistema tiverem que aguardar a conclusão dos scripts. Por padrão, cada script de inicialização deve ser concluído antes do seguinte. Além disso, você pode usar a configuração "Executar scripts de logon em sincronia" para instruir o sistema a aguardar a conclusão dos scripts de logon, antes de carregar a área de trabalho.
+
+Um intervalo excessivamente longo pode atrasar o sistema e incomodar os usuários. No entanto, se o intervalo for muito curto, as tarefas de pré-requisito poderão não ser realizadas e talvez o sistema pareça estar pronto prematuramente.</string>
+      <string id="Run_Legacy_Logon_Script_Hidden">Executar scripts de logon herdados ocultos</string>
+      <string id="Run_Legacy_Logon_Script_Hidden_Explain">Oculta as instruções em scripts de logon escritos para o Windows NT 4.0 e versões anteriores.
+
+Scripts de logon são arquivos de instruções em lotes executados quando o usuário efetua logon. Por padrão, o Windows 2000 exibe as instruções em scripts de logon escritos para o Windows NT 4.0 e versões anteriores em uma janela de comando, à medida que são executados, embora não exiba os scripts de logon escritos para o Windows 2000.
+
+Se você habilitar essa configuração, o Windows 2000 não exibirá scripts de logon escritos para o Windows NT 4.0 e versões anteriores.
+
+Consulte também a configuração "Executar scripts de logon visíveis".</string>
+
+      <string id="Run_Logoff_Script_Visible">Executar scripts de logoff visíveis</string>
+      <string id="Run_Logoff_Script_Visible_Explain">Exibe as instruções em scripts de logoff, à medida que são executados.
+
+Scripts de logoff são arquivos de instruções em lotes executados quando o usuário efetua logoff. Por padrão, o sistema não exibe as instruções no script de logoff.
+
+Se você habilitar essa configuração, o sistema exibirá cada instrução no script de logoff à medida que for executada. As instruções aparecem em uma janela de comando. Essa configuração foi criada para usuários avançados.
+
+Se você desabilitar essa configuração ou não a definir, as instruções serão eliminadas.</string>
+      <string id="Run_Logon_Script_Sync">Executar scripts de logon em sincronia</string>
+      <string id="Run_Logon_Script_Sync_Help">Instrui o sistema a aguardar a conclusão da execução dos scripts de logon, antes de iniciar o programa da interface do Windows Explorer e criar a área de trabalho.
+
+Se você habilitar essa configuração, o Windows Explorer não iniciará até que a execução dos scripts de logon seja concluída. Essa configuração garante que o processamento do script de logon seja concluído antes que o usuário comece a trabalhar, mas pode atrasar a exibição da área de trabalho.
+
+Se você desabilitar essa configuração ou não a definir, os scripts de logon e o Windows Explorer não serão sincronizados e poderão ser executados simultaneamente.
+
+Essa configuração aparece nas pastas Configuração do Computador e Configuração do Usuário. A diretiva definida em Configuração do Computador prevalece sobre a configuração definida em Configuração do Usuário.</string>
+      <string id="Run_Logon_Script_Visible">Executar scripts de logon visíveis</string>
+      <string id="Run_Logon_Script_Visible_Explain">Exibe as instruções em scripts de logon, à medida que são executados.
+
+Scripts de logon são arquivos de instruções em lotes executados quando o usuário efetua logon. Por padrão, o sistema não exibe as instruções no script de logon.
+
+Se você habilitar essa configuração, o sistema exibirá cada instrução no script de logon à medida que for executada. As instruções aparecem em uma janela de comando. Essa configuração foi criada para usuários avançados.
+
+Se você desabilitar essa configuração ou não a definir, as instruções serão eliminadas.</string>
+
+      <string id="Run_Computer_PS_Scripts_First">Executar scripts do Windows PowerShell primeiro na inicialização ou no desligamento do computador</string>
+      <string id="Run_User_PS_Scripts_First">Executar scripts do Windows PowerShell primeiro no logon ou logoff do usuário</string>
+      <string id="Run_Computer_PS_Scripts_First_Explain">Essa configuração de diretiva determina se scripts do Windows PowerShell serão executados antes de scripts que não são do PowerShell durante a inicialização e o desligamento do computador. Por padrão, scripts do PowerShell são executados depois de scripts que não são do PowerShell. 
+ 
+Se você habilitar essa configuração de diretiva, dentro de cada GPO (Objeto de Diretiva de Grupo) aplicável, scripts do PowerShell serão executados antes de scripts que não são do PowerShell durante a inicialização e o desligamento do computador. 
+
+Por exemplo, pressuponha o seguinte cenário: 
+
+Existem três GPOs (GPO A, GPO B e GPO C). Essa configuração de diretiva está habilitada no GPO A. 
+
+O GPO B e GPO C incluem os seguintes scripts de inicialização do computador:
+
+GPO B: B.cmd, B.ps1
+GPO C: C.cmd, C.ps1
+
+Pressuponha também que existam dois computadores, DesktopIT e DesktopSales. 
+No DesktopIT, os GPOs A, B e C foram aplicados. Portanto, os scripts dos GPOs B e C serão executados na seguinte ordem para o DesktopIT:
+
+No GPO B: B.ps1, B.cmd
+No GPO C: C.ps1, C.cmd
+ 
+No DesktopSales, os GPOs B e C foram aplicados, exceto o GPO A. Portanto, os scripts dos GPOs B e C serão executados na seguinte ordem para o DesktopSales:
+
+No GPO B: B.cmd, B.ps1
+No GPO C: C.cmd, C.ps1
+
+Observação: essa configuração de diretiva determina a ordem em que os scripts de inicialização e desligamento do computador serão executados em todos os GPOs aplicáveis. Você pode substituir essa configuração de diretiva para tipos de script específicos dentro de um GPO específico, definindo as seguintes configurações de diretiva para o GPO:
+ 
+Configuração do Computador\Diretivas\Configurações do Windows\Scripts (Inicialização/Desligamento)\Inicialização
+Configuração do Computador\Diretivas\Configurações do Windows\Scripts (Inicialização/Desligamento)\Desligamento
+</string>
+      <string id="Run_User_PS_Scripts_First_Explain">Essa configuração de diretiva determina se scripts do Windows PowerShell serão executados antes de scripts que não são do PowerShell durante o logon e logoff do usuário. Por padrão, scripts do PowerShell são executados depois de scripts que não são do PowerShell. 
+ 
+Se você habilitar essa configuração de diretiva, dentro de cada GPO aplicável, scripts do PowerShell serão executados antes de scripts que não são do PowerShell durante o logon e logoff do usuário. 
+
+Por exemplo, pressuponha o seguinte cenário: 
+
+Existem três GPOs (GPO A, GPO B e GPO C). Essa configuração de diretiva está habilitada no GPO A. 
+
+O GPO B e GPO C incluem os seguintes scripts de logon do usuário:
+
+GPO B: B.cmd, B.ps1
+GPO C: C.cmd, C.ps1
+
+Pressuponha também que existam dois usuários, Qin Hong e Tamara Johnston. 
+Para Qin, os GPOs A, B e C foram aplicados. Portanto, os scripts dos GPOs B e C serão executados na seguinte ordem para Qin:
+
+No GPO B: B.ps1, B.cmd
+No GPO C: C.ps1, C.cmd
+ 
+Para Tamara, os GPOs B e C foram aplicados, exceto o GPO A. Portanto, os scripts dos GPOs B e C serão executados na seguinte ordem para Tamara:
+
+No GPO B: B.cmd, B.ps1
+No GPO C: C.cmd, C.ps1
+
+Observação: essa configuração de diretiva determina a ordem em que os scripts de logon e logoff do usuário serão executados dentro de todos os GPOs aplicáveis. Você pode substituir essa configuração de diretiva para tipos de script específicos dentro de um GPO específico, definindo as seguintes configurações de diretiva para o GPO:
+ 
+Configuração do Usuário\Diretivas\Configurações do Windows\Scripts (Logon/Logoff)\Logon
+Configuração do Usuário\Diretivas\Configurações do Windows\Scripts (Logon/Logoff)\Logoff
+
+Essa configuração aparece nas pastas Configuração do Computador e Configuração do Usuário. A diretiva definida em Configuração do Computador prevalece sobre a configuração definida em Configuração do Usuário.
+</string>
+      <string id="Run_Shutdown_Script_Visible">Executar scripts de desligamento visíveis</string>
+      <string id="Run_Shutdown_Script_Visible_Explain">Exibe as instruções em scripts de desligamento, à medida que são executados.
+
+Scripts de desligamento são arquivos de instruções em lotes executados quando o usuário reinicia ou desliga o sistema. Por padrão, o sistema não exibe as instruções no script de desligamento.
+
+Se você habilitar essa configuração, o sistema exibirá cada instrução no script de desligamento à medida que for executada. As instruções aparecem em uma janela de comando.
+
+Se você desabilitar essa configuração ou não a definir, as instruções serão eliminadas.</string>
+      <string id="Run_Startup_Script_Sync">Executar scripts de inicialização sem sincronia</string>
+      <string id="Run_Startup_Script_Sync_Help">Permite que o sistema execute scripts de inicialização ao mesmo tempo.
+
+Scripts de inicialização são arquivos em lotes executados antes de o usuário ser convidado a fazer logon. Por padrão, o sistema aguarda a conclusão de cada script de inicialização, antes de executar o seguinte.
+
+Se você habilitar essa configuração, o sistema não coordenará a execução de scripts de inicialização. Assim, os scripts de inicialização podem ser executados simultaneamente.
+
+Se você desabilitar essa configuração ou não a definir, não será possível executar uma inicialização até que o script anterior seja concluído.
+
+Observação: a partir do sistema operacional Windows Vista, os scripts configurados para execução assíncrona não estão mais visíveis na inicialização, quer a configuração de diretiva "Executar scripts de inicialização visíveis" esteja habilitada ou não.</string>
+      <string id="Run_Startup_Script_Visible">Executar scripts de inicialização visíveis</string>
+      <string id="Run_Startup_Script_Visible_Explain">Exibe as instruções em scripts de inicialização, à medida que são executados.
+
+Scripts de inicialização são arquivos de instruções em lotes executados antes de o usuário ser convidado a fazer logon. Por padrão, o sistema não exibe as instruções no script de inicialização.
+
+Se você habilitar essa configuração, o sistema exibirá cada instrução no script de inicialização à medida que for executada. As instruções aparecem em uma janela de comando. Essa configuração foi criada para usuários avançados.
+
+Se você desabilitar essa configuração ou não a definir, as instruções serão eliminadas.
+
+Observação: a partir do sistema operacional Windows Vista, os scripts configurados para execução assíncrona não estão mais visíveis na inicialização, quer essa configuração esteja habilitada ou não.</string>
+      <string id="Allow_Logon_Script_NetbiosDisabled">Permitir scripts de logon quando NetBIOS ou WINS estiver desabilitado</string>
+      <string id="Allow_Logon_Script_NetbiosDisabled_Explain">Esta configuração de diretiva permite que sejam executados scripts de logon quando os sufixos DNS entre florestas de logon não forem configurados e o NetBIOS ou o WINS for desabilitado. Esta configuração de diretiva afeta todas as contas de usuário que fazem logon interativo no computador.
+
+Se você habilitar esta configuração de diretiva, os scripts de logon de usuário serão executados se o NetBIOS ou o WINS for desabilitado durante logons entre florestas sem que os sufixos DNS sejam configurados.
+
+Se você desabilitar ou não definir esta configuração de diretiva, nenhum logon interativo de conta de usuário entre florestas poderá executar scripts se o NetBIOS ou o WINS for desabilitado e os sufixos DNS não forem configurados.</string>
+      <string id="Scripts">Scripts</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="MaxGPOScriptWaitPolicy">
+        <decimalTextBox refId="MaxGPOScriptWait" defaultValue="600">Segundos:</decimalTextBox>
+        <text>Intervalo: 0 a 32000; use 0 para tempo de espera infinito</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>itt adja meg a megjelenítendő nevet</displayName>
+  <description>itt adja meg a leírást</description>
+  <resources>
+    <stringTable>
+      <string id="DNS_Client">DNS-ügyfél</string>
+      <string id="DNS_Domain">Kapcsolatspecifikus DNS-utótag</string>
+      <string id="DNS_Domain_Help">Kapcsolatspecifikus DNS-utótag meghatározása. Ez a beállítás lecseréli az adott számítógépeken helyben vagy a DHCP szolgáltatással beállított kapcsolatspecifikus DNS-utótagokat.
+
+Figyelmeztetés A beállításban megadott kapcsolatspecifikus DNS-utótagok a beállítást alkalmazó összes többcímes számítógép hálózati kapcsolataira érvényesek.
+
+A beállítás használatához kattintson az Engedélyezve elemre, majd írja be a DNS-utótagot jelölő karakterláncot a mezőbe.
+
+Ha a beállítást nincs konfigurálva, a rendszer nem alkalmazza a számítógépeken, és a számítógépek a helyi vagy a DHCP-beállításokban szereplő paramétereket használják.</string>
+      <string id="DNS_NameServer">DNS-kiszolgálók</string>
+      <string id="DNS_NameServer_Help">A számítógép névfeloldási kísérletei során lekérdezett DNS-kiszolgálók megadása.
+
+Figyelmeztetés A beállításban definiált DNS-kiszolgálók felülbírálják a helyben és a DHCP protokollal megadott, DNS-kiszolgálókra vonatkozó beállításokat. A DNS-kiszolgálók listája minden olyan többcímes számítógépre vonatkozik, amelyre alkalmazza a rendszer ezt a beállítást.
+
+A beállítás használatához kattintson az Engedélyezve elemre, majd a mezőbe szóközökkel elválasztva írja be az IP-címeket (pontokkal elválasztott decimális formátumban). Ha ez a beállítás engedélyezett, meg kell adnia legalább egy IP-címet.
+
+Ha nem adja meg ezt a beállítást, a rendszer nem alkalmazza azt, és a számítógépek a helyi vagy a DHCP-beállításokban szereplő paramétereket fogják használni.</string>
+      <string id="DNS_PrimaryDnsSuffix">Elsődleges DNS-utótag</string>
+      <string id="DNS_PrimaryDnsSuffix_Help">Az elsődleges Domain Name System (DNS) utótag meghatározása minden érintett számítógép számára. Az elsődleges DNS-utótagot a DNS-név regisztrálásához és feloldásához használja a rendszer.
+
+A beállítással megadhatja az elsődleges DNS-utótagot egy számítógépcsoport számára, és megakadályozhatja, hogy a felhasználók (beleértve a rendszergazdákat is) módosítsák azt.
+
+Ha letiltja vagy nem adja meg ezt a beállítást, valamennyi számítógép a saját helyi elsődleges DNS-utótagját fogja használni, ami rendszerint a számítógépet tartalmazó Active Directory tartomány DNS-neve. A rendszergazdák azonban a Vezérlőpulton található Rendszer párbeszédpanelen módosíthatják a számítógép elsődleges DNS-utótagját.
+
+A beállítás használatához írja be a hozzárendelni kívánt teljes elsődleges DNS-utótagot a megadott mezőbe. Például microsoft.com.
+
+Ez a beállítás nem tiltja le a DNS-utótag és NetBIOS számítógépnév párbeszédpanel használatát, amellyel a rendszergazdák módosíthatják a számítógép elsődleges DNS-utótagját. Ha azonban a rendszergazda utótagot ír be, és ez a beállítás engedélyezett, akkor a rendszer figyelmen kívül hagyja a beírt utótagot.
+
+Fontos: A beállítás változásainak érvénybe lépéséhez a beállítás által érintett valamennyi számítógépen újra kell indítani a Windows rendszert.
+
+Megjegyzés: Ha a beállítások megváltoztatása nélkül szeretné módosítani egy adott számítógép elsődleges DNS-utótagját, kattintson duplán a Vezérlőpulton a Rendszer ikonra, kattintson a Számítógépnév fülre, kattintson a Módosítás gombra, majd kattintson a Részletek gombra, és adja meg az utótagot „A számítógép elsődleges DNS-utótagja” mezőben.
+
+A DNS szolgáltatással kapcsolatban további információt a Súgó rendszerben a Tartománynévrendszer (DNS) című témakörben talál.</string>
+      <string id="DNS_RegisterAdapterName">A DNS-rekordok kapcsolatspecifikus DNS-utótaggal történő regisztrálása</string>
+      <string id="DNS_RegisterAdapterName_Help">Ez a beállítás határozza meg, hogy a dinamikus regisztrálást végrehajtó számítógépek regisztrálhatják-e úgy az A és PTR erőforrásrekordokat, hogy összefűzik a saját számítógépnevüket és a kapcsolatra jellemző DNS-utótagot azon felül, hogy összefűzik saját számítógépnevüket és az elsődleges DNS-utótagot.
+
+Figyelmeztetés A csoportbeállítás engedélyezése minden olyan többcímes számítógépre vonatkozik, amelyre a rendszer ezt a beállítást alkalmazza.
+
+Alapértelmezés szerint a dinamikus DNS-regisztrálást végző DNS-ügyfél az A és PTR erőforrásrekordokat számítógépneve és az elsődleges DNS-utótag összefűzésével regisztrálja. Amennyiben például a rendszer összefűzi a Számítógépnév mezőben megadott „szamitogepnev” nevet a „microsoft.com” elsődleges DNS-utótaggal, akkor az eredmény a „szamitogep.microsoft.com” cím.
+
+Ha engedélyezett ez a beállítás, a számítógép az elsődleges DNS-utótagot tartalmazó A és PTR erőforrásrekordok regisztrálásán kívül a kapcsolatra jellemző DNS-utótagot tartalmazó A és PTR erőforrásrekordokat is regisztrálja. Ilyen esetben például a „szamitogep” számítógépnév és a „VPNkapcsolat” kapcsolatspecifikus DNS-utótag összefűzésével a következő bejegyzés keletkezik: „szamitogep.VPNkapcsolat”. Tartsa szem előtt, hogy ha le van tiltva a dinamikus DNS-regisztrálás egy olyan számítógép esetében, amelyre érvényes ez a beállítás, akkor – tekintet nélkül a beállítás értékére – a számítógép nem kísérli meg dinamikusan regisztrálni a számítógép nevét és a kapcsolatspecifikus DNS-utótagot tartalmazó A és PTR rekordokat. Ha a beállítás hatálya alá eső egyik számítógépnek egy bizonyos hálózati kapcsolatán van letiltva a dinamikus DNS-regisztrálás, akkor a számítógép a beállítás értékére való tekintet nélkül nem kísérli meg dinamikusan regisztrálni a számítógépnevet és a kapcsolatspecifikus DNS-utótagot tartalmazó A és PTR rekordokat az adott hálózati kapcsolatra vonatkozóan.
+
+Ha le van tiltva ez a beállítás, a DNS-ügyfél nem regisztrál kapcsolatspecifikus DNS-utótagot tartalmazó A és PTR erőforrásrekordokat.
+
+Ha nincs konfigurálva ez a beállítás, a rendszer egyetlen számítógépre sem alkalmazza, a számítógépek pedig a helyi konfigurációjukat használják.</string>
+      <string id="DNS_RegisterReverseLookup">PTR-rekordok regisztrálása</string>
+      <string id="DNS_RegisterReverseLookup_DoNotRegister">Nincs regisztrálás</string>
+      <string id="DNS_RegisterReverseLookup_Help">A PTR erőforrásrekordok regisztrálásának engedélyezése olyan számítógépek számára, amelyekre vonatkozik a házirend.
+
+Alapértelmezés szerint a dinamikus DNS-regisztrálásra konfigurált DNS-ügyfelek csak akkor tesznek kísérletet a PTR erőforrásrekord regisztrálására, ha már sikerrel regisztrálták a megfelelő A erőforrásrekordot. Az A erőforrásrekord az állomás DNS-nevét rendeli hozzá az állomás IP-címéhez, a PTR erőforrásrekord pedig az állomás IP-címét rendeli hozzá az állomás DNS-nevéhez
+
+Ha engedélyezni kívánja ezt a beállítást, kattintson az Engedélyezve lehetőségre, majd jelölje ki az alábbi értékek valamelyikét:
+
+Nincs regisztrálás – a számítógépek nem kísérelnek meg PTR erőforrásrekordokat regisztrálni.
+
+Regisztrálás – a számítógépek akkor is megpróbálnak PTR erőforrásrekordokat regisztrálni, ha az A rekord regisztrálása nem sikerült.
+
+Regisztrálás csak az A rekord sikeres regisztrálása esetén – a számítógépek csak akkor kísérelnek meg PTR erőforrásrekordokat regisztrálni, ha sikerült regisztrálniuk a megfelelő A erőforrásrekordokat.
+
+Ha nincs konfigurálva ez a beállítás, a rendszer egyetlen számítógépre sem alkalmazza, a számítógépek pedig a helyi konfigurációjukat használják.</string>
+      <string id="DNS_RegisterReverseLookup_Register">Regisztrálás</string>
+      <string id="DNS_RegisterReverseLookup_RegisterOnlyIfASucceeds">Regisztrálás csak az A rekord sikeres regisztrálása esetén </string>
+      <string id="DNS_RegistrationEnabled">Dinamikus frissítés</string>
+      <string id="DNS_RegistrationEnabled_Help">Itt adhatja meg a dinamikus frissítés engedélyezését.
+
+A dinamikus frissítésre beállított számítógépek automatikusan regisztrálják és frissítik a DNS-erőforrásrekordjaikat a DNS-kiszolgálóval.
+
+Ha engedélyezi a beállítást, akkor azok a számítógépek, amelyekre érvényes a beállítás, dinamikus DNS-regisztrációt használhatnak minden hálózati kapcsolaton, az egyes kapcsolatok konfigurálásának megfelelően. A dinamikus DNS-regisztrációjának adott hálózati kapcsolaton engedélyezésének szükséges és elégséges feltétele, hogy mind a számítógép-specifikus, mind pedig a kapcsolatspecifikus konfiguráció engedélyezve legyen a dinamikus DNS-regisztrációt. Ez a beállítás vezérli a dinamikus DNS-regisztrációt vezérlő számítógép-specifikus tulajdonságot. A beállítás engedélyezése esetén minden egyes hálózati kapcsolathoz külön-külön beállítható a dinamikus frissítés.
+
+A beállítás letiltása esetén azok a számítógépek, amelyekre a beállítás érvényes, egyik hálózati kapcsolatukhoz sem használhatnak dinamikus DNS-regisztrációt, az egyes hálózati kapcsolatok konfigurációjától függetlenül.
+
+Ha nincs konfigurálva ez a beállítás, a rendszer egyetlen számítógépre sem alkalmazza, a számítógépek pedig a helyi konfigurációjukat használják.</string>
+      <string id="DNS_RegistrationOverwritesInConflict">Címek cseréje ütközés esetén</string>
+      <string id="DNS_RegistrationOverwritesInConflict_Help">Ez a beállítás azt határozza meg, hogy az A erőforrásrekordjukat regisztrálni próbáló DNS-ügyfelek felülírják az ütköző IP-címeket tartalmazó meglévő A erőforrásrekordot vagy rekordokat.
+
+Ez a beállítás olyan számítógépekhez használható, amelyek a biztonságos dinamikus frissítést nem támogató DNS-zónákban regisztrálják A erőforrásrekordjaikat. A biztonságos dinamikus frissítés megőrzi az erőforrásrekordok tulajdonosi jogát, és nem teszi lehetővé DNS-ügyfelek számára olyan rekordok felülírását, amelyeket más számítógépek regisztráltak.
+
+Az olyan zónákban történő dinamikus frissítés során, amelyek nem biztonságos dinamikus frissítést használnak, a DNS-ügyfelek észlelhetik, hogy valamely meglévő A erőforrásrekord az adott ügyfél DNS-állomásnevét egy másik számítógép IP-címéhez társítja. Az alapértelmezett konfiguráció szerint a DNS-ügyfél megkísérli felülírni a meglévő A erőforrásrekordot egy olyan másik A erőforrásrekorddal, amely az ügyfél IP-címéhez társítja a DNS-nevet.
+
+Ha engedélyezi ezt a beállítást, a DNS-ügyfelek megkísérlik felülírni az ütköző A erőforrásrekordokat a dinamikus frissítés alkalmával.
+
+Ha letiltja ezt a beállítást, a DNS-ügyfél továbbra is dinamikusan frissíti az A erőforrásrekordokat, ám amikor az ütközést tartalmazó A erőforrásrekordok frissítésére tesz kísérletet a DNS-ügyfél, az nem jár sikerrel, és az eseménynaplóba hibát jegyez be a rendszer.
+
+Ha nincs konfigurálva ez a beállítás, a rendszer egyetlen számítógépre sem alkalmazza, a számítógépek pedig a helyi konfigurációjukat használják.</string>
+      <string id="DNS_RegistrationRefreshInterval">Regisztrációfrissítési gyakoriság</string>
+      <string id="DNS_RegistrationRefreshInterval_Help">Az A és PTR erőforrásrekordok regisztrációfrissítési gyakoriságát határozza meg olyan számítógépek számára, amelyekre ez a beállítás vonatkozik. A beállítás csak dinamikus frissítést használó számítógépeken alkalmazható.
+
+Az olyan Windows 2000 Professional és Windows XP Professional rendszerű számítógépek, amelyek az A és a PTR erőforrásrekordok dinamikus DNS-regisztrálására vannak beállítva, rendszeres időközönként újraregisztrálják rekordjaikat a DNS-kiszolgálókkal, még akkor is, ha a rekordokban tárolt adatok nem módosultak. Erre az ismételt regisztrálásra azért van szükség, hogy a rendszer jelezze az elavult rekordok automatikus eltávolítására (kitakarítására) konfigurált DNS-kiszolgálók számára, hogy a rekordok friss adatokat tartalmaznak, ezért meg kell őket őrizni az adatbázisban.
+
+Figyelmeztetés Ha a DNS-erőforrásrekordok takarítást alkalmazó zónákban vannak regisztrálva, e beállítás értékének nem szabad nagyobbnak lennie az adott zónákban beállított frissítési időköznél. Ha a Regisztrációfrissítési gyakoriság hosszabbra van állítva a DNS-zónák frissítési időközénél, az azt eredményezi, hogy a szükséges A és PTR erőforrásrekordok is törlődnek.
+
+A Regisztrációfrissítési gyakoriság megadásához kattintson az Engedélyezve elemre, majd adjon meg egy 1800-nál nagyobb értéket. Fontos tudni, hogy a Regisztrációfrissítési gyakoriságot másodpercben kell megadni, vagyis az 1800 másodperc 30 percet jelent.
+
+Ha nincs konfigurálva ez a beállítás, a rendszer egyetlen számítógépre sem alkalmazza, a számítógépek pedig a helyi konfigurációjukat használják.</string>
+      <string id="DNS_RegistrationTtl">Az A és PTR rekordokban beállított TTL érték</string>
+      <string id="DNS_RegistrationTtl_Help">Olyan számítógépek által regisztrált A és PTR erőforrásrekordok Élettartam (TTL) mezőjének értékének megadása, amelyekre ez a beállítás érvényes.
+
+A TTL megadásához kattintson az Engedélyezve elemre, majd adja meg a másodpercben kifejezett értéket (például a 900-as érték 15 percet jelent).
+
+Ha a beállítás nincs megadva, akkor egyik számítógépen sem lesz alkalmazva.</string>
+      <string id="DNS_SearchList">DNS-utótagok keresési listája</string>
+      <string id="DNS_SearchList_Help">Meghatározza a nem minősített egycímkés névhez hozzáfűzendő DNS-utótagokat az adott névre vonatkozó DNS-lekérdezés elküldése előtt.
+
+A nem minősített egycímkés név nem tartalmaz pontokat (például minta). Ez különbözik a teljesen minősített tartománynévtől (például minta.microsoft.com).
+
+A beállítás engedélyezése esetén, ha a felhasználó elküldi az egycímkés név (például minta) lekérdezését, akkor a helyi DNS-ügyfél utótagot fűz hozzá (például microsoft.com). Így a lekérdezés a „minta.microsoft.com” formában kerül a DNS-kiszolgálóhoz.
+
+Ha engedélyezi a beállítást, megadhatja a hozzáfűzendő DNS-utótagokat a nem minősített egycímkés név lekérdezésének elküldése előtt. A DNS-utótagok értékei ebben a beállításban vesszővel elválasztott karakterláncokkal is megadhatók (például microsoft.com,serverua.microsoft.com,office.microsoft.com). A rendszer a lekérdezés minden elküldött példányához egy DNS-utótagot fűz hozzá. Ha a lekérdezés sikertelen, új DNS-utótag kerül a sikertelen utótag helyére, és elindul az új lekérdezés. Az értékek a karakterláncban megadott sorrend szerint követik egymást, balról jobbra.
+
+A beállítás engedélyezése esetén legalább egy utótagot meg kell adni.
+
+Ha letiltja ezt a beállítást, a rendszer az elsődleges DNS-utótagot és a hálózati kapcsolatnak megfelelő utótagot fűzi hozzá a nem minősített lekérdezésekhez.
+
+Ha nincs konfigurálva ez a beállítás, a rendszer egyetlen számítógépre sem alkalmazza, a számítógépek pedig a helyi konfigurációjukat használják.</string>
+      <string id="DNS_UpdateSecurityLevel">Frissítés biztonsági szintje</string>
+      <string id="DNS_UpdateSecurityLevel_Help">A beállítást alkalmazó számítógépek biztonságos vagy szabványos dinamikus frissítésének használatát határozza meg a DNS-rekordok regisztrálásakor.
+
+Ha engedélyezni kívánja ezt a beállítást, kattintson az Engedélyezve beállításra, majd jelölje ki az alábbi értékek valamelyikét:
+
+Nem biztonságos, majd biztonságos – a számítógépek csak a nem biztonságos dinamikus frissítések megtagadása esetén küldenek biztonságos dinamikus frissítéseket.
+
+Csak nem biztonságos – a számítógépek csak nem biztonságos dinamikus frissítéseket küldenek.
+
+Csak biztonságos – a számítógépek csak biztonságos dinamikus frissítéseket küldenek.
+
+Ha nincs konfigurálva ez a beállítás, a rendszer egyetlen számítógépre sem alkalmazza, a számítógépek pedig a helyi konfigurációjukat használják.</string>
+      <string id="DNS_UpdateSecurityLevel_OnlySecure">Csak biztonságos szintnél</string>
+      <string id="DNS_UpdateSecurityLevel_OnlyUnsecure">Csak nem biztonságos szintnél</string>
+      <string id="DNS_UpdateSecurityLevel_UnsecureFollowedBySecure">Előbb nem biztonságos, majd biztonságos szintnél</string>
+      <string id="DNS_UpdateTopLevelDomainZones">Felső szintű tartományzónák frissítése</string>
+      <string id="DNS_UpdateTopLevelDomainZones_Help">Azt határozza meg, hogy a beállítás hatálya alá eső számítógépek küldhetnek-e dinamikus frissítéseket az egycímkés névvel rendelkező, más néven felső szintű tartományi zónáknak (például „com”).
+
+Alapértelmezés szerint a dinamikus DNS-frissítésre konfigurált DNS-ügyfelek annak a DNS-zónának küldenek dinamikus frissítéseket, amely mérvadó a DNS-erőforrásrekordjuk számára, hacsak a mérvadó zóna nem felső szintű tartományi és gyökérzóna.
+
+Ha engedélyezett ez a beállítás, a házirend hatálya alá eső számítógépek a gyökérzóna kivételével a számítógép által frissítendő erőforrásrekordok számára mérvadó összes zónának küldenek dinamikus frissítéseket.
+
+Ha ez a beállítás le van tiltva, a házirend hatálya alá eső számítógépek nem küldenek dinamikus frissítéseket a számítógép által frissítendő erőforrásrekordok számára mérvadó gyökér és/vagy felső szintű tartományi zónáknak.
+
+Ha nincs konfigurálva ez a beállítás, a rendszer egyetlen számítógépre sem alkalmazza, a számítógépek pedig a helyi konfigurációjukat használják.</string>
+      <string id="DNS_UseDomainNameDevolution">Elsődleges DNS-utótag csonkolása</string>
+      <string id="DNS_UseDomainNameDevolution_Help">A beállítás meghatározza, hogy a DNS-ügyfél csonkolja az elsődleges DNS-utótagot a névfeloldási folyamat során.
+
+Ha a felhasználó elküldi az egycímkés név (például „pelda”) lekérdezését, akkor a helyi DNS-ügyfél utótagot fűz hozzá (például „microsoft.com”), így a lekérdezés a „pelda.microsoft.com” formában kerül a DNS-kiszolgálóhoz.
+
+Ha nincs megadva DNS-utótagkeresési lista, a DNS-ügyfél az elsődleges DNS-utótagot fűzi hozzá az egycímkés névhez, és ha ez a lekérdezés sikertelen, akkor az új lekérdezés során a kapcsolatspecifikus DNS-utótag lesz hozzáfűzve. Ha egyik lekérdezés sem sikeres, az ügyfél csonkolja a számítógép elsődleges DNS-utótagját (elhagyja az elsődleges DNS-utótag bal szélső címkéjét), csatolja a csonkolt elsődleges DNS-utótagot az egycímkés névhez, és az új lekérdezést elküldi a DNS-kiszolgálónak.
+
+Ha például az ooo.aaa.microsoft.com elsődleges DNS-utótagot fűzi hozzá a „pelda” ponttal nem határolt, egycímkés névhez, és a peldaa.ooo.aaa.microsoft.com elemre vonatkozó DNS-lekérdezés sikertelen, akkor a DNS-ügyfél csonkolja az elsődleges DNS-utótagot (elhagyja a bal szélső címkét), és a peldaa.aaa.microsoft.com lekérdezést küldi el. Ha ez a lekérdezés sem jár eredménnyel, akkor tovább csonkolja az elsődleges DNS-utótagot, és a pelda.microsoft.com lekérdezést küldi el. Ha ez a lekérdezés sikertelen, a csonkolás folytatódik, amennyiben még nem érte el a megadott csonkolási szintet, és a rendszer a pelda.microsoft.com lekérdezést küldi el. Az elsődleges DNS-utótag nem csonkolható a csonkolási szinten túl.
+
+Ha ez a házirend-beállítás engedélyezve van a megfelelő csonkolási szinttel, akkor az azokon a számítógépeken lévő DNS-ügyfelek, amelyekre a beállítás engedélyezve van, megpróbálják feloldani az egycímkés névből és a csonkolt elsődleges DNS-utótagból összerakott neveket.
+
+Ha ez a házirend-beállítás le van tiltva, akkor az azokon a számítógépeken lévő DNS-ügyfelek, amelyekre a beállítás engedélyezve van, nem próbálják meg feloldani az egycímkés névből és a csonkolt elsődleges DNS-utótagból összerakott neveket.
+
+Ha ez a beállítás nem konfigurált, a rendszer egyetlen számítógépre sem alkalmazza, a számítógépek pedig a helyi konfigurációt alkalmazzák.</string>
+      <string id="DNS_DomainNameDevolutionLevel">Elsődleges DNS-utótag csonkolási szintje</string>
+      <string id="DNS_DomainNameDevolutionLevel_Help">Ez a házirend-beállítás határozza meg a DNS-ügyfelek által használt DNS-utótag csonkolási szintjét, ha az ügyfelek az elsődleges DNS-utótag csonkolását egy névfeloldási folyamatban hajtják végre. Ha a DNS-utótag csonkolása engedélyezve van, az elsődleges DNS-utótag bal szélső címkéjét minden egyes olyan lekérdezési eseménynél eldobja a rendszer, amelyben a lekérdezés sikertelen egy olyan névre, amelyhez egy elsődleges DNS-utótag lett illesztve. A csonkolási szint azt fejezi ki, hogy minimum hány címkét kell hozzáadni a lekérdezési karakterlánchoz az elsődleges DNS-utótag csonkolása után.
+
+Amikor a felhasználó elküld egy lekérdezést egy egycímkés névre, például a „pelda” kifejezésre, akkor egy helyi DNS-ügyfél egy utótagot, például a „microsoft.com” utótagot adja hozzá a lekérdezéshez, mielőtt elküldi a lekérdezést a DNS-kiszolgálónak. Ebben az esetben az eredmény a „pelda.microsoft.com” lekérdezés lesz.
+ 
+Ha nincs megadva DNS-utótagkeresési lista, a DNS-ügyfél az elsődleges DNS-utótagot fűzi hozzá az egycímkés névhez. Ha ez a lekérdezés sikertelen, a rendszer a kapcsolatspecifikus DNS-utótagot illeszti az új lekérdezéshez. Ha egyik lekérdezés feloldása sem sikerül, az ügyfél csonkolja a számítógép elsődleges DNS-utótagját, és a csonkolt elsődleges DNS-utótagot adja az egycímkés névhez, és elküldi az új lekérdezést egy DNS-kiszolgálónak.
+
+Ha például a rendszer az aaa.bbb.ccc.ddd.microsoft.com DNS-utótagot illeszti a „pelda” egycímkés névhez (amelynek a végén nincs pont), valamint ha a DNS-utótag csonkolása engedélyezve van és a beállított csonkolási szint 3, akkor a következő lekérdezések lesznek lefuttatva: 
+
+Pelda.aaa.bbb.ccc.ddd.microsoft.com (Ha ez a lekérdezés sikertelen, a következő lekérdezésre az elsődleges DNS-utótag a bbb.ccc.ddd.microsoft.com utótagra lesz csonkolva.)
+
+Pelda.bbb.ccc.ddd.microsoft.com (Ha ez a lekérdezés sikertelen, a következő lekérdezésre az elsődleges DNS-utótag a ccc.ddd.microsoft.com utótagra lesz csonkolva.)
+
+Pelda.ccc.ddd.microsoft.com (Ha ez a lekérdezés sikertelen, a következő lekérdezésre az elsődleges DNS-utótag a ddd.microsoft.com utótagra lesz csonkolva.)
+
+Pelda.ddd.microsoft.com (Ha ez a lekérdezés sikertelen, akkor nem hajtható végre több lekérdezés, mert a beállított csonkolási szint 3, és az elsődleges DNS-utótag 3 címkét tartalmaz.)
+  
+Ha engedélyezi ezt a beállítást, akkor az azokon a számítógépeken lévő DNS-ügyfelek, amelyeken a beállítás engedélyezve van, nem próbálják meg feloldani a feloldandó egycímkés név és a csonkolt elsődleges DNS-utótag összefűzéséből létrejött neveket. A DNS-ügyfelek az elsődleges DNS-utótagot minden lekérdezési kísérletkor csonkolják a név sikeres feloldásáig, a beállításban megadott csonkolási szint eléréséig vagy addig, amíg az elsődleges DNS-utótag már csak 2 címkét tartalmaz.
+ 
+Ha letiltja ezt a házirend-beállítást, akkor az azokon a számítógépeken lévő DNS-ügyfelek, amelyekre a beállítás engedélyezve van, nem próbálják meg az egycímkés névből és a csonkolt elsődleges DNS-utótagból összerakott neveket. Ha van erdő szintű gyökértartomány, nincs beállítva keresőlista, és a lekérdezés egy egycímkés névre vonatkozik, akkor a DNS-ügyfél a név sikeres feloldásáig, de legfeljebb a gyökérszintű erdőtartományig csonkol.</string>
+      <string id="DNS_TurnOffMulticast">Csoportos küldés névfeloldásának kikapcsolása</string>
+      <string id="DNS_TurnOffMulticast_Help">A Local Link Multicast Name Resolution (LLMNR) egy másodlagos névfeloldó protokoll. A lekérdezések a helyi hivatkozáson, egyetlen alhálózaton keresztül érkeznek a csoportos küldést használó számítógépről, amelyre válaszolni tud egy másik, azonos hivatkozáson működő számítógép, amelyen az LLMNR engedélyezett. Az LLMNR névfeloldást kínál olyan esetekben, amikor az általános DNS névfeloldás nem lehetséges.
+
+Ha engedélyezi ezt a házirendbeállítást, a Csoportos küldés névfeloldása (vagy LLMNR) minden elérhető, de nem konfigurált hálózati adapteren keresztül elérhető számítógép számára ki lesz kapcsolva.
+
+Ha letiltja ezt a házirendbeállítást, a Csoportos küldés névfeloldása (vagy LLMNR) minden elérhető, de nem konfigurált hálózati adapteren keresztül elérhető számítógép számára be lesz kapcsolva.
+
+Ha nem konfigurálja ezt a házirendbeállítást, alapértelmezésként a Csoportos küldés névfeloldása (vagy LLMNR) minden elérhető, de nem konfigurált hálózati adapteren keresztül elérhető számítógép számára be lesz kapcsolva.</string>
+      <string id="DNS_AppendToMultiLabelName">DNS-utótag hozzáfűzésének engedélyezése nem minősített, többcímkés névlekérdezésekhez</string>
+      <string id="DNS_AppendToMultiLabelName_Help">Ez a beállítás határozza meg, hogy a beállítás hatálya alá tartozó számítógépek csatolhatnak-e utótagokat egy nem minősített, többcímkés névhez további DNS-lekérdezések elküldése előtt, ha az eredeti név lekérdezése sikertelen.
+
+A pontot tartalmazó, de nem ponttal végződő neveket nevezik nem minősített, többcímkés névnek, ilyen például a „kiszolgalo.vallalat”. Egy teljesen minősített név pontra végződik, például „kiszolgalo.vallalat.kontraktor.hu.”.
+
+Ha engedélyezi a beállítást, az eredeti névlekérdezés sikertelensége esetén hozzáadhatók lesznek utótagok egy nem minősített többcímkés névhez. Például a „kiszolgalo.vallalat” név nem minősített, többcímkés névlekérdezését először a DNS-ügyfél hajtja végre. Amennyiben a lekérdezés sikeres, a válasz visszaérkezik az ügyfélhez. Amennyiben a lekérdezés sikertelen, a nem minősített többcímkés névhez a rendszer hozzáfűzi a számítógépen lekérdezésekhez konfigurált DNS-utótagokat. Ezek az utótagok a helyi DNS-ügyfél elsődleges tartományutótagjának, a kapcsolatspecifikus tartományutótagnak és/vagy a DNS-utótagok keresési listájának kombinációiból származtathatók.
+
+Ha például a DNS-ügyfél lekérdezést kap a „kiszolgalo.vallalat” névre, és az elsődleges tartományutótag „kontraktor.hu” beállítású, ezzel a beállítással a DNS-ügyfél lekérdezést fog küldeni a „kiszolgalo.vallalat.kontraktor.hu.” névre is, ha az eredeti névlekérdezés („kiszolgalo.vallalat”) sikertelen. 
+
+Ha letiltja a beállítást, az eredeti névlekérdezés sikertelensége esetén nem lesznek utótagok hozzáadva egy nem minősített többcímkés névlekérdezéshez. 
+
+Amennyiben nem konfigurálja ezt a beállítást, a számítógépek a helyi DNS-ügyfelek beállításait fogják használni a nem minősített többcímkés nevek lekérdezési viselkedésének meghatározásához.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="DNS_Domain">
+        <textBox refId="DNS_DomainLabel">
+          <label>DNS-utótag:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_NameServer">
+        <textBox refId="DNS_NameServerLabel">
+          <label>IP-címek:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_PrimaryDnsSuffix">
+        <textBox refId="DNS_PrimaryDnsSuffixBox">
+          <label>Írjon be egy elsődleges DNS-utótagot:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_RegisterReverseLookup">
+        <dropdownList refId="DNS_RegisterReverseLookup_Box" defaultItem="0">PTR-rekordok regisztrálása:</dropdownList>
+      </presentation>
+      <presentation id="DNS_RegistrationRefreshInterval">
+        <decimalTextBox refId="DNS_RegistrationRefreshIntervalLabel" defaultValue="1800" spinStep="100">Másodperc:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_DomainNameDevolutionLevel">
+        <decimalTextBox refId="DNS_DomainNameDevolutionLevelLabel" defaultValue="2" spinStep="1">Elsődleges DNS-utótag csonkolási szintjének beállítása</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_RegistrationTtl">
+        <decimalTextBox refId="DNS_RegistrationTtlLabel" defaultValue="600" spinStep="100">Másodperc:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_SearchList">
+        <textBox refId="DNS_SearchListLabel">
+          <label>DNS-utótagok:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_UpdateSecurityLevel">
+        <dropdownList refId="DNS_UpdateSecurityLevel_Box" defaultItem="2">Frissítés biztonsági szintje:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

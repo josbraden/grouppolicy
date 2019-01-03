@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>skriv inn visningsnavn her</displayName>
+  <description>skriv inn beskrivelse her</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Lanman-server</string>
+      <string id="Lbl_FollowShare">Tillat hash-publikasjon bare for delte mapper der BranchCache er aktivert</string>
+      <string id="Lbl_DisableOnAllShares">Ikke tillat hash-publikasjon for alle delte mapper</string>
+      <string id="Lbl_EnableOnAllShares">Tillat hash-publikasjon for alle delte mapper</string>
+      <string id="Pol_HashPublication">Hash-publikasjon for BranchCache</string>
+      <string id="Pol_HashPublication_Help">Denne policyen gjør at en hash-genereringstjeneste kan generere hash-koder for data som er lagret i delte mapper, og deretter tilby disse hash-kodene til klientdatamaskiner der BranchCache er aktivert. Hash-koder er matematisk utledede digitale fingeravtrykk av filer som unikt identifiserer innhold i filer. Disse digitale fingeravtrykkene er svært små, slik at Windows kan sammenligne filer uten å bruke særlig mye WAN-båndbredde (regionnett).
+
+En klientdatamaskin på et avdelingskontor kan få tak i en hash-kode for en fil via en WAN-kobling hvis alle vilkårene nedenfor er oppfylt:      
+1) Brukeren har tillatelse til å få tilgang til filen.
+2) BranchCache er aktivert på klientdatamaskinen.
+3) Hash-publikasjon er tillatt for den delte mappen klientdatamaskinen skal ha tilgang til. 
+
+Hvis klientdatamaskinen får tak i hash-koden, kan datamaskinen deretter søke etter en identisk versjon av filen i hurtigbufferen til andre datamaskiner på avdelingskontoret. Hvis Windows finner en identisk versjon av filen på avdelingskontoret, laster klientdatamaskinen ned den lokalbufrede kopien i stedet for å laste ned filen via WAN-koblingen. 
+
+Hvis du setter denne policyen til Tillat hash-publikasjon bare for delte mapper der BranchCache er aktivert (verdien 0), genereres hash-koder bare for delte mapper der BranchCache er aktivert. Hash-koder for disse delte mappene genereres når ett av følgende inntreffer:
+1) En fil åpnes i en delt mappe der BranchCache er aktivert med en klient som støtter BranchCache.
+2) En administrator genererer hash-koder manuelt ved å bruke kommandolinjeverktøyet Hashgen.
+ 
+Hvis du setter denne policyen til Ikke tillat hash-publikasjon for alle delte mapper (verdien 1), blir hash-koder aldri generert eller tilbydd av datamaskiner der denne policyen er aktivert.
+ 
+Hvis du setter denne policyen til Tillat hash-publikasjon for alle delte mapper (verdien 2), genereres hash-koder for alle delte mapper på serveren når ett av følgende inntreffer: 
+1) En fil åpnes i en delt mappe på serveren av en klient som støtter BranchCache.
+2) En administrator genererer hash-koder manuelt ved å bruke kommandolinjeverktøyet Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Verdier:</text>
+        <text>0 = Tillat hash-publikasjon bare for delte mapper der BranchCache er aktivert</text>
+        <text>1 = Ikke tillat hash-publikasjon for alle delte mapper</text>
+        <text>2 = Tillat hash-publikasjon for alle delte mapper</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Hash-publikasjonshandlinger: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

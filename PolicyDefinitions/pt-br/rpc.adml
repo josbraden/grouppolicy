@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>digite o nome para exibição aqui</displayName>
+  <description>digite a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="Rpc">Chamada de Procedimento Remoto</string>
+      <string id="RpcEEInfoOff">Desativada</string>
+      <string id="RpcEEInfoOffWithExc">Desativada com Exceções</string>
+      <string id="RpcEEInfoOn">Ativada</string>
+      <string id="RpcEEInfoOnWithExc">Ativada com Exceções</string>
+      <string id="RpcEnableAuthEpResolution">Autenticação de Clientes para o Mapeador de Ponto de Extremidade RPC</string>
+      <string id="RpcEnableAuthEpResolution_Help">A habilitação desta configuração instrui os Clientes RPC que precisam se comunicar com o Serviço de Mapeador de Ponto de Extremidade a se autenticarem, desde que a chamada de RPC para a qual o ponto de extremidade precisa ser resolvido tenha informações de autenticação.
+
+A desabilitação dessa configuração fará com que os Clientes RPC que precisarem se comunicar com o Serviço de Mapeador de Ponto de Extremidade não se autentiquem. O serviço do Mapeador de Ponto de Extremidade executado em computadores com o Windows NT4 (e todos os Service Packs) não é capaz de processar informações de autenticação dessa forma. Isso significa que a habilitação dessa configuração em uma máquina cliente impedirá que esse cliente se comunique com um servidor Windows NT4 usando RPC se a resolução de ponto de extremidade for necessária.
+
+Por padrão, os Clientes RPC não usarão a autenticação para se comunicar com o Serviço do Mapeador de Ponto de Extremidade do Servidor de RPC quando solicitarem o ponto de extremidade de um servidor.
+
+Observação: Essa diretiva não terá efeito até que o computador seja reiniciado. </string>
+      <string id="RpcExtendedErrorInformation">Propagação de informações de erro estendidas</string>
+      <string id="RpcExtendedErrorInformation_Help">Instrui o Tempo de Execução de RPC a gerar informações de erro estendidas quando um erro ocorre.
+
+As informações de erro estendidas incluem o horário local em que o erro ocorreu, a versão da RPC e o nome do computador no qual o erro ocorreu ou foi propagado. Os programas podem recuperar as informações de erro estendidas usando interfaces de programação de aplicativos (APIs) padrão do Windows.
+
+Se você desabilitar essa configuração ou não a definir, o Tempo de Execução de RPC somente gerará um código de status para indicar uma condição de erro.
+
+Para usar essa configuração, habilite-a e selecione um tipo de resposta de erro na caixa suspensa.
+
+--  "Desativada" desabilita todas as informações de erro estendidas de todos os processos. A RPC gera apenas um código de erro.
+
+--  "Ativada com Exceções" habilita as informações de erro estendidas, mas permite desabilitá-las para os processos selecionados. Para desabilitar as informações de erro estendidas para um processo enquanto essa configuração estiver em vigor, o comando que inicia o processo deve começar com uma das cadeias de caracteres no campo Exceção de Informações de Erro Estendidas.
+
+--  "Desativada com Exceções" desabilita as informações de erro estendidas, mas permite habilitá-las para os processos selecionados. Para habilitar as informações de erro estendidas para um processo enquanto essa configuração estiver em vigor, o comando que inicia o processo deve começar com uma das cadeias de caracteres no campo Exceção de Informações de Erro Estendidas.
+
+--  "Ativada" habilita as informações de erro estendidas de todos os processos.
+
+Observação: para obter informações sobre o campo Exceção de Informações de Erro Estendidas, consulte o Windows 2000 Platform Software Development Kit (SDK).
+
+Observação: as informações de erro estendidas são formatadas de modo que sejam compatíveis com outros sistemas operacionais e sistemas operacionais mais antigos da Microsoft, mais somente os mais novos poderão ler e responder a essas informações.
+
+Observação: a configuração padrão, "Desativada", foi criada para sistemas em que as informações de erro estendidas são consideradas importantes, e não devem ficar disponíveis remotamente.
+
+Observação: Essa diretiva não terá efeito até que o computador seja reiniciado.</string>
+      <string id="RpcIDFOff">Desativada</string>
+      <string id="RpcIDFOn">Ativada</string>
+      <string id="RpcIgnoreDelegationFailure">Ignorar Falha de Delegação</string>
+      <string id="RpcIgnoreDelegationFailure_Help">Instrui o Tempo de Execução de RPC a ignorar as falhas de delegação, se a delegação tiver solicitado isso.
+
+A família Windows Server 2003 contém um novo modelo de delegação - a delegação restrita. Nesse modelo, o sistema de segurança não relata que a delegação foi habilitada em um contexto de segurança quando um cliente se conecta a um servidor. Os chamadores de RPC e COM são incentivados a usar o sinalizador RPC_C_QOS_CAPABILITIES_IGNORE_DELEGATE_FAILURE, mas alguns aplicativos escritos para o modelo de delegação tradicional talvez não usem esse sinalizador e encontrarão RPC_S_SEC_PKG_ERROR quando se conectarem a um servidor que use a delegação restrita.
+
+Se você desabilitar essa configuração, não a definir ou a definir como "Inativa", o Tempo de Execução de RPC gerará erros de RPC_S_SEC_PKG_ERROR para aplicativos que solicitarem a delegação e se conectarem aos servidores usando a delegação restrita. Se você definir essa configuração como "Ativada", o Tempo de Execução de RPC aceitará os contextos de segurança que não oferecem suporte à delegação, assim como os que oferecerem esse suporte.
+
+--  "Desativada" instrui o Tempo de Execução de RPC a gerar RPC_S_SEC_PKG_ERROR se o cliente solicitar delegação, mas o contexto de segurança criado não oferecer suporte à delegação.
+
+-- "Ativada" instrui o Tempo de Execução de RPC a aceitar contextos de segurança que não oferecem suporte à delegação, mesmo que isso tenha sido pedido.
+
+Observação: Essa configuração de diretiva não terá efeito até que o computador seja reiniciado.</string>
+      <string id="RpcMinimumHttpConnectionTimeout">Tempo Limite Mínimo de Conexão Ociosa para Conexões RPC/HTTP</string>
+      <string id="RpcMinimumHttpConnectionTimeout_Help">Instrui o Tempo de Execução de RPC a presumir que o tempo limite especificado é o tempo limite de conexão ociosa, mesmo que o servidor IIS que está executando o proxy RPC HTTP esteja configurado com um tempo limite maior. Se o servidor IIS que está executando o proxy RPC HTTP estiver configurado com um tempo limite menor de conexão ociosa, será usado o tempo limite do servidor IIS. O tempo limite é atribuído em segundos.
+
+Essa configuração é útil quando um agente de rede, como um proxy HTTP ou um roteador, usa um tempo limite de conexão ociosa menor do que o do servidor IIS que está executando o proxy RPC HTTP. Nesse caso, o RPC em clientes HTTP pode ter erros, porque as conexões atingirão o tempo limite mais depressa do que o esperado. Use essa configuração para forçar o Tempo de Execução de RPC e o Proxy de RPC a usarem tempos limite de conexão menores.
+
+Essa configuração somente é aplicável quando o Cliente RPC, o Servidor RPC e o Proxy HTTP RPC estão executando a família Windows Server 2003/Windows XP SP1 ou versões posteriores. Se o Cliente RPC ou o Servidor RPC ou o Proxy HTTP RPC for executado em uma versão mais antiga do Windows, essa configuração será ignorada.
+
+O valor mínimo permitido para essa configuração é 90 segundos. O máximo é 7200 (2 horas).
+
+Se você desabilitar ou não definir esta configuração, será usado o tempo limite de conexão ociosa no servidor IIS com proxy HTTP RPC.
+
+Observação: Essa configuração de diretiva não terá efeito até que o computador seja reiniciado.</string>
+      <string id="RpcRestrictRemoteClients">Restrições a Clientes RPC Não Autenticados</string>
+      <string id="RpcRestrictRemoteClients_Help">Se você habilitar esta configuração, ela instruirá o Tempo de Execução de RPC em um servidor RPC a restringir a conexão de clientes RPC não autenticados aos servidores RPC em execução em uma máquina. Um cliente será considerado autenticado se usar um pipe nomeado para se comunicar com o servidor ou se usar a Segurança RPC. As interfaces RPC que tiverem solicitado especificamente para serem acessíveis por clientes não autenticados poderão estar isentas dessa restrição, dependendo do valor selecionado para essa diretiva.
+
+Se você desabilitar essa configuração ou não a definir, o valor Autenticada será usado para o Windows XP e o valor Nenhuma será usado para SKUs do Servidor que ofereçam suporte a essa configuração de diretiva. Se você a habilitar, os seguintes valores ficarão disponíveis:
+
+--  "Nenhuma" permite que todos os clientes RPC se conectem aos Servidores RPC em execução na máquina em que a diretiva foi aplicada.
+
+--  "Autenticada" permite que somente os Clientes RPC autenticados (pela definição acima) se conectem aos Servidores RPC em execução na máquina em que a diretiva foi aplicada. As interfaces que tiverem solicitado a isenção dessa restrição serão atendidas.
+
+--  "Autenticada sem exceções" permite que somente os Clientes RPC autenticados (pela definição acima) se conectem aos Servidores RPC em execução na máquina em que a diretiva foi aplicada. Não são permitidas exceções.
+
+Observação: Essa configuração de diretiva não terá efeito até que o computador seja reiniciado.</string>
+      <string id="RpcRestrictRemoteClientsAuth">Autenticadas</string>
+      <string id="RpcRestrictRemoteClientsHigh">Autenticadas sem exceções</string>
+      <string id="RpcRestrictRemoteClientsNone">Nenhuma</string>
+      <string id="RpcStateInfoAuto1">Auto1</string>
+      <string id="RpcStateInfoAuto2">Auto2</string>
+      <string id="RpcStateInfoBoth">Completo</string>
+      <string id="RpcStateInfoNone">Nenhuma</string>
+      <string id="RpcStateInformation">Informações sobre o estado de RPCs para a solução de problemas</string>
+      <string id="RpcStateInformation_Help">
+
+Determina se o Tempo de Execução de RPC mantém informações sobre o estado de RPCs para o sistema, além do volume de informações que ele mantém. Informações de estado básicas, que consistem apenas nos dados de estado mais comumente necessário, são exigidas para a resolução de problemas de RPC.
+
+Se você habilitar essa configuração, poderá usar a caixa suspensa para determinar quais sistemas mantêm informações de estado de RPC. Se a configuração for desabilitada ou não for definida, a RPC usará configuração Auto2.
+
+-- "Nenhuma" indica que o sistema não mantém informações de estado de RPC. Observação: como as informações de estado básicas necessárias para resolução de problemas têm um efeito insignificante sobre o desempenho e usam apenas cerca de 4K de memória, essa configuração não é recomendável para a maioria das instalações.
+
+--  "Auto1" instrui a RPC a manter informações de estado básico somente se o computador tiver pelo menos 64 MB de memória.
+
+--  "Auto2" instrui a RPC a manter informações de estado básicas somente se o computador tiver pelo menos 128 MB de memória e estiver executando o Windows 2000 Server, Windows 2000 Advanced Server ou Windows 2000 Datacenter Server. 
+
+--  "Servidor" instrui a RPC a manter informações de estado básicas no computador, independentemente de sua capacidade.
+
+-- "Completa" instrui a RPC a manter informações de estado de RPC completas no sistema, independentemente de sua capacidade. Como essa configuração pode reduzir o desempenho, seu uso é recomendado somente durante investigações de problemas de RPC.
+
+Observação: para recuperar as informações sobre o estado de RPC de um sistema que as mantém, use uma ferramenta de depuração.
+
+Observação: Essa diretiva não terá efeito até que o computador seja reiniciado.</string>
+      <string id="RpcStateInfoServer">Servidor</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="RpcExtendedErrorInformation">
+        <dropdownList refId="RpcExtendedErrorInformationList" defaultItem="0">Propagação de informações de erro estendidas:</dropdownList>
+        <textBox refId="RpcExtErrorExceptions">
+          <label>Exceções de Informações de Erro Estendidas:</label>
+        </textBox>
+      </presentation>
+      <presentation id="RpcIgnoreDelegationFailure">
+        <dropdownList refId="RpcIgnoreDelegationFailureList" defaultItem="0">Ignorando Falha de Delegação:</dropdownList>
+      </presentation>
+      <presentation id="RpcMinimumHttpConnectionTimeout">
+        <decimalTextBox refId="RpcMinimumHttpConnectionTimeoutValue" defaultValue="900" spinStep="10">Tempo Limite Mínimo de Conexão Ociosa (em segundos):</decimalTextBox>
+      </presentation>
+      <presentation id="RpcRestrictRemoteClients">
+        <dropdownList refId="RpcRestrictRemoteClientsList" defaultItem="1">Restrição de Clientes Não Autenticados de Tempo de Execução de RPC a Aplicar:</dropdownList>
+      </presentation>
+      <presentation id="RpcStateInformation">
+        <dropdownList refId="RpcStateInformationList" defaultItem="2">Informações sobre o estado do Tempo de Execução de RPC a serem mantidas:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

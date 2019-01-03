@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Kerberos-inställningar</displayName>
+  <description>Konfigurationsinställningar för autentiseringsprotokollet Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Använd sökordning för skogar</string>
+      <string id="forestsearch_explain">Den här principinställningen definierar listan över betrodda skogar som Kerberos-klienter söker i vid försök att matcha tvådelade SPN.
+
+Om du aktiverar den här principinställningen söker Kerberos-klienten i skogar som finns i listan om den inte klarar av att matcha ett tvådelat SPN. Om en matchning hittas begär Kerberos-klienten en hänvisningsbiljett till den aktuella domänen.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen söker Kerberos-klienten inte i skogarna i listan för att matcha ett SPN. Om Kerberos-klienten inte klarar av att matcha ett SPN p.g.a. att namnet inte finns kan NTLM-autentisering användas.</string>
+      <string id="hosttorealm">Definiera värdnamn-till-Kerberos-domänmappningar</string>
+      <string id="hosttorealm_explain">Du kan använda den här principinställningen för att ange vilka DNS-värdnamn och DNS-suffix som mappas till en Kerberos-domän.
+
+Om du aktiverar den här principinställningen kan du visa och ändra listan över de DNS-värdnamn och DNS-suffix som har mappats till en Kerberos-domän enligt grupprincipen. Om du vill visa listan över mappningar kan du aktivera principinställningen och sedan klicka på knappen Visa. Om du vill lägga till en mappning aktiverar du principinställningen, noterar syntaxen och klickar på Visa. Ange ett sfärnamn i kolumnen Värdenamn i dialogrutan Visa innehåll. Ange listan med DNS-värdnamn och DNS-suffix i kolumnen Värde i rätt syntaxformat. Om du vill ta bort en mappning från listan klickar du på mappningen och trycker sedan på DEL-tangenten. Om du vill redigera en mappning kan du ta bort posten från listan och sedan lägga till en ny definition med andra parametrar.
+
+Om du inaktiverar den här principinställningen tas listan över värdnamn-till-Kerberos-domänmappningar som har definierats i grupprincipen bort.
+
+Om du inte konfigurerar den här principinställningen använder systemet värdnamn-till-Kerberos-domänmappningar som definieras i det lokala registret, om det finns sådana.</string>
+      <string id="MitRealms">Definiera kompatibla Kerberos V5-domäninställningar</string>
+      <string id="MitRealms_explain">Den här principinställningen konfigurerar Kerberos-klienten så att den kan autentisera med kompatibla Kerberos V5-domäner, enligt den här grupprincipen.
+      
+Om du aktiverar den här inställningen kan du visa och ändra listan över kompatibla Kerberos V5-domäner och deras inställningar. Om du vill visa listan över kompatibla Kerberos V5-domäner kan du aktivera principinställningen och sedan klicka på knappen Visa. Om du vill lägga till en kompatibel Kerberos V5-domän aktiverar du principinställningen, noterar syntaxen och klickar på knappen Visa. Ange det kompatibla Kerberos V5-domännamnet i kolumnen Värdenamn i dialogrutan Visa innehåll. Ange domänflaggorna och värdnamnen för KDC:erna i kolumnen i rätt syntaxformat. Om du vill ta bort ett kompatibelt Kerberos V5-domännamn eller en värdepost från listan klickar du på posten och trycker sedan DEL-tangenten. Om du vill redigera en mappning kan du ta bort posten från listan och sedan lägga till en ny definition med andra parametrar.
+
+Om du inaktiverar den här principinställningen tas de kompatibla Kerberos V5-domäninställningarna som har definierats i grupprincipen bort.
+
+Om du inte konfigurerar den här principinställningen använder systemet de kompatibla Kerberos V5-domäninställningarna som definieras i det lokala registret, om det finns sådana.</string>
+      <string id="ValidateKDC">Kräv strikt KDC-validering</string>
+      <string id="ValidateKDC_explain">Den här principinställningen kontrollerar Kerberos-klientens funktionssätt när KDC-certifikatet valideras.  
+      
+Om du aktiverar den här principinställningen kräver Kerberos-klienten att KDC:ns X.509-certifikat innehåller huvudobjektidentifieraren för KDC i tilläggen Utökad nyckelanvändning, samt att KDC:ns X.509-certifikat innehåller ett dNSName subjectAltName-tillägg (SAN) som matchar domänens DNS-namn. Om datorn tillhör en domän kräver Kerberos-klienten att KDC:ns X.509-certifikat är signerat av en certifikatutfärdare i NTAUTH-lagret. Om datorn inte tillhör en domän tillåter Kerberos-klienten att rotcertifikatutfärdaren på smartkortet används i sökvägsvalideringen på KDC:ns X.509-certifikat.
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen kräver Kerberos-klienten bara att KDC-certifikaten innehåller objektidentifierare för serverautentisering i EKU-tilläggen.
+</string>
+      <string id="StrictTarget">Kräv strikt målmatchning för SPN vid RPC (Remote Procedure Calls)</string>
+      <string id="StrictTarget_explain">När ett program försöker genomföra ett RPC till den här servern med ett null-värde för SPN (Service Principal Name) försöker datorer som kör Windows 7 använda Kerberos genom att generera ett SPN. Den här principinställningen gör det möjligt att konfigurera servern så att Kerberos kan kryptera en biljett som innehåller det systemgenererade SPN:et.
+
+Om du aktiverar den här principinställningen tillåts bara tjänster som körs som LocalSystem eller NetworkService att acceptera de anslutningarna. Tjänster som körs som andra identiteter autentiseras eventuellt inte.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen tillåts alla tjänster att acceptera inkommande anslutningar genom att använda det här systemgenererade SPN:et.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Definiera värdnamn-till-domänmappningar:</listBox>
+        <text></text>
+        <text>Syntax:</text>
+        <text>Ange Kerberos-domännamnet som Värdenamn.</text>
+        <text>Ange värdnamnen och DNS-suffix som du vill</text>
+        <text>ska mappas till Kerberos-domänen som Värde. Om du vill lägga till flera</text>
+        <text>namn, separerar du posterna med ”;”.</text>
+        <text></text>
+        <text>Obs! Om du vill ange ett DNS-suffix anger du en punkt – ”.” före posten.</text>
+        <text>För en värdnamnspost anger du inte inledande punkt – ”.”.</text>
+        <text></text>
+        <text>Exempel:</text>
+        <text>Värdenamn: MICROSOFT.COM</text>
+        <text>Värde: .microsoft.com, .ms.com, computer1.fabrikam.com,</text>
+        <text></text>
+        <text>I exemplet ovan. Alla objekt med antingen DNS-suffixet</text>
+        <text>*.microsoft.com eller *.ms.com mappas till</text>
+        <text>MICROSOFT.COM Kerberos-domänen. Dessutom mappas också värdnamnet</text>
+        <text>computer1.fabrikam.com mappas också till </text>
+        <text>MICROSOFT.COM Kerberos-domänen.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Definiera kompatibla Kerberos V5-domäninställningar:</listBox>
+        <text></text>
+        <text>Syntax:</text>
+        <text>Ange Kerberos V5-domännamnet som Värdenamn.</text>
+        <text>Ange domänflaggorna och värdnamnen för KDC:erna som</text>
+        <text>Värde. Omslut domänflaggorna med följande</text>
+        <text>taggar &lt;f&gt; &lt;/f&gt;. Omslut listan med KDC:er med taggarna &lt;k&gt; &lt;/k&gt;</text>
+        <text>Om du vill lägga till flera KDC-namn, avgränsar du poster med</text>
+        <text>ett semikolon – ”;”.</text>
+        <text></text>
+        <text>Exempel:</text>
+        <text>Värdenamn: TEST.COM</text>
+        <text>Värde: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Ett annat exempel:</text>
+        <text>Värdenamn: REALM.FABRIKAM.COM</text>
+        <text>Värde: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Läge:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Skogar att genomsöka</label>
+        </textBox>
+        <text>Syntax:</text>
+        <text>Ange den lista med skogar som ska genomsökas när den här principen aktiveras.</text>
+        <text>Använd namnformatet FQDN (Fully Qualified Domain Name).</text>
+        <text>Avgränsa flera sökposter med ett semikolon (;).</text>
+        <text>Information:</text>
+        <text>Den aktuella skogen behöver inte ingå i listan eftersom sökordningen för skogar är att först söka i den globala katalogen och sedan i den angivna ordningen.</text>
+        <text>Du behöver inte lista alla domäner i skogen separat.</text>
+        <text>Om en betrodd skog ingår i listan genomsöks alla domäner i den aktuella skogen.</text>
+        <text>För bästa prestanda bör skogarna i listan anges i ordning efter sannolikhet att lyckas. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

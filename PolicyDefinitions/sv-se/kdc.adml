@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>KDC-inställningar</displayName>
+  <description>Konfigurationsinställningar för Kerberos KDC (Key Distribution Center).</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Använd sökordning för skogar</string>
+      <string id="forestsearch_explain">Den här principinställningen definierar listan över betrodda skogar som KDC (Key Distribution Center) söker i vid försök att matcha tvådelade SPN (Service Principal Names).
+
+Om du aktiverar den här principinställningen söker KDC i skogarna som finns i listan om den inte klarar av att matcha ett tvådelat SPN i den lokala skogen. Sökningen i skogarna utförs antingen med en global katalog eller med namnsuffixledtrådar. Om en matchning hittas returnerar KDC en hänvisningsbiljett till klienten för den aktuella domänen.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen söker inte KDC i skogarna i listan för att matcha ett SPN. Om KDC inte klarar av att matcha ett SPN på grund av att namnet inte kan hittas kan istället NTLM-autentisering användas. 
+
+Den här principinställningen måste stödjas och anges på samma sätt på alla domänkontrollanter i domänen om ett konsekvent beteende ska kunna garanteras.</string>
+      <string id="emitlili">Tillhandahålla information om tidigare inloggningar på klientdatorer</string>
+      <string id="emitlili_explain">Den här principinställningen avgör om domänkontrollanten ska tillhandahålla information om tidigare inloggningar till klientdatorer.
+
+Om du aktiverar den här principinställningen tillhandahåller domänkontrollanten information om tidigare inloggningar.
+
+Dessutom måste principinställningen Visa information om tidigare inloggningar när användaren loggar in under Windows-komponenter i noden Inloggningsalternativ för Windows vara aktiverad för att Inloggning för Windows ska kunna använda den här funktionen.
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen tillhandahåller inte domänkontrollanten information om tidigare inloggningar, såvida inte principinställningen Visa information om tidigare inloggningar när användaren loggar in är aktiverad.
+
+Obs! För att information om tidigare inloggningar ska tillhandahållas måste domänens funktionalitetsnivå vara Windows Server 2008. Domänkontrollanter i domäner med funktionalitetsnivån Windows Server 2003, Windows 2000 enhetligt eller Windows 2000 blandat kan inte tillhandahålla information om tidigare inloggningar, och inga extra resurser används om du aktiverar den här inställningen.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Läge:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Skogar att genomsöka</label>
+        </textBox>
+        <text>Syntax:</text>
+        <text>Ange den lista med skogar som ska genomsökas när den här principen aktiveras.</text>
+        <text>Använd namnformatet FQDN (Fully Qualified Domain Name).</text>
+        <text>Avgränsa flera sökposter med ett semikolon (;).</text>
+        <text>Information:</text>
+        <text>Den aktuella skogen behöver inte ingå i listan eftersom sökordningen för skogar är att först söka i den globala katalogen och sedan i den angivna ordningen.</text>
+        <text>Du behöver inte lista alla domäner i skogen separat.</text>
+        <text>Om en betrodd skog ingår i listan genomsöks alla domäner i den aktuella skogen.</text>
+        <text>För bästa prestanda bör skogarna i listan anges i ordning efter sannolikhet att lyckas.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

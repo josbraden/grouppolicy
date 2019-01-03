@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>ange visningsnamn här</displayName>
+  <description>ange beskrivning här</description>
+  <resources>
+    <stringTable>
+      <string id="SNMP_Communities">Grupper</string>
+      <string id="SNMP_PermittedManagers">Tillåtna hanterare</string>
+      <string id="SNMP_PermittedManagers_Help">Du kan använda den här inställningen för att ange en lista med värdar som tillåts skicka frågor till SNMP-agenten (Simple Network Management) som körs på klientdatorn.
+
+SNMP är ett protokoll för fjärrhantering av datornätverk genom avsökning och angivna terminalvärden, samt övervakning av nätverkshändelser.
+
+Hanteraren finns på värddatorn i nätverket. Hanterarens uppgift är att avsöka agenterna för viss information som begärs.
+
+Om inställningen aktiveras godkänner SNMP-agenten endast begäranden från listan med godkända hanterare som konfigureras med inställningen.
+
+Om inställningen inaktiveras eller inte konfigureras, används listan med behöriga hanterare från den lokala datorn i stället.
+
+Rekommendation: Av säkerhetsskäl bör du begränsa åtkomst till registernyckeln HKLM\SOFTWARE\Policies\SNMP\Parameters\PermittedManagers så att endast medlemmar i den lokala gruppen Administratörer har fullständig behörighet.
+
+Obs! Den här inställningen får ingen effekt om SNMP-agenten inte har installerats på klientdatorn.
+
+Se även de övriga två SNMP-inställningarna: "Trap-konfiguration" och "Gruppnamn".</string>
+      <string id="SNMP_SNMP">SNMP</string>
+      <string id="SNMP_TrapDestinations_Help">Den här inställningen används för att konfigurera traps för SNMP-agenten (Simple Network Management Protocol).
+
+SNMP är ett protokoll för fjärrhantering av datornätverk genom avsökning och angivna terminalvärden, samt övervakning av nätverkshändelser.
+
+Du kan använda den här inställningen för att konfigurera namnet på de värddatorer som tar emot trap-meddelanden för gruppen som skickas av SNMP-tjänsten. Ett trap-meddelande är en signal eller en viktig händelse som gör det möjligt för SNMP-agenten att meddela hanteringssystem asynkront.
+
+Om den här inställningen aktiveras skickar SNMP-tjänsten trap-meddelanden till värddatorerna i gruppen Public.
+
+Om inställningen inaktiveras eller inte konfigureras används i stället den trap-konfiguration som angetts på den lokala datorn.
+
+Obs! Den här inställningen får ingen effekt om SNMP-agenten inte har installerats på klientdatorn.
+
+Se även de övriga två SNMP-inställningarna: "Tillåtna hanterare " och "Gruppnamn".</string>
+      <string id="SNMP_Traps_Public">Traps för offentlig grupp</string>
+      <string id="SNMP_ValidCommunities_Help">Används för konfiguration av listan med grupper som angetts för SNMP-tjänsten (Simple Network Management Protocol).
+
+SNMP är ett protokoll för fjärrhantering av datornätverk genom avsökning och angivna terminalvärden, samt övervakning av nätverkshändelser.
+
+En giltig grupp är en grupp som kan identifieras i SNMP-tjänsten och en grupp är en grupp värdar (servrar, arbetsstationer, nav och routrar) som administreras som en enhet av SNMP. Tjänsten SNMP är en hanterad nätverksnod som tar emot SNMP-paket från nätverket.
+
+Om den här inställningen aktiveras, godkänner SNMP-agenten bara begäranden från hanteringssystem inom de grupper som kan identifieras och endast SNMP-läsningsåtgärder tillåts för gruppen.
+
+Om den här inställningen inaktiveras eller inte konfigureras används i stället de giltiga grupper som angetts på den lokala datorn.
+
+Rekommendation: Av säkerhetsskäl bör du begränsa åtkomst till registernyckeln HKLM\SOFTWARE\Policies\SNMP\Parameters\ValidCommunities så att endast medlemmar i den lokala gruppen Administratörer har fullständig behörighet.
+
+Obs! Du bör använda gruppnamn som inte kan gissas enkelt.
+
+Obs! Den här inställningen får ingen effekt om SNMP-agenten inte har installerats på klientdatorn.
+
+Se även de övriga två SNMP-inställningarna: "Tillåtna hanterare" och "Trap-konfiguration".</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="SNMP_Communities">
+        <listBox refId="SNMP_CommunitiesListbox">Grupper</listBox>
+      </presentation>
+      <presentation id="SNMP_PermittedManagers">
+        <listBox refId="SNMP_PermittedManagersListbox">Tillåtna hanterare</listBox>
+      </presentation>
+      <presentation id="SNMP_Traps_Public">
+        <listBox refId="SNMP_Traps_PublicListbox">Trap-konfiguration</listBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>여기에 표시 이름 입력</displayName>
+  <description>여기에 설명 입력</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">이 정책 설정은 TPM(신뢰할 수 있는 플랫폼 모듈) 소유자 정보의 AD DS(Active Directory 도메인 서비스) 백업을 관리할 수 있도록 합니다. 
+
+TPM 소유자 정보에는 TPM 소유자 암호의 암호화 해시가 포함됩니다. 특정 TPM 명령은 TPM 소유자만이 실행할 수 있습니다. 이 해시는 TPM에서 이러한 명령을 실행할 수 있도록 허가합니다. 
+
+이 정책 설정을 사용하면 Windows를 사용하여 TPM 소유자 암호를 설정하거나 변경할 때 TPM 소유자 정보가 자동으로 동의 없이 AD DS로 백업됩니다. 
+
+"AD DS에 TPM 백업 필요" 옵션을 선택하면 컴퓨터가 도메인에 연결되어 있고 AD DS 백업이 성공적으로 수행되어야만 TPM 소유자 암호를 설정하거나 변경할 수 있습니다. 이 옵션은 TPM 소유자 정보를 사용할 수 있도록 하기 위해 기본적으로 선택됩니다. 그렇지 않은 경우 AD DS 백업이 시도되지만 네트워크 또는 기타 백업 실패가 TPM 관리에 영향을 미치지 않습니다. 백업은 자동으로 다시 시도되지 않으며 BitLocker 설정 중에 TPM 소유자 정보가 AD DS에 저장되지 않은 것일 수 있습니다.
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 TPM 소유자 정보가 AD DS로 백업되지 않습니다. 
+
+참고: AD DS 백업이 성공적으로 수행되려면 도메인에서 적절한 스키마 확장 및 액세스 제어 설정을 지정해야 합니다. TPM용 Active Directory 도메인 서비스 설정에 대한 자세한 내용은 온라인 설명서를 참조하십시오.
+
+참고: TPM 소유자를 설정하지 않으면 TPM을 사용하여 BitLocker 드라이브 암호화 및 기타 응용 프로그램에 대한 고급 보안 기능을 제공할 수 없습니다. 소유자 암호를 사용하여 TPM에 대한 소유권을 가져오려면 "tpm.msc"를 실행하고 "TPM 초기화" 작업을 선택하십시오.
+
+참고: TPM 소유자 정보가 없거나 사용할 수 없으면 로컬 컴퓨터에서 "tpm.msc"를 실행하여 제한된 TPM 관리를 수행할 수 있습니다.</string>
+      <string id="ActiveDirectoryBackup_Name">Active Directory 도메인 서비스에 TPM 백업 사용</string>
+      <string id="BlockedCommandsList_Help">Windows에서 차단한 TPM(신뢰할 수 있는 플랫폼 모듈) 명령의 그룹 정책 목록을 관리할 수 있습니다.
+
+이 정책 설정을 사용하면 Windows에서는 지정된 명령이 컴퓨터의 TPM으로 전송되지 않도록 차단합니다. TPM 명령은 명령 번호로 참조됩니다. 예를 들어, 명령 번호 129는 TPM_OwnerReadInternalPub이며 명령 번호 170은 TPM_FieldUpgrade입니다. 각 TPM 명령과 관련된 명령 번호를 찾으려면 "tpm.msc"를 실행하고 "명령 관리" 구역으로 이동합니다.
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 기본 또는 로컬 목록을 통해 지정된 TPM 명령만 Windows에서 차단할 수 있습니다. 차단된 TPM 명령의 기본 목록은 Windows에서 미리 구성합니다. "tpm.msc"를 실행하고 "명령 관리" 구역으로 이동하여 "기본 차단 목록" 열을 표시하면 기본 목록을 볼 수 있습니다. "tpm.msc"를 실행하거나 Win32_Tpm 인터페이스에 대해 스크립팅을 실행하여 그룹 정책 외부에 차단된 TPM 명령의 로컬 목록이 구성됩니다. 관련 정책 설정을 참조하여 차단된 TPM 명령의 기본 및 로컬 목록을 적용하거나 무시하십시오.</string>
+      <string id="BlockedCommandsList_Name">차단된 TPM 명령 목록 구성</string>
+      <string id="IgnoreDefaultList_Help">이 정책 설정을 사용하여 차단된 TPM(신뢰할 수 있는 플랫폼 모듈) 명령의 기본 목록을 적용하거나 무시할 수 있습니다.
+
+이 정책 설정을 사용하면 Windows에서 차단된 TPM 명령의 기본 목록을 무시하고 그룹 정책이나 로컬 목록에 지정된 TPM 명령만 차단합니다. 
+
+차단된 TPM 명령의 기본 목록은 Windows에서 미리 구성합니다. "tpm.msc"를 실행하고 "명령 관리" 구역으로 이동하여 "기본 차단 목록" 열을 표시하면 기본 목록을 볼 수 있습니다. "tpm.msc"를 실행하거나 Win32_Tpm 인터페이스에 대해 스크립팅을 실행하여 그룹 정책 외부에 차단된 TPM 명령의 로컬 목록이 구성됩니다. 차단된 TPM 명령의 그룹 정책 목록을 구성하려면 관련 정책 설정을 참조하십시오.
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 Windows에서 기본 목록에 있는 TPM 명령은 물론, 차단된 TPM 명령의 로컬 목록과 그룹 정책에 있는 명령도 차단합니다. </string>
+      <string id="IgnoreDefaultList_Name">차단된 TPM 명령의 기본 목록 무시</string>
+      <string id="IgnoreLocalList_Help">이 정책 설정을 사용하여 차단된 TPM(신뢰할 수 있는 플랫폼 모듈) 명령의 로컬 목록을 적용하거나 무시할 수 있습니다.
+
+이 정책 설정을 사용하면 Windows에서 차단된 TPM 명령의 로컬 목록을 무시하고 그룹 정책이나 기본 목록에 지정된 TPM 명령만 차단합니다.
+
+"tpm.msc"를 실행하거나 Win32_Tpm 인터페이스에 대해 스크립팅을 실행하여 그룹 정책 외부에 차단된 TPM 명령의 로컬 목록이 구성됩니다. 차단된 TPM 명령의 기본 목록은 Windows에서 미리 구성합니다. 차단된 TPM 명령의 그룹 정책 목록을 구성하려면 관련 정책 설정을 참조하십시오. 
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 Windows에서 로컬 목록에 있는 TPM 명령은 물론, 차단된 TPM 명령의 기본 목록과 그룹 정책에 있는 명령도 차단합니다.</string>
+      <string id="IgnoreLocalList_Name">차단된 TPM 명령의 로컬 목록 무시</string>
+      <string id="TPMCategory">신뢰할 수 있는 플랫폼 모듈 서비스</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">AD DS에 TPM 백업 필요</checkBox>
+        <text/>
+        <text>이 옵션을 선택하면 백업이 실패할 경우 </text>
+        <text>TPM 소유자 암호를 설정하거나 변경할 수 없습니다(권장 기본값).</text>
+        <text/>
+        <text>이 옵션을 선택하지 않으면 백업이 실패할 경우에도 </text>
+        <text>TPM 소유자 암호를 설정하거나 변경할 수 있습니다. 백업은 자동으로 다시 시도되지 않습니다.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>명령 번호를 목록에 추가하여 차단할 명령을 지정합니다.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">차단된 TPM 명령 목록</listBox>
+        <text>예를 들어 명령 TPM_OwnerReadInternalPub</text>
+        <text>및 TPM_FieldUpgrade를 차단하려면 목록에 항목 129와 170을 추가하십시오.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

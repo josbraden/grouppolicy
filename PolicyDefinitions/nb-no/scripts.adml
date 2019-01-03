@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>skriv inn visningsnavn her</displayName>
+  <description>skriv inn beskrivelse her</description>
+  <resources>
+    <stringTable>
+      <string id="MaxGPOScriptWaitPolicy">Maksimal ventetid for gruppepolicyskript</string>
+      <string id="MaxGPOScriptWaitPolicy_Help">Avgjør hvor lenge systemet venter på at skript som er aktivert av gruppepolicy, skal kjøres.
+
+Denne innstillingen begrenser hvor lenge alle skript vedrørende pålogging, oppstart og avslutning som er aktivert av gruppepolicy, skal få kjøre før de avsluttes. Hvis skriptene ikke er ferdige med å kjøre når den angitte tiden utløper, stoppes skriptbehandlingen, og en feilhendelse registreres.
+
+Skriptsettet kan kjøre i opptil 600 sekunder (10 minutter) som standard, men du kan bruke denne innstillingen til å justere dette intervallet.
+
+Skriv inn et tall mellom 1 og 32 000 i Sekunder-boksen for å bruke denne innstillingen. Dette tallet angir hvor lenge systemet venter på at skriptsettet skal fullføres. Skriv inn 0 hvis du vil angi at systemet skal vente til skriptene er fullført, uansett hvor lang tid det tar.
+
+Dette intervallet er spesielt viktig når andre systemoppgaver må vente mens skriptene fullføres. Som standard må hvert oppstartsskript fullføres før det neste kjøres. Du kan også bruke innstillingen Kjør påloggingsskript synkront til å angi at systemet skal vente på at påloggingsskriptene fullføres før skrivebordet lastes inn.
+
+Et langt intervall kan forsinke systemet og være lite fordelaktig for brukerne. Hvis intervallet er for kort, blir nødvendige oppgaver kanskje ikke fullført, og systemet kan virke klart selv om det ikke er det.</string>
+      <string id="Run_Legacy_Logon_Script_Hidden">Kjør eldre påloggingsskript skjulte</string>
+      <string id="Run_Legacy_Logon_Script_Hidden_Explain">Skjuler instruksjonene i påloggingsskript som er skrevet for Windows NT 4.0 og eldre.
+
+Påloggingsskript er satsvise filer med instruksjoner som kjøres når brukeren logger seg på. I Windows 2000 vises instruksjonene i påloggingsskript som er skrevet for Windows NT 4.0 og eldre, som standard i et kommandovindu mens de kjøres, selv om påloggingsskript som er skrevet for Windows 2000, ikke vises.
+
+Hvis du aktiverer denne innstillingen, vises ikke påloggingsskript som er skrevet for Windows NT 4.0. og eldre, i Windows 2000.
+
+Se også innstillingen Kjør påloggingsskript synlige.</string>
+
+      <string id="Run_Logoff_Script_Visible">Kjør avloggingsskript synlige</string>
+      <string id="Run_Logoff_Script_Visible_Explain">Viser instruksjonene i avloggingsskript mens de kjøres.
+
+Avloggingsskript er satsvise filer med instruksjoner som kjøres når brukeren logger seg av. Som standard vises ikke instruksjonene i avloggingsskript.
+
+Hvis du aktiverer denne innstillingen, vises hver instruksjon i avloggingsskriptet mens det kjøres. Instruksjonene vises i et kommandovindu. Denne innstillingen er beregnet på avanserte brukere.
+
+Hvis du deaktiverer denne innstillingen eller ikke konfigurerer den, skjules instruksjonene.</string>
+      <string id="Run_Logon_Script_Sync">Kjør påloggingsskript synkront</string>
+      <string id="Run_Logon_Script_Sync_Help">Angir at systemet skal vente på at kjøring av påloggingsskriptene fullføres før det starter grensesnittprogrammet Windows Utforsker og oppretter skrivebordet.
+
+Hvis du aktiverer denne innstillingen, startes ikke Windows Utforsker før kjøring av påloggingsskriptene er fullført. Denne innstillingen sikrer at behandling av påloggingsskript er fullført før brukeren begynner å arbeide, men den kan forsinke visningen av skrivebordet.
+
+Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, synkroniseres ikke påloggingsskriptene og Windows Utforsker, og begge kan kjøres samtidig.
+
+Denne innstillingen finnes i mappene Datamaskinkonfigurasjon og Brukerkonfigurasjon. Innstillingen som angis i Datamaskinkonfigurasjon, går foran innstillingen som angis i Brukerkonfigurasjon.</string>
+      <string id="Run_Logon_Script_Visible">Kjør påloggingsskript synlige</string>
+      <string id="Run_Logon_Script_Visible_Explain">Viser instruksjonene i påloggingsskript mens de kjøres.
+
+Påloggingsskript er satsvise filer med instruksjoner som kjøres når brukeren logger seg på. Som standard vises ikke instruksjonene i påloggingsskript.
+
+Hvis du aktiverer denne innstillingen, vises hver instruksjon i påloggingsskriptet mens det kjøres. Instruksjonene vises i et kommandovindu. Denne innstillingen er beregnet på avanserte brukere.
+
+Hvis du deaktiverer denne innstillingen eller ikke konfigurerer den, skjules instruksjonene.</string>
+
+      <string id="Run_Computer_PS_Scripts_First">Kjør Windows PowerShell-skript først ved oppstart/avslåing av datamaskin</string>
+      <string id="Run_User_PS_Scripts_First">Kjør Windows PowerShell-skript først når en bruker logger seg på/av</string>
+      <string id="Run_Computer_PS_Scripts_First_Explain">Denne policyinnstillingen bestemmer om Windows PowerShell-skript skal kjøres før ikke-PowerShell-skript ved oppstart og avslutning av datamaskinen. Som standard kjøres PowerShell-skript etter ikke-PowerShell-skript. 
+ 
+Hvis du aktiverer denne policyinnstillingen, vil PowerShell-skript kjøres før ikke-PowerShell-skript ved oppstart og avslutning av datamaskinen for hvert aktuelle gruppepolicyobjekt (GPO). 
+
+Se for eksempel for deg følgende scenario: 
+
+Du har tre GPOer (GPO A, GPO B og GPO C). Denne policyinnstillingen er aktivert for GPO A. 
+
+For GPO B og GPO C kjøres følgende skript ved oppstart av datamaskinen:
+
+GPO B: B.cmd, B.ps1
+GPO C: C.cmd, C.ps1
+
+Anta også at du har to datamaskiner, DatamaskinIT og DatamaskinSalg. 
+For DatamaskinIT brukes GPO A, B og C. Derfor kjøres skriptene for GPO B og C i følgende rekkefølge for DatamaskinIT:
+
+For GPO B: B.ps1, B.cmd
+For GPO C: C.ps1, C.cmd
+ 
+For DatamaskinSalg brukes GPO B og C, men ikke GPO A. Derfor kjøres skriptene for GPO B og C i følgende rekkefølge for DatamaskinSalg:
+
+For GPO B: B.cmd, B.ps1
+For GPO C: C.cmd, C.ps1
+
+Obs: Denne policyinnstillingen bestemmer hvilken rekkefølge skriptene ved oppstart og avslutning av datamaskinen skal kjøres i for alle aktuelle GPOer. Du kan overstyre denne policyinnstillingen for spesifikke skripttyper for et spesifikt GPO ved å konfigurere følgende policyinnstillinger for GPOen:
+ 
+Datamaskinkonfigurasjon\Policyer\Windows-innstillinger\Skript (Oppstart/Avslutning)\Oppstart
+Datamaskinkonfigurasjon\Policyer\Windows-innstillinger\Skript (Oppstart/Avslutning)\Avslutning
+</string>
+      <string id="Run_User_PS_Scripts_First_Explain">Denne policyinnstillingen bestemmer om Windows PowerShell-skript skal kjøres før ikke-PowerShell-skript når en bruker logger seg på og av. Som standard kjøres PowerShell-skript etter ikke-PowerShell-skript. 
+ 
+Hvis du aktiverer denne policyinnstillingen, vil PowerShell-skript kjøres før ikke-PowerShell-skript når en bruker logger seg på og av, for hvert aktuelle gruppepolicyobjekt (GPO). 
+
+Se for eksempel for deg følgende scenario: 
+
+Du har tre GPOer (GPO A, GPO B og GPO C). Denne policyinnstillingen er aktivert for GPO A. 
+
+For GPO B og GPO C kjøres følgende skript når en bruker logger seg på:
+
+GPO B: B.cmd, B.ps1
+GPO C: C.cmd, C.ps1
+
+Anta også at du har to brukere, Kim Vang og Trude Johnsen. 
+For Kim brukes GPO A, B og C. Derfor kjøres skriptene for GPO B og C i følgende rekkefølge for Kim:
+
+For GPO B: B.ps1, B.cmd
+For GPO C: C.ps1, C.cmd
+ 
+For Trude brukes GPO B og C, men ikke GPO A. Derfor kjøres skriptene for GPO B og C i følgende rekkefølge for Trude:
+
+For GPO B: B.cmd, B.ps1
+For GPO C: C.cmd, C.ps1
+
+Obs: Denne policyinnstillingen bestemmer hvilken rekkefølge skriptene skal kjøres i når en bruker logger seg på og av, for alle aktuelle GPOer. Du kan overstyre denne policyinnstillingen for spesifikke skripttyper for et spesifikt GPO ved å konfigurere følgende policyinnstillinger for GPOen:
+ 
+Brukerkonfigurasjon\Policyer\Windows-innstillinger\Skript (På-/avlogging)\Pålogging
+Brukerkonfigurasjon\Policyer\Windows-innstillinger\Skript (På-/avlogging)\Avlogging
+
+Denne innstillingen vises i mappene Datamaskinkonfigurasjon og Brukerkonfigurasjon. Innstillingen som angis i Datamaskinkonfigurasjon, går foran innstillingen som angis i Brukerkonfigurasjon.
+</string>
+      <string id="Run_Shutdown_Script_Visible">Kjør avslutningsskript synlige</string>
+      <string id="Run_Shutdown_Script_Visible_Explain">Viser instruksjonene i avslutningsskript mens de kjøres.
+
+Avslutningsskript er satsvise filer med instruksjoner som kjøres når brukeren starter datamaskinen på nytt eller slår den av. Som standard vises ikke instruksjonene i avslutningsskript.
+
+Hvis du aktiverer denne innstillingen, vises hver instruksjon i avslutningsskriptet mens det kjøres. Instruksjonene vises i et kommandovindu.
+
+Hvis du deaktiverer denne innstillingen eller ikke konfigurerer den, skjules instruksjonene.</string>
+      <string id="Run_Startup_Script_Sync">Kjør oppstartsskript asynkront</string>
+      <string id="Run_Startup_Script_Sync_Help">Lar systemet kjøre oppstartsskript samtidig.
+
+Oppstartsskript er satsvise filer som kjøres før brukeren logger seg på. Som standard venter systemet på at kjøring av hvert oppstartsskript skal fullføres før det neste oppstartsskriptet kjøres.
+
+Hvis du aktiverer denne innstillingen, koordinerer ikke systemet kjøring av oppstartsskript. Oppstartsskriptene kan derfor kjøres samtidig.
+
+Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, kan ikke et oppstartsskript kjøres før det forrige skriptet er fullført.
+
+Obs!  Fra og med operativsystemet Windows Vista er ikke skript som er konfigurert til å kjøre asynkront, lenger synlige ved oppstart, uansett om policyinnstillingen Kjør oppstartsskript synlige er aktivert eller ikke.</string>
+      <string id="Run_Startup_Script_Visible">Kjør oppstartsskript synlige</string>
+      <string id="Run_Startup_Script_Visible_Explain">Viser instruksjonene i oppstartsskript mens de kjøres.
+
+Oppstartsskript er satsvise filer med instruksjoner som kjøres før brukeren logger seg på. Som standard vises ikke instruksjonene i oppstartsskript.
+
+Hvis du aktiverer denne innstillingen, vises hver instruksjon i oppstartsskriptet mens det kjøres. Instruksjonene vises i et kommandovindu. Denne innstillingen er beregnet på avanserte brukere.
+
+Hvis du deaktiverer denne innstillingen eller ikke konfigurerer den, skjules instruksjonene.
+
+Obs!  Fra og med operativsystemet Windows Vista er ikke skript som er konfigurert til å kjøre asynkront, lenger synlige ved oppstart, uansett om denne innstillingen er aktivert eller ikke.</string>
+      <string id="Allow_Logon_Script_NetbiosDisabled">Tillat påloggingsskript når NetBIOS eller WINS er deaktivert</string>
+      <string id="Allow_Logon_Script_NetbiosDisabled_Explain">Denne policyinnstillingen tillater at brukerpåloggingsskript kjører under pålogging på krysskogen når DNS-suffiksene ikke er konfigurert og NetBIOS eller WINS er deaktivert. Denne policyinnstillingen påvirker alle brukerkontoer som interaktivt logget på datamaskinen.
+
+Hvis du aktiverer denne policyinnstillingen, kjører påloggingsskript hvis NetBIOS eller WINS er deaktivert under pålogging på krysskogen uten at DNS-suffikser blir konfigurert.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, ingen brukerkonto cross-forest, interaktiv pålogging vil kunne kjøre påloggingsskript hvis NetBIOS eller WINS er deaktiverte og DNS-suffiksene ikke er konfigurert.</string>
+      <string id="Scripts">Skript</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="MaxGPOScriptWaitPolicy">
+        <decimalTextBox refId="MaxGPOScriptWait" defaultValue="600">Sekunder:</decimalTextBox>
+        <text>Intervallet er 0 til 32 000. Bruk 0 for uendelig ventetid.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

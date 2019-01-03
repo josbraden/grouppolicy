@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>KDC-beállítások</displayName>
+  <description>A Kerberos kulcskiosztó központjára (KDC) vonatkozó beállítások.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Erdőkeresési sorrend használata</string>
+      <string id="forestsearch_explain">Ez a házirend-beállítás megadja azoknak a megbízható erdőknek a listáját, amelyekben a kulcsszolgáltató (KDC) a kétrészes egyszerű szolgáltatásnevek (SPN) feloldásakor keres.
+
+Ha engedélyezi ezt a beállítást, a KDC a listában szereplő erdőkben keres, ha nem tud feloldani egy kétrészes SPN-nevet a helyi erdőben. Az erdőben való keresést a kulcsszolgáltató egy globális katalógus vagy névutótag-emlékeztetők használatával végzi. Ha van találat, a KDC hivatkozó jegyet küld vissza az ügyfélnek a megfelelő tartományhoz.
+
+Ha letiltja vagy nem konfigurálja ezt a beállítást, a KDC nem fog keresni a listában szereplő erdőkben az SPN-név feloldásához. Ha a KDC nem tudja feloldani az SPN-nevet, mert a név nem található, akkor előfordulhat, hogy az NTLM-hitelesítést fogja használni.
+
+A következetes működés biztosításához a házirend-beállítást támogatni kell, és ugyanúgy kell beállítani a tartományban lévő összes tartományvezérlőn.</string>
+      <string id="emitlili">Információ az ügyfélszámítógépekre történő korábbi bejelentkezésekről</string>
+      <string id="emitlili_explain">Ez a házirend-beállítás határozza meg, hogy a tartományvezérlő nyújt-e információt az ügyfélszámítógépekre történő korábbi bejelentkezésekről.
+
+A házirend-beállítás engedélyezése esetén a tartományvezérlő megjelenít információs üzenetet a korábbi bejelentkezésekről.
+
+Ahhoz, hogy a Windows bejelentkeztetője ki tudja használni ezt a funkciót, a Windows-összetevőkben található Windows bejelentkezési beállítások csomópont alatti „Korábbi bejelentkezések adatainak megjelenítése a felhasználó bejelentkezése során” házirend-beállítást is engedélyezni kell.
+
+Ha a házirend-beállítást letiltja vagy nem konfigurálja, a tartományvezérlő nem szolgál információval az előző bejelentkezésekről, kivéve ha a „Korábbi bejelentkezések adatainak megjelenítése a felhasználó bejelentkezése során” házirend-beállítás engedélyezve van.
+
+Megjegyzés: Az előző bejelentkezésekre vonatkozó információt csak olyan tartományvezérlők tudják biztosítani, amelyek Windows Server 2008 működési szintű tartományban vannak. A Windows Server 2003, a Windows 2000 natív vagy a Windows 2000 vegyes működési szintű tartományban lévő tartományvezérlők nem tudnak információt nyújtani a korábbi bejelentkezésekről, így ezek esetében a beállítás engedélyezése semmilyen hatással nem jár.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Mód:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>A keresés helyéül szolgáló erdők</label>
+        </textBox>
+        <text>Szintaxis:</text>
+        <text>Adja meg azokat az erdőket, amelyben a keresés fut, amikor a házirend engedélyezve van.</text>
+        <text>A teljes tartománynév (FQDN) névformátumot használja.</text>
+        <text>A keresési bejegyzéseket pontosvesszővel (;) válassza el.</text>
+        <text>Részletek:</text>
+        <text>Az aktuális erdőket nem kell felsorolni, mert az erdőkeresési sorrend szerint a rendszer először a globális katalógusban, majd a megadott sorrendben keres.</text>
+        <text>Nem kell külön felsorolnia az erdőben lévő összes tartományt.</text>
+        <text>Ha egy meghatalmazó erdő van megadva, akkor a rendszer az adott erdőben lévő összes tartományban keres.</text>
+        <text>Úgy érheti el a legjobb eredményt, ha az erdőket a keresési sikeresség valószínűségének sorrendjében sorolja fel.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

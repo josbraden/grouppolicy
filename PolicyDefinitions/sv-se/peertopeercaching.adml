@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache gör det möjligt för klienter att säkert hämta innehåll från avdelningskontor istället för att behöva hämta det från servern som är värd för innehållet. Beroende på distributionsläge kan innehållet hämtas från andra klienter på avdelningskontoret eller från en server för värdhanterad cache på avdelningskontoret. En klient måste vara auktoriserad av servern för att hämta innehåll från avdelningen. Användande av BranchCache minskar kostnaden för WAN-länken (Wide Area Network) som ansluter avdelningskontoret till datacentret eller huvudkontoren och ökar hämtningshastigheter för innehåll som redan har hämtats till avdelningskontoret.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">Aktivera BranchCache</string>
+
+            <string id="WBC_Enable_Help">Den här principinställningen anger om BranchCache är aktiverad på klientdatorn. BranchCache minskar utnyttjandet av WAN-länkar (Wide Area Network) som ansluter avdelningskontor med datacentret eller huvudkontoren och ökar åtkomsthastigheten för innehåll som redan har hämtats till avdelningskontoret. BranchCache gör detta genom att tillåta att datorer på ett avdelningskontor cachelagrar filer och HTTP-trafik från intranätservrar på vilka BranchCache är aktiverat och sedan säkert dela dem med andra datorer på avdelningskontoret. Datorer på avdelningskontoret kan hämta innehåll från en server för värdhanterad cache på avdelningskontoret (när läget Cachevärd används), eller från andra klientdatorer på avdelningskontoret (när distribuerat cacheläge används). Datorer måste ha behörighet för att få åtkomst till innehållet på källservern.
+
+Aktivera den här principinställningen på klientdatorer på avdelningskontor där WAN-bandbredden är låg, fördröjningen är hög och det finns ett antal klientdatorer som behöver åtkomst till samma data från servrar på det centrala kontoret.
+
+Om du aktiverar den här principinställningen inaktiveras BranchCache. Du måste installera funktionen BranchCache även på klientdatorn för att den här principinställningen ska börja gälla.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen inaktiveras BranchCache.
+            </string>
+
+            <string id="WBC_Cache_Percent">Ange procentsats av diskutrymme som ska användas för cachelagring av klientdatorer</string>
+
+            <string id="WBC_Cache_Percent_Help">Den här principinställningen ändrar standardprocentsatsen av det totala diskutrymmet som används för att cachelagra hämtat material med hjälp av BranchCache. Innehållet görs tillgängligt för andra klientdatorer som efterfrågar det, om de är auktoriserade av servern att få åtkomst till innehållet.
+
+Om du aktiverar den här principinställningen kan du konfigurera det procentuella diskutrymmet som allokeras för cachelagringen.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen är cachelagringen inställd på fem procent av det totala diskutrymmet på klientdatorn.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Ange värdbaserat cacheläge för BranchCache</string>
+
+            <string id="WBC_HostedCache_Location_Help">Den här principinställningen anger om klientdatorn ska använda värdbaserat cacheläge och i så fall information om adressen till BranchCache-serve. Med värdbaserat cacheläge kan en klientdator att hämta innehåll från en BranchCache-server som fungerar som den centrala (värdbaserade) cachelagringsplatsen för ett avdelningskontor. När värdbaserat cacheläge används distribueras innehåll som hämtas av BranchCache-aktiverade klientdatorer till BranchCache-servern, som sedan fungerar som den centraliserade cachelagringen för andra BranchCache-aktiverade klientdatorer på avdelningskontoret. Klientdatorer använder SSL (Secure Sockets Layer) för att kommunicera med BranchCache-servern.
+
+Om du vill använda den här principinställningen måste du ange adressen till BranchCache-servern och adressen måste matcha serverns FQDN (Fully Qualified Domain Name), som specificeras i certifikatet för BranchCache-servern. Dessutom måste certifikatroten för BranchCache-serverns certifikat finnas i klientdatorns arkiv med betrodda utfärdare.
+
+Om du aktiverar den här principinställningen och anger en giltig plats för den värdhanterad cachen inaktiveras värdbaserat cacheläge. Du måste även aktivera principinställningen Aktivera BranchCache för att den här principinställningen ska börja gälla.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen inaktiveras värdbaserat cacheläge.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Ange distribuerat cacheläge för BranchCache</string>
+
+            <string id="WBC_Distributed_Enable_Help">Den här principinställningen anger om klientdatorer ska använda distribuerat cacheläge. Med det här BranchCache-läget kan en klientdator hämta innehåll som har hämtats och cachelagrats på andra klientdatorer på avdelningskontoret. Datorer måste ha behörighet till innehållet på källservern för att få åtkomst till innehållet på andra klientdatorer på avdelningskontoret.
+
+Den här principinställningen anger om distribuerat cacheläge används. Aktivera den här principinställningen när BranchCache används på avdelningskontor där det inte finns någon server som fungerar som en värdhanterad cache.
+
+Om du aktiverar den här principinställningen används distribuerat cacheläge. Du måste även aktivera principinställningen Aktivera BranchCache för att den här principinställningen ska börja gälla.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen inaktiveras distribuerat cacheläge.
+            </string>
+
+            <string id="WBC_SMB_Enable">Konfigurera BranchCache för nätverksfiler</string>
+
+            <string id="WBC_SMB_Enable_Help">Den här principinställningen ändrar standardfördröjningsvärdet för nätverkets överföringstid, över vilket nätverksfiler cachelagras av klientdatorer på avdelningskontoret. Med BranchCache för nätverksfiler kan datorer på avdelningskontor cachelagra data från intranätservrar där BranchCache är aktiverat och sedan dela dem säkert med andra datorer på avdelningskontoret. En av innehållstyperna som kan cachelagras på ett avdelningskontor är nätverksfiler som använder SMB-protokoll (Server Message Block).
+
+Som standard cachelagras nätverksfiler på avdelningskontoret när WAN-länkens fördröjningsvärde för nätverkets överföringstid överstiger 80 ms. Om du alltid vill cachelagra nätverksfiler som hämtas till datorer på avdelningskontoret anger du värdet för nätverksfördröjningen till 0. Om du vill inaktivera cachelagring på avdelningskontor för nätverksfiler anger du värdet för fördröjningen till ett mycket högt värde.
+
+Om du aktiverar den här principinställningen kan du konfigurera fördröjningsvärdet för nätverkets överföringstid över vilket nätverksfiler ska cachelagras av klientdatorer på avdelningskontoret.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen cachelagras nätverksfiler på klientdatorer om WAN-länkens fördröjningsvärde för nätverkets överföringstid överstiger 80 ms.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Ange plats för cache på klientdatorn</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Ange plats för värdhanterad cache</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Ange fördröjningsvärdet för nätverkets överföringstid i millisekunder, över vilket nätverksfiler måste cachelagras på avdelningskontoret</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

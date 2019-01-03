@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Kerberos-indstillinger</displayName>
+  <description>Konfigurationsindstillinger til Kerberos-godkendelsesprotokol.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Brug søgerækkefølge i skov</string>
+      <string id="forestsearch_explain">Denne politikindstilling definerer listen over skove, der er tillid til, og som Kerberos-klienten søger i under forsøg på at fortolke todelte hovednavne (Service Principal Names – SPN'er).
+
+Hvis du aktiverer denne politikindstilling, søger Kerberos-klienten i skovene på denne liste, hvis et todelt SPN-navn ikke kan fortolkes. Hvis der findes et match, anmoder Kerberos-klienten om en henvisningsbillet til det relevante domæne.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, søger Kerberos-klienten ikke i de angivne skove for at fortolke SPN-navnet. Hvis Kerberos-klienten ikke kan fortolke SPN-navnet, fordi navnet ikke kan findes, kan du evt. anvende NTLM-godkendelse.</string>
+      <string id="hosttorealm">Definer tilknytninger af værtsnavn til Kerberos-ressoucer</string>
+      <string id="hosttorealm_explain">Denne politik giver dig mulighed for at angive, hvilke DNS-værtsnavne og hvilke DNS-suffikser der knyttes til en Kerberos-ressource.
+
+Hvis du aktiverer denne indstilling, kan du vise og ændre listen med DNS-værtsnavne og DNS-suffikser, som er knyttet til en Kerberos-ressource, sådan som det er defineret af gruppepolitik. Hvis du vil vise listen over tilknytninger, skal du aktivere politikindstillingen og derefter klikke på knappen Vis. Hvis du vil tilføje en tilknytning, skal du aktivere politikindstillingen, notere syntaksen, klikke på knappen Vis og skrive et ressourcenavn i kolonnen Værdinavn i dialogboksen Vis indhold. Skriv listen over DNS-værtsnavne og DNS-suffikser ved hjælp af det korrekte syntaksformat i kolonnen Værdi. Hvis du vil fjerne en tilknytning fra listen, skal du klikke på den tilknytningspost, der skal fjernes, og derefter trykke på DELETE-tasten. Hvis du vil redigere en tilknytning, skal du fjerne den aktuelle post fra listen og derefter tilføje en ny med andre parametre.
+
+Hvis du deaktiverer denne politikindstilling, slettes listen over tilknytning af værtsnavn til Kerberos-ressourcer, der er defineret af Gruppepolitik.
+
+Hvis du ikke konfigurerer denne politikindstilling, bruger systemet tilknytningerne af værtsnavn til Kerberos-ressoucer, som er defineret i den lokale registreringsdatabase, hvis de findes.</string>
+      <string id="MitRealms">Definer interoperative Kerberos V5-ressouceindstillinger</string>
+      <string id="MitRealms_explain">Denne politikindstilling konfigurerer Kerberos-klienten, så den kan godkendes til interoperative Kerberos V5-ressourcer, såsom det er defineret i denne politikindstilling.
+
+Hvis du aktiverer denne politikindstilling, kan du vise og ændre listen med interoperative Kerberos V5-ressourcer og deres indstillinger. Hvis du vil vise listen over interoperative Kerberos V5-ressourcer, skal du aktivere politikindstillingen og derefter klikke på knappen Vis. Hvis du vil tilføje en interoperativ Kerberos V5-ressource, skal du aktivere politikindstillingen, notere syntaksen og klikke på knappen Vis. Skriv navnet på den interoperative Kerberos V5-ressource i kolonnen Værdinavn i dialogboksen Vis indhold. Angiv ressourceflagene og værtsnavnene for værts-KDC'erne ved hjælp af det relevante syntaksformat. Hvis du vil fjerne værdinavnet eller værdiposten for en interoperativ Kerberos V5-ressource fra listen, skal du klikke på posten og derefter trykke på DELETE-tasten. Hvis du vil redigere en tilknytning, skal du fjerne den aktuelle post fra listen og tilføje en ny med andre parametre.
+
+Hvis du deaktiverer denne politikindstilling, slettes indstillingerne for den interoperative Kerberos V5-ressource, der er defineret af Gruppepolitik.
+
+Hvis du ikke konfigurerer denne politikindstilling, bruger systemet indstillingerne for den interoperative Kerberos V5-ressource, som er defineret i den lokale registreringsdatabase, hvis de findes.</string>
+      <string id="ValidateKDC">Kræv restriktiv KDC-validering</string>
+      <string id="ValidateKDC_explain">Denne politikindstillinger kontrollerer Kerberos-klientens virkemåde ved validering af KDC-certifikatet.  
+
+Hvis du aktiverer denne indstilling, kræver Kerberos-klienten, at KDC'ens X.509-certifikat indeholder KDC'ens vigtigste formålsobjektidentifikator i EKU (Extended Key Usage)-udvidelser, og at KDC'ens X.509-certifikat indeholder en dNSName subjectAltName (SAN)-udvidelse, som svarer til domænets DNS-navn. Hvis computeren føjes til et domæne, kræver Kerberos-klienten, at KDC'ens X.509-certifikat skal signeres af en CA (Certificate Authority) i NTAUTH-butikken. Hvis computeren ikke føjes til et domæne, tillader Kerberos-klienten, at rod-CA-certifikatet på chipkortet bruges i sti-validering af KDC'ens X.509-certifikat.
+
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, kræver Kerberos-klienten kun, at KDC-certifikatet indeholder formålsobjektidentifikatoren til servergodkendelse i EKU-udvidelserne.
+</string>
+      <string id="StrictTarget">Kræv nøjagtig destinationsmatch for SPN ved fjernprocedurekald</string>
+      <string id="StrictTarget_explain">Når et program forsøger at fortage et fjernprocedurekald til denne server med en NULL-værdi for hovednavnet (Service Principal Name – SPN), forsøger computere, som kører Windows 7, at bruge Kerberos ved at oprette et SPN-navn. Denne politikindstilling gør det muligt at konfigurere denne server, så Kerberos kan dekryptere en billet, der indeholder dette systemgenererede SPN-navn.
+
+Hvis du aktiverer denne politikindstilling, er det kun tjenester, der kører som LocalSystem eller NetworkService, der får tilladelse til at acceptere disse betingelser. Tjenester, der kører som andre id'er end LocalSystem eller NetworkService, godkendes muligvis ikke.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, får alle tjenester tilladelse til at acceptere indgående forbindelser ved hjælp af dette systemgenererede SPN-navn.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Definer tilknytninger af værtsnavn til ressourcer:</listBox>
+        <text></text>
+        <text>Syntaks:</text>
+        <text>Indtast navnet på Kerberos-ressourcen som Værdinavn.</text>
+        <text>Angiv de værtsnavne og DNS-suffikser, som du vil</text>
+        <text>knytte til Kerberos-ressourcen, som Værdi.  Hvis du vil føje flere </text>
+        <text>navne, skal posterne adskilles med ";".</text>
+        <text></text>
+        <text>Bemærk! Hvis du vil angive en DNS-suffiks, skal du foranstille posten med et punktum (.).</text>
+        <text>Hvis det er en post med værtsnavn, skal der ikke være foranstillet punktum (.).</text>
+        <text></text>
+        <text>Eksempel:</text>
+        <text>Værdinavn: MICROSOFT.COM</text>
+        <text>Værdi: .microsoft.com; .ms.com; computer1.fabrikam.com;</text>
+        <text></text>
+        <text>I eksemplet ovenover. Alle hovednavne med enten DNS-suffikset</text>
+        <text> *.microsoft.com eller *.ms.com knyttes til </text>
+        <text>MICROSOFT.COM Kerberos-ressoucen. Herudover knyttes værtsnavnet </text>
+        <text>computer1.fabrikam.com også til </text>
+        <text>MICROSOFT.COM Kerberos-ressourcen.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Definer interoperative Kerberos V5-ressouceindstillinger:</listBox>
+        <text></text>
+        <text>Syntaks:</text>
+        <text>Indtast navnet på den interoperative Kerberos-ressource som Værdinavn.</text>
+        <text>Angiv KDC'ens ressourceflag og værtsnavne som </text>
+        <text>Værdi.  Medtag ressourceflagene med følgende </text>
+        <text>koder &lt;f&gt; &lt;/f&gt;.  Medtag listen af KDC'er med koderne &lt;k&gt; &lt;/k&gt;</text>
+        <text>Hvis du vil tilføje flere KDC-navne, skal du adskille poster med </text>
+        <text>et semikolon ";".</text>
+        <text></text>
+        <text>Eksempel:</text>
+        <text>Værdinavn: TEST.COM</text>
+        <text>Værdi: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Et andet eksempel:</text>
+        <text>Værdinavn: REALM.FABRIKAM.COM</text>
+        <text>Værdi: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Tilstand:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Skove, der skal søges i</label>
+        </textBox>
+        <text>Syntaks:</text>
+        <text>Angiv listen over skove, der skal søges i, når denne politik er aktiveret.</text>
+        <text>Brug navngivningsformatet Fuldt domænenavn.</text>
+        <text>Adskil flere søgestrenge med et semikolon ";".</text>
+        <text>Detaljer:</text>
+        <text>Det er ikke nødvendigt at angive den aktuelle skov på listen, fordi søgerækkefølgen for skoven bruger det globale katalog først, før der søges i den angivne rækkefølge.</text>
+        <text>Du behøver ikke at angive alle skovens domæner separat.</text>
+        <text>Hvis der er angivet en skov, der er tillid til, søges der i alle domæner i denne skov.</text>
+        <text>Du opnår det bedste resultat ved at angive skovene i den rækkefølge, hvori de med størst sandsynlighed efterfølger hinanden. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

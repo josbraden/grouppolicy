@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Kerberos-Einstellungen</displayName>
+  <description>Konfigurationseinstellungen für das Kerberos-Authentifizierungsprotokoll.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Gesamtstruktur-Suchreihenfolge verwenden</string>
+      <string id="forestsearch_explain">Mit dieser Richtlinieneinstellung wird die Liste vertrauender Gesamtstrukturen definiert, die der Kerberos-Client beim Versuch, zweiteilige Dienstprinzipalnamen aufzulösen, durchsucht.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, durchsucht der Kerberos-Client die Gesamtstrukturen in dieser Liste, wenn er einen zweiteiligen Dienstprinzipalnamen nicht auflösen kann. Wenn eine Übereinstimmung gefunden wird, fordert der Kerberos-Client ein Verweisticket zur geeigneten Domäne an.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, werden die aufgelisteten Gesamtstrukturen vom Kerberos-Clients nicht zur Auflösung des Dienstprinzipalnamens durchsucht. Wenn der Kerberos-Client den Dienstprinzipalnamen nicht auflösen kann, da er nicht gefunden wird, kann die NTLM-Authentifizierung verwendet werden.</string>
+      <string id="hosttorealm">Zuordnungen von Hostnamen zu Kerberosbereichen definieren</string>
+      <string id="hosttorealm_explain">Mit dieser Richtlinieneinstellung können Sie festlegen, welche DNS-Hostnamen und DNS-Suffixe einem Kerberos-Bereich zugeordnet werden.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, können Sie die Liste der DNS-Hostnamen und DNS-Suffixe anzeigen und ändern, die einem Kerberos-Bereich gemäß der Gruppenrichtlinie zugeordnet sind. Aktivieren Sie die Richtlinieneinstellung, und klicken Sie auf die Schaltfläche "Anzeigen", um die Liste der Zuordnungen anzuzeigen. Aktivieren Sie die Richtlinieneinstellung, notieren Sie sich die Syntax, und klicken Sie auf "Anzeigen", um eine Zuordnung hinzuzufügen. Geben Sie im Dialogfeld "Inhalt anzeigen" in der Spalte "Wertname" einen Bereichsnamen ein. Geben Sie in der Spalte "Wert" die Liste der DNS-Hostnamen und DNS-Suffixe im richtigen Syntaxformat ein. Klicken Sie zum Entfernen einer Zuordnung aus der Liste auf den betreffenden Eintrag, und drücken Sie die Taste ENTF. Wenn Sie eine Zuordnung bearbeiten möchten, entfernen Sie den aktuellen Eintrag aus der Liste, und fügen Sie einen neuen Eintrag mit anderen Parametern hinzu.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren, wird die von der Gruppenrichtlinie definierte Liste der Zuordnungen von Hostnamen zu Kerberos-Bereichen gelöscht.
+
+Wenn Sie diese Richtlinieneinstellung nicht konfigurieren, verwendet das System die Zuordnungen von Hostnamen zu Kerberos-Bereichen, die in der lokalen Registrierung definiert sind, falls vorhanden.</string>
+      <string id="MitRealms">Interoperable Kerberos-V5-Bereichseinstellungen definieren</string>
+      <string id="MitRealms_explain">Diese Richtlinieneinstellung konfiguriert den Kerberos-Client so, dass er eine Authentifizierung mit interoperablen Kerberos V5-Bereichen durchführen kann, wie durch diese Richtlinieneinstellung definiert.
+      
+Wenn Sie diese Richtlinieneinstellung aktivieren, können Sie die Liste der interoperablen Kerberos V5-Bereiche und ihre Einstellungen anzeigen und ändern. Um die Liste der interoperablen Kerberos V5-Bereiche anzuzeigen, aktivieren Sie die Richtlinieneinstellung und klicken auf die Schaltfläche "Anzeigen". Um einen interoperablen Kerberos V5-Bereich hinzuzufügen, aktivieren Sie die Richtlinieneinstellung, notieren sich die Syntax und klicken auf "Anzeigen". Geben Sie im Dialogfeld "Inhalt anzeigen" in der Spalte "Wertname" den Namen des interoperablen Kerberos V5-Bereichs ein. Geben Sie in der Spalte "Wert" die Bereichskennzeichen und Hostnamen der Host-KDCs im richtigen Syntaxformat ein. Um den Eintrag "Wertname" oder "Wert" eines interoperablen Kerberos V5-Bereichs aus der Liste zu entfernen, klicken Sie auf den Eintrag und drücken die Taste ENTF. Wenn Sie eine Zuordnung bearbeiten möchten, entfernen Sie den aktuellen Eintrag aus der Liste, und fügen Sie einen neuen Eintrag mit anderen Parametern hinzu.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren, werden die von der Gruppenrichtlinie definierten interoperablen Kerberos V5-Bereichseinstellungen gelöscht.
+
+Wenn Sie diese Richtlinieneinstellung nicht konfigurieren, verwendet das System die Einstellungen für den interoperablen Kerberos V5-Bereich, die in der lokalen Registrierung definiert sind, falls vorhanden.</string>
+      <string id="ValidateKDC">Strenge KDC-Überprüfung voraussetzen</string>
+      <string id="ValidateKDC_explain">Diese Richtlinieneinstellung steuert das Verhalten des Kerberos-Clients bei der Überprüfung des KDC-Zertifikats.  
+      
+Wenn Sie diese Richtlinieneinstellung aktivieren, setzt der Kerberos-Client voraus, dass das X.509-Zertifikat des KDCs in den EKU-Erweiterungen (Extended Key Usage) die KDC-Schlüsselzweck-Objekt-ID und das X.509-Zertifikat des KDCs eine dNSName subjectAltName-(SAN-)Erweiterung vom Typ "dNSName" enthält, die mit dem DNS-Namen der Domäne übereinstimmt. Wenn der Computer einer Domäne angehört, setzt der Kerberos-Client voraus, dass das X.509-Zertifikat des KDCs von einer Zertifizierungsstelle im NTAUTH-Speicher signiert ist. Wenn der Computer keiner Domäne angehört, erlaubt der Kerberos-Client bei der Pfadüberprüfung des X.509-Zertifikats des KDCs die Verwendung des Stamm-Zertifizierungsstellenzertifikats für die Smartcard.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, setzt der Kerberos-Client nur voraus, dass das KDC-Zertifikat in den EKU-Erweiterungen die Serverauthentifizierungs-Zweckobjekt-ID enthält.
+</string>
+      <string id="StrictTarget">Strenge Übereinstimmung mit Ziel-Dienstprinzipalnamen bei Remoteprozeduraufrufen anfordern</string>
+      <string id="StrictTarget_explain">Wenn eine Anwendung versucht, einen Remoteprozeduraufruf mit einem NULL-Wert für den Dienstprinzipalnamen an diesen Server zu senden, versuchen Computer unter Windows 7, Kerberos zu verwenden, indem sie einen Dienstprinzipalnamen generieren. Mit dieser Richtlinieneinstellung können Sie diesen Server so konfigurieren, dass Kerberos ein Ticket, das den vom System generierten Dienstprinzipalnamen enthält, entschlüsseln kann.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, sind nur die als LocalSystem oder NetworkService ausgeführten Dienste zur Annahme dieser Verbindungen berechtigt. Bei Diensten, die nicht als LocalSystem oder NetworkService ausgeführt werden, kann ein Authentifizierungsfehler auftreten.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, ist jeder Dienst berechtigt, eingehende Verbindungen unter Verwendung des vom System generierten Dienstprinzipalnamens anzunehmen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Zuordnungen von Hostnamen zu Bereichen definieren:</listBox>
+        <text></text>
+        <text>Syntax:</text>
+        <text>Geben Sie den Kerberosbereichsnamen als Wertnamen ein.</text>
+        <text>Geben Sie unter "Wert" die Hostnamen und die DNS-Suffixe ein, die Sie</text>
+        <text>dem Kerberosbereich zuordnen möchten.  Um mehrere</text>
+        <text>Namen hinzuzufügen, trennen Sie die Einträge durch ein Semikolon (;).</text>
+        <text></text>
+        <text>Hinweis: Um ein DNS-Suffix anzugeben, geben Sie vor dem Eintrag einen Punkt (.) ein.</text>
+        <text>Bei einem Hostnameneintrag geben Sie keinen Punkt (.) vor dem Eintrag ein.</text>
+        <text></text>
+        <text>Beispiel:</text>
+        <text>Wertname: MICROSOFT.COM</text>
+        <text>Wert: .microsoft.com; .ms.com; computer1.fabrikam.com;</text>
+        <text></text>
+        <text>In dem obigen Beispiel werden alle Prinzipale mit dem DNS-Suffix</text>
+        <text>*.microsoft.com oder *.ms.com dem Kerberosbereich</text>
+        <text>MICROSOFT.COM zugeordnet.  Außerdem wird der Hostname</text>
+        <text>"computer1.fabrikam.com" ebenfalls dem Kerberosbereich </text>
+        <text>MICROSOFT.COM zugeordnet.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Interoperable Kerberos-V5-Bereichseinstellungen definieren:</listBox>
+        <text></text>
+        <text>Syntax:</text>
+        <text>Geben Sie den interoperablen Kerberos V5-Bereichsnamen als Wertnamen ein.</text>
+        <text>Geben Sie unter "Wert" die Bereichsflags und die Hostnamen der KDCs</text>
+        <text>ein.  Schließen Sie die Bereichsflags in die</text>
+        <text>Tags &lt;f&gt; und &lt;/f&gt; ein.  Schließen Sie die Liste der KDCs in die Tags &lt;k&gt; und &lt;/k&gt; ein.</text>
+        <text>Um mehrere KDC-Namen hinzuzufügen, trennen Sie die Einträge durch</text>
+        <text>ein Semikolon (;).</text>
+        <text></text>
+        <text>Beispiel:</text>
+        <text>Wertname: TEST.COM</text>
+        <text>Wert: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Ein weiteres Beispiel:</text>
+        <text>Wertname: REALM.FABRIKAM.COM</text>
+        <text>Wert: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Modus:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Zu durchsuchende Gesamtstrukturen</label>
+        </textBox>
+        <text>Syntax:</text>
+        <text>Geben Sie die Liste der Gesamtstrukturen ein, die bei aktivierter Richtlinie durchsucht werden sollen.</text>
+        <text>Verwenden Sie das Namensformat für vollqualifizierte Domänennamen (Fully Qualified Domain Name, FQDN).</text>
+        <text>Trennen Sie mehrere Sucheinträge durch ein Semikolon (";").</text>
+        <text>Details:</text>
+        <text>Die aktuelle Gesamtstruktur muss nicht aufgelistet werden, da die Gesamtstruktur-Suchreihenfolge zunächst den globalen Katalog verwendet und dann in der aufgelisteten Reihenfolge sucht.</text>
+        <text>Sie müssen nicht alle Domänen in der Gesamtstruktur separat auflisten.</text>
+        <text>Wenn eine vertrauende Gesamtstruktur aufgeführt ist, werden alle Domänen in der Gesamtstruktur durchsucht.</text>
+        <text>Um optimale Leistung zu erzielen, führen Sie die Gesamtstrukturen nach der höchsten Wahrscheinlichkeit für eine erfolgreiche Suche auf. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

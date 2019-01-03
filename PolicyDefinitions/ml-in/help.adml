@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
+  <resources>
+    <stringTable>
+      <string id="HelpQualifiedRootDir_Comp">Restrict potentially unsafe HTML Help functions to specified folders</string>
+      <string id="HelpQualifiedRootDir_Help">With this policy, you can restrict certain HTML Help commands to function only in HTML Help (.chm) files within specified folders and their subfolders.  Alternatively, you can disable these commands on the entire system.  It is strongly recommended that only folders requiring administrative privileges be added to this policy.
+
+The "Shortcut" command is used to add a link to a Help topic, and runs executables that are external to the Help file. The "WinHelp" command is used to add a link to a Help topic, and runs a WinHLP32.exe Help (.hlp) file.
+
+When this policy is disabled, or not configured, these commands are fully functional for all Help files.  
+
+When this policy is enabled, the commands will function only for .chm files in the specified folders and their subfolders. 
+
+To restrict the commands to one or more folders, enable the policy and enter the desired folders in the text box on the settings tab of the Policy Properties dialog box. Use a semicolon to separate folders. For example, to restrict the commands to only .chm files in the %windir%\help folder and D:\somefolder, add the following string to the edit box: "%windir%\help;D:\somefolder".
+
+To disallow the "Shortcut" and "WinHelp" commands on the entire local system, enable the policy and leave the text box on the settings tab of the Policy Properties dialog box blank.
+
+Note: An environment variable may be used, (for example, %windir%), so long as it is defined on the system. For example, %programfiles% is not defined on some early versions of Windows.
+
+Note: Only folders on the local computer can be specified in this policy. You cannot use this policy to enable the "Shortcut" and "WinHelp" commands for .chm files that are stored on mapped drives or accessed using UNC paths.
+
+For additional options, see the "Restrict these programs from being launched from Help" policy.</string>
+      <string id="RestrictRunFromHelp">Restrict these programs from being launched from Help</string>
+      <string id="RestrictRunFromHelp_Comp">Restrict these programs from being launched from Help</string>
+      <string id="RestrictRunFromHelp_Help">Allows you to restrict programs from being run from online Help.
+
+If you enable this setting, you can prevent programs that you specify from being allowed to be run from Help. When you enable this setting, enter the list of the programs you want to restrict. Enter the file name of the executable for each application, separated by commas.
+
+If you disable or do not configure this setting, users will be able to run applications from online Help.
+
+Note: You can also restrict users from running applications by using the Software Restriction settings available in Computer Configuration\Security Settings.
+
+Note: This setting is available under Computer Configuration and User Configuration. If both are set, the list of programs specified in each of these will be restricted.</string>
+        <string id="DisableHHDEP">Turn off Data Execution Prevention for HTML Help Executible</string>
+        <string id="DisableHHDEPText">
+            This policy setting allows you to exclude HTML Help Executable from being monitored by software-enforced DEP.
+            DEP is designed to block malicious code that takes advantage of exception-handling mechanisms in Windows. If you enable this policy setting, DEP for HTML Help Executable will be turned off. This will allow certain legacy ActiveX controls to function without DEP shutting down HTML Help Executable.
+            If you disable or do not configure this policy setting, DEP will be turned on for HTML Help Executable.
+            Note :  Data Execution Prevention (DEP) is a security feature that can help prevent damage to your computer from viruses and other security threats. DEP can help protect your computer by monitoring your programs to make sure that they use system memory safely.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="HelpQualifiedRootDir_Comp">
+        <textBox refId="HelpQualifiedRootDir_Edit">
+          <label>Enter folder names separated by semi-colons:</label>
+        </textBox>
+        <text>Example: %windir%\Help;%windir%\pchealth;%programfiles%</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Enter executables separated by commas:</label>
+        </textBox>
+        <text>Example: calc.exe,paint.exe</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp_Comp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Enter executables separated by commas:</label>
+        </textBox>
+        <text>Example: calc.exe,paint.exe</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

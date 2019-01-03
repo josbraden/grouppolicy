@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>הזן שם תצוגה כאן</displayName>
+  <description>הזן תיאור כאן</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">שרת Lanman</string>
+      <string id="Lbl_FollowShare">אפשר פרסום hash רק עבור תיקיות משותפות שבהן BranchCache זמין</string>
+      <string id="Lbl_DisableOnAllShares">אל תאפשר פרסום hash בכל התיקיות המשותפות</string>
+      <string id="Lbl_EnableOnAllShares">אפשר פרסום hash עבור כל התיקיות המשותפות</string>
+      <string id="Pol_HashPublication">פרסום Hash עבור BranchCache</string>
+      <string id="Pol_HashPublication_Help">מדיניות זו מאפשרת לשירות יצירת hash ליצור קודי hash עבור נתונים המאוחסנים בתיקיות משותפות, ולאחר מכן לספק קודי hash אלה למחשבי לקוח שבהן BranchCache זמין. קודי Hash הם טביעות אצבע דיגיטליות הנגזרות מתימטית, אשר מזהות את התוכן של קבצים באופן ייחודי. טביעות אצבע דיגיטליות אלו הן קטנות מאוד, מה שמאפשר ל- Windows להשוות קבצים מבלי לצרוך כמות משמעותית של רוחב פס של רשת תקשורת מרחבית(WAN).
+
+מחשב לקוח בסניף יכול להשיג hash עבור קובץ בקישור WAN אם כל התנאים הבאים מתקיימים:      
+1) למשתמש יש הרשאות לגשת לקובץ.
+2) BranchCache זמין במחשב הלקוח.
+3) פרסום Hash מותר בתיקיה המשותפת שאליה ניגש מחשב הלקוח. 
+
+אם מחשב הלקוח משיג את ה- hash, המחשב יכול לחפש גירסה זהה של הקובץ במטמון של מחשבים אחרים בסניף. אם Windows מוצא בסניף גירסה זהה של הקובץ, מחשב הלקוח מוריד את העותק המאוחסן במטמון המקומי במקום להוריד את הקובץ בקישור ה- WAN כולו. 
+
+אם תגדיר מדיניות זו כ"אפשר פרסום hash רק עבור תיקיות משותפות שבהן BranchCache זמין" (ערך = 0), קודי hash ייווצרו רק עבור תיקיות משותפות שבהן BranchCache זמין. קודי ה- Hash עבור תיקיות משותפות אלו נוצרים כאשר אחד מהאירועים הבאים מתקיים:
+1) מתבצעת גישה של לקוח שבו תמיכת BranchCache זמינה אל קובץ בתיקיה משותפת שבה BranchCache זמין.
+2) מנהל מערכת יוצר קודי hash באופן אוטומטי באמצעות כלי שורת הפקודה Hashgen.
+ 
+אם תגדיר מדיניות זו כ"אל תאפשר פרסום hash בכל התיקיות המשותפות" (ערך = 1), מחשבים שבהם מדיניות זו חלה אף פעם לא יצרו או יספקו קודי hash.
+ 
+אם תגדיר מדיניות זו כ"אפשר פרסום hash עבור כל התיקיות המשותפות" (ערך = 2), קודי hash ייווצרו עבור כל התיקיות המשותפות בשרת כאשר אחד מהאירועים הבאים מתקיים: 
+1) לקוח שבו תמיכת BranchCache זמינה ניגש אל קובץ בתיקיה משותפת בשרת.
+2) מנהל מערכת יוצר קודי hash באופן ידני באמצעות כלי שורת הפקודה Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>ערכים:</text>
+        <text>0 = אפשר פרסום hash רק עבור תיקיות משותפות שבהן BranchCache זמין</text>
+        <text>1 = אל תאפשר פרסום hash בכל התיקיות המשותפות</text>
+        <text>2 = אפשר פרסום hash עבור כל התיקיות המשותפות</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">פעולות פרסום Hash: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

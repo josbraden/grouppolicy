@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>kirjoita näyttönimi tähän</displayName>
+  <description>kirjoita kuvaus tähän</description>
+  <resources>
+    <stringTable>
+      <string id="W32TIME_CONFIG_EXPLAIN">Nämä asetukset ohjaavat toimialueen ohjauskoneiden Windows-aikapalvelua (W32time). Monet näistä arvoista ovat skalaarisia, mikä tarkoittaa sitä, että niillä on merkitystä vain suhteessa toisiinsa eikä niitä määritetä mittayksiköiden avulla. Toimialueen jäsenkoneiden ajan synkronointiin liittyvistä asetuksista on tietoja artikkelissa, joka koskee asiakastietokoneen määrittämistä synkronoimaan toimialueen aika automaattisesti (http://go.microsoft.com/fwlink/?LinkId=139706).
+ 
+Kellon tarkkuusparametrit
+ 
+FrequencyCorrectRate: Ohjaa sitä, miten lyhyin aikavälein W32time korjaa paikallisen kellon taajuuden. Pienet arvot tarkoittavat korjausten tekemistä hitaasti ja suuret nopeasti. Liian pieni arvo saattaa aiheuttaa ylikorjauksia ja epävakautta. Liian suuret arvot voivat johtaa hitaaseen synkronointiin. Oletusarvo: 4 (skalaarinen).
+ 
+HoldPeriod: Ilmaisee, montako mahdollisesti tarkkaa aikanäytettä asiakkaan on vastaanotettava peräkkäin, ennen kuin seuraavat aikanäytteet arvioidaan mahdollisina piikkiarvoina. Kun käyttökelpoisia aikanäytteitä ei ole saatu tietyn ajanjakson aikana, aika-asiakas lopettaa aikanäytteiden arvioinnin piikkiarvojen suhteen, kun ensimmäinen mahdollinen tarkka aikanäyte vastaanotetaan. Kun vastaanotetaan sarja aikanäytteitä (HoldPeriod-määrityksen ilmaisemalla tavalla), aika-asiakas analysoi seuraavat aikanäytteet piikkiarvojen suhteen. Aikanäytettä pidetään piikkiarvona, kun aikaero aikanäytteen ja asiakkaan paikallisen kellon välillä on suurempi kuin LargePhaseOffset-arvo. Oletusarvo: 5 aikanäytettä.
+ 
+LargePhaseOffset: Määrittää aikaeron asiakkaan paikalliseen kelloon (vaihesiirtymä), joka aikanäytteellä on oltava, jotta sitä pidetään piikkiarvona. Aikanäytteitä, joiden aikaero on suurempi kuin LargePhaseOffset-arvo, pidetään piikkiarvoina. Oletusarvo: 50 000 000 sadan nanosekunnin (ns) yksikköä eli viisi sekuntia.
+ 
+MaxAllowedPhaseOffset: Määrittää, miten W32time korjaa kellon aikanäytteen ja asiakkaan paikallisen kellon välisen lasketun aikaeron perusteella. Jos vastaanotetaan vastaus, jonka aikaero on tätä arvoa suurempi, W32time määrittää asiakkaan paikallisen kellon ajaksi heti ajan, joka hyväksytään tarkaksi NTP (Network Time Protocol) -palvelimesta. Jos aikaero on tätä arvoa pienempi, asiakkaan paikallisen kellon aika korjataan vähitellen. Oletusarvo: 300 sekuntia.
+ 
+MaxNegPhaseCorrection: Määrittää suurimman sallitun kellon korjauksen, joka voidaan tehdä vastapäivään. Jos vastaanotetaan aikanäyte, joka ilmaisee jo kulunutta aikaa (verrattuna asiakkaan paikalliseen kelloon), jonka aikaero on suurempi kuin MaxNegPhaseCorrection-arvo, aikanäyte hylätään. Jos näin tapahtuu, Windows-aikalähde kirjaa tapahtuman Tapahtumienvalvonnan järjestelmälokiin. Oletusarvo: 172 800 sekuntia.
+ 
+MaxPosPhaseCorrection: Määrittää suurimman sallitun kellon korjauksen, joka voidaan tehdä myötäpäivään. Jos vastaanotetaan aikanäyte, joka ilmaisee tulevaisuudessa olevaa aikaa (verrattuna asiakkaan paikalliseen kelloon), jonka aikaero on suurempi kuin MaxPosPhaseCorrection-arvo, aikanäyte hylätään. Oletusarvo: 172 800 sekuntia. 
+ 
+PhaseCorrectRate: Määrittää, miten nopeasti W32time korjaa asiakkaan paikallisen kellon eron vastaamaan aikanäytteitä, jotka hyväksytään tarkoiksi NTP-palvelimesta. Pienet arvot tarkoittavat korjausten tekemistä hitaasti ja suuret nopeasti. Oletusarvo: 7 (skalaarinen).
+ 
+PollAdjustFactor: Määrittää, miten nopeasti W32time muuttaa kyselyaikavälejä. Kun vastauksia pidetään tarkkoina, kyselyaikaväliä pidennetään automaattisesti. Kun vastauksia pidetään epätarkkoina, kyselyaikaväliä lyhennetään automaattisesti. Oletusarvo: 5 (skalaarinen).
+ 
+SpikeWatchPeriod: Määrittää ajan, jona epäilyttäviä aikanäytteitä vastaanotetaan aikalähteestä, ennen kuin nämä aikanäytteet hyväksytään tarkoiksi. Aikanäytteitä pidetään epäilyttävinä, kun aikaero aikanäytteen ja asiakkaan paikallisen kellon välillä on suurempi kuin LargePhaseOffset-arvo. SpikeWatchPeriod-määritystä käytetään yhdessä HoldPeriod-määrityksen kanssa, jotta satunnaiset, epätarkat vertaiskoneesta palautetut aikanäytteet voidaan eliminoida. Oletusarvo: 900 sekuntia.
+ 
+UpdateInterval: Määrittää ajan, jonka W32time odottaa korjausten välillä, kun kellon aikaa korjataan vähitellen. Kun se tekee asteittaisen korjauksen, palvelu säätää kellon aikaa hieman, odottaa tämän ajan ja tarkistaa sitten, tarvitaanko uutta säätöä, kunnes korjaaminen on valmis. Oletusarvo: 100 sadasosasekunnin yksikköä eli yksi sekunti.
+ 
+Yleiset parametrit:
+ 
+AnnounceFlags: Bittipeitearvo, joka määrittää, miten aikapalvelun saatavuus ilmoitetaan NetLogonin kautta. Oletusarvo: 0x0a (heksadesimaali). Voit tarkastella mahdollisia arvoja Config\AnnounceFlags-merkinnän tiedoissa (http://go.microsoft.com/fwlink/?LinkId=139718).
+ 
+EventLogFlags: Määrittää erityiset tapahtumat, jotka saatetaan kirjata Tapahtumienvalvonnan järjestelmälokiin. Oletusarvo: 0x02 (heksadesimaalinen bittipeite). Voit tarkastella mahdollisia arvoja NtpClient\EventLogFlags-aliavaimen tiedoissa (http://go.microsoft.com/fwlink/?LinkId=139720).
+ 
+LocalClockDispersion: Ilmaisee sekunteina suurimman mahdollisen virheen, jonka NTP-palvelin ilmoittaa asiakkaille, jotka pyytävät aikanäytettä. (Tämä koskee ainoastaan tilannetta, jossa NTP-palvelin käyttää paikallisen CMOS-kellon aikaa.) Oletusarvo: 10 sekuntia.
+ 
+MaxPollInterval: Määrittää suurimman mahdollisen kyselyaikavälin, joka määrittää suurimman mahdollisen vertaiskonekyselyiden välisen ajan. Oletusarvo: 10, jonka kaksikantainen logaritmi antaa arvon 1 024 sekuntia. (Tämän asetuksen ei tule olla suurempi kuin 15.)
+ 
+MinPollInterval: Määrittää pienimmän mahdollisen kyselyaikavälin, joka määrittää pienimmän mahdollisen vertaiskonekyselyiden välisen ajan. Oletusarvo: 6, jonka kaksikantainen logaritmi antaa arvon 64 sekuntia.
+ 
+RODC-parametrit:
+
+Lisätietoja näistä asetuksista on liitteen A teknisissä tiedoissa (http://go.microsoft.com/fwlink/?LinkID=128273).
+ 
+ChainEntryTimeout: Määrittää pisimmän ajan, jonka merkintä voi olla ketjutustaulukossa, ennen kuin merkintää pidetään vanhentuneena. Vanhentuneet merkinnät voidaan poistaa, kun seuraava pyyntö tai vastaus käsitellään. Oletusarvo: 16 sekuntia.
+ 
+ChainMaxEntries: Määrittää suurimman merkintämäärän, joka ketjutustaulukossa sallitaan olevan. Jos ketjutustaulukko on täysi, eikä vanhentuneita merkintöjä voi poistaa, saapuvat pyynnöt hylätään. Oletusarvo: 128 merkintää.
+ 
+ChainMaxHostEntries: Määrittää suurimman määrän merkintöjä, jotka tietylle isännälle sallitaan ketjutustaulukossa. Oletusarvo: 4 merkintää. 
+ 
+ChainDisable: Määrittää, onko ketjutusmekanismi poistettu käytöstä. Jos ketjutus on poistettu käytöstä (asetus on 0), RODC voi synkronoida minkä tahansa toimialueen ohjauskoneen kanssa, mutta isännät, joiden salasanat eivät ole RODC:n välimuistissa, eivät pysty synkronoimaan RODC:n kanssa. Oletusarvo: 0 (totuusarvo).
+ 
+ChainLoggingRate: Määrittää taajuuden, jolla onnistuneita ja epäonnistuneita ketjutusyrityksiä ilmaiseva tapahtuma kirjataan Tapahtumienvalvonnan järjestelmälokiin. Oletusarvo: 30 minuuttia.</string>
+      <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">Määrittää joukon parametreja Windows NTP -asiakkaan hallintaa varten.
+
+NtpServer: NTP-aikalähteen DNS (Domain Name System) -nimi tai IP-osoite. Tämä arvo on muotoa DNS-nimi,merkinnät, jossa merkinnät on kyseisen isännän merkintöjen heksadesimaalinen bittipeite. Lisätietoja on Windows-aikapalvelun ryhmäkäytäntöasetusten Windowsin aikaan liittyvien NTP-asiakkaan ryhmäkäytäntöasetusten osassa (http://go.microsoft.com/fwlink/?LinkId=139727). Oletusarvo on time.windows.com,0x09.
+
+Tyyppi: Tämä arvo ohjaa W32timen käyttämää todennusta. Oletusarvo on NT5DS.
+
+CrossSiteSyncFlags: Tämä bittipeitteenä ilmaistu arvo ohjaa, miten W32time valitsee oman sivustonsa ulkopuolella olevat aikalähteet. Mahdolliset arvot ovat 0, 1 ja 2. Jos täksi arvoksi asetetaan 0 (Ei mitään), aika-asiakkaan ei tule yrittää synkronoida aikaa sen sivuston ulkopuolelta. Jos täksi arvoksi asetetaan 1 (PdcOnly), vain muissa toimialueissa toimialueen pääohjauskoneen emulaattoritoimintojen pääkoneina toimivia tietokoneita voi käyttää synkronointikumppaneina, kun asiakkaan on synkronoitava aika oman sivustonsa ulkopuolella olevan kumppanin kanssa. Jos arvoksi asetetaan 2 (Kaikki), voidaan käyttää mitä tahansa synkronointikumppania. Tämä arvo ohitetaan, jos NT5DS-arvoa ei ole asetettu. Oletusarvo on kymmenjärjestelmässä 2 (heksadesimaalijärjestelmässä 0x02).
+
+ResolvePeerBackoffMinutes: Tämä minuutteina ilmaistava arvo määrittää, miten pitkään W32time odottaa, ennen kuin se yrittää selvittää DNS-nimen, kun aiempi yritys epäonnistui. Oletusarvo on 15 minuuttia.
+
+ResolvePeerBackoffMaxTimes: Tämä arvo määrittää, miten monta kertaa W32time yrittää selvittää DNS-nimen, ennen kuin etsimisprosessi käynnistetään uudelleen. Aina, kun DNS-nimenselvitys epäonnistuu, ennen seuraavaa yritystä odotettava aika on kaksi kertaa edellisen ajan pituinen. Oletusarvo on 7 yritystä.
+
+SpecialPollInterval: Tämä sekunteina ilmaistava NTP-asiakasarvo määrittää, miten usein manuaalisesti määritetylle aikalähteelle tehdään kysely, kun aikalähde on määritetty käyttämään jotakin tiettyä kyselyaikaväliä. Jos SpecialInterval-merkintä on käytössä NTPServer-asetuksessa, asiakas yrittää käyttää kohteessa SpecialPollInterval määritettyä arvoa MinPollInterval- ja MaxPollInterval-arvojen sijaan selvittäessään, miten usein aikalähteelle tehdään kysely. Oletusarvo on 3 600 sekuntia (1 tunti).
+
+EventLogFlags: Tämä arvo on bittipeite, joka ohjaa Tapahtumienvalvonnan järjestelmälokiin mahdollisesti kirjattavia tapahtumia. Jos täksi arvoksi asetetaan 0x1, W32time luo tapahtuman aina, kun ajassa havaitaan siirtymä. Jos täksi arvoksi asetetaan 0x2, W32time luo tapahtuman aina, kun aikalähdemuutos tehdään. Koska se on bittipeitearvo, asetus 0x3 (asetusten 0x1 ja 0x2 lisäksi) ilmaisee, että sekä ajan siirtymät että aikalähdemuutokset kirjataan.
+      </string>
+      <string id="W32TIME_ENABLE_NTPCLIENT_EXPLAIN">Määrittää, onko Windows NTP -asiakas käytössä. Windows NTP -asiakkaan avulla tietokone voi tahdistaa kellonsa toisten NTP-palvelimien avulla. Jos käytät kolmannen osapuolen aikatoimittajaa, tämä palvelu kannattaa ehkä poistaa käytöstä.</string>
+      <string id="W32TIME_ENABLE_NTPSERVER_EXPLAIN">Määrittää, onko Windows NTP -palvelin käytössä. Windows NTP -palvelimen avulla tietokoneesi voi vastata toisten koneiden NTP-pyyntöihin.</string>
+      <string id="W32TIME_POLICY_CONFIG">Yleiset kokoonpanoasetukset</string>
+      <string id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">Määritä Windows NTP -asiakas</string>
+      <string id="W32TIME_POLICY_ENABLE_NTPCLIENT">Ota Windows NTP -asiakas käyttöön</string>
+      <string id="W32TIME_POLICY_ENABLE_NTPSERVER">Ota Windows NTP -palvelin käyttöön</string>
+      <string id="W32TIME_ROOT">Windows-aikapalvelu</string>
+      <string id="W32TIME_TIMEPROVIDERS">Aikatoimittajat</string>
+      <string id="W32TIME_Type_AllSync">AllSync</string>
+      <string id="W32TIME_Type_NoSync">NoSync</string>
+      <string id="W32TIME_Type_NT5DS">NT5DS</string>
+      <string id="W32TIME_Type_Ntp">NTP</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="W32TIME_POLICY_CONFIG">
+        <text>Kellon tarkkuusparametrit</text>
+        <decimalTextBox refId="W32TIME_FrequencyCorrectRate" defaultValue="4">FrequencyCorrectRate</decimalTextBox>
+        <decimalTextBox refId="W32TIME_HoldPeriod" defaultValue="5">HoldPeriod</decimalTextBox>
+        <decimalTextBox refId="W32TIME_LargePhaseOffset" defaultValue="50000000">LargePhaseOffset</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxAllowedPhaseOffset" defaultValue="300">MaxAllowedPhaseOffset</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxNegPhaseCorrection" defaultValue="172800">MaxNegPhaseCorrection</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxPosPhaseCorrection" defaultValue="172800">MaxPosPhaseCorrection</decimalTextBox>
+        <decimalTextBox refId="W32TIME_PhaseCorrectRate" defaultValue="1">PhaseCorrectRate</decimalTextBox>
+        <decimalTextBox refId="W32TIME_PollAdjustFactor" defaultValue="5">PollAdjustFactor</decimalTextBox>
+        <decimalTextBox refId="W32TIME_SpikeWatchPeriod" defaultValue="900">SpikeWatchPeriod</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UpdateInterval" defaultValue="100">UpdateInterval</decimalTextBox>
+        <text>Yleiset parametrit</text>
+        <decimalTextBox refId="W32TIME_AnnounceFlags" defaultValue="10">AnnounceFlags</decimalTextBox>
+        <decimalTextBox refId="W32TIME_EventLogFlags" defaultValue="2">EventLogFlags</decimalTextBox>
+        <decimalTextBox refId="W32TIME_LocalClockDispersion" defaultValue="10">LocalClockDispersion</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainDisable" defaultValue="0">ChainDisable</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainLoggingRate" defaultValue="30">ChainLoggingRate</decimalTextBox>
+      </presentation>
+      <presentation id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">
+        <textBox refId="W32TIME_NtpServer">
+          <label>NtpServer</label>
+          <defaultValue>time.windows.com,0x9</defaultValue>
+        </textBox>
+        <dropdownList refId="W32TIME_Type" noSort="true" defaultItem="2">Tyyppi</dropdownList>
+        <decimalTextBox refId="W32TIME_CrossSiteSyncFlags" defaultValue="2">CrossSiteSyncFlags</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ResolvePeerBackoffMinutes" defaultValue="15">ResolvePeerBackoffMinutes</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ResolvePeerBackoffMaxTimes" defaultValue="7">ResolvePeerBackoffMaxTimes</decimalTextBox>
+        <decimalTextBox refId="W32TIME_SpecialPollInterval" defaultValue="3600">SpecialPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_NtpClientEventLogFlags" defaultValue="0">EventLogFlags</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

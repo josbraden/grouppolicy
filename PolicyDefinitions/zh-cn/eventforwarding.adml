@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<policyDefinitionResources revision="1.0" schemaVersion="1.0">
+	<displayName>事件转发</displayName>
+
+	<description>用于事件转发的策略定义</description>
+
+	<resources>
+
+		<stringTable>
+
+			<string id="EventForwarding">事件转发</string>
+
+                        <string id="ForwarderResourceUsage">ForwarderResourceUsage</string>
+                        <string id="ForwarderResourceUsage_Help">控制转发器的资源使用率。每个设置将应用于转发器的所有订阅。</string>
+ 
+			<string id="SubscriptionManager">配置目标订阅管理器的服务器地址、刷新时间间隔、颁发者证书颁发机构</string>
+
+			<string id="Subscription_Help">使用此策略设置可配置目标订阅管理器的服务器地址、刷新时间间隔和颁发者证书颁发机构(CA)。订阅管理器是将事件转发到其中的计算机。
+
+语法: Option=Value[,Option=Value]*
+选项:
+Server (强制) - 应将事件转发到其中的计算机的地址。当服务器使用默认传输协议(HTTP)和端口(5985)时，将使用“Server=&lt;FQDN&gt;”，其中 &lt;FQDN&gt; 是服务器的完全限定的域名。否则指定完整的 URL。例如，使用 HTTPS 协议时，“Server=https://&lt;FQDN&gt;:5986/wsman/SubscriptionManager/WEC”
+</string>
+
+			<string id="SubscriptionManager_Listbox">SubscriptionManager</string>
+		</stringTable>
+
+	
+		<presentationTable>
+
+			<presentation id="SubscriptionManager">
+                                
+				<listBox refId="SubscriptionManager_Listbox">SubscriptionManager</listBox>
+
+			</presentation>
+
+                        <presentation id="ForwarderResourceUsage">
+
+                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">允许的转发器最大转发率(事件/秒): </decimalTextBox>
+
+                        </presentation>
+
+		</presentationTable>
+
+	</resources>
+
+</policyDefinitionResources>

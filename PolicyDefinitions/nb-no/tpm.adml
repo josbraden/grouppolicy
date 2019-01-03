@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>skriv inn visningsnavn her</displayName>
+  <description>skriv inn beskrivelse her</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Denne policyinnstillingen gjør at du kan administrere AD DS-sikkerhetskopien (Active Directory Domain Services, domenetjenester for Active Directory) av TPM-eierinformasjon (Trusted Platform Module, klarert plattformmodul). 
+
+TPM-eierinformasjon omfatter en kryptografisk hash-kode for TPM-eierpassordet. Bestemte TPM-kommandoer kan bare kjøres av TPM-eieren. Denne hash-koden gir TPM tillatelse til å kjøre disse kommandoene. 
+
+Hvis du aktiverer denne policyinnstillingen, sikkerhetskopieres TPM-eierinformasjon automatisk og stille til domenetjenester for Active Directory når du bruker Windows til å endre et TPM-eierpassord. 
+
+Hvis du velger alternativet for å kreve TPM-sikkerhetskopiering til AD DS, er det ikke mulig å angi eller endre et TPM-eierpassord med mindre datamaskinen er koblet til domenet og AD DS-sikkerhetskopiering er vellykket. Dette alternativet er valgt som standard for å sikre at TPM-eierinformasjon er tilgjengelig. Ellers forsøkes AD DS-sikkerhetskopiering, men nettverks- eller andre sikkerhetskopieringsfeil påvirker ikke TPM-administrasjon. Sikkerhetskopiering forsøkes ikke automatisk utført på nytt, og TPM-eierinformasjonen ble kanskje ikke lagret i AD DS under konfigurasjon av BitLocker.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, sikkerhetskopieres ikke TPM-eierinformasjon til AD DS. 
+
+Obs!  For at AD DS-sikkerhetskopiering skal lykkes, må du først konfigurere riktige XML-skjemautvidelser og innstillinger for tilgangskontroll for domenet. Se den elektroniske dokumentasjonen hvis du vil ha mer informasjon om konfigurasjon av domenetjenester for Active Directory for TPM.
+
+Obs!  Du kan ikke bruke TPM til å tilby funksjoner for forbedret sikkerhet for BitLocker-stasjonskryptering og andre programmer uten at du først angir en eier. Hvis du vil bli eier av TPM med et eierpassord, kjører du tpm.msc og velger handlingen for å initialisere TPM.
+
+Obs!  Hvis TPM-eierinformasjonen har gått tapt eller ikke er tilgjengelig, er begrenset TPM-administrasjon mulig ved å kjøre tpm.msc på den lokale datamaskinen.</string>
+      <string id="ActiveDirectoryBackup_Name">Slå på TPM-sikkerhetskopiering til domenetjenester for Active Directory</string>
+      <string id="BlockedCommandsList_Help">Denne policyinnstillingen gjør at du kan administrere gruppepolicylisten over TPM-kommandoer som blokkeres av Windows.
+
+Hvis du aktiverer denne policyinnstillingen, vil Windows blokkere de angitte kommandoene, slik at de ikke blir sent til TPMen på datamaskinen. TPM-kommandoer blir referert til ved et kommandonummer. For eksempel tilsvarer kommandonummer 129 TPM_OwnerReadInternalPub, og kommandonummer 170 er TPM_FieldUpgrade. Kjør "tpm.msc" og gå til delen Kommandobehandling for å finne kommandonummeret for hver TPM-kommando.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, vil kun de TPM-kommandoene som er spesifisert via standardlister eller lokale lister bli blokkerte av Windows. Standardlisten over blokkerte TPM-kommandoer er forhåndskonfigurert av Windows. Du kan se standardlisten ved å kjøre tpm.msc, navigere deg til delen Kommandobehandling, og vise kolonnen I standard blokkeringsliste. Den lokale listen over blokkerte TPM-kommandoer konfigureres utenfor Gruppepolicy ved å kjøre tpm.msc eller gjennom skript i grensesnittet Win32_Tpm. Se tilknyttede policyinnstillinger for å håndheve eller ignorere standardlisten og lokale lister over blokkerte TPM-kommandoer.</string>
+      <string id="BlockedCommandsList_Name">Konfigurere listen over blokkerte TPM-kommandoer</string>
+      <string id="IgnoreDefaultList_Help">Denne policyinnstillingen gjør at du kan håndheve eller ignorere datamaskinens standardliste over blokkerte TPM-kommandoer.
+
+Hvis du aktiverer denne policyinnstillingen, ignoreres datamaskinens standardliste over blokkerte TPM-kommandoer, og bare de TPM-kommandoene som er angitt av Gruppepolicy eller den lokale listen, blokkeres. 
+
+Standardlisten over blokkerte TPM-kommandoer er forhåndskonfigurert av Windows. Du kan se standardlisten ved å kjøre tpm.msc, navigere deg til delen Kommandobehandling, og vise kolonnen I standard blokkeringsliste. Den lokale listen over blokkerte TPM-kommandoer konfigureres utenfor Gruppepolicy ved å kjøre tpm.msc eller gjennom skript i grensesnittet Win32_Tpm. Se den tilknyttede policyinnstillingen for å konfigurere gruppepolicylisten over blokkerte TPM-kommandoer.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, vil Windows blokkere TPM-kommandoene i standardlisten, i tillegg til kommandoer i gruppepolicylisten og lokale lister over blokkerte TPM-kommandoer. </string>
+      <string id="IgnoreDefaultList_Name">Ignorer standardlisten over blokkerte TPM-kommandoer</string>
+      <string id="IgnoreLocalList_Help">Denne policyinnstillingen gjør at du kan håndheve eller ignorere datamaskinens lokale liste over blokkerte TPM-kommandoer.
+
+Hvis du aktiverer denne policyinnstillingen, ignoreres datamaskinens lokale liste over blokkerte TPM-kommandoer, og bare de TPM-kommandoene som er angitt av Gruppepolicy eller standardlisten, blokkeres.
+
+Den lokale listen over blokkerte TPM-kommandoer konfigureres utenfor Gruppepolicy ved å kjøre tpm.msc eller gjennom skript i grensesnittet Win32_Tpm. Standardlisten over blokkerte TPM-kommandoer er forhåndskonfigurert av Windows. Se den tilknyttede policyinnstillingen for å konfigurere gruppepolicylisten over blokkerte TPM-kommandoer. 
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, vil Windows blokkere TPM-kommandoene i den lokal listen, i tillegg til kommandoer i gruppepolicylisten og standardlisten over blokkerte TPM-kommandoer.</string>
+      <string id="IgnoreLocalList_Name">Ignorer den lokale listen over blokkerte TPM-kommandoer</string>
+      <string id="TPMCategory">Tjenester for klarert plattformmodul</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Krev TPM-sikkerhetskopiering til AD DS</checkBox>
+        <text/>
+        <text>Hvis du velger dette, er det ikke mulig å angi eller endre TPM-eierpassordet </text>
+        <text>hvis sikkerhetskopiering mislykkes (anbefalt standardinnstilling).</text>
+        <text/>
+        <text>Hvis du ikke velger dette, er det mulig å angi eller endre TPM-eierpassordet</text>
+        <text>selv om sikkerhetskopiering mislykkes. Sikkerhetskopiering forsøkes ikke automatisk utført på nytt.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Angir kommandoene som skal blokkeres, ved å legge til numrene i listen.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">Listen over blokkerte TPM-kommandoer:</listBox>
+        <text>Hvis du for eksempel vil blokkere kommandoene TPM_OwnerReadInternalPub</text>
+        <text>og TPM_FieldUpgrade, legger du til elementene 129 og 170 i listen.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

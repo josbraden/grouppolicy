@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>KDC 설정</displayName>
+  <description>Kerberos 키 배포 센터에 대한 구성 설정입니다.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">포리스트 검색 순서 사용</string>
+      <string id="forestsearch_explain">이 정책 설정은 두 부분으로 구성된 SPN(서비스 사용자 이름)을 확인하려고 시도할 때 KDC(키 배포 센터)에서 검색할 트러스팅 포리스트 목록을 정의합니다.
+
+이 정책 설정을 사용하면 KDC는 로컬 포리스트에서 두 부분으로 구성된 SPN을 확인할 수 없을 경우 이 목록의 포리스트를 검색합니다. 포리스트 검색은 글로벌 카탈로그나 이름 접미사 힌트를 사용하여 수행됩니다. 일치하는 항목을 찾으면 KDC에서 해당 도메인의 클라이언트에 참조 티켓을 반환합니다.
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 KDC에서 SPN을 확인하기 위해 목록의 포리스트를 검색하지 않습니다. KDC에서 이름을 찾을 수 없어서 SPN을 확인할 수 없는 경우 NTLM 인증이 사용될 수 있습니다.
+
+일관된 동작을 적용하려면 이 정책 설정을 지원해야 하며 도메인의 모든 도메인 컨트롤러에서 동일하게 설정해야 합니다.</string>
+      <string id="emitlili">클라이언트 컴퓨터에 이전 로그온 정보 제공</string>
+      <string id="emitlili_explain">이 정책 설정은 도메인 컨트롤러가 클라이언트 컴퓨터에 이전 로그온에 대한 정보를 제공할지 여부를 제어합니다.
+
+이 정책 설정을 사용하면 도메인 컨트롤러가 이전 로그온에 대한 정보 메시지를 제공합니다.
+
+Windows 로그온에서 이 기능을 활용하려면 Windows 로그온 옵션 노드에 있는 "사용자 로그온 중 이전 로그온 정보 표시" 정책 설정도 사용해야 합니다.
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 "사용자 로그온 중 이전 로그온 정보 표시" 정책 설정을 사용하지 않는 한 도메인 컨트롤러가 이전 로그온 정보를 제공하지 않습니다.
+
+참고: 이전 로그온 정보를 제공하려면 도메인 기능 수준이 Windows Server 2008이어야 합니다. 도메인 기능 수준이 Windows Server 2003, Windows 2000 기본 또는 Windows 2000 혼합인 도메인에서는 도메인 컨트롤러가 이전 로그온에 대한 정보를 제공할 수 없으며 이 정책 설정을 사용해도 아무 효과가 없습니다.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">모드:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>검색할 포리스트</label>
+        </textBox>
+        <text>구문:</text>
+        <text>이 정책을 사용할 경우 검색할 포리스트 목록을 입력하십시오.</text>
+        <text>FQDN(정규화된 도메인 이름) 이름 지정 형식을 사용하십시오.</text>
+        <text>검색 항목을 여러 개 입력할 경우 각 항목을 세미 콜론 ";"으로 구분하십시오.</text>
+        <text>자세히:</text>
+        <text>포리스트 검색 순서에서 글로벌 카탈로그를 먼저 사용한 다음 나열된 순서대로 검색하기 때문에 현재 포리스트를 목록에 추가할 필요가 없습니다.</text>
+        <text>포리스트의 모든 도메인을 개별적으로 나열할 필요는 없습니다.</text>
+        <text>트러스팅 포리스트가 목록에 추가되면 해당 포리스트의 모든 도메인이 검색됩니다.</text>
+        <text>최상의 성능을 위해 검색 가능성이 높은 순서로 포리스트 목록을 작성하십시오.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Configurações de KDC</displayName>
+  <description>Configurações do Centro de Distribuição de Chaves Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Usar a ordem de pesquisa de floresta</string>
+      <string id="forestsearch_explain">Esta configuração de diretiva define a lista de florestas confiáveis que o KDC (Centro de Distribuição de Chaves) pesquisará ao tentar resolver SPNs (nomes de entidade de serviço) de duas partes.
+
+Se você habilitar esta configuração de diretiva, o KDC pesquisará as florestas dessa lista se não conseguir resolver um SPN de duas partes na floresta local. A pesquisa de floresta é executada com o uso de um catálogo global ou dicas de sufixo de nome. Se uma correspondência for encontrada, o KDC retornará um tíquete de referência ao cliente para o domínio apropriado.
+
+Se você desabilitar ou não definir esta configuração de diretiva, o KDC não pesquisará as florestas listadas para resolver o SPN. Se o KDC não conseguir resolver o SPN por não ter encontrado o nome, a autenticação NTLM poderá ser usada.
+
+Para garantir um comportamento consistente, esta configuração de diretiva deve ter suporte e ser definida e forma idêntica em todos os controladores do domínio.</string>
+      <string id="emitlili">Fornece informações sobre os logons anteriores aos computadores clientes</string>
+      <string id="emitlili_explain">Esta configuração de diretiva define se o controlador de domínio fornecerá informações sobre logons anteriores aos computadores cliente.
+
+Se você habilitar esta configuração de diretiva, o controlador de domínio fornecerá a mensagem informativa sobre logons anteriores.
+
+Para que o Logon do Windows aproveite esse recurso, a configuração de diretiva "Exibir informações sobre logons anteriores durante o logon do usuário", localizada no nó Opções de Logon do Windows em Componentes do Windows, também precisa ser habilitada.
+
+Se você desabilitar ou não definir esta configuração de diretiva, o controlador de domínio não fornecerá informações sobre logons anteriores, a menos que a configuração de diretiva "Exibir informações sobre logons anteriores durante o logon do usuário" esteja habilitada.
+
+Observação: as informações sobre logons anteriores serão fornecidas somente se o nível funcional de domínio for Windows Server 2008. Em domínios com um nível funcional de domínio Windows Server 2003, Windows 2000 nativo ou Windows 2000 misto, os controladores de domínio não poderão fornecer informações sobre logons anteriores, e nada é afetado quando esta configuração diretiva é habilitada.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Modo:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Florestas a Serem Pesquisadas</label>
+        </textBox>
+        <text>Sintaxe:</text>
+        <text>Insira a lista de florestas a serem pesquisadas quando esta diretiva estiver habilitada.</text>
+        <text>Use o formato de nome FQDN (nome de domínio totalmente qualificado).</text>
+        <text>Separe as diversas entradas de pesquisa com um ponto-e-vírgula ";".</text>
+        <text>Detalhes:</text>
+        <text>A floresta atual não precisa estar listada porque a Ordem de Pesquisa da Floresta usa primeiro o catálogo global e depois pesquisa na ordem listada.</text>
+        <text>Não é necessário listar todos os domínios da floresta separadamente.</text>
+        <text>Se uma floresta confiável estiver listada, todos os domínios da floresta serão pesquisados.</text>
+        <text>Para obter o melhor desempenho, liste as florestas em ordem de probabilidade de êxito.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

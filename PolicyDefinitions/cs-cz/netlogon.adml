@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Zde zadejte zobrazovaný název.</displayName>
+  <description>Zde zadejte popis.</description>
+  <resources>
+    <stringTable>
+      <string id="Netlogon">Přihlašování k síti</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain">Vyhledání řadičů domény, které jsou hostiteli domény s jednomístným názvem DNS</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain_Help">Určuje, zda se počítače, pro které platí toto nastavení, pokusí o překlad názvů DNS u jednomístných názvů domén.
+
+Ve výchozím nastavení počítač (či přesněji lokátor řadiče domény spuštěný v počítači), jenž potřebuje vyhledat řadič domény, který je hostitelem domény služby Active Directory zadané pomocí jednomístného názvu, použije výhradně překlad názvů NetBIOS, nikoli překlad názvů DNS, kromě případů, kdy je daný počítač připojen k doménové struktuře služby Active Directory, ve které má alespoň jedna doména jednomístný název DNS. 
+
+Pokud je toto nastavení povoleno, pokusí se počítače, pro které tato zásada platí, vyhledat řadič domény, který je hostitelem domény služby Active Directory zadané pomocí jednomístného názvu, a použijí přitom překlad názvů DNS.
+
+Pokud je toto nastavení zakázáno, pokusí se počítače, pro které tato zásada platí, vyhledat řadič domény, který je hostitelem domény služby Active Directory zadané pomocí jednomístného názvu, a použijí přitom výhradně překlad názvů NetBIOS, nikoli překlad názvů DNS, kromě případů, kdy daný počítač vyhledává v doméně pomocí jednoduchého názvu DNS, který existuje ve stejné doménové struktuře Active Directory jako tento počítač.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_AutoSiteCoverage">Automatické pokrytí serveru záznamy SRV služby DNS lokátoru řadiče domény</string>
+      <string id="Netlogon_AutoSiteCoverage_Help">Určuje, zda řadiče domény budou dynamicky registrovat záznamy SRV lokátoru řadiče domény, které jsou specifické pro lokalitu, pro nejbližší lokality, ve kterých nejsou řadiče domény pro stejnou doménu (nebo neobsahují globální katalog pro stejnou doménovou strukturu). Tyto záznamy DNS jsou dynamicky registrovány službou Přihlašování k síti a slouží k vyhledání řadiče domény.
+
+Pokud je toto nastavení povoleno, budou řadiče domény, pro které toto nastavení platí, dynamicky registrovat záznamy umístění služby (SRV) DNS lokátoru řadiče domény, které jsou specifické pro lokalitu, pro nejbližší lokality, které neobsahují řadiče domény pro stejnou doménu (nebo neobsahují globální katalog pro stejnou doménovou strukturu).
+
+Pokud toto nastavení zakážete, budou řadiče domény registrovat záznamy umístění služby (SRV) DNS lokátoru řadiče domény, které jsou specifické pro lokalitu, pouze pro svou lokalitu.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném řadiči domény a řadiče domény použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_AvoidPdcOnWan">Při nezdařeném přihlášení kontaktovat primární řadič domény</string>
+      <string id="Netlogon_AvoidPdcOnWan_Help">Určuje, zda se řadič domény pokusí ověřit heslo zadané klientem pomocí primárního řadiče domény, pokud se nepodaří ověřit heslo řadiči domény.
+
+Kontaktování primárního řadiče domény je vhodné, pokud bylo heslo klienta nedávno změněno a nebylo dosud rozšířeno do daného řadiče domény. Uživatelé pravděpodobně budou chtít tuto funkci zakázat, pokud je primární řadič domény umístěn v pomalém připojení WAN.
+
+Chcete-li tuto funkci povolit, klikněte na přepínač Povoleno.
+
+Chcete-li tuto funkci zakázat, klikněte na přepínač Zakázáno.</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod">Nastavení pro počáteční opakování zjišťování řadičů domény pro volání na pozadí</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod_Help">Pokud aplikace periodicky vyhledávající řadiče domén nemůže nalézt řadič domény, určuje hodnota tohoto nastavení prodlevu v sekundách před prvním opakováním.
+
+Výchozí hodnota pro toto nastavení je 10 minut (10*60). Maximální hodnota pro toto nastavení je 49 dní (49*24*60*60=4 233 600). Minimální hodnota pro toto nastavení je 0.
+
+Toto nastavení se týká pouze těch volání nastavení DsGetDcName, která mají nastaven příznak DS_BACKGROUND_ONLY.
+
+Pokud je hodnota tohoto nastavení menší než hodnota zadaná v podklíči NegativeCachePeriod, bude použita hodnota v podklíči NegativeCachePeriod.
+
+Upozornění: Pokud je hodnota tohoto nastavení příliš vysoká, klient se nepokusí vyhledat řadiče domény, které byly zpočátku nedostupné. Jestliže je hodnota tohoto nastavení velmi malá a řadič domény není dostupný, může pravidelné zjišťování řadiče domény způsobit nadměrné zatížení sítě.</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod">Nastavení maximálního intervalu opakování pro zjišťování řadičů domény pro volání na pozadí</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod_Help">Pokud aplikace periodicky vyhledávající řadiče domén nemůže nalézt řadič domény, určuje hodnota tohoto nastavení maximální povolenou prodlevu v sekundách před prvním opakováním.
+
+Intervaly opakování mohou být například nastaveny na 10 minut, potom na 20 minut a potom na 40 minut. Pokud však interval dosáhne hodnoty zadané v tomto nastavení, bude pro všechna následující opakování použita jako interval opakování hodnota určená v tomto nastavení, dokud nebude dosažena hodnota v nastavení pro poslední opakování zjišťování řadičů domény.
+
+Výchozí hodnota pro toto nastavení je 60 minut (60*60). Maximální hodnota pro toto nastavení je 49 dní (49*24*60*60=4 233 600). Minimální hodnota pro toto nastavení je 0.
+
+Pokud je hodnota tohoto nastavení menší než hodnota zadaná v nastavení pro počáteční opakování zjišťování řadičů domény, bude použito nastavení pro počáteční opakování zjišťování řadičů domény.
+
+Upozornění: Pokud je hodnota tohoto nastavení příliš vysoká, může klientovi trvat vyhledání řadiče domény velmi dlouho.
+
+Jestliže je hodnota tohoto nastavení příliš malá a řadič domény není k dispozici, mohou častá opakování způsobit nadměrné zatížení sítě.</string>
+      <string id="Netlogon_BackgroundRetryQuitTime">Nastavení pro poslední opakování zjišťování řadičů domény pro volání na pozadí</string>
+      <string id="Netlogon_BackgroundRetryQuitTime_Help">Pokud aplikace periodicky vyhledávající řadiče domén nemůže nalézt řadič domény, určuje hodnota tohoto nastavení, kdy nebudou další opakování povolena. Opakování mohou být například nastavena tak, aby se prováděla podle nastavení maximálního intervalu opakování pro zjišťování řadičů domény, ale po dosažení hodnoty zadané v tomto nastavení se již žádná další opakování neprovedou. Pokud je hodnota tohoto nastavení menší než hodnota v nastavení maximálního intervalu opakování pro zjišťování řadičů domény, bude použito nastavení maximálního intervalu opakování pro zjišťování řadičů domény.
+
+Výchozí hodnota pro toto nastavení je 0 (opakování nebude ukončeno). Maximální hodnota pro toto nastavení je 49 dní (49*24*60*60=4 233 600). Minimální hodnota pro toto nastavení je 0.
+
+Upozornění: Jestliže je hodnota tohoto nastavení příliš malá, ukončí klient pokusy o vyhledání řadiče domény příliš brzy.</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod">Kladná pravidelná aktualizace mezipaměti řadiče domény pro volání na pozadí</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod_Help">Určuje, kdy je aktualizována úspěšná položka mezipaměti řadiče domény. Toto nastavení je platné pro volající programy, které se pravidelně pokouší vyhledat řadiče domény, a je použito před vrácením informací řadiče domény volajícímu programu. Výchozí hodnota pro toto nastavení je nekonečno (4 294 967 200). Maximální hodnota pro toto nastavení je 4 294 967 200, ale maximální hodnota, která není považována za nekonečno, je 49 dní (49*24*60*60=4 233 600). Každá větší hodnota je považována za nekonečno. Minimální hodnota pro toto nastavení je 0 (neustálá aktualizace).</string>
+      <string id="Netlogon_DC_Locator_DNS_Records">Záznamy DNS lokátoru řadičů domény</string>
+      <string id="Netlogon_DebugFlag">Úroveň výstupu ladění souboru protokolu</string>
+      <string id="Netlogon_DebugFlag_Help">Určuje úroveň výstupu ladění pro službu Přihlašování k síti.
+
+Služba Přihlašování k síti ukládá informace o ladění do souboru protokolu netlogon.log v adresáři %windir%\debug. Ve výchozím nastavení nejsou protokolovány žádné informace o ladění.
+
+Pokud toto nastavení povolíte a zadáte nenulovou hodnotu, budou informace o ladění protokolovány v daném souboru. Vyšší hodnoty budou mít za následek podrobnější protokolování. Jako optimální nastavení je běžně používána hodnota 536 936 447.
+
+Pokud pro toto nastavení zadáte nulovou hodnotu, bude použito výše uvedené výchozí chování.
+
+Toto chování bude použito i v případě, že toto nastavení zakážete nebo nenakonfigurujete.</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords">Záznamy služby DNS lokátoru řadiče domény, které nejsou registrovány v řadičích domény</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords_Help">Určuje, které záznamy služby DNS lokátoru řadičů domény nejsou registrovány službou Přihlašování k síti.
+
+Chcete-li toto nastavení povolit, klikněte na přepínač Povoleno a zadejte seznam instrukcí oddělených mezerami pro záznamy služby DNS lokátoru řadičů domény, které nebudou registrovány v řadičích domény, pro něž platí toto nastavení.
+
+Vyberte instrukce z následujícího seznamu:
+
+Instrukce         Typ  Záznam DNS
+
+LdapIpAddress    Adresa     &lt;Název_domény_DNS&gt; Ldap             SRV   _ldap._tcp.&lt;Název_domény_DNS&gt; LdapAtSite       SRV   _ldap._tcp.&lt;Název_serveru&gt;._sites.&lt;Název_domény_DNS&gt; Pdc              SRV   _ldap._tcp.pdc._msdcs.&lt;Název_domény_DNS&gt; Gc               SRV   _ldap._tcp.gc._msdcs.&lt;Název_doménové_struktury_DNS&gt; GcAtSite         SRV   _ldap._tcp.&lt;Název_serveru&gt;._sites.gc._msdcs.&lt;Název_doménové_struktury_DNS&gt; DcByGuid         SRV   _ldap._tcp.&lt;Identifikátor_GUID_domény&gt;.domains._msdcs.&lt;Název_doménové_struktury_DNS&gt; GcIpAddress      A     _gc._msdcs.&lt;Název_doménové_struktury_DNS&gt; DsaCname         CNAME &lt;DsaGuid&gt;._msdcs.&lt;Název_doménové_struktury_DNS&gt; Kdc              SRV   _kerberos._tcp.dc._msdcs.&lt;Název_domény_DNS&gt; KdcAtSite        SRV    _kerberos._tcp.dc._msdcs.&lt;Název_serveru&gt;._sites.&lt;Název_domény_DNS&gt; Dc               SRV   _ldap._tcp.dc._msdcs.&lt;Název_domény_DNS&gt; DcAtSite         SRV   _ldap._tcp.&lt;Název_serveru&gt;._sites.dc._msdcs.&lt;Název_domény_DNS&gt; Rfc1510Kdc       SRV   _kerberos._tcp.&lt;Název_domény_DNS&gt; Rfc1510KdcAtSite SRV   _kerberos._tcp.&lt;Název_serveru&gt;._sites.&lt;Název_domény_DNS&gt; GenericGc        SRV   _gc._tcp.&lt;Název_doménové_struktury_DNS&gt; GenericGcAtSite  SRV   _gc._tcp.&lt;Název_serveru&gt;._sites.&lt;Název_doménové_struktury_DNS&gt; Rfc1510UdpKdc    SRV   _kerberos._udp.&lt;Název_domény_DNS&gt; Rfc1510Kpwd      SRV   _kpasswd._tcp.&lt;Název_domény_DNS&gt; Rfc1510UdpKpwd   SRV   _kpasswd._udp.&lt;Název_domény_DNS&gt;
+
+Pokud je toto nastavení zakázáno, řadiče domény, které jsou nakonfigurovány k provádění dynamické registrace záznamů služby DNS lokátoru řadičů domény, zaregistrují všechny záznamy o prostředcích DNS lokátoru řadičů domény.
+
+Pokud toto nastavení není pro řadiče domény použito, použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_DnsRefreshInterval">Interval aktualizací záznamů DNS lokátoru řadičů domény</string>
+      <string id="Netlogon_DnsRefreshInterval_Help">Určuje interval aktualizací záznamů o prostředcích DNS lokátoru řadičů domény u řadičů domény, pro které platí toto nastavení. Tyto záznamy služby DNS jsou dynamicky registrovány službou Přihlašování k síti a slouží algoritmu lokátoru k vyhledání řadiče domény. Toto nastavení může být použito pouze u řadičů domény, které používají dynamickou aktualizaci.
+
+Řadiče domény, které jsou nakonfigurovány k provádění dynamické registrace záznamů o prostředcích DNS lokátoru řadičů domény, pravidelně znovu registrují své záznamy pomocí serverů DNS, i v případě, že se údaje těchto záznamů nezměnily. Pokud jsou autoritativní servery DNS nakonfigurovány k provádění úklidu zastaralých záznamů, je tato opětovná registrace nutná proto, aby bylo serverům DNS, které jsou nakonfigurovány k automatickému odebrání (úklidu) zastaralých záznamů, oznámeno, že tyto záznamy jsou aktuální a mají být v databázi zachovány.
+
+Upozornění: Pokud jsou záznamy o prostředcích DNS registrovány v zónách, ve kterých je povolen úklid, neměla by hodnota tohoto nastavení být větší, než je interval aktualizace nakonfigurovaný pro tyto zóny. Pokud nastavíte interval aktualizací záznamů o prostředcích DNS lokátoru řadičů domény větší než interval aktualizace pro zóny DNS, může dojít k nežádoucímu odstranění záznamů o prostředcích DNS.
+
+Chcete-li zadat interval aktualizací záznamů řadičů domény, klikněte na přepínač Povoleno a zadejte hodnotu větší než 1 800. Hodnota pro interval aktualizací záznamů řadiče domény se zadává v sekundách, takže například hodnota 3 600 je 60 minut.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném řadiči domény a řadiče domény použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_DnsTtl">Hodnota TTL nastavená v záznamech DNS SRV lokátoru řadičů domény</string>
+      <string id="Netlogon_DnsTtl_Help">Určuje hodnotu TTL (Time-To-Live) v záznamech o prostředcích SRV registrovaných službou Přihlašování k síti. Tyto záznamy služby DNS jsou dynamicky registrovány službou Přihlašování k síti a slouží k vyhledání řadiče domény.
+
+Chcete-li určit hodnotu TTL pro záznamy služby DNS lokátoru řadičů domény, klikněte na přepínač Povoleno a zadejte hodnotu v sekundách (hodnota 900 například představuje 15 minut).
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném řadiči domény a řadiče domény použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_ExpectedDialupDelay">Očekávané zpoždění při přihlašování telefonickým připojením</string>
+      <string id="Netlogon_ExpectedDialupDelay_Help">Určuje dobu, kterou počítač při přihlašování k síti počká na odpověď řadiče domény.
+
+Chcete-li určit hodnotu očekávaného zpoždění při přihlašování telefonickým připojením, klikněte na přepínač Povoleno a zadejte požadovanou hodnotu v sekundách (hodnota 60 například představuje 1 minutu).
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_GcSiteCoverage">Lokality pokryté záznamy DNS SRV lokátoru řadičů domény</string>
+      <string id="Netlogon_GcSiteCoverage_Help">Určuje lokality, pro které by globální katalogy měli registrovat záznamy o prostředcích SRV služby DNS lokátoru globálního katalogu, které jsou specifické pro lokalitu. Tyto záznamy jsou registrovány navíc k záznamům SRV, které jsou specifické pro lokalitu, registrovaným pro lokalitu, ve které se nachází globální katalog, a záznamům registrovaných globálním katalogem nakonfigurovaným na registrování záznamů SRV služby DNS lokátoru globálního katalogu pro ty lokality bez globálního katalogu, které jsou k němu nejblíže. 
+
+Záznamy služby DNS lokátoru globálního katalogu a záznamy SRV specifické pro lokalitu jsou dynamicky registrovány službou Přihlašování k síti a slouží k vyhledání globálního katalogu. Lokalita služby Active Directory se skládá z jedné nebo více dobře propojených podsítí s protokolem TCP/IP, které správcům umožňují konfigurovat replikaci služby Active Directory a přístup k této službě. Globální katalog je řadič domény obsahující částečnou repliku všech domén služby Active Directory.
+
+Chcete-li určit servery pokryté záznamy SRV služby DNS lokátoru globálního katalogu, klikněte na přepínač Povoleno a zadejte názvy lokalit oddělené mezerami.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném globálním katalogu a globální katalogy použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_LdapSrvPriority">Priorita nastavená v záznamech DNS SRV lokátoru řadičů domény</string>
+      <string id="Netlogon_LdapSrvPriority_Help">Určuje hodnotu pole Priorita v záznamech o prostředcích SRV registrovaných řadiči domény, pro které platí toto nastavení. Tyto záznamy DNS jsou dynamicky registrovány službou Přihlašování k síti a slouží k vyhledání řadiče domény.
+
+Pole Priorita v záznamu SRV nastavuje předvolbu pro cílové hostitele (zadané v záznamu SRV v poli Cíl). Klienti DNS, kteří odesílají dotazy na záznamy o prostředcích SRV, se pokusí kontaktovat prvního dosažitelného hostitele s nejnižší uvedenou prioritou.
+
+Chcete-li zadat hodnotu Priorita do záznamů o prostředcích SRV služby DNS lokátoru řadičů domény, klikněte na přepínač Povoleno a zadejte požadovanou hodnotu. Rozsah hodnot je 0 až 65 535.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném řadiči domény a řadiče domény použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_LdapSrvWeight">Váha nastavená v záznamech DNS SRV lokátoru řadičů domény</string>
+      <string id="Netlogon_LdapSrvWeight_Help">Určuje hodnotu pole Váha v záznamech o prostředcích SRV registrovaných řadiči domény, pro které platí toto nastavení. Tyto záznamy DNS jsou dynamicky registrovány službou Přihlašování k síti a slouží k vyhledání řadiče domény.
+
+Pole Váha v záznamech SRV lze použít spolu s hodnotou Priorita k vyrovnávání zatížení, pokud je v záznamech SRV v poli Cíl zadáno více serverů a všechny mají nastavenu stejnou prioritu. Pravděpodobnost s níž klient DNS náhodně vybere cílového hostitele, který bude kontaktován, je přímo úměrná hodnotě zadané do pole Váha v záznamu SRV.
+
+Chcete-li zadat hodnotu Váha do záznamů SRV služby DNS lokátoru řadičů domény, klikněte na přepínač Povoleno a zadejte požadovanou hodnotu. Rozsah hodnot je 0 až 65 535.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném řadiči domény a řadiče domény použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_MaximumLogFileSize">Maximální velikost souboru protokolu</string>
+      <string id="Netlogon_MaximumLogFileSize_Help">Určuje maximální velikost (v bajtech) souboru protokolu netlogon.log v adresáři %windir%\debug, jestliže je povoleno protokolování.
+
+Maximální velikost souboru protokolu je ve výchozím nastavení 20 MB. Pokud je tato zásada povolena, maximální velikost souboru protokolu je nastavena na zadanou velikost. Po dosažení této velikosti je soubor protokolu uložen jako soubor netlogon.bak a soubor netlogon.log je zkrácen. V závislosti na úložném prostoru, který je k dispozici, zadejte přiměřenou hodnotu.
+
+Je-li nastavení této zásady zakázáno nebo není nakonfigurováno, bude použito výchozí chování, jak je uvedeno výše.</string>
+      <string id="Netlogon_NdncSiteCoverage">Lokality pokryté záznamy SRV služby DNS lokátoru oddílu adresáře aplikace</string>
+      <string id="Netlogon_NdncSiteCoverage_Help">Určuje servery, pro které by řadiče domény obsahující oddíl adresáře aplikace měly registrovat záznamy o prostředcích SRV služby DNS lokátoru řadičů domény, které jsou specifické pro lokalitu a konkrétní oddíl adresáře aplikace. Tyto záznamy jsou registrovány navíc k záznamům SRV, které jsou specifické pro lokalitu, registrovaným pro lokalitu, ve které se nachází řadič domény, a k záznamům registrovaných řadičem domény nakonfigurovaným na registrování záznamů SRV služby DNS lokátoru řadičů domény pro ty lokality bez řadiče domény, které jsou k němu nejblíže. 
+
+Záznamy služby DNS lokátoru oddílu adresáře aplikace a záznamy SRV konkrétního serveru jsou dynamicky registrovány službou Přihlašování k síti a slouží k vyhledání řadiče domény, který je specifický pro oddíl adresáře aplikace. Lokalita služby Active Directory se skládá z jedné nebo více dobře propojených podsítí s protokolem TCP/IP, které správcům umožňují konfigurovat replikaci služby Active Directory a přístup k této službě.
+
+Chcete-li určit servery pokryté záznamy SRV služby DNS lokátoru řadičů domény, které jsou specifické pro oddíl adresáře aplikace, klikněte na přepínač Povoleno a zadejte názvy lokalit oddělené mezerami.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném řadiči domény a řadiče domény použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_NegativeCachePeriod">Nastavení mezipaměti záporných odpovědí v řadiči domény</string>
+      <string id="Netlogon_NegativeCachePeriod_Help">Určuje dobu (v sekundách), po kterou si lokátor řadičů domény pamatuje, že řadič domény nebyl v doméně nalezen. Pokud dojde k dalšímu pokusu o vyhledání řadiče domény během doby zadané v tomto nastavení, zjišťování řadiče domény se ihned ukončí (bez pokusu o vyhledání řadiče domény).
+
+Výchozí hodnota pro toto nastavení je 45 sekund. Maximální hodnota pro toto nastavení je 7 dní (7*24*60*60). Minimální hodnota pro toto nastavení je 0.
+
+Upozornění: Pokud je hodnota tohoto nastavení příliš vysoká, klient se nepokusí vyhledat řadiče domény, které byly zpočátku nedostupné. Jestliže je hodnota pro toto nastavení příliš malá, klienti se pokusí vyhledat řadiče domény i tehdy, pokud nejsou žádné řadiče domény k dispozici.</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode">Kompatibilita sdílené složky služby Přihlašování k síti</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode_Help">Toto nastavení určuje, zda má sdílená složka Netlogon služby Přihlašování k síti vytvořená touto službou v řadiči domény podporovat kompatibilitu sémantiky sdílení souborů se staršími aplikacemi.
+
+Pokud je toto nastavení povoleno, bude sdílená složka Netlogon akceptovat sémantiku sdílení souborů, která uděluje žádosti o výhradní přístup ke čtení souborů ve sdílené složce i v případě, že volající má pouze oprávnění ke čtení.
+
+Pokud je toto nastavení zakázáno nebo není nakonfigurováno, sdílená složka Netlogon udělí sdílený přístup ke čtení souborů ve sdílené složce, jestliže je požadován výhradní přístup a volající má pouze právo čtení.
+
+Ve výchozím nastavení udělí sdílená složka Netlogon sdílený přístup pro čtení souborů ve sdílené složce, jestliže je požadován výhradní přístup.
+
+Poznámka: Sdílená složka Netlogon služby Přihlašování k síti je položka vytvořená touto službou pro použití klientskými počítači v doméně. Výchozí chování této sdílené složky zaručuje, že žádná aplikace, která má pouze právo čtení souborů ve sdílené složce Netlogon, nemůže uzamknout soubory požadováním výhradního přístupu pro čtení, což by mohlo zabránit aktualizaci nastavení zásad skupiny u klientů v doméně. Pokud je toto nastavení povoleno, může aplikace, která potřebuje uzamknout soubory ve sdílené složce Netlogon pouze s oprávněním ke čtení, zabránit klientům zásad skupiny ve čtení souborů, což obecně sníží dostupnost sdílené složky Netlogon v doméně.
+
+Pokud je toto nastavení povoleno, musí správci domény zajistit, že aplikace využívající výhradního přístupu ke čtení jsou jedině aplikace schválené správcem.</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">Kladná hodnota pravidelné aktualizace mezipaměti řadiče domény pro volání, která neprobíhají na pozadí</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod_Help">Určuje, kdy je aktualizována úspěšná položka mezipaměti řadiče domény. Toto nastavení je platné pro volající programy, které se nepokouší pravidelně vyhledat řadiče domény, a je použito před vrácením informací řadiče domény volajícímu programu. Toto nastavení se týká pouze těch volání nastavení DsGetDcName, která nemají nastaven příznak DS_BACKGROUND_ONLY.
+
+Výchozí hodnota pro toto nastavení je 30 minut (1 800). Maximální hodnota pro toto nastavení je 4 294 967 200, ale maximální hodnota, která není považována za nekonečno, je 49 dní (49*24*60*60=4 233 600). Každá větší hodnota bude považována za nekonečno. Minimální hodnota pro toto nastavení je 0 (neustálá aktualizace).</string>
+      <string id="Netlogon_ScavengeInterval">Interval úklidu</string>
+      <string id="Netlogon_ScavengeInterval_Help">Určuje interval, ve kterém služba Přihlašování k síti provede následující operace úklidu:
+
+– Ověří, zda je nutné změnit heslo pro zabezpečený kanál a v případě potřeby ho změní.
+
+– V řadičích domény vyhledá řadič, který nebyl vyhledán.
+
+– V primárním řadiči domény se pokusí přidat název NetBIOS &lt;Název_domény&gt; [1B], pokud již nebyl úspěšně přidán.
+
+Žádná z těchto operací není nezbytná. Hodnotu 15 minut, která je optimální v téměř všech případech, je vhodné upravit pouze v krajních případech. Pokud je například řadič domény oddělen od důvěryhodné domény linkou s vysokými náklady na připojení (například linka ISDN), můžete tuto hodnotu zvýšit, abyste zabránili častému automatickému vyhledávání řadičů domény v důvěryhodné doméně.
+
+Chcete-li toto nastavení povolit, klikněte na přepínač Povoleno a zadejte interval v sekundách.</string>
+      <string id="Netlogon_SiteCoverage">Lokality pokryté záznamy DNS SRV lokátoru řadičů domény</string>
+      <string id="Netlogon_SiteCoverage_Help">Určuje lokality, pro které řadiče domény registrují záznamy o prostředcích SRV služby DNS lokátoru řadičů domény, které jsou specifické pro server. Tyto záznamy jsou registrovány navíc k záznamům SRV, které jsou specifické pro lokalitu, registrovaným pro lokalitu, ve které se nachází řadič domény, a k záznamům registrovaných řadičem domény nakonfigurovaným na registrování záznamů SRV služby DNS lokátoru řadičů domény pro ty lokality bez řadiče domény, které jsou k němu nejblíže. 
+
+Tyto záznamy DNS lokátoru řadičů domény jsou dynamicky registrovány službou Přihlašování k síti a slouží k vyhledání řadiče domény. Lokalita služby Active Directory se skládá z jedné nebo více dobře propojených podsítí s protokolem TCP/IP, které správcům umožňují konfigurovat replikaci služby Active Directory a přístup k této službě.
+
+Chcete-li určit lokality pokryté záznamy SRV služby DNS lokátoru řadičů domény, klikněte na přepínač Povoleno a poté zadejte názvy serverů oddělené mezerami.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném řadiči domény a řadiče domény použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_SiteName">Název lokality</string>
+      <string id="Netlogon_SiteName_Help">Určuje lokalitu Active Directory, ke které počítače patří.
+
+Lokalita služby Active Directory se skládá z jedné nebo více dobře propojených podsítí s protokolem TCP/IP, které správcům umožňují konfigurovat replikaci služby Active Directory a přístup k této službě.
+
+Chcete-li pro toto nastavení zadat název lokality, klikněte na přepínač Povoleno a zadejte název lokality. Pokud není určena lokalita, do které počítač patří, počítač ji automaticky vyhledá ve službě Active Directory.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném počítači a počítače použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode">Kompatibilita sdílené složky Sysvol</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode_Help">Toto nastavení určuje, zda má sdílená složka Sysvol vytvořená touto službou v řadiči domény podporovat kompatibilitu sémantiky sdílení souborů se staršími aplikacemi.
+
+Pokud je toto nastavení povoleno, bude sdílená složka Sysvol akceptovat sémantiku sdílení souborů, která uděluje žádosti o výhradní přístup ke čtení souborů ve sdílené složce i v případě, že volající má pouze oprávnění ke čtení.
+
+Pokud je toto nastavení zakázáno nebo není nakonfigurováno, sdílená složka Sysvol udělí sdílený přístup ke čtení souborů ve sdílené složce, jestliže je požadován výhradní přístup a volající má pouze právo čtení.
+
+Ve výchozím nastavení udělí sdílená složka Sysvol sdílený přístup pro čtení souborů ve sdílené složce, jestliže je požadován výhradní přístup.
+
+Poznámka: Sdílená složka Sysvol je položka vytvořená službou Přihlášení k síti pro použití klienty zásad skupiny v doméně. Výchozí chování této sdílené složky zaručuje, že žádná aplikace, která má pouze oprávnění ke čtení souborů ve sdílené složce Sysvol, nemůže uzamknout soubory požadováním výhradního přístupu pro čtení, což by mohlo zabránit aktualizaci nastavení zásad skupiny u klientů v doméně. Pokud je toto nastavení povoleno, může aplikace, která potřebuje uzamknout soubory ve sdílené složce Sysvol pouze s oprávněním ke čtení, zabránit klientům zásad skupiny ve čtení souborů, což obecně sníží dostupnost sdílené složky Sysvol v doméně.
+
+Pokud je toto nastavení povoleno, musí správci domény zajistit, že aplikace využívající výhradního přístupu ke čtení jsou jedině aplikace schválené správcem.</string>
+      <string id="Netlogon_UseDynamicDns">Dynamická registrace záznamů DNS lokátoru řadiče domény</string>
+      <string id="Netlogon_UseDynamicDns_Help">Určuje, zda je povolena dynamická registrace záznamů DNS lokátoru řadiče domény. Tyto záznamy služby DNS jsou dynamicky registrovány službou Přihlašování k síti a slouží algoritmu lokátoru k vyhledání řadiče domény.
+
+Pokud toto nastavení povolíte, budou řadiče domén, pro které toto nastavení platí, dynamicky registrovat záznamy prostředků DNS lokátoru řadiče domény prostřednictvím dynamických síťových připojení DNS s povolenou aktualizací.
+
+Pokud toto nastavení zakážete, nebudou řadiče domény registrovat záznamy prostředků DNS lokátoru řadiče domény.
+
+Pokud toto nastavení není nakonfigurováno, nebude použito v žádném řadiči domény a řadiče domény použijí svou místní konfiguraci.</string>
+      <string id="Netlogon_TryNextClosestSite">Zkusit další nejbližší lokalitu</string>
+      <string id="Netlogon_TryNextClosestSite_Help">Službu lokátoru řadičů domény (lokátor DC) využívají klienti k vyhledání řadičů pro svoji doménu služby Active Directory. Výchozím chováním lokátoru DC je vyhledat řadič domény ve stejné lokalitě. Nebyl-li nalezen ve stejné lokalitě žádný řadič, může lokátor DC vrátit jiný řadič domény z jiné lokality. Vzdálenost mezi dvěma lokalitami je určena celkovými náklady na jejich propojení. Lokalita je blíže v případě, že jsou její náklady na spojení nižší než u jiné lokality s vyššími náklady. Funkce Zkusit další nejbližší lokalitu umožňuje lokátoru DC vyhledat řadič domény v nejbližší lokalitě na základě nákladů na spojení v případě, že nebyl v rámci stejné lokality nalezen žádný řadič. V případě více lokalit umožní přepnutí na funkci Zkusit další nejbližší lokalitu během vyhledávání řadiče domény značné snížení zatížení sítě.
+
+Pokud toto nastavení povolíte, bude vyhledávání řadičů domény pomocí funkce Zkusit další nejbližší lokalitu povoleno na všech síťových adaptérech, kromě těch, které nejsou nakonfigurovány.
+
+Pokud toto nastavení zakážete, bude ve výchozím nastavení vyhledávání řadičů domény pomocí funkce Zkusit další nejbližší lokalitu vypnuto na všech síťových adaptérech, kromě těch, které nejsou nakonfigurovány. Je-li pomocí příznaku DS_TRY_NEXTCLOSEST_SITE explicitně uskutečněno volání, bude chování funkce Zkusit další nejbližší lokalitu akceptováno.
+
+Pokud nebude toto nastavení nakonfigurováno, bude ve výchozím nastavení vyhledávání řadičů domény pomocí funkce Zkusit další nejbližší lokalitu vypnuto na všech síťových adaptérech, kromě těch, které nejsou nakonfigurovány. Je-li explicitně použito příznaku DS_TRY_NEXTCLOSEST_SITE, použije se chování funkce Další nejbližší lokalita.</string>
+      <string id="Netlogon_ForceRediscoveryInterval">Vynutit interval pro opakované vyhledávání</string>
+      <string id="Netlogon_ForceRediscoveryInterval_Help">Službu lokátoru řadičů domény (lokátor DC) využívají klienti k vyhledání řadičů pro svoji doménu služby Active Directory. Jakmile lokátor DC najde příslušný řadič domény, uložením řadičů do mezipaměti zvýší účinnost algoritmu vyhledávání. Jakmile řadič domény v mezipaměti splňuje dané požadavky a je spuštěn, bude lokátor DC pokračovat ve vyhledávání. Je-li přestaven nový řadič domény, existující klienti jej při provedení funkce lokátoru DC Vynutit opakované vyhledávání pouze vyhledají. Ve výchozím nastavení reaguje lokátor DC na stav sítě pomocí funkce Vynutit opakované vyhledávání na základě určeného časového intervalu a provádí správu efektivního vyrovnání zátěže klientů mezi všemi dostupnými řadiči ve všech doménách či doménových strukturách. Výchozím časovým intervalem pro funkci Vynutit opakované vyhledávání pomocí lokátoru DC je 12 hodin. Funkce Vynutit opakované vyhledávání může být dále spuštěna v případě, že volání lokátoru DC používá příznak DS_FORCE_REDISCOVERY. Opakované vyhledávání vynuluje časovač u položek řadiče domény v mezipaměti.
+
+Pokud toto nastavení povolíte, bude lokátor DC spouštět v počítači funkci Vynutit opakované vyhledávání pravidelně podle nastaveného časového intervalu. Minimální časový interval je 3600 sekund (1 hodina), což umožňuje zabránit nadměrnému zatížení sítě způsobenému opakovaným vyhledáváním. Maximální povolený časový interval je 4294967200 sekund, přičemž libovolná hodnota vyšší než 4294967 sekund (~49 dní) bude považována za nekonečno.
+
+Pokud toto nastavení zakážete, bude funkce Vynutit opakované vyhledávání ve výchozím nastavení spuštěna v počítači každých 12 hodin.
+
+Pokud toto nastavení nenakonfigurujete, bude funkce Vynutit opakované vyhledávání ve výchozím nastavení spuštěna v počítači každých 12 hodin, dokud nedojde ke změně hodnoty nastavení místního počítače v registru.</string>
+      <string id="Netlogon_AddressTypeReturned">Vrácený typ adresy řadiče domény</string>
+      <string id="Netlogon_AddressTypeReturned_Help">Rozhraní API lokátoru řadiče domény vrátí adresu IP řadiče s dalšími informacemi. Před zavedením podpory protokolu IPv6 měla IP adresa řadiče domény formát IPv4. S podporou protokolu IPv6 mohou rozhraní API lokátoru vrátit adresu řadiče domény ve formátu IPv6. Některé existující aplikace nemusí vrácenou adresu řadiče domény ve formátu IPv6 správně zpracovat. Pro tyto případy lze vyřešit pomocí této zásady.
+
+Ve výchozím nastavení mohou rozhraní API lokátoru vrátit adresu řadiče domény ve formátu IPv4 či IPv6. Pokud však u některých aplikací dochází na základě vrácené adresy řadiče domény formátu IPv6 k chybě, lze pomocí této zásady zakázat výchozí chování a vynutit vrácení adresy řadiče domény POUZE ve formátu IPv4. Po opravení aplikací lze tuto zásadu použít pro povolení výchozího chování.
+
+Pokud toto nastavení povolíte, mohou rozhraní API lokátoru vrátit adresu řadiče domény ve formátu IPv4 či IPv6. Jedná se o výchozí chování lokátoru řadiče domény.
+
+Pokud toto nastavení zakážete, vrátí rozhraní API lokátoru případnou adresu řadiče domény POUZE ve formátu IPv4. Podporuje-li řadič domény adresy ve formátu IPv4 i IPv6, vrátí rozhraní API lokátoru adresu ve formátu IPv4. Pokud však řadič domény podporuje pouze adresu IPv6, dojde u rozhraní API lokátoru k chybě.
+
+Pokud nebude toto nastavení nakonfigurováno, mohou rozhraní API lokátoru vrátit adresu řadiče domény ve formátu IPv4 i IPv6. Jedná se o výchozí chování lokátoru řadiče domény.</string>
+      <string id="Netlogon_AllowNT4Crypto">Povolit kryptografické algoritmy kompatibilní se systémem Windows NT 4.0</string>
+      <string id="Netlogon_AllowNT4Crypto_Help">Toto nastavení určuje, zda služba Přihlašování k síti povolí použití starších kryptografických algoritmů, které se používají v systému Windows NT 4.0. Kryptografické algoritmy používané v systému Windows NT 4.0 a starších nejsou tak bezpečné jako novější algoritmy používané v systémech Windows 2000, Windows XP, Windows Server 2003, Windows Vista a v této verzi systému Windows.
+
+Ve výchozím nastavení služba Přihlašování k síti použití starších kryptografických algoritmů nepovoluje a nezahrne je do vyjednávání kryptografických algoritmů. Proto počítače se systémem Windows NT 4.0 nebudou moci vytvořit připojení k tomuto řadiči domény.
+ 
+Pokud je toto nastavení povoleno, služba Přihlašování k síti povolí vyjednávání a použití starších kryptografických algoritmů kompatibilních se systémem Windows NT 4.0. Použití starších algoritmů však představuje potenciální bezpečnostní riziko.</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages">Nezpracovávat příchozí zprávy do zásuvky pošty sloužící k vyhledávání řadičů domény na základě názvu domény pro rozhraní NetBIOS</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages_Help">Pomocí nastavení této zásady lze řídit zpracování příchozích zpráv do zásuvky pošty v místním řadiči domény.
+
+Poznámka: Při hledání vzdáleného řadiče domény na základě jeho názvu domény pro rozhraní NetBIOS (jednomístného) lokátor řadičů domény nejprve získá seznam řadičů domény ze serveru WINS, který je nakonfigurován v jeho místním klientském nastavení. Lokátor řadičů domény potom každému vzdálenému řadiči domény odešle zprávu do zásuvky pošty, aby získal více informací. Vyhledání řadiče domény je úspěšné, pouze pokud vzdálený řadič domény na zprávu do zásuvky odpoví.
+
+Nastavení této zásady se doporučuje za účelem zúžení prostoru pro možný útok na řadič domény a lze je použít v prostředí bez služby WINS, v prostředí výhradně s protokolem IPv6 a v jakémkoli jiném prostředí, kde není vyžadováno vyhledávání řadičů domény založené na názvu domény pro rozhraní NetBIOS. Toto nastavení neovlivňuje vyhledávání řadičů domény na základě názvů DNS.
+
+Pokud je nastavení této zásady povoleno, nebude tento řadič domény zpracovávat příchozí zprávy do zásuvky pošty, které se používají k vyhledávání řadičů domény na základě názvu domény pro rozhraní NetBIOS.
+
+Pokud je nastavení této zásady zakázáno nebo pokud není nakonfigurováno, tento řadič domény příchozí zprávy do zásuvky pošty zpracuje. Jedná se o výchozí chování lokátoru řadiče domény.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Netlogon_BackgroundRetryInitialPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryInitialPeriodLabel" defaultValue="600" spinStep="600">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryMaximumPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryMaximumPeriodLabel" defaultValue="3600" spinStep="3600">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryQuitTime">
+        <decimalTextBox refId="Netlogon_BackgroundRetryQuitTimeLabel" defaultValue="0" spinStep="100">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundSuccessfulRefreshPeriodLabel" defaultValue="4294967200" spinStep="1000">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DebugFlag">
+        <decimalTextBox refId="Netlogon_DebugFlagLabel" defaultValue="536936447">Úroveň:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsAvoidRegisterRecords">
+        <textBox refId="Netlogon_DnsAvoidRegisterRecordsLabel">
+          <label>Klávesové zkratky:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_DnsRefreshInterval">
+        <decimalTextBox refId="Netlogon_DnsRefreshIntervalLabel" defaultValue="1800" spinStep="100">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsTtl">
+        <decimalTextBox refId="Netlogon_DnsTtlLabel" defaultValue="600" spinStep="100">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ExpectedDialupDelay">
+        <decimalTextBox refId="Netlogon_ExpectedDialupDelayLabel" defaultValue="0" spinStep="100">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_GcSiteCoverage">
+        <textBox refId="Netlogon_GcSiteCoverageLabel">
+          <label>Lokality:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvPriority">
+        <decimalTextBox refId="Netlogon_LdapSrvPriorityLabel" defaultValue="0" spinStep="100">Priorita:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvWeight">
+        <decimalTextBox refId="Netlogon_LdapSrvWeightLabel" defaultValue="100" spinStep="100">Váha:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_MaximumLogFileSize">
+        <decimalTextBox refId="Netlogon_MaximumLogFileSizeLabel" defaultValue="536936447">Bajty:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NdncSiteCoverage">
+        <textBox refId="Netlogon_NdncSiteCoverageLabel">
+          <label>Lokality:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_NegativeCachePeriod">
+        <decimalTextBox refId="Netlogon_NegativeCachePeriodLabel" defaultValue="45" spinStep="60">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_NonBackgroundSuccessfulRefreshPeriodLabel" defaultValue="1800" spinStep="1000">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ScavengeInterval">
+        <decimalTextBox refId="Netlogon_ScavengeIntervalLabel" defaultValue="900" spinStep="900">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_SiteCoverage">
+        <textBox refId="Netlogon_SiteCoverageLabel">
+          <label>Lokality:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_SiteName">
+        <textBox refId="Netlogon_SiteNameLabel">
+          <label>Lokalita:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_ForceRediscoveryInterval">
+        <decimalTextBox refId="Netlogon_ForceRediscoveryIntervalLabel" defaultValue="43200" spinStep="100">Sekundy:</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

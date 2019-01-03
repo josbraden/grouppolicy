@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>请在此处输入显示名称</displayName>
+  <description>请在此处输入描述</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Lanman 服务器</string>
+      <string id="Lbl_FollowShare">仅允许对启用分支缓存的共享文件夹进行哈希发布</string>
+      <string id="Lbl_DisableOnAllShares">禁止对所有共享文件夹进行哈希发布</string>
+      <string id="Lbl_EnableOnAllShares">允许对所有共享文件夹进行哈希发布</string>
+      <string id="Pol_HashPublication">分支缓存的哈希发布</string>
+      <string id="Pol_HashPublication_Help">此策略可启用哈希生成服务以为共享文件夹中存储的数据生成哈希，然后将这些哈希提供给启用分支缓存的客户端计算机。哈希是通过计算获得的文件的数字指纹，可用于唯一标识文件的内容。这些数字指纹非常小，无需耗费大量广域网(WAN)带宽，即可使 Windows 比较文件。
+
+如果满足以下所有条件，则分支机构中的客户端计算机可通过 WAN 链接获取文件的哈希: 
+1) 用户有权访问文件。
+2) 客户端计算机中启用了分支缓存。
+3) 允许对客户端计算机访问的共享文件夹进行哈希发布。
+
+如果客户端计算机获得了哈希，则该计算机即可在分支机构的其他计算机的缓存中搜索该文件的相同版本。如果 Windows 在分支机构中找到了该文件的相同版本，则客户端计算机将下载本地缓存的副本，而不是通过 WAN 链接下载该文件。
+
+如果将此策略配置为“仅允许对启用分支缓存的共享文件夹进行哈希发布”(值 = 0)，则将仅为启用分支缓存的共享文件夹生成哈希。发生以下任一事件时，将为这些共享文件夹生成哈希:
+1) 被访问的文件位于启用分支缓存的共享文件夹中，且客户端启用了分支缓存支持。
+2) 管理员使用命令行工具 Hashgen 手动生成了哈希。
+ 
+如果将此策略配置为“禁止对所有共享文件夹进行哈希发布”(值 = 1)，则应用此策略的计算机将永远不会生成或提供哈希。
+ 
+如果将此策略配置为“允许对所有共享文件夹进行哈希发布”(值 = 2)，则将在发生以下任一事件时，为服务器上的所有共享文件夹生成哈希:
+1) 被访问的文件位于服务器上的共享文件夹中，且客户端启用了分支缓存支持。
+2) 管理员使用命令行工具 Hashgen 手动生成了哈希。</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>值:</text>
+        <text>0 = 仅允许对启用分支缓存的共享文件夹进行哈希发布</text>
+        <text>1 = 禁止对所有共享文件夹进行哈希发布</text>
+        <text>2 = 允许对所有共享文件夹进行哈希发布</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">哈希发布操作: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

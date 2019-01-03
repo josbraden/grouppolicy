@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>skriv inn visningsnavn her</displayName>
+  <description>skriv inn beskrivelse her</description>
+  <resources>
+    <stringTable>
+      <string id="AccountingEnabled">Slå på kontobehandling for WSRM</string>
+      <string id="AccountingEnabled_Explain">Denne innstillingen slår kontobehandlingsfunksjonen på eller av.
+
+Hvis du aktiverer denne innstillingen, begynner WSRM å kontobehandle forskjellige statistikker for prosessene.
+
+Hvis du deaktiverer denne innstillingen, stopper WSRM å logge statistikker for prosessene.
+
+Hvis du ikke konfigurerer denne innstillingen, kan brukeren angi om kontobehandling skal være på eller av.
+
+Kontobehandling er deaktivert som standard.
+
+Kontobehandlingsdatabasen har et grensesnitt du kan bruke til å behandle både informasjonen i databasen og den fysiske størrelsen til databasen. Behandling av databaseinformasjon betyr å finne relevant informasjon og deretter organisere den effektivt. Den fysiske størrelsen til databasen krever regelmessig oppsyn fordi kontobehandlingsinformasjon lagres kontinuerlig med mindre du angir noe annet. Databasestørrelsen kommer derfor til å fortsette å øke. Hvis du vil justere størrelsen til databasen, kan du arkivere kontobehandlingsdata for senere bruk eller slette dem fra databasen.
+
+Du kan bruke kontobehandlingsdata til å overvåke ressursbruk, sammenligne faktisk og forventet ytelse, vurdere om datamaskinens fysiske ressurser er tilstrekkelige for oppgavene den skal utføre, og skape et grunnlag for tilbakeføring av utgifter.
+</string>
+      <string id="EmailIds">Angi e-postadresser som varslinger skal sendes til</string>
+      <string id="EmailIds_Explain">Denne innstillingen spesifiserer e-postadressen(e) som varslinger skal sendes til. Bruk et semikolon (;) for å skille flere e-postadresser.
+
+Hvis du aktiverer denne innstillingen, sender WSRM meldinger til de(n) angitte adressen(e).
+
+Hvis du deaktiverer denne innstillingen, blir ingen e-postadresser (standardverdi) satt opp.
+
+Hvis du ikke konfigurerer denne innstillingen, kan brukeren angi e-postadressene varslingene skal sendes til. Denne verdien kan være e-postaliaser eller e-postadresser inkludert domenenavn (for eksempel noen@example.com).
+
+Disse e-postadressene varsles i henhold til hendelsene som er valgt for varsling.
+
+Obs! For at du skal kunne motta varslinger, må du slå PÅ varslingsinnstillingen for hendelsesloggen. Hvis du vil vise listen over hendelser, klikker du Feil, Advarsel eller Informasjon, og deretter klikker du OK. Hvis du velger Feil, Advarsel eller Informasjon, inkluderes alle de individuelle hendelsene i den aktuelle kategorien.</string>
+      <string id="KeyName_Explain">Denne innstillingen aktiveres egenskaper for kontobehandling og/eller varsling for WSRM gjennom gruppepolicyinnstillinger.</string>
+      <string id="RecordWriteInterval">Angi intervall i minutter for logging av kontobehandlingsdata</string>
+      <string id="RecordWriteInterval_Explain">Denne innstillingen spesifiserer at kontobehandlingsfunksjonen skal logge data på kontobehandlingsserveren på det angitte tidsintervallet.
+
+Hvis du aktiverer denne innstillingen, setter WSRM tidsintervallet for kontobehandling til den angitte verdien.
+
+Hvis du deaktiverer denne innstillingen, settes standardverdien på 10 minutter.
+
+Hvis du ikke konfigurerer denne innstillingen, kan brukeren angi et kontobehandlingsintervall.
+
+Verdien angis i minutter og kan være mellom 2 minutter og 60 000 minutter. Standardverdien er ti minutter siden dette er en optimal verdi hvis det er mange servere som logger data eksternt. Hvis du angir et skriveintervall for kontobehandling som er mindre enn 10 minutter for en server på et nettverk der flere enn 20 maskiner logger data eksternt, kan ytelsen bli redusert.
+
+Obs! Angi en høyere verdi for skriveintervallet for kontobehandling når antallet maskiner på nettverket økes, slik at du reduserer nettverkstrafikken.</string>
+      <string id="SMTPServer">Angi SMTP-server for bruk til sending av varslinger</string>
+      <string id="SMTPServerConfiguration_Explain">Denne innstillingen angir adressen til SMTP-serveren som sender ut varslinger.
+
+Hvis du aktiverer denne innstillingen, setter WSRM SMTP-serveren til den angitte verdien.
+
+Hvis du deaktiverer denne innstillingen, blir ingen SMTP-server (standardverdi) satt opp.
+
+Hvis du ikke konfigurerer denne innstillingen, kan brukeren angi en SMTP-server.
+
+Denne verdien kan være NetBIOS-navnet eller det fullstendige domenenavnet til SMTP-serveren (Simple Mail Transfer Protocol). Denne serveren inneholder e-postadressene som er konfigurert til å motta varslinger.
+
+Obs! For at du skal kunne motta e-postvarslinger, må du slå PÅ varslingsinnstillingen for hendelsesloggen. Hvis du vil vise listen over hendelser, klikker du Feil, Advarsel eller Informasjon, og deretter klikker du OK. Hvis du velger Feil, Advarsel eller Informasjon, inkluderes alle de individuelle hendelsene i den aktuelle kategorien.</string>
+      <string id="WSRM">Windows-systemressursbehandling</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="EmailIds">
+        <textBox refId="EmailIdsConfiguration">
+          <label>E-post-IDer</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+      <presentation id="RecordWriteInterval">
+        <decimalTextBox refId="Write_Interval" defaultValue="10">Registreringsintervall for kontobehandling (2 til 60 000 minutter) </decimalTextBox>
+      </presentation>
+      <presentation id="SMTPServer">
+        <textBox refId="SMTPServerConfiguration">
+          <label>Oppgi adressen til SMTP-serveren</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

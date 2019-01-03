@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>buraya görünen adı girin</displayName>
+  <description>buraya tanımı girin</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Bu ilke ayarı, BitLocker Sürücü Şifrelemesi kurtarma bilgilerinin Active Directory Etki Alanı Hizmetleri (AD DS) yedeklemesini yönetmenizi sağlar. Bu, anahtar bilgisinin eksikliği durumunda veri kaybını önlemek için BitLocker tarafından şifrelenmiş verileri geri yüklemeye dair idari bir yöntemdir. Bu ilke yalnızca Windows Server 2008 veya Windows Vista çalıştıran bilgisayarlar için geçerlidir.
+
+Bu ayarı etkinleştirirseniz, bir bilgisayar için BitLocker açıldığında, BitLocker kurtarma bilgileri otomatik olarak ve sessizce AD DS'ye yedeklenir. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır.
+
+Not: AD DS yedeklemesinin başarılı olabilmesi için önce etki alanında uygun şema uzantılarını ve erişim denetimi ayarlarını ayarlamanız gerekir. AD DS'yi BitLocker için ayarlama hakkında daha fazla bilgi için, Microsoft TechNet'teki BitLocker Sürücü Şifrelemesi Dağıtım Kılavuzu'na bakın.
+
+BitLocker kurtarma bilgileri, kurtarma parolasını ve bazı benzersiz tanıtıcı verilerini içerir. BitLocker korumalı birimin şifreleme anahtarını içeren bir paket de ekleyebilirsiniz. Bu anahtar paketinin güvenliği bir veya daha fazla kurtarma parolası ile sağlanır ve disk hasar görürse veya bozulursa özel kurtarma gerçekleştirilebilmesini sağlar.
+
+"AD DS'ye BitLocker yedeklemesi iste" seçeneğini belirlerseniz, bilgisayar etki alanına bağlı ve AD DS yedeklemesi başarılı olmadığı sürece BitLocker açılamaz. Bu seçenek varsayılan olarak BitLocker kurtarmasının yapılabilmesi için seçilir. Aksi durumda, AD DS yedeklemesi denenir; ancak ağ veya diğer yedekleme hataları BitLocker kurulumunu etkilemez. Yedekleme otomatik olarak yeniden denenmez ve BitLocker kurulumu sırasında kurtarma parolası AD DS'de depolanmamış olabilir.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız, BitLocker kurtarma bilgileri AD DS'ye yedeklenmez. 
+
+Not: BitLocker kurulumu sırasında Güvenilir Platform Modülü'nün (TPM) başlatılması gerekebilir. TPM bilgilerinin de yedeklenmesini sağlamak için Sistem\Güvenilir Platform Modülü Hizmetleri altında "Active Directory Etki Alanı Hizmetleri'ne TPM yedeklemesini aç" ilke ayarını etkinleştirin.
+</string>
+      <string id="ActiveDirectoryBackup_Name">Active Directory Etki Alanı Hizmetleri'ne (Windows Server 2008 ve Windows Vista) BitLocker kurtarma bilgisini kaydet</string>
+      <string id="ActiveDirectoryBackupDropDown_1">Parolaları ve anahtar paketlerini kurtar</string>
+      <string id="ActiveDirectoryBackupDropDown_2">Yalnızca parolaları kurtar</string>
+      
+      <string id="ConfigureStartupUsage_Help">Bu ilke ayarı, BitLocker Sürücü Şifrelemesi kurulum sihirbazının bilgisayar her başlatıldığında gerekli olan ek bir kimlik doğrulaması yöntemini kurup kuramayacağını belirlemenizi sağlar. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır.
+        
+Not: Bu ilke yalnızca Windows Server 2008 ya da Windows Vista çalıştıran bilgisayarlar için geçerlidir.
+
+Uyumlu bir Güvenilir Platform Modülü (TPM) bulunan bir bilgisayarda, şifrelenmiş veriler için ek koruma sağlamak üzere iki tür başlangıç kimlik doğrulaması çalıştırılabilir. Bilgisayar başlatıldığında, kullanıcıların başlangıç anahtarı içeren bir USB flash sürücü takmaları gerekebilir. Kullanıcıların 4 - 20 basamaklı bir başlangıç kişisel kimlik numarası (PIN) girmeleri de gerekebilir. 
+
+Uyumlu bir TPM bulunmayan bilgisayarlarda başlangıç anahtarı içeren bir USB flash sürücü gerekir. TPM olmadan, BitLocker kullanılarak şifrelenmiş veriler yalnızca bu USB flash sürücüdeki anahtar tarafından korunur. 
+
+Bu ilke ayarını etkinleştirirseniz, sihirbaz, kullanıcının BitLocker gelişmiş başlangıç seçeneklerini ayarlamasına izin veren sayfayı gösterir. TPM uyumlu olan ve olmayan bilgisayarlar için ayar seçeneklerini daha kapsamlı olarak yapılandırabilirsiniz. 
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız, BitLocker kurulum sihirbazı kullanıcıların TPM uyumlu bilgisayarlarda BitLocker'ı etkinleştirmelerini sağlayan temel adımları görüntüler. Bu temel sihirbazda, ek bir başlangıç anahtarı veya başlangıç PIN değeri yapılandırılamaz.
+</string>
+      
+      <string id="ConfigureStartupUsage_Name">Başlangıçta ek kimlik denetimi gerektirir (Windows Server 2008 ve Windows Vista)</string>
+      <string id="ConfigureAdvancedStartup_Name">Başlangıçta ek kimlik doğrulama iste</string>
+      
+      <string id="ConfigureAdvancedStartup_Help">Bu ilke ayarı, bilgisayar başladığında BitLocker'ın ek kimlik doğrulaması isteyip istemeyeceğini ve BitLocker'ın Güvenilir Platform Modülü (TPM) ile mi yoksa bu modül olmadan mı kullanılacağını yapılandırmanıza izin verir. Bu ilke ayarı, BitLocker'ı açtığınızda uygulanır.
+
+Not: Başlangıçta ek kimlik doğrulama seçeneklerinden yalnızca biri istenebilir, aksi halde ilke hatası oluşur.
+
+BitLocker'ı bir bilgisayarda TPM olmadan kullanmak isterseniz, "Uyumlu bir TPM olmadan BitLocker'a izin ver" onay kutusunu işaretleyin. Bu modda, başlangıç için bir USB sürücüsü gerekir ve sürücü şifresini çözmek için kullanılan anahtar bilgileri, bir USB anahtarı oluşturarak USB sürücüsünde saklanır. USB anahtarı takıldığında, sürücüye erişimde kimlik doğrulaması yapılır ve sürücüye erişilebilir. USB anahtarı kaybedilir veya kullanılamaz duruma gelirse, sürücüye erişmek için BitLocker kurtarma seçeneklerinden birini kullanmanız gerekir.
+
+Uyumlu bir TPM'si olan bir bilgisayarda, şifrelenmiş verilere ek koruma sağlamak için başlangıçta dört tür kimlik doğrulama yöntemi kullanılabilir. Bilgisayar başladığında kimlik doğrulama için yalnız TPM'yi kullanabilir veya başlatma anahtarı içeren bir USB flash sürücüsünün takılmasını, 4-20 rakamlık bir kişisel kimlik numarası (PIN) girilmesini veya bunların ikisini birden isteyebilir.
+
+Bu ilke ayarını etkinleştirirseniz, kullanıcılar gelişmiş başlatma seçeneklerini BitLocker kurulum sihirbazında yapılandırabilir.
+
+Bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, kullanıcılar bir TPM'si olan bilgisayarlarda yalnızca temel seçenekleri yapılandırabilir.
+
+Not: Başlatma PIN'i veya USB flash sürücüsü kullanılmasını istemeyi düşünüyorsanız, BitLocker ayarlarını BitLocker Sürücü Şifrelemesi kurulum sihirbazı yerine manage-bde komut satırı aracını kullanarak yapılandırmanız gerekir.
+
+</string>
+
+      <string id="ConfigureTPMPINKeyUsageDropDown_Optional">TPM ile başlatma anahtarı ve PIN'e izin ver</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Require">TPM ile başlatma anahtarı ve PIN iste</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Disallow">TPM ile başlatma anahtarı ve PIN'e izin verme</string>
+
+      <string id="ConfigureTPMUsageDropDown_Optional">TPM'ye izin ver</string>
+      <string id="ConfigureTPMUsageDropDown_Require">TPM iste</string>
+      <string id="ConfigureTPMUsageDropDown_Disallow">TPM'ye izin verme</string>
+
+      <string id="ConfigurePINUsageDropDown_Optional">TPM ile başlangıç PIN'ine izin ver</string>
+      <string id="ConfigurePINUsageDropDown_Require">TPM ile başlangıç PIN'i iste</string>
+      <string id="ConfigurePINUsageDropDown_Disallow">TPM ile başlangıç PIN'ine izin verme</string>
+
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Optional">TPM ile başlangıç anahtarına izin ver</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Require">TPM ile başlangıç anahtarı iste</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Disallow">TPM ile başlangıç anahtarına izin verme</string>
+
+
+      <string id="ConfigureRecoveryUsage_Help">Bu ilke ayarı, BitLocker Sürücü Şifrelemesi (BDE) kurulum sihirbazının BitLocker kurtarma seçeneklerini görüntüleyebilmesini ve belirtebilmesini denetlemenizi sağlar. Bu ilke yalnızca Windows Server 2008 ya da Windows Vista çalıştıran bilgisayarlar için geçerlidir. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır.
+
+Gerekli başlangıç anahtar bilgisinin olmaması durumunda BitLocker ile şifrelenmiş verilere erişimin kilidini kaldırmak için iki kurtarma seçeneği kullanılabilir. Kullanıcı 48 basamaklı sayısal kurtarma parolası yazabilir ya da 256-bit kurtarma anahtarı içeren bir USB flash sürücü takabilir. 
+
+Bu ilke ayarını etkinleştirirseniz, kurulum sihirbazının BitLocker ile şifrelenmiş veriyi kurtarması için kullanıcılara görüntülediği seçenekleri yapılandırabilirsiniz. Bir USB flash sürücüye kaydetmek, metin dosyası olarak 48 basamaklı bir kurtarma parolası ve gizli dosya olarak 256 bitlik bir kurtarma anahtarı depolanmasını sağlayacaktır. Bir klasöre kaydetmek ise metin dosyası olarak 48 basamaklı bir kurtarma parolası depolanmasını sağlayacaktır. Yazdırma işlemi 48 basamaklı bir kurtarma parolasını varsayılan yazıcıya gönderir. Örneğin 48 basamaklı bir kurtarma parolasına izin verilmemesi, kullanıcıların kurtarma bilgisini yazdırmasını ya da bir klasöre kaydetmesini engelleyecektir.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız, BitLocker kurulum sihirbazı kullanıcılara kurtarma seçeneklerini depolama seçenekleri sunacaktır. 
+
+Not: BitLocker kurulumu sırasında Güvenilir Platform Modülü (TPM) başlatılması gerekiyorsa TPM sahibi bilgileri kaydedilecek ya da BitLocker kurtarma bilgileri ile yazdırılacaktır.
+
+Not: 48 basamaklı kurtarma parolası FIPS uyumlu modunda kullanılamaz. 
+
+Önemli: Bu ilke ayarı, anahtar bilgisinin eksikliğine bağlı veri kaybını önlemek için BitLocker tarafından şifrelenen bilgileri kurtarmak için yönetimsel bir yöntem sunar. Her ikisine kullanıcı kurtarma seçeneğine de izin vermezseniz, bir ilke hatasını önlemek için "BitLocker kurtarma bilgilerini Active Directory Etki Alanı Hizmetleri'ne depola (Windows Server 2008 ve Windows Vista)" ilke ayarını etkinleştirmeniz gerekir.
+
+      </string>
+      
+      <string id="ConfigureRecoveryUsage_Name">Kullanıcıların BitLocker korumalı sürücüleri nasıl kurtaracağını seçin (Windows Server 2008 ve Windows Vista)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Require">Kurtarma parolası iste (varsayılan)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Disallow">Kurtarma parolasına izin verme</string>
+
+      <string id="ConfigureRecoveryKeyUsageDropDown_Require">Kurtarma anahtarı iste (varsayılan)</string>
+      <string id="ConfigureRecoveryKeyUsageDropDown_Disallow">Kurtarma anahtarına izin verme</string>
+
+
+      <string id="OSRecoveryUsage_Name">BitLocker ile korunan işletim sistemi sürücülerinin nasıl kurtarılabileceğini seç</string>
+      
+      <string id="OSRecoveryUsage_Help">Bu ilke ayarı BitLocker ile korunan işletim sistemi sürücülerinin gerekli başlatma anahtarı bilgisinin olmaması durumunda nasıl kurtarılacağını denetlemenize izin verir. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır.
+
+"Sertifika tabanlı veri kurtarma aracısına izin ver" onay kutusu, BitLocker ile korunan işletim sistemi sürücüleri ile bir veri kurtarma aracısının kullanılıp kullanılamayacağını belirtmek içindir. Bir veri kurtarma aracısının kullanılabilmesi için aracının Grup İlkesi Yönetim Konsolu'ndaki veya Yerel Grup İlkesi Düzenleyicisi'ndeki Ortak Anahtar İlkeleri öğesinden eklenmesi gerekir. Veri kurtarma aracıları ekleme hakkında daha fazla bilgi için, Microsoft TechNet'teki BitLocker Sürücü Şifrelemesi Dağıtım Kılavuzu'na bakın.
+
+"BitLocker kurtarma bilgilerinin kullanıcı deposunu yapılandır" seçeneğinde kullanıcıların 48 rakamlı veya 256 rakamlı parola üretmelerine izin verme, bunu zorunlu kılma veya buna izin vermeme seçeneklerinden birini seçin.
+
+Kullanıcıların bir sürücüde BitLocker'ı etkinleştirdiklerinde kurtarma seçeneği belirtmelerini engellemek için "BitLocker kurma sihirbazından kurtarma seçeneklerini çıkar" seçeneğini seçin. Bu, BitLocker'ı etkinleştirdiğinizde hangi kurtarma seçeneğinin kullanılacağını seçemeyeceğiniz, bunun yerine sürücünün BitLocker kurtarma seçeneklerinin ilke ayarı tarafından belirleneceği anlamına gelir.
+
+"BitLocker kurtarma bilgilerini Active Directory Etki Alanı Hizmetlerine kaydet" seçeneğinde AD DS'ye işletim sistemi sürücüleri için hangi BitLocker kurtarma bilgilerinin depolanacağını seçin. "Kurtarma parolasını ve anahtar paketini yedekle" seçeneğini seçerseniz, hem BitLocker kurtarma parolası hem de anahtar paketi AD DS'ye kaydedilir. Anahtar paketini depolamak fiziksel olarak bozulmuş bir sürücüden veri kurtarmayı destekler. "Yalnızca kurtarma parolasını yedekle" seçeneğini seçerseniz, AD DS'ye yalnızca kurtarma parolası kaydedilir.
+
+Bilgisayar etki alanına bağlı ve BitLocker kurtarma bilgilerinin AD DS'ye yedeklenmesi başarılı olmadıkça kullanıcıların BitLocker'ı etkinleştirmesini engellemek istiyorsanız, "İşletim sisteminin kurtarma bilgileri AD DS'ye depolanıncaya dek BitLocker'ı etkinleştirme" onay kutusunu seçin.
+
+Not: "İşletim sisteminin kurtarma bilgileri AD DS'ye depolanıncaya dek BitLocker'ı etkinleştirme" onay kutusu seçilirse, otomatik olarak bir kurtarma parolası üretilir.
+
+Bu ilke ayarını etkinleştirirseniz, BitLocker ile korunan işletim sistemi sürücülerinin verilerini kurtarmak için kullanıcıların kullanabilecekleri yöntemleri denetleyebilirsiniz.
+
+Bu ilke ayarı devre dışı bırakılır veya yapılandırılmazsa, varsayılan kurtarma seçenekleri BitLocker kurtarması için desteklenir. Varsayılan olarak bir DRA'ya izin verilir, kurtarma parolası ve kurtarma anahtarı dahil kurtarma seçenekleri kullanıcı tarafından belirlenebilir ve kurtarma bilgileri AD DS'ye yedeklenmez.
+
+</string>
+      
+      <string id="OSRecoveryPasswordUsageDropDown_Require">48 rakamlı kurtarma parolası iste</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Allow">48 rakamlı kurtarma parolasına izin ver</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Disallow">48 rakamlı kurtarma parolasına izin verme</string>
+
+      <string id="OSRecoveryKeyUsageDropDown_Require">256 bitlik kurtarma anahtarı iste</string>
+      <string id="OSRecoveryKeyUsageDropDown_Disallow">256 bitlik kurtarma anahtarına izin verme</string>
+      <string id="OSRecoveryKeyUsageDropDown_Allow">256 bitlik kurtarma anahtarına izin ver</string>
+
+      <string id="FDVRecoveryUsage_Name">BitLocker ile korunan sabit sürücülerin nasıl kurtarılabileceğini seç</string>
+      <string id="FDVRecoveryUsage_Help">Bu ilke ayarı BitLocker ile korunan sabit veri sürücülerinin gerekli kimlik bilgilerinin olmaması durumunda nasıl kurtarılacağını denetlemenize izin verir. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır.
+
+"Veri kurtarma aracısına izin ver" onay kutusu, BitLocker ile korunan sabit veri sürücüleri ile bir veri kurtarma aracısının kullanılıp kullanılamayacağını belirtmek içindir. Bir veri kurtarma aracısının kullanılabilmesi için aracının Grup İlkesi Yönetim Konsolu'ndaki veya Yerel Grup İlkesi Düzenleyicisi'ndeki Ortak Anahtar İlkeleri öğesinden eklenmesi gerekir. Veri kurtarma aracıları ekleme hakkında daha fazla bilgi için, Microsoft TechNet'teki BitLocker Sürücü Şifrelemesi Dağıtım Kılavuzu'na bakın.
+
+"BitLocker kurtarma bilgilerinin kullanıcı deposunu yapılandır" seçeneğinde kullanıcıların 48 rakamlı veya 256 rakamlı parola üretmelerine izin verme, bunu zorunlu kılma veya buna izin vermeme seçeneklerinden birini seçin.
+
+Kullanıcıların bir sürücüde BitLocker'ı etkinleştirdiklerinde kurtarma seçeneği belirtmelerini engellemek için "BitLocker kurma sihirbazından kurtarma seçeneklerini çıkar" seçeneğini seçin. Bu, BitLocker'ı etkinleştirdiğinizde hangi kurtarma seçeneğinin kullanılacağını seçemeyeceğiniz, bunun yerine sürücünün BitLocker kurtarma seçeneklerinin ilke ayarı tarafından belirleneceği anlamına gelir.
+
+"BitLocker kurtarma bilgilerini Active Directory Etki Alanı Hizmetlerine kaydet" seçeneğinde AD DS'ye sabit veri sürücüleri için hangi BitLocker kurtarma bilgilerinin depolanacağını seçin. "Kurtarma parolasını ve anahtar paketini yedekle" seçeneğini seçerseniz, hem BitLocker kurtarma parolası hem de anahtar paketi AD DS'ye kaydedilir. Anahtar paketini depolamak fiziksel olarak bozulmuş bir sürücüden veri kurtarmayı destekler. "Yalnızca kurtarma parolasını yedekle" seçeneğini seçerseniz, AD DS'ye yalnızca kurtarma parolası kaydedilir.
+
+Bilgisayar etki alanına bağlı ve BitLocker kurtarma bilgilerinin AD DS'ye yedeklenmesi başarılı olmadıkça kullanıcıların BitLocker'ı etkinleştirmesini engellemek istiyorsanız, "Sabit veri sürücülerinin kurtarma bilgileri AD DS'ye depolanıncaya dek BitLocker'ı etkinleştirme" onay kutusunu seçin.
+
+Not: "Sabit veri sürücülerinin kurtarma bilgileri AD DS'ye depolanıncaya dek BitLocker'ı etkinleştirme" onay kutusu seçilirse, otomatik olarak bir kurtarma parolası üretilir.
+
+Bu ilke ayarını etkinleştirirseniz, BitLocker ile korunan sabit veri sürücülerinin verilerini kurtarmak için kullanıcıların kullanabilecekleri yöntemleri denetleyebilirsiniz.
+
+Bu ilke ayarı devre dışı bırakılır veya yapılandırılmazsa, varsayılan kurtarma seçenekleri BitLocker kurtarması için desteklenir. Varsayılan olarak bir DRA'ya izin verilir, kurtarma parolası ve kurtarma anahtarı dahil kurtarma seçenekleri kullanıcı tarafından belirlenebilir ve kurtarma bilgileri AD DS'ye yedeklenmez
+
+</string>
+      
+      <string id="FDVRecoveryPasswordUsageDropDown_Require">48 rakamlı kurtarma parolası iste</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Allow">48 rakamlı kurtarma parolasına izin ver</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Disallow">48 rakamlı kurtarma parolasına izin verme</string>
+
+      <string id="FDVRecoveryKeyUsageDropDown_Require">256 bitlik kurtarma anahtarı iste</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Disallow">256 bitlik kurtarma anahtarına izin verme</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Allow">256 bitlik kurtarma anahtarına izin ver</string>
+
+      <string id="RDVRecoveryUsage_Name">BitLocker korumalı çıkarılabilir sürücülerin nasıl kurtarılabileceğini seç</string>
+      
+      <string id="RDVRecoveryUsage_Help">Bu ilke ayarı BitLocker ile korunan çıkarılabilir veri sürücülerinin gerekli kimlik bilgilerinin olmaması durumunda nasıl kurtarılacağını denetlemenize izin verir. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır.
+
+"Veri kurtarma aracısına izin ver" onay kutusu, BitLocker ile korunan çıkarılabilir veri sürücüleri ile bir veri kurtarma aracısının kullanılıp kullanılamayacağını belirtmek içindir. Bir veri kurtarma aracısının kullanılabilmesi için aracının Grup İlkesi Yönetim Konsolu'ndaki veya Yerel Grup İlkesi Düzenleyicisi'ndeki Ortak Anahtar İlkeleri öğesinden eklenmesi gerekir. Veri kurtarma aracıları ekleme hakkında daha fazla bilgi için, Microsoft TechNet'teki BitLocker Sürücü Şifrelemesi Dağıtım Kılavuzu'na bakın.
+
+"BitLocker kurtarma bilgilerinin kullanıcı deposunu yapılandır" seçeneğinde kullanıcıların 48 rakamlı veya 256 rakamlı parola üretmelerine izin verme, bunu zorunlu kılma veya buna izin vermeme seçeneklerinden birini seçin.
+
+Kullanıcıların bir sürücüde BitLocker'ı etkinleştirdiklerinde kurtarma seçeneği belirtmelerini engellemek için "BitLocker kurma sihirbazından kurtarma seçeneklerini çıkar" seçeneğini seçin. Bu, BitLocker'ı etkinleştirdiğinizde hangi kurtarma seçeneğinin kullanılacağını seçemeyeceğiniz, bunun yerine sürücünün BitLocker kurtarma seçeneklerinin ilke ayarı tarafından belirleneceği anlamına gelir.
+
+"BitLocker kurtarma bilgilerini Active Directory Etki Alanı Hizmetlerine kaydet" seçeneğinde AD DS'ye çıkarılabilir veri sürücüleri için hangi BitLocker kurtarma bilgilerinin depolanacağını seçin. "Kurtarma parolasını ve anahtar paketini yedekle" seçeneğini seçerseniz, hem BitLocker kurtarma parolası hem de anahtar paketi AD DS'ye kaydedilir. "Yalnızca kurtarma parolasını yedekle" seçeneğini seçerseniz, AD DS'ye yalnızca kurtarma parolası kaydedilir.
+
+Bilgisayar etki alanına bağlı ve BitLocker kurtarma bilgilerinin AD DS'ye yedeklenmesi başarılı olmadıkça kullanıcıların BitLocker'ı etkinleştirmesini engellemek istiyorsanız, "Çıkarılabilir veri sürücülerinin kurtarma bilgileri AD DS'ye depolanıncaya dek BitLocker'ı etkinleştirme" onay kutusunu seçin.
+
+Not: "Çıkarılabilir veri sürücülerinin kurtarma bilgileri AD DS'ye depolanıncaya dek BitLocker'ı etkinleştirme" onay kutusu seçilirse, otomatik olarak bir kurtarma parolası üretilir.
+
+Bu ilke ayarını etkinleştirirseniz, BitLocker ile korunan çıkarılabilir veri sürücülerinin verilerini kurtarmak için kullanıcıların kullanabilecekleri yöntemleri denetleyebilirsiniz.
+
+Bu ilke ayarı devre dışı bırakılır veya yapılandırılmazsa, varsayılan kurtarma seçenekleri BitLocker kurtarması için desteklenir. Varsayılan olarak bir DRA'ya izin verilir, kurtarma parolası ve kurtarma anahtarı dahil kurtarma seçenekleri kullanıcı tarafından belirlenebilir ve kurtarma bilgileri AD DS'ye yedeklenmez
+      </string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Require">48 rakamlı kurtarma parolası iste</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Allow">48 rakamlı kurtarma parolasına izin ver</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Disallow">48 rakamlı kurtarma parolasına izin verme</string>
+
+      <string id="RDVRecoveryKeyUsageDropDown_Require">256 bitlik kurtarma anahtarı iste</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Disallow">256 bitlik kurtarma anahtarına izin verme</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Allow">256 bitlik kurtarma anahtarına izin ver</string>
+      
+      
+      <string id="ConfigureRecoveryFolder_Help">Bu ilke ayarı, BitLocker Sürücü Şifrelemesi kurulum sihirbazı kullanıcıdan kurtarma parolasının kaydedileceği klasörün konumunu girmesini istediğinde varsayılan yolu belirtmenizi sağlar. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır. 
+
+Bu ilke ayarını etkinleştirirseniz, kullanıcı kurtarma parolasını bir klasöre kaydetme seçeneğini belirlediğinde varsayılan klasör konumu olarak kullanılacak yolu belirtebilirsiniz. Yolda, tam yolu veya hedef bilgisayarın ortam değişkenlerinin içeriğini belirtebilirsiniz. Yol geçerli değilse, BitLocker kurulum sihirbazı bilgisayarın üst düzey klasör görünümünü gösterir. 
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız, kullanıcı kurtarma parolasını bir klasöre kaydetme seçeneğini belirlediğinde BitLocker kurulum sihirbazı bilgisayarın üst düzey klasör görünümünü gösterir.
+
+Not: Bu ilke ayarı kullanıcının kurtarma parolasının başka bir klasöre kaydetmesini engellemez.
+
+</string>
+      
+      <string id="ConfigureRecoveryFolder_Name">Kurtarma parolası için varsayılan klasörü seçin</string>
+
+      <string id="EncryptionMethod_Help">Bu ilke ayarı, BitLocker Sürücü Şifrelemesi tarafından kullanılan algoritmayı ve anahtar kuvvetini yapılandırmanızı sağlar. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır. Sürücü zaten şifrelenmişse veya şifreleme aşamasındaysa şifreleme yöntemini değiştirmenin bir etkisi olmaz. Kullanılabilen şifreleme yöntemleri hakkında daha fazla bilgi için Microsoft TechNet'teki BitLocker Sürücü Şifrelemesi Dağıtım Kılavuzu'na bakın.
+        
+Bu ilke ayarını etkinleştirirseniz, BitLocker'ın sürücüleri şifrelemek için kullanacağı şifreleme algoritmasını ve anahtar kuvvetini seçebilirsiniz. 
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsınız, BitLocker, varsayılan şifreleme yöntemi olan Ayırıcılı AES 128 bit yöntemini kurulum komut dosyası tarafından belirtilen şifreleme yöntemini kullanır.
+
+      </string>
+      <string id="EncryptionMethod_Name">Sürücü şifreleme yöntemini ve anahtar kuvvetini seçin</string>
+      <string id="EncryptionMethodDropDown_AES128Diffuser_Name">Ayırıcılı AES 128 bit (varsayılan)</string>
+      <string id="EncryptionMethodDropDown_AES256Diffuser_Name">Ayırıcılı AES 256 bit</string>
+      <string id="EncryptionMethodDropDown_AES128_Name">AES 128 bit</string>
+      <string id="EncryptionMethodDropDown_AES256_Name">AES 256 bit</string>
+      
+      <string id="FVECategory">BitLocker Drive Encryption</string>
+      <string id="PlatformValidation_Help">Bu ilke ayarı, bilgisayarın Güvenilir Platform Modülü (TPM) güvenlik donanımının BitLocker şifreleme anahtarını nasıl koruyacağını yapılandırmanızı sağlar. Bilgisayarda uyumlu bir TPM yoksa veya TPM korumasıyla BitLocker zaten açılmışsa bu ilke ayarı geçerli değildir.
+
+BitLocker'ı açmadan önce bu ilke ayarını etkinleştirirseniz, TPM'nin BitLocker ile şifrelenmiş işletim sistemi sürücüsüne erişim kilidini kaldırmadan önce doğrulayacağı önyükleme bileşenlerini yapılandırabilirsiniz. BitLocker koruması etkinken bu bileşenlerden biri değişirse, TPM, sürücünün kilidini açmak için şifreleme anahtarını bırakmayacak, bunun yerine bilgisayar, BitLocker Recovery konsolunu gösterecek ve sürücünün kilidini açmak için sunulan kurtarma parolasını ya da kurtarma anahtarını isteyecektir.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsınız, TPM varsayılan platform doğrulama profilini veya komut dosyası tarafından belirtilen platform doğrulama profilini kullanır. Bir platform doğrulama profili 0 ile 23 arasında değişen bir dizi Platform Yapılandırma Kaydı (PCR) dizininden oluşur. Varsayılan platform doğrulama profili, şifreleme anahtarının Ölçüm Güveninin Çekirdek Kökü (CRTM), BIOS ve Platform Uzantıları (PCR 0), Seçenek ROM Kodu (PCR 2), Ana Yükleme Kaydı (MBR) Kodu (PCR 4), NTFS Önyükleme Kesimi (PCR 8), NTFS Önyükleme Bloğu (PCR 9), Önyükleme Yöneticisi (PCR 10) ve BitLocker Erişim Denetimi (PCR 11) öğelerinde yapılan değişikliklere karşı güvenliğini sağlar. Bir Uzatılabilir Ürün Bilgisi Arabirimi (EFI) kullanan bilgisayarlar için PCR ayarlarının açıklaması, standart BIOS kullanan bilgisayarlar için açıklanan PCR ayarlarından farklıdır. Microsoft TechNet'teki BitLocker Sürücü Şifrelemesi Dağıtım Kılavuzu, hem EFI hem de standart BIOS için tüm PCR ayarlarının bir listesini içermektedir. 
+
+Uyarı: Varsayılan profilden başka bir profili kullanmak, bilgisayarınızın güvenliğini ve yönetilebilirliğini etkiler. BitLocker'ın platform değişikliklerine (kötü amaçlı veya yetkili) duyarlılığı, PCR'lerin dahil edilmesine veya dışlanmasına bağlı olarak atar veya azalır.
+      </string>
+      
+      <string id="PlatformValidation_Name">TPM platform doğrulama profilini yapılandır</string>
+
+      <string id="MorBehavior_Help">Bu ilke ayarı, BitLocker gizli kod dizelerinin çözülme riskini göz önünde bulundurarak, bilgisayarın yeniden başlatma işlemi performansını denetler. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır. BitLocker gizli kod dizeleri, verileri şifrelemek için kullanılan anahtar malzemesini içerir. Bu ilke ayarı yalnızca BitLocker koruması etkinleştirildiğinde uygulanır. 
+
+Bu ilke ayarını etkinleştirirseniz, bilgisayar yeniden başlatıldığında belleğin üzerine yazılmayacaktır. Belleğin üzerine yazmayı engellemek yeniden başlatma işlemi performansını artırabilir, ancak BitLocker gizli kod dizelerinin çözülme riskini de artırır.
+
+Bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, bilgisayar yeniden başlatıldığında BitLocker gizli kod dizelerinin bellekten kaldırılır.
+
+      </string>
+      <string id="MorBehavior_Name">Yeniden başlatma sırasında belleğin üzerine yazmayı engelle</string>
+
+      <string id="FVEOSCategory">İşletim Sistemi Sürücüleri</string>
+      <string id="FVEFDVCategory">Sabit Veri Sürücüleri</string>
+      <string id="FVERDVCategory">Çıkarılabilir Veri Sürücüleri</string>
+
+      <string id="IdentificationField_Name">Kuruluşunuz için benzersiz tanıcılar sağlayın</string>
+      <string id="IdentificationField_Help">Bu ilke ayarı benzersiz kuruluş tanımlayıcılarını BitLocker ile etkinleştirilmiş yeni bir sürücü ile ilişkilendirmenize izin verir. Bu tanımlayıcılar kimlik alanı ve izin verilen kimlik alanı olarak depolanır. Kimlik alanı benzersiz bir kuruluş tanımlayıcısını BitLocker ile korunan sürücüler ile ilişkilendirmenize izin verir. Bu tanımlayıcı BitLocker ile korunan yeni sürücülere otomatik olarak eklenir ve Manage-BDE komut satırı aracı kullanılarak BitLocker ile korunan var olan sürücülerde güncelleştirilebilir. BitLocker ile korunan sürücülerde sertifika tabanlı veri kurtarma aracıları yönetmek ve BitLocker To Go Okuyucusunda yapılabilecek güncelleştirmeler için bir kimlik alanı zorunludur. BitLocker yalnızca sürücüdeki kimlik alanı yapılandırılmış kimlik alanı değeriyle eşleştiği zaman veri kurtarma aracılarını yönetir ve güncelleştirir. Benzeri şekilde BitLocker yalnızca sürücüdeki kimlik alanı yapılandırılmış kimlik alanı değeriyle eşleştiğinde BitLocker To Go Okuyucusunu güncelleştirir.
+
+İzin verilen kimlik alanı, kuruluşunuzdaki çıkarılabilir sürücüleri denetlemeye yardımcı olmak için "BitLocker tarafından korunmayan çıkarılabilir sürücülere yazma erişimi verme" ilke ayarı ile birlikte kullanılır. Kuruluşunuzun veya dış kuruluşların virgül ile ayrılmış bir kimlik alanları listesidir.
+
+Var olan sürücülerdeki kimlik alanlarını manage-BDE.exe programını kullanarak yapılandırabilirsiniz.
+
+Bu ilke ayarını etkinleştirirseniz, BitLocker ile korunan sürücüdeki kimlik alanını ve kuruluşunuzun kullandığı herhangi bir izin verilen kimlik alanını yapılandırabilirsiniz.
+
+BitLocker ile korunan bir sürücü BitLocker'ın etkinleştirildiği başka bir bilgisayara bağlanırsa, sürücünün dış bir kuruluştan olup olmadığını belirlemek için kimlik alanı ve izin verilen kimlik alanı kullanılır.
+
+Bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, kimlik alanı gerekli değildir.
+
+Not: Kimlik alanları, BitLocker ile korunan sürücülerde sertifika tabanlı veri kurtarma aracılarının yönetimi için gereklidir. BitLocker sertifika tabanlı veri kurtarma aracılarını yalnızca sürücüde kimlik alanı olduğunda ve bilgisayarda yapılandırılmış değer ile aynı olduğunda yönetir ve güncelleştirir. Kimlik alanı 260 veya daha az karakterden oluşan herhangi bir değer olabilir.
+
+      </string>
+
+      
+      <string id="UserCertificateOID_Name">Akıllı kart sertifikası kullanım kurallarına uygunluğu doğrula</string>
+     <string id="UserCertificateOID_Help">Bu ilke ayarı bir akıllı kart sertifikasındaki bir nesne tanımlayıcısını BitLocker ile korunan biri sürücü ile ilişkilendirmenize izin verir. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır.
+
+Nesne tanımlayıcısı bir sertifikanın gelişmiş anahtar kullanımı (EKU) değerinde belirtilir. BitLocker, sertifikadaki nesne tanımlayıcısını bu ilke ayarı tarafından tanımlanan nesne tanımlayıcısı ile eşleştirerek BitLocker ile korunan bir sürücüde bir kullanıcı sertifikasının kimliğini doğrulamak için hangi sertifikaların kullanılabileceğini belirleyebilir.
+
+Varsayılan nesne tanımlayıcısı değeri şudur: 1.3.6.1.4.1.311.67.1.1
+
+Not: BitLocker bir sertifikanın EKU özniteliği olmasını zorunlu kılmaz, ancak sertifika için bir tane yapılandırılırsa, bunun BitLocker için yapılandırılmış bir nesne tanımlayıcısı (OID) ile eşleşen bir OID'ye ayarlanması gerekir.
+
+Bu ilke ayarını etkinleştirirseniz, "Nesne tanımlayıcısı" kutusunda belirtilen nesne tanımlayıcısının akıllı kart sertifikasındaki nesne tanımlayıcısı ile eşleşmesi gerekir.
+
+Bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, varsayılan bir nesne tanımlayıcısı kullanılır.
+
+     </string>
+
+       <string id="OSActiveDirectoryBackupDropDown_1">Kurtarma parolalarını ve anahtar paketlerini depola</string>
+      <string id="OSActiveDirectoryBackupDropDown_2">Yalnızca kurtarma parolalarını depola</string>
+
+      
+      <string id="MinimumPINLength_Name">En kısa PIN uzunluğunu başlangıç için yapılandır</string>
+      <string id="MinimumPINLength_Help">Bu ilke ayarı bir Güvenilir Platform Modülü (TPM) başlatma PIN'i için en kısa uzunluk yapılandırmanıza izin verir. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır. Başlatma PIN'inin en az 4, en çok 20 rakamlık bir uzunluğu olmalıdır.
+
+Bu ilke ayarını etkinleştirirseniz, başlatma PIN'i ayarlanırken en az belirli bir sayıda rakam kullanılmasını isteyebilirsiniz.
+
+Bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, kullanıcılar uzunluğu 4 ile 20 rakam arasında olan bir başlatma PIN'i yapılandırabilir.
+
+      </string>
+
+      <string id="OSAllowDRA_Name">Sertifika tabanlı veri kurtarma aracılarına izin ver</string>
+          
+      <string id="FDVDenyWriteAccess_Name">BitLocker ile korunmayan sabit sürücülere yazma erişimi verme</string>
+      <string id="FDVDenyWriteAccess_Help">Bu ilke ayarı sabit veri sürücülerinin bir bilgisayarda yazılabilir olması için BitLocker korumasının gerekli olup olmadığını belirler. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır.
+
+Bu ilke ayarını etkinleştirirseniz, BitLocker ile korunmayan tüm sabit veri sürücüleri salt okunur olarak bağlanır. Sürücü BitLocker tarafından korunuyorsa, okuma ve yazma erişimi ile bağlanır.
+
+Bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, bilgisayardaki tüm sabit veri sürücüleri okuma ve yazma erişimi ile bağlanır.
+
+      </string>
+
+      <string id="FDVPassphrase_Name">Sabit veri sürücüleri için parola kullanımını yapılandır</string>
+      <string id="FDVPassphrase_Help">Bu ilke ayarı BitLocker ile korunan sabit veri sürücülerinde parola istenip istenmeyeceğini belirtir. Parola kullanılmasına izin vermeyi seçerseniz, parola kullanılmasını isteyebilir, parolaya karmaşıklık gereksinimleri dayatabilir ve parola için bir uzunluk alt sınırı yapılandırabilirsiniz. Karmaşıklık gereksiniminin devreye girmesi için Bilgisayar Yapılandırması\Windows Ayarları\Güvenlik Ayarları\Hesap İlkeleri\Parola İlkesi\ konumunda bulunan "Parola, karmaşıklık gereksinimlerini karşılamalıdır" Grup İlkesi ayarının da ayrıca etkinleştirilmesi gerekir.
+        
+Not: Bu ayarlar bir birimin kilidini açarken değil BitLocker'ı açarken uygulanır. BitLocker sürücünün kilidinin sürücüde bulunan koruyuculardan herhangi bir ile açılmasına izin verir.
+
+Bu ilke ayarını etkinleştirirseniz, kullanıcılar tanımladığınız parola gereksinimlerini karşılayan bir parola yapılandırabilir. Parola kullanılmasını istemek için "Sabit veri sürücüleri için parola iste"'yi seçin. Parolanın karmaşıklığı ile ilgili gereksinimler dayatmak için "Karmaşıklık iste"'yi seçin.
+
+"Karmaşıklık iste" seçildiğinde, parolanın karmaşıklığını doğrulamak için BitLocker açık olduğunda bir etki alanı denetleyicisine bağlantı gerekir. "Karmaşıklığa izin ver" seçildiğinde, karmaşıklığın ilkenin belirlediği kurallara uygun olduğunu doğrulamak için bir etki alanına bağlanmaya çalışılır, ancak hiçbir etki alanı bulunamazsa, karmaşıklık düzeyine bakılmaksızın parola kabul edilir ve sürücü, koruyucu olarak bu parola kullanılarak şifrelenir. "Karmaşıklığa izin verme" olarak ayarlandığında, hiçbir parola karmaşıklık doğrulaması yapılmaz.
+
+Parolaların en az 8 karakter olması gerekir. Parolalar için daha yüksek bir uzunluk alt sınırı yapılandırmak için, istediğiniz karakter sayısını "Parola uzunluğu alt sınırı" kutusuna girin.
+
+Bu ilke ayarını devre dışı bırakırsanız, kullanıcının parola kullanmasına izin verilmez.
+
+Bu ilke ayarını yapılandırmazsanız, parolalar, parola karmaşıklık gereksinimi içermeyen ve yalnızca 8 karakter gerektiren varsayılan ayarlarla desteklenir.
+
+Not: FIPS uyumluluğu etkinleştirilirse parola kullanılamaz. Bilgisayar Yapılandırması\Windows Ayarları\Güvenlik Ayarları\Yerel İlkeler\Güvenlik Seçenekleri konumundaki "Sistem kriptografisi: Şifreleme, karma değerler ve imzalama için FIPS uyumlu algoritmaları kullan" ilke ayarı FIPS uyumluluğunun etkinleştirilip etkinleştirilmediğini belirtir.
+
+</string>
+
+      <string id="PassphraseComplexityDropDown_2">Parola karmaşıklığına izin ver</string>
+      <string id="PassphraseComplexityDropDown_0">Parola karmaşıklığına izin verme</string>
+      <string id="PassphraseComplexityDropDown_1">Parola karmaşıklığı iste</string>
+      
+      <string id="FDVActiveDirectoryBackupDropDown_1">Kurtarma parolalarını ve anahtar paketlerini yedekle</string>
+      <string id="FDVActiveDirectoryBackupDropDown_2">Yalnızca kurtarma parolalarını yedekle</string>
+
+      
+      <string id="FDVHybrid_Name">Windows'un eski sürümlerinden BitLocker ile korunan sabit veri sürücülerine erişime izin ver</string>
+      <string id="FDVHybrid_Help">Bu ilke ayarı FAT dosya sistemi ile biçimlendirilmiş sabit veri sürücülerinin kilidinin açılıp açılamayacağını ve Windows Server 2008, Windows Vista, Windows XP + Service Pack 3 (SP3) veya Windows XP + Service Pack 2 (SP2) işletim sistemleri ile çalışan bilgisayarlarda görüntülenip görüntülenmeyeceğini yapılandırır.
+
+Bu ilke ayarı etkinleştirilir veya yapılandırılmazsa, FAT dosya sistemi ile biçimlendirilmiş sabit veri sürücülerinin kilidi Windows Server 2008, Windows Vista, Windows XP + SP3 veya Windows XP + SP2 ile açılabilir ve içeriği görüntülenebilir. Bu işletim sistemlerinin BitLocker ile korunan sürücülere salt okunur erişimi vardır.
+
+Bu ilke ayarı etkinleştirildiğinde, kullanıcıların sabit sürücülerinden BitLocker To Go Okuyucusunu çalıştırmalarını engellemek için "FAT ile biçimlendirilmiş sabit sürücülere BitLocker To Go Okuyucusu yükleme" onay kutusunu seçin. BitLocker To Go Okuyucusu (bitlockertogo.exe) belirtilmiş bir kimlik alanı olmayan bir sürücüde varsa veya sürücü, "Kuruluşunuz için benzersiz tanımlayıcılar sağlayın" ilke ayarında belirtilen ile aynı kimlik alanına sahipse, kullanıcıdan BitLocker'ı güncelleştirmesi istenir ve BitLocker To Go Okuyucusu sürücüden silinir. Bu durumda, sabit sürücünün kilidinin Windows Server 2008, Windows Vista, Windows XP + SP3 veya Windows XP + SP2 ile çalışan bilgisayarlarda açılabilmesi için, BitLocker To Go Okuyucusunun bilgisayara yüklenmiş olması gerekir. Bu onay kutusu seçilmemişse, kullanıcıların sürücüyü üzerlerinde BitLocker To Go Okuyucusu yüklü olmayan Windows Server 2008, Windows Vista, Windows XP + SP3 veya Windows XP + SP2 ile çalışan bilgisayarlarda açabilmelerini sağlamak için BitLocker To Go Okuyucusu sabit sürücüye yüklenir.
+
+Bu ilke ayarı devre dışıysa, FAT dosya sistemi ile biçimlendirilmiş BitLocker korumalı sabit veri sürücülerinin kilidi Windows Server 2008, Windows Vista, Windows XP + SP3 veya Windows XP + SP2. Bitlockertogo.exe yüklenmez.
+
+Not: Bu ilke ayarı NTFS dosya sistemi ile biçimlendirilmiş sürücülere uygulanmaz.
+
+      </string>
+
+      
+      <string id="FDVAllowDRA_Name">Sertifika tabanlı veri kurtarma aracılarına izin ver</string>
+      
+      <string id="FDVConfigureSmartCard_Name">Sabit veri sürücülerinde akıllı kart kullanımını yapılandır</string>
+      <string id="FDVConfigureSmartCard_Help">Bu ilke ayarı bir bilgisayardaki BitLocker ile korunan sabit veri sürücülerine kullanıcı erişiminde kimlik doğrulama için akıllı kartlar kullanılıp kullanılamayacağını belirtmenize izin verir.
+
+Bu ilke ayarını etkinleştirirseniz, sürücüye kullanıcı erişimi kimlik doğrulaması için akıllı kartlar kullanılabilir. "Sabit veri sürücülerinde akıllı kart kullanılmasını iste" onay kutusunu seçerek akıllı kartla kimlik doğrulaması isteyebilirsiniz.
+
+Not: Bu ayarlar sürücünün kilidi açılırken değil BitLocker açılırken zorlanır. BitLocker sürücünün kilidinin sürücüde bulunan herhangi bir koruyucu ile açılmasına izin verir.
+
+Bu ilke ayarını devre dışı bırakırsanız, kullanıcıların BitLocker ile korunan sabit veri sürücülerine erişirken kimliklerini doğrulamak için akıllı kart kullanmalarına izin verilmez.
+
+Bu ilke ayarını yapılandırmazsanız, BitLocker ile korunan bir sürücüye kullanıcı erişimi kimlik doğrulamasında akıllı kartlar kullanılabilir.
+
+      </string>
+      
+      <string id="RDVPassphrase_Name">Çıkarılabilir veri sürücüleri için parola kullanımını yapılandır</string>
+      <string id="RDVPassphrase_Help">Bu ilke ayarı BitLocker ile korunan çıkarılabilir veri sürücülerinde parola istenip istenmeyeceğini belirtir. Parola kullanılmasına izin vermeyi seçerseniz, parola kullanılmasını isteyebilir, parolaya karmaşıklık gereksinimleri dayatabilir ve parola için bir uzunluk alt sınırı yapılandırabilirsiniz. Karmaşıklık gereksiniminin devreye girmesi için Bilgisayar Yapılandırması\Windows Ayarları\Güvenlik Ayarları\Hesap İlkeleri\Parola İlkesi\ konumunda bulunan "Parola, karmaşıklık gereksinimlerini karşılamalıdır" Grup İlkesi ayarının da ayrıca etkinleştirilmesi gerekir.
+
+Not: Bu ayarlar bir birimin kilidini açarken değil BitLocker'ı açarken uygulanır. BitLocker sürücünün kilidinin sürücüde bulunan koruyuculardan herhangi bir ile açılmasına izin verir.
+
+Bu ilke ayarını etkinleştirirseniz, kullanıcılar tanımladığınız parola gereksinimlerini karşılayan bir parola yapılandırabilir. Parola kullanılmasını istemek için "Çıkarılabilir veri sürücüleri için parola iste"'yi seçin. Parolanın karmaşıklığı ile ilgili gereksinimler dayatmak için "Karmaşıklık iste"'yi seçin.
+
+"Karmaşıklık iste" seçildiğinde, parolanın karmaşıklığını doğrulamak için BitLocker açık olduğunda bir etki alanı denetleyicisine bağlantı gerekir. "Karmaşıklığa izin ver" seçildiğinde, karmaşıklığın ilkenin belirlediği kurallara uygun olduğunu doğrulamak için bir etki alanına bağlanmaya çalışılır, ancak hiçbir etki alanı bulunamazsa, karmaşıklık düzeyine bakılmaksızın parola kabul edilir ve sürücü, koruyucu olarak bu parola kullanılarak şifrelenir. "Karmaşıklığa izin verme" olarak ayarlandığında, hiçbir parola karmaşıklık doğrulaması yapılmaz.
+
+Parolaların en az 8 karakter olması gerekir. Parolalar için daha yüksek bir uzunluk alt sınırı yapılandırmak için, istediğiniz karakter sayısını "Parola uzunluğu alt sınırı" kutusuna girin.
+
+Bu ilke ayarını devre dışı bırakırsanız, kullanıcının parola kullanmasına izin verilmez.
+
+Bu ilke ayarını yapılandırmazsanız, parolalar, parola karmaşıklık gereksinimi içermeyen ve yalnızca 8 karakter gerektiren varsayılan ayarlarla desteklenir.
+
+Not: FIPS uyumluluğu etkinleştirilirse parola kullanılamaz. Bilgisayar Yapılandırması\Windows Ayarları\Güvenlik Ayarları\Yerel İlkeler\Güvenlik Seçenekleri konumundaki "Sistem kriptografisi: Şifreleme, karma değerler ve imzalama için FIPS uyumlu algoritmaları kullan" ilke ayarı FIPS uyumluluğunun etkinleştirilip etkinleştirilmediğini belirtir.
+
+      </string>
+
+      <string id="RDVDenyWriteAccess_Name">BitLocker ile korunmayan çıkarılabilir sürücülere yazma erişimi verme</string>
+      <string id="RDVDenyWriteAccess_Help">Bu ilke ayarı bir bilgisayarın çıkarılabilir bir veri sürücüsüne veri yazabilmesi için BitLocker korumasının gerekli olup olmadığını yapılandırır.
+
+Bu ilke ayarını yapılandırırsanız, BitLocker ile korunmayan çıkarılabilir tüm veri sürücüleri salt okunur olarak bağlanır. Sürücü BitLocker ile korunuyorsa, okuma ve yazma erişimi ile bağlanır.
+
+"Başka bir kuruluşta yapılandırılmış aygıtlara yazma erişimini engelle" seçeneği seçilirse, yalnızca bilgisayarın kimlik alanları ile eşleşen kimlik alanları olan sürücülere yazma erişimi verilir. Çıkarılabilir bir sürücüye erişildiğinde kimlik alanının ve izin verilen kimlik alanlarının geçerli olup olmadığı denetlenir. Bu alanlar "Kuruluşunuz için benzersiz tanımlayıcılar sağlayın" ilke ayarı tarafından tanımlanır.
+
+Bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, bilgisayardaki tüm çıkarılabilir veri sürücüleri okuma ve yazma erişimi ile bağlanır.
+
+Not: Bu ilke ayarı Kullanıcı Yapılandırması\Yönetim Şablonları\Sistem\Çıkarılabilir Depolama Birimi Erişimi altındaki ilke ayarları tarafından geçersiz kılınabilir. "Çıkarılabilir Diskler: Yazma erişimini engelle" ilke ayarı etkinse bu ilke ayarı göz ardı edilir.
+
+      </string>
+
+      <string id="RDVConfigureBDE_Name">Çıkarılabilir sürücülerde BitLocker kullanımını denetle</string>
+      <string id="RDVConfigureBDE_Help">Bu ilke ayarı çıkarılabilir veri sürücülerinde BitLocker'ın kullanımını denetler. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır.
+
+Bu ilke ayarı seçildiğinde, kullanıcıların BitLocker'ı nasıl yapılandırabileceğini denetleyen özellik ayarları seçebilirsiniz. Kullanıcının çıkarılabilir bir sürücüde BitLocker'ı çalıştırmasına izin vermek için "Kullanıcıların çıkarılabilir veri sürücülerinde BitLocker koruması uygulamasına izin ver"'i seçin. Kullanıcının sürücüden BitLocker Sürücü şifrelemesini kaldırmasına veya bakım yapılırken şifrelemeyi askıya almasına izin vermek için "Kullanıcıların çıkarılabilir veri sürücülerinde BitLocker'ı askıya almasına ve şifresini çözmesine izin ver"'i seçin. BitLocker korumasını askıya alma hakkında daha fazla bilgi için Microsoft TechNet'teki BitLocker Sürücü Şifrelemesi Dağıtım Kılavuzu'na bakın.
+
+Bu ilke ayarını yapılandırmazsanız, kullanıcılar çıkarılabilir veri sürücülerinde BitLocker kullanabilir.
+
+Bu ilke ayarını devre dışı bırakırsanız, kullanıcılar çıkarılabilir sürücülerde BitLocker kullanamaz.
+
+      </string>
+
+
+      <string id="RDVActiveDirectoryBackupDropDown_1">Kurtarma parolalarını ve anahtar paketlerini yedekle</string>
+      <string id="RDVActiveDirectoryBackupDropDown_2">Yalnızca kurtarma parolalarını yedekle</string>
+
+      <string id="RDVHybrid_Name">Windows'un eski sürümlerinden BitLocker ile korunan çıkarılabilir veri sürücülerine erişime izin ver</string>
+      <string id="RDVHybrid_Help">Bu ilke ayarı FAT dosya sistemi ile biçimlendirilmiş çıkarılabilir veri sürücülerinin Windows Server 2008, Windows Vista, Windows XP + Service Pack 3 (SP3) veya Windows XP + Service Pack 2 (SP2) işletim sistemleri ile çalışan bilgisayarlarda kilitlerinin açılıp görüntülenip görüntülenemeyeceğini yapılandırır.
+
+Bu ilke ayarı etkinleştirilirse veya yapılandırılmazsa, FAT dosya sistemi ile biçimlendirilmiş çıkarılabilir veri sürücülerinin Windows Server 2008, Windows Vista, Windows XP + SP3 veya Windows XP + SP2 ile çalışan bilgisayarlarda kilidi açılabilir ve içeriği görüntülenebilir. Bu işletim sistemlerinin BitLocker ile korunan sürücülere salt okunur erişimi vardır.
+
+Bu ilke ayarı etkinleştirildiğinde, kullanıcıların çıkarılabilir sürücülerinden BitLocker To Go Okuyucusunu çalıştırmalarını engellemek için "BitLocker To Go Okuyucusunu FAT ile biçimlendirilmiş çıkarılabilir sürücülere yükleme"'yi seçin. BitLocker To Go Okuyucusu (bitlockertogo.exe) belirtilmiş bir kimlik alanı olmayan bir sürücüde varsa veya sürücünün kimlik alanı "Kuruluşunuz için benzersiz tanımlayıcılar sağlayın" ilke ayarında belirtilen ile aynıysa, kullanıcıdan BitLocker ve BitLocker To Go Okuyucusunun sürücüden silinmesi istenir. Bu durumda, çıkarılabilir sürücünün kilidinin Windows Server 2008, Windows Vista, Windows XP + SP3 veya Windows XP + SP2 ile çalışan bilgisayarlarda açılabilmesi için BitLocker To Go Okuyucusunun bilgisayara yüklenmesi gerekir. Bu onay kutusu seçilirse, kullanıcıların sürücünün kilidini Windows Server 2008, Windows Vista, Windows XP + SP3 veya Windows XP + SP2 ile çalışan ve BitLocker To Go Okuyucusunun yüklü olmadığı çıkarılabilir bilgisayarlarda açılabilmesi için sürücüye BitLocker To Go Okuyucusu yüklenir.
+
+Bu ilke ayarı devre dışı bırakılırsa, FAT dosya sistemi ile biçimlendirilmiş BitLocker ile korunan çıkarılabilir veri sürücülerinin kilidi Windows Server 2008, Windows Vista, Windows XP + SP3 veya Windows XP + SP2 ile çalışan bilgisayarlarda açılamaz. Bitlockertogo.exe yüklenmez.
+
+Not: Bu ilke ayarı NTFS dosya sistemi ile biçimlendirilmiş sürücülere uygulanmaz.
+
+      </string>
+
+      <string id="RDVAllowDRA_Name">Sertifika tabanlı veri kurtarma aracılarına izin ver</string>
+ 
+      <string id="RDVConfigureSmartCard_Name">Çıkarılabilir veri sürücülerinde akıllı kart kullanımını yapılandır</string>
+      <string id="RDVConfigureSmartCard_Help">Bu ilke ayarı bir bilgisayardaki BitLocker ile korunan çıkarılabilir veri sürücülerine kullanıcı erişiminde kimlik doğrulama için akıllı kartlar kullanılıp kullanılamayacağını belirtmenize izin verir.
+
+Bu ilke ayarını etkinleştirirseniz, sürücüye kullanıcı erişimi kimlik doğrulaması için akıllı kartlar kullanılabilir. "Çıkarılabilir veri sürücülerinde akıllı kart kullanılmasını iste" onay kutusunu seçerek akıllı kartla kimlik doğrulaması isteyebilirsiniz.
+
+Not: Bu ayarlar sürücünün kilidi açılırken değil BitLocker açılırken zorlanır. BitLocker sürücünün kilidinin sürücüde bulunan herhangi bir koruyucu ile açılmasına izin verir.
+
+Bu ilke ayarını devre dışı bırakırsanız, kullanıcıların BitLocker ile korunan çıkarılabilir veri sürücülerine erişirken kimliklerini doğrulamak için akıllı kart kullanmalarına izin verilmez.
+
+Bu ilke ayarını yapılandırmazsanız, BitLocker ile korunan çıkarılabilir bir sürücüye kullanıcı erişimi kimlik doğrulamasında akıllı kartlar kullanılabilir.
+
+      </string>
+
+      <string id="EnhancedPIN_Name">Başlangıç için gelişkin PIN'lere izin ver</string>
+      <string id="EnhancedPIN_Help">Bu ilke ayarı BitLocker ile gelişmiş başlatma PIN'lerinin kullanılıp kullanılamayacağını yapılandırmanıza izin verir.
+
+Gelişmiş başlatma PIN'leri büyük ve küçük harf, simge, sayı ve boşluk gibi karakterlerin kullanılmasına izin verir. Bu ilke ayarı BitLocker'ı açtığınızda uygulanır.
+
+Bu ilke ayarını etkinleştirirseniz, belirlenen tüm yeni BitLocker başlatma PIN'leri gelişmiş PIN'ler olur.
+
+Not: Bazı bilgisayarlar önyükleme öncesi ortamda PIN'leri desteklemeyebilir. Kullanıcıların BitLocker kurulumu sırasında bir sistem denetlemesi yapmakları önemle önerilir.
+
+Bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, gelişmiş PIN'ler kullanılmaz.
+
+      </string>
+
+</stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">AD DS'ye BitLocker yedeklemesi iste</checkBox>
+        <text>Seçilirse, yedekleme başarısız olduğunda BitLocker'ı açamaz (önerilen varsayılan). </text>
+        <text>Seçilmezse, yedekleme başarısız olduğunda bile BitLocker'ı açabilir. Yedekleme otomatik olarak yeniden denenmez.</text>
+        <dropdownList refId="ActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Depolanacak BitLocker kurtarma bilgilerini seç:</dropdownList>
+        <text/>
+        <text>Kurtarma parolası, BitLocker ile korunan sürülerin kilidini açan 48 rakamlı bir sayıdır.</text>
+        <text>Anahtar paketi, sürücünün bir veya daha fazla kurtarma parolası ile korunan BitLocker şifreleme anahtarıdır</text>
+	    	<text>Anahtar paketleri, disk hasar gördüğünde veya verileri bozulduğunda özel bir kurtarma gerçekleştirmeye yardımcı olabilir. </text>
+      </presentation>
+      
+      <presentation id="ConfigureStartupUsage_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Uyumlu bir TPM olmadan BitLocker'a izin ver</checkBox>
+        <text>(USB flash sürücüde bir başlangıç anahtarı gerekir)</text>
+        <text>TPM uyumlu bilgisayarlar için ayarlar:</text>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">TPM başlangıç anahtarını yapılandır:</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">TPM başlangıç PIN'i öğesini yapılandır:</dropdownList>
+        <text>Önemli: Başlatma anahtarı isterseniz, başlatma PIN'ine izin vermemeniz gerekir. </text>
+        <text>Başlatma PIN'i isterseniz, başlatma anahtarına izin vermemeniz gerekir. Aksi halde ilke hatası oluşur.</text>
+        <text>Not: TPM'si olan bir bilgisayarda gelişmiş sayfayı gizlemek için PIN ve başlatma anahtarı seçeneklerinin her ikisine birden izin vermeyin.</text>
+      </presentation>
+
+      <presentation id="ConfigureAdvancedStartup_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Uyumlu bir TPM olmadan BitLocker'a izin ver</checkBox>
+        <text>(USB flash sürücüde bir başlangıç anahtarı gerekir)</text>
+        <text>TPM uyumlu bilgisayarlar için ayarlar:</text>
+        <dropdownList refId="ConfigureTPMUsageDropDown_Name" noSort="true" defaultItem="0">TPM başlatmayı yapılandır:</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">TPM başlangıç PIN'i öğesini yapılandır:</dropdownList>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">TPM başlangıç anahtarını yapılandır:</dropdownList>
+        <dropdownList refId="ConfigureTPMPINKeyUsageDropDown_Name" noSort="true" defaultItem="0">TPM başlatma anahtarını ve PIN'i yapılandır:</dropdownList>
+        <text/>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryUsage_Name">
+        <text>Önemli: Veri kaybını önlemek için BitLocker şifreleme anahtarlarını kurtarmak için bir yolunuz olması gerekir. Aşağıdaki kurtarma seçeneklerinin ikisine birden izin vermezseniz, BitLocker kurtarma bilgilerinin AD DS'ye yedeklenmesini etkinleştirmeniz gerekir. Aksi halde, ilke hatası oluşur.</text>
+        <dropdownList refId="ConfigureRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0">48 basamaklı kurtarma parolasını yapılandır:</dropdownList>
+        <dropdownList refId="ConfigureRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0">256-bit kurtarma anahtarını yapılandır:</dropdownList>
+        <text>Not: Kurtarma parolasına izin vermez kurtarma anahtarı isterseniz, kullanıcılar, USB'ye kaydetmeden BitLocker'ı etkinleştiremez.</text>
+        <text/>
+      </presentation>
+
+      <presentation id="OSRecoveryUsage_Name">
+        <checkBox refId="OSAllowDRA_Name" defaultChecked="true">Veri kurtarma aracısına izin ver</checkBox>
+        <text>BitLocker kurtarma bilgilerinin kullanıcı deposunu yapılandır:</text>
+        <dropdownList refId="OSRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="OSRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="OSHideRecoveryPage_Name" defaultChecked="false">BitLocker kurma sihirbazından kurtarma seçeneklerini çıkar</checkBox>
+        <checkBox refId="OSActiveDirectoryBackup_Name" defaultChecked="true">BitLocker kurtarma bilgilerini, işletim sistemi sürücüleri için AD DS'ye kaydet</checkBox>
+        <dropdownList refId="OSActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">BitLocker kurtarma bilgilerinin AD DS'ye depolanmasını yapılandır:</dropdownList>
+        <checkBox refId="OSRequireActiveDirectoryBackup_Name">Kurtarma bilgileri işletim sistemi sürücüleri için AD DS'ye kaydedilmeden BitLocker'ı etkinleştirme</checkBox>
+       </presentation>
+
+      <presentation id="FDVRecoveryUsage_Name">
+        <checkBox refId="FDVAllowDRA_Name" defaultChecked="true">Veri kurtarma aracısına izin ver</checkBox>
+        <text>BitLocker kurtarma bilgilerinin kullanıcı deposunu yapılandır:</text>
+        <dropdownList refId="FDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="FDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="FDVHideRecoveryPage_Name" defaultChecked="false">BitLocker kurma sihirbazından kurtarma seçeneklerini çıkar</checkBox>
+        <checkBox refId="FDVActiveDirectoryBackup_Name" defaultChecked="true">BitLocker kurtarma bilgilerini sabit veri sürücüleri için AD DS'ye kaydet</checkBox>
+        <dropdownList refId="FDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">BitLocker kurtarma bilgilerinin AD DS'ye depolanmasını yapılandır:</dropdownList>
+        <checkBox refId="FDVRequireActiveDirectoryBackup_Name">Sabit veri sürücüleri için AD DS'ye kurtarma bilgileri kaydedilmeden BitLocker'ı etkinleştirme</checkBox>
+      </presentation>
+
+      <presentation id="RDVRecoveryUsage_Name">
+        <checkBox refId="RDVAllowDRA_Name" defaultChecked="true">Veri kurtarma aracısına izin ver</checkBox>
+        <text>BitLocker kurtarma bilgilerinin kullanıcı deposunu yapılandır:</text>
+        <dropdownList refId="RDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="RDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="RDVHideRecoveryPage_Name" defaultChecked="false">BitLocker kurma sihirbazından kurtarma seçeneklerini çıkar</checkBox>
+        <checkBox refId="RDVActiveDirectoryBackup_Name" defaultChecked="true">BitLocker kurtarma bilgilerini çıkarılabilir veri sürücüleri için AD DS'ye kaydet</checkBox> 
+        <dropdownList refId="RDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">BitLocker kurtarma bilgilerinin AD DS'ye depolanmasını yapılandır:</dropdownList>
+        <checkBox refId="RDVRequireActiveDirectoryBackup_Name">Çıkarılabilir veri sürücüleri için AD DS'ye kurtarma bilgileri kaydedilmeden BitLocker'ı etkinleştirme</checkBox>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryFolder_Name">
+        <textBox refId="ConfigureRecoveryFolderPath_Input">
+          <label>Varsayılan klasör yolunu yapılandır:</label>
+          <defaultValue/>
+        </textBox>
+        <text>Tam olarak nitelenmiş bir yol belirtin veya bilgisayarın ortam bilgilerini yola ekleyin. </text>
+        <text>Örneğin, "\\server\backupfolder" veya "%SecureDriveEnvironmentVariable%\backupfolder" yazın</text>
+        <text>Not: Her durumda kullanıcı, kurtarma parolasını kaydetmek için başka klasörleri seçebilir.</text>
+        <text/>
+      </presentation>
+      
+      
+      <presentation id="EncryptionMethod_Name">
+        <dropdownList refId="EncryptionMethodDropDown_Name" noSort="true" defaultItem="0">Şifreleme yöntemini seç:</dropdownList>
+      </presentation>
+      
+      <presentation id="PlatformValidation_Name">
+        <text>Bir platform doğrulama profili bir grup Platform Yapılandırma Kayıt Defteri (PCR) dizininden oluşur. Her PCR dizini, Windows başladığında çalışan bileşenler ile ilişkilendirilir.</text>
+        <text>Profile katılacak PCR dizinlerini seçmek için aşağıdaki onay kutularını kullanın. </text>
+        <text>Bu ayarı değiştirirken dikkatli olun.</text>
+        <text>PCR'lerin varsayılan değerleri olan 0, 2, 4, 5, 8, 9, 10 ve 11'i öneririz.</text>
+        <text>BitLocker korumasının etkinleştirilmesi için PCR 11'i eklemelisiniz.</text>
+
+        <text>TPM platformu doğrulama profilini değiştirmenin getirileri ve tehlikeleri hakkında daha fazla bilgi için çevrimiçi belgelere bakın.</text>
+        
+        <checkBox refId="PlatformValidation_Setting0" defaultChecked="true">PCR 0: Ölçüm Güveninin Çekirdek Kökü (CRTM), BIOS ve Platform Uzantıları</checkBox>
+        <checkBox refId="PlatformValidation_Setting1">PCR 1: Platform ve Anakart Yapılandırması ve Verisi</checkBox>
+        <checkBox refId="PlatformValidation_Setting2" defaultChecked="true">PCR 2: ROM Kodu Seçeneği</checkBox>
+        <checkBox refId="PlatformValidation_Setting3">PCR 3: ROM Yapılandırması ve Verisi Seçeneği</checkBox>
+        <checkBox refId="PlatformValidation_Setting4" defaultChecked="true">PCR 4: Ana Yükleme Kaydı (MBR) Kodu</checkBox>
+        <checkBox refId="PlatformValidation_Setting5" defaultChecked="true">PCR 5: Ana Yükleme Kaydı (MBR) Bölüm Tablosu</checkBox>
+        <checkBox refId="PlatformValidation_Setting6">PCR 6: Durum Geçişi ve Uyanma Olayları</checkBox>
+        <checkBox refId="PlatformValidation_Setting7">PCR 7: Bilgisayar Üreticisi-Belirli</checkBox>
+        <checkBox refId="PlatformValidation_Setting8" defaultChecked="true">PCR 8: NTFS Önyükleme Kesimi</checkBox>
+        <checkBox refId="PlatformValidation_Setting9" defaultChecked="true">PCR 9: NTFS Önyükleme Bloğu</checkBox>
+        <checkBox refId="PlatformValidation_Setting10" defaultChecked="true">PCR 10: Önyükleme Yöneticisi</checkBox>
+        <checkBox refId="PlatformValidation_Setting11" defaultChecked="true">PCR 11: BitLocker Erişim Denetimi</checkBox>
+        <checkBox refId="PlatformValidation_Setting12">PCR 12: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting13">PCR 13: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting14">PCR 14: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting15">PCR 15: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting16">PCR 16: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting17">PCR 17: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting18">PCR 18: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting19">PCR 19: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting20">PCR 20: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting21">PCR 21: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting22">PCR 22: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+        <checkBox refId="PlatformValidation_Setting23">PCR 23: Gelecekte Kullanılmak üzere Ayrılmış</checkBox>
+      </presentation>
+      
+      <presentation id="MorBehavior_Name">
+     
+      </presentation>
+
+      <presentation id="IdentificationField">
+        <textBox refId="IdentificationField">
+          <label>BitLocker kimlik alanı:</label>
+        </textBox>
+        <textBox refId="SecIdentificationField">
+          <label>İzin verilen BitLocker kimlik alanı:</label>
+        </textBox>
+      </presentation>
+
+      <presentation id="UserCertificateOID">
+        <textBox refId="UserCertificateOID">
+          <label>Nesne tanıtıcı:</label>
+          <defaultValue>1.3.6.1.4.1.311.67.1.1</defaultValue>
+        </textBox>
+        </presentation>
+
+     <presentation id="MinimumPINLength">
+        <decimalTextBox refId="MinPINLength" defaultValue="4">En az karakter sayısı:</decimalTextBox>
+      </presentation>
+      
+     <presentation id="FDVPassphrase_Name">
+        <checkBox refId="FDVRequirePassphrase">Sabit veri sürücüsü için parola iste</checkBox>
+        <dropdownList refId="FDVPassphraseComplexity" noSort="true" defaultItem="0">Sabit veri sürücüleri için parola karmaşıklığını yapılandır:</dropdownList>
+        <decimalTextBox refId="FDVMinPassphraseLength" defaultValue="8">Sabit veri sürücüleri için parola uzunluğu alt sınırı:</decimalTextBox>
+       <text>Not: Parola karmaşıklık ayarının devreye girmesi için "Parola, karmaşıklık gereksinimlerini karşılamalıdır" ilke ayarını etkinleştirmelisiniz.</text>
+      </presentation>
+
+       <presentation id="FDVConfigureSmartCard">
+        <checkBox refId="FDVRequireSmartCard_Name">Sabit veri sürücülerinde akıllı kart kullanımı iste</checkBox>
+      </presentation>
+
+     <presentation id="RDVPassphrase_Name">
+        <checkBox refId="RDVRequirePassphrase">Çıkarılabilir veri sürücüsü için parola iste</checkBox>
+       <dropdownList refId="RDVPassphraseComplexity" noSort="true" defaultItem="0">Çıkarılabilir veri sürücüleri için parola karmaşıklığını yapılandır:</dropdownList>
+        <decimalTextBox refId="RDVMinPassphraseLength" defaultValue="8">Çıkarılabilir veri sürücüsü için parola uzunluğu alt sınırı:</decimalTextBox>
+<text>Not: Parola karmaşıklık ayarının devreye girmesi için "Parola, karmaşıklık gereksinimlerini karşılamalıdır" ilke ayarını etkinleştirmelisiniz.</text>
+      </presentation>
+
+      <presentation id="RDVConfigureBDE">
+        <checkBox refId="RDVAllowBDE_Name" noSort="true" defaultChecked="true">Kullanıcıların çıkarılabilir veri sürücülerine BitLocker koruması uygulamasına izin ver</checkBox>
+        <checkBox refId="RDVDisableBDE_Name" noSort="true" defaultChecked="true">Kullanıcıların çıkarılabilir veri sürücülerinde BitLocker korumasını askıya almasına ve şifre çözmesine izin ver</checkBox>
+      </presentation>
+
+      <presentation id="RDVDenyWriteAccess">
+        <checkBox refId="RDVCrossOrg" noSort="true" defaultChecked="false">Başka bir kuruluşta yapılandırılmış aygıtlara yazma izni verme</checkBox>
+      </presentation>
+
+
+      <presentation id="RDVConfigureSmartCard">
+        <checkBox refId="RDVRequireSmartCard_Name" noSort="true" defaultItem="0">Çıkarılabilir veri sürücülerinde akıllı kart kullanımı iste</checkBox>
+        </presentation>
+          
+      <presentation id="EnhancedPIN">
+
+      </presentation>
+
+      <presentation id="FDVDiscoveryVolumeType">
+        <checkBox refId="FDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">FAT ile biçimlendirilmiş sabit sürücülere BitLocker To Go Okuyucusu yükleme</checkBox>
+      </presentation>
+
+      <presentation id="RDVDiscoveryVolumeType">
+        <checkBox refId="RDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">FAT ile biçimlendirilmiş çıkarılabilir sürücülere BitLocker To Go Okuyucusu yükleme</checkBox>
+      </presentation>
+
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

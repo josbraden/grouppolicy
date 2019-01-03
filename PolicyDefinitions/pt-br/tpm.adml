@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>digite o nome para exibição aqui</displayName>
+  <description>digite a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Esta configuração de diretiva permite gerenciar o backup de informações de proprietário do TPM (Trusted Platform Module) nos Serviços de Domínio do Active Directory (AD DS). 
+
+As informações de proprietário do TPM incluem um hash criptográfico da senha do proprietário do TPM. Determinados comandos do TPM só podem ser executados pelo proprietário do TPM. Esse hash autoriza o TPM a executar esses comandos. 
+
+Se você habilitar esta configuração de diretiva, será feito um backup automático e silencioso das informações de proprietário do TPM no AD DS quando o Windows for usado para definir ou alterar a senha de proprietário do TPM. 
+
+Se você selecionar a opção "Exigir o backup TPM no AD DS", a senha de proprietário do TPM não poderá ser definida nem alterada, a não ser que o computador esteja conectado ao domínio e o backup do AD DS seja concluído com êxito. Essa opção é selecionada por padrão para auxiliar na confirmação de que as informações do proprietário do TPM estão disponíveis. Caso contrário, há a tentativa da realização do backup AD DS, mas falhas da rede ou de outros backups não interferem no gerenciamento do TPM. Não há uma nova tentativa automática da execução do backup e as informações de proprietário do TPM podem não ter sido armazenadas no AD DS durante a configuração do BitLocker.
+
+Se você desabilitar ou não definir esta configuração de diretiva, não será feito backup das informações de proprietário do TPM no AD DS. 
+
+Observação: Primeiro é necessário definir extensões de esquema apropriadas e configurações de controle de acesso no domínio antes de o backup AD DS poder ser concluído com êxito. Consulte a documentação online para obter mais informações sobre a configuração do Serviços de Domínio Active Directory no TPM.
+
+Observação: o TPM não poderá ser usado para fornecer recursos avançados de segurança para a Criptografia de Unidade de Disco BitLocker e outros aplicativos sem antes definir um proprietário. Para apropriar-se do TPM com uma senha de proprietário, execute "tpm.msc" e selecione a ação para "Inicializar o TPM".
+
+Observação: Se as informações de proprietário do TPM se perderem ou não estiverem disponíveis, será possível realizar um gerenciamento do TPM de forma limitada, executando-se o "tpm.msc" no computador local.</string>
+      <string id="ActiveDirectoryBackup_Name">Ativar backup TPM no Serviços de Domínio Active Directory</string>
+      <string id="BlockedCommandsList_Help">Esta configuração de diretiva permite que você gerencie a lista da Diretiva de Grupo dos comandos do Trusted Platform Module (TPM) bloqueados pelo Windows.
+
+Se você habilitar esta configuração de diretiva, o Windows impedirá que os comandos especificados sejam enviados para o TPM no computador. Os comandos do TPM são referenciados por um número de comando. Por exemplo, o número de comando 129 é TPM_OwnerReadInternalPub, e o número de comando 170 é TPM_FieldUpgrade. Para saber o número do comando associado a cada comando do TPM, execute "tpm.msc" e navegue pela seção "Gerenciamento de Comando".
+
+Se você desabilitar ou não definir esta configuração de diretiva, somente os comandos do TPM especificados nas listas padrão ou local poderão ser bloqueados pelo Windows. A lista padrão de comandos do TPM bloqueados é predefinida pelo Windows. Você pode exibir a lista padrão executando "tpm.msc", navegando na seção "Gerenciamento de Comando" e tornando visível a coluna "Na Lista de Bloqueios Padrão". A lista local de comandos bloqueados do TPM é configurada fora da Diretiva de Grupo, executando-se o "tpm.msc" ou por meio de script na interface Win32_Tpm. Consulte as configurações de diretiva relacionadas para aplicar ou ignorar as listas padrão e locais de comandos bloqueados do TPM.</string>
+      <string id="BlockedCommandsList_Name">Configurar a lista de comandos bloqueados do TPM</string>
+      <string id="IgnoreDefaultList_Help">Esta configuração de diretiva permite que você aplique ou ignore a lista padrão de comandos bloqueados do TPM do computador.
+
+Se você habilitar esta configuração de diretiva, o Windows ignorará a lista padrão de comandos bloqueados do TPM do computador e só bloqueará os comandos do TPM especificados pela Diretiva de Grupo ou lista local. 
+
+A lista padrão de comandos do TPM bloqueados é predefinida pelo Windows. Você pode exibir a lista padrão executando "tpm.msc", navegando na seção "Gerenciamento de Comando" e tornando visível a coluna "Na Lista de Bloqueios Padrão". A lista local de comandos bloqueados do TPM é configurada fora da Diretiva de Grupo, executando-se o "tpm.msc" ou por meio de script na interface Win32_Tpm. Consulte as configurações de diretiva relacionadas para configurar a lista de comandos bloqueados da TPM da Diretiva de Grupo.
+
+Se você desabilitar ou não definir esta configuração de diretiva, o Windows bloqueará os comandos do TPM na lista padrão, além dos comandos na Diretiva de Grupo e nas listas locais de comandos bloqueados do TPM. </string>
+      <string id="IgnoreDefaultList_Name">Ignorar a lista padrão de comandos bloqueados do TPM</string>
+      <string id="IgnoreLocalList_Help">Esta configuração de diretiva permite que você aplique ou ignore a lista local de comandos bloqueados do TPM do computador.
+
+Se você habilitar esta configuração de diretiva, o Windows ignorará a lista local de comandos bloqueados do TPM do computador e só bloqueará os comandos do TPM especificados pela Diretiva de Grupo ou lista padrão.
+
+A lista local de comandos bloqueados do TPM é configurada fora da Diretiva de Grupo, executando-se o "tpm.msc" ou por meio de script na interface Win32_Tpm. A lista padrão de comandos do TPM bloqueados é predefinida pelo Windows. Consulte as configurações de diretiva relacionadas para configurar a lista de comandos bloqueados do TPM da Diretiva de Grupo. 
+
+Se você desabilitar ou não definir esta configuração de diretiva, o Windows bloqueará os comandos do TPM na lista local, além dos comandos na Diretiva de Grupo e nas listas padrão de comandos bloqueados do TPM.</string>
+      <string id="IgnoreLocalList_Name">Ignorar a lista local de comandos bloqueados do TPM</string>
+      <string id="TPMCategory">Serviços do Trusted Platform Module</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Exigir o backup TPM no AD DS</checkBox>
+        <text/>
+        <text>Se este item for selecionado, não será possível definir ou alterar a senha de proprietário do TPM </text>
+        <text>em caso de falha de backup (padrão recomendado).</text>
+        <text/>
+        <text>Se este item não for selecionado, será possível definir ou alterar a senha de proprietário do TPM,</text>
+        <text>mesmo em caso de falha de backup. Não haverá nova tentativa de backup automaticamente.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Especificar os comandos a bloquear adicionando números à lista.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">A lista de comandos bloqueados do TPM:</listBox>
+        <text>Por exemplo, para bloquear os comandos TPM_OwnerReadInternalPub</text>
+        <text>e TPM_FieldUpgrade, adicione os itens 129 e 170 à lista.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

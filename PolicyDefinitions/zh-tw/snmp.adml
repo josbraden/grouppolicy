@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
+  <resources>
+    <stringTable>
+      <string id="SNMP_Communities">社群</string>
+      <string id="SNMP_PermittedManagers">許可的管理員</string>
+      <string id="SNMP_PermittedManagers_Help">這個設定會判斷主機的許可清單，以便向用戶端電腦上執行的簡易網路管理 (SNMP) 代理程式提交查詢。
+
+簡易網路管理通訊協定是為了提供使用者，透過輪詢與設定終端機值和監視網路事件，遠端管理電腦網路的能力而設計的通訊協定。
+
+管理員是位於網路的主機電腦上。管理員的角色是輪詢代理程式，以取得某些必要資訊。
+
+如果您啟用這個設定，SNMP 代理程式就只會接受來自許可管理員清單 (您使用此設定所設定) 的要求。
+
+如果停用或沒有進行此設定，SNMP 服務會改用本機電腦上所設定的許可管理員。
+
+最佳作法: 基於安全因素，建議您限制 HKLM\SOFTWARE\Policies\SNMP\Parameters\PermittedManagers 機碼，只允許本機系統管理群組的完全控制。
+
+請注意: 如果 SNMP 代理程式不是安裝在用戶端電腦上，此設定將不具任何效用。
+
+另請參閱其他兩項 SNMP 的設定: [設陷設定] 和 [社群名稱]。</string>
+      <string id="SNMP_SNMP">SNMP</string>
+      <string id="SNMP_TrapDestinations_Help">這個設定允許針對簡易網路管理通訊協定 (SNMP) 代理程式，使用設陷設定。
+
+簡易網路管理通訊協定是為了提供使用者，透過輪詢與設定終端機值和監視網路事件，遠端管理電腦網路的能力而設計的通訊協定。
+
+這個設定可讓您設定會接收由 SNMP 服務所傳送之社群陷阱訊息的主機名稱。陷阱訊息是允許 SNMP 代理程式非同步地通知管理系統的警示或重大事件。
+
+如果您啟用這個設定，SNMP 服務會將陷阱訊息傳送給「公用」社群內的主機。
+
+如果停用或沒有進行此設定，SNMP 服務會改用本機電腦上所設定的設陷設定。
+
+請注意: 如果 SNMP 代理程式不是安裝在用戶端電腦上，此設定將不具任何效用。
+
+另請參閱其他兩項 SNMP 的設定: [許可的管理員] 和 [社群名稱]。</string>
+      <string id="SNMP_Traps_Public">公用群區陷阱</string>
+      <string id="SNMP_ValidCommunities_Help">設定為簡易網路管理通訊協定 (SNMP) 服務所定義的社群清單。
+
+SNMP 是為了提供使用者，透過輪詢與設定終端機值和監視網路事件，遠端管理電腦網路的能力而設計的通訊協定。
+
+有效的社群是由 SNMP 服務所認可的社群，而社群是一組由 SNMP 一起管理的主機 (伺服器、工作站、集線器和路由器)。SNMP 服務是會接收來自網路之 SNMP 封包的受管理網路節點。
+
+如果您啟用這個設定，SNMP 代理程式只會接受它所認可之社群內管理系統的要求，且只允許社群的 SNMP 讀取操作。
+
+如果停用或沒有進行此設定，SNMP 服務會改用本機電腦上設定的有效社群。
+
+最佳作法: 基於安全因素，建議您限制 HKLM\SOFTWARE\Policies\SNMP\Parameters\ValidCommunities 機碼，只允許本機系統管理群組的完全控制。
+
+請注意: 最佳作法是使用隱密的社群名稱。
+
+請注意: 如果 SNMP 代理程式不是安裝在用戶端電腦上，此設定將不具任何效用。
+
+另請參閱其他兩項 SNMP 的設定: [許可的管理員] 和 [設陷設定]。</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="SNMP_Communities">
+        <listBox refId="SNMP_CommunitiesListbox">群區</listBox>
+      </presentation>
+      <presentation id="SNMP_PermittedManagers">
+        <listBox refId="SNMP_PermittedManagersListbox">許可的管理員</listBox>
+      </presentation>
+      <presentation id="SNMP_Traps_Public">
+        <listBox refId="SNMP_Traps_PublicListbox">設陷設定</listBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

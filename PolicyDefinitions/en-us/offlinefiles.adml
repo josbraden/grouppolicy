@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_OfflineFiles">Offline Files</string>
+      <string id="Lbl_Fail">Never go offline</string>
+      <string id="Lbl_FullSync">Full</string>
+      <string id="Lbl_QuickSync">Quick</string>
+      <string id="Lbl_WorkOffline">Work offline</string>
+      <string id="Pol_AlwaysPinSubFolders">Subfolders always available offline</string>
+      <string id="Pol_AlwaysPinSubFolders_Help">Makes subfolders available offline whenever their parent folder is made available offline.
+
+This setting automatically extends the "make available offline" setting to all new and existing subfolders of a folder. Users do not have the option of excluding subfolders.
+
+If you enable this setting, when you make a folder available offline, all folders within that folder are also made available offline. Also, new folders that you create within a folder that is available offline are made available offline when the parent folder is synchronized.
+
+If you disable this setting or do not configure it, the system asks users whether they want subfolders to be made available offline when they make a parent folder available offline.</string>
+      <string id="Pol_AssignedOfflineFiles">Administratively assigned offline files</string>
+      <string id="Pol_AssignedOfflineFiles_Help">This policy setting lists network files and folders that are always available for offline use. This ensures that the the specified files and folders are available offline to users of the computer.
+
+If you enable this policy setting, the files you enter are always available offline to users of the computer. To specify a file or folder, click Show. In the Show Contents dialog box in the Value Name column, type the fully qualified UNC path to the file or folder. Leave the Value column field blank.
+
+If you disable this policy setting, the list of files or folders made always available offline (including those inherited from lower precedence GPOs) is deleted and no files or folders are made always available for offline use.
+
+If you do not configure this policy setting, no files or folders are made always available for offline use.
+
+Note: This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the settings will be combined and all specified files will be available for offline use.</string>
+      <string id="Pol_CustomGoOfflineActions">Non-default server disconnect actions</string>
+      <string id="Pol_CustomGoOfflineActions_Help">Determines how computers respond when they are disconnected from particular offline file servers. This setting overrides the default response, a user-specified response, and the response specified in the "Action on server disconnect" setting.
+
+To use this setting, click Show. In the Show Contents dialog box in the Value Name column box, type the server's computer name. Then, in the Value column box, type "0" if users can work offline when they are disconnected from this server, or type "1" if they cannot.
+
+This setting appears in the Computer Configuration and User Configuration folders.  If both settings are configured for a particular server, the setting in Computer Configuration takes precedence over the setting in User Configuration.  Both Computer and User configuration take precedence over a user's setting.  This setting does not prevent users from setting custom actions through the Offline Files tab.  However, users are unable to change any custom actions established via this setting.
+
+Tip: To configure this setting without establishing a setting, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, and then click Advanced. This setting corresponds to the settings in the "Exception list" section.</string>
+      <string id="Pol_DefCacheSize">Default cache size</string>
+      <string id="Pol_DefCacheSize_Help">Limits the percentage of the computer's disk space that can be used to store automatically cached offline files.
+
+This setting also disables the "Amount of disk space to use for temporary offline files" option on the Offline Files tab. This prevents users from trying to change the option while a setting controls it.
+
+Automatic caching can be set on any network share. When a user opens a file on the share, the system automatically stores a copy of the file on the user's computer.
+
+This setting does not limit the disk space available for files that user's make available offline manually.
+
+If you enable this setting, you can specify an automatic-cache disk space limit.
+
+If you disable this setting, the system limits the space that automatically cached files occupy to 10 percent of the space on the system drive.
+
+If you do not configure this setting, disk space for automatically cached files is limited to 10 percent of the system drive by default, but users can change it.
+
+Tip: To change the amount of disk space used for automatic caching without specifying a setting, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, and then use the slider bar associated with the "Amount of disk space to use for temporary offline files" option.</string>
+      <string id="Pol_Enabled">Allow or Disallow use of the Offline Files feature</string>
+      <string id="Pol_Enabled_Help">Determines whether the Offline Files feature is enabled.
+
+This setting also disables the "Enable Offline Files" option on the Offline Files tab. This prevents users from trying to change the option while a setting controls it.
+
+Offline Files saves a copy of network files on the user's computer for use when the computer is not connected to the network.
+
+If you enable this setting, Offline Files is enabled and users cannot disable it.
+
+If you disable this setting, Offline Files is disabled and users cannot enable it.
+
+By default, Offline Files is enabled on Windows 2000 Professional and Windows XP Professional and is disabled on Windows 2000 Server and also Windows Server 2003 family.
+
+Tip: To enable Offline Files without specifying a setting, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, and then click "Enable Offline Files."
+
+Note: To make changes to this setting effective, you must restart Windows.</string>
+      <string id="Pol_EncryptOfflineFiles">Encrypt the Offline Files cache</string>
+      <string id="Pol_EncryptOfflineFiles_Help">This setting determines whether offline files are encrypted.
+
+Offline files reside on a user's hard drive, not the network, and they are stored in a local cache on the computer. Encrypting this cache enhances security on a local computer. If the cache on the local computer is not encrypted, any encrypted files cached from the network will not be encrypted on the local computer. This may pose a security risk in some environments.
+
+If you enable this setting, all files in the Offline Files cache are encrypted.  This includes existing files as well as files added later. The cached copy on the local computer is affected, but the associated network copy is not. The user cannot unencrypt Offline Files through the user interface.
+
+If you disable this setting, all files in the Offline Files cache are unencrypted. This includes existing files as well as files added later. The cached copy on the local computer is affected, but the associated network copy is not. The user cannot encrypt Offline Files through the user interface.
+
+If you do not configure this setting, encryption of the Offline Files cache is controlled by the user through the user interface. The current cache state is retained, and if the cache is only partially encrypted, the operation completes so that it is fully encrypted. The cache does not return to the unencrypted state. The user must be an administrator on the local computer to encrypt or decrypt the Offline Files cache.
+
+Note: By default, this cache is protected on NTFS partitions by ACLs.</string>
+      <string id="Pol_EventLoggingLevel">Event logging level</string>
+      <string id="Pol_EventLoggingLevel_Help">Determines which events the Offline Files feature records in the event log.
+
+Offline Files records events in the Application log in Event Viewer when it detects errors. By default, Offline Files records an event only when the offline files storage cache is corrupted. However, you can use this setting to specify additional events you want Offline Files to record.
+
+To use this setting, in the "Enter" box, select the number corresponding to the events you want the system to log. The levels are cumulative; that is, each level includes the events in all preceding levels.
+
+"0" records an error when the offline storage cache is corrupted.
+
+"1" also records an event when the server hosting the offline file is disconnected from the network.
+
+"2" also records events when the local computer is connected and disconnected from the network.
+
+"3" also records an event when the server hosting the offline file is reconnected to the network.
+
+Note: This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.</string>
+      <string id="Pol_ExtExclusionList">Files not cached</string>
+      <string id="Pol_ExtExclusionList_Help">Lists types of files that cannot be used offline.
+
+This setting lets you exclude certain types of files from automatic and manual caching for offline use. The system does not cache files of the type specified in this setting even when they reside on a network share configured for automatic caching. Also, if users try to make a file of this type available offline, the operation will fail and the following message will be displayed in the Synchronization Manager progress dialog box: "Files of this type cannot be made available offline."
+
+This setting is designed to protect files that cannot be separated, such as database components.
+
+To use this setting, type the file name extension in the "Extensions" box. To type more than one extension, separate the extensions with a semicolon (;).
+
+Note: To make changes to this setting effective, you must log off and log on again.</string>
+      <string id="Pol_GoOfflineAction">Action on server disconnect</string>
+      <string id="Pol_GoOfflineAction_Help">Determines whether network files remain available if the computer is suddenly disconnected from the server hosting the files.
+
+This setting also disables the "When a network connection is lost" option on the Offline Files tab. This prevents users from trying to change the option while a setting controls it.
+
+If you enable this setting, you can use the "Action" box to specify how computers in the group respond.
+
+--  "Work offline" indicates that the computer can use local copies of network files while the server is inaccessible.
+
+--  "Never go offline" indicates that network files are not available while the server is inaccessible.
+
+If you disable this setting or select the "Work offline" option, users can work offline if disconnected.
+
+If you do not configure this setting, users can work offline by default, but they can change this option.
+
+This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer  Configuration takes precedence over the setting in User Configuration.
+
+Tip: To configure this setting without establishing a setting, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, click Advanced, and then select an option in the "When a network connection is lost" section.
+
+Also, see the "Non-default server disconnect actions" setting.</string>
+      <string id="Pol_NoCacheViewer">Prevent use of Offline Files folder</string>
+      <string id="Pol_NoCacheViewer_Help">Disables the Offline Files folder.
+
+This setting disables the "View Files" button on the Offline Files tab. As a result, users cannot use the Offline Files folder to view or open copies of network files stored on their computer. Also, they cannot use the folder to view characteristics of offline files, such as their server status, type, or location.
+
+This setting does not prevent users from working offline or from saving local copies of files available offline. Also, it does not prevent them from using other programs, such as Windows Explorer, to view their offline files.
+
+This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.
+
+Tip: To view the Offline Files Folder, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, and then click "View Files."</string>
+      <string id="Pol_NoConfigCache">Prohibit user configuration of Offline Files</string>
+      <string id="Pol_NoConfigCache_Help">Prevents users from enabling, disabling, or changing the configuration of Offline Files.
+
+This setting removes the Offline Files tab from the Folder Options dialog box. It also removes the Settings item from the Offline Files context menu and disables the Settings button on the Offline Files Status dialog box. As a result, users cannot view or change the options on the Offline Files tab or Offline Files dialog box.
+
+This is a comprehensive setting that locks down the configuration you establish by using other settings in this folder.
+
+This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.
+
+Tip: This setting provides a quick method for locking down the default settings for Offline Files. To accept the defaults, just enable this setting. You do not have to disable any other settings in this folder.</string>
+      <string id="Pol_NoMakeAvailableOffline">Remove 'Make Available Offline'</string>
+      <string id="Pol_NoMakeAvailableOffline_Help">Prevents users from making network files and folders available offline.
+
+This setting removes the "Make Available Offline" option from the File menu and from all context menus in Windows Explorer. As a result, users cannot designate files to be saved on their computer for offline use.
+
+However, this setting does not prevent the system from saving local copies of files that reside on network shares designated for automatic caching.
+
+This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.</string>
+      <string id="Pol_NoPinFiles">Prohibit 'Make Available Offline' for these file and folders</string>
+      <string id="Pol_NoPinFiles_Help">This policy setting allows you to manage a list of files or folders for which you wish to prohibit the 'Make Available Offline' option.
+
+If you enable this policy setting, the 'Make Available Offline' option is not available for the files or folders you list. To specify these files or folders, click Show. In the Show Contents dialog box in the Value Name column box, type the fully qualified UNC path to the file or folder. Leave the Value column field blank.
+
+If you disable this policy setting, the list of files or folders for which the 'Make Available Offline' option is removed (including those inherited from lower precedence GPOs) is deleted.
+
+If you do not configure this policy setting, the 'Make Available Offline' option is available for all files or folders.
+
+Notes:
+
+This policy setting appears in the Computer Configuration and User Configuration folders. If both policy settings are configured, the policy settings are combined, and the 'Make Available Offline' option will be unavailable  for all specified files and folders.
+
+This policy setting does not prevent files from being automatically cached if the network share is configured for 'Automatic Caching'. It only affects the availability of the 'Make Available Offline' menu option in the user interface.
+
+If the 'Disable Make Available Offline' policy setting is enabled, this setting has no effect.</string>
+      <string id="Pol_NoReminders">Turn off reminder balloons</string>
+      <string id="Pol_NoReminders_Help">Hides or displays reminder balloons, and prevents users from changing the setting.
+
+Reminder balloons appear above the Offline Files icon in the notification area to notify users when they have lost the connection to a networked file and are working on a local copy of the file. Users can then decide how to proceed.
+
+If you enable this setting, the system hides the reminder balloons, and prevents users from displaying them.
+
+If you disable the setting, the system displays the reminder balloons and prevents users from hiding them.
+
+If this setting is not configured, reminder balloons are displayed by default when you enable offline files, but users can change the setting.
+
+To prevent users from changing the setting while a setting is in effect, the system disables the "Enable reminders" option on the Offline Files tab
+
+This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.
+
+Tip: To display or hide reminder balloons without establishing a setting, in Windows Explorer, on the Tools menu, click Folder Options, and then click the Offline Files tab. This setting corresponds to the "Enable reminders" check box.</string>
+      <string id="Pol_PurgeAtLogoff">At logoff, delete local copy of user’s offline files</string>
+      <string id="Pol_PurgeAtLogoff_Help">Deletes local copies of the user's offline files when the user logs off.
+
+This setting specifies that automatically and manually cached offline files are retained only while the user is logged on to the computer. When the user logs off, the system deletes all local copies of offline files.
+
+If you disable this setting or do not configure it, automatically and manually cached copies are retained on the user's computer for later offline use.
+
+Caution: Files are not synchronized before they are deleted. Any changes to local files since the last synchronization are lost.</string>
+      <string id="Pol_ReminderFreq">Reminder balloon frequency</string>
+      <string id="Pol_ReminderFreq_Help">Determines how often reminder balloon updates appear.
+
+If you enable this setting, you can select how often reminder balloons updates appear and also prevent users from changing this setting.
+
+Reminder balloons appear when the user's connection to a network file is lost or reconnected, and they are updated periodically. By default, the first reminder for an event is displayed for 30 seconds. Then, updates appear every 60 minutes and are displayed for 15 seconds. You can use this setting to change the update interval.
+
+This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.
+
+Tip: To set reminder balloon frequency without establishing a setting, in Windows Explorer, on the Tools menu, click Folder Options, and then click the Offline Files tab. This setting corresponds to the "Display reminder balloons every ... minutes" option.</string>
+      <string id="Pol_ReminderInitTimeout">Initial reminder balloon lifetime</string>
+      <string id="Pol_ReminderInitTimeout_Help">Determines how long the first reminder balloon for a network status change is displayed.
+
+Reminder balloons appear when the user's connection to a network file is lost or reconnected, and they are updated periodically. By default, the first reminder for an event is displayed for 30 seconds. Then, updates appear every 60 minutes and are displayed for 15 seconds. You can use this setting to change the duration of the first reminder.
+
+This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.</string>
+      <string id="Pol_ReminderTimeout">Reminder balloon lifetime</string>
+      <string id="Pol_ReminderTimeout_Help">Determines how long updated reminder balloons are displayed.
+
+Reminder balloons appear when the user's connection to a network file is lost or reconnected, and they are updated periodically. By default, the first reminder for an event is displayed for 30 seconds. Then, updates appear every 60 minutes and are displayed for 15 seconds. You can use this setting to change the duration of the update reminder.
+
+This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.</string>
+      <string id="Pol_SlowLinkSpeed">Configure Slow link speed</string>
+      <string id="Pol_SlowLinkSpeed_Help">Configures the threshold value at which Offline Files considers a network connection to be "slow". Any network speed below this value is considered to be slow.
+
+When a connection is considered slow, Offline Files automatically adjust its behavior to avoid excessive synchronization traffic and will not automatically reconnect to a server when the presence of a server is detected.
+
+If you enable this setting, you can configure the threshold value that will be used to determine a slow network connection.
+
+If this setting is disabled or not configured, the default threshold value of 64,000 bps is used to determine if a network connection is considered to be slow.
+
+Note: Use the following formula when entering the slow link value: [ bps / 100]. For example, if you want to set a threshold value of 128,000 bps, enter a value of 1280.</string>
+      <string id="Pol_SyncAtLogoff">Synchronize all offline files before logging off</string>
+      <string id="Pol_SyncAtLogoff_Help">Determines whether offline files are fully synchronized when users log off.
+
+This setting also disables the "Synchronize all offline files before logging off" option on the Offline Files tab. This prevents users from trying to change the option while a setting controls it.
+
+If you enable this setting, offline files are fully synchronized. Full synchronization ensures that offline files are complete and current.
+
+If you disable this setting, the system only performs a quick synchronization. Quick synchronization ensures that files are complete, but does not ensure that they are current.
+
+If you do not configure this setting, the system performs a quick synchronization by default, but users can change this option.
+
+This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.
+
+Tip: To change the synchronization method without changing a setting, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, and then select the "Synchronize all offline files before logging off" option.</string>
+      <string id="Pol_SyncAtLogon">Synchronize all offline files when logging on</string>
+      <string id="Pol_SyncAtLogon_Help">Determines whether offline files are fully synchronized when users log on.
+
+This setting also disables the "Synchronize all offline files before logging on" option on the Offline Files tab. This prevents users from trying to change the option while a setting controls it.
+
+If you enable this setting, offline files are fully synchronized at logon. Full synchronization ensures that offline files are complete and current. Enabling this setting automatically enables logon synchronization in Synchronization Manager.
+
+If this setting is disabled and Synchronization Manager is configured for logon synchronization, the system performs only a quick synchronization. Quick synchronization ensures that files are complete but does not ensure that they are current.
+
+If you do not configure this setting and Synchronization Manager is configured for logon synchronization, the system performs a quick synchronization by default, but users can change this option.
+
+This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.
+
+Tip: To change the synchronization method without setting a setting, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, and then select the "Synchronize all offline files before logging on" option.</string>
+      <string id="Pol_SyncAtSuspend">Synchronize offline files before suspend</string>
+      <string id="Pol_SyncAtSuspend_Help">Determines whether offline files are synchonized before a computer is suspended.
+
+If you enable this setting, offline files are synchronized whenever the computer is suspended. Setting the synchronization action to "Quick" ensures only that all files in the cache are complete. Setting the synchronization action to "Full" ensures that all cached files and folders are up-to-date with the most current version.
+
+If you disable or do not configuring this setting, files are not synchronized when the computer is suspended.
+
+Note: If the computer is suspended by closing the display on a portable computer, files are not synchronized. If multiple users are logged on to the computer at the time the computer is suspended, a synchronization is not performed.</string>
+      <string id="Pol_QuickAdimPin">Turn on economical application of administratively assigned Offline Files</string>
+      <string id="Pol_QuickAdimPin_Help">This policy setting allows you to turn on economical application of administratively assigned Offline Files.
+
+If you enable or do not configure this policy setting, only new files and folders in administratively assigned folders are synchronized at logon. Files and folders that are already available offline are skipped and are synchronized later.
+
+If you disable this policy setting, all administratively assigned folders are synchronized at logon.
+      </string>
+
+      <string id="Pol_SlowLinkSettings">Configure slow-link mode</string>
+      <string id="Pol_SlowLinkSettings_Help">This policy setting enables computers running Windows Vista or Windows Server 2008 to use the slow-link mode of Offline Files (it is enabled by default for computers running Windows 7 or Windows Server 2008 R2). This policy also controls when client computers running Windows 7 or Windows Server 2008 R2 transition to the slow-link mode.
+
+When Offline Files is operating in the slow-link mode, all network file requests are satisfied from the Offline Files cache. This is similar to a user working offline. However, users can manually initiate synchronization by using Sync Center. After synchronization completes, computers running Windows Vista or Windows Server 2008 continue to operate in the slow-link mode until the user clicks the Work Online button on the toolbar in Windows Explorer. This transitions the shared folder to the online mode. While in the online mode, Windows periodically checks the connection to the server. If the connection is slow, Offline Files transitions the folder back to the slow-link mode.
+
+On client computers running Windows 7 or Windows Server 2008 R2, a shared folder automatically transitions to the slow-link mode if the round-trip latency of the network is greater than 80 milliseconds, or as configured by this policy. After transitioning a folder to the slow-link mode, Offline Files synchronizes the user's files in the background at regular intervals, or as configured by the 'Configure Background Sync' policy. While in slow-link mode, Windows periodically checks the connection to the folder and brings the folder back online if network speeds improve. 
+
+If you enable this policy setting, Offline Files uses the slow-link mode if the network throughput between the client and the server is below (slower than) the Throughput threshold parameter, or if the round-trip network latency is above (slower than) the Latency threshold parameter.
+
+You can configure the slow-link mode by specifying threshold values for Throughput (in bits per second) and/or Latency (in milliseconds) for specific UNC paths. We recommend that you always specify a value for Latency, since the round-trip network latency detection is faster. You can use wildcard characters (*) for specifying UNC paths. If you do not specify a Latency or Throughput value, computers running Windows Vista or Windows Server 2008 will not use the slow-link mode.
+
+If you do not configure this policy setting, computers running Windows Vista or Windows Server 2008 will not transition a shared folder to the slow-link mode. Computers running Windows 7 or Windows Server 2008 R2 will use the default latency value of 80 milliseconds when transitioning a folder to the slow-link mode. To prevent computers running Windows 7 or Windows Server 2008 R2 from using the slow-link mode, disable this policy.</string>
+      <string id="Pol_CacheSize">Limit disk space used by offline files</string>
+      <string id="Pol_CacheSize_Help">This policy limits the amount of the computer's disk space that can be used to store offline files.
+
+Using this setting you can configure how much total disk space (in Megabytes) is used for storing offline files. This includes the space used by automatically cached files and files that are specifically made available offline. Files can be automatically cached if the user accesses a file on an automatic caching network share.
+This setting also disables the ability to adjust, through the Offline Files control panel applet, the disk space limits on the Offline Files cache. This prevents users from trying to change the option while a policy setting controls it.
+
+If you enable this policy setting, you can specify the disk space limit for offline files and also specify how much of that disk space can be used by automatically cached files.
+
+If you disable this policy setting, the system limits the space that offline files occupy to 25 percent of the total space on the drive where the Offline Files cache is located.  The limit for automatically cached files is 100 percent of the total disk space limit.
+
+If you do not configure this policy setting, the system limits the space that offline files occupy to 25 percent of the total space on the drive where the Offline Files cache is located. The limit for automatically cached files is 100 percent of the total disk space limit.  However, the users can change these values using the Offline Files control applet. 
+
+If you enable this setting and specify a total size limit greater than the size of the drive hosting the Offline Files cache, and that drive is the system drive, the total size limit is automatically adjusted downward to 75 percent of the size of the drive.  If the cache is located on a drive other than the system drive, the limit is automatically adjusted downward to 100 percent of the size of the drive.
+
+If you enable this setting and specify a total size limit less than the amount of space currently used by the Offline Files cache, the total size limit is automatically adjusted upward to the amount of space currently used by offline files.  The cache is then considered "full".
+
+If you enable this setting and specify an auto-cached space limit greater than the total size limit, the auto-cached limit is automatically adjusted downward to equal the total size limit.
+
+
+This setting replaces the "Default Cache Size" setting used by pre-Windows Vista systems.</string>
+      <string id="Pol_BackgroundSyncSettings">Configure Background Sync</string>
+      <string id="Pol_BackgroundSyncSettings_Help">This is a machine-specific setting which applies to any user who logs onto the specified machine while this policy is in effect.
+
+This policy is in effect when a network folder is determined, as specified by the “Configure slow-link mode” policy, to be in “slow-link” mode.
+
+For network folders in "slow-link" mode, a sync will be initiated in the background on a regular basis, according to these settings, to synchronize the files in those shares/folders between the client and server.
+
+By default, network folders in the "slow-link" mode will be synchronized with the server every 360 minutes with the start of the sync varying between 0 and 60 additional minutes.
+
+You can override the default sync interval and variance by setting 'Sync Interval' and 'Sync Variance' values. You can also set a period of time where background sync is disabled by setting 'Blockout Start Time' and 'Blockout Duration'. To ensure that all the network folders on the machine are synchronized with the server on a regular basis, you may also set the 'Maximum Allowed Time Without A Sync'.
+
+You may also configure Background Sync for network shares that are in user selected "Work Offline" mode. This mode is in effect when a user selects the "Work Offline" button for a specific share. When selected, all configured settings will apply to shares in user selected "Work Offline" mode as well.
+
+If you disable this setting or do not configure it, the default behavior for Background Sync will apply.</string>
+      <string id="Pol_OnlineCachingSettings">Enable Transparent Caching</string>
+      <string id="Pol_OnlineCachingSettings_Help">Enabling this policy optimizes subsequent reads to network files by a user or an application. This is done by caching reads to remote files over a slow network in the Offline Files cache. Subsequent reads to the same file are then satisfied from the client after verifying the integrity of the cached copy. This policy not only yields improved end-user response times but also decreased bandwidth consumption over the WAN links to the server.
+
+The cached files are temporary and are not available to the user when offline. The cached files are not kept in sync with the version on the server, and the most current version from the server is always available for subsequent reads.
+
+This policy is triggered by the configured round trip network latency value. We recommend using this policy when the network connection to the server is slow. For example, you can configure a value of 60 ms as the round trip latency of the network above which files should be transparently cached in the Offline Files cache. If the round trip latency of the network is less than 60ms, reads to remote files will not be cached.
+
+If you do not configure this setting, remote files will be not be transparently cached on end-user clients.</string>
+      <string id="Pol_ExclusionListSettings">Exclude files from being cached </string>
+      <string id="Pol_ExclusionListSettings_Help">This policy enables administrators to exclude certain file types from being made available offline. 
+
+You need to specify file extensions of the file types that should be excluded. A user will then be unable to create a file of this type in the folders that have been made available offline. 
+      </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_AlwaysPinSubFolders">
+        <text>Ensures all subfolders are available offline when a folder is made</text>
+        <text>available for offline use.</text>
+      </presentation>
+      <presentation id="Pol_AssignedOfflineFiles_1">
+        <text>Specify network files and folders that are always available offline.</text>
+        <text>In the name field, type a fully-qualified UNC path for each file or folder. </text>
+        <text>Do not enter a value for the item.</text>
+        <text> </text>
+        <listBox refId="Lbl_AssignedOfflineFilesList">Files and Folders: </listBox>
+      </presentation>
+      <presentation id="Pol_AssignedOfflineFiles_2">
+        <text>Specify network files and folders that are always available offline.</text>
+        <text>In the name field, type a fully-qualified UNC path for each file or folder. </text>
+        <text>Do not enter a value for the item.</text>
+        <text> </text>
+        <listBox refId="Lbl_AssignedOfflineFilesList">Files and Folders: </listBox>
+      </presentation>
+      <presentation id="Pol_CustomGoOfflineActions_1">
+        <text>Specify non-default actions for servers that become unavailable.</text>
+        <text>Enter a server name paired with an action value listed below.</text>
+        <text> </text>
+        <listBox refId="Lbl_CustomGoOfflineActionsList">Customize actions: </listBox>
+        <text>Values:</text>
+        <text>0 = Work offline. Server's files are available to local computer</text>
+        <text>1 = Never go offline. Server's files are unavailable to local computer</text>
+      </presentation>
+      <presentation id="Pol_CustomGoOfflineActions_2">
+        <text>Specify non-default actions for servers that become unavailable.</text>
+        <text>Enter a server name paired with an action value listed below.</text>
+        <text> </text>
+        <listBox refId="Lbl_CustomGoOfflineActionsList">Customize actions: </listBox>
+        <text>Values:</text>
+        <text>0 = Work offline. Server's files are available to local computer</text>
+        <text>1 = Never go offline. Server's files are unavailable to local computer</text>
+      </presentation>
+      <presentation id="Pol_DefCacheSize">
+        <text>Value entered is [ percent disk used * 10,000 ].</text>
+        <text>For example, to indicate 12.53%, enter 1253.</text>
+        <text> </text>
+        <decimalTextBox refId="Lbl_DefCacheSizeSpin" defaultValue="1000" spinStep="100">Default cache size: </decimalTextBox>
+      </presentation>
+      <presentation id="Pol_Enabled">
+        <text>When enabled, files from auto-cache shared folders are cached on</text>
+        <text>the local computer. Users can also select specific folders and</text>
+        <text>files to always be available when working offline.</text>
+      </presentation>
+      <presentation id="Pol_EventLoggingLevel_1">
+        <text> </text>
+        <decimalTextBox refId="Lbl_EventLoggingLevelSpin" defaultValue="0">Enter [0-3]: </decimalTextBox>
+        <text> </text>
+        <text>0 = Cache data corrupted</text>
+        <text>1 = Log 'server offline'</text>
+        <text>2 = Level 1 + log 'net stopped' and 'net started'</text>
+        <text>3 = Level 2 + log 'server available for reconnection'</text>
+      </presentation>
+      <presentation id="Pol_EventLoggingLevel_2">
+        <text> </text>
+        <decimalTextBox refId="Lbl_EventLoggingLevelSpin" defaultValue="0">Enter [0-3]: </decimalTextBox>
+        <text> </text>
+        <text>0 = Cache data corrupted</text>
+        <text>1 = Log 'server offline'</text>
+        <text>2 = Level 1 + log 'net stopped' and 'net started'</text>
+        <text>3 = Level 2 + log 'server available for reconnection'</text>
+      </presentation>
+      <presentation id="Pol_ExtExclusionList">
+        <text>Files may be excluded from caching on auto-cache shared folders based</text>
+        <text>on their extension. Enter a list of extensions to be excluded. Extensions</text>
+        <text>must be preceded by an asterisk and period. "e.g. *.dbf;*.ndx;*.lnk</text>
+        <text> </text>
+        <textBox refId="Lbl_ExtExclusionListEdit">
+          <label>Extensions: </label>
+        </textBox>
+      </presentation>
+      <presentation id="Pol_GoOfflineAction_1">
+        <text>Specify how the system is to respond when a network server</text>
+        <text>becomes unavailable.</text>
+        <text> </text>
+        <dropdownList refId="Lbl_GoOfflineActionCombo" defaultItem="0">Action: </dropdownList>
+        <text> </text>
+        <text>Never go offline = Server's files are unavailable to local computer</text>
+        <text>Work offline = Server's files are available to local computer</text>
+      </presentation>
+      <presentation id="Pol_GoOfflineAction_2">
+        <text>Specify how the system is to respond when a network server</text>
+        <text>becomes unavailable.</text>
+        <text> </text>
+        <dropdownList refId="Lbl_GoOfflineActionCombo" defaultItem="0">Action: </dropdownList>
+        <text> </text>
+        <text>Never go offline = Server's files are unavailable to local computer</text>
+        <text>Work offline = Server's files are available to local computer</text>
+      </presentation>
+      <presentation id="Pol_NoConfigCache_1">
+        <text>Prevents users from changing any cache configuration settings.</text>
+      </presentation>
+      <presentation id="Pol_NoConfigCache_2">
+        <text>Prevents users from changing any cache configuration settings.</text>
+      </presentation>
+      <presentation id="Pol_NoPinFiles_1">
+        <text>Click Show and enter a UNC path for each file or folder</text>
+        <text> </text>
+        <listBox refId="Lbl_NoPinFilesList">Files and Folders: </listBox>
+      </presentation>
+      <presentation id="Pol_NoPinFiles_2">
+        <text>Click Show and enter a UNC path for each file or folder</text>
+        <text> </text>
+        <listBox refId="Lbl_NoPinFilesList">Files and Folders: </listBox>
+      </presentation>
+      <presentation id="Pol_PurgeAtLogoff">
+        <text>Causes the local copy of any offline file accessed by the user</text>
+        <text>to be deleted when the user logs off of the computer.</text>
+        <text> </text>
+        <checkBox refId="Lbl_PurgeOnlyAutoCachedFiles">Delete only the temporary offline files.</checkBox>
+      </presentation>
+      <presentation id="Pol_ReminderFreq_1">
+        <text>Number of minutes between reminder balloons</text>
+        <text> </text>
+        <decimalTextBox refId="Lbl_ReminderFreqSpin" defaultValue="60" spinStep="10">Minutes: </decimalTextBox>
+      </presentation>
+      <presentation id="Pol_ReminderFreq_2">
+        <text>Number of minutes between reminder balloons</text>
+        <text> </text>
+        <decimalTextBox refId="Lbl_ReminderFreqSpin" defaultValue="60" spinStep="10">Minutes: </decimalTextBox>
+      </presentation>
+      <presentation id="Pol_ReminderInitTimeout_1">
+        <text>Sets the lifetime of the initial notification balloon displayed</text>
+        <text>when an Offline Files event occurs.</text>
+        <text> </text>
+        <decimalTextBox refId="Lbl_ReminderInitTimeoutSpin" defaultValue="30">Seconds: </decimalTextBox>
+      </presentation>
+      <presentation id="Pol_ReminderInitTimeout_2">
+        <text>Sets the lifetime of the initial notification balloon displayed</text>
+        <text>when an Offline Files event occurs.</text>
+        <text> </text>
+        <decimalTextBox refId="Lbl_ReminderInitTimeoutSpin" defaultValue="30">Seconds: </decimalTextBox>
+      </presentation>
+      <presentation id="Pol_ReminderTimeout_1">
+        <text>Sets the lifetime of the balloon displayed periodically reminding</text>
+        <text>users of the current condition of Offline Files.</text>
+        <text> </text>
+        <decimalTextBox refId="Lbl_ReminderTimeoutSpin" defaultValue="15">Seconds: </decimalTextBox>
+      </presentation>
+      <presentation id="Pol_ReminderTimeout_2">
+        <text>Sets the lifetime of the balloon displayed periodically reminding</text>
+        <text>users of the current condition of Offline Files.</text>
+        <text> </text>
+        <decimalTextBox refId="Lbl_ReminderTimeoutSpin" defaultValue="15">Seconds: </decimalTextBox>
+      </presentation>
+      <presentation id="Pol_SlowLinkSpeed">
+        <text>Value entered is [ bps / 100 ] --&gt; Example: 128,000bps, enter 1280</text>
+        <decimalTextBox refId="Lbl_SlowLinkSpeedSpin" defaultValue="640" spinStep="10">Value: </decimalTextBox>
+      </presentation>
+      <presentation id="Pol_SyncAtSuspend_1">
+        <text>Type of synchronization to perform when suspending:</text>
+        <text> </text>
+        <dropdownList refId="Lbl_SyncAtSuspendCombo" defaultItem="0">Action:</dropdownList>
+      </presentation>
+      <presentation id="Pol_SyncAtSuspend_2">
+        <text>Type of synchronization to perform when suspending:</text>
+        <text> </text>
+        <dropdownList refId="Lbl_SyncAtSuspendCombo" defaultItem="0">Action:</dropdownList>
+      </presentation>
+      <presentation id="Pol_QuickAdimPin">
+        <text>Enables efficient processing of administratively assigned</text>
+        <text>offline files.</text>
+      </presentation>
+      <presentation id="Pol_SlowLinkSettings">
+        <text>Allows the administrator to configure when the automatic slow-link transition should happen for the specified UNC paths.</text>
+        <text>The UNC path should be specified in the Value Name colume. The thresholds for throughput (in bits per second) and/or latency (in milliseconds) should be specified in the Value column.</text>
+        <text>Examples:</text>
+        <text>To enable the slow-link mode to apply when network throughput is less than 10000 bits per second and network latency is greater than 50 milliseconds:</text>
+        <text> Value Name="*" Value="Throughput=10000, Latency=50"</text>
+        <text>To enable the slow-link mode to apply to all shares on a server named "server" when network latency is greater than 50 milliseconds:</text>
+        <text> Value Name="\\server\*" Value="Latency=50"</text>
+        <text>To enable the slow-link mode to apply to the share named "\\server\share" when network throughput is less than 10000 bits per second:</text>
+        <text> Value Name="\\server\share\*" Value="Throughput=10000"</text>
+        <listBox refId="Lbl_SlowLinkSettingsList">UNC Paths: </listBox>
+        <text> </text>
+      </presentation>
+      <presentation id="Pol_CacheSize">
+        <text>Value entered is in Megabytes.</text>
+        <text> </text>
+        <decimalTextBox refId="Lbl_TotalCacheSizeSpin" defaultValue="1000" spinStep="100">Total size of offline files: </decimalTextBox>
+        <decimalTextBox refId="Lbl_AutoCacheSizeSpin" defaultValue="100" spinStep="100">Size of auto-cached files: </decimalTextBox>
+      </presentation>
+      <presentation id="Pol_BackgroundSyncSettings">
+        <text>Configure background sync:</text>
+        <text> </text>
+        <decimalTextBox refId="Lbl_BackgroundSyncDefaultSyncTime" defaultValue="360" spinStep="10">Sync Interval (minutes)</decimalTextBox>
+        <decimalTextBox refId="Lbl_BackgroundSyncVariance" defaultValue="60" spinStep="10">Sync Variance (minutes)</decimalTextBox>
+        <decimalTextBox refId="Lbl_BackgroundSyncIgnoreBlockOutTime" defaultValue="0" spinStep="15">Maximum Allowed Time Without A Sync (minutes)</decimalTextBox>
+        <decimalTextBox refId="Lbl_BackgroundSyncBlockOutPeriodStartTime" defaultValue="0" spinStep="10">Blockout Start Time (HHMM)</decimalTextBox>
+        <text>    HHMM is a value where</text>
+        <text>        HH must be between 0 and 24, and</text>
+        <text>        MM must be between 0 and 59.</text>
+        <decimalTextBox refId="Lbl_BackgroundSyncBlockOutPeriodDuration" defaultValue="0" spinStep="10">Blockout Duration (minutes)</decimalTextBox>
+        <checkBox refId="Lbl_BackgroundSyncInForcedOffline">Enable Background Sync for shares in user selected "Work Offline" mode</checkBox>
+      </presentation>
+      <presentation id="Pol_OnlineCachingSettings">
+        <text>Enter the network latency value above which network files will be temporarily cached on the client. </text>
+        <text> </text>
+        <decimalTextBox refId="Lbl_OnlineCachingSettingsList" defaultValue="32000" spinStep="100">Enter network latency value in milliseconds</decimalTextBox>
+        <text> </text>
+      </presentation>
+      <presentation id="Pol_ExclusionListSettings">
+        <text>Enter semi-colon separated file extensions that you want to be excluded from being made available offline by Offline Files. </text>
+        <text>Extensions must be preceded by an asterisk and period. "e.g. *.dbf;*.jpg"</text>
+        <text> </text>
+        <textBox refId="Lbl_ExclusionListSettingsList">
+          <label>Extensions: </label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

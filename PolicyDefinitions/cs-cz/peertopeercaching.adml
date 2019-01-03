@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>Pobočková mezipaměť (BranchCache) umožňuje klientům bezpečně načítat obsah v rámci pobočky místo toho, aby jej museli načítat ze serveru hostujícího obsah. V závislosti na režimu nasazení lze obsah načíst z jiných klientů v pobočce nebo ze severu hostované mezipaměti v pobočce. Klient může načíst obsah z pobočky, pouze pokud má od serveru autorizaci. Používání pobočkové mezipaměti (BranchCache) snižuje náklady na připojení k síti WAN, které připojuje pobočky k datovým centrům nebo k ústředím, a zvyšuje rychlost stahování u obsahu, který již byl stažen do pobočky.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">Zapnout funkci BranchCache</string>
+
+            <string id="WBC_Enable_Help">Nastavení této zásady určuje, zda je v klientském počítači povolena pobočková mezipaměť BranchCache. BranchCache snižuje využití připojení WAN (wide area network) připojující pobočky k datovým centrům nebo centrálám a zvyšuje přístupové rychlosti pro obsah, který již byl stažen do pobočky. BranchCache to umožňuje tím, že povolí počítačům v pobočce ukládat do mezipaměti soubory a datový přenos HTTP z intranetových serverů, na kterých je mezipaměť BranchCache povolena, a následně bezpečně sdílet soubory s ostatními počítači v pobočce. Počítače v pobočkách mohou načítat obsah ze serveru hostované mezipaměti v pobočce (při používání režimu hostované mezipaměti) nebo z jiných klientských počítačů v pobočce (při používání režimu distribuované mezipaměti). Aby bylo možné získat přístup k obsahu v mezipaměti, musí mít počítač oprávnění pro přístup k obsahu na zdrojovém serveru.
+
+Nastavení této zásady povolte v klientských počítačích v pobočkách s nízkou šířkou pásma sítě WAN, s vysokou latencí a velkým počtem klientských počítačů, které využívají stejná data ze serverů v centrále.
+
+Pokud nastavení této zásady povolíte, je mezipaměť BranchCache zapnuta. Aby se nastavení této zásady projevilo, je nutné také nainstalovat funkci BranchCache v klientském počítači.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, bude funkce BranchCache vypnuta.
+            </string>
+
+            <string id="WBC_Cache_Percent">Nastavit procentuální místo na disku využívané pro mezipaměť klientského počítače</string>
+
+            <string id="WBC_Cache_Percent_Help">Nastavení této zásady změní výchozí procentuální hodnotu celkového místa na disku, které má být vyhrazeno pro ukládání načteného obsahu do pobočkové mezipaměti (BranchCache). Tento obsah je zpřístupněn pro další požadující klientské počítače, pokud mají od serveru autorizaci získat k obsahu přístup.
+
+Pokud nastavení této zásady povolíte, můžete nakonfigurovat procentuální hodnotu celkového místa na disku, které má být vyhrazeno pro mezipaměť.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, je mezipaměť nastavena na 5 procent celkového místa na disku klientského počítače.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Nastavit režim hostované mezipaměti BranchCache</string>
+
+            <string id="WBC_HostedCache_Location_Help">Nastavení této zásady určuje, zda má klientský počítač používat režim hostované mezipaměti, a pokud ano, jaká je adresa serveru BranchCache. Režim hostované mezipaměti umožňuje klientskému počítači načítat obsah ze serveru BranchCache, který funguje jako centrální (hostovaná) pobočková mezipaměť. Při používání režimu hostované mezipaměti je obsah stažený klientskými počítači s podporou mezipaměti BranchCache nabízen serveru BranchCache, který potom slouží jako centralizovaná mezipaměť pro další klienty s podporou mezipaměti BranchCache v pobočce. Klientské počítače používají ke komunikaci se serverem BranchCache protokol Secure Sockets Layer (SSL).
+
+Chcete-li použít nastavení této zásady, je nutné zadat adresu serveru BranchCache a tato adresa se musí shodovat s plně kvalifikovaným názvem domény na serveru zadaném v certifikátu pro server BranchCache. Navíc musí být hlavní certifikační autorita pro certifikát serveru BranchCache v důvěryhodném kořenovém úložišti klientského počítače.
+
+Pokud nastavení této zásady povolíte a zadáte platné umístění hostované mezipaměti, je zapnut režim hostované mezipaměti. Aby bylo nastavení této zásady platné, je nutné povolit nastavení zásady Zapnout funkci BranchCache.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, je režim hostované mezipaměti vypnutý.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Nastavit režim distribuované mezipaměti BranchCache</string>
+
+            <string id="WBC_Distributed_Enable_Help">Nastavení této zásady určuje, zda by měl klientský počítač používat režim distribuované mezipaměti. Tento režim pobočkové mezipaměti (BranchCache) umožňuje klientskému počítači načíst obsah, který byl stažen a uložen do mezipaměti jinými klientskými počítači v pobočce. Chcete-li získat přístup k obsahu uloženému v mezipaměti z jiných klientských počítačů v pobočce, musí mít počítač oprávnění získat přístup k obsahu na zdrojovém serveru.
+
+Nastavení této zásady určuje, zda je použit režim distribuované mezipaměti. Nastavení této zásady povolte v případě, že používáte pobočkovou mezipaměť BranchCache v pobočkách, pro které není nakonfigurován žádný server fungující jako hostovaná mezipaměť.
+
+Pokud nastavení této zásady povolíte, je použit režim distribuované mezipaměti. Aby bylo nastavení této zásady platné, je nutné povolit nastavení zásady Zapnout funkci BranchCache.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, je režim distribuované mezipaměti vypnutý.
+            </string>
+
+            <string id="WBC_SMB_Enable">Konfigurovat pobočkovou mezipaměť (BranchCache) pro síťové soubory</string>
+
+            <string id="WBC_SMB_Enable_Help">Nastavení této zásady změní výchozí hodnotu latence sítě pro přijetí odezvy, nad kterou budou síťové soubory ukládány klientskými počítači v pobočce. BranchCache pro síťové soubory umožňuje počítačům v pobočce ukládat do mezipaměti data z intranetových serverů, na kterých je mezipaměť BranchCache povolena, a následně bezpečně sdílet soubory s ostatními počítači v pobočce. Jedním z typů obsahu, které lze ukládat do pobočkové mezipaměti, jsou síťové soubory využívající protokol SMB (Server Message Block).
+
+Ve výchozím nastavení jsou síťové soubory ukládány do pobočkové mezipaměti, pokud je hodnota latence sítě WAN (wide area network) pro přijetí odezvy vyšší než 80 ms. Chcete-li do mezipaměti síťové soubory stažené do počítačů v pobočce ukládat vždy, nastavte hodnotu latence sítě na hodnotu 0. Chcete-li ukládání síťových souborů do pobočkové mezipaměti zakázat, nastavte hodnotu latence na velmi vysokou hodnotu.
+
+Pokud nastavení této zásady povolíte, můžete nakonfigurovat hodnotu latence sítě pro přijetí odezvy, nad kterou mají být síťové soubory ukládány klientskými počítači do pobočkové mezipaměti.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, bude klientský počítač ukládat síťové soubory do mezipaměti v případě, že je hodnota latence sítě WAN pro přijetí odezvy vyšší než 80 ms.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Zadat umístění mezipaměti klientského počítače</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Zadat umístění hostované mezipaměti</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Zadat hodnotu latence sítě pro přijetí odezvy v milisekundách, nad kterou budou muset být síťové soubory ukládány do pobočkové mezipaměti</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

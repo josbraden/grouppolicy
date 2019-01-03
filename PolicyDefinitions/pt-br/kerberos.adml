@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Configurações do Kerberos</displayName>
+  <description>Definições de configuração do protocolo de autenticação Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Usar a ordem de pesquisa de floresta</string>
+      <string id="forestsearch_explain">Essa configuração de diretiva define a lista de florestas confiáveis que o cliente Kerberos pesquisa ao tentar resolver SPNs (nomes da entidade de serviço) com duas partes.
+
+Se você habilitar essa configuração de diretiva, o cliente Kerberos pesquisará as florestas nesta lista se ele não puder resolver um SPN com duas partes. Se for encontrada uma correspondência, o cliente Kerberos solicitará um tíquete de referência para o domínio apropriado.
+
+Se você desabilitar ou não definir dessa configuração de diretiva, o cliente Kerberos não pesquisará as florestas listadas para resolver o SPN. Se o cliente Kerberos não puder resolver o SPN porque o nome não foi encontrado, a autenticação NTLM poderá ser usada.</string>
+      <string id="hosttorealm">Definir os mapeamentos de nome de host para realm Kerberos</string>
+      <string id="hosttorealm_explain">Esta configuração de diretiva permite especificar quais nomes de host DNS e quais sufixos DNS são mapeados para um realm Kerberos.
+
+Se você habilitar essa configuração de diretiva, poderá visualizar e alterar a lista de nomes de host DNS e sufixos DNS mapeados para um realm Kerberos como definido pela Diretiva de Grupo. Para ver a lista de mapeamentos, habilite a configuração de diretiva e clique no botão Mostrar. Para adicionar um mapeamento, habilite a configuração de diretiva, anote a sintaxe e clique em Mostrar. Na caixa de diálogo Mostrar Conteúdo na coluna Nome do Valor, digite o nome do realm. Na coluna Valor, digite a lista dos nomes do host DNS e sufixos DNS usando o formato de sintaxe apropriado. Para remover um mapeamento da lista, clique na entrada do mapeamento a ser removida e, em seguida, pressione a tecla DELETE. Para editar um mapeamento, remova a entrada atual da lista e adicione outra com parâmetros diferentes.
+
+Se você desabilitar essa configuração de diretiva, a lista de mapeamentos de nome de host para realms Kerberos definidos pela Diretiva de Grupo é excluída.
+
+Se você não configurar essa diretiva, o sistema usará os mapeamentos de nome de host para realms Kerberos que estão definidos no Registro local, caso existam.</string>
+      <string id="MitRealms">Definir configurações de realm interoperável Kerberos V5</string>
+      <string id="MitRealms_explain">Essa diretiva configura o cliente Kerberos, de forma que possa autenticar com realms interoperáveis Kerberos V5, como definido por essa configuração de diretiva.
+      
+Se você habilitar essa configuração de diretiva, será possível visualizar e alterar a lista de realms interoperáveis Kerberos V5 e suas configurações. Para ver a lista de realms interoperáveis Kerberos V5, habilite a configuração de diretiva e clique no botão Mostrar. Para adicionar um realm interoperável Kerberos V5, habilite a configuração de diretiva, anote a sintaxe e clique em Mostrar. Na caixa de diálogo Mostrar Conteúdo na coluna Nome do Valor, digite o nome do realm interoperável Kerberos V5. Na coluna Valor, digite os sinalizadores de realm e os nomes de host dos KDCs host usando o formato de sintaxe apropriado. Para remover uma entrada Valor ou Nome do Valor do realm interoperável Kerberos V5 da lista, clique na entrada e, em seguida, pressione a tecla DELETE. Para editar um mapeamento, remova a entrada atual da lista e adicione outra com parâmetros diferentes.
+
+Se você desabilitar essa configuração de diretiva, as configurações de realm interoperável Kerberos V5 definidas pela Diretiva de Grupo serão excluídas.
+
+Se você não configurar essa diretiva, o sistema usará as configurações de realm interoperável Kerberos V5 que são definidas no Registro local, caso existam.</string>
+      <string id="ValidateKDC">Exigir validação KDC rigorosa</string>
+      <string id="ValidateKDC_explain">Essa configuração de diretiva controla o comportamento do cliente Kerberos ao validar o certificado KDC.  
+      
+Se você habilitar essa configuração de diretiva, o cliente Kerberos exigirá que o certificado X.509 do KDC contenha o identificador de objeto de finalidade de chave KDC nas extensões EKU (Uso Estendido de Chave) e que o certificado X.509 do KDC contenha uma extensão dNSName subjectAltName (SAN) que corresponda ao nome DNS do domínio. Se o computador fizer parte de um domínio, o cliente Kerberos exigirá que o certificado X.509 do KDC seja assinado por uma CA (Autoridade de Certificação) no repositório NTAUTH. Se o computador não fizer parte de um domínio, o cliente Kerberos permitirá que o certificado CA raiz no cartão inteligente seja usado na validação de caminho do certificado X.509 do KDC.
+
+Se você desabilitar ou não configurar essa diretiva, o cliente Kerberos vai exigir apenas que o certificado KDC contenha o identificador do objeto de finalidade de Autenticação de Servidor nas extensões EKU.
+</string>
+      <string id="StrictTarget">Exigir correspondência de SPN de destino restrito em chamadas de procedimento remoto</string>
+      <string id="StrictTarget_explain">Quando um aplicativo tenta fazer uma RPC (chamada de procedimento remoto) para este servidor com um valor NULL para o SPN (nome da entidade de serviço), os computadores que executam o Windows 7 tentarão usar Kerberos gerando um SPN. Essa configuração de diretiva permite que você configure o servidor de forma que o Kerberos possa descriptografar um tíquete contendo esse SPN gerado pelo sistema.
+
+Se você habilitar essa configuração, somente os serviços que estiverem em execução como LocalSystem ou NetworkService terão permissão para aceitar essas conexões. Poderá haver falha na autenticação de serviços executados como identidades diferentes de LocalSystem ou NetworkService.
+
+Se você desabilitar ou não configurar essa diretiva, qualquer serviço terá permissão para aceitar as conexões de entrada usando esse SPN gerado pelo sistema.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Definir mapeamentos de nome de host para realm:</listBox>
+        <text></text>
+        <text>Sintaxe:</text>
+        <text>insira o nome do realm Kerberos como Nome de Valor.</text>
+        <text>Insira os nomes de host e os sufixos DNS que você deseja</text>
+        <text>mapear para o realm Kerberos como o Valor. Para adicionar vários</text>
+        <text>nomes, separe as entradas com ";".</text>
+        <text></text>
+        <text>Observação: para especificar um sufixo DNS, coloque um ponto, ".", antes da entrada.</text>
+        <text>Para um nome de host, não especifique um ponto à esquerda ".".</text>
+        <text></text>
+        <text>Exemplo:</text>
+        <text>Nome do Valor: MICROSOFT.COM</text>
+        <text>Valor: .microsoft.com; .ms.com; computer1.fabrikam.com;</text>
+        <text></text>
+        <text>No exemplo acima. Todos os objetos com o sufixo DNS</text>
+        <text>*.microsoft.com ou *.ms.com serão mapeados para o</text>
+        <text>realm Kerberos MICROSOFT.COM. Além do nome de host,</text>
+        <text>computer1.fabrikam.com também será mapeado para o </text>
+        <text>realm Kerberos MICROSOFT.COM.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Defina as configurações de realm interoperável Kerberos V5:</listBox>
+        <text></text>
+        <text>Sintaxe:</text>
+        <text>insira o nome do realm interoperável Kerberos V5 como Nome de Valor.</text>
+        <text>Insira os sinalizadores de realm e os nomes de host dos KDCs como</text>
+        <text>o Valor. Coloque os sinalizadores de realm entre as seguintes</text>
+        <text>marcas &lt;f&gt; &lt;/f&gt;. Coloque a lista de KDCs entre as marcas &lt;k&gt; &lt;/k&gt;</text>
+        <text>Para adicionar vários nomes KDC, separe as entradas com</text>
+        <text>ponto e vírgula ";".</text>
+        <text></text>
+        <text>Exemplo:</text>
+        <text>Nome do Valor: TEST.COM</text>
+        <text>Valor: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Outro exemplo:</text>
+        <text>Nome do Valor: REALM.FABRIKAM.COM</text>
+        <text>Valor: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Modo:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Florestas a Serem Pesquisadas</label>
+        </textBox>
+        <text>Sintaxe:</text>
+        <text>Insira a lista de florestas a serem pesquisadas quando esta diretiva estiver habilitada.</text>
+        <text>Use o formato de nome FQDN (nome de domínio totalmente qualificado).</text>
+        <text>Separe as diversas entradas de pesquisa com um ponto-e-vírgula ";".</text>
+        <text>Detalhes:</text>
+        <text>A floresta atual não precisa estar listada porque a Ordem de Pesquisa da Floresta usa primeiro o catálogo global e depois pesquisa na ordem listada.</text>
+        <text>Não é necessário listar todos os domínios da floresta separadamente.</text>
+        <text>Se uma floresta confiável estiver listada, todos os domínios da floresta serão pesquisados.</text>
+        <text>Para obter o melhor desempenho, liste as florestas em ordem de probabilidade de êxito. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>KDC Ayarları</displayName>
+  <description>Kerberos Anahtar Dağıtım Merkezi için yapılandırma ayarları.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Orman arama sırasını kullan</string>
+      <string id="forestsearch_explain">Bu ilke ayarı, iki parçalı hizmet birincil adlarını (SPN) çözmeye çalışırken Anahtar Dağıtım Merkezi'nin (KDC) aradığı güvenen ormanların listesini tanımlar.
+
+Bu ilke ayarını etkinleştirirseniz, yerel bir ormanda iki parçalı bir SPN'yi çözemezse KDC bu listedeki ormanları arar. Orman araması genel bir katalog veya ad önek ipuçları kullanılarak yapılır. Bir eşleşme bulunursa, uygun bir etki alanı için KDC istemciye bir referans anahtarı döndürür.
+
+Bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, KDC, SPN'yi çözmek için listelenen ormanları aramaz. KDC SPN'yi ad bulunamadığı için çözemiyorsa, NTLM kimlik doğrulaması kullanılabilir.
+
+Tutarlı davranış sağlamak için bu ilke ayarının etki alanındaki tüm etki alanı denetleyicilerinde desteklenmesi aynı şekilde ayarlanması gerekir.</string>
+      <string id="emitlili">İstemci bilgisayarlara önceki oturum açmalar hakkında bilgi sağla</string>
+      <string id="emitlili_explain">Bu ilke ayarı, etki alanı denetleyicisinin istemci bilgisayarlara önceki oturum açmalar hakkında bilgi sağlayıp sağlamadığını denetler. 
+
+Bu ilke ayarını etkinleştirirseniz, bu etki alanı denetleyicisi önceki oturum açmalar hakkında bilgi iletisi sağlar.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız, etki alanı denetleyicisi "Kullanıcının oturum açması sırasında daha önceki oturumlar hakkındaki bilgileri görüntüle" ilke ayarı etkin olmadıkça önceki oturum açmalar hakkında bilgi sağlamaz.
+
+Windows Oturum Açma'nın bu özelliği kullanması için Windows Bileşenleri altındaki Windows Oturum Açma Seçenekleri düğümünde bulunan "Kullanıcının oturum açması sırasında daha önceki oturumlar hakkındaki bilgileri görüntüle" ilke ayarının da etkin olması gerekir.
+
+Not: Yalnızca etki alanı işlev düzeyi Windows Server 2008 ise önceki oturum açmalar hakkında bilgi sağlanır. Etki alanı işlev düzeyi Windows Server 2003, Windows 2000 asıl veya Windows 2000 karma olan etki alanlarındaki etki alanı denetleyicileri önceki oturum açmalar hakkında bilgi sağlayamaz ve bu ilke ayarının etkinleştirilmesi hiçbir şeyi etkilemez.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Mod:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Aranacak Ormanlar</label>
+        </textBox>
+        <text>Sözdizimi:</text>
+        <text>Bu ilke etkinleştirildiğinde aranacak ormanların listesini girin.</text>
+        <text>Tam Etki Alanı Adı (FQDN) adlandırma biçimini kullanın.</text>
+        <text>Birden fazla arama girişini noktalı virgülle ";" ayırın.</text>
+        <text>Ayrıntılar:</text>
+        <text>Orman Arama Sırası önce genel kataloğu, sonra listelenen sırayı aradığından geçerli ormanın listelenmesi gerekmez.</text>
+        <text>Ormandaki tüm etki alanlarını ayrı olarak listelemeniz gerekmez.</text>
+        <text>Güvenen bir orman listelenmişse, söz konusu ormandaki tüm etki alanları aranır.</text>
+        <text>En iyi performans için, ormanları başarı olasılığı sırasına göre listeleyin.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

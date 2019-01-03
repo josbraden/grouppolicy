@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
+  <resources>
+    <stringTable>
+      <string id="AppCompat">Application Compatibility</string>
+      <string id="AppCompat_Prevent16Bit_Help">Specifies whether to prevent the MS-DOS subsystem (ntvdm.exe) from running for all users. This setting affects the launching of 16-bit applications in the operating system. By default, the MS-DOS subsystem runs for all users.
+
+You can use this setting to turn off the MS-DOS subsystem, which will reduce resource usage and prevent users from running 16-bit applications. To run any 16-bit application or any application with 16-bit components, ntvdm.exe must be allowed to run. The MS-DOS subsystem starts when the first 16-bit application is launched. While the process is running, any subsequent 16-bit applications launch faster, but overall resource usage on the system is increased.
+
+If the status is set to Enabled, ntvdm.exe is prevented from running, which then prevents any 16-bit applications from running. In addition, any 32-bit applications with 16-bit installers or other 16-bit components cannot run.
+
+If the status is set to Disabled, the default setting applies and the MS-DOS subsystem runs for all users.
+
+If the status is set to Not Configured, the default applies and ntvdm.exe runs for all users. However, if an administrator sets the registry DWORD value HKLM\System\CurrentControlSet\Control\WOW\DisallowedPolicyDefault to 1, the default changes to prevent all 16-bit applications from running.
+
+Note:  This setting appears in both Computer Configuration and User Configuration. If both settings are configured, the Computer Configuration setting overrides.</string>
+      <string id="AppCompat_Prevent16BitMach_Help">Specifies whether to prevent the MS-DOS subsystem (ntvdm.exe) from running on this computer. This setting affects the launching of 16-bit applications in the operating system. By default, the MS-DOS subsystem runs for all users on this computer.
+
+You can use this setting to turn off the MS-DOS subsystem, which will reduce resource usage and prevent users from running 16-bit applications. To run any 16-bit application or any application with 16-bit components, ntvdm.exe must be allowed to run. The MS-DOS subsystem starts when the first 16-bit application is launched. While the MS-DOS subsystem is running, any subsequent 16-bit applications launch faster, but overall resource usage on the system is increased.
+
+If the status is set to Enabled, ntvdm.exe is prevented from running, which then prevents any 16-bit applications from running. In addition, any 32-bit applications with 16-bit installers or other 16-bit components cannot run.
+
+If the status is set to Disabled, the default setting applies and the MS-DOS subsystem runs for all users on this computer.
+
+If the status is set to Not Configured, the default applies and ntvdm.exe runs for all users. However, if an administrator sets the registry DWORD value HKLM\System\CurrentControlSet\Control\WOW\DisallowedPolicyDefault to 1, the default changes to prevent all 16-bit applications from running.
+
+Note:  This setting appears in both Computer Configuration and User Configuration. If both settings are configured, the Computer Configuration setting overrides.</string>
+      <string id="AppCompat_RemoveProgramCompatPropPage_Help">This policy controls the visibility of the Program Compatibility property page shell extension.  This shell extension is visible on the property context-menu of any program shortcut or executable file.
+
+The compatibility property page displays a list of options that can be selected and applied to the application to resolve the most common issues affecting legacy applications.  Enabling this policy setting removes the property page from the context-menus, but does not affect previous compatibility settings applied to application using this interface.</string>
+        <string id="AppCompat_TurnOffApplicationImpactTelemetry_Help">The policy controls the state of the Application Telemetry engine in the system.
+
+Application Telemetry is a mechanism that tracks anonymous usage of specific Windows system components by applications.
+
+Turning Application Telemetry off by selecting "enable" will stop the collection of usage data.
+
+If the customer Experience Improvement program is turned off, Application Telemetry will be turned off regardless of how this policy is set.
+
+Disabling telemetry will take effect on any newly launched applications. To ensure that telemetry collection has stopped for all applications, please reboot your machine.</string>
+      <string id="AppCompat_TurnOffEngine_Help"> This policy controls the state of the application compatibility engine in the system.
+
+The engine is part of the loader and looks through a compatibility database every time an application is started on the system.  If a match for the application is found it provides either run-time solutions or compatibility fixes, or displays an Application Help message if the application has a know problem.
+
+Turning off the application compatibility engine will boost system performance.  However, this will degrade the compatibility of many popular legacy applications, and will not block known incompatible applications from installing.  (For Instance: This may result in a blue screen if an old anti-virus application is installed.)
+
+The Windows Resource Protection and User Account Control features of Windows use the application compatibility engine to provide mitigations for application problems. If the engine is turned off, these mitigations will not be applied to applications and their installers and these applications may fail to install or run properly.
+
+This option is useful to server administrators who require faster performance and are aware of the compatibility of the applications they are using.  It is particularly useful for a web server where applications may be launched several hundred times a second, and the performance of the loader is essential.
+
+NOTE: Many system processes cache the value of this setting for performance reasons.  If you make changes to this setting, please reboot to ensure that your system accurately reflects those changes.</string>
+      <string id="AppCompat_TurnOffProgramCompatibilityAssistant_Help">This policy controls the state of the Program Compatibility Assistant in the system.
+      
+The PCA monitors user initiated programs for known compatibility issues at run time. Whenever a potential issue with an application is detected, the PCA will prompt the user with pointers to recommended solutions.  For more information on the various issue detection scenarios covered by PCA and the policies to configure them, refer to policies under System-&gt;Troubleshooting and Diagnostics-&gt;Application Compatibility Diagnostics. 
+
+The PCA is on by default.
+
+If you enable this policy setting, the PCA will be turned off. This option is useful for system administrators who require faster performance and are aware of the compatibility of the applications they are using. Note: With the PCA turned off, the user will not be presented with solutions to known compatibility issues when running applications.
+
+If you disable or do not configure this policy setting, the PCA will be turned on. 
+
+Note: The Diagnostic Policy Service (DPS) and Program Compatibility Assistant Service must be running for the PCA to execute. These services can be configured using the Services snap-in to the Microsoft Management Console.</string>
+      <string id="AppCompat_TurnOffUserActionRecord_Help">This policy controls the state of the Problem Steps Recorder feature in the system.
+
+Problem Steps Recorder enables capturing the steps taken by the user before encountering a problem. The output data generated by Problem Steps Recorder will be another type of data collection enabled through feedback scenarios such as Windows Error Reporting to help developers in understanding problems. The captured data will contain descriptions about the user actions involving information such as  user inputs on keyboard and mouse, meta data about the UI objects interacted along with screen shots.  Problem Steps Recorder provides specific options to turn on and off the data collection whenever required.
+
+By default, Problem Steps Recorder will be available for customers to turn on during a problem reporting scenario.
+
+If you enable this policy setting, then the Problem Steps Recorder feature will be disabled on this machine.
+
+If you disable or do not configure this policy setting, then Problem Steps Recorder will be available for customers.</string>
+
+      <string id="AppCompat_TurnOffSwitchBack_Help">The policy controls the state of the Switchback compatibility engine in the system. 
+
+Switchback is a mechanism that provides generic compatibility mitigations to older applications by providing older behavior to old applications and new behavior to new applications. 
+
+Switchback is on by default.
+
+If you enable this policy setting, Switchback will be turned off. Turning Switchback off may degrade the compatibility of older applications. This option is useful for server administrators who require performance and are aware of compatibility of the applications they are using. 
+
+If you disable or do not configure this policy setting, the Switchback will be turned on.
+
+Please reboot the system after changing the setting to ensure that your system accurately reflects those changes.</string>
+      <string id="AppCompat_TurnOffProgramInventory_Help">This policy controls the state of the Program Inventory collector in the system.
+      
+The PDU inventories programs and files on the system and sends information about those files to Microsoft.  This information is used to help associate files to programs and diagnose application compatibility problems.
+
+The PDU is on by default.
+
+If you enable this policy setting, inventory collection will be turned off and data will not be sent to Microsoft. Enabling this setting also disables collection of installation data through PCA.
+
+If you disable or do not configure this policy setting, inventory collection will be turned on.</string>
+
+      <string id="AppCompatPrevent16Bit">Prevent access to 16-bit applications</string>
+      <string id="AppCompatPrevent16BitMach">Prevent access to 16-bit applications</string>
+      <string id="AppCompatRemoveProgramCompatPropPage">Remove Program Compatibility Property Page</string>
+      <string id="AppCompatTurnOffApplicationImpactTelemetry">Turn off Application Telemetry</string>
+      <string id="AppCompatTurnOffEngine">Turn off Application Compatibility Engine</string>
+      <string id="AppCompatTurnOffProgramCompatibilityAssistant">Turn off Program Compatibility Assistant</string>
+      <string id="AppCompatTurnOffSwitchBack">Turn off SwitchBack Compatibility Engine</string>
+      <string id="AppCompatTurnOffUserActionRecord">Turn off Problem Steps Recorder</string>
+      <string id="AppCompatTurnOffProgramInventory">Turn off Program Inventory</string>
+    </stringTable>
+  </resources>
+</policyDefinitionResources>

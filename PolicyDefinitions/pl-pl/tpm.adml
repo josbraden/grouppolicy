@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>tutaj wprowadź wyświetlaną nazwę</displayName>
+  <description>tutaj wprowadź opis</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">To ustawienie zasad umożliwia zarządzanie kopiami zapasowymi informacji o właścicielu zgodnego sprzętowego modułu zabezpieczającego TPM (Trusted Platform Module) w usługach domenowych usługi Active Directory (AD DS). 
+
+Informacje o właścicielu modułu TPM zawierają kryptograficzny skrót hasła użytkownika modułu TPM. Niektóre polecenia modułu TPM może uruchamiać tylko jego właściciel. Ta wartość skrótu zezwala modułowi TPM na uruchamianie tych poleceń. 
+
+Jeśli to ustawienie zasad zostanie włączone, to w przypadku użycia systemu Windows w celu ustawienia lub zmiany hasła użytkownika modułu TPM kopie zapasowe informacji o właścicielu modułu TPM będą wykonywane automatycznie w usłudze Active Directory w trybie cichym. 
+
+Po wybraniu opcji „Wymagana kopia zapasowa modułu TPM w usługach AD DS” hasło właściciela modułu TPM można ustawić lub zmienić, jeśli komputer połączony z domeną, a utworzenie kopii zapasowej w usługach AD DS powiedzie się. Opcja ta jest wybrana domyślnie, aby zapewnić dostępność informacji o właścicielu modułu TPM. W przeciwnym razie zostanie podjęta próba utworzenia kopii zapasowej w usługach AD DS, ale awarie sieci i inne nie będą miały wpływu na zarządzanie modułem TPM. Próba ponownego utworzenia kopii zapasowej nie jest podejmowana automatycznie, a informacje o właścicielu modułu TPM mogą nie zostać zapisane w usługach AD DS podczas konfigurowania programu BitLocker.
+
+Jeśli to ustawienie zasad zostanie wyłączone lub pozostanie nieskonfigurowane, nie będzie wykonywana kopia zapasowa informacji o właścicielu modułu TPM w usługach AD DS. 
+
+Uwaga: Aby kopia zapasowa w usługach AD DS została wykonana pomyślnie, należy najpierw skonfigurować odpowiednie rozszerzenia schematów i ustawienia kontroli dostępu w domenie. Aby uzyskać więcej informacji dotyczących konfigurowania usług Active Directory Domain Services dla modułu TPM, należy zapoznać się z dokumentacją online.
+
+Uwaga: Modułu TPM nie można używać w celu zapewnienia rozszerzonych funkcji zabezpieczeń w programie BitLocker Drive Encryption i innych aplikacjach bez określenia właściciela. Aby przejąć na własność moduł TPM z hasłem właściciela, należy uruchomić polecenie „tpm.msc” i wybrać akcję „Inicjuj moduł TPM”.
+
+Uwaga: W przypadku utraty lub braku dostępności informacji o właścicielu modułu TPM możliwe jest zarządzanie nim w ograniczonym stopniu poprzez uruchomienie polecenia „tpm.msc” na komputerze lokalnym.</string>
+      <string id="ActiveDirectoryBackup_Name">Włącz tworzenie kopii zapasowej modułu TPM w usługach domenowych Active Directory</string>
+      <string id="BlockedCommandsList_Help">To ustawienie zasad umożliwia zarządzanie listą zasad grupy poleceń modułu TPM (Trusted Platform Module) blokowanych w systemie Windows.
+
+Jeśli to ustawienie zasad zostanie włączone, wysyłanie określonych poleceń w systemie Windows do modułu TPM na komputerze będzie blokowane. Polecenia modułu TPM odwołują się do numeru polecenia. Na przykład numer polecenia 129 to TPM_OwnerReadInternalPub, a numer polecenia 170 to TPM_FieldUpgrade. Aby odnaleźć numer polecenia skojarzony z danym poleceniem modułu TPM, należy wpisać polecenie „tpm.msc” i nawigować do sekcji „Zarządzanie poleceniami”.
+
+Jeśli to ustawienie zasad zostanie wyłączone lub pozostanie nieskonfigurowane, tylko polecenia modułu TPM określone na listach domyślnych lub lokalnych będą mogły być blokowane w systemie Windows. Lista domyślna zablokowanych poleceń modułu TPM jest wstępnie skonfigurowana w systemie Windows. Można wyświetlić listę domyślną, wpisując polecenie „tpm.msc”, przechodząc do sekcji „Zarządzanie poleceniami”, a następnie odkrywając kolumnę „Domyślna czarna lista”. Lokalna czarna lista poleceń modułu TPM jest konfigurowana poza zasadami grupy poprzez wpisanie polecenia „tpm.msc” lub za pomocą skryptu dla interfejsu Win32_Tpm. Aby wymusić lub zignorować listy domyślne i lokalne blokowanych poleceń TPM, należy zobaczyć pokrewne ustawienia zasad.</string>
+      <string id="BlockedCommandsList_Name">Konfigurowanie listy blokowanych poleceń modułu TPM</string>
+      <string id="IgnoreDefaultList_Help">To ustawienie zasad umożliwia wymuszanie lub ignorowanie domyślnej listy poleceń modułu TPM (Trusted Platform Module) zablokowanych na komputerze.
+
+Jeżeli to ustawienie zasad zostanie włączone, lista domyślna zablokowanych poleceń modułu TPM będzie ignorowana w systemie Windows i będą blokowane tylko polecenia modułu TPM określone przez zasady grupy lub przez listę lokalną. 
+
+Domyślna lista zablokowanych poleceń modułu TPM jest wstępnie skonfigurowana w systemie Windows. Można wyświetlić listę domyślną, uruchamiając przystawkę tpm.msc, przechodząc do sekcji Zarządzanie poleceniami, a następnie odkrywając kolumnę Domyślna czarna lista. Lokalna czarna lista poleceń modułu TPM jest konfigurowana poza zasadami grupy przez uruchomienie przystawki tpm.msc lub za pomocą skryptu dla interfejsu Win32_Tpm. Aby skonfigurować listę zasad grupy zablokowanych poleceń modułu TPM, zobacz pokrewne ustawienia zasad.
+
+Jeżeli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, w systemie Windows będą blokowane polecenia modułu TPM, które znajdują się na liście domyślnej, oraz polecenia określone w zasadach grupy i na lokalnych listach zablokowanych poleceń modułu TPM. </string>
+      <string id="IgnoreDefaultList_Name">Ignorowanie listy domyślnej blokowanych poleceń modułu TPM</string>
+      <string id="IgnoreLocalList_Help">To ustawienie zasad umożliwia wymuszanie lub ignorowanie lokalnej listy poleceń modułu TPM (Trusted Platform Module) zablokowanych na komputerze.
+
+Jeśli to ustawienie zasad zostanie włączone, lista lokalna zablokowanych poleceń modułu TPM będzie ignorowana w systemie Windows i będą blokowane tylko polecenia modułu TPM określone przez zasady grupy lub przez listę domyślną.
+
+Lista lokalna zablokowanych poleceń modułu TPM jest konfigurowana poza zasadami grupy poprzez wpisanie polecenia „tpm.msc” lub za pomocą skryptu dla interfejsu Win32_Tpm. Lista domyślna zablokowanych poleceń modułu TPM jest wstępnie skonfigurowana w systemie Windows. Aby skonfigurować listę zasad grupy zablokowanych poleceń modułu TPM, należy zobaczyć pokrewne ustawienia zasad. 
+
+Jeśli to ustawienie zasad zostanie wyłączone lub pozostanie nieskonfigurowane, w systemie Windows będą blokowane polecenia modułu TPM odnalezione na liście lokalnej oraz polecenia w zasadach grupy i na listach domyślnych zablokowanych poleceń modułu TPM.</string>
+      <string id="IgnoreLocalList_Name">Ignorowanie listy lokalnej blokowanych poleceń modułu TPM</string>
+      <string id="TPMCategory">Usługi modułu TPM</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Wymagaj kopii zapasowej modułu TPM w usługach AD DS</checkBox>
+        <text/>
+        <text>Po wybraniu tej opcji nie będzie można ustawić ani zmienić hasła właściciela modułu TPM </text>
+        <text>jeśli tworzenie kopii zapasowej nie powiedzie się (zalecane ustawienie domyślne).</text>
+        <text/>
+        <text>Jeśli ta opcja nie zostanie wybrana, można ustawiać i zmieniać hasło właściciela modułu TPM,</text>
+        <text>nawet jeśli tworzenie kopii zapasowej nie powiedzie się. Próba utworzenia kopii zapasowej nie jest podejmowana automatycznie.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Należy określić polecenia do zablokowania przez dodanie ich numerów do listy.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">Lista blokowanych poleceń modułu TPM:</listBox>
+        <text>Na przykład, aby zablokować polecenia TPM_OwnerReadInternalPub</text>
+        <text>oraz TPM_FieldUpgrade, należy dodać do listy elementy 129 i 170.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

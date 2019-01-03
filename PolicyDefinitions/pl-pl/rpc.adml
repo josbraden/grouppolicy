@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>tutaj wprowadź wyświetlaną nazwę</displayName>
+  <description>tutaj wprowadź opis</description>
+  <resources>
+    <stringTable>
+      <string id="Rpc">Zdalne wywoływanie procedury</string>
+      <string id="RpcEEInfoOff">Wyłączone</string>
+      <string id="RpcEEInfoOffWithExc">Wył. z wyjątkami</string>
+      <string id="RpcEEInfoOn">Włączone</string>
+      <string id="RpcEEInfoOnWithExc">Wł. z wyjątkami</string>
+      <string id="RpcEnableAuthEpResolution">Uwierzytelnienie klienta usługi mapowania punktów końcowych RPC</string>
+      <string id="RpcEnableAuthEpResolution_Help">Włączenie tego ustawienia nakazuje klientom RPC komunikującym się z usługą mapowania punktów końcowych uwierzytelnianie, jeśli wywołanie RPC, dla którego punkt końcowy musi zostać rozpoznany, zawiera informacje uwierzytelniania.
+
+Wyłączenie tego ustawienia spowoduje, że klienci RPC komunikujący się z usługą mapowania punktów końcowych nie będą uwierzytelniani. Usługa mapowania punktów końcowych na komputerach z systemem Windows NT4 (i wszystkimi dodatkami Service Pack) nie może przetwarzać informacji uwierzytelniania dostarczanych w ten sposób. Oznacza to, że włączenie tego ustawienia na komputerze klienckim uniemożliwi temu klientowi komunikowanie się z serwerem systemu Windows NT4 za pomocą usługi RPC, jeśli będzie wymagane rozpoznanie punktu końcowego.
+
+Domyślnie klienci RPC nie będą używać uwierzytelniania podczas komunikowania się z usługą mapowania punktów końcowych serwera RPC w celu uzyskania punktu końcowego serwera.
+
+Uwaga: ta zasada zostanie zastosowana po ponownym uruchomieniu systemu. </string>
+      <string id="RpcExtendedErrorInformation">Propagacja rozszerzonych informacji o błędach</string>
+      <string id="RpcExtendedErrorInformation_Help">Określa, że po wystąpieniu błędu program obsługi RPC ma generować rozszerzone informacje o błędzie.
+
+Rozszerzone informacje o błędzie obejmują lokalny czas wystąpienia błędu, wersję usługi RPC i nazwę komputera, na którym błąd wystąpił lub był propagowany. Programy mogą pobierać rozszerzone informacje o błędach za pomocą standardowych interfejsów programowania aplikacji (API, Application Programming Interface) systemu Windows.
+
+Jeśli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, program obsługi RPC będzie generować tylko kod stanu, wskazujący błąd.
+
+Aby użyć tego ustawienia, należy je włączyć, a następnie w polu rozwijanym należy wybrać typ reakcji na błąd.
+
+--  „Wyłączone” wyłącza wszystkie rozszerzone informacje o błędach dla wszystkich procesów. Usługa RPC generuje tylko kod błędu.
+
+--  „Wł. z wyjątkami” włącza rozszerzone informacje o błędach, ale pozwala na wyłączenie ich dla wybranych procesów. Aby wyłączyć rozszerzone informacje o błędach dla procesu, gdy działa to ustawienie, polecenie uruchamiające ten proces musi rozpoczynać się jednym z ciągów z pola Wyjątki rozszerzonych informacji o błędach.
+
+--  „Wył. z wyjątkami” wyłącza rozszerzone informacje o błędach, ale pozwala na włączenie ich dla wybranych procesów. Aby włączyć rozszerzone informacje o błędach dla procesu, gdy działa to ustawienie, polecenie uruchamiające ten proces musi rozpoczynać się jednym z ciągów z pola Wyjątki rozszerzonych informacji o błędach.
+
+--  „Włączone” włącza rozszerzone informacje o błędach dla wszystkich procesów.
+
+Uwaga: aby uzyskać informacje o polu Wyjątki rozszerzonych informacji o błędach, zobacz zestaw Software Development Kit (SDK) dla platformy Windows 2000.
+
+Uwaga: rozszerzone informacje o błędach są tak sformatowane, aby były zgodne z innymi systemami operacyjnymi i starszymi systemami operacyjnymi firmy Microsoft, ale tylko nowsze systemy operacyjne firmy Microsoft mogą odczytywać te informacje i odpowiadać na nie.
+
+Uwaga: ustawienie domyślne, „Wyłączone”, jest przeznaczone dla systemów, w których rozszerzone informacje o błędach są uznawane za poufne i nie powinny być udostępniane zdalnie.
+
+Uwaga: To ustawienie zasady zostanie zastosowane po ponownym uruchomieniu systemu.</string>
+      <string id="RpcIDFOff">Wyłączone</string>
+      <string id="RpcIDFOn">Włączone</string>
+      <string id="RpcIgnoreDelegationFailure">Ignoruj niepowodzenie delegowania</string>
+      <string id="RpcIgnoreDelegationFailure_Help">Określa, że program obsługi RPC ignoruje niepowodzenia delegowania, jeśli wcześniej zażądano delegowania.
+
+Rodzina systemów Windows Server 2003 zawiera nowy model delegowania — delegowanie ograniczone. W tym modelu system zabezpieczeń nie informuje, że delegowanie było włączone w kontekście zabezpieczeń, gdy klient łączył się z serwerem. W wywołaniach procedur RPC i COM zaleca się stosowanie flagi RPC_C_QOS_CAPABILITIES_IGNORE_DELEGATE_FAILURE, jednak niektóre aplikacje, napisane w tradycyjnym modelu delegowania, mogą nie używać tej flagi i dlatego napotykają błąd RPC_S_SEC_PKG_ERROR podczas próby połączenia z serwerem, który używa delegowania ograniczonego.
+
+Jeśli to ustawienie zostanie wyłączone, nie zostanie skonfigurowane lub zostanie ustawione na „Wyłączone”, program obsługi RPC będzie generował błędy RPC_S_SEC_PKG_ERROR w przypadku aplikacji, które żądają delegowania i łączą się z serwerami używającymi delegowania ograniczonego. Jeśli to ustawienie jest skonfigurowane na „Włączone”, program obsługi RPC akceptuje zarówno konteksty zabezpieczeń, które nie obsługują delegowania, jak i konteksty zabezpieczeń, które obsługują delegowanie.
+
+-- Ustawienie „Wyłączone” powoduje, że program obsługi RPC generuje błąd RPC_S_SEC_PKG_ERROR, jeśli klient żąda delegowania, ale utworzony kontekst zabezpieczeń nie obsługuje delegowania.
+
+-- Ustawienie „Włączone” powoduje, że program obsługi RPC akceptuje konteksty zabezpieczeń, które nie obsługują delegowania, nawet jeśli żądano delegowania.
+
+Uwaga: To ustawienie zasady zostanie zastosowane po ponownym uruchomieniu systemu.</string>
+      <string id="RpcMinimumHttpConnectionTimeout">Minimalny limit czasu bezczynności połączenia RPC/HTTP</string>
+      <string id="RpcMinimumHttpConnectionTimeout_Help">Nakazuje programowi obsługi RPC przyjęcie określonego limitu czasu bezczynności połączenia, nawet jeśli serwer IIS z uruchomionym serwerem proxy RPC HTTP jest skonfigurowany z większym limitem czasu. Jeśli serwer IIS z uruchomionym serwerem proxy RPC HTTP jest skonfigurowany z mniejszym limitem czasu bezczynności połączenia, jest używany limit czasu serwera IIS. Limit czasu jest podawany w sekundach.
+
+To ustawienie jest użyteczne w sytuacjach, gdy agent sieci, taki jak serwer proxy dla protokołu HTTP lub router, używa mniejszego limitu czasu bezczynności połączenia niż serwer IIS z uruchomionym serwerem proxy RPC HTTP. W takich przypadkach klienci wywołań RPC przez protokół HTTP mogą napotkać problemy, ponieważ limity czasu połączeń będą wyczerpywać się szybciej, niż przewidziano. Przy użyciu tego ustawienia można wymusić na programie obsługi RPC oraz serwerze proxy RPC używanie mniejszego limitu czasu połączenia.
+
+To ustawienie ma zastosowanie tylko wtedy, gdy klient i serwer RPC oraz serwer proxy RPC HTTP działają w systemie należącym do rodziny Windows Server 2003 lub systemie Windows XP z dodatkiem SP1 bądź nowszych wersjach. Jeśli klient lub serwer RPC albo serwer proxy RPC HTTP działają w starszej wersji systemu Windows, to ustawienie będzie ignorowane.
+
+Minimalną dozwoloną wartością tego ustawienia jest 90 sekund. Maksymalną wartością jest 7200 sekund (2 godziny).
+
+Jeśli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, będzie używany limit czasu bezczynności połączenia, który obowiązuje na serwerze IIS z uruchomionym serwerem proxy RPC HTTP.
+
+Uwaga: To ustawienie zasady zostanie zastosowane po ponownym uruchomieniu systemu.</string>
+      <string id="RpcRestrictRemoteClients">Ograniczenia dla nieuwierzytelnionych klientów RPC</string>
+      <string id="RpcRestrictRemoteClients_Help">Jeśli to ustawienie zostanie włączone, program obsługi RPC na serwerze RPC ograniczy nieuwierzytelnionym klientom RPC możliwość łączenia się z serwerami RPC uruchomionymi na komputerze. Klient jest uważany za uwierzytelnionego, jeśli używa nazwanego potoku do komunikowania się z serwerem lub korzysta z zabezpieczeń RPC. Interfejsy RPC, które zażądały dostępu dla klientów nieuwierzytelnionych, mogą być wykluczone z tego ograniczenia w zależności od wartości wybranej dla tej zasady.
+
+Jeśli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, wartość Uwierzytelniony zostanie użyta dla systemu Windows XP, a wartość Brak dla wersji serwera obsługujących to ustawienie zasad. Jeśli to ustawienie zostanie włączone, będą dostępne następujące wartości:
+
+--  „Brak” zezwala wszystkim klientom RPC na łączenie się z serwerami RPC uruchomionymi na komputerze, dla którego jest stosowana ta zasada.
+
+--  „Uwierzytelniony” zezwala tylko uwierzytelnionym klientom RPC (odpowiadającym powyższemu opisowi) na łączenie się z serwerami RPC uruchomionymi na komputerze, dla którego jest stosowana ta zasada. Interfejsy, które wymagają wykluczenia z tego ograniczenia, zostaną wykluczone.
+
+--  „Uwierzytelniony bez wyjątków” zezwala tylko uwierzytelnionym klientom RPC (odpowiadającym powyższemu opisowi) na łączenie się z serwerami RPC uruchomionymi na komputerze, dla którego jest stosowana ta zasada. Żadne wyjątki nie są dozwolone.
+
+Uwaga: To ustawienie zasady zostanie zastosowane po ponownym uruchomieniu systemu.</string>
+      <string id="RpcRestrictRemoteClientsAuth">Uwierzytelniony</string>
+      <string id="RpcRestrictRemoteClientsHigh">Uwierzytelniony bez wyjątków</string>
+      <string id="RpcRestrictRemoteClientsNone">Brak</string>
+      <string id="RpcStateInfoAuto1">Auto1</string>
+      <string id="RpcStateInfoAuto2">Auto2</string>
+      <string id="RpcStateInfoBoth">Pełne</string>
+      <string id="RpcStateInfoNone">Brak</string>
+      <string id="RpcStateInformation">Informacje o stanie rozwiązywania problemów z usługą RPC</string>
+      <string id="RpcStateInformation_Help">
+
+Określa, czy program obsługi RPC zachowuje informacje o stanie usługi RPC w systemie i ile informacji jest zachowywanych. Podstawowe informacje o stanie, zawierające tylko najbardziej potrzebne dane stanu, są wymagane do rozwiązywania problemów z usługą RPC.
+
+Jeżeli to ustawienie zostanie włączone, będzie można użyć pola rozwijanego do określenia, które systemy mają zachowywać informacje o stanie usługi RPC. Jeżeli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, usługa RPC będzie używać ustawienia Auto2.
+
+— Wartość Brak wskazuje, że system nie zachowuje żadnych informacji o stanie usługi RPC. Uwaga: ponieważ podstawowe informacje o stanie wymagane do rozwiązywania problemów mają znikomy wpływ na wydajność i zajmują tylko około 4 KB pamięci, to ustawienie nie jest zalecane w przypadku większości instalacji.
+
+— Wartość Auto1 oznacza, że podstawowe informacje o stanie usługi RPC powinny być zachowywane tylko wtedy, gdy komputer ma co najmniej 64 MB pamięci.
+
+— Wartość Auto2 oznacza, że podstawowe informacje o stanie usługi RPC powinny być zachowywane tylko wtedy, gdy komputer ma co najmniej 128 MB pamięci i jest na nim uruchomiony system Windows 2000 Server, Windows 2000 Advanced Server lub Windows 2000 Datacenter Server. 
+
+— Wartość Serwer oznacza, że na komputerze powinny być zachowywane podstawowe informacje o stanie usługi RPC, niezależnie od możliwości komputera.
+
+— Wartość Pełne oznacza, że w systemie powinny być zachowywane wszystkie informacje o stanie usługi RPC, niezależnie od możliwości systemu. Ponieważ to ustawienie może spowodować obniżenie wydajności, zaleca się jego użycie tylko w przypadku badania problemów z usługą RPC.
+
+Uwaga: aby pobrać z systemu informacje o stanie usługi RPC, należy użyć narzędzia do debugowania.
+
+Uwaga: ta zasada zostanie zastosowana po ponownym uruchomieniu systemu.</string>
+      <string id="RpcStateInfoServer">Serwer</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="RpcExtendedErrorInformation">
+        <dropdownList refId="RpcExtendedErrorInformationList" defaultItem="0">Propagacja rozszerzonych informacji o błędach:</dropdownList>
+        <textBox refId="RpcExtErrorExceptions">
+          <label>Wyjątki rozszerzonych informacji o błędach:</label>
+        </textBox>
+      </presentation>
+      <presentation id="RpcIgnoreDelegationFailure">
+        <dropdownList refId="RpcIgnoreDelegationFailureList" defaultItem="0">Ignorowanie niepowodzenia delegowania:</dropdownList>
+      </presentation>
+      <presentation id="RpcMinimumHttpConnectionTimeout">
+        <decimalTextBox refId="RpcMinimumHttpConnectionTimeoutValue" defaultValue="900" spinStep="10">Minimalny limit czasu bezczynności połączenia (w sekundach):</decimalTextBox>
+      </presentation>
+      <presentation id="RpcRestrictRemoteClients">
+        <dropdownList refId="RpcRestrictRemoteClientsList" defaultItem="1">Stosowane ograniczenie nieuwierzytelnionego klienta programu obsługi RPC:</dropdownList>
+      </presentation>
+      <presentation id="RpcStateInformation">
+        <dropdownList refId="RpcStateInformationList" defaultItem="2">Przechowywane informacje o stanie programu obsługi RPC:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

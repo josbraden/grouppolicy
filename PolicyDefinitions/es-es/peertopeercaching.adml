@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache permite a los clientes recuperar contenido de forma segura desde una sucursal en vez de desde el servidor que hospeda el contenido. En función del modo de implementación, se puede recuperar el contenido desde otros clientes de la sucursal o desde un servidor de caché hospedada de la sucursal. Un cliente solo puede recuperar contenido desde la sucursal si el servidor le autoriza a ello. El uso de BranchCache reduce costos en el vínculo de red de área extensa (WAN) que conecta las sucursales al centro de datos u oficina central y aumenta las velocidades de descarga del contenido que ya se ha descargado a la sucursal.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">Activar BranchCache</string>
+
+            <string id="WBC_Enable_Help">Esta configuración de directiva especifica si se habilita BranchCache en el equipo cliente. BranchCache reduce el uso de los vínculos de red de área extensa (WAN) que conectan las sucursales al centro de datos u oficina central y aumenta las velocidades de descarga del contenido que ya se ha descargado a la sucursal. Para ello, BranchCache permite que equipos de una sucursal almacenen en caché archivos y tráfico HTTP desde los servidores de la Intranet en los que BranchCache está habilitado y que, a continuación, compartan los archivos de forma segura con otros equipos de la sucursal. Los equipos de la sucursal pueden recuperar contenido desde un servidor de caché hospedada de la sucursal (cuando se usa el modo Caché hospedada), o desde otros equipos cliente de la sucursal (cuando se usa el modo Caché distribuida). Para tener acceso al contenido almacenado en caché, el equipo debe tener permisos de acceso al contenido en el servidor de origen.
+
+Habilite esta configuración de directiva en los equipos cliente de las sucursales donde el ancho de banda de la WAN es bajo, la latencia es alta y hay varios equipos cliente que necesitan acceso a los mismos datos de servidores de la oficina central.
+
+Si habilita esta configuración de directiva, BranchCache se activa. Para que esta configuración de directiva surta efecto, debe instalar la característica BranchCache también en el equipo cliente.
+
+Si deshabilita o no define esta configuración de directiva, BranchCache se desactiva.
+            </string>
+
+            <string id="WBC_Cache_Percent">Establecer el porcentaje de espacio en disco usado por la memoria caché del equipo cliente</string>
+
+            <string id="WBC_Cache_Percent_Help">Esta configuración de directiva cambia el porcentaje de espacio total en disco dedicado a almacenar en caché contenido recuperado mediante BranchCache. Este contenido queda disponible para otros equipos clientes que lo soliciten si el servidor les autoriza el acceso al contenido.
+
+Si habilita esta configuración de directiva, puede configurar el porcentaje del espacio total en disco que se asigna a la memoria caché.
+
+Si deshabilita o no define esta configuración de directiva, el espacio para la memoria caché se establece en un 5 por ciento del espacio total en el disco del equipo cliente.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Establecer el modo Caché hospedada de BranchCache</string>
+
+            <string id="WBC_HostedCache_Location_Help">Esta configuración de directiva especifica si el equipo cliente debe usar el modo Caché hospedada y, de ser así, cuál es la dirección del servidor de BranchCache. El modo Caché hospedada permite que un equipo cliente recupere contenido de un servidor de BranchCache que actúa como la memoria caché (hospedada) central para una sucursal. Al usar el modo Caché hospedada, el contenido descargado por equipos cliente habilitados para BranchCache se envía al servidor de BranchCache, que a continuación sirve como caché centralizada para otros equipos cliente de la sucursal habilitados para BranchCache. Los equipos cliente usan Capa de sockets seguros (SSL) para comunicarse con el servidor de BranchCache.
+
+Para usar esta configuración de directiva, debe especificar la dirección del servidor de BranchCache, que deberá coincidir con el nombre de dominio completo (FQDN) del servidor especificado en el certificado para el servidor de BranchCache. Además, la raíz del certificado del servidor de BranchCache debe encontrarse en el almacén raíz de confianza del equipo cliente.
+
+Si habilita esta configuración de directiva y especifica una ubicación válida de la memoria caché hospedada, se activa el modo Caché hospedada. Para que esta configuración de directiva surta efecto, debe habilitar también la configuración de directiva "Activar BranchCache".
+
+Si deshabilita o no define esta configuración de directiva, se desactiva el modo Caché hospedada.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Establecer el modo Caché distribuida de BranchCache</string>
+
+            <string id="WBC_Distributed_Enable_Help">Esta configuración de directiva especifica si el equipo cliente debe usar el modo Caché distribuida. Este modo de BranchCache permite que un equipo cliente recupere contenido que otros equipos cliente de la sucursal han descargado y almacenado en caché. Para tener acceso al contenido almacenado en caché en otros equipos cliente de la sucursal, el equipo debe tener permisos de acceso al contenido en el servidor de origen.
+
+Esta configuración de directiva especifica si se usa el modo Caché distribuida. Habilite esta configuración de directiva cuando use BranchCache en sucursales que no disponen de un servidor que actúe como caché hospedada.
+
+ISi habilita esta configuración de directiva, se usará el modo Caché distribuida. Para que surta efecto esta configuración de directiva, debe habilitar también la configuración de directiva "Activar BranchCache".
+
+Si deshabilita o no define esta configuración de directiva, se desactiva el modo Caché distribuida.
+            </string>
+
+            <string id="WBC_SMB_Enable">Configurar BranchCache para archivos de red</string>
+
+            <string id="WBC_SMB_Enable_Help">Esta configuración de directiva cambia el valor predeterminado de latencia de red de ida y vuelta por encima del cual los equipos cliente de la sucursal almacenan en caché los archivos de red. BranchCache para archivos de red permite a los equipos de una sucursal almacenar en caché datos de servidores de la Intranet en los que BranchCache está habilitado para, a continuación, compartir los archivos de forma segura con otros equipos de la sucursal. Uno de los tipos de contenido que se pueden almacenar en caché en una sucursal es archivos de red mediante el protocolo Bloque de mensajes del servidor (SMB).
+
+De forma predeterminada, los archivos de red se almacenan en caché en al sucursal cuando la latencia de red de ida y vuelta del vínculo de red de área local (WAN) es superior a 80 ms. Para almacenar siempre en caché los archivos de red descargados a equipos de la sucursal, establezca el valor de latencia de red en 0. Para deshabilitar el almacenamiento en la memoria caché de la sucursal de los archivos de red, establezca un valor de latencia muy alto.
+
+Si habilita esta configuración de directiva, puede configurar el valor de latencia de red de ida y vuelta por encima del cual los equipos cliente de la sucursal deben almacenar en caché los archivos de red.
+
+Si deshabilita o no define esta configuración de directiva, el equipo cliente almacenará en caché los archivos de red si la latencia de red de ida y vuelta del vínculo de red de área local (WAN) es superior a 80 ms.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Escriba la ubicación de la memoria caché del equipo cliente</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Escriba la ubicación de la memoria caché hospedada</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Escriba el valor de latencia de red de ida y vuelta (en milisegundos) por encima del cual los archivos de red deben almacenarse en caché en la sucursal</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

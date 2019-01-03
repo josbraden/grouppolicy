@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>itt adja meg a megjelenítendő nevet</displayName>
+  <description>itt adja meg a leírást</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Ezzel a házirend-beállítással kezelheti a Platformmegbízhatósági modul (TPM) tulajdonosi információinak az Active Directory tartományszolgáltatásában lévő biztonsági másolatát. 
+
+A TPM-tulajdonos adatai tartalmazzák a TPM tulajdonosi jelszavának kriptográfiai kivonatát. Bizonyos TPM-parancsokat kizárólag a TPM-tulajdonosok futtathatnak. Ez a kivonat hatalmazza fel a TPM-eszközt a parancsok futtatására. 
+
+Ha engedélyezi ezt a házirend-beállítást, a TPM tulajdonosi adatait a rendszer automatikusan a háttérben menti az Active Directoryba, amikor a beállítja a Windows rendszerben a TPM-tulajdonosi jelszó megváltoztatását. 
+
+Ha „A TPM az Active Directory tartományi szolgáltatásaiba történő biztonsági mentése kötelező” beállítást bejelöli, a TPM-tulajdonosi jelszót nem lehet módosítani addig, amíg a számítógép nem csatlakozik a tartományhoz, és a biztonsági mentés nem történik meg az Active Directoryba. Ez a beállítás alapértelmezés szerint be van jelölve annak érdekében, hogy a TPM-tulajdonosi információk elérhetők legyenek. Ellenkező esetben megkísérli a rendszer az adatok az Active Directory tartományi szolgáltatásaiba történő biztonsági mentését, de a hálózat vagy egyéb biztonsági mentés közben fellépő hibák nincsenek hatással a TPM kezelésére. A rendszer a biztonsági mentést automatikusan nem próbálja meg újra, és a TPM-tulajdonosi információkat esetleg nem tárolja az Active Directory a BitLocker beállítása alatt.
+
+Amennyiben letiltja vagy nem konfigurálja ezt a házirend-beállítást, a TPM-tulajdonosi információk biztonsági másolata nem kerül az Active Directoryba. 
+
+Megjegyzés: Először a tartományban be kell állítania a megfelelő sémabővítményeket és a hozzáférés-vezérlést, mielőtt az Active Directoryban sikeresen megtörténhet a biztonsági mentés. Az online dokumentációban talál további információt arról, hogyan használhatja az Active Directory tartományszolgáltatásait a TPM eszközzel.
+
+Megjegyzés: A TPM nem használható bővített biztonsági szolgáltatások biztosítására a BitLocker meghajtótitkosítás és más alkalmazások által a tulajdonos előzetes megadása nélkül. A TPM birtokba vételéhez futtassa a „tpm.msc” programot, és jelölje ki a „TPM-eszköz inicializálása” műveletet.
+
+Megjegyzés: Ha a TPM-tulajdonosi információ elveszett vagy nem elérhető, korlátozott TPM-kezelésre van lehetőség a helyi számítógépen a „tpm.msc” programmal.</string>
+      <string id="ActiveDirectoryBackup_Name">A „TPM biztonsági másolat mentése az Active Directory tartományszolgáltatásokban” beállítás bekapcsolása</string>
+      <string id="BlockedCommandsList_Help">Ezzel a házirend-beállítással kezelheti a Platformmegbízhatósági modul (TPM) Windows által blokkolt parancsainak Csoportházirend listáját.
+
+Ha engedélyezi ezt a házirend-beállítást, a Windows nem engedi, hogy a megadott parancsokat a rendszer elküldje a számítógépen lévő TPM modulnak. A TPM-parancsokat egy parancsszám jelöli. A 129 parancsszám például a TPM_OwnerReadInternalPub, a 170 parancsszám pedig a TPM_FieldUpgrade parancs. Annak kiderítése érdekében, hogy mely parancsszám melyik TPM-parancsot jelöli, futtassa a „tpm.msc” fájlt és keresse meg a „Parancskezelés” szakaszt.
+
+Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, a Windows csak az alapértelmezett vagy helyi listákon megadott TPM-parancsokat blokkolhatja. A blokkolt TPM-parancsok alapértelmezett listáját a Windows előre konfigurálta. Az alapértelmezett listát a „tpm.msc” fájl futtatásával, a „Parancskezelés” szakasz megkeresésével, végül „Az alapértelmezett tiltólistán” oszlop megjelenítésével tekintheti meg. A blokkolt TPM-parancsok helyi listája a Csoportházirenden kívül konfigurálható a „tpm.msc” fájl futtatásával vagy parancsfájlok futtatásával a Win32_Tpm felületen keresztül. A kapcsolódó házirend-beállítások leírásában további információt talál a blokkolt TPM-parancsok alapértelmezés szerinti és helyi listájának kényszerítéséről vagy mellőzéséről.</string>
+      <string id="BlockedCommandsList_Name">A blokkolt TPM-parancsok listájának konfigurálása</string>
+      <string id="IgnoreDefaultList_Help">Ezzel a házirend-beállítással kényszerítheti vagy mellőzheti a platformmegbízhatósági modul (TPM) blokkolt parancsainak alapértelmezett listáját.
+
+Ha engedélyezi ezt a házirend-beállítást, a Windows figyelmen kívül hagyja a blokkolt TPM-parancsoknak a számítógépen lévő alapértelmezett listáját, és csak a csoportházirendben vagy a helyi listában szereplő TPM-parancsokat fogja blokkolni. 
+
+A blokkolt TPM-parancsok alapértelmezett listáját a Windows előre konfigurálta. Az alapértelmezett listát a „tpm.msc” fájl futtatásával, a „Parancskezelés” szakasz megkeresésével, végül „Az alapértelmezett tiltólistán” oszlop megjelenítésével tekintheti meg. A blokkolt TPM-parancsok helyi listája a csoportházirenden kívül konfigurálható a „tpm.msc” fájl futtatásával vagy parancsfájlok futtatásával a Win32_Tpm felületen keresztül. A kapcsolódó házirend-beállítások leírásában további információt talál a blokkolt TPM-parancsok csoportházirend-listájának konfigurálásáról.
+
+Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, a Windows blokkolja az alapértelmezett listán szereplő TPM-parancsokat, továbbá a csoportházirendben és a blokkolt TPM-parancsok helyi listáján szereplő parancsokat. </string>
+      <string id="IgnoreDefaultList_Name">A blokkolt TPM-parancsok alapértelmezett listájának figyelmen kívül hagyása</string>
+      <string id="IgnoreLocalList_Help">Ezzel a házirend-beállítással kényszerítheti vagy mellőzheti a platformmegbízhatósági modul (TPM) blokkolt parancsainak helyi listáját.
+
+Ha engedélyezi ezt a házirend-beállítást, a Windows figyelmen kívül hagyja a blokkolt TPM-parancsok alapértelmezett listáját, és csak a Csoportházirendben vagy a helyi listában szereplő TPM-parancsokat fogja blokkolni.
+
+A blokkolt TPM-parancsok helyi listája a Csoportházirenden kívül konfigurálható a „tpm.msc” fájl futtatásával vagy parancsfájlok futtatásával a Win32_Tpm felületen keresztül. A blokkolt TPM-parancsok alapértelmezett listáját a Windows előre konfigurálta. A kapcsolódó házirend-beállítások leírásában további információt talál a blokkolt TPM-parancsok Csoportházirend listájának konfigurálásáról. 
+
+Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, a Windows blokkolja a helyi listán szereplő TPM-parancsokat, továbbá a Csoportházirendben és a blokkolt TPM-parancsok alapértelmezett listáján szereplő parancsokat.</string>
+      <string id="IgnoreLocalList_Name">A blokkolt TPM-parancsok helyi listájának figyelmen kívül hagyása</string>
+      <string id="TPMCategory">TPM-szolgáltatások</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">A TPM az Active Directory tartományi szolgáltatásaiba történő biztonsági mentése kötelező</checkBox>
+        <text/>
+        <text>Amennyiben bejelöli, nem állítható be és nem módosítható a TPM-tulajdonosi jelszó, </text>
+        <text>ha a biztonsági mentés sikertelen (ajánlott, alapértelmezett beállítás).</text>
+        <text/>
+        <text>Amennyiben nem jelöli be, beállítható és módosítható a TPM-tulajdonosi jelszó,</text>
+        <text>még akkor is, ha a biztonsági mentés sikertelen. A biztonsági mentést a rendszer nem próbálja automatikusan újra végrehajtani.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>A blokkolni kívánt parancsokat számuk a listához történő hozzáadásával adhatja meg.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">A blokkolt TPM-parancsok listája:</listBox>
+        <text>A TPM_OwnerReadInternalPub</text>
+        <text>és TPM_FieldUpgrade parancsok blokkolásához például vegye fel a 129 és a 170 számokat a listára.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

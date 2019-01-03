@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Anzeigenamen hier eingeben</displayName>
+  <description>Beschreibung hier eingeben</description>
+  <resources>
+    <stringTable>
+      <string id="Rpc">Remoteprozeduraufruf</string>
+      <string id="RpcEEInfoOff">Aus</string>
+      <string id="RpcEEInfoOffWithExc">Aus mit Ausnahmen</string>
+      <string id="RpcEEInfoOn">Ein</string>
+      <string id="RpcEEInfoOnWithExc">Ein mit Ausnahmen</string>
+      <string id="RpcEnableAuthEpResolution">RPC-Endpunktzuordnungs-Clientauthentifizierung</string>
+      <string id="RpcEnableAuthEpResolution_Help">Bei Aktivierung dieser Einstellung werden RPC-Clients, die mit dem Endpunktzuordnungsdienst kommunizieren müssen, zur Authentifizierung aufgefordert, wenn der RPC-Aufruf, für den der Endpunkt aufgelöst werden muss, Authentifizierungsinformationen enthält.
+
+Wenn Sie diese Einstellung deaktivieren, werden RPC-Clients, die mit dem Endpunktzuordnungsdienst kommunizieren müssen, nicht authentifiziert. Der Endpunktzuordnungsdienst, der auf Computern mit Windows NT4 (alle Service Packs) ausgeführt wird, kann auf diese Art angegebene Authentifizierungsinformationen nicht verarbeiten. Dies bedeutet, dass das Aktivieren dieser Einstellung auf einem Clientcomputer verhindert, dass der Client mit einem Windows NT4-Server über RPC kommunizieren kann, falls eine Endpunktauflösung erforderlich ist.
+
+Standardmäßig verwenden RPC-Clients keine Authentifizierung zum Kommunizieren mit dem RPC-Server-Endpunktzuordnungsdienst, wenn sie den Endpunkt eines Servers anfordern.
+
+Hinweis: Diese Richtlinie wird erst nach einem Neustart des Systems angewendet. </string>
+      <string id="RpcExtendedErrorInformation">Propagierung erweiterter Fehlerinformationen</string>
+      <string id="RpcExtendedErrorInformation_Help">Gibt der RPC-Laufzeit die Anweisung, bei einem Fehler erweiterte Fehlerinformationen zu erzeugen.
+
+Erweiterte Fehlerinformationen enthalten die Ortszeit, zu welcher der Fehler auftrat, die RPC-Version und den Namen des Computers, auf dem der Fehler aufgetreten ist oder von dem er propagiert wurde. Programme können die erweiterten Fehlerinformationen mithilfe standardmäßiger Windows-APIs (Application Programming Interfaces) abrufen.
+
+Wenn Sie die Einstellung deaktivieren oder nicht konfigurieren, erzeugt die RPC-Laufzeit nur einen Statuscode zur Anzeige einer Fehlerbedingung.
+
+Wenn Sie diese Einstellung verwenden möchten, aktivieren Sie die Einstellung, und wählen Sie dann im Dropdownfeld einen Fehlerreaktionstyp aus.
+
+--  "Aus" deaktiviert alle erweiterten Fehlerinformationen für alle Prozesse. RPC erzeugt nur einen Fehlercode.
+
+-- "Ein mit Ausnahmen" aktiviert erweiterte Fehlerinformationen, Sie können sie jedoch für ausgewählte Prozesse deaktivieren. Zum Deaktivieren erweiterter Fehlerinformationen für einen Prozess, während diese Einstellung wirksam ist, muss der Befehl, mit dem der Prozess gestartet wird, mit einer der Zeichenfolgen im Ausnahmefeld für erweiterte Fehlerinformationen beginnen.
+
+-- "Aus mit Ausnahmen" deaktiviert erweiterte Fehlerinformationen, Sie können sie jedoch für ausgewählte Prozesse aktivieren. Zum Aktivieren erweiterter Fehlerinformationen für einen Prozess, während diese Einstellung wirksam ist, muss der Befehl, mit dem der Prozess gestartet wird, mit einer der Zeichenfolgen im Ausnahmefeld für erweiterte Fehlerinformationen beginnen.
+
+--  "An" aktiviert erweiterte Fehlerinformationen für alle Prozesse.
+
+Hinweis: Informationen über das Ausnahmefeld für erweiterte Fehlerinformationen finden Sie im Windows 2000 Platform SDK (Software Development Kit).
+
+Hinweis: Erweiterte Fehlerinformationen sind so formatiert, dass sie mit anderen Betriebssystemen und älteren Microsoft-Betriebssystemen kompatibel sind. Nur neuere Microsoft-Betriebssysteme können die Informationen jedoch lesen und auf sie reagieren.
+
+Hinweis: Die Standardeinstellung "Aus" ist für Systeme vorgesehen, bei denen erweiterte Fehlerinformationen als vertraulich betrachtet werden und nicht remote verfügbar gemacht werden sollten.
+
+Hinweis: Diese Richtlinieneinstellung wird erst nach einem Neustart des Systems angewendet.</string>
+      <string id="RpcIDFOff">Aus</string>
+      <string id="RpcIDFOn">Ein</string>
+      <string id="RpcIgnoreDelegationFailure">Delegierungsfehler ignorieren</string>
+      <string id="RpcIgnoreDelegationFailure_Help">Gibt der RPC-Laufzeit die Anweisung, bei angeforderter Delegierung Delegierungsfehler zu ignorieren.
+
+Die Windows Server 2003-Produktfamilie enthält ein neues Delegierungsmodell: die eingeschränkte Delegierung. Wenn ein Client eine Verbindung zum Server herstellt, meldet das Sicherheitssystem in diesem Modell nicht, dass die Delegierung in einem Sicherheitskontext aktiviert war. Für RPC- und COM-Aufrufe sollte das RPC_C_QOS_CAPABILITIES_IGNORE_DELEGATE_FAILURE-Flag verwendet werden. Einige Anwendungen, die für das alte Delegierungsmodell geschrieben wurden, verwenden allerdings möglicherweise dieses Flag nicht und melden einen RPC_S_SEC_PKG_ERROR-Fehler, wenn eine Verbindung zu einem Server hergestellt wird, der eingeschränkte Delegierung verwendet.
+
+Wenn Sie diese Einstellung deaktivieren, nicht konfigurieren oder auf "Aus" setzen, erzeugt die RPC-Laufzeit bei Anwendungen, die nach Delegierung anfordern und eine Serververbindung mit eingeschränkter Delegierung herstellen, einen RPC_S_SEC_PKG_ERROR-Fehler. Wenn Sie diese Einstellung auf "Ein" festlegen, werden sowohl Sicherheitskontexte, die keine Delegierung unterstützen, als auch solche, die Delegierung unterstützen, von der RPC-Laufzeit akzeptiert.
+
+--  "Aus" gibt der RPC-Laufzeit die Anweisung, einen RPC_S_SEC_PKG_ERROR-Fehler zu erzeugen, wenn der Client Delegierung anfordert, diese aber vom erzeugten Sicherheitskontext nicht unterstützt wird.
+
+-- "Ein" gibt der RPC-Laufzeit die Anweisung, Sicherheitskontexte zu akzeptieren, die Delegierung nicht unterstützen, selbst dann, wenn Delegierung angefordert wurde.
+
+Hinweis: Diese Richtlinieneinstellung wird erst nach einem Neustart des Systems angewendet.</string>
+      <string id="RpcMinimumHttpConnectionTimeout">Minimales Leerlaufverbindungszeitlimit für RPC/HTTP-Verbindungen</string>
+      <string id="RpcMinimumHttpConnectionTimeout_Help">Gibt der RPC-Laufzeit die Anweisung, als Limit für Leerlaufverbindungen das angegebene Zeitlimit anzunehmen, auch wenn der IIS-Server, auf dem der RPC-HTTP-Proxy ausgeführt wird, mit einem höheren Zeitlimit konfiguriert ist. Wenn der IIS-Server mit einem niedrigeren Leerlaufzeitlimit konfiguriert ist, wird das Zeitlimit des IIS-Servers benutzt. Das Zeitlimit wird in Sekunden angegeben.
+
+Diese Einstellung ist dann nützlich, wenn ein Netzwerk-Agent, wie etwa ein HTTP-Proxy oder ein Router, ein niedrigeres Zeitlimit für Leerlaufverbindungen verwendet als der IIS-Server, auf dem der RPC-HTTP-Proxy ausgeführt wird. In solchen Fällen können bei RPCs über HTTP-Clients Fehler auftreten, weil das Zeitlimit schneller als erwartet erreicht wird. Mit dieser Einstellung können Sie ein niedrigeres Verbindungszeitlimit für die RPC-Laufzeit und den RPC-Proxy erzwingen.
+
+Diese Einstellung kann nur angewendet werden, wenn auf dem RPC-Client, dem RPC-Server und dem RPC-HTTP-Proxy Betriebssysteme der Windows Server 2003-Produktfamilie bzw. Windows XP SP1 oder höher ausgeführt werden. Diese Einstellung wird ignoriert, wenn auf dem RPC-Client, dem RPC-Server oder dem RPC-HTTP-Proxy eine ältere Windows-Version ausgeführt wird.
+
+Das zulässige Minimum für diese Einstellung beträgt 90 Sekunden. Der Höchstwert beträgt 7.200 (2 Stunden).
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, wird das Leerlaufverbindungszeitlimit des IIS-Servers verwendet, auf dem der RPC-HTTP-Proxy ausgeführt wird.
+
+Hinweis: Diese Richtlinieneinstellung wird erst nach einem Neustart des Systems angewendet.</string>
+      <string id="RpcRestrictRemoteClients">Einschränkungen für nicht authentifizierte RPC-Clients</string>
+      <string id="RpcRestrictRemoteClients_Help">Durch Aktivieren dieser Einstellung wird die RPC-Laufzeit auf einem RPC-Server angewiesen, nicht authentifizierte RPC-Clients einzuschränken, die eine Verbindung mit auf dem Computer ausgeführten RPC-Servern herstellen. Ein Client gilt als authentifiziert, wenn er eine Named Pipe zum Kommunizieren mit dem Server oder RPC-Sicherheit verwendet. RPC-Schnittstellen, die nicht authentifizierten Clients explizit den Zugriff genehmigen, können von dieser Einschränkung ausgenommen werden, abhängig vom ausgewählten Wert für diese Richtlinie.
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, wird für Windows XP der Wert "Authentifiziert" und für Server-SKUs, die diese Richtlinie unterstützen, der Wert "Keine" verwendet. Wenn Sie diese Einstellung aktivieren, sind folgende Werte verfügbar:
+
+--  "Keine" ermöglicht allen RPC-Clients, Verbindungen mit RPC-Servern herzustellen, die auf dem Computer, auf den diese Richtlinie angewendet wird, ausgeführt werden.
+
+--  "Authentifiziert" ermöglicht nur authentifizierten RPC-Clients (gemäß der Definition oben) Verbindungen mit RPC-Servern herzustellen, die auf dem Computer, auf den diese Richtlinie angewendet wird, ausgeführt werden. Schnittstellen, die von dieser Einschränkung explizit ausgenommen werden möchten, wird eine Ausnahme erteilt.
+
+-- "Authentifiziert ohne Ausnahmen" ermöglicht nur authentifizierten RPC-Clients (gemäß der Definition oben) Verbindungen mit RPC-Servern herzustellen, die auf dem Computer, auf den diese Richtlinie angewendet wird, ausgeführt werden. Es werden keine Ausnahmen erteilt.
+
+Hinweis: Diese Richtlinieneinstellung wird erst nach einem Neustart des Systems angewendet.</string>
+      <string id="RpcRestrictRemoteClientsAuth">Authentifiziert</string>
+      <string id="RpcRestrictRemoteClientsHigh">Authentifiziert ohne Ausnahmen</string>
+      <string id="RpcRestrictRemoteClientsNone">Keine</string>
+      <string id="RpcStateInfoAuto1">Auto1</string>
+      <string id="RpcStateInfoAuto2">Auto2</string>
+      <string id="RpcStateInfoBoth">Vollständig</string>
+      <string id="RpcStateInfoNone">Keine</string>
+      <string id="RpcStateInformation">Statusinformation für RPC-Problembehandlung</string>
+      <string id="RpcStateInformation_Help">
+
+Legt fest, ob die RPC-Laufzeit RPC-Statusinformationen für das System verwaltet und wie viele Informationen gespeichert werden. Grundlegende Statusinformationen, die nur die am häufigsten benötigten Statusdaten umfassen, sind zur Problembehandlung bei RPC-Fehlern erforderlich.
+
+Wenn Sie diese Einstellung aktivieren, können Sie mithilfe des Dropdownfelds festlegen, welche Systeme RPC-Statusinformationen verwalten. Wenn Sie die Einstellung deaktivieren oder nicht konfigurieren, verwendet RPC die Einstellung "Auto2".
+
+- "Keine" zeigt an, dass das System keine RPC-Statusinformationen verwaltet. Hinweis: Da die für die Problembehandlung benötigten grundlegenden Statusinformationen die Leistung kaum beeinträchtigen und nur ungefähr 4 K Arbeitsspeicher belegen, wird diese Einstellung für die meisten Installationen nicht empfohlen.
+
+- Durch "Auto1" wird RPC angewiesen, nur grundlegende Statusinformationen zu verwalten, wenn der Computer über mindestens 64 MB Arbeitsspeicher verfügt.
+
+- Durch "Auto2" wird RPC angewiesen, nur grundlegende Statusinformationen zu verwalten, wenn der Computer über mindestens 128 MB Arbeitsspeicher verfügt und unter Windows 2000 Server, Windows 2000 Advanced Server oder Windows 2000 Datacenter Server ausgeführt wird. 
+
+- Durch "Server" wird RPC angewiesen, unabhängig von der Kapazität des Computers grundlegende Statusinformationen auf dem Computer zu verwalten.
+
+- Durch "Vollständig" wird RPC angewiesen, unabhängig von der Kapazität vollständige RPC-Statusinformationen auf dem System zu verwalten. Da diese Einstellung die Leistung beeinträchtigen kann, wird empfohlen, sie nur zu verwenden, während sie ein RPC-Problem untersuchen.
+
+Hinweis: Um die RPC-Statusinformationen aus einem System abzurufen, in dem sie gespeichert sind, müssen Sie ein Debugtool verwenden.
+
+Hinweis: Diese Richtlinie wird erst nach einem Neustart des Systems angewendet.</string>
+      <string id="RpcStateInfoServer">Server</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="RpcExtendedErrorInformation">
+        <dropdownList refId="RpcExtendedErrorInformationList" defaultItem="0">Propagierung erweiterter Fehlerinformationen:</dropdownList>
+        <textBox refId="RpcExtErrorExceptions">
+          <label>Erweiterte Fehlerinformationsausnahmen:</label>
+        </textBox>
+      </presentation>
+      <presentation id="RpcIgnoreDelegationFailure">
+        <dropdownList refId="RpcIgnoreDelegationFailureList" defaultItem="0">Delegierungsfehler wird ignoriert:</dropdownList>
+      </presentation>
+      <presentation id="RpcMinimumHttpConnectionTimeout">
+        <decimalTextBox refId="RpcMinimumHttpConnectionTimeoutValue" defaultValue="900" spinStep="10">Minimales Leerlaufverbindungszeitlimit (in Sekunden):</decimalTextBox>
+      </presentation>
+      <presentation id="RpcRestrictRemoteClients">
+        <dropdownList refId="RpcRestrictRemoteClientsList" defaultItem="1">Zu übernehmende Einschränkung für nicht authentifizierte Clients für RPC-Laufzeit:</dropdownList>
+      </presentation>
+      <presentation id="RpcStateInformation">
+        <dropdownList refId="RpcStateInformationList" defaultItem="2">Zu wartende RPC-Laufzeitstatusinformationen:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

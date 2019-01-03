@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>escriba aquí el nombre</displayName>
+  <description>escriba aquí la descripción</description>
+  <resources>
+    <stringTable>
+      <string id="AllowLockdownBrowse">Permitir al usuario buscar el origen mientras está elevado</string>
+      <string id="AllowLockdownBrowse_Help">Permite a los usuarios buscar archivos de instalación durante las instalaciones privilegiadas.
+
+Esta opción habilita el botón Examinar del cuadro de diálogo "Usar característica de". De esta forma los usuarios pueden buscar archivos de instalación, incluso cuando el programa de instalación está ejecutándose con privilegios de sistema elevados. El valor predeterminado es que solo los administradores del sistema pueden examinar durante las instalaciones con privilegios elevados, tales como las instalaciones que se ofrecen en el escritorio o que se muestran en Agregar o quitar programas.
+
+Como la instalación está ejecutándose con privilegios de sistema elevados, los usuarios pueden buscar en directorios a los que normalmente no tienen permitido el acceso.
+
+Esta opción no afecta a las instalaciones que se ejecutan en el contexto de seguridad del usuario. Consulte también la opción "Quitar el cuadro de diálogo de búsqueda de origen del nuevo archivo".</string>
+      <string id="AllowLockdownMedia">Permitir al usuario usar el origen de los medios mientras está elevado</string>
+      <string id="AllowLockdownMedia_Help">Permite que los usuarios instalen programas desde medios extraíbles, como por ejemplo disquetes y CD-ROM durante las instalaciones privilegiadas.
+
+Esta opción permite que todos los usuarios instalen programas desde medios extraíbles, incluso cuando el programa de instalación está ejecutándose con privilegios del sistema elevados. El valor predeterminado es que los usuarios solo pueden instalar programas desde medios extraíbles cuando la instalación se ejecuta en el contexto de seguridad del usuario. Durante las instalaciones privilegiadas, tales como las instalaciones que se ofrecen en el escritorio o que se muestran en Agregar o quitar programas, solo los administradores de sistema pueden instalar desde medios extraíbles.
+
+Esta opción no afecta a las instalaciones que se ejecutan en el contexto de seguridad del usuario. El valor predeterminado es que los usuarios pueden instalar desde medios extraíbles cuando la instalación se ejecuta en su contexto de seguridad.
+
+Consulte también la opción "Impedir la instalación de cualquier medio extraíble" en Configuración del usuario\Plantillas administrativas\Componentes de Windows\Windows Installer.</string>
+      <string id="AllowLockdownPatch">Permitir al usuario incorporar revisiones a productos elevados</string>
+      <string id="AllowLockdownPatch_Help">Permite que los usuarios actualicen programas durante las instalaciones privilegiadas.
+
+Esta opción permite que todos los usuarios instalen revisiones, incluso cuando el programa de instalación está ejecutándose con privilegios del sistema elevados. Las revisiones son actualizaciones que solo sustituyen los archivos de programa que se han modificado. Como puede darse el caso de que algunas revisiones sean un vehículo ideal para programas malintencionados, algunas instalaciones prohíben que se usen.
+
+De forma predeterminada, solo los administradores del sistema pueden aplicar revisiones durante las instalaciones con privilegios elevados, tales como las instalaciones que se ofrecen en el escritorio o que se muestran en Agregar o quitar programas.
+
+Esta opción no afecta a las instalaciones que se ejecutan en el contexto de seguridad del usuario. De forma predeterminada, todos los usuarios pueden instalar revisiones a los programas que se ejecutan dentro de su contexto de seguridad. Consulte también la opción "Prohibir la incorporación de revisiones".</string>
+      <string id="AlwaysInstallElevated">Instalar siempre con privilegios elevados</string>
+      <string id="AlwaysInstallElevated_Help">Indica a Windows Installer que use permisos del sistema al instalar cualquier programa en dicho sistema.
+
+Esta opción amplía los privilegios elevados a todos los programas. Estos privilegios están normalmente reservados para los programas que se han asignado al usuario (ofrecidos en el escritorio), asignados al equipo (instalados automáticamente) o a los que se puede tener acceso por medio de Agregar o quitar programas en el Panel de control. Esta opción permite a los usuarios instalar programas que requieren acceso a directorios para los que el usuario podría no tener permiso para su visualización o modificación, incluidos los directorios de equipos con restricción alta.
+
+Si deshabilita esta opción o no la configura, el sistema aplica los permisos de usuario actuales al instalar programas que un administrador de sistemas no distribuye u ofrece.
+
+Nota: esta opción aparece en las carpetas Configuración del equipo y Configuración del usuario. Para activar esta opción, debe habilitarla en las dos carpetas.
+
+Precaución: los usuarios experimentados pueden aprovechar los permisos de esta opción para modificar sus privilegios y obtener acceso permanente a carpetas y archivos de uso restringido. Tenga en cuenta que no se garantiza que la versión de Configuración del usuario de esta opción sea segura.</string>
+      <string id="AutomaticApplicationShutdownOn">Administrador de reinicio activado</string>
+      <string id="AutomaticApplicationShutdownOff">Administrador de reinicio desactivado</string>
+      <string id="LegacyAutomaticApplicationShutdownOff">Administrador de reinicio desactivado para la instalación de aplicaciones heredadas</string>
+      <string id="DisableAlways">Siempre</string>
+      <string id="DisableAutomaticApplicationShutdown">Prohibir uso del Administrador de reinicio</string>
+      <string id="DisableAutomaticApplicationShutdown_Help">La API del Administrador de reinicio puede eliminar o reducir el número de reinicios del sistema necesarios para completar una instalación o actualización. Esta configuración controla la interacción de Windows Installer con el Administrador de reinicio.
+
+Si habilita esta configuración, podrá usar las opciones del cuadro Prohibir uso del Administrador de reinicio para controlar el comportamiento de la detección del archivo en uso.
+
+-- La opción "Administrador de reinicio activado" indica a Windows Installer que debe usar el Administrador de reinicio para detectar los archivos en uso y omitir los reinicios del sistema siempre que sea posible.
+
+-- La opción "Administrador de reinicio desactivado" desactiva el Administrador de reinicio para la detección de archivos en uso y se usa el comportamiento de archivos heredados en uso.
+
+-- La opción "Administrador de reinicio desactivado para la instalación de aplicaciones heredadas" se aplica a los paquetes creados para versiones de Windows Installer anteriores a la 4.0. Esta opción permite a estos paquetes mostrar la UI de archivos heredados en uso y, al mismo tiempo, usar el Administrador de reinicio para la detección.
+
+Si deshabilita esta configuración no la establece, Windows Installer usará el Administrador de reinicio para detectar los archivos en uso y limitará los reinicios del sistema siempre que sea posible.</string>
+      <string id="DisableBrowse">Quitar el cuadro de diálogo de búsqueda de origen del nuevo archivo</string>
+      <string id="DisableBrowse_Help">Impide que los usuarios busquen archivos de instalación cuando agreguen características o componentes a un programa instalado.
+
+Esta opción deshabilita el botón Examinar que aparece junto a la lista "Usar característica de" en el cuadro de diálogo de Windows Installer. Por lo tanto, los usuarios deben seleccionar un origen de archivo de instalación de la lista "Usar característica de" que el administrador del sistema configura.
+
+Esta opción se aplica incluso cuando la instalación se está ejecutando en el contexto de seguridad del usuario.
+
+Si deshabilita esta opción o no la configura, el botón Examinar se habilita cuando una instalación se ejecuta en el contexto de seguridad del usuario. Sin embargo, solo los administradores del sistema pueden buscar cuando una instalación se está ejecutando con privilegios del sistema elevados, como por ejemplo las instalaciones que se ofrecen en el escritorio o en Agregar o quitar programas.
+
+Esta opción solo afecta a Windows Installer. No impide que los usuarios seleccionen otros exploradores, como el Explorador de Windows o Ubicaciones de red, para buscar archivos de instalación.
+
+Consulte también la opción "Permitir al usuario buscar el origen mientras está elevado".</string>
+      <string id="DisableFlyweightPatching">Prohibir aplicación ligera de revisiones</string>
+      <string id="DisableFlyweightPatching_Help">Esta opción controla la posibilidad de desactivar todas las optimizaciones de revisiones. 
+
+Si habilita esta configuración de directiva (establecida en 1), todas las opciones de optimización de revisiones se desactivan durante la instalación.
+
+Si deshabilita esta configuración de directiva, se permite la aplicación de revisiones de manera más rápida, prescindiendo para ello de la ejecución de acciones innecesarias. El modo de aplicación ligera de revisiones está diseñado principalmente para revisiones que solo actualizan unos cuantos archivos o valores de registro. El instalador analizará la revisión en busca de cambios específicos para determinar si es posible la optimización. De ser así, la revisión se aplicará usando un procesamiento mínimo.</string>
+      <string id="DisableLoggingFromPackageOff">Deshabilitar registro mediante la configuración de paquetes desactivado</string>
+      <string id="DisableLoggingFromPackageOn">Deshabilitar registro mediante la configuración de paquetes activado</string>
+      <string id="DisableLoggingFromPackage">Deshabilitar registro mediante la configuración de paquetes</string>
+      <string id="DisableLoggingFromPackage_Help">La propiedad MsiLogging de los paquetes de instalación puede usarse para habilitar el registro automático de todas las operaciones de instalación del paquete. Esta configuración controla el procesamiento de esta propiedad por parte de Windows Installer.
+      
+Si habilita esta configuración, puede usar las opciones del cuadro Deshabilitar registro mediante la configuración de paquetes para controlar el registro automático mediante el comportamiento de la configuración de los paquetes.
+
+-- La opción "Registro mediante la configuración de paquetes activado" indica a Windows Installer que debe generar automáticamente archivos de registro para los paquetes que incluyan la propiedad MsiLogging.
+
+-- La opción "Registro mediante la configuración de paquetes desactivado" desactiva el comportamiento de registro automático cuando se especifica mediante la directiva MsiLogging. Aún es posible generar los archivos de registro usando el modificador de la línea de comandos de registro o la directiva Registro.
+
+Si no establece esta configuración, Windows Installer generará archivos de registro automáticamente para los paquetes que incluyan la propiedad MsiLogging.</string>
+        <string id="DisableMedia">Impedir la instalación de cualquier medio extraíble</string>
+      <string id="DisableMedia_Help">Impide que los usuarios instalen programas desde medios extraíbles.
+
+Si un usuario intenta instalar un programa desde un medio extraíble, como por ejemplo un CD-ROM, disquetes o DVD, aparecerá un mensaje indicando que no puede hallarse dicha función.
+
+Esta opción se aplica incluso cuando la instalación se está ejecutando en el contexto de seguridad del usuario.
+
+Si deshabilita esta opción o no la configura, los usuarios podrán instalar desde medios extraíbles cuando la instalación se esté ejecutando en su propio contexto de seguridad. Sin embargo, solo los administradores del sistema pueden usar medios extraíbles cuando una instalación se está ejecutando con privilegios de sistema elevados, como las instalaciones ofrecidas en el escritorio o en Agregar o quitar programas.
+
+Consulte también la opción "Permitir al usuario usar el origen de los medios mientras está elevado" en Configuración del equipo\Plantillas administrativas\Componentes de Windows\Windows Installer.
+
+Consulte también la opción "Ocultar la opción 'Agregar un programa desde un CD-ROM o disquete' de Configuración del usuario\Plantillas administrativas\Panel de control\Agregar o quitar programas.</string>
+      <string id="DisableMSI">Deshabilitar Windows Installer</string>
+      <string id="DisableMSI_Help">Deshabilita o restringe el uso de Windows Installer.
+
+Esta opción puede impedir que los usuarios instalen software en sus sistemas o permitir que los usuarios instalen solo los programas que el administrador del sistema ofrezca.
+
+Si habilita esta opción, puede usar las opciones del cuadro Deshabilitar Windows Installer para establecer una configuración de instalación.
+
+--   La opción "Nunca" indica que Windows Installer está completamente habilitado. Los usuarios pueden instalar y actualizar software. Éste es el comportamiento predeterminado de Windows Installer en Windows 2000 Professional, Windows XP Professional y Windows Vista cuando la directiva no está configurada.
+
+--   La opción "Solo para aplicaciones no administradas" permite a los usuarios instalar solamente aquellos programas que un administrador del sistema asigne (ofrezca en el escritorio) o que publique (agregue en Agregar o quitar programas). Éste es el compartimiento predeterminado de Windows Installer en la familia Windows Server 2003 cuando la directiva no está configurada.
+
+--   La opción "Siempre" indica que Windows Installer está deshabilitado.
+
+Esta opción solo afecta a Windows Installer. No impide que los usuarios usen métodos distintos para instalar y actualizar programas.</string>
+      <string id="DisableNever">Nunca</string>
+      <string id="DisableNonManaged">Solo para aplicaciones no administradas</string>
+      <string id="DisablePatch">Prohibir la incorporación de revisiones</string>
+      <string id="DisablePatch_Help">Impide que los usuarios usen Windows Installer para instalar revisiones.
+
+Las revisiones son actualizaciones que solo sustituyen los archivos de programa que se han modificado. Como puede darse el caso de que algunas revisiones sean un vehículo ideal para programas malintencionados, algunas instalaciones prohíben que se usen.
+
+Nota: esta opción solo se aplica a las instalaciones que se ejecutan en el contexto de seguridad del usuario. De forma predeterminada, los usuarios que no son administradores del sistema no pueden aplicar revisiones a instalaciones que se ejecutan con privilegios de sistema elevados, como por ejemplo las que se ofrecen en el escritorio o en Agregar o quitar programas.
+
+Consulte también la opción "Permitir al usuario incorporar revisiones a productos elevados".</string>
+      <string id="DisableRollback">Prohibir la reversión del proceso</string>
+      <string id="DisableRollback_Help">Impide que Windows Installer genere y guarde los archivos que necesita para revertir una instalación interrumpida o que no se ha realizado correctamente.
+
+Esta opción impide que Windows Installer registre el estado original del sistema y la secuencia de cambios realizados durante la instalación. También impide que Windows Installer conserve archivos que tiene la intención de borrar más adelante. Por lo tanto, Windows Installer no puede restaurar el estado original del equipo si la instalación no se completa.
+
+Esta opción se ha creado para reducir la cantidad de espacio temporal en disco necesaria para instalar programas. Asimismo, impide que usuarios malintencionados interrumpan una instalación para reunir datos sobre el estado interno de un sistema o para buscar archivos seguros del sistema. Sin embargo, no debe usar esta opción si no es necesaria porque una instalación incompleta puede hacer que el sistema o que un programa determinado no funcionen.
+
+Esta opción aparece en las carpetas Configuración del equipo y Configuración del usuario. Si la opción está habilitada en una de las carpetas, se considerará como habilitada, incluso cuando se haya deshabilitado intencionadamente en la otra carpeta.</string>
+      <string id="EnableAdminTSRemote">Permitir a los administradores instalar desde la sesión de Servicios de Escritorio remoto</string>
+      <string id="EnableAdminTSRemote_Help">Permite a los administradores de Servicios de Escritorio remoto instalar y configurar los programas remotamente.
+
+De forma predeterminada, los administradores de sistema solo pueden instalar programas cuando los administradores de sistema han iniciado sesión en el equipo en el que se está instalando el programa. Esta opción crea una excepción especial para los equipos en los que se están ejecutando Servicios de Escritorio remoto.
+
+Esta opción solo afecta a los administradores de sistema. El resto de los usuarios no puede instalar programas remotamente.</string>
+      <string id="EnableUserControl">Dar control al usuario sobre las instalaciones</string>
+      <string id="EnableUserControl_Help">Permite que los usuarios cambien las opciones de instalación que normalmente solo están disponibles para los administradores de sistema.
+
+Esta opción ignora algunas de las características de seguridad de Windows Installer. Permite que se completen instalaciones que normalmente se detendrían por una infracción de seguridad.
+
+Las características de seguridad de Windows Installer impiden que los usuarios modifiquen las opciones de instalación que normalmente están reservadas para los administradores de sistema, como especificar el directorio en el que se instalarán los archivos. Si Windows Installer detecta que un paquete de instalación ha permitido que el usuario modifique una opción protegida, detendrá la instalación y mostrará un mensaje. Estas características de seguridad solo funcionan cuando el programa de instalación se está ejecutando en un contexto de seguridad privilegiado en el que tiene acceso a directorios prohibidos para el usuario.
+
+Esta opción se ha creado para entornos menos restrictivos. Puede usarse para ignorar errores de un programa de instalación que impiden que el software se instale.</string>
+      <string id="MSI">Windows Installer</string>
+      <string id="MSI_AllowUser">Permitir instalaciones de usuario</string>
+      <string id="MSI_DisableLUAPatching">Prohibir a los usuarios que no son administradores la aplicación de actualizaciones firmadas por los proveedores</string>
+      <string id="MSI_DisableLUAPatchingHelp">Esta opción controla la posibilidad de que los usuarios que no son administradores instalen actualizaciones firmadas digitalmente por el fabricante de la aplicación.
+
+Las actualizaciones para usuarios que no son administradores proporcionan al autor de una aplicación un mecanismo para crear actualizaciones firmadas digitalmente que los usuarios sin privilegios pueden aplicar.
+
+Si habilita esta configuración de directiva, solo administradores o los usuarios con privilegios administrativos podrán aplicar actualizaciones a las aplicaciones basadas en Windows Installer. 
+
+Si deshabilita esta configuración de directiva, solo los usuarios sin privilegios de administrador podrán instalar actualizaciones para usuarios que no son administradores.</string>
+      <string id="MSI_DisablePatchUninstall">No permitir la eliminación de actualizaciones</string>
+      <string id="MSI_DisablePatchUninstallHelp">Esta opción controla la posibilidad de que los usuarios o los administradores eliminen actualizaciones basadas en Windows Installer. 
+
+Esta opción se debe usar si necesita un control estrecho sobre las actualizaciones. Un ejemplo sería un entorno de bloqueo donde es necesario asegurarse de que los usuarios o los administradores no puedan quitar actualizaciones una vez instaladas.
+
+Si habilita esta configuración de directiva, un usuario o un administrador no pueden quitar actualizaciones del equipo. Windows Installer seguirá pudiendo quitar una actualización que ya no es aplicable al producto.
+
+Si deshabilita esta configuración de directiva, un usuario puede quitar una actualización del equipo solo si tiene privilegios para quitar la actualización. Esto puede depender de si el usuario es un administrador, si están activadas Deshabilitar Windows Installer e Instalar siempre con privilegios elevados, y si se instaló la actualización en un contexto administrado por usuario, no administrado por usuario o en un contexto por equipo.</string>
+      <string id="MSI_DisableSRCheckPoints">Desactivar la creación de puntos de control de Restaurar sistema</string>
+      <string id="MSI_DisableSRCheckPoints_Help">Restaurar sistema permite a los usuarios, en caso de problemas, restaurar sus equipos a un estado anterior sin perder archivos de información personal. De forma predeterminada, Windows Installer crea automáticamente un punto de control de Restaurar sistema cada vez que se instala una aplicación para que los usuarios puedan restaurar sus equipos al estado anterior a la instalación de la aplicación.
+
+Si habilita esta opción, Windows Installer no genera puntos de control de Restaurar sistema al instalar aplicaciones.
+
+Si deshabilita esta opción o no la configura, Windows Installer crea automáticamente un punto de control de Restaurar sistema cada vez que se instala una aplicación.</string>
+      <string id="MSI_DisableUserInstalls">Prohibir instalaciones de usuario</string>
+      <string id="MSI_DisableUserInstalls_Help">Esta opción le permite configurar instalaciones de usuario. Para configurar esta opción, habilítela y use la lista desplegable para seleccionar el comportamiento que desea.
+
+Si esta opción no está configurada o si está habilitada y "Permitir instalaciones de usuario" está seleccionada, el instalador permite y usa los productos que están instalados por usuario y los que están instalados por equipo. Si el instalador encuentra una instalación por usuario de una aplicación, oculta la instalación por equipo del mismo producto.
+
+Si está opción está habilitada y "Ocultar instalaciones de usuario" está seleccionada, el instalador omite aplicaciones por usuario. Esto ocasiona que se muestren a los usuarios las aplicaciones instaladas por equipo, incluso si aquellos usuarios tienen una instalación por usuario del producto registrado en su perfil de usuario.</string>
+      <string id="MSI_EnforceUpgradeComponentRules">Aplicar reglas de actualización de componentes</string>
+      <string id="MSI_EnforceUpgradeComponentRulesHelp">Esta opción hace que Windows Installer aplique reglas estrictas para actualizaciones de componentes y puede producir errores en algunas actualizaciones.
+
+Si habilita esta configuración de directiva, Windows Installer aplicará reglas de actualización estrictas. Se puede producir un error en las actualizaciones si éstas intentan realizar una de las acciones siguientes:
+
+(1) Quitar un componente de una característica.
+Esto también puede ocurrir si cambia el GUID de un componente. El componente identificado por el GUID original parece haberse quitado y el componente identificado por el nuevo GUID aparece como un nuevo componente.
+
+(2) Agregar una nueva característica a la parte superior o media de un árbol de características ya existente.
+La nueva característica se debe agregar como una nueva característica hoja a un árbol de características ya existente.
+
+Si deshabilita esta configuración de directiva, Windows Installer usará reglas menos restrictivas para la actualización de componentes.</string>
+      <string id="MSI_HideUser">Ocultar instalaciones de usuario</string>
+      <string id="MSI_MaxPatchCacheSize">Tamaño máximo de la memoria caché de los archivos de línea base</string>
+      <string id="MSI_MaxPatchCacheSizeHelp">Esta directiva controla el porcentaje de espacio en disco disponible para la memoria caché de archivos de línea base de Windows Installer.
+
+Windows Installer usa la memoria caché de archivos de línea base para guardar archivos de línea base modificados por actualizaciones de diferencias de binarios. Se usa la memoria caché para recuperar el archivo de línea base para futuras actualizaciones. La memoria caché elimina los avisos a los usuarios para medios de origen cuando se aplican nuevas actualizaciones.
+
+Si habilita esta configuración de directiva, puede modificar el tamaño máximo de la memoria caché de archivos de línea base de Windows Installer.
+
+Si establece la memoria caché de línea base en 0, Windows Installer dejará de llenar la memoria caché de línea base para futuras actualizaciones. Los archivos de la memoria caché existentes permanecerán en el disco y no se eliminarán cuando se quite el producto.
+
+Si establece la memoria caché de línea base en 100, Windows Installer usará el espacio libre disponible para la memoria caché de archivos de línea base.
+
+Si deshabilita esta configuración de directiva o si no se configura, Windows Installer usará un valor predeterminado del 10 por ciento para el tamaño máximo de la memoria caché de archivos de línea base.</string>
+      <string id="MSILogging">Registro</string>
+      <string id="MSILogging_Help">Especifica los tipos de eventos que Windows Installer incluye en el registro de transacciones para cada instalación. El registro, Msi.log, aparece en el directorio Temp del volumen del sistema.
+
+Cuando habilita esta directiva, puede especificar los tipos de eventos que desea que Windows Installer registre. Para indicar que se ha registrado un tipo de evento, escriba la letra que representa el tipo de evento. Puede escribir las letras en cualquier orden e incluir los tipos de eventos que desee.
+
+Para deshabilitar el registro, elimine todas las letras del cuadro.
+
+Si deshabilita esta opción o no la configura, Windows Installer registra los tipos de eventos predeterminados, representados por las letras "iweap".</string>
+      <string id="PatchOptimizationOff">Optimización de revisiones desactivada</string>
+      <string id="PatchOptimizationOn">Optimización de revisiones activada</string>
+      <string id="SafeForScripting">Deshabilitar el indicador de seguridad de IE para secuencias de comandos de Windows Installer</string>
+      <string id="SafeForScripting_Help">Permite que los programas basados en Web instalen software en el equipo sin notificarlo al usuario.
+
+De forma predeterminada, cuando una secuencia de comandos hospedada en un explorador de Internet intenta instalar un programa en el sistema, éste advierte al usuario y le permite aceptar o rechazar la instalación. Esta opción suprime el aviso y permite que la instalación continúe.
+
+Esta opción se ha creado para empresas que usan herramientas basadas en Web para distribuir programas entre sus empleados. Sin embargo, como esta opción puede suponer un riesgo de seguridad, debe aplicarse con cuidado.</string>
+      <string id="SearchOrder">Orden de búsqueda</string>
+      <string id="SearchOrder_Help">Especifica el orden en que Windows Installer busca los archivos de instalación.
+
+De forma predeterminada, Windows Installer busca primero en la red, luego en los medios extraíbles (disquete, CD-ROM o DVD) y, finalmente, en Internet (URL).
+
+Para cambiar el orden de búsqueda, habilite la opción y escriba a continuación las letras que representan el origen de cada archivo en el orden en que desea que Windows Installer busque:
+
+--   "n" representa la red.
+
+--   "m" representa el medio.
+
+--   "u" representa la URL o Internet.
+
+Para excluir un origen de archivo, omita o elimine la letra que representa dicho tipo de origen.</string>
+      <string id="SUPPORTED_MSI15">Microsoft Windows XP o Windows 2000 con Windows Installer versión 2.0</string>
+      <string id="SUPPORTED_MSI30">Windows Installer versión 3.0</string>
+      <string id="SUPPORTED_MSI40">Windows Installer versión 4.0</string>
+      <string id="TransformsSecure">La memoria caché se transforma en ubicación segura en la estación de trabajo</string>
+      <string id="TransformsSecure_Help">Guarda copias de los archivos de transformación en una ubicación segura del equipo local.
+
+Los archivos de transformación están formados por instrucciones que modifican o personalizan un programa durante la instalación.
+
+Si habilita esta opción, el archivo de transformación se guarda en una ubicación segura del equipo del usuario. Como Windows Installer necesita el archivo de transformación para repetir una instalación en la que se usó dicho archivo de transformación, el usuario debe usar el mismo equipo o conectarse al medio original o a otro idéntico para volver a instalar, eliminar o reparar la instalación. Este es el compartimiento predeterminado en la familia Windows Server 2003 cuando la directiva no está configurada.
+
+Esta opción se ha creado para empresas para impedir la modificación no autorizada o malintencionada de archivos de transformación.
+
+Si deshabilita esta opción, Windows Installer guardará los archivos de transformación en el directorio Datos de programa en el perfil del usuario. Cuando un usuario reinstala, quita o repara una instalación, el archivo de transformación estará disponible incluso si el usuario está en un equipo diferente o no está conectado a la red. Éste es el comportamiento predeterminado en Windows 2000 Professional, Windows XP Professional y Windows Vista cuando la directiva no está configurada.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AlwaysInstallElevated_1">
+        <text> </text>
+        <text>Esta opción debe establecerse para el equipo y el usuario para que se aplique.</text>
+      </presentation>
+      <presentation id="AlwaysInstallElevated_2">
+        <text> </text>
+        <text>Esta opción debe establecerse para el equipo y el usuario para que se aplique.</text>
+      </presentation>
+      <presentation id="DisableAutomaticApplicationShutdown">
+        <dropdownList refId="DisableAutomaticApplicationShutdown" noSort="true" defaultItem="1">Prohibir uso del Administrador de reinicio</dropdownList>
+      </presentation>
+      <presentation id="DisableFlyweightPatching">
+        <dropdownList refId="DisableFlyweightPatching" noSort="true" defaultItem="1">Prohibir aplicación ligera de revisiones</dropdownList>
+      </presentation>
+      <presentation id="DisableLoggingFromPackage">
+        <dropdownList refId="DisableLoggingFromPackage" nosort="true" defaultItem="1">Deshabilitar registro mediante la configuración de paquetes</dropdownList>
+      </presentation>
+      <presentation id="DisableMSI">
+        <dropdownList refId="DisableMSI" noSort="true" defaultItem="1">Deshabilitar Windows Installer</dropdownList>
+      </presentation>
+      <presentation id="DisableRollback_1">
+        <text> </text>
+        <text>Esta opción se puede configurar para el equipo o para el usuario.</text>
+      </presentation>
+      <presentation id="DisableRollback_2">
+        <text> </text>
+        <text>Esta opción se puede configurar para el equipo o para el usuario.</text>
+      </presentation>
+      <presentation id="MSI_DisableUserInstalls">
+        <dropdownList refId="MSI_DisableUserInstallsBox" noSort="true" defaultItem="1">Comportamiento de la instalación de usuario:</dropdownList>
+      </presentation>
+      <presentation id="MSI_MaxPatchCacheSize">
+        <decimalTextBox refId="MSI_MaxPatchCacheSize" defaultValue="10">Tamaño máximo de la memoria caché de los archivos de línea base</decimalTextBox>
+      </presentation>
+      <presentation id="MSILogging">
+        <textBox refId="MSILogging">
+          <label>Registro</label>
+          <defaultValue>iweap</defaultValue>
+        </textBox>
+        <text>Para activar el registro, indique uno o más de los modos siguientes.</text>
+        <text>"iwearucmpvox" registra todo pero agrega tiempo a la instalación.</text>
+        <text>i: mensajes de estado</text>
+        <text>w: avisos no graves</text>
+        <text>e: todos los mensajes de error</text>
+        <text>a: inicio de acciones</text>
+        <text>r: registros específicos para la acción</text>
+        <text>u: solicitudes de usuario</text>
+        <text>c: parámetros iniciales de UI</text>
+        <text>m: sin memoria</text>
+        <text>p: propiedades de Terminal Server</text>
+        <text>v: información detallada</text>
+        <text>o: mensajes de espacio insuficiente en disco</text>
+        <text>x: información de depuración adicional</text>
+      </presentation>
+      <presentation id="SearchOrder">
+        <textBox refId="SearchOrder">
+          <label>Orden de búsqueda</label>
+          <defaultValue>nmu</defaultValue>
+        </textBox>
+        <text>n = red, m = medios (CD), u = URL</text>
+        <text>Algunos ejemplos válidos: nmu, n, nu, mn</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <policyNamespaces>
+    <target prefix="tpm" namespace="Microsoft.Policies.TrustedPlatformModule" />
+    <using prefix="windows" namespace="Microsoft.Policies.Windows" />
+  </policyNamespaces>
+  <resources minRequiredRevision="1.0" />
+  <categories>
+    <category name="TPMCategory" displayName="$(string.TPMCategory)">
+      <parentCategory ref="windows:System" />
+    </category>
+  </categories>
+  <policies>
+    <policy name="ActiveDirectoryBackup_Name" class="Machine" displayName="$(string.ActiveDirectoryBackup_Name)" explainText="$(string.ActiveDirectoryBackup_Help)" presentation="$(presentation.ActiveDirectoryBackup_Name)" key="Software\Policies\Microsoft\TPM" valueName="ActiveDirectoryBackup">
+      <parentCategory ref="TPMCategory" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+        <boolean id="RequireActiveDirectoryBackup_Name" valueName="RequireActiveDirectoryBackup">
+          <trueValue>
+            <decimal value="1" />
+          </trueValue>
+          <falseValue>
+            <decimal value="0" />
+          </falseValue>
+        </boolean>
+      </elements>
+    </policy>
+    <policy name="BlockedCommandsList_Name" class="Machine" displayName="$(string.BlockedCommandsList_Name)" explainText="$(string.BlockedCommandsList_Help)" presentation="$(presentation.BlockedCommandsList_Name)" key="SOFTWARE\Policies\Microsoft\Tpm\BlockedCommands" valueName="Enabled">
+      <parentCategory ref="TPMCategory" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+        <list id="BlockedCommandsList_Ordinals2" key="SOFTWARE\Policies\Microsoft\Tpm\BlockedCommands\List" additive="true" />
+      </elements>
+    </policy>
+    <policy name="IgnoreDefaultList_Name" class="Machine" displayName="$(string.IgnoreDefaultList_Name)" explainText="$(string.IgnoreDefaultList_Help)" key="Software\Policies\Microsoft\TPM\BlockedCommands" valueName="IgnoreDefaultList">
+      <parentCategory ref="TPMCategory" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="IgnoreLocalList_Name" class="Machine" displayName="$(string.IgnoreLocalList_Name)" explainText="$(string.IgnoreLocalList_Help)" key="Software\Policies\Microsoft\TPM\BlockedCommands" valueName="IgnoreLocalList">
+      <parentCategory ref="TPMCategory" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+  </policies>
+</policyDefinitions>

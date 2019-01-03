@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Kerberos 设置</displayName>
+  <description>Kerberos 身份验证协议的配置设置。</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">使用林搜索顺序</string>
+      <string id="forestsearch_explain">此策略设置定义 Kerberos 客户端在尝试解析由两部分组成的服务主体名称(SPN)时搜索的信任林列表。
+
+如果启用此策略设置，Kerberos 客户端在无法解析由两部分组成的 SPN 时将搜索此列表中的林。如果找到匹配项，则 Kerberos 客户端将请求一个适当域的参照票证。
+
+如果禁用或未配置此策略设置，则 Kerberos 客户端在解析 SPN 时将不搜索列出的林。如果 Kerberos 客户端因未找到相应名称而无法解析 SPN，则可能使用 NTLM 身份验证。</string>
+      <string id="hosttorealm">定义主机名称到 Kerberos 领域的映射</string>
+      <string id="hosttorealm_explain">使用此策略设置，可以指定将哪些 DNS 主机名称和哪些 DNS 后缀映射到 Kerberos 领域。
+
+如果启用此策略设置，则可以查看并更改由组策略定义的映射到 Kerberos 领域的 DNS 主机名称和 DNS 后缀的列表。若要查看映射列表，请启用策略设置，然后单击“显示”按钮。若要添加映射，请启用策略设置，记下语法，单击“显示”。在“显示内容”对话框的“值名称”列键入领域名称。在“值”列，使用正确的语法格式键入 DNS 主机名称和 DNS 后缀的列表。若要从列表删除映射，请单击要删除的映射条目，然后按 DELETE 键。若要编辑映射，请从列表中删除当前条目，然后添加一个带有其他参数的新映射。
+
+如果禁用此策略设置，则由组策略定义的主机名称到 Kerberos 领域的映射列表将被删除。
+
+如果不配置此策略设置，则系统将使用在本地注册表中定义的主机名称到 Kerberos 领域的映射(如果存在)。</string>
+      <string id="MitRealms">定义交互 Kerberos V5 领域设置</string>
+      <string id="MitRealms_explain">此策略设置配置 Kerberos 客户端，以便该客户端以此策略设置定义的方式使用交互 Kerberos V5 领域进行身份验证。
+      
+如果启用此策略设置，则可以查看并更改交互 Kerberos V5 领域及其设置的列表。若要查看交互 Kerberos V5 领域的列表，请启用策略设置，然后单击“显示”按钮。若要添加交互 Kerberos V5 领域，请启用策略设置，记下语法，然后单击“显示”。在“显示内容”对话框的“值名称”列键入交互 Kerberos V5 领域名称。 在“值”列，使用正确的语法格式键入主机 KDC 的领域标志和主机名称。 若要从列表删除交互 Kerberos V5 领域的“值名称”或“值”条目，请单击相应条目，然后按 DELETE 键。若要编辑映射，请从列表中删除当前条目，然后添加一个带有其他参数的新映射。
+
+如果禁用此策略设置，则由组策略定义的交互 Kerberos V5 领域设置将被删除。
+
+如果不配置此策略设置，则系统将使用在本地注册表中定义的交互 Kerberos V5 领域设置(如果存在)。</string>
+      <string id="ValidateKDC">要求严格的 KDC 验证</string>
+      <string id="ValidateKDC_explain">此策略设置控制 Kerberos 客户端验证 KDC 证书的行为。  
+      
+如果启用此策略设置，则 Kerberos 客户端要求 KDC 的 X.509 证书在扩展的密钥用法 (EKU) 扩展名中包含 KDC 密钥目的对象标识符，并且要求 KDC 的 X.509 证书包含与 DNS 域的名称匹配的 dNSName subjectAltName (SAN) 扩展名。 如果计算机加入到域，则 Kerberos 客户端要求 KDC 的 X.509 证书在 NTAUTH 存储中必须由证书颁发机构 (CA) 签署。 如果计算机不加入到域，则 Kerberos 客户端允许在 KDC 的 X.509 证书的路径验证中使用智能卡上的根 CA 证书。
+
+如果禁用或不配置此策略设置，则 Kerberos 客户端将仅要求 KDC 证书在 EKU 扩展名中包含服务器身份验证目的对象标识符。
+</string>
+      <string id="StrictTarget">要求远程过程调用使用严格的目标服务器主体名称(SPN)匹配</string>
+      <string id="StrictTarget_explain">当某应用程序尝试使用值为 NULL 的服务主体名称(SPN)远程调用(RPC)此服务器时，运行 Windows 7 的计算机将尝试通过生成一个 SPN 来使用 Kerberos。使用此策略设置，您可以配置此服务器，使 Kerberos 能解密包含此系统生成的 SPN 的票证。
+
+如果启用此策略设置，则只允许作为 LocalSystem 或 NetworkService 运行的服务接受这些连接。不是以 LocalSystem 或 NetworkService 标识运行的服务将无法进行身份验证。
+
+如果禁用或不配置此策略设置，则允许任何服务通过使用此系统生成的 SPN 接受传入的连接。</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">定义主机名称到领域的映射: </listBox>
+        <text></text>
+        <text>语法: </text>
+        <text>输入 Kerberos 领域名称作为“值名称”。</text>
+        <text>输入要映射到 Kerberos 领域的</text>
+        <text>主机名称和 DNS 后缀作为“值”。若要添加多个</text>
+        <text>名称，请使用“;”分隔条目。</text>
+        <text></text>
+        <text>注意: 若要指定 DNS 后缀，请在条目前使用“.”句点。</text>
+        <text>对于主机名称条目，请勿指定前导“.”句点。</text>
+        <text></text>
+        <text>示例: </text>
+        <text>值名称: MICROSOFT.COM</text>
+        <text>值: .microsoft.com; .ms.com; computer1.fabrikam.com;</text>
+        <text></text>
+        <text>在上面的示例中，DNS 后缀为</text>
+        <text>*.microsoft.com 或 *.ms.com 的所有主体都将被映射到</text>
+        <text>MICROSOFT.COM Kerberos 领域。此外，主机名称</text>
+        <text>computer1.fabrikam.com 也将被映射到 </text>
+        <text>MICROSOFT.COM Kerberos 领域。</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">定义交互 Kerberos V5 领域设置: </listBox>
+        <text></text>
+        <text>语法: </text>
+        <text>输入交互 Kerberos V5 领域名称作为“值名称”。</text>
+        <text>输入 KDC 的领域标志和主机名称作为</text>
+        <text>“值”。使用以下</text>
+        <text>标记 &lt;f&gt; &lt;/f&gt; 括住领域标志。使用标记 &lt;k&gt; &lt;/k&gt; 括住 KDC 列表</text>
+        <text>若要添加多个 KDC 名称，请使用</text>
+        <text>分号“;”分隔条目。</text>
+        <text></text>
+        <text>示例: </text>
+        <text>值名称: TEST.COM</text>
+        <text>值: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>其他示例: </text>
+        <text>值名称: REALM.FABRIKAM.COM</text>
+        <text>值: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">模式: </dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>要搜索的林</label>
+        </textBox>
+        <text>语法:</text>
+        <text>输入启用此策略时要搜索的林的列表。</text>
+        <text>使用完全限定的域名(FQDN)命名格式。</text>
+        <text>使用分号“;”分隔多个搜索条目。</text>
+        <text>详细信息:</text>
+        <text>当前林不必列出，因为“林搜索顺序”先使用全局编录，然后才按列出的顺序搜索。</text>
+        <text>不必分别列出林中的所有域。</text>
+        <text>如果列出的是信任林，则将搜索该林中的所有域。</text>
+        <text>为获得最佳性能，请以成功可能性为序列出林。 </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

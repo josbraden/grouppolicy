@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>skriv inn visningsnavn her</displayName>
+  <description>skriv inn beskrivelse her</description>
+  <resources>
+    <stringTable>
+      <string id="DNS_Client">DNS-klient</string>
+      <string id="DNS_Domain">Tilkoblingsspesifikt DNS-suffiks</string>
+      <string id="DNS_Domain_Help">Angir et tilkoblingsspesifikt DNS-suffiks. Denne innstillingen overstyrer de tilkoblingsspesifikke DNS-suffiksene som angis på datamaskiner hvor denne innstillingen brukes, de som konfigureres lokalt og de som konfigureres med DHCP.
+
+Advarsel!  Et tilkoblingsspesifikt DNS-suffiks angitt i denne innstillingen, brukes på alle nettverkstilkoblinger som brukes av flernettverksdatamaskiner som denne innstillingen brukes på.
+
+Klikk Aktiver hvis du vil bruke denne innestillingen, og angi en strengverdi som representerer DNS-suffikset i det tilgjengelige feltet.
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner, og datamaskinene bruker lokale eller DHCP-konfigurasjonsparametere.</string>
+      <string id="DNS_NameServer">DNS-servere</string>
+      <string id="DNS_NameServer_Help">Angir DNS-serveren hvor en datamaskin sender spørringer når den prøver å løse navn.
+
+Advarsel!  Listen over DNS-servere som er angitt med denne innstillingen, overstyrer DNS-serverne som er konfigurert lokalt og de som konfigureres ved hjelp av DHCP. Listen over DNS-servere brukes på alle nettverkstilkoblinger til flernettverksdatamaskiner som denne innstillingen gjelder for.
+
+Klikk Aktiver for å bruke denne innstillingen og angi deretter en plassbegrenset liste over IP-adresser (med punktum som desimaltegn) i det tilgjengelige feltet. Hvis du aktiverer innstillingen, må du oppgi minst én IP-adresse.
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner, og datamaskinene bruker lokale eller DHCP-konfigurerte parametere.</string>
+      <string id="DNS_PrimaryDnsSuffix">Primært DNS-suffiks</string>
+      <string id="DNS_PrimaryDnsSuffix_Help">Angir det primære DNS-suffikset for alle berørte datamaskiner. Det primære DNS-suffikset brukes til registrering og løsing av DNS-navn.
+
+Med denne innstillingen kan du angi et primært DNS-suffiks for en gruppe datamaskiner og hindre at brukere, inkludert administratorer, endrer det.
+
+Hvis denne innstillingen deaktiveres eller ikke konfigureres, vil hver datamaskin bruke sitt lokale DNS-suffiks, som vanligvis er navnet på Active Directory-domenet datamaskinen er koblet til. Administratorer kan imidlertid bruke System i Kontrollpanel til å endre en datamaskins primære DNS-suffiks.
+
+Hvis du vil bruke denne innstillingen, skriver du inn hele det primære DNS-suffikset du vil tildele, i tekstboksen. Du skriver for eksempel microsoft.com.
+
+Denne innstillingen deaktiverer ikke dialogboksen DNS-suffiks og NetBIOS-datamaskinnavn som administratorer bruker til å endre en datamaskins primære DNS-suffiks. Men hvis administratorer angir et suffiks, vil dette suffikset ignoreres så lenge denne innstillingen er aktivert.
+
+Viktig!  Du må starte Windows på nytt på alle datamaskinene som er berørt av innstillingen, for at endringer av denne innstillingen skal tre i kraft.
+
+Obs!  Hvis du vil endre det primære DNS-suffikset til en datamaskin uten å angi en innstilling, klikker du System i Kontrollpanel, velger kategorien Nettverksidentifikasjon og klikker deretter Egenskaper. Klikk deretter Mer og angi et suffiks i boksen Primært DNS-suffiks for denne datamaskinen.
+
+Hvis du vil ha mer informasjon om DNS, kan du se "Domenenavnsystem (DNS)" i Hjelp.</string>
+      <string id="DNS_RegisterAdapterName">Registrer DNS-poster med tilkoblingsspesifikt DNS-suffiks</string>
+      <string id="DNS_RegisterAdapterName_Help">Angir om en datamaskin som utfører dynamisk registrering kan registrere A- og PTR-ressursposter med sammenkobling av datamaskinnavnet og et tilkoblingsspesifikt DNS-suffiks, i tillegg kan registrere disse postene med en sammenkobling av datamaskinnavnet og det primære DNS-suffikset.
+
+Advarsel!  Aktivering av denne gruppeinnstillingen brukes på alle nettverkstilkoblinger av flernettverksdatamaskiner som innstillingen gjelder for.
+
+Som standard vil en DNS-klient som utfører en dynamisk DNS-registrering, registrere A- og PTR-ressursposter med en sammenkobling av datamaskinnavnet og det primære DNS-suffikset. En sammenkobling av for eksempel et datamaskinnavn, som mindatamaskin, og det primære DNS-suffikset, som microsoft.com, gir resultatet mindatamaskin.microsoft.com.
+
+Hvis denne innstillingen aktiveres, vil en datamaskin kunne registrere A- og PTR-ressursposter med det tilkoblingsspesifikke DNS-suffikset i tillegg til å registrere A- og PTR-ressursposter med det primære DNS-suffikset. En sammenkobling av for eksempel datamaskinnavnet mindatamaskin og det tilkoblingsspesifikke DNS-suffikset VPNconnection vil bli brukt ved registrering av A- og PTR-ressursposter, og resultatet vil bli mindatamaskin.VPNconnection. Merk at hvis dynamisk DNS-registrering er deaktivert på en datamaskin som denne innstillingen brukes på, så vil ikke datamaskinen prøve dynamisk DNS-registrering av A- og PTR-postene som inneholder en sammenkobling av datamaskinnavnet og et tilkoblingsspesifikt DNS-suffiks, uansett status for denne innstillingen. Hvis dynamisk DNS-registrering deaktiveres på en bestemt nettverkstilkobling for en datamaskin som denne innstillingen gjelder, så vil ikke en datamaskin prøve dynamisk DNS-registrering av A- og PTR-poster som inneholder sammenkoblinger av datamaskinnavnet og et tilkoblingsspesifikt DNS-suffiks på den nettverkstilkoblingen, uansett status for denne innstillingen.
+
+Hvis innstillingen deaktiveres, vil en DNS-klient ikke registrere A- og PTR-ressursposter med det tilkoblingsspesifikke DNS-suffikset.
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner, og datamaskinene bruker sine lokale konfigurasjoner.</string>
+      <string id="DNS_RegisterReverseLookup">Registrer PTR-poster</string>
+      <string id="DNS_RegisterReverseLookup_DoNotRegister">Ikke registrer</string>
+      <string id="DNS_RegisterReverseLookup_Help">Angir om registrering av PTR-ressursposter er aktivert for datamaskinene hvor denne policyen brukes.
+
+Som standard vil DNS-klienter som er konfigurert til å utføre dynamisk DNS-registrering, bare forsøke registrering av PTR-ressursposter hvis de har registrert den tilsvarende A-ressursposten. A-ressursposter tilordner et verts-DNS-navn til verts-IP-adressen og PTR-ressursposter tilordner verts-IP-adressen til verts-DNS-navnet.
+
+Hvis du vil aktivere denne innstillingen, klikker du Aktiver og velger deretter en av følgende verdier:
+
+Ikke registrer – Datamaskiner vil aldri forsøke å registrere PTR-ressursposter.
+
+Registrer – Datamaskiner forsøker å registrere PTR-ressursposter uansett om registreringen av A-poster er vellykket.
+
+Registrer bare hvis A-postregistreringen er vellykket – Datamaskiner forsøker å registrere PTR-ressursposter bare hvis de har registrert den tilsvarende A-ressursposten.
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner, og datamaskinene bruker sine lokale konfigurasjoner.</string>
+      <string id="DNS_RegisterReverseLookup_Register">Registrer</string>
+      <string id="DNS_RegisterReverseLookup_RegisterOnlyIfASucceeds">Registrer bare hvis A-postregistreringen er vellykket </string>
+      <string id="DNS_RegistrationEnabled">Dynamisk oppdatering</string>
+      <string id="DNS_RegistrationEnabled_Help">Angir om dynamisk oppdatering er aktivert.
+
+Datamaskiner som er konfigurert for dynamisk oppdatering, registrerer og oppdaterer automatisk sine DNS-ressursposter med en DNS-server.
+
+Hvis denne innstillingen aktiveres, vil datamaskiner som bruker denne innstillingen, kunne bruke dynamisk DNS-registrering på alle nettverkstilkoblinger, avhengig av konfigurasjonen til hver enkelt nettverkstilkobling. For at en dynamisk DNS-registrering skal aktiveres på en bestemt nettverkstilkobling, er det nødvendig og tilstrekkelig at både den datamaskin- og tilkoblingsspesifikke konfigurasjonen tillater dynamisk DNS-registrering. Denne innstillingen bestemmer den datamaskinspesifikke egenskapen som styrer dynamisk DNS-registrering. Hvis denne innstillingen aktiveres, tillater du at dynamisk oppdatering angis enkeltvis for hver av nettverkstilkoblingene.
+
+Hvis denne innstillingen deaktiveres, kan ikke datamaskiner hvor innstillingen brukes, bruke dynamisk DNS-registrering på noen av nettverkstilkoblingene, uansett hvilken konfigurasjon hver enkelt nettverkstilkobling har.
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner, og datamaskinene bruker sine lokale konfigurasjoner.</string>
+      <string id="DNS_RegistrationOverwritesInConflict">Erstatt adresser som er i konflikt</string>
+      <string id="DNS_RegistrationOverwritesInConflict_Help">Angir om en DNS-klient som forsøker å registrere sin A-ressurspost, skal skrive over en eksisterende A-ressurspost eller -poster som inneholder IP-adresser som er i konflikt.
+
+Denne innstillingen er utformet for datamaskiner som registrerer A-ressursposter i DNS-soner som ikke støtter sikker dynamisk oppdatering. Sikker dynamisk oppdatering beholder eierskap av ressursposter og tillater ikke at en DNS-klient skriver over poster som er registrert av andre datamaskiner.
+
+Under en dynamisk oppdatering av en sone som ikke bruker sikker dynamisk oppdatering, kan en DNS-klient oppdage at en eksisterende A-ressurspost knytter klientens verts-DNS-navn til en IP-adresse som tilhører en annen datamaskin. I henhold til standardkonfigurasjonen forsøker DNS-klienten å erstatte den eksisterende A-ressursposten med en A-ressurspost som knytter DNS-navnet til klientens IP-adresse.
+
+Hvis denne innstillingen aktiveres, forsøker DNS-klienter å erstatte A-ressursposter som er i konflikt ved dynamisk oppdatering.
+
+Hvis denne innstillingen deaktiveres, vil DNS-klienten fortsatt utføre dynamisk oppdatering av A-ressursposter, men hvis DNS-klienten forsøker å oppdatere A-ressursposter som inneholder konflikter, vil forsøket mislykkes og en feilkode registreres i hendelseslisteloggen.
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner, og datamaskinene bruker sine lokale konfigurasjoner.</string>
+      <string id="DNS_RegistrationRefreshInterval">Oppdateringsintervall for registrering</string>
+      <string id="DNS_RegistrationRefreshInterval_Help">Angir oppdateringsintervall for registrering av A- og PTR-ressursposter for datamaskiner hvor denne innstillingen blir brukt. Denne innstillingen kan bare brukes på datamaskiner som bruker dynamisk oppdatering.
+
+Datamaskiner som kjører Windows 2000 Professional og Windows XP Professional og som er konfigurert til å utføre dynamisk DNS-registrering av A- og PTR-ressursposter, registrerer regelmessig postene på nytt med DNS-servere, selv om postenes data ikke er endret. Denne nye registreringen kreves for å angi overfor DNS-servere som er konfigurert til automatisk å fjerne (renovere) gamle poster, at disse postene er nye og skal beholdes i databasen.
+
+Advarsel!  Hvis DNS-ressursposter er registrert i soner hvor renovering er aktivert, må verdien til denne innstillingen aldri overstige oppdateringsintervallet som er konfigurert for disse sonene. Hvis det angitte oppdateringsintervallet for registrering er lengre enn oppdateringsintervallet til DNS-sonene, kan resultatet bli en uønsket sletting av A- og PTR-ressursposter.
+
+Klikk Aktiver for å angi oppdateringsintervall for registrering, og angi deretter en verdi større enn 1800. Husk at denne verdien angir oppdateringsintervallet for registrering i sekunder, for eksempel er 1800 sekunder 30 minutter.
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner, og datamaskinene bruker sine lokale konfigurasjoner.</string>
+      <string id="DNS_RegistrationTtl">TTL angitt i A- og PTR-poster</string>
+      <string id="DNS_RegistrationTtl_Help">Angir verdien for TTL-feltet (Levetid) i A- og PTR-ressursposter som er registrert av datamaskiner hvor denne innstillingen er brukt.
+
+For å angi TTL, klikker du Aktiver og angir deretter en verdi i sekunder (verdien 900 er for eksempel 15 minutter).
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner.</string>
+      <string id="DNS_SearchList">Søkeliste for DNS-suffiks</string>
+      <string id="DNS_SearchList_Help">Angir DNS-suffiksene som skal legges til et ukvalifisert ettleddsnavn før sending av en DNS-spørring etter navnet.
+
+Et ukvalifisert enkeltetikettnavn inneholder ingen punktum, slik som example. Dette skiller seg fra et kvalifisert domenenavn, som for eksempel example.microsoft.com.
+
+Når denne innstillingen er aktivert, skjer følgende: Når en bruker sender en spørring etter et ettleddsnavn, som example, vil en lokal DNS-klient legge til et suffiks, som for eksempel microsoft.com, slik at spørringen blir example.microsoft.com, før spørringen blir sendt til en DNS-server.
+
+Hvis denne innstillingen aktiveres, kan du angi DNS-suffiksene som skal legges til, før sending av en spørring etter et ukvalifisert ettleddsnavn. Verdiene til DNS-suffiksene for denne innstillingen kan angis ved hjelp av kommadelte strenger, som for eksempel microsoft.com,serverua.microsoft.com,office.microsoft.com. Ett DNS-suffiks blir lagt til for hver spørring som sendes. Hvis en spørring mislykkes, blir et nytt DNS-suffiks lagt til i stedet for det som mislyktes, og den nye spørringen sendes. Verdiene brukes i den rekkefølgen de står i strengen, fra venstre og mot høyre.
+
+Hvis du aktiverer innstillingen, må du angi minst ett suffiks.
+
+Hvis innstillingen deaktiveres, vil det primære DNS-suffikset og nettverkstilkoblingsspesifikke DNS-suffikser bli lagt til ukvalifiserte spørringer.
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner, og datamaskinene bruker sine lokale konfigurasjoner.</string>
+      <string id="DNS_UpdateSecurityLevel">Oppdater sikkerhetsnivå</string>
+      <string id="DNS_UpdateSecurityLevel_Help">Angir om datamaskiner som denne innstillingen gjelder for, bruker sikker dynamisk oppdatering eller standard dynamisk oppdatering til registrering av DNS-poster.
+
+Hvis du vil aktivere denne innstillingen, klikker du Aktiver og velger deretter en av følgende verdier.
+
+Usikker etterfulgt av sikker – Hvis dette alternativet velges, sender datamaskinene sikre dynamiske oppdateringer bare når usikre dynamiske oppdateringer nektes.
+
+Bare usikker – Hvis dette alternativet velges, sender datamaskiner bare usikre dynamiske oppdateringer.
+
+Bare sikker – Hvis dette alternativet velges, sender datamaskiner bare sikre dynamiske oppdateringer.
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner, og datamaskinene bruker sine lokale konfigurasjoner.</string>
+      <string id="DNS_UpdateSecurityLevel_OnlySecure">Bare sikker</string>
+      <string id="DNS_UpdateSecurityLevel_OnlyUnsecure">Bare usikker</string>
+      <string id="DNS_UpdateSecurityLevel_UnsecureFollowedBySecure">Usikker etterfulgt av sikker</string>
+      <string id="DNS_UpdateTopLevelDomainZones">Oppdater domenesoner på øverste nivå</string>
+      <string id="DNS_UpdateTopLevelDomainZones_Help">Angir om datamaskinene som denne innstillingen gjelder for, skal kunne sende dynamiske oppdateringer til soner med ettleddsnavn, også kalt domenesoner på øverste nivå, for eksempel com.
+
+Som standard vil en DNS-klient som er konfigurert til å utføre dynamiske DNS-oppdateringer, sende dynamiske oppdateringer til DNS-sonen som er autoritativ for DNS-ressursposter, med mindre den autoritative sonen er et domene på øverste nivå og en rotsone.
+
+Hvis denne innstillingen aktiveres, vil datamaskiner hvor policyen brukes, sende dynamiske oppdateringer til alle soner som er autoritative for ressurspostene som datamaskinen trenger å oppdatere, unntatt rotsonen.
+
+Hvis denne innstillingen deaktiveres, vil datamaskiner hvor policyen brukes, ikke sende dynamiske oppdateringer til rotdomenesonen og/eller domenesonen på øverste nivå som er autoritativ for ressursposter som datamaskinen må oppdatere.
+
+Hvis innstillingen ikke konfigureres, brukes den ikke på noen datamaskiner, og datamaskinene bruker sine lokale konfigurasjoner.</string>
+      <string id="DNS_UseDomainNameDevolution">Overføring av primært DNS-suffiks</string>
+      <string id="DNS_UseDomainNameDevolution_Help">Angir om DNS-klienten utfører overføring av primært DNS-suffiks i en navneløsingsprosess.
+
+Når en bruker sender en spørring etter et ettleddsnavn, for eksempel "example", vil en lokal DNS-klient legge til et suffiks, for eksempel microsoft.com, slik at spørringen blir example.microsoft.com, før spørringen blir sendt til en DNS-server.
+
+Hvis det ikke angis noen søkeliste for DNS-suffikser, legger DNS-klienten til det primære DNS-suffikset til ettleddsnavnet, og hvis spørringen mislykkes, legges det tilkoblingsspesifikke DNS-suffikset til for en ny spørring. Hvis ingen av disse spørringene løses, overfører klienten datamaskinens primære DNS-suffiks (hopper over den venstre delen av det primære DNS-suffikset), legger det overførte primære DNS-suffikset til ettleddsnavnet og sender den nye spørringen til en DNS-server.
+
+Hvis for eksempel det primære DNS-suffikset ooo.aaa.microsoft.com føyes til ettleddsnavnet "example", som ikke avsluttes med punktum, og DNS-spørringen etter example.ooo.aaa.microsoft.com mislykkes, overdrar DNS-klienten det primære DNS-suffikset (hopper over leddet lengst til venstre) til det angitte overdragelsesnivået, og sender en spørring etter example.aaa.microsoft.com. Hvis denne spørringen mislykkes, overdras det primære DNS-suffikset videre hvis det er under angitt overføringsnivå, og spørringen etter example.microsoft.com sendes inn. Hvis denne spørringen mislykkes, fortsetter overføringen hvis den er under angitt overføringsnivå, og spørringen example.microsoft.com sendes inn. Det primære DNS-suffikset kan ikke reduseres til mindre enn overføringsnivået. 
+
+Hvis denne innstillingen er aktivert med tilstrekkelig overføringsnivå, vil DNS-klienter på datamaskiner som denne innstillingen gjelder for, forsøke å løse navn som er en sammenkobling av ettleddsnavnet som skal løses og det overførte primære DNS-suffikset.
+
+Hvis denne innstillingen deaktiveres, vil DNS-klienter på datamaskiner som denne innstillingen gjelder for, ikke forsøke å løse navn som er en sammenkobling av ettleddsnavnet som skal løses og det overførte primære DNS-suffikset.
+
+Hvis innstillingen ikke er konfigurert, brukes den ikke på noen datamaskiner, og datamaskinene bruker sine lokale konfigurasjoner.</string>
+      <string id="DNS_DomainNameDevolutionLevel">Overføringsnivå for primært DNS-suffiks</string>
+      <string id="DNS_DomainNameDevolutionLevel_Help">Denne policyinnstillingen fastsetter overføringsnivået for DNS-suffikset (Domain Name System - domenenavnsystem) som DNS-klienter vil bruke hvis klienter utfører overføring av primært DNS-suffiks i en navneløsingsprosess. Når overføring av DNS-suffiks er aktivert, vil det ved hvert nye spørringsforsøk hoppes over leddet lengst til venstre i et primært DNS-suffiks, når en spørring mislykkes for et navn der det er tilføyd et primært DNS-suffiks. Overføringsnivået indikerer det minste antallet etiketter som må føyes til spørringsstrengen etter at det primære DNS-suffikset har blitt overført.
+
+Når en bruker sender en spørring etter et ettleddsnavn, for eksempel "example", vil en lokal DNS-klient føye til et suffiks i spørringen, for eksempel microsoft.com, før spørringen blir sendt til en DNS-server. I dette tilfellet resulterer det i spørringen "example.microsoft.com.”
+ 
+Hvis en søkeliste over DNS-suffikser ikke er angitt, legger DNS-klienten den primære DNS-suffikset til et ettleddsnavn. Hvis denne spørringen mislykkes, blir det tilkoblingsspesifikke DNS-suffikset føyd til for en ny spørring. Hvis ingen av disse spørringene blir løst, vil klienten overdra datamaskinens primære DNS-suffiks, føye det overdratte primære DNS-suffikset til ettleddsnavnet og sende inn denne nye spørringen til en DNS-server.
+
+Hvis for eksempel det primære DNS-suffikset aaa.bbb.ccc.ddd.microsoft.com føyes til ettleddsnavnet "example" (som ikke avsluttes med punktum), og hvis DNS-suffiksoverføring er aktivert og nivået er satt til 3, vil følgende spørringer bli kjørt:  
+
+Example.aaa.bbb.ccc.ddd.microsoft.com (Hvis denne spørringen mislykkes vil det primære suffikset for den neste spørringen overføres til bbb.ccc.ddd.microsoft.com.)
+
+Example.bbb.ccc.ddd.microsoft.com (Hvis denne spørringen mislykkes vil det primære suffikset for den neste spørringen overføres til ccc.ddd.microsoft.com.)
+
+Example.ccc.ddd.microsoft.com (Hvis denne spørringen mislykkes, vil det primære suffikset for den neste spørringen overføres til ddd.microsoft.com.)
+
+Example.ddd.microsoft.com (Hvis denne spørringen mislykkes, kan det ikke sendes flere spørringer fordi overføringsnivået er satt til 3 og det primære DNS-suffikset inneholder 3 ledd.)
+  
+Hvis du aktiverer denne innstillingen, vil DNS-klienter på datamaskiner som denne innstillingen gjelder for, forsøke å løse navn som er en sammenkobling av ettleddsnavnet som skal løses, og det overførte primære DNS-suffikset. DNS-klienter vil overføre det primære DNS-suffikset ved hvert spørringsforsøk helt til navnet har blitt løst, til overføringsnavnet som angis i denne innstillingen er nådd, eller til det primære DNS-suffiksnavnet har to ledd.
+ 
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, vil DNS-klienter på datamaskiner som denne innstillingen gjelder for, ikke forsøke å løse navn som er en sammenkobling av ettleddsnavnet som skal løses, og det overførte primære DNS-suffikset. Hvis et FRD-domene (skogrotdomene) finnes, ingen søkeliste er konfigurert og spørringen er for et ettleddsnavn, vil DNS-klienten overføre frem til FRD-domenet til navnet er løst.</string>
+      <string id="DNS_TurnOffMulticast">Slå av multikastingsnavneløsing</string>
+      <string id="DNS_TurnOffMulticast_Help">LLMNR (Local Link Multicast Name Resolution) er en sekundær navneløsingsprotokoll. Spørringer sendes via den lokale koblingen, et enkelt delnettverk, fra en klientmaskin som bruker multikasting, som en annen klient med LLMNR aktivert på den samme koblingen kan svare på. LLMNR sørger for navneløsing i scenarier der vanlig DNS-navneløsing ikke er mulig.
+
+Hvis du aktiverer denne policyinnstillingen, vil multikastingnavneløsing eller LLMNR bli slått av for datamaskinen på alle tilgjengelige, men ukonfigurerte nettverkskort.
+
+Hvis du deaktiverer denne policyinnstillingen, vil multikastingnavneløsing eller LLMNR bli slått på for datamaskinen på alle tilgjengelige, men ukonfigurerte nettverkskort.
+
+Hvis du ikke konfigurerer denne policyinnstillingen, vil multikastingnavneløsing eller LLMNR bli slått på for datamaskinen som standard på alle tilgjengelige, men ukonfigurerte nettverkskort.</string>
+      <string id="DNS_AppendToMultiLabelName">Tillat tilføying av DNS-suffikser til ukvalifiserte spørringer om flerleddsnavn</string>
+      <string id="DNS_AppendToMultiLabelName_Help">Angir om datamaskinene som denne innstillingen brukes på, kan legge ved suffikser i et ukvalifisert flerleddsnavn før det sendes etterfølgende DNS-spørringer, hvis den opprinnelige navnespørringen mislykkes.
+
+Et navn som inneholder punktum, men ikke avsluttes med punktum, kalles et ukvalifisert flerleddsnavn, for eksempel "server.corp". Et fullstendig kvalifisert navn har et avsluttende punktum, for eksempel "server.corp.contoso.com.".
+
+Hvis du aktiverer denne innstillingen, kan suffikser legges ved et ukvalifisert flerleddsnavn, hvis den opprinnelige navnespørringen mislykkes. En spørring med et ukvalifisert flerleddsnavn etter "server.corp" vil bli spurt av DNS-klienten først. Hvis spørringen er vellykket, returneres svaret til klienten. Hvis spørringen er mislykket, legges det ukvalifiserte flerleddsnavnet til med DNS-suffikser konfigurert for datamaskinen for spørringer. Disse suffiksene kan avledes fra en kombinasjon av den lokale DNS-klientens primære domenesuffiks, et tilkoblingsspesifikk domenesuffiks og/eller søkeliste for DNS-suffiks.
+
+Hvis for eksempel den lokale DNS-klienten mottar en spørring etter "server.corp", og et primært domenesuffiks er konfigurert som "contoso.com", sender DNS-klienten med denne innstillingen en spørring etter "server.corp.contoso.com." hvis den opprinnelige navnespørringen etter "server.corp" mislykkes. 
+
+Hvis du deaktiverer denne innstillingen, legges ingen suffikser ved spørringer med et ukvalifisert flerleddsnavn, hvis den opprinnelige navnespørringen mislykkes. 
+
+Hvis du ikke konfigurerer denne innstillingen, bruker datamaskiner den lokale DNS-klientkonfigurasjonen for å bestemme spørringsvirkemåten for ukvalifiserte flerleddsnavn.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="DNS_Domain">
+        <textBox refId="DNS_DomainLabel">
+          <label>DNS-suffiks:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_NameServer">
+        <textBox refId="DNS_NameServerLabel">
+          <label>IP-adresser:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_PrimaryDnsSuffix">
+        <textBox refId="DNS_PrimaryDnsSuffixBox">
+          <label>Angi et primært DNS-suffiks:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_RegisterReverseLookup">
+        <dropdownList refId="DNS_RegisterReverseLookup_Box" defaultItem="0">Registrer PTR-poster:</dropdownList>
+      </presentation>
+      <presentation id="DNS_RegistrationRefreshInterval">
+        <decimalTextBox refId="DNS_RegistrationRefreshIntervalLabel" defaultValue="1800" spinStep="100">Sekunder:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_DomainNameDevolutionLevel">
+        <decimalTextBox refId="DNS_DomainNameDevolutionLevelLabel" defaultValue="2" spinStep="1">Angi overføringsnivå for det primære DNS-suffikset</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_RegistrationTtl">
+        <decimalTextBox refId="DNS_RegistrationTtlLabel" defaultValue="600" spinStep="100">Sekunder:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_SearchList">
+        <textBox refId="DNS_SearchListLabel">
+          <label>DNS-suffikser:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_UpdateSecurityLevel">
+        <dropdownList refId="DNS_UpdateSecurityLevel_Box" defaultItem="2">Oppdater sikkerhetsnivå:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

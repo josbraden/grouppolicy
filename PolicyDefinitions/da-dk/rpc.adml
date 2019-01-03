@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>indtast det viste navn her</displayName>
+  <description>indtast beskrivelsen her</description>
+  <resources>
+    <stringTable>
+      <string id="Rpc">RPC (Remote Procedure Call)</string>
+      <string id="RpcEEInfoOff">Slået fra</string>
+      <string id="RpcEEInfoOffWithExc">Slået fra med undtagelser</string>
+      <string id="RpcEEInfoOn">Slået til</string>
+      <string id="RpcEEInfoOnWithExc">Slået til med undtagelser</string>
+      <string id="RpcEnableAuthEpResolution">RPC-slutpunktsafbildning - klientgodkendelse</string>
+      <string id="RpcEnableAuthEpResolution_Help">Hvis denne indstilling er aktiveret, skal RPC-klienter, der har brug for at kommunikere med slutpunktsafbildningstjenesten, godkendes, så længe RPC-kaldet, som slutpunktet skal fortolkes for, har godkendelsesoplysninger.
+
+Hvis indstillingen er deaktiveret, vil RPC-klienter, der har brug for at kommunikere med slutpunktsafbildningstjenesten, ikke blive godkendt. Slutpunktsafbildningstjenesten på computere, der kører Windows NT4 (alle Service Packs), kan ikke behandle godkendelsesoplysninger, som overføres på denne måde. Hvis indstillingen aktiveres på en klientcomputer, kan klienten derfor ikke kommunikere med en Windows NT4-server, der benytter RPC, hvis der kræves fortolkning af slutpunkt.
+
+RPC-klienter bruger som standard ikke godkendelse til at kommunikere med slutpunktsafbildningstjenesten på RPC-serveren, når der anmodes om slutpunktet for en server.
+
+Bemærk! Denne politik anvendes først, når systemet er genstartet.  </string>
+      <string id="RpcExtendedErrorInformation">Overførsel af udvidede fejloplysninger</string>
+      <string id="RpcExtendedErrorInformation_Help">Får RPC Runtime til at oprette udvidede fejloplysninger, når der opstår en fejl.
+
+Udvidede fejloplysninger omfatter det lokale tidspunkt, hvor fejlen opstod, RPC-versionen og navnet på den computer, hvor fejlen opstod eller blev overført. Programmer kan hente de udvidede fejloplysninger ved hjælp af standard-API'er (Application Programming Interfaces) i Windows.
+
+Hvis du deaktiverer eller ikke konfigurerer denne indstilling, opretter RPC Runtime kun en statuskode, der angiver en fejltilstand.
+
+Hvis du vil bruge denne indstilling, skal du aktivere den og derefter vælge en type fejlsvar på rullelisten.
+
+--  Slået fra deaktiverer alle udvidede fejloplysninger for alle processer. RPC opretter kun en fejlkode.
+
+--  Slået til med undtagelser aktiverer udvidede fejloplysninger, men giver mulighed for at udvalgte processer kan deaktiveres. Hvis du vil deaktivere udvidede fejlmeddelelser for en proces, når denne indstilling er gældende, skal den kommando, der starter processen, begynde med en af strengene i feltet Undtagelser til udvidede fejloplysninger.
+
+--  Slået fra med undtagelser deaktiverer udvidede fejloplysninger, men giver mulighed for at udvalgte processer kan aktiveres. Hvis du vil aktivere udvidede fejlmeddelelser for en proces, når denne indstilling er gældende, skal den kommando, der starter processen, begynde med en af strengene i feltet Undtagelser til udvidede fejloplysninger.
+
+--  Slået til aktiverer alle udvidede fejloplysninger for alle processer.
+
+Bemærk! Yderligere oplysninger om feltet Undtagelser til udvidede fejloplysninger finder du i SDK (Software Development Kit) til Windows 2000.
+
+Bemærk! Udvidede fejloplysninger er formateret til at være kompatible med andre operativsystemer og ældre Microsoft-operativsystemer, men det er kun nyere Microsoft-operativsystemer, der kan læse og svare på oplysningerne.
+
+Bemærk! Standardindstillingen Slået fra er designet til systemer, hvor udvidede fejloplysninger betragtes som følsomme og ikke bør være tilgængelige eksternt.
+
+Bemærk! Denne politikindstilling anvendes først, når systemet er genstartet.</string>
+      <string id="RpcIDFOff">Slået fra</string>
+      <string id="RpcIDFOn">Slået til</string>
+      <string id="RpcIgnoreDelegationFailure">Ignorer delegeringsfejl</string>
+      <string id="RpcIgnoreDelegationFailure_Help">Bestemmer, at RPC Runtime skal ignorere delegeringsfejl, hvis der blev bedt om delegering.
+
+Windows Server 2003-serien indeholder en ny delegeringsmodel – begrænset delegering. I denne model rapporterer sikkerhedssystemet ikke, at delegering blev aktiveret i en sikkerhedskontekst, når en klient opretter forbindelse til en server. Personer, der kalder RPC og COM, opfordres til at bruge flaget RPC_C_QOS_CAPABILITIES_IGNORE_DELEGATE_FAILURE, men nogle programmer, der er skrevet til den traditionelle delegeringsmodel, bruger måske ikke dette flag og får en RPC_S_SEC_PKG_ERROR, når der oprettes forbindelse til en server, som bruger begrænset delegering.
+
+Hvis du deaktiverer denne indstilling, ikke konfigurerer den eller angiver den til Slået fra, genererer RPC Runtime en RPC_S_SEC_PKG_ERROR-fejl til programmer, der anmoder om delegering, og opretter forbindelse til servere, der bruger begrænset delegering. Hvis du konfigurer denne indstilling til "Slået til", accepterer RPC Runtime sikkerhedskontekster, der ikke understøtter delegering, og sikkerhedskontekster, der understøtter delegering.
+
+--  Slået fra bestemmer, at RPC Runtime genererer RPC_S_SEC_PKG_ERROR, hvis klienten spørger om delegering, men den oprettede sikkerhedskontekst ikke understøtter delegering.
+
+-- Slået til bestemmer, at RPC Runtime accepterer sikkerhedskontekster, der ikke understøtter delegering, selvom der blev bedt om delegering.
+
+Bemærk! Denne politikindstilling anvendes først, når systemet er genstartet.</string>
+      <string id="RpcMinimumHttpConnectionTimeout">Minimal timeout for ledig forbindelse for RPC/HTTP-forbindelser</string>
+      <string id="RpcMinimumHttpConnectionTimeout_Help">Bestemmer, at RPC Runtime bruger den angivne timeout som timeout for ledig forbindelse, selvom IIS-serveren, der kører RPC HTTP-proxien, er konfigureret med en højere timeout. Hvis IIS-serveren, der kører RPC HTTP-proxien, er konfigureret med en lavere timeout for ledig forbindelse, bruges den timeout, der er på IIS-serveren. Timeouten angives i sekunder.
+
+Denne indstilling er nyttig i de tilfælde, hvor en netværksagent som f.eks. en HTTP-proxy eller en router bruger en lavere timeout for ledig forbindelse end den IIS-server, der kører RPC HTTP-proxien. I de tilfælde kan RPC over HTTP-klienter få fejl, fordi forbindelserne får timeout hurtigere end forventet. Med denne indstilling kan du tvinge RPC Runtime og RPC Proxy til at bruge en lavere forbindelsestimeout.
+
+Denne indstilling kan kun bruges, når RPC Client, RPC Server og RPC HTTP Proxy kører på Windows Server 2003-serien eller Windows XP SP1 eller nyere. Hvis enten RPC Client eller RPC Server eller RPC HTTP Proxy kører på en ældre version af Windows, ignoreres denne indstilling.
+
+Den mindste tilladte værdi for denne indstilling er 90 sekunder. Maksimum er 7200 (2 timer).
+
+Hvis du deaktiverer denne indstilling eller ikke konfigurerer den, bruges timeouten for ledig forbindelse på den IIS-server, der kører RPC HTTP-proxien.
+
+Bemærk! Denne politikindstilling anvendes først, når systemet er genstartet.</string>
+      <string id="RpcRestrictRemoteClients">Begrænsninger for ikke-godkendte RPC-klienter</string>
+      <string id="RpcRestrictRemoteClients_Help">Hvis du aktiverer denne indstilling, angiver den, at RPC Runtime på en RPC-server skal begrænse ikke-godkendte RPC-klienter, som opretter forbindelse til RPC-servere, der kører på en computer. En klient opfattes som en godkendt klient, hvis den benytter en navngivet pipe til at kommunikere med serveren, eller hvis den benytter RPC-sikkerhed. Begrænsningen gælder muligvis ikke for RPC-grænseflader, der udtrykkeligt har anmodet om at være tilgængelige for ikke-godkendte klienter, afhængigt af den valgte værdi for politikken.
+
+Hvis du deaktiverer indstillingen eller undlader at konfigurere den, benyttes værdien Godkendt for Windows XP, og værdien Ingen benyttes for Server SKU'er, der understøtter denne politikindstilling. Hvis du aktiverer indstillingen, er følgende værdier tilgængelige:
+
+--  Ingen tillader alle RPC-klienter at oprette forbindelse til RPC-servere, der kører på den computer, hvor politikken anvendes.
+
+--  Godkendt giver kun godkendte RPC-klienter (ifølge ovenstående definition) tilladelse til at oprette forbindelse til RPC-servere, der kører på den computer, hvor politikken anvendes. Grænseflader, der har anmodet om undtagelse fra denne begrænsning, tildeles en undtagelse.
+
+--  Godkendt uden undtagelser tillader kun godkendte RPC-klienter (ifølge ovenstående definition) at oprette forbindelse til RPC-servere, der kører på den computer, hvor politikken anvendes. Der tillades ingen undtagelser.
+
+Bemærk! Denne politikindstilling anvendes først, når systemet er genstartet.</string>
+      <string id="RpcRestrictRemoteClientsAuth">Godkendt</string>
+      <string id="RpcRestrictRemoteClientsHigh">Godkendt uden undtagelser</string>
+      <string id="RpcRestrictRemoteClientsNone">Ingen</string>
+      <string id="RpcStateInfoAuto1">Auto1</string>
+      <string id="RpcStateInfoAuto2">Auto2</string>
+      <string id="RpcStateInfoBoth">Fuld</string>
+      <string id="RpcStateInfoNone">Ingen</string>
+      <string id="RpcStateInformation">Oplysninger om RPC-fejlfindingstilstand</string>
+      <string id="RpcStateInformation_Help">
+
+Fastslår, om RPC Runtime bevarer oplysningerne om systemets RPC-tilstand, og hvor mange oplysninger der bevares. Grundlæggende tilstandsoplysninger, som kun består af de mest almindelige tilstandsdata, kræves for at løse RPC-problemer.
+
+Hvis du aktiverer denne indstilling, kan du bruge rullelisten til at angive, hvilke systemer der skal bevare RPC-tilstandsoplysninger. Hvis indstillingen er deaktiveret eller ikke er konfigureret, bruger RPC indstillingen Auto2.
+
+-- "Ingen" angiver, at systemet ikke bevarer nogen RPC-tilstandsoplysninger. Bemærk! Fordi de grundlæggende tilstandsoplysninger, der kræves til fejlfinding, har en minimal betydning for ydeevnen og kun bruger omkring 4 KB hukommelse, anbefales denne indstilling ikke til de fleste installationer.
+
+-- Med "Auto1" bevarer RPC kun de grundlæggende tilstandsoplysninger, hvis computeren har mindst 64 MB hukommelse.
+
+-- Med "Auto2" bevarer RPC kun de grundlæggende tilstandsoplysninger, hvis computeren har mindst 128 MB hukommelse og kører Windows 2000 Server, Windows 2000 Advanced Server eller Windows 2000 Datacenter Server. 
+
+-- Med "Server" bevarer RPC de grundlæggende tilstandsoplysninger på computeren uafhængigt af kapaciteten.
+
+-- Med "Fuldstændig" bevarer RPC alle fuldførte RPC-tilstandsoplysninger på systemet uafhængigt af kapaciteten. Fordi denne indstilling kan forringe ydeevnen, anbefales det, at den kun bruges, mens du undersøger et RPC-problem.
+
+Bemærk! Du skal bruge et fejlfindingsværktøj for at kunne hente RPC-tilstandsoplysningerne fra et system, der bevarer dem.
+
+Bemærk! Denne politik anvendes først, når systemet er genstartet.</string>
+      <string id="RpcStateInfoServer">Server</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="RpcExtendedErrorInformation">
+        <dropdownList refId="RpcExtendedErrorInformationList" defaultItem="0">Overførsel af udvidede fejloplysninger:</dropdownList>
+        <textBox refId="RpcExtErrorExceptions">
+          <label>Undtagelser til udvidede fejloplysninger:</label>
+        </textBox>
+      </presentation>
+      <presentation id="RpcIgnoreDelegationFailure">
+        <dropdownList refId="RpcIgnoreDelegationFailureList" defaultItem="0">Ignorerer delegeringsfejl:</dropdownList>
+      </presentation>
+      <presentation id="RpcMinimumHttpConnectionTimeout">
+        <decimalTextBox refId="RpcMinimumHttpConnectionTimeoutValue" defaultValue="900" spinStep="10">Minimal timeout for ledig forbindelse (i sekunder):</decimalTextBox>
+      </presentation>
+      <presentation id="RpcRestrictRemoteClients">
+        <dropdownList refId="RpcRestrictRemoteClientsList" defaultItem="1">Begrænsning, der skal anvendes for ikke-godkendt RPC Runtime-klient:</dropdownList>
+      </presentation>
+      <presentation id="RpcStateInformation">
+        <dropdownList refId="RpcStateInformationList" defaultItem="2">RPC Runtime-tilstandsoplysninger, der skal bevares:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

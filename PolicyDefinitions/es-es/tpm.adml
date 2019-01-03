@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>escriba aquí el nombre</displayName>
+  <description>escriba aquí la descripción</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Esta configuración de directiva permite administrar la copia de seguridad de los Servicios de dominio de Active Directory (AD DS) de la información de propietario del Módulo de plataforma segura (TPM). 
+
+La información de propietario del TPM incluye un hash criptográfico de la contraseña de propietario del TPM. Determinados comandos del TPM solo puede ejecutarlos el propietario del TPM. Este hash autoriza al TPM para que ejecute estos comandos. 
+
+Si habilita esta configuración de directiva, se realizará una copia de seguridad de la información de propietario del TPM en AD DS, de forma automática y sin notificaciones, cuando use Windows para establecer o modificar una contraseña de propietario del TPM. 
+
+Si selecciona la opción "Requerir copia de seguridad del TPM en AD DS", no podrá establecerse ni modificarse ninguna contraseña de propietario del TPM, salvo que el equipo esté conectado al dominio y que la copia de seguridad de AD DS se realice correctamente. Esta opción está seleccionada de forma predeterminada para ayudar a garantizar que la información de propietario del TPM esté disponible. De lo contrario, se intenta realizar la copia de seguridad de AD DS, pero los errores de red u otros errores de copia de seguridad no afectan a la administración del TPM. No se vuelve a intentar realizar una copia de seguridad automáticamente y es posible que la información de propietario del TPM no se almacene en AD DS durante la configuración de BitLocker.
+
+Si deshabilita esta configuración de directiva o no la establece, no se realizará ninguna copia de seguridad de la información de propietario del TPM en AD DS. 
+
+Nota: para que la copia de seguridad de AD DS se realice correctamente, es necesario configurar primero las extensiones de esquema adecuadas y tener acceso a la configuración de control en el dominio. Consulte la documentación en línea para obtener más información sobre la configuración de los Servicios de dominio de Active Directory para TPM.
+
+Nota: para que el TPM pueda usarse para ofrecer características de seguridad mejoradas para el Cifrado de unidad BitLocker y otras aplicaciones, hay que establecer primero un propietario. Para tomar posesión del TPM con una contraseña de propietario, ejecute "tpm.msc" y seleccione la acción para "Inicializar TPM".
+
+Nota: si la información de propietario del TPM se pierde o no está disponible, es posible una administración limitada del TPM mediante la ejecución de "tpm.msc" en el equipo local.</string>
+      <string id="ActiveDirectoryBackup_Name">Activar copia de seguridad del TPM en los Servicios de dominio de Active Directory</string>
+      <string id="BlockedCommandsList_Help">Esta configuración de directiva permite administrar la lista de comandos del Módulo de plataforma segura (TPM) de directiva de grupo bloqueados por Windows.
+
+Si habilita esta configuración de directiva, Windows bloqueará los comandos especificados para evitar que se envíen al TPM del equipo. Se hace referencia a los comandos del TPM mediante un número de comando. Por ejemplo, el número de comando 129 es TPM_OwnerReadInternalPub y el número de comando 170 es TPM_FieldUpgrade. Para buscar el número de comando asociado a cada comando del TPM, ejecute "tpm.msc" y vaya a la sección "Administración de comandos".
+
+Si deshabilita esta configuración de directiva o no la establece, Windows solo podrá bloquear los comandos del TPM especificados en las listas local o predeterminada. Windows configura previamente la lista predeterminada de comandos del TPM bloqueados. Para ver la lista predeterminada, ejecute "tpm.msc", vaya a la sección "Administración de comandos" y haga visible la columna "En lista de bloqueo predeterminada". La lista local de comandos del TPM bloqueados se configura fuera de la directiva de grupo, ejecutando "tpm.msc" o mediante scripting a través de la interfaz Win32_Tpm. Consulte las configuraciones de directiva relacionadas para aplicar u omitir las listas predeterminada y local de comandos del TPM bloqueados.</string>
+      <string id="BlockedCommandsList_Name">Configurar la lista de comandos del TPM bloqueados</string>
+      <string id="IgnoreDefaultList_Help">Esta configuración de directiva permite aplicar u omitir la lista predeterminada de comandos del Módulo de plataforma segura (TPM) bloqueados en el equipo.
+
+Si habilita esta configuración de directiva, Windows omitirá la lista predeterminada de comandos del TPM bloqueados en el equipo y solo bloqueará los comandos del TPM especificados por la directiva de grupo o la lista local. 
+
+Windows configura previamente la lista predeterminada de comandos del TPM bloqueados. Para ver la lista predeterminada, ejecute "tpm.msc", vaya a la sección "Administración de comandos" y haga visible la columna "En lista de bloqueo predeterminada". La lista local de comandos del TPM bloqueados se configura fuera de la directiva de grupo, ejecutando "tpm.msc" o mediante scripting a través de la interfaz Win32_Tpm. Consulte la configuración de directiva relacionada para configurar la lista de comandos del TPM bloqueados de directiva de grupo.
+
+Si deshabilita o no establece esta configuración de directiva, Windows bloqueará los comandos del TPM en la lista predeterminada, además de los comandos en las listas local y de directiva de grupo de comandos del TPM bloqueados. </string>
+      <string id="IgnoreDefaultList_Name">Omitir la lista predeterminada de comandos del TPM bloqueados</string>
+      <string id="IgnoreLocalList_Help">Esta configuración de directiva permite aplicar u omitir la lista local de comandos del Módulo de plataforma segura (TPM) bloqueados en el equipo.
+
+Si habilita esta configuración de directiva, Windows omitirá la lista local de comandos del TPM bloqueados en el equipo y solo bloqueará los comandos del TPM especificados por la directiva de grupo o la lista predeterminada.
+
+La lista local de comandos del TPM bloqueados se configura fuera de la directiva de grupo, ejecutando "tpm.msc" o mediante scripting a través de la interfaz Win32_Tpm. Windows configura previamente la lista predeterminada de comandos del TPM bloqueados. Consulte la configuración de directiva relacionada para configurar la lista de comandos del TPM bloqueados de directiva de grupo. 
+
+Si deshabilita o no establece esta configuración de directiva, Windows bloqueará los comandos del TPM en la lista local, además de los comandos en las listas predeterminada y de directiva de grupo de comandos del TPM bloqueados.</string>
+      <string id="IgnoreLocalList_Name">Omitir la lista local de comandos del TPM bloqueados</string>
+      <string id="TPMCategory">Servicios del Módulo de plataforma segura</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Requerir copia de seguridad del TPM en AD DS</checkBox>
+        <text/>
+        <text>Si se selecciona esta opción, no se puede establecer ni modificar la contraseña de propietario del TPM </text>
+        <text>si la copia de seguridad no se realiza correctamente (valor predeterminado recomendado).</text>
+        <text/>
+        <text>Si no se selecciona esta opción, se puede establecer y modificar la contraseña de propietario del TPM</text>
+        <text>aunque la copia de seguridad no se realice correctamente. No se vuelve a intentar realizar la copia de seguridad automáticamente.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Especificar los comandos que se bloquearán agregando sus números a la lista.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">La lista de comandos del TPM bloqueados:</listBox>
+        <text>Por ejemplo, para bloquear los comandos TPM_OwnerReadInternalPub</text>
+        <text>y TPM_FieldUpgrade, agregue los elementos 129 y 170 a la lista.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

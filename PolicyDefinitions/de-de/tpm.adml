@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Anzeigenamen hier eingeben</displayName>
+  <description>Beschreibung hier eingeben</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Diese Richtlinieneinstellung ermöglicht das Verwalten der Active Directory-Domänendienste-Sicherung (AD DS, Active Directory Domain Services) von TPM-Besitzerinformationen (Trusted Platform Module). 
+
+Die TPM-Besitzerinformationen umfassen einen kryptografischen Hash des TPM-Besitzerkennworts. Bestimmte TPM-Befehle können nur vom TPM-Besitzer ausgeführt werden. Dieser Hash autorisiert das TPM, diese Befehle auszuführen. 
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, werden die TPM-Besitzerinformationen automatisch und im Hintergrund in AD DS gesichert, wenn Sie Windows verwenden, um das TPM-Besitzerkennwort festzulegen oder zu ändern. 
+
+Wenn Sie die Option "TPM-Sicherung in AD DS erforderlich" wählen, kann ein TPM-Besitzerkennwort nur dann festgelegt oder geändert werden, wenn der Computer mit einer Domäne verbunden ist und die AD DS-Sicherung erfolgreich ausgeführt wird. Diese Option ist standardmäßig ausgewählt, um sicherzustellen, dass die TPM-Besitzerinformationen verfügbar sind. Andernfalls wird eine AD DS-Sicherung versucht, aber Netzwerk- oder andere Sicherungsfehler haben keinen Einfluss auf die TPM-Verwaltung. Die Sicherung wird nicht automatisch wiederholt, und die TPM-Besitzerinformationen wurden beim BitLocker-Setup möglicherweise nicht gespeichert.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, werden keine TPM-Besitzerinformationen in AD DS gesichert. 
+
+Hinweis: Sie müssen zuerst geeignete Schemaerweiterungen und Zugriffssteuerungseinstellungen in der Domäne einrichten, damit die AD DS-Sicherung erfolgreich ausgeführt werden kann. Weitere Informationen zum Einrichten der Active Directory-Domänendienste für das TPM finden Sie in der Onlinedokumentation.
+
+Hinweis: Sie müssen zuerst einen Besitzer festlegen, um das TPM zum Bereitstellen von erweiterten Sicherheitsfeatures für die BitLocker-Laufwerkverschlüsselung und andere Anwendungen bereitzustellen. Wenn Sie den Besitz eines TPMs mit einem Besitzerkennwort übernehmen möchten, führen Sie "tpm.msc" aus, und wählen Sie die Aktion "TPM initialisieren".
+
+Hinweis: Wenn die TPM-Besitzerinformationen verloren gegangen oder nicht verfügbar sind, ist durch Ausführen von "tpm.msc" auf dem lokalen Computer eine begrenzte TPM-Verwaltung möglich.</string>
+      <string id="ActiveDirectoryBackup_Name">TPM-Sicherung in Active Directory-Domänendienste aktivieren</string>
+      <string id="BlockedCommandsList_Help">Diese Richtlinieneinstellung ermöglicht das Verwalten der Gruppenrichtlinienliste der von Windows blockierten TPM-Befehle (Trusted Platform Module).
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, blockiert Windows bestimmte Befehle, sodass sie nicht an das TPM auf dem Computer gesendet werden. TPM-Befehle werden anhand einer Befehlsnummer angegeben. Die Befehlsnummer 129 entspricht z. B. "TPM_OwnerReadInternalPub", und die Befehlsnummer 170 steht für "TPM_FieldUpgrade". Führen Sie "tpm.msc" aus, und navigieren Sie zum Abschnitt "Befehlsverwaltung", um die zugehörige Befehlsnummer für einen TPM-Befehl ausfindig zu machen.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, können nur die in der Standardliste oder lokalen Liste angegebenen TPM-Befehle von Windows blockiert werden. Die Standardliste der blockierten TPM-Befehle ist in Windows vorkonfiguriert. Führen Sie "tpm.msc" aus, navigieren Sie zum Abschnitt "Befehlsverwaltung", und blenden Sie die Spalte "Auf der Standardliste mit Blockierungen" ein, um die Standardliste anzuzeigen. Die lokale Liste von blockierten TPM-Befehlen wird außerhalb der Gruppenrichtlinie durch Ausführen von "tpm.msc" oder durch Skripting in der Win32_Tpm-Schnittstelle konfiguriert. Weitere Informationen finden Sie in den verwandten Richtlinieneinstellungen zum Erzwingen oder Ignorieren der Standardliste und lokalen Liste von blockierten TPM-Befehlen.</string>
+      <string id="BlockedCommandsList_Name">Liste der blockierten TPM-Befehle konfigurieren</string>
+      <string id="IgnoreDefaultList_Help">Mit dieser Richtlinieneinstellung können Sie die Standardliste blockierter TPM-Befehle (Trusted Platform Module) des Computers erzwingen oder ignorieren.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, ignoriert Windows die Standardliste blockierter TPM-Befehle des Computers, und es werden nur die in der Gruppenrichtlinie oder der lokalen Liste festgelegten Befehle blockiert. 
+
+Die Standardliste blockierter TPM-Befehle ist in Windows vorkonfiguriert. Führen Sie "tpm.msc" aus, navigieren Sie zum Abschnitt "Befehlsverwaltung", und blenden Sie die Spalte "Auf der Standardliste mit Blockierungen" ein, um die Standardliste anzuzeigen. Die lokale Liste blockierter TPM-Befehle wird außerhalb der Gruppenrichtlinie durch Ausführen von "tpm.msc" oder durch Skripting in der Win32_Tpm-Schnittstelle konfiguriert. Weitere Informationen finden Sie in der verwandten Richtlinieneinstellung zum Konfigurieren der Gruppenrichtlinienliste blockierter TPM-Befehle.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, blockiert Windows zusätzlich zu den Befehlen in der Gruppenrichtlinie und lokalen Listen blockierter TPM-Befehle die TPM-Befehle in der Standardliste. </string>
+      <string id="IgnoreDefaultList_Name">Standardliste der blockierten TPM-Befehle ignorieren</string>
+      <string id="IgnoreLocalList_Help">Diese Richtlinieneinstellung ermöglicht das Erzwingen oder Ignorieren der lokalen Liste von blockierten TPM-Befehlen (Trusted Platform Module) des Computers.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, ignoriert Windows die lokale Liste von blockierten TPM-Befehlen des Computers, und es werden nur die in der Gruppenrichtlinie oder der Standardliste festgelegten Befehle blockiert.
+
+Die lokale Liste von blockierten TPM-Befehlen wird außerhalb der Gruppenrichtlinie durch Ausführen von "tpm.msc" oder durch Skripting in der Win32_Tpm-Schnittstelle konfiguriert. Die Standardliste der blockierten TPM-Befehle ist in Windows vorkonfiguriert. Weitere Informationen finden Sie in der verwandten Richtlinieneinstellung zum Konfigurieren der Gruppenrichtlinienliste von blockierten TPM-Befehlen. 
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, blockiert Windows zusätzlich zu den Befehlen in der Gruppenrichtlinienliste und der Standardliste von blockierten TPM-Befehlen die TPM-Befehle in der lokalen Liste.</string>
+      <string id="IgnoreLocalList_Name">Lokale Liste der blockierten TPM-Befehle ignorieren</string>
+      <string id="TPMCategory">Trusted Platform Module-Dienste</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">TPM-Sicherung in AD DS erforderlich</checkBox>
+        <text/>
+        <text>Wenn dieses Kontrollkästchen aktiviert ist, kann das TPM-Besitzerkennwort bei einem Sicherungsfehler </text>
+        <text>nicht festgelegt oder geändert werden (wird als Standardeinstellung empfohlen).</text>
+        <text/>
+        <text>Wenn dieses Kontrollkästchen deaktiviert ist, kann das TPM-Besitzerkennwort festgelegt oder geändert werden,</text>
+        <text>auch wenn ein Sicherungsfehler auftritt. Die Sicherung wird nicht automatisch wiederholt.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Geben Sie die zu blockierenden Befehle an, indem Sie ihre Nummern zur Liste hinzufügen.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">Liste der blockierten TPM-Befehle:</listBox>
+        <text>Fügen Sie der Liste z. B. die Nummern 129 und 170 hinzu, um die Befehle "TPM_OwnerReadInternalPub"</text>
+        <text>und "TPM_FieldUpgrade" zu blockieren.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

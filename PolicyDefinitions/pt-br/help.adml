@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>digite o nome para exibição aqui</displayName>
+  <description>digite a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="HelpQualifiedRootDir_Comp">Restringir funções de HTML da Ajuda potencialmente não seguras às pastas especificadas</string>
+      <string id="HelpQualifiedRootDir_Help">Usando essa diretiva, você pode restringir certos comandos da Ajuda em HTML a funcionar apenas nos arquivos de Ajuda em HTML (.chm) dentro de pastas especificadas e suas subpastas. Como alternativa, você pode desabilitar esses comandos em todo o sistema. É altamente recomendável adicionar a essa diretiva somente pastas que exijam privilégios administrativos.
+
+O comando "Atalho" é usado para adicionar um link a um tópico da Ajuda e executa arquivos executáveis que são externos ao arquivo de Ajuda. O comando "WinHelp" é usado para adicionar um link ao tópico da Ajuda e executa um arquivo de Ajuda WinHLP32.exe (.hlp).
+
+Quando essa diretiva está desabilitada, ou não configurada, esses comandos são totalmente funcionais para os arquivos da Ajuda.  
+
+Quando esta diretiva é habilitada, os comandos funcionam apenas para arquivos .chm nas pastas especificadas e suas subpastas. 
+
+Para restringir os comandos para uma ou mais pastas, habilite a diretiva e digite as pastas desejadas na caixa de texto na guia de configurações da caixa de diálogo Propriedades de Diretiva. Use um ponto-e-vírgula para separar as pastas. Por exemplo, para restringir os comandos a arquivos .chm na pasta %windir%\help e D:\alguma_pasta, adicione a seguinte cadeia de caracteres à caixa de edição: "%windir%\help;D:\alguma_pasta".
+
+Para impedir o uso dos comandos "Atalho" e "WinHelp" em todo o sistema local, habilite a diretiva e deixe em branco a caixa de texto na guia de configurações da caixa de diálogo Propriedades de Diretiva.
+
+Observação: pode ser usada uma variável de ambiente, (por exemplo, %windir%), desde que ela seja definida no sistema. Por exemplo, %programfiles% não é definida em algumas versões mais antigas do Windows.
+
+Observação: apenas pastas no computador local podem ser especificadas nesta diretiva. Não é possível usar essa diretiva para habilitar os comandos "Atalho" e "WinHelp" para arquivos .chm que estejam armazenados em unidades mapeadas ou que sejam acessados usando caminhos UNC.
+
+Para opções adicionais, consulte a diretiva "Impedir que estes programas sejam iniciados a partir da Ajuda".</string>
+      <string id="RestrictRunFromHelp">Impedir que estes programas sejam iniciados a partir da Ajuda</string>
+      <string id="RestrictRunFromHelp_Comp">Impedir que estes programas sejam iniciados a partir da Ajuda</string>
+      <string id="RestrictRunFromHelp_Help">Permite restringir a execução de programas a partir da Ajuda online.
+
+Se você habilitar essa configuração, poderá impedir que programas especificados tenham permissão para serem executados a partir da Ajuda. Ao habilitar essa configuração, digite a lista dos programas que deverão ter sua execução impedida. Digite o nome do arquivo executável de cada aplicativo, separado por vírgulas.
+
+Se você desabilitar ou não fizer essa configuração, os usuários poderão executar aplicativos a partir da Ajuda online.
+
+Observação: também é possível impedir que os usuários executem aplicativos usando as configurações de Restrição de Software disponíveis em Configuração do Computador\Configurações de Segurança.
+
+Observação: essa configuração está disponível em Configuração do Computador e em Configuração do Usuário. Se ambas estiverem definidas, a lista de programas especificados em cada uma será restrita.</string>
+        <string id="DisableHHDEP">Desativar Prevenção de Execução de Dados para Executável da Ajuda em HTML</string>
+        <string id="DisableHHDEPText">
+            Essa configuração de diretiva permite que você impeça que o Executável da Ajuda em HTML seja monitorado pelo DEP executado pelo software.
+            O DEP foi projetado para bloquear código mal-intencionado que tira proveito dos mecanismos de manipulação de exceções no Windows. Se você habilitar essa configuração de diretiva, o DEP para Executável da Ajuda em HTML será desativado. Isso permitirá que determinados controles ActiveX herdados funcionem sem que o DEP desative o Executável da Ajuda em HTML.
+            Se você desabilitar ou não fizer essa configuração, o DEP será desativado para o Executável da Ajuda em HTML.
+            Observação:  a Prevenção de Execução de Dados (DEP) é um recurso de segurança que pode ajudar a prevenir danos em seu computador provocados por vírus e outras ameaças de segurança. O DEP pode ajudar a proteger seu computador, monitorando seus programas para ter certeza de que eles usam a memória do sistema de maneira segura.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="HelpQualifiedRootDir_Comp">
+        <textBox refId="HelpQualifiedRootDir_Edit">
+          <label>Digite nomes de pastas separados por um ponto-e-vírgula:</label>
+        </textBox>
+        <text>Exemplo: %windir%\Help;%windir%\pchealth;%programfiles%</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Digite nomes de executáveis separados por vírgulas:</label>
+        </textBox>
+        <text>Exemplo: calc.exe,paint.exe</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp_Comp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Digite nomes de executáveis separados por vírgulas:</label>
+        </textBox>
+        <text>Exemplo: calc.exe,paint.exe</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

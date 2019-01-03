@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Anzeigenamen hier eingeben</displayName>
+  <description>Beschreibung hier eingeben</description>
+  <resources>
+    <stringTable>
+      <string id="DNS_Client">DNS-Client</string>
+      <string id="DNS_Domain">Verbindungsspezifisches DNS-Suffix</string>
+      <string id="DNS_Domain_Help">Gibt ein verbindungsspezifisches DNS-Suffix an. Diese Einstellung löst die verbindungsspezifischen DNS-Suffixe auf den Computern ab, für die diese Einstellung gilt. Dies betrifft sowohl die lokal als auch die mithilfe von DHCP konfigurierten Suffixe.
+
+Warnung: Ein in dieser Einstellung angegebenes verbindungsspezifisches DNS-Suffix ist für alle Netzwerkverbindungen von mehrfach vernetzten Computern gültig, auf die diese Einstellung angewendet wird.
+
+Um diese Einstellung zu verwenden, klicken Sie auf "Aktivieren" und geben in dem bereitgestellten Feld einen Zeichenkettenwert für das DNS-Suffix ein.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokalen oder DHCP-Konfigurationsparameter.</string>
+      <string id="DNS_NameServer">DNS-Server</string>
+      <string id="DNS_NameServer_Help">Gibt die DNS-Server an, an die der Computer Anfragen zur Namensauflösung sendet.
+
+Warnung: Die Liste der DNS-Server in dieser Einstellung löst die DNS-Server ab, die lokal oder mit DHCP konfiguriert worden sind. Die Liste der DNS-Server ist für alle Netzwerkverbindungen von mehrfach vernetzten Computern gültig, auf die diese Einstellung angewendet wird.
+
+Um diese Einstellung zu verwenden, klicken Sie auf "Aktivieren" und geben in dem bereitgestellten Feld eine durch Leerzeichen getrennte Liste von IP-Adressen (im durch Punkte getrennten Dezimalformat) ein. Wenn Sie diese Einstellung aktivieren, müssen Sie mindestens eine IP-Adresse eingeben.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokalen oder über DHCP konfigurierten Parameter.</string>
+      <string id="DNS_PrimaryDnsSuffix">Primäres DNS-Suffix</string>
+      <string id="DNS_PrimaryDnsSuffix_Help">Gibt das primäre DNS-Suffix (Domain Name System) für alle betroffenen Computer an. Das primäre DNS-Suffix wird bei der DNS-Namensregistrierung und -Namensauflösung verwendet.
+
+Mit dieser Einstellung können Sie ein primäres DNS-Suffix für eine Gruppe von Computern angeben und verhindern, dass Benutzer, auch Administratoren, es ändern.
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, verwendet jeder Computer sein lokales primäres DNS-Suffix, bei dem es sich gewöhnlich um den DNS-Namen der Active Directory-Domäne handelt, zu der er gehört. Administratoren können über "System" in der Systemsteuerung das primäre DNS-Suffix eines Computers jedoch ändern.
+
+Um diese Einstellung zu verwenden, geben Sie in dem bereitgestellten Textfeld das gesamte primäre DNS-Suffix ein, das Sie zuweisen möchten. Beispiel: microsoft.com.
+
+Durch diese Einstellung werden die Dialogfelder "DNS-Suffix" und "NetBIOS-Computername" nicht deaktiviert, mit denen Administratoren das primäre DNS-Suffix eines Computers ändern können. Wenn Administratoren jedoch ein Suffix eingeben, wird es ignoriert, sofern diese Einstellung aktiviert ist.
+
+Wichtig: Sie müssen Windows auf allen betroffenen Computern neu starten, damit die Änderungen an dieser Einstellung wirksam werden.
+
+Hinweis: Um das primäre DNS-Suffix eines Computers zu ändern, ohne eine Richtlinie zu konfigurieren, klicken Sie in der Systemsteuerung auf "System", dann auf die Registerkarte "Netzwerkidentifikation", auf "Eigenschaften" und auf "Weitere". Geben Sie dann im Feld "Primäres DNS-Suffix des Computers" ein Suffix ein.
+
+Weitere Informationen über DNS erhalten Sie unter "Domain Name System (DNS)" in der Hilfe.</string>
+      <string id="DNS_RegisterAdapterName">DNS-Einträge mit verbindungsspezifischem DNS-Suffix registrieren</string>
+      <string id="DNS_RegisterAdapterName_Help">Legt fest, ob ein Computer, der eine dynamische Registrierung durchführt, A- und PTR-Ressourceneinträge mit einer Verkettung seines Computernamens und eines verbindungsspezifischen DNS-Suffixes zusätzlich zu einer Registrierung dieser Einträge mit einer Verkettung seines Computernamens und des primären DNS-Suffixes registrieren kann.
+
+Warnung: Die Aktivierung dieser Gruppenrichtlinieneinstellung ist für alle Netzwerkverbindungen von mehrfach vernetzten Computern gültig, auf die diese Einstellung angewendet wird.
+
+Standardmäßig registriert ein Computer, der eine dynamische Registrierung durchführt, A- und PTR-Ressourceneinträge mit einer Verkettung seines Computernamens und des primären DNS-Suffixes. Die Verkettung des Computernamens "meincomputer" mit dem primären DNS-Suffix "microsoft.com" führt beispielsweise zu "meincomputer.microsoft.com".
+
+Wenn diese Einstellung aktiviert ist, registriert ein Computer, der eine dynamische Registrierung durchführt, A- und PTR-Ressourceneinträge mit einer Verkettung seines Computernamens und des verbindungsspezifischen DNS-Suffixes. So würde beispielsweise eine Verkettung eines Computernamens (meincomputer) und des verbindungsspezifischen DNS-Suffixes (VPNconnection) bei der Registrierung von A- und PTR-Ressourceneinträgen verwendet werden, wodurch sich "meincomputer.VPNconnection" ergibt. Wenn die dynamische DNS-Registrierung auf einem Computer deaktiviert ist, für den diese Einstellung gilt, versucht der Computer ungeachtet dieser Einstellungen nicht, eine dynamische DNS-Registrierung von A- und PTR-Einträgen durchzuführen, die eine Verkettung seines Computernamens und eines verbindungsspezifischen DNS-Suffixes enthalten. Wenn die dynamische DNS-Registrierung für eine bestimmte Netzwerkverbindung eines Computers deaktiviert ist, für den diese Einstellung gilt, versucht der Computer ungeachtet dieser Einstellungen nicht, eine dynamische DNS-Registrierung von A- und PTR-Einträgen durchzuführen, die eine Verkettung seines Computernamens und eines verbindungsspezifischen DNS-Suffixes enthalten.
+
+Wenn diese Einstellung deaktiviert ist, registriert ein DNS-Client keine A- und PTR-Ressourceneinträge mit seinem verbindungsspezifischen DNS-Suffix.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokale Konfiguration.</string>
+      <string id="DNS_RegisterReverseLookup">PTR-Einträge registrieren</string>
+      <string id="DNS_RegisterReverseLookup_DoNotRegister">Nicht registrieren</string>
+      <string id="DNS_RegisterReverseLookup_Help">Bestimmt, ob die Registrierung von PTR-Ressourceneinträge für die Computer aktiviert ist, auf die diese Richtlinie angewendet wird.
+
+Standardmäßig versuchen DNS-Clients, die zur Durchführung einer dynamischen DNS-Registrierung konfiguriert sind, PTR-Ressourceneinträge nur dann zu registrieren, wenn der zugehörige A-Ressourceneintrag erfolgreich registriert wurde. A-Ressourceneinträge weisen einen DNS-Hostnamen der IP-Hostadresse zu, PTR-Ressourceneinträge die IP-Hostadresse zum DNS-Hostnamen.
+
+Um diese Einstellung zu aktivieren, klicken Sie auf "Aktiviert" und wählen dann einen der folgenden Werte aus:
+
+"Nicht registrieren" – Es wird nicht versucht, PTR-Ressourceneinträge zu registrieren.
+
+"Registrieren" – Es wird versucht, PTR-Resourceneinträge unabhängig vom Erfolg der Registrierung von A-Einträgen zu registrieren.
+
+"Nur registrieren, wenn A-Eintragsregistrierung erfolgreich ist" – Die Registrierung von PTR-Ressourceneinträgen wird nur bei erfolgreicher Registrierung der entsprechenden A-Ressourceneinträge versucht.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokale Konfiguration.</string>
+      <string id="DNS_RegisterReverseLookup_Register">Registrieren</string>
+      <string id="DNS_RegisterReverseLookup_RegisterOnlyIfASucceeds">Nur registrieren, wenn A-Eintragsregistrierung erfolgreich ist </string>
+      <string id="DNS_RegistrationEnabled">Dynamisches Update</string>
+      <string id="DNS_RegistrationEnabled_Help">Legt fest, ob das dynamische Update aktiviert wird.
+
+Für das dynamische Update konfigurierte Computer registrieren und aktualisieren ihre DNS-Ressourceneinträge automatisch beim DNS-Server.
+
+Wenn Sie diese Einstellung aktivieren, können die Computer, auf die diese Einstellung angewendet wird, die dynamische DNS-Registrierung für jede ihrer Netzwerkverbindungen (abhängig von deren Konfiguration) verwenden. Um eine dynamische DNS-Registrierung für eine bestimmte Netzwerkverbindung zu aktivieren, ist es erforderlich und ausreichend, dass sowohl die computerspezifische als auch die verbindungsspezifische Konfiguration eine dynamische DNS-Registrierung zulässt. Mit dieser Einstellung wird die computerspezifische Eigenschaft zur Steuerung der dynamischen DNS-Registrierung festgelegt. Wenn Sie diese Einstellung aktivieren, lassen Sie zu, dass das dynamische Update für jede Netzwerkverbindung einzeln festgelegt wird.
+
+Wenn Sie diese Einstellung deaktivieren, können die Computer, auf die diese Einstellung angewendet wird, die dynamische DNS-Registrierung für keine ihrer Netzwerkverbindungen (unabhängig von deren Konfiguration) verwenden.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokale Konfiguration.</string>
+      <string id="DNS_RegistrationOverwritesInConflict">Adressen in Konflikten ersetzen</string>
+      <string id="DNS_RegistrationOverwritesInConflict_Help">Legt fest, ob ein DNS-Client, der seinen A-Ressourceneintrag zu registrieren versucht, andere A-Ressourceneinträge mit IP-Adressen, die damit in Konflikt stehen, überschreiben soll.
+
+Diese Einstellung ist für Computer gedacht, die A-Ressourceneinträge in DNS-Zonen ohne Unterstützung für sicheres dynamisches Update registrieren. Sicheres dynamisches Update erhält den Besitz von Ressourceneinträgen und lässt nicht zu, dass ein DNS-Client von anderen Computern registrierte Einträge überschreibt.
+
+Beim dynamischen Update einer Zone, die das sichere dynamische Update nicht unterstützt, kann ein DNS-Client möglicherweise entdecken, dass ein vorhandener A-Ressourceneintrag den DNS-Hostnamen des Clients mit der IP-Adresse eines anderen Computers verknüpft. In der Standardkonfiguration versucht der DNS-Client den vorhandenen A-Ressourceneintrag durch einen Eintrag zu ersetzen, der den DNS-Namen mit der IP-Adresse des Clients verknüpft.
+
+Wenn Sie diese Einstellung aktivieren, versucht der DNS-Client mit seinem eigenen A-Ressourceneintrag in Konflikt stehende Einträge beim dynamischen Update zu ersetzen.
+
+Wenn Sie diese Einstellung deaktivieren, nimmt der Client nach wie vor ein dynamisches Update der A-Ressourceneinträge vor. Wenn er aber versucht, einen A-Ressourceneintrag zu aktualisieren, der zu einem Konflikt führt, ruft dieser Versuch einen Fehler hervor, der im Ereignisprotokoll aufgezeichnet wird.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokale Konfiguration.</string>
+      <string id="DNS_RegistrationRefreshInterval">Registrierungsaktualisierungsintervall</string>
+      <string id="DNS_RegistrationRefreshInterval_Help">Legt das Registrierungsaktualisierungsintervall von A- und PTR-Ressourceneinträgen für Computer fest, für die diese Einstellung gilt. Diese Einstellung kann nur auf Computern mit dynamischem Update angewendet werden.
+
+Computer, auf denen Windows 2000 Professional und Windows XP Professional ausgeführt werden und die für eine dynamische DNS-Registrierung von A- und PTR-Ressourceneinträgen konfiguriert sind, führen regelmäßig eine erneute Registrierung ihrer Einträge bei DNS-Servern durch, auch wenn sich die Daten ihrer Einträge nicht geändert haben. Diese erneute Registrierung ist erforderlich, um DNS-Servern, die für ein automatisches Entfernen (Aufräumen) veralteter Einträge konfiguriert sind, anzuzeigen, dass diese Einträge aktuell sind und in der Datenbank erhalten bleiben sollen.
+
+Warnung: Wenn die DNS-Ressourceneinträge in Zonen mit aktivierter Aufräumoption registriert werden, sollte der Wert dieser Einstellung niemals höher sein als das für diese Zonen konfigurierte Aktualisierungsintervall. Wenn das Aktualisierungsintervall für die Registrierung nicht auf einen höheren Wert festgelegt ist als das Aktualisierungsintervall der DNS-Zonen, kann dies möglicherweise zur unerwünschten Löschung von A- und PTR-Ressourceneinträgen führen.
+
+Um das Aktualisierungsintervall für die Registrierung anzugeben, klicken Sie auf "Aktivieren" und geben einen Wert größer als 1800 ein. Dieser Wert gibt das Aktualisierungsintervall für die Registrierung in Sekunden an, in diesem Fall also 1800 Sekunden oder 30 Minuten.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokale Konfiguration.</string>
+      <string id="DNS_RegistrationTtl">Gültigkeitsdauer in A- und PTR-Einträgen festlegen</string>
+      <string id="DNS_RegistrationTtl_Help">Legt den Wert für das Gültigkeitsdauerfeld (TTL) in A- und PTR-Ressourceneinträgen fest, die von Computern registriert werden, für die diese Einstellung gilt.
+
+Um die Gültigkeitsdauer anzugeben, klicken Sie auf "Aktivieren" und geben einen Wert in Sekunden ein (z. B. den Wert 900 für 15 Minuten).
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet.</string>
+      <string id="DNS_SearchList">Suchliste für DNS-Suffix</string>
+      <string id="DNS_SearchList_Help">Legt die DNS-Suffixe fest, die an einen nicht qualifizierten, einteiligen Namen angehängt werden, bevor eine DNS-Abfrage nach diesem Namen gesendet wird.
+
+Ein nicht qualifizierter, einteiliger Name enthält keine Punkte, z. B. "example". Damit unterscheidet er sich von einem vollqualifizierten Domänennamen wie "example.microsoft.com".
+
+Wenn diese Einstellung aktiviert ist, hängt ein lokaler DNS-Client vor dem Absenden an einen DNS-Server einer Abfrage nach einem einteiligen Namen wie "example" ein Suffix wie "microsoft.com" an, sodass sich die Abfrage "example.microsoft.com" ergibt.
+
+Wenn Sie diese Einstellung aktivieren, können Sie die DNS-Suffixe angeben, die vor der Übertragung einer Abfrage nach einem nicht qualifizierten einteiligen Namen angehängt werden. Die Werte der DNS-Suffixe können bei dieser Einstellung anhand von kommagetrennten Zeichenfolgen eingegeben werden, wie "microsoft.com,serverua.microsoft.com,office.microsoft.com". Ein DNS-Suffix wird bei jeder Weiterleitung einer Abfrage hinzugefügt. Wird eine Abfrage nicht erfolgreich durchgeführt, wird anstelle eines gescheiterten Suffixes ein neues DNS-Suffix hinzugefügt und diese neue Abfrage dann weitergeleitet. Die Werte werden in der Reihenfolge verwendet, in der sie in der Zeichenkette erscheinen, wobei mit dem Wert ganz links begonnen wird.
+
+Wenn Sie diese Einstellung aktivieren, müssen Sie mindestens ein Suffix angeben.
+
+Wenn Sie diese Einstellung deaktivieren, werden an nicht qualifizierte Abfragen das primäre DNS-Suffix und verbindungsspezifische DNS-Suffixe angehängt.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokale Konfiguration.</string>
+      <string id="DNS_UpdateSecurityLevel">Sicherheitsstufe aktualisieren</string>
+      <string id="DNS_UpdateSecurityLevel_Help">Legt fest, ob die Computer, auf die diese Einstellung angewendet wird, das sichere oder das standardmäßige dynamische Update für die Registrierung von DNS-Einträgen verwenden.
+
+Um diese Einstellung zu aktivieren, klicken Sie auf "Aktiviert" und wählen dann einen der folgenden Werte aus:
+
+"Unsicher gefolgt von sicher" – Wenn diese Option ausgewählt ist, senden Computer sichere dynamische Updates nur, wenn unsichere abgelehnt werden.
+
+"Nur ungesichert" – Wenn diese Option ausgewählt ist, senden Computer nur unsichere dynamische Updates.
+
+"Nur gesichert" – Wenn diese Option ausgewählt ist, senden Computer nur sichere dynamische Updates.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokale Konfiguration.</string>
+      <string id="DNS_UpdateSecurityLevel_OnlySecure">Nur gesichert</string>
+      <string id="DNS_UpdateSecurityLevel_OnlyUnsecure">Nur ungesichert</string>
+      <string id="DNS_UpdateSecurityLevel_UnsecureFollowedBySecure">Unsicher gefolgt von sicher</string>
+      <string id="DNS_UpdateTopLevelDomainZones">Domänenzonen der obersten Ebene aktualisieren</string>
+      <string id="DNS_UpdateTopLevelDomainZones_Help">Gibt an, ob die Computer, auf die diese Einstellung angewendet wird, dynamische Updates zu Zonen senden dürfen, die nur einen einteiligen Namen aufweisen (Zonen für so genannte Top-Level-Domänen, z. B. ".com").
+
+Standardmäßig sendet ein DNS-Client, der zur Durchführung von dynamischen DNS-Updates konfiguriert ist, solche dynamischen Updates zu der autorisierenden DNS-Zone für seine DNS-Ressourceneinträge, es sei denn, die autorisierende Zone ist eine Top-Level-Domänen- und Stammzone.
+
+Wenn diese Einstellung aktiviert ist, senden Computer, für die diese Richtlinie gilt, dynamische Updates zu jeder autorisierenden Zone für die Ressourceneinträge, die sie aktualisieren müssen, ausgenommen in die Stammzone.
+
+Wenn diese Einstellung deaktiviert ist, senden Computer, für die diese Richtlinie gilt, keine dynamischen Updates zu den autorisierenden Stamm- und Top-Level-Domänenzonen für die Ressourceneinträge, die sie aktualisieren müssen.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokale Konfiguration.</string>
+      <string id="DNS_UseDomainNameDevolution">Ablauf des primären DNS-Suffix</string>
+      <string id="DNS_UseDomainNameDevolution_Help">Legt fest, ob der DNS-Client bei der Namensauflösung eine Verkürzung des primären DNS-Suffix durchführt.
+
+Wenn ein Benutzer eine Abfrage nach einem einteiligen Namen wie "Beispiel" sendet, hängt ein lokaler DNS-Client vor dem Senden der Abfrage an einen DNS-Server ein Suffix wie "microsoft.com" an, sodass sich die Abfrage "Beispiel.microsoft.com" ergibt.
+
+Wenn keine Suchliste für DNS-Suffixe angegeben ist, hängt der DNS-Client das primäre DNS-Suffix an einen einteiligen Namen an; wenn ein Abfragefehler auftritt, wird das verbindungsspezifische DNS-Suffix für eine neue Abfrage angehängt. Wenn keine dieser Abfragen aufgelöst wird, verkürzt der Client das primäre DNS-Suffix des Computers (indem er die Bezeichnung ganz links im primären DNS-Suffix weglässt), hängt dieses verkürzte primäre DNS-Suffix an den einteiligen Namen an und sendet diese neue Abfrage an einen DNS-Server.
+
+Wenn beispielsweise das primäre DNS-Suffix "ooo.aaa.microsoft.com" an den ohne Punkt abgeschlossenen, einteiligen Namen "Beispiel" angehängt wird und eine DNS-Abfrage nach "Beispiel.ooo.aaa.microsoft.com" nicht erfolgreich ist, verkürzt der DNS-Client das primäre DNS-Suffix bis auf die angegebene Verkürzungsebene (indem er die Bezeichnung ganz links weglässt) und sendet eine Abfrage nach "Beispiel.aaa.microsoft.com". Wenn diese Abfrage keinen Erfolg hat, wird das primäre DNS-Suffix weiter verkürzt, wenn es sich unter der angegebenen Verkürzungsebene befindet, und die Abfrage nach "Beispiel.microsoft.com" wird gesendet. Wenn auch diese Abfrage einen Fehler erzeugt, wird die Verkürzung fortgesetzt, wenn sie sich unter der angegebenen Verkürzungsebene befindet, und die Abfrage nach "Beispiel.microsoft.com" wird gesendet. Das primäre DNS-Suffix kann nicht über die Verkürzungsebene hinaus verkürzt werden.
+
+Wenn diese Einstellung mit der entsprechenden Verkürzungsebene aktiviert ist, versuchen DNS-Clients auf Computern, für die diese Einstellung gilt, Namen aufzulösen, bei denen es sich um Verkettungen des eigentlich aufzulösenden einteiligen Namens und des verkürzten primären DNS-Suffix handelt.
+
+Wenn diese Einstellung deaktiviert ist, unternehmen DNS-Clients auf Computern, für die diese Einstellung gilt, keinen Versuch, Namen aufzulösen, die Verkettungen des eigentlich aufzulösenden einteiligen Namens und des verkürzten primären DNS-Suffix sind.
+
+Wenn diese Einstellung nicht konfiguriert ist, wird sie auf keinen Computer angewendet. Die Computer verwenden dann ihre lokale Konfiguration.</string>
+      <string id="DNS_DomainNameDevolutionLevel">Verkürzungsebene für das primäre DNS-Suffix</string>
+      <string id="DNS_DomainNameDevolutionLevel_Help">Durch diese Richtlinieneinstellung wird die Verkürzungsebene des DNS-(Domain Name System-)Suffix festgelegt, die von DNS-Clients verwendet wird, wenn die Clients bei der Namensauflösung das primäre DNS-Suffix verkürzen. Wenn die Verkürzung des DNS-Suffix aktiviert ist, wird bei einem neuen Abfrageversuch die Bezeichnung ganz links im primären DNS-Suffix weggelassen, nachdem eine Abfrage nach einem Namen, an den ein primäres DNS-Suffix angefügt wurde, einen Fehler zurückgegeben hat. Die Verkürzungsebene gibt an, wie viele Bezeichnungen der Abfragezeichenfolge mindestens hinzugefügt werden müssen, nachdem das primäre DNS-Suffix verkürzt wurde.
+
+Wenn ein Benutzer eine Abfrage nach einem einteiligen Namen wie "Beispiel" übermittelt, fügt ein lokaler DNS-Client ein Suffix wie "microsoft.com" an die Abfrage an, bevor er sie an einen DNS-Server sendet. Dies ergibt die Abfrage "Beispiel.microsoft.com".
+ 
+Wenn keine Suchliste für DNS-Suffixe angegeben wird, fügt der DNS-Client das primäre DNS-Suffix an einen einteiligen Namen an. Wenn ein Abfragefehler auftritt, wird bei einer neuen Abfrage das verbindungsspezifische DNS-Suffix angefügt. Wenn keine dieser Abfragen aufgelöst wird, verkürzt der Client das primäre DNS-Suffix des Computers, fügt das verkürzte DNS-Suffix an den einteiligen Namen an und übermittelt diese neue Abfrage an einen DNS-Server.
+
+Wenn das primäre DNS-Suffix "aaa.bbb.ccc.ddd.microsoft.com" beispielsweise an den einteiligen (ohne Punkt abgeschlossenen) Namen "Beispiel" angefügt wird und die Verkürzung des DNS-Suffix aktiviert und die Ebene auf "3" festgelegt ist, würden die folgenden Abfragen ausgeführt werden:  
+
+Beispiel.aaa.bbb.ccc.ddd.microsoft.com (Wenn bei dieser Abfrage ein Fehler auftritt, wird das primäre DNS-Suffix für die nächste Abfrage auf "bbb.ccc.ddd.microsoft.com" verkürzt.)
+
+Beispiel.bbb.ccc.ddd.microsoft.com (Wenn bei dieser Abfrage ein Fehler auftritt, wird das primäre DNS-Suffix für die nächste Abfrage auf "ccc.ddd.microsoft.com" verkürzt.)
+
+Beispiel.ccc.ddd.microsoft.com (Wenn bei dieser Abfrage ein Fehler auftritt, wird das primäre DNS-Suffix auf "ddd.microsoft.com" verkürzt.)
+
+Beispiel.ddd.microsoft.com (Wenn bei dieser Abfrage ein Fehler auftritt, können keine weiteren Abfragen ausgeführt werden, da die Verkürzungsebene auf "3" festgelegt ist und das primäre DNS-Suffix drei Ebenen umfasst.)
+  
+Wenn Sie diese Richtlinieneinstellung aktivieren, versuchen die DNS-Clients auf den Computern, für die diese Einstellung gilt, Namen aufzulösen, bei denen es sich um Verkettungen des aufzulösenden einteiligen Namens und des verkürzten primären DNS-Suffix handelt. Die DNS-Clients verkürzen das primäre DNS-Suffix bei jedem Abfrageversuch so lange weiter, bis der Name erfolgreich aufgelöst, die in dieser Einstellung angegebene Verkürzungsebene erreicht ist oder der Name des primären DNS-Suffix zwei Bezeichnungen umfasst.
+ 
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, unternehmen die DNS-Clients auf den Computern, für die diese Einstellung gilt, keinen Versuch, Namen aufzulösen, die Verkettungen des aufzulösenden einteiligen Namens und des verkürzten primären DNS-Suffix sind. Wenn eine Gesamtstruktur-Stammdomäne vorhanden ist, wird keine Suchliste konfiguriert und die Abfrage gilt für einen einteiligen Namen; der DNS-Client verkürzt den Namen bis zur erfolgreichen Auflösung weiter bis auf die Gesamtstruktur-Stammdomäne.</string>
+      <string id="DNS_TurnOffMulticast">Multicastnamensauflösung deaktivieren</string>
+      <string id="DNS_TurnOffMulticast_Help">LLMNR (Local Link Multicast Name Resolution) ist ein sekundäres Namensauflösungsprotokoll. Die Abfragen werden über den lokalen Link, ein einzelnes Subnetz, von einem Clientcomputer mit Multicast gesendet. Andere Client an demselben Link, bei denen LLMNR ebenfalls aktiviert ist, können darauf antworten. LLMNR ermöglicht die Namensauflösung in Situationen, in denen die herkömmliche DNS-Namensauflösung nicht möglich ist.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, wird die Multicastnamensauflösung oder LLMNR auf dem Computer für alle verfügbaren, aber nicht konfigurierten Netzwerkadapter ausgeschaltet.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren, wird die Multicastnamensauflösung oder LLMNR auf dem Computer für alle verfügbaren, aber nicht konfigurierten Netzwerkadapter eingeschaltet.
+
+Wenn Sie diese Richtlinieneinstellung nicht konfigurieren, wird die Multicastnamensauflösung oder LLMNR auf dem Computer für alle verfügbaren, aber nicht konfigurierten Netzwerkadapter eingeschaltet.</string>
+      <string id="DNS_AppendToMultiLabelName">Anfügen von DNS-Suffix an Abfragen für nicht qualifizierte, punktierte Namen (Multilabel) zulassen</string>
+      <string id="DNS_AppendToMultiLabelName_Help">Gibt an, ob Computer, auf die diese Einstellung angewendet wird, Suffixe an einen nicht qualifizierten, punktierten Namen (Multilabel) anfügen können, bevor weitere DNS-Abfragen gesendet werden, falls die ursprüngliche Namensabfrage nicht erfolgreich war.
+
+Ein Name, der Punkte enthält, jedoch nicht mit einem Punkt endet, wird nicht qualifizierter, punktierter Name (Multilabel) genannt. Beispiel: "server.corp". Ein vollqualifizierter Name würde mit einem Punkt enden. Beispiel: "server.corp.contoso.com.".
+
+Wenn Sie diese Einstellung aktivieren, können Suffixe an nicht qualifizierte, punktierte Namen (Multilabel) angefügt werden, wenn die ursprüngliche Namensabfrage nicht erfolgreich war. Angenommen, der DNS-Client fragt zuerst den nicht qualifizierten, punktierten Namen (Multilabel) "server.corp" ab. Wenn die Abfrage erfolgreich ist, wird die Antwort an den Client zurückgegeben. Wenn die Abfrage nicht erfolgreich ist, werden dem nicht qualifizierten, punktierten Namen (Multilabel) DNS-Suffixe angefügt, die auf dem Computer für die Ausführung von Abfragen konfiguriert wurden. Diese Suffixe können aus einer Kombination des primären Domänensuffixes des lokalen DNS-Clients, eines verbindungsspezifischen Domänensuffixes und/oder einer DNS-Suffixsuchliste hergeleitet werden.
+
+Wenn der lokale DNS-Client beispielsweise eine Abfrage für "server.corp" empfängt und "contoso.com" als ein primäres Domänensuffix konfiguriert wurde, sendet der DNS-Client eine Abfrage für "server.corp.contoso.com.", wenn die ursprüngliche Namensabfrage für "server.corp" nicht erfolgreich war. 
+
+Wenn Sie diese Einstellung deaktivieren, werden keine Suffixe an Abfragen für nicht qualifizierte, punktierte Namen (Multilabel) angefügt, wenn die ursprüngliche Namensabfrage nicht erfolgreich war. 
+
+Wenn Sie diese Einstellung nicht konfigurieren, verwenden Computer die Konfiguration des lokalen DNS-Clients, um das Abfrageverhalten für nicht qualifizierte, punktierte Namen (Multilabel) zu bestimmen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="DNS_Domain">
+        <textBox refId="DNS_DomainLabel">
+          <label>DNS-Suffix:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_NameServer">
+        <textBox refId="DNS_NameServerLabel">
+          <label>IP-Adressen:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_PrimaryDnsSuffix">
+        <textBox refId="DNS_PrimaryDnsSuffixBox">
+          <label>Geben Sie ein primäres DNS-Suffix ein:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_RegisterReverseLookup">
+        <dropdownList refId="DNS_RegisterReverseLookup_Box" defaultItem="0">PTR-Einträge registrieren:</dropdownList>
+      </presentation>
+      <presentation id="DNS_RegistrationRefreshInterval">
+        <decimalTextBox refId="DNS_RegistrationRefreshIntervalLabel" defaultValue="1800" spinStep="100">Sekunden:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_DomainNameDevolutionLevel">
+        <decimalTextBox refId="DNS_DomainNameDevolutionLevelLabel" defaultValue="2" spinStep="1">Verkürzungsebene für das primäre DNS-Suffix festlegen</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_RegistrationTtl">
+        <decimalTextBox refId="DNS_RegistrationTtlLabel" defaultValue="600" spinStep="100">Sekunden:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_SearchList">
+        <textBox refId="DNS_SearchListLabel">
+          <label>DNS-Suffixe:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_UpdateSecurityLevel">
+        <dropdownList refId="DNS_UpdateSecurityLevel_Box" defaultItem="2">Sicherheitsstufe aktualisieren:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

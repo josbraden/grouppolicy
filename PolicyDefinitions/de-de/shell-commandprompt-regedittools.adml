@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Anzeigenamen hier eingeben</displayName>
+  <description>Beschreibung hier eingeben</description>
+  <resources>
+    <stringTable>
+      <string id="DisableCMD">Zugriff auf Eingabeaufforderung verhindern</string>
+      <string id="DisableCMD_Help">Verhindert, dass Benutzer die interaktive Eingabeaufforderung (Cmd.exe) ausführen. Zusätzlich legt die Einstellung fest, ob Batchdateien (CMD- und BAT-Dateien) auf dem Computer ausgeführt werden können.
+
+Wenn Sie diese Einstellung aktivieren und der Benutzer versucht, ein Befehlsfenster zu öffnen, wird eine Systemmeldung mit dem Hinweis angezeigt, dass die Aktion aufgrund einer Einstellung nicht ausgeführt werden kann.
+
+Hinweis: Sie sollten das Ausführen von Batchdateien nicht deaktivieren, falls Batchdateiskripts zum Anmelden, Abmelden, Starten oder Herunterfahren des Computers oder für Benutzer verwendet werden, die Remotedesktopdienste nutzen.</string>
+      <string id="DisableCMD_NO">Nein</string>
+      <string id="DisableCMD_YES">Ja</string>
+      <string id="DisableRegedit">Zugriff auf Programme zum Bearbeiten der Registrierung verhindern</string>
+      <string id="DisableRegedit_Help">Deaktiviert den Windows-Registrierungs-Editor "Regedit.exe".
+
+Wenn Sie diese Einstellung aktivieren und der Benutzer versucht, den Registrierungs-Editor zu starten, wird eine Meldung angezeigt mit dem Hinweis, dass die Aktion aufgrund einer Einstellung nicht ausgeführt werden kann.
+
+Verwenden Sie die Einstellung "Nur zugelassene Windows-Anwendungen ausführen", um zu verhindern, dass Benutzer weitere Verwaltungsprogramme verwenden.</string>
+      <string id="DisableRegeditMode_UIAndSilent">Ja</string>
+      <string id="DisableRegeditMode_UIonly">Nein</string>
+  
+   <string id="RestrictApps">Nur zugelassene Windows-Anwendungen ausführen</string>
+      <string id="RestrictApps_Help">Schränkt die Windows-Programme ein, die Benutzer auf dem Computer ausführen dürfen.
+
+Wenn Sie diese Einstellung aktivieren, können die Benutzer nur Programme ausführen, die Sie der Liste zugelassener Anwendungen hinzufügen.
+
+Diese Einstellung verhindert nur, dass Benutzer Programme ausführen, die vom Windows-Explorer-Prozess gestartet werden. Sie verhindert nicht, dass Benutzer Programme wie den Task-Manager ausführen, die vom Systemprozess oder von anderen Prozessen gestartet werden. Wenn die Benutzer auf die Eingabeaufforderung "Cmd.exe" zugreifen können, verhindert diese Einstellung außerdem nicht, dass die Benutzer Programme im Befehlsfenster ausführen, die sie über Windows-Explorer nicht starten dürfen.
+
+Hinweis: Drittanbieteranwendungen, die für Windows 2000 oder spätere Windows-Versionen zertifiziert sind, müssen diese Einstellung einhalten. Hinweis: Klicken Sie auf "Anzeigen", um eine Liste zugelassener Anwendungen zu erstellen. Geben Sie im Dialogfeld "Inhalt anzeigen" in der Spalte "Wert" den Namen der ausführbaren Anwendungsdatei ein (z. B. "Winword.exe", "Poledit.exe", "Powerpnt.exe").</string>
+      <string id="DisallowApps">Angegebene Windows-Anwendungen nicht ausführen</string>
+      <string id="DisallowApps_Help">Verhindert, dass die in dieser Einstellung festgelegten Programme von Windows ausgeführt werden.
+
+Durch Aktivieren dieser Einstellung können Benutzer keine Programme ausführen, die Sie der Liste der nicht zugelassenen Anwendungen hinzugefügt haben.
+
+Diese Einstellung verhindert nur, dass Benutzer Programme ausführen, die vom Windows Explorer-Prozess gestartet werden. Sie verhindert nicht, dass Benutzer Programme wie den Task-Manager ausführen, der mit dem Systemprozess oder anderen Prozessen gestartet wird. Außerdem verhindert diese Einstellung nicht, dass Benutzer Programme im Befehlsfenster starten (falls Sie die Verwendung der Eingabeaufforderung "Cmd.exe" zulassen), die sie in Windows-Explorer nicht starten dürfen. Hinweis: Klicken Sie auf "Anzeigen", um eine Liste nicht zugelassener Anwendungen zu erstellen. Geben Sie im Dialogfeld "Inhalt anzeigen" in der Spalte "Wert" den Namen der ausführbaren Anwendungsdatei ein (z. B. "Winword.exe", "Poledit.exe", "Powerpnt.exe").</string>
+      
+  </stringTable>
+    <presentationTable>
+      <presentation id="DisableCMD">
+        <dropdownList refId="DisableCMDScripts" noSort="true" defaultItem="1">Soll die Skriptverarbeitung der Eingabeaufforderung auch deaktiviert werden?</dropdownList>
+      </presentation>
+      <presentation id="DisableRegedit">
+        <dropdownList refId="DisableRegeditMode" noSort="true" defaultItem="0">Ausführung von Regedit im Hintergrund deaktivieren?</dropdownList>
+      </presentation>
+	<presentation id="RestrictApps">
+        <listBox refId="RestrictApps_RestrictAppsList">Liste zugelassener Anwendungen</listBox>
+      </presentation>
+      <presentation id="DisallowApps">
+        <listBox refId="DisallowAppsList">Liste der nicht zugelassenen Anwendungen</listBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

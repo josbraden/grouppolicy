@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>ange visningsnamn här</displayName>
+  <description>ange beskrivning här</description>
+  <resources>
+    <stringTable>
+      <string id="HelpQualifiedRootDir_Comp">Begränsa eventuellt osäkra HTML-hjälpfunktioner till speciella mappar</string>
+      <string id="HelpQualifiedRootDir_Help">Du kan använda den här principen till att begränsa vissa HTML-hjälpkommandon så att de endast fungerar i HTML-hjälpfiler (CHM) inom mappar som angetts och tillhörande undermappar. Du kan också inaktivera dessa kommandon i hela systemet. Vi rekommenderar att du bara lägger till mappar som behöver administratörsprivilegier i den här principen.
+
+Kommandot "Shortcut" används för att lägga till en länk i ett hjälpavsnitt och för att starta körbara filer som finns utanför hjälpfilen. Kommandot "WinHelp" används för att lägga till en länk i ett hjälpavsnitt och kör en hjälpfil (HLP) av typ WinHLP32.exe.
+
+När denna princip är inaktiverad, eller inte konfigurerad, är dessa kommandon helt funktionsdugliga för alla hjälpfiler.  
+
+När denna princip är aktiverad fungerar kommandona endast för CHM-filer i de mappar som angetts och tillhörande undermappar. 
+
+Begränsa kommandona till en eller flera mappar genom att aktivera principen och ange önskade mappar i textrutan på inställningsfliken i egenskapsdialogrutan för principer. Använd semikolon för att avgränsa mappar. Lägg t.ex. till följande sträng i redigeringsrutan om du vill begränsa kommandon till endast CHM-filer i mappen %windir%\hjälp och D:\någonmapp: "%windir%\hjälp;D:\någonmapp".
+
+Om du inte vill tillåta kommandona "Shortcut" och "WinHelp" i hela det lokala systemet, aktiverar du principen och lämnar textrutan på inställningsfliken i egenskapsdialogrutan för principer tom.
+
+Obs! Under förutsättning att det finns en definierad miljövariabel (t.ex. %windir%) i systemet kan du använda den. %programfiles% är t.ex. inte definierad i vissa tidigare Windows-versioner.
+
+Obs! I den här principen går det bara att ange mappar på den lokala datorn. Du kan inte använda den här principen för att aktivera kommandona "Shortcut" och "WinHelp" för CHM-filer som lagras på mappade enheter eller nås via UNC-sökvägar.
+
+Se principen "Förhindra att dessa program startar från direkthjälpen" för ytterligare alternativ.</string>
+      <string id="RestrictRunFromHelp">Förhindra att dessa program startar från direkthjälpen</string>
+      <string id="RestrictRunFromHelp_Comp">Förhindra att dessa program startar från direkthjälpen</string>
+      <string id="RestrictRunFromHelp_Help">Du kan förhindra att program körs från direkthjälpen.
+
+Om du aktiverar denna inställning kan du förhindra att de program du anger körs från Hjälp. När du aktiverar denna inställning anger du listan med program du vill begränsa. Ange filnamnet för den körbara filen för varje program och avgränsa dem med komman.
+
+Om du inaktiverar eller inte konfigurerar denna inställning kan användare köra program från direkthjälpen.
+
+Obs! Du kan också förhindra användare från att köra program genom att använda inställningarna för begränsning av programvara som finns tillgängliga i Datorkonfiguration\Säkerhetsinställningar.
+
+Obs! Denna inställning finns tillgänglig både i mappen Datorkonfiguration och i mappen Användarkonfiguration. Om båda har bestämts begränsas listan med program som anges i var och en av dessa.</string>
+        <string id="DisableHHDEP">Inaktivera dataexekveringsskydd för körbar HTML-hjälp</string>
+        <string id="DisableHHDEPText">
+            Den här principinställningen gör att du kan undanta körbar HTML-hjälp från att övervakas av dataexekveringsskydd genom programvara.
+            DEP blockerar skadlig kod som utnyttjar undantagshanteringsmekanismer i Windows. Om du aktiverar den här principinställningen inaktiveras DEP för körbar HTML-hjälp. Detta möjliggör att vissa äldre ActiveX-kontroller fungerar utan att DEP inaktiverar körbar HTML-hjälp.
+            Om principinställningen inaktiveras eller inte konfigureras inaktiveras DEP för körbar HTML-hjälp.
+            Obs! DEP är en säkerhetsfunktion som kan hjälpa till att förhindra att virus och andra säkerhetshot skadar din dator. DEP kan hjälpa till att skydda din dator genom att övervaka dina program och kontrollera att de använder systemets minne på ett säkert sätt.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="HelpQualifiedRootDir_Comp">
+        <textBox refId="HelpQualifiedRootDir_Edit">
+          <label>Ange mappnamn avgränsade med semikolon:</label>
+        </textBox>
+        <text>Exempel: %windir%\Help;%windir%\pchealth;%programfiles%</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Ange de körbara filernas namn. Avgränsa filnamnen med kommatecken:</label>
+        </textBox>
+        <text>Exempel: calc.exe,paint.exe</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp_Comp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Ange de körbara filernas namn. Avgränsa filnamnen med kommatecken:</label>
+        </textBox>
+        <text>Exempel: calc.exe,paint.exe</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

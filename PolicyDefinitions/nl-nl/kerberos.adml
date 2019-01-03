@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Kerberos-instellingen</displayName>
+  <description>Configuratie-instellingen voor het Kerberos-verificatieprotocol.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Zoekvolgorde forests gebruiken</string>
+      <string id="forestsearch_explain">Deze beleidsinstelling bepaalt de lijst met vertrouwende forests die de Kerberos-client doorzoekt om SPN-namen om te zetten die uit twee delen bestaan.
+
+Als u deze beleidsinstelling inschakelt, doorzoekt de Kerberos-client de forests in deze lijst als het niet lukt een SPN om te zetten die uit twee delen bestaat. Als er een overeenkomst wordt gevonden, vraagt de Kerberos-client een verwijzingsticket naar het desbetreffende domein aan.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt de lijst met forests niet doorzocht door de Kerberos-client om de SPN om te zetten. Als de Kerberos-client de SPN niet kan omzetten omdat de naam niet is gevonden, kan NTLM-verificatie worden gebruikt.</string>
+      <string id="hosttorealm">Toewijzingen van het type hostnaam-naar-Kerberos-realm definiëren</string>
+      <string id="hosttorealm_explain">Met deze beleidsinstelling kunt u opgeven welke DNS-hostnamen en welke DNS-achtervoegsels worden toegewezen aan een Kerberos-realm.
+
+Als u deze beleidsinstelling inschakelt, kunt u de lijst weergeven met DNS-hostnamen en DNS-achtervoegsels die zijn toegewezen aan een Kerberos-realm zoals dit via Groepsbeleid is gedefinieerd. Als u de lijst met toewijzingen wilt weergeven, schakelt u de beleidsinstelling in en klikt u vervolgens op de knop Weergeven. Als u een toewijzing wilt toevoegen, schakelt u de beleidsinstelling in, vervolgens noteert u de syntaxis en klikt u op de knop Weergeven. Typ in de kolom Waardenaam in het dialoogvenster Inhoud weergeven een realm-naam. Typ met de juiste syntaxis de lijst met DNS-hostnamen en DNS-achtervoegsels in de kolom Waarde. Als u een toewijzing wilt verwijderen uit de lijst, klikt u op de desbetreffende vermelding en drukt u vervolgens op Delete. Als u een toewijzing wilt bewerken, verwijdert u de huidige vermelding uit de lijst en voegt u vervolgens een nieuwe vermelding met andere parameters toe.
+
+Als u deze beleidsinstelling uitschakelt, wordt de lijst met toewijzingen van het type hostnaam-naar-Kerberos-realm, zoals deze via Groepsbeleid is gedefinieerd, verwijderd.
+
+Als u deze beleidsinstelling niet configureert, maakt het systeem, als deze bestaan, gebruik van de toewijzingen van het type hostnaam-naar-Kerberos-realm, zoals deze zijn gedefinieerd in het lokale register (indien aanwezig).</string>
+      <string id="MitRealms">Instellingen voor interoperabele Kerberos V5-realms definiëren</string>
+      <string id="MitRealms_explain">U kunt deze beleidsinstelling gebruiken als u de Kerberos-client zo wil configureren dat verificatie bij interoperabele Kerberos V5-realms mogelijk wordt, zoals gedefinieerd via deze beleidsinstelling.
+
+Als u deze beleidsinstelling inschakelt, kunt u de lijst met interoperabele Kerberos V5-realms en de bijbehorende instellingen weergeven en wijzigen. Als u de lijst met interoperabele Kerberos V5 realms wilt weergeven, schakelt u de beleidsinstelling in en klikt u vervolgens op de knop Weergeven. Als u een interoperabel Kerberos V5-realm wilt toevoegen, schakelt u de beleidsinstelling in, noteert u de syntaxis en klikt u op Weergeven. Typ in de kolom Waardenaam in het dialoogvenster Inhoud weergeven de naam van het interoperabele Kerberos V5-realm. Gebruik de juiste syntaxis om in de kolom Waarde de realm-vlaggen en hostnamen van de host-KDC's te typen. Als u de waardenaam of waarde van een interoperabel Kerberos V5-realm wilt verwijderen uit de lijst, klikt u op de desbetreffende vermelding en drukt u op Delete. Als u een toewijzing wilt bewerken, verwijdert u de huidige vermelding uit de lijst en vervolgens voegt u een nieuwe vermelding met andere parameters toe.
+
+Als u deze beleidsinstelling uitschakelt, worden de instellingen voor interoperabele Kerberos V5-realms, zoals deze via groepsbeleid zijn gedefinieerd, verwijderd.
+
+Als u deze beleidsinstelling niet configureert, maakt het systeem gebruik van instellingen voor interoperabele Kerberos V5-realms zoals deze zijn gedefinieerd in het lokale register (indien aanwezig).</string>
+      <string id="ValidateKDC">Strikte KDC-validatie verplicht stellen</string>
+      <string id="ValidateKDC_explain">U kunt deze beleidsinstelling gebruiken als u het gedrag van de Kerberos-client ten aanzien van het valideren van het KDC-certificaat wilt beheren. 
+  
+Als u deze beleidsinstelling inschakelt, wordt er door de Kerberos-client vereist dat het X.509-certificaat van de KDC de benodigde object-id in de EKU-extensies (Extended Key Usage) bevat en dat het X.509-certificaat van de KDC een SAN-extensie (dNSName subjectAltName) bevat die overeenkomt met de DNS-naam van het domein. Als de computer lid van een domein is, vergt de Kerberos-client dat het X.509-certificaat van de KDC is ondertekend door een certificeringsinstantie uit het NTAUTH-archief. Als de computer geen lid van een domein is, staat de Kerberos-client toe dat het basis-CA-certificaat op de smartcard wordt gebruikt tijdens de validatie van het pad van het X.509-certificaat van de KDC.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, vergt de Kerberos-client alleen dat de object-id voor serververificatiedoeleinden in de EKU-extensies van het KDC-certificaat is opgenomen.
+</string>
+      <string id="StrictTarget">Strikte overeenkomst van doel-SPN vereist voor RPC</string>
+      <string id="StrictTarget_explain">Wanneer een toepassing een RPC (Remote Procedure Call) verstuurt naar deze server met een NULL-waarde voor de SPN (Service Principal Name), wordt op computers met Windows 7 geprobeerd Kerberos te gebruiken door een SPN te genereren. Met deze beleidsinstelling kunt u deze server zo configureren dat Kerberos het ticket met deze door het systeem gegenereerde SPN kan ontsleutelen.
+
+Als u deze beleidsinstelling inschakelt, kunnen alleen services die worden uitgevoerd als LocalSystem of NetworkService deze verbindingen accepteren. Services die worden uitgevoerd als andere identiteiten kunnen mogelijk niet worden geverifieerd.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, kan elke service inkomende verbindingen accepteren door deze door het systeem gegenereerde SPN te gebruiken.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Toewijzingen van het type hostnaam-naar-realm definiëren:</listBox>
+        <text></text>
+        <text>Syntaxis:</text>
+        <text>Typ de naam van het Kerberos-realm in het veld Waardenaam.</text>
+        <text>Typ de hostnamen en DNS-achtervoegsels die u aan het</text>
+        <text>Kerberos-realm wilt toewijzen in het veld Waarde. Als u meerdere</text>
+        <text>namen wilt toevoegen, moet u de vermeldingen scheiden met komma's ";".</text>
+        <text></text>
+        <text>Opmerking: Als u een DNS-achtervoegsel wilt specificeren, plaatst u voor de vermelding een punt.</text>
+        <text>Er mag voor hostnaamvermeldingen geen punt worden geplaatst.</text>
+        <text></text>
+        <text>Voorbeeld:</text>
+        <text>Waardenaam: MICROSOFT.COM</text>
+        <text>Waarde: .microsoft.com; .ms.com; computer1.fabrikam.com;</text>
+        <text></text>
+        <text>In het voorbeeld dat hiervoor is beschreven, worden alle principals met het DNS-achtervoegsel</text>
+        <text>*.microsoft.com of *.ms.com toegewezen aan het </text>
+        <text>MICROSOFT.COM Kerberos-realm. Daarnaast wordt de hostnaam</text>
+        <text>computer1.fabrikam.com aan het </text>
+        <text>MICROSOFT.COM Kerberos-realm toegewezen.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Instellingen voor interoperabele Kerberos V5-realms definiëren:</listBox>
+        <text></text>
+        <text>Syntaxis:</text>
+        <text>Typ de naam van het interoperabele Kerberos-realm in het veld Waardenaam.</text>
+        <text>Typ de realm-vlaggen en de hostnamen van de KDC's in het</text>
+        <text>veld Waarde. Plaats de realm-vlaggen tussen de volgende</text>
+        <text>labels &lt;f&gt; &lt;/f&gt;. Plaats de lijst met KDC's tussen de labels &lt;k&gt; &lt;/k&gt;</text>
+        <text>Als u meerdere KDC-namen wilt toevoegen, moet u de afzonderlijke vermeldingen scheiden met </text>
+        <text>puntkomma's (;).</text>
+        <text></text>
+        <text>Voorbeeld:</text>
+        <text>Waardenaam: TEST.COM</text>
+        <text>Waarde: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Ander voorbeeld:</text>
+        <text>Waardenaam: REALM.FABRIKAM.COM</text>
+        <text>Waarde: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Modus:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Te doorzoeken forests</label>
+        </textBox>
+        <text>Syntaxis:</text>
+        <text>Voer de lijst met forests in die moet worden doorzocht als dit beleid is ingeschakeld.</text>
+        <text>Gebruik de naamgevingsindeling FQDN-naam (Fully Qualified Domain Name).</text>
+        <text>Gebruik een puntkomma ";" om zoektekst van elkaar te scheiden.</text>
+        <text>Details:</text>
+        <text>Het huidige forest hoeft niet te worden opgenomen in de lijst omdat Zoekvolgorde forests gebruiken eerst de globale catalogus gebruikt en dan zoekt in de aangegeven volgorde.</text>
+        <text>U hoeft niet alle domeinen in het forest afzonderlijk te vermelden.</text>
+        <text>Als er een vertrouwend domein in de lijst staat, worden alle domeinen in dat forest doorzocht.</text>
+        <text>U krijgt de beste prestaties als u de forests met de meeste kans op succes boven in de lijst plaatst. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>ange visningsnamn här</displayName>
+  <description>ange beskrivning här</description>
+  <resources>
+    <stringTable>
+      <string id="AddAdminGroupToRUP">Lägg till gruppen Administratörer till centrala användarprofiler</string>
+      <string id="AddAdminGroupToRUP_Help">Den här inställningen lägger till gruppen Administratörer i resursen för centrala användarprofiler.
+
+När en administratör har konfigurerat en central profil för en användare kommer profilen att skapas nästa gång användaren loggar in. Profilen skapas på den plats som anges av administratören.
+
+För datorer med Windows 2000 Professional och datorer med Windows XP är standardbehörigheterna för den här profilen fullständig behörighet (eller läs- och skrivbehörighet) för användaren och ingen behörighet för gruppen Administratörer.
+
+Du kan ändra funktionen genom att ändra den här inställningen.
+
+Om du aktiverar den här inställningen får även gruppen Administratörer full kontroll över användarnas profilmappar.
+
+Om du inaktiverar eller inte konfigurerar den här inställningen får endast användaren full kontroll över användarprofilen och gruppen Administratörer har ingen behörighet i mappen.
+
+Obs! Om den här inställningen aktiveras efter att profilen skapats har inställningen ingen effekt.
+
+Obs! Den här inställningen måste konfigureras på klientdatorn och inte på servern för att den ska ha någon effekt, eftersom det är klientdatorn som anger filbehörighet för centrala profiler när de skapas.
+
+Obs! I standardkonfigurationen har administratörer ingen behörighet för användarnas profiler, men de kan göra sig själva till ägare för mappen och därefter ge sig själva behörighet.
+
+Obs! När den här inställningen är aktiverad fungerar behörigheter för centrala profiler precis som de gör i Windows NT 4.0.</string>
+      <string id="CompatibleRUPSecurity">Kontrollera inte ägarskap för mapparna för centrala profiler</string>
+      <string id="CompatibleRUPSecurity_Help">Den här inställningen inaktiverar de säkrare standardinställningarna för centrala användarprofiler.
+
+När en administratör har konfigurerat en central profil för en användare kommer profilen att skapas nästa gång användaren loggar in. Profilen skapas på den plats som anges av administratören.
+
+För datorer med Windows 2000 Professional före SP4 och datorer med Windows XP före SP1 är standardbehörigheterna för den här profilen Fullständig behörighet för användaren och ingen filbehörighet för gruppen Administratörer. Ingen kontroll för rätt behörigheter görs om mappen redan finns. För datorer med Windows Server 2003, Windows 2000 Professional Service Pack 4 och Windows XP Service Pack 1, kontrolleras som standard att rätt behörigheter tillämpas om mappen redan finns, och filer kopieras inte till eller från mappen om fel behörigheter gäller.
+
+Du kan ändra funktionen genom att ändra den här inställningen.
+
+Om den här inställningen aktiveras kommer behörigheter inte att kontrolleras om mappen redan finns.
+
+Om du inaktiverar eller inte konfigurerar den här inställningen, OCH om mappen finns OCH om användaren eller gruppen Administratörer inte är mappens ägare, kopieras INTE filer till eller från mappen för den centrala profilen i Windows. Användaren ser ett felmeddelande och en post skrivs till loggboken. Användarens cachelagrade profil används eller en tillfällig profil tillämpas om ingen cachelagrad profil finns. 
+
+Obs! Den här inställningen måste konfigureras på klientdatorn och inte på servern för att den ska ha någon effekt, eftersom det är klientdatorn som anger filbehörighet för centrala profiler när de skapas.
+
+Obs! När den här inställningen är aktiverad är förfarandet exakt samma som på datorer med Windows 2000 Professional före SP4 och datorer med Windows XP Professional</string>
+      <string id="Connect_HomeDir_ToRoot">Anslut arbetskatalogen till resursens rot</string>
+      <string id="Connect_HomeDir_ToRoot_Explain">Återställer definitionerna för miljövariablerna %HOMESHARE% och %HOMEPATH% till de värden som användes i Windows NT 4.0 och tidigare.
+
+Om denna inställning aktiveras, används definitionerna i Windows NT 4.0 på datorn. Om den här inställningen inaktiveras eller inte konfigureras, kommer de nya definitioner som utformats för operativsystemet Windows 2000 att användas.
+
+Tillsammans med variabeln %HOMEDRIVE% anger dessa variabler arbetskatalogen för en användarprofil. Arbetskatalogen är en beständig mappning av en enhetsbeteckning på den lokala datorn till en katalog på den lokala datorn eller en fjärrdator.
+
+I Windows 2000 lagras den fullständiga sökvägen till arbetskatalogen i %HOMESHARE% som standard (till exempel \\server\resurs\kat1\kat2\arbetskatalog). Användare kan nå arbetskatalogen och dess underkataloger genom enhetsbeteckningen, men de kan inte se eller använda arbetskatalogens överordnade kataloger. %HOMEPATH% innehåller ett avslutande omvänt snedstreck för kompatibilitet med tidigare system.
+
+I Windows NT 4.0 och tidigare innehåller %HOMESHARE% bara nätverksresursen (till exempel \\server\resurs). %HOMEPATH% innehåller resten av den fullständiga sökvägen till arbetskatalogen (till exempel \kat1\kat2\arbetskatalog). Detta innebär att användare kan se alla kataloger på arbetskatalogens resurs genom att använda enhetsbeteckningen för arbetskatalogen.
+
+Tips! Du kan ange arbetskatalog på Windows 2000 Server-datorer genom att öppna "Active Directory - användare och datorer" eller "Lokala användare och grupper", högerklicka på ett användarkonto, välja "Egenskaper" och klicka på fliken "Profil". Nu kan du markera alternativet "Anslut" i området "Arbetsmapp" och välja enhetsbeteckning och arbetskatalog.
+
+Exempel: Enhet Z är mappad till \\server\resurs\kat1\kat2\arbetskatalog.
+
+Om inställningen är inaktiverad eller inte konfigurerad (förfarande i Windows 2000 Server-familjen).
+
+--  %HOMEDRIVE% = Z: (mappad till \\server\resurs\kat1\kat2\arbetskatalog)
+
+--  %HOMESHARE% = \\server\resurs\kat1\kat2\arbetskatalog
+
+--  %HOMEPATH% = \
+
+Om inställningen är aktiverad (förfarande i Windows NT 4.0):
+
+--  %HOMEDRIVE% = Z: (mappad till \\server\resurs)
+
+--  %HOMESHARE% = \\server\resurs
+
+--  %HOMEPATH% = \kat1\kat2\arbetskatalog</string>
+      <string id="DeleteRoamingCachedProfiles">Ta bort cachelagrade kopior av centrala profiler</string>
+      <string id="DeleteRoamingCachedProfiles_Help">Anger om en kopia av en användares centrala profil ska sparas på den lokala hårddisken när användaren loggar ut.
+
+Den här inställningen och relaterade inställningar i den här mappen beskriver tillsammans hur användarprofiler som finns på fjärrservrar ska hanteras. De bestämmer i synnerhet hur datorn ska uppträda när det tar lång till att läsa in en fjärrprofil.
+
+Centrala profiler finns på en nätverksserver. Standard är att när en användare med central profil loggar ut, sparas även en kopia av den centrala profilen på den dator som använts, så att en profil är tillgänglig även om den server där profilen lagras inte är tillgänglig när användaren loggar in igen. Den lokala kopian används även när det tar lång tid att läsa in användarens centrala profil.
+
+Om den här inställningen aktiveras tas lokala kopior av användarens centrala profil bort när användaren loggar ut. Den centrala profilen kommer fortfarande att finnas på den nätverksserver där den lagras.
+
+Viktigt! Aktivera inte den här inställningen om du använder funktionen för identifiering av långsamma länkar från Windows 2000 Professional och Windows XP Professional. För att datorn ska kunna bestämma vad som ska ske när en långsam länk påträffas måste det finnas en lokal kopia av användarens centrala profil.</string>
+      <string id="EnableSlowLinkDetect">Identifiera inte långsamma nätverksanslutningar</string>
+      <string id="EnableSlowLinkDetect_Help">Inaktiverar funktionen för identifiering av långsam länk.
+
+Avkänning av långsam länk sker genom att hastigheten för anslutningen mellan användarens dator och den fjärrserver där användarens centrala profil lagras mäts. När en långsam länk upptäcks, bestämmer de besläktade inställningarna i den här mappen hur datorn ska reagera.
+
+Om den här inställningen aktiveras identifieras inte långsamma anslutningar på datorn och inga anslutningaranses vara långsamma. Detta innebär att systemet inte svarar på långsamma anslutningar till användarprofiler, och alla inställningar som styr hur datorn ska reagera när en långsam länk påträffas ignoreras fullständigt.
+
+Om den här inställningen inaktiveras eller inte konfigureras, kommer avkänning av långsam länk att vara aktiverat. Datorn kommer att mäta hastigheten för anslutningen mellan användarens dator och den server där profilen lagras. Om anslutningen är långsam (enligt inställningen Timeoutvärde för långsam nätverksanslutning till användarprofil) kommer de andra inställningar som anges i den här mappen att tillämpas. Standard är att en lokal kopia av användarens profil används om anslutningen är långsam.</string>
+      <string id="EnableSlowLinkUI">Fråga användaren när en långsam nätverksanslutning upptäcks</string>
+      <string id="EnableSlowLinkUI_Help">Med den här principinställningen kan användare hämta sin centrala profil, även om en långsam nätverksanslutning till servern för centrala profiler upptäcks.
+
+Om du aktiverar den här principinställningen kan användare definiera om de vill att den centrala profilen ska hämtas när en långsam länk till servern för centrala profiler upptäcks.
+
+I tidigare operativsystem än Microsoft Windows Vista visas en dialogruta under inloggningen om en långsam nätverksanslutning upptäcks. Användaren kan då välja att hämta fjärrkopian av användarprofilen. I Microsoft Windows Vista visas en kryssruta på inloggningsskärmen och användaren måste välja om fjärrprofilen ska hämtas innan hastigheten för nätverksanslutningen identifieras av Windows.  
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen tillfrågas inte användaren. I stället används en lokal kopia av användarprofilen. Om du har aktiverat principinställningen "Vänta på användarens fjärrprofil" hämtas fjärrkopian av användarprofilen utan att användaren tillfrågas. I Microsoft Windows Vista ignoreras de val som användaren har gjort på inloggningsskärmen.
+
+Obs! Den här principinställningen och relaterade principinställningar i den här mappen definierar tillsammans hur systemet ska reagera när centrala användarprofiler tar lång tid att hämta. Du kan ändra hur lång tid användaren har på sig att besvara detta meddelande för tidigare operativsystem än Microsoft Windows Vista med principinställningen "Timeout för dialogrutor".
+
+Viktigt! Om inställningen "Identifiera inte långsamma nätverksanslutningar automatiskt" är aktiverad, kommer den här principinställningen att ignoreras. Om principinställningen "Ta bort cachelagrade kopior av centrala profiler" är aktiverad, kommer det inte heller att finnas någon lokal kopia av den centrala profilen som kan läsas in när en långsam anslutning upptäcks.</string>
+      <string id="ExcludeDirectories">Uteslut kataloger i den centrala profilen</string>
+      <string id="ExcludeDirectories_Help">Används för att lägga till mappar i en lista över mappar som ska uteslutas från användarnas centrala profiler.
+
+Den här inställningen gör att du kan undanta mappar som vanligtvis ingår i användarnas profil. De här mapparna behöver därför inte lagras på den nätverksserver där profilen finns, och följer inte med användare till andra datorer.
+
+Som standard ingår inte mapparna Appdata\Local och Appdata\LocalLow och t.ex. undermapparna Historik, Temp och Temporary Internet Files i användarens centrala profil.
+
+Obs! I tidigare operativsystem än Microsoft Windows Vista ingår inte mapparna Historik, Lokala inställningar, Temp och Temporary Internet Files i användarnas centrala profiler som standard.
+
+Om den här inställningen aktiveras, kan du ange att andra mappar inte heller ska ingå:
+
+Om den här inställningen inaktiveras eller inte konfigureras, kommer endast standardmapparna att undantas.
+
+Obs! Du kan inte använda den här inställningen för att ange att standardmapparna ska ingå i centrala användarprofiler.</string>
+      <string id="LeaveAppMgmtData">Ta inte bort data om programvaruinstallation genom Windows Installer och grupprinciper</string>
+      <string id="LeaveAppMgmtData_Help">Anger om data ska sparas på datorn om programvaruinstallation som baseras på Windows Installer och grupprinciper när profilen tas bort för användare med centrala profiler.
+
+Som standard tas all information om användare med centrala profiler bort (inklusive användarinställningar, data, Windows Installer-relaterad information m.m.) när profilen tas bort. Detta innebär att nästa gång en användare som har en central profil som tidigare har tagits bort vid utloggning loggar in igen på datorn, måste användaren installera om alla program som har publicerats via inloggningsprincip, vilket förlänger inloggningstiden. Du kan använda den här principen för att ändra detta förfarande.
+
+Om den här principen aktiveras tas inte data om programvaruinstallation som baseras på Windows Installer och grupprinciper bort för användare med centrala profiler när profiler tas bort från en dator. Detta innebär bättre prestanda för grupprincipbaserad programvaruinstallation vid nästa inloggning när principen har tagits bort och samma användare sedan loggar in på datorn igen.
+
+Om den här principen inaktiveras eller inte konfigureras kommer hela principen att tas bort för användare med centrala profiler, inklusive data för programvaruinstallation som baseras på Windows Installer och grupprinciper.
+
+Obs! Om den här principen aktiveras på datorn måste en administratör ta bort data om programvaruinstallation som baseras på Windows Installer och grupprinciper som lagras i registret och filsystemet på datorn.</string>
+      <string id="LimitSize">Begränsa profilens storlek</string>
+      <string id="LimitSize_Help">Den här principinställningen anger största storlek för varje användarprofil och bestämmer hur systemet ska reagera när användarprofilen når den största tillåtna storleken. Den här principinställningen påverkar både lokala och centrala profiler.
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen begränsas inte profilens storlek.
+
+Om du aktiverar den här principinställningen kan du
+
+-- ange största tillåtna storlek för användarprofiler -- bestämma om registerfiler ska ingå när profilernas storlek beräknas -- bestämma om användare ska meddelas när profilen överstiger den största tillåtna storleken -- ange ett anpassat meddelande som skickas till användare när profilen överstiger storleken -- bestämma hur ofta detta anpassade meddelande ska visas.
+
+Obs! I tidigare operativsystem än Microsoft Windows Vista tillåts inte användare att logga ut innan profilstorleken har minskats till inom den tillåtna gränsen. I Microsoft Windows Vista hindras inte användare från att logga ut. I stället synkroniseras inte användarens profil med servern för centrala profiler, om användaren har en central profil, om maxgränsen för profilstorleken som anges här överskrids.</string>
+      <string id="LocalProfile">Tillåt endast lokala användarprofiler</string>
+      <string id="LocalProfile_Help">Den här inställningen anger om centrala användarprofiler är tillgängliga på en viss dator. Som standard gäller att när en användare med central profil loggar in på en dator kopieras den centrala profilen till den lokala datorn. Om de redan loggat in på datorn tidigare, samkörs den centrala profilen med den lokala profilen. När användaren sedan loggar ut från datorn kopieras den lokala kopian av profilen, inklusive alla ändringar som gjorts i profilen, till servern.
+
+Du kan använda den här inställningen för att förhindra att en användare med central profil får använda sin centrala profil på en viss dator.
+
+Om den här inställningen aktiveras sker följande på den dator som påverkas: Vid första inloggning får användaren en ny lokal profil i stället för den centrala profilen. Vid utloggning sparas ändringarna i den lokala profilen. Den lokala profilen används vid alla efterföljande inloggningar. 
+
+Om den här inställningen inaktiveras eller inte konfigureras används det standardförfarande som anges ovan.
+
+Om både principen "Förhindra att ändringar i centrala profiler sprids till servern" och principen "Tillåt endast lokala användarprofiler" är aktiverade, är centrala profiler inaktiverade.
+
+Obs! Den här inställningen påverkar endast användare med centrala profiler.</string>
+      <string id="ProfileDlgTimeOut">Timeout för dialogrutor</string>
+      <string id="ProfileDlgTimeOut_Help">Anger hur länge datorn väntar på att användaren ska svara innan ett standardvärde används.
+
+Standardvärdet används när användaren inte besvarar meddelanden som förklarar att någon av följande händelser har inträffat:
+
+-- En långsam anslutning mellan användarens dator och den server där den centrala profilen lagras upptäcks.
+
+--  Det går inte att använda användarnas serverbaserade profiler när användare loggar in eller ut.
+
+--  Användarnas lokala profiler är nyare än deras serverbaserade profiler.
+
+Du kan använda den här inställningen för att åsidosätta datorns standardvärde, som är 30 sekunder. Du använder den här inställningen genom att ange ett värde mellan 0 och 600 som motsvarar intervallets längd.</string>
+     <string id="ProfileErrorAction">Logga inte in användare med temporära profiler</string>
+     <string id="ProfileErrorAction_Help">Med den här principinställningen loggas användare automatiskt ut när deras profil inte kan läsas in i Windows.
+ 
+Om mappen med användarprofilen inte är tillgänglig eller om profilen innehåller fel som förhindrar att den läses in, loggas användaren in med en tillfällig profil. Administratören kan använda den här principen för att inaktivera det här beteendet, vilket förhindrar att användaren loggas in med en tillfällig profil.
+ 
+Om du aktiverar den här principinställningen loggas användaren inte in med en tillfällig profil. Användaren loggas ut om profilen inte kan läsas in. 
+ 
+Om du inaktiverar den här principinställningen eller inte konfigurerar den loggas användaren in med en tillfällig profil när användarprofilen inte kan läsas in i Windows.
+ 
+Se även inställningen Ta bort cachelagrade kopior av centrala profiler.</string>
+      <string id="ProfileUnloadTimeout">Högsta antal nya försök att ta bort användarprofil från minnet och uppdatera den</string>
+      <string id="ProfileUnloadTimeout_Help">Bestämmer hur många nya försök datorn gör att ta bort den del av registret som ingår i användarens profil ur minnet och sedan läsa in den igen. När det antal försök som anges i den här inställningen har uppnåtts görs inga nya försök. Detta innebär att användarens profil kanske inte är aktuell, och den lokala profilen matchar kanske inte den centrala profilen.
+
+När en användare loggar ut från datorn tas den användarspecifika delen av registret (HKEY_CURRENT_USER) bort från minnet och sparas i en fil (NTUSER.DAT) som uppdateras. Om något program eller någon tjänst läser eller redigerar registret, kan det inte tas bort från minnet. Datorn försöker flera gånger (ett försök per sekund) att ta bort registerinställningarna från minnet och uppdatera dem. Som standard görs 60 nya försök (vilket tar en minut).
+
+Om den här inställningen aktiveras, kan du justera det antal gånger som ett försök görs att ta bort användarens registerinställningar från minnet och uppdatera dem. (Det går inte att justera intervallet mellan försök.)
+
+Om den här inställningen inaktiveras eller inte konfigureras, görs 60 nya försök.
+
+Om du anger värdet 0, utförs ett enda försök att ta bort användarens registerinställningar från minnet och uppdatera dem. Inga ytterligare försök görs.
+
+Obs! Den här inställningen är extra viktig för servrar där Terminal Services körs. Eftersom Terminal Services redigerar användarens registerinställningar vid utloggning, kommer de första försöken att ta bort användarens inställningar ur minnet antagligen att misslyckas.
+
+Den här inställningen påverkar inte försök att uppdatera filer i användarens profil.
+
+Tips! Om det finns många användarprofiler i datorns minne, kan det vara bra att öka antalet försök som görs. Detta tyder vanligtvis på att datorn inte kunnat ta bort profilen ur minnet.
+
+Kontrollera även händelser som rapporterats för Userenv i Programloggen i Loggboken. En händelse loggas när datorn försöker ta bort användarnas register ur minnet. En händelse loggas även om det inte går att uppdatera filer i en användarprofil.</string>
+      <string id="Readonlyuserprofile">Förhindra att ändringar i centrala profiler sprids till servern</string>
+      <string id="Readonlyuserprofile_Help">Den här inställningen styr om de ändringar som en användare gör i sin centrala profil slås samman med profilkopian på servern.
+
+Som standard gäller att när en användare med central profil loggar in på en dator kopieras den centrala profilen till den lokala datorn. Om användaren redan har loggat in på datorn tidigare, samkörs den centrala profilen med den lokala profilen. När användaren sedan loggar ut från datorn kopieras den lokala kopian av profilen till servern, inklusive alla ändringar som gjorts i profilen.
+
+Du kan använda den här inställningen för att förhindra att ändringar som görs i en central profil på en viss dator sparas.
+
+Om du aktiverar den här inställningen sker följande på den dator som påverkas: Vid inloggningen får användaren sin centrala profil. Eventuella ändringar som användaren gör i profilen slås däremot inte samman med den centrala profilen när de loggar ut.
+
+Om du aktiverar eller låter blir att konfigurera den här inställningen sker det som anges som standard ovan.
+
+Obs! Den här inställningen påverkar endast användare med centrala profiler.</string>
+      <string id="SlowLinkDefault">Vänta på användarens fjärrprofil</string>
+      <string id="SlowLinkDefault_Help">Anger att datorn ska vänta på att fjärrkopian av användarens centrala profil ska läsas in, även när det tar lång tid att läsa in den. Dessutom väntar datorn på fjärrkopian när användaren meddelas om att anslutningen är långsam men inte svarar inom den angivna tiden
+
+Den här inställningen och relaterade inställningar i den här mappen definierar tillsammans systemets beteende när centrala användarprofiler tar lång tid att läsa in.
+
+Om den här inställningen inaktiveras eller inte konfigureras och det tar lång tid att läsa in en central profil, kommer en lokal kopia av den centrala profilen att läsas in. Den lokala kopian används också när användaren tillfrågas (enligt inställningen "Fråga användaren när en långsam länk påträffas") men inte svarar inom den tillåtna tiden (enligt inställningen Timeout för dialogrutor).
+
+Det kan vara lämpligt att vänta på att fjärrprofilen ska läsas in när användare ofta använder olika datorer och den lokala kopian av fjärrprofilen inte alltid är aktuell. Det kan vara bra att använda den lokala kopian när det är viktigt att kunna logga in snabbt.
+
+Viktigt! Om inställningen "Identifiera inte långsamma nätverksanslutningar automatiskt" är aktiverad, kommer den här inställningen att ignoreras. Om inställningen "Ta bort cachelagrade kopior av centrala profiler" är aktiverad, kommer det inte heller att finnas någon lokal kopia av den centrala profilen som kan läsas in när en långsam anslutning påträffas.</string>
+      <string id="SlowLinkTimeOut">Timeoutvärde för långsam nätverksanslutning till användarprofil</string>
+      <string id="SlowLinkTimeOut_Help">Definierar en långsam anslutning för centrala användarprofiler.
+
+Om den server som användarnas centrala profiler lagras på tar längre tid på sig att svara än vad som anges i den här inställningen, anses anslutningen till servern vara långsam.
+
+Den här inställningen och relaterade inställningar i den här mappen definierar tillsammans systemets beteende när centrala användarprofiler tar lång tid att läsa in.
+
+Den här inställningen bestämmer tröskelvärden för två tester. För datorer som är anslutna till IP-nätverk mäts hur snabbt fjärrservern besvarar ett IP-ping-meddelande. Du anger ett tröskelvärde för detta test genom att ange ett värde mellan 0 och 4 294 967 200 i rutan Anslutningshastighet. Detta värde motsvarar den lägsta tillåtna överföringshastigheten i kbit/s. Som standard anses anslutningen vara långsam om servern returnerar data i en hastighet som är lägre än 500 kbit/s.
+
+För datorer utan IP mäter systemet svarstiden i fjärrserverns filsystem. Du anger ett tröskelvärde för detta test genom att ange ett decimaltal mellan 0 och 20 000 i rutan Tid. Detta värde motsvarar den högsta tillåtna fördröjningen i millisekunder. Som standard anses serverns filsystem vara långsamt om servern inte svarar inom 120 millisekunder.
+
+Det kan vara lämpligt att öka detta värde för klienter där adresser som tilldelas med DHCP-tjänsten används, och för datorer som ansluter till profiler via uppringda anslutningar.
+
+Viktigt! Om inställningen "Identifiera inte långsamma nätverksanslutningar automatiskt" är aktiverad, kommer den här inställningen att ignoreras. Om inställningen "Ta bort cachelagrade kopior av centrala profiler" är aktiverad, kommer det inte heller att finnas någon lokal kopia av den centrala profilen som kan läsas in när en långsam anslutning påträffas.</string>
+      <string id="UserProfiles">Användarprofiler</string>
+      <string id="CleanupProfiles">Ta bort användarprofiler som är äldre än ett visst antal dagar vid omstart av datorn</string>
+      <string id="CleanupProfiles_Help">Administratörer kan använda den här principinställningen för automatisk borttagning av användarprofiler som inte använts under ett angivet antal dagar när datorn startas om. Obs! En dag tolkas som 24 timmar efter att en angiven användarprofil har använts.
+
+Om du aktiverar inställningen tar Användarprofiltjänsten bort alla profiler som inte använts under ett visst antal dagar när datorn startas om. 
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen tas inga profiler bort automatiskt nästa gång datorn startas om.</string>
+      <string id="CscSuspendDirectories">Nätverkskataloger som endast ska synkroniseras vid in-/utloggning</string>
+      <string id="CscSuspendDirectories_Help">Du kan använda den här principinställningen för att ange vilka nätverkskataloger som ska synkroniseras endast vid inloggning och utloggning via Offlinefiler. Den här principinställningen är avsedd att användas tillsammans med mappomdirigering för att lösa problem med program som inte fungerar bra tillsammans med Offlinefiler när användaren är inloggad.
+
+Om du aktiverar den här principinställningen synkroniseras nätverkssökvägarna som anges i den här principinställningen enbart med Offlinefiler när användaren loggar in och ut och kopplas från när användaren är inloggad.
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen fungerar sökvägarna som anges i den här principinställningen på samma sätt som alla andra cachelagrade data via Offlinefiler och är fortfarande online när användaren är inloggad, om det går att komma åt nätverkssökvägarna.   
+
+Obs! Du ska inte använda den här principinställningen för att sätta några av de omdirigerade rotmapparna, t.ex. Appdata\Roaming, Start-menyn och Dokument, i uppehållsläge. Du ska endast sätta undermapparna till de här överordnade mapparna i uppehållsläge.</string>
+      <string id="DontForceUnloadHive">Ta inte bort av användarregistret från minnet när användaren loggar ut</string>
+      <string id="DontForceUnloadHive_Help">Användarregistret tas alltid bort i Microsoft Windows, även om det finns öppna referenser till användarspecifika registernycklar när användaren loggar ut. Men den här principinställningen kan administratören inaktivera det här beteendet, och förhindra att användarregistret tas bort med tvång när användaren loggar ut.
+
+Obs! Den här principinställningen ska endast användas i de fall där du kan stöta på problem med programkompatibilitet på grund av det här specifika Windows-beteendet. Du rekommenderas inte att aktivera den här principen som standard eftersom användare kan förhindras från att få en uppdaterad version av deras centrala användarprofil.
+
+Om du aktiverar den här principinställningen kommer användarregistret inte att tas bort med tvång vid utloggning, utan registret tas bort när alla öppna referenser till användarspecifika registernycklar stängs.
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen tas användarregistret alltid bort i Microsoft Windows vid utloggning, även om det finns öppna referenser till användarspecifika registernycklar när användaren loggar ut.</string>
+      <string id="WaitForNetwork">Ange maximal väntetid för nätverket om en användare har en central användarprofil eller fjärrhemkatalog</string>
+      <string id="WaitForNetwork_Help">Om användaren har en central användarprofil eller fjärrhemkatalog och nätverket inte är tillgängligt för närvarande väntar Microsoft Windows i 30 sekunder på nätverket när användaren loggar in på datorn. Administratören kan använda den här principinställningen för att ange hur länge Windows ska vänta på att nätverket ska bli tillgängligt. Om nätverket inte är tillgängligt när den maximala väntetiden uppnås fortsätter Windows att logga in användaren utan en nätverksanslutning. Användarens centrala profil synkroniseras inte med servern och fjärrhemkatalogen används inte under inloggningssessionen. 
+
+Den här principen är användbar i de fall då det kan ta betydligt längre tid för ett nätverk, t.ex. ett trådlöst nätverk, att initieras.
+
+Obs! Om nätverket blir tillgängligt innan den maximala väntetiden uppnås fortsätter Windows genast med inloggningen av användaren. Windows väntar inte på nätverket om den fysiska nätverksanslutningen inte är tillgänglig på datorn (om systemet är frånkopplat eller det saknas ett nätverkskort).
+ 
+Om du aktiverar den här principinställningen väntar Windows på att nätverket ska bli tillgängligt tills den maximala väntetiden som anges i den här principinställningen har uppnåtts. Om värdet anges till noll fortsätter Windows utan att vänta på nätverket. 
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen väntar Windows på nätverket i maximalt 30 sekunder.</string>
+      <string id="MachineProfilePath">Ange sökvägen till den centrala användarprofilen för alla användare som loggar in på den här datorn</string>
+      <string id="MachineProfilePath_Help">Anger om Microsoft Windows ska använda den angivna nätverkssökvägen som sökväg till den centrala användarprofilen för alla användare som loggar in på den här datorn. 
+
+Du använder den här inställningen genom att ange sökväg till en nätverksresurs i formatet \\Datornamn\Resurs\. Du rekommenderas att lägga till %USERNAME% i sökvägen om du vill skapa en individuell profilmapp för varje användare. Om du inte anger detta använder alla användare som loggar in på den här datorn samma mapp för centrala profiler som anges i den här principen. Kontrollera att du har ställt in korrekt behörighet för mappen så att användare tillåts komma åt profilen. 
+
+Om du aktiverar den här principinställningen använder alla användare som loggar in på den här datorn den sökväg till centrala profiler som anges i den här principen. 
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen använder användare som loggar in på den här datorn sin lokala profil eller den centrala standardanvändarprofilen.   
+
+Obs! Det finns fyra sätt att konfigurera en central profil för en användare. Profilkonfigurationen läses in i följande ordning och den första konfigurerade inställning som läses in används.
+ 
+1. Terminal Services-sökvägen till centrala profiler som anges i Terminal Services-principen
+2. Terminal Services-sökvägen till centrala profiler som anges av användarobjektet
+3. En sökväg till centrala profiler per dator som angetts i den här principen
+4. En sökväg till centrala profiler per användare som angetts i användarobjektet
+</string>
+      <string id="UploadHive">Bakgrundsöverföring av en central användarprofils registerfil när användaren är inloggad</string>
+      <string id="UploadHive_Help">Anger schemat för bakgrundsöverföring av en central användarprofils registerfil (ntuser.dat). Den här inställningen överför bara den centrala användarprofilens registerfil (övriga användardata överförs inte) och genomför överföringen bara om användaren är inloggad. Endast den centrala användarprofilens registerfil överförs, normala profiler påverkas inte. Den här principen förhindrar inte att den centrala användarprofilens registerfil överförs när användaren loggar ut.
+
+Om den här inställningen inaktiveras eller inte konfigureras överförs inte den centrala användarprofilens registerfil i bakgrunden när användaren är inloggad.
+
+Om du vill använda den här inställningen väljer du först vilken schemaläggningsmetod du vill använda.
+
+Om du väljer Kör med angivet intervall måste du ange ett intervall med ett värde av 1-720 timmar. När värdet är angivet överförs profilens registerfil med det intervall som angavs, när användaren har loggat in. Om du anger ett värde på 6 timmar och en användare loggar in 06:00 och fortfarande är inloggad 12:00 överförs registerfilen då. Om användaren fortfarande är inloggad 18:00 sker en ny överföring och sedan var sjätte timma tills användaren loggar ut. Nästa gång användaren loggar in startar timern om och registerfilen överförs sex timmar senare (i vårt exempel.)
+
+Om du väljer Kör vid angiven tid på dagen måste en tidpunkt anges. När värdet har angetts överförs registreringsdatafilen vid samma tidpunkt varje dag om användaren är inloggad vid den tidpunkten.
+
+För båda schemaalternativen gäller att det är en slumpmässig en-timmes fördröjning för varje utlösare för att inte överbelasta servern med flera överföringar samtidigt. Om t.ex. inställningarna anger att användarens registerfil ska överföras 18:00 sker överföringen någon gång mellan 18:00 och 19:00.
+
+Obs! Om du väljer Kör med angivet intervall ignoreras alternativet Kör vid angiven tid på dagen. På samma sätt ignoreras alternativet Kör vid angiven tid på dagen väljs om du väljer alternativet Kör med angivet intervall ignoreras.</string>
+      <string id="UploadHiveMethod_Interval">Kör med angivet intervall</string>
+      <string id="UploadHiveMethod_Time">Kör vid angiven tid på dagen</string>
+      <string id="ScheduleTime0">00:00</string>
+      <string id="ScheduleTime1">01:00</string>
+      <string id="ScheduleTime2">02:00</string>
+      <string id="ScheduleTime3">03:00</string>
+      <string id="ScheduleTime4">04:00</string>
+      <string id="ScheduleTime5">05:00</string>
+      <string id="ScheduleTime6">06:00</string>
+      <string id="ScheduleTime7">07:00</string>
+      <string id="ScheduleTime8">08:00</string>
+      <string id="ScheduleTime9">09:00</string>
+      <string id="ScheduleTime10">10:00</string>
+      <string id="ScheduleTime11">11:00</string>
+      <string id="ScheduleTime12">12:00</string>
+      <string id="ScheduleTime13">13:00</string>
+      <string id="ScheduleTime14">14:00</string>
+      <string id="ScheduleTime15">15:00</string>
+      <string id="ScheduleTime16">16:00</string>
+      <string id="ScheduleTime17">17:00</string>
+      <string id="ScheduleTime18">18:00</string>
+      <string id="ScheduleTime19">19:00</string>
+      <string id="ScheduleTime20">20:00</string>
+      <string id="ScheduleTime21">21:00</string>
+      <string id="ScheduleTime22">22:00</string>
+      <string id="ScheduleTime23">23:00</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ExcludeDirectories">
+        <textBox refId="ExcludeMessage">
+          <label>Förhindra att följande kataloger flyttar med profilen:</label>
+        </textBox>
+        <text>Du kan ange flera katalognamn, avgränsade med semikolon,</text>
+        <text>som alla är relativa till roten i användarprofilen</text>
+      </presentation>
+      <presentation id="LimitSize">
+        <textBox refId="SizeMessage">
+          <label>Anpassat meddelande</label>
+          <defaultValue>Det utrymme som har tilldelats dig för profillagring har överskridits. Innan du kan logga ut måste du flytta några objekt från profilen till någon annan lagringsplats på nätverket eller den lokala datorn.</defaultValue>
+        </textBox>
+        <decimalTextBox refId="ProfileSize" defaultValue="30000" spinStep="100">Största profilstorlek (kB)</decimalTextBox>
+        <checkBox refId="IncludeRegInProQuota">Visa registerfiler i fillistan</checkBox>
+        <checkBox refId="WarnUser">Meddela användaren när lagringsutrymmet överskrids.</checkBox>
+        <decimalTextBox refId="WarnUserTimeout" defaultValue="15" spinStep="5">Påminn användaren var X:e minut:</decimalTextBox>
+      </presentation>
+      <presentation id="ProfileDlgTimeOut">
+        <decimalTextBox refId="ProfileDlgWaitInterval" defaultValue="30">Tid (sekunder)</decimalTextBox>
+      </presentation>
+      <presentation id="ProfileUnloadTimeout">
+        <decimalTextBox refId="ProfileUnloadTimeoutPrompt" defaultValue="60" spinStep="5">Högsta antal nya försök:  </decimalTextBox>
+      </presentation>
+      <presentation id="SlowLinkTimeOut">
+        <decimalTextBox refId="TransferRateOp" defaultValue="500" spinStep="100">Anslutningshastighet (kbit/s):</decimalTextBox>
+        <decimalTextBox refId="SlowLinkWaitInterval" defaultValue="120">Tid (millisekunder)</decimalTextBox>
+      </presentation>
+      <presentation id="CleanupProfiles">
+        <decimalTextBox refId="CleanupProfiles_Days" defaultValue="30">Ta bort användarprofiler som är äldre än (dagar)</decimalTextBox>
+      </presentation>
+      <presentation id="CscSuspendDirectories">
+        <textBox refId="CscSuspendDirectories_Message">
+          <label>Synkronisera endast de här nätverkskatalogerna vid in-/utloggning:</label>
+        </textBox>
+        <text>Du kan ange flera katalognamn om de avgränsas med semikolon.</text>
+      </presentation>
+      <presentation id="WaitForNetwork">
+        <decimalTextBox refId="WaitForNetwork_Seconds" defaultValue="30">Vänta på nätverket i maximalt (sekunder)</decimalTextBox>
+      </presentation>
+      <presentation id="MachineProfilePath">
+        <textBox refId="MachineProfilePath_Message">
+          <label>Användare som loggar in på den här datorn ska använda den här sökvägen till centrala profiler:</label>
+        </textBox>
+        <text>Du rekommenderas att lägga till %ANVÄNDARNAMN% i sökvägen om du vill skapa en individuell profilkatalog för varje användare.</text>
+      </presentation>
+      <presentation id="UploadHive">
+        <dropdownList refId="UploadHiveMethod" noSort="true" defaultItem="0">Schemaläggningsmetod:</dropdownList>
+        <text>Följande inställningar krävs och är tillämpliga endast</text>
+        <text>om Kör med angivet intervall har angetts.</text>
+        <decimalTextBox refId="UploadHiveInterval" defaultValue="12" spinStep="1">intervall (timmar):</decimalTextBox>
+        <text>Följande inställningar krävs och är tillämpliga endast</text>
+        <text>om alternativet Kör vid angiven tid på dagen väljs.</text>
+        <dropdownList refId="UploadHiveTime" defaultItem="3">Tid:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

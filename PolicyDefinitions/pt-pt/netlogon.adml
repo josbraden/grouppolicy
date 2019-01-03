@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>introduzir o nome a apresentar aqui</displayName>
+  <description>introduzir a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="Netlogon">Início de Sessão de Rede</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain">Localização dos DC que hospedam um domínio com nome DNS único</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain_Help">Especifica se os computadores aos quais esta definição é aplicada tentam a resolução de nomes DNS de domínio único.
+
+Por predefinição, quando um computador (ou o Localizador de DC em execução num computador) necessita de localizar um controlador de domínio que hospeda um domínio do Active Directory indicado com um nome único, o computador utiliza apenas a resolução de nome de NetBIOS, não a de DNS, a menos que computador adira a uma floresta do Active Directory na qual pelo menos um domínio tem um nome único DNS. 
+
+Se esta definição for activada, os computadores aos quais esta política é aplicada tentam localizar um controlador de domínio que hospeda um domínio do Active Directory especificado com um nome único utilizando a resolução de nome DNS.
+
+Se esta definição for desactivada, os computadores aos quais esta definição é aplicada tentam localizar um controlador de domínio que hospeda um domínio do Active Directory especificado por um nome único utilizando apenas a resolução de nome de NetBIOS, não a de DNS, a menos que computador esteja a procurar um domínio com um nome único DNS que esteja presente na floresta do Active Directory à qual este computador está associado.
+
+Se esta definição não for configurada, não será aplicada aos computadores e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_AutoSiteCoverage">Cobertura Automática de Locais pelos Registos SRV de DNS Localizador de DC</string>
+      <string id="Netlogon_AutoSiteCoverage_Help">Define se os DC efectuam dinamicamente registos SRV específicos de local de Localizador de DC para os locais mais próximos onde não há um DC para o mesmo domínio (ou não há um Catálogo Global para a mesma floresta). Estes registos DNS são efectuados dinamicamente pelo serviço Início de Sessão de Rede e utilizados para localizar o DC.
+
+Se esta definição for activada, os DC aos quais esta definição é aplicada efectuam dinamicamente registos SRV de DNS específicos de local de Localizador de DC para os locais mais próximos onde não há um DC para o mesmo domínio ou não existe um Catálogo Global para a mesma floresta.
+
+Se desactivar esta definição, os DC só efectuam registos SRV de DNS de Localizador de DC específicos de locais para os próprios locais apenas.
+
+Se esta definição não for configurada, não será aplicada aos DCs e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_AvoidPdcOnWan">Contactar PDC em falhas de início de sessão</string>
+      <string id="Netlogon_AvoidPdcOnWan_Help">Define se um controlador de domínio (DC) deve tentar conferir com o PDC a palavra-passe fornecida por um cliente se o DC não validar a palavra-passe.
+
+Contactar o PDC é útil no caso de a palavra-passe do cliente ter sido recentemente alterada, sem actualizar o DC. Os utilizadores podem desactivar esta funcionalidade se o PDC estiver sobre uma ligação WAN lenta.
+
+Para activar esta funcionalidade, clique em Activado.
+
+Para desactivar esta funcionalidade, clique em Desactivado.</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod">Definição Inicial de Repetição de Identificação de DC para Chamadas em Segundo Plano</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod_Help">Quando as aplicações que efectuam pesquisas periódicas de controladores de domínio (DC) não conseguem localizar um DC, o valor definido nesta definição determina o período de tempo (em segundos) antes da primeira repetição.
+
+O valor predefinido para esta definição é 10 minutos (10*60). O valor máximo para esta definição é 49 dias (0x49*24*60*60=4233600). O valor mínimo para esta definição é 0.
+
+Esta definição é relevante apenas para chamadas de DsGetDcName que especificaram o sinalizador DS_BACKGROUND_ONLY.
+
+Se o valor desta definição for inferior ao valor especificado na subchave NegativeCachePeriod, é utilizado o valor na subchave NegativeCachePeriod.
+
+Aviso: Se o valor desta definição for demasiado alto, os clientes não tentam localizar DCs inicialmente indisponíveis. Se o valor definido nesta definição for muito pequeno e o DC não estiver disponível, o tráfego causado por identificações periódicas de DCs poderá ser excessivo.</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod">Definição de Intervalo Máximo de Repetição de Identificação de DC para Chamadas em Segundo Plano</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod_Help">Quando as aplicações que efectuam pesquisas periódicas de Controladores de Domínio (DC) não conseguem localizar um DC, o valor definido nesta definição determina o intervalo máximo de repetição permitido.
+
+Por exemplo, os intervalos de repetição podem ser definidos para 10, 20 e 40 minutos, mas quando o intervalo atingir o valor definido nesta definição, este torna-se no intervalo para as posteriores repetições até o valor indicado na Definição de Repetição de Identificação Final de DC ser atingido.
+
+O valor predefinido para esta definição é 60 minutos (60*60). O valor máximo para esta definição é 49 dias (0x49*24*60*60=4233600). O valor mínimo para esta definição é 0.
+
+Se o valor desta definição for inferior ao valor indicado para a Definição Inicial de Repetição de Identificação de DC, é utilizado o valor desta última definição.
+
+Aviso: Se o valor desta definição for demasiado alto, os clientes podem demorar bastante tempo a localizar um DC.
+
+Se o valor desta definição for demasiado baixo e o DC não estiver disponível, as repetições frequentes podem sobrecarregar o tráfego da rede.</string>
+      <string id="Netlogon_BackgroundRetryQuitTime">Definição de Repetição de Identificação Final de DC para Chamadas em Segundo Plano</string>
+      <string id="Netlogon_BackgroundRetryQuitTime_Help">Quando as aplicações que efectuam pesquisas periódicas de controladores de domínio (DC) não conseguem localizar um DC, o valor definido nesta definição determina o momento em que deixam de ser permitidas novas tentativas. Por exemplo, pode definir a ocorrência de repetições de acordo com a Definição de Intervalo Máximo de Repetição de Identificação de DC, mas quando este valor desta definição for atingido não ocorrerão mais repetições. Se um valor desta definição for inferior ao valor da Definição de Intervalo Máximo de Repetição de Identificação de DC, será utilizado o valor desta última definição.
+
+O valor predefinido para esta definição é não parar de repetir (0). O valor máximo para esta definição é 49 dias (0x49*24*60*60=4233600). O valor mínimo para esta definição é 0.
+
+Aviso: Se o valor desta definição for demasiado pequeno, um cliente deixará de tentar localizar um DC demasiado cedo.</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod">Actualização Periódica Positiva da Cache de DC para Chamadas em Segundo Plano</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod_Help">Define quando uma entrada bem sucedida na cache do DC é actualizada. Esta definição é aplicada a programas de chamada que tentam periodicamente localizar DCs e é aplicada antes de devolver as informações de DC ao programa de chamada. O valor predefinido para esta definição é infinito (4294967200). O valor máximo para esta definição é (4294967200), sendo o máximo não tratado como infinito 49 dias (49*24*60*60=4233600). Qualquer valor superior é tratado como infinito. O valor mínimo para esta definição é actualizar sempre (0).</string>
+      <string id="Netlogon_DC_Locator_DNS_Records">Registos DNS do Localizador de DC</string>
+      <string id="Netlogon_DebugFlag">Nível de Saída de Depuração do Ficheiro de Registo</string>
+      <string id="Netlogon_DebugFlag_Help">Especifica o nível de saída de depuração do serviço Início de Sessão de Rede.
+
+O serviço Início de Sessão de Rede exporta informações de depuração para o ficheiro de registo netlogon.log no directório %windir%\debug. Por predefinição, não são registadas informações de depuração.
+
+Se activar esta definição e especificar um valor sem ser zero, as informações de depuração serão registadas no ficheiro. Os valores superiores resultam num registo mais verboso; o valor 536936447 é frequentemente utilizado como sendo a definição ideal.
+
+Se especificar zero para esta definição, ocorrerá o comportamento predefinido conforme se descreve acima.
+
+Se desactivar esta definição ou não a configurar, ocorrerá o comportamento predefinido, tal como acima descrito.</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords">Registos DNS do Localizador de DC não registados pelos DCs</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords_Help">Determina que registos DNS do Localizador de DC não são registados pelo serviço Início de Sessão de Rede.
+
+Para activar esta definição, seleccione Activar e especifique uma lista de mnemónicas (instruções) delimitadas por espaço para registos DNS do Localizador de DC que não serão registados pelos DCs aos quais esta definição é aplicada.
+
+Seleccione as mnemónicas na lista seguinte:
+
+Mnemónica        Tipo  Registo DNS
+
+LdapIpAddress    A     &lt;NomeDomínioDns&gt; Ldap             SRV   _ldap._tcp.&lt;NomeDomínioDns&gt; LdapAtSite       SRV   _ldap._tcp.&lt;NomeLocal&gt;._sites.&lt;NomeDomínioDns&gt; Pdc              SRV   _ldap._tcp.pdc._msdcs.&lt;NomeDomínioDns&gt; Gc               SRV   _ldap._tcp.gc._msdcs.&lt;NomeFlorestaDns&gt; GcAtSite         SRV   _ldap._tcp.&lt;NomeLocal&gt;._sites.gc._msdcs.&lt;NomeFlorestaDns&gt; DcByGuid         SRV   _ldap._tcp.&lt;GuidDomínio&gt;.domains._msdcs.&lt;NomeFlorestaDns&gt; GcIpAddress      A     _gc._msdcs.&lt;NomeFlorestaDns&gt; DsaCname         CNAME &lt;GuidDsa&gt;._msdcs.&lt;NomeFlorestaDns&gt; Kdc              SRV   _kerberos._tcp.dc._msdcs.&lt;NomeDomínioDns&gt; KdcAtSite        SRV    _kerberos._tcp.dc._msdcs.&lt;NomeLocal&gt;._sites.&lt;NomeDomínioDns&gt; Dc               SRV   _ldap._tcp.dc._msdcs.&lt;NomeDomínioDns&gt; DcAtSite         SRV   _ldap._tcp.&lt;NomeLocal&gt;._sites.dc._msdcs.&lt;NomeDomínioDns&gt; Rfc1510Kdc       SRV   _kerberos._tcp.&lt;NomeDomínioDns&gt; Rfc1510KdcAtSite SRV   _kerberos._tcp.&lt;NomeLocal&gt;._sites.&lt;NomeDomínioDns&gt; GenericGc        SRV   _gc._tcp.&lt;NomeFlorestaDns&gt; GenericGcAtSite  SRV   _gc._tcp.&lt;NomeLocal&gt;._sites.&lt;NomeFlorestaDns&gt; Rfc1510UdpKdc    SRV   _kerberos._udp.&lt;NomeDomínioDns&gt; Rfc1510Kpwd      SRV   _kpasswd._tcp.&lt;NomeDomínioDns&gt; Rfc1510UdpKpwd   SRV   _kpasswd._udp.&lt;NomeDomínioDns&gt;
+
+Se esta definição estiver desactivada, os DCs configurados para efectuar o registo dinâmico de registos DNS do Localizador de DC registam todos os registos de recursos DNS do Localizador de DC.
+
+Se esta definição não for aplicada a DCs, estes utilizam a respectiva configuração local.</string>
+      <string id="Netlogon_DnsRefreshInterval">Intervalo de Actualização de Registos DNS do Localizador de DC</string>
+      <string id="Netlogon_DnsRefreshInterval_Help">Especifica o Intervalo de Actualização de registos de recurso DNS do Localizador de DC utilizado para os DCs aos quais se aplica esta definição. Estes registos DNS são efectuados dinamicamente pelo serviço Início de Sessão de Rede e são utilizados pelo algoritmo do Localizador para localizar o DC. Esta definição só pode ser aplicada a DCs com actualização dinâmica.
+
+Os DCs configurados para executar o registo dinâmico dos registos de recurso DNS do Localizador de DC registam de novo periodicamente os respectivos registos nos servidores DNS, mesmo que os dados não tenham sido alterados. Se os servidores DNS autoritativos forem configurados para limpar registos obsoletos, este novo registo é necessário para instruir os servidores DNS configurados para a remoção (limpeza) automática de registos obsoletos que estes registos são actuais e deverão ser mantidos na base de dados.
+
+Aviso: Se os registos de recursos DNS forem registados em zonas com a limpeza activada, o valor desta definição nunca deverá ser maior do que o Intervalo de Actualização configurado para estas zonas. Definir um Intervalo de actualização dos registos DNS do Localizador de DC para ser superior ao das zonas DNS pode resultar numa eliminação indesejada de registos de recurso DNS.
+
+Para especificar o Intervalo de Actualização de registos de DC, clique em Activado e introduza um valor superior a 1800. Este valor especifica o Intervalo de Actualização dos registos de DC em segundos (por exemplo, o valor 3600 é 60 minutos).
+
+Se esta definição não for configurada, não será aplicada aos DCs e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_DnsTtl">TTL Definido nos Registos DNS do Localizador de DC</string>
+      <string id="Netlogon_DnsTtl_Help">Especifica o valor do campo TTL (Time-To-Live) nos registos de recurso SRV efectuados no Início de Sessão de Rede. Estes registos DNS são efectuados dinamicamente pelo serviço Início de Sessão de Rede e são utilizados para localizar o DC.
+
+Para especificar o TTL para registos DNS do Localizador de DC, clique em Activado e introduza um valor em segundos (por exemplo, "900" é 15 minutos).
+
+Se esta definição não for configurada, não será aplicada aos DCs e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_ExpectedDialupDelay">Atraso de acesso telefónico previsto no início de sessão</string>
+      <string id="Netlogon_ExpectedDialupDelay_Help">Especifica o tempo adicional para o computador aguardar pela resposta do DC quando iniciar sessão na rede.
+
+Para indicar o atraso de acesso telefónico previsto no início de sessão, clique em Activado e introduza um valor em segundos (por exemplo, "60" é 1 minuto).
+
+Se esta definição não for configurada, não será aplicada aos computadores e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_GcSiteCoverage">Locais Cobertos pelos Registos SRV de DNS do Localizador de GC</string>
+      <string id="Netlogon_GcSiteCoverage_Help">Especifica locais para os quais os GC devem efectuar registos de recurso SRV de DNS do Localizador de GC específicos de locais. Estes registos são efectuados além dos registos SRV específicos de locais onde o GC reside e dos efectuados para um GC configurado para efectuar registos SRV de DNS do Localizador de GC para os locais sem um GC que estão mais próximos. 
+
+Os registos DNS do Localizador de GC e SRV específicos de locais são efectuados dinamicamente pelo serviço Início de Sessão de Rede e são utilizados para localizar o GC. Um local do Active Directory é uma ou mais sub-redes de TCP/IP bem ligada que permite aos administradores configurar a replicação e o acesso ao Active Directory. Um GC é um controlador de domínio que contém uma réplica parcial de todos os domínios do Active Directory.
+
+Para indicar os locais cobertos pelos registos SRV de DNS do Localizador de GC, clique em Activado e introduza os nomes dos locais num formato delimitado por espaços.
+
+Se esta definição não for configurada, não será aplicada aos GCs e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_LdapSrvPriority">Prioridade Definida nos Registos SRV de DNS do Localizador de DC</string>
+      <string id="Netlogon_LdapSrvPriority_Help">Especifica o campo Prioridade dos registos de recurso SRV efectuados pelos DCs aos quais se aplica esta definição. Estes registos DNS são efectuados dinamicamente pelo serviço Início de Sessão de Rede e são utilizados para localizar o DC.
+
+O campo Prioridade do registo SRV define preferências para anfitriões de destino (especificado no campo Destino do registo SRV). Os clientes de DNS que consultam registos de recurso SRV tentam contactar o primeiro anfitrião com o número de prioridade mais baixo listado.
+
+Para definir a Prioridade nos registos de recurso SRV de DNS do Localizador de DC, clique em Activado e introduza um valor. O intervalo de valores é de 0 a 65535.
+
+Se esta definição não for configurada, não será aplicada aos DCs e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_LdapSrvWeight">Peso Definido nos Registos SRV de DNS do Localizador de DC</string>
+      <string id="Netlogon_LdapSrvWeight_Help">Especifica o campo Peso dos registos de recurso SRV registados pelos DC aos quais se aplica esta definição. Estes registos DNS são efectuados dinamicamente pelo serviço Início de Sessão de Rede e utilizados para localizar o DC.
+
+O campo Peso do registo SRV pode ser utilizado para além de o valor Prioridade fornecer um mecanismo de balanceamento de carga onde os múltiplos servidores são especificados no campo Destino de registos SRV e são todos definidos para a mesma prioridade. A probabilidade de selecção aleatória do cliente de DNS pelo anfitrião de destino a ser contactado é proporcional ao valor do campo Peso no registo SRV.
+
+Para definir o Peso nos registos SRV de DNS do Localizador de DC, clique em Activado e introduza um valor. O intervalo de valores é de 0 a 65535.
+
+Se esta definição não for configurada, não será aplicada aos DCs e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_MaximumLogFileSize">Tamanho Máximo do Ficheiro de Registo</string>
+      <string id="Netlogon_MaximumLogFileSize_Help">Especifica o tamanho máximo em bytes do ficheiro de registo netlogon.log no directório %windir%\debug quando o registo está activado.
+
+Por predefinição, o tamanho máximo do ficheiro de registo é 20MB. Se esta política for activada, o tamanho máximo do ficheiro de registo é definido para o tamanho especificado. Depois de ser alcançado este tamanho, o ficheiro de registo é guardado no netlogon.bak e o netlogon.log é truncado. Deve ser especificado um valor razoável baseado no espaço de armazenamento disponível.
+
+Se desactivar esta política ou não a configurar, ocorrerá o comportamento predefinido, tal como acima indicado.</string>
+      <string id="Netlogon_NdncSiteCoverage">Locais Incluídos nos Registos SRV de DNS do Localizador de Partição de Directório de Aplicações</string>
+      <string id="Netlogon_NdncSiteCoverage_Help">Especifica os locais para os quais a partição de directório de aplicações anfitriã de DC deve efectuar os registos de recursos SRV de DNS do Localizador de DC específicos de locais e específicos de partição de directório de aplicações. Estes registos são efectuados para além dos registos SRV específicos de locais onde o DC reside e dos efectuados para um DC configurado para efectuar registos SRV de DNS do Localizador de DC para os locais sem um DC mais próximos. 
+
+Os registos DNS do localizador de partição de directório de aplicações e os registos SRV específicos de locais são efectuados dinamicamente pelo Início de Sessão de Rede e são utilizados para localizar o DC específico de partição de directório de aplicações. Um local do Active Directory é uma ou mais sub-redes de TCP/IP bem ligada que permite aos administradores configurar a replicação e o acesso ao Active Directory.
+
+Para indicar os locais cobertos pelos registos SRV de DNS específicos de partição de directório de aplicações do Localizador de DC, clique em Activado e introduza os nomes de local num formato delimitado por espaços.
+
+Se esta definição não for configurada, não será aplicada aos DCs e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_NegativeCachePeriod">Definição de Cache de Identificação de DC Negativo</string>
+      <string id="Netlogon_NegativeCachePeriod_Help">Especifica o período de tempo (em segundos) que o localizador de DC regista que um DC não pode ser encontrado num domínio. Quando uma tentativa posterior para localizar o DC ocorre no período desta definição, a Identificação de DC falha imediatamente sem tentar localizar o DC.
+
+O valor predefinido para esta definição é 45 segundos. O valor máximo para esta definição é 7 dias (7*24*60*60). O valor mínimo para esta definição é 0.
+
+Aviso: Se o valor desta definição for demasiado alto, os clientes não tentam localizar DCs inicialmente indisponíveis. Se o valor desta definição for demasiado baixo, os clientes tentam localizar DCs mesmo sem estarem disponíveis.</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode">Compatibilidade da partilha de início de sessão de rede</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode_Help">Esta definição controla se a partilha de início de sessão de rede criada pelo serviço Início de Sessão de Rede num controlador de domínio (DC) deve suportar a compatibilidade na semântica da partilha de ficheiros com aplicações de versões anteriores.
+
+Quando esta definição está activa, a partilha de início de sessão de rede respeita a semântica da partilha de ficheiros que concede pedidos de acesso de leitura exclusivo aos ficheiros na partilha, mesmo quando o autor da chamada tem apenas permissão de leitura.
+
+Quando esta definição está desactivada ou não configurada, a partilha de início de sessão de rede concederá acesso de leitura partilhado a ficheiros na partilha quando for pedido acesso exclusivo e o autor da chamada só tiver permissão de leitura.
+
+Por predefinição, a partilha de início de sessão de rede concederá acesso de leitura partilhado aos ficheiros existentes na partilha quando for pedido acesso exclusivo.
+
+Nota: A partilha de início de sessão de rede é uma partilha criada pelo serviço Início de Sessão de Rede para utilização por computadores clientes no domínio. O comportamento predefinido da partilha de início de sessão de rede garante que nenhuma aplicação com permissão só de leitura dos ficheiros na partilha de início de sessão de rede pode bloquear os ficheiros pedindo acesso de leitura exclusivo, o que poderá impedir a actualização das definições da Política de Grupo nos clientes no domínio. Quando esta definição está activada, uma aplicação dependente da capacidade para bloquear ficheiros da partilha de início de sessão de rede apenas com permissão de leitura poderão negar a leitura dos ficheiros aos clientes da Política de Grupo e, de forma geral, a disponibilidade da partilha de início de sessão de rede no domínio será reduzida.
+
+Se esta definição estiver activada, os administradores de domínio deverão certificar-se de que as únicas aplicações que utilizam a capacidade de leitura exclusiva no domínio devem ser as aplicações aprovadas pelo administrador.</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">Actualização Periódica Positiva da Cache de DC para Chamadas Que Não São de Segundo Plano</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod_Help">Define quando uma entrada bem sucedida na cache do DC é actualizada. Esta definição é aplicada a programas de chamada que não tentam periodicamente localizar DCs e é aplicada antes de devolver as informações de DC ao programa de chamada. Esta definição é relevante apenas para as chamadas de DsGetDcName que não especificaram o sinalizador DS_BACKGROUND_ONLY.
+
+O valor predefinido para esta definição é 30 minutos (1800). O valor máximo para esta definição é (4294967200), sendo o máximo não tratado como infinito 49 dias (49*24*60*60=4233600). Qualquer valor superior é tratado como infinito. O valor mínimo para esta definição é actualizar sempre (0).</string>
+      <string id="Netlogon_ScavengeInterval">Intervalo de Limpeza</string>
+      <string id="Netlogon_ScavengeInterval_Help">Determina o intervalo no qual o Início de Sessão de Rede executa as seguintes operações de limpeza:
+
+- Verifica se é necessário modificar uma palavra-passe num canal seguro e, nesse caso, altera-a.
+
+- Nos controladores de domínio (DC), identifica um DC ainda não identificado.
+
+- No PDC, tenta adicionar o nome de NetBIOS &lt;NomeDomínio&gt;[1B] se ainda não tiver sido adicionado com êxito.
+
+Nenhuma destas operações é crítica. 15 minutos é um valor ideal excepto em casos extremos. Por exemplo, se um DC for separado de um domínio fidedigno por uma linha dispendiosa (RDIS), este parâmetro pode ser ajustado para cima para evitar a identificação automática frequente de DCs num domínio fidedigno.
+
+Para activar a definição, clique em Activado e indique o intervalo em segundos.</string>
+      <string id="Netlogon_SiteCoverage">Locais Cobertos pelos Registos SRV de DNS do Localizador de DC</string>
+      <string id="Netlogon_SiteCoverage_Help">Especifica locais para os quais os DC efectuam registos de recurso SRV de DNS do Localizador de DC específicos de locais. Estes registos são efectuados para além dos registos SRV específicos de locais onde o DC reside e dos efectuados para um DC configurado para efectuar registos SRV de DNS do Localizador de DC para os locais sem um DC mais próximos. 
+
+Estes registos DNS do Localizador de DC são efectuados dinamicamente pelo serviço Início de Sessão de Rede e são utilizados para localizar o DC. Um local do Active Directory é uma ou mais sub-redes de TCP/IP bem ligada que permite aos administradores configurar a replicação e o acesso ao Active Directory.
+
+Para indicar os locais cobertos pelos registos SRV de DNS do Localizador de DC, clique em Activado e introduza os nomes dos locais num formato delimitado por espaços.
+
+Se esta definição não for configurada, não será aplicada aos DCs e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_SiteName">Nome do Local</string>
+      <string id="Netlogon_SiteName_Help">Indica o local do Active Directory ao qual os computadores pertencem.
+
+Um local do Active Directory é uma ou mais sub-redes de TCP/IP bem ligada que permite aos administradores configurar a replicação e o acesso ao Active Directory.
+
+Para indicar o nome do local para esta definição, clique em Activado e introduza-o. Quando o local ao qual um computador pertence não está especificado, este identifica-o automaticamente através do Active Directory.
+
+Se esta definição não for configurada, não será aplicada aos computadores e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode">Compatibilidade da partilha Sysvol</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode_Help">Esta definição controla se a partilha Sysvol criada pelo serviço Início de Sessão de Rede num controlador de domínio (DC) deve suportar a compatibilidade na semântica da partilha de ficheiros com aplicações de versões anteriores.
+
+Quando esta definição está activa, a partilha Sysvol respeita a semântica da partilha de ficheiros que concede pedidos de acesso de leitura exclusivo aos ficheiros na partilha, mesmo quando o autor da chamada tem apenas permissão de leitura.
+
+Quando esta definição está desactivada ou não configurada, a partilha Sysvol concederá acesso de leitura partilhado a ficheiros na partilha quando for pedido acesso exclusivo e o autor da chamada só tiver permissão de leitura.
+
+Por predefinição, a partilha Sysvol concederá acesso de leitura partilhado aos ficheiros existentes na partilha quando for pedido acesso exclusivo.
+
+Nota: A partilha Sysvol é uma partilha criada pelo serviço Início de Sessão de Rede para utilização por clientes da Política de Grupo no domínio. O comportamento predefinido da partilha Sysvol garante que nenhuma aplicação com permissão só de leitura dos ficheiros na partilha sysvol pode bloquear os ficheiros pedindo acesso de leitura exclusivo, o que poderá impedir a actualização das definições da Política de Grupo nos clientes no domínio. Quando esta definição está activada, uma aplicação dependente da capacidade para bloquear ficheiros da partilha Sysvol apenas com permissão de leitura poderão negar a leitura dos ficheiros aos clientes da Política de Grupo e, de forma geral, a disponibilidade da partilha Sysvol no domínio será reduzida.
+
+Se esta definição estiver activada, os administradores de domínio deverão certificar-se de que as únicas aplicações que utilizam a capacidade de leitura exclusiva no domínio devem ser as aplicações aprovadas pelo administrador.</string>
+      <string id="Netlogon_UseDynamicDns">Registo Dinâmico de Registos DNS do Localizador de DC</string>
+      <string id="Netlogon_UseDynamicDns_Help">Define se o registo dinâmico de recursos DNS do Localizador de DC está activado. Estes registos DNS são efectuados dinamicamente pelo serviço Início de Sessão de Rede e são utilizados pelo algoritmo do Localizador para localizar o DC.
+
+Se activar esta definição, os DC aos quais é aplicada esta definição registam dinamicamente os registos de recurso DNS do Localizador de DC através de ligações de rede com suporte de actualização dinâmica de DNS.
+
+Se desactivar esta definição, os DC não registam os registos de recurso DNS do Localizador de DC.
+
+Se esta definição não for configurada, não será aplicada aos DCs e estes utilizarão as respectivas configurações locais.</string>
+      <string id="Netlogon_TryNextClosestSite">Tentar Local Seguinte Mais Próximo</string>
+      <string id="Netlogon_TryNextClosestSite_Help">O serviço Localizador de Controlador de Domínio (Localizador de DC) é utilizado pelos clientes na localização de controladores de domínio para o respectivo domínio Active Directory . O comportamento predefinido do Localizador de DC é localizar um DC no mesmo local. Se nenhum controlador for localizado no mesmo local, o Localizador CD pode devolver um DC noutro local que pode ter diversos saltos de local de afastamento. A proximidade de local entre dois locais é determinada pelo custo total de ligação de locais entre os dois. Um local está mais próximo se tiver um custo de ligação de locais inferior ao local com o custo de ligação de locais mais elevado. A funcionalidade Tentar Local Seguinte Mais Próximo permite ao Localizador de DC tentar localizar um DC no local mais próximo com base no custo de ligação de locais, caso não localize um DC no mesmo local. Se cenários com diversos locais, a falha na tentativa de local seguinte mais próximo durante a Localização DC optimiza mais eficazmente o tráfego de rede.
+
+Se activar esta definição de política, Tentar Localização CD no Site Seguinte Mais Próximo será activado no computador em todas as placas de rede disponíveis e não configuradas.
+
+Se desactivar esta definição de política, Tentar Localização CD no Site Seguinte Mais Próximo não será utilizado por predefinição no computador em todas as placas de rede disponíveis e não configuradas. No entanto, se for efectuada uma chamada de Localizador de DC que utilize explicitamente o sinalizador DS_TRY_NEXTCLOSEST_SITE, o comportamento Tentar Local Seguinte Mais Próximo é aplicado.
+
+Se não configurar esta definição de política, Tentar Localização CD no Site Seguinte Mais Próximo não será utilizado por predefinição no computador em todas as placas de rede disponíveis e não configuradas. Se o sinalizador DS_TRY_NEXTCLOSEST_SITE for utilizado explicitamente, o comportamento Local Seguinte Mais Próximo será utilizado.</string>
+      <string id="Netlogon_ForceRediscoveryInterval">Forçar Intervalo de Redetecção</string>
+      <string id="Netlogon_ForceRediscoveryInterval_Help">O serviço Localizador de Controlador de Domínio (Localizador de DC) é utilizado pelos clientes na localização de controladores de domínio para o respectivo domínio Active Directory . Quando o Localizador de DC localiza um controlador de domínio, coloca em cache os controladores de domínio para melhorar a eficácia do algoritmo de localização. Desde que o controlador de domínio colocado em cache cumpra os requisitos e permaneça em execução, o Localizador de DC continuará a devolvê-lo. Se for introduzido um novo controlador de domínio, os clientes existentes só o detectarão quando Forçar Redetecção for executado pelo Localizador de DC. Para adaptar alterações nas condições de rede, o Localizador de DC executa Forçar redetecção por predefinição com base num intervalo de tempo específico e mantém um balanceamento de carga eficaz dos clientes em todos os controladores de domínio disponíveis em todos os domínios ou florestas. O intervalo de tempo predefinido de Forçar Redetecção para o Localizador de DC é 12 horas. Forçar Redetecção pode também ser accionado quando uma chamada do Localizador de DC utiliza o sinalizador DS_FORCE_REDISCOVERY. A Redetecção repõe o temporizador para as entradas de controlador de domínio colocadas em cache.
+
+Se activar esta definição de política, o Localizador de DC do computador executar a opção Forçar Redetecção periodicamente consoante o intervalo de tempo configurado. O intervalo de tempo mínimo é de 3600 segundos (1 hora) para evitar tráfego de rede em excesso resultante da redetecção. O intervalo de tempo máximo permitido é de 4294967200 segundos. Qualquer valor maior que 4294967 segundos (~49 dias) será processado como infinito.
+
+Se desactivar esta definição de política, Forçar Redetecção será utilizado por predefinição para o computador com um intervalo de 12 horas.
+
+Se não configurar esta definição de política, Forçar Redetecção será utilizado por predefinição para o computador com um intervalo de 12 horas, excepto se a definição de computador local no registo tiver um valor diferente.</string>
+      <string id="Netlogon_AddressTypeReturned">Tipo de Endereço de Controlador de Domínio Devolvido</string>
+      <string id="Netlogon_AddressTypeReturned_Help">As APIs do Localizador de Controlador de Domínio (DC) devolve o endereço IP do DC com a restante informação. Antes do suporte IPv6, to endereço IP de DC devolvido era IPv4. Com o suporte IPv6, as APIs do Localizador de DC podem devolver endereços DC IPv6. O endereço DC IPv6 devolvido pode não ser processado correctamente por algumas aplicações existentes. Assim, esta política é fornecida para suportar tais cenários.
+
+Por predefinição, as APIs do Localizador de DC podem devolver endereços DC IPv4/IPv6. NO entanto, se algumas aplicações falharem devido ao endereço DC IPv6 devolvido, esta política pode ser utilizada para desactivar o comportamento predefinido e forçar a devolução APENAS de endereços DC IPv4. Assim que as aplicações forem corrigidas, esta política pode ser utilizada para activar o comportamento predefinido.
+
+Se activar esta definição de política, as APIs do Localizador de DC podem devolver endereços DC IPv4/IPv6. É o comportamento predefinido do Localizador de DC.
+
+Se desactivar esta definição de política, as APIs do Localizador de DC SÓ podem devolver endereços DC IPv4. Assim, se o controlador de domínio suportar endereços IPv4 e IPv6, as APIs do Localizador de DC devolvem endereços IPv4. No entanto, se o controlador de domínio suportar apenas endereços IPv6, as APIs do Localizador de DC falham.
+
+Se não configurar esta definição de política, as APIs do Localizador de DC podem devolver endereços DC IPv4/IPv6. É o comportamento predefinido do Localizador de DC.</string>
+      <string id="Netlogon_AllowNT4Crypto">Permitir algoritmos de criptografia compatíveis com Windows NT 4.0</string>
+      <string id="Netlogon_AllowNT4Crypto_Help">Esta definição controla se o serviço Início de Sessão de Rede permitirá a utilização de algoritmos de criptografia mais antigos, que são utilizados no Windows NT 4.0. Os algoritmos de criptografia utilizados no Windows NT 4.0 e anterior não são tão seguros como os algoritmos mais recentes utilizados no Windows 2000, Windows XP, Windows Server 2003, Windows Vista e nesta versão do Windows.
+
+Por predefinição, o Início de Sessão de Rede não permitirá a utilização de algoritmos de criptografia mais antigos, pelo que não os incluirá na negociação de algoritmos de criptografia. Como tal, os computadores com o Windows NT 4.0 não conseguirão estabelecer ligação a este controlador de domínio.
+ 
+Se esta definição for activada, o Início de Sessão de Rede permitirá a negociação e utilização de algoritmos de criptografia mais antigos, compatíveis com o Windows NT 4.0. No entanto, a utilização de algoritmos mais antigos representa um risco de segurança potencial.</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages">Não processar mensagens a receber do processador de mensagens utilizadas para localização do controlador de domínio com base em nomes de domínio NetBIOS</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages_Help">Esta definição de política permite-lhe controlar o processamento de mensagens a receber do processador de mensagens por um controlador de domínio (DC) local.
+
+Nota: Para localizar um DC remoto com base no respectivo nome de domínio NetBIOS (nome simples), primeiro o Localizador de DC obtém a lista de DCs de um servidor WINS que esteja configurada nas respectivas definições de cliente local. Em seguida, o Localizador de DC envia uma mensagem do processador de mensagens para cada DC remoto para obter mais informações. A localização DC só tem êxito se um DC remoto responder à mensagem do processador de mensagens.
+
+Esta definição de política é recomendada para reduzir a superfície de ataque num DC e pode ser utilizada num ambiente sem WINS, num ambiente só de IPv6 e sempre que não seja necessária uma localização de DC com base num nome de domínio NetBIOS. Esta definição de política não afecta a localização de DC com base em nomes DNS.
+
+Se activar esta definição de política, este DC não processa as mensagens a receber do processador de mensagens utilizadas para a localização de DC com base em nomes de domínio NetBIOS.
+
+Se desactivar ou não configurar esta definição de política, este DC processa as mensagens a receber do processador de mensagens. Este é o comportamento predefinido do Localizador de DC.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Netlogon_BackgroundRetryInitialPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryInitialPeriodLabel" defaultValue="600" spinStep="600">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryMaximumPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryMaximumPeriodLabel" defaultValue="3600" spinStep="3600">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryQuitTime">
+        <decimalTextBox refId="Netlogon_BackgroundRetryQuitTimeLabel" defaultValue="0" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundSuccessfulRefreshPeriodLabel" defaultValue="4294967200" spinStep="1000">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DebugFlag">
+        <decimalTextBox refId="Netlogon_DebugFlagLabel" defaultValue="536936447">Nível:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsAvoidRegisterRecords">
+        <textBox refId="Netlogon_DnsAvoidRegisterRecordsLabel">
+          <label>Mnemónica:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_DnsRefreshInterval">
+        <decimalTextBox refId="Netlogon_DnsRefreshIntervalLabel" defaultValue="1800" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsTtl">
+        <decimalTextBox refId="Netlogon_DnsTtlLabel" defaultValue="600" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ExpectedDialupDelay">
+        <decimalTextBox refId="Netlogon_ExpectedDialupDelayLabel" defaultValue="0" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_GcSiteCoverage">
+        <textBox refId="Netlogon_GcSiteCoverageLabel">
+          <label>Locais:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvPriority">
+        <decimalTextBox refId="Netlogon_LdapSrvPriorityLabel" defaultValue="0" spinStep="100">Prioridade:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvWeight">
+        <decimalTextBox refId="Netlogon_LdapSrvWeightLabel" defaultValue="100" spinStep="100">Peso:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_MaximumLogFileSize">
+        <decimalTextBox refId="Netlogon_MaximumLogFileSizeLabel" defaultValue="536936447">Bytes:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NdncSiteCoverage">
+        <textBox refId="Netlogon_NdncSiteCoverageLabel">
+          <label>Locais:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_NegativeCachePeriod">
+        <decimalTextBox refId="Netlogon_NegativeCachePeriodLabel" defaultValue="45" spinStep="60">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_NonBackgroundSuccessfulRefreshPeriodLabel" defaultValue="1800" spinStep="1000">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ScavengeInterval">
+        <decimalTextBox refId="Netlogon_ScavengeIntervalLabel" defaultValue="900" spinStep="900">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_SiteCoverage">
+        <textBox refId="Netlogon_SiteCoverageLabel">
+          <label>Locais:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_SiteName">
+        <textBox refId="Netlogon_SiteNameLabel">
+          <label>Local:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_ForceRediscoveryInterval">
+        <decimalTextBox refId="Netlogon_ForceRediscoveryIntervalLabel" defaultValue="43200" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

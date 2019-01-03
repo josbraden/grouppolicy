@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>immettere qui il nome visualizzato</displayName>
+  <description>immettere qui la descrizione</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Server Lanman</string>
+      <string id="Lbl_FollowShare">Consenti pubblicazione hash solo per cartelle condivise per cui BranchCache è abilitata</string>
+      <string id="Lbl_DisableOnAllShares">Non consentire pubblicazione hash per tutte le cartelle condivise</string>
+      <string id="Lbl_EnableOnAllShares">Consenti pubblicazione hash per tutte le cartelle condivise</string>
+      <string id="Pol_HashPublication">Pubblicazione hash per BranchCache</string>
+      <string id="Pol_HashPublication_Help">Questo criterio consente a un servizio di generazione di hash di generare hash per i dati archiviati in cartelle condivise e di fornire quindi tali hash ai computer client per i quali è abilitata la funzionalità BranchCache. Gli hash sono ID digitali di file derivati matematicamente che identificano in modo univoco il contenuto dei file. Le dimensioni di questi ID digitali sono particolarmente ridotte e consentono a Windows di eseguire il confronto tra file senza utilizzare una quantità significativa di larghezza di banda della WAN (Wide Area Network).
+
+Un computer client in una succursale può ottenere un hash per un file tramite un collegamento WAN quando vengono soddisfatte tutte le condizioni seguenti:      
+1) L'utente dispone delle autorizzazioni per accedere al file.
+2) La funzionalità BranchCache è abilitata nel computer client.
+3) La pubblicazione di hash è consentita per la cartella condivisa a cui accede il computer client.
+
+Se il computer client ottiene l'hash, il computer sarà quindi in grado di eseguire la ricerca di una versione identica del file nella cache di altri computer della succursale. Se Windows individua una versione identica del file nella succursale, il computer client scaricherà la copia memorizzata nella cache locale anziché scaricare il file attraverso il collegamento WAN.
+
+Se si imposta questo criterio su "Consenti pubblicazione hash solo per cartelle condivise per cui BranchCache è abilitata" (valore = 0), gli hash verranno generati solo per le cartelle condivise per cui la funzionalità BranchCache è abilitata. Gli hash per queste cartelle condivise vengono generati quando si verifica uno degli eventi seguenti:
+1) Un client con supporto BranchCache abilitato esegue l'accesso a un file in una cartella condivisa per la quale la funzionalità BranchCache è abilitata.
+2) Un amministratore genera manualmente hash tramite lo strumento da riga di comando Hashgen.
+ 
+Se si imposta questo criterio su "Non consentire pubblicazione hash per tutte le cartelle condivise" (valore = 1), gli hash non verranno mai generati o forniti dai computer ai quali è applicato questo criterio.
+ 
+Se si imposta questo criterio su "Consenti pubblicazione hash per tutte le cartelle condivise" (valore = 2), gli hash verranno generati per tutte le cartelle condivise del server quando si verifica uno degli eventi seguenti: 
+1) Un client con supporto BranchCache abilitato esegue l'accesso a un file in una cartella condivisa del server.
+2) Un amministratore genera manualmente hash tramite lo strumento da riga di comando Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Valori:</text>
+        <text>0 = Consenti pubblicazione hash solo per cartelle condivise per cui BranchCache è abilitata</text>
+        <text>1 = Non consentire pubblicazione hash per tutte le cartelle condivise</text>
+        <text>2 = Consenti pubblicazione hash per tutte le cartelle condivise</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Azioni pubblicazione di hash: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

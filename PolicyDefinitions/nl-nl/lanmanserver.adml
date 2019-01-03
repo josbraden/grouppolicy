@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>voer hier de weergegeven naam in</displayName>
+  <description>typ hier een beschrijving</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Lanman Server</string>
+      <string id="Lbl_FollowShare">Hash-publicatie alleen toestaan voor gedeelde mappen waarvoor BranchCache is ingeschakeld</string>
+      <string id="Lbl_DisableOnAllShares">Hash-publicatie niet toestaan voor gedeelde mappen</string>
+      <string id="Lbl_EnableOnAllShares">Hash-publicatie toestaan voor alle gedeelde mappen</string>
+      <string id="Pol_HashPublication">Hash-publicatie voor BranchCache</string>
+      <string id="Pol_HashPublication_Help">Gebruik dit beleid om een service voor het genereren van hashes toestemming te geven hashes te genereren voor gegevens die zijn opgeslagen in gedeelde mappen, en deze hashes vervolgens aan te bieden aan clientcomputers waarop BranchCache is ingeschakeld. Hashes zijn mathematisch afgeleide, digitale vingerafdrukken van bestanden die een unieke identificatie van de inhoud van deze bestanden vormen. Deze digitale vingerafdrukken zijn erg klein, wat betekent dat Windows bestanden kan vergelijken zonder dat hiervoor erg veel bandbreedte van het WAN (Wide Area Network) nodig is.
+
+Een clientcomputer in een filiaal kan via een WAN-verbinding een hash aanvragen voor een bestand als aan alle volgende voorwaarden wordt voldaan:  
+1) De gebruiker beschikt over toegangsmachtigingen voor het bestand.
+2) BranchCache is ingeschakeld op de clientcomputer.
+3) Hash-publicatie is toegestaan voor de gedeelde map die door de clientcomputer wordt geopend.
+
+Als de hash wordt verzonden aan de clientcomputer, kan de computer vervolgens in de cache van andere computers in het filiaal zoeken naar een identieke versie van het bestand. Als een dergelijke versie wordt gevonden, wordt de kopie in de lokale cache gedownload en hoeft de clientcomputer het bestand niet te downloaden via de WAN-verbinding. 
+
+Als u dit beleid instelt op 'Hash-publicatie alleen toestaan voor gedeelde mappen waarvoor BranchCache is ingeschakeld' (waarde = 0), worden er alleen hashes gegenereerd voor gedeelde mappen waarvoor BranchCache is ingeschakeld. Dit gebeurt wanneer zich een van de volgende gebeurtenissen voordoet:
+1) Een bestand in een gedeelde map waarvoor BranchCache is ingeschakeld wordt geopend door een client waarvoor BranchCache-ondersteuning is ingeschakeld.
+2) Een beheerder genereert handmatig hashes via het opdrachtregelprogramma Hashgen.
+ 
+Als u dit beleid instelt op 'Hash-publicatie niet toestaan voor gedeelde mappen' (waarde = 1), worden er nooit hashes gegenereerd of aangeboden door computers waarop dit beleid van toepassing is.
+ 
+Als u dit beleid instelt op 'Hash-publicatie toestaan voor alle gedeelde mappen' (waarde = 2), worden er hashes gegenereerd voor alle gedeelde mappen op de server wanneer zich een van de volgende gebeurtenissen voordoet: 
+1) Een bestand in een gedeelde map waarvoor BranchCache is ingeschakeld wordt geopend door een client waarvoor BranchCache-ondersteuning is ingeschakeld.
+2) Een beheerder genereert handmatig hashes via het opdrachtregelprogramma Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Waarden:</text>
+        <text>0 = Hash-publicatie alleen toestaan voor gedeelde mappen waarvoor BranchCache is ingeschakeld</text>
+        <text>1 = Hash-publicatie niet toestaan voor gedeelde mappen</text>
+        <text>2 = Hash-publicatie toestaan voor alle gedeelde mappen</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Acties bij hash-publicatie: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

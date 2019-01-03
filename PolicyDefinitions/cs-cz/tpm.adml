@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Zde zadejte zobrazovaný název.</displayName>
+  <description>Zde zadejte popis.</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Nastavení této zásady umožňuje spravovat zálohování informací o vlastníkovi čipu TPM (Trusted Platform Module) prováděné službou AD DS (Active Directory Domain Services). 
+
+Informace o vlastníkovi čipu TPM zahrnují kryptografický algoritmus hash hesla vlastníka čipu TPM. Určité příkazy čipu TPM mohou být spuštěny pouze vlastníkem čipu TPM. Uvedený algoritmus hash autorizuje čip TPM ke spuštění těchto příkazů. 
+
+Pokud toto nastavení povolíte, informace o vlastníkovi čipu TPM budou automaticky zálohovány v tichém režimu službou AD DS při každém nastavení nebo změně hesla vlastníka čipu TPM pomocí systému Windows. 
+
+Pokud vyberete možnost Vyžadovat zálohování čipu TPM službou AD DS, nelze heslo vlastníka čipu TPM nastavit ani změnit, pokud je počítač připojen k doméně a záloha prováděná službou AD DS je úspěšná. Ve výchozím nastavení je tato možnost vybrána, což zajišťuje dostupnost informací o vlastníkovi čipu TPM. V opačném případě dojde k pokusu o zálohování službou AD DS, správa čipu TPM však nebude ovlivněna selháním sítě nebo dalšího zálohování. K novému pokusu o zálohování nedojde automaticky a může se stát, že informace o vlastníkovi čipu TPM nebudou službou AD DS během instalace nástroje BitLocker uloženy.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, nebudou informace o vlastníkovi čipu TPM službou AD DS zálohovány. 
+
+Poznámka: Předtím, než budete moci úspěšně provést zálohování službou AD DS, musíte nastavit vhodná rozšíření schématu a přístupová práva v doméně. Další informace o nastavení služby AD DS (Active Directory Domain Services) pro čip TPM naleznete v online dokumentaci.
+
+Poznámka: Čip TPM nelze používat k poskytování funkcí rozšířeného nastavení zabezpečení pro nástroj BitLocker Drive Encryption a další aplikace, aniž byste nejdříve nastavili vlastníka čipu TPM. Chcete-li převzít vlastnictví čipu TPM s heslem vlastníka, spusťte příkaz tpm.msc a vyberte akci inicializace čipu TPM.
+
+Poznámka: Pokud jsou informace o vlastníkovi čipu TPM ztracené nebo nedostupné, je možné v místním počítači provádět omezenou správu čipu TPM spuštěním příkazu tpm.msc.</string>
+      <string id="ActiveDirectoryBackup_Name">Zapnout zálohování čipu TPM službou AD DS</string>
+      <string id="BlockedCommandsList_Help">Nastavení této zásady umožňuje spravovat pomocí Zásad skupiny seznam příkazů čipu TPM blokovaných systémem Windows.
+
+Pokud toto nastavení povolíte, systém Windows blokuje jmenované příkazy a neumožní jejich odesílání do čipu TPM v počítači. Příkazy čipu TPM jsou uváděny čísly. Příkaz TPM_OwnerReadInternalPub je například označen číslem 129, příkaz TPM_FieldUpgrade má číslo 170. Chcete-li vyhledat číslo příkazu, které náleží jednotlivým příkazům čipu TPM, spusťte soubor tpm.msc a přejděte na část Command Management.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, systém Windows bude moci blokovat pouze příkazy čipu TPM určené výchozím nastavením nebo místními seznamy. Výchozí seznam blokovaných příkazů čipu TPM je předem nakonfigurován systémem Windows. Chcete-li vidět výchozí seznam, spusťte soubor tpm.msc a zobrazte sloupec Ve výchozím seznamu blokování v části Správa příkazů. Konfigurace místního seznamu blokovaných příkazů čipu TPM se provádí mimo zásady skupiny spuštěním příkazu tpm.msc nebo použitím skriptů vůči rozhraní Win32_Tpm. Informace týkající se vynucení nebo ignorování výchozího seznamu a místních seznamů blokovaných příkazů čipu TPM získáte v popisu souvisejících nastavení zásad.</string>
+      <string id="BlockedCommandsList_Name">Konfigurovat seznam blokovaných příkazů čipu TPM</string>
+      <string id="IgnoreDefaultList_Help">Nastavení této zásady umožňuje vynutit nebo ignorovat výchozí seznam blokovaných příkazů čipu TPM v daném počítači.
+
+Pokud toto nastavení povolíte, systém Windows bude ignorovat výchozí seznam blokovaných příkazů čipu TPM daného počítače a bude blokovat pouze příkazy určené seznamem zásad skupiny nebo místním seznamem. 
+
+Výchozí seznam blokovaných příkazů čipu TPM je předem nakonfigurován systémem Windows. Chcete-li vidět výchozí seznam, spusťte soubor tpm.msc a zobrazte sloupec Ve výchozím seznamu blokování v části Správa příkazů. Konfigurace místního seznamu blokovaných příkazů čipu TPM se provádí mimo zásady skupiny spuštěním příkazu tpm.msc nebo použitím skriptů vůči rozhraní Win32_Tpm. Informace o tom, jak nakonfigurovat seznam zásad skupiny blokovaných příkazů čipu TPM, naleznete v souvisejících nastaveních zásad.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, systém Windows blokuje příkazy čipu TPM uvedené ve výchozím seznamu, ale i příkazy určené seznamem zásad skupiny a místním seznamem blokovaných příkazů čipu TPM. </string>
+      <string id="IgnoreDefaultList_Name">Ignorovat výchozí seznam blokovaných příkazů čipu TPM</string>
+      <string id="IgnoreLocalList_Help">Nastavení této zásady umožňuje vynutit nebo ignorovat místní seznam blokovaných příkazů čipu TPM v daném počítači.
+
+Pokud toto nastavení povolíte, systém Windows bude ignorovat místní seznam blokovaných příkazů čipu TPM daného počítače a bude blokovat pouze příkazy určené seznamem zásad skupiny nebo výchozím seznamem.
+
+Konfigurace místního seznamu blokovaných příkazů čipu TPM se provádí mimo zásady skupiny spuštěním příkazu tpm.msc nebo použitím skriptů vůči rozhraní Win32_Tpm. Výchozí seznam blokovaných příkazů čipu TPM je předem nakonfigurován systémem Windows. Informace o tom, jak nakonfigurovat seznam zásad skupiny blokovaných příkazů čipu TPM, naleznete v souvisejících nastaveních zásad. 
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, systém Windows blokuje příkazy čipu TPM uvedené v místním seznamu, ale i příkazy určené seznamy zásad skupiny a výchozím seznamem blokovaných příkazů čipu TPM.</string>
+      <string id="IgnoreLocalList_Name">Ignorovat místní seznam blokovaných příkazů čipu TPM</string>
+      <string id="TPMCategory">Služby TPM (Trusted Platform Module)</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Vyžadovat zálohování čipu TPM službou AD DS</checkBox>
+        <text/>
+        <text>Je-li toto nastavení vybráno, nelze změnit heslo vlastníka čipu TPM </text>
+        <text>pokud zálohování selže (jedná se o doporučené výchozí nastavení).</text>
+        <text/>
+        <text>Pokud toto nastavení není vybráno, je možné změnit heslo vlastníka čipu TPM,</text>
+        <text>i pokud zálohování selže. Další pokus o zálohování se automaticky neprovádí.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Příkazy, které mají být blokovány, určíte přidáním jejich čísel do seznamu.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">Seznam blokovaných příkazů čipu TPM:</listBox>
+        <text>Chcete-li například zablokovat příkaz TPM_OwnerReadInternalPub</text>
+        <text>a TPM_FieldUpgrade, přidejte do seznamu položky 129 a 170.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>tapez le nom complet ici</displayName>
+  <description>tapez la description ici</description>
+  <resources>
+    <stringTable>
+      <string id="HelpQualifiedRootDir_Comp">Restreindre des fonctions d’aide HTML potentiellement non sécurisées à des dossiers spécifiés</string>
+      <string id="HelpQualifiedRootDir_Help">Cette stratégie vous permet de limiter le fonctionnement de certaines commandes de l’aide HTML aux fichiers de l’aide HTML (.chm) dans les dossiers indiqués et leurs sous-dossiers.  Vous pouvez également désactiver ces commandes sur l’intégralité du système.  Il est vivement conseillé d’ajouter uniquement les dossiers nécessitant des privilèges d’administration à cette stratégie.
+
+La commande « Raccourci » permet d’ajouter un lien à une rubrique d’Aide et d’exécuter des exécutables externes au fichier d’Aide. La commande « WinHelp » permet d’ajouter un lien à une rubrique d’Aide et d’exécuter un fichier d’Aide WinHLP32.exe (.hlp).
+
+Lorsque cette stratégie est désactivée, ou non configurée, ces commandes fonctionnent pour tous les fichiers d’Aide.  
+
+Lorsque cette stratégie est activée, les commandes ne fonctionnent que pour les fichiers .chm dans les dossiers spécifiés et leurs sous-dossiers. 
+
+Pour limiter les commandes à un ou plusieurs dossiers, activez la stratégie et entrez les dossiers souhaités dans la zone de texte figurant sous l’onglet Configuration de la boîte de dialogue Propriétés de la stratégie. Séparez les dossiers par un point-virgule. Par exemple, pour restreindre les commandes aux seuls fichiers .chm dans le dossier %windir%\help et D:\dossier, ajoutez la chaîne suivante à la zone d’édition : « %windir%\help;D:\dossier ».
+
+Pour interdire les commandes « Raccourci » et « WinHelp » sur l’intégralité du système local, activez la stratégie et laissez vide la zone de texte figurant sous l’onglet Configuration de la boîte de dialogue Propriétés de la stratégie.
+
+Remarque : une variable d’environnement peut être utilisée (par exemple, %windir%), à condition qu’elle soit définie dans le système. Par exemple, %programfiles% n’est pas définie dans certaines versions anciennes de Windows.
+
+Remarque : seuls les dossiers sur l’ordinateur local peuvent être spécifiés dans cette stratégie. Vous ne pouvez pas utiliser cette stratégie pour activer les commandes « Raccourci » et « WinHelp » lorsque les fichiers .chm sont stockés sur des lecteurs mappés ou accessibles par des chemins d’accès UNC.
+
+Pour obtenir des options supplémentaires, voir la stratégie « Restreindre l’exécution de ces programmes à partir de l’Aide ».</string>
+      <string id="RestrictRunFromHelp">Restreindre l’exécution de ces programmes à partir de l’Aide</string>
+      <string id="RestrictRunFromHelp_Comp">Restreindre l’exécution de ces programmes à partir de l’Aide</string>
+      <string id="RestrictRunFromHelp_Help">Vous permet d’empêcher les programmes de s’exécuter à partir de l’aide en ligne.
+
+Si vous activez ce paramètre, vous pouvez empêcher les programmes que vous spécifiez d’être autorisés à s’exécuter à partir de l’aide. Lorsque vous activez ce paramètre, entrez la liste des programmes dont vous voulez empêcher l’exécution. Entrez les noms de fichier des exécutables de chaque application, séparés par des virgules.
+
+Si vous désactivez ce paramètre ou ne le configurez pas, les utilisateurs peuvent exécuter des applications à partir de l’aide en ligne.
+
+Remarque : vous pouvez également empêcher les utilisateurs d’exécuter des applications en utilisant les paramètres de restriction logicielle disponibles dans Configuration de l’ordinateur\Paramètres de sécurité.
+
+Remarque : ce paramètre est disponible sous Configuration de l’ordinateur et Configuration de l’utilisateur. Si les deux sont définis, les programmes spécifiés dans les deux listes ne pourront pas s’exécuter.</string>
+        <string id="DisableHHDEP">Désactiver la prévention de l'exécution des données pour l'exécutable de l'aide HTML</string>
+        <string id="DisableHHDEPText">
+            Ce paramètre de stratégie vous permet d'empêcher l'exécutable de l'aide HTML d'être contrôlé par la prévention d'exécution des données appliquée par le logiciel.
+            La prévention d'exécution des données est conçue pour bloquer le code malveillant qui exploite les mécanismes de gestion des exceptions dans Windows. Si vous activez ce paramètre de stratégie, la prévention d'exécution des données pour l'exécutable de l'aide HTML sera désactivée. Ceci permettra à certains contrôles ActiveX hérités de fonctionner sans que la prévention d'exécution des données n'arrête l'exécutable de l'aide HTML.
+            Si vous désactivez ou ne configurez pas ce paramètre, la prévention d'exécution des données sera activée pour l'exécutable de l'aide HTML.
+            Remarque : la prévention de l'exécution des données est une fonctionnalité de sécurité qui vous aide à protéger votre ordinateur des virus et autres risques de sécurité. La prévention de l'exécution des données peut vous aider à protéger votre ordinateur en  contrôlant vos programmes afin de s'assurer qu'ils utilisent la mémoire système de façon sécurisée.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="HelpQualifiedRootDir_Comp">
+        <textBox refId="HelpQualifiedRootDir_Edit">
+          <label>Entrez les noms de dossier en les séparant par un point-virgule :</label>
+        </textBox>
+        <text>Exemple : %windir%\Help;%windir%\pchealth;%programfiles%</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Entrer des exécutables séparés par des virgules :</label>
+        </textBox>
+        <text>Exemple : calc.exe,paint.exe</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp_Comp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Entrer des exécutables séparés par des virgules :</label>
+        </textBox>
+        <text>Exemple : calc.exe,paint.exe</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

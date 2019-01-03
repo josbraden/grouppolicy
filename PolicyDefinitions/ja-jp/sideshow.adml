@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>表示名をここに入力する</displayName>
+  <description>説明をここに入力する</description>
+  <resources>
+    <stringTable>
+      <string id="DeleteDataOnLogoff">ユーザーがコンピューターからログオフすると、Microsoft のファームウェアを実行するデバイスからデータを削除します。</string>
+      <string id="DeleteDataOnLogoff_Explain">このポリシー設定を使うと、ユーザーがコンピューターからログオフするとき、(Microsoft のファームウェアを実行する) Windows SideShow 互換デバイスに格納されたすべての情報が削除されます。これはセキュリティ保護のためですが、デバイスの利便性を大幅に制限することになります。
+
+このポリシー設定を有効にすると、ユーザーがコンピューターからログオフするとき、Microsoft のファームウェアを実行するデバイスに格納されたすべての情報が削除されます。そのユーザーが再度ログオンすると、データがデバイスに再送信されます。
+
+このポリシー設定を無効にするか、設定しない場合は、ユーザーがコンピューターからログオフするときに、このようなデバイスからデータは削除されません。ユーザーは、Windows SideShow のコントロール パネルでこの設定を有効にできます。
+
+注  このポリシー設定は、Microsoft ファームウェアを実行していないデバイスには影響しません。</string>
+      <string id="DisableWindowsSideShow">Windows SideShow をオフにする</string>
+      <string id="DisableWindowsSideShow_Explain">このポリシー設定は、Windows SideShow を無効にします。
+
+このポリシー設定を有効にすると、Windows SideShow のコントロール パネルが無効になり、Windows SideShow 互換のガジェット (アプリケーション) のデータが接続されたデバイスに送信されなくなります。 
+
+このポリシー設定を無効にした場合、または構成しなかった場合は、Windows SideShow は既定により有効になります。</string>
+      <string id="DisableAutoWake">自動スリープ解除を無効にする</string>
+      <string id="DisableAutoWake_Explain">このポリシー設定を使うと、コンピューターを定期的にスリープ解除して、Windows SideShow 互換デバイスの情報を更新するオプションが無効になります。
+
+このポリシー設定を有効にすると、Windows SideShow のコントロール パネルでコンピューターを自動的にスリープ解除するオプションが使用できなくなります。
+
+このポリシー設定を無効にした場合、または構成しなかった場合は、コンピューターを自動的にスリープ解除するオプションを、Windows SideShow のコントロール パネルで使用できます。ただし、このオプションは既定では無効です。
+
+注   Windows SideShow 互換デバイスの情報は、コンピューターの電源が入っており、スリープ状態でないときにのみ更新されます。</string>
+      <string id="PINTimeout_10Minutes">10 分</string>
+      <string id="PINTimeout_1Minute">1 分</string>
+      <string id="PINTimeout_2Minutes">2 分</string>
+      <string id="PINTimeout_30Minutes">30 分</string>
+      <string id="PINTimeout_5Minutes">5 分</string>
+      <string id="PINTimeout_Never">なし</string>
+      <string id="PINTimeout_WhenScreenIsOff">画面がオフになったとき</string>
+      <string id="SetPIN">Microsoft ファームウェアを実行しているデバイス上のデータへのアクセス時に PIN の入力を求める</string>
+      <string id="SetPIN_Explain">このポリシー設定を有効にすると、指定された非アクティブの期間 (タイムアウト期間) 後にデバイス上のデータのロックを解除してアクセスする場合に、ユーザーによる既定の暗証番号 (PIN) の入力が必要になります。この設定は、Microsoft のファームウェアを実行する Windows SideShow 互換デバイスに対して適用されます。
+
+このポリシー設定を有効にすると、指定されたタイムアウト期間後にデバイス上のデータのロックを解除してアクセスする場合に、ユーザーによる既定の PIN の入力が必要になります。
+
+注意   PIN およびタイムアウト期間は、Windows SideShow のコントロール パネルのデバイス設定ページで変更できます。
+
+このポリシー設定を無効にした場合、または構成しなかった場合は、指定されたタイムアウト期間後にデバイス上のデータのロックを解除してアクセスする際に、ユーザーによる既定の PIN の入力は必要ありません。ただし、ユーザーは Windows SideShow のコントロール パネルで PIN によるロックを有効にしてタイムアウト期間を変更することができます。
+
+注  このポリシー設定は、Microsoft ファームウェアを実行していないデバイスには影響しません。
+
+注   タイムアウト期間には固定セットがあり、それには、1 分後、2 分後、5 分後、10 分後、30 分後、画面がオフになったとき、なし、があります。</string>
+      <string id="SideShow">Windows SideShow</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="SetPIN_1">
+        <decimalTextBox refId="PINNumber" defaultValue="9999" spinStep="0">4 桁の PIN</decimalTextBox>
+        <dropdownList refId="PINTimeout" noSort="true" defaultItem="0">タイムアウトの値</dropdownList>
+      </presentation>
+      <presentation id="SetPIN_2">
+        <text>Microsoft のファームウェアを実行している SideShow 互換デバイスのデータに</text>
+        <text>アクセスするための、ユーザーが入力しなければならない既定の PIN です。</text>
+        <decimalTextBox refId="PINNumber" defaultValue="9999" spinStep="0">4 桁の PIN</decimalTextBox>
+        <text>Microsoft のファームウェアを実行している SideShow 互換デバイスを</text>
+        <text>非アクティブにできる時間の長さです。この時間の経過後に、デバイスはロックされます。</text>
+        <dropdownList refId="PINTimeout" noSort="true" defaultItem="0">タイムアウトの値</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

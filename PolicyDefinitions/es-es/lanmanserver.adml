@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>escriba aquí el nombre</displayName>
+  <description>escriba aquí la descripción</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Servidor Lanman</string>
+      <string id="Lbl_FollowShare">Permitir la publicación de hash solo para carpetas compartidas en las que BranchCache esté habilitado</string>
+      <string id="Lbl_DisableOnAllShares">No permitir la publicación de hash en ninguna carpeta compartida</string>
+      <string id="Lbl_EnableOnAllShares">Permitir la publicación de hash para todas las carpetas compartidas</string>
+      <string id="Pol_HashPublication">Publicación de hash para BranchCache</string>
+      <string id="Pol_HashPublication_Help">Esta directiva permite que un servicio de generación de hash genere hash para datos almacenados en carpetas compartidas y, a continuación, proporcione estos hash a los equipos clientes en los que BranchCache está habilitado. Los hash son huellas digitales de archivos derivadas matemáticamente que identifican de forma única el contenido de los archivos. Estas huellas digitales son muy pequeñas, lo que permite que Windows compare archivos sin consumir una cantidad significativa de ancho de banda de red de área extensa (WAN).
+
+Un equipo cliente de una sucursal puede obtener un hash para un archivo mediante un vínculo de WAN si son verdaderas todas las condiciones siguiente:      
+1) El usuario tiene permisos de acceso al archivo.
+2) BranchCache está habilitado en el equipo cliente.
+3) Se permite la publicación de hash en la carpeta compartida a la que va a obtener acceso el equipo cliente. 
+
+Si el equipo cliente obtiene el hash, podrá buscar una versión idéntica del archivo en la memoria caché de otros equipos de la sucursal. Si Windows encuentra una versión idéntica del archivo en la sucursal, el equipo cliente se descargará la copia almacenada localmente en caché en vez de descargarse el archivo mediante el vínculo de WAN. 
+
+Si configura esta directiva en "Permitir la publicación de hash solo para carpetas compartidas en las que BranchCache esté habilitado" (valor = 0), los hash se generan solo para carpetas compartidas en las que BranchCache esté habilitado. Los hash para carpetas compartidas se generan si se produce alguno de los siguientes eventos:
+1) Un cliente con compatibilidad de BranchCache habilitada obtiene acceso a un archivo de una carpeta compartida en la que BranchCache está habilitado.
+2) Un administrador genera hash manualmente mediante la herramienta de línea de comandos Hashgen.
+
+Si configura esta directiva en "No permitir la publicación de hash en ninguna carpeta compartida" (valor = 1), los hash no se generan nunca ni los proporcionan los equipos en los que se aplique esta directiva.
+ 
+Si configura esta directiva en "Permitir la publicación de hash para todas las carpetas compartidas" (valor = 2), se generan hash en todas las carpetas compartidas del servidor si se produce alguno de los siguientes eventos: 
+1) Un cliente con compatibilidad de BranchCache habilitada obtiene acceso a un archivo de una carpeta compartida.
+2) Un administrador genera hash manualmente mediante la herramienta de línea de comandos Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Valores:</text>
+        <text>0 = Permitir la publicación de hash solo para carpetas compartidas en las que BranchCache esté habilitado</text>
+        <text>1 = No permitir la publicación de hash en ninguna carpeta compartida</text>
+        <text>2 = Permitir la publicación de hash para todas las carpetas compartidas</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Acciones de publicación de hash: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

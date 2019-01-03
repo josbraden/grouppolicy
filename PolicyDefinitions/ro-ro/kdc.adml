@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>KDC Settings</displayName>
+  <description>Configuration settings for the Kerberos Key Distribution Center.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Use forest search order</string>
+      <string id="forestsearch_explain">This policy setting defines the list of trusting forests that the Key Distribution Center (KDC) searches when attempting to resolve two-part service principal names (SPNs).
+
+If you enable this policy setting, the KDC will search the forests in this list if it is unable to resolve a two-part SPN in the local forest. The forest search is performed by using a global catalog or name suffix hints. If a match is found, the KDC will return a referral ticket to the client for the appropriate domain.
+
+If you disable or do not configure this policy setting, the KDC will not search the listed forests to resolve the SPN. If the KDC is unable to resolve the SPN because the name is not found, NTLM authentication might be used.
+
+To ensure consistent behavior, this policy setting must be supported and set identically on all domain controllers in the domain.</string>
+      <string id="emitlili">Provide information about previous logons to client computers</string>
+      <string id="emitlili_explain">This policy setting controls whether the domain controller provides information about previous logons to client computers.
+
+If you enable this policy setting, the domain controller provides the information message about previous logons.
+
+For Windows Logon to leverage this feature, the "Display information about previous logons during user logon" policy setting located in the Windows Logon Options node under Windows Components also needs to be enabled.
+
+If you disable or do not configure this policy setting, the domain controller does not provide information about previous logons unless the "Display information about previous logons during user logon" policy setting is enabled.
+
+Note: Information about previous logons is provided only if the domain functional level is Windows Server 2008. In domains with a domain functional level of Windows Server 2003, Windows 2000 native, or Windows 2000 mixed, domain controllers cannot provide information about previous logons, and enabling this policy setting does not affect anything.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Mode:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Forests to Search</label>
+        </textBox>
+        <text>Syntax:</text>
+        <text>Enter the list of forests to be searched when this policy is enabled.</text>
+        <text>Use the Fully Qualified Domain Name (FQDN)  naming format.</text>
+        <text>Separate multiple search entries with a semi-colon ";".</text>
+        <text>Details:</text>
+        <text>The current forest need not be listed because Forest Search Order uses the global catalog first then searches in the order listed.</text>
+        <text>You do not need to separately list all the domains in the forest.</text>
+        <text>If a trusting forest is listed, all the domains in that forest will be searched.</text>
+        <text>For best performance, list the forests in probability of success order.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

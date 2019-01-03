@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Paramètres Kerberos</displayName>
+  <description>Paramètres de configuration du protocole d’authentification Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Utiliser l'ordre de recherche de la forêt</string>
+      <string id="forestsearch_explain">Ce paramètre de stratégie définit la liste des forêts autorisées à approuver dans laquelle le client Kerberos effectue sa recherche lorsqu'il essaie de résoudre les noms principaux de service (SPN, Service Principal Name) en deux parties.
+
+Si vous activez ce paramètre de stratégie, le client Kerberos effectue sa recherche dans les forêts de cette liste s'il ne parvient pas à résoudre un nom SPN en deux parties. S'il trouve une correspondance, le client Kerberos demande un ticket de référence au domaine approprié.
+
+Si vous désactivez ce paramètre ou ne le configurez pas, le client Kerberos n'effectue pas sa recherche dans la liste des forêts répertoriées pour résoudre le nom SPN. Si le client Kerberos ne trouve pas le nom et par conséquent ne parvient à résoudre le nom SPN, l'authentification NTLM peut être utilisée.</string>
+      <string id="hosttorealm">Définir les mappages de noms d’hôte à un domaine Kerberos</string>
+      <string id="hosttorealm_explain">Ce paramètre de stratégie permet de spécifier les noms d’hôtes DNS et les suffixes DNS mappés à un domaine Kerberos.
+
+Si vous activez ce paramètre de stratégie, vous pouvez afficher et modifier la liste des noms d’hôtes DNS et des suffixes DNS mappés à un domaine Kerberos, telle que définie par la stratégie de groupe. Pour afficher la liste des mappages, activez le paramètre de stratégie et cliquez sur le bouton Afficher. Pour afficher un mappage, activez le paramètre de stratégie, notez la syntaxe, puis cliquez sur Afficher. Dans la boîte de dialogue Afficher le contenu, dans la colonne Valeur, tapez le nom d’un domaine. Dans la colonne Valeur, tapez la liste des noms d’hôtes DNS et des suffixes DNS en respectant la syntaxe appropriée. Pour supprimer un mappage de la liste, cliquez sur l'entrée à supprimer, puis appuyez sur la touche SUPPR. Pour modifier un mappage, supprimez l’entrée actuelle de la liste, puis ajoutez-en une avec d’autres paramètres.
+
+Si vous désactivez ce paramètre de stratégie, la liste des mappages de noms d’hôtes au domaine Kerberos, définie par la stratégie de groupe, est supprimée.
+
+Si vous ne configurez pas ce paramètre de stratégie, le système utilise les mappages de noms d’hôtes au domaine Kerberos qui sont définis dans le Registre local s’ils existent.</string>
+      <string id="MitRealms">Définir les paramètres des domaines interopérables Kerberos V5</string>
+      <string id="MitRealms_explain">Ce paramètre de stratégie configure le client Kerberos pour qu’il puisse s’authentifier à des domaines interopérables Kerberos V5, tel que défini par ce paramètre de stratégie.
+      
+Si vous activez ce paramètre de stratégie, vous pourrez afficher et modifier la liste des domaines interopérables Kerberos V5 et leurs paramètres. Pour afficher la liste des domaines interopérables Kerberos V5, activez le paramètre de stratégie et cliquez sur le bouton Afficher. Pour ajouter un domaine interopérable Kerberos V5, activez le paramètre de stratégie, notez la syntaxe, puis cliquez sur le bouton Afficher. Dans la boîte de dialogue Afficher le contenu, dans la colonne Nom de valeur, tapez le nom du domaine interopérable Kerberos V5. Dans la colonne Valeur, tapez les indicateurs de domaines et les noms d'hôtes des contrôleurs de domaine Kerberos (KDC, Kerberos Domain Controller) hôte en respectant la syntaxe appropriée. Pour supprimer une entrée Nom de valeur ou Valeur dans la liste, cliquez sur son entrée, puis appuyez sur la touche SUPPR. Pour modifier un mappage, supprimez l’entrée actuelle de la liste, puis ajoutez-en une avec d’autres paramètres.
+
+Si vous désactivez ce paramètre de stratégie, les paramètres des domaines interopérables Kerberos V5 définis par la stratégie de groupe sont supprimés.
+
+Si vous ne configurez pas ce paramètre de stratégie, le système utilise les paramètres des domaines interopérables Kerberos V5 qui sont définis dans le Registre local s’ils existent.</string>
+      <string id="ValidateKDC">Exiger une validation KDC stricte</string>
+      <string id="ValidateKDC_explain">Ce paramètre de stratégie contrôle le comportement du client Kerberos dans la validation du certificat KDC.  
+      
+Si vous activez ce paramètre de stratégie, le client Kerberos exige que le certificat X.509 du contrôleur de domaine Kerberos (KDC) contienne l’identificateur d’objet du rôle de clé dans les extensions EKU (Extended Key Usage) et que le certificat X.509 du KDC contienne une extension dNSName subjectAltName (SAN) qui correspond au nom DNS du domaine. Si l’ordinateur est joint à un domaine, le client Kerberos exige que le certificat X.509 du KDC soit signé par une autorité de certification du magasin NTAUTH. Si l’ordinateur n’est pas joint à un domaine, le client Kerberos permet l’utilisation du certificat racine de l’autorité de certification sur la carte à puce dans la validation de chemin d’accès du certificat X.509 du KDC.
+
+Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, le client Kerberos exige seulement que le certificat du KDC contienne l’identificateur d’objet du rôle de l’authentification du serveur dans les extensions EKU.
+</string>
+      <string id="StrictTarget">Exiger une correspondance stricte des noms SPN cibles dans les appels de procédure distante</string>
+      <string id="StrictTarget_explain">Lorsqu'une application essaie d'effectuer un appel de procédure distante (RPC, Remote Procedure Call) vers ce serveur avec une valeur NULL en tant que nom principal de service (SPN, Service Principal Name), les ordinateurs exécutant Windows 7 essaient d'utiliser Kerberos en générant un nom SPN. Ce paramètre de stratégie vous permet de configurer ce serveur de sorte que Kerberos puisse déchiffrer un ticket contenant le nom SPN généré par le système.
+
+Si vous activez ce paramètre de stratégie, seuls les services s'exécutant en tant que LocalSystem ou NetworkService sont autorisées à accepter ces connexions. Les services qui s'exécutent avec une identité autre que Système local ou Service réseau peuvent ne pas être authentifiés.
+
+Si vous désactivez ce paramètre ou ne le configurez pas, tous les services seront autorisés à accepter les connexions entrantes en utilisant le nom SPN généré par le système.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Définir les mappages de noms d’hôte à un domaine :</listBox>
+        <text></text>
+        <text>Syntaxe :</text>
+        <text>Entrez le nom du domaine Kerberos en tant que Nom de valeur.</text>
+        <text>Entrez les noms d’hôte et les suffixes DNS à mapper</text>
+        <text>au domaine Kerberos en tant que Valeur.  Pour ajouter plusieurs</text>
+        <text>noms, séparez les entrées par des point-virgule « ; ».</text>
+        <text></text>
+        <text>Remarque : pour spécifier un suffixe DNS, précédez l’entrée par un point « . ».</text>
+        <text>Pour l’entrée d’un nom d’hôte, ne spécifiez pas de point « . » au début.</text>
+        <text></text>
+        <text>Exemple :</text>
+        <text>Nom de valeur : MICROSOFT.COM</text>
+        <text>Valeur : .microsoft.com; .ms.com; ordinateur1.fabrikam.com;</text>
+        <text></text>
+        <text>Dans l’exemple ci-dessus. Toutes les entités comportant le suffixe</text>
+        <text>DNS *.microsoft.com ou *.ms.com seront mappées au</text>
+        <text>domaine Kerberos MICROSOFT.COM.  En outre, le nom d’hôte</text>
+        <text>ordinateur1.fabrikam.com sera également mappé au </text>
+        <text>domaine Kerberos MICROSOFT.COM.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Définir les paramètres des domaines interopérables Kerberos V5 :</listBox>
+        <text></text>
+        <text>Syntaxe :</text>
+        <text>Entrez le nom du domaine interopérable Kerberos V5 en tant que Nom de valeur.</text>
+        <text>Entrez les indicateurs de domaine et les noms d’hôte des contrôleurs</text>
+        <text>de domaine Kerberos (KDC) en tant que Valeur.  Placez les indicateurs de domaine entre</text>
+        <text>les balises &lt;f&gt; &lt;/f&gt;.  Placez la liste des KDC entre les balises&lt;k&gt; &lt;/k&gt;.</text>
+        <text>Pour ajouter plusieurs noms de KDC, séparez</text>
+        <text>les entrées par un point-virgule « ; ».</text>
+        <text></text>
+        <text>Exemple :</text>
+        <text>Nom de valeur : TEST.COM</text>
+        <text>Valeur : &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Autre exemple :</text>
+        <text>Nom de valeur : REALM.FABRIKAM.COM</text>
+        <text>Valeur : &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Mode :</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Forêts dans lesquelles effectuer la recherche</label>
+        </textBox>
+        <text>Syntaxe :</text>
+        <text>Entrez la liste des forêts dans lesquelles effectuer la recherche lorsque cette stratégie est activée.</text>
+        <text>Utilisez le format de nom de domaine complet (FQDN, Fully Qualified Domain Name).</text>
+        <text>Séparez les entrées à rechercher par des points-virgules (;).</text>
+        <text>Détails :</text>
+        <text>Il n'est pas nécessaire de répertorier la forêt actuelle, car l'ordre de recherche de la forêt utilise d'abord le catalogue global, puis effectue la recherche dans l'ordre de la liste.</text>
+        <text>Il n'est pas nécessaire de répertorier séparément tous les domaines de la forêt.</text>
+        <text>Si une forêt autorisée à approuver est répertoriée, la recherche sera effectuée sur tous les domaines de cette forêt.</text>
+        <text>Pour de meilleures performances, répertoriez les forêts dans l'ordre de probabilité de réussite. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

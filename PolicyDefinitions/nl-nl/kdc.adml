@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>KDC-instellingen</displayName>
+  <description>Configuratie-instellingen voor het Kerberos Key Distribution Center.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Zoekvolgorde forests gebruiken</string>
+      <string id="forestsearch_explain">Deze beleidsinstelling bepaalt de lijst met vertrouwende forests die KDC (Key Distribution Center) doorzoekt om SPN-namen om te zetten die uit twee delen bestaan.
+
+Als u deze beleidsinstelling inschakelt, doorzoekt KDC de forests in deze lijst als het niet lukt een SPN die uit twee delen bestaat in het lokale forest om te zetten. De zoekopdracht wordt uitgevoerd met een globale catalogus of hints voor naamachtervoegsels. Als er een overeenkomst wordt gevonden, stuurt KDC een verwijzingsticket voor het betreffende domein terug naar de client.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt de lijst met forests niet doorzocht door KDC om de SPN om te zetten. Als KDC de SPN niet kan omzetten omdat de naam niet is gevonden, kan NTLM-verificatie worden gebruikt.
+
+Voor een consistente werking is het belangrijk dat deze beleidsinstelling wordt ondersteund op alle domeincontrollers in het domein en overal identiek is ingesteld.</string>
+      <string id="emitlili">Informatie leveren over eerdere aanmeldingspogingen bij clientcomputers</string>
+      <string id="emitlili_explain">Met deze beleidsinstelling kunt u bepalen of de domeincontroller informatie levert over eerdere aanmeldingspogingen bij clientcomputers. 
+
+Als u deze beleidsinstelling inschakelt, geeft de domeincontroller informatieberichten weer over eerdere aanmeldingspogingen.
+
+Deze functie kan alleen worden gebruikt door Windows-aanmelding als de beleidsinstelling Informatie over eerdere aanmeldingspogingen weergeven tijdens het aanmelden ook is ingeschakeld (in het knooppunt Windows-aanmeldingsopties onder Windows-onderdelen).
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, levert de domeincontroller geen informatie over eerdere aanmeldingspogingen, tenzij de beleidsinstelling Informatie over eerdere aanmeldingspogingen weergeven tijdens het aanmelden is ingeschakeld.
+
+Opmerking: informatie over eerdere aanmeldingspogingen wordt alleen verstrekt als het domeinfunctionaliteitsniveau Windows Server 2008 is. In domeinen van het functieniveau Windows Server 2003, Windows 2000 (native) of Windows 2000 (gecombineerd) kunnen domeincontrollers geen informatie leveren over eerdere aanmeldingspogingen, en heeft het inschakelen van deze beleidsinstelling dus geen effect.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Modus:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Te doorzoeken forests</label>
+        </textBox>
+        <text>Syntaxis:</text>
+        <text>Voer de lijst met forests in die moet worden doorzocht als dit beleid is ingeschakeld.</text>
+        <text>Gebruik de naamgevingsindeling FQDN-naam (Fully Qualified Domain Name).</text>
+        <text>Gebruik een puntkomma ";" om zoektekst van elkaar te scheiden.</text>
+        <text>Details:</text>
+        <text>Het huidige forest hoeft niet te worden opgenomen in de lijst omdat Zoekvolgorde forests gebruiken eerst de globale catalogus gebruikt en dan zoekt in de aangegeven volgorde.</text>
+        <text>U hoeft niet alle domeinen in het forest afzonderlijk te vermelden.</text>
+        <text>Als er een vertrouwend domein in de lijst staat, worden alle domeinen in dat forest doorzocht.</text>
+        <text>U krijgt de beste prestaties als u de forests met de meeste kans op succes boven in de lijst plaatst.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

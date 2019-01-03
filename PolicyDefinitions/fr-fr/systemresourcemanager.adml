@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>entrer le nom complet ici</displayName>
+  <description>entrer la description ici</description>
+  <resources>
+    <stringTable>
+      <string id="AccountingEnabled">Activer le suivi pour le Gestionnaire de ressources système Windows</string>
+      <string id="AccountingEnabled_Explain">Ce paramètre permet d'activer ou de désactiver la fonctionnalité de suivi.
+
+Si vous activez ce paramètre, le Gestionnaire de ressources système Windows (WSRM) démarre l'enregistrement de diverses statistiques d'utilisation des processus.
+
+Si vous désactivez ce paramètre, WSRM arrête d'enregistrer les statistiques d'utilisation des processus.
+
+Si vous ne configurez pas ce paramètre, l'utilisateur peut spécifier si le suivi doit être activé ou désactivé.
+
+Le suivi des processus est désactivé par défaut.
+
+La base de données de suivi fournit une interface qui permet de gérer les informations qu'elle contient ainsi que sa taille physique. La gestion des informations de cette base de données implique la recherche des informations pertinentes et leur organisation de manière efficace. La gestion de la taille physique de la base de données nécessite une attention constante, car à moins qu'il ne soit configuré autrement, WSRM continue de stocker les informations de suivi. Par conséquent, la taille de la base de données ne cesse d'augmenter. Pour gérer la taille de la base de données, vous pouvez soit archiver les données de suivi en vue d'une utilisation ultérieure, soit les supprimer.
+
+Vous pouvez utiliser les données de suivi pour surveiller l'utilisation des ressources, comparer les performances effectives à celles qui sont attendues, évaluer si les ressources physiques de l'ordinateur sont suffisantes pour les tâches prévues, et fournir une base pour une rétrofacturation.
+</string>
+      <string id="EmailIds">Définir les ID de courrier électronique auxquels des notifications doivent être envoyées</string>
+      <string id="EmailIds_Explain">Ce paramètre permet de définir la ou les adresses de messagerie auxquelles des notifications doivent être envoyées. Utilisez un point-virgule (;) pour séparer plusieurs adresses de messagerie.
+
+Si vous activez ce paramètre, le Gestionnaire de ressources système Windows (WSRM) envoie les notifications aux adresses spécifiées.
+
+Si vous désactivez ce paramètre, aucune adresse de messagerie (valeur par défaut) n'est définie.
+
+Si vous ne configurez pas ce paramètre, l'utilisateur peut spécifier les adresses de messagerie qui doivent recevoir des notifications. Cette valeur peut correspondre à des alias de messagerie ou à une adresse de messagerie incluant un nom de domaine (par exemple xyz@example.com).
+
+Selon les événements sélectionnés pour être notifiés, ces adresses de messagerie recevront des notifications.
+
+Remarque : pour permettre la réception de notifications, le paramètre correspondant doit être activé dans le journal des événements. Pour afficher la liste des événements, cliquez sur Erreur, Avertissement ou Information, puis cliquez sur OK. Si vous sélectionnez Erreur, Avertissement ou Information, tous les événements de cette catégorie sont inclus.</string>
+      <string id="KeyName_Explain">Ce paramètre permet d'activer les propriétés de suivi et/ou de notification du Gestionnaire de ressources système Windows via les paramètres de stratégie de groupe</string>
+      <string id="RecordWriteInterval">Définir l'intervalle (en minutes) de l'enregistrement des données de suivi</string>
+      <string id="RecordWriteInterval_Explain">Ce paramètre indique à la fonctionnalité de suivi d'enregistrer les données sur le serveur de suivi selon l'intervalle de temps spécifié.
+
+Si vous activez ce paramètre, le Gestionnaire de ressources système Windows (WSRM) définit l'intervalle de temps du suivi en fonction de la valeur spécifiée.
+
+Si vous désactivez ce paramètre, la valeur par défaut (10 minutes) est définie.
+
+Si vous ne configurez pas ce paramètre, l'utilisateur peut spécifier un intervalle de suivi.
+
+La valeur est spécifiée en minutes et est comprise entre 2 et 60 000 minutes. La valeur par défaut est dix minutes, car il s'agit d'une valeur optimale si de nombreux serveurs enregistrent des données à distance. Si l'intervalle d'écriture des enregistrements de suivi est inférieur à 10 minutes pour un serveur situé sur un réseau de plus de 20 ordinateurs enregistrant des données à distance, les performances risquent de se dégrader.
+
+Remarque : affectez à l'intervalle d'écriture des enregistrements de suivi une valeur supérieure chaque fois que le nombre d'ordinateurs du réseau augmente afin de réduire la surcharge du réseau.</string>
+      <string id="SMTPServer">Définir le serveur SMTP utilisé pour l'envoi des notifications</string>
+      <string id="SMTPServerConfiguration_Explain">Ce paramètre permet d'attribuer l'adresse du serveur SMTP qui envoie les notifications.
+
+Si vous activez ce paramètre, le Gestionnaire de ressources système Windows (WSRM) définit le serveur SMTP en fonction de la valeur spécifiée.
+
+Si vous désactivez ce paramètre, aucun serveur SMTP (valeur par défaut) n'est défini.
+
+Si vous ne configurez pas ce paramètre, l'utilisateur peut spécifier un serveur SMTP.
+
+Cette valeur peut être le nom NetBIOS ou le nom de domaine complet du serveur SMTP (Simple Mail Transfer Protocol). Ce serveur contient les adresses de messagerie configurées pour recevoir des notifications.
+
+Remarque : pour permettre la réception de notifications par courrier électronique, le paramètre correspondant doit être activé dans le journal des événements. Pour afficher la liste des événements, cliquez sur Erreur, Avertissement ou Information, puis cliquez sur OK. Si vous sélectionnez Erreur, Avertissement ou Information, tous les événements de cette catégorie sont inclus.</string>
+      <string id="WSRM">Gestionnaire de ressources système Windows</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="EmailIds">
+        <textBox refId="EmailIdsConfiguration">
+          <label>ID de courrier électronique</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+      <presentation id="RecordWriteInterval">
+        <decimalTextBox refId="Write_Interval" defaultValue="10">Intervalle d'enregistrement pour le suivi (de 2 à 60 000 minutes)  </decimalTextBox>
+      </presentation>
+      <presentation id="SMTPServer">
+        <textBox refId="SMTPServerConfiguration">
+          <label>Entrer l'adresse du serveur SMTP</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

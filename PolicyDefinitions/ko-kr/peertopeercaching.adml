@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache를 통해 클라이언트는 콘텐츠를 호스트하는 서버에서 콘텐츠를 검색하는 대신 지점 내에서 콘텐츠를 안전하게 검색할 수 있습니다. 배포 모드에 따라 지점의 다른 클라이언트 또는 지점의 호스트되는 캐시 서버에서 콘텐츠를 검색할 수 있습니다. 클라이언트는 서버에서 지점 내 콘텐츠만 검색하도록 허가한 경우 그렇게만 할 수 있습니다. BranchCache를 사용하면 지점을 데이터 센터나 본사에 연결하는 WAN(광역 네트워크) 링크의 비용을 줄이고 지점으로 이미 다운로드된 콘텐츠에 대한 다운로드 속도를 높일 수 있습니다.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">BranchCache 사용</string>
+
+            <string id="WBC_Enable_Help">이 정책 설정은 클라이언트 컴퓨터에서 BranchCache를 사용할지 여부를 지정합니다. BranchCache는 지점을 데이터 센터나 본사에 연결하는 WAN(광역 네트워크) 링크의 사용량을 줄이고 지점에 이미 다운로드된 콘텐츠에 대한 액세스 속도를 높여 줍니다. BranchCache는 지점의 컴퓨터에서 BranchCache를 사용하는 인트라넷 서버로부터 파일과 HTTP 트래픽을 캐시에 저장한 후 지점의 다른 컴퓨터와 파일을 안전하게 공유할 수 있도록 함으로써 이러한 기능을 수행합니다. 지점의 컴퓨터는 호스트된 캐시 모드를 사용할 경우 지점의 호스트되는 캐시 서버에서 콘텐츠를 검색하거나, 분산 캐시 모드를 사용할 경우 지점의 다른 클라이언트 컴퓨터에서 콘텐츠를 검색할 수 있습니다. 캐시에 저장된 콘텐츠를 액세스하려면 컴퓨터에서 원본 서버의 콘텐츠에 액세스할 수 있는 권한이 있어야 합니다.
+
+지점의 WAN 대역폭이 낮고, 대기가 길며 본사 서버의 동일한 데이터를 액세스해야 하는 클라이언트 컴퓨터가 많을 경우 클라이언트 컴퓨터에서 이 정책 설정을 사용하십시오.
+
+이 정책 설정을 사용하면 BranchCache가 사용됩니다. 이 정책 설정을 적용하려면 클라이언트 컴퓨터에 BranchCache 기능을 설치해야 합니다.
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 BranchCache가 사용되지 않습니다.
+            </string>
+
+            <string id="WBC_Cache_Percent">클라이언트 컴퓨터 캐시에 사용되는 디스크 공간의 백분율 설정</string>
+
+            <string id="WBC_Cache_Percent_Help">이 정책 설정은 BranchCache를 통해 검색된 콘텐츠를 캐시에 저장하는 용도로 사용될 총 디스크 공간의 기본 백분율을 변경합니다. 이 콘텐츠는 서버에서 콘텐츠에 액세스할 수 있도록 허가를 받았으며 이 콘텐츠가 필요한 다른 클라이언트 컴퓨터에서도 사용할 수 있습니다.
+
+이 정책 설정을 사용하면 캐시에 할당할 총 디스크 공간의 백분율을 구성할 수 있습니다.
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 캐시는 클라이언트 컴퓨터에 있는 총 디스크 공간의 5퍼센트로 설정됩니다.
+            </string>
+
+            <string id="WBC_HostedCache_Location">BranchCache 호스트된 캐시 모드 설정</string>
+
+            <string id="WBC_HostedCache_Location_Help">이 정책 설정은 클라이언트 컴퓨터에서 호스트된 캐시 모드를 사용할지 여부와 이 모드를 사용할 경우 BranchCache 서버 주소를 지정합니다. 호스트된 캐시 모드를 통해 클라이언트 컴퓨터에서는 지점에 대해 호스트되는 중앙 캐시 역할을 하는 BranchCache 서버로부터 콘텐츠를 검색할 수 있습니다. 호스트된 캐시 모드를 사용할 경우 BranchCache를 사용하는 클라이언트 컴퓨터에서 다운로드한 콘텐츠는 BranchCache 서버에 추가되어 지점에서 BranchCache를 사용하는 다른 클라이언트 컴퓨터에 대해 중앙 캐시 역할을 합니다. 클라이언트 컴퓨터는 SSL(Secure Sockets Layer)을 사용하여 BranchCache 서버와 통신합니다.
+
+이 정책 설정을 사용하려면 BranchCache 서버의 주소를 지정해야 하고 이 주소는 BranchCache 서버의 인증서에 지정된 서버의 FQDN(정규화된 도메인 이름)과 일치해야 합니다. 또한 BranchCache 서버 인증서의 인증서 루트가 클라이언트 컴퓨터의 신뢰할 수 있는 루트 저장소에 있어야 합니다.
+
+이 정책 설정을 사용하도록 설정하고 호스트된 캐시의 올바른 위치를 지정할 경우 호스트된 캐시 모드가 사용됩니다. 이 정책 설정을 적용하려면 "BranchCache 사용" 정책 설정도 사용해야 합니다.
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 호스트된 캐시 모드가 사용되지 않습니다.
+            </string>
+
+            <string id="WBC_Distributed_Enable">BranchCache 분산 캐시 모드 설정</string>
+
+            <string id="WBC_Distributed_Enable_Help">이 정책 설정은 클라이언트 컴퓨터에서 분산 캐시 모드를 사용할지 여부를 지정합니다. 이 BranchCache 모드를 사용하면 클라이언트 컴퓨터는 지점에 있는 다른 클라이언트 컴퓨터에서 다운로드하여 캐시에 저장된 콘텐츠를 검색할 수 있습니다. 지점의 다른 클라이언트 컴퓨터에서 캐시에 저장된 콘텐츠를 액세스하려면 컴퓨터에서 원본 서버의 콘텐츠에 액세스할 수 있는 권한이 있어야 합니다.
+
+이 정책 설정은 분산 캐시 모드를 사용할지 여부를 지정합니다. 호스트된 캐시 역할을 하는 서버가 없는 지점에서 BranchCache를 사용할 경우 이 정책 설정을 사용하십시오.
+
+이 정책 설정을 사용하면 분산 캐시 모드가 사용됩니다. 이 정책 설정을 적용하려면 "BranchCache 사용" 정책 설정도 사용해야 합니다.
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 분산 캐시 모드가 사용되지 않습니다.
+            </string>
+
+            <string id="WBC_SMB_Enable">네트워크 파일에 대해 BranchCache 구성</string>
+
+            <string id="WBC_SMB_Enable_Help">이 정책 설정은 지점의 클라이언트 컴퓨터에서 기본 왕복 네트워크 지연 값이 몇 밀리초를 넘으면 네트워크 파일을 캐시에 저장하는지를 변경합니다. 네트워크 파일에 대해 BranchCache를 사용하면 지점의 컴퓨터에서 BranchCache가 사용되는 인트라넷 서버의 데이터를 캐시에 저장한 후 지점의 다른 컴퓨터와 안전하게 파일을 공유할 수 있습니다. 지점의 캐시에 저장할 수 있는 콘텐츠 유형 중 하나는 서버 메시지 블록(SMB) 프로토콜을 사용하는 네트워크 파일입니다.
+
+기본적으로 WAN(광역 네트워크) 링크의 왕복 네트워크 지연이 80ms보다 길 경우 네트워크 파일이 지점의 캐시에 저장됩니다. 지점의 컴퓨터로 다운로드된 네트워크 파일을 항상 캐시에 저장하려면 네트워크 지연 값을 0으로 설정합니다. 네트워크 파일에 대해 지점 캐싱을 사용하지 않으려면 지연 값을 아주 높게 설정합니다.
+
+이 정책 설정을 사용하면 왕복 네트워크 지연이 몇 밀리초를 넘으면 지점의 클라이언트 컴퓨터에서 네트워크 파일을 캐시에 저장할지를 구성할 수 있습니다.
+
+이 정책 설정을 사용하지 않거나 구성하지 않으면 WAN(광역 네트워크) 링크의 왕복 네트워크 지연이 80ms보다 길 경우 클라이언트 컴퓨터에서 네트워크 파일을 캐시에 저장합니다.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>클라이언트 컴퓨터 캐시의 위치를 입력합니다.</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>호스트된 캐시의 위치를 입력합니다.</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>왕복 네트워크 지연 값(밀리초)이 몇 밀리초를 넘으면 네트워크 파일을 지점의 캐시에 저장할지를 입력합니다.</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

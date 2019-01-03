@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Impostazioni KDC</displayName>
+  <description>Impostazioni di configurazione per il Centro distribuzione chiavi Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Usa ordine di ricerca nella foresta</string>
+      <string id="forestsearch_explain">Questa impostazione definisce l'elenco delle foreste trusting in cui il centro distribuzione chiavi esegue la ricerca durante il tentativo di risolvere nomi principali di servizio (SPN) in due parti.
+
+Se si abilita questa impostazione, il centro distribuzione chiavi eseguirà la ricerca nelle foreste incluse in questo elenco nel caso non sia possibile risolvere un nome principale di servizio (SPN) in due parti nella foresta locale. La ricerca nella foresta viene eseguita utilizzando un catalogo globale o suggerimenti per i suffissi di nome. Se viene trovata una corrispondenza, il centro distribuzione chiavi restituirà un ticket di riferimento al client per il dominio appropriato.
+
+Se si disabilita o non si configura questa impostazione, il centro distribuzione chiavi non eseguirà la ricerca nelle foreste elencate per risolvere l'SPN. Se il centro distribuzione chiavi non è in grado di risolvere l'SPN a causa dell'impossibilità di trovare il nome, potrebbe venire utilizzata l'autenticazione NTLM.
+
+Per garantire un comportamento coerente, è necessario che questa impostazione sia supportata e impostata in modo identico in tutti i controller di dominio del dominio.</string>
+      <string id="emitlili">Fornisci informazioni sugli accessi precedenti ai computer client</string>
+      <string id="emitlili_explain">Questa impostazione stabilisce se tramite il controller di dominio vengono fornite informazioni sugli accessi precedenti ai computer client.
+
+Se si abilita questa impostazione, il controller di dominio visualizzerà il messaggio di informazioni sugli accessi precedenti.
+
+Affinché questa funzionalità possa essere utilizzata da Accesso a Windows, è inoltre necessario che sia abilitata l'impostazione "Visualizza informazioni sugli accessi precedenti durante l'accesso dell'utente" disponibile nel nodo Opzioni di accesso a Windows in Componenti di Windows.
+
+Se si disabilita o non si configura questa impostazione, il controller di dominio fornirà le informazioni sugli accessi precedenti solo se l'opzione "Visualizza informazioni sugli accessi precedenti durante l'accesso dell'utente" è abilitata.
+
+Nota: le informazioni sugli accessi precedenti vengono fornite solo se il livello di funzionalità del dominio è Windows Server 2008. Nei domini con un livello di funzionalità corrispondente a Windows Server 2003, Windows 2000 originale o Windows 2000 misto non è possibile fornire informazioni sugli accessi precedenti e l'abilitazione dell'impostazione non produce alcun effetto.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Modalità:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Foreste in cui cercare</label>
+        </textBox>
+        <text>Sintassi:</text>
+        <text>Immettere l'elenco delle foreste in cui cercare quando questo criterio è abilitato.</text>
+        <text>Utilizzare il formato di assegnazione nomi Nome di dominio completo (FQDN).</text>
+        <text>Separare più voci di ricerca con un punto e virgola ";".</text>
+        <text>Dettagli:</text>
+        <text>Non è necessario includere la foresta corrente nell'elenco, in quanto Ordine di ricerca nella foresta utilizza innanzitutto il catalogo globale e quindi esegue la ricerca nell'ordine elencato.</text>
+        <text>Non è necessario elencare separatamente tutti i domini della foresta.</text>
+        <text>Se una foresta trusting è inclusa nell'elenco, la ricerca verrà eseguita in tutti i domini di tale foresta.</text>
+        <text>Per ottenere prestazioni ottimali, elencare le foreste secondo l'ordine di probabilità di successo della ricerca.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

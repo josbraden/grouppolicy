@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>skriv inn visningsnavn her</displayName>
+  <description>skriv inn beskrivelse her</description>
+  <resources>
+    <stringTable>
+      <string id="AddAdminGroupToRUP">Legg systemansvarliges sikkerhetsgruppe til i sentrale brukerprofiler</string>
+      <string id="AddAdminGroupToRUP_Help">Denne innstillingen legger administratorsikkerhetsgruppen til den sentrale brukerprofildelingen.
+
+Når en administrator har konfigurert en brukers sentrale profil, blir profilen opprettet når brukeren logger seg inn neste gang. Profilen opprettes der administrator vil legge den.
+
+For Windows 2000 Professional og Windows XP Professional er standardinnstillingene for filtilgang for nygenererte profiler full kontroll eller lese- og skrivetilgang for brukeren, og ingen filtilgang for administratorgruppen.
+
+Du kan forandre dette ved å konfigurere denne innstillingen.
+
+Hvis du aktiverer denne innstillingen, gir du også administratorgruppen full kontroll over brukerens profilmappe.
+
+Hvis du deaktiverer eller ikke konfigurerer den, er det bare brukeren som får full kontroll over brukerprofilen sin, og administratorgruppen har ingen filsystemtilgang for denne mappen.
+
+OBS! Hvis innstillingen aktiveres etter at profilen er blitt opprettet, vil ikke innstillingen ha noen effekt.
+
+OBS! Innstillingen må være konfigurert på klientdatamaskinen, ikke serveren, for at den skal ha noen virkning siden fildelingstillatelser angis på klientdatamaskinen når den sentrale profilen opprettes.
+
+OBS! I utgangspunktet (som standard) har ikke administratorer filtilgang mot brukerens profil, men de kan likevel gi seg selv filrettigheter for slike mapper.
+
+OBS! Når denne innstillingen er aktivert, oppfører den seg på akkurat samme måte som i Windows NT 4.0.</string>
+      <string id="CompatibleRUPSecurity">Ikke kontroller om bruker eier sentrale profilmapper</string>
+      <string id="CompatibleRUPSecurity_Help">Denne innstillingen deaktiverer den sikrere standardinnstillingen for brukerens sentrale brukerprofilmappe.
+
+Når en administrator har konfigurert en brukers sentrale profil, blir profilen opprettet når brukeren logger seg inn neste gang. Profilen opprettes der administrator vil legge den.
+
+For Windows 2000 Professional før SP4 og Windows XP før SP1 er standardinnstillingene for filtilgang for nygenererte profiler full kontroll for brukeren, og ingen filtilgang for administratorgruppen. Det foretas ingen kontroll for riktige tillatelser hvis profilmappen allerede finnes. I Windows Server 2003-serien, Windows 2000 Professional SP4 og Windows XP SP1 er standardvirkemåten at det kontrolleres om tillatelsene er riktige for mappen hvis profilmappen allerede finnes, og at det ikke kopieres filer til eller fra den sentrale mappen hvis tillatelsene ikke er riktige.
+
+Du kan forandre dette ved å konfigurere denne innstillingen.
+
+Hvis du aktiverer denne innstillingen, vil ikke Windows sjekke tillatelsene for mappen i tilfeller hvor mappen finnes.
+
+Hvis du deaktiverer eller ikke konfigurerer denne innstillingen OG den sentrale profilmappen finnes OG brukeren eller administratorgruppen ikke er eier(e) av mappen, vil Windows IKKE kopiere filer til eller fra den sentrale mappen. Brukeren får se en feilmelding og det legges til en oppføring i hendelsesloggen. Brukerens hurtigbufferprofil brukes, og hvis det ikke finnes noen hurtigbufferprofil, utstedes det en midlertidig profil. 
+
+OBS! Innstillingen må være konfigurert på klientdatamaskinen, ikke serveren, for at den skal ha noen virkning siden fildelingstillatelser angis på klientdatamaskinen når den sentrale profilen opprettes.
+
+OBS! Virkemåten når denne innstillingen er aktivert, er akkurat lik virkemåten i Windows 2000 Professional før SP4 og Windows XP Professional</string>
+      <string id="Connect_HomeDir_ToRoot">Koble hjemmemappe til roten av den delte ressursen</string>
+      <string id="Connect_HomeDir_ToRoot_Explain">Gjenoppretter definisjonene i miljøvariablene %HOMESHARE% og %HOMEPATH% til hva som er brukt i Windows NT 4.0 og tidligere.
+
+Hvis denne innstillingen aktiveres, vil systemet bruke Windows NT 4.0-definisjonene. Hvis innstillingen deaktiveres eller ikke konfigureres, bruker systemet de nye definisjonene beregnet på operativsystemet Windows 2000.
+
+Sammen med %HOMEDRIVE% definerer disse variablene hjemmemappen til en brukerprofil.  Hjemmemappen er en fast tilordning av en stasjonsbokstav på den lokale datamaskinen til en lokal eller ekstern katalog.
+
+%HOMESHARE% lagrer som standard den fullstendig kvalifiserte banen til hjemmemappen i Windows 2000 Server-serien (for eksempel \\serveressurs\mappe1\mappe2\hjemmemappe). Brukere har tilgang til hjemmemappen og dens undermapper fra stasjonsbokstaven for hjemmemappen, men kan ikke se eller få tilgang til dens overordnede mapper. %HOMEPATH% lagrer en endelig omvendt skråstrek og er inkludert for kompatibilitet med tidligere systemer.
+
+På Windows NT 4.0 og tidligere lagret %HOMESHARE% bare nettverksressursen (for eksempel \\serveressurs). %HOMEPATH% lagrer resten av den fullstendig kvalifiserte banen til hjemmemappen (for eksempel \mappe1\mappe2\hjemmemappe). Brukere får dermed tilgang til alle mapper på hjemmemappen ved å bruke stasjonsbokstaven for hjemmemappen.
+
+Tips! Hvis du vil angi en hjemmekatalog i Windows 2000 Server-serien, høyreklikker du navnet på en bruker konto i Active Directory-brukere og -datamaskiner eller Lokale brukere og grupper, klikker Egenskaper, kategorien Profiler og velger alternativet Koble til i Hjemmemappe-delen. Velg en stasjonsbokstav og hjemmekatalog.
+
+Eksempel: Stasjon Z er tilordnet \\serveressurs\mappe1\mappe2\hjemmemappe.
+
+Hvis denne innstillingen er deaktivert eller ikke konfigurert (Windows 2000 Server-serienoppførsel):
+
+--  %HOMEDRIVE%  = Z: (tilordnet \\serveressurs\mappe1\mappe2\hjemmemappe)
+
+--  %HOMESHARE% = \\serveressurs\mappe1\mappe2\hjemmemappe
+
+--  %HOMEPATH% = \
+
+Hvis denne innstillingen er aktivert (Windows NT 4.0-oppførsel):
+
+--  %HOMEDRIVE%  = Z: (tilordnet \\serveressurs)
+
+--  %HOMESHARE% = \\serveressurs
+
+%HOMEPATH% = \mappe1\mappe2\hjemmemappe</string>
+      <string id="DeleteRoamingCachedProfiles">Slett hurtigbufrede kopier av sentrale profiler</string>
+      <string id="DeleteRoamingCachedProfiles_Help">Angir om systemet lagrer en kopi av brukerens sentrale profil på den lokale datamaskinens harddisk når brukeren logger av.
+
+Denne og relaterte innstillinger i denne mappen beskriver sammen en strategi for å administrere brukerprofiler på eksterne servere. De forteller systemet spesielt hvordan det skal besvare langsom innlasting av eksterne profiler.
+
+Sentrale profiler er lagret på en nettverksserver. Standardinnstillingen er at når brukere med sentrale profiler logger av, lagrer systemet også en kopi av den sentrale profilen på harddisken til datamaskinen de bruker, i tilfelle serveren som lagrer den sentrale profilen ikke er tilgjengelig når brukeren logger på igjen. Den lokale kopien brukes også når den eksterne kopien av den sentrale profilen er treg å laste inn.
+
+Hvis denne innstillingen aktiveres, slettes lokale kopier av brukerens sentrale profil når brukeren logger av. Den sentrale profilen vil fortsatt finnes på nettverksserveren som lagrer den.
+
+Viktig! Ikke aktiver denne profilen hvis du bruker funksjonen for gjenkjenning av langsomme tilkoblinger i Windows 2000 Professional og Windows XP Professional. Systemet krever en lokal kopi av brukerens sentrale profil for å besvare en langsom tilkobling.</string>
+      <string id="EnableSlowLinkDetect">Ikke søk etter langsomme nettverkstilkoblinger</string>
+      <string id="EnableSlowLinkDetect_Help">Deaktiverer funksjonen for søking etter langsomme tilkoblinger.
+
+Søking etter langsomme tilkoblinger måler forbindelseshastigheten mellom en brukers datamaskin og den eksterne serveren som lagrer den sentrale brukerprofilen. Når systemet oppdager en langsom kobling, vil de aktuelle innstillingen i denne mappen fortelle systemet hvordan det skal besvares.
+
+Hvis denne innstillingen aktiveres, vil systemet ikke søke etter, eller gjenkjenne, langsomme tilkoblinger. Som et resultat av dette, vil systemet ikke besvare langsomme tilkoblinger til brukerprofiler og ignorere innstillinger som forteller systemet hvordan det skal besvare en langsom tilkobling.
+
+Hvis innstillingen deaktiveres eller ikke konfigureres, vil gjenkjenning av langsomme tilkoblinger bli aktivert. Systemet måler hastigheten til forbindelsen mellom brukerens datamaskin og profilserveren. Hvis forbindelsen er langsom (definert i innstillingen Tidsavbrudd for langsomme nettverksforbindelser for brukerprofiler), vil systemet bruke de andre innstillingene angitt i denne mappen for å fastsette fremdrift. Standardinnstillingen er at når tilkoblingen er langsom, vil systemet laste inn den lokale kopien av brukerprofilen.</string>
+      <string id="EnableSlowLinkUI">Varsle bruker når en langsom nettverkstilkobling oppdages</string>
+      <string id="EnableSlowLinkUI_Help">Denne policyinnstillingen gir brukerne mulighet til å laste ned sine sentrale profiler, selv når en langsom nettverkstilkobling til serveren med den sentrale profilen, oppdages.
+
+Hvis du aktiverer denne policyinnstillingen, får brukerne tillatelse til å bestemme om de vil at deres sentrale profil skal lastes ned når en langsom nettverkstilkobling til serveren med den sentrale profilen, oppdages.
+
+I operativsystemer før Microsoft Windows Vista, vises en dialogboks for brukeren under påloggingen hvis en langsom nettverksforbindelse oppdages. Brukeren kan da velge å laste ned den eksterne kopien av brukerprofilen. I Microsoft Windows Vista vises en avmerkingsboks på påloggingsskjermbildet, og brukeren må velge om den eksterne brukerprofilen skal lastes ned før Windows oppdager hastigheten på nettverkstilkoblingen.  
+
+Hvis du deaktiverer eller lar være å konfigurerer denne policyinnstillingen, får ikke brukeren dette valget. Systemet bruker i stedet den lokale kopien av brukerprofilen. Hvis policyinnstillingen Vent for ekstern brukerprofil er aktivert, vil systemet laste ned den eksterne kopien av brukerprofilen, uten brukerinnblanding. I Microsoft Windows Vista ignorerer systemet brukervalg som gjøres på påloggingsskjermbildet.
+
+OBS! Denne og relaterte policyinnstillinger i denne mappen, definerer hvordan systemet skal besvare langsomme nedlastinger av sentrale brukerprofiler. Bruk innstillingen Tidsavbrudd for dialogbokser for å justere hvor lang tid brukeren har til å besvare denne varslingen i operativsystemer før Microsoft Windows Vista.
+
+Viktig! Hvis policyen Ikke søk etter langsomme nettverkstilkoblinger er aktivert, ignoreres denne policyinnstillingen. Hvis policyinnstillingen Slett hurtigbufrede kopier av sentrale profiler er aktivert, finnes det ingen lokal kopi av den sentrale profilen som kan lastes når en treg tilkobling oppdages.</string>
+      <string id="ExcludeDirectories">Utelukk mapper i sentral profil</string>
+      <string id="ExcludeDirectories_Help">Lar deg legge til i listen over mapper som er utelukket fra brukerens sentrale profil.
+
+Denne innstillingen lar deg utelukke mapper som vanligvis er inkludert i brukerens profil. Disse mappene trenger da ikke bli lagret av nettverksserveren hvor profilen er plassert, og følger ikke brukere til andre datamaskiner.
+
+Mappene Appdata\Local og Appdata\LocalLow med alle undermapper som Historyg, Temp og Temporary Internet Files er utelukket fra brukerens sentrale profil som standard.
+
+Obs! I operativsystemer før Microsoft Windows Vista er bare mappene History, Local Settings, Temp og Temporary Internet Files utelukket fra brukerens sentrale profil som standard.
+
+Hvis denne innstillingen aktiveres, kan du utelukke flere mapper.
+
+Hvis innstillingen deaktiveres eller ikke konfigureres, vil bare standardmappene utelukkes
+
+OBS! Du kan ikke bruke denne innstillingen for å inkludere standardmappene i en sentral brukerprofil.</string>
+      <string id="LeaveAppMgmtData">Behold programvareinstallasjonsdata for Windows Installer og gruppepolicy</string>
+      <string id="LeaveAppMgmtData_Help">Bestemmer om systemet beholder en sentral brukers programvareinstallasjonsdata for Windows Installer og gruppepolicy ved sletting av profil.
+
+Som standard sletter brukerprofilen all informasjon som er knyttet til en sentral bruker (som inkluderer brukerinnstillinger, data, data knyttet til Windows Installer osv.) når profilen slettes. Dermed må den sentrale brukeren som har fått slettet profilen sin på klienten, installere alle programmer på nytt som er publisert via policy neste gang brukeren logger seg på, slik at det tar lengre tid å logge seg på. Du kan bruke denne policyen til å endre dette.
+
+Hvis du aktiverer denne innstillingen, sletter ikke Windows programvareinstallasjonsdata for Windows Installer eller gruppepolicy for sentrale brukere når profilene slettes fra maskinen. Dermed forbedres ytelsen ved gruppepolicybasert programvareinstallasjon under brukerpålogging når en brukerprofil blir slettet og brukeren senere logger seg på maskinen.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyen, sletter Windows hele profilen for sentrale brukere, inkludert programvareinstallasjonsdataene for Windows Installer og gruppepolicyen ved sletting av profilene.
+
+Obs: Hvis denne policyen er aktivert for en maskin, må den lokale administratoren fjerne programvareinstallasjonsdataene for Windows Installer eller gruppepolicyen som er lagret i registeret og filsystemet for de sentrale brukernes profiler på maskinen.</string>
+      <string id="LimitSize">Begrens profilstørrelse</string>
+      <string id="LimitSize_Help">Denne policyinnstillingen angir maksimal størrelse for hver brukerprofil og angir systemets respons når en brukerprofil når denne størrelsen. Denne policyinnstillingen påvirker både lokale og sentrale profiler.
+
+Hvis denne policyinnstillingen deaktiveres eller ikke konfigureres, vil systemet ikke begrense størrelsen på brukerprofiler.
+
+Hvis du aktiverer denne policyinnstillingen, kan du:
+
+-- Angi en maksimal tillatt størrelse for brukerprofiler. -- Angi om registerfilene er inkludert i beregningen av profilstørrelsen. -- Angi om brukere blir varslet når profilen overstiger maksimal størrelse. -- Angi en egendefinert melding som varsler brukere om en for stor profil. -- Angi hvor ofte den egendefinerte meldingen skal vises.
+
+Obs! I operativsystemer før Microsoft Windows Vista, tillater ikke Windows at brukere logger av før profilstørrelsen er redusert til under den tillatte grensen. I Microsoft Windows Vista, vil ikke Windows blokkere brukere fra å logge på. Hvis brukeren har en sentral brukerprofil, synkroniserer ikke Windows brukerens profil med serveren for den sentrale profilen hvis den maksimale profilstørrelsen som er angitt her, er overskredet.</string>
+      <string id="LocalProfile">Tillat bare lokale brukerprofiler</string>
+      <string id="LocalProfile_Help">Denne innstillingen angir om sentrale brukerprofiler er tilgjengelige på en bestemt datamaskin. Som standard kopieres den sentrale brukerprofilen til den lokale datamaskinen når brukere med sentrale brukerprofiler logger på. Hvis de allerede har logget på datamaskinen tidligere, slås den sentrale brukerprofilen sammen med den lokale profilen. På samme måte vil den lokale kopien av profilen, inkludert eventuelle endringer som er gjort, bli slått sammen med serverkopien av profilen når brukeren logger av datamaskinen.
+
+Ved å bruke denne innstillingen kan du hindre at brukere som er konfigurert til å bruke sentrale brukerprofiler mottar profilen på en bestemt datamaskin.
+
+Hvis denne innstillingen aktiveres, vil følgende skje på datamaskinen den gjelder for: Ved første pålogging vil brukeren motta en ny lokal profil i stedet for den sentrale brukerprofilen. Ved avlogging lagres endringene i den lokale profilen. Alle senere pålogginger bruker den lokale profilen. 
+
+Hvis denne innstillingen deaktiveres eller ikke konfigureres, brukes standard som indikert ovenfor.
+
+Hvis både innstillingen Forhindre at endringer av sentral brukerprofil overføres til serveren og Bare tillat lokale brukerprofiler aktiveres, deaktiveres sentrale brukerprofiler.
+
+OBS! Denne innstillingen gjelder bare for brukere med sentrale brukerprofiler.</string>
+      <string id="ProfileDlgTimeOut">Tidsavbrudd for dialogbokser</string>
+      <string id="ProfileDlgTimeOut_Help">Angir hvor lenge systemet venter på et brukersvar før den bruker en standardverdi.
+
+Standardverdien brukes når brukeren ikke svarer på meldinger som forklarer at en av følgende hendelser har oppstått:
+
+--  Systemet oppdager en langsom tilkobling mellom brukerens datamaskin og serveren som lagrer brukerens sentrale brukerprofiler.
+
+--  Systemet får ikke tilgang til brukernes serverbaserte profiler når brukere logger seg på eller av.
+
+--  Brukernes lokale profiler er nyere enn de serverbaserte profilene.
+
+Du kan bruke denne innstillingen til å overstyre systemets standardverdi på 30 sekunder. Hvis du vil bruke denne innstillingen, skriver du inn et desimaltall mellom 0 og 600 for lengden på intervallet.</string>
+     <string id="ProfileErrorAction">Ikke logg på brukere med midlertidige profiler</string>
+     <string id="ProfileErrorAction_Help">Denne policyen logger automatisk av en bruker hvis Windows ikke finner dennes profil.
+ 
+Hvis Windows ikke får tilgang til brukerprofilmappen eller hvis profilen inneholder feil som hindrer at den lastes, logger Windows på brukeren med en midlertidig profil. Med denne policyen kan administratoren deaktivere denne funksjonen og hindre at Windows logger på brukeren med en midlertidig profil.
+ 
+Hvis denne policyinnstillingen aktiveres, logger ikke Windows på en bruker med en midlertidig fil. Windows logger av brukeren hvis profilen ikke kan lastes. 
+ 
+Hvis du deaktiverer denne policyinnstillingen eller lar være å konfigurere den, logger Windows på brukeren med en midlertidig profil når Windows ikke kan laste brukerprofilen.
+ 
+Se også innstillingen Slett hurtigbufrede kopier av sentrale profiler.</string>
+      <string id="ProfileUnloadTimeout">Maksimalt antall nye forsøk på utlasting og oppdatering av brukerprofil</string>
+      <string id="ProfileUnloadTimeout_Help">Angir hvor mange ganger systemet prøver å laste ut og oppdatere registerdelen av en brukerprofil. Når antall forsøk angitt i denne innstillingen overskrides, stopper systemet å forsøke. Som et resultat av dette, kan brukerprofilen bli utdatert, og lokale og sentrale brukerprofiler vil kanskje ikke samsvare.
+
+Når en bruker logger av datamaskinen, laster systemet ut den brukerspesifikke delen av registret (HKEY_CURRENT_USER) til en fil (NTUSER.DAT), og oppdaterer den. Hvis et annet program eller tjeneste forsøker å lese eller redigere registret, kan systemet ikke laste delen ut.  Systemet vil forsøke (en gang per sekund) å laste ut og oppdatere registerinnstillingene. Systemet forsøker dette som standard 60 ganger (over ett minutt).
+
+Hvis denne innstillingen aktiveres, kan du justere antall ganger systemet skal forsøke å laste ut og oppdatere brukerens registerinnstillinger (du kan ikke justere frekvensen for nye forsøk).
+
+Hvis innstillingen deaktiveres eller ikke konfigureres, vil systemet forsøke 60 ganger.
+
+Hvis du angir antall nye forsøk til 0, vil systemet bare forsøke å laste ut og oppdatere brukerens registerinnstillinger én gang. Systemet prøver ikke på nytt.
+
+OBS! Denne innstillingen er spesielt viktig for servere som kjører Terminal Services. Fordi Terminal Services redigerer brukernes registerinnstillinger når de logger av, vil de første forsøkene på å laste ut brukerinnstillingene sannsynligvis mislykkes.
+
+Denne innstillingen påvirker ikke systemets forsøk på å oppdatere filer i brukerprofilen.
+
+Tips! Overvei å øke antall nye forsøk angitt i denne innstillingen hvis det finnes mange brukerprofiler lagret i datamaskinens minne. Dette indikerer at systemet ikke har vært i stand til å laste ut profilen.
+
+Kontroller også programloggen i Hendelsesliste for hendelser generert av Userenv.  Systemet registrerer en hendelse når det forsøker å laste ut registerdelen av en brukerprofil. Systemet registrerer også en hendelse når det mislykkes i å oppdatere filene i en brukerprofil.</string>
+      <string id="Readonlyuserprofile">Forhindre at endringer av sentral brukerprofil overføres til serveren</string>
+      <string id="Readonlyuserprofile_Help">Denne innstillingen angir om endringer en bruker gjør i den sentrale brukerprofilen, skal slås sammen med serverkopien av profilen.
+
+Som standard kopieres den sentrale brukerprofilen ned til den lokale maskinen når en bruker med sentral brukerprofil logger seg på en datamaskin. Hvis de allerede har logget på datamaskinen tidligere, slås den sentrale brukerprofilen sammen med den lokale profilen. På samme måte vil den lokale kopien av profilen, inkludert eventuelle endringer som er gjort, bli slått sammen med serverkopien av profilen når brukeren logger av datamaskinen.
+
+Ved å bruke denne innstillingen kan du forhindre at endringer i den sentrale brukerprofilen gjort på en bestemt datamaskin opprettholdes.
+
+Hvis denne innstillingen aktiveres, vil følgende skje på datamaskinen den gjelder for: Brukeren mottar sin sentrale brukerprofil ved pålogging. Ingen endringer som brukeren foretar, slås imidlertid sammen med den sentrale brukerprofilen når brukeren logger av.
+
+Hvis denne innstillingen deaktiveres eller ikke konfigureres, følges standard virkemåte, som indikert over.
+
+Obs: Denne innstillingen gjelder bare for brukere med sentrale brukerprofiler.</string>
+      <string id="SlowLinkDefault">Vent på ekstern brukerprofil</string>
+      <string id="SlowLinkDefault_Help">Gir systemet beskjed om å vente på at den eksterne kopien av den sentrale brukerprofilen lastes, selv om lastingen går langsomt. Systemet venter også på den eksterne kopien når brukeren er varslet om en langsom tilkobling, men svarer ikke innen den angitte tiden.
+
+Denne og relaterte innstillinger i denne mappen definerer sammen hvordan systemet skal besvare langsomme innlastinger av sentrale brukerprofiler.
+
+Hvis denne innstillingen deaktiveres eller ikke konfigureres, lastes den lokale kopien av den sentrale brukerprofilen hvis den eksterne profilen lastes for sakte. Den lokale kopien brukes også når brukeren blir spurt (som angitt i innstillingen Meddel bruker når langsom tilkobling oppdages), men ikke svarer innen angitte tid (som angitt i innstillingen Tidsavbrudd for dialogbokser).
+
+Å vente på den eksterne profilen er fornuftig når brukere flytter hyppig mellom datamaskiner, og den lokale kopien av profilen deres ikke alltid er oppdatert. Å bruke den lokale kopien er ønskelig når rask pålogging prioriteres.
+
+Viktig! Hvis innstillingen Ikke søk etter langsomme nettverkstilkoblinger er aktivert, ignoreres denne innstillingen. Hvis innstillingen Slett hurtigbufrede kopier av sentrale profiler er aktivert, finnes det ingen lokal kopi av den sentrale profilen som kan lastes når en treg tilkobling oppdages.</string>
+      <string id="SlowLinkTimeOut">Tidsavbrudd for langsomme nettverkstilkoblinger for brukerprofiler</string>
+      <string id="SlowLinkTimeOut_Help">Definerer en treg tilkobling for sentrale brukerprofiler.
+
+Hvis serveren som brukerens sentrale brukerprofil befinner seg på, bruker lengre tid på å svare enn grensene angitt av denne innstillingen tillater, anses tilkoblingen til profilen som treg.
+
+Denne og relaterte innstillinger i denne mappen definerer sammen hvordan systemet skal besvare langsomme innlastinger av sentrale brukerprofiler.
+
+Denne innstillingen etablerer grenser for to tester. For datamaskiner som er koblet til IP-nettverk, måles hastigheten en ekstern server returnerer data på, som svar på en IP-pingmelding. Hvis du vil angi en grense for denne testen, skriver du inn et desimaltall mellom 0 og 4 294 967 200 i boksen Tilkoblingshastighet, som angitt minimum godkjente overføringshastighet i kilobiter per sekund. Standarden er at hvis serveren returnerer mindre enn 500 kilobiter med data per sekund, anses dette som tregt.
+
+For ikke-IP-maskiner, måles svarhastigheten til den eksterne serverens filsystem. Hvis du vil angi en grense for denne testen, skriver du inn et desimaltall mellom 0 og 20 000 i boksen Tid, som representerer maksimum godkjente forsinkelse i millisekunder. Standarden er at hvis serverens filsystem ikke svarer innen 120 millisekunder, anses dette som tregt.
+
+Du bør vurdere å øke denne verdien for klienter som bruker DHCP Service-tildelte adresser eller for datamaskiner som får tilgang til profiler over eksterne tilkoblinger.
+
+Viktig! Hvis innstillingen Ikke søk etter langsomme nettverkstilkoblinger er aktivert, ignoreres denne innstillingen. Hvis innstillingen Slett hurtigbufrede kopier av sentrale profiler er aktivert, finnes det ingen lokal kopi av den sentrale profilen som kan lastes når en treg tilkobling oppdages.</string>
+      <string id="UserProfiles">Brukerprofiler</string>
+      <string id="CleanupProfiles">Slett brukerprofiler som er eldre enn et bestemt antall dager ved omstart av maskinen</string>
+      <string id="CleanupProfiles_Help">Med denne policyinnstillingen kan en administrator automatisk slette brukerprofiler som ikke er blitt brukt på et visst antall dager, ved omstart av systemet. Obs! Én dag tolkes som 24 timer etter at en bestemt brukerprofil ble åpnet.
+
+Hvis du aktiverer denne policyinnstillingen, vil tjenesten User Profile automatisk slette alle brukerprofiler på datamaskinen som ikke er blitt brukt på et visst antall dager ved neste omstart av systemet. 
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, vil ikke tjenesten User Profile automatisk slette profiler ved neste omstart av systemet.</string>
+      <string id="CscSuspendDirectories">Nettverksmapper som kun skal synkroniseres ved av-/pålogging</string>
+      <string id="CscSuspendDirectories_Help">Med denne policyinnstillingen kan du angi hvilke nettverkskataloger som bare blir synkronisert ved på- og avlogging via frakoblede filer. Denne policyinnstillingen er beregnet for bruk i forbindelse med mappeomadressering, for å løse problemer med programmer som ikke fungerer bra med frakoblede filer når brukeren er tilkoblet.
+
+Hvis du aktiverer denne policyinnstillingen, synkroniseres nettverksbanene som er angitt i denne policyinnstillingen, bare av frakoblede filer under brukerpålogging og -avlogging og kobles fra mens brukeren er logget på.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, fungerer banene som er angitt i denne policyinnstillingen på samme måte som annen bufret data via frakoblede filer og forblir tilkoblet mens brukeren er logget på, hvis nettverksbanene er tilgjengelige.   
+
+Obs! Du bør ikke bruke denne policyinnstillingen til å ekskludere noen av de omadresserte rotmappene, for eksempel Appdata\Roaming, Startmeny eller Dokumenter. Du bør bare ekskludere undermappene til disse overordnede mappene.</string>
+      <string id="DontForceUnloadHive">Ikke last ut brukerens register ved brukeravlogging</string>
+      <string id="DontForceUnloadHive_Help">Microsoft Windows laster alltid ut brukerens register, selv om det er åpne referanser til brukerens registernøkler ved brukeravloggingen. Ved bruk av denne policyinnstillingen kan en administrator oppheve denne funksjonen og hindre at Windows laster ut brukerens register ved brukeravlogging.
+
+Obs! Denne policyen bør bare brukes i tilfeller der det kan oppstå problemer med programkompatibilitet på grunn av denne bestemte Windows-funksjonen.  Denne policyen bør ikke aktiveres som standard fordi den kan hindre at brukerne får en oppdatert versjon av sin sentrale brukerprofil.
+
+Hvis du aktiverer denne policyinnstillingen, laster ikke Windows ut brukerens register ved avlogging. Registeret lastes ikke ut før alle referanser til brukerens registernøkler er lukket.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, laster Windows alltid ut brukerens register ved avlogging, selv om det er åpne referanser til brukerens registernøkler ved brukeravloggingen.</string>
+      <string id="WaitForNetwork">Angi maksimal ventetid for nettverket hvis en bruker har en sentral brukerprofil eller ekstern hjemmekatalog</string>
+      <string id="WaitForNetwork_Help">Hvis brukeren har en sentral brukerprofil eller ekstern hjemmekatalog og nettverket for øyeblikket er utilgjengelig, venter Microsoft Windows i 30 sekunder på nettverket når brukeren logger på datamaskinen. Ved å bruke denne policyinnstillingen kan en administrator angi hvor lenge Windows skal vente på at nettverket blir tilgjengelig. Hvis nettverket er utilgjengelig etter den maksimale ventetiden, logger Windows på brukeren, uten en nettverkstilkobling. Brukerens sentrale profil synkroniseres ikke med serveren, og den eksterne hjemmekatalogen brukes ikke for påloggingsøkten. 
+
+Denne policyen er nyttig i tilfeller der et nettverk bruker lengre tid på å initialisere, som for eksempel et trådløst nettverk.
+
+Obs! Hvis nettverket blir tilgjengelig før maksimal ventetid er ute, fortsetter Windows straks med brukerpåloggingen. Windows venter ikke på nettverket hvis den fysiske nettverkstilkoblingen ikke er tilgjengelig på datamaskinen (hvis mediet er frakoblet eller nettverkskortet ikke er tilgjengelig).
+ 
+Hvis du aktiverer denne policyinnstillingen, venter Windows på at nettverket skal bli tilgjengelig, opp til den maksimale ventetiden som er angitt i denne policyinnstillingen. Angis verdien null, fortsetter Windows uten å vente på nettverket. 
+
+Hvis du deaktiverer eller lar være å konfigurere denne innstillingen, venter Windows på nettverket i høyst 30 sekunder.</string>
+      <string id="MachineProfilePath">Angi bane for sentrale profiler for alle brukere som logger på denne datamaskinen.</string>
+      <string id="MachineProfilePath_Help">Angir om Microsoft Windows skal bruke den angitte nettverksbanen som bane for sentrale profiler for alle brukere som logger på denne datamaskinen. 
+
+Hvis du vil bruke denne innstillingen, skriver du inn banen til den delte nettverksressursen i formatet \\datamaskinnavn\ressursnavn\. %USERNAME% bør legges til banen for å gi hver bruker en individuell profilmappe. Hvis dette ikke gjøres, bruker alle brukere som logger på denne datamaskinen, den samme mappen for sentral profil, som er angitt i denne policyen. Du må forsikre deg om at du har angitt riktig sikkerhet for mappen, slik at alle brukerne får tilgang til profilene. 
+
+Hvis du aktiverer denne policyinnstillingen, bruker alle brukere som logger på denne datamaskinen, den samme mappen for sentral profil, som er angitt i denne policyen. 
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, bruker alle brukere som logger på denne datamaskinen, sine lokale profiler eller den sentrale standardbrukerprofilen.   
+
+Obs: En sentral brukerprofil kan konfigureres på fire måter. Windows leser profilkonfigurasjonen i følgende rekkefølge og bruker den første konfigurerte innstillingen den leser.
+ 
+1. Terminal Services' bane for sentral profil, som er angitt av Terminal Services-policyen
+2. Terminal Services' bane for sentral profil, som er angitt av brukerobjektet
+3. Datamaskinens bane for sentral profil, som er angitt i denne policyen
+4. Brukerens bane for sentral profil, som er angitt i brukerobjektet
+</string>
+      <string id="UploadHive">Opplasting i bakgrunnen av registerfilen for en sentral brukerprofil mens brukeren er logget på</string>
+      <string id="UploadHive_Help">Angir tidsplanen for opplasting i bakgrunnen av registerfilen for en sentral brukerprofil (ntuser.dat). Denne innstillingen vil bare laste opp registerfilen for brukerprofilen (andre brukerdata lastes ikke opp), og filen lastes bare opp hvis brukeren er logget på. Bare registerfilen for en sentral brukerprofil lastes opp – vanlige profiler påvirkes ikke. Denne policyen hindrer ikke at registerfilen for den sentrale brukerprofilen lastes opp når brukeren logger seg av.
+
+Hvis denne innstillingen er deaktivert eller ikke konfigurert, lastes ikke registerfilen for en sentral brukerprofil opp i bakgrunnen mens brukeren er logget på.
+
+Hvis du vil bruke denne innstillingen, må du først velge hvilken planleggingsmetode du vil bruke.
+
+Hvis du velger Kjør etter angitt intervall, må du angi et intervall med en verdi på 1-720 timer. Når dette er angitt, lastes registerfilen for profilen opp i det angitte intervallet etter at brukeren logger seg på. Hvis verdien for eksempel er 6 timer og en bruker logger seg på klokken 6:00 og fortsatt er logget på klokken 12:00, lastes registerfilen opp på dette tidspunktet. Hvis brukeren fortsatt er logget på klokken 18:00, lastes filen også opp da, og videre hver 6. time til brukeren logger seg av. Neste gang brukeren logger seg på, startes tidtakingen på nytt, slik at registerfilen lastes opp 6 timer senere (i eksemplet vårt.)
+
+Hvis du velger Kjør til angitt tid på dagen, må du angi et tidspunkt på dagen. Når dette er angitt, lastes registerstrukturen opp samme tid hver dag, forutsatt at brukeren er logget på på dette tidspunktet.
+
+For begge planleggingsalternativene inngår en tilfeldig forsinkelse på en time per utløser, slik at serveren ikke overbelastes med samtidige opplastinger. Hvis innstillingene for eksempel angir at brukerens registerfil skal lastes opp klokken 18:00, lastes den faktisk opp på et tilfeldig tidspunkt mellom 18:00 og 19:00.
+
+Obs: Hvis du velger Kjør etter angitt intervall, tas det ikke hensyn til alternativet Tid på dagen. Hvis du velger Kjør til angitt tid på dagen, tas det på samme måte ikke hensyn til alternativet Intervall (timer).</string>
+      <string id="UploadHiveMethod_Interval">Kjør etter angitt intervall</string>
+      <string id="UploadHiveMethod_Time">Kjør til angitt tid på dagen</string>
+      <string id="ScheduleTime0">00:00</string>
+      <string id="ScheduleTime1">01:00</string>
+      <string id="ScheduleTime2">02:00</string>
+      <string id="ScheduleTime3">03:00</string>
+      <string id="ScheduleTime4">04:00</string>
+      <string id="ScheduleTime5">05:00</string>
+      <string id="ScheduleTime6">06:00</string>
+      <string id="ScheduleTime7">07:00</string>
+      <string id="ScheduleTime8">08:00</string>
+      <string id="ScheduleTime9">09:00</string>
+      <string id="ScheduleTime10">10:00</string>
+      <string id="ScheduleTime11">11:00</string>
+      <string id="ScheduleTime12">12:00</string>
+      <string id="ScheduleTime13">13:00</string>
+      <string id="ScheduleTime14">14:00</string>
+      <string id="ScheduleTime15">15:00</string>
+      <string id="ScheduleTime16">16:00</string>
+      <string id="ScheduleTime17">17:00</string>
+      <string id="ScheduleTime18">18:00</string>
+      <string id="ScheduleTime19">19:00</string>
+      <string id="ScheduleTime20">20:00</string>
+      <string id="ScheduleTime21">21:00</string>
+      <string id="ScheduleTime22">22:00</string>
+      <string id="ScheduleTime23">23:00</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ExcludeDirectories">
+        <textBox refId="ExcludeMessage">
+          <label>Forhindre følgende mapper fra å følge brukerens sentrale profil:</label>
+        </textBox>
+        <text>Du kan angi flere katalognavn, adskilt med semikolon,</text>
+        <text>alle relative til roten for brukerens profil</text>
+      </presentation>
+      <presentation id="LimitSize">
+        <textBox refId="SizeMessage">
+          <label>Egendefinert melding</label>
+          <defaultValue>Du har overskredet lagringsplassen for profiler. Du må fjerne noen elementer fra profilen din til nettverket eller lokalt før du kan logge av.</defaultValue>
+        </textBox>
+        <decimalTextBox refId="ProfileSize" defaultValue="30000" spinStep="100">Maks. profilstørrelse (kB)</decimalTextBox>
+        <checkBox refId="IncludeRegInProQuota">Vis registerfiler i fillisten</checkBox>
+        <checkBox refId="WarnUser">Varsle bruker når lagringsplass for profil er overskredet.</checkBox>
+        <decimalTextBox refId="WarnUserTimeout" defaultValue="15" spinStep="5">Påminn bruker hvert X minutt:</decimalTextBox>
+      </presentation>
+      <presentation id="ProfileDlgTimeOut">
+        <decimalTextBox refId="ProfileDlgWaitInterval" defaultValue="30">Tid (sekunder)</decimalTextBox>
+      </presentation>
+      <presentation id="ProfileUnloadTimeout">
+        <decimalTextBox refId="ProfileUnloadTimeoutPrompt" defaultValue="60" spinStep="5">Maksimalt antall nye forsøk:  </decimalTextBox>
+      </presentation>
+      <presentation id="SlowLinkTimeOut">
+        <decimalTextBox refId="TransferRateOp" defaultValue="500" spinStep="100">Tilkoblingshastighet (kbps):</decimalTextBox>
+        <decimalTextBox refId="SlowLinkWaitInterval" defaultValue="120">Tid (millisekunder)</decimalTextBox>
+      </presentation>
+      <presentation id="CleanupProfiles">
+        <decimalTextBox refId="CleanupProfiles_Days" defaultValue="30">Slett brukerprofiler som er eldre enn (dager)</decimalTextBox>
+      </presentation>
+      <presentation id="CscSuspendDirectories">
+        <textBox refId="CscSuspendDirectories_Message">
+          <label>Synkroniser disse nettverksmappene kun ved av-/pålogging:</label>
+        </textBox>
+        <text>Du kan angi flere mappenavn, angitt med semikolon.</text>
+      </presentation>
+      <presentation id="WaitForNetwork">
+        <decimalTextBox refId="WaitForNetwork_Seconds" defaultValue="30">Vent på nettverket i maksimalt (sekunder)</decimalTextBox>
+      </presentation>
+      <presentation id="MachineProfilePath">
+        <textBox refId="MachineProfilePath_Message">
+          <label>Brukere som logger på denne datamaskinen, bør bruke denne banen for sentral profil:</label>
+        </textBox>
+        <text>%USERNAME% bør legges til banen for å gi hver bruker forskjellig profilkatalog.</text>
+      </presentation>
+      <presentation id="UploadHive">
+        <dropdownList refId="UploadHiveMethod" noSort="true" defaultItem="0">Planleggingsmetode:</dropdownList>
+        <text>Følgende innstillinger er bare nødvendige og aktuelle</text>
+        <text>hvis Kjør etter angitt intervall er valgt.</text>
+        <decimalTextBox refId="UploadHiveInterval" defaultValue="12" spinStep="1">intervall (timer):</decimalTextBox>
+        <text>Følgende innstillinger er bare nødvendige og aktuelle</text>
+        <text>hvis Kjør til angitt tid på dagen er valgt.</text>
+        <dropdownList refId="UploadHiveTime" defaultItem="3">Tid på dagen:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

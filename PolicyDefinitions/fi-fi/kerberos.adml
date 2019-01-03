@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Kerberos-asetukset</displayName>
+  <description>Kerberos-todennusprotokollan kokoonpanoasetukset.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Käytä toimialuepuuryhmän hakujärjestystä</string>
+      <string id="forestsearch_explain">Tämä käytäntöasetus määrittää luettelon luotettavista toimialuepuuryhmistä, joista Kerberos-asiakas etsii yrittäessään selvittää kaksiosaisia palvelun päänimiä (SPN-nimiä).
+
+Jos otat tämän käytäntöasetuksen käyttöön, Kerberos-asiakas yrittää etsiä tämän luettelon toimialuepuuryhmistä, jos se ei pysty selvittämään kaksiosaista palvelun päänimeä. Jos vastaava kohde löytyy, Kerberos-asiakas pyytää asianmukaisen toimialueen viittauslipun.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Kerberos-asiakas ei selvitä palvelun päänimeä etsimällä luettelossa olevista toimialuepuuryhmistä. Jos Kerberos-asiakas ei pysty selvittämään palvelun päänimeä, koska nimeä ei löydy, saatetaan käyttää NTLM-todennusta.</string>
+      <string id="hosttorealm">Määritä isäntänimien ja Kerberos-alueen väliset määritykset</string>
+      <string id="hosttorealm_explain">Tämän käytäntöasetuksen avulla voit määrittää, mitkä DNS-isäntänimet ja DNS-liitteet yhdistetään Kerberos-alueeseen.
+
+Jos otat tämän käytäntöasetuksen käyttöön, voit tarkastella ja muuttaa Kerberos-alueeseen ryhmäkäytännön määrittämällä tavalla yhdistettyjen DNS-isäntänimien ja DNS-liitteiden luetteloa. Jos haluat tarkastella yhdistämismääritysten luetteloa, ota käytäntöasetus käyttöön ja valitse sitten Näytä. Jos haluat lisätä yhdistämismäärityksen, ota käytäntöasetus käyttöön, kiinnitä huomiota syntaksiin ja valitse Näytä. Kirjoita alueen nimi Näytä sisältö -valintaikkunan Arvon nimi -sarakkeeseen. Kirjoita Arvo-sarakkeeseen DNS-isäntänimien ja DNS-liitteiden luettelo käyttäen asianmukaista syntaksimuotoa. Jos haluat poistaa yhdistämismäärityksen luettelosta, valitse poistettava merkintä ja paina sitten DELETE-näppäintä. Jos haluat muokata yhdistämismääritystä, poista nykyinen merkintä luettelosta ja lisää uusi merkintä, jolla on eri parametrit.
+
+Jos poistat tämän käytäntöasetuksen käytöstä, ryhmäkäytännön määrittämä isäntänimien ja Kerberos-alueiden yhdistämismääritysten luettelo poistetaan.
+
+Jos et määritä tätä käytäntöasetusta, järjestelmä käyttää paikallisessa rekisterissä mahdollisesti määritettyjä isäntänimien ja Kerberos-alueiden yhdistämismäärityksiä.</string>
+      <string id="MitRealms">Määritä yhteensopivat Kerberos V5 -alueasetukset</string>
+      <string id="MitRealms_explain">Tämä käytäntöasetus määrittää Kerberos-asiakkaan niin, että se voidaan todentaa tämän käytäntöasetuksen määrittämillä yhteensopivilla Kerberos V5 -alueilla.
+      
+Jos otat tämän käytäntöasetuksen käyttöön, voit tarkastella ja muuttaa yhteensopivien Kerberos V5 -alueiden ja niiden asetusten luetteloa. Jos haluat tarkastella yhteensopivien Kerberos V5 -alueiden luetteloa, ota käytäntöasetus käyttöön ja valitse Näytä. Jos haluat lisätä yhteensopivan Kerberos V5 -alueen, ota käytäntöasetus käyttöön, kiinnitä huomiota syntaksiin ja valitse Näytä. Kirjoita yhteensopivan Kerberos V5 -alueen nimi Näytä sisältö -valintaikkunan Arvon nimi -sarakkeeseen. Kirjoita Arvo-sarakkeeseen isäntäavainten jakelukeskusten alueliput ja isäntänimet käyttäen asianmukaista syntaksimuotoa. Jos haluat poistaa yhteensopivan Kerberos V5 -alueen Arvon nimi- tai Arvo-merkinnän luettelosta, valitse merkintä ja paina sitten DELETE-näppäintä. Jos haluat muokata yhdistämismääritystä, poista nykyinen merkintä luettelosta ja lisää uusi merkintä, jolla on eri parametrit.
+
+Jos poistat tämän käytäntöasetuksen käytöstä, ryhmäkäytännön määrittämät yhteensopivan Kerberos V5 -alueen asetukset poistetaan.
+
+Jos et määritä tätä käytäntöasetusta, järjestelmä käyttää paikallisessa rekisterissä mahdollisesti määritettyjä yhteensopivan Kerberos V5 -alueen asetuksia.</string>
+      <string id="ValidateKDC">Vaadi tarkasti määritetty avaintenjakelukeskuksen vahvistus</string>
+      <string id="ValidateKDC_explain">Tämä käytäntöasetus ohjaa Kerberos-asiakkaan toimintaa avaintenjakelukeskuksen varmenteen vahvistamisessa.  
+      
+Jos otat tämän käytäntöasetuksen käyttöön, Kerberos-asiakas vaatii, että avaintenjakelukeskuksen X.509-varmenne sisältää avaintenjakelukeskuksen avaimen käyttötarkoituksen objektitunnuksen EKU (Extended Key Usage) -laajennukset ja että avaintenjakelukeskuksen X.509-varmenne sisältää SAN (DNSName subjectAltName) -tunnisteen, joka vastaa toimialueen DNS-nimeä. Jos tietokone on liitetty toimialueelle, Kerberos-asiakas edellyttää, että avaintenjakelukeskuksen X.509-varmenteen on oltava varmenteen myöntäjän (CA) allekirjoittama NTAUTH-säilössä. Jos tietokonetta ei ole liitetty toimialueelle, Kerberos-asiakas sallii, että älykortilla olevaa varmenteen myöntäjän päävarmennetta käytetään avaintenjakelukeskuksen X.509-varmenteen polun vahvistamiseen.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Kerberos-asiakas vaatii vain, että avaintenjakelukeskuksen varmenne sisältää palvelimen todennuksen käyttötarkoituksen objektitunnuksen EKU-laajennuksissa.
+</string>
+      <string id="StrictTarget">Edellytä tarkka kohteen palvelun päänimen vastaavuus etäproseduurikutsuissa</string>
+      <string id="StrictTarget_explain">Kun sovellus yrittää tehdä etäproseduurikutsun tälle palvelimelle käyttäen palvelun päänimenä NULL-arvoa, Windows 7 -tietokoneet yrittävät käyttää Kerberosta luomalla palvelun päänimen. Tämän käytäntöasetuksen avulla voit määrittää tämän palvelimen niin, että Kerberos pystyy purkamaan tämän järjestelmän luoman palvelun päänimen sisältävän lipun salauksen.
+
+Jos otat tämän käytäntöasetuksen käyttöön, vain LocalSystem- tai NetworkService-tunnistetietoa käyttäen suoritettavat palvelut saavat hyväksyä näitä yhteyksiä. Palveluiden, jotka suoritetaan käyttäen muuta kuin LocalSystem- tai NetworkService-tunnistetietoa, todennus saattaa epäonnistua.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, kaikki palvelut saavat hyväksyä saapuvat yhteydet käyttäen tätä järjestelmän luomaa palvelun päänimeä.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Isäntänimien ja toimialueen välisten määritysten määrittäminen:</listBox>
+        <text></text>
+        <text>Käyttö:</text>
+        <text>Kirjoita Kerberos-alueen nimi Arvon nimi -kenttään.</text>
+        <text>Kirjoita Arvo-kenttään isäntänimet ja DNS-liitteet, jotka haluat</text>
+        <text>yhdistää Kerberos-alueeseen.  Jos haluat lisätä useita</text>
+        <text>nimiä, erota ne puolipisteellä (;).</text>
+        <text></text>
+        <text>Huomautus: Voit määrittää DNS-liitteen lisäämällä tietueen eteen pisteen.</text>
+        <text>Älä lisää pistettä isäntänimitietueen eteen.</text>
+        <text></text>
+        <text>Esimerkki:</text>
+        <text>Arvon nimi: MICROSOFT.COM</text>
+        <text>Arvo: .microsoft.com; .ms.com; computer1.fabrikam.com;</text>
+        <text></text>
+        <text>Edellä olevassa esimerkissä: Kaikki pääkohteet, joiden DNS-liite on joko</text>
+        <text>*.microsoft.com tai *.ms.com, yhdistetään</text>
+        <text>MICROSOFT.COM-Kerberos-alueeseen. Myös isäntänimi</text>
+        <text>computer1.fabrikam.com yhdistetään </text>
+        <text>MICROSOFT.COM-Kerberos-alueeseen.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Yhteensopivien Kerberos V5 -alueasetusten määrittäminen:</listBox>
+        <text></text>
+        <text>Käyttö:</text>
+        <text>Kirjoita yhteensopivan Kerberos V5 -alueen nimi Arvon nimi -kenttään.</text>
+        <text>Kirjoita alueen liput ja avaintenjakelukeskusten isäntänimet</text>
+        <text>Arvo-kenttään.  Lisää alueen lippujen ympärille seuraavat</text>
+        <text>tunnisteet: &lt;f&gt; &lt;/f&gt;.  Lisää avaintenjakelukeskusten luettelon ympärille seuraavat tunnisteet: &lt;k&gt; &lt;/k&gt;</text>
+        <text>Jos haluat lisätä useita avaintenjakelukeskusten nimiä, erota merkinnät toisistaan</text>
+        <text>puolipisteellä (;).</text>
+        <text></text>
+        <text>Esimerkki:</text>
+        <text>Arvon nimi: TEST.COM</text>
+        <text>Arvo: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Toinen esimerkki:</text>
+        <text>Arvon nimi: REALM.FABRIKAM.COM</text>
+        <text>Arvo: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Tila:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Toimialuepuuryhmät, joista etsitään</label>
+        </textBox>
+        <text>Käyttö:</text>
+        <text>Anna luettelo toimialuepuuryhmistä, joista etsitään, kun tämä käytäntö on käytössä.</text>
+        <text>Käytä täydellisen toimialuenimen nimeämiskäytäntöä.</text>
+        <text>Erottele hakumerkinnät puolipisteen (;) avulla.</text>
+        <text>Tiedot:</text>
+        <text>Nykyistä toimialuepuuryhmää ei tarvitse olla luettelossa, koska toimialuepuuryhmän hakujärjestys käyttää ensin yleistä luetteloa ja etsii sitten määritetyssä järjestyksessä.</text>
+        <text>Sinun ei tarvitse luetella toimialuepuuryhmän kaikkia toimialueita erikseen.</text>
+        <text>Jos luettelossa on luotettava toimialuepuuryhmä, etsitään kaikista kyseisen toimialuepuuryhmän toimialueista.</text>
+        <text>Parhaan suorituskyvyn saat, kun asetat toimialuepuuryhmät luetteloon haun onnistumistodennäköisyyden järjestyksessä. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

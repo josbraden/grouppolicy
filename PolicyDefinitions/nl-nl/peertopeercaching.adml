@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>Met BranchCache kunnen clients op een veilige manier inhoud ophalen uit een filiaal en hoeven ze de inhoud niet op te halen van de server die de inhoud host. Afhankelijk van de implementatiemodus, kan de inhoud worden opgehaald van andere clients in het filiaal of van een server voor een gehoste cache in het filiaal. Een client kan alleen inhoud ophalen uit het filiaal als dit wordt toegestaan door de server. Het inschakelen van BranchCache verlaagt de kosten van de WAN-verbinding (Wide Area Network) tussen de filialen en het datacentrum of het hoofdkantoor en verhoogt de downloadsnelheid voor inhoud die al is gedownload naar het filiaal.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">BranchCache inschakelen</string>
+
+            <string id="WBC_Enable_Help">Deze beleidsinstelling bepaalt of BranchCache is ingeschakeld op de clientcomputer. BranchCache verlaagt de kosten voor het gebruik van de WAN-verbindingen (Wide Area Network) tussen filialen en het datacentrum of het hoofdkantoor en verhoogt de toegangssnelheid voor inhoud die al is gedownload naar het filiaal. BranchCache zorgt er namelijk voor dat computers in een filiaal bestanden en HTTP-verkeer van intranetservers waarop BranchCache is ingeschakeld in de cache kunnen opslaan en deze bestanden vervolgens veilig kunnen delen met andere computers in het filiaal. Computers in het filiaal kunnen inhoud ophalen van een server voor een gehoste cache in het filiaal (bij gebruik van de modus Gehoste cache) of van andere clientcomputers in het filiaal (bij gebruik van de modus Gedistribueerde cache). Om toegang te hebben tot inhoud in de cache, moet de computer beschikken over machtigingen voor toegang tot de inhoud op de bronserver.
+
+Schakel deze beleidsinstelling in op clientcomputers in filialen met een lage WAN-bandbreedte, een hoge latentie en diverse clientcomputers die toegang moeten hebben tot dezelfde gegevens op servers in het hoofdkantoor.
+
+Als u deze beleidsinstelling inschakelt, wordt BranchCache ingeschakeld. Deze beleidsinstelling heeft alleen effect als de functie BranchCache is geïnstalleerd op de clientcomputer.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt BranchCache uitgeschakeld.
+            </string>
+
+            <string id="WBC_Cache_Percent">Percentage van schijfruimte instellen voor cache op clientcomputer</string>
+
+            <string id="WBC_Cache_Percent_Help">Met deze beleidsinstelling kunt u het percentage van de totale schijfruimte wijzigen dat standaard wordt gereserveerd voor het opslaan in de cache van inhoud die is opgehaald met BranchCache. Deze inhoud wordt beschikbaar gesteld aan andere clientcomputers die deze inhoud nodig hebben, maar alleen als dit wordt toegestaan door de server.
+
+Als u deze beleidsinstelling inschakelt, kunt u het percentage van de totale schijfruimte configureren dat wordt gereserveerd voor de cache.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt er 5 procent van de totale schijfruimte op de clientcomputer gereserveerd voor de cache.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Modus Gehoste cache instellen voor BranchCache</string>
+
+            <string id="WBC_HostedCache_Location_Help">Gebruik deze beleidsinstelling om aan te geven of de clientcomputer de modus Gehoste cache moet gebruiken, en zo ja, wat het adres van de BranchCache-server is. In de modus Gehoste cache kan een clientcomputer inhoud ophalen van een BranchCache-server die fungeert als de centrale (gehoste) cache voor een filiaal. Als de modus Gehoste cache wordt gebruikt, wordt inhoud die is gedownload door clientcomputers waarop BranchCache is ingeschakeld, doorgestuurd naar de BranchCache-server. Deze server fungeert vervolgens als de centrale cache voor andere clientcomputers in het filiaal waarop BranchCache is ingeschakeld. Clientcomputers maken gebruik van SSL (Secure Sockets Layer) om te communiceren met de BranchCache-server.
+
+Als u deze beleidsinstelling wilt gebruiken, moet u het adres van de BranchCache-server opgeven. Dit adres moet overeenkomen met de FQDN-naam (Fully Qualified Domain Name) van de server die is opgegeven in het certificaat voor de BranchCache-server. Bovendien moet de certificaatbasisinstantie voor het certificaat van de BranchCache-server zich bevinden in het vertrouwde basisarchief van de clientcomputer.
+
+Als u deze beleidsinstelling inschakelt en een geldige locatie opgeeft voor de gehoste cache, wordt de modus Gehoste cache ingeschakeld. Deze beleidsinstelling heeft alleen effect als u ook de beleidsinstelling BranchCache inschakelen activeert.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt de modus Gehoste cache uitgeschakeld.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Modus Gedistribueerde cache instellen voor BranchCache</string>
+
+            <string id="WBC_Distributed_Enable_Help">Gebruik deze beleidsinstelling om aan te geven of de clientcomputer de modus Gedistribueerde cache moet gebruiken. In deze modus van BranchCache kan een clientcomputer inhoud ophalen die is gedownload door andere clientcomputers in het filiaal en vervolgens in de cache is geplaatst. Om toegang te hebben tot inhoud in de cache van andere clientcomputers, moet de computer beschikken over machtigingen voor toegang tot de inhoud op de bronserver.
+
+Deze beleidsinstelling bepaalt of de modus Gedistribueerde cache wordt gebruikt. Schakel deze beleidsinstelling in wanneer u BranchCache gebruikt in filialen waarvoor geen server beschikbaar is die als een gehoste cache fungeert.
+
+Als u deze beleidsinstelling inschakelt, wordt de modus Gedistribueerde cache gebruikt. Deze beleidsinstelling heeft alleen effect als u ook de beleidsinstelling BranchCache inschakelen activeert.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt de modus Gedistribueerde cache uitgeschakeld.
+            </string>
+
+            <string id="WBC_SMB_Enable">BranchCache configureren voor netwerkbestanden</string>
+
+            <string id="WBC_SMB_Enable_Help">Gebruik deze beleidsinstelling om de standaardwaarde voor de retourlatentie van het netwerk te wijzigen waarboven clientcomputers in het filiaal netwerkbestanden opslaan in de cache. BranchCache voor netwerkbestanden zorgt er namelijk voor dat computers in een filiaal gegevens van intranetservers waarop BranchCache is ingeschakeld in de cache kunnen opslaan en de bestanden vervolgens veilig kunnen delen met andere computers in het filiaal. Netwerkbestanden kunnen met behulp van het protocol SMB (Server Message Block) worden opgeslagen in de cache van een clientcomputer in een filiaal.
+
+Dit gebeurt standaard wanneer de retourlatentie van de WAN-verbinding (Wide Area Network) hoger is dan 80 ms. Als u wilt dat netwerkbestanden die zijn gedownload naar computers in het filiaal altijd in de cache worden geplaatst, stelt u de waarde voor de netwerklatentie in op 0. Als u niet wilt dat netwerkbestanden worden opgeslagen in de cache van clientcomputers in een filiaal, stelt u de latentie in op een zeer hoge waarde.
+
+Als u deze beleidsinstelling inschakelt, kunt u de retourlatentie van het netwerk configureren waarboven clientcomputers in het filiaal netwerkbestanden opslaan in de cache.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, worden netwerkbestanden opgeslagen in de cache als de retourlatentie van de WAN-verbinding hoger is dan 80 ms.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Cachelocatie van clientcomputer invoeren</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Voer de locatie van de gehoste cache in.</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Voer de retourlatentie in (in milliseconden) waarboven netwerkbestanden moeten worden opgeslagen in de cache van de clientcomputers in het filiaal.</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Zde zadejte zobrazovaný název.</displayName>
+  <description>Zde zadejte popis.</description>
+  <resources>
+    <stringTable>
+      <string id="Rpc">Vzdálené volání procedur (RPC)</string>
+      <string id="RpcEEInfoOff">Vypnuto</string>
+      <string id="RpcEEInfoOffWithExc">Vypnuto s výjimkami</string>
+      <string id="RpcEEInfoOn">Zapnuto</string>
+      <string id="RpcEEInfoOnWithExc">Zapnuto s výjimkami</string>
+      <string id="RpcEnableAuthEpResolution">Ověření klienta pomocí mapovače koncových bodů RPC</string>
+      <string id="RpcEnableAuthEpResolution_Help">Pokud je tohoto nastavení povoleno, klienti služby RPC se budou muset ověřovat pomocí služby mapovače koncových bodů (pokud volání RPC zjišťovaného koncového bodu obsahuje ověřovací informace).
+
+Pokud je toto nastavení zakázáno, klienti RPC se při komunikaci se službou mapovače koncových bodů nebudou ověřovat. Služba mapovače koncových bodů spuštěná v prostředí systému Windows NT4 (kterákoli aktualizace Service Pack) není schopna zpracovat ověřovací informace dodané tímto způsobem. Pokud tedy toto nastavení povolíte, počítač nebude v případě nutnosti překladu koncového bodu moci komunikovat se serverem Windows NT4 pomocí služby RPC.
+
+Ve výchozím nastavení klienti služby RPC ke komunikaci se službou mapovače koncových bodů serveru RPC při žádosti o koncový bod serveru ověřování nepoužívají.
+
+Poznámka: Tato zásada bude použita až po restartování systému. </string>
+      <string id="RpcExtendedErrorInformation">Šíření rozšířených informací o chybách</string>
+      <string id="RpcExtendedErrorInformation_Help">Ukládá modulu runtime služby Vzdálené volání procedur (RPC) generovat rozšířené informace o chybě v případě, že dojde k chybě.
+
+Rozšířené informace o chybě obsahují místní čas výskytu chyby, verzi služby Vzdálené volání procedur a název počítače, ve kterém k chybě došlo nebo do kterého se chyba rozšířila. Aplikace mohou načíst rozšířené informace o chybě pomocí standardních rozhraní API systému Windows.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, generuje modul runtime služby Vzdálené volání procedur pouze stavový kód, který ukazuje kód chyby.
+
+Chcete-li toto nastavení použít, povolte je a pak v rozevíracím seznamu vyberte typ reakce na chybu.
+
+– Možnost Vypnuto zakáže všechny rozšířené informace o chybě u všech procesů. Vzdálené volání procedur bude generovat pouze kód chyby.
+
+– Možnost Zapnuto s výjimkami povolí rozšířené informace o chybě, ale umožní uživateli je u vybraných procesů zakázat. Chcete-li zakázat rozšířené informace o chybě u nějakého procesu pomocí tohoto nastavení, musí příkaz, který tento proces spouští, začínat jedním z řetězců v poli Výjimky rozšířených informací o chybách.
+
+– Možnost Vypnuto s výjimkami zakáže rozšířené informace o chybách, ale umožní uživateli je u vybraných procesů povolit. Chcete-li povolit rozšířené informace o chybách u nějakého procesu pomocí tohoto nastavení, musí příkaz, který tento proces spouští, začínat jedním z řetězců v poli Výjimky rozšířených informací o chybách.
+
+– Možnost Zapnuto povolí rozšířené informace o chybách u všech procesů.
+
+Poznámka: Informace o poli Výjimky rozšířených informací o chybách najdete v sadě Windows 2000 Platform SDK (Software Development Kit).
+
+Poznámka: Rozšířené informace o chybách jsou formátovány tak, aby byly kompatibilní s jinými operačními systémy a staršími operačními systémy společnosti Microsoft, avšak pouze novější operační systémy společnosti Microsoft mohou tyto informace přečíst a reagovat na ně.
+
+Poznámka: Výchozí nastavení Vypnuto je určeno pro systémy, kde jsou rozšířené informace o chybách považovány za citlivé údaje, které by neměly být vzdáleně přístupné.
+
+Poznámka: Nastavení této zásady se použije až po restartování systému.</string>
+      <string id="RpcIDFOff">Vypnuto</string>
+      <string id="RpcIDFOn">Zapnuto</string>
+      <string id="RpcIgnoreDelegationFailure">Ignorovat chyby delegování</string>
+      <string id="RpcIgnoreDelegationFailure_Help">Pokud bylo vyžádáno delegování, modul runtime služby Vzdálené volání procedur (RPC) bude ignorovat chyby delegování.
+
+Systémy řady Windows Server 2003 používají nový model delegování – vynucené delegování. V tomto modelu systém zabezpečení při připojení klienta k serveru nehlásí, že je povoleno delegování v kontextu zabezpečení. Aplikace volající službu Vzdálené volání procedur a model COM používají příznak RPC_C_QOS_CAPABILITIES_IGNORE_DELEGATE_FAILURE, ale některé aplikace určené pro tradiční model delegování tento příznak nepoužívají a je jim při připojení k serveru, který používá vynucené delegování, vrácena chyba RPC_S_SEC_PKG_ERROR.
+
+Pokud toto nastavení zakážete, nenakonfigurujete nebo nastavíte na hodnotu Vypnuto, modul runtime služby Vzdálené volání procedur bude generovat chyby RPC_S_SEC_PKG_ERROR pro aplikace, které žádají o delegování a připojí se k serverům používajícím vynucené delegování. Jestliže toto nastavení nakonfigurujete na hodnotu Zapnuto, bude modul runtime služby Vzdálené volání procedur přijímat kontexty zabezpečení, které nepodporují delegování, i kontexty, které delegování podporují.
+
+– Hodnota Vypnuto způsobí, že pokud klient požaduje delegování, ale vytvořený kontext zabezpečení delegování nepodporuje, modul runtime služby Vzdálené volání procedur vygeneruje chybu RPC_S_SEC_PKG_ERROR.
+
+– Hodnota Zapnuto způsobí, že modul runtime služby Vzdálené volání procedur bude přijímat kontexty zabezpečení, které nepodporují delegování, i v případě, kdy je delegování požadováno.
+
+Poznámka: Nastavení této zásady se použije až po restartování systému.</string>
+      <string id="RpcMinimumHttpConnectionTimeout">Minimální časový limit nečinného připojení pro připojení služby Vzdálené volání procedur nebo protokolu HTTP</string>
+      <string id="RpcMinimumHttpConnectionTimeout_Help">Modul runtime služby Vzdálené volání procedur bude považovat určený limit za časový limit nečinného připojení i v případě, že na serveru Internetové informační služby se spuštěným proxy serverem protokolu HTTP služby Vzdálené volání procedur je nakonfigurován vyšší časový limit. Pokud je na serveru služby IIS se spuštěným proxy serverem HTTP služby Vzdálené volání procedur nakonfigurován nižší časový limit nečinného připojení, je použit časový limit na serveru služby IIS. Časový limit je udáván v sekundách.
+
+Toto nastavení je užitečné v případech, kdy síťový agent (například proxy server HTTP nebo směrovač) používá nižší časový limit připojení než server služby IIS se spuštěným proxy serverem protokolu HTTP služby Vzdálené volání procedur. V takových případech bude u klientů služby Vzdálené volání procedur používajících protokol HTTP docházet k chybám, protože časový limit připojení vyprší dříve, než bylo očekáváno. Pomocí tohoto nastavení lze u modulu runtime služby Vzdálené volání procedur a proxy serveru služby Vzdálené volání procedur vynutit použití nižšího časového limitu připojení.
+
+Toto nastavení lze použít, pouze pokud klient služby Vzdálené volání procedur, server služby Vzdálené volání procedur i proxy server HTTP služby Vzdálené volání procedur používají systém řady Windows Server 2003 nebo Windows XP SP1 nebo novější. Pokud klient, server nebo proxy server HTTP služby Vzdálené volání procedur používají starší verzi systému Windows, bude toto nastavení ignorováno.
+
+Minimální možná hodnota pro toto nastavení je 90 sekund. Maximální hodnota je 7 200 sekund (2 hodiny).
+
+Jestliže toto nastavení zakážete nebo nenakonfigurujete, bude použit časový limit na serveru služby IIS se spuštěným proxy serverem HTTP služby Vzdálené volání procedur.
+
+Poznámka: Nastavení této zásady se použije až po restartování systému.</string>
+      <string id="RpcRestrictRemoteClients">Omezení pro klienty neověřené protokolem RPC</string>
+      <string id="RpcRestrictRemoteClients_Help">Pokud toto nastavení povolíte, modul runtime služby Vzdálené volání procedur (RPC) na serveru omezí připojování neověřených klientů RPC k serverům RPC v počítači. Klient bude považován za ověřeného v případě, že použije ke komunikaci se serverem pojmenovaný kanál nebo vnitřní zabezpečení služby RPC. Rozhraní služby RPC, která explicitně vyžadují přístup neověřených klientů, mohou být vyjmuta z tohoto omezení v závislosti na hodnotě této zásady.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, pro systém Windows XP se použije hodnota Ověřen a pro serverové operační systémy, které tuto zásadu podporují, se použije hodnota Žádné. Pokud tuto zásadu povolíte, jsou k dispozici následující hodnoty:
+
+– Hodnota Žádné umožňuje všem klientům služby RPC připojení k serverům RPC v počítači, pro který tato zásada platí.
+
+– Hodnota Ověřen umožňuje připojení k serverům RPC v počítači, pro který tato zásada platí, pouze ověřeným klientům (na základě předchozí definice). Rozhraní vyžadující výjimku z tohoto omezení tuto výjimku získají.
+
+– Hodnota Ověřen bez výjimek umožňuje připojení k serverům RPC v počítači, pro který tato zásada platí, pouze ověřeným klientům (na základě předchozí definice). Nebudou povoleny žádné výjimky.
+
+Poznámka: Nastavení této zásady se použije až po restartování systému.</string>
+      <string id="RpcRestrictRemoteClientsAuth">Ověřen</string>
+      <string id="RpcRestrictRemoteClientsHigh">Ověřen bez výjimek</string>
+      <string id="RpcRestrictRemoteClientsNone">Žádné</string>
+      <string id="RpcStateInfoAuto1">Automaticky 1</string>
+      <string id="RpcStateInfoAuto2">Automaticky 2</string>
+      <string id="RpcStateInfoBoth">Úplné</string>
+      <string id="RpcStateInfoNone">Žádné</string>
+      <string id="RpcStateInformation">Stavové informace RPC k odstraňování potíží</string>
+      <string id="RpcStateInformation_Help">
+
+Určuje, zda modul runtime služby Vzdálené volání procedur (RPC) bude uchovávat stavové informace RPC o systému a kolik informací bude uchovávat. Základní stavové informace (obsahující pouze nejběžněji potřebná stavová data) jsou vyžadovány při řešení problémů se vzdáleným voláním procedur (RPC).
+
+Pokud toto nastavení povolíte, budete moci pomocí rozevíracího seznamu určit, které systémy mají uchovávat stavové informace vzdáleného volání procedur. Pokud je toto nastavení zakázáno nebo není nakonfigurováno, bude použito nastavení Automaticky 2.
+
+– Hodnota Žádné znamená, že systém neuchovává žádné stavové informace RPC. Poznámka: Základní stavové informace vyžadované pro řešení problémů mají zanedbatelný vliv na výkon a využívají jen asi 4 kB paměti. Toto nastavení tedy pro většinu instalací nedoporučujeme.
+
+– Hodnota Automaticky 1 určuje, že služba RPC uchovává základní informace o stavu, pouze pokud má počítač minimálně 64 MB paměti.
+
+– Hodnota Automaticky 2 určuje, že služba RPC uchovává základní informace o stavu, pouze pokud má počítač minimálně 128 MB paměti a je v něm spuštěn systém Windows 2000 Server, Windows 2000 Advanced Server nebo Windows 2000 Datacenter Server. 
+
+– Hodnota Ze serveru ukládá službě RPC povinnost uchovávat v počítači základní stavové informace bez ohledu na kapacitu systému.
+
+– Hodnota Úplné ukládá službě RPC povinnost uchovávat v systému kompletní stavové informace RPC bez ohledu na kapacitu systému. Toto nastavení může zhoršit výkon, proto je doporučujeme pouze v případě, že zkoumáte problém se vzdáleným voláním procedur.
+
+Poznámka: Chcete-li načíst stavové informace vzdáleného volání procedur ze systému, který je uchovává, musíte použít ladicí nástroj.
+
+Poznámka: Tato zásada se použije až po restartování systému.</string>
+      <string id="RpcStateInfoServer">Ze serveru</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="RpcExtendedErrorInformation">
+        <dropdownList refId="RpcExtendedErrorInformationList" defaultItem="0">Šíření rozšířených informací o chybách:</dropdownList>
+        <textBox refId="RpcExtErrorExceptions">
+          <label>Výjimky rozšířených informací o chybách:</label>
+        </textBox>
+      </presentation>
+      <presentation id="RpcIgnoreDelegationFailure">
+        <dropdownList refId="RpcIgnoreDelegationFailureList" defaultItem="0">Chyba delegování je ignorována:</dropdownList>
+      </presentation>
+      <presentation id="RpcMinimumHttpConnectionTimeout">
+        <decimalTextBox refId="RpcMinimumHttpConnectionTimeoutValue" defaultValue="900" spinStep="10">Minimální časový limit nečinného připojení (v sekundách):</decimalTextBox>
+      </presentation>
+      <presentation id="RpcRestrictRemoteClients">
+        <dropdownList refId="RpcRestrictRemoteClientsList" defaultItem="1">Použitá omezení pro klienty, kteří nejsou ověřeni protokolem RPC:</dropdownList>
+      </presentation>
+      <presentation id="RpcStateInformation">
+        <dropdownList refId="RpcStateInformationList" defaultItem="2">Informace o běhu RPC k údržbě:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

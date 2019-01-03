@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>ange ett visningsnamn här</displayName>
+  <description>ange en beskrivning här</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Lanman-server</string>
+      <string id="Lbl_FollowShare">Tillåt endast hash-publicering för delade mappar där BranchCache har aktiverats</string>
+      <string id="Lbl_DisableOnAllShares">Förhindra hash-publicering för alla delade mappar</string>
+      <string id="Lbl_EnableOnAllShares">Tillåt hash-publicering för alla delade mappar</string>
+      <string id="Pol_HashPublication">Hash-publicering för BranchCache</string>
+      <string id="Pol_HashPublication_Help">Den här principen aktiverar en tjänst för hash-generering för data lagrade i delade mappar och tillhandahåller klientdatorer där BranchCache är aktiverat dessa hash-värden. Hash-värden är matematiskt härledda digitala fingeravtryck för filer som unikt identifierar innehållet i filerna. Dessa digitala fingeravtryck är mycket små och Windows kan därför jämföra filer utan att det kräver någon större mängd WAN-bandbredd (Wide Area Network).
+
+En klientdator i ett avdelningskontor kan erhålla ett hash-värde för en fil över en WAN-länk om alla av följande villkor är uppfyllda:      
+1) Användaren har behörighet att komma åt filen.
+2) BranchCache är aktiverat på klientdatorn.
+3) Hash-publicering tillåts för den delade mapp som klientdatorn arbetar i. 
+
+Om klientdatorn erhåller hash-värdet kan den söka efter en identisk version av filen i cachen på andra datorer på avdelningskontoret. Om Windows hittar en identisk version av filen på avdelningskontoret hämtar klientdatorn den lokalt cachelagrade kopian i stället för att hämta filen över WAN-länken. 
+
+Om du konfigurerar den här principen till Tillåt endast hash-publicering för delade mappar där BranchCache har aktiverats (värde = 0), genereras endast hash-värden för delade mappar där BranchCache är aktiverat. Hash-värden för dessa delade mappar genereras när någon av följande händelser inträffar:
+1) En fil används i en delad mapp där BranchCache är aktiverat av en klient med stöd för BranchCache.
+2) En administratör genererar hash-värden manuellt med kommandoradsverktyget Hashgen.
+ 
+Om du konfigurerar den här principen till Förhindra hash-publicering för alla delade mappar (värde = 1) genereras eller tillhandahålls aldrig hash-värden på datorer som den här principen tillämpas på.
+ 
+Om du konfigurerar den här principen till Tillåt hash-publicering för alla delade mappar (värde = 2) genereras hash-värden för alla delade mappar på servern när någon av följande händelser inträffar: 
+1) En fil används i en delad mapp på servern av en klient med stöd för BranchCache.
+2) En administratör genererar hash-värden manuellt med kommandoradsverktyget Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Värden:</text>
+        <text>0 = Tillåt endast hash-publicering för delade mappar där BranchCache har aktiverats</text>
+        <text>1 = Förhindra hash-publicering för alla delade mappar</text>
+        <text>2 = Tillåt hash-publicering för alla delade mappar</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Hash-publiceringsåtgärder: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

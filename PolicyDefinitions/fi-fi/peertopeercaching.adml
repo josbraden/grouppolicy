@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache antaa asiakkaiden noutaa suojatusti sisältöä sivutoimipisteen sisältä niin, ettei heidän tarvitse noutaa sitä sisältöä isännöivästä palvelimesta. Käyttöönottotilasta riippuen sisältö voidaan noutaa sivutoimipisteen muista asiakkaista tai sen isännöidystä välimuistipalvelimesta. Asiakas voi noutaa sisältöä sivutoimipisteen sisältä ainoastaan, jos palvelin on antanut siihen valtuudet. BranchCachen käyttäminen pienentää kustannuksia suuralueverkon (WAN) linkissä, joka yhdistää sivutoimipisteet tietokeskukseen tai pääkonttoriin ja parantaa sivutoimipisteeseen jo ladatun sisällön lataamisnopeutta.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">Ota BranchCache käyttöön</string>
+
+            <string id="WBC_Enable_Help">Tämä käytäntöasetus määrittää, onko BranchCache käytössä asiakastietokoneessa. BranchCache pienentää sivutoimipisteen tietokeskukseen tai pääkonttoriin yhdistävien suuralueverkon (WAN) linkkien kulutusta ja nopeuttaa sivutoimipisteeseen jo ladatun sisällön käyttämistä. BranchCache tekee tämän antamalla sivutoimipisteen tietokoneiden kopioida välimuistiin tiedostoja ja HTTP-tietoliikennettä niistä intranet-palvelimista, joissa BranchCache on käytössä, ja jakaa sitten kyseiset tiedostot turvallisesti muiden sivutoimipisteen tietokoneiden kanssa. Sivutoimipisteen tietokoneet pystyvät noutamaan sisältöä sivutoimipisteen isännöidyn välimuistin palvelimesta (kun isännöidyn välimuistin tila on käytössä) tai muista sivutoimipisteen asiakastietokoneista (kun hajautetun välimuistin tila on käytössä). Tietokoneella on oltava oikeudet käyttää lähdepalvelimen sisältöä, jotta se pystyy käyttämään välimuistissa olevaa sisältöä.
+
+Ota tämä käytäntöasetus käyttöön asiakastietokoneissa sivutoimipisteessä, jossa WAN-kaistanleveys on pieni, viive on suuri ja useiden asiakastietokoneiden on käytettävä samaa pääkonttorin palvelinten tietoa.
+
+Jos otat tämän käytäntöasetuksen käyttöön, BranchCache otetaan käyttöön. Sinun on myös asennettava BranchCache-ominaisuus asiakastietokoneeseen, jotta tämä käytäntöasetus voidaan ottaa käyttöön.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, BranchCache poistetaan käytöstä.
+            </string>
+
+            <string id="WBC_Cache_Percent">Määritä asiakastietokoneen välimuistille käytettävä levytila prosenttilukuna</string>
+
+            <string id="WBC_Cache_Percent_Help">Tämä käytäntöasetus muuttaa noudetun sisällön välimuistiin sijoittamiselle BranchCachen avulla varattavan levytilan osuutta kokonaislevytilasta prosenttilukuna. Tämä sisältö tehdään muiden pyytävien asiakastietokoneiden käytettäväksi, jos palvelin on antanut niille oikeuden käyttää sisältöä.
+
+Jos otat tämän käytäntöasetuksen käyttöön, voit määrittää välimuistille varattavan levytilan kokonaislevytilasta prosenttilukuna.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, välimuistin kooksi asetetaan viisi prosenttia asiakastietokoneen kokonaislevytilasta.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Määritä BranchCachen isännöidyn välimuistin tila</string>
+
+            <string id="WBC_HostedCache_Location_Help">Tämä käytäntöasetus määrittää, tuleeko asiakastietokoneen isännöidyn välimuistin tilaa, ja jos tulee, mikä BranchCache-palvelimen osoite on. Isännöidyn välimuistin tila antaa asiakastietokoneen noutaa sisältöä BranchCache-palvelimesta, joka toimii sivutoimipisteen keskitettynä (isännöitynä) välimuistina. Kun käytetään isännöidyn välimuistin tilaa, BranchCachea tukevien asiakastietokoneiden lataama sisältö kopioidaan BranchCache-palvelimeen, joka toimii sitten keskitettynä välimuistina sivutoimipisteen muille BranchCachea tukeville asiakastietokoneille. Asiakastietokoneet käyttävät SSL (Secure Sockets Layer) -protokollaa vaihtaessaan tietoja BranchCache-palvelimen kanssa.
+
+Jos haluat käyttää tätä käytäntöasetusta, sinun on määritettävä BranchCache-palvelimen osoite, ja kyseisen osoitteen on vastattava BranchCache-palvelimen varmenteessa määritetyn palvelimen täydellistä toimialuenimeä. Lisäksi BranchCache-palvelimen varmenteen päämyöntäjän on oltava asiakastietokoneen luotettavien varmenteiden päämyöntäjien säilössä.
+
+Jos otat tämän käytäntöasetuksen käyttöön ja määrität isännöidyn välimuistin kelvollisen sijainnin, isännöidyn välimuistin tila otetaan käyttöön. Sinun on myös otettava käyttöön Ota BranchCache käyttöön -käytäntöasetus, jotta tämä käytäntöasetus tulee voimaan.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, isännöidyn välimuistin tila poistetaan käytöstä.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Määritä BranchCachen hajautetun välimuistin tila</string>
+
+            <string id="WBC_Distributed_Enable_Help">Tämä käytäntöasetus määrittää, tuleeko asiakastietokoneen käyttää hajautetun välimuistin tilaa. Tämä BranchCache-tila antaa asiakastietokoneen noutaa sisältöä, jonka sivutoimipisteen muut asiakastietokoneet ovat ladanneet ja kopioineen välimuistiin. Tietokoneella on oltava oikeudet käyttää lähdepalvelimen sisältöä, jotta se pystyy käyttämään sivutoimipisteen muiden tietokoneiden välimuistissa olevaa sisältöä.
+
+Tämä käytäntöasetus määrittää, käytetäänkö hajautetun välimuistin tilaa. Ota tämä käytäntöasetus käyttöön, kun BranchCache on käytössä sivutoimipisteissä, joissa ei ole isännöitynä välimuistina toimivaa palvelinta.
+
+Jos otat tämän käytäntöasetuksen käyttöön, käytetään hajautetun välimuistin tilaa. Sinun on myös otettava käyttöön Ota BranchCache käyttöön -käytäntöasetus, jotta tämä käytäntöasetus tulee voimaan.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, hajautetun välimuistin tila poistetaan käytöstä.
+            </string>
+
+            <string id="WBC_SMB_Enable">Määritä BranchCache verkon tiedostoille</string>
+
+            <string id="WBC_SMB_Enable_Help">Tämä käytäntöasetus muuttaa oletuskierron verkkoviiveen arvoa, jonka ylityttyä sivutoimipisteen asiakastietokoneet kopioivat verkon tiedostot välimuistiin. BranchCachen käyttäminen verkon tiedostoille antaa sivutoimipisteen tietokoneiden kopioida välimuistiin tietoja niistä intranet-palvelimista, joissa BranchCache on käytössä, ja jakaa sitten kyseiset tiedostot turvallisesti muiden sivutoimipisteen tietokoneiden kanssa. Yksi sisältötyypeistä, joka voidaan kopioida välimuistiin sivutoimipisteessä, on SMB (Server Message Block) -protokollaa käyttävät verkkotiedostot.
+
+Sivutoimipisteen verkon tiedostot kopioidaan välimuistiin oletusarvon mukaan, kun suuralueverkon (WAN) linkin kierron verkkoviive on yli 80 ms. Jos haluat kopioida sivutoimipisteen tietokoneisiin ladatut verkon tiedostot aina välimuistiin, määritä verkkoviiveen arvoksi 0. Jos haluat poistaa sivutoimipisteen verkon tiedostojen välimuistiin kopioimisen käytöstä, määritä verkkoviiveen arvoksi hyvin suuri arvo.
+
+Jos otat tämän käytäntöasetuksen käyttöön, voit määrittää kierron verkkoviiveen arvon, jonka ylityttyä sivutoimipisteen asiakastietokoneet kopioivat verkon tiedostot välimuistiin.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, asiakastietokone kopioi verkon tiedostot välimuistiin, jos suuralueverkon (WAN) linkin kierron verkkoviive on yli 80 ms.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Anna asiakastietokoneen välimuistin sijainti</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Anna isännöidyn välimuistin sijainti</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Anna millisekunteina kierron verkkoviiveen arvo, jonka ylityttyä verkon tiedostot on kopioitava välimuistiin sivutoimipisteessä</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

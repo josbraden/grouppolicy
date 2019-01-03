@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Zde zadejte zobrazovaný název.</displayName>
+  <description>Zde zadejte popis.</description>
+  <resources>
+    <stringTable>
+      <string id="WdiDpsScenarioDataSizeLimitPolicy">Diagnostika: Konfigurovat uchování scénáře</string>
+      <string id="WdiDpsScenarioDataSizeLimitPolicyExplain">Určuje limit uchování dat pro data scénáře služby DPS (Diagnostic Policy Service).
+
+Jestliže povolíte toto nastavení, je třeba zadat maximální velikost dat scénáře (v MB), která mají být uchována. Budou uchovávána podrobná data o odstraňování potíží týkající se scénářům, dokud nebude dosaženo tohoto limitu.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, služba DPS odstraní data scénáře, jakmile jejich velikost dosáhne 128 MB.
+
+K tomu, aby se projevila tato zásada, není vyžadováno restartování počítače ani služby. Změny se projeví okamžitě.
+
+Nastavení této zásady se projeví jedině v případě, že je služba DPS spuštěna. Pokud je služba zastavena nebo zakázána, data scénáře diagnostiky nebudou odstraněna. Službu DPS lze konfigurovat pomocí modulu snap-in Služby konzoly Microsoft Management Console (MMC).</string>
+      <string id="WdiDpsScenarioExecutionLevelResolution">Rozpoznání, poradce při potížích a řešení</string>
+      <string id="WdiDpsScenarioExecutionLevelTsOnly">Pouze rozpoznání a poradce při potížích</string>
+      <string id="WdiDpsScenarioExecutionPolicy">Diagnostika: Konfigurovat úroveň spuštění scénáře</string>
+      <string id="WdiDpsScenarioExecutionPolicyExplain">Určuje úroveň spuštění scénářů služby DPS (Diagnostic Policy Service).
+
+Pokud toto nastavení povolíte, je nutné vybrat úroveň spuštění v rozevírací nabídce. Jestliže vyberete pouze rozpoznání a poradce při potížích, služba DPS rozpozná potíže a pokusí se určit jejich hlavní příčiny. Tyto hlavní příčiny budou po rozpoznání zaznamenány do protokolu událostí, ale nebude provedena žádná opravná akce. Jestliže vyberete rozpoznání, poradce při potížích a řešení, služba DPS se pokusí automaticky odstranit rozpoznané potíže nebo oznámí uživateli, že je k dispozici řešení s asistencí.
+
+Jestliže toto nastavení zakážete, systém Windows nebude moci rozpoznat a řešit potíže pomocí služby DPS.
+
+Jestliže toto nastavení nenakonfigurujete, služba DPS ve výchozím nastavení povolí všechny scénáře pro řešení, pokud nenakonfigurujete samostatné nastavení zásad specifické scénář.
+
+Nastavení této zásady (je-li povoleno nebo zakázáno) má přednost před všemi nastaveními zásad specifickými pro scénář. Nastavení pro specifické scénáře se projeví, pokud toto nastavení není nakonfigurován.
+
+K tomu, aby se projevila tato zásada, není vyžadováno restartování počítače ani služby. Změny se projeví okamžitě.
+
+Nastavení této zásady se projeví jedině v případě, že je služba DPS spuštěna. Pokud je služba zastavena nebo zakázána, scénáře diagnostiky nebudou spuštěny. Službu DPS lze konfigurovat pomocí modulu snap-in Služby konzoly Microsoft Management Console (MMC).</string>
+    </stringTable>
+
+    <presentationTable>
+      <presentation id="WdiDpsScenarioDataSizeLimitPolicy">
+        <decimalTextBox refId="WdiDpsScenarioDataSizeLimitPolicyValue" defaultValue="128">Limit velikosti dat scénáře (MB)</decimalTextBox>
+      </presentation>
+      <presentation id="WdiDpsScenarioExecutionPolicy">
+        <dropdownList refId="WdiDpsScenarioExecutionPolicyLevel" noSort="true">Úroveň spuštění scénáře</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

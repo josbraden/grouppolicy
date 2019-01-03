@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>entrer le nom complet ici</displayName>
+  <description>entrer la description ici</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Ce paramètre de stratégie vous permet de gérer la sauvegarde des informations de récupération de chiffrement de lecteur BitLocker dans les services de domaine Active Directory (AD DS). Il fournit une méthode administrative de récupérer les données chiffrées par BitLocker pour éviter la perte de données en l'absence d'informations de clé. Cette stratégie n'est applicable qu'aux ordinateurs Windows Server 2008 et Windows Vista.
+
+Si vous activez ce paramètre de stratégie, les informations de récupération BitLocker sont sauvegardées automatiquement et silencieusement dans les services de domaine Active Directory quand BitLocker est activé sur un ordinateur. Ce paramètre de stratégie est appliqué lorsque vous activez BitLocker. 
+
+Remarque : vous devez définir les paramètres d'extensions de schéma et de contrôle d'accès appropriés pour le domaine pour que la sauvegarde s'effectue dans les services de domaine Active Directory. Consultez le Guide de déploiement du chiffrement de lecteur BitLocker sur Microsoft Technet pour plus d'informations sur la configuration de la sauvegarde des données BitLocker dans les services de domaine Active Directory.
+
+Les informations de récupération BitLocker incluent le mot de passe de récupération et certaines données d'identificateur unique. Vous pouvez également inclure un package qui contient une clé de chiffrement du lecteur protégé par BitLocker. Ce package de clé est sécurisé par un ou plusieurs mots de passe de récupération et peut aider à effectuer une récupération spécialisée quand le disque est endommagé ou altéré. 
+
+Si vous sélectionnez l’option « Requérir la sauvegarde BitLocker vers les services de domaine Active Directory (AD DS) », BitLocker ne peut pas être activé sans que l’ordinateur soit connecté au domaine et que la sauvegarde des informations de récupération BitLocker vers les services de domaine Active Directory réussisse. Cette option est sélectionnée par défaut de façon à garantir que la récupération BitLocker est possible. Dans le cas contraire, la sauvegarde des services de domaine Active Directory est tentée mais des échecs réseau ou d’autres échecs de sauvegarde n’ont pas d’impact sur la configuration BitLocker. La sauvegarde n’est pas automatiquement essayée à nouveau et le mot de passe de récupération peut ne pas avoir été stocké dans les services de domaine Active Directory lors de la configuration BitLocker.
+
+Si vous désactivez ou que vous ne configurez pas ce paramètre de stratégie, les informations de récupération BitLocker ne seront pas sauvegardées dans les services de domaine Active Directory. 
+
+Remarque : l’initialisation du module de plateforme sécurisée peut être nécessaire lors de la configuration BitLocker. Activez le paramètre de stratégie « Activer la sauvegarde du module de plateforme sécurisée dans les services de domaine Active Directory (AD DS) » dans « Système\Services de module de plateforme sécurisée\ » pour faire en sorte que les informations du module de plateforme sécurisée soient également sauvegardées.
+</string>
+      <string id="ActiveDirectoryBackup_Name">Enregistrer les informations de récupération BitLocker dans les services de domaine Active Directory (Windows Server 2008 et Windows Vista)</string>
+      <string id="ActiveDirectoryBackupDropDown_1">Mots de passe et packages de clés de récupération</string>
+      <string id="ActiveDirectoryBackupDropDown_2">Mots de passe de récupération uniquement</string>
+      
+      <string id="ConfigureStartupUsage_Help">Ce paramètre de stratégie vous permet d’indiquer si l’Assistant Installation du chiffrement de lecteur BitLocker peut configurer une méthode d'authentification supplémentaire qui est demandée à chaque démarrage de l’ordinateur. Ce paramètre de stratégie est appliqué lorsque vous activez BitLocker. 
+        
+Remarque : cette stratégie n'est applicable qu'aux ordinateurs Windows Server 2008 et Windows Vista. 
+
+Sur un ordinateur avec un module de plateforme sécurisée, deux méthodes d’authentification peuvent être utilisées au démarrage pour offrir une protection renforcée des données chiffrées. Lorsque l’ordinateur démarre, il peut demander à l’utilisateur d’insérer un lecteur flash USB contenant une clé de démarrage. Il peut également demander à l’utilisateur d’entrer un code confidentiel de démarrage constitué de 4 à 20 chiffres.  
+
+Un lecteur flash USB contenant une clé de démarrage est nécessaire sur les ordinateurs sans module de plateforme sécurisée compatible. Sans module de plateforme sécurisée, les données chiffrées par BitLocker sont protégées seulement par le support de gestion des clés qui se trouve sur ce lecteur flash USB. 
+
+Si vous activez ce paramètre de stratégie, l’Assistant affiche la page permettant à l’utilisateur de configurer des options de démarrage avancées pour BitLocker. Vous pouvez configurer ultérieurement des options pour les ordinateurs avec et sans module de plateforme sécurisée.
+
+Si vous désactivez ou ne configurez pas ce paramètre, l'Assistant d'installation BitLocker affichera les étapes de base permettant aux utilisateurs d'activer BitLocker sur les ordinateurs avec module de plateforme sécurisée. Dans cet Assistant de base, aucune clé ni aucun code confidentiel de démarrage supplémentaires ne peuvent être configurés.
+</string>
+      
+      <string id="ConfigureStartupUsage_Name">Demander une authentification supplémentaire au démarrage (Windows Server 2008 et Windows Vista)</string>
+      <string id="ConfigureAdvancedStartup_Name">Demander une authentification supplémentaire au démarrage</string>
+      
+      <string id="ConfigureAdvancedStartup_Help">Ce paramètre de stratégie vous permet de configurer si BitLocker exige une authentification supplémentaire à chaque démarrage de l'ordinateur et si vous utilisez BitLocker avec ou sans module de plateforme sécurisée. Ce paramètre de stratégie est appliqué lorsque vous activez BitLocker.
+
+Remarque : une seule des options d'authentification supplémentaire peut être exigée au démarrage, sans générer d'erreur de stratégie. 
+
+Si vous voulez utiliser BitLocker sur un ordinateur sans module de plateforme sécurisée, sélectionnez la case à cocher « Autoriser BitLocker sans un module de plateforme autorisée compatible ». Dans ce mode, un lecteur USB est nécessaire au démarrage et les informations de clé utilisées pour chiffrer le lecteur sont stockées sur ce lecteur USB, créant une clé USB. Lorsque la clé USB est insérée, l'accès au lecteur est authentifié et le lecteur est accessible. Si vous perdez la clé USB ou si elle n'est pas disponible, vous devez utiliser l'une des options de récupération BitLocker pour accéder au lecteur.
+
+Sur un ordinateur avec un module de plateforme sécurisée compatible, quatre types de méthode d'authentification peuvent être utilisés au démarrage pour renforcer la protection de l'accès aux données chiffrées. Au démarrage, l'ordinateur ne peut utiliser que le module de plateforme sécurisée pour l'authentification ; ou il peut exiger l'insertion d'un lecteur flash USB contant une clé de démarrage et/ou la saisie d'un code confidentiel composé de 4 à 20 chiffres. 
+
+Si vous activez ce paramètre de stratégie, les utilisateurs peuvent définir les options de démarrage avancées dans l'Assistant d'installation BitLocker. 
+
+Si vous désactivez ou ne configurez pas ce paramètre, les utilisateurs ne peuvent définir que les options de base sur les ordinateurs avec module de plateforme sécurisée.
+
+Remarque : si vous voulez rendre obligatoire l'utilisation d'un code confidentiel de démarrage et d'un lecteur flash USB, vous devez définir les paramètres BitLocker à l'aide de l'outil de ligne de commande manage-bde et non avec l'Assistant.
+
+</string>
+
+      <string id="ConfigureTPMPINKeyUsageDropDown_Optional">Autoriser une clé et un code confidentiel de démarrage avec le module de plateforme sécurisée</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Require">Demander une clé et un code confidentiel de démarrage avec le module de plateforme sécurisée</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Disallow">Ne pas autoriser les clés et codes confidentiels de démarrage avec le module de plateforme sécurisée</string>
+
+      <string id="ConfigureTPMUsageDropDown_Optional">Autoriser le module de plateforme sécurisée</string>
+      <string id="ConfigureTPMUsageDropDown_Require">Demander le module de plateforme sécurisée</string>
+      <string id="ConfigureTPMUsageDropDown_Disallow">Ne pas autoriser le module de plateforme sécurisée</string>
+
+      <string id="ConfigurePINUsageDropDown_Optional">Autoriser les codes confidentiels de démarrage avec le module de plateforme sécurisée</string>
+      <string id="ConfigurePINUsageDropDown_Require">Demander un code confidentiel de démarrage avec le module de plateforme sécurisée</string>
+      <string id="ConfigurePINUsageDropDown_Disallow">Ne pas autoriser les codes confidentiels de démarrage avec le module de plateforme sécurisée</string>
+
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Optional">Autoriser les clés de démarrage avec le module de plateforme sécurisée</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Require">Demander une clé de démarrage avec le module de plateforme sécurisée</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Disallow">Ne pas autoriser les clés de démarrage avec le module de plateforme sécurisée</string>
+
+
+      <string id="ConfigureRecoveryUsage_Help">Ce paramètre de stratégie vous permet d’indiquer si l’Assistant Installation du chiffrement de lecteur BitLocker demande ou non à l’utilisateur d’enregistrer les options de récupération BitLocker. Cette stratégie n'est applicable qu'aux ordinateurs Windows Server 2008 et Windows Vista. Ce paramètre est appliqué lorsque vous activez BitLocker.
+
+Deux options de récupération peuvent déverrouiller l’accès aux données chiffrées par BitLocker en l'absence des informations de clé de démarrage requises. L’utilisateur peut entrer un mot de passe de récupération constitué de 48 chiffres ou insérer un lecteur flash USB contenant une clé de récupération de 256 bits. 
+
+Si vous activez ce paramètre de stratégie, vous pouvez configurer les options que l’Assistant affiche aux utilisateurs pour la récupération de données protégées par BitLocker. L'enregistrement sur un lecteur flash USB stocke le mot de passe de récupération à 48 chiffres sous forme de fichier texte (idem pour l'enregistrement dans un dossier) et la clé de récupération de 256 bits sous la forme d'un fichier caché. L'impression envoie le mot de passe à l'imprimante par défaut. Par exemple, la désactivation du mot de passe de récupération de 48 chiffres empêche les utilisateurs de pouvoir imprimer ou enregistrer les informations de récupération dans un dossier.
+
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, l’Assistant d'installation BitLocker propose aux utilisateurs des moyens de stocker les options de récupération.
+
+Remarque : si l’initialisation du module de plateforme sécurisée est nécessaire lors de la configuration BitLocker, les informations du propriétaire du module de plateforme sécurisée sont enregistrées ou imprimées avec les informations de récupération BitLocker. 
+
+Remarque : le mot de passe de récupération de 48 chiffres ne sera pas disponible en mode de compatibilité FIPS. 
+
+Important : cette stratégie fournit une méthode administrative de récupérer les données de récupération chiffrées avec BitLocker pour éviter la perte de données due à l'absence des informations de clé. Si vous interdisez les deux options de récupération, vous devez activer le paramètre de stratégie « Enregistrer les informations de récupération BitLocker dans les services de domaine Active Directory (Windows Server 2008 et Windows Vista) » pour éviter toute erreur de stratégie.
+
+      </string>
+      
+      <string id="ConfigureRecoveryUsage_Name">Sélectionner la méthode de récupération des lecteurs protégés par BitLocker (Windows Server 2008 et Windows Vista)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Require">Requérir un mot de passe de récupération (par défaut)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Disallow">Ne pas autoriser les mots de passe de récupération</string>
+
+      <string id="ConfigureRecoveryKeyUsageDropDown_Require">Requérir une clé de récupération (par défaut)</string>
+      <string id="ConfigureRecoveryKeyUsageDropDown_Disallow">Ne pas autoriser les clés de récupération</string>
+
+
+      <string id="OSRecoveryUsage_Name">Sélectionner la méthode de récupération des lecteurs du système d'exploitation protégés par BitLocker</string>
+      
+      <string id="OSRecoveryUsage_Help">Ce paramètre de stratégie vous permet de contrôler la façon dont les lecteurs du système d'exploitation protégés par BitLocker sont récupérés en l'absence des informations de clé de démarrage requises. Ce paramètre est appliqué lorsque vous activez BitLocker.
+
+La case à cocher « Autoriser les agents de récupération de données basés sur des certificats » permet de spécifier si un agent de récupération de données peut être utilisé pour les lecteurs du système d'exploitation protégés par BitLocker. Avant de pouvoir être utilisé, l'agent doit être transféré de l'élément Stratégies de clé publique vers la Console de gestion des stratégies de groupe ou l'Éditeur de stratégie de groupe locale. Consultez le Guide de déploiement du chiffrement de lecteur BitLocker sur Microsoft Technet pour plus d'informations sur l'ajout d'agents de récupération de données.
+
+Dans « Configurez l'enregistrement par les utilisateurs des informations de récupération BitLocker », précisez si la génération d'un mot de passe de 48 chiffres ou d'une clé de 256 bits de récupération est autorisée, exigée ou interdite.
+
+Sélectionnez « Supprimer les options de configuration de l'Assistant d'installation BitLocker » pour empêcher les utilisateurs de configurer les options de récupération lorsqu'ils activent BitLocker sur un lecteur. Cela signifie que vous ne pourrez pas indiquer quelle option de récupération utiliser lorsque vous activez BitLocker. Ces options sont définies par le paramètre de stratégie.
+
+Dans « Enregistrer les informations de récupération BitLocker dans les services de domaine Active Directory pour les lecteurs du système d'exploitation », sélectionnez les informations de récupération BitLocker à enregistrer dans les services de domaine Active Directory pour les lecteurs du système d'exploitation. Si vous sélectionnez « Sauvegarder les mots de passe de récupération et les packages de clés », le package de clé et le mot de passe de récupération BitLocker sont enregistrés dans les services de domaine Active Directory. L'enregistrement du package de clé permet de récupérer les données d'un lecteur endommagé physiquement. Si vous sélectionnez « Sauvegarder les mots de passe de récupération uniquement », seul le mot de passe est enregistré dans les services de domaine Active Directory.
+
+Activez la case à cocher « N'activer BitLocker qu'une fois les informations de récupération enregistrées dans les services de domaine Active Directory pour les lecteurs du système d'exploitation » pour autoriser les utilisateurs à n'activer BitLocker que si l'ordinateur est connecté au domaine et que les informations de récupération BitLocker sont sauvegardées dans les services de domaine Active Directory.
+
+Remarque : si la case à cocher est activée, un mot de passe de récupération est automatiquement généré.
+
+Si vous activez ce paramètre de stratégie, vous pouvez contrôler les méthodes mises à disposition des utilisateurs pour récupérer les données des lecteurs du système d'exploitation protégés par BitLocker.
+
+Si vous désactivez ou ne configurez pas ce paramètre, les options de récupération par défaut sont prises en charge pour la récupération BitLocker. Par défaut, les agents de récupération de données sont autorisés, l'utilisateur peut définir les options de récupération, y compris le mot de passe de récupération et le package de clé, et les informations de récupération ne sont pas sauvegardées dans les services de domaine Active Directory.
+
+</string>
+      
+      <string id="OSRecoveryPasswordUsageDropDown_Require">Demander un mot de passe de récupération de 48 chiffres</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Allow">Autoriser les mots de passe de récupération de 48 chiffres</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Disallow">Ne pas autoriser les mots de passe de récupération de 48 chiffres</string>
+
+      <string id="OSRecoveryKeyUsageDropDown_Require">Demander une clé de récupération de 256 bits</string>
+      <string id="OSRecoveryKeyUsageDropDown_Disallow">Ne pas autoriser les clés de récupération de 256 bits</string>
+      <string id="OSRecoveryKeyUsageDropDown_Allow">Autoriser les clés de récupération de 256 bits</string>
+
+      <string id="FDVRecoveryUsage_Name">Sélectionner la méthode de récupération des lecteurs fixes protégés par BitLocker</string>
+      <string id="FDVRecoveryUsage_Help">Ce paramètre de stratégie vous permet de contrôler la façon dont les lecteurs de données fixes protégés par BitLocker sont récupérés en l'absence des informations d'identification requises. Ce paramètre est appliqué lorsque vous activez BitLocker.
+
+La case à cocher « Autoriser les agents de récupération de données » permet de spécifier si un agent de récupération de données peut être utilisé pour les lecteurs de données fixes protégés par BitLocker. Avant de pouvoir être utilisé, l'agent doit être transféré de l'élément Stratégies de clé publique vers la Console de gestion des stratégies de groupe ou l'Éditeur de stratégie de groupe locale. Consultez le Guide de déploiement du chiffrement de lecteur BitLocker sur Microsoft Technet pour plus d'informations sur l'ajout d'agents de récupération de données.
+
+Dans « Configurez l'enregistrement par les utilisateurs des informations de récupération BitLocker », précisez si la génération d'un mot de passe de 48 chiffres ou d'une clé de 256 bits de récupération est autorisée, exigée ou interdite.
+
+Sélectionnez « Supprimer les options de configuration de l'Assistant d'installation BitLocker » pour empêcher les utilisateurs de configurer les options de récupération lorsqu'ils activent BitLocker sur un lecteur. Cela signifie que vous ne pourrez pas indiquer quelle option de récupération utiliser lorsque vous activez BitLocker. Ces options sont définies par le paramètre de stratégie.
+
+Dans « Enregistrer les informations de récupération BitLocker dans les services de domaine Active Directory pour les lecteurs de données fixes », sélectionnez les informations de récupération BitLocker à enregistrer dans les services de domaine Active Directory pour les lecteurs de données fixes. Si vous sélectionnez « Sauvegarder les mots de passe de récupération et les packages de clés », le package de clé et le mot de passe de récupération BitLocker sont enregistrés dans les services de domaine Active Directory. L'enregistrement du package de clé permet de récupérer les données d'un lecteur endommagé physiquement. Si vous sélectionnez « Sauvegarder les mots de passe de récupération uniquement », seul le mot de passe est enregistré dans les services de domaine Active Directory.
+
+Activez la case à cocher « N'activer BitLocker qu'une fois les informations de récupération enregistrées dans les services de domaine Active Directory pour les lecteurs de données fixes » pour autoriser les utilisateurs à n'activer BitLocker que si l'ordinateur est connecté au domaine et que les informations de récupération BitLocker sont sauvegardées dans les services de domaine Active Directory.
+
+Remarque : si la case à cocher est activée, un mot de passe de récupération est automatiquement généré.
+
+Si vous activez ce paramètre de stratégie, vous pouvez contrôler les méthodes mises à disposition des utilisateurs pour récupérer les données des lecteurs de données fixes protégés par BitLocker.
+
+Si vous désactivez ou ne configurez pas ce paramètre, les options de récupération par défaut sont prises en charge pour la récupération BitLocker. Par défaut, les agents de récupération de données sont autorisés, l'utilisateur peut définir les options de récupération, y compris le mot de passe de récupération et le package de clé, et les informations de récupération ne sont pas sauvegardées dans les services de domaine Active Directory.
+
+</string>
+      
+      <string id="FDVRecoveryPasswordUsageDropDown_Require">Demander un mot de passe de récupération de 48 chiffres</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Allow">Autoriser les mots de passe de récupération de 48 chiffres</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Disallow">Ne pas autoriser les mots de passe de récupération de 48 chiffres</string>
+
+      <string id="FDVRecoveryKeyUsageDropDown_Require">Demander une clé de récupération de 256 bits</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Disallow">Ne pas autoriser les clés de récupération de 256 bits</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Allow">Autoriser les clés de récupération de 256 bits</string>
+
+      <string id="RDVRecoveryUsage_Name">Sélectionner la méthode de récupération des lecteurs amovibles protégés par BitLocker</string>
+      
+      <string id="RDVRecoveryUsage_Help">Ce paramètre de stratégie vous permet de contrôler la façon dont les lecteurs de données amovibles protégés par BitLocker sont récupérés en l'absence des informations d'identification requises. Ce paramètre est appliqué lorsque vous activez BitLocker.
+
+La case à cocher « Autoriser les agents de récupération de données  » permet de spécifier si un agent de récupération de données peut être utilisé pour les lecteurs de données amovibles protégés par BitLocker. Avant de pouvoir être utilisé, l'agent doit être transféré de l'élément Stratégies de clé publique vers la Console de gestion des stratégies de groupe ou l'Éditeur de stratégie de groupe locale. Consultez le Guide de déploiement du chiffrement de lecteur BitLocker sur Microsoft Technet pour plus d'informations sur l'ajout d'agents de récupération de données.
+
+Dans « Configurez l'enregistrement par les utilisateurs des informations de récupération BitLocker », précisez si la génération d'un mot de passe de 48 chiffres ou d'une clé de 256 bits de récupération est autorisée, exigée ou interdite.
+
+Sélectionnez « Supprimer les options de configuration de l'Assistant d'installation BitLocker » pour empêcher les utilisateurs de configurer les options de récupération lorsqu'ils activent BitLocker sur un lecteur. Cela signifie que vous ne pourrez pas indiquer quelle option de récupération utiliser lorsque vous activez BitLocker. Ces options sont définies par le paramètre de stratégie.
+
+Dans « Enregistrer les informations de récupération BitLocker dans les services de domaine Active Directory pour les lecteurs de données amovibles », sélectionnez les informations de récupération BitLocker à enregistrer dans les services de domaine Active Directory pour les lecteurs de données amovibles. Si vous sélectionnez « Sauvegarder les mots de passe de récupération et les packages de clés », le package de clé et le mot de passe de récupération BitLocker sont enregistrés dans les services de domaine Active Directory. Si vous sélectionnez « Sauvegarder les mots de passe de récupération uniquement », seul le mot de passe est enregistré dans les services de domaine Active Directory.
+
+Activez la case à cocher « N'activer BitLocker qu'une fois les informations de récupération enregistrées dans les services de domaine Active Directory pour les lecteurs de données amovibles » pour autoriser les utilisateurs à n'activer BitLocker que si l'ordinateur est connecté au domaine et que les informations de récupération BitLocker sont sauvegardées dans les services de domaine Active Directory.
+
+Remarque : si la case à cocher est activée, un mot de passe de récupération est automatiquement généré.
+
+Si vous activez ce paramètre de stratégie, vous pouvez contrôler les méthodes mises à disposition des utilisateurs pour récupérer les données des lecteurs de données amovibles protégés par BitLocker.
+
+Si vous désactivez ou ne configurez pas ce paramètre, les options de récupération par défaut sont prises en charge pour la récupération BitLocker. Par défaut, les agents de récupération de données sont autorisés, l'utilisateur peut définir les options de récupération, y compris le mot de passe de récupération et le package de clé, et les informations de récupération ne sont pas sauvegardées dans les services de domaine Active Directory.
+      </string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Require">Demander un mot de passe de récupération de 48 chiffres</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Allow">Autoriser les mots de passe de récupération de 48 chiffres</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Disallow">Ne pas autoriser les mots de passe de récupération de 48 chiffres</string>
+
+      <string id="RDVRecoveryKeyUsageDropDown_Require">Demander une clé de récupération de 256 bits</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Disallow">Ne pas autoriser les clés de récupération de 256 bits</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Allow">Autoriser les clés de récupération de 256 bits</string>
+      
+      
+      <string id="ConfigureRecoveryFolder_Help">Ce paramètre de stratégie vous permet de spécifier le chemin d’accès par défaut qui est affiché quand l’Assistant Installation du chiffrement de lecteur BitLocker invite l’utilisateur à entrer l’emplacement d’un dossier où enregistrer le mot de passe de récupération. Cette stratégie est appliquée lorsque vous activez BitLocker.
+
+Si vous activez ce paramètre de stratégie, vous pouvez spécifier le chemin d’accès par défaut affiché lorsque l’utilisateur choisit d’enregistrer le mot de passe de récupération dans un fichier. Vous pouvez spécifier un chemin d’accès complet ou inclure les variables d’environnement de l’ordinateur cible dans le chemin d’accès. Si le chemin d’accès n’est pas valide, l’Assistant Installation du chiffrement de lecteur BitLocker affichera la vue du dossier de niveau supérieur de l’ordinateur. 
+
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, l’Assistant Installation du chiffrement de lecteur BitLocker affiche la vue du dossier de niveau supérieur de l’ordinateur lorsque l’utilisateur choisit d’enregistrer le mot de passe de récupération dans un dossier.
+
+Remarque : dans tous les cas, l’utilisateur aura la possibilité de sélectionner un autre dossier où enregistrer le mot de passe de récupération.
+
+</string>
+      
+      <string id="ConfigureRecoveryFolder_Name">Sélectionner le dossier par défaut d'enregistrement du mot de passe de récupération</string>
+
+      <string id="EncryptionMethod_Help">Ce paramètre de stratégie vous permet de configurer l’algorithme et la puissance de chiffrement utilisés par le chiffrement de lecteur BitLocker. Ce paramètre de stratégie est appliqué lorsque vous activez BitLocker. La modification de la méthode de chiffrement est sans effet si le disque est déjà chiffré ou si le chiffrement est en cours. Consultez le Guide de déploiement du chiffrement de lecteur BitLocker sur Microsoft Technet pour plus d'informations sur les méthodes de chiffrement disponibles.
+        
+Si vous activez ce paramètre de stratégie, vous pouvez sélectionner l'algorithme et la puissance de chiffrement utilisés par BitLocker.
+
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, BitLocker utilise la méthode de chiffrement par défaut AES 128 bits avec diffuseur ou la méthode de chiffrement spécifiée par un script d’installation d’un administrateur local.
+
+      </string>
+      <string id="EncryptionMethod_Name">Sélectionner la méthode et la puissance de chiffrement des lecteurs</string>
+      <string id="EncryptionMethodDropDown_AES128Diffuser_Name">AES 128 bits avec diffuseur (par défaut)</string>
+      <string id="EncryptionMethodDropDown_AES256Diffuser_Name">AES 256 bits avec diffuseur</string>
+      <string id="EncryptionMethodDropDown_AES128_Name">AES 128 bits</string>
+      <string id="EncryptionMethodDropDown_AES256_Name">AES 256 bits</string>
+      
+      <string id="FVECategory">Chiffrement de lecteur BitLocker</string>
+      <string id="PlatformValidation_Help">Ce paramètre de stratégie vous permet de configurer la façon dont le matériel de sécurité du module de plateforme sécurisée de l’ordinateur sécurise la clé de chiffrement de BitLocker. Ce paramètre de stratégie ne s’applique pas si l’ordinateur n’a pas de module de plateforme sécurisée compatible ou si BitLocker a déjà été activé avec la protection du module de plateforme sécurisée.
+
+Si vous activez ce paramètre de stratégie avant d’activer BitLocker, vous pouvez configurer les composants de démarrage qui seront validés par le module de plateforme sécurisée avant de verrouiller l’accès au lecteur du système d’exploitation chiffré par BitLocker. Si l’un de ces composants est modifié alors que la protection BitLocker est activée, le module de plateforme sécurisée ne libère pas la clé de chiffrement pour déverrouiller le lecteur et l’ordinateur affiche la console de récupération BitLocker et demande un mot de passe ou une clé de récupération pour déverrouiller le lecteur.
+
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, le module de plateforme sécurisée utilise le profil de validation de plateforme par défaut ou celui spécifié par le script d’installation. Un profil de validation de plateforme consiste en un ensemble d'index de registre de configuration de plateforme (PCR, Platform Configuration Register) allant de 0 à 23. Le profil de validation de plateforme par défaut sécurise la clé de chiffrement contre les modifications apportées au CTRM (Core Root of Trust of Measurement), au BIOS, aux extensions de plateforme (PCR 0), au code de ROM en option (PCR 2), au code de l’enregistrement de démarrage principal (PCR 4), au secteur de démarrage NTFS (PCR 8), au bloc de démarrage NTFS (PCR 9), au gestionnaire de démarrage (PCR 10) et au contrôle d’accès BitLocker (PCR 11). Les descriptions des paramètres PCR pour les ordinateurs qui utilisent une interface EFI (Extensible Firmware Interface) sont différentes de celles des paramètres PCR utilisés pour les ordinateurs avec BIOS standard. Le Guide de déploiement du chiffrement de lecteur BitLocker sur Microsoft TechNet propose une liste complète des paramètres PCR pour EFI et BIOS standard.
+
+Avertissement : la modification du profil par défaut affecte la sécurité et la gestion de votre ordinateur. La sensibilité de BitLocker aux modifications de plateforme (malveillantes ou autorisées) augmente ou diminue en fonction de l’inclusion ou de l’exclusion (respectivement) des registres de configuration de plateforme (PCR).
+      </string>
+      
+      <string id="PlatformValidation_Name">Configurer le profil de validation de plateforme du module de plateforme sécurisée</string>
+
+      <string id="MorBehavior_Help">Ce paramètre de stratégie gère les performances du redémarrage de l’ordinateur, au risque d’exposer les secrets BitLocker. Ce paramètre est appliqué lorsque vous activez BitLocker. Les secrets BitLocker sont notamment les éléments essentiels servant à chiffrer les données. Ce paramètre de stratégie s’applique uniquement lorsque la protection BitLocker est activée. 
+
+Si vous activez ce paramètre de stratégie, les données en mémoire ne seront pas remplacées au redémarrage. En l’absence de réécriture des données en mémoire, les performances du redémarrage peuvent être supérieures, mais le risque de révéler les secrets BitLocker augmente d’autant.
+
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, les secrets BitLocker sont supprimés de la mémoire au redémarrage de l’ordinateur.
+
+      </string>
+      <string id="MorBehavior_Name">Empêcher le remplacement des données en mémoire au redémarrage</string>
+
+      <string id="FVEOSCategory">Lecteurs du système d'exploitation</string>
+      <string id="FVEFDVCategory">Lecteurs de données fixes</string>
+      <string id="FVERDVCategory">Lecteurs de données amovibles</string>
+
+      <string id="IdentificationField_Name">Fournir les identificateurs uniques de votre organisation</string>
+      <string id="IdentificationField_Help">Ce paramètre de stratégie vous permet d'associer des identificateurs uniques de votre organisation à un nouveau lecteur protégé par BitLocker. Ces identificateurs sont stockés dans les champs d'identification et d'identification autorisée. Le champ d'identification vous permet d'associer un identificateur unique d'organisation aux lecteurs protégés par BitLocker. Cet identificateur est automatique ajouté aux nouveaux lecteurs protégés par BitLocker et peut être mis à jour pour les lecteurs BitLocker existants à l'aide du l'outil de ligne de commande Manage-BDE. Un champ d'identification est nécessaire pour la gestion des agents de récupération de données basés sur des certificats pour les lecteurs protégés par BitLocker et pour les éventuelles mises à jour de l'utilitaire BitLocker To Go. BitLocker ne gère et ne met à jour les agents de récupération de données que si le champ d'identification du lecteur correspond à la valeur configurée pour le champ d'identification. Idem pour la mise à jour de l'utilitaire BitLocker To Go.
+
+Le champ d'identification autorisée est utilisé en association avec le paramètre de stratégie « Refuser l'accès en écriture aux lecteurs amovibles non protégés par BitLocker » pour aider à contrôler l'utilisation des lecteurs amovibles dans votre organisation. Il s'agit d'une liste séparée par des virgules des champs d'identification de votre organisation ou d'organisations externes.
+
+Vous pouvez configurer les champs d'identification des lecteurs existants à l'aide de l'outil manage-BDE.exe.
+
+Si vous activez ce paramètre de stratégie, vous pouvez configurer le champ d'identification du lecteur protégé par BitLocker et tout champ d'identification autorisée utilisé par votre organisation.
+
+Lorsqu'un lecteur protégé par BitLocker est monté sur un autre ordinateur compatible BitLocker, les champs d'identification et d'identification autorisée permettent de déterminer si le lecteur provient d'une autre organisation.
+
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, le champ d'identification n'est pas obligatoire.
+
+Remarque : les champs d'identification sont nécessaires à la gestion des agents de récupération de données basés sur des certificats pour les lecteurs protégés par BitLocker. BitLocker ne gère et ne met à jour ces agents que si le champ d'identification est présent sur le lecteur et s'il est identique à la valeur configurée sur l'ordinateur. Le champ d'identification peut être toute valeur de 260 caractères maximum.
+
+      </string>
+
+      
+      <string id="UserCertificateOID_Name">Valider la conformité à la règle d'utilisation des certificats de cartes à puce</string>
+     <string id="UserCertificateOID_Help">Ce paramètre de stratégie vous permet d'associer un identificateur d'objet issu d'un certificat de carte à puce à un lecteur protégé par BitLocker. Ce paramètre est appliqué lorsque vous activez BitLocker.
+
+L'identificateur d'objet est spécifié dans l'utilisation améliorée de la clé du certificat. BitLocker peut identifier les certificats permettant d'authentifier un certificat utilisateur en relation avec un lecteur protégé par BitLocker en comparant l'identificateur d'objet du certificat avec l'identificateur d'objet défini par ce paramètre de stratégie.
+
+L'identificateur d'objet par défaut est 1.3.6.1.4.1.311.67.1.1
+
+Remarque : BitLocker ne requiert pas qu'un certificat comporte un attribut d'utilisation améliorée de la clé, mais s'il en possède un, l'identificateur d'objet doit correspondre à celui configuré pour BitLocker.
+
+Si vous activez ce paramètre de stratégie, l'identificateur d'objet spécifié dans la zone du même nom doit correspondre à l'identificateur d'objet du certificat de carte à puce.
+
+Si vous désactivez ou ne configurez pas ce paramètre, un identificateur d'objet par défaut est utilisé.
+
+     </string>
+
+       <string id="OSActiveDirectoryBackupDropDown_1">Enregistrer les mots de passe de récupération et les packages de clés</string>
+      <string id="OSActiveDirectoryBackupDropDown_2">Enregistrer les mots de passe de récupération uniquement</string>
+
+      
+      <string id="MinimumPINLength_Name">Configurer la longueur minimale du code confidentiel de démarrage</string>
+      <string id="MinimumPINLength_Help">Ce paramètre de stratégie vous permet de configurer la longueur minimale du code confidentiel de démarrage du module de plateforme sécurisée. Ce paramètre est appliqué lorsque vous activez BitLocker. Le code confidentiel de démarrage doit comporter entre 4 et 20 chiffres.
+
+Si vous activez ce paramètre, vous pouvez préciser le nombre minimal de chiffres que l'utilisateur doit entrer lorsqu'il définit le code confidentiel de démarrage.
+
+Si vous désactivez ou ne configurez pas ce paramètre, les utilisateurs peuvent définir un code confidentiel comportant entre 4 et 20 chiffres.
+
+      </string>
+
+      <string id="OSAllowDRA_Name">Autoriser les agents de récupération de données basés sur des certificats</string>
+          
+      <string id="FDVDenyWriteAccess_Name">Refuser l'accès en écriture aux lecteurs fixes non protégés par BitLocker</string>
+      <string id="FDVDenyWriteAccess_Help">Ce paramètre de stratégie détermine si les lecteurs de données fixes d'un ordinateur doivent être protégés par BitLocker pour être accessibles en écriture. Ce paramètre est appliqué lorsque vous activez BitLocker.
+
+Si vous activez ce paramètre, les lecteurs de données fixes non protégés par BitLocker seront montés en lecture seule. En revanche, les lecteurs protégés par BitLocker sont accessibles en lecture et en écriture.
+
+Si vous désactivez ou ne configurez pas ce paramètre, tous les lecteurs de données fixes de l'ordinateur sont montés en lecture et en écriture.
+
+      </string>
+
+      <string id="FDVPassphrase_Name">Configurer l'utilisation des mots de passe pour les lecteurs de données fixes</string>
+      <string id="FDVPassphrase_Help">Ce paramètre de stratégie spécifie si un mot de passe est obligatoire pour déverrouiller les lecteurs de données fixes protégés par BitLocker. Si vous autorisez les mots de passe, vous pouvez en imposer l'utilisation et en définir les critères de complexité et la longueur minimale. Pour que le paramétrage des critères de complexité prenne effet, vous devez également activer le paramètre de stratégie de groupe « Le mot de passe doit respecter des exigences de complexité » situé dans Configuration ordinateur\Paramètres Windows\Paramètres de sécurité\Stratégies de comptes\Stratégie de mot de passe\.
+        
+Remarque : ces paramètres sont appliqués lorsque BitLocker est activé et non lorsqu'un lecteur est déverrouillé. BitLocker permet de déverrouiller un lecteur avec l'un des moyens de protection disponibles pour celui-ci.
+
+Si vous activez ce paramètre, les utilisateurs peuvent configurer un mot de passe correspondant aux critères que vous définissez. Pour imposer l'utilisation d'un mot de passe, sélectionnez « Demander un mot de passe pour les lecteurs de données fixes ». Pour appliquer des critères de complexité aux mots de passe, sélectionnez « Imposer les critères de complexité ».
+
+Lorsque « Imposer les critères de complexité » est sélectionné, la connexion à un contrôleur de domaine est nécessaire lors de l'activation de BitLocker pour valider la complexité du mot de passe. Lorsque « Autoriser les critères de complexité » est sélectionné, le système tente de se connecter à un contrôleur de domaine pour vérifier que le mot de passe respecte les règles de complexité définies par la stratégie, mais s'il ne trouve aucun contrôleur de domaine, il accepte le mot de passe quelle que soit sa complexité et protège le lecteur par ce mot de passe. Lorsque « Ne pas autoriser les critères de complexité » est sélectionné, aucune validation de la complexité du mot de passe n'est réalisée.
+
+Les mots de passe doivent comporter au moins 8 caractères. Pour configurer une longueur minimale de mot de passe supérieure à 8 caractères, entrez le nombre minimal de caractères dans la zone « Longueur minimale des mots de passe ».
+
+Si vous désactivez ce paramètre, les utilisateurs ne peuvent pas utiliser de mot de passe.
+
+Si vous ne configurez pas ce paramètre, les mots de passe sont acceptés selon les paramètres par défaut, à savoir aucun critère de complexité et une longueur de 8 caractères.
+
+Remarque : les mots de passe ne peuvent pas être utilisés si la conformité FIPS est activée. Le paramètre de stratégie de groupe « Chiffrement système : utiliser des algorithmes compatibles FIPS pour le chiffrement, le hachage et la signature » dans Configuration ordinateur\Paramètres Windows\Paramètres de sécurité\Stratégies locales\Options de sécurité spécifie si la conformité FIPS est activée.
+
+</string>
+
+      <string id="PassphraseComplexityDropDown_2">Autoriser les critères de complexité des mots de passe</string>
+      <string id="PassphraseComplexityDropDown_0">Ne pas autoriser les critères de complexité</string>
+      <string id="PassphraseComplexityDropDown_1">Imposer les critères de complexité des mots de passe</string>
+      
+      <string id="FDVActiveDirectoryBackupDropDown_1">Sauvegarder les mots de passe de récupération et les packages de clés</string>
+      <string id="FDVActiveDirectoryBackupDropDown_2">Sauvegarder les mots de passe de récupération uniquement</string>
+
+      
+      <string id="FDVHybrid_Name">Autoriser l'accès aux lecteurs de données fixes protégés par BitLocker à partir de versions antérieures de Windows</string>
+      <string id="FDVHybrid_Help">Ce paramètre de stratégie configure si les lecteurs de données fixes au format de système de fichiers FAT peuvent être déverrouillés et affichés par des ordinateurs Windows Server 2008, Windows Vista, Windows XP avec Service Pack 3 (SP3) ou Windows XP avec Service Pack 2 (SP2).
+
+Si ce paramètre est activé ou non configuré, ces lecteurs peuvent être déverrouillés par ces systèmes d'exploitation et leur contenu affiché. Ces systèmes d'exploitation ont un accès en lecture aux lecteurs protégés par BitLocker.
+
+Lorsque ce paramètre est activé, sélectionnez la case à cocher « Ne pas installer l'utilitaire BitLocker To Go sur les lecteurs fixes au format FAT » pour empêcher les utilisateurs d'exécuter l'utilitaire BitLocker To Go à partir de leurs lecteurs fixes. Si l'utilitaire BitLocker To Go (bitlockertogo.exe) est présent sur un lecteur dont le champ d'identification n'est pas spécifié, ou si le lecteur a le même champ d'identification que celui défini dans le paramètre de stratégie « Fournir les identificateurs uniques de votre organisation », le système demandera à l'utilisateur de mettre à jour BitLocker et l'utilitaire BitLocker To Go sera supprimé du lecteur. Dans ce cas, pour déverrouiller les lecteurs fixes montés sur des ordinateurs Windows Server 2008, Windows Vista, Windows XP avec SP3 ou Windows XP avec SP2, l'utilitaire BitLocker To Go doit être installé sur l'ordinateur. Si cette case à cocher n'est pas activée, L'utilitaire BitLocker To Go est installé sur le lecteur fixe pour permettre aux utilisateurs de le déverrouiller sur les ordinateurs Windows Server 2008, Windows Vista, Windows XP avec SP3 ou Windows XP avec SP2 et sur lesquels l'utilitaire BitLocker To Go n'est pas installé.
+
+Si ce paramètre est désactivé, les lecteurs de données fixes au format de système de fichiers FAT protégés par BitLocker ne peuvent pas être déverrouillés sur les ordinateurs Windows Server 2008, Windows Vista, Windows XP avec SP3 ou Windows XP avec SP2. Bitlockertogo.exe ne sera pas installé.
+
+Remarque : ce paramètre de stratégie ne s'applique pas aux lecteurs au format de système de fichiers NTFS.
+
+      </string>
+
+      
+      <string id="FDVAllowDRA_Name">Autoriser les agents de récupération de données basés sur des certificats</string>
+      
+      <string id="FDVConfigureSmartCard_Name">Configurer l'utilisation des cartes à puce sur les lecteurs de données fixes</string>
+      <string id="FDVConfigureSmartCard_Help">Ce paramètre de stratégie vous permet de spécifier si les cartes à puce peuvent être utilisées pour authentifier l'accès de l'utilisateur aux lecteurs de données fixes protégés par BitLocker sur un ordinateur.
+
+Si vous activez ce paramètre, les cartes à puce peuvent être utilisées pour authentifier l'accès de l'utilisateur aux lecteurs. Vous pouvez imposer l'authentification par carte à puce en activant la case à cocher « Imposer l'utilisation des cartes à puce sur les lecteurs de données fixes ».
+
+Remarque : ces paramètres sont appliqués lorsque BitLocker est activé et non lorsqu'un lecteur est déverrouillé. BitLocker permet de déverrouiller un lecteur avec l'un des moyens de protection disponibles pour celui-ci.
+
+Si vous désactivez ce paramètre, les utilisateurs ne peuvent pas utiliser de cartes à puce pour authentifier leur accès aux lecteurs de données fixes protégés par BitLocker.
+
+Si vous ne configurez pas ce paramètre, les cartes à puce sont autorisées pour authentifier l'accès de l'utilisateur aux lecteurs protégés par BitLocker.
+
+      </string>
+      
+      <string id="RDVPassphrase_Name">Configurer l'utilisation des mots de passe pour les lecteurs de données amovibles</string>
+      <string id="RDVPassphrase_Help">Ce paramètre de stratégie spécifie si un mot de passe est obligatoire pour déverrouiller les lecteurs de données amovibles protégés par BitLocker. Si vous autorisez les mots de passe, vous pouvez en imposer l'utilisation et en définir les critères de complexité et la longueur minimale. Pour que le paramétrage des critères de complexité prenne effet, vous devez également activer le paramètre de stratégie de groupe « Le mot de passe doit respecter des exigences de complexité » situé dans Configuration ordinateur\Paramètres Windows\Paramètres de sécurité\Stratégies de comptes\Stratégie de mot de passe\.
+
+Remarque : ces paramètres sont appliqués lorsque BitLocker est activé et non lorsqu'un lecteur est déverrouillé. BitLocker permet de déverrouiller un lecteur avec l'un des moyens de protection disponibles pour celui-ci.
+
+Si vous activez ce paramètre, les utilisateurs peuvent configurer un mot de passe correspondant aux critères que vous définissez. Pour imposer l'utilisation d'un mot de passe, sélectionnez « Demander un mot de passe pour les lecteurs de données amovibles ». Pour appliquer des critères de complexité aux mots de passe, sélectionnez « Imposer les critères de complexité ».
+
+Lorsque « Imposer les critères de complexité » est sélectionné, la connexion à un contrôleur de domaine est nécessaire lors de l'activation de BitLocker pour valider la complexité du mot de passe. Lorsque « Autoriser les critères de complexité » est sélectionné, le système tente de se connecter à un contrôleur de domaine pour vérifier que le mot de passe respecte les règles de complexité définies par la stratégie, mais s'il ne trouve aucun contrôleur de domaine, il accepte le mot de passe quelle que soit sa complexité et protège le lecteur par ce mot de passe. Lorsque « Ne pas autoriser les critères de complexité » est sélectionné, aucune validation de la complexité du mot de passe n'est réalisée.
+
+Les mots de passe doivent comporter au moins 8 caractères. Pour configurer une longueur minimale de mot de passe supérieure à 8 caractères, entrez le nombre minimal de caractères dans la zone « Longueur minimale des mots de passe ».
+
+Si vous désactivez ce paramètre, les utilisateurs ne peuvent pas utiliser de mot de passe.
+
+Si vous ne configurez pas ce paramètre, les mots de passe sont acceptés selon les paramètres par défaut, à savoir aucun critère de complexité et une longueur de 8 caractères.
+
+Remarque : les mots de passe ne peuvent pas être utilisés si la conformité FIPS est activée. Le paramètre de stratégie de groupe « Chiffrement système : utiliser des algorithmes compatibles FIPS pour le chiffrement, le hachage et la signature » dans Configuration ordinateur\Paramètres Windows\Paramètres de sécurité\Stratégies locales\Options de sécurité spécifie si la conformité FIPS est activée.
+
+      </string>
+
+      <string id="RDVDenyWriteAccess_Name">Refuser l'accès en écriture aux lecteurs amovibles non protégés par BitLocker</string>
+      <string id="RDVDenyWriteAccess_Help">Ce paramètre de stratégie configure si les lecteurs de données amovibles doivent être protégés par BitLocker pour être accessibles en écriture.
+
+Si vous activez ce paramètre, les lecteurs de données amovibles non protégés par BitLocker seront montés en lecture seule. En revanche, les lecteurs protégés par BitLocker sont accessibles en lecture et en écriture.
+
+Si « Ne pas autoriser l'accès en écriture aux périphériques configurés par une autre organisation » est sélectionné, seuls les lecteurs dont le champ d'identification correspond au champ d'identification de l'ordinateur sont accessibles en écriture. Lors de l'accès à un lecteur de données amovible, la validité des champs d'identification et d'identification autorisée est vérifiée. Ces champs sont définis par le paramètre de stratégie « Fournir les identificateurs uniques de votre organisation ».
+
+Si vous désactivez ou ne configurez pas ce paramètre, tous les lecteurs de données amovibles de l'ordinateur sont montés en lecture et en écriture.
+
+Remarque : ce paramètre de stratégie peut être remplacé par ceux dans Configuration utilisateur\Modèles d’administration\Système\Accès au stockage amovible. Ce paramètre est ignoré si le paramètre de stratégie « Disques amovibles : refuser l'accès en écriture » est activé.
+
+      </string>
+
+      <string id="RDVConfigureBDE_Name">Contrôler l'utilisation de BitLocker sur les lecteurs amovibles</string>
+      <string id="RDVConfigureBDE_Help">Ce paramètre de stratégie contrôle l'utilisation de BitLocker sur les lecteurs de données amovibles. Ce paramètre est appliqué lorsque vous activez BitLocker.
+
+Si vous activez ce paramètre, vous pouvez sélectionner les paramètres de propriété contrôlant la façon dont les utilisateurs peuvent configurer BitLocker. Sélectionnez « Autoriser les utilisateurs à protéger les lecteurs de données amovibles avec BitLocker » pour permettre aux utilisateurs d'exécuter l'Assistant d'installation BitLocker sur un lecteur de données amovible. Sélectionnez « Autoriser les utilisateurs à suspendre et supprimer la protection BitLocker sur les lecteurs de données amovibles » pour permettre aux utilisateurs de supprimer le chiffrement BitLocker sur un lecteur ou de suspendre le chiffrement pendant une opération de maintenance. Consultez le Guide de déploiement du chiffrement de lecteur BitLocker sur Microsoft TechNet pour plus d'informations sur la suspension de la protection BitLocker.
+
+Si vous ne configurez pas ce paramètre, les utilisateurs peuvent utiliser BitLocker sur les lecteurs amovibles.
+
+Si vous désactivez ce paramètre, les utilisateurs ne peuvent pas utiliser BitLocker sur les lecteurs amovibles.
+
+      </string>
+
+
+      <string id="RDVActiveDirectoryBackupDropDown_1">Sauvegarder les mots de passe de récupération et les packages de clés</string>
+      <string id="RDVActiveDirectoryBackupDropDown_2">Sauvegarder les mots de passe de récupération uniquement</string>
+
+      <string id="RDVHybrid_Name">Autoriser l'accès aux lecteurs de données amovibles protégés par BitLocker à partir de versions antérieures de Windows</string>
+      <string id="RDVHybrid_Help">Ce paramètre de stratégie configure si les lecteurs de données amovibles au format de système de fichiers FAT peuvent être déverrouillés et affichés par des ordinateurs Windows Server 2008, Windows Vista, Windows XP avec Service Pack 3 (SP3) ou Windows XP avec Service Pack 2 (SP2).
+
+Si ce paramètre est activé ou non configuré, ces lecteurs peuvent être déverrouillés par ces systèmes d'exploitation et leur contenu affiché. Ces systèmes d'exploitation ont un accès en lecture aux lecteurs protégés par BitLocker.
+
+Lorsque ce paramètre est activé, sélectionnez la case à cocher « Ne pas installer l'utilitaire BitLocker To Go sur les lecteurs amovibles au format FAT » pour empêcher les utilisateurs d'exécuter l'utilitaire BitLocker To Go à partir de leurs lecteurs amovibles. Si l'utilitaire BitLocker To Go (bitlockertogo.exe) est présent sur un lecteur dont le champ d'identification n'est pas spécifié, ou si le lecteur a le même champ d'identification que celui défini dans le paramètre de stratégie « Fournir les identificateurs uniques de votre organisation », le système demandera à l'utilisateur de mettre à jour BitLocker et l'utilitaire BitLocker To Go sera supprimé du lecteur. Dans ce cas, pour déverrouiller les lecteurs amovibles montés sur des ordinateurs Windows Server 2008, Windows Vista, Windows XP avec SP3 ou Windows XP avec SP2, l'utilitaire BitLocker To Go doit être installé sur l'ordinateur. Si cette case à cocher n'est pas activée, l'utilitaire BitLocker To Go est installé sur le lecteur amovible pour permettre aux utilisateurs de le déverrouiller sur les ordinateurs Windows Server 2008, Windows Vista, Windows XP avec SP3 ou Windows XP avec SP2 et sur lesquels l'utilitaire BitLocker To Go n'est pas installé.
+
+Si ce paramètre est désactivé, les lecteurs de données amovibles au format de système de fichiers FAT protégés par BitLocker ne peuvent pas être déverrouillés sur les ordinateurs Windows Server 2008, Windows Vista, Windows XP avec SP3 ou Windows XP avec SP2. Bitlockertogo.exe ne sera pas installé.
+
+Remarque : ce paramètre de stratégie ne s'applique pas aux lecteurs au format de système de fichiers NTFS.
+
+      </string>
+
+      <string id="RDVAllowDRA_Name">Autoriser les agents de récupération de données basés sur des certificats</string>
+ 
+      <string id="RDVConfigureSmartCard_Name">Configurer l'utilisation des cartes à puce sur les lecteurs de données amovibles</string>
+      <string id="RDVConfigureSmartCard_Help">Ce paramètre de stratégie vous permet de spécifier si les cartes à puce peuvent être utilisées pour authentifier l'accès de l'utilisateur aux lecteurs de données amovibles protégés par BitLocker sur un ordinateur.
+
+Si vous activez ce paramètre, les cartes à puce peuvent être utilisées pour authentifier l'accès de l'utilisateur aux lecteurs. Vous pouvez imposer l'authentification par carte à puce en activant la case à cocher « Imposer l'utilisation des cartes à puce sur les lecteurs de données amovibles ».
+
+Remarque : ces paramètres sont appliqués lorsque BitLocker est activé et non lorsqu'un lecteur est déverrouillé. BitLocker permet de déverrouiller un lecteur avec l'un des moyens de protection disponibles pour celui-ci.
+
+Si vous désactivez ce paramètre, les utilisateurs ne peuvent pas utiliser de cartes à puce pour authentifier leur accès aux lecteurs de données amovibles protégés par BitLocker.
+
+Si vous ne configurez pas ce paramètre, les cartes à puce sont autorisées pour authentifier l'accès de l'utilisateur aux lecteurs amovibles protégés par BitLocker.
+
+      </string>
+
+      <string id="EnhancedPIN_Name">Autoriser les codes confidentiels améliorés au démarrage</string>
+      <string id="EnhancedPIN_Help">Ce paramètre de stratégie vous permet de configurer si les codes confidentiels améliorés peuvent être utilisés avec BitLocker au démarrage.
+
+Les codes confidentiels de démarrage améliorés permettent l'utilisation de caractères comme les majuscules et les minuscules, les symboles, les chiffres et les espaces. Ce paramètre est appliqué lorsque vous activez BitLocker.
+
+Si vous activez ce paramètre, tous les nouveaux codes confidentiels de démarrage BitLocker seront des codes améliorés.
+
+Remarque : tous les ordinateurs ne prennent pas en charge les codes confidentiels améliorés dans l'environnement de prédémarrage. Il est fortement conseillé que les utilisateurs réalisent une vérification système pendant l'installation de BitLocker.
+
+Si vous désactiver ou ne configurez pas ce paramètre, les codes confidentiels améliorés ne sont pas autorisés.
+
+      </string>
+
+</stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Requérir la sauvegarde BitLocker vers les services de domaine Active Directory (AD DS)</checkBox>
+        <text>Si sélectionné, impossible d'activer BitLocker en cas d'échec de la sauvegarde (paramètre par défaut recommandé). </text>
+        <text>Si non sélectionné, il est possible d'activer BitLocker même en cas d'échec de la sauvegarde. La sauvegarde n'est pas retentée automatiquement.</text>
+        <dropdownList refId="ActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Sélectionner les informations de récupération BitLocker à stocker :</dropdownList>
+        <text/>
+        <text>Un mot de passe de récupération est un nombre de 48 chiffres qui déverrouille l'accès à un lecteur protégé par BitLocker.</text>
+        <text>Un package de clés contient une clé de chiffrement BitLocker pour le lecteur, sécurisée par un ou plusieurs mots de passe de récupération</text>
+	    	<text>Les packages de clés aident à réaliser des récupérations spécialisées en cas d'endommagement du disque. </text>
+      </presentation>
+      
+      <presentation id="ConfigureStartupUsage_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Autoriser BitLocker sans un module de plateforme sécurisée compatible</checkBox>
+        <text>(requiert une clé de démarrage sur un lecteur flash USB)</text>
+        <text>Paramètres pour les ordinateurs avec un module de plateforme sécurisée :</text>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">Configurer la clé de démarrage de module de plateforme sécurisée :</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Configurer le code confidentiel de démarrage de module de plateforme sécurisée :</dropdownList>
+        <text>Important : si vous imposez l'utilisation d'une clé de démarrage, vous devez interdire l'utilisation d'un code confidentiel de démarrage. </text>
+        <text>Si vous imposez l'utilisation d'un code confidentiel de démarrage, vous devez interdire l'utilisation d'une clé de démarrage. Sinon, une erreur de stratégie se produira.</text>
+        <text>Remarque : n'autorisez ni les options de code confidentiel ni les options de clé de démarrage à masquer la page avancée sur un ordinateur avec module de plateforme sécurisée.</text>
+      </presentation>
+
+      <presentation id="ConfigureAdvancedStartup_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Autoriser BitLocker sans un module de plateforme sécurisée compatible</checkBox>
+        <text>(requiert une clé de démarrage sur un lecteur flash USB)</text>
+        <text>Paramètres pour les ordinateurs avec un module de plateforme sécurisée :</text>
+        <dropdownList refId="ConfigureTPMUsageDropDown_Name" noSort="true" defaultItem="0">Configurer le démarrage du module de plateforme sécurisée :</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Configurer le code confidentiel de démarrage de module de plateforme sécurisée :</dropdownList>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">Configurer la clé de démarrage de module de plateforme sécurisée :</dropdownList>
+        <dropdownList refId="ConfigureTPMPINKeyUsageDropDown_Name" noSort="true" defaultItem="0">Configurer le code confidentiel et la clé de démarrage de module de plateforme sécurisée :</dropdownList>
+        <text/>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryUsage_Name">
+        <text>Important : pour éviter la perte de données, vous devez disposer d'un moyen de récupérer les clés de chiffrement BitLocker. Si vous n'autorisez aucune des options de récupération ci-dessous, vous devez activer la sauvegarde des informations de récupération BitLocker dans les services de domaine Active Directory. Sinon, une erreur de stratégie se produira.</text>
+        <dropdownList refId="ConfigureRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0">Configurer le mot de passe de récupération à 48 chiffres :</dropdownList>
+        <dropdownList refId="ConfigureRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0">Configurer la clé de récupération à 256 bits :</dropdownList>
+        <text>Remarque : si vous n'autorisez pas les mots de passe et que vous imposez l'utilisation d'une clé de récupération, les utilisateurs ne peuvent activer BitLocker qu'en enregistrant les informations sur clé USB.</text>
+        <text/>
+      </presentation>
+
+      <presentation id="OSRecoveryUsage_Name">
+        <checkBox refId="OSAllowDRA_Name" defaultChecked="true">Autoriser les agents de récupération de données</checkBox>
+        <text>Configurer l'enregistrement par les utilisateurs des informations de récupération BitLocker :</text>
+        <dropdownList refId="OSRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="OSRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="OSHideRecoveryPage_Name" defaultChecked="false">Supprimer les options de configuration de l'Assistant d'installation BitLocker</checkBox>
+        <checkBox refId="OSActiveDirectoryBackup_Name" defaultChecked="true">Enregistrer les informations de récupération BitLocker dans les services de domaine Active Directory pour les lecteurs du système d'exploitation</checkBox>
+        <dropdownList refId="OSActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Configurer le stockage des informations de récupération BitLocker dans les services de domaine Active Directory :</dropdownList>
+        <checkBox refId="OSRequireActiveDirectoryBackup_Name">N'activer BitLocker qu'une fois les informations de récupération enregistrées dans les services de domaine Active Directory pour les lecteurs du système d'exploitation</checkBox>
+       </presentation>
+
+      <presentation id="FDVRecoveryUsage_Name">
+        <checkBox refId="FDVAllowDRA_Name" defaultChecked="true">Autoriser les agents de récupération de données</checkBox>
+        <text>Configurer l'enregistrement par les utilisateurs des informations de récupération BitLocker :</text>
+        <dropdownList refId="FDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="FDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="FDVHideRecoveryPage_Name" defaultChecked="false">Supprimer les options de configuration de l'Assistant d'installation BitLocker</checkBox>
+        <checkBox refId="FDVActiveDirectoryBackup_Name" defaultChecked="true">Enregistrer les informations de récupération BitLocker dans les services de domaine Active Directory pour les lecteurs du système d'exploitation</checkBox>
+        <dropdownList refId="FDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Configurer le stockage des informations de récupération BitLocker dans les services de domaine Active Directory :</dropdownList>
+        <checkBox refId="FDVRequireActiveDirectoryBackup_Name">N'activer BitLocker qu'une fois les informations de récupération enregistrées dans les services de domaine Active Directory pour les lecteurs de données fixes</checkBox>
+      </presentation>
+
+      <presentation id="RDVRecoveryUsage_Name">
+        <checkBox refId="RDVAllowDRA_Name" defaultChecked="true">Autoriser les agents de récupération de données</checkBox>
+        <text>Configurer l'enregistrement par les utilisateurs des informations de récupération BitLocker :</text>
+        <dropdownList refId="RDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="RDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="RDVHideRecoveryPage_Name" defaultChecked="false">Supprimer les options de configuration de l'Assistant d'installation BitLocker</checkBox>
+        <checkBox refId="RDVActiveDirectoryBackup_Name" defaultChecked="true">Enregistrer les informations de récupération BitLocker dans les services de domaine Active Directory pour les lecteurs du système d'exploitation</checkBox> 
+        <dropdownList refId="RDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Configurer le stockage des informations de récupération BitLocker dans les services de domaine Active Directory :</dropdownList>
+        <checkBox refId="RDVRequireActiveDirectoryBackup_Name">N'activer BitLocker qu'une fois les informations de récupération enregistrées dans les services de domaine Active Directory pour les lecteurs de données amovibles</checkBox>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryFolder_Name">
+        <textBox refId="ConfigureRecoveryFolderPath_Input">
+          <label>Configurer le chemin d’accès du dossier par défaut :</label>
+          <defaultValue/>
+        </textBox>
+        <text>Spécifiez un chemin d'accès complet ou ajoutez les variables d'environnement de l'ordinateur dans le chemin d'accès. </text>
+        <text>Par exemple, entrez « \\serveur\dossiersauvegarde » ou « %VariableEnvironnementLecteurSécurisé%\dossiersauvegarde »</text>
+        <text>Remarque : dans tous les cas, l’utilisateur aura la possibilité de sélectionner d’autres dossiers où enregistrer le mot de passe de récupération.</text>
+        <text/>
+      </presentation>
+      
+      
+      <presentation id="EncryptionMethod_Name">
+        <dropdownList refId="EncryptionMethodDropDown_Name" noSort="true" defaultItem="0">Sélectionner la méthode de chiffrement :</dropdownList>
+      </presentation>
+      
+      <presentation id="PlatformValidation_Name">
+        <text>Un profil de validation de plateforme consiste en un ensemble d'index de registre de configuration de plateforme (PCR). Chaque index PCR est associé à des composants qui s'exécutent au démarrage de Windows.</text>
+        <text>Utilisez les cases à cocher ci-dessous pour sélectionner les index PCR à inclure au profil. </text>
+        <text>Soyez prudent en modifiant ce paramétrage.</text>
+        <text>Nous recommandons les PCR par défaut : 0, 2, 4, 5, 8, 9, 10 et 11.</text>
+        <text>Pour que la protection BitLocker prenne effet, vous devez inclure le registre de configuration de plateforme 11.</text>
+
+        <text>Consultez la documentation en ligne pour plus d'informations sur les avantages et les risques de modifier le profil de validation de plateforme du module de plateforme sécurisée.</text>
+        
+        <checkBox refId="PlatformValidation_Setting0" defaultChecked="true">PCR 0 : CRTM (Core Root of Trust of Measurement), BIOS et extensions de plateforme</checkBox>
+        <checkBox refId="PlatformValidation_Setting1">PCR 1 : Configuration et données de plateforme et de carte mère</checkBox>
+        <checkBox refId="PlatformValidation_Setting2" defaultChecked="true">PCR 2 : Code de ROM en option</checkBox>
+        <checkBox refId="PlatformValidation_Setting3">PCR 3 : Configuration et données de ROM en option</checkBox>
+        <checkBox refId="PlatformValidation_Setting4" defaultChecked="true">PCR 4 : Code d’enregistrement de démarrage principal (MBR)</checkBox>
+        <checkBox refId="PlatformValidation_Setting5" defaultChecked="true">PCR 5 : Table de partition d’enregistrement de démarrage principal (MBR)</checkBox>
+        <checkBox refId="PlatformValidation_Setting6">PCR 6 : Événements de transition d’état et de sortie de veille</checkBox>
+        <checkBox refId="PlatformValidation_Setting7">PCR 7 : Spécificité du fabricant de l’ordinateur</checkBox>
+        <checkBox refId="PlatformValidation_Setting8" defaultChecked="true">PCR 8 : Secteur d’amorçage NTFS</checkBox>
+        <checkBox refId="PlatformValidation_Setting9" defaultChecked="true">PCR 9 : Bloc d’amorçage NTFS</checkBox>
+        <checkBox refId="PlatformValidation_Setting10" defaultChecked="true">PCR 10 : Gestionnaire de démarrage</checkBox>
+        <checkBox refId="PlatformValidation_Setting11" defaultChecked="true">PCR 11 : Contrôle d’accès BitLocker</checkBox>
+        <checkBox refId="PlatformValidation_Setting12">PCR 12 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting13">PCR 13 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting14">PCR 14 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting15">PCR 15 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting16">PCR 16 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting17">PCR 17 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting18">PCR 18 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting19">PCR 19 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting20">PCR 20 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting21">PCR 21 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting22">PCR 22 : Réservé pour un usage futur</checkBox>
+        <checkBox refId="PlatformValidation_Setting23">PCR 23 : Réservé pour un usage futur</checkBox>
+      </presentation>
+      
+      <presentation id="MorBehavior_Name">
+     
+      </presentation>
+
+      <presentation id="IdentificationField">
+        <textBox refId="IdentificationField">
+          <label>Champ d'identification BitLocker :</label>
+        </textBox>
+        <textBox refId="SecIdentificationField">
+          <label>Champ d'identification autorisée BitLocker :</label>
+        </textBox>
+      </presentation>
+
+      <presentation id="UserCertificateOID">
+        <textBox refId="UserCertificateOID">
+          <label>Identificateur d'objet :</label>
+          <defaultValue>1.3.6.1.4.1.311.67.1.1</defaultValue>
+        </textBox>
+        </presentation>
+
+     <presentation id="MinimumPINLength">
+        <decimalTextBox refId="MinPINLength" defaultValue="4">Nombre minimal de caractères :</decimalTextBox>
+      </presentation>
+      
+     <presentation id="FDVPassphrase_Name">
+        <checkBox refId="FDVRequirePassphrase">Demander un mot de passe pour les lecteurs de données fixes</checkBox>
+        <dropdownList refId="FDVPassphraseComplexity" noSort="true" defaultItem="0">Configurer les critères de complexité des mots de passe pour les lecteurs de données fixes :</dropdownList>
+        <decimalTextBox refId="FDVMinPassphraseLength" defaultValue="8">Longueur minimale des mots de passe pour les lecteurs de données fixes :</decimalTextBox>
+       <text>Remarque : vous devez activer le paramètre de stratégie « Le mot de passe doit respecter des exigences de complexité » pour que les critères de complexité soient appliqués.</text>
+      </presentation>
+
+       <presentation id="FDVConfigureSmartCard">
+        <checkBox refId="FDVRequireSmartCard_Name">Imposer l'utilisation des cartes à puce sur les lecteurs de données fixes</checkBox>
+      </presentation>
+
+     <presentation id="RDVPassphrase_Name">
+        <checkBox refId="RDVRequirePassphrase">Demander un mot de passe pour les lecteurs de données amovibles</checkBox>
+       <dropdownList refId="RDVPassphraseComplexity" noSort="true" defaultItem="0">Configurer les critères de complexité des mots de passe pour les lecteurs de données amovibles :</dropdownList>
+        <decimalTextBox refId="RDVMinPassphraseLength" defaultValue="8">Longueur minimale des mots de passe pour les lecteurs de données amovibles :</decimalTextBox>
+<text>Remarque : vous devez activer le paramètre de stratégie « Le mot de passe doit respecter des exigences de complexité » pour que les critères de complexité soient appliqués.</text>
+      </presentation>
+
+      <presentation id="RDVConfigureBDE">
+        <checkBox refId="RDVAllowBDE_Name" noSort="true" defaultChecked="true">Autoriser les utilisateurs à protéger les lecteurs de données amovibles avec BitLocker</checkBox>
+        <checkBox refId="RDVDisableBDE_Name" noSort="true" defaultChecked="true">Autoriser les utilisateurs à suspendre et supprimer la protection BitLocker sur les lecteurs de données amovibles</checkBox>
+      </presentation>
+
+      <presentation id="RDVDenyWriteAccess">
+        <checkBox refId="RDVCrossOrg" noSort="true" defaultChecked="false">Ne pas autoriser l'accès en écriture aux périphériques configurés par une autre organisation</checkBox>
+      </presentation>
+
+
+      <presentation id="RDVConfigureSmartCard">
+        <checkBox refId="RDVRequireSmartCard_Name" noSort="true" defaultItem="0">Imposer l'utilisation des cartes à puce sur les lecteurs de données amovibles</checkBox>
+        </presentation>
+          
+      <presentation id="EnhancedPIN">
+
+      </presentation>
+
+      <presentation id="FDVDiscoveryVolumeType">
+        <checkBox refId="FDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">Ne pas installer l'utilitaire BitLocker To Go sur les lecteurs fixes au format FAT</checkBox>
+      </presentation>
+
+      <presentation id="RDVDiscoveryVolumeType">
+        <checkBox refId="RDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">Ne pas installer l'utilitaire BitLocker To Go sur les lecteurs amovibles au format FAT</checkBox>
+      </presentation>
+
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

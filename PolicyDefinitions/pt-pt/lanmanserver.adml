@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>introduzir o nome a apresentar aqui</displayName>
+  <description>introduzir a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Servidor Lanman</string>
+      <string id="Lbl_FollowShare">Permitir a publicação de hashes para pastas partilhadas nas quais o BranchCache está activado</string>
+      <string id="Lbl_DisableOnAllShares">Não permitir a publicação de hashes em todas as pastas partilhadas</string>
+      <string id="Lbl_EnableOnAllShares">Permitir a publicação de hashes em todas as pastas partilhadas</string>
+      <string id="Pol_HashPublication">Publicação de Hashes no BranchCache</string>
+      <string id="Pol_HashPublication_Help">Esta política permite que um serviço de geração de hashes crie hashes para dados armazenados em pastas partilhadas e, em seguida, forneça-os a computadores cliente nos quais o BranchCache está activado. Os hashes são impressões digitais de ficheiros derivadas matematicamente, que identificam de forma exclusiva o conteúdo dos ficheiros. Estas impressões digitais são muito pequenas, o que permite ao Windows comparar ficheiros sem consumir uma quantidade significativa da largura de banda da rede alargada (WAN).
+
+Um computador cliente de uma sucursal pode obter um hash para um ficheiro através de uma ligação WAN, se todas as condições seguintes forem verdadeiras:      
+1) O utilizador tem permissões para aceder ao ficheiro.
+2) BranchCache está activado no computador cliente.
+3) A publicação de hashes é permitida na pasta partilhada à qual o computador cliente está a aceder. 
+
+Se o computador cliente obtiver o hash, em seguida, o computador poderá procurar uma versão idêntica do ficheiro na cache de outros computadores da sucursal. Se o Windows localizar uma versão idêntica do ficheiro na sucursal, o computador cliente transfere a cópia na cache local em vez de transferir o ficheiro através da ligação WAN. 
+
+Se configurar esta política para "Permitir a publicação de hashes para pastas partilhadas nas quais o BranchCache está activado" (valor = 0), os hashes serão gerados apenas para pastas partilhadas nas quais o BranchCache está activado. Os hashes para estas pastas partilhadas são gerados quando um dos seguintes eventos ocorre:
+1) Um ficheiro é acedido numa pasta partilhada na qual o BranchCache é permitido por um cliente com suporte de BranchCache activado.
+2) Um administrador gera manualmente hashes utilizando a ferramenta de linha de comandos Hashgen.
+ 
+Se configurar esta política para "Não permitir a publicação de hashes em todas as pastas partilhadas" (valor = 1), os hashes nunca serão gerados ou fornecidos por computadores nos quais esta política seja aplicada.
+ 
+Se configurar esta política para "Permitir a publicação de hashes em todas as pastas partilhadas" (valor = 2), os hashes são gerados para todas as pastas partilhadas no servidor quando um dos seguintes eventos ocorrer: 
+1) Um ficheiro é acedido numa pasta partilhada no servidor por um cliente com suporte de BranchCache activado.
+2) Um administrador gera manualmente hashes utilizando a ferramenta de linha de comandos Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Valores:</text>
+        <text>0 = Permitir a publicação de hashes para pastas partilhadas nas quais o BranchCache está activado</text>
+        <text>1 = Não permitir a publicação de hashes em todas as pastas partilhadas</text>
+        <text>2 = Permitir a publicação de hashes em todas as pastas partilhadas</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Acções de publicação de hashes: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

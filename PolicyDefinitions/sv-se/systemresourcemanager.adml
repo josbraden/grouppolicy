@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>ange visningsnamn här</displayName>
+  <description>ange beskrivning här</description>
+  <resources>
+    <stringTable>
+      <string id="AccountingEnabled">Aktivera redovisning för WSRM</string>
+      <string id="AccountingEnabled_Explain">Du kan använda den här inställningen för att aktivera eller inaktivera redovisningsfunktionen.
+
+Om inställningen aktiveras börjar WSRM (Windows System Resource Manager) redovisa användningsinformation för processerna.
+
+Om inställningen inaktiveras avslutas loggningen av användningsinformationen om processerna i WSRM.
+
+Om inställningen inte konfigureras kan användaren ange om redovisningen ska aktiveras eller inte.
+
+Redovisningsprocesserna är inaktiverade som standard.
+
+Redovisningsdatabasen kan användas för hantering av informationen i databasen och av databasens fysiska storlek. Hantering av databasinformation inbegriper sökning efter relevant information som sedan sorteras på ett effektivt sätt. Hantering av databasens fysiska storlek kräver regelbunden översyn eftersom WSRM fortsätter att lagra redovisningsinformation (om inget annat anges). Det medför att databasens storlek hela tiden ökar. Du kan hantera databasstorleken genom att arkivera redovisningsdata för senare användning eller ta bort informationen ur databasen.
+
+Redovisningsdata kan sedan användas för övervakning av resursanvändning, för jämförelse av förväntade och faktiska prestanda, för utvärdering av om datorns fysiska resurser är tillräckliga för uppgifterna den ska användas för samt som grund för redovisning med återdebitering.
+</string>
+      <string id="EmailIds">Ange e-postidentiteter som meddelanden ska skickas till</string>
+      <string id="EmailIds_Explain">Du kan använda den här inställningen för att ange e-postadresser som meddelanden ska skickas till. Använd semikolon (;) för att avgränsa flera e-postadresser.
+
+Om inställningen aktiveras skickas meddelanden till de angivna adresserna i WSRM (Windows System Resource Manager).
+
+Om inställningen inaktiveras anges inga e-postadresser (standardinställning).
+
+Om inställningen inte konfigureras kan användaren ange e-postadresser för meddelanden. Värdet kan vara e-postalias eller e-postadresser med domännamn (t ex någon@exempel.com).
+
+Meddelanden skickas till dessa adresser beroende på vilka händelser som väljs för meddelanden.
+
+Obs! För att meddelanden ska kunna tas emot måste meddelandeinställningen aktiveras för händelseloggen. Du visar listan med händelser genom att klicka på "Fel", "Varning" eller "Information", och sedan på "OK". Om du klickar på "Fel", "Varning" eller "Information", inkluderas alla enskilda händelser i kategorin.</string>
+      <string id="KeyName_Explain">Du kan använda den här inställningen för att aktivera egenskapen för redovisning och/eller meddelande i WSRM via grupprincipinställningarna.</string>
+      <string id="RecordWriteInterval">Ange tidsintervall i minuter för loggning av redovisningsdata</string>
+      <string id="RecordWriteInterval_Explain">Du kan använda den här inställningen för att ange att data på redovisningsservern ska loggas i angivet intervall.
+
+Om inställningen aktiveras anges tidsintervallet till angivet värde i WSRM (Windows System Resource Manager).
+
+Om inställningen inaktiveras anges ett standardvärde på 10 minuter.
+
+Om du inte konfigurerar inställningen kan användaren ange ett intervall.
+
+Värdet anges i minuter mellan 2 och 60 000 minuter. Tio minuter används som standardvärde eftersom det är lämpligt om det finns många servrar där data fjärrloggas. Prestanda kan påverkas negativt om värdet anges till mindre än tio minuter för en server i ett nätverk där det finns fler än 20 datorer där data fjärrloggas.
+
+Obs! Om antalet datorer i nätverket ökar ska du ange ett högre värde för tidsintervallet för att undvika nätverksproblem.</string>
+      <string id="SMTPServer">Ange vilken SMTP-server som ska användas för att skicka meddelanden</string>
+      <string id="SMTPServerConfiguration_Explain">Du kan använda den här inställningen för att ange adressen för SMTP-servern som används för att skicka meddelanden.
+
+Om inställningen aktiveras anges SMTP-servern till angivet värde i WSRM (Windows System Resource Manager).
+
+Om inställningen inaktiveras anges ingen SMTP-server (standardinställning).
+
+Om du inte konfigurerar inställningen kan användaren ange en SMTP-server.
+
+Värdet kan vara NetBIOS-namnet eller det fullständiga domännamnet för SMTP-servern (Simple Mail Transfer Protocol). På servern finns e-postadresserna som meddelanden ska skickas till.
+
+Obs! För att e-postmeddelanden ska kunna tas emot måste meddelandeinställningen aktiveras för händelseloggen. Du visar listan med händelser genom att klicka på "Fel", "Varning" eller "Information", och sedan på "OK". Om du klickar på "Fel", "Varning" eller "Information", inkluderas alla enskilda händelser i kategorin.</string>
+      <string id="WSRM">Windows System Resource Manager</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="EmailIds">
+        <textBox refId="EmailIdsConfiguration">
+          <label>E-post-ID:n</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+      <presentation id="RecordWriteInterval">
+        <decimalTextBox refId="Write_Interval" defaultValue="10">Registreringsintervall för redovisning (2-60 000 minuter) </decimalTextBox>
+      </presentation>
+      <presentation id="SMTPServer">
+        <textBox refId="SMTPServerConfiguration">
+          <label>Ange SMTP-serverns adress</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>voer hier de weergegeven naam in</displayName>
+  <description>typ hier een beschrijving</description>
+  <resources>
+    <stringTable>
+      <string id="Netlogon">Netwerkaanmelding</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain">Locatie van de domeincontrollers (DC's) die als host optreden voor een domein met een DNS-naam met een enkelvoudig label</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain_Help">Hiermee wordt bepaald of de computers waarop deze instelling wordt toegepast, DNS-naamomzetting proberen uit te voeren bij domeinnamen met een enkelvoudig label.
+
+Als een computer (of eigenlijk de DC-locator die op een computer wordt uitgevoerd) een domeincontroller moet opsporen die de host is van een Active Directory-domein met een enkelvoudige labelnaam, gebruikt de computer uitsluitend NetBIOS-naamomzetting en niet de DNS-naamomzetting, tenzij de computer aan een Active Directory-forest is toegevoegd waarin ten minste één domein een DNS-naam met een enkelvoudig label heeft. 
+
+Als deze instelling is ingeschakeld, proberen computers waarop dit beleid wordt toegepast, een domeincontroller voor een Active Directory-domein met een enkelvoudige labelnaam op te sporen met DNS-naamomzetting.
+
+Als deze instelling is uitgeschakeld, proberen computers waarop dit beleid wordt toegepast, een domeincontroller voor een Active Directory-domein met een enkelvoudige labelnaam alleen op te sporen met NetBIOS-naamomzetting, niet met de DNS-naamomzetting, tenzij de computer een domein met een DNS-naam met een enkelvoudig label zoekt dat bestaat in het Active Directory-forest waaraan deze computer is toegevoegd.
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele computer toegepast en gebruiken computers hun lokale configuratie.</string>
+      <string id="Netlogon_AutoSiteCoverage">Automatische DC-selectie voor sites door de DNS-SRV-records voor de DC-locator</string>
+      <string id="Netlogon_AutoSiteCoverage_Help">Hiermee wordt bepaald of domeincontrollers (DC's) dynamische registratie uitvoeren voor sitespecifieke SRV-records voor de DC-locator voor de dichtstbijzijnde sites waar geen DC voor hetzelfde domein bestaat (of waar geen globale catalogus voor hetzelfde forest bestaat). Deze DNS-records worden dynamisch geregistreerd door de Net Logon-service en worden gebruikt om de domeincontroller te lokaliseren.
+
+Als deze instelling is ingeschakeld, worden door de DC's waarop deze instelling wordt toegepast, sitespecifieke DNS-SRV-records voor de DC-locator dynamisch geregistreerd voor de dichtstbijzijnde sites waar geen DC voor hetzelfde domein bestaat of geen globale catalogus voor hetzelfde forest bestaat.
+
+Als u deze instelling uitschakelt, registreren de DC's alleen sitespecifieke DNS-SRV-records voor de DC-locator voor hun eigen sites.
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele DC toegepast en gebruiken DC's hun lokale configuratie.</string>
+      <string id="Netlogon_AvoidPdcOnWan">Contact met PDC opnemen bij mislukte aanmeldingen</string>
+      <string id="Netlogon_AvoidPdcOnWan_Help">Hiermee wordt bepaald of een domeincontroller (DC) moet proberen het wachtwoord dat door een client is opgegeven, te verifiëren bij de PDC als het wachtwoord niet kan worden gevalideerd door de DC.
+
+Dit is bijvoorbeeld nuttig als het wachtwoord van de client kortgeleden is gewijzigd en dit nog niet is doorgegeven aan de DC. Gebruikers kunnen deze functie uitschakelen als de toegang tot de PDC via een langzame WAN-verbinding verloopt.
+
+Klik op Ingeschakeld als u deze functie wilt inschakelen.
+
+Klik op Uitgeschakeld als u deze functie wilt uitschakelen.</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod">Eerste hernieuwde DC-detectiepoging voor achtergrondaanvragers</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod_Help">Wanneer toepassingen die periodiek naar domeincontrollers (DC's) zoeken, een DC niet kunnen vinden, bepaalt de waarde die in deze instelling is opgegeven de tijd (in seconden) tot aan de eerstvolgende nieuwe poging.
+
+De standaardwaarde voor deze instelling is 10 minuten (10*60). De maximale waarde voor deze instelling is 49 dagen (0x49*24*60*60=4233600). De minimale waarde voor deze instelling is 0.
+
+Deze instelling is alleen relevant voor aanroepers van DsGetDcName die de vlag DS_BACKGROUND_ONLY hebben opgegeven.
+
+Als de waarde van deze instelling kleiner is dan de waarde die is opgegeven in de subsleutel NegativeCachePeriod, wordt de waarde in de subsleutel NegativeCachePeriod gebruikt.
+
+Waarschuwing: Wanneer de waarde voor deze instelling te hoog is, probeert de client niet om DC's te vinden die eerst onbeschikbaar waren. Als de waarde in deze instelling zeer klein is en de DC niet beschikbaar is, is het netwerkverkeer dat door periodieke DC-opsporingen wordt veroorzaakt mogelijk buitensporig.</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod">Maximuminterval voor hernieuwde DC-detectiepogingen voor achtergrondaanvragers</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod_Help">Wanneer toepassingen die periodiek naar domeincontrollers (DC's) zoeken, een DC niet kunnen vinden, bepaalt de waarde in deze instelling het maximale interval dat is toegestaan voor nieuwe pogingen.
+
+De intervallen voor nieuwe pogingen kunnen bijvoorbeeld zijn ingesteld op 10 minuten, vervolgens 20 minuten en dan 40 minuten, maar als het interval de waarde bereikt die in deze instelling is opgegeven, wordt die waarde het interval voor alle volgende pogingen totdat de waarde die is ingesteld in 'Laatste hernieuwde DC-detectiepoging' wordt bereikt.
+
+De standaardwaarde voor deze instelling is 60 minuten (60*60). De maximale waarde voor deze instelling is 49 dagen (0x49*24*60*60=4233600). De minimale waarde voor deze instelling is 0.
+
+Als de waarde voor deze instelling kleiner is dan de waarde die is opgegeven voor 'Eerste hernieuwde DC-detectiepoging', wordt de waarde van 'Eerste hernieuwde DC-detectiepoging' gebruikt.
+
+Waarschuwing: als de waarde voor deze instelling te groot is, kunnen de perioden om een DC te vinden voor een client erg lang duren.
+
+Als de waarde voor deze instelling te klein is en de DC niet beschikbaar is, kunnen de frequente nieuwe pogingen leiden tot buitensporig netwerkverkeer.</string>
+      <string id="Netlogon_BackgroundRetryQuitTime">Laatste hernieuwde DC-detectiepoging voor achtergrondaanvragers</string>
+      <string id="Netlogon_BackgroundRetryQuitTime_Help">Wanneer toepassingen die periodiek naar domeincontrollers (DC's) zoeken, een DC niet kunnen vinden, bepaalt de waarde in deze instelling wanneer nieuwe pogingen niet meer zijn toegestaan. U kunt bijvoorbeeld instellen dat nieuwe pogingen moeten worden uitgevoerd volgens de instelling 'Maximuminterval voor hernieuwde DC-detectiepogingen', maar als de waarde in deze instelling wordt bereikt, worden er geen nieuwe pogingen meer gedaan. Als de waarde voor deze instelling kleiner is dan de waarde die is opgegeven voor 'Maximuminterval voor hernieuwde DC-detectiepogingen', wordt de waarde van 'Maximuminterval voor hernieuwde DC-detectiepogingen' gebruikt.
+
+De standaardwaarde voor deze instelling is 0, wat betekent dat nieuwe pogingen niet worden gestaakt. De maximale waarde voor deze instelling is 49 dagen (0x49*24*60*60=4233600). De minimale waarde voor deze instelling is 0.
+
+Waarschuwing: Wanneer de waarde voor deze instelling te klein is, stopt de client de pogingen om een DC te vinden te snel.</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod">Positieve periodieke DC-cachevernieuwing voor achtergrondaanvragers</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod_Help">Hiermee wordt bepaald wanneer een geslaagde DC-cachevermelding wordt vernieuwd. Deze instelling wordt toegepast op aanroepprogramma's die periodiek proberen DC's te lokaliseren. De instelling wordt toegepast voordat de DC-gegevens worden geretourneerd naar het aanroepprogramma. De standaardwaarde voor deze instelling is oneindig (4294967200). De maximumwaarde voor de instelling is 4294967200, en het maximum dat niet wordt behandeld als oneindig is 49 dagen (49*24*60*60=4233600). Elke waarde die groter is, wordt behandeld als oneindig. De minimale waarde voor deze instelling is 0 (altijd vernieuwen).</string>
+      <string id="Netlogon_DC_Locator_DNS_Records">DNS-records voor DC-locator</string>
+      <string id="Netlogon_DebugFlag">Niveau van foutopsporingsuitvoer naar logboekbestand</string>
+      <string id="Netlogon_DebugFlag_Help">Hiermee wordt het niveau bepaald van foutopsporingsuitvoer voor de Net Logon-service.
+
+De Net Logon-service voert foutopsporingsgegevens uit naar het logboekbestand netlogon.log in de map %windir%\debug. Standaard worden geen foutopsporingsgegevens in het logboek geregistreerd.
+
+Als u deze instelling inschakelt en een waarde opgeeft die niet gelijk is aan nul, worden de foutopsporingsgegevens in het logboek geregistreerd. Hogere waarden resulteren in een uitgebreidere logboekregistratie. De waarde 536936447 wordt algemeen gebruikt als optimale instelling.
+
+Als u nul opgeeft voor deze instelling, is het standaardgedrag van toepassing (zie hierboven).
+
+Als u deze instelling uitschakelt of niet configureert, is het standaardgedrag van toepassing (zie hierboven).</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords">DNS-records voor DC-locator niet geregistreerd door de DC's</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords_Help">Hiermee wordt bepaald welke DNS-records voor de DC-locator niet worden geregistreerd door de Netlogon-service.
+
+Als u deze instelling wilt inschakelen, selecteert u Inschakelen en geeft u een door spaties gescheiden lijst met instructies op voor de DNS-records voor de DC-locator die niet moeten worden geregistreerd door de DC's waarop deze instelling wordt toegepast.
+
+Selecteer de instructies in de volgende lijst:
+
+Instructie   Type DNS-record
+
+LdapIpAddress A  &lt;NaamDnsDomein&gt; Ldap    SRV _ldap._tcp.&lt;NaamDnsDomein&gt; LdapAtSite  SRV _ldap._tcp.&lt;Sitenaam&gt;._sites.&lt;NaamDnsDomein&gt; Pdc    SRV _ldap._tcp.pdc._msdcs.&lt;NaamDnsDomein&gt; Gc    SRV _ldap._tcp.gc._msdcs.&lt;NaamDnsForest&gt; GcAtSite   SRV _ldap._tcp.&lt;Sitenaam&gt;._sites.gc._msdcs.&lt;NaamDnsForest&gt; DcByGuid   SRV _ldap._tcp.&lt;GuidDomein&gt;.domains._msdcs.&lt;NaamDnsForest&gt; GcIpAddress  A  _gc._msdcs.&lt;NaamDnsForest&gt; DsaCname   CNAME &lt;GuidDsa&gt;._msdcs.&lt;NaamDnsForest&gt; Kdc    SRV _kerberos._tcp.dc._msdcs.&lt;NaamDnsDomein&gt; KdcAtSite  SRV _kerberos._tcp.dc._msdcs.&lt;Sitenaam&gt;._sites.&lt;NaamDnsDomein&gt; Dc    SRV _ldap._tcp.dc._msdcs.&lt;NaamDnsDomein&gt; DcAtSite   SRV _ldap._tcp.&lt;Sitenaam&gt;._sites.dc._msdcs.&lt;NaamDnsDomein&gt; Rfc1510Kdc  SRV _kerberos._tcp.&lt;NaamDnsDomein&gt; Rfc1510KdcAtSite SRV _kerberos._tcp.&lt;Sitenaam&gt;._sites.&lt;NaamDnsDomein&gt; GenericGc  SRV _gc._tcp.&lt;NaamDnsForest&gt; GenericGcAtSite SRV _gc._tcp.&lt;Sitenaam&gt;._sites.&lt;NaamDnsForest&gt; Rfc1510UdpKdc SRV _kerberos._udp.&lt;NaamDnsDomein&gt; Rfc1510Kpwd  SRV _kpasswd._tcp.&lt;NaamDnsDomein&gt; Rfc1510UdpKpwd SRV _kpasswd._udp.&lt;NaamDnsDomein&gt;
+
+Als deze instelling is uitgeschakeld, worden door DC's die zijn geconfigureerd om DNS-records voor de DC-locator dynamisch te registreren, alle DNS-bronrecords voor de DC-locator geregistreerd.
+
+Als deze instelling niet wordt toegepast op DC's, gebruiken DC's hun lokale configuratie.</string>
+      <string id="Netlogon_DnsRefreshInterval">Vernieuwingsinterval van DNS-records voor de DC-locator</string>
+      <string id="Netlogon_DnsRefreshInterval_Help">Hiermee wordt het vernieuwingsinterval bepaald van de DNS-bronrecords voor de DC-locator voor DC's waarop deze instelling wordt toegepast. Deze DNS-records worden dynamisch geregistreerd door de Net Logon-service en worden door de locator-algoritme gebruikt om de DC te vinden. Deze instelling kan alleen worden toegepast op DC's die dynamische updates gebruiken.
+
+DC's die zijn geconfigureerd om dynamische registratie uit te voeren van de DNS-bronrecords voor de DC-locator, registreren hun records periodiek opnieuw bij de DNS-servers, zelfs als de recordgegevens niet zijn gewijzigd. Als gemachtigde DNS-servers zijn geconfigureerd om verlopen records op te ruimen, is opnieuw registreren vereist om aan te geven dat deze records actueel zijn en in de database dienen te blijven.
+
+Waarschuwing: Als de DNS-bronrecords in zones zijn geregistreerd en opruimen is ingeschakeld, mag de waarde van deze instelling nooit langer zijn dan het vernieuwingsinterval dat voor deze zones is geconfigureerd. Als het vernieuwingsinterval van de DNS-records voor de DC-locator langer is dan het vernieuwingsinterval van de DNS-zones, kunnen DNS-bronrecords worden verwijderd terwijl dit niet de bedoeling is.
+
+Als u het vernieuwingsinterval van de DC-records wilt opgeven, klikt u op Ingeschakeld en voert u een waarde in die groter is dan 1800. Met deze waarde wordt het interval in seconden opgegeven: 3600 seconden is bijvoorbeeld 60 minuten.
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele DC toegepast en gebruiken DC's hun lokale configuratie.</string>
+      <string id="Netlogon_DnsTtl">TTL (levensduur) ingesteld in de DNS-SRV-records voor de DC-locator</string>
+      <string id="Netlogon_DnsTtl_Help">Hiermee wordt de waarde ingesteld voor het veld voor levensduur (TTL, time-to-live) in door Net Logon geregistreerde SRV-bronrecords. Deze DNS-records worden dynamisch geregistreerd door de Net Logon-service en worden gebruikt om de domeincontroller te lokaliseren.
+
+Als u de levensduur voor DNS-records voor de DC-locator wilt opgeven, klikt u op Ingeschakeld en voert u een waarde in seconden in (de waarde 900 is bijvoorbeeld 15 minuten).
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele DC toegepast en gebruiken DC's hun lokale configuratie.</string>
+      <string id="Netlogon_ExpectedDialupDelay">Verwachte inbelvertraging tijdens aanmelding</string>
+      <string id="Netlogon_ExpectedDialupDelay_Help">Hiermee wordt de extra tijd bepaald die de computer op de reactie van de domeincontroller (DC) moet wachten bij aanmelding op het netwerk.
+
+Als u de verwachte vertraging wilt opgeven, klikt u op Inschakelen en voert u de gewenste waarde in seconden in (de waarde 60 is bijvoorbeeld 1 minuut).
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele computer toegepast en gebruiken computers hun lokale configuratie.</string>
+      <string id="Netlogon_GcSiteCoverage">Sites gedekt door de DNS-SRV-records voor de GC-locator</string>
+      <string id="Netlogon_GcSiteCoverage_Help">Hiermee geeft u de sites op waarvoor de globale catalogi (GC) sitespecifieke DNS-SRV-bronrecords voor de GC-locator moeten registreren. Deze records worden geregistreerd naast de sitespecifieke SRV-records die worden geregistreerd voor de site waar de GC zich bevindt, en records die worden geregistreerd door een GC die is geconfigureerd om DNS-SRV-records voor de GC-locator te registreren voor de dichtstbijzijnde sites zonder GC. 
+
+De DNS-records voor de GC-locator en de sitespecifieke SRV-records worden dynamisch geregistreerd door de Net Logon-service en worden gebruikt om de GC te lokaliseren. Een Active Directory-site bestaat uit een of meer met elkaar verbonden TCP/IP-subnetten waarvoor beheerders Active Directory-toegang en -replicatie kunnen configureren. Een GC is een domeincontroller die een gedeeltelijke replica bevat van elk domein in Active Directory.
+
+Als u de sites wilt opgeven voor de DNS-SRV-records voor de GC-locator, klikt u op Ingeschakeld en voert u de namen van de sites in, met een spatie als scheidingsteken tussen de namen.
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele GC toegepast en gebruiken GC's hun lokale configuratie.</string>
+      <string id="Netlogon_LdapSrvPriority">Prioriteit ingesteld in de DNS-SRV-records voor de DC-locator</string>
+      <string id="Netlogon_LdapSrvPriority_Help">Hiermee geeft u de instelling op voor het veld voor de prioriteit in de SRV-bronrecords die worden geregistreerd door domeincontrollers (DC's) waarop deze instelling wordt toegepast. Deze DNS-records worden dynamisch geregistreerd door de Net Logon-service en worden gebruikt om de domeincontroller te lokaliseren.
+
+Met het veld Prioriteit in de SRV-record wordt de voorkeur voor doelhosts ingesteld (die zijn opgegeven in het veld Doel in de SRV-record). DNS Clients die query's uitvoeren voor SRV-bronrecords, proberen contact te krijgen met de eerste bereikbare host met de laagste prioriteitswaarde in de lijst.
+
+Als u de prioriteit wilt opgeven in de DNS-SRV-bronrecords voor de DC-locator, klikt u op Ingechakeld en voert u een waarde in. U kunt een waarde opgeven van 0 tot en met 65535.
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele DC toegepast en gebruiken DC's hun lokale configuratie.</string>
+      <string id="Netlogon_LdapSrvWeight">Gewicht ingesteld in de DNS-SRV-records voor de DC-locator</string>
+      <string id="Netlogon_LdapSrvWeight_Help">Hiermee geeft u de instelling op voor het veld voor het gewicht in de SRV-bronrecords die worden geregistreerd door domeincontrollers (DC's) waarop deze instelling wordt toegepast Deze DNS-records worden dynamisch geregistreerd door de Net Logon-service en worden gebruikt om de domeincontroller te lokaliseren.
+
+Het veld Gewicht in de SRV-record kan naast de waarde voor Prioriteit worden gebruikt om een taakverdelingsmechanisme te bieden wanneer in het veld Doel van de SRV-records meerdere servers zijn opgegeven en deze allemaal dezelfde prioriteit hebben. De waarschijnlijkheid waarmee de DNS Client willekeurig de doelhost selecteert waarmee contact moet worden opgenomen, is evenredig aan de waarde van het veld Gewicht in de SRV-record.
+
+Als u het gewicht wilt opgeven in de DNS-SRV-records voor de DC-locator, klikt u op Ingechakeld en voert u een waarde in. U kunt een waarde opgeven van 0 tot en met 65535.
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele DC toegepast en gebruiken DC's hun lokale configuratie.</string>
+      <string id="Netlogon_MaximumLogFileSize">Maximale grootte van het logboekbestand</string>
+      <string id="Netlogon_MaximumLogFileSize_Help">Hiermee geeft u de maximumgrootte in bytes op van het logboekbestand netlogon.log in de map %windir%\debug wanneer logboekregistratie is ingeschakeld.
+
+De maximumgrootte van het logboekbestand is standaard 20 MB. Als dit beleid is ingeschakeld, wordt de maximale grootte van het logboekbestand op de opgegeven grootte ingesteld. Als deze grootte is bereikt, wordt het logboekbestand opgeslagen als netlogon.bak en wordt netlogon.log afgekapt. Geef een redelijke waarde op basis van de beschikbare opslagruimte op.
+
+Als u dit beleid uitschakelt of niet configureert, worden de standaardinstellingen gebruikt (zie hierboven).</string>
+      <string id="Netlogon_NdncSiteCoverage">Sites waarvoor de DNS-SRV-records voor de partitielocator voor de toepassingsmap worden geregistreerd</string>
+      <string id="Netlogon_NdncSiteCoverage_Help">Hiermee geeft u de sites op waarvoor de domeincontrollers met een partitie met toepassingsmappen de sitespecifieke en voor de partitie met toepassingsmappen specifieke DNS-SRV-bronrecords voor de DC-locator dienen te registreren. Deze records worden geregistreerd naast de sitespecifieke SRV-records die worden geregistreerd voor de site waar de DC zich bevindt, en records die worden geregistreerd door een DC die is geconfigureerd om DNS-SRV-records voor de DC-locator te registreren voor de dichtstbijzijnde sites zonder DC. 
+
+De locator-DNS-records van de partitie met toepassingsmappen en de sitespecifieke SRV-records worden dynamisch geregistreerd door de Net Logon-service en worden gebruikt om de voor de partitie met toepassingsmappen specifieke DC op te sporen. Een Active Directory-site bestaat uit een of meer met elkaar verbonden TCP/IP-subnetten waarvoor beheerders Active Directory-toegang en -replicatie kunnen configureren.
+
+Als u de sites wilt opgeven voor de voor de partitie met toepassingsmappen specifieke DNS-SRV-bronrecords voor de DC-locator, klikt u op Ingeschakeld en voert u de namen van de sites in, met een spatie als scheidingsteken tussen de namen.
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele DC toegepast en gebruiken DC's hun lokale configuratie.</string>
+      <string id="Netlogon_NegativeCachePeriod">Negatieve cache-instelling DC-detectie</string>
+      <string id="Netlogon_NegativeCachePeriod_Help">Hiermee geeft u de tijd op (in seconden) dat de DC-locator onthoudt dat een domeincontroller (DC) niet werd gevonden in een domein. Wanneer binnen de tijd die in deze instelling is opgegeven een nieuwe poging wordt gedaan om de DC te vinden, mislukt de DC-detectie direct, zonder dat er wordt geprobeerd de DC te vinden.
+
+De standaardwaarde voor deze instelling is 45 seconden. De maximale waarde voor deze instelling is 7 dagen (7*24*60*60). De minimale waarde voor deze instelling is 0.
+
+Waarschuwing: Wanneer de waarde voor deze instelling te hoog is, probeert de client niet om DC's te vinden die eerst onbeschikbaar waren. Als de waarde te klein is, probeert de client om DC's te vinden, zelfs wanneer er geen DC's beschikbaar zijn.</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode">Compatibiliteit van NetLogon-share</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode_Help">Deze instelling bepaalt of de Netlogon-share die door de Netlogon-service op een domeincontroller is gemaakt, compatibiliteit moet ondersteunen in semantiek van bestandsdeling met oudere toepassingen.
+
+Wanneer deze instelling is ingeschakeld, wordt door de Netlogon-share de semantiek van bestandsdeling gerespecteerd waarbij aanvragen voor exclusieve leestoegang tot bestanden op de share ook worden ingewilligd wanneer de aanroeper slechts leesmachtigingen heeft.
+
+Wanneer deze instelling is uitgeschakeld of niet is geconfigureerd, verleent de Netlogon-share gedeelde leestoegang tot bestanden op de share wanneer exclusieve toegang wordt gevraagd en de aanroeper alleen over leesmachtigingen beschikt.
+
+De Netlogon-share verleent standaard gedeelde leestoegang aan bestanden op de share wanneer exclusieve toegang wordt gevraagd.
+
+Opmerking: de Netlogon-share is een share die door de Net Logon-service wordt gemaakt voor gebruik door clientcomputers in het domein. Het standaardgedrag van de Netlogon-share zorgt ervoor dat een toepassing met alleen leesmachtigingen voor bestanden op de Netlogon-share de bestanden niet kan vergrendelen door exclusieve leestoegang aan te vragen, waardoor instellingen van groepsbeleid mogelijk niet zouden worden bijgewerkt op clients in het domein. Wanneer deze instelling is ingeschakeld, kan een toepassing die vertrouwt op de mogelijkheid om bestanden op de Netlogon-share te vergrendelen met alleen leesmachtigingen, verhinderen dat groepsbeleidsclients de bestanden lezen. Bovendien wordt hierdoor de beschikbaarheid van de Netlogon-share in het domein algemeen verminderd.
+
+Als deze instelling is ingeschakeld, moeten domeinadministrators ervoor zorgen dat alleen toepassingen die door de administrator zijn goedgekeurd, gebruik kunnen maken van de mogelijkheid voor exclusieve leestoegang in het domein.</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">Positieve periodieke DC-cachevernieuwing voor niet-achtergrondaanvragers</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod_Help">Hiermee wordt bepaald wanneer een geslaagde DC-cachevermelding wordt vernieuwd. Deze instelling wordt toegepast op aanroepprogramma's die niet periodiek proberen DC's te lokaliseren. De instelling wordt toegepast voordat de DC-gegevens worden geretourneerd naar het aanroepprogramma. Deze instelling is alleen relevant voor aanroepers van DsGetDcName die de vlag DS_BACKGROUND_ONLY niet hebben opgegeven.
+
+De standaardwaarde voor deze instelling is 30 minuten (1800). De maximumwaarde voor de instelling is 4294967200, en het maximum dat niet wordt behandeld als oneindig is 49 dagen (49*24*60*60=4233600). Elke waarde die groter is, wordt behandeld als oneindig. De minimale waarde voor deze instelling is 0 (altijd vernieuwen).</string>
+      <string id="Netlogon_ScavengeInterval">Opruimingsinterval</string>
+      <string id="Netlogon_ScavengeInterval_Help">Hiermee wordt het interval bepaald waarmee door Netlogon de volgende opruimbewerkingen worden uitgevoerd:
+
+- Controleren of een wachtwoord op een beveiligd kanaal moet worden gewijzigd en het zonodig wijzigen.
+
+- Op de domeincontrollers (DC's), een DC detecteren die niet is gedetecteerd.
+
+- Op de PDC, proberen de &lt;DomainName&gt;[1B] NetBIOS-naam toe te voegen als die nog niet is toegevoegd.
+
+Geen van deze bewerkingen is essentieel. 15 minuten is voldoende in alle normale gevallen. Als een DC bijvoorbeeld via een dure lijn (zoals ISDN) van een vertrouwd domein gescheiden is, kan deze parameter beter worden verhoogd om frequente automatische detectiepogingen van DC's in een vertrouwd domein te voorkomen.
+
+Als u deze instelling wilt inschakelen, klikt u op Ingeschakeld en geeft u het interval in seconden op.</string>
+      <string id="Netlogon_SiteCoverage">Sites gedekt door de DNS-SRV-records voor de DC-locator</string>
+      <string id="Netlogon_SiteCoverage_Help">Hiermee geeft u de sites op waarvoor de domeincontrollers (DC) sitespecifieke DNS-SRV-bronrecords voor de DC-locator registreren. Deze records worden geregistreerd naast de sitespecifieke SRV-records die worden geregistreerd voor de site waar de DC zich bevindt, en records die worden geregistreerd door een DC die is geconfigureerd om DNS-SRV-records voor de DC-locator te registreren voor de dichtstbijzijnde sites zonder DC. 
+
+De DNS-records voor de DC-locator worden dynamisch geregistreerd door de Net Logon-service en worden gebruikt om de domeincontroller te lokaliseren. Een Active Directory-site bestaat uit een of meer met elkaar verbonden TCP/IP-subnetten waarvoor beheerders Active Directory-toegang en -replicatie kunnen configureren.
+
+Als u de sites wilt opgeven voor de DNS-SRV-records voor de DC-locator, klikt u op Ingeschakeld en voert u de namen van de sites in, met een spatie als scheidingsteken tussen de namen.
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele DC toegepast en gebruiken DC's hun lokale configuratie.</string>
+      <string id="Netlogon_SiteName">Naam van de site</string>
+      <string id="Netlogon_SiteName_Help">Hiermee geeft u de Active Directory-site op waartoe computers behoren.
+
+Een Active Directory-site bestaat uit een of meer met elkaar verbonden TCP/IP-subnetten waarvoor beheerders Active Directory-toegang en -replicatie kunnen configureren.
+
+Als u de sitenaam voor deze instelling wilt opgeven, klikt u op Ingeschakeld en voert u de sitenaam in. Wanneer de site waartoe deze computer behoort niet is opgegeven, detecteert de computer de site automatisch vanuit Active Directory.
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele computer toegepast en gebruiken computers hun lokale configuratie.</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode">Compatibiliteit van Sysvol-share</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode_Help">Deze instelling bepaalt of de Sysvol-share die door de Netlogon-service op een domeincontroller is gemaakt, compatibiliteit moet ondersteunen in semantiek van bestandsdeling met oudere toepassingen.
+
+Wanneer deze instelling is ingeschakeld, wordt door de Sysvol-share de semantiek van bestandsdeling gerespecteerd waarbij aanvragen voor exclusieve leestoegang tot bestanden op de share ook worden ingewilligd wanneer de aanroeper slechts leesmachtigingen heeft.
+
+Wanneer deze instelling is uitgeschakeld of niet is geconfigureerd, verleent de Sysvol-share gedeelde leestoegang tot bestanden op de share wanneer exclusieve toegang wordt gevraagd en de aanroeper alleen over leesmachtigingen beschikt.
+
+De Sysvol-share verleent standaard gedeelde leestoegang aan bestanden op de share wanneer exclusieve toegang wordt gevraagd.
+
+Opmerking: de Sysvol-share is een share die door de Net Logon-service wordt gemaakt voor gebruik door clients van groepsbeleid in het domein. Het standaardgedrag van de Sysvol-share zorgt ervoor dat een toepassing met alleen leesmachtigingen voor bestanden op de Sysvol-share de bestanden niet kan vergrendelen door exclusieve leestoegang aan te vragen, waardoor instellingen van groepsbeleid mogelijk niet zouden worden bijgewerkt op clients in het domein. Wanneer deze instelling is ingeschakeld, kan een toepassing die vertrouwt op de mogelijkheid om bestanden op de Sysvol-share te vergrendelen met alleen leesmachtigingen, verhinderen dat groepsbeleidsclients de bestanden lezen. Bovendien wordt hierdoor de beschikbaarheid van de Sysvol-share in het domein algemeen verminderd.
+
+Als deze instelling is ingeschakeld, moeten domeinadministrators ervoor zorgen dat alleen toepassingen die door de administrator zijn goedgekeurd, gebruik kunnen maken van de mogelijkheid voor exclusieve leestoegang in het domein.</string>
+      <string id="Netlogon_UseDynamicDns">Dynamische registratie van de DNS-records voor de DC-locator</string>
+      <string id="Netlogon_UseDynamicDns_Help">Hiermee bepaalt u of dynamische registratie van de DNS-bronrecords voor de DC-locator is ingeschakeld. Deze DNS-records worden dynamisch geregistreerd door de Net Logon-service en worden door de locator-algoritme gebruikt om de DC te vinden.
+
+Als u deze instelling inschakelt, worden DNS-bronrecords voor de DC-locator door DC's waarop deze instelling wordt toegepast, dynamisch geregistreerd via netwerkverbindingen die dynamische DNS-updates ondersteunen.
+
+Als u deze instelling uitschakelt, worden DNS-bronrecords voor de DC-locator niet geregistreerd door DC's.
+
+Als deze instelling niet is geconfigureerd, wordt deze op geen enkele DC toegepast en gebruiken DC's hun lokale configuratie.</string>
+      <string id="Netlogon_TryNextClosestSite">Dichtstbijzijnde site proberen</string>
+      <string id="Netlogon_TryNextClosestSite_Help">De service DC-locator (Domain Controller Locator) wordt door clients gebruikt om domeincontrollers te zoeken voor hun Active Directory-domein. De DC-locator zoekt standaard naar een domeincontroller op dezelfde site. Als op dezelfde site geen domeincontroller is gevonden, kan een domeincontroller op een andere site, diverse site-hops verderop, worden opgehaald door de DC-locator. De nabijheid van twee sites wordt bepaald door de totale sitekoppelingskosten tussen de sites. Een site met lagere sitekoppelingskosten wordt als dichterbij beschouwd dan een site met hogere sitekoppelingskosten. Met de functie Dichtstbijzijnde site proberen zoekt de DC-locator een domeincontroller op de dichtstbijzijnde site op basis van de sitekoppelingskosten, als op dezelfde site geen domeincontroller is gevonden. Wanneer in scenario's met meerdere sites geen domeincontroller aanwezig is op dezelfde site en vervolgens op de dichtstbijzijnde site een domeincontroller wordt gezocht, verloopt het netwerkverkeer efficiënter.
+
+Als u deze beleidsinstelling inschakelt, wordt Dichtstbijzijnde site proberen ingeschakeld voor de computer op alle beschikbare maar niet-geconfigureerde netwerkadapters.
+
+Als u deze beleidsinstelling uitschakelt, wordt Dichtstbijzijnde site proberen niet standaard gebruikt voor de computer op alle beschikbare maar niet-geconfigureerde netwerkadapters. Als de DC-locator echter expliciet wordt aangeroepen met de vlag DS_TRY_NEXTCLOSEST_SITE, wordt wel gezocht op de dichtstbijzijnde site.
+
+Als u deze beleidsinstelling niet configureert, wordt Dichtstbijzijnde site proberen niet standaard gebruikt voor de computer op alle beschikbare maar niet-geconfigureerde netwerkadapters. Als de vlag DS_TRY_NEXTCLOSEST_SITE expliciet wordt gebruikt, wordt gezocht op de dichtstbijzijnde site.</string>
+      <string id="Netlogon_ForceRediscoveryInterval">Interval voor geforceerd opnieuw zoeken</string>
+      <string id="Netlogon_ForceRediscoveryInterval_Help">De service DC-locator (Domain Controller Locator) wordt door clients gebruikt om domeincontrollers te zoeken voor hun Active Directory-domein. Wanneer de DC-locator een domeincontroller vindt, worden domeincontrollers in de cache geplaatst om de efficiency van het zoekalgoritme te verbeteren. Zolang de domeincontroller in de cache aan de vereisten voldoet en actief is, blijft de DC-locator deze ophalen. Als een nieuwe domeincontroller wordt geïntroduceerd, kunnen bestaande clients deze alleen vinden als de DC-locator geforceerd opnieuw heeft gezocht. In verband met wijzigingen die in de netwerkomgeving kunnen optreden, zoekt de DC-locator na een bepaald tijdsinterval standaard opnieuw geforceerd naar domeincontrollers, voor een efficiënte taakverdeling tussen de clients in alle beschikbare domeincontrollers in alle domeinen of forests. Het standaardinterval voor de DC-locator voor geforceerd opnieuw zoeken is 12 uur. Wanneer de DC-locator wordt aangeroepen met de vlag DS_FORCE_REDISCOVERY, wordt ook geforceerd opnieuw gezocht. Bij geforceerd opnieuw zoeken wordt de timer voor de domeincontrollers in de cache opnieuw ingesteld.
+
+Als u deze beleidsinstelling inschakelt, zal de DC-locator op de computer periodiek geforceerd opnieuw zoeken volgens het geconfigureerde interval. Het minimale interval is 3600 seconden (1 uur) om buitensporig veel netwerkverkeer door opnieuw zoeken te voorkomen. Het maximaal toegestane interval is 4294967200 seconden, waarbij elke waarde groter dan 4294967 seconden (ongeveer 49 dagen) wordt behandeld als oneindig.
+
+Als u deze beleidsinstelling uitschakelt, wordt voor de computer standaard elke 12 uur geforceerd opnieuw gezocht.
+
+Als u deze beleidsinstelling niet configureert, wordt voor de computer standaard elke 12 uur geforceerd opnieuw gezocht, tenzij de registerinstelling van de lokale computer een andere waarde heeft.</string>
+      <string id="Netlogon_AddressTypeReturned">Opgehaald adrestype voor domeincontrollers</string>
+      <string id="Netlogon_AddressTypeReturned_Help">De API's van de DC-locator halen de IP-adressen van de domeincontroller met de rest van de gegevens op. Voordat IPv6 werd ondersteund, werd het IPv4-adres van de domeincontroller opgehaald. Maar met de ondersteuning van IPv6, kunnen de API's van de DC-locator IPv6-adressen ophalen. Het opgehaalde IPv6-adres wordt door sommige bestaande toepassingen mogelijk niet juist verwerkt. Dit beleid is daarom bestemd voor dergelijke scenario's.
+
+Standaard kunnen de API's van de DC-locator IPv4/IPv6-adressen ophalen. Maar als sommige toepassingen worden verbroken als gevolg van het opgehaalde IPv6-adres, kunt u dit beleid gebruiken om het standaardgedrag uit te schakelen en ALLEEN IPv4-adressen op te halen. Wanneer de toepassingen zijn hersteld, kunt u met dit beleid het standaardgedrag inschakelen.
+
+Als u deze beleidsinstelling inschakelt, kunnen de API's van de DC-locator IPv4/IPv6-adressen ophalen. Dit is het standaardgedrag van de DC-locator.
+
+Als u deze beleidsinstelling uitschakelt, halen de API's van de DC-locator ALLEEN IPv4-adressen op (indien aanwezig). Als de domeincontroller zowel IPv4- als IPv6-adressen ondersteunt, halen de API's van de DC-locator alleen IPv4-adressen op. Maar als de domeincontroller alleen IPv6-adressen ondersteunt, kunnen de API's geen adres ophalen.
+
+Als u deze beleidsinstelling niet configureert, kunnen de API's van de DC-locator IPv4/IPv6-adressen ophalen. Dit is het standaardgedrag van de DC-locator.</string>
+      <string id="Netlogon_AllowNT4Crypto">Met Windows NT 4.0 compatibele cryptografiealgoritmen toestaan</string>
+      <string id="Netlogon_AllowNT4Crypto_Help">Met deze instelling wordt bepaald of de Net Logon-service het gebruik van oudere cryptografiealgoritmen voor Windows NT 4.0 toestaat. De cryptografiealgoritmen die worden gebruikt in Windows NT 4.0 en eerder zijn niet zo veilig als de nieuwere algoritmen die worden gebruikt in Windows 2000, Windows XP, Windows Server 2003, Windows Vista en deze versie van Windows.
+
+Net Logon staat standaard niet toe dat deze oudere cryptografiealgoritmen worden gebruikt en deze worden niet opgenomen bij het onderhandelen over cryptografiealgoritmen. Daarom kunnen computers met Windows NT 4.0 geen verbinding tot stand brengen met deze domeincontroller.
+ 
+Als deze instelling is ingeschakeld, staat Net Logon het onderhandelen over en het gebruik toe van oudere cryptografiealgoritmen die compatibel zijn met Windows NT 4.0. Het gebruik van deze oudere cryptografiealgoritmen vormt echter mogelijk een beveiligingsrisico.</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages">Binnenkomende mailslotberichten die worden gebruikt voor domeincontrollerlocaties op basis van NetBIOS-domeinnamen niet verwerken</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages_Help">U kunt met deze beleidsinstelling de verwerking van binnenkomende mailslotberichten door een lokale domeincontroller beheren.
+
+Als u deze beleidsinstelling inschakelt, worden binnenkomende mailslotberichten die worden gebruikt voor de op de NetBIOS-domeinnaam gebaseerde locatie van de domeincontroller, niet verwerkt.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, worden binnenkomende mailslotberichten door deze domeincontroller verwerkt. Dit is het standaardgedrag van DC Locator.
+
+Opmerking: als u de locatie wilt bepalen van een externe domeincontroller op basis van de NetBIOS-domeinnaam (enkelvoudige naam), haalt DC Locator eerst de lijst met domeincontrollers op van een WINS-server die is geconfigureerd in de bijbehorende lokale clientinstellingen. DC Locator verzendt vervolgens een mailslotbericht aan elke lokale domeincontroller om meer informatie te krijgen. Het vaststellen van de locatie van de domeincontroller lukt alleen als een externe domeincontroller reageert op het mailslotbericht.
+
+Deze beleidsinstelling wordt aanbevolen voor het verminderen van het aanvalsbereik op een domeincontroller en kan worden gebruikt in een omgeving zonder WINS, in een omgeving met uitsluitend IPv6 en in gevallen waarin het vaststellen van de locatie van een domeincontroller op basis van de NetBIOS-domeinnaam niet vereist is. Deze beleidsinstelling is niet van invloed op vaststellen van domeincontrollerlocaties op basis van DNS-namen. 
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Netlogon_BackgroundRetryInitialPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryInitialPeriodLabel" defaultValue="600" spinStep="600">Seconden:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryMaximumPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryMaximumPeriodLabel" defaultValue="3600" spinStep="3600">Seconden:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryQuitTime">
+        <decimalTextBox refId="Netlogon_BackgroundRetryQuitTimeLabel" defaultValue="0" spinStep="100">Seconden:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundSuccessfulRefreshPeriodLabel" defaultValue="4294967200" spinStep="1000">Seconden:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DebugFlag">
+        <decimalTextBox refId="Netlogon_DebugFlagLabel" defaultValue="536936447">Niveau:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsAvoidRegisterRecords">
+        <textBox refId="Netlogon_DnsAvoidRegisterRecordsLabel">
+          <label>Instructies:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_DnsRefreshInterval">
+        <decimalTextBox refId="Netlogon_DnsRefreshIntervalLabel" defaultValue="1800" spinStep="100">Seconden:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsTtl">
+        <decimalTextBox refId="Netlogon_DnsTtlLabel" defaultValue="600" spinStep="100">Seconden:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ExpectedDialupDelay">
+        <decimalTextBox refId="Netlogon_ExpectedDialupDelayLabel" defaultValue="0" spinStep="100">Seconden:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_GcSiteCoverage">
+        <textBox refId="Netlogon_GcSiteCoverageLabel">
+          <label>Sites:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvPriority">
+        <decimalTextBox refId="Netlogon_LdapSrvPriorityLabel" defaultValue="0" spinStep="100">Prioriteit:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvWeight">
+        <decimalTextBox refId="Netlogon_LdapSrvWeightLabel" defaultValue="100" spinStep="100">Gewicht:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_MaximumLogFileSize">
+        <decimalTextBox refId="Netlogon_MaximumLogFileSizeLabel" defaultValue="536936447">Bytes:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NdncSiteCoverage">
+        <textBox refId="Netlogon_NdncSiteCoverageLabel">
+          <label>Sites:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_NegativeCachePeriod">
+        <decimalTextBox refId="Netlogon_NegativeCachePeriodLabel" defaultValue="45" spinStep="60">Seconden:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_NonBackgroundSuccessfulRefreshPeriodLabel" defaultValue="1800" spinStep="1000">Seconden:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ScavengeInterval">
+        <decimalTextBox refId="Netlogon_ScavengeIntervalLabel" defaultValue="900" spinStep="900">Seconden:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_SiteCoverage">
+        <textBox refId="Netlogon_SiteCoverageLabel">
+          <label>Sites:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_SiteName">
+        <textBox refId="Netlogon_SiteNameLabel">
+          <label>Site:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_ForceRediscoveryInterval">
+        <decimalTextBox refId="Netlogon_ForceRediscoveryIntervalLabel" defaultValue="43200" spinStep="100">Seconden:</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

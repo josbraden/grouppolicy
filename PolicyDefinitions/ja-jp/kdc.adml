@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>KDC 設定</displayName>
+  <description>Kerberos キー配布センターの構成設定。</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">フォレストの検索順序を使用する</string>
+      <string id="forestsearch_explain">このポリシー設定では、2 つの部分で構成されるサービス プリンシパル名 (SPN) の解決を試行するときにキー配布センター (KDC) によって検索される信頼する側のフォレストの一覧を定義します。
+
+このポリシー設定を有効にすると、2 つの部分で構成される SPN をローカル フォレストで解決できない場合にこの一覧のフォレストが KDC によって検索されます。 フォレストの検索は、グローバル カタログまたは名前サフィックスのヒントを使用して実行されます。 一致するものが見つかると、KDC は適切なドメインのクライアントに紹介チケットを返します。
+
+このポリシー設定を無効にした場合、または構成しなかった場合は、SPN を解決するために一覧のフォレストが検索されません。 名前が見つからないために KDC で SPN を解決できない場合は、NTLM 認証が使用される場合があります。
+
+一貫した動作を確保するには、ドメイン内のすべてのドメイン コントローラーでこのポリシー設定をサポートして同じ設定にする必要があります。</string>
+      <string id="emitlili">以前のログオンに関する情報をクライアント コンピューターに提供する</string>
+      <string id="emitlili_explain">このポリシー設定では、クライアント コンピューターへの以前のログオンに関する情報をドメイン コントローラーから提供するかどうかを指定します。
+
+このポリシー設定を有効にした場合、ドメイン コントローラーは以前のログオンに関する情報メッセージを提供します。
+
+Windows ログオンでこの機能を利用するには、[Windows コンポーネント] の下の [Windows ログオンのオプション] ノードにある [ユーザー ログオン時に以前のログオンに関する情報を表示する] ポリシー設定も有効にする必要があります。
+
+このポリシー設定を無効または未構成にした場合、[ユーザー ログオン時に以前のログオンに関する情報を表示する] ポリシー設定が有効になっている場合を除き、ドメイン コントローラーは以前のログオンに関する情報を提供しません。
+
+注意: 以前のログオンに関する情報が提供されるのは、ドメインの機能レベルが Windows Server 2008 である場合だけです。 ドメインの機能レベルが Windows Server 2003、Windows 2000 ネイティブ、または Windows 2000 混在のドメイン内のドメイン コントローラーは、この設定を有効にしても、以前のログオンに関する情報を提供できません。
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">モード:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>検索対象のフォレスト</label>
+        </textBox>
+        <text>構文 :</text>
+        <text>このポリシーが有効になっているときに検索するフォレストの一覧を入力してください。</text>
+        <text>完全修飾ドメイン名 (FQDN) の形式を使用してください。</text>
+        <text>複数の検索エントリはセミコロン ";" で区切ってください。</text>
+        <text>詳細:</text>
+        <text>フォレストの検索順序ではまずグローバル カタログが使用され、次に一覧に表示されている順序で検索されるため、現在のフォレストを一覧に含める必要はありません。</text>
+        <text>フォレスト内のすべてのドメインを個別に一覧に含める必要はありません。</text>
+        <text>信頼する側のフォレストを一覧に含めると、フォレスト内のすべてのドメインが検索されます。</text>
+        <text>最適なパフォーマンスを得るためには、一致する可能性が高い順序でフォレストを一覧に含めてください。</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

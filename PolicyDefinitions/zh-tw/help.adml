@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
+  <resources>
+    <stringTable>
+      <string id="HelpQualifiedRootDir_Comp">將可能不安全的 HTML 說明功能限制於指定的資料夾</string>
+      <string id="HelpQualifiedRootDir_Help">透過這項原則，您可以限制特定的 HTML 說明命令只能在指定資料夾及其子資料夾內的 HTML 說明檔 (.chm) 中作用，或者，您也可對整個系統停用這些命令。我們強烈建議您只將需要系統管理特殊權限的資料夾加入這個原則。
+
+"Shortcut" 命令是用來新增說明主題的連結，並執行該說明檔外部的執行檔。"WinHelp" 命令則是用來新增說明主題的連結，並執行 WinHLP32.exe 說明檔 (.hlp)。
+
+停用或未設定這個原則時，這些命令會對所有說明檔完全發揮作用。  
+
+啟用這個原則時，這些命令將只會對指定的資料夾和其子資料夾內的 .chm 檔案發揮作用。 
+
+如果要將命令限制在一或多個資料夾中執行，請啟用這個原則，並在 [原則內容] 對話方塊的 [設定] 索引標籤上，將需要的資料夾輸入文字方塊中。請使用分號分隔資料夾。例如，如果要要將命令限制於僅在 [%windir%\help] 資料夾及 D:\somefolder 中的 .chm 檔案，請將下列字串加入編輯方塊中: "%windir%\help;D:\somefolder"。
+
+若是要對整個本機系統禁止 "Shortcut" 及 "WinHelp" 命令，請啟用這個原則，並讓 [原則內容] 對話方塊中 [設定] 索引標籤上的文字方塊保持空白。
+
+注意: 只要是系統中已定義的環境變數即可使用 (例如 %windir%)。例如，某些較舊的 Windows 版本中並未定義 %programfiles%。
+
+注意: 這個原則中僅能指定本機電腦上的資料夾。若 .chm 檔案儲存於對應磁碟機上或是使用 UNC 路徑存取時，則不能使用這個原則啟用 "Shortcut" 和 "WinHelp" 命令。
+
+如需其他選項資訊，請參閱 [限制這些程式從說明中啟動] 原則。</string>
+      <string id="RestrictRunFromHelp">限制這些程式從說明中啟動</string>
+      <string id="RestrictRunFromHelp_Comp">限制這些程式從說明中啟動</string>
+      <string id="RestrictRunFromHelp_Help">讓您禁止程式從線上說明中啟動。
+
+若啟用此設定，您可以禁止指定的程式從說明中啟動。啟用此設定時，請輸入您想禁止的程式清單。輸入每個應用程式的執行檔名稱 (以逗號分隔)。
+
+若停用或未設定此設定，使用者將可以從線上說明執行應用程式。
+
+注意: 您也可以使用 [電腦設定\安全性設定] 中的軟體限制設定，來禁止使用者執行應用程式。
+
+注意: 在 [電腦設定] 和 [使用者設定] 下都可以使用此設定。如果同時在這兩處都進行設定，則會禁止這些清單內指定的所有程式。</string>
+        <string id="DisableHHDEP">關閉 HTML Help 可執行檔的資料執行防止</string>
+        <string id="DisableHHDEPText">
+            這個原則設定可讓您排除 HTML Help 可執行檔，不受軟體強制執行的 DEP 監視。
+            DEP 的用途是要封鎖惡意程式碼，因為它們會利用 Windows 中的例外處理機制。如果啟用這個原則設定，會關閉 HTML Help 可執行檔的 DEP。這樣一來，DEP 不須關閉 HTML Help 可執行檔，某些舊版 ActiveX 控制項就可以運作。
+            如果停用或未設定這個原則設定，就會開啟 HTML Help 可執行檔的 DEP。
+            注意: 資料執行防止 (DEP) 是一種安全性功能，可防止病毒和其他安全性威脅損害您的電腦。DEP 可以監視您的程式，確定程式都以安全的方式使用記憶體，藉此保護您的電腦。
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="HelpQualifiedRootDir_Comp">
+        <textBox refId="HelpQualifiedRootDir_Edit">
+          <label>輸入資料夾名稱 (以分號分隔):</label>
+        </textBox>
+        <text>範例: %windir%\Help;%windir%\pchealth;%programfiles%</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>輸入執行檔名稱 (以逗號分隔):</label>
+        </textBox>
+        <text>範例: calc.exe,paint.exe</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp_Comp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>輸入執行檔名稱 (以逗號分隔):</label>
+        </textBox>
+        <text>範例: calc.exe,paint.exe</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

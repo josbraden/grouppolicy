@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
+  <resources>
+    <stringTable>
+      <string id="AccountingEnabled">開啟 WSRM 的計量功能</string>
+      <string id="AccountingEnabled_Explain">這個設定會開啟或關閉計量功能。
+
+如果啟用這個設定，Windows 系統資源管理員 (WSRM) 將開始計量程序的各種使用統計資料。
+
+如果停用這個設定，WSRM 將停止記錄程序的使用統計資料。
+
+如果未做這個設定，則使用者可以指定必須開啟或關閉計量。
+
+計量處理程序預設為停用狀態。
+
+計量資料庫提供介面，讓您可以用來同時管理資料庫內的資訊以及資料庫的實體大小。管理資料庫資訊牽涉到尋找相關資訊，然後有效率地組織資訊。管理資料庫的實體大小則需要定期注意，因為除非另有設定，否則 Windows 系統資源管理員會不斷儲存計量資訊。因此，資料庫的大小會不斷增加。若要管理資料庫的大小，您可以將計量資料封存起來以供日後使用，或是由資料庫中刪除。
+
+您可以使用計量資料來監視資源使用量、比較實際與預期的效能、評估電腦的實體資源是否足夠應付預定工作，以及提供收費帳目的基礎。
+</string>
+      <string id="EmailIds">設定接收通知的電子郵件識別碼</string>
+      <string id="EmailIds_Explain">此設定指派用於接收通知的電子郵件地址。使用分號 (;) 隔開多個電子郵件地址。
+
+如果啟用此設定，Windows 系統資源管理員 (WSRM) 會將通知傳給指定的位址。
+
+如果停用此設定，則不會設定電子郵件地址 (預設值)。
+
+如果沒有進行此設定，使用者可以指定用於接收通知的電子郵件地址。這個值可以是電子郵件別名，或是包含網域名稱的電子郵件地址 (例如，someone@example.com)。
+
+系統會根據所選取的通知事件，來通知這些電子郵件地址。
+
+附註: 若要接收通知，必須「開啟」事件日誌上的通知設定。若要檢視事件清單，請按一下 [錯誤]、[警告] 或 [資訊]，然後按一下 [確定]。如果您選取 [錯誤]、[警告] 或 [資訊]，則會包含該類別中所有的個別事件。</string>
+      <string id="KeyName_Explain">此設定透過群組原則設定來開啟 WSRM 的計量和/或通知內容。</string>
+      <string id="RecordWriteInterval">設定記錄計量資料的時間間隔 (分鐘)</string>
+      <string id="RecordWriteInterval_Explain">本設定會指示計量功能在計量伺服器上，以指定的時間間隔記錄資料。
+
+如果啟用此設定，Windows 系統資源管理員 (WSRM) 會將計量時間間隔設定為指定的值。
+
+如果停用此設定，則會設定預設值 10 分鐘。
+
+如果沒有進行此設定，使用者可以指定計量間隔。
+
+指定的值以分鐘為單位，範圍介於 2 至 60000 分鐘。預設值為 10 分鐘，因為如果有很多伺服器從遠端記錄資料，此為最佳的數值。如果某個網路中有 20 台電腦從遠端記錄資料，而您將此網路中伺服器的計量記錄寫入間隔值設為低於 10 分鐘，則有可能會降低效能。
+
+附註: 若網路上的電腦數量增加，請提高計量記錄寫入間隔值設定以減少網路壅塞。</string>
+      <string id="SMTPServer">設定用來傳送通知的 SMTP 伺服器</string>
+      <string id="SMTPServerConfiguration_Explain">此設定會指派傳送通知的 SMTP 伺服器位址。
+
+如果啟用此設定，Windows 系統資源管理員 (WSRM) 會將 SMTP 伺服器設定為指定的值。
+
+如果停用此設定，則不會設定 SMTP 伺服器 (預設值)。
+
+如果沒有進行此設定，使用者可以指定 SMTP 伺服器。
+
+此值可以是簡易郵件傳送通訊協定 (SMTP) 的 NetBIOS 名稱，或完整網域名稱 (FQDN)。此伺服器包含設定為接收通知的電子郵件地址。
+
+附註: 若要接收電子郵件通知，必須開啟事件日誌上的通知設定。若要檢視事件清單，請按一下 [錯誤]、[警告] 或 [資訊]，然後按一下 [確定]。如果您選取 [錯誤]、[警告] 或 [資訊]，則會包含該類別中所有的個別事件。</string>
+      <string id="WSRM">Windows 系統資源管理員</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="EmailIds">
+        <textBox refId="EmailIdsConfiguration">
+          <label>電子郵件識別碼</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+      <presentation id="RecordWriteInterval">
+        <decimalTextBox refId="Write_Interval" defaultValue="10">計量記錄間隔值 (2 至 60000 分鐘) </decimalTextBox>
+      </presentation>
+      <presentation id="SMTPServer">
+        <textBox refId="SMTPServerConfiguration">
+          <label>輸入 SMTP 伺服器位址</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

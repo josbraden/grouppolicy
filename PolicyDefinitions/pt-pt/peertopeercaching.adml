@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>A BranchCache permite que os clientes obtenham conteúdo seguramente a partir da sucursal em vez de terem de o obter a partir do servidor que aloja o conteúdo. Consoante o modo de implementação, é possível obter o conteúdo a partir de outros clientes na sucursal ou a partir de um servidor de cache alojada na filial. Um cliente só pode obter conteúdo a partir da filial se estiver autorizado a fazê-lo pelo servidor. A utilização de BranchCache reduz custos na ligação de rede alargada (WAN) que liga as sucursais ao centro de dados ou à sede e aumenta as velocidades de transferência para conteúdo que já tenha sido transferido para a sucursal.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">Activar BranchCache</string>
+
+            <string id="WBC_Enable_Help">Esta definição de política especifica se a BranchCache está activada no computador cliente. A BranchCache reduz a utilização das ligações de rede alargada (WAN) que ligam as sucursais ao centro de dados ou à sede e aumenta as velocidades de acesso para conteúdo que já tenha sido transferido para a sucursal. A BranchCache fá-lo activando computadores numa sucursal para colocar ficheiros e tráfego HTTP em cache a partir de servidores da Intranet em que a BranchCache está activada e, em seguida, partilha seguramente os ficheiros com outros computadores na filial. Os computadores na sucursal podem obter conteúdo a partir de um servidor de cache alojada na filial (quando utilizarem o modo Cache Alojada), ou a partir de outros computadores cliente na filial (quando utilizarem o modo Cache Distribuída). Para aceder ao conteúdo em cache, o computador necessita de permissões para aceder ao conteúdo do servidor de origem.
+
+Active esta definição de política em computadores cliente em sucursais onde a largura de banda da WAN seja reduzida, a latência seja elevada e existam vários computadores cliente que necessitem de aceder aos mesmos dados de servidores no escritório central.
+
+Se activar esta definição de política, a BranchCache é activada. Para que esta definição de política tenha efeito, também tem de instalar a funcionalidade BranchCache no computador cliente.
+
+Se desactivar ou não configurar esta definição de política, a BranchCache é desactivada.
+            </string>
+
+            <string id="WBC_Cache_Percent">Definir percentagem de espaço em disco utilizada para cache de computador cliente</string>
+
+            <string id="WBC_Cache_Percent_Help">Esta definição de política altera a percentagem predefinida do espaço em disco total a dedicar à colocação em cache de conteúdo obtido com a BranchCache. Este conteúdo é disponibilizado para outros computadores cliente que efectuem pedidos, se estes estiverem autorizados pelo servidor aceder ao conteúdo.
+
+SE activar esta definição de política, poderá configurar a percentagem do espaço em disco total a alocar à cache.
+
+Se desactivar ou não configurar esta definição de política, a cache é definida para 5 porcento do espaço em disco total no computador cliente.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Definir o modo Cache Alojada BranchCache</string>
+
+            <string id="WBC_HostedCache_Location_Help">Esta definição de política especifica se o computador cliente deve utilizar o modo Cache Alojada e, em caso afirmativo, o endereço do servidor BranchCache. O modo Cache Alojada permite a um computador cliente obter conteúdo de um servidor BranchCache que tenha a função de cache central (alojada) para uma sucursal. Quando utilizar o modo Cache Alojada, o conteúdo transferido pelos computadores cliente com suporte de BranchCache é inserido no servidor BranchCache e, em seguida, serve de cache centralizada para outros computadores cliente com suporte de BranchCache na sucursal. Os computadores cliente utilizam SSL (Secure Sockets Layer) para comunicar com o servidor BranchCache.
+
+Para utilizar esta definição de política, tem de especificar o endereço do servidor BranchCache, e este endereço tem de corresponder ao FQDN (Nome de Domínio Completamente Qualificado) do servidor especificado no certificado para o servidor BranchCache. Além disso, a raiz do certificado do servidor BranchCache tem de estar no arquivo de raiz fidedigno do computador cliente.
+
+Se activar esta definição de política e especificar uma localização válida da cache alojada, o modo Cache Alojada é activado. Para que esta definição de política tenha efeito, também tem de activar a definição de política "Activar BranchCache".
+
+Se desactivar ou não configurar esta definição de política, o modo Cache Alojada é desactivado.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Definir o modo Cache Distribuída BranchCache</string>
+
+            <string id="WBC_Distributed_Enable_Help">Esta definição de política especifica se o computador cliente deve utilizar o modo Cache Distribuída. Este modo BranchCache activa um computador cliente para obter conteúdo que tenha sido transferido e colocado em cache por outros computadores cliente na sucursal. Para aceder a conteúdo colocado em cache de outros computadores cliente na sucursal, o computador necessita de permissões para aceder ao conteúdo no servidor de origem.
+
+Esta definição de política especifica se o modo Cache Distribuída é utilizado. Active esta definição de política ao utilizar BranchCache em sucursais para as quais não exista um servidor com a função de cache alojada.
+
+Se activar esta definição de política, o modo Cache Distribuída é utilizado. Para que esta definição de política tenha efeito, também tem de activar a definição de política "Activar BranchCache".
+
+Se desactivar ou não configurar esta definição de política, o modo Cache Distribuída é desactivado.
+            </string>
+
+            <string id="WBC_SMB_Enable">Configurar BranchCache para ficheiros de rede</string>
+
+            <string id="WBC_SMB_Enable_Help">Esta definição de política altera o valor predefinido de latência de ida e volta da rede, acima do qual os ficheiros de rede são colocados em cache por computadores cliente na filial. Para ficheiros de rede, a BranchCache activa computadores numa sucursal para colocar dados em cache a partir de servidores da Intranet em que a BranchCache está activada e, em seguida, partilha seguramente os ficheiros com outros computadores na sucursal. Os ficheiros de rede são um dos tipos de conteúdo que pode ser colocado em cache numa sucursal utilizando o protocolo Bloco de Mensagem de Servidor (SMB).
+
+Por predefinição, os ficheiros de rede são colocados em cache na sucursal quando a latência de ida e volta de rede da ligação da rede alargada (WAN) está acima de 80 ms. Para colocar sempre em cache ficheiros de rede transferidos para computadores na sucursal, defina o valor de latência da rede como 0. Para desactivar a colocação em cache de ficheiros de rede para filiais, defina a latência para um valor bastante elevado.
+
+Se activar esta definição de política, poderá configurar a latência de ida e volta da rede, acima da qual os ficheiros de rede devem ser colocados em cache por computadores cliente na sucursal.
+
+Se desactivar ou não configurar esta definição de política, o computador cliente colocará ficheiros de rede em cache se a latência de ida e volta de rede da ligação de rede alargada (WAN) estiver acima dos 80 ms.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Introduzir localização da Cache do Computador Cliente</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Introduzir a localização da cache alojada</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Introduzir o valor de latência de ida e volta da rede em milissegundos, acima do qual os ficheiros de rede têm de ser colocados em cache na sucursal</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

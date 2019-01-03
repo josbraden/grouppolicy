@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Kerberos Settings</displayName>
+  <description>Configuration settings for the Kerberos authentication protocol.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Use forest search order</string>
+      <string id="forestsearch_explain">This policy setting defines the list of trusting forests that the Kerberos client searches when attempting to resolve two-part service principal names (SPNs).
+
+If you enable this policy setting, the Kerberos client will search the forests in this list if it is unable to resolve a two-part SPN. If a match is found, the Kerberos client will request a referral ticket to the appropriate domain.
+
+If you disable or do not configure this policy setting, the Kerberos client will not search the listed forests to resolve the SPN. If the Kerberos client is unable to resolve the SPN because the name is not found, NTLM authentication might be used.</string>
+      <string id="hosttorealm">Define host name-to-Kerberos realm mappings</string>
+      <string id="hosttorealm_explain">This policy setting allows you to specify which DNS host names and which DNS suffixes are mapped to a Kerberos realm.
+
+If you enable this policy setting, you can view and change the list of DNS host names and DNS suffixes mapped to a Kerberos realm as defined by Group Policy. To view the list of mappings, enable the policy setting and then click the Show button. To add a mapping, enable the policy setting, note the syntax, and then click Show. In the Show Contents dialog box in the Value Name column, type a realm name. In the Value column, type the list of DNS host names and DNS suffixes using the appropriate syntax format. To remove a mapping from the list, click the mapping entry to be removed, and then press the DELETE key. To edit a mapping, remove the current entry from the list and add a new one with different parameters.
+
+If you disable this policy setting, the host name-to-Kerberos realm mappings list defined by Group Policy is deleted.
+
+If you do not configure this policy setting, the system will use the host name-to-Kerberos realm mappings that are defined in the local registry, if they exist.</string>
+      <string id="MitRealms">Define interoperable Kerberos V5 realm settings</string>
+      <string id="MitRealms_explain">This policy setting configures the Kerberos client so that it can authenticate with interoperable Kerberos V5 realms, as defined by this policy setting.
+      
+If you enable this policy setting, you can view and change the list of interoperable Kerberos V5 realms and their settings. To view the list of interoperable Kerberos V5 realms, enable the policy setting and then click the Show button. To add an interoperable Kerberos V5 realm, enable the policy setting, note the syntax, and then click Show. In the Show Contents dialog box in the Value Name column, type the interoperable Kerberos V5 realm name. In the Value column, type the realm flags and host names of the host KDCs using the appropriate syntax format. To remove an interoperable Kerberos V5 realm Value Name or Value entry from the list, click the entry, and then press the DELETE key. To edit a mapping, remove the current entry from the list and add a new one with different parameters.
+
+If you disable this policy setting, the interoperable Kerberos V5 realm settings defined by Group Policy are deleted.
+
+If you do not configure this policy setting, the system will use the interoperable Kerberos V5 realm settings that are defined in the local registry, if they exist.</string>
+      <string id="ValidateKDC">Require strict KDC validation</string>
+      <string id="ValidateKDC_explain">This policy setting controls the Kerberos client's behavior in validating the KDC certificate.  
+      
+If you enable this policy setting, the Kerberos client requires that the KDC's X.509 certificate contains the KDC key purpose object identifier in the Extended Key Usage (EKU) extensions, and that the KDC's X.509 certificate contains a dNSName subjectAltName (SAN) extension that matches the DNS name of the domain. If the computer is joined to a domain, the Kerberos client requires that the KDC's X.509 certificate must be signed by a Certificate Authority (CA) in the NTAUTH store. If the computer is not joined to a domain, the Kerberos client allows the root CA certificate on the smart card to be used in the path validation of the KDC's X.509 certificate.
+
+If you disable or do not configure this policy setting, the Kerberos client will require only that the KDC certificate contain the Server Authentication purpose object identifier in the EKU extensions.
+</string>
+      <string id="StrictTarget">Require strict target SPN match on remote procedure calls</string>
+      <string id="StrictTarget_explain">When an application attempts to make a remote procedure call (RPC) to this server with a NULL value for the service principal name (SPN), computers running Windows 7 will attempt to use Kerberos by generating an SPN. This policy setting allows you to configure this server so that Kerberos can decrypt a ticket that contains this system-generated SPN.
+
+If you enable this policy setting, only services running as LocalSystem or NetworkService will be allowed to accept these connections. Services running as identities different from LocalSystem or NetworkService might fail to authenticate.
+
+If you disable or do not configure this policy setting, then any service will be allowed to accept incoming connections by using this system-generated SPN.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Define host name-to-realm mappings:</listBox>
+        <text></text>
+        <text>Syntax:</text>
+        <text>Enter the Kerberos realm name as the Value Name.</text>
+        <text>Enter the host names and DNS suffixes, that you want to</text>
+        <text>map to the Kerberos realm, as the Value.  To add multiple</text>
+        <text>names, separate entries with ";".</text>
+        <text></text>
+        <text>Note: To specify a DNS suffix preceed the entry with a '.' period.</text>
+        <text>For a host name entry do not specify a leading '.' period.</text>
+        <text></text>
+        <text>Example:</text>
+        <text>Value Name: MICROSOFT.COM</text>
+        <text>Value: .microsoft.com; .ms.com; computer1.fabrikam.com;</text>
+        <text></text>
+        <text>In the example above. All principals with either the DNS suffix</text>
+        <text>of *.microsoft.com or *.ms.com will be mapped to the</text>
+        <text>MICROSOFT.COM Kerberos realm.  In addition the host name</text>
+        <text>computer1.fabrikam.com will also be mapped to the </text>
+        <text>MICROSOFT.COM Kerberos realm.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Define interoperable Kerberos V5 realm settings:</listBox>
+        <text></text>
+        <text>Syntax:</text>
+        <text>Enter the interoperable Kerberos V5 realm name as the Value Name.</text>
+        <text>Enter the realm flags and the host names of the KDCs as</text>
+        <text>the Value.  Enclose the realm flags with the following</text>
+        <text>tags &lt;f&gt; &lt;/f&gt;.  Enclose the list of KDCs with the tags &lt;k&gt; &lt;/k&gt;</text>
+        <text>To add multiple KDC names, separate entries with</text>
+        <text>a semi-colon ";".</text>
+        <text></text>
+        <text>Example:</text>
+        <text>Value Name: TEST.COM</text>
+        <text>Value: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Another Example:</text>
+        <text>Value Name: REALM.FABRIKAM.COM</text>
+        <text>Value: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Mode:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Forests to Search</label>
+        </textBox>
+        <text>Syntax:</text>
+        <text>Enter the list of forests to be searched when this policy is enabled.</text>
+        <text>Use the Fully Qualified Domain Name (FQDN)  naming format.</text>
+        <text>Separate multiple search entries with a semi-colon ";".</text>
+        <text>Details:</text>
+        <text>The current forest need not be listed because Forest Search Order uses the global catalog first then searches in the order listed.</text>
+        <text>You do not need to separately list all the domains in the forest.</text>
+        <text>If a trusting forest is listed, all the domains in that forest will be searched.</text>
+        <text>For best performance, list the forests in probability of success order. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

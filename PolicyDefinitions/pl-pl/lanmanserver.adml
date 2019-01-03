@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>tutaj wprowadź wyświetlaną nazwę</displayName>
+  <description>tutaj wprowadź opis</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Serwer Lanman</string>
+      <string id="Lbl_FollowShare">Zezwalaj na publikowanie skrótów tylko dla folderów udostępnionych, w których włączono usługę BranchCache</string>
+      <string id="Lbl_DisableOnAllShares">Nie zezwalaj na publikowanie skrótów we wszystkich folderach udostępnionych</string>
+      <string id="Lbl_EnableOnAllShares">Zezwalaj na publikowanie skrótów dla wszystkich folderów udostępnionych</string>
+      <string id="Pol_HashPublication">Publikowanie skrótów dla usługi BranchCache</string>
+      <string id="Pol_HashPublication_Help">Ta zasada umożliwia usłudze generowania skrótów generowanie skrótów dla danych przechowywanych w folderach udostępnionych, a następnie dostarczanie tych skrótów na komputery klienckie, na których włączono usługę BranchCache. Skróty to wyznaczane matematycznie „cyfrowe odciski plików”, które jednoznacznie identyfikują zawartość plików. Te odciski cyfrowe są bardzo małe, dzięki czemu system Windows może porównywać pliki bez konieczności zużywania dużej części przepustowości sieci rozległej (WAN).
+
+Komputer kliencki w oddziale firmy może uzyskać skrót pliku za pośrednictwem łącza sieci WAN, jeśli są spełnione wszystkie następujące warunki:      
+1) Użytkownik na uprawnienia dostępu do pliku.
+2) Usługa BranchCache jest włączona na komputerze klienckim.
+3) Publikowanie skrótów jest dozwolone w folderze udostępnionym, do którego uzyskuje dostęp komputer kliencki. 
+
+Jeżeli komputer kliencki uzyska skrót, będzie mógł wyszukać identyczną wersję pliku w pamięci podręcznej innych komputerów znajdujących się w oddziale firmy. Jeżeli system Windows znajdzie identyczną wersję pliku w oddziale firmy, komputer kliencki pobierze buforowaną lokalnie kopię pliku, zamiast pobierać plik za pośrednictwem łącza sieci WAN. 
+
+Jeżeli dla tej zasady zostanie skonfigurowane ustawienie Zezwalaj na publikowanie skrótów tylko dla folderów udostępnionych, w których włączono usługę BranchCache (wartość = 0), skróty będą generowane tylko dla folderów udostępnionych, w których włączono usługę BranchCache. Skróty dla tych folderów udostępnionych są generowane, gdy wystąpi dowolne z następujących zdarzeń:
+1) Klient obsługujący usługę BranchCache uzyska dostęp do pliku znajdującego się w folderze, w którym włączono usługę BranchCache.
+2) Administrator ręcznie wygeneruje skróty za pomocą narzędzia wiersza polecenia Hashgen.
+ 
+Jeżeli dla tej zasady zostanie skonfigurowane ustawienie Nie zezwalaj na publikowanie skrótów we wszystkich folderach udostępnionych (wartość = 1), skróty nigdy nie będą generowane ani dostarczane przez komputery, na których zastosowano tę zasadę.
+ 
+Jeżeli dla tej zasady zostanie skonfigurowane ustawienie Zezwalaj na publikowanie skrótów dla wszystkich folderów udostępnionych (wartość = 2), skróty będą generowane dla wszystkich folderów udostępnionych na serwerze, gdy wystąpi dowolne z następujących zdarzeń: 
+1) Klient obsługujący usługę BranchCache uzyska dostęp do pliku znajdującego się w folderze udostępnionym na serwerze.
+2) Administrator ręcznie wygeneruje skróty, używając narzędzia wiersza polecenia Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Wartości:</text>
+        <text>0 = Zezwalaj na publikowanie skrótów tylko dla folderów udostępnionych, w których włączono usługę BranchCache</text>
+        <text>1 = Nie zezwalaj na publikowanie skrótów we wszystkich folderach udostępnionych</text>
+        <text>2 = Zezwalaj na publikowanie skrótów dla wszystkich folderów udostępnionych</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Akcje publikowania skrótów: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

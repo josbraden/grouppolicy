@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Служба установки ActiveX</displayName>
+  <description>Устанавливает элементы управления ActiveX с разрешенных установочных веб-сайтов</description>
+  <resources>
+    <stringTable>
+      <string id="AxInstSv">Служба установки ActiveX</string>
+      <string id="AxISURLZonePolicies">Политика установки ActiveX для сайтов в доверенных зонах</string>        
+      <string id="AxISURLZonePolicies_explain">С помощью этого параметра политики можно настроить установку элементов управления ActiveX для сайтов в доверенной зоне. Если этот параметр включен, элементы ActiveX устанавливаются в соответствии с параметрами, определяемыми этим параметром политики. 
+
+Если этот параметр отключен или не настроен, перед установкой элементов ActiveX всегда отображается запрос. 
+
+Если на доверенном сайте используется протокол HTTPS, этот параметр политики также может определять действия службы установщика ActiveX при возникновении ошибок сертификата. По умолчанию для всех подключений HTTPS требуется предоставить сертификат сервера, прошедший все необходимые проверки. Чтобы по-прежнему относить к числу доверенных сайт, на котором возникает ошибка сертификата, можно выбрать ошибки, которые будут пропускаться.
+
+Примечание. Этот параметр применяется ко всем сайтам в доверенных зонах.
+</string>
+      <string id="TrustedZoneDisabled">Не устанавливать</string>
+      <string id="TrustedZonePrompt">Запрашивать пользователя</string>
+      <string id="TrustedZoneSilentInstall">Устанавливать без предупреждения</string>
+      <string id="ApprovedActiveXInstallSites">Веб-сайты, разрешенные для установки элементов управления ActiveX</string>
+      <string id="ApprovedActiveXInstallSites_explain">
+        Служба установки ActiveX представляет собой решение, позволяющее делегировать установку элементов управления ActiveX на каждом компьютере в организации обычному пользователю.
+Список веб-сайтов, разрешенных для установки элементов управления ActiveX, содержит URL узла и параметры политики для каждого URL. Подстановочные символы не поддерживаются.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AxISURLZonePolicies">
+        <dropdownList refId="InstallTrustedOCX" noSort="true" defaultItem="2">Политика установки для элементов ActiveX, подписанных надежным издателем</dropdownList>
+        <dropdownList refId="InstallSignedOCX" noSort="true" defaultItem="1">Политика установки для подписанных элементов ActiveX</dropdownList>
+        <dropdownList refId="InstallUnSignedOCX" noSort="true" defaultItem="0">Политика установки для неподписанных элементов ActiveX</dropdownList>
+        <text>Разрешить подключение к доверенным сайтам со следующими ошибками сертификата сервера.</text>
+        <checkBox refId="IgnoreUnknownCA" defaultChecked="false">Неизвестный центр сертификации (ЦС)</checkBox>
+        <checkBox refId="IgnoreInvalidCN" defaultChecked="false">Недопустимое имя сертификата</checkBox>
+        <checkBox refId="IgnoreInvalidCertDate" defaultChecked="false">Срок действия проверки сертификата истек</checkBox>
+        <checkBox refId="IgnoreWrongCertUsage" defaultChecked="false">Недопустимое применение сертификата</checkBox>
+      </presentation>
+
+      <presentation id="ApprovedActiveXInstallSites">
+        <listBox refId="ApprovedActiveXInstallSiteslist">URL-адреса сайтов</listBox>
+        <text>Содержит политику для URL-адреса узла.</text>
+        <text>Например </text>
+        <text>URL узла: http://activex.microsoft.com</text>
+        <text>Значение: 2,1,0,0</text>
+        <text>Значением для каждого сайта являются четыре параметра в формате CSV.</text>
+        <text>А именно: «TPSSignedControl, SignedControl, UnsignedControl, ServerCertificatePolicy»</text>
+        <text>Значения первых трех параметров в политике управляют установкой элементов управления ActiveX на основании их подписи.</text>
+        <text>Эти параметры могут принимать одно из следующих значений</text>
+        <text>0: элемент управления ActiveX не устанавливается</text>
+        <text>1: запросить разрешение пользователя на установку элемента управления ActiveX</text>
+        <text>2: элемент управления ActiveX устанавливается без запроса разрешения</text>
+        <text>Элементы управления, подписанные с помощью сертификатов в хранилище надежных издателей, будут устанавливаться без предупреждений </text>
+        <text>Автоматическая установка неподписанных элементов управления не поддерживается</text>
+        <text></text>
+        <text>Правый параметр представляет собой флаг с битовой маской</text>
+        <text>Флаги используются для пропуска ошибок сертификатов https.</text>
+        <text>По умолчанию значение равно 0.</text>
+        <text>Это означает, что https-соединения должны пройти все проверки безопасности</text>
+        <text></text>
+        <text>Следует использовать следующие значения</text>
+        <text>для пропуска ошибок, связанных с недействительными сертификатами</text>
+        <text>0x00000100  пропускать неизвестные центры сертификации</text>
+        <text>0x00001000  пропускать недействительные общие имена</text>
+        <text>0x00002000  пропускать недействительные даты сертификатов</text>
+        <text>0x00000200  пропускать неверное использование сертификатов</text>
+        <text></text>
+        
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

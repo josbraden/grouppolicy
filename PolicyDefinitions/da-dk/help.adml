@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>indtast det viste navn her</displayName>
+  <description>indtast beskrivelsen her</description>
+  <resources>
+    <stringTable>
+      <string id="HelpQualifiedRootDir_Comp">Begræns muligt usikre HTML-hjælpfunktioner til angivne mapper</string>
+      <string id="HelpQualifiedRootDir_Help">Med denne politik kan du begrænse bestemte HTML-hjælpkommandoer, så de kun fungerer i HTML Hjælp-filer (.chm) i bestemte mapper og deres undermapper.  Du kan også deaktivere disse kommandoer i hele systemet.  Det anbefales, at det kun er mapper, der kræver administratorrettigheder, som tilføjes i denne politik.
+
+Kommandoen "Genvej" bruges til at føje et hyperlink til et Hjælp-emne, og den kører eksekverbare filer, der er eksterne i forhold til Hjælp-filen.  Kommandoen "WinHelp" bruges til at føje et hyperlink til et Hjælp-emne og kører Hjælp-filen (.hlp) WinHLP32.exe.
+
+Når denne politik er deaktiveret eller ikke-konfigureret, fungerer disse kommandoer for alle Hjælp-filer.    
+
+Når denne politik er aktiveret, fungerer kommandoerne kun for .chm-filer i de angivne mapper og deres undermapper.  
+
+Kommandoerne begrænses til en eller flere mapper ved at aktivere politikken og angive de ønskede mapper i tekstboksen på indstillingsfanen i dialogboksen med politikegenskaber. Brug et semikolon til at adskille mapper. Hvis du f.eks. vil begrænse kommandoerne til kun .chm-filer i mappen %windir%\help og D:\enmappe, skal du føje følgende streng til redigeringsboksen: "%windir%\help;D:\enmappe".
+
+Hvis du vil deaktivere kommandoerne "Genvej" og "WinHelp" i hele det lokale system, skal du aktivere politikken og lade tekstboksen på indstillingsfanen i dialogboksen med politikegenskaber være tom.
+
+Bemærk! Der kan bruges en miljøvariabel, (f.eks. %windir%), blot den er defineret på systemet.  %programfiles% er f.eks. ikke defineret på nogle tidlige versioner af Windows.
+
+Bemærk! Kun mapper på den lokale computer kan angives i denne politik. Du kan ikke bruge denne politik til at aktivere kommandoerne "Genvej" og "WinHelp" for .chm-filer, der er gemt på tilknyttede drev eller åbnet vha. UNC-stier.
+
+Du kan finde flere indstillinger under politikken "Forbyd, at disse programmer startes fra Hjælp".</string>
+      <string id="RestrictRunFromHelp">Forbyd, at disse programmer startes fra Hjælp</string>
+      <string id="RestrictRunFromHelp_Comp">Forbyd, at disse programmer startes fra Hjælp</string>
+      <string id="RestrictRunFromHelp_Help">Gør det muligt, at begrænse hvilke programmer, der må køres fra online Hjælp.
+
+Hvis du aktiverer denne indstilling, kan du forhindre at de programmer, du angiver, kan køres fra Hjælp. Når du aktiverer denne indstilling, skal du skrive en liste over de programmer, der ikke må køres. Skriv filnavnet på den eksekverbare fil for hvert program, adskilt af kommaer.
+
+Hvis du deaktiverer eller ikke konfigurerer denne indstilling, kan brugere køre programmer fra online Hjælp.
+
+Bemærk! Du kan også forhindre brugere i at køre programmer ved hjælp af indstillingerne til softwarebegrænsning under Computerkonfiguration\Sikkerhedsindstillinger.
+
+Bemærk! Denne indstilling er tilgængelig under Computerkonfiguration og under Brugerkonfiguration. Hvis indstillingen er angivet begge steder, bliver listen over programmer begrænset hvert sted.</string>
+        <string id="DisableHHDEP">Slå Forhindring af datakørsel fra for eksekverbar fil til Microsoft® HTML Hjælp</string>
+        <string id="DisableHHDEPText">
+            Med denne politikindstilling kan du udelukke, at den eksekverbar fil til HTML Hjælp overvåges af softwareforstærket forhindring af datakørsel.
+Forhindring af datakørsel er designet, så det blokerer skadelig kode, som udnytter mekanismer til undtagelseshåndtering i Windows. Hvis du aktiverer denne politikindstilling, deaktiveres forhindring af datakørsel for den eksekverbar fil til HTML Hjælp. På denne måde kan bestemte ældre ActiveX-objekter fungere, uden at forhindring af datakørsel lukker den eksekverbare fil til HTML Hjælp ned.
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, deaktiveres forhindring af datakørsel for den eksekverbare fil til HTML Hjælp.
+Bemærk!  Forhindring af datakørsel er en sikkerhedsfunktion, som kan være med til at forhindre, at din computer beskadiges af vira og andre sikkerhedstrusler. Forhindring af datakørsel kan også beskytte computeren ved at overvåge dine programmer for at kontrollere, om de bruger systemhukommelse sikkert.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="HelpQualifiedRootDir_Comp">
+        <textBox refId="HelpQualifiedRootDir_Edit">
+          <label>Angiv mappenavne adskilt af semikolon:</label>
+        </textBox>
+        <text>Eksempel: %windir%\Help;%windir%\pchealth;%programfiles%</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Skriv eksekverbare filer, adskilt af kommaer:</label>
+        </textBox>
+        <text>Eksempel: calc.exe,paint.exe</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp_Comp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Skriv eksekverbare filer, adskilt af kommaer:</label>
+        </textBox>
+        <text>Eksempel: calc.exe,paint.exe</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

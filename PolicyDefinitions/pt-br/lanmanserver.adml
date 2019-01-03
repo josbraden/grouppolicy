@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>digite o nome para exibição aqui</displayName>
+  <description>digite a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Servidor Lanman</string>
+      <string id="Lbl_FollowShare">Permitir a publicação de hash somente em pastas compartilhadas nas quais o BranchCache está habilitado</string>
+      <string id="Lbl_DisableOnAllShares">Impedir a publicação de hash em todas as pastas compartilhadas</string>
+      <string id="Lbl_EnableOnAllShares">Permitir a publicação de hash em todas as pastas compartilhadas</string>
+      <string id="Pol_HashPublication">Publicação de Hash para BranchCache</string>
+      <string id="Pol_HashPublication_Help">Essa diretiva permite que um serviço de geração de hash gere hashes para dados armazenados em pastas compartilhadas e, em seguida, forneça esses hashes a computadores cliente nos quais o BranchCache esteja habilitado. Os hashes são impressões digitais derivadas matematicamente de arquivos que identificam o conteúdo de arquivos de forma exclusiva. Essas impressões digitais são muito pequenas, permitindo que o Windows compare arquivos sem consumir uma quantidade significativa da largura de banda de rede de longa distância (WAN).
+
+Um computador cliente em uma filial poderá obter um hash para um arquivo através de um link WAN se todas as seguintes condições forem verdadeiras:      
+1) O usuário tem permissões para acessar o arquivo.
+2) O BranchCache está habilitado no computador cliente.
+3) A publicação de hash é permitida na pasta compartilhada que o computador cliente está acessando. 
+
+Se o computador cliente obtiver o hash, o computador poderá procurar por uma versão idêntica do arquivo no cache de outros computadores na filial. Se o Windows localizar uma versão idêntica do arquivo na filial, o computador cliente baixará a cópia armazenada em cache local em vez de baixar o arquivo pelo link WAN. 
+
+Se você configurar essa diretiva para "Permitir a publicação de hash somente nas pastas compartilhadas nas quais o BranchCache está habilitado" (valor = 0), os hashes serão gerados somente para pastas compartilhadas nas quais o BranchCache está habilitado. Os hashes para essas pastas compartilhadas são gerados quando os seguintes eventos ocorrem:
+1) Um arquivo é acessado em uma pasta compartilhada na qual o BranchCache está habilitado por um cliente com o suporte a BranchCache habilitado.
+2) Um administrador gera manualmente os hashes usando a ferramenta de linha de comando Hashgen.
+ 
+Se você configurar essa diretiva para "Impedir a publicação de hash em todas as pastas compartilhadas" (valor = 1), os hashes nunca serão gerados nem fornecidos por computadores nos quais essa diretiva é aplicada.
+ 
+Se você configurar essa diretiva para "Permitir a publicação de hash em todas as pastas compartilhadas" (valor = 2), os hashes serão gerados para todas as pastas compartilhadas no servidor quando um dos seguintes eventos ocorrer: 
+1) Um arquivo é acessado em uma pasta compartilhada no servidor por um cliente com o suporte a BranchCache habilitado.
+2) Um administrador gera manualmente os hashes usando a ferramenta de linha de comando Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Valores:</text>
+        <text>0 = Permitir a publicação de hash somente nas pastas compartilhadas nas quais o BranchCache está habilitado</text>
+        <text>1 = Impedir a publicação de hash em todas as pastas compartilhadas</text>
+        <text>2 = Permitir a publicação de hash em todas as pastas compartilhadas</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Ações da publicação de hash: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>escriba aquí el nombre</displayName>
+  <description>escriba aquí la descripción</description>
+  <resources>
+    <stringTable>
+      <string id="DNS_Client">Cliente DNS</string>
+      <string id="DNS_Domain">Sufijo DNS específico de conexión</string>
+      <string id="DNS_Domain_Help">Especifica un sufijo DNS específico de conexión. Esta opción reemplaza los sufijos DNS específicos de conexión establecidos en los equipos a los que se aplica esta opción, en los configurados localmente y en los configurados con DHCP.
+
+Advertencia: un sufijo DNS específico de conexión especificado en esta opción se aplica a todas las conexiones de red usadas por los equipos de host múltiple a los que se aplica esta opción.
+
+Para usar esta opción, haga clic en Habilitar y, a continuación, escriba un valor de cadena que represente el sufijo DNS en el campo disponible.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán sus parámetros de configuración local o DHCP.</string>
+      <string id="DNS_NameServer">Servidores DNS</string>
+      <string id="DNS_NameServer_Help">Define los servidores DNS a los que un equipo envía consultas cuando intenta resolver nombres.
+
+Advertencia: la lista de servidores DNS definida en esta opción reemplaza los servidores DNS configurados localmente y los configurados con DHCP. La lista de servidores DNS se aplica a todas las conexiones de red de los equipos de host múltiple a los que se aplica esta opción.
+
+Para usar esta opción, haga clic en Habilitar y, a continuación, escriba una lista delimitada por espacios de direcciones IP (en formato con punto decimal) en el campo disponible. Si habilita esta opción, debe escribir como mínimo una dirección IP.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán sus parámetros configurados localmente o mediante DHCP.</string>
+      <string id="DNS_PrimaryDnsSuffix">Sufijo DNS primario</string>
+      <string id="DNS_PrimaryDnsSuffix_Help">Especifica el sufijo del Sistema de nombres de dominio (DNS) primario para todos los equipos afectados. El sufijo DNS primario se usa en el registro de nombres DNS y la resolución de nombres DNS.
+
+Esta opción permite especificar un sufijo DNS primario para un grupo de equipos e impide que los usuarios, incluidos los administradores, lo puedan cambiar.
+
+Si deshabilita esta opción o no la configura, cada equipo usará su sufijo DNS primario local, que suele ser el nombre DNS del dominio de Active Directory al que está unido. No obstante, los administradores pueden usar el elemento Sistema del Panel de control para cambiar el sufijo DNS primario de un equipo.
+
+Para usar esta opción, en el cuadro de texto que se proporciona, escriba todo el sufijo DNS primario completo que desee asignar. Por ejemplo, microsoft.com.
+
+Esta opción no deshabilita el cuadro de diálogo Sufijo DNS y nombre NetBIOS del equipo que los administradores usan para cambiar el sufijo DNS primario de un equipo. No obstante, si los administradores indican un sufijo, éste se omitirá mientras esté habilitada esta opción.
+
+Importante: para que los cambios de esta opción surtan efecto, debe reiniciar Windows en todos los equipos a los que afecta.
+
+Nota: para cambiar el sufijo DNS primario de un equipo sin configurar una opción, haga clic en el elemento Sistema del Panel de control, en la ficha Identificación de red, en Propiedades, en Más y, a continuación, escriba un sufijo en el cuadro "Sufijo DNS principal de este equipo".
+
+Para obtener más información acerca de DNS, consulte "Sistema de nombres de dominio (DNS)" en la Ayuda.</string>
+      <string id="DNS_RegisterAdapterName">Registrar elementos DNS con sufijos DNS específicos de conexión</string>
+      <string id="DNS_RegisterAdapterName_Help">Determina si un equipo que realice el registro dinámico puede registrar los registros de recursos A y PTR con una concatenación de su nombre de equipo y un sufijo DNS específico de conexión, además de registrar estos registros con una concatenación de su nombre de equipo y el sufijo DNS primario.
+
+Advertencia: al habilitar esta opción de grupo, se aplica a todas las conexiones de red de equipos de host múltiple a las que se aplica esta opción.
+
+De forma predeterminada, un cliente DNS que realice un registro dinámico de DNS registra los registros de recursos A y PTR con una concatenación de su nombre de equipo y el sufijo DNS primario. Por ejemplo, una concatenación de un nombre de equipo "miequipo" y el sufijo DNS primario "microsoft.com", daría como resultado "miequipo.microsoft.com".
+
+Si se habilitara esta opción, un equipo registraría los registros de recursos A y PTR con su sufijo DNS específico de conexión además de registrar los registros de recursos A y PTR con el sufijo DNS primario. Por ejemplo, se usaría una concatenación de un nombre de equipo "miequipo" y el sufijo DNS específico de conexión "conexiónVPN" para registrar los registros de recursos A y PTR, lo que daría como resultado "miequipo.conexiónVPN". Tenga en cuenta que si el registro dinámico de DNS está deshabilitado en un equipo en el que se aplica esta opción, independientemente de la configuración de esta opción, el equipo no intentará el registro dinámico de DNS de registros A y PTR que contengan una concatenación de su nombre de equipo y un sufijo DNS específico de conexión. Si el registro dinámico de DNS está deshabilitado en una conexión de red específica de un equipo en el que se aplica esta opción, independientemente de la configuración de esta opción, el equipo no intentará el registro dinámico de DNS de registros A y PTR que contengan una concatenación de su nombre de equipo y un sufijo DNS específico de conexión en dicha conexión de red.
+
+Si se deshabilita esta opción, un cliente DNS no registra los registros de recursos A y PTR con su sufijo DNS específico de conexión.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán su configuración local.</string>
+      <string id="DNS_RegisterReverseLookup">Registrar registros PTR</string>
+      <string id="DNS_RegisterReverseLookup_DoNotRegister">No registrar</string>
+      <string id="DNS_RegisterReverseLookup_Help">Determina si el registro de registros de recursos PTR está habilitado para los equipos a los que se aplica esta directiva.
+
+De forma predeterminada, los clientes DNS configurados para realizar el registro dinámico de DNS intentan registrar los registros de recursos PTR solo si registraron correctamente el registro de recursos A correspondiente. Los registros de recursos "A" asignan un nombre DNS del host a la dirección IP del host y los registros de recursos "PTR" asignan la dirección IP del host al nombre DNS del host.
+
+Para habilitar esta opción, haga clic en Habilitar y, a continuación, seleccione uno de los valores siguientes:
+
+No registrar: los equipos no intentan nunca realizar el registro de los registros de recursos PTR.
+
+Registrar: los equipos intentan realizar el registro de los registros de recursos PTR independientemente de si el registro de los registros A se realizó correctamente.
+
+Registrar solo si el registro de registros A se realiza correctamente: los equipos intentan realizar el registro de los registros de recursos PTR solo si registraron correctamente los registros de recursos A correspondientes.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán su configuración local.</string>
+      <string id="DNS_RegisterReverseLookup_Register">Registrar</string>
+      <string id="DNS_RegisterReverseLookup_RegisterOnlyIfASucceeds">Registrar solo si el registro de registros A se realiza correctamente </string>
+      <string id="DNS_RegistrationEnabled">Actualización dinámica</string>
+      <string id="DNS_RegistrationEnabled_Help">Determina si se habilita la actualización dinámica.
+
+Los equipos configurados para la actualización dinámica registran y actualizan automáticamente sus registros de recursos DNS con un servidor DNS.
+
+Si se habilita esta opción, los equipos a los que se aplique pueden usar el registro dinámico de DNS en cada una de sus conexiones de red, en función de la configuración de cada conexión de red individual. Para que se habilite un registro dinámico de DNS en una conexión de red específica, es necesario y suficiente que las configuraciones específicas del equipo y de la conexión permitan el registro dinámico de DNS. Esta opción controla la propiedad específica del equipo que controla el registro dinámico de DNS. Si habilita esta opción, permite establecer individualmente la actualización dinámica para cada una de las conexiones de red.
+
+Si se deshabilita esta opción, los equipos a los que se aplique no pueden usar el registro dinámico de DNS para ninguna de sus conexiones de red, independientemente de la configuración de cada conexión de red individual.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán su configuración local.</string>
+      <string id="DNS_RegistrationOverwritesInConflict">Reemplazar direcciones en conflicto</string>
+      <string id="DNS_RegistrationOverwritesInConflict_Help">Determina si un cliente DNS que intenta registrar su registro de recursos A debe sobrescribir un registro o registros de recursos A existentes que contengan direcciones IP en conflicto.
+
+Esta opción está diseñada para equipos que registran registros de recursos A en zonas DNS que no admiten la actualización dinámica segura. La actualización dinámica segura conserva la propiedad de los registros de recursos y no permite que un cliente DNS sobrescriba registros registrados por otros equipos.
+
+Durante la actualización dinámica de una zona que no use la actualización dinámica segura, un cliente DNS puede detectar que un registro de recursos A existente asocia el nombre DNS del host del cliente con una dirección IP de un equipo distinto. Según la configuración predeterminada, el cliente DNS intenta reemplazar el registro de recursos A existente con un registro de recursos A que asocie el nombre DNS con la dirección IP del cliente.
+
+Si habilita esta opción, los clientes DNS intentan reemplazar los registros de recursos A en conflicto durante la actualización dinámica.
+
+Si deshabilita esta opción, el cliente DNS realiza la actualización dinámica de los registros de recursos A, pero si el cliente DNS intenta actualizar registros de recursos A que contengan conflictos, se produce un error en el intento, que se incluye en el registro del Visor de eventos.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán su configuración local.</string>
+      <string id="DNS_RegistrationRefreshInterval">Intervalo de actualización de registro</string>
+      <string id="DNS_RegistrationRefreshInterval_Help">Especifica el intervalo de actualización de registro de los registros de recursos A y PTR para los equipos a los que se aplique esta opción. Esta opción solo se puede aplicar a equipos que usen la actualización dinámica.
+
+Los equipos con Windows 2000 Professional y Windows XP Professional configurados para realizar el registro dinámico de DNS de registros de recursos A y PTR vuelven a registrar periódicamente sus registros con servidores DNS, aunque los datos de estos registros no hayan cambiado. Esto es necesario para poder indicar a los servidores DNS configurados para quitar (eliminar) automáticamente los registros obsoletos que estos registros están actualizados y que deben conservarse en la base de datos.
+
+Advertencia: si los registros de recursos DNS están registrados en zonas con la eliminación habilitada, el valor de esta opción no debe ser nunca superior al del intervalo de actualización configurado para estas zonas. Si se establece el intervalo de actualización de registro en un valor superior al del intervalo de actualización de las zonas DNS, se puede provocar una eliminación no deseada de registros de recursos A y PTR.
+
+Para especificar el intervalo de actualización de registro, haga clic en Habilitar y escriba un valor superior a 1800. Recuerde que esta opción especifica el intervalo de actualización de registro en segundos; por ejemplo, 1800 segundos son 30 minutos.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán su configuración local.</string>
+      <string id="DNS_RegistrationTtl">Valor de TTL para los registros A y PTR</string>
+      <string id="DNS_RegistrationTtl_Help">Especifica el valor del campo Tiempo de vida de los registros de recursos A y PTR registrados por los equipos a los que se aplica esta opción.
+
+Para especificar el tiempo de vida (TTL), haga clic en Habilitar y, a continuación, escriba un valor en segundos (por ejemplo, el valor 900 equivale a 15 minutos).
+
+Si no se configura esta opción, no se aplicará a ningún equipo.</string>
+      <string id="DNS_SearchList">Lista de búsqueda de sufijos DNS</string>
+      <string id="DNS_SearchList_Help">Determina los sufijos DNS que se adjuntan a un nombre no completo de una sola etiqueta antes de enviar una consulta DNS para este nombre.
+
+Un nombre no completo de una sola etiqueta no contiene puntos, como "ejemplo". Es distinto de un nombre de dominio completo, como "ejemplo.microsoft.com".
+
+Con esta opción habilitada, cuando un usuario envía una consulta de un nombre de una sola etiqueta, como "ejemplo", un cliente DNS local adjunta un sufijo, como "microsoft.com", lo que da como resultado la consulta "ejemplo.microsoft.com", antes de enviar la consulta a un servidor DNS.
+
+Si habilita esta opción, puede especificar los sufijos DNS que se deben adjuntar antes de enviar una consulta de un nombre no completo de una sola etiqueta. Los valores de los sufijos DNS en esta opción pueden establecerse con cadenas separadas por comas, como por ejemplo, "microsoft.com,servidorua.microsoft.com,office.microsoft.com". Se adjunta un sufijo DNS para cada consulta que se envía. Si una consulta no tiene un resultado correcto, se agregará un nuevo sufijo DNS en lugar del sufijo que produjo el error y se enviará esta nueva consulta. Los valores se usan en el orden en que aparecen en la cadena, empezando por el valor de la izquierda y siguiendo hacia la derecha.
+
+Si habilita esta opción, debe especificar como mínimo un sufijo.
+
+Si deshabilita esta opción, el sufijo DNS primario y los sufijos DNS específicos de las conexiones de red se adjuntan a las consultas de nombres no completos.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán su configuración local.</string>
+      <string id="DNS_UpdateSecurityLevel">Nivel de seguridad de la actualización</string>
+      <string id="DNS_UpdateSecurityLevel_Help">Especifica si los equipos a los que se aplica esta opción usan la actualización dinámica segura o la actualización dinámica estándar para registrar los registros DNS.
+
+Para habilitar esta opción, haga clic en Habilitar y, a continuación, elija uno de los valores siguientes.
+
+No seguras seguidas de seguras: si se elige esta opción, los equipos envían actualizaciones dinámicas seguras solo cuando se rechazan las actualizaciones dinámicas no seguras.
+
+Solo no seguras: si se elige esta opción, los equipos envían solo actualizaciones dinámicas no seguras.
+
+Solo seguras: si se elige esta opción, los equipos envían solo actualizaciones dinámicas seguras.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán su configuración local.</string>
+      <string id="DNS_UpdateSecurityLevel_OnlySecure">Solo seguras</string>
+      <string id="DNS_UpdateSecurityLevel_OnlyUnsecure">Solo no seguras</string>
+      <string id="DNS_UpdateSecurityLevel_UnsecureFollowedBySecure">No seguras seguidas de seguras</string>
+      <string id="DNS_UpdateTopLevelDomainZones">Actualizar zonas de dominio de nivel superior</string>
+      <string id="DNS_UpdateTopLevelDomainZones_Help">Especifica si los equipos a los que se aplica esta opción pueden enviar actualizaciones dinámicas a las zonas cuyos nombres están compuestos de una sola etiqueta, conocidas también como zonas de dominio de nivel superior (por ejemplo, "com").
+
+De forma predeterminada, un cliente DNS configurado para realizar una actualización dinámica de DNS envía las actualizaciones dinámicas a la zona DNS autoritativa para sus registros de recursos DNS, a menos que la zona autoritativa sea un dominio de nivel superior y una zona raíz.
+
+Si habilita esta opción, los equipos a los que se aplica esta directiva envían actualizaciones dinámicas a cualquier zona autoritativa para los registros de recursos que debe actualizar el equipo, a excepción de la zona raíz.
+
+Si deshabilita esta opción, los equipos a los que se aplica esta directiva no envían actualizaciones dinámicas a las zonas de dominio de nivel superior o raíz autoritativas para los registros de recursos que el equipo debe actualizar.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán su configuración local.</string>
+      <string id="DNS_UseDomainNameDevolution">Acortamiento de sufijo DNS primario</string>
+      <string id="DNS_UseDomainNameDevolution_Help">Determina si el cliente DNS acorta el sufijo DNS primario en un proceso de resolución de nombres.
+
+Cuando un usuario envía una consulta de un nombre de una sola etiqueta, como "ejemplo", un cliente DNS local adjunta un sufijo, como "microsoft.com", lo que da como resultado la consulta "ejemplo.microsoft.com", antes de enviar la consulta a un servidor DNS.
+
+Si no se especifica una lista de búsqueda de sufijos DNS, el cliente DNS adjunta el sufijo DNS primario a un nombre de una sola etiqueta y, si esta consulta da error, se adjunta el sufijo DNS específico de conexión para una nueva consulta. Si no se resuelve ninguna de estas consultas, el cliente acorta el sufijo DNS primario del equipo (quita la etiqueta situada más a la izquierda del sufijo DNS primario), adjunta este sufijo DNS primario acortado al nombre de una sola etiqueta y envía esta nueva consulta a un servidor DNS.
+
+Por ejemplo, si se adjunta el sufijo DNS primario ooo.aaa.microsoft.com al nombre de una sola etiqueta no terminado en punto "ejemplo" y la consulta DNS ejemplo.ooo.aaa.microsoft.com da error, el cliente DNS acorta el sufijo DNS primario (quita la etiqueta situada más a la izquierda) hasta el nivel de acortamiento especificado y envía una consulta ejemplo.aaa.microsoft.com. Si esta consulta da error, el sufijo DNS primario se acorta aún más si se encuentra por debajo del nivel de acortamiento especificado y se envía la consulta ejemplo.microsoft.com. Si esta consulta da error, el acortamiento continúa si se encuentra por debajo del nivel de acortamiento especificado y se envía la consulta ejemplo.microsoft.com. El sufijo DNS primario no se puede acortar más de lo establecido en el nivel de acortamiento.
+
+Si se habilita esta opción con un nivel de acortamiento adecuado, los clientes DNS de los equipos a los que se aplica intentarán resolver los nombres que son concatenaciones del nombre de una sola etiqueta que se debe resolver y el sufijo DNS primario acortado.
+
+Si se deshabilita esta opción, los clientes DNS de los equipos a los que se aplica no intentarán resolver los nombres que son concatenaciones del nombre de una sola etiqueta que se debe resolver y el sufijo DNS primario acortado.
+
+Si no se configura esta opción, no se aplicará a ningún equipo y los equipos usarán su configuración local.</string>
+      <string id="DNS_DomainNameDevolutionLevel">Nivel de acortamiento del sufijo DNS primario</string>
+      <string id="DNS_DomainNameDevolutionLevel_Help">Esta opción de directiva determina el nivel de acortamiento del sufijo del Sistema de nombres de dominio (DNS) que utilizarán los clientes DNS, si éstos acortan el sufijo DNS primario en un proceso de resolución del nombre. Cuando está habilitado el acortamiento del sufijo DNS, se quita la etiqueta situada más a la izquierda de un sufijo DNS primario en cada intento de consulta sucesivo, si una consulta da error para un nombre al que se le ha adjuntado un sufijo DNS primario. El nivel de acortamiento indica el número mínimo de etiquetas que deben agregarse a la cadena de consulta después de acortar el sufijo DNS primario.
+
+Cuando un usuario envía una consulta para un nombre de una sola etiqueta, el cliente DNS local adjunta un sufijo, como "microsoft.com" a la consulta, antes de enviar la consulta a un servidor DNS. En este caso, da como resultado la consulta "ejemplo.microsoft.com".
+ 
+Si no se especifica una lista de búsqueda de sufijos DNS, el cliente DNS adjunta el sufijo DNS primario a un nombre de una sola etiqueta. Si esta consulta da error, el sufijo DNS específico de la conexión se adjunta para una nueva consulta. Si no se resuelve ninguna de estas consultas, el cliente acorta el sufijo DNS primario del equipo, adjunta el sufijo DNS primario al nombre de una sola etiqueta y envía esta nueva consulta a un servidor DNS.
+
+Por ejemplo, si se adjunta el sufijo DNS primario aaa.bbb.ccc.ddd.microsoft.com al nombre de una sola etiqueta "ejemplo" (que no tiene un punto al final), y si se habilita el acortamiento el sufijo DNS y se establece el nivel en 3, se ejecutarán las siguientes consultas:  
+
+Ejemplo.aaa.bbb.ccc.ddd.microsoft.com (si esta consulta da error, para la siguiente consulta el sufijo DNS primario se acortará a bbb.ccc.ddd.microsoft.com.)
+
+Ejemplo.bbb.ccc.ddd.microsoft.com (si esta consulta da error, para la siguiente consulta el sufijo DNS primario se acortará a ccc.ddd.microsoft.com.)
+
+Ejemplo.ccc.ddd.microsoft.com (si esta consulta da error, para la siguiente consulta el sufijo DNS primario se acortará a ddd.microsoft.com.)
+
+Ejemplo.ddd.microsoft.com (si esta consulta da error, no se podrán realizar más consultas porque el nivel de acortamiento se estableció en 3 y el sufijo DNS primario contiene 3 etiquetas.)
+  
+Si se habilita esta configuración de directiva, los clientes DNS de los equipos a los que se aplica intentarán resolver los nombres que son concatenaciones del nombre de una sola etiqueta que se debe resolver y el sufijo DNS primario acortado. Los clientes DNS acortarán el sufijo DNS primario en cada intento de consulta hasta que el nombre se acorte correctamente, se haya alcanzado el nivel de acortamiento especificado en esta configuración o el nombre de sufijo DNS primario tenga dos etiquetas.
+ 
+Si se deshabilita o no se configura esta opción de directiva, los clientes DNS en los equipos a los que se aplica no intentarán resolver los nombres que son concatenaciones del nombre de una sola etiqueta que se debe resolver y del sufijo DNS primario. Si hay un dominio raíz de bosque (FRD), no se configura ninguna lista de búsqueda y la consulta se realiza para un nombre de una sola etiqueta, entonces el cliente DNS acortará el nombre al FRD hasta que se resuelva correctamente.</string>
+      <string id="DNS_TurnOffMulticast">Desactivar resolución de nombres de multidifusión</string>
+      <string id="DNS_TurnOffMulticast_Help">La resolución de nombres de multidifusión de vínculo local (LLMNR) es un protocolo de resolución de nombres secundario. Las consultas se envían a través del vínculo local, una única subred, desde un equipo cliente mediante multidifusión y puede responder a ellas otro cliente del mismo vínculo que también tenga LLMNR habilitada. LLMNR proporciona resolución de nombres en escenarios en los que no es posible realizar la resolución de nombres DNS convencional.
+
+Si habilita esta configuración de directiva, la resolución de nombres de multidifusión o LLMNR se desactivará para el equipo en todos los adaptadores de red disponibles que no estén configurados.
+
+Si deshabilita esta configuración de directiva, la resolución de nombres de multidifusión o LLMNR se activará para el equipo en todos los adaptadores de red disponibles que no estén configurados.
+
+Si no establece esta configuración de directiva, la resolución de nombres de multidifusión o LLMNR se activará para el equipo en todos los adaptadores de red disponibles que no estén configurados de forma predeterminada.</string>
+      <string id="DNS_AppendToMultiLabelName">Permitir sufijo DNS adjunto a consultas de nombres no completos de varias etiquetas</string>
+      <string id="DNS_AppendToMultiLabelName_Help">Especifica si los equipos a los que se aplica esta opción pueden adjuntar sufijos a un nombre no completo de varias etiquetas antes de enviar consultas DNS posteriores, si se produce un error en la consulta de nombre original.
+
+Un nombre que contiene puntos, pero que no termina en punto, se denomina nombre no completo de varias etiquetas; por ejemplo, "server.corp". Un nombre completo incluiría un punto final; por ejemplo, "server.corp.contoso.com.".
+
+Si habilita esta opción, se permite adjuntar sufijos a un nombre no completo de varias etiquetas, si se produce un error en la consulta de nombre original. Por ejemplo, una consulta de nombre no completo de varias etiquetas "server.corp" se consultará en primer lugar por parte del cliente DNS. Si la consulta es correcta, se devuelve una respuesta al cliente. Si la consulta no es correcta, el nombre no completo de varias etiquetas se adjunta con sufijos DNS configurados para el equipo para las consultas. Estos sufijos pueden derivarse de una combinación del sufijo de dominio principal del cliente DNS local, un sufijo de dominio específico de la conexión y la lista de búsqueda de sufijos DNS.
+
+Por ejemplo, si el cliente DNS local recibe una consulta de "server.corp" y el sufijo de dominio principal se configura como "contoso.com", con esta opción, el cliente DNS enviará una consulta de "server.corp.contoso.com." si la consulta de nombre original para "server.corp" es incorrecta. 
+
+Si deshabilita esta opción, no se adjuntan sufijos a consultas de nombres no completos de varias etiquetas, si se produce un error en la consulta de nombre original. 
+
+Si no configura esta opción, los equipos usarán su configuración de cliente DNS local para determinar el comportamiento de la consulta para nombres no completos de varias etiquetas.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="DNS_Domain">
+        <textBox refId="DNS_DomainLabel">
+          <label>Sufijo DNS:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_NameServer">
+        <textBox refId="DNS_NameServerLabel">
+          <label>Direcciones IP:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_PrimaryDnsSuffix">
+        <textBox refId="DNS_PrimaryDnsSuffixBox">
+          <label>Escribir un sufijo DNS primario:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_RegisterReverseLookup">
+        <dropdownList refId="DNS_RegisterReverseLookup_Box" defaultItem="0">Registrar registros PTR:</dropdownList>
+      </presentation>
+      <presentation id="DNS_RegistrationRefreshInterval">
+        <decimalTextBox refId="DNS_RegistrationRefreshIntervalLabel" defaultValue="1800" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_DomainNameDevolutionLevel">
+        <decimalTextBox refId="DNS_DomainNameDevolutionLevelLabel" defaultValue="2" spinStep="1">Establecer el nivel de acortamiento del sufijo DNS primario</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_RegistrationTtl">
+        <decimalTextBox refId="DNS_RegistrationTtlLabel" defaultValue="600" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_SearchList">
+        <textBox refId="DNS_SearchListLabel">
+          <label>Sufijos DNS:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_UpdateSecurityLevel">
+        <dropdownList refId="DNS_UpdateSecurityLevel_Box" defaultItem="2">Nivel de seguridad de la actualización:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

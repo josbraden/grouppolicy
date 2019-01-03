@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>أدخل اسم العرض هنا</displayName>
+  <description>أدخل الوصف هنا</description>
+  <resources>
+    <stringTable>
+      <string id="W32TIME_CONFIG_EXPLAIN">تقوم هذه الإعدادات بالتحكم في خدمة توقيت Windows (W32time) الخاصة بعناصر تحكم المجال.  العديد من هذه القيم عبارة عن قيم عددية، الأمر الذي يعني أنها تعطي معنى عندما تقترن بالقيم الأخرى وعدم تعيينها بقياسات وحدة معينة. وبالنسبة لإعدادات مزامنة التوقيت لأجهزة الكمبيوتر التي هي عبارة عن عضو في مجال، راجع تكوين الكمبيوتر العميل لمزامنة التوقيت التلقائية للمجال (http://go.microsoft.com/fwlink/?LinkId=139706).
+ 
+معلمات قسم الساعة
+ 
+FrequencyCorrectRate:تقوم بالتحكم في المعدل الذي يقوم عنده W32time بتصحيح تردد الساعة المحلية. تؤدي القيم الصغيرة إلى عمليات تصحيح بطيئة بينما تتسبب القيم الكبيرة في عمليات تصحيح أسرع. يمكن أن تؤدي القيم الصغيرة جدًا إلى الإفراط في التصحيح وعدم الاستقرار. كما يمكن أن تتسبب القيم الكبيرة جدًا في بطء عملية المزامنة. الإعداد الافتراضي: 4 (قيمة عددية).
+ 
+HoldPeriod: يشير إلى كمية نماذج التوقيت الدقيقة المحتملة التي يجب على العميل استلامها في سلسلة قبل أن يتم تقييم نماذج التوقيت الفرعية كمسمار محتمل. بعد فترة من عدم استلام أية نماذج توقيت قابلة للاستخدام، يتوقف عميل التوقيت عن تقييم نماذج التوقيت كعناقيد بمجرد استلام أول نموذج توقيت محتمل. عند استلام سلسلة من نماذج التوقيت (التي قام HoldPeriod بالإشارة إليها)، يقوم عميل التوقيت بتقييم نماذج التوقيت الفرعية كمسامير. يعتبر نموذج التوقيت عبارة عن عقدة عندما يكون فرق التوقيت بين نموذج التوقيت والتوقيت المحلي للعميل أكبر من قيمة LargePhaseOffset. الإعداد الافتراضي: 5 نماذج توقيت.
+ 
+LargePhaseOffset: يحدد اختلاف التوقيت من التوقيت المحلي للعميل (phase offset) الذي يجب على نموذج التوقيت الحصول عليه حتى يتم اعتباره كمسامير. يتم اعتبار نماذج التوقيت التي بها فروق توقيت أكبر من قيمة LargePhaseOffset كمسامير. الإعداد الافتراضي: 50,000,000 100 وحدة نانو ثانية، والتي تقدر بخمس ثوان.
+ 
+MaxAllowedPhaseOffset: تقوم بالتحكم في كيفية قيام W32time بتصحيح التوقيت بناءًا على حجم الاختلاف في التوقيت الذي تم حسابه بين نموذج التوقيت والتوقيت المحلي للعميل. في حالة استلام استجابة تفيد بوجود اختلاف في التوقيت أكبر من هذه القيمة، يقوم W32time في الحال بضبط التوقيت المحلي للعميل على التوقيت الذي تمت الموافقة عليه كتوقيت دقيق من قِبل خادم "بروتوكول وقت الشبكة" (NTP). أما في حالة ما إذا كان الاختلاف في التوقيت أقل من هذه القيمة، يتم تصحيح الساعة المحلية للعميل بشكل تدريجي. الإعداد الافتراضي : 300 ثانية.
+ 
+MaxNegPhaseCorrection: يقوم بالتحكم في أقصى حد لتصحيح الساعة المسموح به والذي يمكن تنفيذه في اتجاه عكسي. في حالة استلام نموذج توقيت يشير إلى وجود توقيت في الماضي (كما هو مقارن بالتوقيت المحلي للعميل) يختلف في التوقيت بقيمة أكبر من قيمة MaxNegPhaseCorrection، يتم رفض نموذج التوقيت. في حالة حدوث ذلك، يقوم مصدر توقيت Windows بتسجيل خروج أحد الأحداث الموجودة في سجل النظام لعارض الأحداث. الإعداد الافتراضي: 172،800 ثانية.
+ 
+MaxPosPhaseCorrection: يقوم بالتحكم في أقصى حد من التصحيح المسموح به للساعة والذي يمكن تنفيذه في اتجاه أمامي. في حالة استلام نموذج توقيت يشير إلى وجود توقيت في المستقبل (كما هو مقارن بالتوقيت المحلي للعميل) يختلف في التوقيت بقيمة أكبر من قيمة MaxPosPhaseCorrection، يتم رفض نموذج التوقيت. الإعداد الافتراضي: 172،800 ثانية. 
+ 
+PhaseCorrectRate: يقوم بالتحكم في مدى سرعة قيام W32time بتصحيح الاختلاف الموجود في التوقيت المحلي للعميل حتى يتوافق مع نماذج التوقيت المقبولة كنماذج دقيقة من قِبل خادم "برتوكول وقت الشبكة" (NTP). تعمل القيم الصغيرة على تصحيح الساعة بشكل أكثر بطئًا، بينما تعمل القيم الكبيرة على تصحيح الساعة بشكل أكثر سرعةً. الإعداد الافتراضي: 7 (قيمة عددية).
+ 
+PollAdjustFactor: يقوم بالتحكم في مدى سرعة قيام W32time بتغيير فواصل الاستقصاء. عندما يتم تحديد الاستجابات على أنها دقيقة، يتم زيادة طول الفواصل الخاصة بالاستقصاء بشكل تلقائي. أما في حالة تحديد الاستجابات على أنها غير دقيقة، يتم تصغير فواصل الاستقصاء بشكل تلقائي. الإعداد الافتراضي: 5 (قيمة عددية).
+ 
+SpikeWatchPeriod: يقوم بتحديد كمية الوقت التي تقوم نماذج الوقت المشكوك فيها باستلامها من مصدر للوقت قبل أن يتم قبول تلك النماذج كنماذج توقيت دقيقة. يتم اعتبار نماذج التوقيت على أنها نماذج مشكوك فيها عندما يكون فرق التوقيت بين نموذج التوقيت والتوقيت المحلي للعميل أكبر من قيمة LargePhaseOffset. يتم استخدام SpikeWatchPeriod بالاشتراك مع HoldPeriod في إزالة نماذج التوقيت المتقطعة وغير الدقيقة التي يتم إرجاعها من أحد النظراء. الإعداد الافتراضي: 900 ثانية.
+ 
+UpdateInterval: يقوم بتحديد كمية وقت انتظار W32time بين عمليات التصحيح عندما يتم تصحيح الساعة بشكل تدريجي. عندما تقوم W32time بإجراء التصحيح التدرجي للساعة، تقوم الخدمة بضبط الساعه بشكل جزئي، والانتظار لتلك الفترة الزمنية ثم القيام بعد ذلك بالتحقق مما إذا كان هناك ضبط آخر يجب القيام به أم لا وذلك حتى انتهاء عملية التصحيح. الإعداد الافتراضي: 100 1/100 وحدة ثانية والتي هي عبارة عن 1 ثانية.
+ 
+المعلمات العامة:
+ 
+AnnounceFlags: قيمة قناع بت التي تتحكم في كيفية الإعلان عن توفر خدمة الوقت عبر NetLogon. الإعداد الافتراضي: 0x0a ست عشريًا. لمعرفة القيم الممكنة، راجع، Config\AnnounceFlags Entry (http://go.microsoft.com/fwlink/?LinkId=139718).
+ 
+EventLogFlags: تقوم بالتحكم في الأحداث الخاصة التي قد يكون تم إجراء تسجيل الدخول لها على سجل النظام لعارض الأحداث. الإعداد الافتراضي: 0x02 قناع بت سداسي عشري. لمعرفة القيم الممكنة، راجع المفتاح الفرعي NtpClient\EventLogFlags (http://go.microsoft.com/fwlink/?LinkId=139720).
+ 
+LocalClockDispersion: تشير إلى أقصى حد من الأخطاء في الثواني التي يقوم خادم "بروتوكول وقت الشبكة" (NTP) بإعداد تقرير عنها للعملاء الذين يطالبون بنموذج توقيت. (يتم تطبيقه فقط عندما يقوم خادم "بروتوكول وقت الشاشة" (NTP) باستخدام توقيت الساعة المحلية لـ CMOS). الإعداد الافتراضي: 10 ثوان.
+ 
+MaxPollInterval: تقوم بالتحكم في أقصى حد للفاصل الزمني للاستقصاء والذي يحدد أقصى كمية من الوقت بين عمليات الاستقصاء لنظير. الإعداد الافتراضي: 10 في قاعدة التسجيل-2 ويبلغ ذلك 1.024 ثانية. (يجب ألا يتم تعيينها على قيمة أعلى من 15). 
+ 
+MinPollInterval: تقوم بالتحكم في الحد الأدنى من الفاصل الزمني للاستقصاء والذي يحدد أقل حد للفاصل الزمني بين عمليات الاستقصاء لنظير. الإعداد الافتراضي: 6 في قاعدة التسجيل-2 ويبلغ ذلك 64 ثانية.
+ 
+معلمات RODC:
+
+لمزيد من المعلومات حول هذه الإعدادات، راجع Appendix A: مواضيع المرجعية التقنية (http://go.microsoft.com/fwlink/?LinkID=128273).
+ 
+ChainEntryTimeout: تحدد أقصى كمية من الوقت يمكن أن يمكثها إدخال في جدول التسلسل قبل اعتبار هذا الإدخال منتهي الصلاحية. قد يتم إزالة الإدخالات منتهية الصلاحية عندما تتم معالجة الطلب أو الاستجابة التالية. الإعداد الافتراضي: 16 ثانية.
+ 
+ChainMaxEntries: يقوم بالتحكم في أقصى عدد من الإدخالات المسموح بها في جدول التسلسل. في حالة ما إذا كان جدول التسلسل ممتلئًا ويتعذر حذف أية إدخالات منتهية الصلاحية، فيتم تجاهل أية طلبات واردة. الإعداد الافتراضي: 128 إدخالاً.
+ 
+ChainMaxHostEntries: تقوم بالتحكم في أقصى عدد من الإدخالات المسموح بها في جدول التسلسل لمضيف معين. الإعداد الافتراضي: 4 إدخالات. 
+ 
+ChainDisable: تقوم بالتحكم في تعطيل آلية التسلسل أو تمكينها. في حالة تعطيل التسلسل (الإعداد على 0)، فيمكن لـ RODC القيام بالمزامنة باستخدام أي وحدة تحكم في المجال، لكن لن يتمكن المضيفون الذين ليست لديهم كلمات مرور مخزنة على RODC من المزامنة باستخدام RODC. الإعداد الافتراضي: 0 منطقي.
+ 
+ChainLoggingRate: يقوم بالتحكم في التردد الذي يتم تسجيل الحدث الذي يشير إلى عدد محاولات التسلسل الناجحة وغير الناجحة  على سجل النظام في عارض الأحداث. الإعداد الافتراضي: 30 دقيقة.</string>
+      <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">تحدد مجموعة من المعلمات للتحكم في عميل Windows NTP.
+
+NtpServer: اسم نظام اسم المجال (DNS) أو عنوان IP الخاص بمصدر وقت NTP. هذه القيمة موجودة بالشكل "dnsName,flags" حيث أن "flags" هي قناع بت سداسي عشري خاص بعلامات ذلك المضيف. لمزيد من المعلومات، راجع إعدادات نهج المجموعة الخاصة بعميل NTP المقترنة بقسم وقت Windows الخاص بإعدادات نهج مجموعة خدمة وقت Windows (http://go.microsoft.com/fwlink/?LinkId=139727). القيمة الافتراضية هي "time.windows.com,0x09".
+
+Type: تتحكم هذه القيمة في المصادقة التي يستخدمها W32time. القيمة الافتراضية هي NT5DS.
+
+CrossSiteSyncFlags: يقوم W32time باختيار مصادر الوقت من خارج الموقع الخاص به. القيم الممكنة هي "0 "و "1" و"2 ". يشير ضبط هذه القيمة على "0 " (None) إلى أن عميل الوقت لا ينبغي عليه إجراء محاولة مزامنة الوقت خارج الموقع الخاص به. يشير إعداد هذه القيمة على "1" (PdcOnly) إلى أنه يمكن استخدام فقط أجهزة الكمبيوتر التي تعمل كأشكال رئيسية لعمليات محاكات عامل تحكم المجال الرئيسي (PDC) في المجالات الأخرى كشركاء في المزامنة عندما يجب على العميل مزامنة الوقت مع شريك خارج الموقع الخاص به. يشير ضبط القيمة على "2" (All) إلى إمكانية استخدام أي شريك للمزامنة. يتم تجاهل هذه القيمة في حالة عدم ضبط قيمة NT5DS. القيمة الافتراضية هي "2" رقم عشري (0×2 رقم سداسي عشري).
+
+ResolvePeerBackoffMinutes: تتحكم هذه القيم (المشار إليها بالدقائق) في المدة التي ينتظرها W32time قبل محاولة تحليل اسم DNS في حالة فشل محاولة سابقة. القيمة الافتراضية هي 15 دقيقة.
+
+ResolvePeerBackoffMaxTimes: تتحكم هذه القيمة في عدد مرات محاولة W32time تحليل اسم DNS قبل إعادة تشغيل عملية الاستكشاف. يتم مضاعفة مدة الانتظار بعد كل محاولة حل فاشلة لـ DNS. القيمة الافتراضية هي 7 محاولات.
+
+SpecialPollInterval: تتحكم قيمة عميل NTP (المشار إليها بالثواني) في عدد مرات إجراء الاستقصاء لمصدر الموقت الذي تم تكوينه عند تكوين مصدر الوقت للاستخدام أثناء الفاصل الزمني الخاص بالاستقصاء.  في حالة تمكين علامة SpecialInterval في إعداد NTPServer، يقوم العميل باستخدام القيمة التي تم تعيينها كـ SpecialPollInterval بدلاً من قيم MinPollInterval و MaxPollInterval. القيمة الافتراضية هي 3600 ثانية (ساعة واحدة).
+
+EventLogFlags: هذه القيمة عبارة عن قناع بت الذي يتحكم في الأحداث التي قد يتم تسجيلها على سجل النظام في عارض الأحداث. يشير ضبط هذه القيمة على "0×1" إلى أن W32time سيقوم بإنشاء حدث ما في أي وقت يتم فيه الكشف عن انتقال الوقت. يشير ضبط هذه القيمة على "0×2" إلى أن W32time سيقوم بإنشاء حدث ما في أي وقت يتم فيه إجراء تغيير لمصدر الوقت. يشير الإعداد على "0×3" (إضافة 0×1 و 0×2) إلى أنه سيتم تسجيل كلا من انتقال الوقت وتغيير مصدر الوقت، وذلك لأن هذه القيمة تعتبر قناع بت.
+      </string>
+      <string id="W32TIME_ENABLE_NTPCLIENT_EXPLAIN">تحدد فيما إذا كان عميل Windows NTP ممكّناً. يسمح تمكين عميل Windows NTP لجهاز الكمبيوتر بمزامنة ساعة الكمبيوتر مع خوادم NTP الأخرى. وقد ترغب بتعطيل هذه الخدمة إذا قررت استخدام موفر الوقت لجهة خارجية.</string>
+      <string id="W32TIME_ENABLE_NTPSERVER_EXPLAIN">تحدد فيما إذا كان خادم Windows NTP ممكّناً. ويسمح تمكين خادم Windows NTP Server لجهاز الكمبيوتر أن يطلب خدمة NTP من أجهزة أخرى.</string>
+      <string id="W32TIME_POLICY_CONFIG">إعدادات التكوين العمومي</string>
+      <string id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">تكوين عميل Windows NTP</string>
+      <string id="W32TIME_POLICY_ENABLE_NTPCLIENT">تمكين عميل Windows NTP</string>
+      <string id="W32TIME_POLICY_ENABLE_NTPSERVER">تمكين خادم Windows NTP</string>
+      <string id="W32TIME_ROOT">خدمة الوقت Windows</string>
+      <string id="W32TIME_TIMEPROVIDERS">موفرو الوقت</string>
+      <string id="W32TIME_Type_AllSync">AllSync</string>
+      <string id="W32TIME_Type_NoSync">NoSync</string>
+      <string id="W32TIME_Type_NT5DS">NT5DS</string>
+      <string id="W32TIME_Type_Ntp">NTP</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="W32TIME_POLICY_CONFIG">
+        <text>معلمات نظام الساعة</text>
+        <decimalTextBox refId="W32TIME_FrequencyCorrectRate" defaultValue="4">FrequencyCorrectRate</decimalTextBox>
+        <decimalTextBox refId="W32TIME_HoldPeriod" defaultValue="5">HoldPeriod</decimalTextBox>
+        <decimalTextBox refId="W32TIME_LargePhaseOffset" defaultValue="50000000">LargePhaseOffset</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxAllowedPhaseOffset" defaultValue="300">MaxAllowedPhaseOffset</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxNegPhaseCorrection" defaultValue="172800">MaxNegPhaseCorrection</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxPosPhaseCorrection" defaultValue="172800">MaxPosPhaseCorrection</decimalTextBox>
+        <decimalTextBox refId="W32TIME_PhaseCorrectRate" defaultValue="1">PhaseCorrectRate</decimalTextBox>
+        <decimalTextBox refId="W32TIME_PollAdjustFactor" defaultValue="5">PollAdjustFactor</decimalTextBox>
+        <decimalTextBox refId="W32TIME_SpikeWatchPeriod" defaultValue="900">SpikeWatchPeriod</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UpdateInterval" defaultValue="100">UpdateInterval</decimalTextBox>
+        <text>معلمّات عامة</text>
+        <decimalTextBox refId="W32TIME_AnnounceFlags" defaultValue="10">AnnounceFlags</decimalTextBox>
+        <decimalTextBox refId="W32TIME_EventLogFlags" defaultValue="2">EventLogFlags</decimalTextBox>
+        <decimalTextBox refId="W32TIME_LocalClockDispersion" defaultValue="10">LocalClockDispersion</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainDisable" defaultValue="0">ChainDisable</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainLoggingRate" defaultValue="30">ChainLoggingRate</decimalTextBox>
+      </presentation>
+      <presentation id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">
+        <textBox refId="W32TIME_NtpServer">
+          <label>NtpServer</label>
+          <defaultValue>time.windows.com,0x9</defaultValue>
+        </textBox>
+        <dropdownList refId="W32TIME_Type" noSort="true" defaultItem="2">النوع</dropdownList>
+        <decimalTextBox refId="W32TIME_CrossSiteSyncFlags" defaultValue="2">CrossSiteSyncFlags</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ResolvePeerBackoffMinutes" defaultValue="15">ResolvePeerBackoffMinutes</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ResolvePeerBackoffMaxTimes" defaultValue="7">ResolvePeerBackoffMaxTimes</decimalTextBox>
+        <decimalTextBox refId="W32TIME_SpecialPollInterval" defaultValue="3600">SpecialPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_NtpClientEventLogFlags" defaultValue="0">EventLogFlags</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>kirjoita näyttönimi tähän</displayName>
+  <description>kirjoita kuvaus tähän</description>
+  <resources>
+    <stringTable>
+      <string id="WdiDpsScenarioDataSizeLimitPolicy">Diagnostiikka: Määritä skenaarion säilytys</string>
+      <string id="WdiDpsScenarioDataSizeLimitPolicyExplain">Määrittää diagnostiikkakäytäntöpalvelun tietojen säilytysrajan.
+
+Jos tämä käytäntöasetus otetaan käyttöön, sinun täytyy antaa säilytettävien skenaariotietojen enimmäiskoko megatavuina.  Yksityiskohtaiset skenaarioihin liittyvät vianmääritystiedot säilytetään, kunnes tämä raja saavutetaan.
+
+Jos tämä asetus poistetaan käytöstä tai sitä ei määritetä, diagnostiikkakäytäntöpalvelu poistaa skenaariotiedot, kun niiden koko ylittää 128 megatavua.
+
+Tämä käytäntö ei edellytä järjestelmän tai palvelun käynnistämistä uudelleen. Muutokset tulevat heti voimaan.
+
+Käytäntöasetus tulee voimaan vain silloin, kun diagnostiikkakäytäntöpalvelu on käynnissä.  Jos palvelu keskeytetään tai poistetaan käytöstä, diagnostiikan skenaariotietoja ei poisteta.  Diagnostiikkakäytäntöpalvelu voidaan määrittää MMC-konsolin Palvelut-laajennuksen avulla.</string>
+      <string id="WdiDpsScenarioExecutionLevelResolution">Havaitseminen, vianmääritys ja korjaus</string>
+      <string id="WdiDpsScenarioExecutionLevelTsOnly">Vain havaitseminen ja vianmääritys</string>
+      <string id="WdiDpsScenarioExecutionPolicy">Diagnostiikka: Määritä skenaarion suoritustaso</string>
+      <string id="WdiDpsScenarioExecutionPolicyExplain">Määrittää diagnostiikkakäytäntöpalvelun skenaarioiden suoritustason.
+
+Jos tämä käytäntöasetus otetaan käyttöön, avattavasta valikosta täytyy valita suoritustaso.  Jos valitaan vain ongelmien havaitseminen ja vianmääritys, DPS havaitsee ongelmat ja yrittää selvittää niiden perussyyt.  Perussyyt merkitään tapahtumalokiin, mutta korjaustoimenpiteitä ei tehdä.  Jos valitaan havaitseminen, vianmääritys ja korjaus, diagnostiikkakäytäntöpalvelu yrittää automaattisesti korjata havaitsemiaan ongelmia tai ilmoittaa käyttäjälle, että avustettu korjaus on saatavana.
+
+Jos tämä käytäntöasetus poistetaan käytöstä, Windows ei pysty havaitsemaan, määrittämään tai korjaamaan mitään diagnostiikkakäytäntöpalvelun käsittelemiä ongelmia.
+
+Jos tätä käytäntöasetusta ei määritetä, diagnostiikkakäytäntöpalvelu ottaa oletusarvoisesti käyttöön kaikki ratkaisuskenaariot, ellei erityisiä skenaariokohtaisia käytäntöasetuksia määritetä.
+
+Tämä käytäntöasetus ohittaa kaikki skenaariokohtaiset käytäntöasetukset, kun se on käytössä tai poistettu käytöstä.  Skenaariokohtaiset asetukset ovat voimassa vain silloin, kun tätä käytäntöä ei ole määritetty.
+
+Tämä käytäntö ei edellytä järjestelmän tai palvelun käynnistämistä uudelleen. Muutokset tulevat heti voimaan.
+
+Käytäntöasetus tulee voimaan vain silloin, kun diagnostiikkakäytäntöpalvelu on käynnissä.  Kun palvelu on pysäytetty tai poistettu käytöstä, diagnostiikkaskenaarioita ei suoriteta.  Diagnostiikkakäytäntöpalvelu voidaan määrittää MMC-konsolin Palvelut-laajennuksen avulla.</string>
+    </stringTable>
+
+    <presentationTable>
+      <presentation id="WdiDpsScenarioDataSizeLimitPolicy">
+        <decimalTextBox refId="WdiDpsScenarioDataSizeLimitPolicyValue" defaultValue="128">Skenaariotietojen kokorajoitus (Mt)</decimalTextBox>
+      </presentation>
+      <presentation id="WdiDpsScenarioExecutionPolicy">
+        <dropdownList refId="WdiDpsScenarioExecutionPolicyLevel" noSort="true">Skenaarioiden suoritustaso</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

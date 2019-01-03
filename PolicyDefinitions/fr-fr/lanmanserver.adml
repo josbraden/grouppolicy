@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>entrez le nom complet ici</displayName>
+  <description>entrez la description ici</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Serveur Lanman</string>
+      <string id="Lbl_FollowShare">Autoriser la publication de hachages uniquement pour les dossiers partagés dans lesquels BranchCache est activé</string>
+      <string id="Lbl_DisableOnAllShares">N'autoriser la publication de hachages dans aucun dossier partagé</string>
+      <string id="Lbl_EnableOnAllShares">Autoriser la publication de hachages pour tous les dossiers partagés</string>
+      <string id="Pol_HashPublication">Publication de hachages pour BranchCache</string>
+      <string id="Pol_HashPublication_Help">Cette stratégie active un service de génération de hachage pour les données stockées dans les dossiers partagés, puis fournit ces hachages aux ordinateurs clients sur lesquels BranchCache est activé. Les hachages sont des empreintes numériques de fichiers déduites mathématiquement qui identifient de façon unique le contenu des fichiers. Ces empreintes numériques sont très petites, ce qui permet à Windows de comparer les fichiers sans utiliser une grande quantité de bande passante réseau étendu (WAN, Wide Area Network).
+
+Un ordinateur client d'une filiale peut obtenir un hachage pour un fichier via une liaison réseau étendu si toutes les conditions suivantes sont vraies :      
+1) L'utilisateur dispose des autorisations d'accès au fichier.
+2) BranchCache est activé sur l'ordinateur client.
+3) La publication de hachage est autorisée sur le répertoire partagé auquel l'ordinateur client accède. 
+
+Si l'ordinateur client obtient le hachage, il peut ensuite rechercher une version identique du fichier dans la mémoire cache d'autres ordinateurs de la filiale. Si Windows trouve une version identique du fichier dans la filiale, l'ordinateur client télécharge la copie mise en cache localement plutôt que de télécharger le fichier via la liaison réseau étendue. 
+
+Si vous configurez cette stratégie sur Autoriser la publication de hachages uniquement pour les dossiers partagés dans lesquels BranchCache est activé (valeur = 0), les hachages sont générés uniquement pour les dossiers partagés sur lesquels BranchCache est activé. Les hachages de ces dossiers partagés sont générés lorsque l'un des événements suivants se produit :
+1) Un client sur lequel la prise en charge de BranchCache est activée accède à un fichier d'un répertoire partagé sur lequel BranchCache est activé.
+2) Un administrateur génère manuellement des hachages à l'aide de l'outil de ligne de commande Hashgen.
+ 
+Si vous configurez cette stratégie sur N'autoriser la publications de hachages dans aucun dossiers partagés (valeur = 1), les hachages ne sont jamais générés ou fournis par les ordinateurs sur lesquels cette stratégie est appliquée.
+ 
+Si vous configurez cette stratégie sur Autoriser la publication de hachages pour tous les dossiers partagés (valeur = 2), les hachages sont générés pour tous les dossiers partagés sur le serveur, lorsque l'un ou l'autre des événements suivants se produit : 
+1) Un client sur lequel la prise en charge de BranchCache est activée accède à un fichier d'un répertoire partagé sur le serveur.
+2) Un administrateur génère manuellement des hachages à l'aide de l'outil de ligne de commande Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Valeurs :</text>
+        <text>0 = Autoriser la publication de hachages uniquement pour les dossiers partagés dans lesquels BranchCache est activé</text>
+        <text>1 = N'autoriser la publication de hachages dans aucun dossier partagé</text>
+        <text>2 = Autoriser la publication de hachages pour tous les dossiers partagés</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Actions de la publication de hachages : </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

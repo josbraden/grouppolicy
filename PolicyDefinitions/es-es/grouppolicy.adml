@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>escriba aquí el nombre</displayName>
+  <description>escriba aquí la descripción</description>
+  <resources>
+    <stringTable>
+      <string id="DisableLGPOProcessing">Desactivar el procesamiento de objetos de directiva de grupo local</string>
+      <string id="DisableLGPOProcessing_Help">Esta configuración de directiva impide que se apliquen objetos de directiva de grupo local (GPO locales).
+
+De forma predeterminada, la configuración de directiva de los GPO locales se aplica antes que la configuración de directiva de los GPO basados en dominios. Esta configuración de directiva puede aplicarse tanto a los usuarios como al equipo local. Puede deshabilitar el procesamiento y la aplicación de todos los GPO locales para garantizar que solo se apliquen los GPO basados en dominios.
+
+Si habilita esta configuración de directiva, el sistema no procesará ni aplicará ningún GPO local.
+
+Si deshabilita o no establece esta configuración de directiva, seguirán aplicándose los GPO locales.
+
+Nota: en el caso de los equipos unidos a un dominio, se recomienda establecer solamente esta configuración de directiva en los GPO basados en dominios. Esta configuración se pasará por alto en los equipos unidos a un grupo de trabajo.
+</string>
+      <string id="SyncWaitTime">Tiempo de espera de procesamiento de directiva de inicio</string>
+      <string id="SyncWaitTime_Help">Esta configuración de directiva especifica cuánto tiempo tiene que esperar la directiva de grupo a las notificaciones de disponibilidad de red durante el procesamiento de la directiva de inicio. Si el procesamiento de la directiva de inicio es sincrónico, el equipo se bloquea hasta que la red está disponible o hasta que se alcanza el tiempo de espera predeterminado. Si el procesamiento de la directiva de inicio es asincrónico, el equipo no se bloquea y el procesamiento de la directiva tiene lugar en segundo plano. En cualquier caso, establecer esta configuración de directiva invalida cualquier tiempo de espera calculado por el sistema.
+
+Si habilita esta configuración de directiva, la directiva de grupo usará este tiempo de espera máximo configurado de forma administrativa e invalidará cualquier tiempo de espera predeterminado o calculado por el sistema.
+
+Si deshabilita o no establece esta configuración de directiva, la directiva de grupo usará el tiempo de espera predeterminado de 30 segundos en los equipos que ejecuten el sistema operativo Windows Vista. 
+</string>
+
+      <string id="AllowX-ForestPolicy-and-RUP">Permitir directiva de usuarios entre bosques y perfiles de usuarios móviles</string>
+      <string id="AllowX-ForestPolicy-and-RUP_Help">Permite el procesamiento de directivas de usuario, perfiles de usuarios móviles y scripts de inicio de sesión del objeto Usuario para inicios de sesión interactivos entre bosques.
+
+Esta opción afecta a todas las cuentas de usuario que inician sesión de forma interactiva en un equipo de un bosque distinto cuando hay una confianza entre bosques o una confianza bidireccional.
+
+Cuando esta opción no está configurada: 
+-  No se aplican configuraciones de directivas de usuario desde el bosque del usuario.
+-  Los usuarios no reciben sus perfiles móviles sino que reciben un perfil local en el equipo del bosque local. Aparece un mensaje de advertencia para el usuario y se guarda un mensaje en el registro de eventos (1529).
+-  El procesamiento de directivas de grupo de bucle invertido se aplica usando los objetos de directiva de grupo (GPO) dentro del ámbito del equipo.
+- Se guarda un mensaje en el registro de eventos (1109) que indica que se ha invocado al bucle invertido en modo de reemplazo.
+
+Cuando esta opción está habilitada, el comportamiento es exactamente el mismo que en Windows 2000: se aplica la directiva de usuario y se permite el uso del perfil de usuario móvil desde el bosque de confianza.
+
+Cuando esta opción está deshabilitada, el comportamiento es el mismo que cuando no está configurada.</string>
+      <string id="CSE_AppMgmt">Procesamiento de directivas de instalación de software</string>
+      <string id="CSE_AppMgmt_Help">Determina cuándo se actualizan las directivas de instalación de software.
+
+Esta opción afecta a todas las directivas que usan el componente de instalación de software de la directiva de grupo, como las directivas que se encuentran en Configuración del software\Instalación del software. Solo puede definir una directiva de instalación de software para objetos de la directiva de grupo guardados en Active Directory y no para objetos de la directiva de grupo guardados en el equipo local.
+
+Esta directiva invalida la configuración personalizada que el programa que implementa la directiva de instalación de software definió al instalarse.
+
+Si habilita esta opción, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "Permitir el procesamiento a través de una conexión de red de baja velocidad" actualiza las directivas incluso cuando la actualización se transmite a través de una conexión de red lenta como una línea telefónica. Las actualizaciones que se llevan a cabo mediante conexiones lentas pueden ocasionar retrasos significativos.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. Muchas implementaciones de directivas especifican que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+      <string id="CSE_DiskQuota">Procesamiento de directivas de cuota de disco</string>
+      <string id="CSE_DiskQuota_Help">Determina cuándo se actualizan las directivas de cuota de disco.
+
+Esta opción afecta a todas las directivas que usan el componente de cuota de disco de la directiva de grupo, como las que se encuentran en Configuración del equipo\Plantillas administrativas\Sistema\Cuotas de disco.
+
+Esta opción invalida la configuración personalizada que el programa que implementa la directiva de cuota de disco definió al instalarse.
+
+Si habilita esta opción, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "Permitir el procesamiento a través de una conexión de red de baja velocidad" actualiza las directivas incluso cuando la actualización se transmite a través de una conexión de red lenta como una línea telefónica. Las actualizaciones que se llevan a cabo mediante conexiones lentas pueden ocasionar retrasos significativos.
+
+La opción "No aplicar durante el procesamiento periódico en segundo plano" impide que el sistema actualice las directivas afectadas en segundo plano mientras el equipo se está usando. Si se deshabilitan las actualizaciones en segundo plano, los cambios realizados en las directivas no tendrán efecto hasta que el usuario vuelva a iniciar sesión o hasta que se reinicie el sistema.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. Muchas implementaciones de directivas especifican que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+      <string id="CSE_EFSRecovery">Procesamiento de directivas de recuperación EFS</string>
+      <string id="CSE_EFSRecovery_Help">Determina cuándo se actualizan las directivas de cifrado.
+
+Esta opción afecta a todas las directivas que usan el componente de cifrado de la directiva de grupo, como las directivas relacionadas con el cifrado en Configuración de Windows\Configuración de seguridad.
+
+Esta opción invalida la configuración personalizada que el programa que implementa la directiva de cifrado definió al instalarse.
+
+Si habilita esta opción, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "Permitir el procesamiento a través de una conexión de red de baja velocidad" actualiza las directivas incluso cuando la actualización se transmite a través de una conexión de red lenta como una línea telefónica. Las actualizaciones que se llevan a cabo mediante conexiones lentas pueden ocasionar retrasos significativos.
+
+La opción "No aplicar durante el procesamiento periódico en segundo plano" impide que el sistema actualice las directivas afectadas en segundo plano mientras el equipo se está usando. Si se deshabilitan las actualizaciones en segundo plano, los cambios realizados en las directivas no tendrán efecto hasta que el usuario vuelva a iniciar sesión o hasta que se reinicie el sistema.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. Muchas implementaciones de directivas especifican que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+      <string id="CSE_FolderRedirection">Procesamiento de directivas de Redirección de carpetas</string>
+      <string id="CSE_FolderRedirection_Help">Determina cuándo se actualizan las directivas de redirección de carpetas.
+
+Esta opción afecta a todas las directivas que usan el componente de redirección de carpetas de la directiva de grupo, como las que se encuentran en Configuración de Windows\Redirección de carpetas. Solo puede definir una directiva de redirección de carpetas para objetos de la directiva de grupo guardados en Active Directory y no para objetos de directiva de grupo del equipo local.
+
+Esta opción invalida la configuración personalizada que el programa que implementa la directiva de redirección de carpetas definió al instalarse.
+
+Si habilita esta opción, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "Permitir el procesamiento a través de una conexión de red de baja velocidad" actualiza las directivas incluso cuando la actualización se transmite a través de una conexión de red lenta como una línea telefónica. Las actualizaciones que se llevan a cabo mediante conexiones lentas pueden ocasionar retrasos significativos.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. Muchas implementaciones de directivas especifican que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+      <string id="CSE_IEM">Procesamiento de directivas de mantenimiento de Internet Explorer</string>
+      <string id="CSE_IEM_Help">Determina cuándo se actualizan las directivas de mantenimiento de Internet Explorer.
+
+Esta opción afecta a todas las directivas que usan el componente de mantenimiento de Internet Explorer de directiva de grupo, como las directivas de Configuración de Windows\Mantenimiento de Internet Explorer.
+
+Esta opción invalida la configuración personalizada que el programa que implementa la directiva de mantenimiento de Internet Explorer definió al instalarse.
+
+Si habilita esta opción, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "Permitir el procesamiento a través de una conexión de red de baja velocidad" actualiza las directivas incluso cuando la actualización se transmite a través de una conexión de red lenta como una línea telefónica. Las actualizaciones que se llevan a cabo mediante conexiones lentas pueden ocasionar retrasos significativos.
+
+La opción "No aplicar durante el procesamiento periódico en segundo plano" impide que el sistema actualice las directivas afectadas en segundo plano mientras el equipo se está usando. Si se deshabilitan las actualizaciones en segundo plano, los cambios realizados en las directivas no tendrán efecto hasta que el usuario vuelva a iniciar sesión o hasta que se reinicie el sistema.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. Muchas implementaciones de directivas especifican que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+      <string id="CSE_IPSecurity">Procesamiento de directivas de seguridad IP</string>
+      <string id="CSE_IPSecurity_Help">Determina cuándo se actualizan las directivas de seguridad IP.
+
+Esta opción afecta a todas las directivas que usan el componente de seguridad IP de la directiva de grupo, como las que se encuentran en Configuración del equipo\Configuración de Windows\Configuración de seguridad\Directivas de seguridad IP en el equipo local.
+
+Esta opción invalida la configuración personalizada que el programa que implementa la directiva de seguridad IP definió al instalarse.
+
+Si habilita esta opción, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "Permitir el procesamiento a través de una conexión de red de baja velocidad" actualiza las directivas incluso cuando la actualización se transmite a través de una conexión de red lenta como una línea telefónica. Las actualizaciones que se llevan a cabo mediante conexiones lentas pueden ocasionar retrasos significativos.
+
+La opción "No aplicar durante el procesamiento periódico en segundo plano" impide que el sistema actualice las directivas afectadas en segundo plano mientras el equipo se está usando. Si se deshabilitan las actualizaciones en segundo plano, los cambios realizados en las directivas no tendrán efecto hasta que el usuario vuelva a iniciar sesión o hasta que se reinicie el sistema.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. Muchas implementaciones de directivas especifican que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+      <string id="CSE_Registry">Procesamiento de directivas del Registro</string>
+      <string id="CSE_Registry_Help">Determina cuándo se actualizan las directivas del Registro.
+
+Esta opción afecta a todas las directivas de la carpeta Plantillas administrativas y a cualquier otra directiva que almacene valores en el Registro.
+
+Esta opción invalida la configuración personalizada que el programa que implementa la directiva del Registro definió al instalarse.
+
+Si habilita esta opción, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "No aplicar durante el procesamiento periódico en segundo plano" impide que el sistema actualice las directivas afectadas en segundo plano mientras el equipo se está usando. Si se deshabilitan las actualizaciones en segundo plano, los cambios realizados en las directivas no tendrán efecto hasta que el usuario vuelva a iniciar sesión o hasta que se reinicie el sistema.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. Muchas implementaciones de directivas especifican que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+      <string id="CSE_Scripts">Procesamiento de directivas de scripts</string>
+      <string id="CSE_Scripts_Help">Determina cuándo se actualizan las directivas que asignan scripts compartidos.
+
+Esta opción afecta a todas las directivas que usan el componente de scripts de la directiva de grupo, como las que se encuentran en Configuración de Windows\Scripts.
+
+Esta opción invalida la configuración personalizada que el programa que implementa la directiva de scripts definió al instalarse.
+
+Si habilita esta directiva, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "Permitir el procesamiento a través de una conexión de red de baja velocidad" actualiza las directivas incluso cuando la actualización se transmite a través de una conexión de red lenta como una línea telefónica. Las actualizaciones que se llevan a cabo mediante conexiones lentas pueden ocasionar retrasos significativos.
+
+La opción "No aplicar durante el procesamiento periódico en segundo plano" impide que el sistema actualice las directivas afectadas en segundo plano mientras el equipo se está usando. Si se deshabilitan las actualizaciones en segundo plano, los cambios realizados en las directivas no tendrán efecto hasta que el usuario vuelva a iniciar sesión o hasta que se reinicie el sistema.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. Muchas implementaciones de directivas especifican que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+      <string id="CSE_Security">Procesamiento de directivas de seguridad</string>
+      <string id="CSE_Security_Help">Determina cuándo se actualizan las directivas de seguridad.
+
+Esta opción afecta a todas las directivas que usan el componente de seguridad de la directiva de grupo, como las que se encuentran en Configuración de Windows\Configuración de seguridad.
+
+Esta opción invalida la configuración personalizada que el programa que implementa la directiva de seguridad definió al instalarse.
+
+Si habilita esta opción, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "No aplicar durante el procesamiento periódico en segundo plano" impide que el sistema actualice las directivas afectadas en segundo plano mientras el equipo se está usando. Si se deshabilitan las actualizaciones en segundo plano, los cambios realizados en las directivas no tendrán efecto hasta que el usuario vuelva a iniciar sesión o hasta que se reinicie el sistema.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. En las implementaciones de muchas directivas se especifica que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+      <string id="CSE_Wireless">Procesamiento de directivas de red inalámbrica</string>
+      <string id="CSE_Wireless_Help">Determina cuándo se actualizan las directivas que asignan configuraciones de red inalámbrica.
+
+Esta opción afecta a todas las directivas que usan el componente de redes inalámbricas de la directiva de grupo, como las que se encuentran en Configuración de Windows\Directivas de red inalámbrica.
+
+Esta opción invalida la configuración personalizada que el programa que implementa la directiva de red inalámbrica definió al instalarse.
+
+Si habilita esta directiva, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "Permitir el procesamiento a través de una conexión de red de baja velocidad" actualiza las directivas incluso cuando la actualización se transmite a través de una conexión de red lenta como una línea telefónica. Las actualizaciones que se llevan a cabo mediante conexiones lentas pueden ocasionar retrasos significativos.
+
+La opción "No aplicar durante el procesamiento periódico en segundo plano" impide que el sistema actualice las directivas afectadas en segundo plano mientras el equipo se está usando. Si se deshabilitan las actualizaciones en segundo plano, los cambios realizados en las directivas no tendrán efecto hasta que el usuario vuelva a iniciar sesión o hasta que se reinicie el sistema.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. Muchas implementaciones de directivas especifican que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+      <string id="CSE_Wired">Procesamiento de directivas de red cableada</string>
+      <string id="CSE_Wired_Help">Determina cuándo se actualizan las directivas que asignan configuraciones de red cableada.
+
+Esta opción afecta a todas las directivas que usan el componente de redes cableadas de la directiva de grupo, como las que se encuentran en Configuración de Windows\Directivas de red cableada.
+
+Esta opción invalida la configuración personalizada que el programa que implementa la directiva de red cableada definió al instalarse.
+
+Si habilita esta directiva, puede usar las casillas suministradas para modificar las opciones. Si deshabilita esta opción o no la configura, no surtirá efecto en el sistema.
+
+La opción "Permitir el procesamiento a través de una conexión de red de baja velocidad" actualiza las directivas incluso cuando la actualización se transmite a través de una conexión de red lenta como una línea telefónica. Las actualizaciones que se llevan a cabo mediante conexiones lentas pueden ocasionar retrasos significativos.
+
+La opción "No aplicar durante el procesamiento periódico en segundo plano" impide que el sistema actualice las directivas afectadas en segundo plano mientras el equipo se está usando. Si se deshabilitan las actualizaciones en segundo plano, los cambios realizados en las directivas no tendrán efecto hasta que el usuario vuelva a iniciar sesión o hasta que se reinicie el sistema.
+
+La opción "Procesar incluso si los objetos de directiva de grupo no han cambiado" actualiza y vuelve a aplicar las directivas aunque dichas directivas no hayan cambiado. Muchas implementaciones de directivas especifican que solo se actualizan cuando se modifican. Sin embargo, puede actualizar las directivas no modificadas, como volver a aplicar una opción de configuración deseada en el caso de que un usuario la haya modificado.</string>
+
+      <string id="DenyRsopToInteractiveUser">Denegar a los usuarios interactivos generar datos del conjunto resultante de directivas</string>
+      <string id="DenyRsopToInteractiveUser_Help">Esta opción controla la capacidad de los usuarios de ver sus datos del conjunto resultante de directivas (RSoP).
+
+De forma predeterminada, los usuarios que inicien sesión de manera interactiva pueden ver sus datos del conjunto resultante de directivas (RSoP).
+
+Si esta opción está habilitada, los usuarios interactivos no podrán generar datos RSoP.
+
+Si esta opción no está configurada o está deshabilitada, los usuarios interactivos podrán generar datos RSoP.
+
+Nota: esta opción no afecta a los administradores. Si esta opción está habilitada o deshabilitada, los administradores podrán ver datos RSoP de forma predeterminada.
+
+Nota: para ver datos RSoP en un equipo cliente, use el complemento de RSoP para Microsoft Management Console. Para ejecutar el complemento de RSoP desde la línea de comandos, escriba RSOP.msc
+
+Nota: esta opción existe como una opción de configuración tanto del usuario como del equipo.
+
+Consulte también la opción "Desactivar el registro del conjunto resultante de directivas" en Configuración del equipo\Plantillas administrativas \Sistema\Directivas de grupo.</string>
+      <string id="DisableAutoADMUpdate">Desactivar la actualización automática de los archivos ADM</string>
+      <string id="DisableAutoADMUpdate_Help">Impide que el sistema actualice automáticamente los archivos de origen de Plantillas administrativas cuando se abra el Editor de objetos de directiva de grupo. Es posible que los administradores deseen usar esta directiva si están preocupados por la cantidad de espacio usado en el volumen del sistema de un controlador de dominio.
+
+De forma predeterminada, cuando se abre el Editor de objetos de directiva de grupo, se realiza una comparación en la marca de tiempo de los archivos de origen en el directorio local %SYSTEMROOT%\inf y los archivos de origen almacenados en el GPO. Si los archivos locales son más recientes, se copiarán en el GPO.
+
+Si cambia el estado de esta opción a habilitado, evitará que los archivos de origen se copien en el GPO.
+
+Si cambia el estado de esta opción a deshabilitado, se aplicará el comportamiento predeterminado. Los archivos se copiarán siempre al GPO si tienen una marca de tiempo más reciente.
+
+NOTA: si la configuración de directiva de Configuración del equipo "Usar siempre archivos ADM locales para el Editor de objetos de directiva de grupo" está habilitada, se pasará por alto el estado de esta opción y se tratará siempre como si estuviera habilitada.</string>
+      <string id="DisableBackgroundPolicy">Desactivar la actualización en segundo plano de la directiva de grupo</string>
+      <string id="DisableBackgroundPolicy_Help">Impide que la directiva de grupo se actualice mientras el equipo está en uso. Esta opción se aplica a la directiva de grupo para equipos, usuarios y controladores de dominio.
+
+Si habilita esta opción, el sistema espera hasta que el usuario actual cierre la sesión en el sistema antes de actualizar el equipo y la configuración de usuario.
+
+Si deshabilita esta opción, las actualizaciones se pueden aplicar mientras los usuarios están trabajando. La frecuencia de actualizaciones está determinada por las opciones "Intervalo de actualización de la directiva de grupo para equipos" e "Intervalo de actualización de la directiva de grupo para usuarios".
+
+Nota: si cambia esta opción de configuración, debe reiniciar el equipo para que los cambios surtan efecto.</string>
+      <string id="DisableUsersFromMachGP">Quitar la capacidad de usuarios para invocar la actualización de directivas de equipo</string>
+      <string id="DisableUsersFromMachGP_Help">Esta opción le permite controlar la capacidad del usuario para invocar una actualización de directivas de equipo.
+
+Si habilita esta opción, los usuarios no podrán invocar una actualización de directivas de equipo. La directiva de equipo seguirá aplicándose al inicio o cuando se produzca una actualización de directiva oficial.
+
+Si deshabilita o no configura esta opción, se aplica el comportamiento predeterminado. De forma predeterminada, la directiva de equipo se aplica cuando el equipo se inicia. También se aplica a un intervalo de actualización especificado o cuando el usuario la invoca manualmente.
+
+Nota: esta opción de configuración solo se aplica a los no administradores. Los administradores aún pueden invocar una actualización de directivas del equipo en cualquier momento, sin importar como esté configurada esta directiva.
+
+Consulte también la opción para cambiar el intervalo de actualización de la directiva "Intervalo de actualización de la directiva de grupo para equipos".
+
+Nota: si cambia esta opción, deberá reiniciar el equipo para que los cambios surtan efecto.</string>
+      <string id="EnforcePoliciesOnly">Aplicar Mostrar solo directivas</string>
+      <string id="EnforcePoliciesOnly_Help">Impide que los administradores vean o usen preferencias de directivas de grupo.
+
+Un archivo de administración de directivas de grupo (.adm) puede contener preferencias y opciones de configuración verdaderas. Las opciones de configuración verdaderas, que son totalmente compatibles con las directivas de grupo, deben usar entradas del Registro en las subclaves del Registro Software\Directivas o Software\Microsoft\Windows\Versión actual\Directivas. Las preferencias, que no son totalmente compatibles, usan entradas del Registro en otras subclaves.
+
+Si habilita esta opción, el comando "Mostrar solo directivas" se activará, y los administradores no podrán desactivarlo. Como resultado, el Editor de objetos de directiva de grupo solo muestra las opciones de configuración verdaderas; las preferencias no aparecen.
+
+Si deshabilita esta opción o no la configura, el comando "Mostrar solo directivas" se activa de forma predeterminada, pero los administradores pueden ver las preferencias si desactivan el comando "Mostrar solo directivas".
+
+Nota: para buscar el comando "Mostrar solo directivas", en el Editor de objetos de directiva de grupo, haga clic en la carpeta Plantillas administrativas (en cualquiera), haga clic con el botón secundario en la misma carpeta y elija "Ver".
+
+En el Editor de objetos de directiva de grupo, las preferencias tienen un icono rojo para distinguirlas de las opciones de configuración verdaderas, que tienen un icono azul.</string>
+      <string id="GPDCOptionAny">Usar cualquier controlador de dominio disponible</string>
+      <string id="GPDCOptionInherit">Heredar de Complementos de Active Directory</string>
+      <string id="GPDCOptionPDC">Usar el controlador de dominio principal</string>
+      <string id="GPDCOptions">Selección del controlador de dominio de la directiva de grupo</string>
+      <string id="GPDCOptions_Help">Determina el controlador de dominio que usa el complemento Editor de objetos de directiva de grupo.
+
+--  "Usar el controlador de dominio principal" indica que el complemento Editor de objetos de directiva de grupo lee y escribe los cambios en el controlador de dominio designado como el maestro de operaciones PDC del dominio.
+
+--  "Heredar de Complementos de Active Directory" indica que el complemento Editor de objetos de directiva de grupo lee y escribe los cambios en el controlador del dominio que usan los complementos Usuarios y equipos de Active Directory y Sitios y servicios de Active Directory.
+
+--  "Usar cualquier controlador de dominio disponible" indica que el complemento Editor de objetos de directiva de grupo puede leer y escribir los cambios en cualquier controlador de dominio disponible.
+
+Si deshabilita esta opción o no la configura, el complemento Editor de objetos de directiva de grupo usará el controlador de dominio designado como maestro de operaciones PDC para el dominio.
+
+Nota: para modificar el maestro de operaciones PDC de un dominio, en Usuarios y equipos de Active Directory, haga clic con el botón secundario en un dominio y, a continuación, haga clic en "Maestros de operaciones".</string>
+      <string id="GPTransferRate">Detección de vínculo de baja velocidad de la directiva de grupo</string>
+      <string id="GPTransferRate_Help">Define una conexión lenta para aplicar y actualizar la directiva de grupo.
+
+Si la velocidad de transmisión de datos desde el controlador de dominio que proporciona una actualización para la directiva de este grupo es inferior a la velocidad especificada por esta opción, el sistema considera que se trata de una conexión de baja velocidad.
+
+La respuesta del sistema a una conexión de directiva de baja velocidad depende de las directivas. El programa que implementa la directiva puede especificar la respuesta a un vínculo a baja velocidad. Asimismo, la directiva que procesa las opciones de configuración de esta carpeta le permite invalidar las respuestas especificadas de los programas para vínculos de baja velocidad.
+
+Para usar esta opción, en el cuadro "Velocidad de conexión", escriba un número decimal comprendido entre 0 y 4.294.967.200, que indica la velocidad de transferencia en kilobits por segundo. Se considera que todas las conexiones que tengan una velocidad inferior a la indicada son lentas. Si escribe 0, todas las conexiones se consideran rápidas.
+
+Si deshabilita esta opción o no la configura, el sistema usa el valor predeterminado de 500 kilobits por segundo.
+
+Esta opción aparece en las carpetas Configuración del equipo y Configuración de usuario. La opción de Configuración del equipo define un vínculo de baja velocidad para directivas de la carpeta Configuración del equipo. La opción de Configuración de usuario define un vínculo de baja velocidad para las opciones de Configuración de usuario.
+
+Consulte también la opción "No detectar las conexiones de red lentas" y las directivas relacionadas en Configuración del equipo\Plantillas administrativas\Sistema\Perfil de usuario. Nota: si el perfil del servidor tiene conectividad IP, se usará la opción de velocidad de conexión. Si no la tiene, se usará la opción de cronología SMB.</string>
+      <string id="GroupPolicyRefreshRate">Intervalo de actualización de la directiva de grupo para equipos</string>
+      <string id="GroupPolicyRefreshRate_Help">Especifica la frecuencia con que se actualiza la directiva de grupo para equipos mientras el equipo se está usando (en segundo plano). Esta opción solo especifica una velocidad de actualización en segundo plano para las directivas de grupo de la carpeta Configuración del equipo.
+
+Además de las actualizaciones en segundo plano, la directiva de grupo para el equipo siempre se actualiza cuando se inicia el sistema.
+
+De forma predeterminada, la directiva de grupo se actualiza en segundo plano cada 90 minutos, con un desplazamiento aleatorio de 0 a 30 minutos.
+
+Puede especificar una velocidad de actualización de 0 a 64.800 minutos (45 días). Si selecciona 0 minutos, el equipo intenta actualizar la directiva de grupo cada 7 segundos. Sin embargo, como las actualizaciones pueden interferir con el trabajo del usuario y aumentar el tráfico de la red, no es aconsejable definir intervalos de actualización demasiado cortos en la mayoría de las instalaciones.
+
+Si deshabilita esta opción, la directiva de grupo se actualizará cada 90 minutos (valor predeterminado). Para especificar que nunca debe actualizarse la directiva de grupo mientras se está usando el equipo, seleccione la directiva "Desactivar la actualización en segundo plano de la directiva de grupo".
+
+El intervalo de actualización de la directiva de grupo para las directivas de equipo le permite especificar cuánto varía el intervalo de actualización. Para impedir que los clientes que tengan el mismo intervalo de actualización soliciten las actualizaciones a la vez, el sistema modifica el intervalo de actualización de cada cliente en una cantidad aleatoria de minutos. El número que escriba en la casilla de tiempo aleatorio define el límite superior de la variación. Por ejemplo, si escribe 30 minutos, el sistema selecciona una variación de 0 a 30 minutos. Un número mayor define un intervalo más amplio y disminuye la posibilidad de que las solicitudes de los clientes coincidan. Sin embargo, es posible que las actualizaciones se retrasen considerablemente.
+
+Esta opción establece la velocidad de actualización de las directivas de grupo del equipo. Para definir una velocidad de actualización para las directivas de usuario, use la opción "Intervalo de actualización de la directiva de grupo para usuarios" que se encuentra en Configuración de usuario\Plantillas administrativas\Sistema\Directivas de grupo).
+
+Esta opción solo se usa cuando la opción "Desactivar la actualización en segundo plano de la directiva de grupo" no está habilitada.
+
+Nota: es aconsejable que notifique a los usuarios que su directiva se actualiza periódicamente para que sean capaces de reconocer cuándo se ha actualizado una directiva. Cuando la directiva de grupo se actualiza, el escritorio de Windows se actualiza, parpadea brevemente y cierra los menús que se encuentren abiertos. También es posible que las restricciones impuestas por las directivas de grupo, como las que limitan los programas que los usuarios pueden ejecutar, interfieran con las tareas en curso.</string>
+      <string id="GroupPolicyRefreshRateDC">Intervalo de actualización de la directiva de grupo para controladores de dominio</string>
+      <string id="GroupPolicyRefreshRateDC_Help">Especifica la frecuencia con que se actualiza la directiva de grupo de los controladores de dominio mientras se están ejecutando (en segundo plano). Las actualizaciones que esta opción especifica son adicionales a las actualizaciones que se llevan a cabo al iniciar el sistema.
+
+De forma predeterminada, la directiva de grupo de los controladores de dominio se actualiza cada cinco minutos.
+
+Puede especificar una velocidad de actualización de 0 a 64.800 minutos (45 días). Si selecciona 0 minutos, el controlador de dominio intenta actualizar la directiva de grupo cada 7 segundos. Sin embargo, como las actualizaciones pueden interferir con el trabajo del usuario y aumentar el tráfico de la red, no es aconsejable definir intervalos de actualización demasiado cortos en la mayoría de las instalaciones.
+
+Si deshabilita esta opción, el controlador de dominio actualiza la directiva de grupo cada 5 minutos (valor predeterminado). Para especificar que nunca deben actualizarse las directivas de grupo para usuarios mientras se está usando el equipo, seleccione la opción "Desactivar la actualización en segundo plano de la directiva de grupo".
+
+Esta opción también le permite especificar cuánto varía el intervalo real de actualización. Para impedir que los controladores de dominio que tengan el mismo intervalo de actualización soliciten las actualizaciones a la vez, el sistema modifica el intervalo de actualización de cada controlador con una cantidad aleatoria de minutos. El número que escriba en la casilla de tiempo aleatorio define el límite superior de la variación. Por ejemplo, si escribe 30 minutos, el sistema selecciona una variación de 0 a 30 minutos. Un número mayor define un intervalo más amplio y disminuye la posibilidad de que las solicitudes de los clientes coincidan. Sin embargo, es posible que las actualizaciones se retrasen considerablemente.
+
+Nota: esta opción solo se usa cuando se establece una directiva para un dominio, sitio, unidad organizativa (OU) o grupo personalizado. Si solo establece la directiva para un equipo local, el sistema pasa por alto esta opción.</string>
+      <string id="GroupPolicyRefreshRateUser">Intervalo de actualización de la directiva de grupo para usuarios</string>
+      <string id="GroupPolicyRefreshRateUser_Help">Especifica la frecuencia con que se actualiza la directiva de grupo para usuarios mientras el equipo se está usando (en segundo plano). Esta opción solo especifica una velocidad de actualización en segundo plano para las directivas de grupo de la carpeta Configuración de usuario.
+
+Además de las actualizaciones en segundo plano, la directiva de grupo para usuarios siempre se actualiza cuando los usuarios inician sesión.
+
+De forma predeterminada, la directiva de grupo de usuarios se actualiza en segundo plano cada 90 minutos, con un desplazamiento aleatorio de 0 a 30 minutos.
+
+Puede especificar una velocidad de actualización de 0 a 64.800 minutos (45 días). Si selecciona 0 minutos, el equipo intenta actualizar la directiva de grupo de usuario cada 7 segundos. Sin embargo, como las actualizaciones pueden interferir con el trabajo del usuario y aumentar el tráfico de la red, no es aconsejable definir intervalos de actualización demasiado cortos en la mayoría de las instalaciones.
+
+Si deshabilita esta opción, la directiva de grupo de usuario se actualizará cada 90 minutos (valor predeterminado). Para especificar que nunca deben actualizarse las directivas de grupo para usuarios mientras se está usando el equipo, seleccione la opción "Desactivar la actualización en segundo plano de la directiva de grupo".
+
+Esta opción también le permite especificar cuánto varía el intervalo real de actualización. Para impedir que los clientes que tengan el mismo intervalo de actualización soliciten las actualizaciones a la vez, el sistema modifica el intervalo de actualización de cada cliente en una cantidad aleatoria de minutos. El número que escriba en la casilla de tiempo aleatorio define el límite superior de la variación. Por ejemplo, si escribe 30 minutos, el sistema selecciona una variación de 0 a 30 minutos. Un número mayor define un intervalo más amplio y disminuye la posibilidad de que las solicitudes de los clientes coincidan. Sin embargo, es posible que las actualizaciones se retrasen considerablemente.
+
+Importante: esta opción se pasará por alto si la opción "Desactivar la actualización en segundo plano de la directiva de grupo" está activada.
+
+Nota: esta opción establece la velocidad de actualización de directivas de grupo para usuarios. Para definir una velocidad de actualización para las directivas de grupo de equipos, use la opción "Intervalo de actualización de la directiva de grupo para equipos" que se encuentra en Configuración del equipo\Plantillas administrativas\Sistema\Directivas de grupo).
+
+Sugerencia: es aconsejable que notifique a los usuarios que su directiva se actualiza periódicamente para que sean capaces de reconocer cuándo se ha actualizado una directiva. Cuando la directiva de grupo se actualiza, el escritorio de Windows se actualiza, parpadea brevemente y cierra los menús que se encuentren abiertos. También es posible que las restricciones impuestas por las directivas de grupo, como las que limitan los programas que los usuarios pueden ejecutar, interfieran con las tareas en curso.</string>
+      <string id="NewGPODisplayName">Nombre predeterminado para los nuevos objetos de directiva de grupo</string>
+      <string id="NewGPODisplayName_Help">Establece el nombre para mostrar predeterminado para nuevos objetos de directiva de grupo.
+
+Esta opción le permite especificar el nombre predeterminado para los nuevos objetos de directiva de grupo creados con herramientas de administración de directivas de grupo compatibles con la directiva, incluida la ficha Directiva de grupo en las herramientas de Active Directory y el explorador GPO.
+
+El nombre para mostrar puede contener variables de entorno y puede tener un máximo de 255 caracteres de largo.
+
+Si esta opción está deshabilitada o no se ha configurado, se usará el nombre predeterminado del nuevo objeto de directiva de grupo.</string>
+      <string id="NewGPOLinksDisabled">Crear nuevos vínculos de objetos de directiva de grupo en estado deshabilitado de forma predeterminada</string>
+      <string id="NewGPOLinksDisabled_Help">Crea nuevos vínculos de objetos de directiva de grupo en estado deshabilitado.
+
+Esta opción crea todos los nuevos vínculos de objetos de la directiva de grupo en estado deshabilitado de forma predeterminada. Después de configurar y comprobar los nuevos vínculos de objetos, usando una herramienta de administración de directivas de grupo compatible con la directiva como Usuarios y equipos de Active Directory o Sitios y servicios de Active Directory, podrá habilitar los vínculos de objetos para usarlos en el sistema.
+
+Si deshabilita esta opción o no la configura, se crearán nuevos vínculos de objetos de directiva de grupo en estado habilitado. Si no desea que se hagan efectivos hasta que se configuren y se comprueben, debe deshabilitar el vínculo de objeto.</string>
+      <string id="OnlyUseLocalAdminFiles">Usar siempre archivos ADM locales para el Editor de objetos de directiva de grupo</string>
+      <string id="OnlyUseLocalAdminFiles_Help">Usar siempre archivos ADM locales para el complemento de directiva de grupo.
+
+De forma predeterminada, al editar un objeto de directiva de grupo (GPO) mediante el complemento Editor de objetos de directiva de grupo, los archivos ADM se cargan de dicho GPO al complemento Editor de objetos de directiva de grupo. Esto le permite usar la misma versión de los archivos ADM que se usaron para crear el GPO al editar este GPO.
+
+Este proceso lleva al siguiente comportamiento:
+
+-  Si originalmente creó el GPO con un sistema inglés, por ejemplo, el GPO contiene archivos ADM en inglés.
+
+-  Si modifica posteriormente el GPO desde un sistema con un idioma distinto, obtendrá los archivos ADM en inglés como estaban en el GPO.
+
+Puede cambiar el comportamiento descrito mediante esta opción.
+
+Si habilita esta opción, el complemento Editor de objetos de directiva de grupo siempre usa archivos ADM locales del directorio %windir%\inf al editar objetos GPO.
+
+Este proceso lleva al siguiente comportamiento:
+
+-  Si originalmente creó el GPO con un sistema en inglés y, a continuación, modifica el GPO con un sistema japonés, el complemento Editor de objetos de directiva de grupo usa los archivos ADM locales en japonés, y verá el texto en japonés bajo Plantillas administrativas.
+
+Si deshabilita esta opción o no la configura, el complemento Editor de objetos de directiva de grupo siempre carga todos los archivos ADM del GPO real.
+
+Nota: si los archivos ADM que requiere no están disponibles localmente en el directorio %windir%\inf, puede que no vea todas las opciones que se han configurado en el GPO que está modificando.</string>
+      <string id="PolicyPolicies">Directiva de grupo</string>
+      <string id="RSoPLogging">Desactivar el registro del conjunto resultante de directivas</string>
+      <string id="RSoPLogging_Help">Esta opción le permite habilitar o deshabilitar el registro del conjunto resultante de directivas (RSoP) en un equipo cliente.
+
+RSoP registra información acerca de la configuración de la directiva de grupo que se ha aplicado al cliente. Esta información incluye detalles tales como los objetos de directiva de grupo (GPO) que se aplicaron, su procedencia y la configuración de extensión del lado cliente que se incluyó.
+
+Si habilita esta opción, el registro de RSoP se desactiva.
+
+Si deshabilita esta opción o no la configura, el registro de RSoP estará activado. De forma predeterminada, el registro de RSoP está siempre activado.
+
+Nota: para ver la información RSoP registrada en un equipo cliente, puede usar el complemento RSoP en Microsoft Management Console (MMC).</string>
+      <string id="UserPolicyMode">Modo de procesamiento de bucle invertido de la directiva de grupo de usuario</string>
+      <string id="UserPolicyMode_Help">Aplica una configuración de usuario alternativa cuando un usuario inicia la sesión en un sistema afectado por esta opción de configuración.
+
+Esta opción dirige el sistema para que aplique el grupo de objetos de directiva de grupo para el equipo a cualquier usuario que inicie sesión en un equipo afectado por esta opción. Está concebida para equipos que tienen un uso específico, como los que se encuentran en lugares públicos, laboratorios y aulas, donde debe modificar la configuración de usuario según el equipo que se use.
+
+De forma predeterminada, los objetos de la directiva de grupo determinan qué configuración de usuario se aplica. Si esta opción está habilitada, cuando un usuario inicie la sesión en este equipo, los objetos de la directiva de grupo del equipo determinan el conjunto de objetos de la directiva de grupo que se aplica.
+
+Para usar esta opción, seleccione uno de los modos siguientes de la casilla Modo:
+
+--   "Sustituir" indica que la configuración de usuario definida en los objetos de la directiva de grupo del equipo sustituirá a la configuración de usuario aplicada normalmente al usuario.
+
+--   "Combinar" indica que la configuración de usuario definida en los objetos de la directiva de grupo del equipo y la configuración de usuario que normalmente se aplica al usuario se combinarán. Si las opciones de configuración entran en conflicto, la configuración de usuario de los objetos de la directiva de grupo del equipo tendrá prioridad sobre la configuración normal del usuario.
+
+Si deshabilita esta opción o no la configura, los objetos de la directiva de grupo del usuario determinan la configuración de usuario que se aplica.
+
+Nota: esta opción solo se hace efectiva cuando la cuenta del equipo y del usuario se encuentran en dominios de Windows 2000.</string>
+      <string id="UserPolicyMode_Merge">Combinar</string>
+      <string id="UserPolicyMode_Replace">Sustituir</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="SyncWaitTime">
+        <decimalTextBox refId="SyncWaitTime_Minutes" defaultValue="120">Tiempo que hay que esperar (en segundos):</decimalTextBox>
+      </presentation>
+      <presentation id="CSE_AppMgmt">
+        <checkBox refId="CSE_SLOWLINK1">Permitir el procesamiento a través de una conexión de red de baja velocidad</checkBox>
+        <checkBox refId="CSE_NOCHANGES1">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="CSE_DiskQuota">
+        <checkBox refId="CSE_SLOWLINK2">Permitir el procesamiento a través de una conexión de red de baja velocidad</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND2">No aplicar durante el procesamiento periódico en segundo plano</checkBox>
+        <checkBox refId="CSE_NOCHANGES2">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="CSE_EFSRecovery">
+        <checkBox refId="CSE_SLOWLINK3">Permitir el procesamiento a través de una conexión de red de baja velocidad</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND3">No aplicar durante el procesamiento periódico en segundo plano</checkBox>
+        <checkBox refId="CSE_NOCHANGES3">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="CSE_FolderRedirection">
+        <checkBox refId="CSE_SLOWLINK4">Permitir el procesamiento a través de una conexión de red de baja velocidad</checkBox>
+        <checkBox refId="CSE_NOCHANGES4">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="CSE_IEM">
+        <checkBox refId="CSE_SLOWLINK5">Permitir el procesamiento a través de una conexión de red de baja velocidad</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND5">No aplicar durante el procesamiento periódico en segundo plano</checkBox>
+        <checkBox refId="CSE_NOCHANGES5">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="CSE_IPSecurity">
+        <checkBox refId="CSE_SLOWLINK6">Permitir el procesamiento a través de una conexión de red de baja velocidad</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND6">No aplicar durante el procesamiento periódico en segundo plano</checkBox>
+        <checkBox refId="CSE_NOCHANGES6">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="CSE_Registry">
+        <checkBox refId="CSE_NOBACKGROUND10">No aplicar durante el procesamiento periódico en segundo plano</checkBox>
+        <checkBox refId="CSE_NOCHANGES10">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="CSE_Scripts">
+        <checkBox refId="CSE_SLOWLINK7">Permitir el procesamiento a través de una conexión de red de baja velocidad</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND7">No aplicar durante el procesamiento periódico en segundo plano</checkBox>
+        <checkBox refId="CSE_NOCHANGES7">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="CSE_Security">
+        <checkBox refId="CSE_NOBACKGROUND11">No aplicar durante el procesamiento periódico en segundo plano</checkBox>
+        <checkBox refId="CSE_NOCHANGES11">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="CSE_Wired">
+        <checkBox refId="CSE_SLOWLINK8">Permitir el procesamiento a través de una conexión de red de baja velocidad</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND8">No aplicar durante el procesamiento periódico en segundo plano</checkBox>
+        <checkBox refId="CSE_NOCHANGES8">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="CSE_Wireless">
+        <checkBox refId="CSE_SLOWLINK9">Permitir el procesamiento a través de una conexión de red de baja velocidad</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND9">No aplicar durante el procesamiento periódico en segundo plano</checkBox>
+        <checkBox refId="CSE_NOCHANGES9">Procesar incluso si los objetos de directiva de grupo no han cambiado</checkBox>
+      </presentation>
+      <presentation id="GPDCOptions">
+        <dropdownList refId="GPDCOptionsDesc" noSort="true" defaultItem="0">Cuando el Editor de objetos de directiva de grupo selecciona un controlador de dominio para usar, debe:</dropdownList>
+      </presentation>
+      <presentation id="GPTransferRate_1">
+        <decimalTextBox refId="TransferRateOp1" defaultValue="500" spinStep="100">Velocidad de conexión (Kbps):</decimalTextBox>
+        <text> </text>
+        <text>Escribir 0 para deshabilitar la detección de vínculos de baja velocidad.</text>
+      </presentation>
+      <presentation id="GPTransferRate_2">
+        <decimalTextBox refId="TransferRateOp2" defaultValue="500" spinStep="100">Velocidad de conexión (Kbps):</decimalTextBox>
+        <text> </text>
+        <text>Escribir 0 para deshabilitar la detección de vínculos de baja velocidad.</text>
+      </presentation>
+      <presentation id="GroupPolicyRefreshRate">
+        <text>Esta opción le permite personalizar la frecuencia con que se aplica la directiva de grupo</text>
+        <text>a equipos. El intervalo es de 0 a 64800 minutos (45 días).</text>
+        <decimalTextBox refId="GPRefreshRate1" defaultValue="90">Minutos:</decimalTextBox>
+        <text> </text>
+        <text>Éste es un tiempo aleatorio que se agrega al intervalo de actualización para impedir</text>
+        <text>que todos los clientes soliciten la directiva de grupo al mismo tiempo.</text>
+        <text>El intervalo es de 0 a 1440 minutos (24 horas)</text>
+        <decimalTextBox refId="GPRefreshRateOffset1" defaultValue="30">Minutos:</decimalTextBox>
+      </presentation>
+      <presentation id="GroupPolicyRefreshRateDC">
+        <text>Esta opción le permite personalizar la frecuencia con que se aplica la directiva de grupo</text>
+        <text>a controladores de dominio. El intervalo es de 0 a 64800 minutos (45 días).</text>
+        <decimalTextBox refId="GPRefreshRate2" defaultValue="5">Minutos:</decimalTextBox>
+        <text> </text>
+        <text>Éste es un tiempo aleatorio que se agrega al intervalo de actualización para impedir</text>
+        <text>que todos los clientes soliciten la directiva de grupo al mismo tiempo.</text>
+        <text>El intervalo es de 0 a 1440 minutos (24 horas)</text>
+        <decimalTextBox refId="GPRefreshRateOffset2" defaultValue="0">Minutos:</decimalTextBox>
+      </presentation>
+      <presentation id="GroupPolicyRefreshRateUser">
+        <text>Esta opción le permite personalizar la frecuencia con que se aplica la directiva de grupo</text>
+        <text>a usuarios. El intervalo es de 0 a 64800 minutos (45 días).</text>
+        <decimalTextBox refId="GPRefreshRate3" defaultValue="90">Minutos:</decimalTextBox>
+        <text> </text>
+        <text>Éste es un tiempo aleatorio que se agrega al intervalo de actualización para impedir</text>
+        <text>que todos los clientes soliciten la directiva de grupo al mismo tiempo.</text>
+        <text>El intervalo es de 0 a 1440 minutos (24 horas)</text>
+        <decimalTextBox refId="GPRefreshRateOffset3" defaultValue="30">Minutos:</decimalTextBox>
+      </presentation>
+      <presentation id="NewGPODisplayName">
+        <textBox refId="NewGPODisplayNameHeading">
+          <label>Nombre de GPO:</label>
+        </textBox>
+      </presentation>
+      <presentation id="UserPolicyMode">
+        <dropdownList refId="UserPolicyModeOp" noSort="true" defaultItem="1">Modo:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

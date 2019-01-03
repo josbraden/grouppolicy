@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache enables clients to securely retrieve content from within the branch office instead of having to retrieve it from the server hosting the content. Depending on the deployment mode, the content can be retrieved from other clients in the branch office or from a hosted cache server in the branch. A client can only retrieve content from within the branch if it is authorized by the server to do so. The use of BranchCache reduces costs on the wide area network (WAN) link that connects your branch offices to the data center or headquarters and increases download speeds for content that has already been downloaded into the branch office.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">Turn on BranchCache</string>
+
+            <string id="WBC_Enable_Help">This policy setting specifies whether BranchCache is enabled on the client computer. BranchCache reduces the utilization of the wide area network (WAN) links connecting branch offices to the data center or headquarters and increases access speeds for content that has already been downloaded into the branch office. BranchCache does this by enabling computers in a branch office to cache files and HTTP traffic from Intranet servers on which BranchCache is enabled, and then securely share the files with other computers in the branch. Computers in the branch office can retrieve content from a hosted cache server in the branch (when using Hosted Cache mode), or from other client computers in the branch (when using Distributed Cache mode). To access cached content, the computer must have permissions to access the content on the source server.
+
+Enable this policy setting on client computers in branch offices where WAN bandwidth is low, latency is high, and there are a number of client computers that need to access the same data from servers in the central office.
+
+If you enable this policy setting, BranchCache is turned on. For this policy setting to take effect, you also must install the BranchCache feature on the client computer.
+
+If you disable or do not configure this policy setting, BranchCache is turned off.
+            </string>
+
+            <string id="WBC_Cache_Percent">Set percentage of disk space used for client computer cache</string>
+
+            <string id="WBC_Cache_Percent_Help">This policy setting changes the default percentage of total disk space to dedicate to caching retrieved content with BranchCache. This content is made available to other requesting client computers if they are authorized by the server to access the content.
+
+If you enable this policy setting, you can configure the percentage of total disk space to allocate for the cache.
+
+If you disable or do not configure this policy setting, the cache is set to 5 percent of the total disk space on the client computer.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Set BranchCache Hosted Cache mode</string>
+
+            <string id="WBC_HostedCache_Location_Help">This policy setting specifies whether the client computer should use the Hosted Cache mode, and if so, what the address of the BranchCache server is. The Hosted Cache mode enables a client computer to retrieve content from a BranchCache server that acts as the central (hosted) cache for a branch office. When using the Hosted Cache mode, content downloaded by BranchCache-enabled client computers is pushed to the BranchCache server, which then serves as the centralized cache for other BranchCache enabled client computers in the branch office. Client computers use Secure Sockets Layer (SSL) to communicate with the BranchCache server.
+
+To use this policy setting, you must specify the address of the BranchCache server and this address must match the Fully Qualified Domain Name (FQDN) of the server specified in the certificate for the BranchCache server. Additionally, the certificate root for the BranchCache server's certificate must be in the client computer's trusted root store.
+
+If you enable this policy setting and specify a valid location of the hosted cache, the Hosted Cache mode is turned on. For this policy setting to take effect, you also need to enable the "Turn on BranchCache" policy setting.
+
+If you disable or do not configure this policy setting, the Hosted Cache mode is turned off.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Set BranchCache Distributed Cache mode</string>
+
+            <string id="WBC_Distributed_Enable_Help">This policy setting specifies whether the client computer should use the Distributed Cache mode. This BranchCache mode enables a client computer to retrieve content that has been downloaded and cached by other client computers in the branch office. To access cached content from other client computers in the branch, the computer must have permissions to access the content on the source server.
+
+This policy setting specifies whether the Distributed Cache mode is used. Enable this policy setting when using BranchCache in branch offices for which there is no server acting as a hosted cache.
+
+If you enable this policy setting, the Distributed Cache mode is used. For this policy setting to take effect, you also need to enable the "Turn on BranchCache" policy setting.
+
+If you disable or do not configure this policy setting, the Distributed Cache mode is turned off.
+            </string>
+
+            <string id="WBC_SMB_Enable">Configure BranchCache for network files</string>
+
+            <string id="WBC_SMB_Enable_Help">This policy setting changes the default round trip network latency value above which network files are cached by client computers in the branch. BranchCache for network files enables computers in a branch office to cache data from Intranet servers on which BranchCache is enabled, and then securely share the files with other computers in the branch. One of the content types that can be cached in a branch office is network files using the Server Message Block (SMB) protocol.
+
+By default, network files are cached in the branch office when the round trip network latency of the wide area network (WAN) link is above 80 ms. To always cache network files downloaded to computers in the branch office, set the network latency value to 0. To disable branch caching for network files, set the latency value to a very high value.
+
+If you enable this policy setting, you can configure the round trip network latency above which network files should be cached by client computers in the branch office.
+
+If you disable or do not configure this policy setting, the client computer will cache network files if the round trip network latency of the wide area network (WAN) link is above 80 ms.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Enter Client Computer Cache location</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Enter the location of hosted cache</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Enter the round trip network latency value in milliseconds above which network files must be cached in the branch office</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

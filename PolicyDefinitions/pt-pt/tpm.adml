@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>introduzir o nome a apresentar aqui</displayName>
+  <description>introduzir a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Esta definição de política permite-lhe gerir a cópia de segurança dos Serviços de Domínio do Active Directory (AD DS) das informações de proprietário do Trusted Platform Module (TPM). 
+
+As informações de proprietário do TPM incluem um hash criptográfico da palavra-passe de proprietário do TPM. Determinados comandos TPM só podem ser executados pelo proprietário do TPM. Este hash autoriza o TPM a executar estes comandos. 
+
+Se activar esta definição de política, será efectuada uma cópia de segurança das informações de proprietário do TPM de forma automática e silenciosa para AD DS quando utilizar o Windows para definir ou alterar uma palavra-passe de proprietário do TPM. 
+
+Se tiver seleccionado a opção "Pedir cópia de segurança do TPM para AD DS", não é possível definir ou alterar uma palavra-passe de proprietário do TPM a não ser que o computador esteja ligado ao domínio e a cópia de segurança do AD DS tenha êxito. Esta opção está seleccionada por predefinição para ajudar a assegurar que as informações de proprietário do TPM estão disponíveis. Caso contrário, tenta-se efectuar a cópia de segurança do AD DS mas as falhas da rede ou de outras cópias de segurança não têm impacto na gestão do TPM. A tentativa de efectuar a cópia de segurança não é repetida automaticamente e as informações de proprietário do TPM poderão não ter sido armazenadas no AD DS durante a configuração do BitLocker.
+
+Se desactivar ou não configurar esta definição de política, não será efectuada uma cópia de segurança das informações de proprietário do TPM para o AD DS. 
+
+Nota: Primeiro deve configurar as extensões de esquema apropriadas e aceder a definições de controlo no domínio antes da cópia de segurança do AD DS ter êxito. Consulte a documentação online para obter mais informações sobre como configurar os Serviços de Domínio do Active Directory para TPM.
+
+Nota: O TPM não pode ser utilizado para fornecer funcionalidades de segurança melhoradas para a Encriptação de Unidade BitLocker e outras aplicações sem ser primeiro definido um proprietário. Para obter propriedade do TPM com uma palavra-passe de proprietário, execute "tpm.msc" e seleccione a acção para "Inicializar TPM".
+
+Nota: Se as informações de proprietário do TPM se tiverem perdido ou não estiverem disponíveis, é possível efectuar a gestão limitada do TPM executando "tpm.msc" no computador local.</string>
+      <string id="ActiveDirectoryBackup_Name">Activar a cópia de segurança do TPM para os Serviços Trusted Platform Module</string>
+      <string id="BlockedCommandsList_Help">Esta definição de política permite-lhe gerir a lista da Política de Grupo de comandos do Trusted Platform Module (TPM) bloqueados pelo Windows.
+
+Se activar esta definição de política, o Windows vai bloquear os comandos especificados de serem enviados para o TPM no computador. Os comandos TPM são referenciados por um número de comando. Por exemplo, o número de comando 129 é TPM_OwnerReadInternalPub e o número de comando 170 é TPM_FieldUpgrade. Para localizar o número de comando associado a cada comando TPM, execute "tpm.msc" e navegue para a secção "Gestão de Comandos".
+
+Se desactivar ou não configurar esta definição de política, apenas os comandos TPM especificados através das listas predefinidas ou locais poderão ser bloqueados pelo Windows. A lista predefinida de comandos TPM bloqueados é pré-configurada pelo Windows. Pode ver a lista predefinida ao executar "tpm.msc", navegando para a secção "Gestão de Comandos" e tornando visível a coluna "Lista de Bloqueios Predefinida". A lista local de comandos TPM bloqueados é configurada fora da Política de Grupo ao executar "tpm.msc" ou através de scripts na interface Win32_Tpm. Consulte as definições de política relacionadas para forçar ou ignorar a aplicação da lista predefinida e local de comandos TPM bloqueados.</string>
+      <string id="BlockedCommandsList_Name">Configurar a lista de comandos TPM bloqueados</string>
+      <string id="IgnoreDefaultList_Help">Esta definição de política permite-lhe impor ou ignorar a lista predefinida do computador de comandos do Trusted Platform Module (TPM) bloqueados.
+
+Se activar esta definição de política, o Windows ignorará a lista predefinida do computador de comandos TPM bloqueados e apenas bloqueará os comandos TPM especificados pela Política de Grupo ou pela lista local. 
+
+A lista predefinida de comandos TPM bloqueados é pré-configurada pelo Windows. Pode ver a lista predefinida executando "tpm.msc", navegando para a secção "Gestão de Comandos" e tornando visível a coluna "Na Lista de Bloqueios Predefinida". A lista local de comandos TPM bloqueados é configurada fora da Política de Grupo executando "tpm.msc" ou através de scripts na interface Win32_Tpm. Consulte a definição de política relacionada para configurar a lista da Política de Grupo de comandos TPM bloqueados.
+
+Se desactivar ou não configurar esta definição de política, o Windows bloqueará os comandos TPM da lista predefinida, além dos comandos das lista da Política de Grupo e local de comandos TPM bloqueados. </string>
+      <string id="IgnoreDefaultList_Name">Ignorar a lista predefinida de comandos TPM bloqueados</string>
+      <string id="IgnoreLocalList_Help">Esta definição de política permite-lhe forçar ou ignorar a aplicação da lista local do computador de comandos do Trusted Platform Module (TPM) bloqueados.
+
+Se activar esta definição de política, o Windows vai ignorar a lista local do computador de comandos TPM bloqueados e vai apenas bloquear os comandos TPM especificados pela Política de Grupo ou pela lista predefinida.
+
+A lista local de comandos TPM bloqueados é configurada fora da Política de Grupo ao executar "tpm.msc" ou através de scripts na interface Win32_Tpm. A lista predefinida de comandos TPM bloqueados é pré-configurada pelo Windows. Consulte a definição de política relacionada para configurar a lista da Política de Grupo de comandos TPM bloqueados. 
+
+Se desactivar ou não configurar esta definição de política, o Windows vai bloquear os comandos TPM localizados na lista local, para além dos comandos na Política de Grupo e listas predefinidas de comandos TPM bloqueados.</string>
+      <string id="IgnoreLocalList_Name">Ignorar a lista local de comandos TPM bloqueados</string>
+      <string id="TPMCategory">Serviços Trusted Platform Module</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Pedir cópia de segurança do TPM para AD DS</checkBox>
+        <text/>
+        <text>Se seleccionada, não é possível definir ou alterar a palavra-passe de proprietário do TPM </text>
+        <text>se a cópia de segurança falhar (predefinição recomendada).</text>
+        <text/>
+        <text>Se não for seleccionado, é possível definir ou alterar a palavra-passe de proprietário do TPM</text>
+        <text>mesmo se a cópia de segurança falhar. A tentativa de cópia de segurança não é repetida automaticamente.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Especifique os comandos a bloquear adicionando os respectivos números à lista.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">A lista de comandos TPM bloqueados:</listBox>
+        <text>Por exemplo, para bloquear os comandos TPM_OwnerReadInternalPub</text>
+        <text>e TPM_FieldUpgrade, adicione os itens 129 e 170 à lista.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

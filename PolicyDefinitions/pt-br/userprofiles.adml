@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>digite o nome para exibição aqui</displayName>
+  <description>digite a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="AddAdminGroupToRUP">Adicionar o grupo de segurança Administradores a perfis móveis de usuários</string>
+      <string id="AddAdminGroupToRUP_Help">Esta configuração adiciona um grupo de segurança Administradores ao compartilhamento de perfis de usuários móveis.
+
+Depois que um administrador configura o perfil móvel de um usuário, o perfil é criado na próxima vez em que o usuário fizer logon. O perfil é criado no local especificado pelo administrador.
+
+Nos sistemas operacionais Windows 2000 Professional e Windows XP Professional, as permissões de arquivo padrão para o perfil recém-gerado são controle total ou acesso de leitura e gravação para o usuário e nenhum acesso a arquivos para o grupo de administradores.
+
+Ao definir esta configuração, você pode alterar esse comportamento.
+
+Se você habilitar esta configuração, o grupo de administradores também terá controle total sobre a pasta de perfis do usuário.
+
+Se você a desabitar ou não a configurar, apenas o usuário terá controle total sobre seu perfil de usuário e o grupo de administradores não terá acesso ao sistema de arquivos para essa pasta.
+
+Observação: se a configuração for habilitada após a criação do perfil, ela não terá efeito.
+
+Observação: para que a configuração tenha efeito, ela deve ser definida no computador cliente, e não no servidor, pois é o computador cliente que define as permissões ao compartilhamento de arquivos para o perfil móvel no momento de criação.
+
+Observação: no caso padrão, os administradores não têm acesso de arquivo ao perfil do usuário, mas ainda podem se tornar proprietários dessa pasta para conceder permissões de arquivo a si mesmos.
+
+Observação: o funcionamento quando esta configuração é habilitada é exatamente igual ao funcionamento observado no Windows NT 4.0.</string>
+      <string id="CompatibleRUPSecurity">Não verificar se o usuário é proprietário de Pastas de Perfil Móvel</string>
+      <string id="CompatibleRUPSecurity_Help">Esta configuração desabilita a configuração padrão mais segura para a pasta de perfil de usuário móvel do usuário.
+
+Depois que um administrador configura o perfil móvel de um usuário, o perfil é criado na próxima vez em que o usuário fizer logon. O perfil é criado no local especificado pelo administrador.
+
+Nos sistemas operacionais Windows 2000 Professional pre-SP4 e Windows XP pre-SP1, as permissões de arquivo padrão para o perfil recém-gerado são controle total e nenhum acesso a arquivos para o grupo de administradores. Nenhuma verificação é feita quanto às permissões corretas se a pasta de perfil já existir. Para a família Windows Server 2003, Windows 2000 Professional SP4 e Windows XP SP1, o funcionamento padrão é verificar na pasta se as permissões corretas existem, caso a pasta de perfil já exista, e não copiar arquivos de ou para a pasta móvel se as permissões não estiverem corretas.
+
+Ao definir esta configuração, você pode alterar esse comportamento.
+
+Se você habilitar esta configuração, o Windows não verificará as permissões da pasta caso ela já exista
+
+Se você desabilitar esta configuração ou não a definir E a pasta de perfil móvel existir E o usuário ou o grupo de administradores não for o proprietário da pasta, o Windows NÃO copiará arquivos de ou para a pasta móvel. O usuário receberá uma mensagem de erro e uma entrada será gravada no log de eventos. Será usado o perfil de usuário armazenado em cache ou será emitido um perfil temporário se não houver um perfil armazenado em cache. 
+
+Observação: para que a configuração tenha efeito, ela deve ser definida no computador cliente, e não no servidor, pois é o computador cliente que define as permissões ao compartilhamento de arquivos para o perfil móvel no momento de criação.
+
+Observação: o comportamento quando esta configuração é habilitada é exatamente o mesmo que ocorre no Windows 2000 Professional anterior ao SP4 e no Windows XP Professional</string>
+      <string id="Connect_HomeDir_ToRoot">Conectar a pasta base à raiz do compartilhamento</string>
+      <string id="Connect_HomeDir_ToRoot_Explain">Restaura as definições das variáveis de ambiente %HOMESHARE% e %HOMEPATH% para aquelas usadas no Windows NT 4.0 ou em versões anteriores.
+
+Se você desabilitar esta configuração, o sistema usará as definições do Windows NT 4.0. Se desabilitar esta configuração ou não a definir, o sistema usará as novas definições projetadas para o Windows 2000.
+
+Junto com a variável %HOMEDRIVE%, essas variáveis definem a pasta base de um perfil de usuário. A pasta local é um mapeamento persistente de uma letra de unidade no computador local para uma pasta base ou remota.
+
+Por padrão, na família Windows 2000 Server, %HOMESHARE% armazena o caminho completo qualificado para a pasta base (como \\servidor\compartilhamento\pasta1\pasta2\pastabase) Os usuários podem acessar a pasta base e qualquer uma das suas subpastas desde a letra da unidade base, mas não podem ver ou acessar suas pastas pai. %HOMEPATH% armazena uma barra invertida final e esta é incluída para compatibilidade com sistemas anteriores.
+
+No Windows NT 4.0 e anterior, %HOMESHARE% armazena somente o compartilhamento de rede (como \\servidor\compartilhamento). %HOMEPATH% armazena um lembrete do caminho completo qualificado para a pasta base (como \pasta1\pasta2\pastabase). Como resultado, os usuários podem acessar qualquer pasta no compartilhamento base usando a letra de unidade da pasta base.
+
+Dica: para especificar uma pasta base na família Windows 2000 Server, em Usuários e Computadores ou Usuários e Grupos Locais do Active Directory, clique com o botão direito no nome de uma conta de usuário, clique em Propriedades e clique na guia Perfil. Na seção "Pasta Base", selecione a opção "Conectar" e especifique uma letra de unidade e pasta base.
+
+Exemplo: a unidade Z é mapeada como \\servidor\compartilhamento\pasta1\pasta2\pastabase.
+
+se esta configuração estiver desabilitada ou não estiver definida (comportamento da família Windows 2000 Server):
+
+--  %HOMEDRIVE%  = Z: (mapeada para \\servidor\compartilhamento\pasta1\pasta2\pastabase)
+
+--  %HOMESHARE% = \\servidor\compartilhamento\pasta1\pasta2\pastabase
+
+--  %HOMEPATH% = \
+
+se a configuração estiver habilitada (comportamento do Windows NT 4.0):
+
+--  %HOMEDRIVE% = Z: (mapeada para \\servidor\compartilhamento)
+
+--  %HOMESHARE% = \\servidor\compartilhamento
+
+--  %HOMEPATH% = \pasta1\pasta2\pastabase</string>
+      <string id="DeleteRoamingCachedProfiles">Excluir cópias em cache de perfis móveis</string>
+      <string id="DeleteRoamingCachedProfiles_Help">Determina se o sistema salvará uma cópia do perfil móvel de um usuário no disco rígido do computador local quando o usuário efetuar logoff.
+
+Esta configuração, assim como as configurações relacionadas nesta pasta, descrevem em conjunto uma estratégia para gerenciar perfis de usuários residentes em servidores remotos. Especificamente, elas informam ao sistema como responder quando um perfil remoto é lento para carregar.
+
+Perfis móveis residem em um servidor remoto. Por padrão, quando os usuários com perfis móveis fazem logoff, o sistema também salva uma cópia de seu perfil móvel na unidade de disco rígido do computador que eles estão usando, para a hipótese de o servidor que armazena o perfil móvel ficar indisponível quando o usuário fizer logon novamente. A cópia local também é usada quando a cópia remota de um perfil móvel de usuário está muito lenta para ser carregada.
+
+Se esta configuração estiver habilitada, quaisquer cópias locais do perfil móvel do usuário serão excluídas quando você fizer logoff. O perfil móvel ainda permanece no servidor da rede que o armazena.
+
+Importante: não habilite esta configuração se estiver usando o recurso de detecção de vínculo lento do Windows 2000 Professional e do Windows XP Professional. Para responder a um vínculo lento, o sistema solicita uma cópia local do perfil móvel do usuário.</string>
+      <string id="EnableSlowLinkDetect">Não detectar conexões de rede lentas</string>
+      <string id="EnableSlowLinkDetect_Help">Desabilita o recurso de detecção de vínculos lentos.
+
+A detecção de vínculos lentos mede a velocidade da conexão entre o computador do usuário e o servidor remoto que armazena o perfil móvel do usuário. Quando o sistema detecta um vínculo lento, as configurações relacionadas nesta pasta informam ao sistema como responder.
+
+Se você habilitar esta configuração, o sistema não detectará conexões lentas nem reconhecerá quaisquer conexões como sendo lentas. Dessa forma, o sistema não responderá a conexões lentas a perfis de usuários e ignorará as configurações que especificam como o sistema deve responder a uma conexão lenta.
+
+Se você desabilitar esta configuração ou não a definir, a detecção de vínculo lento estará habilitada. O sistema mede a velocidade da conexão entre o computador do usuário e o servidor do perfil. Se a conexão for lenta (conforme definido pela configuração "Tempo limite de conexão de rede lenta para perfis de usuário"), o sistema aplica as outras configurações definidas nesta pasta para determinar como proceder. Por padrão, quando a conexão é lenta, o sistema carrega a cópia local do perfil do usuário.</string>
+      <string id="EnableSlowLinkUI">Avisar usuário quando uma conexão de rede lenta for detectada</string>
+      <string id="EnableSlowLinkUI_Help">Essa configuração de diretiva fornece aos usuários a capacidade de baixar seu perfil móvel, mesmo quando uma conexão de rede lenta com seu servidor de perfil móvel for detectada.
+
+Se você habilitar essa configuração de diretiva, os usuários poderão definir se desejam que seu perfis móveis sejam baixados quando for detectada uma conexão lenta com seu servidor de perfil móvel.
+
+Em sistemas operacionais anteriores ao Microsoft Windows Vista, será mostrada uma caixa de diálogo para o usuário durante o logon se uma conexão de rede lenta for detectada. O usuário poderá então optar por baixar a cópia remota do perfil de usuário. No Microsoft Windows Vista, uma caixa de seleção é exibida na tela de logon e o usuário deve escolher se deseja baixar o perfil de usuário remoto antes que o Windows detecte a velocidade da conexão de rede.  
+
+Se você desabilitar ou não definir essa configuração de diretiva, o sistema não consultará o usuário. Em vez disso, o sistema usará a cópia local do perfil de usuário. Se você tiver habilitado a configuração de diretiva "Aguardar perfil de usuário remoto", o sistema baixará a cópia remota do perfil de usuário sem consultar o usuário. No Microsoft Windows Vista, o sistema ignorará a opção do usuário selecionada na tela de logon.
+
+Observação: Esta configuração de diretiva e as configurações relacionadas nessa pasta definem a resposta do sistema quando o download dos perfis móveis de usuários está lento. Para ajustar o período de tempo em que o usuário deve responder a esse aviso em sistemas operacionais anteriores ao Microsoft Windows Vista, use a configuração de diretiva "Tempo limite para caixas de diálogo".
+
+Importante: se a configuração "Não detectar conexões de rede lentas" estiver habilitada, essa configuração de diretiva será ignorada. Além disso, se a configuração de diretiva "Excluir cópias em cache de perfis móveis" estiver habilitada, não haverá cópia local do perfil móvel para ser carregada quando o sistema detectar uma conexão lenta.</string>
+      <string id="ExcludeDirectories">Excluir pastas do perfil móvel</string>
+      <string id="ExcludeDirectories_Help">Permite que você adicione itens à lista de pastas excluídas do perfil móvel do usuário.
+
+Esta configuração permite que você exclua pastas que normalmente são incluídas no perfil de usuário. Consequentemente, essas pastas não precisarão ser armazenadas pelo servidor de rede em que o perfil reside e não seguirão usuários para outros computadores.
+
+Por padrão, as pastas Appdata\Local e Appdata\LocalLow e todas as subpastas, como as pastas Histórico, Temp e Temporary Internet Files, são excluídas do perfil móvel do usuário.
+
+Observação: em sistemas operacionais anteriores ao Microsoft Windows Vista, apenas as pastas Histórico, Local Settings, Temp e Temporary Internet Files são excluídas do perfil móvel do usuário por padrão.
+
+Se você habilitar esta configuração, poderá excluir pastas adicionais.
+
+Se desabilitar esta configuração ou não a definir, somente as pastas padrão serão excluídas.
+
+Observação: você não pode usar esta configuração para incluir as pastas padrão em um perfil móvel do usuário.</string>
+      <string id="LeaveAppMgmtData">Deixar Dados de Instalação de Software de Diretiva de Grupo e do Windows Installer</string>
+      <string id="LeaveAppMgmtData_Help">Determina se o sistema retém dados de instalação de software da Diretiva de Grupo e do Windows Installer do usuário móvel na exclusão de seu perfil.
+
+Por padrão, o Perfil de Usuário exclui todas as informações relacionadas a um usuário móvel (o que inclui as configurações do usuário, dados, dados relacionados ao Windows Installer etc.) quando o perfil é excluído. Como resultado, da próxima vez que um usuário móvel cujo perfil tenha sido excluído anteriormente no cliente fizer logon, ele precisará instalar todos os aplicativos publicados pela diretiva ao fazer logon, aumentando o tempo de logon. Você pode usar essa diretiva para mudar esse comportamento.
+
+Se você habilitar essa configuração, o Windows não excluirá os dados de instalação de software de Diretiva de Grupo ou do Windows Installer de usuários móveis quando os perfis forem excluídos do computador. Isso melhorará o desempenho da Instalação de Software com base na Diretiva de Grupo durante o logon do usuário quando um perfil de usuário for excluído e o usuário fizer logon posteriormente no computador.
+
+Se você desabilitar ou não configurar essa diretiva, o Windows excluirá todo o perfil para usuários móveis, inclusive os dados de instalação de software da Diretiva de Grupo e do Windows Installer quando esses perfis forem excluídos.
+
+Observação: se essa diretiva for habilitada para um computador, será necessária a ação local de administrador para remover os dados de instalação de software da Diretiva de Grupo ou do Windows Installer armazenados no Registro e o sistema de arquivos dos perfis de usuários móveis no computador.</string>
+      <string id="LimitSize">Limitar tamanho do perfil</string>
+      <string id="LimitSize_Help">Essa configuração de diretiva define o tamanho máximo de cada perfil de usuário e determina a resposta do sistema quando um perfil de usuário atinge o tamanho máximo. Essa configuração de diretiva afeta perfis locais e móveis.
+
+Se você desabilitar essa configuração de diretiva ou não a definir, o sistema não limitará o tamanho dos perfis de usuário.
+
+Se você habilitar essa configuração de diretiva, poderá:
+
+-- Definir um tamanho máximo permitido de perfil de usuário.
+-- Determinar se os arquivos do Registro estão incluídos no cálculo do tamanho do perfil.
+-- Determinar se os usuários são notificados quando o perfil excede o tamanho máximo permitido.
+-- Especificar uma mensagem personalizada notificando os usuários do perfil de tamanho acima do normal.
+-- Determinar qual a frequência em que a mensagem personalizada é exibida.
+
+Observação: Em sistemas operacionais anteriores ao Microsoft Windows Vista, o Windows só permitirá que os usuários façam logoff depois que o tamanho do perfil for reduzido até o limite permitido. No Microsoft Windows Vista, o Windows não impede que os usuários façam logoff. Em vez disso, se o usuário tiver um perfil de usuário móvel, o Windows não sincronizará perfil do o usuário com o servidor de perfil móvel se o tamanho limite máximo de perfil especificado aqui for excedido.</string>
+      <string id="LocalProfile">Só permitir perfis de usuário locais</string>
+      <string id="LocalProfile_Help">Essa configuração determina se perfis de usuário móveis estão disponíveis em um computador específico. Por padrão, quando um usuário com perfil móvel faz logon em um computador, o seu perfil móvel é copiado para o computador local. Caso ele já tenha feito logon anteriormente nesse computador, o perfil móvel será mesclado com o perfil local. Da mesma maneira, quando ele fizer logoff desse computador, a cópia local do perfil dele, inclusive quaisquer alterações feitas, será mesclada com a cópia do perfil existente no servidor.
+
+Usando essa configuração, você pode evitar que usuários configurados para usar perfis móveis recebam o seu perfil em um computador específico.
+
+Se você habilitar essa configuração, ocorrerá o seguinte no computador afetado: no primeiro logon, o usuário receberá um novo perfil local em vez do perfil móvel. No logoff, as alterações serão salvas no perfil local. Todos os logons subsequentes usarão o perfil local. 
+
+Se você desabilitar esta configuração ou não a definir, ocorrerá o comportamento padrão indicado acima.
+
+Se você habilitar as configurações "Impedir propagação de alterações no perfil móvel para o servidor" e "Só permitir perfis de usuário locais", os perfis móveis serão desabilitados.
+
+Observação: essa configuração afeta somente perfis de usuário móveis.</string>
+      <string id="ProfileDlgTimeOut">Tempo limite para caixas de diálogo</string>
+      <string id="ProfileDlgTimeOut_Help">Determina o tempo que o sistema esperará por uma resposta do usuário antes de usar um valor padrão.
+
+O valor padrão é aplicado quando o usuário não responde a mensagens explicando que algum dos seguintes eventos ocorreu:
+
+--  O sistema detecta uma conexão lenta entre o computador do usuário e o servidor que armazena perfis de usuário móveis do usuário.
+
+--  O sistema não consegue acessar os perfis dos usuários baseados em servidor quando eles fazem logon ou logoff.
+
+--  Os perfis locais dos usuários são mais recentes do que os respectivos perfis baseados em servidor.
+
+Você pode usar esta configuração para substituir o valor padrão do sistema, que é de 30 segundos. Para usar esta configuração, digite um número decimal entre 0 e 600 para a duração do intervalo.</string>
+     <string id="ProfileErrorAction">Não conectar usuários com perfis temporários</string>
+     <string id="ProfileErrorAction_Help">Essa diretiva fará o logoff automático de um usuário quando o Windows não puder carregar seu perfil.
+ 
+Se o Windows não puder acessar a pasta do perfil do usuário ou se o perfil contiver erros que o impeçam de ser carregado, o Windows fará o logon do usuário com um perfil temporário. Essa diretiva permite que o administrador desabilite esse comportamento, impedindo que o Windows faça o logon do usuário com um perfil temporário.
+ 
+Se você habilitar essa configuração de diretiva, o Windows não fará o logon de um usuário com um arquivo temporário. O Windows fará o logoff do usuário se seu perfil não puder ser carregado. 
+ 
+Se você desabilitar essa configuração de diretiva ou não definir, o Windows fará o logon do usuário com um perfil temporário quando não puder carregar seu perfil de usuário.
+ 
+Consulte também a configuração "Excluir cópias em cache de perfis móveis".</string>
+      <string id="ProfileUnloadTimeout">Número máximo de tentativas para descarregar e atualizar perfil de usuário</string>
+      <string id="ProfileUnloadTimeout_Help">Determina quantas vezes o sistema tenta descarregar e atualizar a parte do Registro de um perfil de usuário. Quando o número de tentativas especificado por esta configuração é excedido, o sistema para de tentar. Consequentemente, o perfil de usuário pode não ser atualizado e os perfis locais e móveis podem não coincidir.
+
+Quando um usuário efetua logoff do computador, o sistema descarrega a seção do Registro referente ao usuário (HKEY_CURRENT_USER) em um arquivo (NTUSER.DAT) e a atualiza. No entanto, se outro programa ou serviço estiver lendo ou editando o Registro, o sistema não pode descarregá-la. O sistema tenta repetidamente (a uma taxa de uma tentativa por segundo) descarregar e atualizar as configurações do Registro. Por padrão, ele repete as tentativas periódicas 60 vezes (durante um minuto).
+
+Se você habilitar esta configuração, poderá ajustar o número de vezes que o sistema tenta descarregar e atualizar as configurações do Registro do usuário. (Não é possível ajustar a taxa de repetição de tentativas.)
+
+Se você desabilitar esta configuração ou não a definir, o sistema repetirá suas tentativas 60 vezes
+
+Se você definir o número de tentativas como 0, o sistema tentará descarregar e atualizar as configurações do Registro do usuário apenas uma vez. Ele não fará outras tentativas.
+
+Observação: esta configuração é particularmente importante para servidores que executam os serviços de terminal. Como os serviços de terminal editam as configurações do Registro dos usuários quando eles efetuam logoff, as primeiras tentativas que o sistema faz para descarregar as configurações do usuário estão mais sujeitas a falhas.
+
+Esta configuração não afeta as tentativas que o sistema faz para atualizar os arquivos no perfil do usuário.
+
+Dica: você pode aumentar o número de tentativas especificado nesta configuração se houver muitos perfis de usuário armazenados na memória do computador. Isso indica que o sistema não conseguiu descarregar o perfil.
+
+Além disso, consulte o log de aplicativos no Visualizador de Eventos para verificar se há eventos gerados por Userenv. O sistema registra um evento sempre que tenta descarregar a parte do Registro referente ao perfil do usuário. O sistema também registra um evento quando não consegue atualizar os arquivos em um perfil de usuário.</string>
+      <string id="Readonlyuserprofile">Impedir propagação de alterações no perfil móvel para o servidor</string>
+      <string id="Readonlyuserprofile_Help">Esta configuração determina se as alterações feitas pelo usuário no seu perfil móvel serão mescladas com a cópia do seu perfil existente no servidor.
+
+Por padrão, quando um usuário com perfil móvel faz logon em um computador, o perfil móvel dele é copiado no computador local. Caso ele já tenha feito logon anteriormente nesse computador, o perfil móvel será mesclado com o perfil local. Da mesma maneira, quando ele fizer logoff desse computador, a cópia local do perfil dele, inclusive quaisquer alterações feitas, será mesclada com a cópia do perfil existente no servidor.
+
+Usando essa configuração, você pode evitar que alterações feitas em um perfil móvel em um computador específico sejam persistentes.
+
+Se você habilitar essa configuração, ocorrerá o seguinte no computador afetado: no logon, o usuário receberá o seu perfil móvel. Porém, quaisquer alterações que ele fizer no seu perfil não serão mescladas com o seu perfil móvel quando fizer logoff.
+
+Se essa configuração for desabilitada ou não for definida, ocorrerá o comportamento padrão indicado acima.
+
+Observação: essa configuração afeta somente perfis de usuário móveis.</string>
+      <string id="SlowLinkDefault">Aguardar perfil de usuário remoto</string>
+      <string id="SlowLinkDefault_Help">Direciona o sistema para que ele aguarde até que a cópia remota do perfil móvel do usuário seja carregada, mesmo quando ela estiver lenta. Além disso, o sistema aguarda a cópia remota quando o usuário é notificado sobre uma conexão lenta, mas não responde no tempo permitido.
+
+Esta configuração e as relacionadas nesta pasta definem juntas a resposta do sistema quando os perfis móveis de usuários estão lentos para serem carregados.
+
+Se você desabilitar esta configuração ou não a definir, quando o perfil remoto estiver lento para ser carregado, o sistema carregará a cópia local do perfil do usuário móvel. A cópia local também é usada quando o usuário é consultado (como definido na configuração "Avisar ao usuário quando uma conexão lenta for detectada"), mas não responde no tempo permitido (como definido na configuração "Tempo limite para caixas de diálogo").
+
+Aguardar o perfil remoto é apropriado quando os usuários movem-se entre computadores com frequência e a cópia local do perfil deles nem sempre está atualizada. A utilização da cópia local é desejável quando o logon rápido é uma prioridade.
+
+Importante: se a configuração "Não detectar conexões de rede lentas" estiver habilitada, ela será ignorada. Além disso, se a configuração "Excluir cópias em cache de perfis móveis" estiver habilitada, não haverá cópia local do perfil móvel para ser carregada quando o sistema detectar uma conexão lenta.</string>
+      <string id="SlowLinkTimeOut">Tempo limite de conexão de rede lenta para perfis de usuário</string>
+      <string id="SlowLinkTimeOut_Help">Define uma conexão lenta para perfis móveis de usuários.
+
+Se o servidor no qual o perfil móvel de usuário reside levar mais tempo para responder do que os limites permitidos definidos por esta configuração, o sistema considerará que a conexão com o perfil está lenta.
+
+Esta configuração e as relacionadas nesta pasta definem juntas a resposta do sistema quando os perfis móveis de usuários estão lentos para serem carregados.
+
+Ela também estabelece limites para dois testes. Para computadores conectados a redes IP, o sistema mede a taxa em que o servidor remoto retorna dados em resposta a uma mensagem ping de IP. Para definir um limite para este teste, na caixa Velocidade da conexão, digite um número decimal entre 0 e 4.294.967.200, o que representa a taxa de transferência mínima aceitável em quilobytes por segundo. Por padrão, se o servidor retornar menos do que 500 quilobytes de dados por segundo, ele será considerado lento.
+
+Para computadores que não são IP, o sistema mede a capacidade de resposta do sistema de arquivos do servidor remoto. Para definir um limite para este teste, na caixa Tempo, digite um número decimal entre 0 e 20.000, o que representa o tempo de espera máximo aceitável em milissegundos. Por padrão, se o sistema de arquivos do servidor não responder dentro de 120 milissegundos, ele será considerado lento.
+
+Considere o aumento deste valor para clientes que usam os endereços atribuídos ao serviço DHCP ou para computadores que acessam perfis em conexões dial-up.
+
+Importante: se a configuração "Não detectar conexões de rede lentas" estiver habilitada, ela será ignorada. Além disso, se a configuração "Excluir cópias em cache de perfis móveis" estiver habilitada, não haverá cópia local do perfil móvel para ser carregada quando o sistema detectar uma conexão lenta.</string>
+      <string id="UserProfiles">Perfis de usuário</string>
+      <string id="CleanupProfiles">Excluir perfis de usuário anteriores ao número de dias especificado na reinicialização do sistema</string>
+      <string id="CleanupProfiles_Help">Esta configuração de diretiva permite que um administrador exclua automaticamente perfis na reinicialização do sistema que não foram utilizados durante um número específico de dias. Observação: um dia é interpretado como 24 horas depois que um perfil de usuário específico foi acessado.
+
+Se você habilitar esta configuração de diretiva, na próxima vez em que o sistema for reinicializado, o Serviço de Perfis de Usuário excluirá automaticamente todos os perfis de usuário que não tiverem sido usados durante o número de dias especificado. 
+
+Se você desabilitar ou não definir essa configuração de diretiva, esse serviço não excluirá automaticamente perfil algum na próxima vez em que o sistema for reinicializado.</string>
+      <string id="CscSuspendDirectories">Pastas de rede para sincronização somente no logon/logoff</string>
+      <string id="CscSuspendDirectories_Help">Essa configuração de diretiva permite especificar os diretórios de rede que serão sincronizados apenas no logon e no logoff via Arquivos Offline. Essa configuração de diretiva deve ser usada em conjunto com o Redirecionamento de Pasta, para ajudar a resolver problemas de aplicativos que não funcionam corretamente com Arquivos Offline enquanto o usuário está online.
+
+Se você habilitar essa configuração de diretiva, os caminhos de rede especificados nessa configuração de diretiva serão sincronizados apenas por Arquivos Offline durante o logon e o logoff do usuário e serão colocados offline enquanto o usuário estiver conectado.
+
+Se você desabilitar ou não definir essa configuração de diretiva, os caminhos especificados nela funcionarão como quaisquer outros dados armazenados em cache via Arquivos Offline e permanecerão online enquanto o usuário estiver conectado, se os caminhos de rede estiverem acessíveis.   
+
+Observação: você não deve usar essa configuração de diretiva para suspender as pastas redirecionadas da raiz, como Appdata\Roaming, Menu Iniciar e Documentos. Você deve suspender apenas as subpastas das pastas pai.</string>
+      <string id="DontForceUnloadHive">Não force o descarregamento do Registro dos usuários ao ser feito o logoff</string>
+      <string id="DontForceUnloadHive_Help">O Microsoft Windows sempre descarregará o Registro dos usuários, mesmo que haja identificadores abertos para as chaves do Registro por usuário ao ser feito o logoff do usuário. Usando essa configuração de diretiva, um administrador pode negar esse comportamento, impedindo que o Windows force o descarregamento do Registro dos usuários ao ser feito o logoff do usuário.
+
+Observação: essa diretiva deve ser usada apenas nos casos em que você possa estar tendo problemas de compatibilidade de aplicativos devido a esse comportamento específico do Windows. Não é recomendável habilitar essa diretiva por padrão, pois ela pode impedir que os usuários obtenham uma versão atualizada do perfil de usuário móvel.
+
+Se você habilitar essa configuração de diretiva, o Windows não forçará o descarregamento do Registro dos usuários ao ser feito o logoff, mas descarregará o Registro quando todos os identificadores abertos para as chaves do Registro por usuário forem fechados.
+
+Se você desabilitar ou não definir essa configuração de diretiva, o Windows sempre descarregará o Registro dos usuários ao ser feito o logoff, mesmo que haja identificadores abertos para as chaves do Registro por usuário ao ser feito o logoff do usuário.</string>
+      <string id="WaitForNetwork">Definir tempo de espera máximo para a rede se um usuário tiver um perfil de usuário móvel ou pasta base remota</string>
+      <string id="WaitForNetwork_Help">Se o usuário tiver um perfil de usuário móvel ou pasta base remota e a rede não estiver disponível no momento, o Microsoft Windows aguardará a rede por 30 segundos quando o usuário fizer logon no computador. Usando essa configuração de diretiva, um administrador pode especificar por quanto tempo o Windows deve aguardar até que a rede se torne disponível. Se a rede não estiver disponível após o tempo de espera máximo, o Windows continuará a fazer o logon do usuário sem uma conexão de rede. O perfil móvel do usuário não é sincronizado com o servidor e a pasta base remota não é usada para a sessão de logon. 
+
+Essa diretiva é útil para os casos em que a inicialização da rede geralmente pode demorar mais, como redes sem fio.
+
+Observação: se a rede se tornar disponível antes do tempo de espera máximo, o Windows prosseguirá imediatamente com o logon do usuário. O Windows não aguardará a rede se a conexão de rede física não estiver disponível no computador (se a mídia estiver desconectada ou se o adaptador de rede não estiver disponível).
+ 
+Se você habilitar essa configuração de diretiva, o Windows aguardará que a rede se torne disponível até o tempo de espera máximo especificado. Se o valor for definido como zero, o Windows prosseguirá sem aguardar pela rede. 
+
+Se você desabilitar ou não definir essa configuração de diretiva, o Windows aguardará pela rede por até 30 segundos no máximo.</string>
+      <string id="MachineProfilePath">Definir o caminho de perfil móvel para todos os usuários que fizerem logon no computador</string>
+      <string id="MachineProfilePath_Help">Especifica se o Microsoft Windows deve usar o caminho de rede especificado como caminho de perfil móvel do usuário para todos os usuários que fizerem logon no computador. 
+
+Para usar essa configuração, digite o caminho para o compartilhamento da rede na forma \\Nome_do_computador\Nome_do_compartilhamento\. É recomendável adicionar %NOME DE USUÁRIO% ao caminho para dar a cada usuário uma pasta de perfil individual. Se essa opção não for especificada, todos os usuários que fizerem logon no computador usarão a mesma pasta de perfil móvel especificada por essa diretiva. Verifique se definiu a segurança adequada na pasta para permitir que todos os usuários acessem o perfil. 
+
+Se você habilitar essa configuração de diretiva, todos os usuários que fizerem logon no computador usarão o caminho de perfil móvel especificado nessa diretiva. 
+
+Se você desabilitar ou não definir essa configuração de diretiva, os usuários que fizerem logon no computador usarão seu perfil local ou o perfil de usuário móvel padrão.   
+
+Observação: há quatro maneiras de se configurar um perfil móvel para um usuário. O Windows lê a configuração do perfil na ordem a seguir e usa a primeira configuração definida que ler.
+ 
+1. Caminho de perfil móvel de Serviços de Terminal especificado pela diretiva de Serviços de Terminal
+2. Caminho de perfil móvel de Serviços de Terminal especificado pelo objeto de usuário
+3. Um caminho de perfil móvel por computador especificado nessa diretiva
+4. Um caminho de perfil móvel por usuário especificado no objeto de usuário
+</string>
+      <string id="UploadHive">Upload em segundo plano de um arquivo de registro do perfil de usuário móvel enquanto o usuário está conectado</string>
+      <string id="UploadHive_Help">Define o agendamento de um carregamento em segundo plano do arquivo de registro do perfil de um usuário móvel (ntuser.dat).  Essa configuração somente carregará o arquivo de registro do perfil de um usuário (outros dados do usuário não serão carregados) e só se o usuário estiver conectado.  Somente o arquivo de registro do perfil de um usuário móvel será carregado--perfis regulares não serão afetados. Essa diretiva não interrompe o carregamento do arquivo de registro do perfil de usuário móvel quando no logoff do usuário.
+
+Se essa configuração for desabilitada ou não for definida, o arquivo de registro do perfil de um usuário móvel não será carregado em segundo plano enquanto o usuário estiver conectado.
+
+Para usar essa configuração, escolha primeiro qual método de agendamento usar.
+
+Se "Executar no intervalo definido" for escolhida, um intervalo deverá ser definido, com um valor entre 1-720 horas. Uma vez definido, o arquivo de registro do perfil será carregado no intervalo especificado após o logon do usuário. Por exemplo, com um valor de 6 horas, se um usuário fizer logon às 6:00am e ainda estiver conectado às 12:00pm, seu arquivo de registro será carregado para esse intervalo. Além disso, se ele ainda estiver conectado às 6:00pm, o arquivo será novamente carregado e assim consecutivamente a cada 6 horas até o logoff.  Na próxima vez que o usuário fizer logon, o temporizador iniciará novamente e o arquivo de registro será carregado 6 horas mais tarde (no nosso exemplo.)
+
+Se "Executar na hora do dia especificada" for escolhida, a hora do dia deverá ser especificada. Uma vez definida, a ramificação do registro será carregada na mesma hora, todos os dias, assumindo que o usuário está conectado nessa hora.
+
+Para as duas opções de agendamento, há um atraso de uma hora aleatório incluído por acionamento para evitar a sobrecarga no servidor com carregamentos simultâneos. Por exemplo, se as configurações determinarem que o arquivo de registro do usuário deve ser carregado às 6:00pm, ele será carregado, na verdade, em uma hora aleatória entre 6:00pm e 7:00pm.
+
+Observação: se "Executar no intervalo definido" for selecionada, a opção "Hora do dia" será descartada. Da mesma forma, se "Executar na hora do dia definida" for escolhida, a opção "Intervalo (horas)" será descartada.</string>
+      <string id="UploadHiveMethod_Interval">Executar no intervalo definido</string>
+      <string id="UploadHiveMethod_Time">Executar na hora do dia especificada</string>
+      <string id="ScheduleTime0">00:00</string>
+      <string id="ScheduleTime1">01:00</string>
+      <string id="ScheduleTime2">02:00</string>
+      <string id="ScheduleTime3">03:00</string>
+      <string id="ScheduleTime4">04:00</string>
+      <string id="ScheduleTime5">05:00</string>
+      <string id="ScheduleTime6">06:00</string>
+      <string id="ScheduleTime7">07:00</string>
+      <string id="ScheduleTime8">08:00</string>
+      <string id="ScheduleTime9">09:00</string>
+      <string id="ScheduleTime10">10:00</string>
+      <string id="ScheduleTime11">11:00</string>
+      <string id="ScheduleTime12">12:00</string>
+      <string id="ScheduleTime13">13:00</string>
+      <string id="ScheduleTime14">14:00</string>
+      <string id="ScheduleTime15">15:00</string>
+      <string id="ScheduleTime16">16:00</string>
+      <string id="ScheduleTime17">17:00</string>
+      <string id="ScheduleTime18">18:00</string>
+      <string id="ScheduleTime19">19:00</string>
+      <string id="ScheduleTime20">20:00</string>
+      <string id="ScheduleTime21">21:00</string>
+      <string id="ScheduleTime22">22:00</string>
+      <string id="ScheduleTime23">23:00</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ExcludeDirectories">
+        <textBox refId="ExcludeMessage">
+          <label>Impedir que as pastas a seguir sejam movidas com o perfil:</label>
+        </textBox>
+        <text>Você pode digitar vários nomes de diretório, separados por ponto-e-vírgula,</text>
+        <text>todos eles relativos à raiz do perfil do usuário</text>
+      </presentation>
+      <presentation id="LimitSize">
+        <textBox refId="SizeMessage">
+          <label>Mensagem personalizada</label>
+          <defaultValue>Você excedeu o espaço de armazenamento de seu perfil. Para poder fazer logoff, você precisa mover alguns itens do perfil para a rede ou para o armazenamento local.</defaultValue>
+        </textBox>
+        <decimalTextBox refId="ProfileSize" defaultValue="30000" spinStep="100">Tamanho máximo de perfil (KB)</decimalTextBox>
+        <checkBox refId="IncludeRegInProQuota">Mostrar arquivos do Registro na lista de arquivos</checkBox>
+        <checkBox refId="WarnUser">Notificar o usuário quando o espaço de armazenamento do perfil for ultrapassado.</checkBox>
+        <decimalTextBox refId="WarnUserTimeout" defaultValue="15" spinStep="5">Lembrar o usuário a cada X minutos:</decimalTextBox>
+      </presentation>
+      <presentation id="ProfileDlgTimeOut">
+        <decimalTextBox refId="ProfileDlgWaitInterval" defaultValue="30">Tempo (segundos)</decimalTextBox>
+      </presentation>
+      <presentation id="ProfileUnloadTimeout">
+        <decimalTextBox refId="ProfileUnloadTimeoutPrompt" defaultValue="60" spinStep="5">Máx. de tentativas:  </decimalTextBox>
+      </presentation>
+      <presentation id="SlowLinkTimeOut">
+        <decimalTextBox refId="TransferRateOp" defaultValue="500" spinStep="100">Velocidade da conexão (Kbps):</decimalTextBox>
+        <decimalTextBox refId="SlowLinkWaitInterval" defaultValue="120">Tempo (milissegundos)</decimalTextBox>
+      </presentation>
+      <presentation id="CleanupProfiles">
+        <decimalTextBox refId="CleanupProfiles_Days" defaultValue="30">Excluir perfis de usuários com mais de (dias)</decimalTextBox>
+      </presentation>
+      <presentation id="CscSuspendDirectories">
+        <textBox refId="CscSuspendDirectories_Message">
+          <label>Sincronizar estas pastas de rede somente no logon/logoff:</label>
+        </textBox>
+        <text>Você pode digitar vários nomes de pastas, separados por ponto-e-vírgula.</text>
+      </presentation>
+      <presentation id="WaitForNetwork">
+        <decimalTextBox refId="WaitForNetwork_Seconds" defaultValue="30">Aguardar pela rede pelo máximo de (segundos)</decimalTextBox>
+      </presentation>
+      <presentation id="MachineProfilePath">
+        <textBox refId="MachineProfilePath_Message">
+          <label>Os usuários que fazem logon no computador devem usar este caminho de perfil móvel:</label>
+        </textBox>
+        <text>É recomendável adicionar %USERNAME% ao caminho para dar a cada usuário um diretório de perfil diferente.</text>
+      </presentation>
+      <presentation id="UploadHive">
+        <dropdownList refId="UploadHiveMethod" noSort="true" defaultItem="0">Método de agendamento:</dropdownList>
+        <text>As configurações a seguir só serão obrigatórias e aplicáveis</text>
+        <text>se "Executar no intervalo definido" for selecionada.</text>
+        <decimalTextBox refId="UploadHiveInterval" defaultValue="12" spinStep="1">intervalos (horas):</decimalTextBox>
+        <text>As configurações a seguir só serão obrigatórias e aplicáveis</text>
+        <text>se "Executar na hora do dia especificada" for selecionada.</text>
+        <dropdownList refId="UploadHiveTime" defaultItem="3">Hora do dia:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

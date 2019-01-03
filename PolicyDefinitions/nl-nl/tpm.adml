@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>voer hier de weergegeven naam in</displayName>
+  <description>typ hier een beschrijving</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Met deze beleidsinstelling kunt u de functie voor het maken van een back-up van de informatie over de eigenaar van de TPM (Trusted Platform Module) in Active Directory Domain Services beheren. 
+
+Informatie over de eigenaar van de TPM omvat onder andere een cryptografische hash van het wachtwoord van de eigenaar van de TPM. Bepaalde TPM-opdrachten kunnen alleen worden uitgevoerd door de eigenaar van de TPM. Deze hash geeft de TPM de bevoegdheid om deze opdrachten uit te voeren. 
+
+Als u deze beleidsinstelling inschakelt, wordt er automatisch en zonder dat u het merkt een back-up van de informatie over de eigenaar van de TPM gemaakt in Active Directory Domain Services zodra u in Windows het wachtwoord van de eigenaar van de TPM instelt of wijzigt. 
+
+Als u de optie TPM-back-up in Active Directory Domain Services vereisen selecteert, kan er alleen een TPM-wachtwoord worden ingesteld of gewijzigd als de computer is verbonden met het domein en de back-up in Active Directory Domain Services met succes is voltooid. Deze optie is standaard ingeschakeld om ervoor te zorgen dat informatie over de eigenaar van de TPM altijd aanwezig is. Wanneer de optie niet is ingeschakeld, probeert de computer weliswaar een back-up in Active Directory Domain Services te maken, maar heeft het geen effect op het TPM-beheer wanneer deze mislukt, bijvoorbeeld door netwerkproblemen. De computer probeert niet automatisch om nogmaals een back-up te maken, en er is dus mogelijk geen informatie over de eigenaar van de TPM opgeslagen in Active Directory Domain Services wanneer u BitLocker instelt.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt er geen back-up van de informatie over de eigenaar van de TPM gemaakt in Active Directory Domain Services. 
+
+Opmerking: u moet eerst de juiste schema-uitbreidingen en toegangsbeheerinstellingen voor het domein instellen voordat een back-up in Active Directory Domain Services mogelijk is. Zie de onlinedocumentatie voor meer informatie over het instellen van Active Directory Domain Services voor TPM.
+
+Opmerking: u kunt in TPM alleen uitgebreide beveiligingsfuncties instellen voor BitLocker-stationsversleuteling en andere toepassingen als u een eigenaar hebt ingesteld. Als u zichzelf eigenaar wilt maken van het TPM met een eigenaarwachtwoord, voert u tpm.msc uit en selecteert u de actie TPM initialiseren.
+
+Opmerking: als de informatie over de eigenaar van de TPM verloren is gegaan of niet beschikbaar is, is beperkt TPM-beheer mogelijk door tpm.msc uit te voeren op de lokale computer.</string>
+      <string id="ActiveDirectoryBackup_Name">TPM-back-up in Active Directory Domain Services inschakelen</string>
+      <string id="BlockedCommandsList_Help">Met deze beleidsinstelling kunt u de lijst Groepsbeleid beheren voor TPM-opdrachten (Trusted Platform Module) die door Windows worden geblokkeerd.
+
+Als u deze beleidsinstelling inschakelt, worden de opgegeven opdrachten door Windows geblokkeerd en niet verzonden naar de TPM op de computer. Naar TPM-opdrachten wordt verwezen met een opdrachtnummer. Zo verwijst opdrachtnummer 129 naar TPM_OwnerReadInternalPub en opdrachtnummer 170 naar TPM_FieldUpgrade. Als u wilt achterhalen welk opdrachtnummer aan een TPM-opdracht is gekoppeld, voert u tpm.msc uit en gaat u naar de sectie Opdrachtbeheer.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, worden alleen TPM-opdrachten uit de standaardlijst of de lokale lijst door Windows geblokkeerd. De standaardlijst met geblokkeerde TPM-opdrachten wordt vooraf door Windows geconfigureerd. Als u de standaardlijst wilt weergeven, voert u tpm.msc uit, gaat u naar de sectie Opdrachtbeheer en maakt u de kolom In standaardblokkeerlijst zichtbaar. De lokale lijst met geblokkeerde TPM-opdrachten configureert u buiten Groepsbeleid door tpm.msc uit te voeren of door middel van een script in de Win32_Tpm interface. Zie de gerelateerde beleidsinstellingen voor het afdwingen van het gebruik van de standaardlijsten en lokale lijsten met geblokkeerde TPM-opdrachten of het negeren hiervan.</string>
+      <string id="BlockedCommandsList_Name">Lijst met geblokkeerde TPM-opdrachten configureren</string>
+      <string id="IgnoreDefaultList_Help">Met deze beleidsinstelling kunt u het gebruik van de standaardlijst met geblokkeerde TPM-opdrachten (Trusted Platform Module) van de computer afdwingen of deze negeren.
+
+Als u deze beleidsinstelling inschakelt, negeert Windows de standaardlijst met geblokkeerde TPM-opdrachten van de computer, en worden alleen die TPM-commando's geblokkeerd die zijn opgegeven in het Groepsbeleid of de lokale lijst. 
+
+De standaardlijst met geblokkeerde TPM-opdrachten wordt vooraf door Windows geconfigureerd. Als u de standaardlijst wilt weergeven, voert u tpm.msc uit, gaat u naar de sectie Opdrachtbeheer en maakt u de kolom In standaardblokkeerlijst zichtbaar. De lokale lijst met geblokkeerde TPM-opdrachten configureert u buiten Groepsbeleid dooor tpm.msc uit te voeren of door middel van een script in de Win32_Tpm interface. Zie de gerelateerde beleidsinstelling voor het configureren van de lijst Groepsbeleid met geblokkeerde TPM-opdrachten.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, worden de TPM-opdrachten uit de standaardlijst door Windows geblokkeerd, evenals de TPM-opdrachten in de lijst Groepsbeleid en de lokale lijst. </string>
+      <string id="IgnoreDefaultList_Name">Standaardlijst met geblokkeerde TPM-opdrachten negeren</string>
+      <string id="IgnoreLocalList_Help">Met deze beleidsinstelling kunt u gebruik van de lokale lijst met geblokkeerde TPM-opdrachten (Trusted Platform Module) van de computer afdwingen of deze negeren.
+
+Als u deze beleidsinstelling inschakelt, negeert Windows de lokale lijst met geblokkeerde TPM-opdrachten van de computer en worden alleen die TPM-commando's geblokkeerd die zijn opgegeven in het Groepsbeleid of de standaardlijst.
+
+De lokale lijst met geblokkeerde TPM-opdrachten configureert u buiten Groepsbeleid dooor tpm.msc uit te voeren of door middel van een script in de Win32_Tpm interface. De standaardlijst met geblokkeerde TPM-opdrachten wordt vooraf door Windows geconfigureerd. Zie de gerelateerde beleidsinstelling voor het configureren van de lijst Groepsbeleid met geblokkeerde TPM-opdrachten. 
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, worden de TPM-opdrachten uit de lokale lijst door Windows geblokkeerd, evenals de TPM-opdrachten in de lijst Groepsbeleid en de standaardlijst.</string>
+      <string id="IgnoreLocalList_Name">Lokale lijst met geblokkeerde TPM-opdrachten negeren</string>
+      <string id="TPMCategory">TPM-services (Trusted Platform Module)</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">TPM-back-up in Active Directory Domain Services vereisen</checkBox>
+        <text/>
+        <text>Als deze optie is geselecteerd, kunt u geen wachtwoord voor de TPM-eigenaar instellen en het bestaande wachtwoord niet wijzigen </text>
+        <text>als de back-up mislukt (aanbevolen standaardinstelling).</text>
+        <text/>
+        <text>Als deze optie niet is geselecteerd, kunt u ook een wachtwoord voor de TPM-eigenaar instellen of het bestaande wachtwoord wijzigen</text>
+        <text>als de back-up is mislukt. De computer probeert niet automatisch nogmaals een back-up te maken.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Geef de opdrachten op die moeten worden geblokkeerd door de nummers van de opdrachten aan de lijst toe te voegen.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">De lijst met geblokkeerde TPM-opdrachten:</listBox>
+        <text>Als u bijvoorbeeld de opdrachten TPM_OwnerReadInternalPub</text>
+        <text>en TPM_FieldUpgrade wilt blokkeren, voegt u items 129 en 170 aan de lijst toe.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

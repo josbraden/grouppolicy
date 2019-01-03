@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
+  <resources>
+    <stringTable>
+      <string id="DNS_Client">DNS Client</string>
+      <string id="DNS_Domain">Connection-Specific DNS Suffix</string>
+      <string id="DNS_Domain_Help">Specifies a connection-specific DNS suffix. This setting supersedes the connection-specific DNS suffixes set on the computers to which this setting is applied, those configured locally and those configured using DHCP.
+
+Warning: A connection-specific DNS suffix specified in this setting is applied to all the network connections used by multihomed computers to which this setting is applied.
+
+To use this setting, click Enable, and then enter a string value representing the DNS suffix in the available field.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local or DHCP-configuration parameters.</string>
+      <string id="DNS_NameServer">DNS Servers</string>
+      <string id="DNS_NameServer_Help">Defines the DNS servers to which a computer sends queries when it attempts to resolve names.
+
+Warning: The list of the DNS servers defined in this setting supersedes DNS servers configured locally and those configured using DHCP. The list of DNS servers is applied to all network connections of multihomed computers to which this setting is applied.
+
+To use this setting, click Enable, and then enter a space-delimited list of IP addresses (in dotted decimal format) in the available field. If you enable this setting, you must enter at least one IP address.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local or DHCP-configured parameters.</string>
+      <string id="DNS_PrimaryDnsSuffix">Primary DNS Suffix</string>
+      <string id="DNS_PrimaryDnsSuffix_Help">Specifies the primary Domain Name System (DNS) suffix for all affected computers. The primary DNS suffix is used in DNS name registration and DNS name resolution.
+
+This setting lets you specify a primary DNS suffix for a group of computers and prevents users, including administrators, from changing it.
+
+If you disable this setting or do not configure it, each computer uses its local primary DNS suffix, which is usually the DNS name of Active Directory domain to which it is joined. However, administrators can use System in Control Panel to change the primary DNS suffix of a computer.
+
+To use this setting, in the text box provided, type the entire primary DNS suffix you want to assign. For example, microsoft.com.
+
+This setting does not disable the DNS Suffix and NetBIOS Computer Name dialog box that administrators use to change the primary DNS suffix of a computer. However, if administrators enter a suffix, that suffix is ignored while this setting is enabled.
+
+Important: To make changes to this setting effective, you must restart Windows on all computers affected by the setting.
+
+Note: To change the primary DNS suffix of a computer without setting a setting, click System in Control Panel, click the Network Identification tab, click Properties, click More, and then enter a suffix in the "Primary DNS suffix of this computer" box.
+
+For more information about DNS, see "Domain Name System (DNS)" in Help.</string>
+      <string id="DNS_RegisterAdapterName">Register DNS records with connection-specific DNS suffix</string>
+      <string id="DNS_RegisterAdapterName_Help">Determines if a computer performing dynamic registration may register A and PTR resource records with a concatenation of its Computer Name and a connection-specific DNS suffix, in addition to registering these records with a concatenation of its Computer Name and the Primary DNS suffix.
+
+Warning: Enabling of this group setting is applied to all the network connections of multihomed computers to which this setting is applied.
+
+By default, a DNS client performing dynamic DNS registration registers A and PTR resource records with a concatenation of its Computer Name and the primary DNS suffix. For example, a concatenation of a Computer Name, such as "mycomputer", and the primary DNS suffix, such as "microsoft.com", would result in "mycomputer.microsoft.com".
+
+If this setting were enabled, a computer would register A and PTR resource records with its connection-specific DNS suffix in addition to registering A and PTR resource records with the primary DNS suffix. For example, a concatenation of a Computer Name "mycomputer" and the connection specific DNS suffix "VPNconnection" would be used when registering A and PTR resource records, resulting in "mycomputer.VPNconnection". Notice that if dynamic DNS registration is disabled on a computer to which this setting is applied, then, regardless of this setting’s settings, a computer does not attempt dynamic DNS registration of A and PTR records containing a concatenation of its Computer Name and a connection-specific DNS suffix. If dynamic DNS registration is disabled on a specific network connection of a computer to which this setting is applied, then, regardless of this setting’s settings, a computer does not attempt dynamic DNS registration of A and PTR records containing a concatenation of its Computer Name and a connection-specific DNS suffix on that network connection.
+
+If this setting is disabled, a DNS client does not register A and PTR resource records with its connection-specific DNS suffix.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="DNS_RegisterReverseLookup">Register PTR Records</string>
+      <string id="DNS_RegisterReverseLookup_DoNotRegister">Do not register</string>
+      <string id="DNS_RegisterReverseLookup_Help">Determines whether the registration of PTR resource records is enabled for the computers to which this policy is applied.
+
+By default, DNS clients configured to perform dynamic DNS registration attempt PTR resource record registration only if they successfully registered the corresponding A resource record. "A" resource records map a host DNS name to the host IP address, and "PTR" resource records map the host IP address to the host DNS name.
+
+To enable this setting, click Enable, and then select one of the following values:
+
+Do not register - computers never attempt PTR resource records registration.
+
+Register - computers attempt PTR resource records registration regardless of the success of the A records registration.
+
+Register only if A record registration succeeds – computers attempt PTR resource records registration only if they successfully registered the corresponding A resource records.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="DNS_RegisterReverseLookup_Register">Register</string>
+      <string id="DNS_RegisterReverseLookup_RegisterOnlyIfASucceeds">Register only if A record registration succeeds </string>
+      <string id="DNS_RegistrationEnabled">Dynamic Update</string>
+      <string id="DNS_RegistrationEnabled_Help">Determines if dynamic update is enabled.
+
+Computers configured for dynamic update automatically register and update their DNS resource records with a DNS server.
+
+If you enable this setting, the computers to which this setting is applied may use dynamic DNS registration on each of their network connections, depending on the configuration of each individual network connection. For a dynamic DNS registration to be enabled on a specific network connection, it is necessary and sufficient that both computer-specific and connection-specific configurations allow dynamic DNS registration. This setting controls the computer-specific property controlling dynamic DNS registration. If you enable this setting, you allow dynamic update to be set individually for each of the network connections.
+
+If you disable this setting, the computers to which this setting is applied may not use dynamic DNS registration for any of their network connections, regardless of the configuration for individual network connections.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="DNS_RegistrationOverwritesInConflict">Replace Addresses In Conflicts</string>
+      <string id="DNS_RegistrationOverwritesInConflict_Help">Determines whether a DNS client that attempts to register its A resource record should overwrite an existing A resource record or records containing conflicting IP addresses.
+
+This setting is designed for computers that register A resource records in DNS zones that do not support Secure Dynamic Update. Secure Dynamic Update preserves ownership of resource records and does not allow a DNS client to overwrite records that are registered by other computers.
+
+During dynamic update of a zone that does not use Secure Dynamic Update, a DNS client may discover that an existing A resource record associates the client’s host DNS name with an IP address of a different computer. According to the default configuration, the DNS client attempts to replace the existing A resource record with an A resource record associating the DNS name with the client’s IP address.
+
+If you enable this setting, DNS clients attempt to replace conflicting A resource records during dynamic update.
+
+If you disable this setting, the DNS client still performs the dynamic update of A resource records, but if the DNS client attempts to update A resource records containing conflicts, this attempt fails and an error is recorded in the Event Viewer log.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="DNS_RegistrationRefreshInterval">Registration Refresh Interval</string>
+      <string id="DNS_RegistrationRefreshInterval_Help">Specifies the Registration Refresh Interval of A and PTR resource records for computers to which this setting is applied. This setting may be applied to computers using dynamic update only.
+
+Computers running Windows 2000 Professional and Windows XP Professional, and configured to perform dynamic DNS registration of A and PTR resource records, periodically reregister their records with DNS servers, even if their records’ data has not changed. This reregistration is required to indicate to DNS servers configured to automatically remove (scavenge) stale records that these records are current and should be preserved in the database.
+
+Warning: If the DNS resource records are registered in zones with scavenging enabled, the value of this setting should never be longer than the Refresh Interval configured for these zones. Setting the Registration Refresh Interval to longer than the Refresh Interval of the DNS zones might result in the undesired deletion of A and PTR resource records.
+
+To specify the Registration Refresh Interval, click Enable, and then enter a value larger than 1800. Remember, this value specifies the Registration Refresh Interval in seconds, for example, 1800 seconds is 30 minutes.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="DNS_RegistrationTtl">TTL Set in the A and PTR records</string>
+      <string id="DNS_RegistrationTtl_Help">Specifies the value for the Time-To-Live (TTL) field in A and PTR resource records registered by the computers to which this setting is applied.
+
+To specify the TTL, click Enable, and then enter a value in seconds (for example, the value 900 is 15 minutes).
+
+If this setting is not configured, it is not applied to any computer.</string>
+      <string id="DNS_SearchList">DNS Suffix Search List</string>
+      <string id="DNS_SearchList_Help">Determines the DNS suffixes to attach to an unqualified single-label name before submission of a DNS query for that name.
+
+An unqualified single-label name contains no dots, such as "example". This is different from a fully qualified domain name, such as "example.microsoft.com.".
+
+With this setting enabled, when a user submits a query for a single-label name, such as "example", a local DNS client attaches a suffix, such as "microsoft.com", resulting in the query "example.microsoft.com", before sending the query to a DNS server.
+
+If you enable this setting, you can specify the DNS suffixes to attach before submission of a query for an unqualified single-label name. The values of the DNS suffixes in this setting may be set using comma-separated strings, such as "microsoft.com,serverua.microsoft.com,office.microsoft.com". One DNS suffix is attached for each submission of a query. If a query is unsuccessful, a new DNS suffix is added in place of the failed suffix, and this new query is submitted. The values are used in the order they appear in the string, starting with the leftmost value and preceding to the right.
+
+If you enable this setting, you must specify at least one suffix.
+
+If you disable this setting, the primary DNS suffix and network connection-specific DNS suffixes are appended to the unqualified queries.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="DNS_UpdateSecurityLevel">Update Security Level</string>
+      <string id="DNS_UpdateSecurityLevel_Help">Specifies whether the computers to which this setting is applied use secure dynamic update or standard dynamic update for registration of DNS records.
+
+To enable this setting, click Enable, and then choose one of the following values.
+
+Unsecure followed by secure - if this option is chosen, computers send secure dynamic updates only when nonsecure dynamic updates are refused.
+
+Only Unsecure - if this option is chosen, computers send only nonsecure dynamic updates.
+
+Only Secure - if this option is chosen, computers send only secure dynamic updates.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="DNS_UpdateSecurityLevel_OnlySecure">Only Secure</string>
+      <string id="DNS_UpdateSecurityLevel_OnlyUnsecure">Only Unsecure</string>
+      <string id="DNS_UpdateSecurityLevel_UnsecureFollowedBySecure">Unsecure followed by Secure</string>
+      <string id="DNS_UpdateTopLevelDomainZones">Update Top Level Domain Zones</string>
+      <string id="DNS_UpdateTopLevelDomainZones_Help">Specifies whether the computers to which this setting is applied may send dynamic updates to the zones named with a single label name, also known as top-level domain zones, for example, "com".
+
+By default, a DNS client configured to perform dynamic DNS update sends dynamic updates to the DNS zone that is authoritative for its DNS resource records, unless the authoritative zone is a top-level domain and root zone.
+
+If this setting is enabled, computers to which this policy is applied send dynamic updates to any zone that is authoritative for the resource records that the computer needs to update, except the root zone.
+
+If this setting is disabled, computers to which this policy is applied do not send dynamic updates to the root and/or top-level domain zones that are authoritative for the resource records that the computer needs to update.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="DNS_UseDomainNameDevolution">Primary DNS Suffix Devolution</string>
+      <string id="DNS_UseDomainNameDevolution_Help">Determines whether the DNS client performs primary DNS suffix devolution in a name resolution process.
+
+When a user submits a query for a single-label name, such as "example", a local DNS client attaches a suffix, such as "microsoft.com", resulting in the query "example.microsoft.com", before sending the query to a DNS server.
+
+If a DNS Suffix Search List is not specified, the DNS client attaches the Primary DNS Suffix to a single-label name, and, if this query fails, the Connection-Specific DNS suffix is attached for a new query. If none of these queries are resolved, the client devolves the Primary DNS Suffix of the computer (drops the leftmost label of the Primary DNS Suffix), attaches this devolved Primary DNS suffix to the single-label name, and submits this new query to a DNS server.
+
+For example, if the primary DNS suffix ooo.aaa.microsoft.com is attached to the non-dot-terminated single-label name "example," and the DNS query for example.ooo.aaa.microsoft.com fails, the DNS client devolves the primary DNS suffix (drops the leftmost label) till the specified devolution level, and submits a query for example.aaa.microsoft.com. If this query fails, the primary DNS suffix is devolved further if it is under specified devolution level and the query example.microsoft.com is submitted. If this query fails, devolution continues if it is under specified devolution level and the query example.microsoft.com is submitted. The primary DNS suffix cannot be devolved beyond devolution level. 
+
+If this setting is enabled with appropriate devolution level, DNS clients on the computers to which this setting is applied attempt to resolve names that are concatenations of the single-label name to be resolved and the devolved Primary DNS Suffix.
+
+If this setting is disabled, DNS clients on the computers to which this setting is applied do not attempt to resolve names that are concatenations of the single-label name to be resolved and the devolved Primary DNS Suffix.
+
+If this setting is not configured, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="DNS_DomainNameDevolutionLevel">Primary DNS Suffix Devolution Level</string>
+      <string id="DNS_DomainNameDevolutionLevel_Help">This policy setting determines the Domain Name System (DNS) suffix devolution level that DNS clients will use, if the clients perform primary DNS suffix devolution in a name resolution process. When DNS suffix devolution is enabled, the leftmost label of a primary DNS suffix is dropped on each successive query attempt, when a query fails for a name to which a primary DNS suffix has been attached. The devolution level indicates the minimum number of labels that must be added to the query string after the primary DNS suffix is devolved.
+
+When a user submits a query for a single-label name, such as "example," a local DNS client attaches a suffix, such as "microsoft.com” to the query, before sending the query to a DNS server. In this case, this results in the query "example.microsoft.com.”
+ 
+If a DNS suffix search list is not specified, the DNS client attaches the primary DNS suffix to a single-label name. If this query fails, the connection-specific DNS suffix is attached for a new query. If none of these queries is resolved, the client devolves the primary DNS suffix of the computer, attaches the devolved primary DNS suffix to the single-label name, and submits this new query to a DNS server.
+
+For example, if the primary DNS suffix aaa.bbb.ccc.ddd.microsoft.com is attached to the single-label name "example” (which has no dot at the end), and if DNS suffix devolution is enabled and the level is set to 3, the following queries would be run:  
+
+Example.aaa.bbb.ccc.ddd.microsoft.com (If this query fails, for the next query the primary DNS suffix will devolve to bbb.ccc.ddd.microsoft.com.)
+
+Example.bbb.ccc.ddd.microsoft.com (If this query fails, for the next query the primary DNS suffix will devolve to ccc.ddd.microsoft.com.)
+
+Example.ccc.ddd.microsoft.com (If this query fails, for the next query the primary DNS suffix will devolve to ddd.microsoft.com.)
+
+Example.ddd.microsoft.com (If this query fails, no further queries can be made because the devolution level is set to 3 and the primary DNS suffix contains 3 labels.)
+  
+If you enable this policy setting, DNS clients on the computers to which this setting is applied attempt to resolve names that are concatenations of the single-label name to be resolved and the devolved primary DNS suffix. The DNS clients will devolve the primary DNS suffix on each query attempt until the name is successfully resolved, the devolution level specified in this setting has been reached, or the primary DNS suffix name has two labels.
+ 
+If you disable or do not configure this policy setting, DNS clients on the computers to which this setting is applied do not attempt to resolve names that are concatenations of the single-label name to be resolved and the devolved primary DNS suffix. If a Forest Root Domain (FRD) is present, no search list is configured, and the query is for a single-label name, then the DNS client will devolve up to the FRD until the name is successfully resolved.</string>
+      <string id="DNS_TurnOffMulticast">Turn off Multicast Name Resolution</string>
+      <string id="DNS_TurnOffMulticast_Help">Local Link Multicast Name Resolution (LLMNR) is a secondary name resolution protocol. Queries are sent over the Local Link, a single subnet, from a client machine using Multicast to which another client on the same link, which also has LLMNR enabled, can respond. LLMNR provides name resolution in scenarios in which conventional DNS name resolution is not possible.
+
+If you enable this policy setting, Multicast name resolution or LLMNR, will be turned off for the machine across all available but un-configured network adapters.
+
+If you disable this policy setting, Multicast name resolution or LLMNR, will be turned on for the machine across all available but un-configured network adapters.
+
+If you do not configure this policy setting, Multicast name resolution or LLMNR, will be turned on for the machine across all available but un-configured network adapters by default.</string>
+      <string id="DNS_AppendToMultiLabelName">Allow DNS Suffix Appending to Unqualified Multi-Label Name Queries</string>
+      <string id="DNS_AppendToMultiLabelName_Help">Specifies whether the computers to which this setting is applied may attach suffixes to an unqualified multi-label name before sending subsequent DNS queries, if the original name query fails.
+
+A name containing dots, but not dot-terminated, is called an unqualified multi-label name, for example "server.corp". A fully qualified name would have a terminating dot, for example "server.corp.contoso.com.".
+
+If you enable this setting, suffixes are allowed to be appended to an unqualified multi-label name, if the original name query fails. For example, an unqualified multi-label name query for "server.corp" will be queried by the DNS Client first. If the query succeeds, the response is returned to the client. If the query fails, the unqualified multi-label name is appended with DNS Suffixes configured for the computer for queries. These suffixes can be derived from a combination of the local DNS Client's primary domain suffix, a connection-specific domain suffix and/or DNS Suffix Search List.
+
+For example, if the local DNS Client receives a query for "server.corp", and a primary domain suffix is configured as "contoso.com", with this setting the DNS Client will send a query for "server.corp.contoso.com." if the original name query for "server.corp" fails. 
+
+If you disable this setting, no suffixes are appended to unqualified multi-label name queries if the original name query fails. 
+
+If you do not configure this setting, computers will use their local DNS Client configuration to determine the query behavior for unqualified multi-label names.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="DNS_Domain">
+        <textBox refId="DNS_DomainLabel">
+          <label>DNS Suffix:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_NameServer">
+        <textBox refId="DNS_NameServerLabel">
+          <label>IP Addresses:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_PrimaryDnsSuffix">
+        <textBox refId="DNS_PrimaryDnsSuffixBox">
+          <label>Enter a primary DNS suffix:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_RegisterReverseLookup">
+        <dropdownList refId="DNS_RegisterReverseLookup_Box" defaultItem="0">Register PTR records:</dropdownList>
+      </presentation>
+      <presentation id="DNS_RegistrationRefreshInterval">
+        <decimalTextBox refId="DNS_RegistrationRefreshIntervalLabel" defaultValue="1800" spinStep="100">Seconds:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_DomainNameDevolutionLevel">
+        <decimalTextBox refId="DNS_DomainNameDevolutionLevelLabel" defaultValue="2" spinStep="1">Set the primary DNS suffix devolution level</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_RegistrationTtl">
+        <decimalTextBox refId="DNS_RegistrationTtlLabel" defaultValue="600" spinStep="100">Seconds:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_SearchList">
+        <textBox refId="DNS_SearchListLabel">
+          <label>DNS Suffixes:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_UpdateSecurityLevel">
+        <dropdownList refId="DNS_UpdateSecurityLevel_Box" defaultItem="2">Update Security Level:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

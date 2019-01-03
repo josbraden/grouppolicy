@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Paramètres KDC</displayName>
+  <description>Paramètres de configuration pour le centre de distribution de clés Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Utiliser l'ordre de recherche dans la forêt</string>
+      <string id="forestsearch_explain">Ce paramètre de stratégie définit la liste des forêts de confiance interrogées par le centre de distribution de clés (KDC) lorsque celui-ci essaie de résoudre des noms principaux de services (noms SPN) en deux parties.
+
+Si vous activez ce paramètre de stratégie, le centre de distribution de clés effectue ses recherches dans les forêts de cette liste s'il ne parvient pas à résoudre un nom SPN en deux parties dans la forêt locale. La recherche est basée sur un catalogue global ou sur les suffixes de noms. Dès qu'il trouve une correspondance, le centre de distribution de clés renvoie un ticket de référence au client pour le domaine approprié.
+
+Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, le centre de distribution de clés n'essaie pas de résoudre le nom SPN en analysant le contenu des forêts répertoriées. S'il n'est pas en mesure de résoudre le nom, l'authentification NTLM peut être appliquée.
+
+Pour assurer un comportement cohérent, veillez à ce que ce paramètre de stratégie soit pris en charge et défini de façon identique sur tous les contrôleurs de domaine au sein du domaine.</string>
+      <string id="emitlili">Fournir des informations sur les ouvertures de session précédentes sur les ordinateurs clients</string>
+      <string id="emitlili_explain">Ce paramètre de stratégie détermine si le contrôleur de domaine fournit des informations sur des ouvertures de session précédentes aux ordinateurs clients.
+
+Si vous activez ce paramètre de stratégie, le contrôleur de domaine ne fournit pas les messages d’information relatifs aux ouvertures de session précédentes.
+
+Pour tirer parti de cette fonction, il est nécessaire d'activer également le paramètre de stratégie « Afficher les informations sur les ouvertures de session précédentes au cours d’une ouverture de session utilisateur » situé au niveau du nœud Options d'ouverture de session Windows sous Composants Windows.
+
+Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, le contrôleur de domaine fournit des informations sur les ouvertures de session précédentes uniquement si le paramètre de stratégie « Afficher les informations sur les ouvertures de session précédentes au cours d’une ouverture de session utilisateur » est activé.
+
+Remarque : pour que des informations sur les ouvertures de session précédentes soient fournies, le niveau fonctionnel du domaine doit être Windows Server 2008. Dans les domaines dont le niveau fonctionnel de domaine est Windows Server 2003, Windows 2000 natif ou Windows 2000 mixte, les contrôleurs de domaine ne peuvent pas fournir des informations sur les ouvertures de session précédentes, et l’activation de ce paramètre de stratégie n’a aucun effet.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Mode :</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Forêts à interroger</label>
+        </textBox>
+        <text>Syntaxe :</text>
+        <text>Entrez la liste des forêts dans lesquelles vous souhaitez effectuer une recherche lorsque cette stratégie est activée.</text>
+        <text>Utilisez le nom de domaine complet (FQDN) en guise de format de nom.</text>
+        <text>Séparez les entrées de recherche par un point-virgule « ; ».</text>
+        <text>Détails :</text>
+        <text>Il est nécessaire d'ajouter la forêt actuelle à la liste, car l'ordre de recherche des forêts se base d'abord sur le catalogue global, puis sur la liste des forêts dans l'ordre indiqué.</text>
+        <text>Il n'est pas utile de répertorier un à un l'ensemble des domaines dans la forêt.</text>
+        <text>Si une forêt de confiance figure dans la liste, la recherche s'appliquera à tous les domaines de cette forêt.</text>
+        <text>Pour optimiser les performances, indiquez en premier les forêts où la recherche a le plus de chances d'aboutir.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

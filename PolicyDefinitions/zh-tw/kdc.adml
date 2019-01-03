@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>KDC 設定</displayName>
+  <description>Kerberos 金鑰發佈中心的組態設定。</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">使用樹系搜尋順序</string>
+      <string id="forestsearch_explain">此原則設定會定義金鑰發佈中心 (KDC) 嘗試解析兩部分服務主要名稱 (SPN) 時所搜尋的信任的樹系清單。
+
+如果啟用此原則設定，若 KDC 無法在本機樹系中解析兩部分 SPN，便會在此清單中搜尋樹系。樹系搜尋是使用通用類別目錄或名稱尾碼提示執行。如果找到符合項，KDC 便會將轉介票證傳回適當網域的用戶端。
+
+如果停用或未設定此原則設定，KDC 將不會搜尋列出的樹系來解析 SPN。如果 KDC 因為找不到名稱而無法解析 SPN，就可能會使用 NTLM 驗證。
+
+為確保一致的行為，網域中的所有網域控制站都必須支援此原則設定，並以相同的方式設定。</string>
+      <string id="emitlili">提供用戶端電腦有關先前登入的資訊</string>
+      <string id="emitlili_explain">此原則設定控制網域控制站是否提供用戶端電腦有關先前登入的資訊。
+
+若啟用此原則設定，網域控制站將提供有關先前登入的資訊訊息。
+
+若要讓 Windows 登入運用這項功能，必須同時啟用 Windows 元件下 [Windows 登入選項] 節點中的 [於使用者登入期間顯示有關上次登入的資訊] 原則設定。
+
+若停用或未設定此原則設定，除非已啟用 [於使用者登入期間顯示有關上次登入的資訊] 原則設定，否則網域控制站將不提供有關先前登入的資訊。
+
+注意: 只有當網域功能等級為 Windows Server 2008 時，才會提供有關先前登入的資訊。若網域功能等級為 Windows Server 2003、Windows 2000 原生或 Windows 2000 混合模式，網域控制站將無法提供有關先前登入的資訊，啟用此原則設定將不會有任何效果。
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">模式:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>要搜尋的樹系</label>
+        </textBox>
+        <text>語法:</text>
+        <text>輸入啟用此原則時要搜尋的樹系清單。</text>
+        <text>使用完整網域名稱 (FQDN) 命名格式。</text>
+        <text>以分號 ";" 分隔多個搜尋項目。</text>
+        <text>詳細資料:</text>
+        <text>不需要列出目前的樹系，因為樹系搜尋順序會先使用通用類別目錄，然後再依列出的順序搜尋。</text>
+        <text>您不需要分別列出樹系中的所有網域。</text>
+        <text>如果列出了信任的樹系，便會搜尋樹系中的所有網域。</text>
+        <text>請依成功可能性的順序列出樹系，以達到最佳效能。</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

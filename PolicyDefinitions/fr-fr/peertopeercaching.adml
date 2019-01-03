@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache permet aux clients de récupérer un contenu de façon sécurisée directement à partir d'une succursale et non à partir du serveur hébergeant le contenu. Selon le mode de déploiement, le contenu peut être récupéré à partir d'autres clients de la succursale ou à partir d'un serveur de cache hébergé de la succursale. Un client ne peut extraire un contenu à partir d'une succursale qu'à la condition que le serveur l'y autorise. L'utilisation de BranchCache réduit les coûts de la liaison de réseau étendu qui relie les succursales au centre de données ou au siège social et augmente les vitesses de téléchargement pour les contenus déjà téléchargés dans la succursale.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">Activer BranchCache</string>
+
+            <string id="WBC_Enable_Help">Ce paramètre de stratégie spécifie si BranchCache est activé sur l'ordinateur client. BranchCache réduit l'utilisation des liaisons de réseau étendu reliant les succursales au centre de données ou au siège sociale et augmente les vitesses d'accès aux contenus déjà téléchargés dans la succursale. Pour ce faire, BranchCache permet aux ordinateurs d'une succursale de mettre en cache des fichiers et le trafic HTTP à partir des serveurs Intranet sur lesquels BranchCache est activé, puis de partager les fichiers de façon sécurisée avec les autres ordinateurs de la succursale. Les ordinateurs de la succursale peuvent récupérer du contenu à partir d'un serveur de cache hébergé de la succursale (à l'aide du mode de cache hébergé), ou à partir d'autres clients de la succursale (à l'aide du mode de cache distribué). Pour accéder au contenu mis en cache, l'ordinateur doit disposer des autorisations d'accès au contenu sur le serveur source.
+
+Activez ce paramètre de stratégie sur les ordinateurs clients des succursales disposant d'une faible bande passante de réseau étendu, d'une latence élevée et dans lesquelles plusieurs ordinateurs clients doivent accéder aux mêmes données à partir des serveurs de la succursale.
+
+Si vous activez ce paramètre de stratégie, BranchCache est également activé. Pour que ce paramètre soit pris en compte, vous devez également installer la fonctionnalité BranchCache sur l'ordinateur client.
+
+Si vous désactivez ce paramètre ou ne le configurez pas, BranchCache est désactivé.
+            </string>
+
+            <string id="WBC_Cache_Percent">Définir le pourcentage d'espace disque utilisé pour la mémoire cache de l'ordinateur client</string>
+
+            <string id="WBC_Cache_Percent_Help">Ce paramètre de stratégie modifie le pourcentage par défaut de l'espace disque dédié à la mise en cache des contenus récupérés à l'aide de la fonctionnalité BranchCache. Ces contenus sont rendus disponibles aux autres ordinateurs clients qui en font la demande si le serveur les autorise à accéder aux contenus.
+
+Si vous activez ce paramètre de stratégie, vous pouvez configurer le pourcentage d'espace disque à allouer à la mémoire cache.
+
+Si vous le désactivez ou ne le configurez pas, le pourcentage alloué à la mémoire cache est de 5 pour cent du total de l'espace disque de l'ordinateur client.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Définir le mode de cache hébergé de BranchCache</string>
+
+            <string id="WBC_HostedCache_Location_Help">Ce paramètre de stratégie spécifie si l'ordinateur client doit utiliser le mode de cache hébergé, et si tel est le cas, il spécifie également l'adresse du serveur BranchCache. Le mode de cache hébergé permet à un ordinateur client de récupérer un contenu auprès d'un serveur BranchCache agissant en tant que mémoire cache (hébergée) centrale d'une succursale. Lorsque vous utilisez le mode de cache hébergé, le contenu téléchargé par les ordinateurs clients BranchCache est transmis au serveur BranchCache, lequel sert ensuite de mémoire cache centralisée pour les autres ordinateurs clients BranchCache de la succursale. Les ordinateurs clients utilisent le protocole SSL (Secure Sockets Layer) pour communiquer avec le serveur BranchCache.
+
+Pour activer ce paramètre de stratégie, vous devez spécifier l'adresse du serveur BranchCache et cette adresse doit correspondre au nom de domaine complet du serveur figurant dans le certificat établi pour le serveur BranchCache. En outre, la racine de certification du certificat du serveur BranchCache doit se trouver dans le magasin racine approuvé de l'ordinateur client.
+
+Si vous activez ce paramètre de stratégie et spécifiez un emplacement valide pour la mémoire cache hébergée, le mode de cache hébergé est activé. Pour que ce paramètre soit pris en compte, vous devez également activer le paramètre de stratégie Activer BranchCache.
+
+Si vous désactivez ce paramètre ou ne le configurez pas, le mode de cache hébergé est désactivé.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Définir le mode de cache distribué de BranchCache</string>
+
+            <string id="WBC_Distributed_Enable_Help">Ce paramètre de stratégie spécifie si l'ordinateur client doit utiliser le mode de cache distribué. Ce mode BranchCache permet à un ordinateur client de récupérer un contenu téléchargé et mis en cache par d'autres ordinateurs clients de la succursale. Pour accéder au contenu mis en cache à partir d'autres ordinateurs clients de la succursale, l'ordinateur doit disposer des autorisations d'accès au contenu sur le serveur source.
+
+Ce paramètre de stratégie spécifie si le mode de cache distribué est utilisé. Activez ce paramètre lorsque vous utilisez la fonctionnalité BranchCache dans des succursales qui ne disposent pas de serveur agissant en tant que mémoire cache hébergée.
+
+Si vous activez ce paramètre de stratégie, le mode de cache distribué est utilisé. Pour que ce paramètre soit pris en compte, vous devez également activer le paramètre de stratégie Activer BranchCache.
+
+Si vous désactivez ce paramètre ou ne le configurez pas, le mode de cache distribué est désactivé.
+            </string>
+
+            <string id="WBC_SMB_Enable">Configurer BranchCache pour les fichiers réseau</string>
+
+            <string id="WBC_SMB_Enable_Help">Ce paramètre de stratégie modifie la valeur par défaut de latence du parcours circulaire du réseau au-delà de laquelle les fichiers réseau sont mis en cache par les ordinateurs clients de la succursale. La fonctionnalité BranchCache pour les fichiers réseau permet aux ordinateurs d'une succursale de mettre en cache des données à partir de serveurs Intranet sur lesquels BranchCache est activé, puis de partager ces données de façon sécurisée avec les autres ordinateurs de la succursale. Les fichiers réseau utilisant le protocole SMB (Server Message Block) constituent l'un des types de contenus pouvant être mis en cache dans une succursale.
+
+Par défaut, les fichiers réseau sont mis en cache dans une succursale lorsque la latence du parcours circulaire du réseau de la liaison de réseau étendu est supérieure à 80 ms. Pour toujours mettre en cache les fichiers réseau téléchargés sur les ordinateurs de la succursale, attribuez à la latence du réseau la valeur 0. Pour désactiver la mise en cache de succursale pour les fichiers réseau, attribuez à la latence du réseau une valeur très élevée.
+
+Si vous activez ce paramètre de stratégie, vous pouvez configurer la latence de parcours circulaire du réseau au-delà de laquelle les fichiers réseau doivent être mis en cache par les ordinateurs clients de la succursale.
+
+Si vous désactivez ou ne configurez pas ce paramètre, l'ordinateur client met les fichiers réseau en cache si la latence de parcours circulaire du réseau de la liaison de réseau étendu est supérieure à 80 ms.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Entrer l'emplacement de la mémoire cache de l'ordinateur client</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Entrer l'emplacement de la mémoire cache hébergée</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Entrer la valeur de latence du parcours circulaire du réseau (en millisecondes) au-delà de laquelle les fichiers réseau doivent être mis en cache dans la succursale</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

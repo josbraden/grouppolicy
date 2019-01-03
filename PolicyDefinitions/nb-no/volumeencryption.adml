@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>skriv inn visningsnavn her</displayName>
+  <description>skriv inn beskrivelse her</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Med denne policyinnstillingen kan du administrere Active Directory Domain Services' (AD DS) sikkerhetskopi av gjenopprettingsinformasjonen for BitLocker-stasjonskryptering. Dette sørger for at du har en administrativ metode for å gjenopprette data kryptert av BitLocker for å unngå tap av data på grunn av manglende nøkkelinformasjon. Denne policyen gjelder bare for datamaskiner som kjører Windows Server 2008 eller Windows Vista.
+
+Hvis du aktiverer denne policyinnstillingen, sikkerhetskopieres gjenopprettingsinformasjonen for BitLocker automatisk og stille til AD DS når BitLocker aktiveres på en datamaskin. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+
+Obs: Du må først konfigurere aktuelle skjemautvidelser og tilgangskontroll på domenet før AD DS-sikkerhetskopiering kan utføres. Se distribusjonsveiledningen for BitLocker-stasjonskryptering på Microsoft TechNet for mer informasjon om hvordan du konfigurerer AD DS-sikkerhetskopiering for BitLocker.
+
+BitLocker-gjenopprettingsinformasjonen inneholder gjenopprettingspassordet og unike ID-data. Du kan også inkludere en pakke som inneholder krypteringsnøkkelen til en BitLocker-beskyttet stasjon. Denne nøkkelpakken er sikret av ett eller flere gjenopprettingspassord og kan bidra til å utføre spesialisert gjenoppretting når disken er skadet eller ødelagt.
+
+Hvis du merker av for Krev BitLocker-sikkerhetskopiering til AD DS, kan ikke BitLocker aktiveres hvis ikke datamaskinen er koblet til domenet og sikkerhetskopieringen av BitLocker-gjenopprettingsinformasjon til AD DS er vellykket. Det er merket av for dette som standard for å sørge for at det er mulig med BitLocker-gjenoppretting. Hvis det ikke er merket av for dette, forsøkes AD DS-sikkerhetskopiering, men nettverks- eller andre sikkerhetskopieringsfeil hindrer ikke BitLocker-konfigurasjon. Sikkerhetskopiering forsøkes ikke automatisk på nytt, og gjenopprettingspassordet ble kanskje ikke lagret i AD DS under BitLocker-konfigurasjon.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, sikkerhetskopieres ikke BitLocker-gjenopprettingsinformasjon til AD DS.
+
+Obs: TPM-initialisering (Trusted Platform Module) er kanskje nødvendig under BitLocker-konfigurasjon. Aktiver policyinnstillingen Slå på TPM-sikkerhetskopiering til domenetjenester for Active Directory i System\Trusted Platform Module Services for å sørge for at TPM-informasjon også sikkerhetskopieres.
+</string>
+      <string id="ActiveDirectoryBackup_Name">Lagre BitLocker-gjenopprettingsinformasjon i Active Directory Domain Services (Windows Server 2008 og Windows Vista)</string>
+      <string id="ActiveDirectoryBackupDropDown_1">Gjenopprettingspassord og nøkkelpakker</string>
+      <string id="ActiveDirectoryBackupDropDown_2">Bare gjenopprettingspassord</string>
+      
+      <string id="ConfigureStartupUsage_Help">Med denne policyinnstillingen kan du angi om installasjonsveiviseren for BitLocker-stasjonskryptering skal kunne konfigurere en ekstra godkjenningsmetode som skal kreves hver gang datamaskinen startes. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+        
+Obs: Denne policyen gjelder bare for datamaskiner som kjører Windows Server 2008 eller Windows Vista.
+
+På en datamaskin med en kompatibel TPM-modul (Trusted Platform Module) kan to godkjenningsmetoder brukes ved oppstart for å gi ekstra beskyttelse for krypterte data. Når datamaskinen starter, kan den be brukerne om å sette inn en USB-flash-stasjon som inneholder en oppstartsnøkkel. Den kan også be brukerne om å skrive inn en PIN-oppstartskode på 4–20 sifre.
+
+En USB-flash-stasjon som inneholder en oppstartsnøkkel, kreves på datamaskiner uten en kompatibel TPM-modul. Uten en TPM-modul beskyttes BitLocker-krypterte data bare av nøkkelmaterialet på denne USB-flash-stasjonen.
+
+Hvis du aktiverer denne policy-innstillingen, viser veiviseren den siden som tillater at brukeren konfigurerer avanserte oppstartsalternativer for BitLocker. Du kan ytterligere angi innstillingsalternativer for datamaskiner med og uten en TPM-modul.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, viser installasjonsveiviseren for BitLocker grunnleggende trinn som brukerne kan følge for å aktivere BitLocker på datamaskiner med TPM. I denne grunnleggende veiviseren kan det ikke konfigureres noen ekstra oppstartsnøkkel eller PIN-oppstartskode.
+</string>
+      
+      <string id="ConfigureStartupUsage_Name">Krev ekstra godkjenning ved oppstart (Windows Server 2008 og Windows Vista)</string>
+      <string id="ConfigureAdvancedStartup_Name">Krev ekstra godkjenning ved oppstart</string>
+      
+      <string id="ConfigureAdvancedStartup_Help">Med denne policyinnstillingen kan du konfigurere om BitLocker skal kreve ekstra godkjenning hver gang datamaskinen startes, og om du vil bruke BitLocker med eller uten en TPM-modul (Trusted Platform Module). Denne policyinnstillingen brukes når du aktiverer BitLocker.
+
+Obs: Bare ett av alternativene for ekstra godkjenning kan kreves ved oppstart, ellers oppstår det en policyfeil.
+
+Hvis du vil bruke BitLocker på en datamaskin uten en TPM-modul, merker du av for Tillat BitLocker uten en kompatibel TPM. I denne modusen kreves en USB-stasjon for oppstart, og nøkkelinformasjonen som brukes til å kryptere stasjonen, er lagret på USB-stasjonen, og dermed opprettes en USB-nøkkel. Når USB-nøkkelen settes inn, godkjennes tilgangen til stasjonen, og stasjonen er tilgjengelig. Hvis USB-nøkkelen går tapt eller ikke er tilgjengelig, må du bruke ett av alternativene for BitLocker-gjenoppretting til å få tilgang til stasjonen.
+
+På en datamaskin med en kompatibel TPM-modul kan fire godkjenningsmetoder brukes ved oppstart for å gi ekstra beskyttelse for krypterte data. Når datamaskinen startes, kan den bare bruke TPM-modulen for godkjenning, eller den kan også kreve at en USB-flash-stasjon med en oppstartsnøkkel settes inn, at brukeren taster inn en PIN-kode på 4–20 sifre, eller begge deler.
+
+Hvis du aktiverer denne policyinnstillingen, kan brukerne konfigurere avanserte oppstartsalternativer i veiviseren for BitLocker-konfigurasjon.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, kan brukerne bare konfigurere grunnleggende alternativer på datamaskiner med en TPM-modul.
+
+Obs: Hvis du vil kreve at en PIN-kode for oppstart og en USB-flash-stasjon brukes, må du konfigurere BitLocker-innstillinger ved hjelp av kommandolinjeverktøyet manage-bde i stedet for veiviseren for konfigurasjon av BitLocker-stasjonskryptering.
+
+</string>
+
+      <string id="ConfigureTPMPINKeyUsageDropDown_Optional">Tillat oppstartsnøkkel og PIN-kode med TPM</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Require">Krev oppstartsnøkkel og PIN-kode med TPM</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Disallow">Ikke tillat oppstartsnøkkel og PIN-kode med TPM</string>
+
+      <string id="ConfigureTPMUsageDropDown_Optional">Tillat TPM</string>
+      <string id="ConfigureTPMUsageDropDown_Require">Krev TPM</string>
+      <string id="ConfigureTPMUsageDropDown_Disallow">Ikke tillat TPM</string>
+
+      <string id="ConfigurePINUsageDropDown_Optional">Tillat PIN-oppstartskode med TPM</string>
+      <string id="ConfigurePINUsageDropDown_Require">Krev PIN-oppstartskode med TPM</string>
+      <string id="ConfigurePINUsageDropDown_Disallow">Ikke tillat PIN-oppstartskode med TPM</string>
+
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Optional">Tillat oppstartsnøkkel med TPM</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Require">Kreve oppstartsnøkkel med TPM</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Disallow">Ikke tillat oppstartsnøkkel med TPM</string>
+
+
+      <string id="ConfigureRecoveryUsage_Help">Med denne policyinnstillingen kan du angi om installasjonsveiviseren for BitLocker-kryptering skal be brukeren om å lagre gjenopprettingsalternativene for BitLocker. Denne policyen gjelder bare for datamaskiner som kjører Windows Server 2008 eller Windows Vista. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+
+To gjenopprettingsalternativer kan brukes til å låse opp BitLocker-krypterte data hvis den nødvendige oppstartsnøkkelinformasjonen ikke er angitt. Brukeren kan skrive inn et numerisk gjenopprettingspassord på 48 sifre eller sette inn en USB-flash-stasjon med en 256-biters gjenopprettingsnøkkel.
+
+Hvis du aktiverer denne policyinnstillingen, kan du konfigurere alternativene som brukerne ser i installasjonsveiviseren, for gjenoppretting av BitLocker-krypterte data. Ved lagring på en USB-flash-stasjon lagres gjenopprettingspassordet på 48 sifre som en tekstfil og gjenopprettingsnøkkelen på 256 biter som en skjult fil. Ved lagring i en mappe lagres gjenopprettingspassordet på 48 sifre som en tekstfil. Ved utskrift sendes gjenopprettingspassordet på 48 sifre til standardskriveren. Hvis du for eksempel ikke tillater gjenopprettingspassordet på 48 sifre, kan ikke brukerne skrive ut eller lagre gjenopprettingsinformasjon i en mappe.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, vises måter å lagre gjenopprettingsalternativer på i installasjonsveiviseren for BitLocker.
+
+Obs: Hvis det er nødvendig med TPM-initialisering (Trusted Platform Module) under BitLocker-installasjon, blir TPM-eierinformasjon lagret eller skrevet ut med BitLocker-gjenopprettingsinformasjonen.
+
+Obs: Gjenopprettingspassordet på 48 sifre vil ikke være tilgjengelig i FIPS-samsvarende modus.
+
+Viktig: Denne policyinnstillingen sørger for at du har en administrativ metode for å gjenopprette data kryptert av BitLocker for å unngå tap av data på grunn av manglende nøkkelinformasjon. Hvis du ikke tillater begge gjenopprettingsalternativene for brukere, må du aktivere policyinnstillingen Lagre BitLocker-gjenopprettingsinformasjon i Active Directory Domain Services (Windows Server 2008 og Windows Vista) for å unngå en policyfeil.
+
+      </string>
+      
+      <string id="ConfigureRecoveryUsage_Name">Velg hvordan brukere kan gjenopprette BitLocker-beskyttede stasjoner (Windows Server 2008 og Windows Vista)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Require">Krev gjenopprettingspassord (standard)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Disallow">Ikke tillat gjenopprettingspassord</string>
+
+      <string id="ConfigureRecoveryKeyUsageDropDown_Require">Krev gjenopprettingsnøkkel (standard)</string>
+      <string id="ConfigureRecoveryKeyUsageDropDown_Disallow">Ikke tillat gjenopprettingsnøkkel</string>
+
+
+      <string id="OSRecoveryUsage_Name">Velg hvordan BitLocker-beskyttede operativsystemstasjoner kan gjenopprettes</string>
+      
+      <string id="OSRecoveryUsage_Help">Med denne policyinnstillingen kan du kontrollere hvordan BitLocker-beskyttede operativsystemstasjoner gjenopprettes når den påkrevde oppstartsnøkkelen ikke er oppgitt. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+
+Avmerkingsboksen Tillat datagjenopprettingsagent brukes til å angi om en datagjenopprettingsagent kan brukes med BitLocker-beskyttede operativsystemstasjoner. Før en datagjenopprettingsagent kan brukes, må den legges til fra elementet Policyer for fellesnøkkel i konsollen for gruppepolicybehandling eller redigeringsprogrammet for lokal gruppepolicy. Se i distribusjonsveiledningen for BitLocker-stasjonskryptering på Microsoft TechNet for mer informasjon om å legge til datagjenopprettingsagenter.
+
+Velg om brukere er tillatt, påkrevd eller ikke tillatt under Konfigurer brukerlagring av BitLocker-gjenopprettingsinformasjon, for å generere et gjenopprettingspassord på 48 sifre eller en gjenopprettingsnøkkel på 256 biter.
+
+Velg Utelat gjenopprettingsalternativer fra BitLocker-installasjonsveiviseren for å hindre brukere fra å angi gjenopprettingsalternativer når de aktiverer BitLocker på en stasjon. Dette betyr at du ikke kan angi hvilket gjenopprettingsalternativ som skal brukes når du aktiverer BitLocker, og BitLocker-gjenopprettingsalternativer for stasjonen bestemmes i stedet av policyinnstillingen.
+
+Velg hvilken BitLocker-gjenopprettingsinformasjon som skal lagres i AD DS for operativsystemstasjoner, under Lagre BitLocker-gjenopprettingsinformasjon i Active Directory Domain Services. Hvis du velger Sikkerhetskopier gjenopprettingspassord og nøkkelpakker, lagres både gjenopprettingspassordet og nøkkelpakken for BitLocker i AD DS. Ved å lagre nøkkelpakken støttes gjenoppretting av data fra en stasjon som er blitt fysisk ødelagt. Hvis du velger Sikkerhetskopier bare gjenopprettingspassord, lagres bare gjenopprettingspassordet i AD DS.
+
+Merk av for Ikke aktiver BitLocker før gjenopprettingsinformasjon er lagret i AD DS for operativsystemstasjoner hvis du vil hindre brukere fra å aktivere BitLocker hvis ikke datamaskinen er koblet til domenet og sikkerhetskopieringen av BitLocker-gjenopprettingsinformasjonen til AD DS er vellykket.
+
+Obs: Hvis det er merket av for Ikke aktiver BitLocker før gjenopprettingsinformasjon er lagret i AD DS for operativsystemstasjoner, genereres et gjenopprettingspassord automatisk.
+
+Hvis du aktiverer denne policyinnstillingen, kan du kontrollere hvilke metoder som er tilgjengelige for brukere for å gjenopprette data fra BitLocker-beskyttede operativsystemstasjoner.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, støttes standard gjenopprettingsalternativer for BitLocker-gjenoppretting. Som standard er en DRA tillatt, gjenopprettingsalternativene kan angis av brukeren, inkludert gjenopprettingspassordet og -nøkkelen, og gjenopprettingsinformasjonen sikkerhetskopieres ikke til AD DS.
+
+</string>
+      
+      <string id="OSRecoveryPasswordUsageDropDown_Require">Krev gjenopprettingspassord på 48 sifre</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Allow">Tillat gjenopprettingspassord på 48 sifre</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Disallow">Ikke tillat gjenopprettingspassord på 48 sifre</string>
+
+      <string id="OSRecoveryKeyUsageDropDown_Require">Krev 256-biters gjenopprettingsnøkkel</string>
+      <string id="OSRecoveryKeyUsageDropDown_Disallow">Ikke tillat 256-biters gjenopprettingsnøkkel</string>
+      <string id="OSRecoveryKeyUsageDropDown_Allow">Tillat 256-biters gjenopprettingsnøkkel</string>
+
+      <string id="FDVRecoveryUsage_Name">Velg hvordan BitLocker-beskyttede faste stasjoner kan gjenopprettes</string>
+      <string id="FDVRecoveryUsage_Help">Med denne policyinnstillingen kan du kontrollere hvordan BitLocker-beskyttede faste datastasjoner gjenopprettes når den påkrevde legitimasjonen ikke er oppgitt. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+
+Avmerkingsboksen Tillat datagjenopprettingsagent brukes til å angi om en datagjenopprettingsagent kan brukes med BitLocker-beskyttede faste datastasjoner. Før en datagjenopprettingsagent kan brukes, må den legges til fra elementet Policyer for fellesnøkkel i konsollen for gruppepolicybehandling eller redigeringsprogrammet for lokal gruppepolicy. Se i distribusjonsveiledningen for BitLocker-stasjonskryptering på Microsoft TechNet for mer informasjon om å legge til datagjenopprettingsagenter.
+
+Velg om brukere er tillatt, påkrevd eller ikke tillatt under Konfigurer brukerlagring av BitLocker-gjenopprettingsinformasjon, for å generere et gjenopprettingspassord på 48 sifre eller en gjenopprettingsnøkkel på 256 biter.
+
+Velg Utelat gjenopprettingsalternativer fra BitLocker-installasjonsveiviseren for å hindre brukere fra å angi gjenopprettingsalternativer når de aktiverer BitLocker på en stasjon. Dette betyr at du ikke kan angi hvilket gjenopprettingsalternativ som skal brukes når du aktiverer BitLocker, og BitLocker-gjenopprettingsalternativer for stasjonen bestemmes i stedet av policyinnstillingen.
+
+Velg hvilken BitLocker-gjenopprettingsinformasjon som skal lagres i AD DS for faste datastasjoner, under Lagre BitLocker-gjenopprettingsinformasjon i Active Directory Domain Services. Hvis du velger Sikkerhetskopier gjenopprettingspassord og nøkkelpakker, lagres både gjenopprettingspassordet og nøkkelpakken for BitLocker i AD DS. Ved å lagre nøkkelpakken støttes gjenoppretting av data fra en stasjon som er blitt fysisk ødelagt. Hvis du velger Sikkerhetskopier bare gjenopprettingspassord, lagres bare gjenopprettingspassordet i AD DS.
+
+Merk av for Ikke aktiver BitLocker før gjenopprettingsinformasjon er lagret i AD DS for faste datastasjoner hvis du vil hindre brukere fra å aktivere BitLocker hvis ikke datamaskinen er koblet til domenet og sikkerhetskopieringen av BitLocker-gjenopprettingsinformasjonen til AD DS er vellykket.
+
+Obs: Hvis det er merket av for Ikke aktiver BitLocker før gjenopprettingsinformasjon er lagret i AD DS for faste datastasjoner, genereres et gjenopprettingspassord automatisk.
+
+Hvis du aktiverer denne policyinnstillingen, kan du kontrollere hvilke metoder som er tilgjengelige for brukere for å gjenopprette data fra BitLocker-beskyttede faste datastasjoner.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, støttes standard gjenopprettingsalternativer for BitLocker-gjenoppretting. Som standard er en DRA tillatt, gjenopprettingsalternativene kan angis av brukeren, inkludert gjenopprettingspassordet og -nøkkelen, og gjenopprettingsinformasjonen sikkerhetskopieres ikke til AD DS.
+
+</string>
+      
+      <string id="FDVRecoveryPasswordUsageDropDown_Require">Krev gjenopprettingspassord på 48 sifre</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Allow">Tillat gjenopprettingspassord på 48 sifre</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Disallow">Ikke tillat gjenopprettingspassord på 48 sifre</string>
+
+      <string id="FDVRecoveryKeyUsageDropDown_Require">Krev 256-biters gjenopprettingsnøkkel</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Disallow">Ikke tillat 256-biters gjenopprettingsnøkkel</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Allow">Tillat 256-biters gjenopprettingsnøkkel</string>
+
+      <string id="RDVRecoveryUsage_Name">Velg hvordan BitLocker-beskyttede flyttbare stasjoner kan gjenopprettes</string>
+      
+      <string id="RDVRecoveryUsage_Help">This policy setting allows you to control how BitLocker-protected removable data drives are recovered in the absence of the required credentials. This policy setting is applied when you turn on BitLocker.
+
+The "Allow data recovery agent" check box is used to specify whether a data recovery agent can be used with BitLocker-protected removable data drives. Before a data recovery agent can be used it must be added from the Public Key Policies item in either the Group Policy Management Console or the Local Group Policy Editor. Consult the BitLocker Drive Encryption Deployment Guide on Microsoft TechNet for more information about adding data recovery agents.
+
+In "Configure user storage of BitLocker recovery information" select whether users are allowed, required, or not allowed to generate a 48-digit recovery password or a 256-bit recovery key.
+
+Select "Omit recovery options from the BitLocker setup wizard" to prevent users from specifying recovery options when they enable BitLocker on a drive. This means that you will not be able to specify which recovery option to use when you enable BitLocker, instead BitLocker recovery options for the drive are determined by the policy setting.
+
+In "Save BitLocker recovery information to Active Directory Domain Services" choose which BitLocker recovery information to store in AD DS for removable data drives. If you select "Backup recovery password and key package", both the BitLocker recovery password and key package are stored in AD DS. If you select "Backup recovery password only" only the recovery password is stored in AD DS.
+
+Select the "Do not enable BitLocker until recovery information is stored in AD DS for removable data drives" check box if you want to prevent users from enabling  BitLocker unless the computer is connected to the domain and the backup of BitLocker recovery information to AD DS succeeds.
+
+Note: If the "Do not enable BitLocker until recovery information is stored in AD DS for fixed data drives" check box is selected, a recovery password is automatically generated.
+
+If you enable this policy setting, you can control the methods available to users to recover data from BitLocker-protected removable data drives.
+
+If this policy setting is not configured or disabled, the default recovery options are supported for BitLocker recovery. By default a DRA is allowed, the recovery options can be specified by the user including the recovery password and recovery key, and recovery information is not backed up to AD DS
+      </string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Require">Krev gjenopprettingspassord på 48 sifre</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Allow">Tillat gjenopprettingspassord på 48 sifre</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Disallow">Ikke tillat gjenopprettingspassord på 48 sifre</string>
+
+      <string id="RDVRecoveryKeyUsageDropDown_Require">Krev 256-biters gjenopprettingsnøkkel</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Disallow">Ikke tillat 256-biters gjenopprettingsnøkkel</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Allow">Tillat 256-biters gjenopprettingsnøkkel</string>
+      
+      
+      <string id="ConfigureRecoveryFolder_Help">Med denne policyinnstillingen kan du angi standardbanen som skal vises når installasjonsveiviseren for BitLocker-stasjonskryptering ber brukeren om å skrive inn en plassering for mappen der gjenopprettingspassordet skal lagres. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+
+Hvis du aktiverer denne policyinnstillingen, kan du angi banen som skal brukes som standard mappeplassering når brukeren velger alternativet for lagring av gjenopprettingspassord i en mappe. Du kan angi enten en fullstendig kvalifisert bane eller inkludere måldatamaskinens miljøvariabler i banen. Hvis banen ikke er gyldig, vises det øverste mappenivået på datamaskinen i installasjonsveiviseren for BitLocker.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, vises det øverste mappenivået på datamaskinen i installasjonsveiviseren for BitLocker når brukeren velger alternativet for lagring av gjenopprettingspassord i en mappe.
+
+Obs: Denne policyinnstillingen hindrer ikke brukeren fra å lagre gjenopprettingspassordet i en annen mappe.
+
+</string>
+      
+      <string id="ConfigureRecoveryFolder_Name">Velg standardmappe for gjenopprettingspassordet</string>
+
+      <string id="EncryptionMethod_Help">Med denne policyinnstillingen kan du konfigurere algoritmen og chifferkodestyrken som skal brukes av BitLocker-stasjonskryptering. Denne policyinnstillingen brukes når du aktiverer BitLocker. Endring av krypteringsmåten får ingen virkning hvis stasjonen allerede er kryptert eller kryptering pågår. Se i distribusjonsveiledningen for BitLocker-stasjonskryptering på Microsoft TechNet for mer informasjon om de tilgjengelige krypteringsmetodene.
+        
+Hvis du aktiverer denne policyinnstillingen, kan du velge en krypteringsalgoritme og nøkkelchifferkodestyrke som BitLocker skal bruke til å kryptere stasjoner.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, vil BitLocker bruke krypteringsmetoden AES 128-biters med spreder eller den krypteringsmetoden som er angitt i installasjonsskriptet.
+
+      </string>
+      <string id="EncryptionMethod_Name">Velg krypteringsmetode og chifferkodestyrke for stasjon</string>
+      <string id="EncryptionMethodDropDown_AES128Diffuser_Name">AES 128-biters med spreder (standard)</string>
+      <string id="EncryptionMethodDropDown_AES256Diffuser_Name">AES 256-biters med spreder</string>
+      <string id="EncryptionMethodDropDown_AES128_Name">AES 128-biters</string>
+      <string id="EncryptionMethodDropDown_AES256_Name">AES 256-biters</string>
+      
+      <string id="FVECategory">BitLocker-stasjonskryptering</string>
+      <string id="PlatformValidation_Help">Med denne policyinnstillingen kan du konfigurere hvordan datamaskinens TPM-sikkerhetsmaskinvare (Trusted Platform Module) skal sikre BitLocker-krypteringsnøkkelen. Denne policyinnstillingen gjelder ikke hvis datamaskinen ikke har en kompatibel TPM, eller hvis BitLocker allerede er slått på med TPM-beskyttelse.
+
+Hvis du aktiverer denne policyinnstillingen før du slår på BitLocker, kan du konfigurere oppstartskomponentene som TPM skal validere før frigivelse av tilgang til den BitLocker-krypterte operativsystemstasjonen. Hvis noen av disse komponentene endres mens BitLocker-beskyttelsen er aktivert, vil ikke TPM frigjøre krypteringsnøkkelen som låser opp stasjonen, og datamaskinen viser i stedet BitLocker-gjenopprettingskonsollen og krever at gjenopprettingspassordet eller -nøkkelen oppgis for å låse opp stasjonen.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, bruker TPM standard plattformvalideringsprofil eller den valideringsprofilen som er angitt i installasjonsskriptet. En plattformvalideringsprofil består av et sett med PCR-forekomster (Platform Configuration Register) fra 0 til 23, Standard plattformvalideringsprofil sikrer krypteringsnøkkelen mot endringer i CRTM (Core Root of Trust of Measurement), BIOS og plattformutvidelser (PCR 0), alternativ ROM-kode (PCR 2), kode (PCR 4) for hovedoppstartssektor (MBR), NTFS oppstartssektor (PCR 8), NTFS oppstartsblokk (PCR 9), Boot Manager (PCR 10) og BitLocker tilgangskontroll (PCR 11). Beskrivelsene av PCR-innstillinger for datamaskiner som bruker en EFI (Extensible Firmware Interface), er forskjellige fra PCR-innstillingene som er beskrevet for datamaskiner som bruker en standard BIOS. Distribusjonsveiledningen for BitLocker-stasjonskryptering på Microsoft TechNet inneholder en fullstendig liste over PCR-innstillinger både for EFI og standard BIOS.
+
+Advarsel: Ved bytte fra standardprofil for plattformvalidering påvirkes sikkerheten og administrasjonen av datamaskinen. BitLockers følsomhet for plattformendringer (skadelige eller godkjente) øker eller minsker med inkludering eller ekskludering (henholdsvis) av PCRer.
+      </string>
+      
+      <string id="PlatformValidation_Name">Konfigurere valideringsprofil for TPM-plattform</string>
+
+      <string id="MorBehavior_Help">Denne policyinnstillingen kontrollerer ytelsen for omstart av datamaskinen i forhold til risikoen for å blottlegge BitLocker-hemmeligheter. Denne policyinnstillingen brukes når du aktiverer BitLocker. BitLocker-hemmeligheter inkluderer nøkkelmateriale som brukes til å kryptere data. Denne policyinnstillingen gjelder bare når BitLocker-beskyttelse er aktivert.
+
+Hvis du aktiverer denne policyinnstillingen, overskrives ikke minnet når du starter datamaskinen på nytt. Når du forhindrer minneoverskriving, kan det hende at datamaskinen starter raskere, men dette øker risikoen for å blottlegge BitLocker-hemmeligheter.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, fjernes BitLocker-hemmeligheter fra minnet når du starter datamaskinen på nytt.
+
+      </string>
+      <string id="MorBehavior_Name">Forhindre minneoverskriving ved omstart</string>
+
+      <string id="FVEOSCategory">Operativsystemstasjoner</string>
+      <string id="FVEFDVCategory">Faste datastasjoner</string>
+      <string id="FVERDVCategory">Flyttbare datastasjoner</string>
+
+      <string id="IdentificationField_Name">Oppgi de unike IDene for organisasjonen</string>
+      <string id="IdentificationField_Help">Med denne policyinnstillingen kan du knytte unike organisasjons-IDer til en ny stasjon som er aktivert med BitLocker. Disse IDene lagres som et felt for ID og et felt for tillatt ID. I ID-feltet kan du knytte en unik organisasjons-ID til BitLocker-beskyttede stasjoner. Denne IDen legges automatisk til på nye BitLocker-beskyttede stasjoner og kan oppdateres på eksisterende BitLocker-beskyttede stasjoner ved hjelp av kommandolinjeverktøyet Manage-BDE. Et ID-felt kreves for behandling av sertifikatbaserte datagjenopprettingsagenter på BitLocker-beskyttede stasjoner og for mulige oppdateringer for BitLocker To Go-leseren. BitLocker behandler og oppdaterer bare datagjenopprettingsagenter når ID-feltet på stasjonen samsvarer med verdien som er konfigurert i ID-feltet. På samme måte vil BitLocker bare oppdatere BitLocker To Go-leseren når ID-feltet på stasjonen samsvarer med verdien som er konfigurert i ID-feltet.
+
+Feltet for tillatt ID brukes sammen med policyinnstillingen Avslå skrivetilgang til flyttbare stasjoner som ikke er beskyttet av BitLocker, for å bidra til å kontrollere bruken av flyttbare stasjoner i organisasjonen. Det er en kommadelt liste over ID-felt fra organisasjonen din eller fra eksterne organisasjoner.
+
+Du kan konfigurere ID-feltene på eksisterende stasjoner ved hjelp av manage-BDE.exe.
+
+Hvis du aktiverer denne policyinnstillingen, kan du konfigurere ID-feltet på den BitLocker-beskyttede stasjonen og alle tillatte ID-felt som brukes av organisasjonen.
+
+Når en BitLocker-beskyttet stasjon er montert på en annen BitLocker-aktivert datamaskin, brukes ID-feltet og feltet for tillatt ID til å fastslå om stasjonen er fra en ekstern organisasjon.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, er det ikke nødvendig med ID-feltet.
+
+Obs: ID-felt kreves for behandling av sertifikatbaserte datagjenopprettingsagenter på BitLocker-beskyttede stasjoner. BitLocker vil bare behandle og oppdatere sertifikatbaserte datagjenopprettingsagenter når ID-feltet finnes på en stasjon og er identisk med verdien som er konfigurert på datamaskinen. ID-feltet kan ha en verdi på opptil 260 tegn.
+
+      </string>
+
+      
+      <string id="UserCertificateOID_Name">Valider overholdelse av regler for bruk av smartkortsertifikat</string>
+     <string id="UserCertificateOID_Help">Med denne policyinnstillingen kan du knytte en objekt-ID fra et smartkortsertifikat til en BitLocker-beskyttet stasjon. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+
+Objekt-IDen er angitt i EKUen (utvidet nøkkelbruk) for et sertifikat. BitLocker kan identifisere hvilke sertifikater som kan brukes til å godkjenne et brukersertifikat til en BitLocker-beskyttet stasjon, ved å samsvare objekt-IDen i sertifikatet med objekt-IDen som er definert av denne policyinnstillingen.
+
+Standard objekt-ID er 1.3.6.1.4.1.311.67.1.1
+
+Obs: BitLocker krever ikke at et sertifikat har et EKU-attributt, men hvis et attributt er konfigurert for sertifikatet, må det settes til en objekt-ID som svarer til objekt-IDen som er konfigurert for BitLocker.
+
+Hvis du aktiverer denne policyinnstillingen, må objekt-IDen som er angitt i boksen Objekt-ID, svare til objekt-IDen i smartkortsertifikatet.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, brukes en standard objekt-ID.
+
+     </string>
+
+       <string id="OSActiveDirectoryBackupDropDown_1">Lagre gjenopprettingspassord og nøkkelpakker</string>
+      <string id="OSActiveDirectoryBackupDropDown_2">Lagre bare gjenopprettingspassord</string>
+
+      
+      <string id="MinimumPINLength_Name">Konfigurer minimum PIN-lengde for oppstart</string>
+      <string id="MinimumPINLength_Help">Med denne policyinnstillingen kan du konfigurere en minimumslengde for en PIN-kode for oppstart for en TPM (Trusted Platform Module). Denne policyinnstillingen brukes når du aktiverer BitLocker. PIN-koden for oppstart må ha en minimumslengde på 4 sifre, og den kan være på maksimalt 20 sifre.
+
+Hvis du aktiverer denne policyinnstillingen, kan du kreve at et minimum antall sifre brukes ved angivelse av PIN-koden for oppstart.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, kan brukerne konfigurere en PIN-kode for oppstart fra 4 til 20 sifre.
+
+      </string>
+
+      <string id="OSAllowDRA_Name">Tillat sertifikatbaserte datagjenopprettingsagenter</string>
+          
+      <string id="FDVDenyWriteAccess_Name">Avslå skrivetilgang til faste stasjoner som ikke er beskyttet av BitLocker</string>
+      <string id="FDVDenyWriteAccess_Help">Denne policyinnstillingen bestemmer om BitLocker-beskyttelse skal være påkrevd for at brukerne skal kunne skrive til faste datastasjoner på en datamaskin. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+
+Hvis du aktiverer denne policyinnstillingen, monteres alle faste datastasjoner som ikke er BitLocker-beskyttet, som skrivebeskyttet. Hvis stasjonen er beskyttet av BitLocker, monteres den med lese- og skrivetilgang.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, monteres alle faste datastasjoner på datamaskinen med lese- og skrivetilgang.
+
+      </string>
+
+      <string id="FDVPassphrase_Name">Konfigurer bruk av passord for faste datastasjoner</string>
+      <string id="FDVPassphrase_Help">Denne policyinnstillingen angir om et passord kreves for å låse opp BitLocker-beskyttede faste datastasjoner. Hvis du velger å tillate bruk av et passord, kan du kreve at passordet skal brukes, angi krav til passordets kompleksitet og konfigurere en minimumslengde for passordet. For at innstillingen for krav til kompleksitet skal tre i kraft, må også gruppepolicyinnstillingen Passordet må oppfylle kravene om kompleksitet under Datamaskinkonfigurasjon\Windows-innstillinger\Sikkerhetsinnstillinger\Kontopolicyer\Passordpolicy\ aktiveres.
+        
+Obs: Disse innstillingene fremtvinges når du aktiverer BitLocker, ikke når du låser opp et volum. BitLocker tillater opplåsing av en stasjon når noe av beskyttelsen er tilgjengelig på stasjonen.
+
+Hvis du aktiverer denne policyinnstillingen, kan brukerne konfigurere et passord som oppfyller kravene du definerer. Hvis du vil kreve bruk av et passord, velger du Krev passord for fast datastasjon. Hvis du vil angi at passordet skal være komplekst, velger du Krev kompleksitet.
+
+Hvis du velger Krev kompleksitet, er det nødvendig med en tilkobling til en domenekontroller når BitLocker er aktivert, for å validere passordets kompleksitet. Hvis du velger Tillat kompleksitet, forsøkes det å koble til en domenekontroller for å validere at kompleksiteten overholder reglene som er angitt av policyen, men hvis ingen domenekontrollere blir funnet, vil passordet likevel godtas uavhengig av den faktiske kompleksiteten til passordet, og stasjonen krypteres ved å bruke dette passordet som beskyttelse. Hvis du velger Ikke tillat kompleksitet, utføres ingen validering av passordets kompleksitet.
+
+Passord må være på minst 8 tegn. Hvis du vil konfigurere en større minimumslengde for passordet, angir du ønsket antall tegn i boksen Minimum passordlengde.
+
+Hvis du deaktiverer denne policyinnstillingen, kan ikke en bruker bruke et passord.
+
+Hvis du ikke konfigurerer denne policyinnstillingen, støttes ikke passord med standardinnstillingene, som ikke inkluderer kompleksitetskrav for passord, og som bare krever 8 tegn.
+
+Obs: Passord kan ikke brukes hvis FIPS-kompatibilitet er aktivert. Policyinnstillingen Systemkryptografi: Bruk FIPS-kompatible algoritmer til kryptering, hash-koding og signering under Datamaskinkonfigurasjon\Windows-innstillinger\Sikkerhetsinnstillinger\Lokale policyer\Sikkerhetsalternativer angir om FIPS-kompatibilitet er aktivert.
+
+</string>
+
+      <string id="PassphraseComplexityDropDown_2">Tillat passordkompleksitet</string>
+      <string id="PassphraseComplexityDropDown_0">Ikke tillat passordkompleksitet</string>
+      <string id="PassphraseComplexityDropDown_1">Krev passordkompleksitet</string>
+      
+      <string id="FDVActiveDirectoryBackupDropDown_1">Sikkerhetskopier gjenopprettingspassord og nøkkelpakker</string>
+      <string id="FDVActiveDirectoryBackupDropDown_2">Sikkerhetskopier bare gjenopprettingspassord</string>
+
+      
+      <string id="FDVHybrid_Name">Tillat tilgang til BitLocker-beskyttede faste datastasjoner fra tidligere versjoner av Windows</string>
+      <string id="FDVHybrid_Help">Denne policyinnstillingen angir om faste datastasjoner formatert med FAT-filsystemet kan låses opp og vises på datamaskiner som kjører Windows Server 2008, Windows Vista, Windows XP med Service Pack 3 (SP3) eller Windows XP med Service Pack 2 (SP2).
+
+Hvis denne policyinnstillingen er aktivert eller ikke konfigurert, kan faste datastasjoner formatert med FAT-filsystemet låses opp på datamaskiner som kjører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, og innholdet kan vises. Disse operativsystemene har skrivebeskyttet tilgang til BitLocker-beskyttede stasjoner.
+
+Når denne policyinnstillingen er aktivert, merker du av for Ikke installer BitLocker To Go-leser på FAT-formaterte faste stasjoner for å hindre brukere fra å kjøre BitLocker To Go-leseren fra faste stasjoner. Hvis BitLocker To Go-leseren (bitlockertogo.exe) finnes på en stasjon som ikke har et angitt ID-felt, eller hvis stasjonen har samme ID-felt som er angitt i policyinnstillingen Oppgi unike IDer for organisasjonen, blir brukeren bedt om å oppdatere BitLocker, og BitLocker To Go-leseren slettes fra stasjonen. For at den faste stasjonen i denne situasjonen skal låses opp på datamaskiner som kjører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, må BitLocker To Go-leseren være installert på datamaskinen. Hvis det ikke er merket av i denne boksen, blir BitLocker To Go-leseren installert på den faste stasjonen, slik at brukerne kan låse opp stasjonen på datamaskiner som kjører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, og der BitLocker To Go-leseren ikke er installert.
+
+Hvis denne policyinnstillingen er deaktivert, kan ikke faste datastasjoner formatert med FAT-filsystemet som er BitLocker-beskyttet, låses opp på datamaskiner som kjører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Bitlockertogo.exe installeres ikke.
+
+Obs: Denne policyinnstillingen gjelder ikke for stasjoner som er formatert med NTFS-filsystemet.
+
+      </string>
+
+      
+      <string id="FDVAllowDRA_Name">Tillat sertifikatbaserte datagjenopprettingsagenter</string>
+      
+      <string id="FDVConfigureSmartCard_Name">Konfigurer bruk av smartkort på faste datastasjoner</string>
+      <string id="FDVConfigureSmartCard_Help">Med denne policyinnstillingen kan du angi om smartkort kan brukes til å godkjenne brukertilgang til BitLocker-beskyttede faste datastasjoner på en datamaskin.
+
+Hvis du aktiverer denne policyinnstillingen, kan smartkort brukes til å godkjenne brukertilgang til stasjonen. Du kan kreve smartkortgodkjenning ved å merke av for Krev bruk av smartkort på faste datastasjoner.
+
+Obs: Disse innstillingene fremtvinges når du aktiverer BitLocker, ikke når du låser opp en stasjon. BitLocker tillater opplåsing av en stasjon når noe av beskyttelsen er tilgjengelig på stasjonen.
+
+Hvis du deaktiverer denne policyinnstillingen, kan ikke brukere bruke smartkort til å godkjenne tilgangen til BitLocker-beskyttede faste datastasjoner.
+
+Hvis du ikke konfigurerer denne policyinnstillingen, kan smartkort brukes til å godkjenne brukertilgang til en BitLocker-beskyttet stasjon.
+
+      </string>
+      
+      <string id="RDVPassphrase_Name">Konfigurer bruk av passord for flyttbare datastasjoner</string>
+      <string id="RDVPassphrase_Help">Denne policyinnstillingen angir om et passord kreves for å låse opp BitLocker-beskyttede flyttbare datastasjoner. Hvis du velger å tillate bruk av passord, kan du kreve at et passord skal brukes, fremtvinge krav til kompleksitet og angi en minimumslengde. For at innstillingen for krav til kompleksitet skal tre i kraft, må også gruppepolicyinnstillingen Passordet må oppfylle kravene om kompleksitet under Datamaskinkonfigurasjon\Windows-innstillinger\Sikkerhetsinnstillinger\Kontopolicyer\Passordpolicy\ aktiveres.
+
+Obs: Disse innstillingene fremtvinges når du aktiverer BitLocker, ikke når du låser opp et volum. BitLocker tillater opplåsing av en stasjon når noe av beskyttelsen er tilgjengelig på stasjonen.
+
+Hvis du aktiverer denne policyinnstillingen, kan brukerne konfigurere et passord som oppfyller kravene du definerer. Hvis du vil kreve bruk av et passord, velger du Krev passord for flyttbar datastasjon. Hvis du vil angi at passordet skal være komplekst, velger du Krev kompleksitet.
+
+Hvis du velger Krev kompleksitet, er det nødvendig med en tilkobling til en domenekontroller når BitLocker er aktivert, for å validere passordets kompleksitet. Hvis du velger Tillat kompleksitet, forsøkes det å koble til en domenekontroller for å validere at kompleksiteten overholder reglene som er angitt av policyen, men hvis ingen domenekontrollere blir funnet, vil passordet likevel godtas uavhengig av den faktiske kompleksiteten til passordet, og stasjonen krypteres ved å bruke dette passordet som beskyttelse. Hvis du velger Ikke tillat kompleksitet, utføres ingen validering av passordets kompleksitet.
+
+Passord må være på minst 8 tegn. Hvis du vil konfigurere en større minimumslengde for passordet, angir du ønsket antall tegn i boksen Minimum passordlengde.
+
+Hvis du deaktiverer denne policyinnstillingen, kan ikke en bruker bruke et passord.
+
+Hvis du ikke konfigurerer denne policyinnstillingen, støttes ikke passord med standardinnstillingene, som ikke inkluderer kompleksitetskrav for passord, og som bare krever 8 tegn.
+
+Obs: Passord kan ikke brukes hvis FIPS-kompatibilitet er aktivert. Policyinnstillingen Systemkryptografi: Bruk FIPS-kompatible algoritmer til kryptering, hash-koding og signering under Datamaskinkonfigurasjon\Windows-innstillinger\Sikkerhetsinnstillinger\Lokale policyer\Sikkerhetsalternativer angir om FIPS-kompatibilitet er aktivert.
+
+      </string>
+
+      <string id="RDVDenyWriteAccess_Name">Avslå skrivetilgang til flyttbare stasjoner som ikke er beskyttet av BitLocker</string>
+      <string id="RDVDenyWriteAccess_Help">Denne policyinnstillingen angir om BitLocker-beskyttelse skal kreves for at en datamaskin skal kunne skrive data til en flyttbar datastasjon.
+
+Hvis du aktiverer denne policyinnstillingen, monteres alle flyttbare datastasjoner som ikke er BitLocker-beskyttet, som skrivebeskyttet. Hvis stasjonen er beskyttet av BitLocker, monteres den med lese- og skrivetilgang.
+
+Hvis Avslå skrivetilgang til enheter konfigurert i en annen organisasjon er valgt, får bare stasjoner med ID-felt som samsvarer med datamaskinens ID-felt, skrivetilgang. Når det blir gitt tilgang til en flyttbar datastasjon, kontrolleres det at ID-feltet og feltet for tillatt ID er gyldig. Disse feltene er definert av policyinnstillingen Oppgi unike IDer for organisasjonen.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, monteres alle flyttbare datastasjoner på datamaskinen med lese- og skrivetilgang.
+
+Obs: Denne policyinnstillingen kan overstyres av policyinnstillingene under Brukerkonfigurasjon\Administrative maler\System\Tilgang til flyttbare lagringsmedier. Hvis policyinnstillingen Flyttbare disker: Avslå skrivetilgang er aktivert, ignoreres denne policyinnstillingen.
+
+      </string>
+
+      <string id="RDVConfigureBDE_Name">Kontroller bruk av BitLocker på flyttbare stasjoner</string>
+      <string id="RDVConfigureBDE_Help">Denne policyinnstillingen kontrollerer bruken av BitLocker på flyttbare datastasjoner. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+
+Når denne policyinnstillingen er aktivert, kan du velge egenskapsinnstillinger som kontrollerer hvordan brukere kan konfigurere BitLocker. Velg Tillat brukere å bruke BitLocker-beskyttelse på flyttbare datastasjoner for å tillate brukerne å kjøre veiviseren for BitLocker-installasjon på en flyttbar datastasjon. Velg Tillat brukere å undertrykke og dekryptere BitLocker på flyttbare datastasjoner for å tillate brukerne å fjerne BitLocker-stasjonskryptering fra stasjonen eller undertrykke krypteringen mens vedlikehold utføres. Se i distribusjonsveiledningen for BitLocker-stasjonskryptering på Microsoft TechNet for mer informasjon om undertrykking av BitLocker-beskyttelse.
+
+Hvis du ikke konfigurerer denne policyinnstillingen, kan brukerne bruke BitLocker på flyttbare diskstasjoner.
+
+Hvis du deaktiverer denne policyinnstillingen, kan ikke brukerne bruke BitLocker på flyttbare diskstasjoner.
+
+      </string>
+
+
+      <string id="RDVActiveDirectoryBackupDropDown_1">Sikkerhetskopier gjenopprettingspassord og nøkkelpakker</string>
+      <string id="RDVActiveDirectoryBackupDropDown_2">Sikkerhetskopier bare gjenopprettingspassord</string>
+
+      <string id="RDVHybrid_Name">Tillat tilgang til BitLocker-beskyttede flyttbare datastasjoner fra tidligere versjoner av Windows</string>
+      <string id="RDVHybrid_Help">Denne policyinnstillingen angir om flyttbare datastasjoner formatert med FAT-filsystemet kan låses opp og vises på datamaskiner som kjører Windows Server 2008, Windows Vista, Windows XP med Service Pack 3 (SP3) eller Windows XP med Service Pack 2 (SP2).
+
+Hvis denne policyinnstillingen er aktivert eller ikke konfigurert, kan flyttbare datastasjoner formatert med FAT-filsystemet låses opp på datamaskiner som kjører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, og innholdet kan vises. Disse operativsystemene har skrivebeskyttet tilgang til BitLocker-beskyttede stasjoner.
+
+Når denne policyinnstillingen er aktivert, merker du av for Ikke installer BitLocker To Go-leser på FAT-formaterte flyttbare stasjoner for å hindre brukere fra å kjøre BitLocker To Go-leseren fra flyttbare stasjoner. Hvis BitLocker To Go-leseren (bitlockertogo.exe) finnes på en stasjon som ikke har et angitt ID-felt, eller hvis stasjonen har samme ID-felt som er angitt i policyinnstillingen Oppgi unike IDer for organisasjonen, blir brukeren bedt om å oppdatere BitLocker, og BitLocker To Go-leseren slettes fra stasjonen. For at den flyttbare stasjonen i denne situasjonen skal låses opp på datamaskiner som kjører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, må BitLocker To Go-leseren være installert på datamaskinen. Hvis det ikke er merket av i denne boksen, blir BitLocker To Go-leseren installert på den flyttbare stasjonen, slik at brukerne kan låse opp stasjonen på datamaskiner som kjører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, og der BitLocker To Go-leseren ikke er installert.
+
+Hvis denne policyinnstillingen er deaktivert, kan ikke flyttbare datastasjoner formatert med FAT-filsystemet som er BitLocker-beskyttet, låses opp på datamaskiner som kjører Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Bitlockertogo.exe installeres ikke.
+
+Obs: Denne policyinnstillingen gjelder ikke for stasjoner som er formatert med NTFS-filsystemet.
+
+      </string>
+
+      <string id="RDVAllowDRA_Name">Tillat sertifikatbaserte datagjenopprettingsagenter</string>
+ 
+      <string id="RDVConfigureSmartCard_Name">Konfigurer bruk av smartkort på flyttbare datastasjoner</string>
+      <string id="RDVConfigureSmartCard_Help">Med denne policyinnstillingen kan du angi om smartkort kan brukes til å godkjenne brukertilgang til BitLocker-beskyttede flyttbare datastasjoner på en datamaskin.
+
+Hvis du aktiverer denne policyinnstillingen, kan smartkort brukes til å godkjenne brukertilgang til stasjonen. Du kan kreve smartkortgodkjenning ved å merke av for Krev bruk av smartkort på flyttbare datastasjoner.
+
+Obs: Disse innstillingene fremtvinges når du aktiverer BitLocker, ikke når du låser opp en stasjon. BitLocker tillater opplåsing av en stasjon når noe av beskyttelsen er tilgjengelig på stasjonen.
+
+Hvis du deaktiverer denne policyinnstillingen, kan ikke brukere bruke smartkort til å godkjenne tilgangen til BitLocker-beskyttede flyttbare datastasjoner.
+
+Hvis du ikke konfigurerer denne policyinnstillingen, kan smartkort brukes til å godkjenne brukertilgang til en BitLocker-beskyttet flyttbar datastasjon.
+
+      </string>
+
+      <string id="EnhancedPIN_Name">Tillat utvidede PIN-koder for oppstart</string>
+      <string id="EnhancedPIN_Help">Med denne policyinnstillingen kan du angi om utvidede PIN-koder for oppstart skal brukes med BitLocker.
+
+Utvidede PIN-koder for oppstart tillater bruk av tegn, inkludert store og små bokstaver, symboler, tall og mellomrom. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+
+Hvis du aktiverer denne policyinnstillingen, vil alle nye PIN-koder for oppstart som angis i BitLocker, være utvidede PIN-koder.
+
+Obs: Det er ikke sikkert at alle datamaskiner støtter utvidede PIN-koder i miljøet før oppstart. Det anbefales på det sterkeste at brukerne utfører en systemkontroll under BitLocker-installasjon.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, brukes ikke utvidede PIN-koder.
+
+      </string>
+
+</stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Krev BitLocker-sikkerhetskopiering til AD DS</checkBox>
+        <text>Kan ikke slå på BitLocker hvis sikkerhetskopiering mislykkes, når dette er valgt (anbefalt standardinnstilling) </text>
+        <text>Kan slå på BitLocker selv om sikkerhetskopiering mislykkes, når dette ikke er valgt. Sikkerhetskopiering forsøkes ikke automatisk utført på nytt.</text>
+        <dropdownList refId="ActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Velg den BitLocker gjenopprettingsinformasjon som skal lagres:</dropdownList>
+        <text/>
+        <text>Et gjenopprettingspassord er et tall på 48 sifre som frigjør tilgang til en BitLocker-beskyttet stasjon.</text>
+        <text>En nøkkelpakke inneholder BitLocker-krypteringsnøkkelen til en stasjon, sikret av ett eller flere gjenopprettingspassord</text>
+	    	<text>Nøkkelpakker kan bidra til å utføre spesialisert gjenoppretting når disken er skadet eller ødelagt. </text>
+      </presentation>
+      
+      <presentation id="ConfigureStartupUsage_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Tillat BitLocker uten en kompatibel TPM</checkBox>
+        <text>(krever en oppstartsnøkkel på en USB-flash-stasjon)</text>
+        <text>Innstillinger for datamaskiner med en TPM:</text>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurere TPM-oppstartnøkkel:</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurere PIN-oppstartskode for TPM:</dropdownList>
+        <text>Viktig: Hvis du krever oppstartsnøkkelen, må du ikke tillate PIN-koden for oppstart. </text>
+        <text>Hvis du krever PIN-koden for oppstart, må du ikke tillate oppstartsnøkkelen. Hvis ikke, oppstår det en policyfeil.</text>
+        <text>Obs: Du må ikke tillate både PIN-kode for oppstart og oppstartsnøkkel for å skjule den avanserte siden på en datamaskin med en TPM-modul.</text>
+      </presentation>
+
+      <presentation id="ConfigureAdvancedStartup_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Tillat BitLocker uten en kompatibel TPM</checkBox>
+        <text>(krever en oppstartsnøkkel på en USB-flash-stasjon)</text>
+        <text>Innstillinger for datamaskiner med en TPM:</text>
+        <dropdownList refId="ConfigureTPMUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurere TPM-oppstart:</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurere PIN-oppstartskode for TPM:</dropdownList>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurere TPM-oppstartnøkkel:</dropdownList>
+        <dropdownList refId="ConfigureTPMPINKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurere oppstartsnøkkel og PIN-kode for TPM:</dropdownList>
+        <text/>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryUsage_Name">
+        <text>Viktig: Du må ha en måte å gjenopprette BitLocker-krypteringsnøkler på for å unngå datatap. Hvis du ikke tillater begge gjenopprettingsalternativene nedenfor, må du aktivere sikkerhetskopiering av BitLocker-gjenopprettingsinformasjon til AD DS. Hvis ikke, oppstår det en policyfeil.</text>
+        <dropdownList refId="ConfigureRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurere 48-sifret gjenopprettingspassord:</dropdownList>
+        <dropdownList refId="ConfigureRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurere 256-biters gjenopprettingsnøkkel:</dropdownList>
+        <text>Obs: Hvis du ikke tillater gjenopprettingspassordet og krever gjenopprettingsnøkkelen, kan ikke brukerne aktivere BitLocker uten å lagre på USB.</text>
+        <text/>
+      </presentation>
+
+      <presentation id="OSRecoveryUsage_Name">
+        <checkBox refId="OSAllowDRA_Name" defaultChecked="true">Tillat datagjenopprettingsagent</checkBox>
+        <text>Konfigurer brukerlagring av BitLocker-gjenopprettingsinformasjon:</text>
+        <dropdownList refId="OSRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="OSRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="OSHideRecoveryPage_Name" defaultChecked="false">Utelat gjenopprettingsalternativer fra veiviseren for BitLocker-installasjon</checkBox>
+        <checkBox refId="OSActiveDirectoryBackup_Name" defaultChecked="true">Lagre BitLocker-gjenopprettingsinformasjon på AD DS for operativsystemstasjoner</checkBox>
+        <dropdownList refId="OSActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Konfigurere lagring av BitLocker-gjenopprettingsinformasjon på AD DS:</dropdownList>
+        <checkBox refId="OSRequireActiveDirectoryBackup_Name">Ikke aktiver BitLocker før gjenopprettingsinformasjon er lagret på AD DS for operativsystemstasjoner</checkBox>
+       </presentation>
+
+      <presentation id="FDVRecoveryUsage_Name">
+        <checkBox refId="FDVAllowDRA_Name" defaultChecked="true">Tillat datagjenopprettingsagent</checkBox>
+        <text>Konfigurer brukerlagring av BitLocker-gjenopprettingsinformasjon:</text>
+        <dropdownList refId="FDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="FDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="FDVHideRecoveryPage_Name" defaultChecked="false">Utelat gjenopprettingsalternativer fra veiviseren for BitLocker-installasjon</checkBox>
+        <checkBox refId="FDVActiveDirectoryBackup_Name" defaultChecked="true">Lagre BitLocker-gjenopprettingsinformasjon på AD DS for faste datastasjoner</checkBox>
+        <dropdownList refId="FDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Konfigurere lagring av BitLocker-gjenopprettingsinformasjon på AD DS:</dropdownList>
+        <checkBox refId="FDVRequireActiveDirectoryBackup_Name">Ikke aktiver BitLocker før gjenopprettingsinformasjon er lagret på AD DS for faste datastasjoner</checkBox>
+      </presentation>
+
+      <presentation id="RDVRecoveryUsage_Name">
+        <checkBox refId="RDVAllowDRA_Name" defaultChecked="true">Tillat datagjenopprettingsagent</checkBox>
+        <text>Konfigurer brukerlagring av BitLocker-gjenopprettingsinformasjon:</text>
+        <dropdownList refId="RDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="RDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="RDVHideRecoveryPage_Name" defaultChecked="false">Utelat gjenopprettingsalternativer fra veiviseren for BitLocker-installasjon</checkBox>
+        <checkBox refId="RDVActiveDirectoryBackup_Name" defaultChecked="true">Lagre BitLocker-gjenopprettingsinformasjon på AD DS for flyttbare datastasjoner</checkBox> 
+        <dropdownList refId="RDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Konfigurere lagring av BitLocker-gjenopprettingsinformasjon på AD DS:</dropdownList>
+        <checkBox refId="RDVRequireActiveDirectoryBackup_Name">Ikke aktiver BitLocker før gjenopprettingsinformasjon er lagret på AD DS for flyttbare datastasjoner</checkBox>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryFolder_Name">
+        <textBox refId="ConfigureRecoveryFolderPath_Input">
+          <label>Konfigurere standard mappebane:</label>
+          <defaultValue/>
+        </textBox>
+        <text>Angi en fullstendig kvalifisert bane, eller inkluder datamaskinens miljøvariabler i banen. </text>
+        <text>Skriv for eksempel "\\server\sikkerhetskopimappe" eller "%SecureDriveEnvironmentVariable%\sikkerhetskopimappe"</text>
+        <text>Obs: Brukeren vil i alle tilfeller kunne velge andre mapper der gjenopprettingspassordet skal lagres.</text>
+        <text/>
+      </presentation>
+      
+      
+      <presentation id="EncryptionMethod_Name">
+        <dropdownList refId="EncryptionMethodDropDown_Name" noSort="true" defaultItem="0">Velg krypteringsmetode:</dropdownList>
+      </presentation>
+      
+      <presentation id="PlatformValidation_Name">
+        <text>En plattformvalideringsprofil består av et sett med PCR-indekser (Platform Configuration Register). Hver PCR-indeks er tilknyttet komponenter som kjører når Windows starter.</text>
+        <text>Bruk avmerkingsboksene nedenfor til å velge hvilke PCR-indekser som skal inkluderes i profilen. </text>
+        <text>Vær forsiktig når du endrer denne innstillingen.</text>
+        <text>Vi anbefaler standardprofilen for PCRene 0, 2, 4, 5, 8, 9, 10 og 11.</text>
+        <text>For at BitLocker-beskyttelse skal fungere, må du ta med PCR 11.</text>
+
+        <text>Se dokumentasjon på Internett for mer informasjon om fordeler og risikoer ved endring av standard TPM-plattformvalideringsprofil.</text>
+        
+        <checkBox refId="PlatformValidation_Setting0" defaultChecked="true">PCR 0: Core Root of Trust Measurement (CRTM), BIOS og plattformutvidelser</checkBox>
+        <checkBox refId="PlatformValidation_Setting1">PCR 1: Konfigurasjon og data for plattform og hovedkort</checkBox>
+        <checkBox refId="PlatformValidation_Setting2" defaultChecked="true">PCR 2: Alternativ ROM-kode</checkBox>
+        <checkBox refId="PlatformValidation_Setting3">PCR 3: Alternativ ROM-konfigurasjon og data</checkBox>
+        <checkBox refId="PlatformValidation_Setting4" defaultChecked="true">PCR 4: Kode for hovedoppstartspost (MBR)</checkBox>
+        <checkBox refId="PlatformValidation_Setting5" defaultChecked="true">PCR 5: Partisjonstabell for hovedoppstartssektor (MBR)</checkBox>
+        <checkBox refId="PlatformValidation_Setting6">PCR 6: Overgangs- og reaktiveringshendelser</checkBox>
+        <checkBox refId="PlatformValidation_Setting7">PCR 7: Spesifikk for datamaskinprodusent</checkBox>
+        <checkBox refId="PlatformValidation_Setting8" defaultChecked="true">PCR 8: NTFS-oppstartssektor</checkBox>
+        <checkBox refId="PlatformValidation_Setting9" defaultChecked="true">PCR 9: NTFS-oppstartsblokk</checkBox>
+        <checkBox refId="PlatformValidation_Setting10" defaultChecked="true">PCR 10: Boot Manager</checkBox>
+        <checkBox refId="PlatformValidation_Setting11" defaultChecked="true">PCR 11: BitLocker tilgangskontroll</checkBox>
+        <checkBox refId="PlatformValidation_Setting12">PCR 12: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting13">PCR 13: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting14">PCR 14: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting15">PCR 15: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting16">PCR 16: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting17">PCR 17: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting18">PCR 18: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting19">PCR 19: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting20">PCR 20: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting21">PCR 21: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting22">PCR 22: Reservert for fremtidig bruk</checkBox>
+        <checkBox refId="PlatformValidation_Setting23">PCR 23: Reservert for fremtidig bruk</checkBox>
+      </presentation>
+      
+      <presentation id="MorBehavior_Name">
+     
+      </presentation>
+
+      <presentation id="IdentificationField">
+        <textBox refId="IdentificationField">
+          <label>ID-felt for BitLocker:</label>
+        </textBox>
+        <textBox refId="SecIdentificationField">
+          <label>Tillat ID-felt for BitLocker:</label>
+        </textBox>
+      </presentation>
+
+      <presentation id="UserCertificateOID">
+        <textBox refId="UserCertificateOID">
+          <label>Objekt-ID:</label>
+          <defaultValue>1.3.6.1.4.1.311.67.1.1</defaultValue>
+        </textBox>
+        </presentation>
+
+     <presentation id="MinimumPINLength">
+        <decimalTextBox refId="MinPINLength" defaultValue="4">Minimum antall tegn:</decimalTextBox>
+      </presentation>
+      
+     <presentation id="FDVPassphrase_Name">
+        <checkBox refId="FDVRequirePassphrase">Krev passord for fast datastasjon</checkBox>
+        <dropdownList refId="FDVPassphraseComplexity" noSort="true" defaultItem="0">Konfigurere passordkompleksitet for faste datastasjoner:</dropdownList>
+        <decimalTextBox refId="FDVMinPassphraseLength" defaultValue="8">Minimum passordlengde for fast datastasjon:</decimalTextBox>
+       <text>Obs: Du må aktivere policyinnstillingen Passordet må oppfylle kravene om kompleksitet for at innstillingen for passordkompleksitet skal tre i kraft.</text>
+      </presentation>
+
+       <presentation id="FDVConfigureSmartCard">
+        <checkBox refId="FDVRequireSmartCard_Name">Krev bruk av smartkort på faste datastasjoner</checkBox>
+      </presentation>
+
+     <presentation id="RDVPassphrase_Name">
+        <checkBox refId="RDVRequirePassphrase">Krev passord for flyttbar datastasjon</checkBox>
+       <dropdownList refId="RDVPassphraseComplexity" noSort="true" defaultItem="0">Konfigurere passordkompleksitet for flyttbare datastasjoner:</dropdownList>
+        <decimalTextBox refId="RDVMinPassphraseLength" defaultValue="8">Minimum passordlengde for flyttbar datastasjon:</decimalTextBox>
+<text>Obs: Du må aktivere policyinnstillingen Passordet må oppfylle kravene om kompleksitet for at innstillingen for passordkompleksitet skal tre i kraft.</text>
+      </presentation>
+
+      <presentation id="RDVConfigureBDE">
+        <checkBox refId="RDVAllowBDE_Name" noSort="true" defaultChecked="true">Tillat brukere å bruke BitLocker-beskyttelse på flyttbare datastasjoner</checkBox>
+        <checkBox refId="RDVDisableBDE_Name" noSort="true" defaultChecked="true">Tillat brukere å undertrykke og dekryptere BitLocker-beskyttelse på flyttbare datastasjoner</checkBox>
+      </presentation>
+
+      <presentation id="RDVDenyWriteAccess">
+        <checkBox refId="RDVCrossOrg" noSort="true" defaultChecked="false">Ikke tillat skrivetilgang til enheter konfigurert i en annen organisasjon</checkBox>
+      </presentation>
+
+
+      <presentation id="RDVConfigureSmartCard">
+        <checkBox refId="RDVRequireSmartCard_Name" noSort="true" defaultItem="0">Krev bruk av smartkort på flyttbare datastasjoner</checkBox>
+        </presentation>
+          
+      <presentation id="EnhancedPIN">
+
+      </presentation>
+
+      <presentation id="FDVDiscoveryVolumeType">
+        <checkBox refId="FDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">Ikke installer BitLocker To Go-leser på FAT-formaterte faste stasjoner</checkBox>
+      </presentation>
+
+      <presentation id="RDVDiscoveryVolumeType">
+        <checkBox refId="RDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">Ikke installer BitLocker To Go-leser på FAT-formaterte flyttbare stasjoner</checkBox>
+      </presentation>
+
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

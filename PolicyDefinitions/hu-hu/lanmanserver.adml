@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>itt adja meg a megjelenítendő nevet</displayName>
+  <description>itt adja meg a leírást</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Lanman kiszolgáló</string>
+      <string id="Lbl_FollowShare">A kivonat-közzététel engedélyezése csak olyan megosztott mappákra, amelyeken a BranchCache engedélyezve van</string>
+      <string id="Lbl_DisableOnAllShares">A kivonat-közzététel tiltása az összes megosztott mappán</string>
+      <string id="Lbl_EnableOnAllShares">Kivonat-közzététel engedélyezése minden megosztott mappára</string>
+      <string id="Pol_HashPublication">Kivonat-közzététel - BranchCache</string>
+      <string id="Pol_HashPublication_Help">Ez a házirend lehetővé teszi, hogy egy kivonat-létrehozó szolgáltatás kivonatokat készítsen a megosztott mappákban tárolt adatokhoz, és ezeket a kivonatokat elérhetővé tegye olyan ügyfélszámítógépek számára, amelyeken a BranchCache engedélyezve van. A kivonatok a fájlok matematikailag származtatott digitális ujjlenyomatai, melyek egyértelműen azonosítják a fájlok tartalmát. Ezek a digitális ujjlenyomatok rendkívül kicsik, így a Windows úgy tudja összehasonlítani a fájlokat, hogy nem foglal le jelentős mennyiséget a nagytávolságú hálózat (WAN) sávszélességéből.
+
+Egy fiókirodában lévő ügyfélszámítógép egy fájl kivonatát a WAN-kapcsolaton keresztül akkor kaphatja meg, ha az összes következő feltétel teljesül:      
+1) A felhasználó rendelkezik a fájl hozzáféréséhez szükséges engedélyekkel.
+2) A BranchCache engedélyezve van az ügyfélszámítógépen.
+3) A kivonat-közzététel engedélyezve van azon a megosztott mappán, amelyhez az ügyfélszámítógép hozzáfér. 
+
+Ha az ügyfélszámítógép megkapja a kivonatot, a számítógép ezután meg tudja keresni a fájl azonos verzióját a fiókiroda többi számítógépének gyorsítótárában. Ha a Windows megtalálja a fájl azonos verzióját a fiókirodában, akkor az ügyfélszámítógép a helyi gyorsítótárban lévő másolatot tölti le, nem pedig a WAN-kapcsolaton keresztül magát a fájlt. 
+
+Ha ezt a házirendet úgy állítja be, hogy „A kivonat-közzététel engedélyezése csak olyan megosztott mappákra, amelyeken a BranchCache engedélyezve van” (érték=0), akkor a rendszer csak olyan megosztott mappákra hozza létre a kivonatokat, amelyeken a BranchCache engedélyezve van. A rendszer ezekhez a megosztott mappákhoz akkor hoz létre kivonatokat, ha a következő események valamelyike fordul elő:
+1) Egy olyan megosztási mappában lévő fájlhoz férnek hozzá, amelyen a BranchCache szolgáltatást engedélyezte egy bekapcsolt BranchCache-támogatással rendelkező ügyfél.
+2) Egy rendszergazda manuálisan hoz létre kivonatokat a Hashgen parancssori eszközzel.
+ 
+Ha a házirendben „A kivonat-közzététel tiltása az összes megosztott mappán” (érték=1) beállítást konfigurálja, akkor a kivonatokat az olyan számítógépek soha nem hozzák létre illetve nem biztosítják, amelyeken ez a házirend van alkalmazva.
+ 
+Ha a házirendben a „Kivonat-közzététel engedélyezése az összes megosztott mappára” (érték=2) beállítást konfigurálja, akkor a rendszer a kivonatokat a kiszolgáló összes megosztási mappájához létrehozza, ha a következő események egyike lép fel: 
+1) A kiszolgáló egyik megosztási mappájában az egyik fájlhoz egy olyan ügyfél fér hozzá, amelyen engedélyezve van a BranchCache-támogatás.
+2) Egy rendszergazda manuálisan létrehozza a kivonatokat a Hashgen parancssori eszközzel.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Értékek:</text>
+        <text>0 = A kivonat-közzététel csak olyan megosztási mappákra engedélyezett, amelyeken a BranchCache engedélyezve van</text>
+        <text>1 = A kivonat-közzététel tiltása az összes megosztott mappán</text>
+        <text>2 = Kivonat-közzététel engedélyezése minden megosztott mappára</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Kivonat-közzétételi műveletek: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
+  <resources>
+    <stringTable>
+      <string id="DeleteDataOnLogoff">使用者登出電腦時，從執行 Microsoft 韌體的裝置中刪除資料。</string>
+      <string id="DeleteDataOnLogoff_Explain">這個原則設定會在使用者登出電腦時，刪除所有儲存在 Windows SideShow 相容裝置 (執行 Microsoft 韌體) 上的資料。這是一種安全性措施，但會大大地限制裝置的用處。
+
+如果您啟用這個原則設定，當使用者登出電腦時，將會刪除所有儲存於執行 Microsoft 韌體之裝置上的資料。當使用者再次登入時，資料將會重新傳送到該裝置。
+
+如果停用或沒有進行此原則設定，當使用者登出電腦時，將不會刪除這些裝置上的資料。使用者可以在 Windows SideShow 控制台中啟用這個設定。
+
+附註: 未執行 Microsoft 韌體的裝置不會受到這個原則設定的影響。</string>
+      <string id="DisableWindowsSideShow">關閉 Windows SideShow</string>
+      <string id="DisableWindowsSideShow_Explain">這個原則設定會關閉 Windows SideShow。
+
+如果您啟用這個原則設定，便會停用 Windows SideShow 控制台，且不會將 Windows SideShow 相容之小工具 (應用程式) 的資料傳送到連接的裝置。 
+
+如果停用或沒有進行此原則設定，Windows SideShow 依預設是開啟的。</string>
+      <string id="DisableAutoWake">關閉自動喚醒</string>
+      <string id="DisableAutoWake_Explain">這個原則設定會關閉定期喚醒電腦的選項，使電腦無法更新 Windows SideShow 相容裝置上的資訊。
+
+如果啟用此原則設定，則無法在 [Windows SideShow 控制台] 中使用自動喚醒電腦的選項。
+
+如果停用或沒有進行此原則設定，可在 Windows SideShow 控制台中使用自動喚醒電腦的選項。不過，此選項預設是停用的。
+
+附註: 只有在電腦開啟與喚醒時，才會更新 Windows SideShow 相容之裝置上的資訊。</string>
+      <string id="PINTimeout_10Minutes">10 分鐘</string>
+      <string id="PINTimeout_1Minute">1 分鐘</string>
+      <string id="PINTimeout_2Minutes">2 分鐘</string>
+      <string id="PINTimeout_30Minutes">30 分鐘</string>
+      <string id="PINTimeout_5Minutes">5 分鐘</string>
+      <string id="PINTimeout_Never">永不</string>
+      <string id="PINTimeout_WhenScreenIsOff">畫面關閉時</string>
+      <string id="SetPIN">要求 PIN 以存取執行 Microsoft 韌體之裝置上的資料</string>
+      <string id="SetPIN_Explain">此原則設定會要求使用者輸入預設的個人識別碼 (PIN)，以便在過了指定的閒置等待時間 (逾時階段) 後解除鎖定及存取裝置上的資料。此設定適用於執行 Microsoft 靭體的 Windows SideShow 相容裝置。
+
+若啟用此原則設定，使用者必須輸入預設的 PIN，以便在指定的逾時階段後解除鎖定及存取裝置上的資料。
+
+附註: 使用者可在 [Windows SideShow 控制台] 的裝置設定頁上變更 PIN 和逾時階段。
+
+若停用或未進行此原則設定，使用者不必輸入預設的 PIN，就能在指定的逾時階段後解除鎖定及存取裝置上的資料。然而，使用者可在 [Windows SideShow 控制台] 中選擇開啟 PIN 鎖定，也可以變更逾時階段。
+
+附註: 未執行 Microsoft 韌體的裝置不會受到這個原則設定的影響。
+
+附註: 逾時期間的設定是固定的，其中包括:1 分鐘後、2 分鐘後、5 分鐘後、10 分鐘後、30 分鐘、畫面關閉時、永不。</string>
+      <string id="SideShow">Windows SideShow</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="SetPIN_1">
+        <decimalTextBox refId="PINNumber" defaultValue="9999" spinStep="0">4 位數的 PIN</decimalTextBox>
+        <dropdownList refId="PINTimeout" noSort="true" defaultItem="0">逾時值</dropdownList>
+      </presentation>
+      <presentation id="SetPIN_2">
+        <text>預設的 PIN，使用者必須輸入此 PIN，才能在執行</text>
+        <text>Microsoft 韌體的 SideShow 相容裝置上存取資料。</text>
+        <decimalTextBox refId="PINNumber" defaultValue="9999" spinStep="0">4 位數的 PIN</decimalTextBox>
+        <text>執行 Microsoft 韌體並與 SideShow 相容裝置的時間長度</text>
+        <text>可以在裝置鎖定前互動。</text>
+        <dropdownList refId="PINTimeout" noSort="true" defaultItem="0">逾時值</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

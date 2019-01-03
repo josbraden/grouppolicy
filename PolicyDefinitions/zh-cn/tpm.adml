@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>请在此处输入显示名称</displayName>
+  <description>请在此处输入描述</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">使用此策略设置，可以管理受信任的平台模块 (TPM) 所有者信息的 Active Directory 域服务 (AD DS) 备份。 
+
+TPM 所有者信息包括 TPM 所有者密码的加密哈希。某些 TPM 命令只能由 TPM 所有者运行。此哈希授权 TPM 运行这些命令。 
+
+如果启用此策略设置，则使用 Windows 设置或更改 TPM 所有者密码时，TPM 所有者信息将自动备份到 AD DS。 
+
+如果选择“要求 TPM 备份到 AD DS”选项，则只有计算机连接到域并且 AD DS 备份成功时，才可以设置或更改 TPM 所有者密码。默认情况下，此选项处于选中状态，以确保 TPM 所有者信息可用。否则，将尝试进行 AD DS 备份，而网络备份或其他备份故障不会影响 TPM 管理。在安装 BitLocker 过程中，不会自动重试备份，并且 TPM 所有者信息不会存储在 AD DS 中。
+
+如果禁用或不配置此策略设置，则 TPM 所有者信息不会备份到 AD DS。 
+
+注意: 必须先设置域中相应的架构扩展和访问控制设置，AD DS 备份才能成功。有关设置“TPM 的 Active Directory 域服务”的详细信息，请查阅联机文档。
+
+注意: 只有首先设置所有者，才可以使用 TPM 为 BitLocker 驱动器加密和其他应用程序提供增强的安全功能。若要使用所有者密码获得 TPM 的所有权，请运行“tpm.msc”，然后选择“初始化 TPM”的操作。
+
+注意: 如果 TPM 所有者信息丢失或不可用，则可以在本地计算机上运行“tpm.msc”来进行有限的 TPM 管理。</string>
+      <string id="ActiveDirectoryBackup_Name">启用对 Active Directory 域服务的 TPM 备份</string>
+      <string id="BlockedCommandsList_Help">此策略设置使您能够管理 Windows 所阻止的受信任的平台模块 (TPM) 命令的组策略列表。
+
+如果启用此策略设置，Windows 将阻止指定的命令被发送到计算机上的 TPM。TPM 命令由命令编号引用。例如，命令编号 129 是 TPM_OwnerReadInternalPub，而命令编号 170 是 TPM_FieldUpgrade。要查找与每个 TPM 命令关联的命令编号，请运行“tpm.msc”并导航到“命令管理”部分。
+
+如果禁用或不配置此策略设置，则 Windows 仅能够阻止通过默认或本地列表指定的那些 TPM 命令。阻止的 TPM 命令的默认列表由 Windows 预先进行配置。您可以通过运行“tpm.msc”，导航到“命令管理”部分以及使“在默认阻止列表上”列可见来查看默认列表。通过运行“tpm.msc”或对 Win32_Tpm 界面编写脚本，可在组策略之外配置被阻止的 TPM 命令的本地列表。请参阅相关策略设置来强制或忽略被阻止的 TPM 命令的默认列表和本地列表。</string>
+      <string id="BlockedCommandsList_Name">配置阻止的 TPM 命令的列表</string>
+      <string id="IgnoreDefaultList_Help">使用此策略设置，可强制或忽略计算机被阻止的受信任平台模块 (TPM) 命令的默认列表。
+
+如果启用此策略设置，则 Windows 将忽略计算机被阻止的 TPM 命令默认列表，而且只阻止那些由组策略或本地列表指定的 TPM 命令。 
+
+阻止的 TPM 命令的默认列表由 Windows 预先进行配置。 您可以通过运行“tpm.msc”，导航到“命令管理”部分以及使“在默认阻止列表上”列可见来查看默认列表。 通过运行“tpm.msc”或对 Win32_Tpm 界面编写脚本，可在组策略之外配置被阻止的 TPM 命令的本地列表。 请参阅相关策略设置来配置阻止的 TPM 命令的组策略列表。
+
+如果禁用或不配置此策略设置，则除阻止的 TPM 命令的组策略和本地列表中的命令外，Windows 还将阻止默认列表中的 TPM 命令。 </string>
+      <string id="IgnoreDefaultList_Name">忽略阻止的 TPM 命令的默认列表</string>
+      <string id="IgnoreLocalList_Help">使用此策略设置，可强制或忽略计算机被阻止的受信任平台模块 (TPM) 命令的本地列表。
+
+如果启用此策略设置，则 Windows 将忽略计算机被阻止的 TPM 命令本地列表，而且只阻止那些在组策略或默认列表中指定的 TPM 命令。
+
+通过运行“tpm.msc”或对 Win32_Tpm 界面编写脚本，可在组策略之外配置被阻止的 TPM 命令的本地列表。阻止的 TPM 命令的默认列表由 Windows 预先进行配置。请参阅相关策略设置来配置阻止的 TPM 命令的组策略列表。 
+
+如果禁用或不配置此策略设置，则除被阻止的 TPM 命令的组策略和默认列表中的命令外，Windows 还将阻止本地列表中发现的 TPM 命令。</string>
+      <string id="IgnoreLocalList_Name">忽略阻止的 TPM 命令的本地列表</string>
+      <string id="TPMCategory">受信任的平台模块服务</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">要求 TPM 备份到 AD DS</checkBox>
+        <text/>
+        <text>如果选中此项，则当备份失败时， </text>
+        <text>无法设置或更改 TPM 所有者密码(推荐的默认设置)。</text>
+        <text/>
+        <text>如果不选中此项，则即使备份失败，</text>
+        <text>也可以设置或更改 TPM 所有者密码。备份不会自动重试。</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>通过向列表中添加命令编号可以指定要阻止的命令。</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">被阻止的 TPM 命令列表: </listBox>
+        <text>例如，若要阻止命令 TPM_OwnerReadInternalPub</text>
+        <text>和 TPM_FieldUpgrade，请向列表中添加项目 129 和 170。</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

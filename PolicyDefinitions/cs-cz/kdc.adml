@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Nastavení služby KDC</displayName>
+  <description>Konfigurační nastavení pro službu Kerberos Key Distribution Center</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">Služba KDC</string>
+      <string id="forestsearch">Používat pořadí hledání v doménové struktuře</string>
+      <string id="forestsearch_explain">Nastavení této zásady definuje seznam důvěřujících doménových struktur, které služba KDC (Key Distribution Center) prohledává při pokusu o překlad hlavních názvů služeb (SPN) skládající se ze dvou částí.
+
+Pokud nastavení této zásady povolíte, služba KDC bude doménové struktury v tomto seznamu prohledávat v případě, že nebude moci přeložit hlavní název služby skládající se ze dvou částí v místní doménové struktuře. Prohledávání doménové struktury probíhá prostřednictvím globálního katalogu nebo nápovědy k příponě názvu. Pokud je nalezena shoda, zobrazí služba KDC klientovi referenční seznam pro odpovídající doménu.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, služba KDC nebude prohledávat doménové struktury uvedené v seznamu za účelem přeložení hlavního názvu služby. Pokud služba KDC nebude moci přeložit hlavní název služby, protože nenalezne název, může být použito ověřování NTLM.
+
+Aby bylo zajištěno konzistentní chování, musí být nastavení této zásady podporováno a identicky nastaveno na všech řadičích domény v doméně.</string>
+      <string id="emitlili">Poskytnout informace o předchozích přihlášeních ke klientským počítačům</string>
+      <string id="emitlili_explain">Nastavení této zásady určuje, zda řadič domény poskytuje informace o předchozích přihlášeních ke klientským počítačům.
+
+Pokud nastavení této zásady povolíte, řadič domény bude poskytovat informativní zprávu o předchozích přihlášeních.
+
+Aby mohlo Přihlášení k systému Windows využívat tuto funkci, musí být povoleno také nastavení zásady Zobrazit informace o předchozích přihlášeních během přihlášení uživatele nacházející se v uzlu Možnosti přihlášení k systému Windows v části Součásti systému Windows.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, řadič domény informace o předchozích přihlášeních nebude poskytovat, pokud je povoleno nastavení zásad Zobrazit informace o předchozích přihlášeních během přihlášení uživatele.
+
+Poznámka: Informace o předchozích přihlášeních jsou poskytovány, pouze pokud je funkční úroveň domény Windows Server 2008. V doménách s funkční úrovní domény Windows Server 2003, Windows 2000 – nativní režim nebo Windows 2000 – smíšený režim, nemohou řadiče domény poskytovat informace o předchozích přihlášeních a povolení tohoto nastavení nebude mít žádný vliv.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Režim:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Doménové struktury k prohledávání</label>
+        </textBox>
+        <text>Syntaxe:</text>
+        <text>Zadejte seznam doménových struktur, které mají být prohledávány, pokud je povolena tato zásada.</text>
+        <text>Použijte formát pojmenování v podobě plně kvalifikovaného názvu domény.</text>
+        <text>Více položek hledání oddělujte středníkem (;).</text>
+        <text>Podrobnosti:</text>
+        <text>Aktuální doménová struktura nemusí být uvedena v seznamu, protože pro pořadí vyhledávání v doménové struktuře se používá nejprve globální katalog a potom se vyhledává v uvedeném pořadí.</text>
+        <text>Není potřeba uvádět zvlášť jednotlivé domény v doménové struktuře.</text>
+        <text>Pokud je uvedena důvěřující doména, budou prohledány všechny domény v této doménové struktuře.</text>
+        <text>Nejlepších výsledků dosáhnete tak, že doménové struktury seřadíte podle pravděpodobnosti úspěšnosti.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

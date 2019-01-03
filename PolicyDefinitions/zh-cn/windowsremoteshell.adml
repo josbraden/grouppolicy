@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>请在此处输入显示名称</displayName>
+  <description>请在此处输入描述</description>
+  <resources>
+    <stringTable>
+      <string id="AllowRemoteShellAccess">允许远程解释器访问</string>
+      <string id="AllowRemoteShellAccess_Help">配置对远程 shell 的访问权限。
+
+如果启用此策略设置并将其设置为 False，则服务器将拒绝新的远程 shell 连接。
+
+如果禁用或未配置此策略设置，则将允许新的远程 shell 连接。
+</string>
+      <string id="IdleTimeout">指定空闲超时</string>
+      <string id="IdleTimeout_Help">配置远程 shell 被自动删除之前在没有任何用户活动的情况下处于打开状态的最长时间(毫秒)。
+
+可设置 0 到 0x7FFFFFFF 之间的任何值。对于较小的值，使用最短时间 60000 毫秒(1 分钟)。
+
+如果启用此策略设置，则服务器在终止打开的 shell 之前会先等待自上次从客户端收到消息以来的指定时间。
+
+如果未配置或禁用此策略设置，则将使用默认值 900000(即 15 秒)。</string>
+      <string id="MaxConcurrentUsers">MaxConcurrentUsers</string>
+      <string id="MaxConcurrentUsers_Help">配置系统允许并行执行远程 shell 操作的最大用户数。
+
+该值可以为 1 到 100 之间的任意数字。
+
+如果启用此策略设置，则新的 shell 连接在超过指定限制时将遭到拒绝。
+
+如果禁用或未配置此策略设置，则默认数字为 5 个用户。</string>
+      <string id="MaxMemoryPerShellMB">指定每个解释器的最大内存量(以 MB 为单位)</string>
+      <string id="MaxMemoryPerShellMB_Help">配置可由任何活动的远程 shell 及其所有子进程分配的最大内存总量(以 MB 为单位)。
+
+可以设置 0 到 0x7FFFFFFF 之间的任意值，其中 0 等于无限内存，表示用于分配内存的远程操作功能仅受可用虚拟内存的限制。
+
+如果启用此策略设置，则当新的分配超过指定配额时将终止远程操作。
+
+如果禁用或未配置此策略设置，则默认情况下使用值 150。</string>
+      <string id="MaxProcessesPerShell">指定每个解释器的最大进程数</string>
+      <string id="MaxProcessesPerShell_Help">配置允许远程 shell 启动的最大进程数。
+
+可以设置 0 到 0x7FFFFFFF 之间的任意数字，其中 0 表示不受限制的进程数。
+
+如果禁用或未配置此策略设置，则限制将是每个 shell 5 个进程。</string>
+      <string id="ShellTimeOut">指定解释器超时</string>
+      <string id="ShellTimeOut_Help">
+        此策略设置已弃用。
+      </string>
+      <string id="MaxShellsPerUser">指定每个用户的远程解释器的最大数目</string>
+      <string id="MaxShellsPerUser_Help">配置任何用户在同一系统上可以远程打开的并发 shell 的最大数目。
+
+可以设置 0 到 0x7FFFFFFF 之间的任意数字，其中 0 表示不受限制的 shell 数目。
+
+如果启用此策略设置，则当计数超过指定限制时，用户将无法打开新的远程 shell。
+
+如果禁用或未配置此策略设置，则默认情况下，该限制将被设置为每个用户 2 个远程 shell。
+</string>
+      <string id="WinRS">Windows 远程解释器</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AllowRemoteShellAccess">
+        <decimalTextBox refId="AllowRemoteShellAccess" defaultValue="1">AllowRemoteShellAccess</decimalTextBox>
+      </presentation>
+      <presentation id="IdleTimeout">
+        <decimalTextBox refId="IdleTimeout" defaultValue="900000">IdleTimeout</decimalTextBox>
+      </presentation>
+      <presentation id="MaxConcurrentUsers">
+        <decimalTextBox refId="MaxConcurrentUsers" defaultValue="5">MaxConcurrentUsers</decimalTextBox>
+      </presentation>
+      <presentation id="MaxMemoryPerShellMB">
+        <decimalTextBox refId="MaxMemoryPerShellMB" defaultValue="150">MaxMemoryPerShellMB</decimalTextBox>
+      </presentation>
+      <presentation id="MaxProcessesPerShell">
+        <decimalTextBox refId="MaxProcessesPerShell" defaultValue="5">MaxProcessesPerShell</decimalTextBox>
+      </presentation>
+      <presentation id="ShellTimeOut">
+        <decimalTextBox refId="ShellTimeOut" defaultValue="2147483647">ShellTimeOut</decimalTextBox>
+      </presentation>
+      <presentation id="MaxShellsPerUser">
+        <decimalTextBox refId="MaxShellsPerUser" defaultValue="2">MaxShellsPerUser</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

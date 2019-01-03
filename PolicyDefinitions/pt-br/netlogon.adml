@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>digite o nome para exibição aqui</displayName>
+  <description>digite a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="Netlogon">Logon de Rede</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain">Localização dos DCs que hospedam um domínio com nome DNS de rótulo único</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain_Help">Especifica se os computadores aos quais essa configuração é aplicada tentam resolver nomes DNS de rótulo único de um domínio.
+
+Por padrão, quando um computador (ou, mais especificamente, o localizador de controlador de domínio executado em um computador) precisa localizar um controlador de domínio que hospeda um domínio do Active Directory especificado com um nome de rótulo único, o computador usa exclusivamente a resolução de nome NetBIOS, mas não a resolução de nome DNS, a menos que o computador tenha ingressado em uma floresta do Active Directory na qual pelo menos um domínio tenha um nome DNS de rótulo único. 
+
+Se essa configuração estiver habilitada, os computadores aos quais ela for aplicada tentarão localizar um controlador de domínio que hospede um domínio do Active Directory especificado com um nome de rótulo único usando a resolução de nome DNS.
+
+Se essa configuração estiver desabilitada, os computadores aos quais ela for aplicada tentarão localizar um controlador de domínio que hospede um domínio do Active Directory especificado com um nome de rótulo único usando a resolução de nome NetBIOS, mas não a resolução de nome DNS, a menos que o computador esteja procurando um domínio com um nome de DNS de rótulo único que exista na floresta do Active Directory na qual o computador ingressou.
+
+Se não for definida, essa configuração não será aplicada a nenhum computador e os computadores usarão a sua configuração local.</string>
+      <string id="Netlogon_AutoSiteCoverage">Inclusão Automática de Site nos Registros do Servidor DNS do Localizador de Controladores de Domínio</string>
+      <string id="Netlogon_AutoSiteCoverage_Help">Determina se os controladores de domínio (DCs) registrarão dinamicamente os registros do servidor do localizador de DC específicos dos sites mais próximos nos quais não exista nenhum DC para o mesmo domínio (ou nenhum catálogo global para a mesma floresta). Esses registros DNS são registrados dinamicamente pelo serviço Logon de Rede e são usados para localizar o DC.
+
+Se essa configuração estiver habilitada, os DCs aos quais ela for aplicada registrarão dinamicamente os registros do servidor DNS do localizador de DC específicos dos sites mais próximos nos quais não exista nenhum DC para o mesmo domínio ou nenhum catálogo global para a mesma floresta.
+
+Se você desabilitar essa configuração, os DCs só gravarão esses registros para seus próprios sites.
+
+Se não for definida, essa configuração não será aplicada a nenhum DC e os DCs usarão a sua configuração local.</string>
+      <string id="Netlogon_AvoidPdcOnWan">Contatar controlador de domínio primário em falhas de logon</string>
+      <string id="Netlogon_AvoidPdcOnWan_Help">Define se um controlador de domínio (DC) deverá tentar verificar no PDC a senha fornecida por um cliente se o DC não validar a senha.
+
+Contatar o PDC será útil caso a senha do cliente tenha sido alterada recentemente e ainda não tenha se propagado para o DC. Talvez seja aconselhável desabilitar esse recurso se o PDC estiver localizado em uma conexão WAN lenta.
+
+Para habilitar esse recurso, clique em Habilitado.
+
+Para desabilitar esse recurso, clique em Desabilitado.</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod">Configuração da Nova Tentativa Inicial de Descoberta do Controlador de Domínio para Chamadores de Segundo Plano</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod_Help">Quando os aplicativos que procuram periodicamente controladores de domínio (DC) não podem localizar um DC, o valor definido para esta configuração determina o tempo (em segundos) antes de a tentativa ser repetida pela primeira vez.
+
+O valor padrão dessa configuração é de 10 minutos (10*60). O valor máximo da configuração é de 49 dias (0x49*24*60*60=4233600). O valor mínimo dessa configuração é 0.
+
+Essa configuração só é relevante para os chamadores de DsGetDcName que especificaram o sinalizador DS_BACKGROUND_ONLY.
+
+Se o valor da configuração for inferior ao valor especificado na subchave NegativeCachePeriod, o valor dessa subchave será usado.
+
+Aviso: se o valor dessa configuração for muito alto, um cliente não tentará localizar nenhum DC que já não estivesse disponível anteriormente. Se o valor definido for muito baixo e o controlador de domínio não estiver disponível, o tráfego causado por descobertas periódicas de DC pode se tornar excessivo.</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod">Configuração do Intervalo Máximo de Repetição de Descoberta de DC para Chamadores de Segundo Plano</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod_Help">Quando os aplicativos que realizam procuras periódicas de controladores de domínio (DC) não podem localizar um controlador de domínio, o valor definido para esta configuração determina o intervalo máximo permitido para repetições de tentativas.
+
+Por exemplo, os intervalos de repetição podem ser definidos como 10, 20 e 40 minutos, mas quando o intervalo atingir o valor definido nessa configuração, esse valor se tornará o intervalo de repetição para todas as tentativas subsequentes até ser atingido o valor definido em Configuração da nova tentativa final de descoberta de DC.
+
+O valor padrão dessa configuração é de 60 minutos (60*60). O valor máximo da configuração é de 49 dias (0x49*24*60*60=4233600). O valor mínimo dessa configuração é 0.
+
+Se o valor dessa configuração for menor do que o valor especificado para a configuração da nova tentativa inicial de descoberta de DC, será usada essa configuração.
+
+Aviso: se o valor dessa configuração for muito alto, um cliente poderá levar muito tempo tentando localizar um DC.
+
+Se o valor for muito baixo e o DC não estiver disponível, a repetição frequente de tentativas poderá gerar um tráfego excessivo na rede.</string>
+      <string id="Netlogon_BackgroundRetryQuitTime">Configuração da Tentativa Final de Descoberta de Controlador de Domínio para Chamadores de Segundo Plano</string>
+      <string id="Netlogon_BackgroundRetryQuitTime_Help">Quando os aplicativos que realizam procuras periódicas de controladores de domínio (DC) não podem localizar um controlador de domínio, o valor definido para esta configuração determina o prazo para o fim das repetições de tentativas. Por exemplo, as repetições podem ser definidas para ocorrer de acordo com a Configuração do Intervalo Máximo de Repetição de Descoberta de DC para Chamadores de Segundo Plano, mas nenhuma repetição ocorre. Se um valor desta configuração for inferior ao valor de Configuração do Intervalo Máximo de Repetição de Descoberta de DC, será usado o valor de Configuração do Intervalo Máximo de Repetição de Descoberta de DC.
+
+O valor padrão desta configuração é de que as repetições não parem (0). O valor máximo da configuração é de 49 dias (0x49*24*60*60=4233600). O valor mínimo dessa configuração é 0.
+
+Aviso: se o valor é muito baixo, o cliente para de repetir a tentativa de encontrar um controlador de domínio rapidamente.</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod">Atualização Periódica do Cache do Controlador de Domínio Positivo para Chamadores de Segundo Plano</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod_Help">Determina quando uma entrada de cache de DC bem-sucedida deve ser atualizada. Essa configuração é aplicada a programas chamadores que tentam periodicamente localizar DCs e é aplicada antes de retornar as informações sobre o DC ao programa chamador. O valor padrão dessa configuração é infinito (4294967200). O valor máximo dessa configuração é (4294967200), enquanto o máximo que não é tratado como infinito é 49 dias (49*24*60*60=4233600). Qualquer valor maior é tratado como infinito. O valor mínimo para essa configuração é sempre atualizar (0).</string>
+      <string id="Netlogon_DC_Locator_DNS_Records">Registros DNS do localizador de controladores de domínio</string>
+      <string id="Netlogon_DebugFlag">Nível de saída de depuração de arquivo de log</string>
+      <string id="Netlogon_DebugFlag_Help">Especifica o nível de saída de depuração para o serviço Logon de Rede.
+
+O serviço Logon de Rede fornece informações de depuração ao arquivo de log netlogon.log no diretório %windir%\debug. Por padrão, nenhuma informação de depuração será gravada.
+
+Se você habilitar esta configuração e especificar um valor diferente de zero, as informações de depuração serão gravadas no arquivo. Valores mais elevados resultam em um registro mais detalhado; o valor 536936447 normalmente é usado como a configuração ótima.
+
+Se você especificar zero nesta configuração, ocorrerá o comportamento padrão, conforme descrito acima.
+
+Se você desabilitar ou não definir esta configuração, ocorrerá o comportamento padrão, conforme descrito acima.</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords">Registros DNS do localizador de controladores de domínio não registrados pelos controladores de domínio</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords_Help">Determina quais registros DNS do localizador do controlador de domínio (DC) não são registrados pelo serviço Logon de Rede.
+
+Para habilitar esta configuração, selecione Habilitar e especifique uma lista de mnemônicos (instruções) delimitados por espaço para os registros DNS do localizador DC que não serão registrados pelos DCs aos quais esta configuração é aplicada.
+
+Selecione os mnemônicos na seguinte lista:
+
+Mnemônico         Tipo  Registro DNS
+
+LdapIpAddress    A     &lt;NomeDomínioDns&gt;
+Ldap             SRV   _ldap._tcp.&lt;NomeDomínioDns&gt;
+LdapAtSite       SRV   _ldap._tcp.&lt;NomeSite&gt;._sites.&lt;NomeDomínioDns&gt;
+Pdc              SRV   _ldap._tcp.pdc._msdcs.&lt;NomeDomínioDns&gt;
+Gc               SRV   _ldap._tcp.gc._msdcs.&lt;NomeFlorestaDns&gt;
+GcAtSite         SRV   _ldap._tcp.&lt;NomeSite&gt;._sites.gc._msdcs.&lt;NomeFlorestaDns&gt;
+DcByGuid         SRV   _ldap._tcp.&lt;GuidDomínio&gt;.domains._msdcs.&lt;NomeFlorestaDns&gt;
+GcIpAddress      A     _gc._msdcs.&lt;NomeFlorestaDns&gt;
+DsaCname         CNAME &lt;GuidDsa&gt;._msdcs.&lt;NomeFlorestaDns&gt;
+Kdc              SRV   _kerberos._tcp.dc._msdcs.&lt;NomeDomínioDns&gt;
+KdcAtSite        SRV    _kerberos._tcp.dc._msdcs.&lt;NomeSite&gt;._sites.&lt;NomeDomínioDns&gt;
+Dc               SRV   _ldap._tcp.dc._msdcs.&lt;NomeDomínioDns&gt;
+DcAtSite         SRV   _ldap._tcp.&lt;NomeSite&gt;._sites.dc._msdcs.&lt;NomeDomínioDns&gt;
+Rfc1510Kdc       SRV   _kerberos._tcp.&lt;NomeDomínioDns&gt;
+Rfc1510KdcAtSite SRV   _kerberos._tcp.&lt;NomeSite&gt;._sites.&lt;NomeDomínioDns&gt;
+GenericGc        SRV   _gc._tcp.&lt;NomeFlorestaDns&gt;
+GenericGcAtSite  SRV   _gc._tcp.&lt;NomeSite&gt;._sites.&lt;NomeFlorestaDns&gt;
+Rfc1510UdpKdc    SRV   _kerberos._udp.&lt;NomeDomínioDns&gt;
+Rfc1510Kpwd      SRV   _kpasswd._tcp.&lt;NomeDomínioDns&gt;
+Rfc1510UdpKpwd   SRV   _kpasswd._udp.&lt;NomeDomínioDns&gt;
+
+Se esta configuração estiver desabilitada, os controladores de domínio configurados para realizar o registro dinâmico de registros DNS do localizador do controlador de domínio gravarão todos os registros desse tipo.
+
+Se esta configuração não for aplicada a controladores de domínio, eles usarão sua configuração local.</string>
+      <string id="Netlogon_DnsRefreshInterval">Intervalo de atualização dos registros DNS do localizador de controladores de domínio</string>
+      <string id="Netlogon_DnsRefreshInterval_Help">Especifica o intervalo de atualização dos registros de recursos DNS do localizador de controlador de domínio (DC) para os DCs aos quais essa configuração se aplica. Esses registros DNS são registrados dinamicamente pelo serviço 'Logon de rede' e são usados pelo algoritmo do localizador para localizar o DC. Essa configuração só pode ser aplicada a DCs que usem a atualização dinâmica.
+
+Os DCs configurados para realizar o registro dinâmico dos registros de recursos DNS do localizador de DC fazem periodicamente um novo registro dos seus registros nos servidores DNS, mesmo que os dados desses registros não tenham sido alterados. Se servidores DNS autorizados estiverem configurados para eliminar registros fora de uso, será necessário um novo registro para informar os servidores DNS configurados para remover (eliminar) automaticamente registros fora de uso de que esses registros estão atualizados e devem ser preservados no banco de dados.
+
+Aviso: se os registros de recursos DNS estiverem registrados em zonas com o recurso de eliminação habilitado, o valor dessa configuração não deverá ser maior do que o intervalo de atualização configurado para essas zonas. Se o intervalo de atualização dos registros DNS do localizador de DC for definido como um valor maior do que o intervalo de atualização das zonas DNS, isso poderá resultar na exclusão indesejada de registros de recursos DNS.
+
+Para especificar o intervalo de atualização dos registros de DC, clique em Habilitado e digite um valor maior do que 1800. Esse valor especifica o intervalo de atualização dos registros de DC em segundos (por exemplo, o valor 3600 representa 60 minutos).
+
+Se não for definida, essa configuração não será aplicada a nenhum DC e os DCs usarão a sua configuração local.</string>
+      <string id="Netlogon_DnsTtl">TTL definido nos registros DNS do localizador de controladores de domínio</string>
+      <string id="Netlogon_DnsTtl_Help">Especifica o valor do campo Tempo de Vida (TTL) nos registros de recurso de serviços registrados pelo serviço Logon de Rede. Esses registros DNS são registrados dinamicamente pelo serviço Logon de Rede e são usados para localizar o controlador de domínio (DC).
+
+Para especificar o TTL dos registros DNS do localizador de DC, clique em Habilitado e digite um valor em segundos (por exemplo, o valor "900" corresponde a 15 minutos).
+
+Se não for definida, essa configuração não será aplicada a nenhum DC e os DCs usarão a sua configuração local.</string>
+      <string id="Netlogon_ExpectedDialupDelay">Atraso de discagem esperado no logon</string>
+      <string id="Netlogon_ExpectedDialupDelay_Help">Especifica o tempo adicional que o computador deve aguardar pela resposta do controlador de domínio (DC) ao fazer logon na rede.
+
+Para especificar o atraso de discagem esperado no logon, clique em Habilitar e digite o valor desejado em segundos (por exemplo, o valor "60" corresponde a 1 minuto).
+
+Se não for definida, essa configuração não será aplicada a nenhum computador e os computadores usarão a sua configuração local.</string>
+      <string id="Netlogon_GcSiteCoverage">Sites incluídos nos registros do servidor DNS do localizador de GC</string>
+      <string id="Netlogon_GcSiteCoverage_Help">Especifica os sites para os quais os catálogos globais (GC) devem registrar os registro de recurso de serviços DNS do localizador de GC específicos do site. Esses registros são registrados juntamente com os registros de servidor específicos do site, que são registrados para o site no qual o GC reside, e os registros que são registrados por um GC configurado para registrar registros do servidor DNS do localizador de GC para os sites sem um GC que estejam mais próximos a ele. 
+
+Os registros DNS do localizador de GC e os registros de servidor específicos do site são registrados dinamicamente pelo serviço 'Logon de rede' e são usados para localizar o GC. Um site do Active Directory é composto de uma ou mais sub-redes TCP/IP bem-conectadas que permitem aos administradores configurar a replicação e o acesso ao Active Directory. Um GC é um controlador de domínio que contém uma réplica parcial de cada domínio do Active Directory.
+
+Para especificar os sites incluídos nos registros do servidor DNS do localizador de GC, clique em Habilitado e digite os nomes dos sites em um formato delimitado por espaço.
+
+Se não for definida, essa configuração não será aplicada a nenhum GC e os GCs usarão a sua configuração local.</string>
+      <string id="Netlogon_LdapSrvPriority">Prioridade definida nos registros do servidor DNS do localizador de controladores de domínio</string>
+      <string id="Netlogon_LdapSrvPriority_Help">Especifica o campo Prioridade dos registro de recurso de serviços registrados pelos controladores de domínio (DC) aos quais essa configuração é aplicada. Esses registros DNS são registrados dinamicamente pelo serviço Logon de Rede e são usados para localizar o DC.
+
+O campo Prioridade, no registro do servidor, define a preferência para hosts de destino (especificados no campo Destino do registro do servidor). Os clientes DNS que consultam registro de recurso de serviços tentam contatar o primeiro host acessível com o número de prioridade mais baixo listado.
+
+Para especificar a prioridade nos registro de recurso de serviços DNS do localizador de DC, clique em Habilitado e digite um valor. O intervalo de valores é de 0 a 65535.
+
+Se não for definida, essa configuração não será aplicada a nenhum DC e os DCs usarão a sua configuração local.</string>
+      <string id="Netlogon_LdapSrvWeight">Importância definida nos registros do servidor DNS do localizador de controladores de domínio</string>
+      <string id="Netlogon_LdapSrvWeight_Help">Especifica o campo Importância dos registros de recursos de servidor registrados pelos controladores de domínio (DCs) aos quais essa configuração é aplicada. Esses registros DNS são registrados dinamicamente pelo serviço Logon de Rede e são usados para localizar o DC.
+
+O campo Importância, no registro do servidor, pode ser usado com o valor Prioridade para fornecer um mecanismo de balanceamento de carga no qual vários servidores são especificados no campo Destino dos registros do servidor e definidos com a mesma prioridade. A probabilidade de que o cliente DNS selecione aleatoriamente o host de destino a ser contatado é proporcional ao valor do campo Importância no registro do servidor.
+
+Para especificar a importância nos registros do servidor DNS do localizador de DC, clique em Habilitado e digite um valor. O intervalo de valores é de 0 a 65535.
+
+Se não for definida, essa configuração não será aplicada a nenhum DC e os DCs usarão a sua configuração local.</string>
+      <string id="Netlogon_MaximumLogFileSize">Tamanho máximo do arquivo de log</string>
+      <string id="Netlogon_MaximumLogFileSize_Help">Especifica o tamanho máximo em bytes do arquivo de log netlogon.log no diretório %windir%\debug quando os logs estão habilitados.
+
+Por padrão, o tamanho máximo do arquivo de log é 20 MB. Se esta diretiva for habilitada, o tamanho máximo do arquivo de log será definido como o tamanho especificado. Quando esse tamanho for atingido, o arquivo de log será salvo em netlogon.bak e netlogon.log será truncado. Deve ser especificado um valor razoável baseado no armazenamento disponível.
+
+Se esta diretiva for desabilitada ou não for configurada, ocorrerá o comportamento padrão, conforme indicado acima.</string>
+      <string id="Netlogon_NdncSiteCoverage">Sites incluídos nos registros do servidor DNS do localizador de partição do diretório de aplicativo</string>
+      <string id="Netlogon_NdncSiteCoverage_Help">Especifica os sites para os quais os controladores de domínio (DC) que contêm a partição do diretório de aplicativo devem registrar os registro de recurso de serviços DNS do localizador de DC específicos da partição do diretório de aplicativo e específicos do site. Esses registros são registrados juntamente com os registros de servidor específicos do site, que são registrados para o site no qual o DC reside, e os registros registrados por um DC configurado para registrar registros do servidor DNS do localizador de DC para os sites sem um DC que estejam mais próximos a ele. 
+
+Os registros DNS do localizador de partição de diretório de aplicativo e os registros de servidor específicos do site são registrados dinamicamente pelo serviço Logon de Rede e são usados para localizar o DC específico da partição de diretório de aplicativo. Um site do Active Directory é composto de uma ou mais sub-redes TCP/IP bem-conectadas que permitem aos administradores configurar a replicação e o acesso ao Active Directory.
+
+Para especificar os sites incluídos nos registros do servidor DNS específicos à partição do diretório do aplicativo do localizador de DC, clique em Habilitado e digite os nomes dos sites em um formato delimitado por espaço.
+
+Se não for definida, essa configuração não será aplicada a nenhum DC e os DCs usarão a sua configuração local.</string>
+      <string id="Netlogon_NegativeCachePeriod">Configuração de cache de descoberta de controlador de domínio negativo</string>
+      <string id="Netlogon_NegativeCachePeriod_Help">Especifica o período de tempo (em segundos) durante o qual o localizador de DC memoriza que um controlador de domínio (DC) não foi localizado em um domínio. Quando uma tentativa subsequente de localizar o DC for feita dentro do mesmo período de tempo definido nessa configuração, a descoberta do DC é interrompida imediatamente, sem tentar localizar o DC.
+
+O valor padrão dessa configuração é 45 segundos. O valor máximo para essa configuração é 7 dias (7*24*60*60). O valor mínimo dessa configuração é 0.
+
+Aviso: se o valor dessa configuração for muito alto, um cliente não tentará localizar nenhum DC que já não estivesse disponível anteriormente. Se o valor dessa configuração for muito baixo, os clientes tentarão localizar DCs mesmo quando não houver nenhum disponível.</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode">Compatibilidade de compartilhamento de Netlogon</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode_Help">Esta configuração controla se o compartilhamento Netlogon criado pelo serviço Logon de Rede em um controlador de domínio (CD) deve ou não dar suporte à compatibilidade para a semântica de compartilhamento de arquivo com aplicativos anteriores.
+
+Quando esta configuração é habilitada, o compartilhamento Netlogon aceita a semântica de compartilhamento de arquivo que atende a pedidos de acesso de leitura exclusivo para arquivos no compartilhamento, mesmo quando o chamador tiver apenas permissão de leitura.
+
+Quando esta configuração é desabilitada ou não é definida, o compartilhamento Netlogon concede o acesso de leitura compartilhado a arquivos no compartilhamento quando o acesso exclusivo é solicitado e o chamador tem apenas permissão de leitura.
+
+Por padrão, o compartilhamento Netlogon concede acesso de leitura compartilhado a arquivos no compartilhamento quando o acesso exclusivo é solicitado.
+
+Observação: o compartilhamento Netlogon é um compartilhamento criado pelo serviço Logon de Rede para uso por computadores cliente no domínio. O comportamento padrão do compartilhamento Netlogon garante que nenhum aplicativo com apenas permissão de leitura para arquivos no compartilhamento Netlogon possa bloquear os arquivos solicitando acesso exclusivo de leitura, o que pode impedir as configurações de diretiva de grupo de ser atualizadas em clientes no domínio. Quando esta configuração é habilitada, um aplicativo que depende da capacidade de bloquear arquivos no compartilhamento Netlogon apenas com permissão de leitura pode impedir que clientes da diretiva de grupo leiam os arquivos e, em geral, diminui a disponibilidade do compartilhamento Netlogon no domínio.
+
+Se esta configuração for habilitada, os administradores de domínio deverão se certificar de que os únicos aplicativos que estão usando o recurso de leitura exclusivo no domínio são aqueles aprovados pelo administrador.</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">Atualização periódica do cache de DC positivo para chamadores que não são de segundo plano</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod_Help">Determina quando uma entrada de cache de DC bem-sucedida deve ser atualizada. Essa configuração é aplicada a programas chamadores que não tentam periodicamente localizar DCs e é aplicada antes de retornar as informações sobre o DC ao programa chamador. Essa configuração só é relevante para os chamadores de DsGetDcName que não especificaram o sinalizador DS_BACKGROUND_ONLY.
+
+O valor padrão dessa configuração é de 30 minutos (1800). O valor máximo dessa configuração é (4294967200), enquanto o máximo que não é tratado como infinito é 49 dias (49*24*60*60=4233600). Qualquer valor maior será tratado como infinito. O valor mínimo para essa configuração é sempre atualizar (0).</string>
+      <string id="Netlogon_ScavengeInterval">Intervalo de limpeza</string>
+      <string id="Netlogon_ScavengeInterval_Help">Determina o intervalo de execução das seguintes operações de eliminação pelo Logon de Rede:
+
+- Verifica se uma senha em um canal seguro precisa ser modificada e, se necessário, a modifica.
+
+- Nos controladores de domínio (DCs), descobre um DC que não foi descoberto.
+
+- No PDC, tenta adicionar o nome NetBIOS &lt;NomeDomínio&gt;[1B], se ele ainda não tiver sido adicionado com êxito .
+
+Nenhuma dessas operações é crítica. 15 minutos é um valor ideal, exceto em casos extremos. Por exemplo, se um DC estiver separado de um domínio confiável por uma linha cara (por exemplo, ISDN), esse parâmetro poderá ser aumentado a fim de evitar a descoberta automática frequente de DCs em um domínio confiável.
+
+Para habilitar a configuração, clique em Habilitado e especifique o intervalo em segundos.</string>
+      <string id="Netlogon_SiteCoverage">Sites incluídos nos registros do servidor DNS do localizador de controladores de domínio</string>
+      <string id="Netlogon_SiteCoverage_Help">Especifica os sites para os quais os controladores de domínio (DC) registram os registro de recurso de serviços DNS do localizador de DC específicos do site. Esses registros são registrados juntamente com os registros de servidor específicos do site, que são registrados para o site no qual o DC reside, e os registros registrados por um DC configurado para registrar registros do servidor DNS do localizador de DC para os sites sem um DC que estejam mais próximos a ele. 
+
+Os registros DNS do localizador de DC são registrados dinamicamente pelo serviço Logon de Rede e são usados para localizar o DC. Um site do Active Directory é composto de uma ou mais sub-redes TCP/IP bem-conectadas que permitem aos administradores configurar a replicação e o acesso ao Active Directory.
+
+Para especificar os sites incluídos nos registros do servidor DNS do localizador de DC, clique em Habilitado e digite os nomes dos sites em um formato delimitado por espaço.
+
+Se não for definida, essa configuração não será aplicada a nenhum DC e os DCs usarão a sua configuração local.</string>
+      <string id="Netlogon_SiteName">Nome do site</string>
+      <string id="Netlogon_SiteName_Help">Especifica o site do Active Directory ao qual os computadores pertencem.
+
+Um site do Active Directory é composto de uma ou mais sub-redes TCP/IP bem-conectadas que permitem aos administradores configurar a replicação e o acesso ao Active Directory.
+
+Para especificar o nome do site para essa configuração, clique em Habilitado e digite o nome. Quando o site ao qual um computador pertence não estiver especificado, o computador descobrirá automaticamente o seu site no Active Directory.
+
+Se não for definida, essa configuração não será aplicada a nenhum computador e os computadores usarão a sua configuração local.</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode">Compatibilidade de compartilhamento de Sysvol</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode_Help">Esta configuração controla se o compartilhamento Sysvol criado pelo serviço Logon de Rede em um controlador de domínio (CD) deve ou não dar suporte à compatibilidade para a semântica de compartilhamento de arquivo com aplicativos anteriores.
+
+Quando esta configuração é habilitada, o compartilhamento Sysvol aceita a semântica de compartilhamento de arquivo que atende a pedidos de acesso de leitura exclusivo para arquivos no compartilhamento, mesmo quando o chamador tiver apenas permissão de leitura.
+
+Quando esta configuração é desabilitada ou não é definida, o compartilhamento Sysvol concede o acesso de leitura compartilhado a arquivos no compartilhamento quando o acesso exclusivo é solicitado e o chamador tem apenas permissão de leitura.
+
+Por padrão, o compartilhamento Sysvol concede acesso de leitura compartilhado a arquivos no compartilhamento quando o acesso exclusivo é solicitado.
+
+Observação: o compartilhamento Sysvol é um compartilhamento criado pelo serviço Logon de Rede para uso por clientes de diretiva de grupo no domínio. O comportamento padrão do compartilhamento Sysvol garante que nenhum aplicativo com apenas permissão de leitura para arquivos no compartilhamento Sysvol possa bloquear os arquivos solicitando acesso exclusivo de leitura, o que pode impedir que configurações de diretiva de grupo sejam atualizadas em clientes no domínio. Quando esta configuração é habilitada, um aplicativo que depende da capacidade de bloquear arquivos no compartilhamento Sysvol apenas com permissão de leitura pode impedir que clientes da diretiva de grupo leiam os arquivos e, em geral, diminui a disponibilidade do compartilhamento Sysvol no domínio.
+
+Se esta configuração for habilitada, os administradores de domínio deverão se certificar de que os únicos aplicativos que estão usando o recurso de leitura exclusivo no domínio são aqueles aprovados pelo administrador.</string>
+      <string id="Netlogon_UseDynamicDns">Registro dinâmico de registros DNS do localizador de controladores de domínio</string>
+      <string id="Netlogon_UseDynamicDns_Help">Determina se o registro dinâmico dos registros de recursos DNS do localizador de controlador de domínio (DC) está habilitado. Esses registros DNS são registrados dinamicamente pelo serviço Logon de Rede e são usados pelo algoritmo do localizador para localizar o DC.
+
+Se você habilitar essa configuração, os DCs aos quais ela for aplicada registrarão dinamicamente os registros DNS do localizador de DC através de conexões de rede com a atualização dinâmica de DNS habilitada.
+
+Se você desabilitar essa configuração, os DCs não registrarão esses registros.
+
+Se não for definida, essa configuração não será aplicada a nenhum DC e os DCs usarão a sua configuração local.</string>
+      <string id="Netlogon_TryNextClosestSite">Tentar Site mais Próximo</string>
+      <string id="Netlogon_TryNextClosestSite_Help">O serviço Localizador de Controladores de Domínio é usado pelos clientes para localizar controladores de domínio do Active Directory. O comportamento padrão do Localizador de Controladores de Domínio é localizar um controlador de domínio no mesmo site. Se nenhum for localizado no mesmo site, um controlador de domínio de outro site, que pode estar a vários sites de distância, pode ser retornado pelo Localizador de Controladores de Domínio. A proximidade entre dois sites é determinada pelo custo total de link de site entre eles. Um site estará mais próximo se tiver um custo de link de site menor do que outro site com um custo de link de site maior. O recurso Tentar Site mais Próximo permite que o Localizador de Controladores de Domínio tente localizar um controlador de domínio no site mais próximo tomando por base o custo do link do site, caso um controlador de domínio no mesmo site não seja localizado. Em cenários com vários sites, o failover para o site mais próximo durante a localização do controlador de domínio torna o tráfego de rede mais eficiente.
+
+Se você habilitar‏ esta configuração de diretiva, o Local de Controladores de Domínio do recurso Tentar Site mais Próximo será ativado para o computador em todos os adaptadores de rede disponíveis mas não configurados.
+
+Se você desabilitar‏ esta configuração de diretiva, o Local de Controladores de Domínio do recurso Tentar Site mais Próximo não será usado por padrão para o computador em todos os adaptadores de rede disponíveis mas não configurados. No entanto, se for feita uma chamada do Localizador de Controladores de Domínio usando explicitamente o sinalizador DS_TRY_NEXTCLOSEST_SITE, o comportamento de Tentar Site mais Próximo será mantido.
+
+Se você não definir‏ esta configuração de diretiva, o Local de Controladores de Domínio do recurso Tentar Site mais Próximo não será usado por padrão para o computador em todos os adaptadores de rede disponíveis mas não configurados. Se o sinalizador DS_TRY_NEXTCLOSEST_SITE for usado explicitamente, o comportamento de Site mais Próximo será usado.</string>
+      <string id="Netlogon_ForceRediscoveryInterval">Forçar Intervalo de Redescoberta</string>
+      <string id="Netlogon_ForceRediscoveryInterval_Help">O serviço Localizador de Controladores de Domínio é usado pelos clientes para localizar controladores de domínio do Active Directory. Quando o Localizador de Controladores de Domínio localiza um controlador de domínio, ele coloca os controladores de domínio no cache para aumentar a eficiência do algoritmo do local. Enquanto o controlador de domínio no cache atender aos requisitos e estiver em execução, o Localizador de Controladores de Domínio continuará a retorná-lo. Se for introduzido um novo controlador de domínio, os clientes existentes só o descobrirão quando for executada uma redescoberta forçada pelo Localizador de Controladores de Domínio. Para adaptar-se a alterações nas condições da rede, o Localizador de Controladores de Domínio executará por padrão uma redescoberta forçada de acordo com um intervalo de tempo específico e manterá o balanceamento de carga eficiente dos clientes em todos os controladores de domínio disponíveis em todos os domínios ou florestas. O intervalo de tempo padrão da redescoberta forçada pelo Localizador de Controlador de Domínios é de 12 horas. A redescoberta forçada também poderá ser disparada se uma chamada do Localizador de Controladores de Domínio usar o sinalizador DS_FORCE_REDISCOVERY. A redescoberta zera o timer nas entradas do controlador de domínio no cache.
+
+Se você habilitar esta configuração de diretiva, o Localizador de Controladores de Domínio no computador executará a redescoberta forçada periodicamente, de acordo com o intervalo de tempo configurado. O intervalo de tempo mínimo é de 3.600 segundos (1 hora) para evitar o excesso de tráfego de rede resultante da redescoberta. O intervalo máximo permitido é de 4.294.967.200 segundos e qualquer valor maior do que 4.294.967 segundos (~49 dias) será tratado como infinito.
+
+Se você desabilitar essa configuração de diretiva, a redescoberta forçada será usada por padrão no computador a cada intervalo de 12 horas.
+
+Se não definir esta configuração de diretiva, a redescoberta forçada será usada por padrão no computador a cada intervalo de 12 horas, a menos que a configuração do computador local no registro seja um valor diferente.</string>
+      <string id="Netlogon_AddressTypeReturned">Tipo de Endereço de Controlador de Domínio Retornado</string>
+      <string id="Netlogon_AddressTypeReturned_Help">As APIs do Localizador de Controladores de Domínio retornam o endereço IP do controlador de domínio com a outra parte da informação. Antes do suporte a IPv6, o endereço IP do controlador de domínio retornado era IPv4. Mas com o suporte a IPv6, as APIs do Localizador de Controladores de Domínio podem retornar o endereço de controlador de domínio IPv6. É possível que o endereço de controlador de domínio IPv6 não seja tratado corretamente por alguns aplicativos existentes. Assim, esta diretiva é fornecida para oferecer suporte a esses cenários.
+
+Por padrão, as APIs do Localizador de Controladores de Domínio podem retornar endereços de controlador de domínio IPv4/IPv6. Mas se alguns aplicativos forem interrompidos devido ao endereço de controlador de domínio IPv6 retornado, esta diretiva poderá ser usada para desabilitar o comportamento padrão e impor o retorno SOMENTE do endereço de controlador de domínio IPv4. Depois de corrigidos os aplicativos, esta diretiva pode ser usada para habilitar o comportamento padrão.
+
+Se você habilitar esta configuração de diretiva, as APIs do Localizador de Controladores de Domínio poderão retornar endereços de controlador de domínio IPv4/IPv6. Esse é o comportamento padrão do Localizador de Controladores de Domínio.
+
+Se você desabilitar essa configuração de diretiva, as APIs do Localizador de Controladores de Domínio retornarão APENAS endereços de controlador de domínio IPv4, se houver. Assim, se o controlador de domínio oferecer suporte a endereços IPv4 e IPv6, as APIs do Localizador de Controladores de Domínio retornarão o endereço IPv4. Mas se o controlador de domínio oferecer suporte somente a endereços IPv6, então as APIs falharão.
+
+Se você não definir esta configuração de diretiva, as APIs do Localizador de Controladores de Domínio poderão retornar endereços de controlador de domínio IPv4/IPv6. Esse é o comportamento padrão do Localizador de Controladores de Domínio.</string>
+      <string id="Netlogon_AllowNT4Crypto">Permitir algoritmos de criptografia compatíveis com o Windows NT 4.0</string>
+      <string id="Netlogon_AllowNT4Crypto_Help">Esta configuração controla se o serviço Logon de Rede permitirá o uso de algoritmos de criptografia mais antigos que os usados no Windows NT 4.0. Os algoritmos de criptografia usados no Windows NT 4.0 e anterior não são tão seguros quanto os algoritmos mais recentes usados no Windows 2000, Windows XP, Windows Server 2003, Windows Vista e nesta versão do Windows.
+
+Por padrão, o Logon de Rede não permite o uso de algoritmos de criptografia mais antigos e não os incluirá na negociação de algoritmos de criptografia. Portanto, os computadores que estejam executando o Windows NT 4.0 não conseguirão estabelecer uma conexão com este controlador de domínio.
+ 
+Se esta configuração não estiver habilitada, o Logon de Rede permitirá a negociação e o uso de algoritmos de criptografia mais antigos compatíveis com o Windows NT 4.0. No entanto, usar algoritmos mais antigos representa um risco potencial à segurança.</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages">Não processar mensagens de entrada do processador de mensagens usadas para localização de controlador de domínio com base nos nomes de domínio do NetBIOS</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages_Help">Essa configuração de diretiva permite controlar o processamento de mensagens do processador de mensagens recebidas por um controlador de domínio local.
+
+Observação: Para localizar um controlador de domínio baseado em NetBIOS (rótulo único), o localizador de controlador de domínio primeiro obtém a lista de controladores de domínio de um servidor WINS configurado em suas configurações de cliente local. O localizador então envia uma mensagem do processador a cada controlador de domínio remoto para obter mais informações. A localização acontece somente se um controlador de domínio remoto responde à mensagem do processador.
+
+Essa configuração de diretiva é recomendada para reduzir a superfície de ataque em um controlador de domínio e pode ser usada em um ambiente sem WINS, em um ambiente que tenha apenas IPv6 ou quando a localização do controlador de domínio baseada em um nome de domínio do NetBIOS não for necessária. Essa configuração de diretiva não afeta o local do controlador de domínio baseado em nomes do DNS.
+
+Se você habilitar essa configuração de diretiva, esse controlador de domínio não processará mensagens do processador de mensagens recebidas usadas no nome de domínio NetBIOS baseado no controlador de domínio local.
+
+Se você desabilitar ou não definir essa configuração de diretiva, esse controlador de domínio processará mensagens do processador de mensagens recebidas. Esse é o comportamento padrão do localizador de controladores de domínio.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Netlogon_BackgroundRetryInitialPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryInitialPeriodLabel" defaultValue="600" spinStep="600">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryMaximumPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryMaximumPeriodLabel" defaultValue="3600" spinStep="3600">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryQuitTime">
+        <decimalTextBox refId="Netlogon_BackgroundRetryQuitTimeLabel" defaultValue="0" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundSuccessfulRefreshPeriodLabel" defaultValue="4294967200" spinStep="1000">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DebugFlag">
+        <decimalTextBox refId="Netlogon_DebugFlagLabel" defaultValue="536936447">Nível:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsAvoidRegisterRecords">
+        <textBox refId="Netlogon_DnsAvoidRegisterRecordsLabel">
+          <label>Mnemônico:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_DnsRefreshInterval">
+        <decimalTextBox refId="Netlogon_DnsRefreshIntervalLabel" defaultValue="1800" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsTtl">
+        <decimalTextBox refId="Netlogon_DnsTtlLabel" defaultValue="600" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ExpectedDialupDelay">
+        <decimalTextBox refId="Netlogon_ExpectedDialupDelayLabel" defaultValue="0" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_GcSiteCoverage">
+        <textBox refId="Netlogon_GcSiteCoverageLabel">
+          <label>Sites:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvPriority">
+        <decimalTextBox refId="Netlogon_LdapSrvPriorityLabel" defaultValue="0" spinStep="100">Prioridade:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvWeight">
+        <decimalTextBox refId="Netlogon_LdapSrvWeightLabel" defaultValue="100" spinStep="100">Importância:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_MaximumLogFileSize">
+        <decimalTextBox refId="Netlogon_MaximumLogFileSizeLabel" defaultValue="536936447">Bytes:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NdncSiteCoverage">
+        <textBox refId="Netlogon_NdncSiteCoverageLabel">
+          <label>Sites:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_NegativeCachePeriod">
+        <decimalTextBox refId="Netlogon_NegativeCachePeriodLabel" defaultValue="45" spinStep="60">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_NonBackgroundSuccessfulRefreshPeriodLabel" defaultValue="1800" spinStep="1000">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ScavengeInterval">
+        <decimalTextBox refId="Netlogon_ScavengeIntervalLabel" defaultValue="900" spinStep="900">Segundos:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_SiteCoverage">
+        <textBox refId="Netlogon_SiteCoverageLabel">
+          <label>Sites:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_SiteName">
+        <textBox refId="Netlogon_SiteNameLabel">
+          <label>Site:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_ForceRediscoveryInterval">
+        <decimalTextBox refId="Netlogon_ForceRediscoveryIntervalLabel" defaultValue="43200" spinStep="100">Segundos:</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

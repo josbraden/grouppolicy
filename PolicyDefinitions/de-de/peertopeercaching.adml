@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache ermöglicht es Clients, Inhalte sicher innerhalb der Zweigstelle abzurufen, anstatt über den Server, auf dem sich der Inhalt befindet. Je nach Art der Bereitstellung kann der Inhalt von anderen Clients in der Zweigstelle oder von einem in der Zweigstelle gehosteten Cacheserver abgerufen werden. Inhalte können von einem Client nur innerhalb der Zweigstelle abgerufen werden, wenn der Client vom Server dazu autorisiert wird. Die Verwendung von BranchCache senkt die Kosten einer WAN-Verbindung (Wide Area Network), die die Zweigstellen mit dem Rechenzentrum oder der Hauptniederlassung verbindet, und erhöht die Geschwindigkeit beim Herunterladen von Inhalten, die bereits an die Zweigstelle übertragen wurden.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">BranchCache aktivieren</string>
+
+            <string id="WBC_Enable_Help">Durch diese Richtlinieneinstellung wird festgelegt, ob BranchCache auf dem Clientcomputer aktiviert wird. BranchCache reduziert die Auslastung von WAN-Verbindungen (Wide Area Network), die Zweigstellen mit dem Rechenzentrum oder der Hauptniederlassung verbinden, und erhöht die Geschwindigkeit beim Herunterladen von Inhalten, die bereits an die Zweigstelle übertragen wurden. Um dies zu erreichen, ermöglicht BranchCache Zweigstellencomputern das Zwischenspeichern von Dateien und Daten, die mittels HTTP von BranchCache-fähigen Intranetservern abgerufen werden; anschließend werden die Dateien sicher für andere Zweigstellencomputer freigegeben. Zweigstellencomputer können Inhalte (bei Verwendung des Modus "Gehosteter Cache") von einem gehosteten Cacheserver in der Zweigstelle oder (bei Verwendung des Modus "Verteilter Cache") von anderen Clientcomputern in der Zweigstelle abrufen. Um auf zwischengespeicherten Inhalt zuzugreifen, benötigt der Computer Zugriffsberechtigungen für Inhalte auf dem Quellserver.
+
+Aktivieren Sie diese Richtlinieneinstellung auf Clientcomputern in Zweigstellen, die über eine geringe WAN-Bandbreite, hohe Latenzzeiten und eine Reihe von Clientcomputern verfügen, die auf identische Daten auf Servern in der Hauptniederlassung zugreifen müssen.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, wird BranchCache aktiviert. Damit diese Richtlinieneinstellung wirksam wird, müssen Sie zusätzlich das BranchCache-Feature auf dem Clientcomputer installieren.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, ist BranchCache deaktiviert.
+            </string>
+
+            <string id="WBC_Cache_Percent">Prozentuale Speicherplatzbelegung durch Clientcomputercache festlegen</string>
+
+            <string id="WBC_Cache_Percent_Help">Mit dieser Richtlinieneinstellung wird der prozentuale Anteil des Gesamtspeicherplatzes geändert, der bei Verwendung von BranchCache standardmäßig zum Zwischenspeichern abgerufener Inhalte reserviert wird. Dieser Inhalt wird anderen anfordernden Clientcomputern zur Verfügung gestellt, wenn diese vom Server für den Zugriff auf den Inhalt autorisiert wurden.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, können Sie den prozentualen Anteil des Gesamtspeicherplatzes konfigurieren, der vom Cache belegt wird.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird der Cache auf fünf Prozent des Gesamtspeicherplatzes auf dem Clientcomputer festgelegt.
+            </string>
+
+            <string id="WBC_HostedCache_Location">BranchCache-Modus "Gehosteter Cache" festlegen</string>
+
+            <string id="WBC_HostedCache_Location_Help">Mit dieser Richtlinieneinstellung wird angegeben, ob der Clientcomputer den Modus "Gehosteter Cache" verwenden soll, und wie die Adresse des BranchCache-Servers im gegebenen Fall lautet. Mit dem Modus "Gehosteter Cache" kann ein Clientcomputer Inhalte von einem BranchCache-Server abrufen, der als zentraler (gehosteter) Cache für eine Zweigstelle fungiert. Bei Verwendung des Modus "Gehosteter Cache" wird der von BranchCache-fähigen Clientcomputern heruntergeladene Inhalt mithilfe von Push auf den BranchCache-Server übertragen, der daraufhin als zentraler Cache für andere BranchCache-fähige Clientcomputer in der Zweigstelle fungiert. Clientcomputer kommunizieren über Secure Sockets Layer (SSL) mit dem BranchCache-Server.
+
+Um diese Richtlinieneinstellung zu verwenden, müssen Sie die Adresse des BranchCache-Servers angeben, die mit dem vollqualifizierten Domänennamen (FQDN) des Servers übereinstimmen muss, der im Zertifikat des BranchCache-Servers festgelegt wurde. Der Zertifikatstamm für das Zertifikat des BranchCache-Servers muss sich außerdem im vertrauenswürdigen Stammspeicher des Clientcomputers befinden.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren und einen gültigen Ort für den gehosteten Cache angeben, wird der Modus "Gehosteter Cache" aktiviert. Damit diese Richtlinieneinstellung wirksam wird, müssen Sie außerdem die Richtlinieneinstellung "BranchCache aktivieren" aktivieren.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird der Modus "Gehosteter Cache" deaktiviert.
+            </string>
+
+            <string id="WBC_Distributed_Enable">BranchCache-Modus "Verteilter Cache" festlegen</string>
+
+            <string id="WBC_Distributed_Enable_Help">Mit dieser Richtlinieneinstellung geben Sie an, ob der Clientcomputer den Modus "Verteilter Cache" verwenden soll. In diesem BranchCache-Modus ist ein Clientcomputer in der Lage, Inhalt abzurufen, der von anderen Clientcomputern in der Zweigstelle heruntergeladen und zwischengespeichert wurde. Um auf zwischengespeicherten Inhalt anderer Clientcomputer in der Zweigstelle zuzugreifen, benötigt der Computer Zugriffsberechtigungen für Inhalte auf dem Quellserver.
+
+Mit dieser Richtlinieneinstellung wird angegeben, ob der Modus "Verteilter Cache" verwendet wird. Aktivieren Sie diese Richtlinieneinstellung bei Verwendung von BranchCache in Zweigstellen, in denen kein Server als gehosteter Cache eingesetzt wird.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, wird der Modus "Verteilter Cache" verwendet. Damit diese Richtlinieneinstellung wirksam wird, müssen Sie außerdem die Richtlinieneinstellung "BranchCache aktivieren" aktivieren.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird der Modus "Verteilter Cache" deaktiviert.
+            </string>
+
+            <string id="WBC_SMB_Enable">BranchCache für Netzwerkdateien konfigurieren</string>
+
+            <string id="WBC_SMB_Enable_Help">Mit dieser Richtlinieneinstellung wird der Standardwert für die Roundtrip-Netzwerklatenz geändert, oberhalb dessen Netzwerkdateien von Clientcomputern in der Zweigstelle zwischengespeichert werden. BranchCache für Netzwerkdateien ermöglicht Computern in einer Zweigstelle das Zwischenspeichern von Daten von Intranetservern, auf denen BranchCache aktiviert ist; anschließend werden die Dateien sicher für andere Zweigstellencomputer freigegeben. Einer der Inhaltstypen, die in einer Zweigstelle zwischengespeichert werden können, sind mit dem SMB-(Server Message Block-)Protokoll übertragene Netzwerkdateien.
+
+Netzwerkdateien werden standardmäßig in der Zweigstelle zwischengespeichert, wenn die Roundtrip-Netzwerklatenz der WAN-Verbindung (Wide Area Network) über 80 ms liegt. Um die auf die Zweigstellencomputer heruntergeladenen Netzwerkdateien immer zwischenzuspeichern, legen Sie den Wert für die Netzwerklatenz auf 0 fest. Um das Zwischenspeichern von Netzwerkdateien in Zweigstellen zu deaktivieren, legen Sie die Latenz auf einen sehr hohen Wert fest.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, können Sie die Roundtrip-Netzwerklatenz auf einen Wert festlegen, oberhalb dessen Netzwerkdateien von Clientcomputern in der Zweigstelle zwischengespeichert werden sollen.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, werden Netzwerkdateien vom Clientcomputer zwischengespeichert, wenn der Wert für die Roundtrip-Netzwerklatenz der WAN-Verbindung (Wide Area Network) über 80 ms liegt.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Speicherort des Clientcomputercaches eingeben</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Speicherort des gehosteten Caches eingeben</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Roundtrip-Netzwerklatenzwert (ms) eingeben, oberhalb dessen Netzwerkdateien in der Zweigstelle zwischengespeichert werden müssen</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

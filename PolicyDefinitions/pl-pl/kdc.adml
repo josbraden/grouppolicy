@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Ustawienia KDC</displayName>
+  <description>Ustawienia konfiguracji centrum dystrybucji kluczy Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Użyj funkcji kolejności przeszukiwania lasów</string>
+      <string id="forestsearch_explain">To ustawienie zasad definiuje listę lasów ufających, które centrum dystrybucji kluczy (KDC) przeszukuje podczas prób rozpoznania dwuczęściowych głównych nazw usługi (SPN).
+
+Jeśli to ustawienie zasad zostanie włączone, centrum dystrybucji kluczy będzie przeszukiwać lasy z tej listy, jeśli nie będzie w stanie rozpoznać dwuczęściowej nazwy SPN w lesie lokalnym. Przeszukiwanie lasów jest wykonywane przy użyciu wykazu globalnego lub wskazówek dotyczących sufiksu nazwy. Jeśli zostanie znalezione dopasowanie, centrum dystrybucji kluczy zwróci klientowi bilet odwołania do odpowiedniej domeny.
+
+Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, centrum dystrybucji kluczy nie będzie przeszukiwać wymienionych na liście lasów w celu rozpoznania nazwy SPN. Jeśli centrum dystrybucji kluczy nie będzie w stanie rozpoznać nazwy SPN, ponieważ jej odnalezienie będzie niemożliwe, będzie można użyć uwierzytelniania NTLM.
+
+Aby zagwarantować spójne zachowanie, to ustawienie zasad musi być obsługiwane i identycznie ustawione na wszystkich kontrolerach domeny.</string>
+      <string id="emitlili">Podaj informacje o poprzednich logowaniach do komputerów klienckich</string>
+      <string id="emitlili_explain">To ustawienie zasad określa, czy kontroler domeny udostępnia komputerom klienckim informacje o poprzednich logowaniach. 
+
+Jeśli to ustawienie zasad zostanie włączone, kontroler domeny będzie przekazywać komunikat informacyjny o poprzednich logowaniach.
+
+Aby ta funkcja mogła być używana podczas logowania systemu Windows, musi też być włączone ustawienie zasad Wyświetl informacje o poprzednich zalogowaniach podczas logowania użytkownika, które jest dostępne w węźle Opcje logowania systemu Windows w węźle Składniki systemu Windows.
+
+Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, kontroler domeny nie będzie udostępniać informacji o poprzednich logowaniach, chyba że będzie włączone ustawienie zasad Wyświetl informacje o poprzednich zalogowaniach podczas logowania użytkownika.
+
+Uwaga: Informacje o poprzednich logowaniach są dostarczane tylko wtedy, gdy poziomem funkcjonalności domeny jest system Windows Server 2008. W przypadku domen z poziomem funkcjonalności systemu Windows Server 2003, systemu Windows 2000 działającego w trybie macierzystym lub systemu Windows 2000 działającego w trybie mieszanym kontrolery domeny nie mogą dostarczać informacji o poprzednich logowaniach, a włączenie tego ustawienia zasad nie przyniesie żadnego efektu.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Tryb:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Lasy do przeszukania</label>
+        </textBox>
+        <text>Składnia:</text>
+        <text>Wprowadź listę lasów, które będą przeszukiwanie po włączeniu tej zasady.</text>
+        <text>Użyj formatu nazewnictwa w pełni kwalifikowanej nazwy domeny (FQDN).</text>
+        <text>Rozdziel wpisy wyszukiwania średnikami (;).</text>
+        <text>Szczegóły:</text>
+        <text>Bieżącego lasu nie trzeba umieszczać na liście, ponieważ funkcja kolejności przeszukiwania lasów najpierw używa wykazu globalnego, a następnie wykonuje wyszukiwanie zgodnie z kolejnością z listy.</text>
+        <text>Nie ma potrzeby tworzenia osobnej listy zawierającej wszystkie domeny w lesie.</text>
+        <text>Jeśli na liście znajduje się las ufający, zostaną przeszukane wszystkie domeny w tym lesie.</text>
+        <text>Aby uzyskać najwyższą wydajność, kolejność lasów na liście powinna odpowiadać prawdopodobieństwu sukcesu.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

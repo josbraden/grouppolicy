@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>itt adja meg a megjelenítendő nevet</displayName>
+  <description>itt adja meg a leírást</description>
+  <resources>
+    <stringTable>
+      <string id="Rpc">Távoli eljáráshívás</string>
+      <string id="RpcEEInfoOff">Kikapcsolva</string>
+      <string id="RpcEEInfoOffWithExc">Kikapcsolva (kivételekkel)</string>
+      <string id="RpcEEInfoOn">Bekapcsolva</string>
+      <string id="RpcEEInfoOnWithExc">Bekapcsolva (kivételekkel)</string>
+      <string id="RpcEnableAuthEpResolution">RPC végpontleképező ügyfelek hitelesítése</string>
+      <string id="RpcEnableAuthEpResolution_Help">A beállítás engedélyezése esetén a rendszer a végpontleképező szolgáltatásra támaszkodó RPC-ügyfeleket hitelesítésre utasítja, ha az az eljáráshívás, amelyhez a végpontot fel kell oldani, rendelkezik hitelesítési információkkal.
+
+E beállítás letiltása esetén a végpontleképező szolgáltatásra támaszkodó RPC-ügyfelek nem hitelesítik magukat. A (bármely szervizcsomaggal bővített) Windows NT 4 rendszereken futó végpontleképező szolgáltatás az ilyen módon megadott hitelesítési információkat nem tudja feldolgozni. Ez azt jelenti, ha ezt a beállítást egy ügyfélszámítógépen bekapcsolja, akkor az ügyfél nem tud majd kapcsolatba lépni a távoli eljáráshívást használó Windows NT 4 alapú kiszolgálókkal, ha végpontfeloldásra van szükség.
+
+Alapértelmezés szerint az RPC-ügyfelek kiszolgálóvégpont kérésekor hitelesítés nélkül kommunikálnak az RPC-kiszolgáló végpontleképező szolgáltatásával.
+
+Megjegyzés: Ez a házirend a rendszer újraindítása után lép érvénybe. </string>
+      <string id="RpcExtendedErrorInformation">Kibővített hibainformáció továbbítása</string>
+      <string id="RpcExtendedErrorInformation_Help">Arra utasítja a távoli eljáráshívás futásidejű összetevőjét, hogy hiba esetén bővített hibainformációt hozzon létre.
+
+A bővített hibainformáció az alábbiakat tartalmazza: a hiba fellépésének időpontját a helyi idő szerint, a távoli eljáráshívás verzióját, és annak a számítógépnek a nevét, amelyen a hiba történt vagy propagálva lett. A programok a szabványos Windows alkalmazásprogramozási felületekkel (API-k) olvashatják be a bővített hibainformációt.
+
+Ha letiltja vagy nem konfigurálja ezt a beállítást, a távoli eljáráshívás futásidejű összetevője állapotkód generálásával jelzi a hibát.
+
+A beállítás használatához engedélyezze azt, majd jelölje ki a hibára adandó válasz típusát a legördülő menüből.
+
+-- A „Kikapcsolva” beállítás az összes folyamat esetében letiltja a bővített hibainformációt. A távoli eljáráshívás csak egy hibakódot generál.
+
+-- Az „Bekapcsolva (kivételekkel)” beállítás engedélyezi a bővített hibainformációt, de lehetővé teszi, hogy egyes kijelölt folyamatok esetében letiltsa azt. Ha az érvényben lévő beállítás mellett egy adott folyamatra vonatkozóan le szeretné tiltani a bővített hibainformációt, a folyamatot elindító parancsnak a Részletes hibainformáció Kivételek mezőjében szereplő valamelyik karakterlánccal kell kezdődnie.
+
+-- A „Kikapcsolva (kivételekkel)” beállítás letiltja a bővített hibainformációt, de lehetővé teszi azok engedélyezését bizonyos kijelölt folyamatok esetében. Ha az érvényben lévő beállítás mellett egy adott folyamatra vonatkozóan engedélyezni szeretné a bővített hibainformációt, a folyamatot elindító parancsnak a Részletes hibainformáció Kivételek mezőjében szereplő valamelyik karakterlánccal kell kezdődnie.
+
+-- Az „Bekapcsolva” beállítás minden folyamaton engedélyezi a bővített hibainformáció létrehozását.
+
+Megjegyzés: További információt a Részletes hibainformáció Kivételek mezőjével kapcsolatban a Windows 2000 platform szoftverfejlesztő csomagjában (Platform SDK) talál.
+
+Megjegyzés: A bővített hibainformációk formátuma kompatibilis ugyan más típusú vagy régebbi Microsoft operációs rendszerekkel, de csak az újabb Microsoft operációs rendszerek tudják olvasni az információkat és reagálni azokra.
+
+Megjegyzés: Az alapértelmezett „Kikapcsolva” beállítást ajánlott használni azokon a rendszereken, amelyeken a bővített hibainformáció bizalmas adatnak minősül, és nem volna célszerű annak távoli elérését lehetővé tenni.
+
+Megjegyzés: Ez a házirend-beállítás a rendszer újraindítása után lép érvénybe.</string>
+      <string id="RpcIDFOff">Kikapcsolva</string>
+      <string id="RpcIDFOn">Bekapcsolva</string>
+      <string id="RpcIgnoreDelegationFailure">Delegálási hiba figyelmen kívül hagyása</string>
+      <string id="RpcIgnoreDelegationFailure_Help">Arra utasítja a távoli eljáráshívás futásidejű összetevőjét, hogy hagyja figyelmen kívül a delegálási hibákat delegálás kérése esetén.
+
+A Windows Server 2003 termékcsalád egy új delegálási modellt tartalmaz, a korlátozott delegálást. Ebben a modellben a biztonsági rendszer nem jelzi, hogy a delegálás engedélyezve lett egy biztonsági környezetben, amikor az ügyfél egy kiszolgálóhoz csatlakozik. A Távoli eljáráshívás (RPC) és a COM szolgáltatás hívásakor ajánlott az RPC_C_QOS_CAPABILITIES_IGNORE_DELEGATE_FAILURE jelzőt használni, azonban lehetnek bizonyos alkalmazások, amelyeket a hagyományos delegálási modellhez írtak és nem használják ezt a jelzőt, így RPC_S_SEC_PKG_ERROR hibát érzékelnek a korlátozott delegálást használó kiszolgálóhoz történő kapcsolódás során.
+
+Ha letiltja a beállítást, nem konfigurálja vagy „Kikapcsolva” állapotúra állítja, a távoli eljáráshívás futásidejű összetevője RPC_S_SEC_PKG_ERROR hibákat hoz létre azon delegálást kérő alkalmazásokhoz, amelyek a korlátozott delegálást használó kiszolgálókhoz próbálnak csatlakozni. Ha a beállítást „Bekapcsolva” állapotúra állítja, a távoli eljáráshívás futásidejű összetevője mind a delegálást támogató, mind a delegálást nem támogató biztonsági környezeteket el fogja fogadni.
+
+--  A „Kikapcsolva” állapot beállítása esetén a távoli eljáráshívás futásidejű összetevője RPC_S_SEC_PKG_ERROR hibát hoz létre, abban az esetben, ha az ügyfél kér delegálást, azonban a létrehozott biztonsági környezet nem támogatja azt.
+
+-- A „Bekapcsolva” állapot beállítása esetén a távoli eljáráshívás futásidejű összetevője akkor is elfogadja a delegálást nem támogató biztonsági környezeteket, ha az ügyfél delegálást kért.
+
+Megjegyzés: Ez a házirend-beállítás a rendszer újraindítása után lép érvénybe.</string>
+      <string id="RpcMinimumHttpConnectionTimeout">Az RPC/HTTP-kapcsolatok minimális üresjárati időkorlátja</string>
+      <string id="RpcMinimumHttpConnectionTimeout_Help">Ennek a beállításnak a hatására a távoli eljáráshívás futásidejű összetevője a megadott időkorlátot fogja minimális üresjárati időkorlátnak tekinteni olyan esetekben is, ha az RPC HTTP proxy kiszolgálót futtató IIS kiszolgálónak magasabb időkorlátot adtak meg. Ha az RPC HTTP proxy kiszolgálót futtató IIS kiszolgálónak alacsonyabb időkorlátot adtak meg, akkor a kiszolgáló időkorlátja lesz érvényes. Az időkorlát másodpercekben van megadva.
+
+Ez a beállítás olyan esetekben hasznos, amikor egy hálózati ügynök, például egy HTTP-proxy vagy egy útválasztó alacsonyabb minimális üresjárati időkorlátot használ, mint az RPC HTTP-proxykiszolgálót futtató IIS kiszolgáló. Ezekben az esetekben az RPC HTTP-n keresztül típusú ügyfelek hibát észlelhetnek a kapcsolat időkorlátjának vártnál alacsonyabb szintje miatt. A fenti beállításokkal a távoli eljáráshívás futásidejű összetevője és az RPC proxy számára alacsonyabb időkorlátot állíthat be.
+
+Ez a beállítás csak akkor alkalmazható, ha az RPC-ügyfél, az RPC-kiszolgáló és az RPC HTTP-Proxy a Windows Server 2003 család/Windows XP SP1 rendszert vagy újabb verziót használ. Ha az RPC-ügyfél, az RPC-kiszolgáló vagy az RPC HTTP-Proxy régebbi Windows-verziót használ, ezt a beállítást figyelmen kívül hagyja a rendszer.
+
+A beállítás minimális értéke 90 másodperc. A maximális időtartam 7200 másodperc (2 óra).
+
+Ha letiltja vagy nem konfigurálja ezt a beállítást, a rendszer az RPC HTTP proxykiszolgálót futtató IIS kiszolgáló számára beállított minimális üresjárati időkorlátot fogja figyelembe venni.
+
+Megjegyzés: Ez a házirend-beállítás a rendszer újraindítása után lép érvénybe.</string>
+      <string id="RpcRestrictRemoteClients">Nem hitelesített RPC-ügyfelekre vonatkozó korlátozások</string>
+      <string id="RpcRestrictRemoteClients_Help">E beállítás bekapcsolása esetén a rendszer arra utasítja a távoli eljáráshívás futásidejű összetevőjét az RPC-kiszolgálón, hogy korlátozza azon nem hitelesített RPC-ügyfelek hozzáférését, amelyek a számítógépen futó RPC-kiszolgálókhoz kapcsolódnak. A rendszer akkor tekint egy ügyfelet hitelesítettnek, ha a kiszolgálóval való kommunikációhoz nevesített csövet vagy biztonságos távoli eljáráshívást használ. A távoli eljáráshívás azon felületei, amelyek a nem hitelesített ügyfelek számára kifejezetten elérhetővé vannak téve, kivételt képezhetnek e korlátozás alól a házirend beállításaitól függően.
+
+Ha letiltja vagy nem konfigurálja ezt a beállítást, a rendszer Windows XP esetében a Hitelesítve, az ezt a házirend-beállítást támogató kiszolgálótermékek esetében pedig a Nincs értéket használja. Ha engedélyezi, akkor a következő értékek állnak rendelkezésre:
+
+--  A „Nincs” beállítással az RPC-ügyfelek csatlakozhatnak a házirendet alkalmazó számítógépeken működő minden RPC kiszolgálóhoz.
+
+--  A „Hitelesítve” beállítással csak hitelesítetett RPC-ügyfelek (a fenti definíció szerint) csatlakozhatnak a házirendet alkalmazó számítógépeken működő RPC kiszolgálókhoz. Azokra a felületekre, amelyek esetében a felhasználó kivételt kért a fenti szabályok alól, nem vonatkoznak a fenti szabályok.
+
+--  A „Hitelesítve, kivételek nélkül” beállítással csak hitelesítetett RPC-ügyfelek (a fenti definíció szerint) csatlakozhatnak a házirendet alkalmazó számítógépeken működő RPC kiszolgálókhoz. Kivétel nincs.
+
+Megjegyzés: Ez a házirend-beállítás a rendszer újraindítása után lép érvénybe.</string>
+      <string id="RpcRestrictRemoteClientsAuth">Hitelesített</string>
+      <string id="RpcRestrictRemoteClientsHigh">Hitelesítve, kivételek nélkül</string>
+      <string id="RpcRestrictRemoteClientsNone">Nincs</string>
+      <string id="RpcStateInfoAuto1">Auto1</string>
+      <string id="RpcStateInfoAuto2">Auto2</string>
+      <string id="RpcStateInfoBoth">Teljes</string>
+      <string id="RpcStateInfoNone">Nincs</string>
+      <string id="RpcStateInformation">Távoli eljáráshívás hibakeresési állapotinformációja</string>
+      <string id="RpcStateInformation_Help">
+
+Azt határozza meg, hogy a távoli eljáráshívás (RPC) futásidejű összetevője rögzíti-e a rendszer távoli eljáráshívással kapcsolatos állapotinformációit, illetve mennyi információt tárol. Az alapvető állapotinformációk, amelyek csak a leggyakrabban igényelt adatokból állnak, a távoli eljáráshívással kapcsolatos problémák megoldásához szükségesek.
+
+Ha engedélyezi a beállítást, a legördülő listából kijelölheti, hogy mely rendszerek vezessenek RPC-állapotinformációkat. Azokban az esetekben, amikor a beállítás letiltott vagy nem konfigurálták, a távoli eljáráshívás az Auto2 beállítást alkalmazza.
+
+-- A „Nincs” beállítás arra utal, hogy a rendszer nem tárol a távoli eljáráshívás (RPC) szolgáltatás állapotáról adatokat. Megjegyzés: A hibaelhárításhoz szükséges alapvető állapotinformációknak pusztán elhanyagolható hatása van a teljesítményre és csak körülbelül 4KB memóriát használnak fel, ezért ez a beállítás a legtöbb telepítéshez nem ajánlott.
+
+--  Az „Auto1” beállítás hatására a távoli eljáráshívás csak akkor tart nyilván alapvető állapotinformációkat, ha a számítógép legalább 64 MB memóriával rendelkezik.
+
+--  Az „Auto2” beállítás hatására a távoli eljáráshívás csak akkor tart nyilván alapvető állapotinformációkat, ha a számítógép legalább 128 MB memóriával rendelkezik és a Windows 2000 Server, Windows 2000 Advanced Server vagy a Windows 2000 Datacenter Server rendszerek valamelyikét használja. 
+
+--  A „Kiszolgáló” beállítás hatására a távoli eljáráshívás nyilvántartja az alapvető állapotinformációkat a számítógépen a memóriakapacitástól függetlenül.
+
+--  A „Teljes” beállítás hatására a távoli eljáráshívás minden távoli eljáráshívásra vonatkozó állapotinformációt nyilvántart a számítógépen, a memóriakapacitástól függetlenül. Mivel ez a beállítás csökkentheti a teljesítményt, csak akkor ajánlott használni, ha távoli eljáráshívással kapcsolatos problémákat vizsgál ki.
+
+Megjegyzés: Az RPC-állapotinformációkat tároló számítógépről valamilyen hibakereső eszközzel tudja lekérni az adatokat.
+
+Megjegyzés: Ez a házirend a rendszer újraindítása után lép érvénybe.</string>
+      <string id="RpcStateInfoServer">Kiszolgáló</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="RpcExtendedErrorInformation">
+        <dropdownList refId="RpcExtendedErrorInformationList" defaultItem="0">Kibővített hibainformáció továbbítása:</dropdownList>
+        <textBox refId="RpcExtErrorExceptions">
+          <label>Kibővített hibainformáció kivételei:</label>
+        </textBox>
+      </presentation>
+      <presentation id="RpcIgnoreDelegationFailure">
+        <dropdownList refId="RpcIgnoreDelegationFailureList" defaultItem="0">Delegálási hiba figyelmen kívül hagyása:</dropdownList>
+      </presentation>
+      <presentation id="RpcMinimumHttpConnectionTimeout">
+        <decimalTextBox refId="RpcMinimumHttpConnectionTimeoutValue" defaultValue="900" spinStep="10">Kapcsolat minimális üresjárati időkorlátja (másodpercben):</decimalTextBox>
+      </presentation>
+      <presentation id="RpcRestrictRemoteClients">
+        <dropdownList refId="RpcRestrictRemoteClientsList" defaultItem="1">Távoli eljáráshívás futásidejű összetevőjének nem hitelesített ügyfeleire vonatkozó korlátozás:</dropdownList>
+      </presentation>
+      <presentation id="RpcStateInformation">
+        <dropdownList refId="RpcStateInformationList" defaultItem="2">Távoli eljáráshívás megőrzendő futtatási idejű állapotinformációja:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

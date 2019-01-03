@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>Med BranchCache kan klienter hente innhold fra avdelingskontoret på en sikker måte, i stedet for at det må hentes fra serveren som er vert for innholdet. Alt etter distribusjonsmodusen kan innholdet hentes fra andre klienter på bransjekontoret eller fra en server for vertsbasert hurtigbuffer i avdelingen. En klient kan bare hente innhold fra avdelingen hvis serveren har godkjent at den kan gjøre dette. Bruken av BranchCache reduserer kostnadene for WAN-koblingen (fjernnett) som kobler avdelingskontorene til datasenteret eller hovedkontorene, og øker nedlastingshastigheten for innhold som allerede er lastet ned på avdelingskontoret.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">Aktiver BranchCache</string>
+
+            <string id="WBC_Enable_Help">Denne policyinnstillingen angir om BranchCache er aktivert på klientdatamaskinen. BranchCache reduserer belastningen på WAN-koblingene (fjernnett) som kobler avdelingskontorer til datasenteret eller hovedkontorene, og øker tilgangshastigheten for innhold som allerede er blitt lastet ned til avdelingskontoret. BranchCache gjør dette ved å tillate datamaskiner på et avdelingskontor å hurtigbufre filer og HTTP-trafikk fra intranettservere der BranchCache er aktivert, og deretter dele filene med andre datamaskiner i avdelingen på en sikker måte. Datamaskiner på avdelingskontoret kan hente innhold fra en server for vertsbasert hurtigbuffer i avdelingen (ved bruk av modusen Vertsbasert hurtigbuffer), eller fra andre klientdatamaskiner i avdelingen (ved bruk av modusen Distribuert hurtigbuffer). For å få tilgang til hurtigbufret innhold må datamaskinen ha tillatelse til å få tilgang til innholdet på kildeserveren.
+
+Aktiver denne policyinnstillingen på klientdatamaskiner på avdelingskontorer med lav WAN-båndbredde, høy ventetid og mange klientdatamaskiner som må ha tilgang til de samme dataene fra servere på hovedkontoret.
+
+Hvis du aktiverer denne policyinnstillingen, er BranchCache aktivert. For at denne policyinnstillingen skal tre i kraft, må du også installere BranchCache på klientdatamaskinen.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, er BranchCache deaktivert.
+            </string>
+
+            <string id="WBC_Cache_Percent">Angi hvor mange prosent av diskplassen som skal brukes for hurtigbufferen for klientdatamaskiner</string>
+
+            <string id="WBC_Cache_Percent_Help">Denne policyinnstillingen endrer hvor mange prosent av den totale diskplassen som som standard skal brukes til å hurtigbufre innhold som er hentet med BranchCache. Dette innholdet blir gjort tilgjengelig for andre klientdatamaskiner som ber om det, hvis de har godkjenning fra serveren til å få tilgang til innholdet.
+
+Hvis du aktiverer denne policyinnstillingen, kan du konfigurere hvor mange prosent av den totale diskplassen som skal tildeles hurtigbufferen.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, settes hurtigbufferen til 5 prosent av den totale diskplassen på klientdatamaskinen.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Angi modus for vertsbasert hurtigbuffer for BranchCache</string>
+
+            <string id="WBC_HostedCache_Location_Help">Denne policyinnstillingen angir om klientdatamaskinen skal bruke modusen for vertsbasert hurtigbuffer, og i så fall hvilken adresse BranchCache-serveren har. I modusen for vertsbasert hurtigbuffer kan en klientdatamaskin hente innhold fra en BranchCache-server som virker som den sentrale (vertsbaserte) hurtigbufferen for et avdelingskontor. I modus for vertsbasert hurtigbuffer sendes innhold som er lastet ned av BranchCache-aktiverte klientdatamaskiner, til BranchCache-serveren, som deretter virker som en sentral hurtigbuffer for andre BranchCache-aktiverte klientdatamaskiner på avdelingskontoret. Klientdatamaskiner bruker SSL (Secure Sockets Layer) til å kommunisere med BranchCache-serveren.
+
+Hvis du vil bruke denne policyinnstillingen, må du angi adressen for BranchCache-serveren, og denne adressen må samsvare med det fullstendige domenenavnet (FQDN) for serveren som er angitt i sertifikatet til BranchCache-serveren. I tillegg må sertifikatroten for BranchCache-serverens sertifikat være i klientdatamaskinens klarerte rotlager.
+
+Hvis du aktiverer denne policyinnstillingen og angir en gyldig plassering for den vertsbaserte hurtigbufferen, er modusen for vertsbasert hurtigbuffer aktivert. For at denne policyinnstillingen skal tre i kraft, må du også aktivere policyinnstillingen Aktiver BranchCache.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, er modusen for vertsbasert hurtigbuffer deaktivert.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Angi modus for distribuert hurtigbuffer for BranchCache</string>
+
+            <string id="WBC_Distributed_Enable_Help">Denne policyinnstillingen angir om klientdatamaskinen skal bruke modusen for distribuert hurtigbuffer. I denne BranchCache-modusen kan en klientdatamaskin hente innhold som er lastet ned og hurtigbufret av andre klientdatamaskiner på avdelingskontoret. For å få tilgang til hurtigbufret innhold fra andre datamaskiner i avdelingen må datamaskinen ha tillatelse til å få tilgang til innholdet på kildeserveren.
+
+Denne policyinnstillingen angir om modusen for distribuert hurtigbuffer brukes. Aktiver denne policyinnstillingen når du bruker BranchCache på avdelingskontorer der det ikke finnes noen server som virker som en vertsbasert hurtigbuffer.
+
+Hvis du aktiverer denne policyinnstillingen, brukes modusen for distribuert hurtigbuffer. For at denne policyinnstillingen skal tre i kraft, må du også aktivere policyinnstillingen Aktiver BranchCache.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, er modusen for distribuert hurtigbuffer deaktivert.
+            </string>
+
+            <string id="WBC_SMB_Enable">Konfigurer BranchCache for nettverksfiler</string>
+
+            <string id="WBC_SMB_Enable_Help">Denne policyinnstillingen endrer hvor høy standardverdien for ventetiden tur-retur på nettverket kan være før nettverksfiler hurtigbufres av klientdatamaskiner i avdelingen. BranchCache for nettverksfiler gjør at datamaskiner på et avdelingskontor kan hurtigbufre data fra intranettservere der BranchCache er aktivert, og deretter dele filene med andre datamaskiner i avdelingen på en sikker måte. En av innholdstypene som kan hurtigbufres på et avdelingskontor, er nettverksfiler som bruker SMB-protokollen (servermeldingsblokk).
+
+Som standard hurtigbufres nettverksfiler på avdelingskontoret når ventetiden tur-retur på WAN-koblingen (fjernnett) er over 80 ms. Hvis du alltid vil hurtigbufre nettverksfiler som lastes ned på datamaskiner på avdelingskontoret, setter du verdien for ventetid på nettverket til 0. Hvis du vil deaktivere hurtigbufring i avdelingen for nettverksfiler, angir du en svært høy verdi for ventetiden.
+
+Hvis du aktiverer denne policyinnstillingen, kan du angi hvor høy ventetiden tur-retur på nettverket kan være før nettverksfiler hurtigbufres av klientdatamaskiner på avdelingskontoret.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, hurtigbufrer klientdatamaskinen nettverksfiler hvis ventetiden tur-retur på WAN-koblingen (fjernnett) er over 80 ms.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Angi plassering for hurtigbuffer for klientdatamaskin</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Angi plassering for vertsbasert hurtigbuffer</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Angi hvor høy ventetiden tur-retur på nettverket kan være i millisekunder før nettverksfiler må hurtigbufres på avdelingskontoret</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

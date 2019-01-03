@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>KDC 设置</displayName>
+  <description>Kerberos 密钥发行中心的配置设置。</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">使用林搜索顺序</string>
+      <string id="forestsearch_explain">此策略设置定义在尝试解析由两部分组成的服务主体名称(SPN)时密钥发行中心(KDC)搜索的信任林列表。
+
+如果启用此策略设置，则当 KDC 无法在本地林中解析由两部分组成的 SPN 时，该 KDC 将在此列表中搜索林。林搜索使用全局编录或名称后缀提示执行。如果找到匹配项，则 KDC 向客户端返回用于访问相应域的参照票据。
+
+如果禁用或未配置此策略设置，则 KDC 不会搜索列表中的林来解析 SPN。如果 KDC 由于找不到名称而无法解析 SPN，则可能会使用 NTLM 身份验证。
+
+为确保操作的一致性，必须支持此策略设置，且域中的所有域控制器对此策略的设置必须相同。</string>
+      <string id="emitlili">提供有关以前登录到客户端计算机的信息</string>
+      <string id="emitlili_explain">此策略设置控制域控制器是否提供有关以前登录到客户端计算机的信息。
+
+如果启用此策略设置，则域控制器将提供有关以前登录的信息。
+
+要使 Windows 登录时利用此功能，还需启用 Windows 组件下“Windows 登录选项”节点中的“在用户登录期间显示有关以前登录的信息”策略设置。
+
+如果禁用或未配置此策略设置，则仅当启用“在用户登录期间显示有关以前登录的信息”策略设置后，域控制器才提供有关以前登录的信息。
+
+注意: 仅当域功能级别为 Windows Server 2008 时，才会提供有关以前登录的信息。在域功能级别为 Windows Server 2003、Windows 2000 纯模式或 Windows 2000 混合模式的域中，域控制器无法提供有关以前登录的信息，并且启用此策略设置不会影响任何操作。
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">模式:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>要搜索的林</label>
+        </textBox>
+        <text>语法:</text>
+        <text>输入启用此策略时要搜索的林的列表。</text>
+        <text>使用完全限定域名(FQDN)命名格式。</text>
+        <text>使用分号“;”分隔多个搜索项。</text>
+        <text>详细信息:</text>
+        <text>不需要列出当前林，因为林搜索顺序先使用全局编录搜索，再按列表中的顺序搜索。</text>
+        <text>不需要分别列出林中的所有域。</text>
+        <text>如果列出了信任林，则将搜索该林中的所有域。</text>
+        <text>为获得最佳性能，应按成功可能性大小顺序列出林。</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

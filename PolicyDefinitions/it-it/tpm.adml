@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>immettere qui il nome visualizzato</displayName>
+  <description>immettere qui la descrizione</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Questa impostazione consente di gestire il backup su Servizi di dominio Active Directory delle informazioni sul proprietario del TPM (Trusted Platform Module).
+
+Le informazioni sul proprietario del TPM includono un hash di crittografia della password del proprietario del TPM. Alcuni comandi TPM possono essere eseguiti solo dal proprietario del TPM. Tale hash autorizza il TPM a eseguire questi comandi.
+
+Se si abilita questa impostazione, verrà eseguito il backup automatico e in modo invisibile all'utente delle informazioni sul proprietario del TPM su Servizi di dominio Active Directory quando si utilizza Windows per impostare o modificare una password del proprietario del TPM.
+
+Se si seleziona l'opzione "Richiedi backup TPM su Servizi di dominio Active Directory", non sarà possibile impostare o modificare una password del proprietario del TPM a meno che il computer non sia connesso a un dominio e il backup su Servizi di dominio Active Directory abbia esito positivo. Questa opzione è selezionata per impostazione predefinita per garantire che le informazioni sul proprietario del TPM siano disponibili. In caso contrario, verrà tentato il backup su Servizi di dominio Active Directory, ma errori di backup o di rete non avranno effetto sulla gestione del TPM. Il backup non verrà ritentato automaticamente ed è possibile che le informazioni sul proprietario del TPM non siano state archiviate in Servizi di dominio Active Directory durante l'installazione di BitLocker.
+
+Se si disabilita o non si configura questa impostazione, non verrà eseguito il backup delle informazioni sul proprietario del TPM su Servizi di dominio Active Directory.
+
+Nota: per poter eseguire il backup su Servizi di dominio Active Directory è necessario configurare innanzitutto le impostazioni di controllo di accesso nel dominio e le estensioni dello schema adeguate. Per ulteriori informazioni sull'impostazione di Servizi di dominio Active Directory per TPM, vedere la documentazione online.
+
+Nota: non è possibile utilizzare il TPM per fornire funzionalità di sicurezza avanzate per Crittografia unità BitLocker e altre applicazioni senza impostare prima un proprietario. Per diventare proprietari del TPM con una password del proprietario, eseguire "tpm.msc" e selezionare l'azione "Inizializza TPM".
+
+Nota: se le informazioni sul proprietario del TPM sono andate perdute o non sono disponibili, è possibile una gestione del TPM limitata eseguendo "tpm.msc" nel computer locale.</string>
+      <string id="ActiveDirectoryBackup_Name">Attiva backup TPM su Servizi di dominio Active Directory</string>
+      <string id="BlockedCommandsList_Help">Questa impostazione consente di gestire l'elenco di Criteri di gruppo dei comandi del TPM (Trusted Platform Module) bloccati da Windows.
+
+Sei si abilita questa impostazione, Windows impedirà l'invio dei comandi specificati al TPM nel computer. I comandi TPM sono indicati mediante un numero di comando. Ad esempio, il numero di comando 129 è TPM_OwnerReadInternalPub e il numero di comando 170 è TPM_FieldUpgrade. Per individuare il numero di comando associato a ogni comando TPM, eseguire "tpm.msc" e passare alla sezione "Gestione comandi".
+
+Se si disabilita o non si configura questa impostazione, Windows potrà bloccare solo i comandi TPM specificati mediante gli elenchi predefiniti o locali. L'elenco predefinito di comandi TPM bloccati è preconfigurato da Windows. Per visualizzare l'elenco predefinito, eseguire "tpm.msc", passare alla sezione "Gestione comandi" e visualizzare la colonna "Nell'elenco di blocco predefinito". Questo elenco locale di comandi TPM bloccati viene configurato all'esterno di Criteri di gruppo eseguendo "tpm.msc" o tramite script sull'interfaccia Win32_Tpm. Per imporre o ignorare gli elenchi locali e predefiniti di comandi TPM bloccati, vedere le impostazioni correlate.</string>
+      <string id="BlockedCommandsList_Name">Configura l'elenco dei comandi TPM bloccati</string>
+      <string id="IgnoreDefaultList_Help">Questa impostazione consente di imporre o ignorare l'elenco predefinito dei comandi TPM (Trusted Platform Module) bloccati del computer.
+
+Se si abilita questa impostazione, Windows ignorerà l'elenco predefinito di comandi TPM bloccati e bloccherà soltanto i comandi TPM specificati da Criteri di gruppo o l'elenco locale.
+
+L'elenco predefinito di comandi TPM bloccati è preconfigurato da Windows. Per visualizzare l'elenco predefinito, eseguire "tpm.msc", passare alla sezione "Gestione comandi" e visualizzare la colonna "Nell'elenco di blocco predefinito". Questo elenco locale di comandi TPM bloccati viene configurato all'esterno di Criteri di gruppo eseguendo "tpm.msc" o tramite script sull'interfaccia Win32_Tpm. Per configurare l'elenco di Criteri di gruppo di comandi TPM bloccati, vedere l'impostazione correlata.
+
+Se si disabilita o non si configura questa impostazione, Windows bloccherà i comandi TPM nell'elenco predefinito, oltre ai comandi in Criteri di gruppo e negli elenchi locali di comandi TPM bloccati. </string>
+      <string id="IgnoreDefaultList_Name">Ignora l'elenco predefinito di comandi TPM bloccati</string>
+      <string id="IgnoreLocalList_Help">Questa impostazione consente di imporre o ignorare l'elenco locale dei comandi TPM (Trusted Platform Module) bloccati del computer.
+
+Se si abilita questa impostazione, Windows ignorerà l'elenco locale di comandi TPM bloccati e bloccherà soltanto i comandi TPM specificati da Criteri di gruppo o l'elenco predefinito.
+
+Questo elenco locale di comandi TPM bloccati viene configurato all'esterno di Criteri di gruppo eseguendo "tpm.msc" o tramite script sull'interfaccia Win32_Tpm. L'elenco predefinito di comandi TPM bloccati è preconfigurato da Windows. Per configurare l'elenco di Criteri di gruppo di comandi TPM bloccati, vedere l'impostazione correlata.
+
+Se si disabilita o non si configura questa impostazione, Windows bloccherà i comandi TPM nell'elenco locale, oltre ai comandi in Criteri di gruppo e negli elenchi predefiniti di comandi TPM bloccati.</string>
+      <string id="IgnoreLocalList_Name">Ignora l'elenco locale di comandi TPM bloccati</string>
+      <string id="TPMCategory">Servizi Trusted Platform Module</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Richiedi backup TPM su Servizi di dominio Active Directory</checkBox>
+        <text/>
+        <text>Se questa impostazione è selezionata, non sarà possibile impostare o modificare la password del proprietario del TPM </text>
+        <text>se il backup non riesce (scelta predefinita consigliata).</text>
+        <text/>
+        <text>Se questa impostazione non è selezionata, sarà possibile impostare o modificare la password del proprietario del TPM</text>
+        <text>anche se il backup non riesce (scelta predefinita consigliata). Il backup non verrà ritentato automaticamente.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Specificare i comandi da bloccare aggiungendo i relativi numeri all'elenco.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">Elenco di comandi TPM bloccati:</listBox>
+        <text>Ad esempio, per bloccare i comandi TPM_OwnerReadInternalPub</text>
+        <text>e TPM_FieldUpgrade, aggiungere le voci 129 e 170 all'elenco.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

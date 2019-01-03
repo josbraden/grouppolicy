@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">LanMan 伺服器</string>
+      <string id="Lbl_FollowShare">只對啟用 BranchCache 的共用資料夾允許雜湊發行</string>
+      <string id="Lbl_DisableOnAllShares">在所有共用資料夾上都不允許雜湊發行</string>
+      <string id="Lbl_EnableOnAllShares">對所有共用資料夾允許雜湊發行</string>
+      <string id="Pol_HashPublication">BranchCache 的雜湊發行</string>
+      <string id="Pol_HashPublication_Help">這個原則讓雜湊產生服務可以為儲存在共用資料夾中的資料產生雜湊，然後提供這些雜湊給已啟用 BranchCache 的用戶端電腦。雜湊是以數學方式導出的檔案數位指紋，可唯一識別檔案的內容。這些數位指紋非常小，讓 Windows 可以比較檔案，又不會消耗大量的廣域網路 (WAN) 頻寬。
+
+如果下列條件成立，分公司的用戶端電腦就可以透過 WAN 連結取得檔案的雜湊:      
+1) 使用者有權存取檔案。
+2) 用戶端電腦已啟用 BranchCache。
+3) 在用戶端電腦所存取的共用資料夾上允許雜湊發行。
+
+如果用戶端電腦取得雜湊，接著該電腦可以在分公司其他電腦的快取中搜尋檔案的相同版本。如果 Windows 在分公司找到檔案的相同版本，用戶端電腦就會下載本機快取的複本，而不必透過 WAN 連結下載檔案。
+
+如果將這個原則設定為「只對啟用 BranchCache 的共用資料夾允許雜湊發行」(值 = 0)，系統只會為已啟用 BranchCache 的共用資料夾產生雜湊。這些共用資料夾的雜湊會在發生下列任一事件時產生:
+1) 已啟用 BranchCache 支援的用戶端在已啟用 BranchCache 的共用資料夾中存取檔案。
+2) 系統管理員使用命令列工具 Hashgen 手動產生雜湊。
+ 
+如果將這個原則設定為「在所有共用資料夾上都不允許雜湊發行」(值 = 1)，在套用這個原則的電腦上永遠不會產生或提供雜湊。
+ 
+如果將這個原則設定為「對所有共用資料夾允許雜湊發行」(值 = 2)，則會在發生下列任一事件時，為伺服器上的所有共用資料夾產生雜湊: 
+1) 已啟用 BranchCache 支援的用戶端在伺服器的共用資料夾中存取檔案。
+2) 系統管理員使用命令列工具 Hashgen 手動產生雜湊。</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>值:</text>
+        <text>0 = 只對啟用 BranchCache 的共用資料夾允許雜湊發行</text>
+        <text>1 = 在所有共用資料夾上都不允許雜湊發行</text>
+        <text>2 = 對所有共用資料夾允許雜湊發行</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">雜湊發行動作: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

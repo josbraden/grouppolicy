@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Zde zadejte zobrazovaný název.</displayName>
+  <description>Zde zadejte popis.</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Lanman Server</string>
+      <string id="Lbl_FollowShare">Povolit publikování hodnot hash pouze pro sdílené složky, ve kterých je povolena pobočková mezipaměť (BranchCache)</string>
+      <string id="Lbl_DisableOnAllShares">Zakázat publikování hodnot hash ve všech sdílených složkách</string>
+      <string id="Lbl_EnableOnAllShares">Povolit publikování hodnot hash pro všechny sdílené složky</string>
+      <string id="Pol_HashPublication">Publikování hodnot hash pro pobočkovou mezipaměť (BranchCache)</string>
+      <string id="Pol_HashPublication_Help">Tato zásada umožňuje službě generování hodnoty hash vygenerovat hodnoty hash pro data uložená ve sdílených složkách a následně tyto hodnoty hash poskytnout klientským počítačům, ve kterých je povolena pobočková mezipaměť (BranchCache). Hodnoty hash jsou matematicky odvozené digitální otisky souborů, které jedinečně identifikují obsah souborů. Tyto digitální otisky jsou velmi malé, a umožňují proto systému Windows porovnávat soubory, aniž by se využívala výrazně větší šířka pásma připojení WAN (Wide Area Network).
+
+Klientský počítač v pobočce může získat hodnotu hash pro soubor v rámci připojení WAN, pokud jsou splněny všechny tyto podmínky:     
+1) Uživatel má oprávnění pro přístup k souboru.
+2) V klientském počítači je povolena pobočková mezipaměť BranchCache.
+3) Ve sdílené složce, ke které má klientský počítač přístup, je povoleno publikování hodnot hash. 
+
+Pokud klientský počítač hodnotu hash obdrží, může počítač následně vyhledat identickou verzi souboru v mezipaměti ostatních počítačů v pobočce. Jestliže systém Windows najde identickou verzi souboru v pobočce, stáhne klientský počítač kopii uloženou místně v mezipaměti, místo toho, aby soubor stahoval přes připojení WAN. 
+
+Jestliže nakonfigurujete tuto zásadu na možnost Povolit publikování hodnot hash pouze pro sdílené složky, ve kterých je povolena pobočková mezipaměť (BranchCache) (hodnota = 0), jsou hodnoty hash generovány pouze pro sdílené složky, na kterých je mezipaměť BranchCache povolena. Hodnoty hash pro tyto sdílené složky jsou generovány v případě, že dojde k některé z následujících událostí:
+1) K souboru je získáván přístup ve sdílené složce, ve které je povolena pobočková mezipaměť BranchCache klientem s povolenou podporou mezipaměti BranchCache.
+2) Správce ručně vygeneruje hodnoty hash pomocí nástroje příkazového řádku Hashgen.
+ 
+Pokud tuto zásadu nakonfigurujete na možnost Zakázat publikování hodnot hash ve všech sdílených složkách (hodnota = 1), nejsou hodnoty hash nikdy generovány ani nejsou poskytovány počítači, ve kterých je tato zásad aplikována.
+ 
+Pokud tuto zásadu nakonfigurujete na možnost Povolit publikování hodnot hash pro všechny sdílené složky (hodnota = 2), jsou hodnoty hash generovány pro všechny sdílené složky na serveru, pokud dojde k některé z následujících událostí: 
+1) K souboru je získáván přístup ve sdílené složce na serveru klientem s povolenou podporou mezipaměti BranchCache.
+2) Správce ručně vygeneruje hodnoty hash pomocí nástroje příkazového řádku Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Hodnoty:</text>
+        <text>0 = Povolit publikování hodnot hash pouze pro sdílené složky, ve kterých je povolena pobočková mezipaměť (BranchCache)</text>
+        <text>1 = Zakázat publikování hodnot hash ve všech sdílených složkách</text>
+        <text>2 = Povolit publikování hodnot hash pro všechny sdílené složky</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Akce publikování hodnot hash: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

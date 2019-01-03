@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Lanman Server</string>
+      <string id="Lbl_FollowShare">Allow hash publication only for shared folders on which BranchCache is enabled</string>
+      <string id="Lbl_DisableOnAllShares">Disallow hash publication on all shared folders</string>
+      <string id="Lbl_EnableOnAllShares">Allow hash publication for all shared folder</string>
+      <string id="Pol_HashPublication">Hash Publication for BranchCache</string>
+      <string id="Pol_HashPublication_Help">This policy enables a hash generation service to generate hashes for data stored in shared folders, and then provide these hashes to client computers on which BranchCache is enabled. Hashes are mathematically-derived digital fingerprints of files that uniquely identify the contents of files. These digital fingerprints are very small, enabling Windows to compare files without consuming a significant amount of Wide Area Network (WAN) bandwidth.
+
+A client computer in a branch office can obtain a hash for a file across a WAN link if all of the following conditions are true:      
+1) The user has permissions to access the file.
+2) BranchCache is enabled on the client computer.
+3) Hash publication is permitted on the shared folder that the client computer is accessing. 
+
+If the client computer obtains the hash, the computer can then search for an identical version of the file in the cache of other computers in the branch office. If Windows finds an identical version of the file in the branch office, the client computer downloads the locally-cached copy instead of downloading the file across the WAN link. 
+
+If you configure this policy to "Allow hash publication only for shared folders on which BranchCache is enabled" (value = 0), hashes are generated only for shared folders on which BranchCache is enabled. Hashes for these shared folders are generated when either of the following events occurs:
+1) A file is accessed in a shared folder on which BranchCache is enabled by a client with BranchCache support enabled.
+2) An administrator manually generates hashes using the command-line tool Hashgen.
+ 
+If you configure this policy to "Disallow hash publication on all shared folders" (value = 1), hashes are never generated or provided by computers on which this policy is applied.
+ 
+If you configure this policy to "Allow hash publication for all shared folders" (value = 2), hashes are generated for all shared folders on the server when either of the following events occurs: 
+1) A file is accessed in a shared folder on the server by a client with BranchCache support enabled.
+2) An administrator manually generates hashes using the command-line tool Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Values:</text>
+        <text>0 = Allow hash publication only for shared folders on which BranchCache is enabled</text>
+        <text>1 = Disallow hash publication on all shared folders</text>
+        <text>2 = Allow hash publication for all shared folder</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Hash publication actions: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>indtast det viste navn her</displayName>
+  <description>indtast beskrivelsen her</description>
+  <resources>
+    <stringTable>
+      <string id="AccountingEnabled">Slå logføring til for WSRM</string>
+      <string id="AccountingEnabled_Explain">Denne indstilling slår funktionen Logføring til eller fra.
+
+Hvis du aktiverer denne indstilling, går WSRM (Windows System Resource Manager) i gang med at logføre forskellige anvendelsesstatistikker for processer.
+
+Hvis du deaktiverer denne indstilling, afbryder WSRM logføring af anvendelsesstatistikker for processer.
+
+Hvis du ikke konfigurerer denne indstilling, kan brugeren angive, om logføring skal slås til eller fra.
+
+Logføringsprocesserne er som standard deaktiveret.
+
+Logføringsdatabasen indeholder en brugergrænseflade, du både kan bruge til at administrere oplysningerne i databasen og databasens fysiske størrelse. Administration af databaseoplysninger indbefatter søgning efter relevante oplysninger og derefter en effektiv organisering af dem. Administration af den fysiske størrelse af databasen skal udføres ofte, for medmindre den konfigureres anderledes, fortsætter Windows System Resource Manager med at lagre logføringsoplysninger. Derfor bliver databasen større og større. Når du administrerer databasens størrelse, kan du arkivere logføringsdata til senere brug eller slette dem fra databasen.
+
+Du kan bruge logføringsdata til at overvåge ressourceforbruget, sammenligne faktiske og forventede resultater, vurdere, om computerens fysiske ressourcer er tilstrækkelige til at udføre de ønskede opgaver, og som grundlag for tilbageført kontering.
+</string>
+      <string id="EmailIds">Angiv de e-mail-id'er, som meddelelser skal sendes til</string>
+      <string id="EmailIds_Explain">Denne indstilling tildeler den eller de e-mail-adresser, meddelelser sendes til. Brug semikolon (;) til at adskille flere e-mail-adresser.
+
+Hvis du aktiverer denne indstilling, sender WSRM (Windows System Resource Manager) meddelelser til den eller de angivne adresser.
+
+Hvis du deaktiverer denne indstilling, angives der ingen e-mail-adresser (standard).
+
+Hvis du ikke konfigurerer denne indstilling, kan brugeren angive e-mail-adresser, der skal modtage meddelelser. Denne værdi kan være e-mail-aliaser eller e-mail-adresser med domænenavn (f.eks. nogen@example.com).
+
+Afhængigt af de hændelser, der er valgt for meddelelsen, sendes der en meddelelse til disse e-mail-adresser.
+
+Bemærk! For at kunne modtage meddelelser skal meddelelsesindstillingen i hændelseslogfilen være slået til. Du kan få vist listen over hændelser ved at klikke på Fejl, Advarsel eller Oplysninger og derefter klikke på OK. Hvis du vælger Fejl, Advarsel eller Oplysninger, medtages de enkelte hændelser i den pågældende kategori.</string>
+      <string id="KeyName_Explain">Denne indstilling aktiverer egenskaberne Logføring og/eller Meddelelse for WSRM via indstillinger for gruppepolitik</string>
+      <string id="RecordWriteInterval">Angiv tidsintervallet i minutter for logføring af logføringsdata</string>
+      <string id="RecordWriteInterval_Explain">Hvis denne indstilling er angivet, logfører funktionen Logføring data på logføringsserveren med det angivne tidsinterval.
+
+Hvis du aktiverer denne indstilling, angiver WSRM (Windows System Resource Manager) tidsintervallet for logføring til den angivne værdi.
+
+Hvis du deaktiverer denne indstilling, angives standardværdien på 10 minutter.
+
+Hvis du ikke konfigurerer denne indstilling, kan brugeren angive et logføringsinterval.
+
+Værdien angives i minutter og kan ligge mellem 2 og 60.000 minutter. 10 minutter angives som standardværdi, da det er den optimale værdi, hvis der er mange servere, som fjernlogfører data. Hvis du angiver en intern værdi for logføringsregistrering på mindre end 10 minutter for en server på et netværk med mere en 20 computere, kan ydeevnen forringes.
+
+Bemærk! Angiv værdien for logføringsregistrering til en højere værdi, efterhånden som antallet af computere forøges på netværket, for at reducere belastning af netværket.</string>
+      <string id="SMTPServer">Angiv den SMTP-server, der skal bruges til at sende meddelelser</string>
+      <string id="SMTPServerConfiguration_Explain">Denne indstilling tildeler adressen på den SMTP-serveren, der sender meddelelser ud.
+
+Hvis du aktiverer denne indstilling, angiver WSRM (Windows System Resource Manager) SMTP-serveren til den angivne værdi.
+
+Hvis du deaktiverer denne indstilling, angives der ingen SMTP-server (standard).
+
+Hvis du ikke konfigurerer denne indstilling, kan brugeren angive en SMTP-server.
+
+Denne værdi kan være NetBIOS-navnet eller hele domænenavnet for SMTP-serveren (Simple Mail Transfer Protocol). Denne server indeholder de e-mail-adresser, der er konfigureret til at modtage meddelelser.
+
+Bemærk! For at kunne modtage e-mail-meddelelser skal meddelelsesindstillingen i hændelseslogfilen være slået til. Du kan få vist listen over hændelser ved at klikke på Fejl, Advarsel eller Oplysninger og derefter klikke på OK. Hvis du vælger Fejl, Advarsel eller Oplysninger, medtages de enkelte hændelser i den pågældende kategori.</string>
+      <string id="WSRM">Windows System Resource Manager</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="EmailIds">
+        <textBox refId="EmailIdsConfiguration">
+          <label>E-mail-id'er</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+      <presentation id="RecordWriteInterval">
+        <decimalTextBox refId="Write_Interval" defaultValue="10">Registreringsinterval for logføring (2-60.000 minutter) </decimalTextBox>
+      </presentation>
+      <presentation id="SMTPServer">
+        <textBox refId="SMTPServerConfiguration">
+          <label>Angiv adressen på SMTP-serveren</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<policyDefinitionResources revision="1.0" schemaVersion="1.0">
+	<displayName>イベント転送</displayName>
+
+	<description>イベント転送のポリシー定義</description>
+
+	<resources>
+
+		<stringTable>
+
+			<string id="EventForwarding">イベント転送</string>
+
+                        <string id="ForwarderResourceUsage">ForwarderResourceUsage</string>
+                        <string id="ForwarderResourceUsage_Help">フォワーダーのリソース使用率を制御します。各設定はフォワーダーのすべてのサブスクリプションに適用されます。</string>
+ 
+			<string id="SubscriptionManager">サーバー アドレス、更新間隔、ターゲット サブスクリプション マネージャーの発行証明機関を構成します。</string>
+
+			<string id="Subscription_Help">このポリシー設定では、ターゲット サブスクリプション マネージャーのサーバー アドレス、更新間隔、発行証明機関 (CA) を構成できます。サブスクリプション マネージャーは、イベントの転送先のコンピューターです。
+
+構文: オプション=値[,オプション=値]*
+オプション:
+Server (必須) - イベントの転送先のコンピューターのアドレス。サーバーが既定のトランスポート プロトコル (HTTP) およびポート (5985) を使用する場合、"Server=&lt;FQDN&gt;" と指定します。この場合の &lt;FQDN&gt; は、サーバーの完全修飾ドメイン名です。これ以外の場合は、完全な URL を指定する必要があります。たとえば、HTTPS を使用する場合、"Server=https://&lt;FQDN&gt;:5986/wsman/SubscriptionManager/WEC" と指定します。
+</string>
+
+			<string id="SubscriptionManager_Listbox">サブスクリプション マネージャー</string>
+		</stringTable>
+
+	
+		<presentationTable>
+
+			<presentation id="SubscriptionManager">
+                                
+				<listBox refId="SubscriptionManager_Listbox">サブスクリプション マネージャー</listBox>
+
+			</presentation>
+
+                        <presentation id="ForwarderResourceUsage">
+
+                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">フォワーダーに対して許容される最大転送速度 (イベント数/秒): </decimalTextBox>
+
+                        </presentation>
+
+		</presentationTable>
+
+	</resources>
+
+</policyDefinitionResources>

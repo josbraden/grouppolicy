@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
+  <resources>
+    <stringTable>
+      <string id="DisableCMD">Prevent access to the command prompt</string>
+      <string id="DisableCMD_Help">Prevents users from running the interactive command prompt, Cmd.exe. This setting also determines whether batch files (.cmd and .bat) can run on the computer.
+
+If you enable this setting and the user tries to open a command window, the system displays a message explaining that a setting prevents the action.
+
+Note: Do not prevent the computer from running batch files if the computer uses logon, logoff, startup, or shutdown batch file scripts, or for users that use Remote Desktop Services.</string>
+      <string id="DisableCMD_NO">No</string>
+      <string id="DisableCMD_YES">Yes</string>
+      <string id="DisableRegedit">Prevent access to registry editing tools</string>
+      <string id="DisableRegedit_Help">Disables the Windows registry editor Regedit.exe.
+
+If this setting is enabled and the user tries to start a registry editor, a message appears explaining that a setting prevents the action.
+
+To prevent users from using other administrative tools, use the "Run only specified Windows applications" setting.</string>
+      <string id="DisableRegeditMode_UIAndSilent">Yes</string>
+      <string id="DisableRegeditMode_UIonly">No</string>
+  
+   <string id="RestrictApps">Run only specified Windows applications</string>
+      <string id="RestrictApps_Help">Limits the Windows programs that users have permission to run on the computer.
+
+If you enable this setting, users can only run programs that you add to the List of Allowed Applications.
+
+This setting only prevents users from running programs that are started by the Windows Explorer process. It does not prevent users from running programs such as Task Manager, which are started by the system process or by other processes. Also, if users have access to the command prompt, Cmd.exe, this setting does not prevent them from starting programs in the command window that they are not permitted to start by using Windows Explorer.
+
+Note: It is a requirement for third-party applications with Windows 2000 or later certification to adhere to this setting. Note: To create a list of allowed applications, click Show. In the Show Contents dialog box, in the Value column, type the application executable name (e.g., Winword.exe, Poledit.exe, Powerpnt.exe).</string>
+      <string id="DisallowApps">Don't run specified Windows applications</string>
+      <string id="DisallowApps_Help">Prevents Windows from running the programs you specify in this setting.
+
+If you enable this setting, users cannot run programs that you add to the list of disallowed applications.
+
+This setting only prevents users from running programs that are started by the Windows Explorer process. It does not prevent users from running programs, such as Task Manager, that are started by the system process or by other processes. Also, if you permit users to gain access to the command prompt, Cmd.exe, this setting does not prevent them from starting programs in the command window that they are not permitted to start by using Windows Explorer. Note: To create a list of disallowed applications, click Show. In the Show Contents dialog box, in the Value column, type the application executable name (e.g., Winword.exe, Poledit.exe, Powerpnt.exe).</string>
+      
+  </stringTable>
+    <presentationTable>
+      <presentation id="DisableCMD">
+        <dropdownList refId="DisableCMDScripts" noSort="true" defaultItem="1">Disable the command prompt script processing also?</dropdownList>
+      </presentation>
+      <presentation id="DisableRegedit">
+        <dropdownList refId="DisableRegeditMode" noSort="true" defaultItem="0">Disable regedit from running silently?</dropdownList>
+      </presentation>
+	<presentation id="RestrictApps">
+        <listBox refId="RestrictApps_RestrictAppsList">List of allowed applications</listBox>
+      </presentation>
+      <presentation id="DisallowApps">
+        <listBox refId="DisallowAppsList">List of disallowed applications</listBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

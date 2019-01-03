@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Configuración de Kerberos</displayName>
+  <description>Opciones de configuración del protocolo de autenticación Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Usar orden de búsqueda en bosques</string>
+      <string id="forestsearch_explain">Esta configuración de directiva define la lista de bosques de confianza en los que el cliente Kerberos realiza una búsqueda al intentar resolver nombres principales de servicio (SPN) que constan de dos partes.
+
+Si habilita esta configuración de directiva, el cliente Kerberos buscará en los bosques de la lista si no puede resolver un SPN de dos partes. Si encuentra una coincidencia, el cliente Kerberos solicitará un vale de referencia al dominio adecuado.
+
+Si deshabilita o no define esta configuración de directiva, el cliente Kerberos no buscará en los bosques de la lista para resolver el SPN. Si el cliente Kerberos no puede resolver el SPN porque no encuentra el nombre, se puede usar la autenticación NTLM.</string>
+      <string id="hosttorealm">Definir asignaciones de nombres de host al dominio kerberos</string>
+      <string id="hosttorealm_explain">Esta configuración de directiva le permite especificar los nombres de host DNS y los sufijos DNS que se asignan a un dominio kerberos.
+
+Si habilita esta configuración de directiva, puede ver y cambiar la lista de nombres de host DNS y sufijos DNS asignados a un dominio kerberos definida por la directiva de grupo. Para ver la lista de asignaciones, habilite la configuración de directiva y haga clic en el botón Mostrar. Para agregar una asignación, habilite la configuración de directiva, observe la sintaxis y haga clic en el botón Mostrar. En el cuadro de diálogo Mostrar contenido, en la columna Nombre de valor, escriba un nombre de dominio kerberos. En la columna Valor, escriba la lista de nombres de host DNS y sufijos DNS con el formato de sintaxis adecuado. Para quitar una asignación de la lista, haga clic en la entrada de la asignación que desea quitar y, después, presione la tecla Supr. Para editar una asignación, quite la entrada actual de la lista y agregue una nueva con parámetros diferentes.
+
+Si deshabilita esta configuración de directiva, se eliminará la lista de asignaciones de nombres de host al dominio kerberos definida por la directiva de grupo.
+
+Si no establece esta configuración de directiva, el sistema usará las asignaciones de nombres de host al dominio kerberos definidas en el Registro local en el caso de que existan.</string>
+      <string id="MitRealms">Definir configuración de dominios kerberos V5 interoperables</string>
+      <string id="MitRealms_explain">Esta configuración de directiva configura el cliente Kerberos para que se pueda autenticar con dominios kerberos V5 interoperables, según lo definido por esta configuración de directiva.
+      
+Si habilita esta configuración de directiva, puede ver y cambiar la lista de dominios kerberos V5 interoperables y su configuración. Para ver la lista de dominios kerberos V5 interoperables, habilite la configuración de directiva y haga clic en el botón Mostrar. Para agregar un dominio kerberos V5 interoperable, habilite la configuración de directiva, observe la sintaxis y haga clic en el botón Mostrar. En el cuadro de diálogo Mostrar contenido, en la columna Nombre de valor, escriba el nombre del dominio kerberos V5 interoperable. En la columna Valor, escriba las marcas de dominio kerberos y nombres de host de los KDC host con el formato de sintaxis adecuado. Para quitar de la lista una entrada de valor o nombre de valor de dominio kerberos V5 interoperable, haga clic en la entrada y, después, presione la tecla Supr. Para editar una asignación, quite la entrada actual de la lista y agregue una nueva con parámetros diferentes.
+
+Si deshabilita esta configuración de directiva, se eliminará la configuración de los dominios kerberos V5 interoperables definida en la directiva de grupo.
+
+Si no establece esta configuración de directiva, el sistema usará la configuración de los dominios kerberos V5 interoperables definida en el Registro local en el caso de que exista.</string>
+      <string id="ValidateKDC">Requerir validación KDC estricta</string>
+      <string id="ValidateKDC_explain">Esta configuración de directiva controla el comportamiento del cliente Kerberos al validar el certificado KDC.  
+      
+Si habilita esta configuración de directiva, el cliente Kerberos requiere que el certificado X.509 de KDC contenga el identificador del objeto de propósito de la clave KDC en las extensiones de Uso mejorado de clave (EKU), y que el certificado X.509 de KDC contenga una extensión dNSName subjectAltName (SAN) que coincida con el nombre DNS del dominio. Si el equipo está unido a un dominio, el cliente Kerberos requiere que el certificado X.509 de KDC esté firmado por una entidad de certificación (CA) en el almacén NTAUTH. Si el equipo no está unido a un dominio, el cliente Kerberos permite usar el certificado de CA raíz de la tarjeta inteligente en la validación de ruta del certificado X.509 de KDC.
+
+Si deshabilita o no establece esta configuración de directiva, el cliente Kerberos requerirá solo que el certificado KDC contenga el identificador del objeto de propósito de autenticación de servidor en las extensiones EKU.
+</string>
+      <string id="StrictTarget">Requerir coincidencia de SPN de destino estricta en llamadas a procedimiento remoto</string>
+      <string id="StrictTarget_explain">Cuando un aplicación intenta realizar una llamada a procedimiento remoto (RPC) en este servidor con un valor NULL de nombre principal de servicio (SPN), los equipos que ejecutan Windows 7 intentarán usar Kerberos mediante la generación de un SPN. Esta configuración de directiva le permite configurar este servidor de forma que Kerberos pueda descifrar un vale que contenga el SPN generado por el sistema.
+
+Si habilita esta configuración de directiva, solo se permitirá aceptar estas conexiones a los servicios que se ejecuten como LocalSystem o NetworkService. Es posible que los servicios que se ejecuten con identidades diferentes de LocalSystem o NetworkService no puedan autenticarse.
+
+Si deshabilita o no define esta configuración de directiva, se permitirá que todos los servicios acepten conexiones entrantes con el SPN generado por el sistema.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Definir asignaciones de nombres de host al dominio kerberos:</listBox>
+        <text></text>
+        <text>Sintaxis:</text>
+        <text>Escriba el nombre del dominio kerberos en el campo Nombre de valor.</text>
+        <text>Escriba los nombres de host y los sufijos DNS que desea</text>
+        <text>asignar al dominio kerberos en el campo Valor. Para agregar varios</text>
+        <text>nombres, separe las entradas con ";".</text>
+        <text></text>
+        <text>Nota: para especificar un sufijo DNS, escriba un punto ('.') antes de la entrada.</text>
+        <text>En el caso de las entradas de nombres de host, no especifique el punto ('.') inicial.</text>
+        <text></text>
+        <text>Ejemplo:</text>
+        <text>Nombre de valor: MICROSOFT.COM</text>
+        <text>Valor: .microsoft.com; .ms.com; equipo1.fabrikam.com;</text>
+        <text></text>
+        <text>En el ejemplo anterior. Todas las entidades de seguridad con el sufijo DNS</text>
+        <text>de *.microsoft.com o *.ms.com se asignarán al</text>
+        <text>dominio kerberos MICROSOFT.COM. Asimismo, el nombre de host</text>
+        <text>equipo1.fabrikam.com también se asignará al </text>
+        <text>dominio kerberos MICROSOFT.COM.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Definir configuración de dominios kerberos V5 interoperables:</listBox>
+        <text></text>
+        <text>Sintaxis:</text>
+        <text>Escriba el nombre del dominio kerberos V5 interoperable en el campo Nombre de valor.</text>
+        <text>Escriba las marcas del dominio kerberos y los nombres de host de los KDC en</text>
+        <text>el campo Valor. Escriba las marcas del dominio kerberos entre las siguientes</text>
+        <text>etiquetas &lt;f&gt; &lt;/f&gt;. Escriba la lista de KDC entre las etiquetas &lt;k&gt; &lt;/k&gt;</text>
+        <text>Para agregar varios nombres de KDC, separe las entradas con</text>
+        <text>un punto y coma (";").</text>
+        <text></text>
+        <text>Ejemplo:</text>
+        <text>Nombre de valor: PRUEBA.COM</text>
+        <text>Valor: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.prueba.com; kdc2.prueba.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Otro ejemplo:</text>
+        <text>Nombre de valor: DOMINIO_KERBEROS.FABRIKAM.COM</text>
+        <text>Valor: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Modo:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Bosques en los que buscar</label>
+        </textBox>
+        <text>Sintaxis:</text>
+        <text>Escriba la lista de bosques en los que buscar cuando esté habilitada esta directiva.</text>
+        <text>Use el formato de nombre de dominio completo (FQDN).</text>
+        <text>Separe varias entradas de búsqueda mediante punto y coma (";").</text>
+        <text>Detalles:</text>
+        <text>No hace falta incluir en la lista el bosque actual porque el orden de búsqueda en bosques usa primero el catálogo global y después en el orden de la lista.</text>
+        <text>No es necesario incluir en la lista por separado todos los dominios del bosque.</text>
+        <text>Si se incluye en la lista un bosque de confianza, se buscará en todos los dominios de ese bosque.</text>
+        <text>Para mejorar el rendimiento, ordene los bosques en la lista según la probabilidad de que la búsqueda tenga éxito. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache 讓用戶端可以安全地從分公司內部擷取內容，而不必從裝載內容的伺服器擷取內容。依部署模式而定，內容可以從分公司中的其他用戶端擷取，也可以從分公司中的託管快取伺服器擷取。如果伺服器授權用戶端只能從分公司內部擷取內容，則用戶端只能這樣做。使用 BranchCache 可以降低將分公司連線到資料中心或總公司的廣域網路 (WAN) 連結成本，並提高已下載到分公司之內容的下載速度。
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">開啟 BranchCache</string>
+
+            <string id="WBC_Enable_Help">這個原則設定會指定是否要在用戶端電腦上啟用 BranchCache。BranchCache 會降低將分公司連線到資料中心或總公司的廣域網路 (WAN) 連結用量，並提高已下載到分公司之內容的存取速度。BranchCache 的作法是讓分公司的電腦快取由已啟用 BranchCache 的內部網路伺服器傳來的檔案和 HTTP 流量，然後以安全的方式與分公司的其他電腦共用。分公司的電腦可從分公司中的託管快取伺服器擷取內容 (使用託管快取模式時)，或從分公司的其他用戶端電腦擷取內容 (使用分散式快取模式時)。若要存取快取內容，電腦必須有權存取來源伺服器上的內容。
+
+當分公司的 WAN 頻寬低、延遲高而且有大量用戶端電腦必須存取總公司伺服器上的相同資料時，請在其用戶端電腦上啟用這個原則設定。
+
+如果啟用這個原則設定，BranchCache 為開啟狀態。若要讓這個原則設定生效，您還必須在用戶端電腦上安裝 BranchCache 功能。
+
+如果停用或未設定這個原則設定，則 BranchCache 為關閉狀態。
+            </string>
+
+            <string id="WBC_Cache_Percent">設定用於用戶端電腦快取的磁碟空間百分比</string>
+
+            <string id="WBC_Cache_Percent_Help">這個原則設定會變更專供 BranchCache 快取的擷取內容使用的預設磁碟空間總計百分比。如果其他要求的用戶端電腦已獲得伺服器存取內容的授權，就可以使用這個內容。
+
+如果啟用這個原則設定，您可以設定配置供快取使用的磁碟空間總計百分比。
+
+如果停用或未設定這個原則設定，則快取設為用戶端電腦上磁碟空間總計的百分之 5。
+            </string>
+
+            <string id="WBC_HostedCache_Location">設定 BranchCache 託管快取模式</string>
+
+            <string id="WBC_HostedCache_Location_Help">這個原則設定會指定用戶端電腦是否應使用託管快取模式，如果是的話，指定 BranchCache 伺服器的位址。託管快取模式可以讓用戶端電腦從做為分公司中央 (託管) 快取的 BranchCache 伺服器擷取內容。使用託管快取模式時，已啟用 BranchCache 的用戶端所下載的內容會推送到 BranchCache 伺服器，之後便會做為分公司中其他啟用 BranchCache 的用戶端電腦的集中式快取。用戶端電腦會使用安全通訊端層 (SSL) 與 BranchCache 伺服器進行通訊。
+
+若要使用這個原則設定，您必須指定 BranchCache 伺服器的位址，而且這個位址必須符合 BranchCache 伺服器的憑證中所指定的伺服器完整網域名稱 (FQDN)。此外，BranchCache 伺服器憑證的憑證根必須位在用戶端電腦的信任根存放區中。
+
+如果啟用這個原則設定並指定有效的託管快取位置，就會開啟託管快取模式。若要讓這個原則設定生效，您還必須啟用「開啟 BranchCache」原則設定。
+
+如果停用或未設定這個原則設定，則託管快取模式為關閉狀態。
+            </string>
+
+            <string id="WBC_Distributed_Enable">設定 BranchCache 分散式快取模式</string>
+
+            <string id="WBC_Distributed_Enable_Help">這個原則設定會指定用戶端電腦是否應使用分散式快取模式。這個 BranchCache 模式可以讓用戶端電腦擷取分公司中其他用戶端電腦已下載並快取的內容。若要存取來自分公司中其他用戶端電腦的快取內容，電腦必須有權存取來源伺服器上的內容。
+
+這個原則設定會指定是否使用分散式快取模式。在沒有伺服器做為託管快取的分公司使用 BranchCache 時，請啟用這個原則設定。
+
+如果啟用這個原則設定，就會使用分散式快取模式。若要讓這個原則設定生效，您還必須啟用「開啟 BranchCache」原則設定。
+
+如果停用或未設定這個原則設定，則分散式快取模式為關閉狀態。
+            </string>
+
+            <string id="WBC_SMB_Enable">設定用於網路檔案的 BranchCache</string>
+
+            <string id="WBC_SMB_Enable_Help">這個原則設定會變更預設的來回網路延遲值，只要超過這個值，分公司的用戶端電腦就會快取網路檔案。用於網路檔案的 BranchCache 讓分公司中的電腦可以快取由已啟用 BranchCache 的內部網路伺服器傳來的資料，然後安全地與分公司的其他電腦共用。可快取在分公司的其中一種內容類型是使用伺服器訊息區 (SMB) 通訊協定的網路檔案。
+
+根據預設，當廣域網路 (WAN) 連結的來回網路延遲高於 80 毫秒時，網路檔案就會快取在分公司。若要一律快取下載到分公司電腦的網路檔案，請將網路延遲值設為 0。若要停用網路檔案的分公司快取，請將延遲值設為非常高的值。
+
+如果啟用這個原則設定，您可以設定來回網路延遲，只要超過這個值，分公司的用戶端電腦就應快取網路檔案。
+
+如果停用或未設定這個原則設定，則當廣域網路 (WAN) 連結的來回網路延遲高於 80 毫秒時，用戶端電腦就會快取網路檔案。
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>輸入用戶端電腦快取位置</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>輸入託管快取的位置</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>輸入來回網路延遲值 (毫秒)，只要超過這個值就必須將網路檔案快取在分公司</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

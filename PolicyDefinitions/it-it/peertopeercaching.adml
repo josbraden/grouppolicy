@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache consente ai client di recuperare in modo sicuro il contenuto posto all'interno della succursale anziché recuperarlo dal server che lo ospita. A seconda della modalità di distribuzione, il contenuto può essere recuperato da altri client posti nella succursale o da un server cache ospitata posto nella succursale. Un client può recuperare contenuto dalla succursale solo se è autorizzato a tale scopo dal server. L'utilizzo della funzionalità BranchCache consente di ridurre i costi dei collegamenti su rete WAN che connettono le succursali al centro dati o alle sedi centrali e di aumentare le velocità di download del contenuto già scaricato nella succursale.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">Attiva BranchCache</string>
+
+            <string id="WBC_Enable_Help">Questa impostazione specifica se la funzionalità BranchCache è abilitata nel computer client. BranchCache consente di ridurre l'utilizzo dei collegamenti su rete WAN che connettono le succursali al centro dati o alle sedi centrali e di aumentare la velocità di accesso al contenuto già scaricato nella succursale. A tale scopo, BranchCache consente ai computer di una succursale di memorizzare nella cache i file e il traffico HTTP dei server Intranet in cui è abilitata la funzionalità BranchCache e di condividere in modo sicuro i file con altri computer della succursale. I computer della succursale sono in grado di recuperare contenuto da un server cache ospitata posto nella succursale (se si utilizza la modalità Cache ospitata) o da altri computer client della succursale (se si utilizza la modalità Cache distribuita). Per accedere al contenuto memorizzato nella cache, è necessario che il computer disponga delle autorizzazioni per l'accesso al contenuto nel server di origine.
+
+Abilitare questa impostazione nei computer client di succursali in cui la larghezza di banda della rete WAN è limitata, la latenza è elevata e diversi computer client hanno la necessità di accedere agli stessi dati nei server dell'ufficio centrale.
+
+Se si abilita questa impostazione, BranchCache verrà disabilitata. Per rendere effettiva questa impostazione, è inoltre necessario installare la funzionalità BranchCache nel computer client.
+
+Se si disabilita o non si configura questa impostazione, BranchCache verrà disabilitata.
+            </string>
+
+            <string id="WBC_Cache_Percent">Imposta percentuale di spazio su disco utilizzata per la cache del computer client</string>
+
+            <string id="WBC_Cache_Percent_Help">Questa impostazione modifica la percentuale predefinita dello spazio totale su disco da dedicare alla memorizzazione nella cache del contenuto recuperato con BranchCache. Il contenuto verrà reso disponibile per altri computer client che lo richiedono se a tali computer client sono state concesse dal server le autorizzazioni necessarie per accedere al contenuto.
+
+Se si abilita questa impostazione, sarà possibile configurare la percentuale dello spazio totale su disco da allocare per la cache.
+
+Se si disabilita o non si configura questa impostazione, la percentuale dello spazio totale su disco per la cache nel computer client verrà impostata su 5 percento.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Imposta modalità Cache ospitata di BranchCache</string>
+
+            <string id="WBC_HostedCache_Location_Help">Questa impostazione specifica se il computer client utilizza la modalità Cache ospitata e, in caso affermativo, qual è l'indirizzo del server BranchCache. La modalità Cache ospitata consente a un computer client di recuperare contenuto da un server BranchCache che agisce come cache centrale (ospitata) per una succursale. Quando si utilizza la modalità Cache ospitata, il contenuto scaricato dai computer client abilitati per BranchCache viene inviato al server BranchCache, che agisce come cache centralizzata per gli altri computer client abilitati per BranchCache posti nella succursale. I computer client utilizzano SSL (Secure Sockets Layer) per comunicare con il server BranchCache.
+
+Per utilizzare questa impostazione, è necessario specificare l'indirizzo del server BranchCache, che deve corrispondere al nome di dominio completo (FQDN) del server specificato nel certificato per il server BranchCache. È inoltre necessario che la radice del certificato per il certificato del server BranchCache sia inclusa nell'archivio dei certificati attendibili del computer client.
+
+Se si abilita questa impostazione e si specifica un percorso valido della cache ospitata, la modalità Cache ospitata verrà attivata. Per rendere effettiva questa impostazione, è inoltre necessario abilitare l'impostazione "Attiva BranchCache".
+
+Se si disabilita o non si configura questa impostazione, la modalità Cache ospitata verrà disattivata.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Imposta modalità Cache distribuita di BranchCache</string>
+
+            <string id="WBC_Distributed_Enable_Help">Questa impostazione specifica se il computer client utilizza la modalità Cache distribuita. Questa modalità di BranchCache consente a un computer client di recuperare il contenuto scaricato e memorizzato nella cache da altri computer client posti nella succursale. Per accedere al contenuto memorizzato nella cache da altri computer client della succursale, è necessario che il computer disponga delle autorizzazioni necessarie per accedere al contenuto del server di origine.
+
+Questa impostazione specifica se viene utilizzata la modalità Cache distribuita. Abilitare questa impostazione quando si utilizza BranchCache in succursali per le quali non è disponibile un server che agisce come cache ospitata.
+
+Se si abilita questa impostazione, verrà utilizzata la modalità Cache distribuita. Per rendere effettiva questa impostazione, è inoltre necessario abilitare l'impostazione "Attiva BranchCache".
+
+Se si disabilita o non si configura questa impostazione, la modalità Cache distribuita verrà disattivata.
+            </string>
+
+            <string id="WBC_SMB_Enable">Configura BranchCache per file di rete</string>
+
+            <string id="WBC_SMB_Enable_Help">Questa impostazione modifica il valore relativo alla latenza di andata e ritorno predefinita della rete al di sopra del quale i file di rete vengono memorizzati nella cache dai computer client posti nella succursale. La funzionalità BranchCache per file di rete consente ai computer di una succursale di memorizzare nella cache i dati provenienti da server Intranet in cui BranchCache è abilitata e di condividere in modo sicuro i file con gli altri computer della succursale. Uno dei tipi di contenuto che possono essere memorizzati nella cache di una succursale è rappresentato dai file di rete che utilizzano il protocollo SMB (Server Message Block).
+
+Per impostazione predefinita, i file di rete vengono memorizzati nella cache della succursale quando la latenza di andata e ritorno della rete del collegamento WAN (Wide Area Network) è superiore a 80 ms. Per fare in modo che i file di rete scaricati nei computer della succursale vengano sempre memorizzati nella cache, impostare su 0 il valore della latenza di rete. Per disabilitare BranchCache per i file di rete, impostare la latenza su un valore molto alto.
+
+Se si abilita questa impostazione, sarà possibile configurare la latenza di andata e ritorno della rete al di sopra della quale i file di rete vengono memorizzati nella cache dai computer client della succursale.
+
+Se si disabilita o non si configura questa impostazione, il computer client memorizzerà nella cache i file di rete se il valore della latenza di andata e ritorno della rete del collegamento WAN è superiore a 80 ms.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Immettere il percorso della cache del computer client</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Immettere il percorso della cache ospitata</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Immettere il valore in millisecondi della latenza di andata e ritorno della rete al di sopra del quale i file di rete devono essere memorizzati nella cache della succursale</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

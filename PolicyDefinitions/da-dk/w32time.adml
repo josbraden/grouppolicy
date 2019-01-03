@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>indtast det viste navn her</displayName>
+  <description>indtast beskrivelsen her</description>
+  <resources>
+    <stringTable>
+      <string id="W32TIME_CONFIG_EXPLAIN">Disse indstillinger styrer tjenesten Windows Time (W32time) for domænecontrollere. Flere af disse værdier er skalarværdier, hvilket betyder, at de kun har betydning i forhold til hinanden, og at de ikke er defineret af bestemte måleenheder. Du kan få oplysninger om indstillinger vedrørende tidssynkronisering for computere, der er medlem af et domæne, under Configure a client computer for automatic domain time synchronization (http://go.microsoft.com/fwlink/?LinkId=139706).
+ 
+Tidsmålingsparametre
+
+FrequencyCorrectRate: Styrer hastigheden, hvormed W32time korrigerer det lokale urs frekvens. Lave værdier giver langsommere korrektioner, mens høje værdier giver hurtige korrektioner. Værdier, som er for lave, kan føre til overkorrektion og ustabilitet. Værdier, som er for høje, kan føre til langsom synkronisering. Standard er 4 (skalar).
+
+HoldPeriod: Angiver, hvor mange potentielt nøjagtige tidsprøver, klienten skal modtage i en serie, før efterfølgende tidsprøver evalueres som potentielle pigge. Efter en periode, hvor der ikke er modtaget nogen brugbare tidsprøver, ophører en tidsklient med at evaluere tidsprøver for pigge, så snart den første potentielt nøjagtige tidsprøve er modtaget. Når der er modtaget en serie af tidsprøver (som angivet af HoldPeriod), evaluerer tidsklienten efterfølgende tidsprøver for pigge. En tidsprøve betragtes som pigge, når tidsforskellen mellem et tidsprøve og klientens lokale ur er større end værdien for LargePhaseOffset. Standard er 5 tidsprøver.
+
+LargePhaseOffset: Angiver den tidsvariation i forhold til klientens lokale ur (phase offset - faseforskydning), som en tidsprøve skal have for at blive betragtet som en pigge. Tidsprøver, hvis tidsvariationer er større end værdien af LargePhaseOffset, betragtes som pigge. Standard er 50.000,000 100-nanosekundenheder (ns), hvilket er fem sekunder.
+
+MaxAllowedPhaseOffset: Styrer, hvordan W32time korrigerer uret på grundlag af størrelsen af den beregnede tidsvariation mellem tidsprøven og klientens lokale ur. Hvis der modtages et svar, hvis tidsvariation er større end denne værdi, indstiller W32time straks klientens lokale ur til det klokkeslæt, der er accepteret som nøjagtigt fra NTP-serveren (Network Time Protocol). Hvis tidsvariationen er mindre end denne værdi, korrigeres klientens lokale ur gradvist. Standard: 300 sekunder.
+
+MaxNegPhaseCorrection: Styrer den maksimalt tilladte urkorrektion, som kan udføres i modsat retning. Hvis der modtages en tidsprøve, som angiver et tidspunkt i fortiden (sammenlignet med klientens lokale ur), der har en tidsforskel, som er større end værdien for MaxNegPhaseCorrection, kasseres tidsprøven. Hvis dette sker, logfører Windows Time-kilden en hændelse i systemloggen til Logbog. Standard er 172.800 sekunder.
+
+MaxPosPhaseCorrection: Styrer, hvor stor en korrektion af uret, der maksimalt kan udføres i fremadgående retning. Hvis der modtages en tidsprøve, som angiver et tidspunkt i fremtiden (i forhold til tiden på klientens lokale ur) med en tidsforskel, som er større end værdien for MaxPosPhaseCorrection, kasseres tidsprøven. Standard er 172.800 sekunder.
+
+PhaseCorrectRate: Styrer, hvor hurtigt W32time korrigerer klientens lokale ur og tilpasser det efter tidsprøver, der er accepteret som nøjagtige, fra NTP-serveren. Med lave værdier korrigeres uret langsomt, mens det med høje værdier korrigeres hurtigere. Standard er 7 (skalar).
+
+PollAdjustFactor: Styrer, hvor hurtigt W32time skifter forespørgselsinterval. Når svar betragtes som nøjagtige, øges forespørgselsintervallet automatisk. Når svar betragtes som unøjagtige, mindskes forespørgselsintervallet automatisk. Standard er 5 (skalar).
+
+SpikeWatchPeriod: Angiver, hvor længe mistænkelige tidsprøver modtages fra en tidskilde, før disse tidsprøver accepteres som nøjagtige. Tidsprøver betragtes som mistænkelige, når tidsforskellen mellem tidsprøven og klientens lokale ur er større end værdien for LargePhaseOffset. SpikeWatchPeriod bruges sammen med HoldPeriod til at udelukke sporadiske, unøjagtige tidsprøver, som returneres fra en peer. Standard er 900 sekunder.
+ 
+UpdateInterval: Angiver, hvor lang tid W32time venter mellem korrektioner, når uret korrigeres gradvist. Når der foretages en gradvis korrektion, justerer tjenesten uret en smule, venter i dette tidsrum og kontrollerer derefter, om der skal foretages endnu en korrektion, indtil korrektionen er afsluttet. Standard er 100 1/100. sekundenheder, hvilket er 1 sekund.
+
+General Parameters:
+
+AnnounceFlags: En bitmaskeværdi, som styrer, hvordan tidstjenestens tilgængelighed annonceres via Netlogon. Standard er 0x0a hexadecimal. Du kan finde mulige værdier under Config\AnnounceFlags Entry (http://go.microsoft.com/fwlink/?LinkId=139718).
+
+EventLogFlags: Styrer, særlige hændelser, som kan logges i systemlogfilen Logbog. Standard er 0x02 hexadecimal bitmaske. Du kan finde mulige værdier under NtpClient\EventLogFlags Subkey (http://go.microsoft.com/fwlink/?LinkId=139720).
+ 
+LocalClockDispersion: Angiver maksimumfejl i sekunder, der rapporteres af NTP-serveren til klienter, som anmoder om en tidsprøve (gælder kun, når NTP-serveren bruger klokkeslættet fra det lokale CMOS-ur). Standard er 10 sekunder.
+
+MaxPollInterval: Styrer det maksimale forespørgselsinterval, som definerer, hvor lang tid der højst må gå mellem forespørgsler fra en peer. Standard er 10 i 2-tals logaritme, hvilket er 1.024 sekunder (bør ikke indstilles højere end 15).
+
+MinPollInterval: Styrer det mindste forespørgselsinterval, som definerer, hvor lang tid der som minimum kan gå mellem forespørgsler fra en peer. Standard er 6 i 2-tals logaritme, hvilket er 64 sekunder.
+
+RODC-parametre:
+
+Du kan finde flere oplysninger om disse indstillinger i Appendix A: Technical Reference Topics (http://go.microsoft.com/fwlink/?LinkID=128273).
+ 
+ChainEntryTimeout: Angiver det tidsrum, som en post makismalt kan forblive i sammenkædningstabellen, før posten betragtes som udløbet. Udløbne poster kan fjernes, når den næste anmodning eller det næste svar behandles. Standard er 16 sekunder.
+
+ChainMaxEntries: Styrer, hvor mange poster der maksimalt er tilladt i sammenkædningstabellen. Hvis sammenkædningstabellen er fuld, og der ikke kan fjernes nogen udløbne poster, kasseres indgående anmodninger. Standard er 128 poster.
+ 
+ChainMaxHostEntries: Styrer, hvor mange poster der maksimalt er tilladt i sammenkædningstabellen for en bestemt vært. Standard er 4 poster.
+
+ChainDisable: Styrer, om sammenkædningsmekanismen skal deaktiveres. Hvis sammenkædningen deaktiveres (indstilles til 0), kan den skrivebeskyttede domænecontroller (Read-Only Domain Controller - RODC) synkronisere med enhver domænecontroller, men værter, som ikke har deres egen adgangskode cachelagret på RODC'en, kan ikke synkronisere med RODC'en. Standard er 0 boolesk.
+
+ChainLoggingRate: Styrer hastigheden, hvormed en hændelse, som angiver antallet af vellykkede og mislykkede sammenkædningsforsøg, logføres i systemloggen i Logbog. Standard er 30 minutter.</string>
+      <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">Angiver et sæt parametre til styring af Windows NTP-klienten.
+
+NtpServer: DNS-navnet (Domain Name System) eller IP-adressen på en NTP-tidskilde. Denne værdi har formen "dnsName,flags", hvor flags er en hexadecimal bitmaske for flagene for denne vært. Du kan finde flere oplysninger i NTP Client Group Policy Settings i forbindelse med Windows Time-afsnittet i Windows Time Service Group Policy Settings (http://go.microsoft.com/fwlink/?LinkId=139727). Standardværdien er "time.windows.com,0x09".
+
+Type: Denne værdi styrer godkendelsen, som W32time bruger. Standardværdien er NT5DS.
+
+CrossSiteSyncFlags: Denne værdi, der udtrykkes som en bitmaske, styrer, hvordan W32time vælger tidskilder uden for sit eget område. Mulige værdier er 0, 1 og 2. Hvis denne værdi indstilles til 0 (None), angiver det, at tidsklienten ikke skal forsøge at synkronisere tiden uden for sit eget område. Hvis denne værdi indstilles til 1 (PdcOnly), angiver det, at kun computere, der fungerer som Emulator Operations Masters for primære domænecontrollere (PDC) i andre domæner, kan bruges som synkroniseringspartnere, når klienten skal synkronisere tiden med en partner uden for sit eget område. Hvis værdien 2 (All) vælges, angiver det, at enhver synkroniseringspartner kan bruges. Denne værdi ignoreres, hvis NT5DS-værdien ikke angives. Standardværdien er 2 decimal (0x02 hexadecimal).
+
+ResolvePeerBackoffMinutes: Denne værdi, som udtrykkes i minutter, styrer, hvor længe W32time venter, før der gøres forsøg på at fortolke et DNS-navn, når et tidligere forsøg er mislykkedes. Standardværdien er 15 minutter.
+
+ResolvePeerBackoffMaxTimes: Denne værdi styrer, hvor mange gange W32time forsøger at fortolke et DNS-navn, før registreringsprocessen genstartes. Hver gang fortolkningen af DNS-navnet mislykkes, øges tiden inden det næste forsøg til det dobbelte af det foregående tidsrum. Standardværdien er 7 forsøg.
+
+SpecialPollInterval: Denne NTP-klientværdi, som udtrykkes i sekunder, styrer, hvor ofte der forespørges på en manuelt konfigureret tidskilde, når tidskilden er konfigureret til at bruge et særligt forespørgselsinterval. Hvis flaget for SpecialPollInterval er aktiveret for indstillingen NTPServer, bruger klienten den værdi, der er angivet som SpecialPollInterval, i stedet for værdierne for MinPollInterval og MaxPollInterval, til at bestemme, hvor ofte tidskilden skal forespørges. Standardværdien er 3600 sekunder (1 time).
+
+EventLogFlags: Denne værdi er en bitmaske, som styrer hændelser, som kan logføres i systemlogfilen i Logbog. Hvis denne værdi indstilles til 0x1, angiver det, at W32time opretter en hændelse, når der registreres en tidsændring. Hvis denne værdi indstilles til 0x2, angiver det, at W32time opretter en hændelse, når der foretages en ændring af tidskilden. Eftersom det er en bitmaskeværdi, angiver det, at både tidsændringer og tidskildeændringer logføres, hvis indstillingen 0x3 (0x1 og 0x2 lagt sammen) angives.
+      </string>
+      <string id="W32TIME_ENABLE_NTPCLIENT_EXPLAIN">Angiver, om Windows NTP-klienten er aktiveret. Hvis Windows NTP-klienten er aktiveret, kan computeren synkronisere uret med andre NTP-servere. Du kan evt. deaktivere denne tjeneste, hvis du beslutter at bruge tidsprovidere fra en anden leverandør.</string>
+      <string id="W32TIME_ENABLE_NTPSERVER_EXPLAIN">Angiver, om Windows NTP-serveren er aktiveret. Når Windows NTP-serveren er aktiveret, kan computeren behandle NTP-anmodninger fra andre computere.</string>
+      <string id="W32TIME_POLICY_CONFIG">Globale konfigurationsindstillinger</string>
+      <string id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">Konfigurer Windows NTP-klient</string>
+      <string id="W32TIME_POLICY_ENABLE_NTPCLIENT">Aktiver Windows NTP-klient</string>
+      <string id="W32TIME_POLICY_ENABLE_NTPSERVER">Aktiver Windows NTP-server</string>
+      <string id="W32TIME_ROOT">Tjenesten Windows Time</string>
+      <string id="W32TIME_TIMEPROVIDERS">Tidsprovidere</string>
+      <string id="W32TIME_Type_AllSync">Synkronisering af alt</string>
+      <string id="W32TIME_Type_NoSync">Ingen synkronisering</string>
+      <string id="W32TIME_Type_NT5DS">NT5DS</string>
+      <string id="W32TIME_Type_Ntp">NTP</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="W32TIME_POLICY_CONFIG">
+        <text>Tidsmålingsparametre</text>
+        <decimalTextBox refId="W32TIME_FrequencyCorrectRate" defaultValue="4">Frekvenskorrektionshastighed</decimalTextBox>
+        <decimalTextBox refId="W32TIME_HoldPeriod" defaultValue="5">Pauseperiode</decimalTextBox>
+        <decimalTextBox refId="W32TIME_LargePhaseOffset" defaultValue="50000000">Stor faseforskydning</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxAllowedPhaseOffset" defaultValue="300">Maksimal tilladt faseforskydning</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxNegPhaseCorrection" defaultValue="172800">Maksimal negativ fasekorrektion</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxPosPhaseCorrection" defaultValue="172800">Maksimal positiv fasekorrektion</decimalTextBox>
+        <decimalTextBox refId="W32TIME_PhaseCorrectRate" defaultValue="1">Korrektionsinterval for fase</decimalTextBox>
+        <decimalTextBox refId="W32TIME_PollAdjustFactor" defaultValue="5">Forespørgselsjusteringsfaktor</decimalTextBox>
+        <decimalTextBox refId="W32TIME_SpikeWatchPeriod" defaultValue="900">Overvågningsperiode for høj aktivitet</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UpdateInterval" defaultValue="100">Opdateringsinterval</decimalTextBox>
+        <text>Generelle parametre</text>
+        <decimalTextBox refId="W32TIME_AnnounceFlags" defaultValue="10">Meddelelsesflag</decimalTextBox>
+        <decimalTextBox refId="W32TIME_EventLogFlags" defaultValue="2">Flag til hændelseslog</decimalTextBox>
+        <decimalTextBox refId="W32TIME_LocalClockDispersion" defaultValue="10">Lokal tidsforsinkelse</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">Maksimal forespørgselsinterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">Mindste forespørgselsinterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainDisable" defaultValue="0">ChainDisable</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainLoggingRate" defaultValue="30">ChainLoggingRate</decimalTextBox>
+      </presentation>
+      <presentation id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">
+        <textBox refId="W32TIME_NtpServer">
+          <label>NtpServer</label>
+          <defaultValue>time.windows.com,0x9</defaultValue>
+        </textBox>
+        <dropdownList refId="W32TIME_Type" noSort="true" defaultItem="2">Type</dropdownList>
+        <decimalTextBox refId="W32TIME_CrossSiteSyncFlags" defaultValue="2">Synkroniseringsflag på tværs af områder</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ResolvePeerBackoffMinutes" defaultValue="15">Antal minutter inden fortolkning af peer afbrydes</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ResolvePeerBackoffMaxTimes" defaultValue="7">Antal gange inden fortolkning af peer afbrydes</decimalTextBox>
+        <decimalTextBox refId="W32TIME_SpecialPollInterval" defaultValue="3600">Specielt forespørgselsinterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_NtpClientEventLogFlags" defaultValue="0">Flag til hændelseslog</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

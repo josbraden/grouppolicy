@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>表示名をここに入力する</displayName>
+  <description>説明をここに入力する</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">このポリシー設定を使用すると、トラステッド プラットフォーム モジュール (TPM) 所有者情報の Active Directory ドメイン サービス (AD DS) バックアップを管理できます。 
+
+TPM 所有者情報には、TPM 所有者パスワードの暗号化ハッシュが含まれています。特定の TPM コマンドは TPM 所有者のみが実行できます。このハッシュによって、TPM でこれらのコマンドを実行できるようになります。 
+
+このポリシー設定を有効にした場合、Windows で TPM 所有者パスワードを設定または変更すると、TPM 所有者情報は通知なしに自動的に AD DS にバックアップされます。 
+
+[AD DS への TPM バックアップが必要] オプションを選択すると、コンピューターがドメインに接続されておらず AD DS バックアップが完了しない場合は、TPM 所有者パスワードを設定または変更できません。既定ではこのオプションが選択され、TPM 所有者情報を確実に利用できます。このオプションを選択しない場合は、AD DS バックアップは試行されますが、ネットワーク エラーまたは他のバックアップ エラーが発生しても TPM 管理に影響しません。バックアップは自動的に再試行されず、TPM 所有者情報は BitLocker セットアップ中に AD DS に格納されない可能性があります。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、TPM 所有者情報は AD DS にバックアップされません。 
+
+注: AD DS バックアップを完了するには、最初にドメイン上で適切なスキーマ拡張機能とアクセス制御設定をセットアップする必要があります。TPM の Active Directory ドメイン サービスのセットアップの詳細については、オンライン ドキュメントを参照してください。
+
+注: 最初に所有者を設定しなければ、TPM を使用して BitLocker ドライブ暗号化や他のアプリケーションで、拡張されたセキュリティ機能を利用できません。所有者パスワードが設定された TPM の所有権を取得するには、"tpm.msc" を実行して "TPM を初期化する" ための操作を選択します。
+
+注: TPM 所有者情報がなかったり利用できない場合は、ローカル コンピューターで "tpm.msc" を実行することにより、制限された TMP 管理が可能になります。</string>
+      <string id="ActiveDirectoryBackup_Name">Active Directory ドメイン サービスへの TPM バックアップを有効にする</string>
+      <string id="BlockedCommandsList_Help">このポリシー設定を使うと、Windows によってブロックされたトラステッド プラットフォーム モジュール (TPM) コマンドのグループ ポリシー一覧を管理できます。
+
+このポリシー設定を有効にした場合、Windows は指定されたコマンドがコンピューター上の TPM に送信されるのをブロックします。TPM コマンドはコマンド番号により参照されます。たとえば、コマンド番号 129 は TPM_OwnerReadInternalPub であり、コマンド番号 170 は TPM_FieldUpgrade です。各 TPM コマンドに関連付けられたコマンド番号を確認するには、"tpm.msc" を実行して、"コマンド管理" セクションに移動します。
+
+このポリシー設定を無効にした場合、または構成しなかった場合は、既定またはローカルの一覧で指定された TPM コマンドのみが Windows によってブロックされます。ブロックされる TPM コマンドの既定の一覧は、Windows によってあらかじめ構成されています。既定の一覧を表示するには、"tpm.msc" を実行して、"コマンド管理" セクションに移動し、"On Default Block List" 列を表示します。ブロックされる TPM コマンドのローカルの一覧は、"tpm.msc" を実行するか、Win32_Tpm インターフェイスに対するスクリプトを介して、グループ ポリシー外で構成されます。ブロックされる TPM コマンドの既定およびローカルの一覧を強制的に使用するか無視するには、関連するポリシー設定を参照してください。</string>
+      <string id="BlockedCommandsList_Name">ブロックされる TPM コマンドの一覧を構成する</string>
+      <string id="IgnoreDefaultList_Help">このポリシー設定を使用すると、ブロックされるトラステッド プラットフォーム モジュール (TPM) コマンドの、コンピューターにある既定の一覧を強制的に使用するか無視することができます。
+
+このポリシー設定を有効にした場合は、Windows はブロックされる TPM コマンドのコンピューターにある既定の一覧を無視し、グループ ポリシーまたはローカルの一覧で指定された TPM コマンドのみをブロックします。 
+
+ブロックされる TPM コマンドの既定の一覧は、Windows によってあらかじめ構成されています。既定の一覧を表示するには、"tpm.msc" を実行して、[コマンド管理] セクションに移動し、[既定のブロック一覧上] 列を表示します。ブロックされる TPM コマンドのローカルの一覧は、"tpm.msc" を実行するか、Win32_Tpm インターフェイスに対するスクリプトを介して、グループ ポリシー外で構成されます。ブロックされる TPM コマンドのグループ ポリシー一覧を構成するには、関連するポリシー設定を参照してください。
+
+このポリシー設定を無効にするか構成しなかった場合、Windows は、ブロックされる TPM コマンドのグループ ポリシー一覧およびローカル一覧に含まれたコマンドに加えて、既定の一覧内の TPM コマンドをブロックします。 </string>
+      <string id="IgnoreDefaultList_Name">ブロックされる TPM コマンドの既定の一覧を無視する</string>
+      <string id="IgnoreLocalList_Help">このポリシー設定を使用すると、ブロックされるトラステッド プラットフォーム モジュール (TPM) コマンドの、コンピューターにあるローカル一覧を強制的に使用するか無視することができます。
+
+このポリシー設定を有効にした場合は、Windows はブロックされる TPM コマンドのコンピューターにあるローカル一覧を無視し、グループ ポリシーまたは既定の一覧で指定された TPM コマンドのみをブロックします。
+
+ブロックされる TPM コマンドのローカルの一覧は、"tpm.msc" を実行するか、Win32_Tpm インターフェイスに対するスクリプトを介して、グループ ポリシー外で構成されます。ブロックされる TPM コマンドの既定の一覧は、Windows によってあらかじめ構成されています。ブロックされる TPM コマンドのグループ ポリシー一覧を構成するには、関連するポリシー設定を参照してください。 
+
+このポリシー設定を無効にするか構成しなかった場合、Windows は、ブロックされる TPM コマンドのグループ ポリシー一覧および既定の一覧に含まれたコマンドに加えて、ローカルの一覧内の TPM コマンドをブロックします。</string>
+      <string id="IgnoreLocalList_Name">ブロックされる TPM コマンドのローカルの一覧を無視する</string>
+      <string id="TPMCategory">トラステッド プラットフォーム モジュール サービス</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">AD DS への TPM バックアップが必要</checkBox>
+        <text/>
+        <text>選択されている場合、バックアップに失敗すると、 </text>
+        <text>TPM 所有者パスワードを設定または変更できません (推奨する既定値)。</text>
+        <text/>
+        <text>選択されていない場合、バックアップに失敗しても </text>
+        <text>TPM 所有者パスワードを設定または変更できます。バックアップは自動的に再試行されません。</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>コマンド番号を一覧に追加することにより、ブロックするコマンドを指定します。</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">ブロックされる TPM コマンドの一覧 : </listBox>
+        <text>たとえば、TPM_OwnerReadInternalPub コマンドと TPM_FieldUpgrade コマンドをブロックするには、</text>
+        <text>129 と 170 を一覧に追加します。</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

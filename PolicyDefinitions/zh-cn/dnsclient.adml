@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>请在此处输入显示名称</displayName>
+  <description>请在此处输入描述</description>
+  <resources>
+    <stringTable>
+      <string id="DNS_Client">DNS 客户端</string>
+      <string id="DNS_Domain">连接特定的 DNS 后缀</string>
+      <string id="DNS_Domain_Help">指定连接特定的 DNS 后缀。此设置将取代在应用此设置的计算机、本地配置的计算机以及使用 DHCP 配置的计算机上设置的连接特定的 DNS 后缀。
+
+警告: 在该设置中指定的连接特定的 DNS 后缀适用于此设置应用到的多主计算机所使用的全部网络连接。
+
+要使用此设置，请单击“启用”，然后在可用字段中输入代表 DNS 后缀的字符串值。
+
+如果未配置此设置，则任何计算机都不会应用此设置，而是使用其本地参数或由 DHCP 配置的参数。</string>
+      <string id="DNS_NameServer">DNS 服务器</string>
+      <string id="DNS_NameServer_Help">定义计算机在试图解析名称时将向其发送查询的 DNS 服务器。
+
+警告: 在该设置中定义的 DNS 服务器的列表将取代在本地配置的 DNS 服务器和通过使用 DHCP 配置的 DNS 服务器。DNS 服务器的列表适用于此设置应用到的多主计算机的所有网络连接。
+
+要使用此设置，请单击“启用”，然后在可用字段中(以点分隔的十进制格式)输入 IP 地址的空格分隔列表。如果启用了此设置，则必须至少输入一个 IP 地址。
+
+如果未配置此设置，则任何计算机都不会应用此设置，而是使用其本地参数或由 DHCP 配置的参数。</string>
+      <string id="DNS_PrimaryDnsSuffix">主 DNS 后缀</string>
+      <string id="DNS_PrimaryDnsSuffix_Help">为所有受到影响的计算机指定主域名称系统 (DNS) 后缀。主 DNS 后缀用于注册和解析 DNS 名称。
+
+此设置允许您为一组计算机指定主 DNS 后缀，并防止用户(包括管理员)更改它。
+
+如果未配置或禁用了此设置，则每台计算机都将使用其本地的主 DNS 后缀(这通常是该计算机所加入到的 Active Directory 域的 DNS 名称)。但是，管理员可以使用“控制面板”中的“系统”来更改计算机的主 DNS 后缀。
+
+要使用此设置，请在所提供的文本框中键入要分配的整个主 DNS 后缀。例如，microsoft.com。
+
+此设置不会禁用“DNS 后缀和 NetBIOS 计算机名称”对话框，管理员可以使用该对话框来更改计算机的主 DNS 后缀。但是，如果启用了此设置，管理员输入的后缀将被忽略。
+
+重要提示: 必须在受到此设置影响的所有计算机上重新启动 Windows，才能使对于此设置的更改生效。
+
+注意: 要在不配置设置的情况下更改计算机的主 DNS 后缀，请在“控制面板”中，双击“系统”，单击“网络标识”选项卡，单击“属性”，单击“其它”，然后在“此计算机的主 DNS 后缀”框中输入一个后缀。
+
+有关 DNS 的更多信息，请参阅“帮助”中的“域名称系统 (DNS)”。</string>
+      <string id="DNS_RegisterAdapterName">用连接特定的 DNS 后缀注册 DNS 记录</string>
+      <string id="DNS_RegisterAdapterName_Help">确定执行动态注册的计算机除通过其计算机名称和主 DNS 后缀的串联注册 A 资源记录和 PTR 资源记录之外，是否可以通过其计算机名称和特定连接的 DNS 后缀的串联来注册这些记录。
+
+警告: 对于这个组设置的启用适用于此设置应用到的多主计算机的所有网络连接。
+
+默认情况下，执行动态 DNS 注册的 DNS 客户端将通过其计算机名称和主 DNS 后缀的串联来注册 A 资源记录和 PTR 资源记录。例如，计算机名称“mycomputer”和主 DNS 后缀“microsoft.com”的串联结果为“mycomputer.microsoft.com”。
+
+如果启用了此设置，则计算机除通过主 DNS 后缀来注册 A 资源记录和 PTR 资源记录之外，还通过其连接特定的 DNS 后缀来注册这些记录。例如，在注册 A 资源记录和 PTR 资源记录时，可使用计算机名称“mycomputer”和连接特定的 DNS 后缀“VPNconnection”的串联，即“mycomputer.VPNconnection”。请注意，如果在应用此设置的计算机上禁用了动态 DNS 注册，那么，无论此设置如何配置，计算机都不会尝试对包含其计算机名称和特定连接的 DNS 后缀串联的 A 资源记录和 PTR 资源记录进行动态 DNS 注册。如果针对应用此设置的计算机的特定网络连接禁用了动态 DNS 注册，那么，无论此设置如何配置，计算机都不会尝试对该网络连接上包含计算机名称和特定连接的 DNS 后缀串联的 A 记录和 PTR 记录进行动态 DNS 注册。
+
+如果禁用了此设置，DNS 客户端就不会通过其连接特定的 DNS 后缀注册 A 资源记录和 PTR 资源记录。
+
+如果未配置此设置，则任何计算机都不会应用此设置，而是使用其本地配置。</string>
+      <string id="DNS_RegisterReverseLookup">注册 PTR 记录</string>
+      <string id="DNS_RegisterReverseLookup_DoNotRegister">不注册</string>
+      <string id="DNS_RegisterReverseLookup_Help">确定是否针对应用此策略的计算机启用对 PTR 资源记录的注册。
+
+默认情况下，配置为执行动态 DNS 注册的 DNS 客户端，只有当其成功注册 A 资源记录之后，才尝试注册相应的 PTR 资源记录。A 资源记录将主 DNS 名称映射到主 IP 地址，而 PTR 资源记录将主 IP 地址映射到主 DNS 名称。
+
+要启用此设置，请单击“启用”，然后选择下列值之一:
+
+不注册 - 计算机从不尝试注册 PTR 资源记录。
+
+注册 - 无论是否已成功 A 资源记录，计算机都会尝试注册 PTR 资源记录。
+
+仅在 A 记录注册成功时注册 - 计算机仅在其成功注册 A 资源记录时才尝试注册相应的 PTR 资源记录。
+
+如果未配置此设置，则任何计算机都不会应用此设置，而是使用其本地配置。</string>
+      <string id="DNS_RegisterReverseLookup_Register">注册</string>
+      <string id="DNS_RegisterReverseLookup_RegisterOnlyIfASucceeds">仅在 A 记录注册成功时注册 </string>
+      <string id="DNS_RegistrationEnabled">动态更新</string>
+      <string id="DNS_RegistrationEnabled_Help">确定是否启用了动态更新。
+
+配置为动态更新的计算机会自动在 DNS 服务器上注册和更新其 DNS 资源记录。
+
+如果启用了此设置，那么，应用此设置的计算机就可以根据每个网络连接的配置来在每个网络连接上使用动态 DNS 注册功能。针对特定网络连接启用动态 DNS 注册的充分必要条件是: 计算机特定的配置和连接特定的配置都允许进行动态 DNS 注册。用来控制动态 DNS 注册的计算机特定的属性是由该设置控制的。如果启用了此设置，就可以允许针对每个网络连接单独设置动态更新。
+
+如果禁用了此设置，那么，无论每个网络连接的配置如何，应用此设置的计算机都不能针对任何网络连接使用动态 DNS 注册功能。
+
+如果未配置此设置，则任何计算机都不会应用此设置，而是使用其本地配置。</string>
+      <string id="DNS_RegistrationOverwritesInConflict">在冲突时替换地址</string>
+      <string id="DNS_RegistrationOverwritesInConflict_Help">确定试图注册其 A 资源记录的 DNS 客户端是否应该覆盖包含冲突 IP 地址的现有 A 资源记录。
+
+此设置专门用于在不支持安全动态更新的 DNS 区域注册 A 资源记录的计算机。安全动态更新将保留对资源记录的所有权，并且不允许 DNS 客户端覆盖由其他计算机注册的记录。
+
+在对不使用安全动态更新的区域进行动态更新的过程中，DNS 客户端可能会发现现有的 A 资源记录将此客户端的主 DNS 名称与其他计算机的 IP 地址关联。根据默认配置，DNS 客户端会试图将现有的 A 资源记录替换为将 DNS 名称与客户端的 IP 地址关联的 A 资源记录。
+
+如果启用了此设置，DNS 客户端将试图在动态更新期间替换发生冲突的 A 资源记录。
+
+如果禁用了此设置，DNS 客户端将仍然对 A 资源记录执行动态更新；但是，如果 DNS 客户端试图更新包含冲突的 A 资源记录，这种尝试将会失败，并且将在“事件查看器”日志中记录一个错误。
+
+如果未配置此设置，则任何计算机都不会应用此设置，而是使用其本地配置。</string>
+      <string id="DNS_RegistrationRefreshInterval">注册刷新间隔</string>
+      <string id="DNS_RegistrationRefreshInterval_Help">为应用此设置的计算机指定 A 资源记录和 PTR 资源记录的注册刷新间隔。此设置仅适用于使用动态更新的计算机。
+
+运行 Windows 2000 Professional 和 Windows XP Professional 并配置为针对 A 记录和 PTR 资源记录执行动态 DNS 注册的计算机，会定期将其记录注册到 DNS 服务器，即使其记录的数据未发生更改也是如此。要向配置为自动删除(清除)陈旧记录的 DNS 服务器表明这些记录是最新记录并应保留在数据库中，就必须进行这种注册。
+
+警告: 如果要在启用了清除的区域中注册 DNS 资源记录，此设置的值就不应大于为这些区域配置的“刷新间隔”。将“注册刷新间隔”设置为大于 DNS 区域的“刷新间隔”将导致删除不该删除的 A 资源记录和 PTR 资源记录。
+
+要指定“注册刷新间隔”，请单击“启用”，然后输入大于 1800 的值。切记，此值将以秒为单位来指定“注册刷新间隔”，例如，1800 秒就是 30 分钟。
+
+如果未配置此设置，则任何计算机都不会应用此设置，而是使用其本地配置。</string>
+      <string id="DNS_RegistrationTtl">在 A 和 PTR 记录中的 TTL 设置</string>
+      <string id="DNS_RegistrationTtl_Help">在由该设置所应用到的计算机注册的 A 资源记录和 PTR 资源记录中，指定“生存时间 (TTL)”字段的值。
+
+要指定 TTL，请单击“启用”，然后输入以秒为单位的值(例如，值 900 相当于 15 分钟)。
+
+如果未配置此设置，则任何计算机都不会应用此设置。</string>
+      <string id="DNS_SearchList">DNS 后缀查找列表</string>
+      <string id="DNS_SearchList_Help">确定在提交非限定的单标签名称的 DNS 查询之前，要附加到该名称后面的 DNS 后缀。
+
+非限定的单标签名称不包含圆点(如“example”)。这与完全限定的域名(如，“example.microsoft.com”)不同。
+
+如果启用了此设置，那么，当用户提交单标签名称的查询(如“example”)时，本地 DNS 客户端会在向 DNS 服务器发送查询之前附加一个后缀(如“microsoft.com”)，这样所得到的查询就是“example.microsoft.com”。
+
+如果启用了此设置，就可以指定在提交非限定的单标签名称之前要附加的 DNS 后缀。此设置中 DNS 后缀的值可以使用逗点分隔字符串(如“microsoft.com，serverua.microsoft.com，office.microsoft.com”)来设置。每提交一次查询都附加一个 DNS 后缀。如果查询失败，则会添加一个新的 DNS 后缀以取代失败的后缀，并提交这个新查询。值的使用顺序与其在字符串中的顺序相同，从最左边的值开始，一直到最右边的值。
+
+如果启用了此设置，则必须至少指定一个后缀。
+
+如果禁用了此设置，则将在非限定的查询后面附加主 DNS 后缀和网络连接特定的 DNS 后缀。
+
+如果未配置此设置，则任何计算机都不会应用此设置，而是使用其本地配置。</string>
+      <string id="DNS_UpdateSecurityLevel">更新安全等级</string>
+      <string id="DNS_UpdateSecurityLevel_Help">指定此设置应用到的计算机在注册 DNS 记录时是使用安全动态更新还是标准动态更新。
+
+要启用此设置，请单击“启用”，然后选择下列值之一: 
+
+不安全，然后是安全 - 如果选择此选项，则计算机仅在非安全动态更新被拒绝时发送安全动态更新。
+
+仅不安全 - 如果选择此选项，则计算机仅发送非安全动态更新。
+
+仅安全 - 如果选择此选项，则计算机仅发送安全动态更新。
+
+如果未配置此设置，则任何计算机都不会应用此设置，而是使用其本地配置。</string>
+      <string id="DNS_UpdateSecurityLevel_OnlySecure">仅安全</string>
+      <string id="DNS_UpdateSecurityLevel_OnlyUnsecure">仅不安全</string>
+      <string id="DNS_UpdateSecurityLevel_UnsecureFollowedBySecure">不安全，然后是安全</string>
+      <string id="DNS_UpdateTopLevelDomainZones">更新顶级域区域</string>
+      <string id="DNS_UpdateTopLevelDomainZones_Help">指定应用此设置的计算机是否可以向以单标签名称命名的区域(也称为“顶级域”区域，例如“com”)发送动态更新。
+
+默认情况下，配置为执行动态 DNS 更新的 DNS 客户端将向对其 DNS 资源记录具有权威性的 DNS 区域发送动态更新，除非权威区域是顶级域和根区域。
+
+如果启用了此设置，那么，应用此策略的计算机将向对计算机需要更新的资源记录具有权威性的任何区域(根区域除外)发送动态更新。
+
+如果禁用了此设置，那么，应用此策略的计算机将不向对计算机需要更新的资源记录具有权威的根区域和/或顶级域发送动态更新。
+
+如果未配置此设置，则任何计算机都不会应用此设置，而是使用其本地配置。</string>
+      <string id="DNS_UseDomainNameDevolution">主 DNS 后缀传递</string>
+      <string id="DNS_UseDomainNameDevolution_Help">确定 DNS 客户端是否在名称解析过程中执行主 DNS 后缀传递。
+
+当用户提交单标签名称的查询(如“example”)时，本地 DNS 客户端会在向 DNS 服务器发送查询之前附加一个后缀(如“microsoft.com”)，这样所得到的查询就是“example.microsoft.com”。
+
+如果未指定“DNS 后缀搜索列表”，则 DNS 客户端会将主 DNS 后缀附加到单标签名称后面，而且，如果此查询失败，就会附加连接特定的 DNS 后缀，以进行新的查询。如果这些查询均未解析，那么，客户端将传递此计算机的主 DNS 后缀(放弃主 DNS 后缀最左边的标签)，将这个传递过的主 DNS 后缀附加到单标签名称后面，再向 DNS 服务器提交这个新查询。
+
+例如，如果将主 DNS 后缀 ooo.aaa.microsoft.com 附加到以非圆点结尾的单标签名称“example”后面，而且对 example.ooo.aaa.microsoft.com 的 DNS 查询失败，则 DNS 客户端会传递主 DNS 后缀(放弃最左边的标签)，并提交查询 example.aaa.microsoft.com。如果此查询失败，且在指定的传递层次下，则会进一步传递主 DNS 后缀，并提交查询 example.microsoft.com(直到指定的传递层次为止)。如果此查询失败，且在指定的传递层次下，则继续传递，并提交查询 example.microsoft.com。主 DNS 后缀无法传递到传递层次之外。
+
+如果使用适当的传递层次启用了此设置，那么，应用此设置的计算机上的 DNS 客户端将尝试解析要解析的单标签名称与已传递的主 DNS 后缀相串联的名称。
+
+如果禁用了此设置，那么，应用此设置的计算机上的 DNS 客户端将不尝试解析要解析的单标签名称与已传递的主 DNS 后缀相串联的名称。
+
+如果未配置此设置，则任何计算机都不应用此设置，而是使用其本地配置。</string>
+      <string id="DNS_DomainNameDevolutionLevel">主 DNS 后缀传递层次</string>
+      <string id="DNS_DomainNameDevolutionLevel_Help">此策略设置确定当客户端在名称解析过程中执行主域名系统(DNS)后缀传递时，DNS 客户端将使用的 DNS 后缀传递层次。启用 DNS 后缀传递后，如果对已附加了主 DNS 后缀的名称的查询失败，则会在每次后续查询尝试时放弃主 DNS 后缀最左边的标签。传递层次指示在传递主 DNS 后缀后必须添加到查询字符串的最小标签数。
+
+当用户提交单标签名称的查询(如“example”)时，本地 DNS 客户端会在向 DNS 服务器发送查询之前附加一个后缀(如“microsoft.com”)。这种情况下，会生成查询“example.microsoft.com”。
+ 
+如果未指定 DNS 后缀搜索列表，则 DNS 客户端将主 DNS 后缀附加到单标签名称。如果此查询失败，则附加特定于连接的 DNS 后缀以进行新的查询。如果所有这些查询都未解析，则客户端传递计算机的主 DNS 后缀，将传递的主 DNS 后缀附加到单标签名称，并将此新查询提交给 DNS 服务器。
+
+例如，如果将主 DNS 后缀 aaa.bbb.ccc.ddd.microsoft.com 附加到单标签名称“example”(该名称不以圆点结尾)，启用了 DNS 后缀传递并将层次设置为 3，则运行以下查询:
+
+Example.aaa.bbb.ccc.ddd.microsoft.com (如果此查询失败，则对于下一个查询，主 DNS 后缀会传递到 bbb.ccc.ddd.microsoft.com。)
+
+Example.bbb.ccc.ddd.microsoft.com (如果此查询失败，则对于下一个查询，主 DNS 后缀会传递到 ccc.ddd.microsoft.com。)
+
+Example.ccc.ddd.microsoft.com (如果此查询失败，则对于下一个查询，主 DNS 后缀会传递到 ddd.microsoft.com。)
+
+Example.ddd.microsoft.com (如果此查询失败，则无法进行进一步查询，因为传递层次设置为 3 且主 DNS 后缀包含 3 个标签。)
+  
+如果启用了此策略设置，那么，应用此设置的计算机上的 DNS 客户端会尝试解析要解析的单标签名称与已传递的主 DNS 后缀相串联的名称。DNS 客户端会在每次尝试查询时传递主 DNS 后缀，直至成功解析名称、达到此设置中指定的传递层次，或者主 DNS 后缀名称具有两个标签为止。
+ 
+如果禁用或未配置此策略设置，那么，应用此设置的计算机上的 DNS 客户端将不尝试解析要解析的单标签名称与已传递的主 DNS 后缀相串联的名称。如果存在林根域(FRD)、未配置任何搜索列表并且查询是针对单标签名称的，则 DNS 客户端向上传递到 FRD，直至成功解析名称为止。</string>
+      <string id="DNS_TurnOffMulticast">关闭多播名称解析</string>
+      <string id="DNS_TurnOffMulticast_Help">本地链路多播名称解析 (LLMNR) 是辅助名称解析协议。客户端计算机将使用多播机制通过本地链路上的单个子网发送查询，同一个链路上也启用了 LLMNR 的其他客户端能够对查询进行响应。LLMNR 能在传统的 DNS 名称解析不可能实现的情况下提供名称解析。
+
+如果启用了此策略设置，那么，多播名称解析(即 LLMNR)就将针对计算机上所有可用但未配置的网络适配器关闭。
+
+如果禁用了此策略设置，那么，多播名称解析(即 LLMNR)就将针对计算机上所有可用但未配置的网络适配器打开。
+
+如果未配置此策略设置，那么，在默认情况下，多播名称解析(即 LLMNR)就将针对计算机上所有可用但未配置的网络适配器打开。</string>
+      <string id="DNS_AppendToMultiLabelName">允许将 DNS 后缀附加到非限定性多标签名称进行查询</string>
+      <string id="DNS_AppendToMultiLabelName_Help">指定如果初始名称查询失败，则应用此设置的计算机能否先将后缀附加到非限定性多标签名称，然后再发送后续 DNS 查询。
+
+包含点、但不以点结尾的名称就称为非限定性多标签名称，例如“server.corp”。完全限定的名称具有结尾点，例如“server.corp.contoso.com.”。
+
+如果启用此设置，则初始名称查询失败后，将允许后缀附加到非限定性多标签名称。例如，DNS 客户端将首先查询“server.corp”的非限定性多标签名称。如果查询成功，会将响应返回到客户端。如果查询失败，会将为该计算机配置的 DNS 后缀附加到非限定性多标签名称，然后再进行查询。可以从本地 DNS 客户端的主域后缀、特定于连接的域后缀和/或 DNS 后缀搜索列表的组合中派生这些后缀。
+
+例如，如果本地 DNS 客户端收到一个对“server.corp”的查询，并且主域后缀已配置为“contoso.com”，则通过此设置，对“server.corp”的初始名称查询失败后，DNS 客户端将发送对“server.corp.contoso.com”的查询。 
+
+如果禁用了此设置，则初始名称查询失败后，不会将任何后缀附加到非限定性多标签名称进行查询。 
+
+如果未配置此设置，计算机将使用其本地 DNS 客户端的配置来确定对非限定性多标签名称的查询行为。</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="DNS_Domain">
+        <textBox refId="DNS_DomainLabel">
+          <label>DNS 后缀:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_NameServer">
+        <textBox refId="DNS_NameServerLabel">
+          <label>IP 地址:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_PrimaryDnsSuffix">
+        <textBox refId="DNS_PrimaryDnsSuffixBox">
+          <label>输入一个主 DNS 后缀:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_RegisterReverseLookup">
+        <dropdownList refId="DNS_RegisterReverseLookup_Box" defaultItem="0">注册 PTR 记录:</dropdownList>
+      </presentation>
+      <presentation id="DNS_RegistrationRefreshInterval">
+        <decimalTextBox refId="DNS_RegistrationRefreshIntervalLabel" defaultValue="1800" spinStep="100">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_DomainNameDevolutionLevel">
+        <decimalTextBox refId="DNS_DomainNameDevolutionLevelLabel" defaultValue="2" spinStep="1">设置主 DNS 后缀的传递层次</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_RegistrationTtl">
+        <decimalTextBox refId="DNS_RegistrationTtlLabel" defaultValue="600" spinStep="100">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="DNS_SearchList">
+        <textBox refId="DNS_SearchListLabel">
+          <label>DNS 后缀:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DNS_UpdateSecurityLevel">
+        <dropdownList refId="DNS_UpdateSecurityLevel_Box" defaultItem="2">更新安全等级:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

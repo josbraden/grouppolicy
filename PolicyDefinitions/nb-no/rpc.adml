@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>skriv inn visningsnavn her</displayName>
+  <description>skriv inn beskrivelse her</description>
+  <resources>
+    <stringTable>
+      <string id="Rpc">Eksterne prosedyrekall (RPC)</string>
+      <string id="RpcEEInfoOff">Av</string>
+      <string id="RpcEEInfoOffWithExc">Av med unntak</string>
+      <string id="RpcEEInfoOn">På</string>
+      <string id="RpcEEInfoOnWithExc">På med unntak</string>
+      <string id="RpcEnableAuthEpResolution">Klientautentisering for RPC-endepunktadresserer</string>
+      <string id="RpcEnableAuthEpResolution_Help">Når du aktiverer denne innstillingen, må RPC-klienter som må kommunisere med tjenesten for endepunktstilordning, godkjennes så lenge RPC-kallet endepunktet må løses for, har godkjenningsinformasjon.
+
+Hvis du deaktiverer denne innstillingen, fører dette til at RPC-klienter som må kommunisere med tjenesten for endepunktstilordning, ikke godkjennes. Tjenesten for endepunktstilordning på maskiner som kjører Windows NT4 (alle oppdateringspakker), kan ikke behandle godkjenningsinformasjon som leveres på denne måten. Dette betyr at hvis denne innstillingen aktiveres på en klientmaskin, kan klienten ikke kommunisere med en Windows NT4-server via RPC hvis endepunktløsing er nødvendig.
+
+Som standard bruker ikke RPC-klienter godkjenning til å kommunisere med tjenesten for endepunktstilordning på en RPC-server når de ber om endepunktet til en server.
+
+Obs: Denne policyen trer ikke i kraft før du starter systemet på nytt.  </string>
+      <string id="RpcExtendedErrorInformation">Overføring av utvidet feilinformasjon</string>
+      <string id="RpcExtendedErrorInformation_Help">Angir at RPC-kjøretid skal generere utvidet feilinformasjon når det oppstår en feil.
+
+Utvidet feilinformasjon omfatter det lokale klokkeslettet da feilen oppstod, RPC-versjon og navnet på datamaskinen hvor feilen oppstod eller ble overført. Programmer kan hente utvidet feilinformasjon ved hjelp av standard Windows-APIer.
+
+Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, genererer RPC-kjøretid bare en statuskode for å indikere en feil.
+
+Hvis du vil bruke denne innstillingen, aktiverer du den og velger en feilsvartype fra rullegardinlisten.
+
+--  Av deaktiverer all utvidet feilinformasjon for alle prosesser. RPC genererer bare en feilkode.
+
+--  På med unntak aktiverer utvidet feilinformasjon, men lar deg deaktivere den for utvalgte prosesser. Hvis du vil deaktivere utvidet feilinformasjon for en prosess mens denne innstillingen er aktiv, må kommandoen som starter prosessen, begynne med én av strengene i feltet Unntak for utvidet feilinformasjon.
+
+--  Av med unntak deaktiverer utvidet feilinformasjon, men lar deg aktivere den for utvalgte prosesser. Hvis du vil aktivere utvidet feilinformasjon for en prosess mens denne innstillingen er aktiv, må kommandoen som starter prosessen, begynne med én av strengene i feltet Unntak for utvidet feilinformasjon.
+
+--  På aktiverer utvidet feilinformasjon for alle prosesser.
+
+Obs! Hvis du vil ha informasjon om feltet Unntak for utvidet feilinformasjon, se Windows 2000 Platform Software Development Kit (SDK).
+
+Obs! Utvidet feilinformasjon er formatert for å være kompatibel med andre operativsystemer og eldre Microsoft-operativsystemer, men bare nyere Microsoft-operativsystemer kan lese og svare på informasjonen.
+
+Obs! Standardinnstillingen, Av, er beregnet på systemer hvor utvidet feilinformasjon er regnet for å være sensitiv og bør ikke gjøres tilgjengelig eksternt.
+
+Obs!  Denne policyinnstillingen trer ikke i kraft før du starter systemet på nytt.</string>
+      <string id="RpcIDFOff">Av</string>
+      <string id="RpcIDFOn">På</string>
+      <string id="RpcIgnoreDelegationFailure">Ignorer delegeringsfeil</string>
+      <string id="RpcIgnoreDelegationFailure_Help">Angir at RPC-kjøretid skal ignorere delegeringsfeil hvis det ble bedt om delegering.
+
+Windows Server 2003-serien inkluderer en ny delegeringsmodell, begrenset delegering. I denne modellen rapporterer ikke sikkerhetssystemet at delegering ble aktivert i en sikkerhetskontekst når en klient kobles til en server. Oppkallere til RPC og COM oppfordres til å bruke flagget RPC_C_QOS_CAPABILITIES_IGNORE_DELEGATE_FAILURE, men enkelte programmer som er skrevet for den tradisjonelle delegeringsmodellen, kan ikke bruke dette flagget og blir møtt med RPC_S_SEC_PKG_ERROR ved tilkobling til en server som bruker begrenset delegering.
+
+Hvis du deaktiverer denne innstillingen, skal du ikke konfigurere den eller sette den til Av, siden RPC-kjøretid genererer feilen RPC_S_SEC_PKG_ERROR for programmer som ber om delegering og kobler til servere med begrenset delegering. Hvis du konfigurerer denne innstillingen til På, godtar RPC-kjøretid både sikkerhetskontekster som ikke støtter delegering, og sikkerhetskontekster som støtter delegering.
+
+--  Av angir at RPC-kjøretid skal generere RPC_S_SEC_PKG_ERROR hvis klienten ber om delegering og den opprettede sikkerhetskonteksten ikke støtter delegering.
+
+--  På angir at RPC-kjøretid skal godkjenne sikkerhetskontekster som ikke støtter delegering, selv hvis det bes om delegering.
+
+Obs!  Denne policyinnstillingen trer ikke i kraft før du starter systemet på nytt.</string>
+      <string id="RpcMinimumHttpConnectionTimeout">Minimum tidsavbrudd for inaktiv tilkobling for RPC/HTTP-tilkoblinger</string>
+      <string id="RpcMinimumHttpConnectionTimeout_Help">Angir at RPC-kjøretid skal anta at angitt tidsavbrudd er tidsavbrudd for inaktiv tilkobling selv hvis IIS-serveren som kjører RPC HTTP-proxyen, er konfigurert med et høyere tidsavbrudd. Hvis IIS-serveren som kjører RPC HTTP-proxyen, er konfigurert med et lavere tidsavbrudd for inaktiv tilkobling, brukes tidsavbruddet for IIS-serveren. Tidsavbruddet oppgis i sekunder.
+
+Denne innstillingen er nyttig i tilfeller hvor en nettverksagent, for eksempel en HTTP-proxy eller en ruter, bruker et lavere tidsavbrudd for inaktiv tilkobling enn IIS-serveren som kjører RPC HTTP-proxyen. I slike tilfeller kan det oppstå feil for RPC over HTTP-klienter fordi tilkoblingene tidsavbrytes raskere enn forventet. Ved hjelp av denne innstillingen kan du tvinge RPC-kjøretid og RPC-proxyen til å bruke et lavere tidsavbrudd for tilkobling.
+
+Denne innstillingen gjelder bare når både RPC-klienten, RPC-serveren og RPC HTTP-proxyen kjører Windows Server 2003-serien / Windows XP SP1 eller høyere versjoner. Hvis enten RPC-klienten, RPC-serveren eller RPC HTTP-proxyen kjøres på en eldre versjon av Windows, ignoreres denne innstillingen.
+
+Minimumsverdien for denne innstillingen er 90 sekunder. Maksimumsverdien er 7200 (2 timer).
+
+Hvis du deaktiverer denne innstillingen eller ikke konfigurerer den, brukes tidsavbruddet for inaktiv tilkobling på IIS-serveren som kjører RPC HTTP-proxyen.
+
+Obs!  Denne policyinnstillingen trer ikke i kraft før du starter systemet på nytt.</string>
+      <string id="RpcRestrictRemoteClients">Begrensninger for uautentiserte RPC-klienter</string>
+      <string id="RpcRestrictRemoteClients_Help">Hvis du aktiverer denne innstillingen, begrenser RPC-kjøretid på en RPC-server ikke-godkjente RPC-klienter som kobler seg til RPC-servere som kjører på en maskin. En klient regnes for å være godkjent hvis den bruker en navngitt datakanal til å kommunisere med serveren, eller hvis den bruker RPC-sikkerhet. RPC-grensesnitt som spesifikt har bedt om å være tilgjengelige for ikke-godkjente klienter, kan unntas fra denne begrensningen, avhengig av verdien som velges for denne policyen.
+
+Hvis du deaktiverer denne innstillingen eller ikke konfigurerer den, brukes verdien Autentisert for Windows XP, og verdien Ingen brukes for Server-SKUer som støtter denne policyinnstillingen. Hvis du aktiverer den, er følgende verdier tilgjengelige:
+
+--  Ingen tillater alle RPC-klienter å koble seg til RPC-servere som kjører på maskinen der policyen er aktivert.
+
+--  Autentisert tillater bare godkjente RPC-klienter (etter definisjonen ovenfor) å koble seg til RPC-servere som kjører på maskinen der policyen er aktivert. Grensesnitt som har bedt om å bli unntatt fra denne begrensningen, får innvilget et unntak.
+
+--  Autentisert uten unntak tillater bare godkjente RPC-klienter (etter definisjonen ovenfor) å koble seg til RPC-servere som kjører på maskinen der policyen er aktivert. Ingen unntak tillates.
+
+Obs!  Denne policyinnstillingen trer ikke i kraft før du starter systemet på nytt.</string>
+      <string id="RpcRestrictRemoteClientsAuth">Autentisert</string>
+      <string id="RpcRestrictRemoteClientsHigh">Autentisert uten unntak</string>
+      <string id="RpcRestrictRemoteClientsNone">Ingen</string>
+      <string id="RpcStateInfoAuto1">Auto1</string>
+      <string id="RpcStateInfoAuto2">Auto2</string>
+      <string id="RpcStateInfoBoth">Full</string>
+      <string id="RpcStateInfoNone">Ingen</string>
+      <string id="RpcStateInformation">Tilstandsinformasjon om RPC-feilsøking</string>
+      <string id="RpcStateInformation_Help">
+
+Avgjør om RPC-kjøretid lagrer RPC-tilstandsinformasjon for systemet, og hvor mye informasjon som lagres. Grunnleggende tilstandsinformasjon, som bare består av tilstandsdataene som oftest kreves, er nødvendig for feilsøking av RPC-problemer.
+
+Hvis du aktiverer denne innstillingen, kan du bruke rullegardinlisten til å angi hvilke systemer som skal lagre RPC-tilstandsinformasjon. Hvis du deaktiverer eller ikke konfigurerer innstillingen, brukes innstillingen Auto2.
+
+-- Ingen betyr at systemet ikke lagrer RPC-tilstandsinformasjon i det hele tatt. Obs: Fordi den grunnleggende tilstandsinformasjonen som kreves for å feilsøke, har en ubetydelig effekt på ytelsen og bare bruker 4 kB minne, anbefales ikke denne innstillingen for de fleste installasjoner.
+
+--  Auto1 angir at RPC skal lagre grunnleggende tilstandsinformasjon bare hvis datamaskinen har minst 64 MB minne.
+
+--  Auto2 angir at RPC skal lagre grunnleggende tilstandsinformasjon bare hvis datamaskinen har minst 128 MB minne og kjører Windows 2000 Server, Windows 2000 Advanced Server eller Windows 2000 Datacenter Server. 
+
+--  Server angir at RPC skal lagre grunnleggende tilstandsinformasjon på datamaskinen uavhengig av kapasiteten til maskinen.
+
+-- Full angir at RPC skal lagre komplett RPC-tilstandsinformasjon på datamaskinen uavhengig av kapasiteten til maskinen. Siden denne innstillingen kan redusere ytelsen, anbefales det at du bare bruker den hvis du undersøker et RPC-problem.
+
+Obs: Du må bruke et feilsøkingsverktøy for å kunne innhente RPC-tilstandsinformasjonen fra systemet som lagrer den.
+
+Obs: Denne policyen trer ikke i kraft før du starter systemet på nytt.</string>
+      <string id="RpcStateInfoServer">Server</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="RpcExtendedErrorInformation">
+        <dropdownList refId="RpcExtendedErrorInformationList" defaultItem="0">Overføring av utvidet feilinformasjon:</dropdownList>
+        <textBox refId="RpcExtErrorExceptions">
+          <label>Unntak for utvidet feilinformasjon:</label>
+        </textBox>
+      </presentation>
+      <presentation id="RpcIgnoreDelegationFailure">
+        <dropdownList refId="RpcIgnoreDelegationFailureList" defaultItem="0">Ignorere delegeringsfeil:</dropdownList>
+      </presentation>
+      <presentation id="RpcMinimumHttpConnectionTimeout">
+        <decimalTextBox refId="RpcMinimumHttpConnectionTimeoutValue" defaultValue="900" spinStep="10">Minimum tidsavbrudd for inaktiv tilkobling (i sekunder):</decimalTextBox>
+      </presentation>
+      <presentation id="RpcRestrictRemoteClients">
+        <dropdownList refId="RpcRestrictRemoteClientsList" defaultItem="1">Begrensning for uautentiserte klienter for RPC-kjøretid:</dropdownList>
+      </presentation>
+      <presentation id="RpcStateInformation">
+        <dropdownList refId="RpcStateInformationList" defaultItem="2">Tilstandsinformasjon om RPC-kjøretid som skal lagres:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

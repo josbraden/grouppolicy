@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>אופן הפעולה של רשת מנוהלת</displayName>
+  <description>התקנת פקדי ActiveX מאתרי התקנה מאושרים</description>
+  <resources>
+    <stringTable>
+      <string id="AxInstSv">שירות מתקין ActiveX</string>
+      <string id="AxISURLZonePolicies">מדיניות התקנת ActiveX לאתרים באזורים מהימנים</string>        
+      <string id="AxISURLZonePolicies_explain">הגדרת מדיניות זו שולטת בהתקנה של פקדי ActiveX עבור אתרים באזור מהימן. אם הגדרה זו זמינה, פקדי ActiveX יותקנו בהתאם להגדרות שנקבעו בהגדרת מדיניות זו. 
+      
+אם הגדרה זו אינה זמינה או שתצורתה לא נקבעה, פקדי ActiveX תמיד יציגו למשתמש הנחיה לפני ההתקנה. 
+
+אם האתר המהימן משתמש בפרוטוקול HTTPS, להגדרת מדיניות זו יש גם אפשרות לשלוט באופן שבו שירות מתקין ActiveX יגיב לשגיאות אישור. כברירת מחדל, כל חיבורי ה- HTTPS נדרשים לספק אישור שרת שיענה על כל קריטריוני האימות. אם אתה מודע לכך שאתר מהימן כולל שגיאת אישור אך עדיין מעוניין לתת בו אמון, באפשרותך לבחור את שגיאות האישור שמהן ברצונך להתעלם.
+    
+הערה: הגדרה זו חלה על כל האתרים באזורים מהימנים.
+</string>
+      <string id="TrustedZoneDisabled">אל תתקין</string>
+      <string id="TrustedZonePrompt">הצג הנחיה למשתמש</string>
+      <string id="TrustedZoneSilentInstall">התקנה שקטה</string>
+      <string id="ApprovedActiveXInstallSites">אתרי התקנה מאושרים עבור פקדי ActiveX</string>
+      <string id="ApprovedActiveXInstallSites_explain">שירות מתקין ActiveX הוא הפתרון להקצאת ההתקנה של פקדי ActiveX לפי מחשב, למשתמש רגיל בארגון.
+
+רשימת אתרי ההתקנה המאושרים של ActiveX מכילה את כתובת ה- URL של המארח ואת הגדרות המדיניות עבור כל כתובת URL של מארח. ‏‏תווים כלליים אינם נתמכים.      </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AxISURLZonePolicies">
+        <dropdownList refId="InstallTrustedOCX" noSort="true" defaultItem="2">מדיניות התקנה עבור פקד ActiveX חתום על-ידי מפרסם מהימן</dropdownList>
+        <dropdownList refId="InstallSignedOCX" noSort="true" defaultItem="1">מדיניות ההתקנה עבור פקד ActiveX חתום</dropdownList>
+        <dropdownList refId="InstallUnSignedOCX" noSort="true" defaultItem="0">מדיניות ההתקנה עבור פקד ActiveX לא חתום</dropdownList>
+        <text>אשר התחברות לאתרים מהימנים עם שגיאות אישור השרת שלהלן.</text>
+        <checkBox refId="IgnoreUnknownCA" defaultChecked="false">רשות אישורים (CA) לא ידועה</checkBox>
+        <checkBox refId="IgnoreInvalidCN" defaultChecked="false">שם אישור (CN) לא חוקי</checkBox>
+        <checkBox refId="IgnoreInvalidCertDate" defaultChecked="false">תאריך פקיעת תוקף של אישור</checkBox>
+        <checkBox refId="IgnoreWrongCertUsage" defaultChecked="false">שימוש שגוי באישור</checkBox>
+      </presentation>
+
+      <presentation id="ApprovedActiveXInstallSites">
+        <listBox refId="ApprovedActiveXInstallSiteslist">כתובות URL של מארחים</listBox>
+        <text>מכילה מדיניות עבור כתובת ה- URL של המארח.</text>
+        <text>למשל </text>
+        <text>HostName: http://activex.microsoft.com</text>
+        <text>ערך: 2,1,0,0</text>
+        <text>הערך עבור כל כתובת URL של מארח הוא ארבע הגדרות בתבנית CSV.</text>
+        <text>לייצוג "TPSSignedControl,SignedControl,UnsignedControl,ServerCertificatePolicy</text>
+        <text>שלושת הערכים השמאליים ביותר במדיניות שולטים בהתקנה של פקדי ActiveX בהתבסס על החתימה שלהם.</text>
+        <text>הם יכולים להיות אחד מהערכים שלהלן.</text>
+        <text>0: פקד ActiveX לא יותקן</text>
+        <text>1: הצגת הנחיה למשתמש להתקנת פקד ActiveX</text>
+        <text>2: פקד ActiveX יותקן בצורה שקטה</text>
+        <text>פקדים הנושאים חתימות של אישורים במאגר המפרסמים המהימנים יותקנו בצורה שקטה </text>
+        <text>אין תמיכה בהתקנה שקטה של פקדים ללא חתימה</text>
+        <text></text>
+        <text>הערך הימני ביותר במדיניות הוא דגל עם מסיכת סיביות</text>
+        <text>הדגלים משמשים להתעלמות משגיאות אישורי https.</text>
+        <text>ערך ברירת המחדל הוא 0.</text>
+        <text>כלומר, חיבורי https חייבים לעבור את כל בדיקות האבטחה</text>
+        <text></text>
+        <text>השתמש בשילוב של הערכים הבאים</text>
+        <text>כדי להתעלם משגיאות אישורים לא חוקיים</text>
+        <text>0x00000100  התעלם מרשות אישורים לא ידועה</text>
+        <text>0x00001000  התעלם משם אישור לא חוקי</text>
+        <text>0x00002000  התעלם מתאריך אישור לא חוקי</text>
+        <text>0x00000200  התעלם משימוש שגוי באישור</text>
+        <text></text>
+        
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

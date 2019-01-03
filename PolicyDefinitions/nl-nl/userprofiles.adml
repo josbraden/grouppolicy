@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>voer hier de weergegeven naam in</displayName>
+  <description>typ hier een beschrijving</description>
+  <resources>
+    <stringTable>
+      <string id="AddAdminGroupToRUP">De beveiligingsgroep Administrators aan zwervende gebruikersprofielen toevoegen</string>
+      <string id="AddAdminGroupToRUP_Help">Met deze instelling voegt u de beveiligingsgroep Administrators toe aan de share voor zwervende gebruikersprofielen.
+
+Wanneer een beheerder het zwervende profiel van een gebruiker eenmaal heeft geconfigureerd, wordt het profiel gemaakt wanneer de gebruiker zich vervolgens aanmeldt. Het profiel wordt gemaakt op de locatie die de beheerder heeft opgegeven.
+
+In Windows 2000 Professional en Windows XP Professional zijn de standaardmachtigingen voor het nieuwe profiel Volledig beheer of Lezen en schrijven voor de gebruiker en geen bestandstoegang voor de groep Administrators.
+
+Door deze instelling te configureren kunt u dit gedrag wijzigen.
+
+Als u deze instelling inschakelt, krijgt de groep Administrators ook volledig beheer over de profielmap van de gebruiker.
+
+Als u de instelling uitschakelt of niet configureert, krijgt alleen de gebruiker volledig beheer over het gebruikersprofiel en heeft de groep Administrators geen toegang tot bestanden in deze map.
+
+Opmerking: als deze instelling wordt ingeschakeld nadat het profiel is gemaakt, heeft de instelling geen invloed.
+
+Opmerking: deze instelling moet op de clientcomputer worden geconfigureerd, niet op de server. Anders heeft deze geen effect. Op de clientcomputer worden de bestandsmachtigingen voor het zwervende profiel namelijk ingesteld wanneer het profiel wordt gemaakt.
+
+Opmerking: normaliter hebben beheerders geen bestandstoegang tot het profiel van de gebruiker, maar ze kunnen wel eigenaar van deze map worden en bestandsmachtigingen aan zichzelf toewijzen.
+
+Opmerking: het resultaat van het inschakelen van deze instelling is precies hetzelfde als in Windows NT 4.0.</string>
+      <string id="CompatibleRUPSecurity">De toegangsmachtigingen tot mappen van zwervende profielen niet controleren</string>
+      <string id="CompatibleRUPSecurity_Help">Met deze instelling schakelt u de veiliger standaardinstelling voor de map met het zwervende profiel van de gebruiker uit.
+
+Wanneer een beheerder het zwervende profiel van een gebruiker eenmaal heeft geconfigureerd, wordt het profiel gemaakt wanneer de gebruiker zich vervolgens aanmeldt. Het profiel wordt gemaakt op de locatie die de beheerder heeft opgegeven.
+
+In versies vóór Windows 2000 Professional SP4 en Windows XP SP1 zijn de standaardmachtigingen voor het nieuwe profiel Volledig beheer voor de gebruiker en geen bestandstoegang voor de groep Administrators. Als de profielmap al bestaat, wordt niet gecontroleerd of de machtigingen juist zijn. In producten uit de Windows Server 2003-familie, Windows 2000 Professional SP4 en Windows XP SP1, wordt standaard gecontroleerd of de machtigingen juist zijn als de profielmap al bestaat. Als de machtigingen niet juist zijn, worden er geen bestanden naar of uit de map met het zwervende profiel gekopieerd.
+
+Door deze instelling te configureren kunt u dit gedrag wijzigen.
+
+Als u deze instelling inschakelt, worden in Windows de machtigingen voor de map niet gecontroleerd wanneer de map al bestaat.
+
+Als u deze instelling uitschakelt of niet configureert EN de map met het zwervende profiel bestaat EN de gebruiker of de groep Administrators niet eigenaar van de map is, worden er in Windows GEEN bestanden naar of uit de map met het zwervende profiel gekopieerd. Er verschijnt een foutbericht en er wordt een vermelding toegevoegd aan het gebeurtenislogboek. Het gebruikersprofiel in de cache wordt gebruikt of er wordt een tijdelijk profiel toegewezen als de cache geen profiel bevat. 
+
+Opmerking: deze instelling moet op de clientcomputer worden geconfigureerd, niet op de server. Anders heeft deze geen effect. Op de clientcomputer worden de bestandsmachtigingen voor het zwervende profiel namelijk ingesteld wanneer het profiel wordt gemaakt.
+
+Opmerking: het resultaat van het inschakelen van deze instelling is precies hetzelfde als in Windows 2000 Professional (vóór SP4) en Windows XP Professional.</string>
+      <string id="Connect_HomeDir_ToRoot">De basismap verbinden met de hoofdmap van de share</string>
+      <string id="Connect_HomeDir_ToRoot_Explain">Hiermee stelt u de omgevingsvariabelen %HOMESHARE% en %HOMEPATH% in op de waarden die worden gebruikt in Windows NT 4.0 en eerdere versies.
+
+Als u deze instelling inschakelt, worden de systeeminstellingen van Windows NT 4.0 gebruikt. Als u deze instelling uitschakelt of niet configureert, worden de nieuwe systeeminstellingen van het Windows 2000-besturingssysteem gebruikt.
+
+Samen met %HOMEDRIVE% bepalen deze variabelen welke basismap voor een gebruikersprofiel wordt gebruikt. De basismap is een permanente toewijzing van een stationsletter op de lokale computer aan een lokale of externe map.
+
+Bij producten uit de Windows 2000 Server-familie bevat %HOMESHARE% standaard het volledige pad naar de basismap (zoals \\server\share\map1\map2\basismap). Gebruikers hebben via de stationsletter van de basismap toegang tot de basismap en onderliggende mappen, maar ze hebben geen toegang tot de bovenliggende mappen en kunnen deze niet zien. Met het oog op de compatibiliteit met eerdere systemen wordt de waarde in %HOMEPATH% afgesloten met een backslash.
+
+Bij Windows NT 4.0 en eerdere versies wordt in %HOMESHARE% alleen de naam van de netwerkshare opgeslagen (bijvoorbeeld \\server\share). In %HOMEPATH% wordt de rest van het volledige pad naar de basismap opgeslagen (bijvoorbeeld \map1\map2\basismap). Hierdoor hebben gebruikers via de stationsletter van de basismap toegang tot elke map op de basis-share.
+
+Tip: bij producten uit de Windows 2000 Server-familie kunt u een basismap opgeven door in de module Active Directory-gebruikers en -computers of de module Lokale gebruikers en groepen met de rechtermuisknop op de naam van een gebruikersaccount te klikken, op Eigenschappen te klikken, op de tab Profiel te klikken, in de sectie Basismap de optie Verbinden te selecteren en vervolgens een stationsletter en basismap te selecteren.
+
+Voorbeeld: station Z wordt toegewezen aan \\server\share\map1\map2\basismap.
+
+Als deze instelling is uitgeschakeld of niet geconfigureerd (zoals in producten uit de Windows 2000 Server-familie), geldt het volgende:
+
+-- %HOMEDRIVE% = Z: (toegewezen aan \\server\share\map1\map2\basismap)
+
+-- %HOMESHARE% = \\server\share\map1\map2\basismap
+
+-- %HOMEPATH% = \
+
+Als deze instelling is ingeschakeld (zoals in Windows NT 4.0), geldt het volgende:
+
+-- %HOMEDRIVE% = Z: (toegewezen aan \\server\share)
+
+-- %HOMESHARE% = \\server\share
+
+-- %HOMEPATH% = \map1\map2\basismap</string>
+      <string id="DeleteRoamingCachedProfiles">Kopieën van zwervende profielen uit cache verwijderen</string>
+      <string id="DeleteRoamingCachedProfiles_Help">Deze instelling bepaalt of er een kopie van het zwervende profiel van een gebruiker wordt opgeslagen op de harde schijf van de computer wanneer de gebruiker in kwestie zich afmeldt.
+
+Met behulp van deze en aanverwante instellingen in deze map kunt u een strategie beschrijven voor het beheren van gebruikersprofielen op externe servers. U kunt hiermee met name aangeven hoe het systeem moet reageren wanneer een extern profiel niet snel genoeg wordt geladen.
+
+Zwervende profielen worden opgeslagen op een netwerkserver. Wanneer een gebruiker met een zwervend profiel zich afmeldt, wordt standaard ook een kopie van het bewuste zwervende profiel opgeslagen op de harde schijf van de computer die deze gebruikt, voor het geval de server met het zwervende profiel niet beschikbaar is wanneer de gebruiker zich weer aanmeldt. De lokale kopie wordt ook gebruikt wanneer de externe kopie van het zwervende gebruikersprofiel niet snel genoeg wordt geladen.
+
+Als u deze instelling inschakelt, worden eventuele lokale kopieën van het zwervende gebruikersprofiel verwijderd wanneer de gebruiker in kwestie zich afmeldt. Het zwervende profiel wordt niet verwijderd van de netwerkserver waarop het profiel is opgeslagen.
+
+Belangrijk: schakel deze instelling niet in als u de functie voor het detecteren van langzame verbindingen gebruikt in Windows 2000 Professional en Windows XP Professional. Er kan alleen op een langzame verbinding worden gereageerd als het systeem een lokale kopie van het zwervende profiel van de gebruiker bevat.</string>
+      <string id="EnableSlowLinkDetect">Langzame netwerkverbindingen niet detecteren</string>
+      <string id="EnableSlowLinkDetect_Help">Met deze instelling schakelt u de functie voor het detecteren van langzame verbindingen uit.
+
+De functie voor het detecteren van langzame verbindingen meet de snelheid van de verbinding tussen de computer van de gebruiker en de externe server waarop het zwervende gebruikersprofiel is opgeslagen. Waneer de verbinding niet snel genoeg is, wordt aan de hand van de instellingen in deze map bepaald hoe het systeem moet reageren.
+
+Als u deze instelling inschakelt, worden langzame verbindingen niet gedetecteerd of als zodanig herkend. Daardoor wordt in geval van een langzame verbinding met een gebruikersprofiel niet gereageerd en worden de bewuste instellingen genegeerd.
+
+Als u deze instelling uitschakelt of niet configureert, wordt de functie voor het detecteren van langzame verbindingen ingeschakeld. Het systeem meet de snelheid van de verbinding tussen de computer van de gebruiker en de server met het profiel. Als de verbinding langzaam is (zoals opgegeven via de instelling Time-out van langzame netwerkverbinding voor gebruikersprofielen), worden alle andere instellingen toegepast die in deze map zijn ingesteld en aan de hand waarvan wordt bepaald hoe moet worden gereageerd. Standaard wordt de lokale kopie van het gebruikersprofiel geladen als de verbinding langzaam is.</string>
+      <string id="EnableSlowLinkUI">Gebruiker waarschuwen wanneer een langzame netwerkverbinding wordt gedetecteerd</string>
+      <string id="EnableSlowLinkUI_Help">Deze beleidsinstelling stelt gebruikers in staat hun zwervende profiel te downloaden, zelfs wanneer een trage netwerkverbinding met de server van hun zwervende profiel wordt gedetecteerd.
+
+Als u deze beleidsinstelling inschakelt, kunnen gebruikers opgeven of ze hun zwervende profiel willen downloaden wanneer een langzame verbinding met de server van hun zwervende profiel wordt gedetecteerd.
+
+In oudere besturingssystemen dan Microsoft Windows Vista krijgt de gebruiker tijdens het aanmelden een dialoogvenster te zien als een langzame netwerkverbinding wordt gedetecteerd. Vervolgens kan de gebruiker desgewenst de externe kopie van het gebruikersprofiel downloaden. Op het aanmeldingsscherm van Microsoft Windows Vista wordt een selectievakje weergegeven en moet de gebruiker kiezen of het gebruikersprofiel moet worden gedownload voordat de snelheid van de netwerkverbinding wordt gedetecteerd. 
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt de gebruiker niet geraadpleegd. In plaats daarvan wordt de lokale kopie van het gebruikersprofiel gebruikt. Als u de beleidsinstelling Wachten op extern gebruikersprofiel hebt ingeschakeld, wordt de externe kopie van het gebruikersprofiel gedownload zonder dat de gebruiker wordt geraadpleegd. In Microsoft Windows Vista wordt de instelling die de gebruiker op het aanmeldingsscherm heeft opgegeven, genegeerd.
+
+Opmerking: met behulp van deze en aanverwante beleidsinstellingen in deze map kunt u bepalen hoe het systeem reageert wanneer zwervende gebruikersprofielen niet snel genoeg worden gedownload. Met de beleidsinstelling Time-out voor dialoogvensters kunt u de tijd aanpassen waarbinnen de gebruiker in oudere besturingssystemen dan Microsoft Windows Vista op deze melding moet reageren.
+
+Belangrijk: als de instelling Langzame netwerkverbindingen niet detecteren is ingeschakeld, wordt deze beleidsinstelling genegeerd. Daarnaast geldt dat er geen lokale kopie van het zwervende profiel kan worden geladen wanneer er een langzame verbinding wordt gedetecteerd als de beleidsinstelling Kopieën van zwervende profielen uit cache verwijderen is ingeschakeld.</string>
+      <string id="ExcludeDirectories">Mappen niet opnemen in zwervend profiel</string>
+      <string id="ExcludeDirectories_Help">Met deze instelling kunt u items toevoegen aan de lijst met mappen die niet in het zwervende profiel van de gebruiker worden opgenomen.
+
+Met deze instelling kunt u mappen uitsluiten die normaal gezien in het profiel van de gebruiker worden opgenomen. Als gevolg hiervan hoeven deze mappen niet te worden opgeslagen op de netwerkserver waarop het profiel is opgeslagen en zijn deze mappen niet beschikbaar wanneer de gebruiker zich op een andere computer aanmeldt.
+
+Standaard worden de mappen Appdata\Local en Appdata\LocalLow en al hun submappen, zoals Geschiedenis, Temp en Temporary Internet Files, niet in het zwervende profiel van de gebruiker opgenomen.
+
+Opmerking: in oudere besturingssystemen dan Microsoft Windows Vista worden standaard alleen de mappen Geschiedenis, Local Settings, Temp en Temporary Internet Files niet in het zwervende profiel van de gebruiker opgenomen.
+
+Als u deze instelling inschakelt, kunt u aanvullende mappen uitsluiten.
+
+Als u deze instelling uitschakelt of niet configureert, worden alleen de standaardmappen uitgesloten.
+
+Opmerking: u kunt deze instelling niet gebruiken om de standaardmappen op te nemen in een zwervend gebruikersprofiel.</string>
+      <string id="LeaveAppMgmtData">Windows Installer en installatiegegevens van software van groepsbeleid behouden</string>
+      <string id="LeaveAppMgmtData_Help">Met deze instelling geeft u aan of de gegevens van toepassingen die zijn geïnstalleerd met Windows Installer of via een groepsbeleidsregel bij verwijdering van het profiel van een zwervende gebruiker moeten worden bewaard op het systeem.
+
+Standaard worden via User Profile-service alle gegevens voor een zwervende gebruiker (met inbegrip van de gebruikersinstellingen en -gegevens, de gegevens van toepassingen die zijn geïnstalleerd met Windows Installer of via een groepsbeleidsregel, enzovoort) verwijderd wanneer het bijbehorende profiel wordt verwijderd. Dit heeft tot gevolg dat wanneer een zwervende gebruiker wiens profiel eerder op een bepaalde client is verwijderd, zich aanmeldt, deze gebruiker alle toepassingen opnieuw moet installeren die op basis van beleid bij aanmelding worden gepubliceerd. De aanmeldingstijd neemt hierdoor toe. Met behulp van dit beleid kunt u dit gedrag wijzigen.
+
+Als u deze instelling inschakelt, worden de gegevens van toepassingen die zijn geïnstalleerd met Windows Installer of via een groepsbeleidsregel niet verwijderd voor zwervende gebruikers wanneer de bijbehorende profielen van het systeem worden verwijderd. Op die manier wordt de installatie van software via groepsbeleidsregels versneld wanneer een gebruikersprofiel is verwijderd en dezelfde gebruiker zich vervolgens opnieuw aanmeldt.
+
+Als u dit beleid uitschakelt of niet configureert, worden de profielen van zwervende gebruikers in hun geheel verwijderd, met inbegrip van de gegevens van toepassingen die zijn geïnstalleerd met Windows Installer of via een groepsbeleidsregel, wanneer de gebruikersprofielen in kwestie worden verwijderd.
+
+Opmerking: als deze beleidsregel voor een computer is ingeschakeld, moet een lokale beheerder de gegevens van toepassingen die zijn geïnstalleerd met Windows Installer of via een groepsbeleidsregel verwijderen uit het register en het bestandssysteem in de profielen van zwevende gebruikers op de computer.</string>
+      <string id="LimitSize">Profielgrootte beperken</string>
+      <string id="LimitSize_Help">Met deze beleidsinstelling kunt u een maximumgrootte opgeven voor elk gebruikersprofiel en aangeven hoe het systeem moet reageren wanneer voor een bepaald gebruikersprofiel de maximumgrootte is bereikt. Deze beleidsinstelling is van toepassing op lokale en op zwervende profielen.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt de grootte van gebruikersprofielen niet beperkt.
+
+Als u deze beleidsinstelling inschakelt, kunt u:
+
+-- Een maximaal toegestane grootte voor gebruikersprofielen opgeven. -- Aangeven of de registerbestanden worden meegeteld bij het berekenen van de profielgrootte. -- Aangeven of gebruikers een melding ontvangen wanneer de toegestane maximumgrootte voor hun profiel is overschreden. -- Een aangepast bericht opgeven waarin wordt gemeld dat de toegestane grootte voor het profiel van de gebruiker is overschreden. -- Aangeven hoe vaak het aangepaste bericht wordt weergegeven.
+
+Opmerking: in oudere besturingssystemen dan Microsoft Windows Vista Windows wordt afmelden geblokkeerd totdat de profielgrootte is teruggebracht tot onder het toegestane maximum. In Microsoft Windows Vista wordt afmelden niet geblokkeerd. Als de gebruiker in Vista een zwervend gebruikersprofiel heeft en de hier opgegeven maximale profielgrootte wordt overschreden, wordt het profiel van de gebruiker niet gesynchroniseerd met de server van het zwervende gebruikersprofiel.</string>
+      <string id="LocalProfile">Alleen lokale gebruikersprofielen toestaan</string>
+      <string id="LocalProfile_Help">Met deze instelling geeft u aan of zwervende gebruikersprofielen op een bepaalde computer beschikbaar zijn. Wanneer gebruikers met een zwervend profiel zich bij een computer aanmelden, worden de bewuste zwervende profielen standaard naar de lokale computer gekopieerd. Als deze gebruikers zich al eens eerder bij deze computer hebben aangemeld, worden hun zwervende profielen samengevoegd met hun lokale profielen. Volgens hetzelfde principe wordt de lokale kopie van de profielen, met inbegrip van eventuele aangebrachte wijzigingen, samengevoegd met de kopie op de server wanneer de gebruikers in kwestie zich bij de computer afmelden.
+
+Met deze instelling kunt u voorkomen dat voor gebruikers met zwervende profielen de profielen in kwestie naar een bepaalde computer worden gekopieerd.
+
+Als u deze instelling inschakelt, gebeurt het volgende op de betrokken computer: Wanneer de gebruiker zich voor het eerst aanmeldt, wordt er een nieuw lokaal profiel gemaakt. Het zwervende profiel wordt niet gekopieerd. Wanneer de gebruiker zich afmeldt, worden de wijzigingen in het lokale profiel opgeslagen. Wanneer de gebruiker zich in het vervolg aanmeldt, wordt steeds het lokale profiel gebruikt. 
+
+Als u deze instelling uitschakelt of niet configureert, worden de standaardinstellingen gebruikt (zie hierboven).
+
+Als u zowel de instelling Wijzigingen in zwervende profielen mogen niet aan de server worden doorgegeven als de instelling Alleen lokale gebruikersprofielen toestaan inschakelt, wordt het gebruik van zwervende profielen uitgeschakeld.
+
+Opmerking: deze instelling heeft alleen invloed op gebruikers met zwervende profielen.</string>
+      <string id="ProfileDlgTimeOut">Time-out voor dialoogvensters</string>
+      <string id="ProfileDlgTimeOut_Help">Met deze instelling geeft u aan hoelang moet worden gewacht totdat de gebruiker reageert, voordat een standaardwaarde wordt gebruikt.
+
+De standaardwaarde wordt toegepast wanneer de gebruiker niet reageert op het bericht met de melding dat een of meer van de volgende gebeurtenissen zich hebben voorgedaan:
+
+-- Er is een langzame verbinding gedetecteerd tussen de computer van de gebruiker en de server waarop het zwervende gebruikersprofiel van de gebruiker is opgeslagen.
+
+-- Het systeem kan geen toegang verkrijgen tot het bijbehorende gebruikersprofiel op de server wanneer de gebruiker zich aan- of afmeldt.
+
+-- Het lokale gebruikersprofiel is nieuwer dan het profiel op de server.
+
+Met behulp van deze instelling kunt u de standaardwaarde van het systeem (30 seconden) vervangen. Als u deze instelling wilt gebruiken, moet u een decimaal cijfer opgeven tussen 0 en 600, zijnde de lengte van het interval.</string>
+     <string id="ProfileErrorAction">Gebruikers niet aanmelden met tijdelijke profielen</string>
+     <string id="ProfileErrorAction_Help">Dit beleid zorgt dat een gebruiker automatisch wordt afgemeld wanneer zijn of haar profiel niet kan worden geladen.
+ 
+Als de map met het gebruikersprofiel ontoegankelijk is voor Windows of het profiel fouten bevat waardoor het niet kan worden geladen, wordt de gebruiker aangemeld met een tijdelijk profiel. Met behulp van dit beleid kan de beheerder dit gedrag uitschakelen en zodoende beletten dat de gebruiker met een tijdelijk profiel wordt aangemeld.
+ 
+Als u deze beleidsinstelling inschakelt, worden gebruikers niet met een tijdelijk profiel aangemeld. Als het profiel van een gebruiker niet kan worden geladen, wordt deze gebruiker afgemeld. 
+ 
+Als u deze beleidsinstelling uitschakelt of niet configureert, worden gebruikers met een tijdelijk profiel aangemeld wanneer hun gebruikersprofiel niet kan worden geladen.
+ 
+Zie daarnaast de instelling Kopieën van zwervende profielen uit cache verwijderen.</string>
+      <string id="ProfileUnloadTimeout">Maximum aantal nieuwe pogingen om het gebruikersprofiel uit het geheugen te verwijderen en bij te werken</string>
+      <string id="ProfileUnloadTimeout_Help">Met deze instelling geeft u aan hoe vaak moet worden geprobeerd het registergedeelte van een gebruikersprofiel uit het geheugen te verwijderen en bij te werken. Wanneer het in deze instelling opgegeven aantal pogingen wordt overschreden, worden de pogingen gestaakt. Als gevolg hiervan kan het zijn dat het gebruikersprofiel niet actueel is en dat het lokale en het zwervende gebruikersprofiel niet overeenkomen.
+
+Wanneer een gebruiker zich bij de computer afmeldt, wordt het gebruikersspecifieke gedeelte van het register (HKEY_CURRENT_USER) verwijderd en naar een bestand gekopieerd (NTUSER.DAT), en vervolgens bijgewerkt. Als het register op dat moment echter wordt gelezen of bewerkt door een ander programma of een andere service, kan het gebruikersspecifieke registergedeelte niet worden verwijderd. Er wordt dan herhaaldelijk geprobeerd de registerinstellingen te verwijderen en bij te werken (met tussenpozen van één seconde). Standaard worden deze pogingen zestig maal herhaald (gedurende één minuut).
+
+Als u deze instelling inschakelt, kunt u het aantal malen aanpassen dat wordt geprobeerd de registerinstellingen van de gebruiker te verwijderen en bij te werken. (Het interval tussen de pogingen kunt u niet aanpassen.)
+
+Als u deze instelling uitschakelt of niet configureert, worden zestig pogingen ondernomen.
+
+Als u het aantal instelt op 0, wordt slechts eenmaal geprobeerd de registerinstellingen van de gebruiker te verwijderen en bij te werken. Het blijft bij die ene poging.
+
+Opmerking: deze instelling is met name van belang voor servers waarop Terminal Services actief is. Aangezien Terminal Services wordt gebruikt om de registerinstellingen van gebruikers bij te werken wanneer dezen zich afmelden, komt het vaker voor dat de eerste pogingen om de gebruikersinstellingen te verwijderen mislukken.
+
+Deze instelling heeft geen invloed op de pogingen om de bestanden in het gebruikersprofiel bij te werken.
+
+Tip: het is verstandig het aantal opeenvolgende pogingen te verhogen als er een groot aantal gebruikersprofiel in het geheugen van de computer is geladen. Dit wijst erop dat het niet is gelukt de profielen te verwijderen.
+
+Kijk daarnaast in het Toepassingslogboek met Logboeken om te zien of dit gebeurtenissen bevat die zijn gegenereerd door Userenv. Telkens wanneer wordt geprobeerd het registergedeelte van het gebruikersprofiel te verwijderen wordt er een gebeurtenis vastgelegd op het systeem. Er wordt ook een gebeurtenis vastgelegd wanneer het bijwerken van de bestanden in een gebruikersprofiel mislukt.</string>
+      <string id="Readonlyuserprofile">Wijzigingen in zwervende profielen mogen niet aan de server worden doorgegeven</string>
+      <string id="Readonlyuserprofile_Help">Met deze instelling geeft u aan of de wijzigingen die een gebruiker in het zwervende profiel aanbrengt, moeten worden samengevoegd met de kopie van dit profiel op de server.
+
+Wanneer een gebruiker met een zwervend profiel zich bij een computer aanmeldt, wordt het bewuste zwervende profiel standaard naar de lokale computer gekopieerd. Als deze gebruiker zich al eens eerder bij deze computer heeft aangemeld, wordt diens zwervende profiel samengevoegd met het lokale profiel. Volgens hetzelfde principe wordt de lokale kopie van het profiel, met inbegrip van eventuele aangebrachte wijzigingen, samengevoegd met de kopie op de server wanneer de gebruiker in kwestie zich bij de computer afmeldt.
+
+Met behulp van deze instellingen kunt u voorkomen dat wijzigingen die worden aangebracht in een zwervend profiel op een bepaalde computer een permanent karakter krijgen.
+
+Als u deze instelling inschakelt, gebeurt het volgende op de betrokken computer: bij aanmelding wordt het bewuste zwervende profiel naar de lokale computer gekopieerd. Als de gebruiker wijzigingen in het profiel aanbrengt, worden deze niet samengevoegd met het zwervende profiel wanneer de gebruiker zich afmeldt.
+
+Als u deze instelling uitschakelt of niet configureert, worden de standaardinstellingen gebruikt (zie hierboven).
+
+Opmerking: deze instelling heeft alleen invloed op gebruikers met zwervende profielen.</string>
+      <string id="SlowLinkDefault">Wachten op extern gebruikersprofiel</string>
+      <string id="SlowLinkDefault_Help">Met deze instelling kunt u aangeven dat moet worden gewacht totdat de externe kopie van het zwervende gebruikersprofiel is geladen, zelfs als dat langzaam gaat. Daarnaast wordt gewacht op de externe kopie wanneer gebruiker een bericht ontvangt met de melding dat de verbinding langzaam is, maar niet binnen de aangegeven tijd reageert.
+
+Met behulp van deze en aanverwante instellingen in deze map kunt u bepalen hoe het systeem reageert wanneer zwervende gebruikersprofielen niet snel genoeg worden geladen.
+
+Als u deze instelling uitschakelt of niet configureert, wordt de lokale kopie van het zwervende gebruikersprofiel geladen wanneer het laden van het externe profiel lang duurt. De lokale kopie wordt ook gebruikt wanneer de gebruiker wordt geraadpleegd (volgens de instelling die is opgegeven bij Gebruiker waarschuwen als een langzame verbinding wordt gevonden), maar deze niet binnen de aangegeven tijd reageert (volgens de instelling die is opgegeven bij Time-out voor dialoogvensters).
+
+Wanneer gebruikers vaak van computer wisselen en de lokale kopie van hun profiel niet altijd actueel is, kan het verstandig zijn te wachten totdat het externe profiel is geladen. Het gebruik van de lokale kopie is gewenst als snel aanmelden prioriteit heeft.
+
+Belangrijk: als de instelling Langzame netwerkverbindingen niet detecteren is ingeschakeld, wordt deze instelling genegeerd. Daarnaast geldt dat er geen lokale kopie van het zwervende profiel kan worden geladen wanneer er een langzame verbinding wordt gedetecteerd als de instelling Kopieën van zwervende profielen uit cache verwijderen is ingeschakeld.</string>
+      <string id="SlowLinkTimeOut">Time-out van langzame netwerkverbinding voor gebruikersprofielen</string>
+      <string id="SlowLinkTimeOut_Help">Met deze instelling geeft u aan dat de verbinding voor zwervende gebruikersprofielen langzaam is.
+
+Als de server met de zwervende gebruikersprofielen niet reageert binnen de tijd die bij deze instelling is opgegeven, wordt de verbinding als langzaam beschouwd.
+
+Met behulp van deze en aanverwante instellingen in deze map kunt u bepalen hoe het systeem reageert wanneer zwervende gebruikersprofielen niet snel genoeg worden geladen.
+
+Met deze instelling kunt u drempelwaarden opgeven voor twee tests. Voor computers in IP-netwerken wordt de snelheid gemeten waarmee de externe server gegevens retourneert na ontvangst van een IP Ping-bericht. U kunt een drempelwaarde voor deze test opgeven door in het vak Verbindingssnelheid een decimaal getal te typen tussen 0 en 4.294.967.200, zijnde de minimaal aanvaardbare overdrachtssnelheid in kilobits per seconde. Standaard wordt een verbinding met een overdrachtssnelheid van minder dan 500 kilobits per seconde beschouwd als langzaam.
+
+Voor computers buiten IP-netwerken wordt gemeten hoe snel het bestandssysteem van de externe server reageert. U kunt een drempelwaarde voor deze test opgeven door in het vak Tijd een decimaal getal te typen tussen 0 en 20.000, zijnde de maximaal aanvaardbare vertraging in milliseconden. Als het bestandssysteem van de server niet reageert binnen 120 milliseconden wordt dit standaard als langzaam beschouwd.
+
+Het kan verstandig zijn deze waarde te verhogen voor clients met adressen die via de DHCP-service worden toegewezen of voor computers waarop profielen via een inbelverbinding worden geladen.
+
+Belangrijk: als de instelling Langzame netwerkverbindingen niet detecteren is ingeschakeld, wordt deze instelling genegeerd. Daarnaast geldt dat er geen lokale kopie van het zwervende profiel kan worden geladen wanneer er een langzame verbinding wordt gedetecteerd als de instelling Kopieën van zwervende profielen uit cache verwijderen is ingeschakeld.</string>
+      <string id="UserProfiles">Gebruikersprofielen</string>
+      <string id="CleanupProfiles">Bij het opnieuw starten van het systeem gebruikersprofielen verwijderen als ze ouder zijn dan het opgegeven aantal dagen</string>
+      <string id="CleanupProfiles_Help">Met deze beleidsinstelling kan een beheerder ervoor zorgen dat gebruikersprofielen die gedurende een opgegeven aantal dagen niet zijn gebruikt, automatisch worden verwijderd bij het opnieuw starten van het systeem. Opmerking: één dag wordt geïnterpreteerd als 24 uur na het oproepen van een specifiek gebruikersprofiel.
+
+Als u deze beleidsinstelling inschakelt, zorgt de User Profile-service ervoor dat bij het opnieuw starten van het systeem automatisch alle gebruikersprofielen op de computer worden verwijderd die gedurende het opgegeven aantal dagen niet zijn gebruikt. 
+
+Als u deze instelling uitschakelt of niet configureert, zorgt de User Profile-service er niet voor dat gebruikersprofielen automatisch worden verwijderd bij het opnieuw starten van het systeem.</string>
+      <string id="CscSuspendDirectories">Deze netwerkmappen alleen synchroniseren bij aan- en afmelden</string>
+      <string id="CscSuspendDirectories_Help">Met deze beleidsinstelling kunt u opgeven welke netwerkmappen alleen bij aan- en afmelden worden gesynchroniseerd via Offlinebestanden. Deze beleidsinstelling, in combinatie met Mapomleiding, dient voor het verhelpen van problemen met toepassingen die niet correct werken met Offlinebestanden terwijl de gebruiker online is.
+
+Als u deze beleidsinstelling inschakelt, worden de netwerkpaden die voor deze beleidsinstelling zijn opgegeven, alleen door Offlinebestanden gesynchroniseerd wanneer de gebruiker zich aan- en afmeldt, en worden ze offline gezet terwijl de gebruiker is aangemeld.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, gedragen de hier opgegeven paden zich zoals alle andere cachegegevens via Offlinebestanden en blijven ze online terwijl de gebruiker is aangemeld, mits de netwerkpaden toegankelijk zijn. 
+
+Opmerking: gebruik deze beleidsinstelling niet om mappen die naar de hoofdmap zijn omgeleid, zoals Appdata\Roaming, Menu Start en Documenten, te onderbreken. U dient alleen de submappen van deze bovenliggende mappen te onderbreken.</string>
+      <string id="DontForceUnloadHive">Verwijdering van het gebruikersregister niet forceren bij gebruikersafmelding</string>
+      <string id="DontForceUnloadHive_Help">Het gebruikersregister wordt altijd verwijderd, zelfs als er open ingangen naar de gebruikersafhankelijke registersleutels zijn wanneer de gebruiker zich afmeldt. Met deze beleidsinstelling kan een beheerder dit gedrag annuleren, en voorkomen dat het gebruikersregister geforceerd wordt verwijderd wanneer gebruikers zich afmelden.
+
+Opmerking: gebruik dit beleid alleen voor gevallen waarin dit specifieke Windows-gedrag compatibiliteitsproblemen voor toepassingen kan opleveren. Het is niet raadzaam dit beleid standaard in te schakelen. Als u dit doet, bestaat het risico dat gebruikers geen bijgewerkte versie van hun zwervende gebruikersprofiel kunnen verkrijgen.
+
+Als u deze beleidsinstelling inschakelt, wordt het gebruikersregister niet geforceerd verwijderd bij het afmelden, maar wordt het register pas verwijderd wanneer alle open ingangen naar de gebruikersafhankelijke registersleutels zijn gesloten.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt het gebruikersregister bij afmelding altijd verwijderd, zelfs als er open ingangen naar de gebruikersafhankelijke registersleutels zijn wanneer de gebruiker zich afmeldt.</string>
+      <string id="WaitForNetwork">Maximale wachttijd voor het netwerk instellen als een gebruiker een zwervend gebruikersprofiel of externe basismap heeft</string>
+      <string id="WaitForNetwork_Help">Als de gebruiker een zwervend gebruikersprofiel of externe basismap heeft en zich op de computer aanmeldt terwijl het netwerk niet beschikbaar is, wordt 30 seconden op netwerkverbinding gewacht. Met deze beleidsinstelling kan een beheerder opgeven hoe lang op netwerkverbinding moet worden gewacht. Als het netwerk na de maximale wachttijd nog steeds niet beschikbaar is, wordt de gebruiker zonder netwerkverbinding aangemeld. Het zwervende profiel van de gebruiker wordt niet gesynchroniseerd met de server, en de externe basismap wordt niet voor de aanmeldingssessie gebruikt. 
+
+Deze beleidsinstelling is handig in situaties waarin het initialiseren van het netwerk doorgaans langer duurt (bijvoorbeeld in draadloze netwerken).
+
+Opmerking: Als het netwerk vóór het verstrijken van de maximale wachttijd weer beschikbaar is, wordt de aanmeldingsprocedure direct voortgezet. Als de fysieke netwerkverbinding niet beschikbaar is op de computer (als het medium niet is verbonden of de netwerkadapter niet beschikbaar is), wordt niet op netwerkverbinding gewacht.
+ 
+Als u deze beleidsinstelling inschakelt, wordt op netwerkverbinding gewacht totdat de maximale wachttijd die met deze beleidsinstelling is opgegeven, is verstreken. Als u de waarde op nul instelt, wordt de aanmeldingsprocedure voortgezet zonder op netwerkverbinding te wachten. 
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt maximaal 30 seconden op netwerkverbinding gewacht.</string>
+      <string id="MachineProfilePath">Het pad naar het zwervende profiel instellen voor alle gebruikers die zich bij deze computer aanmelden</string>
+      <string id="MachineProfilePath_Help">Met deze beleidsinstelling kunt u definiëren of het opgegeven netwerkpad voor alle gebruikers die zich bij deze computer aanmelden, als het pad naar het zwervende gebruikersprofiel moet worden gebruikt. 
+
+Als u deze instelling wilt gebruiken, typt u het pad naar de netwerkshare in de notatie \\computernaam\sharenaam\. Het verdient aanbeveling %USERNAME% aan het pad toe te voegen om iedere gebruiker een aparte profielmap te geven. Als deze instelling niet wordt opgegeven, benutten alle gebruikers die zich bij deze computer aanmelden, dezelfde map met het zwervende profiel zoals gedefinieerd door dit beleid. Zorg dat u de beveiliging voor de map zodanig hebt ingesteld dat alle gebruikers toegang hebben tot het profiel. 
+
+Als u deze beleidsinstelling inschakelt, benutten alle gebruikers die zich bij deze computer aanmelden, de map met het zwervende profiel zoals gedefinieerd in dit beleid. 
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, benutten de gebruikers die zich bij deze computer aanmelden, hun lokale profiel of het standaard zwervende gebruikersprofiel. 
+
+Opmerking: u kunt op vier manieren een zwervend profiel voor een gebruiker instellen. De profielconfiguratie wordt in de volgende volgorde gelezen. De instelling die het eerst wordt gelezen, wordt gebruikt.
+ 
+1. Pad naar het zwervende Terminal Services-profiel zoals opgegeven door Terminal Services-beleid 2. Pad naar het zwervende Terminal Services-profiel zoals opgegeven door het gebruikersobject 3. Een computerafhankelijk pad naar het zwervende profiel zoals opgegeven in dit beleid 4. Een gebruikersafhankelijk pad naar het zwervende profiel zoals opgegeven in het gebruikersobject.
+</string>
+      <string id="UploadHive">Registerbestand van zwervend gebruikersprofiel op achtergrond uploaden terwijl gebruiker is aangemeld</string>
+      <string id="UploadHive_Help">Hiermee kunt u het schema instellen voor het op de achtergrond uploaden van het registerbestand van een zwervend gebruikersprofiel (Ntuser.dat). Met deze instelling wordt alleen het registerbestand van het gebruikersprofiel geüpload (geen andere gebruikersgegevens) en alleen als de gebruiker is aangemeld. Alleen het registerbestand van een zwervend gebruikersprofiel wordt geüpload; de instelling heeft geen invloed op gewone profielen. Deze beleidsinstelling heeft geen gevolgen voor het uploaden van het registerbestand van een zwervend gebruikersprofiel op het moment dat de gebruiker zich afmeldt.
+
+Als deze instelling is uitgeschakeld of niet is geconfigureerd, wordt het registerbestand van een zwervend gebruikersprofiel niet op de achtergrond geüpload terwijl de gebruiker is aangemeld.
+
+Als u deze instelling wilt gebruiken, kiest u eerst de gewenste planningsmethode.
+
+Als u Uitvoeren met vast interval kiest, moet u vervolgens een interval instellen tussen 1-720 uur. Als u dat hebt gedaan, wordt het registerbestand van het profiel met het opgegeven interval geüpload nadat de gebruiker zich heeft aangemeld. Als u het interval bijvoorbeeld instelt op 6 uur en een gebruiker zich aanmeldt om 6:00 en om 12:00 nog steeds is aangemeld, wordt op dat moment het registerbestand van de gebruiker geüpload. Als de gebruiker ook om 18:00 nog steeds is aangemeld, wordt het bestand opnieuw geüpload, en zo elke 6 uur totdat de gebruiker zich afmeldt. De volgende keer dat de gebruiker zich aanmeldt, begint de timer opnieuw te lopen en wordt het registerbestand 6 uur later geüpload (in dit voorbeeld).
+
+Als u Uitvoeren op bepaald tijdstip kiest, moet u vervolgens een tijdstip opgeven. Als dat is gebeurd, wordt het registerbestand elke dag op dat tijdstip geüpload, op voorwaarde dat de gebruiker op dat moment is aangemeld.
+
+Voor beide opties geldt dat er per activering een willekeurige vertraging wordt ingebouwd om te voorkomen dat de server wordt overbelast door gelijktijdige uploads. Als u bijvoorbeeld hebt ingesteld dat het registerbestand om 18:00 moet worden geüpload, gebeurt dit op een willekeurig tijdstip tussen 18:00 en 19:00.
+
+Opmerking: als Uitvoeren met vast interval is geselecteerd, wordt de optie Tijdstip genegeerd en als Uitvoeren op vast tijdstip is geselecteerd, wordt de optie Interval (uren) genegeerd.</string>
+      <string id="UploadHiveMethod_Interval">Uitvoeren met vast interval</string>
+      <string id="UploadHiveMethod_Time">Uitvoeren op bepaald tijdstip</string>
+      <string id="ScheduleTime0">00:00</string>
+      <string id="ScheduleTime1">01:00</string>
+      <string id="ScheduleTime2">02:00</string>
+      <string id="ScheduleTime3">03:00</string>
+      <string id="ScheduleTime4">04:00</string>
+      <string id="ScheduleTime5">05:00</string>
+      <string id="ScheduleTime6">06:00</string>
+      <string id="ScheduleTime7">07:00</string>
+      <string id="ScheduleTime8">08:00</string>
+      <string id="ScheduleTime9">09:00</string>
+      <string id="ScheduleTime10">10:00</string>
+      <string id="ScheduleTime11">11:00</string>
+      <string id="ScheduleTime12">12:00</string>
+      <string id="ScheduleTime13">13:00</string>
+      <string id="ScheduleTime14">14:00</string>
+      <string id="ScheduleTime15">15:00</string>
+      <string id="ScheduleTime16">16:00</string>
+      <string id="ScheduleTime17">17:00</string>
+      <string id="ScheduleTime18">18:00</string>
+      <string id="ScheduleTime19">19:00</string>
+      <string id="ScheduleTime20">20:00</string>
+      <string id="ScheduleTime21">21:00</string>
+      <string id="ScheduleTime22">22:00</string>
+      <string id="ScheduleTime23">23:00</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ExcludeDirectories">
+        <textBox refId="ExcludeMessage">
+          <label>De volgende mappen niet laten zwerven met het profiel:</label>
+        </textBox>
+        <text>U kunt meerdere mapnamen opgegeven, gescheiden door puntkomma's,</text>
+        <text>alle ten opzichte van de hoofdmap van het gebruikersprofiel.</text>
+      </presentation>
+      <presentation id="LimitSize">
+        <textBox refId="SizeMessage">
+          <label>Aangepast bericht</label>
+          <defaultValue>U hebt de limiet voor profielopslagruimte overschreden. Voordat u zich kunt afmelden, dient u enkele items uit uw profiel te verplaatsen naar netwerkopslag of lokale opslag.</defaultValue>
+        </textBox>
+        <decimalTextBox refId="ProfileSize" defaultValue="30000" spinStep="100">Maximale profielgrootte (kB)</decimalTextBox>
+        <checkBox refId="IncludeRegInProQuota">Registerbestanden weergeven in de bestandslijst</checkBox>
+        <checkBox refId="WarnUser">Gebruiker waarschuwen als limiet voor profielopslagruimte wordt overschreden.</checkBox>
+        <decimalTextBox refId="WarnUserTimeout" defaultValue="15" spinStep="5">Gebruiker elke x minuten herinneren:</decimalTextBox>
+      </presentation>
+      <presentation id="ProfileDlgTimeOut">
+        <decimalTextBox refId="ProfileDlgWaitInterval" defaultValue="30">Tijd (seconden)</decimalTextBox>
+      </presentation>
+      <presentation id="ProfileUnloadTimeout">
+        <decimalTextBox refId="ProfileUnloadTimeoutPrompt" defaultValue="60" spinStep="5">Max. aantal pogingen:  </decimalTextBox>
+      </presentation>
+      <presentation id="SlowLinkTimeOut">
+        <decimalTextBox refId="TransferRateOp" defaultValue="500" spinStep="100">Verbindingssnelheid (kbps):</decimalTextBox>
+        <decimalTextBox refId="SlowLinkWaitInterval" defaultValue="120">Tijd (milliseconden)</decimalTextBox>
+      </presentation>
+      <presentation id="CleanupProfiles">
+        <decimalTextBox refId="CleanupProfiles_Days" defaultValue="30">Gebruikersprofielen verwijderen als ze ouder zijn dan (dagen)</decimalTextBox>
+      </presentation>
+      <presentation id="CscSuspendDirectories">
+        <textBox refId="CscSuspendDirectories_Message">
+          <label>Deze netwerkmappen alleen synchroniseren bij aan- en afmelden:</label>
+        </textBox>
+        <text>U kunt meerdere mapnamen opgeven, gescheiden door puntkomma's.</text>
+      </presentation>
+      <presentation id="WaitForNetwork">
+        <decimalTextBox refId="WaitForNetwork_Seconds" defaultValue="30">Maximale wachttijd voor netwerkverbinding (seconden)</decimalTextBox>
+      </presentation>
+      <presentation id="MachineProfilePath">
+        <textBox refId="MachineProfilePath_Message">
+          <label>Gebruikers die zich bij deze computer aanmelden, moeten dit pad naar het zwervende profiel benutten:</label>
+        </textBox>
+        <text>Het verdient aanbeveling %USERNAME% aan het pad toe te voegen om iedere gebruiker een aparte profielmap te geven.</text>
+      </presentation>
+      <presentation id="UploadHive">
+        <dropdownList refId="UploadHiveMethod" noSort="true" defaultItem="0">Planningsmethode:</dropdownList>
+        <text>De volgende instellingen zijn alleen vereist en van toepassing</text>
+        <text>als Uitvoeren met vast interval is geselecteerd.</text>
+        <decimalTextBox refId="UploadHiveInterval" defaultValue="12" spinStep="1">interval (uren):</decimalTextBox>
+        <text>De volgende instellingen zijn alleen vereist en van toepassing</text>
+        <text>als Uitvoeren op bepaald tijdstip is geselecteerd.</text>
+        <dropdownList refId="UploadHiveTime" defaultItem="3">Tijdstip:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

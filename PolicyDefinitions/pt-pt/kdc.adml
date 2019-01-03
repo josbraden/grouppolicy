@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Definições de KDC</displayName>
+  <description>Definições de configuração para o Centro de Distribuição de Chaves Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="KDC">KDC</string>
+      <string id="forestsearch">Utilizar ordem de pesquisa de floresta</string>
+      <string id="forestsearch_explain">Esta definição de política define a lista de florestas fidedignas que o Centro de Distribuição de Chaves (KDC) pesquisa ao tentar resolver os nomes do principal do serviço (SPNs) de duas partes.
+
+Se activar esta definição de política, o KDC pesquisará as florestas nesta lista se não for possível resolver um SPN de duas partes na floresta local. A pesquisa da floresta é efectuada utilizando um catálogo global ou sugestões de sufixo de nome. Se uma correspondência for encontrada, o KDC devolverá uma permissão de referência ao cliente para o domínio apropriado.
+
+Se desactivar ou não configurar esta definição de política, o KDC não pesquisará as florestas listadas para resolver o SPN. Se o KDC não conseguir resolver o SPN porque o nome não é encontrado, a autenticação NTLM poderá ser utilizada.
+
+Para garantir um comportamento consistente, esta definição de política tem de ser suportada e definida de forma idêntica em todos os controladores do domínio.</string>
+      <string id="emitlili">Fornece informações sobre inícios de sessão anteriores em computadores cliente</string>
+      <string id="emitlili_explain">Esta definição de política controla se o controlador de domínio fornece informações sobre inícios de sessão anteriores em computadores cliente.
+
+Se activar esta definição de política, o controlador de domínio fornecerá a mensagem de informação sobre inícios de sessão anteriores.
+
+Para que o Início de Sessão do Windows tire partido desta funcionalidade, a definição de política "apresentar informações sobre inícios de sessão anteriores durante o início de sessão do utilizador" localizada no nó Opções de Início de Sessão do Windows em Componentes do Windows também precisa de ser activada.
+
+Se desactivar ou não configurar esta definição de política, o controlador de domínio não fornece informações sobre inícios de sessão anteriores a menos que a definição de política "Apresentar informações sobre inícios de sessão anteriores durante o início de sessão do utilizador" seja activada.
+
+Nota: As informações sobre inícios de sessão anteriores só serão fornecidas se o nível de funcionalidade do domínio corresponder ao Windows Server 2008. Nos domínios com um nível de funcionalidade do domínio equivalente ao Windows Server 2003, Windows 2000 nativo ou Windows 2000 misto, os controladores de domínio não poderão fornecer informações sobre inícios de sessão anteriores, pelo que a activação desta definição de política não terá qualquer influência.
+</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="emitlili">
+        <dropdownList refId="emitliliOp" oSort="true" defaultItem="0">Modo:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Florestas a Pesquisar</label>
+        </textBox>
+        <text>Sintaxe:</text>
+        <text>Introduza a lista de florestas a pesquisar quando esta política for activada.</text>
+        <text>Utilize o formato de nomes de domínio completamente qualificados (FQDN).</text>
+        <text>Separe múltiplas entradas de pesquisa com um ponto e vírgula ";".</text>
+        <text>Detalhes:</text>
+        <text>A floresta actual não precisa de ser listada porque a Ordem de Pesquisa de Floresta utiliza o catálogo global primeiro, em seguida, pesquisa na ordem listada.</text>
+        <text>Não precisa de listar separadamente todos os domínios na floresta.</text>
+        <text>Se for listada uma floresta fidedigna, todos os domínios nessa floresta serão pesquisados.</text>
+        <text>Para melhor desempenho, liste as florestas pela ordem de probabilidade de sucesso.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

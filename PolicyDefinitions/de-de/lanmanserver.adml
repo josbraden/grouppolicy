@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Anzeigenamen hier eingeben</displayName>
+  <description>Beschreibung hier eingeben</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">LanMan-Server</string>
+      <string id="Lbl_FollowShare">Hashveröffentlichung nur für freigegebene Ordner mit aktiviertem BranchCache zulassen</string>
+      <string id="Lbl_DisableOnAllShares">Hashveröffentlichung für keinen freigegebenen Ordner zulassen</string>
+      <string id="Lbl_EnableOnAllShares">Hashveröffentlichung für alle freigegebenen Ordner zulassen</string>
+      <string id="Pol_HashPublication">Hashveröffentlichung für BranchCache</string>
+      <string id="Pol_HashPublication_Help">Diese Richtlinie aktiviert einen Hashgenerierungsdienst, mit dem Hashes für Daten in freigegebenen Ordnern generiert werden; diese Hashes werden anschließend für die Clientcomputer bereitgestellt, auf denen BranchCache aktiviert ist. Hashes sind mathematisch abgeleitete, digitale "Fingerabdrücke" von Dateien, durch die deren Inhalt eindeutig identifiziert wird. Diese digitalen Fingerabdrücke belegen nur wenig Speicher und ermöglichen Windows den Vergleich von Dateien, ohne besonders viel WAN-Bandbreite (Wide Area Network) zu beanspruchen.
+
+Ein Clientcomputer in einer Zweigstelle kann über eine WAN-Verbindung einen Hash für eine Datei empfangen, wenn die folgenden Bedingungen zutreffen:      
+1) Der Benutzer besitzt Zugriffsberechtigungen für die Datei.
+2) BranchCache ist auf dem Clientcomputer aktiviert.
+3) Die Hashveröffentlichung ist für den freigegebenen Ordner zugelassen, auf den der Clientcomputer zugreift. 
+
+Wenn der Clientcomputer den Hash empfängt, kann er im Cache anderer Zweigstellencomputer nach einer identischen Version der Datei suchen. Wenn Windows eine identische Dateiversion in der Zweigstelle findet, lädt der Clientcomputer die lokal zwischengespeicherte Kopie herunter, anstatt die Datei über die WAN-Verbindung zu empfangen. 
+
+Wenn Sie diese Richtlinie auf "Hashveröffentlichung nur für freigegebene Ordner mit aktiviertem BranchCache zulassen" (Wert = 0) festlegen, werden Hashes nur für freigegebene Ordner generiert, für die BranchCache aktiviert wurde. Hashes für diese freigegebenen Ordner werden generiert, wenn eines der folgenden Ereignisse eintritt:
+1) Ein Client mit aktivierter BranchCache-Unterstützung greift auf eine Datei in einem freigegebenen Ordner zu, für den BranchCache aktiviert ist.
+2) Ein Administrator generiert Hashes mithilfe des Befehlszeilentools "Hashgen" manuell.
+ 
+Wenn Sie diese Richtlinie auf "Hashveröffentlichung für keinen freigegebenen Ordner zulassen" (Wert = 1) festlegen, werden von Computern, für die diese Richtlinie gilt, grundsätzlich keine Hashes generiert.
+ 
+Wenn Sie diese Richtlinie auf "Hashveröffentlichung für alle freigegebenen Ordner zulassen" (Wert = 2) festlegen, werden Hashes für alle freigegebenen Ordner auf dem Server generiert, wenn eines der folgenden Ereignisse eintritt: 
+1) Ein Client mit aktivierter BranchCache-Unterstützung greift auf eine Datei in einem freigegebenen Ordner auf dem Server zu.
+2) Ein Administrator generiert Hashes mithilfe des Befehlszeilentools "Hashgen" manuell.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Werte:</text>
+        <text>0 = Hashveröffentlichung nur für freigegebene Ordner mit aktiviertem BranchCache zulassen</text>
+        <text>1 = Hashveröffentlichung für keinen freigegebenen Ordner zulassen</text>
+        <text>2 = Hashveröffentlichung für alle freigegebenen Ordner zulassen</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Aktionen zur Hashveröffentlichung: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

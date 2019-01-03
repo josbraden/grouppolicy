@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>خدمة ActiveX Installer</displayName>
+  <description>تثبيت عناصر التحكم ActiveX من مواقع التثبيت المعتمدة</description>
+  <resources>
+    <stringTable>
+      <string id="AxInstSv">خدمة مثبت ActiveX</string>
+      <string id="AxISURLZonePolicies">نهج تثبيت ActiveX للمواقع الموجودة في المناطق الموثوق بها</string>        
+      <string id="AxISURLZonePolicies_explain">يتحكم إعداد النهج هذا في تثبيت عناصر تحكم ActiveX بالنسبة للمواقع الموجودة في المنطقة الموثوق بها. وإذا تم تمكين هذا الإعداد، فسوف يتم تثبيت عناصر تحكم ActiveX وفقًا للإعدادات المحددة بواسطة إعداد النهج هذا. 
+      
+وإذا تم تعطيل هذا الإعداد أو لم يتم تكوينه، فسوف تطالب عناصر تحكم ActiveX المستخدم بتثبيتها دومًا قبل التثبيت. 
+
+وإذا كان الموقع الموثوق به يستخدم بروتوكول HTTPS، فسوف يمكن لإعداد النهج هذا أن يتحكم أيضًا في كيفية استجابة خدمة مثبت ActiveX  لأخطاء الشهادة. وبشكل افتراضي لابد أن تزود جميع اتصالات HTTPS شهادة خادم تجتاز جميع معايير التحقق من الصحة. وإذا كنت على علم بأن هناك موقعًا موثوق به يحتوي على خطأ شهادة لكن تريد الثقة به على أية حال، فيمكنك عندئذ تحديد أخطاء الشهادة التي تريد تجاهلها.
+    
+ملاحظة: يسري هذا الإعداد على جميع المواقع الموجودة في المناطق الموثوق بها.
+</string>
+      <string id="TrustedZoneDisabled">عدم التثبيت</string>
+      <string id="TrustedZonePrompt">مطالبة المستخدم</string>
+      <string id="TrustedZoneSilentInstall">التثبيت تلقائيًا</string>
+      <string id="ApprovedActiveXInstallSites">مواقع التثبيت المعتمدة لعناصر التحكم ActiveX</string>
+      <string id="ApprovedActiveXInstallSites_explain">تعد خدمة مثبت ActiveX بمثابة الحل لتفويض تثبيت عناصر التحكم ActiveX لكل جهاز إلى مستخدم قياسي في الشركة.
+
+وتتضمن قائمة مواقع تثبيت ActiveX المعتمدة إعدادات محددات مواقع المعلومات (URL) المضيفة وإعدادات النهج لكل محدد موقع معلومات (URL) مضيف. أحرف البدل غير معتمدة.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AxISURLZonePolicies">
+        <dropdownList refId="InstallTrustedOCX" noSort="true" defaultItem="2">نهج تثبيت لعنصر تحكم ActiveX الموقع بواسطة ناشر موثوق به</dropdownList>
+        <dropdownList refId="InstallSignedOCX" noSort="true" defaultItem="1">نهج تثبيت لعنصر تحكم ActiveX موقّع</dropdownList>
+        <dropdownList refId="InstallUnSignedOCX" noSort="true" defaultItem="0">نهج تثبيت لعنصر تحكم ActiveX غير موقّع</dropdownList>
+        <text>السماح بالاتصال بالمواقع الموثوق بها مع وجود أخطاء شهادات الخادم التالية.</text>
+        <checkBox refId="IgnoreUnknownCA" defaultChecked="false">مرجع مصدق غير معروف (CA)</checkBox>
+        <checkBox refId="IgnoreInvalidCN" defaultChecked="false">اسم شهادة غير صالح (CN)</checkBox>
+        <checkBox refId="IgnoreInvalidCertDate" defaultChecked="false">انتهاء تاريخ التحقق من صلاحية الشهادة</checkBox>
+        <checkBox refId="IgnoreWrongCertUsage" defaultChecked="false">استخدام شهادة خاطئ</checkBox>
+      </presentation>
+
+      <presentation id="ApprovedActiveXInstallSites">
+        <listBox refId="ApprovedActiveXInstallSiteslist">محددات مواقع المعلومات (URLs) المضيفة</listBox>
+        <text>تتضمن النهج الخاص بمحدد موقع المعلومات (URL) المضيف.</text>
+        <text>على سبيل المثال </text>
+        <text>اسم المضيف: http://activex.microsoft.com</text>
+        <text>القيمة: 2,1,0,0</text>
+        <text>القيمة بالنسبة لكل محدد موقع معلومات (URL) مضيف عبارة عن أربعة إعدادات في تنسيق CSV.</text>
+        <text>والتي تمثل "TPSSignedControl,SignedControl,UnsignedControl,ServerCertificatePolicy</text>
+        <text>تتحكم القيم الثلاث في أقصى يسار النهج في تثبيت عناصر التحكم ActiveX استنادًا إلى التوقيع الخاص بها.</text>
+        <text>فقد تكون واحدة مما يلي.</text>
+        <text>0: لا يتم تثبيت عنصر التحكم ActiveX ‏</text>
+        <text>1: مطالبة المستخدم بتثبيت عنصر التحكم ActiveX ‏‎‏</text>
+        <text>2: يتم تثبيت عنصر التحكم ActiveX تلقائيًا</text>
+        <text>سوف يتم تثبيت عناصر التحكم الموقّعة بواسطة الشهادات في مخزن الناشرين الموثوق بهم تلقائيًا </text>
+        <text>التثبيت التلقائي لعناصر التحكم غير الموقعة غير مدعوم</text>
+        <text></text>
+        <text>القيمة في أقصى يمين النهج عبارة عن علامة نقطية</text>
+        <text>تستخدم العلامات في تجاهل أخطاء شهادات https.</text>
+        <text>القيمة الافتراضية هي 0.</text>
+        <text>يعني ذلك أنه يجب على كافة اتصالات اجتياز كافة عمليات التدقيق المتعلقة بالأمان</text>
+        <text></text>
+        <text>استخدم مجموعة مؤلفة من القيم التالية</text>
+        <text>لتجاهل أخطاء الشهادات غير الصحيحة</text>
+        <text>0x00000100  لتجاهل مرجع مصدق (CA)‏</text>
+        <text>0x00001000 لتجاهل اسم شائع غير صحيح</text>
+        <text>0x00002000  لتجاهل تاريخ غير صحيح للشهادة</text>
+        <text>0x00000200  لتجاهل استخدام خاطئ للشهادة</text>
+        <text></text>
+        
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

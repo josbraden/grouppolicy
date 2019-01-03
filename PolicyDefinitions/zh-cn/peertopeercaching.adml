@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache 使客户端可以安全地从分支机构内检索内容，而不是从托管该内容的服务器上进行检索。根据具体的部署模式，可以从分支机构的其他客户端或托管缓存服务器检索该内容。如果服务器仅授权客户端从分支内检索内容，则客户端仅能执行此类检索。使用 BranchCache 可降低连接您分支机构和数据中心或总部的广域网(WAN)链接的成本，还能够提高对已下载到分支机构的内容的下载速度。
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">启用 BranchCache</string>
+
+            <string id="WBC_Enable_Help">此策略设置指定是否在客户端计算机上启用 BranchCache。BranchCache 可降低连接分支机构和数据中心或总部的广域网(WAN)链接的利用率，并可提高对已下载到分支机构的内容的访问速度。为此，BranchCache 需使分支机构中的计算机能够缓存启用了 BranchCache 的 Intranet 服务器上的文件和 HTTP 流量，然后再与分支中的其他计算机安全共享这些文件。分支机构中的计算机可以检索分支中托管缓存服务器上的内容(使用托管缓存模式时)，也可以从分支的其他客户端计算机上检索内容(使用分布式缓存模式时)。要访问缓存的内容，则计算机必须具有访问源服务器内容的权限。
+
+如果您的分支机构面临以下状况，则可以对其中的客户端计算机启用此策略设置: WAN 带宽低、延迟时间长并且有许多客户端计算机需要访问总公司服务器上的相同内容。
+
+如果启用此策略设置法，则将启用 BranchCache。要使此策略设置生效，还必须在客户端计算机上安装 BranchCache 功能。
+
+如果禁用或未配置此策略设置，则 BranchCache 将关闭。
+            </string>
+
+            <string id="WBC_Cache_Percent">设置用于客户端计算机缓存的磁盘空间百分比</string>
+
+            <string id="WBC_Cache_Percent_Help">此策略设置可更改专用于使用 BranchCache 缓存检索内容的默认总磁盘空间百分比。如果服务器授权其他发出请求的客户端计算机可以访问此内容，则这些计算机也可以访问该内容。
+
+如果启用此策略设置，则您可以配置分配用于缓存的总磁盘空间百分比。
+
+如果禁用或未配置此策略设置，则在客户端计算机上，缓存所占的空间为总磁盘空间的百分之五。
+            </string>
+
+            <string id="WBC_HostedCache_Location">设置 BranchCache 托管缓存模式</string>
+
+            <string id="WBC_HostedCache_Location_Help">此策略设置指定客户端计算机是否应使用托管缓存模式，如果使用，则还需指定 BranchCache 服务器的地址。在托管缓存模式下，客户端计算机可以从作为分支机构中心(托管)缓存的 BranchCache 服务器检索内容。当使用托管缓存模式时，由启用了 BranchCache 的客户端计算机下载的内容将被放置到 BranchCache 服务器，该服务器将作为分支机构中启用了 BranchCache 的其他客户端计算机的中心缓存。客户端计算机使用安全套接字层(SSL)与 BranchCache 服务器进行通信。
+
+要使用此策略设置，您必须指定该 BranchCache 服务器的地址，并且此地址还必须与在 BranchCache 服务器证书中指定的服务器的完全限定的域名(FQDN)匹配。此外，BranchCache 服务器证书的证书根必须位于客户端计算机的受信任的根存储区中。
+
+如果启用此策略设置并指定了有效的托管缓存位置，则将启用托管缓存模式。要使此策略设置生效，还需要启用“启用 BranchCache”策略设置。
+
+如果禁用或未配置此策略设置，则托管缓存模式将关闭。
+            </string>
+
+            <string id="WBC_Distributed_Enable">设置 BranchCache 分布式缓存模式</string>
+
+            <string id="WBC_Distributed_Enable_Help">此策略设置指定客户端计算机是否应使用分布式缓存模式。在此 BranchCache 模式下，客户端计算机可检索已由分支机构中其他客户端计算机下载和缓存的内容。要从分支上其他客户端计算机中访问缓存的内容，则计算机必须具有访问源服务器内容的权限。
+
+此策略设置指定是否使用分布式缓存模式。如果分支机构中没有任何服务器用作托管缓存，则在使用 BranchCache 时可启用此策略设置。
+
+如果启用此策略设置，则将使用分布式缓存模式。要使此策略设置生效，还需要启用“启用 BranchCache”策略设置。
+
+如果禁用或未配置此策略设置，则分布式缓存模式将关闭。
+            </string>
+
+            <string id="WBC_SMB_Enable">配置网络文件的 BranchCache</string>
+
+            <string id="WBC_SMB_Enable_Help">此策略设置可更改默认的回程网络延迟值，大于该值时，网络文件将由分支中的客户端计算机进行缓存。通过网络文件的 BranchCache，分支机构中的计算机可缓存启用了 BranchCache 的 Intranet 服务器上的数据，然后再与分支中的其他计算机安全共享这些文件。使用服务器消息块(SMB)协议的网络文件是可在分支机构中缓存的一种内容类型。
+
+默认情况下，当广域网(WAN)链接的回程网络延迟时间大于 80 毫秒时，将在分支机构中缓存网络文件。要始终缓存已下载到分支机构计算机上的网络文件，请将网络延迟值设置为 0。要禁用网络文件的分支缓存，可将该延迟值设置为较高的值。
+
+如果启用此策略设置，则可配置回程网络延迟时间，若大于该值，网络文件将由分支机构中的客户端计算机进行缓存。
+
+如果禁用或未配置此策略设置，则当广域网(WAN)链接的回程网络延迟时间大于 80 毫秒时，客户端计算机将缓存网络文件。
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>输入客户端计算机缓存位置</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>输入托管缓存的位置</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>输入回程网络延迟值(以毫秒为单位)，若大于该值，则网络文件必须缓存到分支机构中</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

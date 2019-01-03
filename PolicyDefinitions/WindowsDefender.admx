@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <policyNamespaces>
+    <target prefix="windef" namespace="Microsoft.Policies.WindowsDefender" />
+    <using prefix="windows" namespace="Microsoft.Policies.Windows" />
+  </policyNamespaces>
+  <resources minRequiredRevision="1.0" />
+  <categories>
+    <category name="AntiSpyware" displayName="$(string.AntiSpyware)">
+      <parentCategory ref="windows:WindowsComponents" />
+    </category>
+  </categories>
+  <policies>
+    <policy name="CheckForSignaturesBeforeRunningScan" class="Machine" displayName="$(string.CheckForSignaturesBeforeRunningScan)" explainText="$(string.CheckForSignaturesBeforeRunningScan_Explain)" key="Software\Policies\Microsoft\Windows Defender\Scan" valueName="CheckForSignaturesBeforeRunningScan">
+      <parentCategory ref="AntiSpyware" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="DisableAntiSpyware" class="Machine" displayName="$(string.DisableAntiSpyware)" explainText="$(string.DisableAntiSpyware_Explain)" key="Software\Policies\Microsoft\Windows Defender" valueName="DisableAntiSpyware">
+      <parentCategory ref="AntiSpyware" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="SpyNetReporting" class="Machine" displayName="$(string.SpyNetReporting)" explainText="$(string.SpyNetReporting_Explain)" presentation="$(presentation.SpyNetReporting)" key="Software\Policies\Microsoft\Windows Defender\SpyNet" valueName="SpyNetReporting">
+      <parentCategory ref="AntiSpyware" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <elements>
+        <enum id="SpyNetReporting" valueName="SpyNetReporting" required="true">
+          <item displayName="$(string.SpyNetReporting_Disabled)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.SpyNetReporting_Basic)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+          <item displayName="$(string.SpyNetReporting_Advanced)">
+            <value>
+              <decimal value="2" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="CheckAlternateDownloadLocation" class="Machine" displayName="$(string.CheckAlternateDownloadLocation)" explainText="$(string.CheckAlternateDownloadLocation_Explain)" key="Software\Policies\Microsoft\Windows Defender\Signature Updates" valueName="CheckAlternateDownloadLocation">
+      <parentCategory ref="AntiSpyware" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="CheckAlternateHttpLocation" class="Machine" displayName="$(string.CheckAlternateHttpLocation)" explainText="$(string.CheckAlternateHttpLocation_Explain)" key="Software\Policies\Microsoft\Windows Defender\Signature Updates" valueName="CheckAlternateHttpLocation">
+      <parentCategory ref="AntiSpyware" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="DisableRealtimeMonitoring" class="Machine" displayName="$(string.DisableRealtimeMonitoring)" explainText="$(string.DisableRealtimeMonitoring_Explain)" key="Software\Policies\Microsoft\Windows Defender\Real-time Protection" valueName="DisableRealtimeMonitoring">
+      <parentCategory ref="AntiSpyware" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="DisableRoutinelyTakingAction" class="Machine" displayName="$(string.DisableRoutinelyTakingAction)" explainText="$(string.DisableRoutinelyTakingAction_Explain)" key="Software\Policies\Microsoft\Windows Defender" valueName="DisableRoutinelyTakingAction">
+      <parentCategory ref="AntiSpyware" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+  </policies>
+</policyDefinitions>

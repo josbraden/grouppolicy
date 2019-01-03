@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache を使用すると、クライアントは、コンテンツをホストしているサーバーから取得する代わりに、ブランチ オフィス内から安全にコンテンツを取得できます。展開モードに応じて、ブランチ オフィス内の他のクライアント、またはブランチ内でホストされているキャッシュ サーバーから、コンテンツを取得できます。サーバーによって承認されている場合にのみ、クライアントはブランチ内からコンテンツを取得できます。BranchCache を使用すると、ブランチ オフィスをデータ センターまたは本社に接続するワイド エリア ネットワーク (WAN) リンクのコストを下げ、ブランチ オフィスに既にダウンロードされているコンテンツのダウンロード速度を上げることができます。
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">BranchCache を有効にする</string>
+
+            <string id="WBC_Enable_Help">このポリシー設定は、クライアント コンピューターで BranchCache を有効にするかどうかを指定します。BranchCache は、ブランチ オフィスをデータ センターまたは本社に接続するワイド エリア ネットワーク (WAN) リンクの使用率を下げ、ブランチ オフィスに既にダウンロードされているコンテンツへのアクセス速度を上げます。BranchCache は、ブランチ オフィス内のコンピューターが、BranchCache が有効になっているイントラネット サーバーからのファイルと HTTP トラフィックをキャッシュした後、ブランチ内の他のコンピューターとファイルを安全に共有できるようにします。ブランチ オフィス内のコンピューターは、ブランチ内でホストされているキャッシュ サーバーから (ホスト型キャッシュ モードを使用している場合)、またはブランチ内の他のクライアント コンピューターから (分散キャッシュ モードを使用している場合)、コンテンツを取得できます。キャッシュのコンテンツにアクセスするには、ソース サーバー上のコンテンツにアクセスするためのアクセス許可がコンピューターに必要です。
+
+WAN の帯域幅が低く、待ち時間が長く、セントラル オフィスにあるサーバーの同じデータにアクセスする必要のあるクライアント コンピューターの数が多い、ブランチ オフィスのクライアント コンピューターでは、このポリシー設定を有効にします。
+
+このポリシー設定を有効にした場合、BranchCache が有効になります。このポリシー設定を適用するには、クライアント コンピューターにも BranchCache 機能をインストールする必要があります。
+
+このポリシー設定を無効にするか、または構成しない場合、BranchCache は無効になります。
+            </string>
+
+            <string id="WBC_Cache_Percent">クライアント コンピューター キャッシュに使用するディスク領域の割合を設定する</string>
+
+            <string id="WBC_Cache_Percent_Help">このポリシー設定は、取得したコンテンツを BranchCache でキャッシュするために専用に使用する合計ディスク領域の既定の割合を変更します。他のクライアント コンピューターは、サーバーによってコンテンツへのアクセスを承認されている場合は、このコンテンツを要求して使用できます。
+
+このポリシー設定を有効にした場合、キャッシュに割り当てる合計ディスク領域の割合を構成できます。
+
+このポリシー設定を無効にするか、または構成しない場合、キャッシュはクライアント コンピューターの全ディスク領域の 5 パーセントに設定されます。
+            </string>
+
+            <string id="WBC_HostedCache_Location">BranchCache をホスト型キャッシュ モードに設定する</string>
+
+            <string id="WBC_HostedCache_Location_Help">このポリシー設定は、クライアント コンピューターがホスト型キャッシュ モードを使用する必要があるかどうかを指定し、使用する場合は、BranchCache サーバーのアドレスを指定します。ホスト型キャッシュ モードを使用すると、クライアント コンピューターは、ブランチ オフィスに対するセントラル (ホスト型) キャッシュとして機能する BranchCache サーバーからコンテンツを取得できます。ホスト型キャッシュ モードを使用するときは、BranchCache が有効なクライアント コンピューターによってダウンロードされたコンテンツは、BranchCache サーバーにプッシュされ、その後は BranchCache サーバーがブランチ オフィス内にある他の BranchCache が有効なクライアント コンピューターに対する集中キャッシュとして機能します。クライアント コンピューターは、Secure Sockets Layer (SSL) を使用して BranchCache サーバーと通信します。
+
+このポリシー設定を使用するには、BranchCache サーバーのアドレスを指定する必要があり、このアドレスは BranchCache サーバーの証明書で指定されているサーバーの完全修飾ドメイン名 (FQDN) と一致している必要があります。さらに、BranchCache サーバーの証明書の証明書ルートは、クライアント コンピューターの信頼されたルート ストアの中にある必要があります。
+
+このポリシー設定を有効にして、ホスト型キャッシュの有効な場所を指定すると、ホスト型キャッシュ モードがオンになります。このポリシー設定を適用するには、[BranchCache を有効にする] ポリシー設定も有効にする必要があります。
+
+このポリシー設定を無効にするか、または構成しない場合は、ホスト型キャッシュ モードはオフになります。
+            </string>
+
+            <string id="WBC_Distributed_Enable">BranchCache を分散キャッシュ モードに設定する</string>
+
+            <string id="WBC_Distributed_Enable_Help">このポリシー設定は、クライアント コンピューターが分散キャッシュ モードを使用する必要があるかどうかを指定します。この BranchCache モードを使用すると、クライアント コンピューターは、ブランチ オフィス内の他のクライアント コンピューターによってダウンロードされてキャッシュされたコンテンツを取得できます。ブランチ内の他のクライアント コンピューターのキャッシュされたコンテンツにアクセスするには、ソース サーバー上のコンテンツにアクセスするためのアクセス許可がコンピューターに必要です。
+
+このポリシー設定は、分散キャッシュ モードを使用するかどうかを指定します。ホスト型キャッシュとして機能するサーバーがないブランチ オフィスで BranchCache を使用する場合は、このポリシー設定を有効にします。
+
+このポリシー設定を有効にすると、分散キャッシュ モードが使用されます。このポリシー設定を適用するには、[BranchCache を有効にする] ポリシー設定も有効にする必要があります。
+
+このポリシー設定を無効にするか、または構成しない場合は、分散キャッシュ モードはオフになります。
+            </string>
+
+            <string id="WBC_SMB_Enable">ネットワーク ファイルの BranchCache を構成する</string>
+
+            <string id="WBC_SMB_Enable_Help">このポリシー設定は、ブランチ内のクライアント コンピューターによってネットワーク ファイルがキャッシュされる際のラウンド トリップ ネットワーク待ち時間の既定値を変更します。ネットワーク ファイルの BranchCache を使用すると、ブランチ オフィス内のコンピューターは、BranchCache が有効になっているイントラネット サーバーからのデータをキャッシュした後、ブランチ内の他のコンピューターとファイルを安全に共有できます。ブランチ オフィスでキャッシュできるコンテンツの種類の 1 つに、サーバー メッセージ ブロック (SMB) プロトコルを使用するネットワーク ファイルがあります。
+
+既定では、ネットワーク ファイルは、ワイド エリア ネットワーク (WAN) リンクのラウンド トリップ ネットワーク待ち時間が 80 ミリ秒を超えるとブランチ オフィスでキャッシュされます。ブランチ オフィス内のコンピューターにダウンロードされたネットワーク ファイルを常にキャッシュするには、ネットワーク待ち時間の値を 0 に設定します。ネットワーク ファイルのブランチ キャッシュを無効にするには、待ち時間の値を非常に大きい値に設定します。
+
+このポリシー設定を有効にすると、ブランチ オフィス内のクライアント コンピューターによってネットワーク ファイルがキャッシュされる際のラウンド トリップ ネットワーク待ち時間を構成できます。
+
+このポリシー設定を無効にするか、または構成しない場合は、ワイド エリア ネットワーク (WAN) リンクのラウンド トリップ ネットワーク待ち時間が 80 ミリ秒を超えるとクライアント コンピューターによってネットワーク ファイルがキャッシュされます。
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>クライアント コンピューターのキャッシュの場所の入力</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>ホスト型キャッシュの場所の入力</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>ブランチ オフィスでネットワーク ファイルをキャッシュする必要があると見なされるラウンド トリップ ネットワーク待ち時間の値 (ミリ秒) の入力</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

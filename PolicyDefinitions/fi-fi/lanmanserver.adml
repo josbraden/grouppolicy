@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>kirjoita näyttönimi tähän</displayName>
+  <description>kirjoita kuvaus tähän</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Lanman-palvelin</string>
+      <string id="Lbl_FollowShare">Salli hajautusarvon julkaiseminen vain niille jaetuille kansioille, joissa BranchCache on käytössä</string>
+      <string id="Lbl_DisableOnAllShares">Älä salli hajautusarvon julkaisemista millekään jaetulle kansiolle</string>
+      <string id="Lbl_EnableOnAllShares">Salli kaikkien jaettujen kansioiden hajautusarvojen julkaiseminen</string>
+      <string id="Pol_HashPublication">BranchCachen hajautusarvon julkaiseminen</string>
+      <string id="Pol_HashPublication_Help">Tämä käytäntö antaa hajautusarvon luontipalvelun luoda jaettuihin kansioihin tallennettujen tietojen hajautusarvoja ja tarjota kyseiset hajautusarvot sitten asiakastietokoneille, joissa BranchCache on käytössä. Hajautusarvot ovat matemaattisesti johdettuja tiedostojen digitaalisia allekirjoituksia, jotka tunnistavat tiedostojen sisällön yksilöivästi. Nämä digitaaliset allekirjoitukset ovat hyvin pieniä, joten Windows pystyy vertaamaan tiedostoja niin, ettei se käytä runsaasti suuralueverkon (WAN) kaistanleveyttä.
+
+Sivutoimipisteen asiakastietokone pystyy hankkimaan tiedoston hajautusarvon WAN-linkin välityksellä, jos kaikki seuraavat ehdot toteutuvat:      
+1) Käyttäjällä on oikeudet käyttää tiedostoa.
+2) BranchCache on käytössä asiakastietokoneessa.
+3) Hajautusarvon julkaiseminen on sallittu jaetussa kansiossa, jota asiakastietokone käyttää. 
+
+Jos asiakastietokone hankkii hajautusarvon, se pystyy etsimään tiedoston identtistä versiota muiden sivutoimipisteen tietokoneiden välimuistista. Jos Windows löytää tiedoston identtisen version sivutoimipisteestä, asiakastietokone lataa paikallisessa välimuistissa olevan kopion sen sijaan, että se lataisi tiedoston WAN-linkin välityksellä. 
+
+Jos määrität täksi käytännöksi Salli hajautusarvon julkaiseminen vain niille jaetuille kansioille, joissa BranchCache on käytössä (arvo = 0), hajautusarvot luodaan vain niissä jaetuissa kanasioissa, joissa BranchCache on käytössä. Näiden jaettujen kansioiden hajautusarvot luodaan, kun tapahtuu jompikumpi seuraavista tapahtumista:
+1) Asiakas, jossa on BranchCache-tuki käytössä, käyttää sellaisessa jaetussa kansiossa olevaa tiedostoa, jossa BranchCache on käytössä.
+2) Järjestelmänvalvoja luo hajautusarvot manuaalisesti Hashgen-komentorivityökalulla.
+ 
+Jos määrität täksi käytännöksi Älä salli hajautusarvon julkaisemista millekään jaetulle kansiolle (arvo = 1), hajautusarvoja ei luoda koskaan, eikä mikään tätä käytäntöä käyttävä tietokone anna niitä.
+ 
+Jos määrität täksi käytännöksi Salli kaikkien jaettujen kansioiden hajautusarvojen julkaiseminen (arvo = 2), hajautusarvot luodaan kaikille palvelimen jaetuille kansioille, kun seuraavat tapahtumat tapahtuvat: 
+1) Asiakas, jossa on BranchCache-tuki käytössä, käyttää palvelimen jaetussa kansiossa olevaa tiedostoa.
+2) Järjestelmänvalvoja luo hajautusarvot manuaalisesti Hashgen-komentorivityökalulla.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Arvot:</text>
+        <text>0 = Salli hajautusarvon julkaiseminen vain niille jaetuille kansioille, joissa BranchCache on käytössä</text>
+        <text>1 = Älä salli hajautusarvon julkaisemista millekään jaetulle kansiolle</text>
+        <text>2 = Salli kaikkien jaettujen kansioiden hajautusarvojen julkaiseminen</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Hajautusarvon julkaisemisen toiminnot: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

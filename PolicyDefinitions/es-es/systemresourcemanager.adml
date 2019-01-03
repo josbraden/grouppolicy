@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>escriba aquí el nombre</displayName>
+  <description>escriba aquí la descripción</description>
+  <resources>
+    <stringTable>
+      <string id="AccountingEnabled">Activar Contabilidad para WSRM</string>
+      <string id="AccountingEnabled_Explain">Esta opción activa o desactiva la característica Contabilidad.
+
+Si se habilita esta configuración, el Administrador de recursos del sistema de Windows (WSRM) iniciará el recuento de diversas estadísticas de uso de los procesos.
+
+Si se deshabilita esta configuración, WSRM detendrá el registro de las estadísticas de uso de los procesos.
+
+Si no configura esta opción, el usuario podrá especificar si se debe activar o desactivar la contabilidad.
+
+De forma predeterminada, los procesos de contabilidad están deshabilitados.
+
+La base de datos de contabilidad proporciona una interfaz que puede usar para administrar tanto la información de la base de datos como su tamaño físico. La administración de la información de la base de datos implica la búsqueda de información pertinente y, a continuación, su organización eficiente. La administración del tamaño físico de la base de datos exige una atención constante; a menos que esté configurada para que este proceso se realice de otra manera, el Administrador de recursos del sistema de Windows seguirá almacenando la información de contabilidad. Como consecuencia, el tamaño de la base de datos seguirá creciendo. Para administrar el tamaño de la base de datos, puede archivar los datos de contabilidad para su posterior uso o eliminarlos de la misma.
+
+Puede usar los datos de contabilidad para supervisar el uso de recursos, comparar el rendimiento real frente al previsto, evaluar si los recursos físicos del equipo son suficientes para las tareas previstas, así como proporcionar la base necesaria para la contabilidad de los propios recursos.
+</string>
+      <string id="EmailIds">Establecer los identificadores de correo electrónico a los que se enviarán las notificaciones</string>
+      <string id="EmailIds_Explain">Esta opción asigna las direcciones de correo electrónico a las que se enviarán las notificaciones. Use punto y coma (;) para separar varias direcciones de correo electrónico.
+
+Si se habilita esta configuración, el Administrador de recursos del sistema de Windows (WSRM) enviará notificaciones a la dirección o direcciones especificadas.
+
+Si se deshabilita esta configuración, no se establecerá ninguna dirección de correo (valor predeterminado).
+
+Si no configura esta opción, el usuario podrá especificar direcciones de correo electrónico en las que se recibirán las notificaciones. Este valor puede ser alias o direcciones de correo electrónico, incluido el nombre del dominio (por ejemplo, alguien@ejemplo.com).
+
+Dependiendo de los eventos seleccionados para notificación, en estas direcciones de correo electrónico se recibirán notificaciones.
+
+Nota: para recibir notificaciones, debe estar activada la opción correspondiente en el registro de eventos. Para ver la lista de eventos, haga clic en Error, Advertencia o Información y, a continuación, haga clic en Aceptar. Si selecciona Error, Advertencia o Información, se incluirán todos los distintos eventos de esa categoría.</string>
+      <string id="KeyName_Explain">Esta opción permite activar las propiedades de Contabilidad o Notificación de WSRM mediante la configuración de directiva de grupo</string>
+      <string id="RecordWriteInterval">Establecer intervalo de tiempo en minutos para el registro de datos de contabilidad</string>
+      <string id="RecordWriteInterval_Explain">Esta opción indica a la característica Contabilidad que registre los datos en el servidor de contabilidad con el intervalo de tiempo especificado.
+
+Si se habilita esta configuración, el Administrador de recursos del sistema de Windows (WSRM) establecerá el intervalo de tiempo de contabilidad en el valor especificado.
+
+Si se deshabilita esta configuración, se establecerá en 10 minutos el valor predeterminado.
+
+Si no configura esta opción, el usuario podrá especificar un intervalo de contabilidad.
+
+El valor se especifica en minutos y puede oscilar entre 2 y 60.000 minutos. Como valor predeterminado se establece diez minutos, ya que sería un valor óptimo si hubiera muchos servidores registrando datos de forma remota. Si se establece un valor de intervalo de escritura de registros de contabilidad inferior a 10 minutos para un servidor de una red con más de 20 equipos que registran datos de forma remota, se podría ver afectado el rendimiento.
+
+Nota: establezca el intervalo de escritura de registros de contabilidad en un valor superior conforme aumente el número de equipos de la red para reducir la congestión de la misma.</string>
+      <string id="SMTPServer">Establecer el servidor SMTP usado para enviar notificaciones</string>
+      <string id="SMTPServerConfiguration_Explain">Esta opción asigna la dirección del servidor SMTP que envía notificaciones.
+
+Si se habilita esta configuración, el Administrador de recursos del sistema de Windows (WSRM) establecerá el servidor SMTP en el valor especificado.
+
+Si se deshabilita esta configuración, no se establecerá ningún servidor SMTP (valor predeterminado).
+
+Si no configura esta opción, el usuario podrá especificar un servidor SMTP.
+
+Esta opción puede ser el nombre NetBIOS o el nombre de dominio completo (FQDN) del servidor de Protocolo simple de transferencia de correo (SMTP). Este servidor contiene las direcciones de correo electrónico configuradas para recibir notificaciones.
+
+Nota: para recibir notificaciones de correo electrónico, debe estar activada la opción correspondiente en el registro de eventos. Para ver la lista de eventos, haga clic en Error, Advertencia o Información y, a continuación, haga clic en Aceptar. Si selecciona Error, Advertencia o Información, se incluirán todos los distintos eventos de esa categoría.</string>
+      <string id="WSRM">Administrador de recursos del sistema de Windows</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="EmailIds">
+        <textBox refId="EmailIdsConfiguration">
+          <label>Identificadores de correo electrónico</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+      <presentation id="RecordWriteInterval">
+        <decimalTextBox refId="Write_Interval" defaultValue="10">Intervalo de registro para contabilidad (de 2 a 60.000 minutos) </decimalTextBox>
+      </presentation>
+      <presentation id="SMTPServer">
+        <textBox refId="SMTPServerConfiguration">
+          <label>Escriba la dirección del servidor SMTP</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

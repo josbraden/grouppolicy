@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>请在此处输入显示名称</displayName>
+  <description>请在此处输入描述</description>
+  <resources>
+    <stringTable>
+      <string id="AccountingEnabled">为 WSRM 启用计帐功能</string>
+      <string id="AccountingEnabled_Explain">此设置可启用或关闭计帐功能。
+
+如果启用该设置，Windows 系统资源管理器 (WSRM) 将开始记录进程的各种使用数据。
+
+如果禁用该设置，WSRM 将停止记录进程的使用数据。
+
+如果不配置此设置，用户可以指定是否需要启用或关闭计帐功能。
+
+默认情况下，禁用计帐进程。
+
+计帐数据库提供一个界面，可用于管理数据库中的信息和数据库的物理大小。 管理数据库信息包括查找相关信息，然后有效地整理信息。 管理数据的物理大小需要定期予以关注，因为除非将其配置为按其他方式工作，否则 Windows 系统资源管理器会继续存储计帐信息。 因此，数据库的大小会持续增大。 若要管理数据库的大小，可以将计帐数据存档供以后使用或者将其从数据库中删除。
+
+可以使用计帐数据来监控资源使用率，比较实际和预计的性能；评估计算机的物理资源是否足够其计划任务使用；以及为回充计帐提供基准。
+</string>
+      <string id="EmailIds">设置将向其发送通知的电子邮件 ID</string>
+      <string id="EmailIds_Explain">此设置可分配将向其发送通知的电子邮件地址。使用分号 (;) 分隔多个电子邮件地址。
+
+如果启用该设置，Windows 系统资源管理器 (WSRM) 将向指定的地址发送通知。
+
+如果禁用该设置，不会设置电子邮件地址(默认值)。
+
+如果不配置此设置，用户可以指定接收通知的电子邮件地址。此值可以是电子邮件别名或包含域名的电子邮件地址(例如，someone@example.com)。
+
+根据为通知选择的事件，向这些电子邮件地址发送通知。
+
+注意: 若要接收通知，必须启用事件日志上的通知设置。若要查看事件列表，单击“错误”、“警告”或“信息”，然后单击“确定”。如果选择“错误”、“警告”或“信息”，则包括该类别的所有单个事件。</string>
+      <string id="KeyName_Explain">此设置通过组策略设置启用 WSRM 的“计帐”和/或“通知”属性</string>
+      <string id="RecordWriteInterval">为记录计帐数据设置时间间隔(以分钟为单位)</string>
+      <string id="RecordWriteInterval_Explain">此设置指示计帐功能在计帐服务器上按指定的时间间隔记录数据。
+
+如果启用该设置，Windows 系统资源管理器 (WSRM) 会将记帐时间间隔设置为指定值。
+
+如果禁用该设置，将设置为默认值 10 分钟。
+
+如果不配置此设置，用户可以指定计帐间隔。
+
+以分钟为单位指定该值，其范围是 2 分钟到 60000 分钟。将 10 分钟指定为默认值，因为如果存在多台远程记录数据的服务器，该值应该为最优值。如果网络中有 20 台以上的机器远程记录数据，为服务器设置一个小于 10 分钟的计帐记录写入间隔值有可能会降低性能。
+
+注意: 当网络上的机器数量增加时，将计帐记录写入间隔设置为较高的值，可以减少网络拥塞。</string>
+      <string id="SMTPServer">设置用于发送通知的 SMTP 服务器</string>
+      <string id="SMTPServerConfiguration_Explain">此设置分配发出通知的 SMTP 服务器的地址。
+
+如果启用该设置，Windows 系统资源管理器 (WSRM) 会将 SMTP 服务器设置为指定值。
+
+如果禁用该设置，不会设置 SMTP 服务器(默认值)。
+
+如果不配置此设置，用户可以指定 SMTP 服务器。
+
+此值可以是简单邮件传输协议 (SMTP) 服务器的 NetBIOS 名称或完全限定的域名 (FQDN)。该服务器包含配置为接收通知的电子邮件地址。
+
+注意: 若要接收电子邮件通知，必须启用事件日志上的通知设置。若要查看事件列表，单击“错误”、“警告”或“信息”，然后单击“确定”。如果选择“错误”、“警告”或“信息”，则包括该类别的所有单个事件。</string>
+      <string id="WSRM">Windows 系统资源管理器</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="EmailIds">
+        <textBox refId="EmailIdsConfiguration">
+          <label>电子邮件 ID</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+      <presentation id="RecordWriteInterval">
+        <decimalTextBox refId="Write_Interval" defaultValue="10">记帐的记录时间间隔(2 - 60,000 分钟) </decimalTextBox>
+      </presentation>
+      <presentation id="SMTPServer">
+        <textBox refId="SMTPServerConfiguration">
+          <label>输入 SMTP 服务器的地址</label>
+          <defaultValue/>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

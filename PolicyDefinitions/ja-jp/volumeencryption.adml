@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>表示名をここに入力する</displayName>
+  <description>説明をここに入力する</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">このポリシー設定を使用すると、BitLocker ドライブ暗号化回復情報の Active Directory ドメイン サービス (AD DS) バックアップを管理できます。このポリシー設定には、キー情報がないことが原因でデータが損失するのを防ぐために BitLocker で暗号化されたデータを回復するための管理方法が用意されています。このポリシーは、Windows Server 2008 または Windows Vista を実行しているコンピューターにのみ適用できます。
+
+このポリシー設定を有効にした場合、コンピューターで BitLocker を有効にしたときに、BitLocker 回復情報は通知なしに自動的に AD DS にバックアップされます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。
+
+注: AD DS バックアップを完了するには、最初にドメイン上で適切なスキーマ拡張機能とアクセス制御設定をセットアップする必要があります。BitLocker の AD DS バックアップのセットアップの詳細については、Microsoft Technet の『BitLocker Drive Encryption Deployment Guide』を参照してください。
+
+BitLocker 回復情報には、回復パスワードと一意の識別子データが含まれています。BitLocker で保護されているドライブの暗号化キーを含むパッケージも、回復情報に含めることができます。このキー パッケージは、1 つまたは複数の回復パスワードでセキュリティが保護されており、ディスクが破損した場合に特別な回復を実行するのに役立ちます。
+
+[AD DS への BitLocker バックアップが必要] オプションを選択すると、コンピューターがドメインに接続されておらず AD DS への BitLocker 回復情報のバックアップが完了しない場合は、BitLocker を有効にできません。既定ではこのオプションが選択され、BitLocker 回復を確実に利用できます。このオプションを選択しない場合は、AD DS バックアップは試行されますが、ネットワーク エラーまたは他のバックアップ エラーが発生しても BitLocker セットアップに影響しません。バックアップは自動的に再試行されず、BitLocker セットアップ中に回復パスワードが AD DS に格納されない可能性があります。
+
+このポリシー設定を無効にするか、または構成しない場合、BitLocker 回復情報は AD DS にバックアップされません。
+
+注: BitLocker セットアップ中に、トラステッド プラットフォーム モジュール (TPM) の初期化が必要な場合があります。システム\トラステッド プラットフォーム モジュール サービスで [Active Directory ドメイン サービスへの TPM バックアップを有効にする] ポリシー設定を有効にし、TPM 情報もバックアップされるようにします。
+</string>
+      <string id="ActiveDirectoryBackup_Name">Active Directory ドメイン サービスに BitLocker 回復情報を保存する (Windows Server 2008 および Windows Vista)</string>
+      <string id="ActiveDirectoryBackupDropDown_1">回復パスワードとキー パッケージ</string>
+      <string id="ActiveDirectoryBackupDropDown_2">回復パスワードのみ</string>
+      
+      <string id="ConfigureStartupUsage_Help">このポリシー設定を使用すると、BitLocker ドライブ暗号化セットアップ ウィザードが、コンピューターーを起動するたびに要求される追加の認証方法をセットアップできるようにするかどうかを制御できます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。
+        
+注: このポリシーは Windows Server 2008 または Windows Vista を実行しているコンピューターにのみ適用できます。
+
+互換性のあるトラステッド プラットフォーム モジュール (TPM) が装備されているコンピューターーでは、スタートアップ時に 2 種類の認証方法を使用して暗号化されたデータの保護を強化できます。コンピューターーが起動すると、ユーザーに、スタートアップ キーが格納された USB フラッシュ ドライブを挿入するように要求できます。また、4 ～ 20 桁のスタートアップ暗証番号 (PIN) を入力するように要求することもできます。
+
+互換性のある TPM が装備されていないコンピューターーでは、スタートアップ キーを含む USB フラッシュ ドライブが必要です。TPM が装備されていない場合、BitLocker 暗号化データは、この USB フラッシュ ドライブのキー マテリアルのみで保護されます。
+
+このポリシー設定を有効にすると、ウィザードによって、BitLocker の詳細なスタートアップ オプションを構成できるページが表示されます。TPM が装備されているコンピューターーおよび TPM が装備されていないコンピューターーについて、さらに設定オプションを構成できます。
+
+このポリシー設定を無効にするか、または構成しない場合、BitLocker セットアップ ウィザードは、TPM が装備されているコンピューターーで BitLocker を有効にできる基本的な手順を表示します。この基本のウィザードでは、追加のスタートアップ キーまたはスタートアップ PIN は構成できません。
+</string>
+      
+      <string id="ConfigureStartupUsage_Name">スタートアップ時に追加の認証を要求する (Windows Server 2008 および Windows Vista)</string>
+      <string id="ConfigureAdvancedStartup_Name">スタートアップ時に追加の認証を要求する</string>
+      
+      <string id="ConfigureAdvancedStartup_Help">このポリシー設定を使用すると、コンピューターを起動するたびに BitLocker で追加の認証を要求するかどうか、および BitLocker をトラステッド プラットフォーム モジュール (TPM) と併用するかどうかを構成できます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。
+
+注: スタートアップ時に要求できる追加の認証オプションは 1 つだけです。複数のオプションを追加すると、ポリシー エラーが発生します。
+
+TPM が装備されていないコンピューターで BitLocker を使用する場合は、[互換性のある TPM が装備されていない BitLocker を許可する] チェック ボックスをオンにします。このモードでは、スタートアップに USB ドライブが必要です。ドライブの暗号化に使用されるキー情報はこの USB ドライブに格納され、USB キーが作成されます。USB キーが挿入されると、ドライブへのアクセスが認証され、ドライブにアクセスできるようになります。USB キーが失われたり、使用できなくなった場合は、BitLocker 回復オプションのいずれかを使用してドライブにアクセスする必要があります。
+
+互換性のある TPM が装備されているコンピューターでは、スタートアップ時に 4 種類の認証方法を使用して暗号化されたデータの保護を強化できます。コンピューターの起動時に、認証に TPM のみを使用することも、スタートアップ キーを含む USB フラッシュ ドライブの挿入または 4 ～ 20 桁の暗証番号 (PIN) の入力、あるいはその両方を要求することもできます。
+
+このポリシー設定を有効にすると、BitLocker セットアップ ウィザードで詳細なスタートアップ オプションを構成できます。
+
+このポリシー設定を無効にするか、または構成しない場合、TPM が装備されているコンピューターで基本オプションのみを構成できます。
+
+注: スタートアップ PIN および USB フラッシュ ドライブを使用する必要がある場合は、BitLocker ドライブ暗号化セットアップ ウィザードではなく、コマンドライン ツール manage-bde を使用して BitLocker 設定を構成する必要があります。
+
+</string>
+
+      <string id="ConfigureTPMPINKeyUsageDropDown_Optional">TPM でスタートアップ キーと PIN を許可する</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Require">TPM でスタートアップ キーと PIN を要求する</string>
+      <string id="ConfigureTPMPINKeyUsageDropDown_Disallow">TPM でスタートアップ キーと PIN を許可しない</string>
+
+      <string id="ConfigureTPMUsageDropDown_Optional">TPM を許可する</string>
+      <string id="ConfigureTPMUsageDropDown_Require">TPM を要求する</string>
+      <string id="ConfigureTPMUsageDropDown_Disallow">TPM を許可しない</string>
+
+      <string id="ConfigurePINUsageDropDown_Optional">TPM でスタートアップ PIN を許可する</string>
+      <string id="ConfigurePINUsageDropDown_Require">TPM でスタートアップ PIN を要求する</string>
+      <string id="ConfigurePINUsageDropDown_Disallow">TPM でスタートアップ PIN を許可しない</string>
+
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Optional">TPM でスタートアップ キーを許可する</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Require">TPM でスタートアップ キーを要求する</string>
+      <string id="ConfigureTPMStartupKeyUsageDropDown_Disallow">TPM でスタートアップ キーを許可しない</string>
+
+
+      <string id="ConfigureRecoveryUsage_Help">このポリシー設定を使用すると、BitLocker ドライブ暗号化セットアップ ウィザードを表示して BitLocker 回復オプションを指定できるようにするかどうかを制御できます。このポリシーは、Windows Server 2008 または Windows Vista を実行しているコンピューターにのみ適用できます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。
+
+必要なスタートアップ キー情報がない場合は、2 つの回復オプションを使用して BitLocker で暗号化されたデータのロックを解除できます。ユーザーは、48 桁の数字の回復パスワードを入力するか、256 ビットの回復キーを含む USB フラッシュ ドライブを挿入することもできます。
+
+このポリシー設定を有効にすると、BitLocker で暗号化されたデータを回復するためのセットアップ ウィザードをユーザーに表示するオプションを構成できます。USB フラッシュ ドライブに保存すると、48 桁の回復パスワードはテキスト ファイルとして格納され、256 ビットの回復キーは隠しファイルとして格納されます。フォルダーに保存すると、48 桁の回復パスワードがテキスト ファイルとして格納されます。印刷すると、48 桁の回復パスワードは既定のプリンターに送信されます。たとえば、48 桁の回復パスワードを許可しなければ、ユーザーは回復情報を印刷したりフォルダーに保存したりできません。
+
+このポリシー設定を無効にするか、または構成しない場合、BitLocker セットアップ ウィザードは回復オプションを格納する方法をユーザーに提示します。
+
+注: BitLocker セットアップ中にトラステッド プラットフォーム モジュール (TPM) 初期化が必要な場合は、TPM 所有者情報が BitLocker 回復情報と共に保存あるいは印刷されます。
+
+注: 48 桁の回復パスワードは、FIPS 準拠のモードでは利用できません。 
+
+重要: このポリシー設定には、キー情報がないことが原因でデータが損失するのを防ぐために BitLocker で暗号化されたデータを回復するための管理方法が用意されています。どちらのユーザー回復オプションも許可しない場合は、[Active Directory ドメイン サービスに BitLocker 回復情報を保存する (Windows Server 2008 および Windows Vista)] ポリシー設定を有効にして、ポリシー エラーを回避する必要があります。
+
+      </string>
+      
+      <string id="ConfigureRecoveryUsage_Name">BitLocker で保護されているドライブの回復方法を選択する (Windows Server 2008 および Windows Vista)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Require">回復パスワードを要求する (既定)</string>
+      <string id="ConfigureRecoveryPasswordUsageDropDown_Disallow">回復パスワードを許可しない</string>
+
+      <string id="ConfigureRecoveryKeyUsageDropDown_Require">回復キーを要求する (既定)</string>
+      <string id="ConfigureRecoveryKeyUsageDropDown_Disallow">回復キーを許可しない</string>
+
+
+      <string id="OSRecoveryUsage_Name">BitLocker で保護されているオペレーティング システム ドライブの回復方法を選択する</string>
+      
+      <string id="OSRecoveryUsage_Help">このポリシー設定を使用すると、必要なスタートアップ キー情報がない場合に BitLocker で保護されているオペレーティング システム ドライブを回復する方法を制御できます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。
+
+BitLocker で保護されているオペレーティング システム ドライブでデータ回復エージェントを使用できるかどうかは、[証明書に基づくデータ回復エージェントを許可する] チェック ボックスで指定します。データ回復エージェントを使用するには、グループ ポリシー管理コンソールまたはローカル グループ ポリシー エディターで、公開キーのポリシー項目からデータ回復エージェントを追加する必要があります。データ回復エージェントの追加の詳細については、Microsoft TechNet の『BitLocker Drive Encryption Deployment Guide』を参照してください。
+
+[BitLocker 回復情報のユーザー記憶域を構成する] で、48 桁の回復パスワードまたは 256 ビットの回復キーの生成をユーザーに許可するか、要求するか、または許可しないかを選択します。
+
+ドライブで BitLocker を有効にしている場合にユーザーが回復オプションを指定できないようにするには、[BitLocker セットアップ ウィザードの回復オプションを省略する] を選択します。この場合、BitLocker が有効なときに使用する回復オプションを指定できなくなり、ドライブの BitLocker 回復オプションはポリシー設定によって決まります。
+
+[Active Directory ドメイン サービスに BitLocker 回復情報を保存する] で、オペレーティング システム ドライブの AD DS に格納する BitLocker 回復情報を選択します。[回復パスワードとキー パッケージをバックアップする] を選択した場合は、BitLocker 回復パスワードとキー パッケージの両方が AD DS に格納されます。キー パッケージを格納すると、物理的に破損したドライブからデータを回復できます。[回復パスワードのみバックアップする] を選択すると、回復パスワードだけが AD DS に格納されます。
+
+コンピューターがドメインに接続されておらず AD DS への BitLocker 回復情報のバックアップが完了しない場合に、ユーザーが BitLocker を有効にできないようにするには、[オペレーティング システム ドライブの AD DS に回復情報が格納されるまで BitLocker を有効にしない] チェック ボックスをオンにします。
+
+注: [オペレーティング システム ドライブの AD DS に回復情報が格納されるまで BitLocker を有効にしない] チェック ボックスがオンの場合、回復パスワードは自動的に生成されます。
+
+このポリシー設定を有効にした場合、ユーザーが BitLocker で保護されているオペレーティング システム ドライブからデータを回復する方法を制御できます。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、BitLocker の回復については既定の回復オプションがサポートされます。既定では、DRA が許可されて、ユーザーは回復パスワードと回復キーを含む回復オプションを指定できます。また、回復情報は AD DS にバックアップされません。
+
+</string>
+      
+      <string id="OSRecoveryPasswordUsageDropDown_Require">48 桁の回復パスワードを要求する</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Allow">48 桁の回復パスワードを許可する</string>
+      <string id="OSRecoveryPasswordUsageDropDown_Disallow">48 桁の回復パスワードを許可しない</string>
+
+      <string id="OSRecoveryKeyUsageDropDown_Require">256 ビットの回復キーを要求する</string>
+      <string id="OSRecoveryKeyUsageDropDown_Disallow">256 ビットの回復キーを許可しない</string>
+      <string id="OSRecoveryKeyUsageDropDown_Allow">256 ビットの回復キーを許可する</string>
+
+      <string id="FDVRecoveryUsage_Name">BitLocker で保護されている固定ドライブの回復方法を選択する</string>
+      <string id="FDVRecoveryUsage_Help">このポリシー設定を使用すると、必要な資格情報がない場合に BitLocker で保護されている固定データ ドライブを回復する方法を制御できます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。
+
+BitLocker で保護されている固定データ ドライブでデータ回復エージェントを使用できるかどうかは、[データ回復エージェントを許可する] チェック ボックスで指定します。データ回復エージェントを使用するには、グループ ポリシー管理コンソールまたはローカル グループ ポリシー エディターで公開キーのポリシー項目からデータ回復エージェントを追加する必要があります。データ回復エージェントの追加の詳細については、Microsoft TechNet の『BitLocker Drive Encryption Deployment Guide』を参照してください。
+
+[BitLocker 回復情報のユーザー記憶域を構成する] で、48 桁の回復パスワードまたは 256 ビットの回復キーの生成をユーザーに許可するか、要求するか、または許可しないかを選択します。
+
+ドライブで BitLocker を有効にしている場合にユーザーが回復オプションを指定できないようにするには、[BitLocker セットアップ ウィザードの回復オプションを省略する] を選択します。この場合、BitLocker が有効なときに使用する回復オプションを指定できなくなり、ドライブの BitLocker 回復オプションはポリシー設定によって決まります。
+
+[Active Directory ドメイン サービスに BitLocker 回復情報を保存する] で、固定データ ドライブの AD DS に格納する BitLocker 回復情報を選択します。[回復パスワードとキー パッケージをバックアップする] を選択した場合は、BitLocker 回復パスワードとキー パッケージの両方が AD DS に格納されます。キー パッケージを格納すると、物理的に破損したドライブからデータを回復できます。[回復パスワードのみバックアップする] を選択すると、回復パスワードだけが AD DS に格納されます。
+
+コンピューターがドメインに接続されておらず AD DS への BitLocker 回復情報のバックアップが完了しない場合に、ユーザーが BitLocker を有効にできないようにするには、[固定データ ドライブの AD DS に回復情報が格納されるまで BitLocker を有効にしない] チェック ボックスをオンにします。
+
+注: [固定データ ドライブの AD DS に回復情報が格納されるまで BitLocker を有効にしない] チェック ボックスがオンの場合、回復パスワードは自動的に生成されます。
+
+このポリシー設定を有効にした場合、ユーザーが BitLocker で保護されている固定データ ドライブからデータを回復する方法を制御できます。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、BitLocker の回復については既定の回復オプションがサポートされます。既定では、DRA が許可されて、ユーザーは回復パスワードと回復キーを含む回復オプションを指定できます。また、回復情報は AD DS にバックアップされません
+
+</string>
+      
+      <string id="FDVRecoveryPasswordUsageDropDown_Require">48 桁の回復パスワードを要求する</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Allow">48 桁の回復パスワードを許可する</string>
+      <string id="FDVRecoveryPasswordUsageDropDown_Disallow">48 桁の回復パスワードを許可しない</string>
+
+      <string id="FDVRecoveryKeyUsageDropDown_Require">256 ビットの回復キーを要求する</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Disallow">256 ビットの回復キーを許可しない</string>
+      <string id="FDVRecoveryKeyUsageDropDown_Allow">256 ビットの回復キーを許可する</string>
+
+      <string id="RDVRecoveryUsage_Name">BitLocker で保護されているリムーバブル ドライブの回復方法を選択する</string>
+      
+      <string id="RDVRecoveryUsage_Help">このポリシー設定を使用すると、必要な資格情報がない場合に BitLocker で保護されているリムーバブル データ ドライブを回復する方法を制御できます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。
+
+BitLocker で保護されているリムーバブル データ ドライブでデータ回復エージェントを使用できるかどうかは、[データ回復エージェントを許可する] チェック ボックスで指定します。データ回復エージェントを使用するには、グループ ポリシー管理コンソールまたはローカル グループ ポリシー エディターのいずれかで公開キーのポリシー項目からデータ回復エージェントを追加する必要があります。データ回復エージェントの追加の詳細については、Microsoft TechNet の『BitLocker Drive Encryption Deployment Guide』を参照してください。
+
+[BitLocker 回復情報のユーザー記憶域を構成する] で、48 桁の回復パスワードまたは 256 ビットの回復キーの生成をユーザーに許可するか、要求するか、または許可しないかを選択します。
+
+ドライブで BitLocker を有効にしている場合にユーザーが回復オプションを指定できないようにするには、[BitLocker セットアップ ウィザードの回復オプションを省略する] を選択します。この場合、BitLocker が有効なときに使用する回復オプションを指定できなくなり、ドライブの BitLocker 回復オプションはポリシー設定によって決まります。
+
+[Active Directory ドメイン サービスに BitLocker 回復情報を保存する] で、リムーバブル データ ドライブの AD DS に格納する BitLocker 回復情報を選択します。[回復パスワードとキー パッケージをバックアップする] を選択した場合は、BitLocker 回復パスワードとキー パッケージの両方が AD DS に格納されます。[回復パスワードのみバックアップする] を選択すると、回復パスワードだけが AD DS に格納されます。
+
+コンピューターがドメインに接続されておらず AD DS への BitLocker 回復情報のバックアップが完了しない場合に、ユーザーが BitLocker を有効にできないようにするには、[リムーバブル データ ドライブの AD DS に回復情報が格納されるまで BitLocker を有効にしない] チェック ボックスをオンにします。
+
+注: [固定データ ドライブの AD DS に回復情報が格納されるまで BitLocker を有効にしない] チェック ボックスがオンの場合、回復パスワードは自動的に生成されます。
+
+このポリシー設定を有効にした場合、ユーザーが BitLocker で保護されているリムーバブル データ ドライブからデータを回復する方法を制御できます。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、BitLocker の回復については既定の回復オプションがサポートされます。既定では、DRA が許可されて、ユーザーは回復パスワードと回復キーを含む回復オプションを指定できます。また、回復情報は AD DS にバックアップされません。
+      </string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Require">48 桁の回復パスワードを要求する</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Allow">48 桁の回復パスワードを許可する</string>
+      <string id="RDVRecoveryPasswordUsageDropDown_Disallow">48 桁の回復パスワードを許可しない</string>
+
+      <string id="RDVRecoveryKeyUsageDropDown_Require">256 ビットの回復キーを要求する</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Disallow">256 ビットの回復キーを許可しない</string>
+      <string id="RDVRecoveryKeyUsageDropDown_Allow">256 ビットの回復キーを許可する</string>
+      
+      
+      <string id="ConfigureRecoveryFolder_Help">このポリシー設定を使用すると、BitLocker ドライブ暗号化セットアップ ウィザードにより回復パスワードを保存するフォルダーの場所の入力がユーザーに要求されたときに表示される、既定のパスを指定できます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。
+
+このポリシー設定を有効にした場合、ユーザーが回復パスワードをフォルダーに保存するオプションを選択したときに、既定のフォルダーの場所として使用されるパスを指定できます。完全修飾パスを指定することも、対象となるコンピューターの環境変数をパスに含めることもできます。指定されたパスが有効でない場合、BitLocker セットアップ ウィザードはコンピューターの最上位レベルのフォルダー ビューを表示します。 
+
+このポリシー設定を無効にするか、または構成しない場合、BitLocker セットアップ ウィザードは、ユーザーが回復パスワードをフォルダーに保存するオプションを選択したときに、コンピューターの最上位レベルのフォルダー ビューを表示します。
+
+注: このポリシー設定を有効にしても、ユーザーが回復パスワードを別のフォルダーに保存することは妨げられません。
+
+</string>
+      
+      <string id="ConfigureRecoveryFolder_Name">回復パスワードの既定のフォルダーを選択する</string>
+
+      <string id="EncryptionMethod_Help">このポリシー設定を使用すると、BitLocker ドライブ暗号化で使用されるアルゴリズムと暗号強度を構成できます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。ドライブが既に暗号化されているか、暗号化が進行中の場合は、暗号化方法を変更しても影響はありません。使用可能な暗号化方法の詳細については、Microsoft TechNet の『BitLocker Drive Encryption Deployment Guide』を参照してください。
+        
+このポリシー設定を有効にすると、BitLocker がドライブの暗号化に使用する暗号化アルゴリズムおよびキーの暗号強度を選択できます。
+
+このポリシー設定を無効にするか、または構成しない場合、BitLocker は、ディフューザーを使用した AES 128 ビットの既定の暗号化方法か、セットアップ スクリプトで指定された暗号化方法を使用します。
+
+      </string>
+      <string id="EncryptionMethod_Name">ドライブの暗号化方法と暗号強度を選択する</string>
+      <string id="EncryptionMethodDropDown_AES128Diffuser_Name">ディフューザーを使用した AES 128 ビット (既定)</string>
+      <string id="EncryptionMethodDropDown_AES256Diffuser_Name">ディフューザーを使用した AES 256 ビット</string>
+      <string id="EncryptionMethodDropDown_AES128_Name">AES 128 ビット</string>
+      <string id="EncryptionMethodDropDown_AES256_Name">AES 256 ビット</string>
+      
+      <string id="FVECategory">BitLocker ドライブ暗号化</string>
+      <string id="PlatformValidation_Help">このポリシー設定を使用すると、コンピューターのトラステッド プラットフォーム モジュール (TPM) セキュリティ ハードウェアが BitLocker の暗号化キーをセキュリティで保護する方法を構成できます。コンピューターに互換性のある TPM が装備されていない場合、または BitLocker の TPM 保護が既に有効になっている場合は、このポリシー設定は適用されません。
+
+BitLocker を有効にする前にこのポリシー設定を有効にすると、BitLocker の暗号化オペレーティング システム ドライブへのアクセスのロックを解除する前に TPM が検証するブート コンポーネントを構成できます。BitLocker の保護が有効になっている間にこれらのコンポーネントのいずれかが変更された場合、TPM は、ドライブのロックを解除するための暗号化キーを解放せず、代わりにコンピューターは BitLocker 回復コンソールを表示し、ドライブのロックを解除するための回復パスワードまたは回復キーの指定を要求します。
+
+このポリシー設定を無効にするか、または構成しない場合、TPM では、既定のプラットフォーム検証プロファイルか、セットアップ スクリプトで指定されたプラットフォーム検証プロファイルを使用します。プラットフォーム検証プロファイルは、0 ～ 23 の範囲のプラットフォーム構成レジスタ (PCR) のインデックス セットで構成されます。既定のプラットフォーム検証プロファイルは、コアの信頼性測定のルート (CRTM)、BIOS、およびプラットフォーム拡張 (PCR 0)、オプション ROM  コード (PCR 2)、マスター ブート レコード (MBR) コード (PCR 4)、NTFS ブート セクター (PCR 8)、NTFS ブート ブロック (PCR 9)、ブート マネージャー (PCR 10)、および BitLocker アクセス コントロール (PCR 11) に対する変更から暗号化キーを保護します。拡張ファームウェア インターフェイス (EFI) を使用するコンピューターの PCR 設定の記述は、標準 BIOS を使用するコンピューター用に記述された PCR 設定とは異なります。EFI と標準 BIOS の両方の PCR 設定の完全な一覧については、Microsoft TechNet の『BitLocker Drive Encryption Deployment Guide』を参照してください。
+
+警告: 既定のプラットフォーム検証プロファイルを変更すると、コンピューターのセキュリティと管理性に影響します。プラットフォームの (悪意があるまたは認可された) 変更に対する BitLocker の感度は、PCR が含まれているか含まれていないかに応じて、それぞれ高くなったり低くなったりします。
+      </string>
+      
+      <string id="PlatformValidation_Name">TPM プラットフォーム検証プロファイルを構成する</string>
+
+      <string id="MorBehavior_Help">このポリシー設定は、コンピューターの再起動時の速さを制御しますが、BitLocker の機密が漏洩する危険があります。このポリシー設定は、BitLocker を有効にしている場合に適用されます。BitLocker の機密情報には、データの暗号化に使用されるキー マテリアルが含まれます。このポリシー設定は、BitLocker 保護が有効な場合に限り適用されます。
+
+このポリシー設定を有効にすると、コンピューターの再起動時にメモリが上書きされません。メモリの上書きを回避することで、再起動時のパフォーマンスが向上する可能性がありますが、BitLocker の機密情報が公開される危険性が増します。
+
+このポリシー設定を無効にするか、または構成しない場合は、コンピューターの再起動時に、BitLocker の機密情報がメモリから削除されます。
+
+      </string>
+      <string id="MorBehavior_Name">再起動時のメモリ上書きの回避</string>
+
+      <string id="FVEOSCategory">オペレーティング システムのドライブ</string>
+      <string id="FVEFDVCategory">固定データ ドライブ</string>
+      <string id="FVERDVCategory">リムーバブル データ ドライブ</string>
+
+      <string id="IdentificationField_Name">組織に一意の識別子を提供する</string>
+      <string id="IdentificationField_Help">このポリシー設定を使用すると、BitLocker が有効な新しいドライブに、一意の組織 ID を関連付けることができます。これらの ID は、ID フィールドおよび許可された ID フィールドとして格納されます。ID フィールドを使用すると、一意の組織ID と BitLocker で保護されているドライブを関連付けることができます。この ID は、BitLocker で保護されている新しいドライブには自動的に追加され、BitLocker で保護されている既存のドライブについては manage-bde コマンドライン ツールを使用して更新できます。ID フィールドは、BitLocker で保護されているドライブでの証明書に基づくデータ回復エージェントの管理、および BitLocker To Go リーダーに対して行われる可能性のある更新に必要です。BitLocker は、ドライブの ID フィールドが ID フィールドで構成されている値と一致するときに限り、データ回復エージェントを管理および更新します。同様に、BitLocker は、ドライブの ID フィールドが ID フィールドに対して構成されている値と一致するときに限り、BitLocker To Go リーダーを更新します。
+
+許可された ID フィールドは、[BitLocker で保護されていないリムーバブル ドライブへの書き込みアクセスを拒否する] ポリシー設定と組み合わせて使用され、組織でのリムーバブル ドライブの使用を管理するのに役立ちます。許可された ID フィールドは、自分の組織または他の外部組織からの ID フィールドのコンマ区切りの一覧です。
+
+既存のドライブの ID フィールドは、manage-BDE.exe を使用して構成できます。
+
+このポリシー設定を有効にすると、BitLocker で保護されているドライブの ID フィールド、および組織で使用される許可された ID フィールドを構成できます。
+
+BitLocker で保護されているドライブが、別の BitLocker が有効なコンピューターでマウントされるとき、ID フィールドおよび許可された ID フィールドは、そのドライブが外部の組織のものかどうかを判別するのに使用されます。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、ID フィールドは必要ありません。
+
+注: BitLocker で保護されているドライブでの証明書に基づくデータ回復エージェントの管理には、ID フィールドが必要です。BitLocker は、ID フィールドがドライブに存在し、コンピューターで構成されている値と一致するときに限り、証明書に基づくデータ回復エージェントを管理および更新します。ID フィールドには、260 文字以下の任意の値を使用できます。
+
+      </string>
+
+      
+      <string id="UserCertificateOID_Name">スマート カード証明書の使用規則の準拠を検証する</string>
+     <string id="UserCertificateOID_Help">このポリシー設定を使用すると、スマート カード証明書のオブジェクト識別子 (OID) を、BitLocker で保護されているドライブに関連付けることができます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。
+
+OID は、証明書の拡張キー使用法 (EKU) で指定されます。BitLocker は、証明書の OID と、このポリシー設定で定義されている OID を照合することにより、BitLocker で保護されているドライブに対するユーザー証明書の認証に使用できる証明書を識別できます。
+
+既定の OID は 1.3.6.1.4.1.311.67.1.1 です。
+
+注: 証明書に EKU 属性があることは BitLocker において必須ではありませんが、証明書に対して EKU 属性が構成されている場合は、BitLocker 用に構成した OID と同じ OID に設定されている必要があります。
+
+このポリシー設定を有効にした場合は、[オブジェクトの識別子] ボックスで指定されている OID が、スマート カード証明書の OID と一致する必要があります。
+
+このポリシー設定を無効にするか、または構成しない場合、既定の OID が使用されます。
+
+     </string>
+
+       <string id="OSActiveDirectoryBackupDropDown_1">回復パスワードとキー パッケージを保存する</string>
+      <string id="OSActiveDirectoryBackupDropDown_2">回復パスワードのみ保存する</string>
+
+      
+      <string id="MinimumPINLength_Name">スタートアップに対する PIN の長さの最小値を構成する</string>
+      <string id="MinimumPINLength_Help">このポリシー設定を使用すると、トラステッド プラットフォーム モジュール (TPM) のスタートアップ PIN の最小の長さを構成できます。このポリシー設定は、BitLocker を有効にしている場合に適用されます。スタートアップ PIN の長さの許容範囲は、4 ～ 20 桁です。
+
+このポリシー設定を有効にすると、スタートアップ PIN を設定するときに使用する最小桁数を要求できます。
+
+このポリシー設定を無効にするか、または構成しない場合、ユーザーは 4 ～ 20 桁の範囲で任意の長さのスタートアップ PIN を構成できます。
+
+      </string>
+
+      <string id="OSAllowDRA_Name">証明書に基づくデータ回復エージェントを許可する</string>
+          
+      <string id="FDVDenyWriteAccess_Name">BitLocker で保護されていない固定ドライブへの書き込みアクセスを拒否する</string>
+      <string id="FDVDenyWriteAccess_Help">このポリシー設定は、固定データ ドライブをコンピューターで書き込み可能にするために BitLocker の保護が必要かどうかを決定します。このポリシー設定は、BitLocker を有効にしている場合に適用されます。
+
+このポリシー設定を有効にした場合、BitLocker で保護されていないすべての固定データ ドライブは、読み取り専用としてマウントされます。ドライブが BitLocker で保護されている場合は、読み取りおよび書き込みのアクセスが可能としてマウントされます。
+
+このポリシー設定を無効にするか、または構成しない場合、コンピューターのすべての固定データ ドライブが読み書きアクセス可能でマウントされます。
+
+      </string>
+
+      <string id="FDVPassphrase_Name">固定データ ドライブのパスワードの使用を構成する</string>
+      <string id="FDVPassphrase_Help">このポリシー設定では、BitLocker で保護されている固定データ ドライブのロックを解除するときにパスワードを要求するかどうかを指定します。パスワードを使用する場合は、パスワードを必須にしたり、パスワードに複雑さの要件を強制したり、パスワードの長さの最小値を構成したりできます。複雑さの要件の設定を有効にするには、"コンピューターの構成\Windows の設定\セキュリティの設定\アカウント ポリシー\パスワードのポリシー" にある [複雑さの要件を満たす必要があるパスワード] グループ ポリシー設定も有効にする必要があります。
+        
+注: これらの設定は、ボリュームのロックを解除するときではなく、BitLocker を有効にするときに強制されます。BitLocker では、ドライブで使用可能ないずれかの保護機能を使用してドライブのロックを解除できます。
+
+このポリシー設定を有効にした場合、ユーザーは定義された要件を満たすパスワードを構成できます。パスワードの使用を必須にするには、[固定データ ドライブに対してパスワードを要求する] を選択します。パスワードの複雑さの要件を強制するには、[複雑さを要求する] を選択します。
+
+[複雑さを要求する] に設定すると、BitLocker が有効な場合に、パスワードの複雑さを検証するためにドメイン コントローラーへの接続が必須になります。[複雑さを許可する] に設定すると、ポリシーで設定された複雑さの規則を満たすかどうかを検証するためにドメイン コントローラーへの接続が試行されますが、ドメイン コントローラーが見つからなかった場合でも、実際のパスワードの複雑さにかかわらずそのパスワードが受け入れられ、そのパスワードを保護機能として使用してドライブが暗号化されます。[複雑さを許可しない] に設定すると、パスワードの複雑さの検証は行われません。
+
+パスワードは 8 文字以上にする必要があります。パスワードの長さの最小値を大きくするには、[パスワードの長さ] ボックスに文字数を入力します。
+
+このポリシー設定を無効にした場合、ユーザーはパスワードを使用できません。
+
+このポリシー設定を構成しなかった場合は、既定の設定 (パスワードの複雑さの要件なし、長さの最小値は 8 文字) でパスワードがサポートされます。
+
+注: FIPS 準拠が有効な場合はパスワードは使用できません。FIPS 準拠を有効にするかどうかは、"コンピューターの構成\Windows の設定\セキュリティの設定\ローカル ポリシー\セキュリティ オプション" にある [システム暗号化: 暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う] ポリシー設定で指定されます。
+
+</string>
+
+      <string id="PassphraseComplexityDropDown_2">パスワードの複雑さを許可する</string>
+      <string id="PassphraseComplexityDropDown_0">パスワードの複雑さを許可しない</string>
+      <string id="PassphraseComplexityDropDown_1">パスワードの複雑さを必要とする</string>
+      
+      <string id="FDVActiveDirectoryBackupDropDown_1">回復パスワードとキー パッケージをバックアップする</string>
+      <string id="FDVActiveDirectoryBackupDropDown_2">回復パスワードのみバックアップする</string>
+
+      
+      <string id="FDVHybrid_Name">BitLocker で保護されている固定データ ドライブに対する以前のバージョンの Windows からのアクセスを許可する</string>
+      <string id="FDVHybrid_Help">このポリシー設定では、Windows Server 2008、Windows Vista、Windows XP Service Pack 3 (SP3)、または Windows XP Service Pack 2 (SP2) の各オペレーティング システムを実行しているコンピューターで、FAT ファイル システムでフォーマットされた固定データ ドライブのロックを解除して表示できるようにするかどうかを構成します。
+
+このポリシー設定を有効にした場合、または構成しなかった場合は、Windows Server 2008、Windows Vista、Windows XP SP3、または Windows XP SP2 を実行しているコンピューターで、FAT ファイル システムでフォーマットされた固定データ ドライブのロックを解除してその内容を表示することができます。BitLocker で保護されているドライブに対するこれらのオペレーティング システムからのアクセスは読み取り専用になります。
+
+このポリシー設定を有効にした場合に、ユーザーによって固定ドライブから BitLocker To Go リーダーが実行されないようにするには、[FAT 形式の固定ドライブに BitLocker To Go リーダーをインストールしない] チェック ボックスをオンにします。ID フィールドが指定されていないドライブに BitLocker To Go リーダー (bitlockertogo.exe) が存在する場合、またはドライブに [組織の一意な識別子を指定する] ポリシー設定と同じ ID フィールドが指定されている場合、ユーザーは BitLocker を更新するよう求められ、BitLocker To Go リーダーがドライブから削除されます。この場合、Windows Server 2008、Windows Vista、Windows XP SP3、または Windows XP SP2 を実行しているコンピューターで固定ドライブのロックを解除するには、そのコンピューターに BitLocker To Go リーダーがインストールされている必要があります。このチェック ボックスをオフにすると、BitLocker To Go リーダーがインストールされていない固定ドライブに BitLocker To Go リーダーがインストールされ、Windows Server 2008、Windows Vista、Windows XP SP3、または Windows XP SP2 を実行しているコンピューターでドライブのロックを解除できるようになります。
+
+このポリシー設定を無効にした場合は、Windows Server 2008、Windows Vista、Windows XP SP3、または Windows XP SP2 を実行しているコンピューターで、BitLocker で保護されている FAT ファイル システム形式の固定データ ドライブのロックを解除できません。bitlockertogo.exe はインストールされません。
+
+注意: このポリシー設定は、NTFS ファイル システムでフォーマットされたドライブには適用されません。
+
+      </string>
+
+      
+      <string id="FDVAllowDRA_Name">証明書に基づくデータ回復エージェントを許可する</string>
+      
+      <string id="FDVConfigureSmartCard_Name">固定データ ドライブでのスマート カードの使用を構成する</string>
+      <string id="FDVConfigureSmartCard_Help">このポリシー設定では、コンピューター上の BitLocker で保護されている固定データ ドライブに対するユーザー アクセスの認証にスマート カードを使用できるようにするかどうかを指定できます。
+
+このポリシー設定を有効にした場合、ドライブに対するユーザー アクセスの認証にスマート カードを使用できます。スマート カード認証を必須にするには、[固定データ ドライブでスマート カードを必ず使用する] チェック ボックスをオンにします。
+
+注意: これらの設定は、ドライブのロックを解除するときではなく、BitLocker を有効にするときに強制されます。BitLocker では、ドライブで使用可能ないずれかの保護機能を使用してドライブのロックを解除できます。
+
+このポリシー設定を無効にした場合、BitLocker で保護されている固定データ ドライブに対するアクセスの認証にスマート カードを使用できません。
+
+このポリシー設定を構成しなかった場合は、BitLocker で保護されているドライブに対するユーザー アクセスの認証にスマート カードを使用できます。
+
+      </string>
+      
+      <string id="RDVPassphrase_Name">リムーバブル データ ドライブのパスワードの使用を構成する</string>
+      <string id="RDVPassphrase_Help">このポリシー設定では、Bitlocker で保護されているリムーバブル データ ドライブのロックを解除するときにパスワードを要求するかどうかを指定します。パスワードを使用する場合は、パスワードを必須にしたり、複雑さの要件を強制したり、長さの最小値を構成したりすることができます。複雑さの要件の設定を有効にするには、"コンピューターの構成\Windows の設定\セキュリティの設定\アカウント ポリシー\パスワードのポリシー" にある [複雑さの要件を満たす必要があるパスワード] グループ ポリシー設定も有効にする必要があります。
+
+注: これらの設定は、ボリュームのロックを解除するときではなく、BitLocker を有効にするときに強制されます。BitLocker では、ドライブで使用可能ないずれかの保護機能を使用してドライブのロックを解除できます。
+
+このポリシー設定を有効にした場合、ユーザーは定義された要件を満たすパスワードを構成できます。パスワードの使用を必須にするには、[リムーバブル データ ドライブに対してパスワードを要求する] を選択します。パスワードの複雑さの要件を強制するには、[複雑さを要求する] を選択します。
+
+[複雑さを要求する] に設定すると、BitLocker が有効な場合に、パスワードの複雑さを検証するためにドメイン コントローラーへの接続が必須になります。[複雑さを許可する] に設定すると、ポリシーで設定された複雑さの規則を満たすかどうかを検証するためにドメイン コントローラーへの接続が試行されますが、ドメイン コントローラーが見つからなかった場合でも、実際のパスワードの複雑さにかかわらずそのパスワードが受け入れられ、そのパスワードを保護機能として使用してドライブが暗号化されます。[複雑さを許可しない] に設定すると、パスワードの複雑さの検証は行われません。
+
+パスワードは 8 文字以上にする必要があります。パスワードの長さの最小値を大きくするには、[パスワードの長さ] ボックスに文字数を入力します。
+
+このポリシー設定を無効にした場合、ユーザーはパスワードを使用できません。
+
+このポリシー設定を構成しなかった場合は、既定の設定 (パスワードの複雑さの要件なし、長さの最小値は 8 文字) でパスワードがサポートされます。
+
+注: FIPS 準拠が有効な場合はパスワードは使用できません。FIPS 準拠を有効にするかどうかは、"コンピューターの構成\Windows の設定\セキュリティの設定\ローカル ポリシー\セキュリティ オプション" にある [システム暗号化: 暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う] ポリシー設定で指定されます。
+
+      </string>
+
+      <string id="RDVDenyWriteAccess_Name">BitLocker で保護されていないリムーバブル ドライブへの書き込みアクセスを拒否する</string>
+      <string id="RDVDenyWriteAccess_Help">このポリシー設定では、コンピューターでリムーバブル データ ドライブにデータを書き込む際に BitLocker 保護を必須にするかどうかを構成します。
+
+このポリシー設定を有効にした場合、BitLocker で保護されていないリムーバブル データ ドライブは、すべて読み取り専用としてマウントされます。ドライブが BitLocker で保護されている場合は、読み取りおよび書き込みのアクセスでマウントされます。
+
+[別の組織で構成されたデバイスへの書き込みアクセスを拒否する] オプションが選択されている場合は、ID フィールドがコンピューターの ID フィールドと一致するドライブだけに書き込みアクセスが付与されます。リムーバブル データ ドライブへのアクセス時に、有効な ID フィールドと許可された ID フィールドが確認されます。これらのフィールドは [組織の一意な識別子を指定する] ポリシー設定で定義されます。
+
+このポリシー設定を無効にするか、または構成しない場合は、コンピューターのすべてのリムーバブル データ ドライブが読み取りおよび書き込みのアクセスでマウントされます。
+
+注意: このポリシー設定は、"ユーザーの構成\管理用テンプレート\システム\リムーバブル記憶域へのアクセス" にあるポリシー設定で上書きされることがあります。[リムーバブル ディスク: 書き込みアクセスの拒否] ポリシー設定が有効になっている場合、このポリシー設定は無視されます。
+
+      </string>
+
+      <string id="RDVConfigureBDE_Name">リムーバブル ドライブでの BitLocker の使用を制御する</string>
+      <string id="RDVConfigureBDE_Help">このポリシー設定では、リムーバブル データ ドライブでの BitLocker の使用を制御します。このポリシー設定は、BitLocker を有効にすると適用されます。
+
+このポリシー設定を有効にすると、ユーザーが BitLocker を構成する方法を制御するプロパティ設定を選択できます。リムーバブル データ ドライブで BitLocker セットアップ ウィザードを実行できるようにするには、[リムーバブル データ ドライブに BitLocker 保護を適用できるようにする] を選択します。ドライブから BitLocker ドライブ暗号化を削除したり、メンテナンスの実行時に暗号化を中断できるようにするには、[リムーバブル データ ドライブの BitLocker を中断および暗号化解除できるようにする] を選択します。BitLocker 保護の中断の詳細については、Microsoft TechNet の『BitLocker Drive Encryption Deployment Guide』を参照してください。
+
+このポリシー設定を構成しなかった場合、ユーザーはリムーバブル ディスク ドライブで BitLocker を使用できます。
+
+このポリシー設定を無効にした場合、ユーザーはリムーバブル ディスク ドライブで BitLocker を使用できません。
+
+      </string>
+
+
+      <string id="RDVActiveDirectoryBackupDropDown_1">回復パスワードとキー パッケージをバックアップする</string>
+      <string id="RDVActiveDirectoryBackupDropDown_2">回復パスワードのみバックアップする</string>
+
+      <string id="RDVHybrid_Name">BitLocker で保護されているリムーバブル データ ドライブに対する以前のバージョンの Windows からのアクセスを許可する</string>
+      <string id="RDVHybrid_Help">このポリシー設定では、Windows Server 2008、Windows Vista、Windows XP Service Pack 3 (SP3)、または Windows XP Service Pack 2 (SP2) の各オペレーティング システムを実行しているコンピューターで、FAT ファイル システムでフォーマットされたリムーバブル データ ドライブのロックを解除して表示できるようにするかどうかを構成します。
+
+このポリシー設定を有効にした場合、または構成しなかった場合は、Windows Server 2008、Windows Vista、Windows XP SP3、または Windows XP SP2 を実行しているコンピューターで、FAT ファイル システムでフォーマットされたリムーバブル データ ドライブのロックを解除してその内容を表示することができます。BitLocker で保護されているドライブに対するこれらのオペレーティング システムからのアクセスは読み取り専用になります。
+
+このポリシー設定を有効にした場合に、ユーザーによってリムーバブル ドライブから BitLocker To Go リーダーが実行されないようにするには、[FAT 形式のリムーバブル ドライブに BitLocker To Go リーダーをインストールしない] チェック ボックスをオンにします。ID フィールドが指定されていないドライブに BitLocker To Go リーダー (bitlockertogo.exe) が存在する場合、またはドライブに [組織の一意な識別子を指定する] ポリシー設定と同じ ID フィールドが指定されている場合、ユーザーは BitLocker を更新するよう求められ、BitLocker To Go リーダーがドライブから削除されます。この場合、Windows Server 2008、Windows Vista、Windows XP SP3、または Windows XP SP2 を実行しているコンピューターでリムーバブル ドライブのロックを解除するには、そのコンピューターに BitLocker To Go リーダーがインストールされている必要があります。このチェック ボックスをオフにすると、BitLocker To Go リーダーがインストールされていないリムーバブル ドライブに BitLocker To Go リーダーがインストールされ、Windows Server 2008、Windows Vista、Windows XP SP3、または Windows XP SP2 を実行しているコンピューターでドライブのロックを解除できるようになります。
+
+このポリシー設定を無効にした場合は、Windows Server 2008、Windows Vista、Windows XP SP3、または Windows XP SP2 を実行しているコンピューターで、BitLocker で保護されている FAT ファイル システム形式のリムーバブル データ ドライブのロックを解除できません。bitlockertogo.exe はインストールされません。
+
+注意: このポリシー設定は、NTFS ファイル システムでフォーマットされたドライブには適用されません。
+
+      </string>
+
+      <string id="RDVAllowDRA_Name">証明書に基づくデータ回復エージェントを許可する</string>
+ 
+      <string id="RDVConfigureSmartCard_Name">リムーバブル データ ドライブでのスマート カードの使用を構成する</string>
+      <string id="RDVConfigureSmartCard_Help">このポリシー設定では、コンピューター上の BitLocker で保護されているリムーバブル データ ドライブに対するユーザー アクセスの認証にスマート カードを使用できるようにするかどうかを指定できます。
+
+このポリシー設定を有効にした場合、ドライブに対するユーザー アクセスの認証にスマート カードを使用できます。スマート カード認証を必須にするには、[リムーバブル データ ドライブでスマート カードを必ず使用する] チェック ボックスをオンにします。
+
+注意: これらの設定は、ドライブのロックを解除するときではなく、BitLocker を有効にするときに強制されます。BitLocker では、ドライブで使用可能ないずれかの保護機能を使用してドライブのロックを解除できます。
+
+このポリシー設定を無効にした場合、BitLocker で保護されているリムーバブル データ ドライブに対するアクセスの認証にスマート カードを使用できません。
+
+このポリシー設定を構成しなかった場合は、BitLocker で保護されているリムーバブル データ ドライブに対するユーザー アクセスの認証にスマート カードを使用できます。
+
+      </string>
+
+      <string id="EnhancedPIN_Name">スタートアップの拡張 PIN を許可する</string>
+      <string id="EnhancedPIN_Help">このポリシー設定では、BitLocker で拡張スタートアップ PIN を使用するかどうかを構成できます。
+
+拡張スタートアップ PIN では、大文字と小文字、記号、数字、空白などの文字を使用できます。このポリシー設定は、BitLocker を有効にすると適用されます。
+
+このポリシー設定を有効にした場合、すべての新しい BitLocker スタートアップ PIN のセットが拡張PIN になります。
+
+注意: コンピューターによっては、プレブート環境で拡張 PIN がサポートされていない場合もあります。BitLocker セットアップでシステム チェックを実行することを強くお勧めします。
+
+このポリシー設定を無効にするか、または構成しない場合は、拡張PIN は使用されません。
+
+      </string>
+
+</stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">AD DS への BitLocker バックアップが必要</checkBox>
+        <text>選択されている場合、バックアップに失敗すると、BitLocker を有効にできません (推奨される既定)。 </text>
+        <text>選択されていない場合、バックアップに失敗しても、BitLocker を有効にできます。バックアップは自動的に再試行されません。</text>
+        <dropdownList refId="ActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">格納する BitLocker 回復情報を選択する: </dropdownList>
+        <text/>
+        <text>回復パスワードは 48 桁の数字で、BitLocker で保護されているドライブへのアクセスのロックを解除します。</text>
+        <text>キー パッケージには、1 つ以上の回復パスワードによってセキュリティで保護された、ドライブの BitLocker 暗号化キーが含まれています</text>
+	    	<text>キー パッケージは、ディスクが破損した場合に特別な回復を実行するのに役立ちます。 </text>
+      </presentation>
+      
+      <presentation id="ConfigureStartupUsage_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">互換性のある TPM が装備されていない BitLocker を許可する</checkBox>
+        <text>(USB フラッシュ ドライブでスタートアップ キーが必要)</text>
+        <text>TPM が装備されているコンピューターの設定: </text>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">TPM スタートアップ キーの構成:</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">TPM スタートアップ PIN の構成:</dropdownList>
+        <text>重要: スタートアップ キーが必要な場合は、スタートアップ PIN を許可しないようにする必要があります。 </text>
+        <text>スタートアップ PIN が必要な場合は、スタートアップ キーを許可しないようにする必要があります。そうしなければ、ポリシー エラーが発生します。</text>
+        <text>注意: スタートアップ PIN とスタートアップ キー オプションの両方を無効にして、TPM が装備されているコンピューターの詳細設定のページを非表示にします。</text>
+      </presentation>
+
+      <presentation id="ConfigureAdvancedStartup_Name">
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">互換性のある TPM が装備されていない BitLocker を許可する</checkBox>
+        <text>(USB フラッシュ ドライブでスタートアップ キーが必要)</text>
+        <text>TPM が装備されているコンピューターの設定:</text>
+        <dropdownList refId="ConfigureTPMUsageDropDown_Name" noSort="true" defaultItem="0">TPM スタートアップの構成:</dropdownList>
+        <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">TPM スタートアップ PIN の構成:</dropdownList>
+        <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">TPM スタートアップ キーの構成:</dropdownList>
+        <dropdownList refId="ConfigureTPMPINKeyUsageDropDown_Name" noSort="true" defaultItem="0">TPM スタートアップ キーと PIN の構成:</dropdownList>
+        <text/>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryUsage_Name">
+        <text>重要: データの損失を避けるために、BitLocker 暗号化キーを回復する方法を用意しておく必要があります。以下の回復オプションをどちらも許可しない場合は、AD DS への BitLocker 回復情報のバックアップを有効にする必要があります。そうしなければ、ポリシー エラーが発生します。</text>
+        <dropdownList refId="ConfigureRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0">48 桁の回復パスワードの構成:</dropdownList>
+        <dropdownList refId="ConfigureRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0">256 ビットの回復キーの構成:</dropdownList>
+        <text>注意: 回復パスワードを無効にし回復キーを要求する場合は、ユーザーは USB への保存を行わずに BitLocker を有効にすることはできません。</text>
+        <text/>
+      </presentation>
+
+      <presentation id="OSRecoveryUsage_Name">
+        <checkBox refId="OSAllowDRA_Name" defaultChecked="true">データ回復エージェントを許可する</checkBox>
+        <text>BitLocker 回復情報のユーザー記憶域を構成する:</text>
+        <dropdownList refId="OSRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="OSRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="OSHideRecoveryPage_Name" defaultChecked="false">BitLocker セットアップ ウィザードの回復オプションを省略する</checkBox>
+        <checkBox refId="OSActiveDirectoryBackup_Name" defaultChecked="true">オペレーティング システム ドライブの AD DS に BitLocker 回復情報を保存する</checkBox>
+        <dropdownList refId="OSActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">AD DS への BitLocker 回復情報の記憶域を構成する:</dropdownList>
+        <checkBox refId="OSRequireActiveDirectoryBackup_Name">オペレーティング システム ドライブの AD DS に回復情報が格納されるまで BitLocker を有効にしない</checkBox>
+       </presentation>
+
+      <presentation id="FDVRecoveryUsage_Name">
+        <checkBox refId="FDVAllowDRA_Name" defaultChecked="true">データ回復エージェントを許可する</checkBox>
+        <text>BitLocker 回復情報のユーザー記憶域を構成する:</text>
+        <dropdownList refId="FDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="FDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="FDVHideRecoveryPage_Name" defaultChecked="false">BitLocker セットアップ ウィザードの回復オプションを省略する</checkBox>
+        <checkBox refId="FDVActiveDirectoryBackup_Name" defaultChecked="true">固定データ ドライブの AD DS に BitLocker 回復情報を保存する</checkBox>
+        <dropdownList refId="FDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">AD DS への BitLocker 回復情報の記憶域を構成する:</dropdownList>
+        <checkBox refId="FDVRequireActiveDirectoryBackup_Name">固定データ ドライブの AD DS に回復情報が格納されるまで BitLocker を有効にしない</checkBox>
+      </presentation>
+
+      <presentation id="RDVRecoveryUsage_Name">
+        <checkBox refId="RDVAllowDRA_Name" defaultChecked="true">データ回復エージェントを許可する</checkBox>
+        <text>BitLocker 回復情報のユーザー記憶域を構成する:</text>
+        <dropdownList refId="RDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+        <dropdownList refId="RDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
+       <checkBox refId="RDVHideRecoveryPage_Name" defaultChecked="false">BitLocker セットアップ ウィザードの回復オプションを省略する</checkBox>
+        <checkBox refId="RDVActiveDirectoryBackup_Name" defaultChecked="true">リムーバブル データ ドライブの AD DS に BitLocker 回復情報を保存する</checkBox> 
+        <dropdownList refId="RDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">AD DS への BitLocker 回復情報の記憶域を構成する:</dropdownList>
+        <checkBox refId="RDVRequireActiveDirectoryBackup_Name">リムーバブル データ ドライブの AD DS に回復情報が格納されるまで BitLocker を有効にしない</checkBox>
+      </presentation>
+      
+      <presentation id="ConfigureRecoveryFolder_Name">
+        <textBox refId="ConfigureRecoveryFolderPath_Input">
+          <label>既定のフォルダー パスの構成: </label>
+          <defaultValue/>
+        </textBox>
+        <text>完全修飾パスを指定するか、コンピューターの環境変数をパスに含めてください。 </text>
+        <text>たとえば、「\\server\backupfolder」または「%SecureDriveEnvironmentVariable%\backupfolder」と入力してください</text>
+        <text>注: いずれの場合でも、ユーザーは回復パスワードの保存先として他のフォルダーを選択できます。</text>
+        <text/>
+      </presentation>
+      
+      
+      <presentation id="EncryptionMethod_Name">
+        <dropdownList refId="EncryptionMethodDropDown_Name" noSort="true" defaultItem="0">暗号化方法を選択してください:</dropdownList>
+      </presentation>
+      
+      <presentation id="PlatformValidation_Name">
+        <text>プラットフォーム検証プロファイルは、プラットフォーム構成レジスタ (PCR) のインデックス セットで構成されます。各 PCR インデックスは、Windows の起動時に実行されるコンポーネントに関連付けられます。</text>
+        <text>以下で、プロファイルに含める PCR インデックスのチェック ボックスをオンにします。 </text>
+        <text>この設定を変更する場合は注意が必要です。</text>
+        <text>既定の PCR 0、2、4、5、8、9、10、および 11 を使用することをお勧めします。</text>
+        <text>BitLocker 保護を有効にするには、PCR 11 を含める必要があります。</text>
+
+        <text>既定の TPM プラットフォーム検証プロファイルを変更するメリットとリスクの詳細については、オンライン ドキュメントを参照してください。</text>
+        
+        <checkBox refId="PlatformValidation_Setting0" defaultChecked="true">PCR 0: コアの信頼性測定のルート (CRTM)、BIOS、およびプラットフォーム拡張</checkBox>
+        <checkBox refId="PlatformValidation_Setting1">PCR 1: プラットフォームおよびマザーボードの構成とデータ</checkBox>
+        <checkBox refId="PlatformValidation_Setting2" defaultChecked="true">PCR 2: オプションの ROM コード</checkBox>
+        <checkBox refId="PlatformValidation_Setting3">PCR 3: オプションの ROM 構成とデータ</checkBox>
+        <checkBox refId="PlatformValidation_Setting4" defaultChecked="true">PCR 4: マスター ブート レコード (MBR) コード</checkBox>
+        <checkBox refId="PlatformValidation_Setting5" defaultChecked="true">PCR 5: マスター ブート レコード (MBR) パーティション テーブル</checkBox>
+        <checkBox refId="PlatformValidation_Setting6">PCR 6: 状態の推移とウェイク イベント</checkBox>
+        <checkBox refId="PlatformValidation_Setting7">PCR 7: コンピューター製造元固有</checkBox>
+        <checkBox refId="PlatformValidation_Setting8" defaultChecked="true">PCR 8: NTFS ブート セクター</checkBox>
+        <checkBox refId="PlatformValidation_Setting9" defaultChecked="true">PCR 9: NTFS ブート ブロック</checkBox>
+        <checkBox refId="PlatformValidation_Setting10" defaultChecked="true">PCR 10: ブート マネージャー</checkBox>
+        <checkBox refId="PlatformValidation_Setting11" defaultChecked="true">PCR 11: BitLocker のアクセスの制御</checkBox>
+        <checkBox refId="PlatformValidation_Setting12">PCR 12: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting13">PCR 13: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting14">PCR 14: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting15">PCR 15: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting16">PCR 16: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting17">PCR 17: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting18">PCR 18: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting19">PCR 19: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting20">PCR 20: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting21">PCR 21: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting22">PCR 22: 将来の使用のため予約済み</checkBox>
+        <checkBox refId="PlatformValidation_Setting23">PCR 23: 将来の使用のため予約済み</checkBox>
+      </presentation>
+      
+      <presentation id="MorBehavior_Name">
+     
+      </presentation>
+
+      <presentation id="IdentificationField">
+        <textBox refId="IdentificationField">
+          <label>BitLocker ID フィールド:</label>
+        </textBox>
+        <textBox refId="SecIdentificationField">
+          <label>許可された BitLocker ID フィールド:</label>
+        </textBox>
+      </presentation>
+
+      <presentation id="UserCertificateOID">
+        <textBox refId="UserCertificateOID">
+          <label>オブジェクトの識別子:</label>
+          <defaultValue>1.3.6.1.4.1.311.67.1.1</defaultValue>
+        </textBox>
+        </presentation>
+
+     <presentation id="MinimumPINLength">
+        <decimalTextBox refId="MinPINLength" defaultValue="4">最小文字数:</decimalTextBox>
+      </presentation>
+      
+     <presentation id="FDVPassphrase_Name">
+        <checkBox refId="FDVRequirePassphrase">固定データ ドライブに対してパスワードを要求する</checkBox>
+        <dropdownList refId="FDVPassphraseComplexity" noSort="true" defaultItem="0">固定データ ドライブのパスワードの複雑さを構成する:</dropdownList>
+        <decimalTextBox refId="FDVMinPassphraseLength" defaultValue="8">固定データ ドライブの最小パスワード長:</decimalTextBox>
+       <text>注: パスワードの複雑さの設定を有効にするには、[複雑さの要件を満たす必要があるパスワード] ポリシー設定を有効にする必要があります。</text>
+      </presentation>
+
+       <presentation id="FDVConfigureSmartCard">
+        <checkBox refId="FDVRequireSmartCard_Name">固定データ ドライブでスマート カードを必ず使用する</checkBox>
+      </presentation>
+
+     <presentation id="RDVPassphrase_Name">
+        <checkBox refId="RDVRequirePassphrase">リムーバブル データ ドライブに対してパスワードを要求する</checkBox>
+       <dropdownList refId="RDVPassphraseComplexity" noSort="true" defaultItem="0">リムーバブル データ ドライブのパスワードの複雑さを構成する:</dropdownList>
+        <decimalTextBox refId="RDVMinPassphraseLength" defaultValue="8">リムーバブル データ ドライブの最小パスワード長:</decimalTextBox>
+<text>注: パスワードの複雑さの設定を有効にするには、[複雑さの要件を満たす必要があるパスワード] ポリシー設定を有効にする必要があります。</text>
+      </presentation>
+
+      <presentation id="RDVConfigureBDE">
+        <checkBox refId="RDVAllowBDE_Name" noSort="true" defaultChecked="true">リムーバブル データ ドライブに BitLocker 保護を適用できるようにする</checkBox>
+        <checkBox refId="RDVDisableBDE_Name" noSort="true" defaultChecked="true">リムーバブル データ ドライブの BitLocker 保護を中断および暗号化解除できるようにする</checkBox>
+      </presentation>
+
+      <presentation id="RDVDenyWriteAccess">
+        <checkBox refId="RDVCrossOrg" noSort="true" defaultChecked="false">別の組織で構成されたデバイスへの書き込みアクセスを許可しない</checkBox>
+      </presentation>
+
+
+      <presentation id="RDVConfigureSmartCard">
+        <checkBox refId="RDVRequireSmartCard_Name" noSort="true" defaultItem="0">リムーバブル データ ドライブでスマート カードを必ず使用する</checkBox>
+        </presentation>
+          
+      <presentation id="EnhancedPIN">
+
+      </presentation>
+
+      <presentation id="FDVDiscoveryVolumeType">
+        <checkBox refId="FDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">FAT 形式の固定ドライブに BitLocker To Go リーダーをインストールしない</checkBox>
+      </presentation>
+
+      <presentation id="RDVDiscoveryVolumeType">
+        <checkBox refId="RDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">FAT 形式のリムーバブル ドライブに BitLocker To Go リーダーをインストールしない</checkBox>
+      </presentation>
+
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

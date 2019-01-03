@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>kirjoita näyttönimi tähän</displayName>
+  <description>kirjoita kuvaus tähän</description>
+  <resources>
+    <stringTable>
+      <string id="Netlogon">Verkkokirjautuminen</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain">Yksiosaisella DSN-nimellä määritetyn toimialueen ohjauskoneen sijainti</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain_Help">Määrittää, yrittävätkö kaikki tietokoneet, joita tämä asetus koskee, suorittaa yksiosaisten toimialuenimien DNS-nimenselvityksen.
+
+Oletusarvoisesti tietokoneen (tai tarkemmin tietokoneessa toimiva ohjauskoneen paikannin) tarvitessa etsiä toimialueen ohjaimen, joka isännöi yksiosaisella nimellä määritettyä Active Directory -toimialuetta, tietokone käyttää yksinomaan NetBIOS-nimenselvitystä eikä DNS-nimenselvitystä, ellei tietokonetta ole liitetty Active Directory -puuryhmään, jossa ainakin yhdellä toimialueella on yksiosainen DNS-nimi. 
+
+Jos tämä asetus on käytössä, tietokoneet, joita tämä käytäntö koskee, yrittävät etsiä ohjauskoneen, jossa on yksiosaisella nimellä määritetty Active Directory -toimialue, käyttämällä DNS-nimenselvitystä.
+
+Jos tämä asetus ei ole käytössä, tietokoneet, joita tämä käytäntö koskee, yrittävät etsiä ohjauskoneen, jossa on yksiosaisella nimellä määritetty Active Directory -toimialue, käyttämällä vain NetBIOS-nimenselvitystä ilman DNS-nimenselvitystä, ellei tietokone etsi toimialuetta, jolla on yksiosainen DNS-nimi, joka sijaitsee Active Directory -puuryhmässä, johon tietokone on liitetty.
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään tietokoneessa ja tietokoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_AutoSiteCoverage">Ohjauskoneen paikantimen DNS SRV -tietueiden automaattinen saitin peitto</string>
+      <string id="Netlogon_AutoSiteCoverage_Help">Määrittää, rekisteröivätkö ohjauskoneet dynaamisesti ohjauskoneen paikantimen saittikohtaiset SRV-tietueet lähimmille saiteille, joilla ei ole saman toimialueen ohjauskonetta (tai saman toimialuepuuryhmän yleistä luetteloa ei ole olemassa). Verkkokirjauspalvelu rekisteröi dynaamisesti nämä DNS-tietueet, joita käytetään ohjauskoneen paikantamisessa.
+
+Jos tämä asetus on käytössä, asetuksen määrittämät ohjauskoneet rekisteröivät ohjauskoneen paikantimen saittikohtaiset DNS SRV -tietueet lähimpään saittiin, jossa ei ole saman toimialueen ohjauskonetta tai saman puuryhmän yleistä luetteloa.
+
+Jos poistat tämän asetuksen käytöstä, ohjauskoneet eivät rekisteröi muiden saittien saittikohtaisia ohjauskoneen paikantimien DNS SRV -tietueita.
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään ohjauskoneessa ja ohjauskoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_AvoidPdcOnWan">Ota yhteys pääohjauskoneeseen kirjausvirheen tapahtuessa</string>
+      <string id="Netlogon_AvoidPdcOnWan_Help">Määrittää, yrittääkö toimialueen ohjauskone varmistaa työaseman antaman salasanan pääohjauskoneesta, jos ohjauskone ei voinut vahvistaa salasanaa.
+
+Yhteyden ottaminen pääohjauskoneeseen on hyödyllistä, jos työaseman salasana on vaihdettu vastikään, eikä tieto siitä ole vielä kulkenut ohjauskoneeseen. Käyttäjät voivat poistaa tämän toiminnon käytöstä, jos pääohjauskone on hitaan WAN-yhteyden päässä.
+
+Ota toiminto käyttöön valitsemalla Ota käyttöön.
+
+Poista toiminto käytöstä valitsemalla Poistettu käytöstä.</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod">Ohjauskoneiden etsinnän taustatoiminnon uudelleenyritysten alkuasetus</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod_Help">Kun ohjauskoneita ajoittain etsivät sovellukset eivät voi löytää ohjauskonetta, tämän asetuksen arvo määrittää ajan (sekunteina) ennen ensimmäistä uudelleenyritystä.
+
+Tämän asetuksen oletusarvo on 10 minuuttia (10*60). Tämän asetuksen enimmäisarvo on 49 päivää (0x49*24*60*60=4 233 600). Tämän asetuksen vähimmäisarvo on 0.
+
+Tämä asetus koskee vain niitä DsGetDcName-kutsun lähettäjiä, joihin on määritetty DS_BACKGROUND_ONLY-merkintä.
+
+Jos tämän asetuksen arvo on pienempi kuin NegativeCachePeriod-aliavaimessa määritetty arvo, käytetään NegativeCachePeriod-aliavaimen arvoa.
+
+Varoitus: Jos tämän asetuksen arvo on liian suuri, asiakas ei yritä etsiä ohjauskoneita, jotka eivät olleet aluksi käytettävissä. Jos tämän asetuksen arvo on liian pieni eikä yhtään ohjauskonetta ole käytettävissä, etsintäyritykset saattavat aiheuttaa liian runsasta verkkoliikennettä.</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod">Ohjauskoneiden etsinnän taustatoiminnon uudelleenyritysten enimmäisasetus</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod_Help">Kun toimialueen ohjauskonetta ajoittain etsivät sovellukset eivät löydä ohjauskonetta, tämä arvo määrittää suurimman sallitun uudelleenyritysvälin.
+
+Uudelleenyritysvälit voi ehkä olla määritetty arvoon 10 minuuttia, 20 minuuttia ja sen jälkeen 40 minuuttia, mutta kun aikaväli saavuttaa tämän asetuksen arvon, arvosta tulee uudelleenyritysaikaväli kaikissa tulevissa uudelleenyrityksissä, kunnes ohjauskoneiden etsinnän taustatoiminnon uudelleenyritysten asetuksen arvo saavutetaan.
+
+Tämän asetuksen oletusarvo on 60 minuuttia (60*60). Tämän asetuksen enimmäisarvo on 49 päivää (0x49*24*60*60=4 233 600). Tämän asetuksen vähimmäisarvo on 0.
+
+Jos tämän asetuksen arvo on pienempi kuin ohjauskoneiden etsinnän taustatoiminnon uudelleenyritysten asetuksen arvo, käytetään ohjauskoneiden etsinnän taustatoiminnon uudelleenyritysten asetuksen arvoa.
+
+Varoitus: Jos tämän asetuksen arvo on liian suuri, työaseman ohjauskoneen etsimiseen voi kulua hyvin pitkä aika.
+
+Jos asetuksen arvo on liian pieni eikä ohjauskone ole saatavilla, tiheään tapahtuvat uudelleenyritykset voivat tuottaa liikaa verkkoliikennettä.</string>
+      <string id="Netlogon_BackgroundRetryQuitTime">Ohjauskoneiden etsinnän taustatoiminnon uudelleenyritysten loppuasetus</string>
+      <string id="Netlogon_BackgroundRetryQuitTime_Help">Kun toimialueen ohjauskonetta ajoittain etsivät sovellukset eivät löydä ohjauskonetta, tämä arvo määrittää, milloin uusia yrityksiä ei enää sallita. Uudelleenyritykset voidaan määrittää tapahtumaan enimmäisaikaväliasetuksen mukaisesti, mutta saavutettaessa asetuksessa määritetty arvo enempää uusia yrityksiä ei tapahdu. Jos tämän asetuksen arvo on pienempi kuin ohjauskoneiden etsinnän uudelleenyritysten enimmäisasetuksen arvo, käytetään ohjauskoneiden etsinnän uudelleenyritysten enimmäisasetuksen arvoa.
+
+Tämän asetuksen oletusarvona on olla lopettamatta uudelleenyrityksiä (0). Tämän asetuksen enimmäisarvo on 49 päivää (0x49*24*60*60=4 233 600). Tämän asetuksen vähimmäisarvo on 0.
+
+Varoitus: Jos tämän asetuksen arvo on liian pieni, asiakas lopettaa ohjauskoneen etsimisen liian pian.</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod">Onnistuneen säännöllisen taustatoiminnon  ohjauskonevälimuistipäivitys</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod_Help">Määrittää, milloin onnistunut ohjauskonevälimuistimäärite päivitetään. Tätä asetusta sovelletaan kutsuviin ohjelmiin, jotka yrittävät säännöllisesti paikantaa ohjauskoneita, ennen  ohjauskonetietojen palauttamista kutsuvalle ohjelmalle. Tämän asetuksen oletusarvo on ääretön (4 294 967 200). Enimmäisarvo on 4 294 967 200, mutta enimmäisarvo, jota ei laskennallisesti käsitellä äärettömänä, on 49 päivää (49*24*60*60=4 233 600). Mainittua arvoa suuremmat arvot tulkitaan äärettömiksi. Vähimmäisarvo 0 tarkoittaa, että päivitys suoritetaan aina.</string>
+      <string id="Netlogon_DC_Locator_DNS_Records">Ohjauskoneen paikantimen DNS-tietueet</string>
+      <string id="Netlogon_DebugFlag">Virheenkorjauksen lokitiedoston kirjaustaso</string>
+      <string id="Netlogon_DebugFlag_Help">Määrittää verkkokirjauspalvelun virheenkorjauksen tulostetason.
+
+Verkkokirjauspalvelu tulostaa virheenkorjaustietoja lokitiedostoon netlogon.log, joka sijaitsee %windir%\debug-kansiossa. Oletusarvoisesti ei kirjata mitään virheenkorjaustietoja.
+
+Jos otat tämän asetuksen käyttöön ja määrität muun arvon kuin nollan, tiedostoon kirjataan virheenkorjaustietoja.  Mitä suurempi arvo, sen enemmän tietoja lokimerkinnät sisältävät. Arvoa 536 936 447 käytetään yleisesti optimaalisena asetuksena.
+
+Jos määrität asetuksen arvoksi nollan, käytetään yllä kuvattua oletustoimintoa.
+
+Jos poistat tämän asetuksen käytöstä tai et määritä sitä, käytetään yllä kuvattua oletustoimintoa.</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords">Ohjauskoneet eivät rekisteröi ohjauskoneen paikantimen DNS-tietueita</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords_Help">Määrittää, mitä ohjauskoneen paikantimen DNS-tietueita ei rekisteröidä verkkokirjauspalvelussa.
+
+Ota tämä asetus käyttöön valitsemalla Ota käyttöön ja määrittämällä välilyönnein eroteltujen niiden ohjauskoneen paikantimen DNS-tietueiden ohjeiden luettelo, joita ei rekisteröidä ohjauskoneissa, joita tämä asetus koskee.
+
+Valitse ohjeet seuraavasta luettelosta:
+
+Ohje             Tyyppi  DNS-tietue
+
+LdapIpAddress    A     &lt;DNS-toimialuenimi&gt; Ldap             SRV   _ldap._tcp.&lt;DNS-toimialuenimi&gt; LdapAtSite       SRV   _ldap._tcp.&lt;Saittinimi&gt;._sites.&lt;DNS-toimialuenimi&gt; Pdc              SRV   _ldap._tcp.pdc._msdcs.&lt;DNS-toimialuenimi&gt; Gc               SRV   _ldap._tcp.gc._msdcs.&lt;DNS-puuryhmänimi&gt; GcAtSite         SRV   _ldap._tcp.&lt;Saittinimi&gt;._sites.gc._msdcs.&lt;DNS-puuryhmänimi&gt; DcByGuid         SRV   _ldap._tcp.&lt;Toimialue-GUID&gt;.domains._msdcs.&lt;DNS-puuryhmänimi&gt; GcIpAddress      A     _gc._msdcs.&lt;DNS-puuryhmänimi&gt; DsaCname         CNAME &lt;DSA-GUID&gt;._msdcs.&lt;DNS-puuryhmänimi&gt; Kdc              SRV   _kerberos._tcp.dc._msdcs.&lt;DNS-toimialuenimi&gt; KdcAtSite        SRV    _kerberos._tcp.dc._msdcs.&lt;Saittinimi&gt;._sites.&lt;DNS-toimialuenimi&gt; Dc               SRV   _ldap._tcp.dc._msdcs.&lt;DNS-toimialuenimi&gt; DcAtSite         SRV   _ldap._tcp.&lt;Saittinimi&gt;._sites.dc._msdcs.&lt;DNS-toimialuenimi&gt; Rfc1510Kdc       SRV   _kerberos._tcp.&lt;DNS-toimialuenimi&gt; Rfc1510KdcAtSite SRV   _kerberos._tcp.&lt;Saittinimi&gt;._sites.&lt;DNS-toimialuenimi&gt; GenericGc        SRV   _gc._tcp.&lt;DNS-puuryhmänimi&gt; GenericGcAtSite  SRV   _gc._tcp.&lt;Saittinimi&gt;._sites.&lt;DNS-puuryhmänimi&gt; Rfc1510UdpKdc    SRV   _kerberos._udp.&lt;DNS-toimialuenimi&gt; Rfc1510Kpwd      SRV   _kpasswd._tcp.&lt;DNS-toimialuenimi&gt; Rfc1510UdpKpwd   SRV   _kpasswd._udp.&lt;DNS-toimialuenimi&gt;
+
+Jos tämä asetus on poistettu käytöstä, ohjauskoneen paikantimen DNS-tietueiden dynaamiseen rekisteröintiin määritetyt ohjauskoneet rekisteröivät kaikki ohjauskoneen paikantimen DNS-resurssitietueet.
+
+Jos tätä asetusta ei sovelleta ohjauskoneeseen, ohjauskone käyttää paikallista määritystä.</string>
+      <string id="Netlogon_DnsRefreshInterval">Ohjauskoneen paikantimen DNS-tietueiden päivitysväli</string>
+      <string id="Netlogon_DnsRefreshInterval_Help">Määrittää ohjauskoneen paikantimen DNS-resurssitietueiden päivitysvälin niissä ohjauskoneissa, joihin tätä asetusta käytetään. Verkkokirjauspalvelu rekisteröi dynaamisesti nämä DNS-tietueet, joita käytetään ohjauskoneen paikantamiseen paikantimen algoritmissa. Tätä asetusta voidaan käyttää vain ohjauskoneissa, jotka käyttävät dynaamista päivitystä.
+
+Ohjauskoneen paikantimen DNS-resurssitietueiden dynaamiseen rekisteröintiin määritetyt ohjauskoneet rekisteröivät tietueensa ajoittain DNS-palvelimiin, vaikka tietueiden tiedot eivät olisikaan muuttuneet. Jos määräävät DNS-palvelimet on määritetty suorittamaan vanhentuneiden tietueiden poistaminen, tätä uudelleenrekisteröintiä tarvitaan ilmoittamaan näille DNS-palvelimille, että nämä tietueet ovat ajan tasalla ja että ne tulisi säilyttää tietokannassa.
+
+Varoitus: Jos DNS-resurssitietueet rekisteröidään alueilla, joissa poistaminen on käytössä, tämän asetuksen arvon ei koskaan tule olla suurempi kuin näiden alueiden päivitysvälin arvo. Jos asetat ohjauskoneen paikantimen DNS-tietueiden päivitysvälin suuremmaksi kuin DNS-alueiden päivitysvälin, DNS-resurssitietueet voidaan tarpeettomasti poistaa.
+
+Voit määrittää toimialueen ohjauskoneiden tietueiden päivitysvälin valitsemalla Ota käyttöön -vaihtoehdon ja kirjoittamalla luvun, jonka vähimmäisarvo on 1 800. Tämä arvo määrittää toimialueen ohjauskoneiden päivitysvälin sekunteina (esimerkiksi arvo 3 600 sekuntia vastaa 60 minuuttia).
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään ohjauskoneessa ja ohjauskoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_DnsTtl">Ohjauskoneen paikantimen DNS-tietueiden elinaika-asetus</string>
+      <string id="Netlogon_DnsTtl_Help">Määrittää Verkkokirjauspalvelun rekisteröimien SRV-resurssitietueiden Elinaika (TTL) -kentän arvon. Verkkokirjauspalvelu rekisteröi dynaamisesti nämä DNS-tietueet, joita käytetään ohjauskoneen paikantamisessa.
+
+Määritä ohjauskoneen paikantimen DNS-tietueiden elinaika valitsemalla Käytössä ja antamalla arvo sekunteina (esimerkiksi arvo 900 on 15 minuuttia).
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään ohjauskoneessa ja ohjauskoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_ExpectedDialupDelay">Odotettu soittoviive kirjauduttaessa</string>
+      <string id="Netlogon_ExpectedDialupDelay_Help">Määrittää lisäajan, jonka tietokone odottaa ohjauskoneen vastausta verkkoon kirjauduttaessa.
+
+Määritä odotettu soittoviive kirjauduttaessa valitsemalla Ota käyttöön ja antamalla haluamasi arvon sekunteina (esimerkiksi arvo 60 on yksi minuutti).
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään tietokoneessa ja tietokoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_GcSiteCoverage">Yleisen luettelon paikantimen DNS SRV -tietueiden kattamat saitit</string>
+      <string id="Netlogon_GcSiteCoverage_Help">Määrittää saitit, joille yleisten luettelojen pitäisi rekisteröidä saittikohtaiset yleisen luettelon paikantimen DNS SRV -resurssitietueet. Nämä tietueet rekisteröidään yleisen luettelon saiteille rekisteröityjen saittikohtaisten SRV-tietueiden lisäksi ja sellaisen yleisen luettelon rekisteröimien tietueiden lisäksi, joka on määritetty lähimpien ilman yleistä luetteloa olevien saittien yleisen luettelon paikantimen DNS SRV -tietueiden rekisteröintiä varten. 
+
+Verkkokirjauspalvelu rekisteröi dynaamisesti nämä yleisen luettelon paikantimen DNS-tietueet ja saittikohtaiset SRV-tietueet, joita käytetään yleisen luettelon paikantamisessa. Active Directory -saitti muodostuu vähintään yhdestä hyvin yhdistetystä TCP/IP-aliverkosta, joiden avulla järjestelmänvalvojat voivat määrittää Active Directoryn käytön ja replikoinnin asetuksia. Yleinen luettelo on ohjauskone, jossa on jokaisen Active Directoryn toimialueen osittainen kopio.
+
+Määritä saitit, jotka yleisen luettelon paikantimen DNS SRV -tietueet kattavat, valitsemalla Käytössä ja antamalla saittien nimet välilyönnein erotellussa muodossa.
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään yleisessä luettelossa ja yleiset luettelot käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_LdapSrvPriority">Ohjauskoneen paikantimen DNS SRV -tietueiden prioriteettiasetus</string>
+      <string id="Netlogon_LdapSrvPriority_Help">Määrittää tätä asetusta käyttävien ohjauskoneiden rekisteröimien SRV-resurssitietueiden Prioriteetti-kentän arvon. Verkkokirjauspalvelu rekisteröi dynaamisesti nämä DNS-tietueet, joita käytetään ohjauskoneen paikantamisessa.
+
+SRV-tietueen prioriteettikenttä määrittää kohdeisäntien suosituimmuuden (määritetty SRV-tietueen Kohde-kentässä). SRV-resurssitietueita kyselevät DNS-työasemat yrittävät ensin muodostaa yhteyden ensimmäiseen tavoitettavaan isäntään, jolla on pienin prioriteettinumero.
+
+Määritä ohjauskoneen paikantimen DNS SRV -resurssitietueiden prioriteetti valitsemalla Käytössä ja antamalla arvo. Arvoalue on 0 - 65 535.
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään ohjauskoneessa ja ohjauskoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_LdapSrvWeight">Ohjauskoneen paikantimen DNS SRV -tietueiden painoasetus</string>
+      <string id="Netlogon_LdapSrvWeight_Help">Määrittää tätä asetusta käyttävien ohjauskoneiden rekisteröimien SRV-resurssitietueiden Painoarvo-kentän arvon. Verkkokirjauspalvelu rekisteröi dynaamisesti nämä DNS-tietueet, joita käytetään ohjauskoneen paikantamisessa.
+
+SRV-tietueen Painoarvo-kenttää voidaan käyttää prioriteettiarvon lisäksi luomaan kuormituksen tasausmekanismi, jossa useita palvelimia on määritetty SRV-tietueiden Kohde-kentässä ja niiden kaikkien prioriteetti on sama. Todennäköisyys, jolla DNS-asiakas sattumanvaraisesti valitsee kohdepalvelimen yhteyttä varten määräytyy SRV-tietueen Painoarvo-kentän arvon mukaan.
+
+Määritä ohjauskoneen paikantimen DNS SRV -tietueiden painoarvo valitsemalla Käytössä ja antamalla arvo. Arvoalue on 0 - 65 535.
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään ohjauskoneessa ja ohjauskoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_MaximumLogFileSize">Lokitiedoston enimmäiskoko</string>
+      <string id="Netlogon_MaximumLogFileSize_Help">Määrittää %windir%\debug-kansiossa olevan lokitiedoston netlogon.log enimmäiskoon tavuina, kun kirjaaminen on käytössä.
+
+Lokitiedoston oletusarvoinen enimmäiskoko on 20 Mt. Jos tämä käytäntö otetaan käyttöön, lokitiedoston enimmäiskooksi asetetaan määritetty koko.  Kun lokitiedoston koko saavuttaa sallitun enimmäiskoon, lokitiedosto tallennetaan tiedostoon Netlogon.bak ja tiedosto Netlogon.log katkaistaan. Määritä käytettävissä olevaan tallennustilaan nähden kohtuullinen arvo.
+
+Jos tämä käytäntö on pois käytöstä tai sitä ei ole määritetty, käytetään edellä kuvattua oletustoimintatapaa.</string>
+      <string id="Netlogon_NdncSiteCoverage">Application Directory -osion paikantimen DNS SRV -tietueiden kattamat saitit</string>
+      <string id="Netlogon_NdncSiteCoverage_Help">Määrittää saitit, joiden saittikohtaisen sovelluskansion ohjauskoneen paikantimen DNS SRV -resurssitietueet ohjauskoneiden sovelluskansio-osion tulee rekisteröidä. Nämä tietueet rekisteröidään ohjauskoneen saitille rekisteröityjen saittikohtaisten SRV-tietueiden lisäksi ja lähimpien ohjauskoneettomien saittien ohjauskoneen paikantimen DNS SRV -tietueiden rekisteröintiä varten määritetyn ohjauskoneen rekisteröimien tietueiden lisäksi. 
+
+Verkkokirjauspalvelu rekisteröi dynaamisesti nämä sovelluskansio-osion paikantimen DNS-tietueet ja saittikohtaiset SRV-tietueet, joita käytetään sovelluskansion osiokohtaisen ohjauskoneen paikantamisessa. Active Directory -saitti muodostuu vähintään yhdestä hyvin yhdistetystä TCP/IP-aliverkosta, joiden avulla järjestelmänvalvojat voivat määrittää Active Directoryn käytön ja replikoinnin asetuksia.
+
+Määritä saitit, jotka ohjauskoneen paikantimen sovelluskansion osiokohtaiset DNS SRV -tietueet kattavat, valitsemalla Käytössä ja antamalla saittien nimet välilyönnein erotellussa muodossa.
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään ohjauskoneessa ja ohjauskoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_NegativeCachePeriod">Epäonnistuneen ohjauskoneen etsinnän välimuistiasetus</string>
+      <string id="Netlogon_NegativeCachePeriod_Help">Määrittää ajan (sekunteina), jonka ohjauskoneen paikannin muistaa, ettei ohjauskonetta löytynyt toimialueesta. Kun tämän asetuksen määrittämän ajan aikana tapahtuu uusi ohjauskoneen etsimisyritys, ohjauskoneen etsiminen epäonnistuu heti ilman ohjauskoneen etsimistä.
+
+Tämän asetuksen oletusarvo on 45 sekuntia. Tämän asetuksen enimmäisarvo on 7 päivää (7*24*60*60). Tämän asetuksen vähimmäisarvo on 0.
+
+Varoitus: Jos tämän asetuksen arvo on liian suuri, asiakas ei yritä etsiä ohjauskoneita, jotka eivät olleet aluksi käytettävissä. Jos asetuksen arvo on liian pieni, työasemat yrittävät löytää ohjauskoneita, vaikka yhtään ohjauskonetta ei ole saatavilla.</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode">Netlogon-resurssin yhteensopivuus</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode_Help">Tämä asetus hallitsee sitä, tukeeko verkkokirjauspalvelun ohjauskoneeseen luoma jaettu verkkokirjausasema aiemman sovellusten tiedostonjako-ohjeita.
+
+Kun tämä asetus on käytössä, jaettu verkkokirjausasema noudattaa tiedostonjako-ohjeita, jotka myöntävät yksinomaisen lukuoikeuden jaetussa asemassa oleviin tiedostoihin, vaikka kutsujalla olisi vain lukuoikeudet.
+
+Kun tämä asetus ei ole käytössä tai sitä ei ole määritetty, jaettu verkkokirjausasema myöntää jaetun lukuoikeuden asemassa olevaan tiedostoon, kun siihen pyydetään yksinomaista lukuoikeutta ja kutsujalla on vain lukuoikeudet.
+
+Oletusarvoisesti jaettu verkkokirjausasema myöntää jaetun lukuoikeuden asemassa oleviin tiedostoihin yksinomaista lukuoikeutta pyydettäessä.
+
+Huomautus: Verkkokirjauspalvelu luo jaetun verkkokirjausaseman toimialueen asiakaskoneiden käyttöä varten. Jaetun verkkokirjausaseman oletustoimintatapa varmistaa sen, ettei yksikään sovellus, jolla on vain lukuoikeudet jaetun verkkokirjausaseman tiedostoihin, voi lukita tiedostoja pyytämällä yksinomaista lukukäyttöä, mikä saattaisi estää ryhmäkäytäntöasetusten päivittämisen toimialueen työasemiin. Kun tämä asetus on käytössä, sovellus, joka luottaa jaetun verkkokirjausaseman tiedostojen lukitsemismahdollisuuteen vain lukuoikeuksilla, voi estää ryhmäkäytäntötyöasemia lukemasta tiedostoja ja toimialueen jaetun verkkokirjausaseman saatavuus heikkenee.
+
+Jos tämä asetus on käytössä, toimialueen järjestelmänvalvojien tulee varmistaa, että vain yksinomaista lukuoikeutta käyttävät sovellukset ovat järjestelmänvalvojan hyväksymiä.</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">Onnistuneen säännöllisen muun kuin taustatoiminnon ohjauskonevälimuistipäivitys</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod_Help">Määrittää, milloin onnistunut ohjauskonevälimuistimäärite päivitetään. Tätä asetusta sovelletaan kutsuviin ohjelmiin, jotka eivät yritä paikantaa ohjauskoneita säännöllisesti, ennen ohjauskonetietojen palauttamista kutsuvalle ohjelmalle. Tämä asetus koskee vain niitä DsGetDcName-kutsun lähettäjiä, joihin ei ole määritetty DS_BACKGROUND_ONLY-merkintää.
+
+Tämän asetuksen oletusarvo on 30 minuuttia (1800). Enimmäisarvo on 4 294 967 200, mutta enimmäisarvo, jota ei laskennallisesti käsitellä äärettömänä, on 49 päivää (49*24*60*60=4 233 600). Mainittua arvoa suuremmat arvot tulkitaan äärettömiksi. Vähimmäisarvo 0 tarkoittaa, että päivitys suoritetaan aina.</string>
+      <string id="Netlogon_ScavengeInterval">Poistamisväli</string>
+      <string id="Netlogon_ScavengeInterval_Help">Määrittää aikavälin, jolla verkkokirjaus suorittaa seuraavat puhdistustoiminnot:
+
+- Tarkistaa, onko suojatun kanavan salasanaa muokattava, ja muokkaa sen tarvittaessa.
+
+- Etsii ohjauskoneessa ohjauskoneen, jota ei ole vielä löydetty.
+
+- Toimialueen ensisijaisessa ohjauskoneessa pyrkii lisäämään NetBIOS-nimen &lt;Toimialuenimi&gt;[1B], jos sitä ei ole vielä lisätty.
+
+Mikään näistä toiminnoista ei ole toiminnalle tärkeä. 15 minuuttia on optimaalinen aikaväli kaikissa muissa kuin äärimmäisissä tapauksissa. Jos ohjauskone on erotettu luotetusta toimialueesta kalliilla yhteydellä (kuten ISDN-yhteydellä), tätä parametria voidaan säätää suuremmaksi, jottei ohjauskoneita etsitä automaattisesti tiheään luotettavassa toimialueessa.
+
+Ota asetus käyttöön valitsemalla Käytössä ja määritä aikaväli sekunteina.</string>
+      <string id="Netlogon_SiteCoverage">Ohjauskoneen paikantimen DNS SRV -tietueiden kattamat saitit</string>
+      <string id="Netlogon_SiteCoverage_Help">Määrittää saitit, joille ohjauskoneiden pitäisi rekisteröidä saittikohtaiset ohjauskoneen paikantimen DNS SRV -resurssitietueet. Nämä tietueet rekisteröidään ohjauskoneen saitille rekisteröityjen saittikohtaisten SRV-tietueiden lisäksi ja lähimpien ohjauskoneettomien saittien ohjauskoneen paikantimen DNS SRV -tietueiden rekisteröintiä varten määritetyn ohjauskoneen rekisteröimien tietueiden lisäksi. 
+
+Verkkokirjauspalvelu rekisteröi dynaamisesti nämä DNS-tietueet, joita käytetään ohjauskoneen paikantamisessa. Active Directory -saitti muodostuu vähintään yhdestä hyvin yhdistetystä TCP/IP-aliverkosta, joiden avulla järjestelmänvalvojat voivat määrittää Active Directoryn käytön ja replikoinnin asetuksia.
+
+Määritä saitit, jotka ohjauskoneen paikantimen DNS SRV -tietueet kattavat, valitsemalla Käytössä ja antamalla saittien nimet välilyönnein erotellussa muodossa.
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään ohjauskoneessa ja ohjauskoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_SiteName">Saitin nimi</string>
+      <string id="Netlogon_SiteName_Help">Määrittää Active Directory -saitin, johon tietokoneet kuuluvat.
+
+Active Directory -saitti muodostuu vähintään yhdestä hyvin yhdistetystä TCP/IP-aliverkosta, joiden avulla järjestelmänvalvojat voivat määrittää Active Directoryn käytön ja replikoinnin asetuksia.
+
+Määritä saitin nimi tähän asetukseen valitsemalla Käytössä ja kirjoittamalla saitin nimi. Kun saittia, johon tietokone kuuluu, ei ole määritetty, tietokone etsii saittinsa automaattisesti Active Directorysta.
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään tietokoneessa ja tietokoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode">Sysvol-resurssin yhteensopivuus</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode_Help">Tämä asetus hallitsee sitä, tukeeko verkkokirjauspalvelun ohjauskoneeseen luoma jaettu Sysvol-asema aiemman sovellusten tiedostonjako-ohjeita.
+
+Kun tämä asetus on käytössä, jaettu Sysvol-asema noudattaa tiedostonjako-ohjeita, jotka myöntävät yksinomaisen lukuoikeuden jaetussa asemassa oleviin tiedostoihin, vaikka kutsujalla olisi vain lukuoikeudet.
+
+Kun tämä asetus ei ole käytössä tai sitä ei ole määritetty, jaettu Sysvol-asema myöntää jaetun lukuoikeuden asemassa olevaan tiedostoon, kun siihen pyydetään yksinomaista lukuoikeutta ja kutsujalla on vain lukuoikeudet.
+
+Oletusarvoisesti jaettu Sysvol-asema myöntää jaetun lukuoikeuden asemassa oleviin tiedostoihin yksinomaista lukuoikeutta pyydettäessä.
+
+Huomautus: Verkkokirjauspalvelu luo jaetun Sysvol-aseman toimialueen ryhmäkäytäntöasiakaskoneiden käyttöä varten. Jaetun Sysvol-aseman oletustoimintatapa varmistaa sen, ettei yksikään sovellus, jolla on vain lukuoikeudet jaetun Sysvol-aseman tiedostoihin, voi lukita tiedostoja pyytämällä yksinomaista lukukäyttöä, mikä saattaisi estää ryhmäkäytäntöasetusten päivittämisen toimialueen työasemiin. Kun tämä asetus on käytössä, sovellus, joka luottaa jaetun Sysvol-aseman tiedostojen lukitsemismahdollisuuteen vain lukuoikeuksilla, voi estää ryhmäkäytäntötyöasemia lukemasta tiedostoja ja toimialueen jaetun Sysvol-aseman saatavuus heikkenee.
+
+Jos tämä asetus on käytössä, toimialueen järjestelmänvalvojien tulee varmistaa, että vain yksinomaista lukuoikeutta käyttävät sovellukset ovat järjestelmänvalvojan hyväksymiä.</string>
+      <string id="Netlogon_UseDynamicDns">Ohjauskoneen paikantimen DNS-tietueiden dynaaminen rekisteröinti</string>
+      <string id="Netlogon_UseDynamicDns_Help">Määrittää, onko ohjauskoneen paikantimen DNS-resurssitietueiden dynaaminen rekisteröinti käytössä. Verkkokirjauspalvelu rekisteröi dynaamisesti nämä DNS-tietueet, joita käytetään ohjauskoneen paikantamiseen paikantimen algoritmissa.
+
+Jos otat tämän asetuksen käyttöön, ohjauskoneet, joita tämä asetus dynaamisesti koskee, rekisteröivät ohjauskoneen paikantimen DNS-resurssitietueet dynaamisen DNS-päivitysyhteensopivien verkkoyhteyksien kautta.
+
+Jos poistat tämän asetuksen käytöstä, ohjauskoneet eivät rekisteröi ohjauskoneen paikantimen DNS-resurssitietueita.
+
+Jos tätä asetusta ei ole määritetty, sitä ei käytetä missään ohjauskoneessa ja ohjauskoneet käyttävät paikallista määritystä.</string>
+      <string id="Netlogon_TryNextClosestSite">Koeta seuraavaksi lähintä sivustoa</string>
+      <string id="Netlogon_TryNextClosestSite_Help">Asiakkaat käyttävät ohjauskoneiden paikantamispalvelua etsiessään Active Directory -toimialueensa ohjauskoneita. Ohjauskoneen paikannin yrittää oletusarvoisesti löytää ohjauskoneen samasta sivustosta. Jos ohjauskoneita ei löydy samasta sivustosta, ohjauskoneen paikannin saattaa palauttaa haun tuloksena toisen ohjauskoneen, joka sijaitsee toisessa, mahdollisesti usean sivustohypyn päässä olevassa, sivustossa. Kahden sivuston välinen etäisyys määritetään niiden välisten sivustolinkkien yhteenlasketun kustannusten mukaan. Lähempänä olevan sivuston sivustolinkkien kustannus on pienempi kuin kauempana olevan sivuston. Koeta seuraavaksi lähintä sivustoa -ominaisuus määrittää ohjauskoneen paikantimen etsimään ohjauskonetta sivustolinkkien kustannusten mukaan seuraavaksi lähimmästä sivustosta, jos ohjauskonetta ei löydy samasta sivustosta. Seuraavaksi lähimmästä sivustosta etsiminen sujuvoittaa verkkoliikennettä huomattavasti useista sivustoista koostuvissa skenaarioissa.
+
+Jos tämä käytäntöasetus otetaan käyttöön, Koeta seuraavaksi lähintä sivustoa -asetus otetaan käyttöön kaikissa tietokoneessa käytettävissä olevissa mutta määrittämättömissä verkkosovittimissa.
+
+Jos tämä käytäntöasetus poistetaan käytöstä, Koeta seuraavaksi lähintä sivustoa -asetusta ei käytetä oletusarvoisesti kaikissa tietokoneessa käytettävissä olevissa mutta määrittämättömissä verkkosovittimissa. Jos ohjauskoneen kutsussa kuitenkin käytetään DS_TRY_NEXTCLOSEST_SITE -lippua, paikantamisessa noudatetaan Koeta seuraavaa sivustoa -asetusta.
+
+Jos tätä käytäntöasetusta ei määritetä, Koeta seuraavaksi lähintä sivustoa -asetusta ei käytetä oletusarvoisesti kaikissa tietokoneessa käytettävissä olevissa mutta määrittämättömissä verkkosovittimissa. Jos kutsussa käytetään DS_TRY_NEXTCLOSEST_SITE -lippua, paikantamisessa noudatetaan Koeta seuraavaa sivustoa -asetusta.</string>
+      <string id="Netlogon_ForceRediscoveryInterval">Pakota uudelleenetsinnän aikaväli</string>
+      <string id="Netlogon_ForceRediscoveryInterval_Help">Asiakkaat käyttävät ohjauskoneiden paikantamispalvelua etsiessään Active Directory -toimialueensa ohjauskoneita. Kun ohjauskoneen paikannin löytää ohjauskoneen, se tehostaa paikannusalgoritmia tallentamalla ohjauskoneet välimuistiin. Ohjauskoneen paikannin palaa ohjauskoneeseen niin kauan kuin se täyttää asetetut vaatimukset ja on käytössä. Olemassa olevat asiakkaat löytävät uuden ohjauskoneen vain silloin, kun ohjauskoneen paikannin suorittaa pakotetun uudelleenetsinnän. Ohjauskoneen paikannin suorittaa pakotetun uudelleenetsinnän määrätyin väliajoin, jotta se pystyy huomioimaan verkossa tapahtuneet muutokset sekä tasapainottamaan asiakkaiden kuormituksen tehokkaasti kaikkien toimialueiden tai toimialuepuuryhmien ohjauskoneille. Ohjauskoneen paikantimen pakotetun uudelleenetsinnän oletusaikaväli on 12 tuntia. Pakotettu uudelleenetsintä voidaan käynnistää myös silloin, jos ohjauskoneen paikantimelle tulevassa kutsussa käytetään DS_FORCE_REDISCOVERY -lippua. Uudelleenetsintä nollaa välimuistiin tallennettujen ohjauskonemerkintöjen laskurin.
+
+Jos otat tämän käytäntöasetuksen käyttöön, tietokoneen ohjauskoneen paikannin suorittaa pakotetun uudelleenetsinnän määrätyin aikavälein. Pienin sallittu aikaväli on 3600 sekuntia (1 tunti). Tämä estää sen, että uudelleenetsintä ei kuormita verkkoa liikaa. Suurin sallittu aikaväli on 4 294 967 200, mutta kaikkia 4294967 sekuntia (~49 päivää) suurempia arvoja käsitellään äärettömänä.
+
+Jos poistat tämän käytäntöasetuksen käytöstä, pakotettu uudelleenetsintä suoritetaan oletuksena 12 tunnin välein.
+
+Jos et määritä tätä käytäntöasetusta, pakotettu uudelleenetsintä suoritetaan oletuksena 12 tunnin välein, ellei rekisteri paikallinen kone -asetuksessa ole toisin määritetty.</string>
+      <string id="Netlogon_AddressTypeReturned">Palautettavan ohjauskoneen osoitetyyppi</string>
+      <string id="Netlogon_AddressTypeReturned_Help">Ohjauskoneen paikantimen APIt palauttavat ohjauskoneen IP-osoitteen ja muita tietoja. Ennen IPv6-tukea, ohjauskoneen IP-osoite palautettiin IPv4-muodossa. IPv6-tuen myötä, ohjauskoneen paikantimen API-liittymät pystyvät palauttamaan osoitteen IPv6-muodossa. Kaikki vanhemmat sovellukset eivät osaa käsitellä IPv6-muotoisia ohjauskoneen osoitteita oikein. Tämä käytäntö on tarkoitettu näihin tilanteisiin.
+
+Ohjauskoneen paikantimen APIt pystyvät oletuksena palauttamaan IPv4/IPv6-muotoisia ohjauskoneen osoitteita. Jos kuitenkin IPv6-muotoiset ohjauskoneen osoitteet aiheuttavat sen, että jotkut sovellukset eivät toimi, oletusasetusta voidaan muuttaa tämä käytännön avulla ja pakottaa paikannin palauttamaan VAIN IPv4-muotoisia ohjauskoneen osoitteita. Kun sovellukset on saatu korjattua, oletusasetus voidaan palauttaa takaisin tämän käytännön avulla.
+
+Jos otat tämän käytäntöasetuksen käyttöön, ohjauskoneen paikantimen APIt pystyvät palauttamaan IPv4/IPv6-muotoisia ohjauskoneen osoitteita. Tämä on ohjauskoneen paikantimen oletusasetus.
+
+Jos otat tämän käytäntöasetuksen käyttöön, ohjauskoneen paikantimen APIt palauttavat VAIN IPv4-muotoisia ohjauskoneen osoitteita tai ei mitään. Jos ohjauskone tukee sekä IPv4- että IPv6-osoitteita, ohjauskoneen paikantimen APIt palauttavat IPv4-osoitteen. Jos ohjauskone kuitenkin tukee vain IPv6-osoitteita, ohjauskoneen paikantimen APIt eivät toimi oikein.
+
+Jos et määritä tätä käytäntöasetusta, ohjauskoneen paikantimen APIt pystyvät palauttamaan IPv4/IPv6-muotoisia ohjauskoneen osoitteita. Tämä on ohjauskoneen paikantimen oletusasetus.</string>
+      <string id="Netlogon_AllowNT4Crypto">Salli Windows NT 4.0 -yhteensopivat salausalgoritmit</string>
+      <string id="Netlogon_AllowNT4Crypto_Help">Tämä asetus määrittää, salliiko verkkokirjauspalvelu Windows NT 4.0:ssa käytetyt vanhat salausalgoritmit. Windows NT 4.0:ssa ja aiemmissa käyttöjärjestelmissä käytetyt salausalgoritmit eivät ole yhtä turvallisia kuin Windows 2000:n, Windows XP:n, Windows Server 2003:n, Windows Vistan ja tämän Windows-version salausalgoritmit.
+
+Verkkokirjauspalvelu ei oletusarvoisesti salli vanhojen salausalgoritmien käyttöä, eikä se sisällytä niitä salausalgoritmien neuvotteluun. Siksi Windows NT 4.0 -tietokoneet eivät voi muodostaa yhteyttä tämän toimialueen ohjauskoneeseen.
+ 
+Jos tämä asetus otetaan käyttöön, verkkokirjauspalvelu sallii Windows NT 4.0:n kanssa yhteensopivien salausalgoritmien neuvottelun ja käytön. Vanhojen algoritmien käyttö on kuitenkin turvallisuusriski.</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages">Älä käsittele lähetyspaikkasanomia, joita käytetään, kun toimialueen ohjauskoneen sijainti perustuu NetBIOS-toimialuenimiin</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages_Help">Tämän käytäntöasetuksen avulla voidaan ohjata sitä, miten paikallinen toimialueen ohjauskone käsittelee saapuvia viestipaikkasanomia.
+
+Huomautus: Voidakseen paikantaa toimialueen etäohjauskoneen NetBIOS (yksi otsikko) -toimialueen nimen perusteella toimialueen ohjauskoneen paikannin noutaa ensin toimialueen ohjauskoneiden luettelon WINS-palvelimesta, joka on määritetty sen paikallisen asiakkaan asetuksiin. Toimialueen ohjauskoneen paikannin lähettää tämän jälkeen viestipaikkasanoman kuhunkin toimialueen etäohjauskoneeseen saadakseen lisätietoja. Toimialueen ohjauskoneen sijainnin selvitys onnistuu vain, jos toimialueen etäohjauskone vastaa viestipaikkasanomaan.
+
+Tätä käytäntöasetusta suositellaan toimialueen ohjauskoneen hyökkäyspinnan pienentämistä varten, ja sitä voi käyttää ympäristössä, josta WINS puuttuu, vain IPv6 -ympäristössä ja muissa tilanteissa, joissa NetBIOS-toimialuenimeen perustuvaa toimialueen ohjauskoneen sijaintia ei tarvita. Tämä asetus ei vaikuta toimialueen ohjauskoneen sijaintiin, joka perustuu DNS-nimiin.
+
+Jos otat tämän käytäntöasetuksen käyttöön, tämä toimialueen ohjauskone ei käsittele saapuvia viestipaikkasanomia, joita käytetään, kun NetBIOS-toimialuenimi perustuu toimialueen ohjauskoneen sijaintiin.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, tämä toimialueen ohjauskone käsittelee saapuvat viestipaikkasanomat. Tämä on toimialueen ohjauskoneen paikantimen oletustoiminta.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Netlogon_BackgroundRetryInitialPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryInitialPeriodLabel" defaultValue="600" spinStep="600">Sekuntia:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryMaximumPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryMaximumPeriodLabel" defaultValue="3600" spinStep="3600">Sekuntia:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryQuitTime">
+        <decimalTextBox refId="Netlogon_BackgroundRetryQuitTimeLabel" defaultValue="0" spinStep="100">Sekuntia:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundSuccessfulRefreshPeriodLabel" defaultValue="4294967200" spinStep="1000">Sekuntia:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DebugFlag">
+        <decimalTextBox refId="Netlogon_DebugFlagLabel" defaultValue="536936447">Taso:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsAvoidRegisterRecords">
+        <textBox refId="Netlogon_DnsAvoidRegisterRecordsLabel">
+          <label>Ohjeet:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_DnsRefreshInterval">
+        <decimalTextBox refId="Netlogon_DnsRefreshIntervalLabel" defaultValue="1800" spinStep="100">Sekuntia:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsTtl">
+        <decimalTextBox refId="Netlogon_DnsTtlLabel" defaultValue="600" spinStep="100">Sekuntia:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ExpectedDialupDelay">
+        <decimalTextBox refId="Netlogon_ExpectedDialupDelayLabel" defaultValue="0" spinStep="100">Sekuntia:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_GcSiteCoverage">
+        <textBox refId="Netlogon_GcSiteCoverageLabel">
+          <label>Saitit:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvPriority">
+        <decimalTextBox refId="Netlogon_LdapSrvPriorityLabel" defaultValue="0" spinStep="100">Prioriteetti:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvWeight">
+        <decimalTextBox refId="Netlogon_LdapSrvWeightLabel" defaultValue="100" spinStep="100">Painoarvo:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_MaximumLogFileSize">
+        <decimalTextBox refId="Netlogon_MaximumLogFileSizeLabel" defaultValue="536936447">Tavua:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NdncSiteCoverage">
+        <textBox refId="Netlogon_NdncSiteCoverageLabel">
+          <label>Saitit:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_NegativeCachePeriod">
+        <decimalTextBox refId="Netlogon_NegativeCachePeriodLabel" defaultValue="45" spinStep="60">Sekuntia:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_NonBackgroundSuccessfulRefreshPeriodLabel" defaultValue="1800" spinStep="1000">Sekuntia:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ScavengeInterval">
+        <decimalTextBox refId="Netlogon_ScavengeIntervalLabel" defaultValue="900" spinStep="900">Sekuntia:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_SiteCoverage">
+        <textBox refId="Netlogon_SiteCoverageLabel">
+          <label>Saitit:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_SiteName">
+        <textBox refId="Netlogon_SiteNameLabel">
+          <label>Saitti:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_ForceRediscoveryInterval">
+        <decimalTextBox refId="Netlogon_ForceRediscoveryIntervalLabel" defaultValue="43200" spinStep="100">Sekuntia:</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

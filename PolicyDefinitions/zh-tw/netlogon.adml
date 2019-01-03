@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
+  <resources>
+    <stringTable>
+      <string id="Netlogon">網路登入</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain">主控單一標籤 DNS 名稱網域的 DC 位置</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain_Help">指定套用這個設定的電腦是否嘗試對單一標籤網域名稱進行 DNS 名稱解析。
+
+電腦 (具體地說，是在電腦上執行的 DC 定位程式) 需要定位的網域控制站是主控以單一標籤名稱指定的 Active Directory 網域時，除非該電腦所加入的 Active Directory 樹系中至少有一個網域具有單一標籤的 DNS 名稱，否則該電腦預設只會使用 NetBIOS 名稱解析，而不會使用 DNS 名稱解析。 
+
+如果啟用這個設定，則套用這個原則的電腦會嘗試使用 DNS 名稱解析，定位用來主控以單一標籤名稱所指定之 Active Directory 網域的網域控制站。
+
+如果停用這個設定，則除非該電腦加入的 Active Directory 樹系中有一個網域具有單一標籤 DNS 名稱，否則套用這個設定的電腦只會使用 NetBIOS 名稱解析，定位用來主控以單一標籤名稱所指定之 Active Directory 網域的網域控制站，而不會使用 DNS 名稱解析。
+
+如果沒有進行此設定，則它將不會套用到任何電腦，而電腦會使用它們的本機設定。</string>
+      <string id="Netlogon_AutoSiteCoverage">DC 定位程式 DNS SRV 記錄會自動涵蓋站台</string>
+      <string id="Netlogon_AutoSiteCoverage_Help">決定如果在相同的網域中沒有網域控制站 (DC) (或相同樹系中沒有通用類別目錄)，DC 是否要為最接近的站台動態地登錄站台特有的 DC 定位程式 SRV 記錄。Net Logon 服務會動態地登錄這些 DNS 記錄，並使用它們來定位 DC。
+
+如果啟用這個設定，則相同的網域中沒有 DC 時，或相同樹系中沒有通用類別目錄時，套用這個設定的 DC 會為最接近的站台動態地登錄站台特有的 DC 定位程式 SRV 記錄。
+
+如果您停用此設定，則 DC 只會登錄它們自己的記錄，而不會為其他任何站台登錄站台特有的 DC 定位程式 DNS SRV 記錄。
+
+如果沒有進行此設定，則該設定將不套用到任何 DC，DC 將使用它們的本機設定。</string>
+      <string id="Netlogon_AvoidPdcOnWan">在登入時連絡 PDC 失敗</string>
+      <string id="Netlogon_AvoidPdcOnWan_Help">定義網域控制站 (DC) 無法驗證密碼時，是否應該嘗試向 PDC 驗證用戶端所提供的密碼。
+
+如果用戶端的密碼最近變更過，且尚未傳播到網域控制站，則連絡 PDC 會有所幫助。如果 PDC 是位於慢速的廣域網路連線，則使用者可能會想要停用這個功能。
+
+若要啟用這個功能，請選取 [已啟用]。
+
+若要停用這個功能，請選取 [已停用]。</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod">初始背景呼叫的 DC 搜尋重試設定</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod_Help">在執行網域控制站 (DC) 週期性搜尋的應用程式找不到 DC 時，這個設定中所設定的值會決定多久 (秒) 之後才會執行第一次重試。
+
+這個設定的預設值是 10 分鐘 (10*60)。這個設定的最大值是 49 天 (0x49*24*60*60=4233600)。這個設定的最小值是 0。
+
+這個設定只與那些已指定 DS_BACKGROUND_ONLY 旗標之 DsGetDcName 的呼叫者相關。
+
+如果這個設定的值小於 NegativeCachePeriod 子機碼中所指定的值，則會使用 NegativeCachePeriod 子機碼中的值。
+
+警告: 如果這個設定的值太大，則用戶端不會嘗試尋找一開始就找不到的 DC。如果這個設定中所設定的值太小，而且無法使用 DC，則週期性 DC 搜尋的流量會太高。</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod">背景呼叫的最大 DC 搜尋重試間隔設定</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod_Help">在執行網域控制站 (DC) 週期性搜尋的應用程式找不到 DC 時，這個設定中所設定的值會決定允許的最大重試間隔。
+
+例如，重試間隔可能設定成 10 分鐘，然後 20 分鐘，然後 40 分鐘，但間隔到達這個設定中所設定的值時，除非到達最後 DC 搜尋重試設定中所設定的值，否則該值會變成所有後續重試的重試間隔。
+
+這個設定的預設值是 60 分鐘 (60*60)。這個設定的最大值是 49 天 (0x49*24*60*60=4233600)。這個設定的最小值是 0。
+
+如果這個設定的值小於指定給「初始 DC 搜尋重試設定」的值，則會使用「初始 DC 搜尋重試設定」。
+
+警告: 如果這個設定的值太大，用戶端可能會等待一段很長的時間才會嘗試尋找 DC。
+
+如果這個設定的值太小，而且無法使用 DC，則太頻繁的重試可能會造成的網路流量超載。</string>
+      <string id="Netlogon_BackgroundRetryQuitTime">背景呼叫的最後 DC 搜尋重試間隔設定</string>
+      <string id="Netlogon_BackgroundRetryQuitTime_Help">在執行網域控制站 (DC) 週期性搜尋的應用程式找不到 DC 時，這個設定中所設定的值會決定什麼時候不再允許重試。例如，目前可能設為根據「最大 DC 搜尋重試間隔設定」來執行重試，但是到達這個設定中所設定的值時，不會再執行任何重試。如果這個設定的值小於「最大 DC 搜尋重試間隔設定」中的值，則會使用「最大 DC 搜尋重試間隔設定」。
+
+這個設定的預設值是一直重試 (0)。這個設定的最大值是 49 天 (0x49*24*60*60=4233600)。這個設定的最小值是 0。
+
+警告: 如果這個設定的值太小，則用戶端會很快地停止嘗試尋找 DC。</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod">背景呼叫的正值週期性 DC 快取重新整理</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod_Help">決定成功的 DC 快取項目要何時重新整理。這個設定會套用到呼叫程式，這個程式每隔一段時間會嘗試尋找 DC，而且會在 DC 資訊傳回到呼叫程式之前套用這個設定。這個設定的預設值是無限大 (4294967200)。這個設定的最大值是 (4294967200)，而不是視為無限大的最大值則是 49 天 (49*24*60*60=4233600)。任何超過這個最大值的數值都會視為無限大。這個設定的最小值是一律重新整理 (0)。</string>
+      <string id="Netlogon_DC_Locator_DNS_Records">DC 定位程式的 DNS 記錄</string>
+      <string id="Netlogon_DebugFlag">記錄檔偵錯輸出等級</string>
+      <string id="Netlogon_DebugFlag_Help">指定 Net Logon 服務的偵錯輸出層級。
+
+Net Logon 服務會將偵錯資訊輸出至 %windir%\debug 目錄中的 netlogon.log 記錄檔。預設並不會記錄任何偵錯資訊。
+
+如果您啟用此設定，並指定非零的值，則會將偵錯資訊記錄至檔案中。值越高，記錄便越詳盡；536936447 這個值最常用來當作最佳設定。
+
+如果將這個設定指定為零，則會發生上述的預設行為。
+
+如果您停用或是沒有進行此設定，則會發生上述的預設行為。</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords">DC 並未登錄 DC 定位程式的 DNS 記錄</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords_Help">決定網路登入服務不登錄哪些網域控制站 (DC) 定位程式 DNS 記錄。
+
+若要啟用這個設定，請選取 [啟用]，並指定一份由空格隔開之助憶鍵 (指示) 的清單，列出套用這個設定之 DC 不會登錄的 DC 定位程式 DNS 記錄。
+
+請從下列清單選取助憶鍵:
+
+助憶鍵         類型  DNS 記錄
+
+LdapIpAddress    A     &lt;DnsDomainName&gt; Ldap             SRV   _ldap._tcp.&lt;DnsDomainName&gt; LdapAtSite       SRV   _ldap._tcp.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt; Pdc              SRV   _ldap._tcp.pdc._msdcs.&lt;DnsDomainName&gt; Gc               SRV   _ldap._tcp.gc._msdcs.&lt;DnsForestName&gt; GcAtSite         SRV   _ldap._tcp.&lt;SiteName&gt;._sites.gc._msdcs.&lt;DnsForestName&gt; DcByGuid         SRV   _ldap._tcp.&lt;DomainGuid&gt;.domains._msdcs.&lt;DnsForestName&gt; GcIpAddress      A     _gc._msdcs.&lt;DnsForestName&gt; DsaCname         CNAME &lt;DsaGuid&gt;._msdcs.&lt;DnsForestName&gt; Kdc              SRV   _kerberos._tcp.dc._msdcs.&lt;DnsDomainName&gt; KdcAtSite        SRV    _kerberos._tcp.dc._msdcs.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt; Dc               SRV   _ldap._tcp.dc._msdcs.&lt;DnsDomainName&gt; DcAtSite         SRV   _ldap._tcp.&lt;SiteName&gt;._sites.dc._msdcs.&lt;DnsDomainName&gt; Rfc1510Kdc       SRV   _kerberos._tcp.&lt;DnsDomainName&gt; Rfc1510KdcAtSite SRV   _kerberos._tcp.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt; GenericGc        SRV   _gc._tcp.&lt;DnsForestName&gt; GenericGcAtSite  SRV   _gc._tcp.&lt;SiteName&gt;._sites.&lt;DnsForestName&gt; Rfc1510UdpKdc    SRV   _kerberos._udp.&lt;DnsDomainName&gt; Rfc1510Kpwd      SRV   _kpasswd._tcp.&lt;DnsDomainName&gt; Rfc1510UdpKpwd   SRV   _kpasswd._udp.&lt;DnsDomainName&gt;
+
+如果停用這個設定，則設為執行動態登錄 DC 定位程式 DNS 記錄的 DC 會登錄所有 DC 定位程式 DNS 資源記錄。
+
+如果未將這個設定套用至 DC，則 DC 會使用它們自己的本機設定。</string>
+      <string id="Netlogon_DnsRefreshInterval">DC 定位程式 DNS 記錄的更新間隔</string>
+      <string id="Netlogon_DnsRefreshInterval_Help">指定這個設定所套用之網域控制站 (DC) 的 DC 定位程式 DNS 資源記錄的更新間隔。Net Logon 服務會動態地登錄這些 DNS 記錄，而定位程式演算法會使用它們來定位 DC。這個設定可能只會套用至使用動態更新的 DC。
+
+設為執行 DC 定位程式 DNS 資源記錄之動態登錄的 DC，即使它們的記錄資料並未變更，還是會定期向 DNS 伺服器登錄它們的記錄。如果有權管理的 DNS 伺服器被設為清除過期的記錄，便需要這種重新登錄來告訴設為自動移除 (清除) 過期記錄的 DNS 伺服器這些記錄是最新的，而且應該要保留在資料庫中。
+
+警告: 如果 DNS 資源記錄已登錄在啟用清除功能的區域中，則這個設定的值不應該超過設定給這些區域的重新整理間隔。DC 定位程式 DNS 記錄的重新整理間隔如果設為超過 DNS 區域的重新整理間隔，可能會導致不適當地刪除 DNS 資源記錄。
+
+若要指定 DC 記錄的重新整理間隔，請按一下 [已啟用]，並輸入大於 1800 的值。這個值會指定 DC 記錄的重新整理間隔 (秒) (例如，值 3600 表示 60 分鐘)。
+
+如果沒有進行此設定，則該設定將不套用到任何 DC，DC 將使用它們的本機設定。</string>
+      <string id="Netlogon_DnsTtl">在 DC 定位程式 DNS 記錄中的 TTL 設定</string>
+      <string id="Netlogon_DnsTtl_Help">指定由網路登入登錄之 SRV 資源記錄的存留時間 (TTL) 欄位值。Net Logon 服務會動態地登錄這些 DNS 記錄，並使用它們來定位網域控制站 (DC)。
+
+若要指定 DC 定位程式 DNS 記錄的 TTL，請按一下 [已啟用]，並輸入值 (秒) (例如，值 900 表示 15 分鐘)。
+
+如果沒有進行此設定，則該設定將不套用到任何 DC，DC 將使用它們的本機設定。</string>
+      <string id="Netlogon_ExpectedDialupDelay">預期在登入時會有撥號延遲</string>
+      <string id="Netlogon_ExpectedDialupDelay_Help">指定登入網路時，電腦等候網域控制站 (DC) 回應的額外時間。
+
+若要指定「預期在登入時會有撥號延遲」，請按一下 [啟用]，然後輸入所要的值 (秒) (例如，值 60 表示 1 分鐘)。
+
+如果沒有進行此設定，則它將不會套用到任何電腦，而電腦會使用它們的本機設定。</string>
+      <string id="Netlogon_GcSiteCoverage">GC 定位程式 DNS SRV 記錄所涵蓋的站台</string>
+      <string id="Netlogon_GcSiteCoverage_Help">指定通用類別目錄 (GC) 應該要登錄哪些站台的站台特有 GC 定位程式 DNS SRV 資源記錄。除了為 GC 所在之站台而登錄的站台特有的 SRV 記錄，以及設為登錄站台 (這些站台的附近沒有 GC) 之 GC 定位程式 DNS SRV 記錄之 GC 所登錄的記錄以外，還會登錄這些記錄。 
+
+Net Logon 服務會動態地登錄 GC 定位程式 DNS 記錄及站台特有的 SRV 記錄，並使用它們來定位 GC。Active Directory 站台是一些連線狀況良好的 TCP/IP 子網路，系統管理員可以設定 Active Directory 的存取及複寫。GC 是一個網域控制站，內含 Active Directory 中之每個網域的部分複本。
+
+若要指定 GC 定位程式 DNS SRV 記錄所涵蓋的站台，請按一下 [已啟用]，並輸入用空格隔開的站台名稱。
+
+如果沒有進行此設定，則該設定值將不會套用至任何 GC，而 GC 會使用它們的本機設定。</string>
+      <string id="Netlogon_LdapSrvPriority">在 DC 定位程式 DNS SRV 記錄中的優先順序設定</string>
+      <string id="Netlogon_LdapSrvPriority_Help">指定套用這個設定之網域控制站 (DC) 所登錄的 SRV 資源記錄中的優先順序欄位。Net Logon 服務會動態地登錄這些 DNS 記錄，並使用它們來定位 DC。
+
+SRV 記錄中的優先順序欄位會設定目標主機 (指定在 SRV 記錄的目標欄位中) 的喜好設定。查詢 SRV 資源記錄的 DNS 用戶端會嘗試從清單中列出的優先順序數字最小主機開始，去連絡第一個可以連接的主機。
+
+若要在 DC 定位程式 DNS SRV 資源記錄中指定優先順序，請按一下 [已啟用]，然後輸入值。值範圍從 0 到 65535。
+
+如果沒有進行此設定，則該設定將不套用到任何 DC，DC 將使用它們的本機設定。</string>
+      <string id="Netlogon_LdapSrvWeight">在 DC 定位程式 DNS SRV 記錄中的權數設定</string>
+      <string id="Netlogon_LdapSrvWeight_Help">指定套用這個設定之網域控制站 (DC) 所登錄的 SRV 資源記錄中的權數欄位。Net Logon 服務會動態地登錄這些 DNS 記錄，並使用它們來定位 DC。
+
+SRV 記錄中的權數欄位可以與優先順序值搭配使用，以提供負載平衡機制，而在這個機制中，會在 SRV 記錄的目標欄位中指定多部伺服器，而且全都設為相同的優先順序。DNS 用戶端隨機選取要連絡之目標主機的機率，會與 SRV 記錄中的權數欄位成比例。
+
+若要在 DC 定位程式 DNS SRV 記錄中指定權數，請按一下 [已啟用]，然後輸入值。值範圍從 0 到 65535。
+
+如果沒有進行此設定，則該設定將不套用到任何 DC，DC 將使用它們的本機設定。</string>
+      <string id="Netlogon_MaximumLogFileSize">記錄檔大小最大值</string>
+      <string id="Netlogon_MaximumLogFileSize_Help">指定在啟用記錄功能時，%windir%\debug 目錄中之 netlogon.log 記錄檔的最大位元組數。
+
+記錄檔的預設最大大小為 20MB。如果啟用這個原則，則記錄檔的最大大小會設為指定的大小。一旦達到這個大小，就會將記錄檔儲存成 netlogon.bak，並截斷 netlogon.log。您應該根據可用存放區，來指定合理的值。
+
+如果停用或未設定這個原則，則會發生上述的預設行為。</string>
+      <string id="Netlogon_NdncSiteCoverage">應用程式目錄磁碟分割定位程式的 DNS SRV 記錄所涵蓋的站台</string>
+      <string id="Netlogon_NdncSiteCoverage_Help">指定儲存應用程式目錄磁碟分割之網域控制站 (DC)，應該要登錄哪些站台之站台特有、應用程式目錄磁碟分割特有的 DC 定位程式 SRV 資源記錄。除了為 DC 所在之站台登錄站台特有的 SRV 記錄，以及設為登錄站台 (這些站台的附近沒有 DC) 之 DC 定位程式 DNS SRV 記錄之 DC 所登錄的記錄以外，還會登錄這些記錄。 
+
+Net Logon 服務會動態地登錄應用程式目錄磁碟分割定位程式 DNS 記錄以及站台特有的 SRV 記錄，並使用它們來定位應用程式目錄磁碟分割特有的 DC。Active Directory 站台是一些連線狀況良好的 TCP/IP 子網路，系統管理員可以設定 Active Directory 的存取及複寫。
+
+若要指定 DC 定位程式的應用程式目錄磁碟分割特有之 DNS SRV 記錄所涵蓋的站台，請按一下 [已啟用]，並輸入用空格隔開的站台名稱。
+
+如果沒有進行此設定，則該設定將不套用到任何 DC，DC 將使用它們的本機設定。</string>
+      <string id="Netlogon_NegativeCachePeriod">負值的 DC 搜尋快取設定</string>
+      <string id="Netlogon_NegativeCachePeriod_Help">指定 DC 定位程式記住在網域中找不到網域控制站 (DC) 的時間長度 (秒)。在這個設定值所設定的時間內，如果繼續嘗試尋找這台 DC，則 DC 搜尋會立即失敗，而且不會嘗試尋找 DC。
+
+這個設定的預設值是 45 秒。這個設定的最大值是 7 天 (7*24*60*60)。這個設定的最小值是 0。
+
+警告: 如果這個設定的值太大，則用戶端不會嘗試尋找一開始就找不到的 DC。如果這個設定的值太小，則即使無法使用任何 DC，用戶端還是會繼續嘗試尋找 DC。</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode">Netlogon 共用相容性</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode_Help">這個設定控制 Net Logon 服務在網域控制站 (DC) 上所建立的 Netlogon 共用是否應該與舊版應用程式的檔案共用語意相容。
+
+啟用這個設定時，即使在呼叫者只擁有共用上之檔案的讀取權限時，Netlogon 共用都會允許授與該檔案獨占讀取權之要求的檔案共用語意。
+
+停用或沒有進行此設定時，如果要求獨占存取權，但呼叫者只擁有共用上之檔案的讀取權限時，Netlogon 共用會授與該檔案的共用讀取權。
+
+Netlogon 共用預設會在要求共用上之檔案的獨占存取權時，授與該檔案的共用讀取權。
+
+附註: Netlogon 共用是由 Net Logon 服務所建立的共用，供網域中的用戶端電腦所使用。Netlogon 共用的預設行為可確定在 Netlogon 共用上只擁有檔案讀取權限的應用程式，無法藉由要求獨占讀取權而鎖定檔案，這種情況可以避免更新到網域之用戶端上的群組原則設定。啟用這個設定時，在 Netlogon 共用上只擁有檔案之讀取權限但可以鎖定檔案的應用程式，可以拒絕群組原則用戶端讀取檔案，且一般而言，從網域上使用 Netlogon 共用的機會會降低。
+
+如果啟用這個設定，則網域系統管理員應該要確定網域中唯一使用獨占讀取權的應用程式，就是那些由系統管理員所核准的應用程式。</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">非背景呼叫的正值週期性 DC 快取重新整理</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod_Help">決定成功的 DC 快取項目要何時重新整理。這個設定會套用到不會每隔一段時間就嘗試尋找 DC 的呼叫程式，而且會在 DC 資訊傳回到呼叫程式之前套用這個設定。這個設定只與那些尚未指定 DS_BACKGROUND_ONLY 旗標之 DsGetDcName 的呼叫者相關。
+
+這個設定的預設值是 30 分鐘 (1800 秒)。這個設定的最大值是 (4294967200)，而不是視為無限大的最大值則是 49 天 (49*24*60*60=4233600)。最大值是 (4294967200)，任何超過 49 天 (4294967) 的數值都會被視為無限大。這個設定的最小值是一律重新整理 (0)。</string>
+      <string id="Netlogon_ScavengeInterval">清除間隔</string>
+      <string id="Netlogon_ScavengeInterval_Help">決定 Netlogon 執行下列清除操作的間隔:
+
+- 檢查是否需要修改安全通道上的密碼，並在必要時予以修改。
+
+- 在網域控制站 (DC) 上，發現未曾搜尋到的 DC。
+
+- 在 PDC 上，如果尚未順利新增 &lt;DomainName&gt;[1B] NetBIOS 名稱，請嘗試新增它。
+
+這些操作都不重要。在大多數情況下，最多只需 15 分鐘。例如，如果 DC 與受信任網域中間隔著昂貴的線路 (例如 ISDN)，則可能會向上調整這個參數，以避免經常自動搜尋受信任網域中的 DC。
+
+若要啟用這個設定，請按一下 [已啟用]，然後指定間隔 (秒)。</string>
+      <string id="Netlogon_SiteCoverage">DC 定位程式 DNS SRV 記錄所涵蓋的站台</string>
+      <string id="Netlogon_SiteCoverage_Help">指定網域控制站 (DC) 應該要登錄哪些站台的站台特有 DC 定位程式 DNS SRV 資源記錄。除了為 DC 所在之站台而登錄的站台特有的 SRV 記錄，以及設為登錄站台 (這些站台的附近沒有 DC) 之 DC 定位程式 DNS SRV 記錄之 DC 所登錄的記錄以外，還會登錄這些記錄。 
+
+Net Logon 服務會動態地登錄 DC 定位程式 DNS 記錄，並使用它們來定位 DC。Active Directory 站台是一些連線狀況良好的 TCP/IP 子網路，系統管理員可以設定 Active Directory 的存取及複寫。
+
+若要指定 DC 定位程式 DNS SRV 記錄所涵蓋的站台，請按一下 [已啟用]，並輸入用空格隔開的站台名稱。
+
+如果沒有進行此設定，則該設定將不套用到任何 DC，DC 將使用它們的本機設定。</string>
+      <string id="Netlogon_SiteName">站台名稱</string>
+      <string id="Netlogon_SiteName_Help">指定電腦所屬的 Active Directory 站台。
+
+Active Directory 站台是一些連線狀況良好的 TCP/IP 子網路，系統管理員可以設定 Active Directory 的存取及複寫。
+
+若要指定這個設定的站台名稱，請按一下 [已啟用]，然後輸入站台名稱。如果未指定電腦所屬的站台，則電腦會自動從 Active Directory 中搜尋它的站台。
+
+如果沒有進行此設定，則它將不會套用到任何電腦，而電腦會使用它們的本機設定。</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode">Sysvol 共用相容性</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode_Help">這個設定控制 Net Logon 服務在網域控制站 (DC) 上所建立的 Sysvol 共用是否應該與舊版應用程式的檔案共用語意相容。
+
+啟用這個設定時，即使在呼叫者只擁有共用上之檔案的讀取權限時，Sysvol 共用都會允許授與該檔案獨占讀取權之要求的檔案共用語意。
+
+停用或未設定這個設定時，如果要求獨占存取權，但呼叫者只擁有共用上之檔案的讀取權限時，Sysvol 共用會授與該檔案的共用讀取權。
+
+Sysvol 共用預設會在要求共用上之檔案的獨占存取權時，授與該檔案的共用讀取權。
+
+附註: Sysvol 共用是由 Net Logon 服務所建立的共用，供網域中的群組原則用戶端所使用。Sysvol 共用的預設行為可確定在 Sysvol 共用上只擁有檔案讀取權限的應用程式，無法藉由要求獨占讀取權而鎖定檔案，這種情況可以避免更新到網域之用戶端上的群組原則設定。啟用這個設定時，在 Sysvol 共用上只擁有檔案之讀取權限但可以鎖定檔案的應用程式，可以拒絕群組原則用戶端讀取檔案，且一般而言，從網域上使用 Sysvol 共用的機會會降低。
+
+如果啟用這個設定，則網域系統管理員應該要確定網域中唯一使用獨占讀取權的應用程式，就是那些由系統管理員所核准的應用程式。</string>
+      <string id="Netlogon_UseDynamicDns">動態登錄 DC 定位程式的 DNS 記錄</string>
+      <string id="Netlogon_UseDynamicDns_Help">決定是否啟用網域控制站 (DC) 定位程式 DNS 資源記錄的動態登錄。Net Logon 服務會動態地登錄這些 DNS 記錄，而定位程式演算法會使用它們來定位 DC。
+
+如果您啟用此設定，則套用這個設定的 DC 會透過啟用了動態 DNS 更新的網路連線，動態地登錄 DC 定位程式 DNS 資源記錄。
+
+如果您停用此設定，則 DC 不會登錄 DC 定位程式 DNS 資源記錄。
+
+如果沒有進行此設定，則該設定將不套用到任何 DC，DC 將使用它們的本機設定。</string>
+      <string id="Netlogon_TryNextClosestSite">嘗試下一個最接近的網站</string>
+      <string id="Netlogon_TryNextClosestSite_Help">用戶端可以使用網域控制站定位程式 (DC 定位程式) 服務來尋找其 Active Directory 網域的網域控制站。DC 定位程式的預設行為是在同一個網站中尋找 DC。若在相同的網站中找不到，則 DC 定位程式可能會傳回其他網站的 DC (可能在數個網站躍點外)。兩個網站之間的網站接近程度由其間的網站連結總成本決定。如果某個網站的網站連結成本比另一個網站低，則前者較接近。當 DC 定位程式在相同的網站中找不到 DC 時，則可使用 [嘗試下一個最接近的網站] 功能，根據網站連結成本，嘗試在最接近的網站中尋找 DC。在擁有多個網站的案例中，在搜尋 DC 位置期間嘗試容錯移轉以搜尋下一個最接近的網站，可讓網路傳輸更有效率。
+
+如果啟用此原則設定，會為所有可用但未設定網路介面卡的電腦開啟 [嘗試下一個最接近的網站 DC 位置]。
+
+如果停用此原則設定，則預設不會為所有可用但未設定網路介面卡的電腦使用 [嘗試下一個最接近的網站 DC 位置]。不過，若是明確使用 DS_TRY_NEXTCLOSEST_SITE 旗標進行 DC 定位程式呼叫，則會使用 [嘗試下一個最接近的網站] 行為。
+
+若未設定此原則設定，則預設不會為所有可用但未設定網路介面卡的電腦使用 [嘗試下一個最接近的網站 DC 位置]。若是明確使用 DS_TRY_NEXTCLOSEST_SITE 旗標，則將使用 [下一個最接近的網站] 行為。</string>
+      <string id="Netlogon_ForceRediscoveryInterval">強制重新探索間隔</string>
+      <string id="Netlogon_ForceRediscoveryInterval_Help">用戶端可以使用網域控制站定位程式 (DC 定位程式) 服務來尋找其 Active Directory 網域的網域控制站。當 DC 定位程式找到網域控制站時，它會快取網域控制站以改善位置演算法的效率。只要快取的網域控制站符合需求並正在執行，DC 定位程式會繼續傳回它。若引進新的網域控制站，則唯有當強制重新探索是由 DC 定位程式執行時，現有的用戶端才會探索它。為了在網路環境中採用變更，DC 定位程式預設會根據特定的時間間隔執行強制重新探索，並在所有網域或樹系中，為所有可用的網域控制站之間的用戶端維持有效的負載平衡。DC 定位程式的強制重新探索的預設時間間隔是 12 小時。若 DC 定位程式的呼叫使用 DS_FORCE_REDISCOVERY 旗標，則也可以觸發強制重新探索。重新探索會重設快取之網域控制站項目上的計時器。
+
+如果啟用此原則設定，電腦上的 DC 定位程式會根據設定的時間間隔，定期執行強制重新探索。最小的時間間隔是 3600 秒 (1 小時)，避免重新探索造成過多的網路傳輸。許可的時間間隔上限為 4294967200 秒，大於 4294967 秒 (~49 天) 的任何值都會視為無限大。
+
+如果停用此原則設定，則預設會每隔 12 小時，為電腦使用強制重新探索。
+
+若未設定此原則設定，則預設會每隔 12 小時為電腦使用強制重新探索，除非登錄中的本機電腦設定具有不同的值。</string>
+      <string id="Netlogon_AddressTypeReturned">傳回的網域控制站位址類型</string>
+      <string id="Netlogon_AddressTypeReturned_Help">網域控制站 (DC) 定位程式 API 可傳回 DC 的 IP 位址，該 DC 具有其他部分的資訊。支援 IPv6 前，傳回的 DC IP 位址是 IPv4。但支援 IPv6 後，DC 定位程式 API 可傳回 IPv6 DC 位址。部分現有的應用程式可能無法正確處理傳回的 IPv6 DC 位址。因此提供這個原則來支援此類案例。
+
+DC 定位程式 API 預設可傳回 IPv4/IPv6 DC 位址。但如果部分應用程式因傳回的 IPv6 DC 位址而中斷，則可使用此原則來停用預設的行為，並且只強制傳回 IPv4 DC 位址。修正應用程式後，可使用此原則來啟用預設行為。
+
+若啟用此原則設定，DC 定位程式 API 可傳回 IPv4/IPv6 DC 位址。這是 DC 定位程式的預設行為。
+
+若停用此原則設定，DC 定位程式 API 只能傳回 IPv4 DC 位址 (如果有的話)。因此若網域控制站支援 IPv4 和 IPv6 位址，DC 定位程式 API 將傳回 IPv4 位址。但如果網域控制站僅支援 IPv6 位址，則 DC 定位程式 API 將失敗。
+
+若未設定此原則設定，DC 定位程式 API 可傳回 IPv4/IPv6 DC 位址。這是 DC 定位程式的預設行為。</string>
+      <string id="Netlogon_AllowNT4Crypto">允許與 Windows NT 4.0 相容的密碼編譯演算法</string>
+      <string id="Netlogon_AllowNT4Crypto_Help">此設定可控制 Net Logon 服務是否將允許用於 Windows NT 4.0 的舊密碼編譯演算法的使用。用於 Windows NT 4.0 及更舊版本的密碼編譯演算法，並未像 Windows 2000、Windows XP、Windows Server 2003、Windows Vista 以及這個版本的 Windows 中使用的新演算法一樣安全。
+
+根據預設，Net Logon 將不允許使用舊密碼編譯演算法，而且將不會在密碼編譯演算法的交涉中包括它們。因此，執行 Windows NT 4.0 的電腦將無法建立連至此網域控制站的連線。
+ 
+如果啟用此設定，Net Logon 將允許交涉並使用與 Windows NT 4.0 相容的舊密碼編譯演算法。不過，使用舊演算法代表可能的安全性風險。</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages">不要處理根據 NetBIOS 網域名稱之網域控制站位置的傳入郵件槽訊息</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages_Help">這個原則設定可讓您控制本機網域控制站 (DC) 如何處理傳入的郵件槽訊息。
+
+注意: 為了根據 NetBIOS (單一標籤) 網域名稱來定位遠端 DC，DC 定位程式會先從在其本機用戶端設定中所設定的 WINS 伺服器取得 DC 的清單。接著 DC 定位程式會傳送郵件槽訊息給每個遠端 DC，以取得更詳細的資訊。DC 位置只有在遠端 DC 回應郵件槽訊息時才成功。
+
+建議您使用這個原則設定以減少在 DC 上的攻擊面，而且可用於沒有 WINS 的環境中、在僅使用 IPv6 的環境中，以及不需要根據 NetBIOS 網域名稱的 DC 位置時。這個原則設定不會影響根據 DNS 名稱的 DC 位置。
+
+如果啟用這個原則設定，這部 DC 不會處理根據 NetBIOS 網域名稱之 DC 位置的傳入郵件槽訊息。
+
+如果停用或未設定這個原則設定，這部 DC 就會處理傳入的郵件槽訊息。這是 DC 定位程式的預設行為。</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Netlogon_BackgroundRetryInitialPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryInitialPeriodLabel" defaultValue="600" spinStep="600">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryMaximumPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundRetryMaximumPeriodLabel" defaultValue="3600" spinStep="3600">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundRetryQuitTime">
+        <decimalTextBox refId="Netlogon_BackgroundRetryQuitTimeLabel" defaultValue="0" spinStep="100">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_BackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_BackgroundSuccessfulRefreshPeriodLabel" defaultValue="4294967200" spinStep="1000">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DebugFlag">
+        <decimalTextBox refId="Netlogon_DebugFlagLabel" defaultValue="536936447">等級:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsAvoidRegisterRecords">
+        <textBox refId="Netlogon_DnsAvoidRegisterRecordsLabel">
+          <label>助憶鍵:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_DnsRefreshInterval">
+        <decimalTextBox refId="Netlogon_DnsRefreshIntervalLabel" defaultValue="1800" spinStep="100">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_DnsTtl">
+        <decimalTextBox refId="Netlogon_DnsTtlLabel" defaultValue="600" spinStep="100">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ExpectedDialupDelay">
+        <decimalTextBox refId="Netlogon_ExpectedDialupDelayLabel" defaultValue="0" spinStep="100">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_GcSiteCoverage">
+        <textBox refId="Netlogon_GcSiteCoverageLabel">
+          <label>站台:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvPriority">
+        <decimalTextBox refId="Netlogon_LdapSrvPriorityLabel" defaultValue="0" spinStep="100">優先順序:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_LdapSrvWeight">
+        <decimalTextBox refId="Netlogon_LdapSrvWeightLabel" defaultValue="100" spinStep="100">權數:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_MaximumLogFileSize">
+        <decimalTextBox refId="Netlogon_MaximumLogFileSizeLabel" defaultValue="536936447">位元組:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NdncSiteCoverage">
+        <textBox refId="Netlogon_NdncSiteCoverageLabel">
+          <label>站台:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_NegativeCachePeriod">
+        <decimalTextBox refId="Netlogon_NegativeCachePeriodLabel" defaultValue="45" spinStep="60">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">
+        <decimalTextBox refId="Netlogon_NonBackgroundSuccessfulRefreshPeriodLabel" defaultValue="1800" spinStep="1000">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_ScavengeInterval">
+        <decimalTextBox refId="Netlogon_ScavengeIntervalLabel" defaultValue="900" spinStep="900">秒:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_SiteCoverage">
+        <textBox refId="Netlogon_SiteCoverageLabel">
+          <label>站台:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_SiteName">
+        <textBox refId="Netlogon_SiteNameLabel">
+          <label>站台:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Netlogon_ForceRediscoveryInterval">
+        <decimalTextBox refId="Netlogon_ForceRediscoveryIntervalLabel" defaultValue="43200" spinStep="100">秒:</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

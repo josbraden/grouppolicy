@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>表示名をここに入力する</displayName>
+  <description>説明をここに入力する</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">LAN Manager サーバー</string>
+      <string id="Lbl_FollowShare">ハッシュの発行を BranchCache が有効になっている共有フォルダーにのみ許可する</string>
+      <string id="Lbl_DisableOnAllShares">ハッシュの発行をすべての共有フォルダーで許可しない</string>
+      <string id="Lbl_EnableOnAllShares">ハッシュの発行をすべての共有フォルダーで許可する</string>
+      <string id="Pol_HashPublication">BranchCache のハッシュの発行</string>
+      <string id="Pol_HashPublication_Help">このポリシーにより、ハッシュ生成サービスが有効になり、共有フォルダーに格納されているデータのハッシュが生成されて、BranchCache が有効になっているクライアント コンピューターにこれらのハッシュが提供されます。ハッシュは、ファイルの内容を一意に識別する、数学的に派生させたファイルのデジタル指紋です。これらのデジタル指紋は非常に小さく、Windows は、ワイド エリア ネットワーク (WAN) の帯域幅を大量に消費することなくファイルを比較できます。
+
+支社のクライアント コンピューターは、次のすべての条件を満たしている場合に WAN リンクを介してファイルのハッシュを取得できます。      
+1) ユーザーがファイルにアクセスするためのアクセス許可を持っている。
+2) クライアント コンピューターで BranchCache が有効になっている。
+3) クライアント コンピューターがアクセスしている共有フォルダーで、ハッシュの発行が許可されている。 
+
+ハッシュを取得すると、クライアント コンピューターは、支社の別のコンピューターのキャッシュにある同一バージョンのファイルを検索できるようになります。支社で同一バージョンのファイルが見つかると、クライアント コンピューターは WAN リンクを介してそのファイルをダウンロードするのではなく、ローカルにキャッシュされたコピーをダウンロードします。 
+
+このポリシーを "ハッシュの発行を BranchCache が有効になっている共有フォルダーにのみ許可する" (値 = 0) に構成すると、BranchCache が有効になっている共有フォルダーでのみハッシュが生成されます。これらの共有フォルダーのハッシュが生成されるのは、次のいずれかのイベントが発生した場合です。
+1) BranchCache サポートを有効にしたクライアントによって、BranchCache が有効になっている共有フォルダーのファイルがアクセスされた場合。
+2) 管理者がコマンド ライン ツールの Hashgen を使用して、手動でハッシュを生成した場合。
+ 
+このポリシーを "ハッシュの発行をすべての共有フォルダーで許可しない" (値 = 1) に構成すると、このポリシーが適用されたコンピューターでハッシュが生成または提供されることはありません。
+ 
+このポリシーを "ハッシュの発行をすべての共有フォルダーで許可する" (値 = 2) に構成すると、次のいずれかのイベントが発生した場合に、サーバー上のすべての共有フォルダーでハッシュが生成されます。 
+1) BranchCache サポートを有効にしたクライアントによって、サーバー上の共有フォルダーのファイルがアクセスされた場合。
+2) 管理者がコマンド ライン ツールの Hashgen を使用して、手動でハッシュを生成した場合。</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>値:</text>
+        <text>0 = ハッシュの発行を BranchCache が有効になっている共有フォルダーにのみ許可する</text>
+        <text>1 = ハッシュの発行をすべての共有フォルダーで許可しない</text>
+        <text>2 = ハッシュの発行をすべての共有フォルダーで許可する</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">ハッシュの発行の動作: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>indtast det viste navn her</displayName>
+  <description>indtast beskrivelsen her</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Lanman-server</string>
+      <string id="Lbl_FollowShare">Tillad kun hashudgivelse til delte mapper, som BranchCache er aktiveret for</string>
+      <string id="Lbl_DisableOnAllShares">Tillad ikke hashudgivelse for alle delte mapper</string>
+      <string id="Lbl_EnableOnAllShares">Tillad hashudgivelse til alle delte mapper</string>
+      <string id="Pol_HashPublication">Hashudgivelse til BranchCache</string>
+      <string id="Pol_HashPublication_Help">Denne politik aktiverer en hashoprettelsestjeneste, som opretter hashværdier for data, der er gemt i delte mapper. Disse hashværdier leveres derefter til klientcomputere, som BranchCache er aktiveret på. Hashværdier er matematisk afledte digitale fingeraftryk af filer, som entydigt identificerer indholdet af filer. Disse digitale fingeraftryk er meget små, hvilket gør det muligt for Windows at sammenligne filer uden at lægge beslag på en meget stor mængde WAN-båndbredde (Wide Area Network).
+
+En klientcomputer på et afdelingskontor kan hente en hashværdi til en fil på tværs af en WAN-forbindelse, hvis alle følgende betingelser er sande:      
+1) Brugeren har tilladelser til at åbne filen.
+2) BranchCache er aktiveret på klientcomputeren.
+3) Hashudgivelse er tilladt for den delte mappe, som klientcomputeren åbner. 
+
+Hvis klientcomputeren finder hashværdien, kan computeren derefter søge efter en identisk version af filen i cachelageret på andre computere i afdelingskontoret. Hvis Windows finder en identisk version af filen i afdelingskontoret, overfører klientcomputeren kopien i det lokale cachelager i stedet for at overføre filen på tværs af WAN-forbindelsen. 
+
+Hvis du vælger indstillingen "Tillad kun hashudgivelse til delte mapper, som BranchCache er aktiveret for" (værdi = 0) for denne politik, oprettes der kun hashværdier til delte mapper, som BranchCache er aktiveret på. Der oprettes hashværdier til disse delte mapper, når et af følgende sker:
+1) Der oprettes en fil i en delt mappe, som en klient med aktiveret BranchCache-understøttelse har aktiveret BranchCache for.
+2) En administrator opretter hashværdier manuelt ved hjælp af kommandolinjeværktøjet Hashgen.
+ 
+Hvis du indstiller denne politik til "Tillad ikke hashudgivelse for alle delte mapper" (værdi = 1), oprettes der aldrig hashværdier af og leveres der aldrig hashværdier fra computere, som denne politik anvendes på.
+ 
+Hvis du indstiller denne politik til "Tillad hashudgivelse til alle delte mapper" (værdi = 2), oprettes der hashværdier til alle delte mapper på serveren, når et af følgende sker: 
+1) En fil åbnes i en delt mappe på serveren af en klient med BranchCache-understøttelse aktiveret.
+2) En administrator opretter hashværdier manuelt ved hjælp af kommandolinjeværktøjet Hashgen.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Værdier:</text>
+        <text>0 = Tillad kun hashudgivelse til delte mapper, som BranchCache er aktiveret for</text>
+        <text>1 = Tillad ikke hashudgivelse for alle delte mapper</text>
+        <text>2 = Tillad hashudgivelse til alle delte mapper</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Hashudgivelseshandlinger: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

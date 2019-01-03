@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>buraya görünen adı girin</displayName>
+  <description>buraya tanımı girin</description>
+  <resources>
+    <stringTable>
+      <string id="Cat_LanmanServer">Lanman Sunucusu</string>
+      <string id="Lbl_FollowShare">Karma yayımlamaya yalnızca BranchCache'in etkinleştirildiği paylaşılan klasörler için izin ver</string>
+      <string id="Lbl_DisableOnAllShares">Paylaşılan klasörlerin hiçbirinde karma yayımlamaya izin verme</string>
+      <string id="Lbl_EnableOnAllShares">Tüm paylaşılan klasörler için karma yayımlamaya izin ver</string>
+      <string id="Pol_HashPublication">BranchCache için Karma Yayımlama</string>
+      <string id="Pol_HashPublication_Help">Bu ilke, bir karma üretme hizmetinin paylaşılan klasörlerde depolanan veriler için karma üretmesine izin verir ve sonra bu karmaları BranchCache'in etkin olduğu istemci bilgisayarlara sağlar. Karmalar, dosyaların matematiksel olarak türetilen ve dosyaların içeriğini benzersiz olarak tanımlayan dijital parmak izleridir. Bu dijital parmak izleri çok küçük olduklarından Windows'un önemli miktarda Geniş Alan Ağı (WAN) bant genişliği kullanmadan dosyaları karşılaştırmasını sağlar.
+
+Şube ofisindeki bir istemci bilgisayar, aşağıdaki koşulların tümü doğruysa bir WAN bağlantısı üzerinden bir dosyanın karmasını alabilir:      
+1) Kullanıcının dosyaya erişme izni var.
+2) İstemci bilgisayarda BranchCache etkinleştirilmiş.
+3) İstemci bilgisayarın eriştiği paylaşılan klasörde karma yayımlamaya izin veriliyor. 
+
+İstemci bilgisayar karmayı elde ederse, bilgisayar şube ofisindeki diğer bilgisayarların önbelleğinde dosyanın özdeş bir sürümünü arayabilir. Windows şube ofisinde dosyanın özdeş bir sürümünü bulursa, istemci bilgisayar dosyayı WAN bağlantısı üzerinden karşıdan yüklemek yerine yerel olarak önbelleğe alınmış kopyasını karşıdan yükler. 
+
+Bu ilkeyi "Karma yayımlamaya yalnızca BranchCache'in etkinleştirildiği paylaşılan klasörler için izin ver" (değer = 0) olarak yapılandırırsanız, yalnızca BranchCache'in etkinleştirildiği paylaşılan klasörler için karmalar üretilir. Aşağıdaki olaylardan biri gerçekleştiğinde bu klasörler için karma üretilir:
+1) BranchCache desteğinin etkin olduğu bir istemci tarafından BranchCache'in etkinleştirilmiş olduğu bir paylaşılan klasördeki bir dosyaya erişildiğinde.
+2) Bir yönetici Hashgen komut satırı aracını kullanarak karmaları el ile ürettiğinde.
+ 
+Bu ilkeyi "Paylaşılan klasörlerin hiçbirinde karma yayımlamaya izin verme" (değer = 1) olarak yapılandırırsanız, karmalar bu ilkenin uygulandığı bilgisayarlar tarafından asla üretilmez ve sağlanmaz.
+ 
+Bu ilkeyi "Tüm paylaşılan klasörler için karma yayımlamaya izin ver" (değer = 2) olarak yapılandırırsanız, sunucudaki tüm paylaşılan klasörler için, aşağıdaki olaylardan biri gerçekleştiğinde karma oluşturulur: 
+1) BranchCache desteğinin etkin olduğu bir istemci tarafından sunucudaki bir paylaşılan klasördeki bir dosyaya erişildiğinde.
+2) Bir yönetici Hashgen komut satırı aracını kullanarak karmaları el ile ürettiğinde.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="Pol_HashPublication">
+        <text>Değerler:</text>
+        <text>0 = Karma yayımlamaya yalnızca BranchCache'in etkinleştirildiği paylaşılan klasörler için izin ver</text>
+        <text>1 = Paylaşılan klasörlerin hiçbirinde karma yayımlamaya izin verme</text>
+        <text>2 = Tüm paylaşılan klasörler için karma yayımlamaya izin ver</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Karma yayımlama eylemleri: </dropdownList>
+        <text> </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

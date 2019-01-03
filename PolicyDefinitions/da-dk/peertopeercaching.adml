@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>BranchCache gør det muligt for klienter at hente indhold fra afdelingskontoret på en sikker måde i stedet for at skulle hente det fra den server, der er vært for indholdet. Afhængigt af den valgte installation kan indholdet hentes fra andre klienter på afdelingskontoret eller fra en cacheserver på værtssystemet i afdelingen. En klient kan kun hente indhold fra afdelingskontoret, hvis serveren godkender det. Brugen af BranchCache reducerer omkostninger til den WAN-forbindelse (Wide Area Network), som forbinder afdelingskontorerne med datacenteret eller hovedkontoret, og øger overførselshastigheder for indhold, som allerede er overført til afdelingskontoret.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">Slå BranchCache til</string>
+
+            <string id="WBC_Enable_Help">Denne politikindstilling angiver, om BranchCache er aktiveret på klientcomputeren. BranchCache reducerer udnyttelsen af WAN-forbindelser (Wide Area Network), som forbinder afdelingskontorer med datacenteret eller hovedkontoret, og øger adgangshastigheder for indhold, som allerede er overført til afdelingskontoret. BranchCache gør dette ved at sætte computere på afdelingskontoret i stand til at lagre filer og HTTP-trafik fra intranetservere, som BranchCache er aktiveret på, i cachen og derefter dele filerne sikkert med andre computere i afdelingen. Computere på afdelingskontoret kan hente indhold fra en cacheserver på afdelingens værtssystem (når tilstanden for cacher på værtssystemet er aktiveret) eller fra andre klientcomputere i afdelingen (når tilstanden for distribuerede cacher er aktiveret). Computeren skal have adgangstilladelse til indholdet på kildeserveren for at kunne få adgang til cachelagret indhold.
+
+Aktiver denne politikindstilling på klientcomputere i afdelingskontorer, hvor WAN-båndbredden er lav, ventetiden er høj, og hvor der findes en række klientcomputere, som skal have adgang til de samme data fra servere på hovedkontoret.
+
+Hvis du aktiverer denne politikindstilling, slås BranchCache til. Politikindstillingen virker først, når du har installeret funktionen BranchCache på klientcomputeren.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, slås BranchCache fra.
+            </string>
+
+            <string id="WBC_Cache_Percent">Angiv procentdel af diskplads, som bruges til klientcomputerens cache</string>
+
+            <string id="WBC_Cache_Percent_Help">Denne politikindstilling ændrer standardprocentdelen af den samlede diskplads, som skal dedikeres til indhold hentet fra cachen med BranchCache. Dette indhold gøres tilgængeligt for andre klientcomputer, som anmoder om det, hvis deres adgang til indholdet er godkendt af serveren.
+
+Hvis du aktiverer denne politikindstilling, kan du vælge, hvor stor en procentdel af samlede diskplads, der skal allokeres til cachen.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, indstilles cachen til fem procent af den samlede diskplads på klientcomputeren.
+            </string>
+
+            <string id="WBC_HostedCache_Location">Konfigurer BranchCache-tilstanden for cacher på værtssystemet</string>
+
+            <string id="WBC_HostedCache_Location_Help">Denne politikindstilling angiver, om klientcomputeren skal bruge tilstanden for cacher på værtssystemet, og i givet fald også adressen til BranchCache-serveren. I tilstanden for cacher på værtssystemet kan en klientcomputer hente indhold fra en BranchCache-server, der fungerer som den centrale (værts)cache for et afdelingskontor. Når tilstanden for cacher på værtssystemet er aktiveret, skubbes indhold, som er overført af BranchCache-aktiverede klientcomputere, til BranchCache-serveren, som derefter fungerer som den centraliserede cache for andre BranchCache-aktiverede klientcomputere i afdelingskontoret. Klientcomputere bruger SSL (Secure Sockets Layer) til at kommunikere med BranchCache-serveren.
+
+Når du vil bruge denne politikindstilling, skal du angive adressen på BranchCache-serveren, og denne adresse skal svare til det fuldstændige domænenavn (Fully Qualified Domain Name – FQDN) for den server, der er angivet i certifikatet for BranchCache-serveren. Certifikatroden for BranchCache-serverens certifikat skal desuden findes i rodlageret, der er tillid til, på klientcomputeren.
+
+Hvis du aktiverer denne politikindstilling og angiver en gyldig placering for cachen på værtssystemet, aktiveres tilstanden for cacher på værtssystemet. Denne politikindstilling virker først, når du har aktiveret politikindstillingen "Slå BranchCache til".
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, slås tilstanden for cacher på værtssystemet fra.
+            </string>
+
+            <string id="WBC_Distributed_Enable">Konfigurer BranchCache-tilstanden for distribuerede cacher</string>
+
+            <string id="WBC_Distributed_Enable_Help">Denne politikindstilling angiver, om klientcomputeren skal bruge tilstanden for distribuerede cacher. Denne BranchCache-tilstand gør det muligt for en klientcomputer at hente indhold, som er overført og lagret i cachen af andre klientcomputere på afdelingskontoret. Computeren skal have adgangstilladelse til indholdet på kildeserveren for at kunne få adgang til cachelagret indhold fra andre klientcomputere i afdelingen.
+
+Denne politikindstilling angiver, om tilstanden for distribuerede cacher anvendes. Aktiver denne politikindstilling, når BranchCache bruges på afdelingskontorer, hvor der ikke findes nogen server, som fungerer som cache på værtssystemet.
+
+Hvis du aktiverer denne politikindstilling, anvendes tilstanden for distribuerede cacher. Denne politikindstilling virker først, når du har aktiveret politikindstillingen "Slå BranchCache til".
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, slås tilstanden for distribuerede cacher fra.
+            </string>
+
+            <string id="WBC_SMB_Enable">Konfigurer BranchCache til netværksfiler</string>
+
+            <string id="WBC_SMB_Enable_Help">Denne politikindstilling ændrer standardværdien for ventetid på rundture på netværket, over hvilken netværksfiler lagres i cachen af klientcomputere i afdelingen. BranchCache til netværksfiler sætter computere på afdelingskontoret i stand til at lagre data fra intranetservere, som BranchCache er aktiveret på, i cachen og derefter dele filerne sikkert med andre computere i afdelingen. En af de indholdstyper, som kan lagres i cachen på et afdelingskontor, er netværksfiler, som bruger SMB-protokollen (Server Message Block).
+
+Som standard lagres netværksfiler i cachen på afdelingskontoret, når ventetiden for rundture på netværket for WAN-forbindelsen (Wide Area Network) ligger over 80 millisekunder. Hvis netværksfiler, der er overført til computere på afdelingskontoret, altid skal lagres i cachen, skal du indstille værdien for ventetiden på netværket til 0. Du kan deaktivere cachelagring af netværksfiler på afdelingskontoret ved at angive en meget høj værdi for ventetid.
+
+Hvis du aktiverer denne politikindstilling, kan du indstille ventetiden for rundturen på netværket over, hvilke netværksfiler der skal lagres i cachen af klientcomputere på afdelingskontoret.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, lagrer klientcomputeren netværksfiler, hvis ventetiden for rundturen på netværket for WAN-forbindelsen ligger over 80 millisekunder.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Angiv placeringen af cachen på klientcomputeren</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Angiv placeringen af cachen på værtssystemet</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Angiv værdien for ventetid for rundture på netværket i millisekunder, en værdi over hvilken netværksfiler skal lagres i cachen på afdelingskontoret</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

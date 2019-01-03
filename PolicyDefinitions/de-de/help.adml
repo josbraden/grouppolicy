@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Anzeigenamen hier eingeben</displayName>
+  <description>Beschreibung hier eingeben</description>
+  <resources>
+    <stringTable>
+      <string id="HelpQualifiedRootDir_Comp">Potenziell unsichere Funktionen der HTML-Hilfe auf bestimmten Ordnern einschränken</string>
+      <string id="HelpQualifiedRootDir_Help">Mit dieser Richtlinie können Sie bestimmte Befehle der HTML-Hilfe so einschränken, dass sie nur in HTML-Hilfe-Dateien (CHM) innerhalb angegebener Ordner und deren Unterordner funktionieren.  Alternativ können Sie diese Befehle auch systemweit deaktivieren.  Es wird dringend empfohlen, zu dieser Richtlinie nur Ordner hinzuzufügen, die Administratorrechte erfordern.
+
+Der Befehl "Shortcut" wird verwendet, um eine Verknüpfung zu einem Hilfethema hinzuzufügen. Hierdurch werden ausführbare Dateien ausgeführt, die außerhalb der Hilfedatei liegen. Der Befehl "WinHelp" wird verwendet, um eine Verknüpfung zu einem Hilfethema hinzuzufügen. Hierdurch wird eine Hilfedatei (HLP) von "WinHLP32.exe" ausgeführt.
+
+Wenn Sie diese Richtlinie deaktivieren oder nicht konfigurieren, sind diese Befehle in allen Hilfedateien voll funktionsfähig.  
+
+Wenn Sie diese Richtlinie aktivieren, funktionieren diese Befehle nur bei CHM-Dateien in den angegebenen Ordnern und deren Unterordnern. 
+
+Um die Befehle auf einen oder mehrere Ordner zu beschränken, aktivieren Sie die Richtlinie and geben im Dialogfeld "Richtlinieneigenschaften" auf der Registerkarte "Einstellungen" die gewünschten Ordner in dem entsprechenden Textfeld an. Verwenden Sie ein Semikolon, um die einzelnen Ordner zu trennen. Um z. B. ausschließlich die Ordner "%windir%\help" und "D:\BeliebigerOrdner" zuzulassen, fügen Sie in dem Feld folgende Zeichenfolge hinzu: "%windir%\help;D:\BeliebigerOrdner".
+
+Um die Befehle "Shortcut" und "Winhelp" auf dem gesamten System zu deaktivieren, aktivieren Sie die Richtlinie und lassen dabei im Dialogfeld der Richtlinieneigenschaften auf der Registerkarte "Einstellungen" das Textfeld leer.
+
+Hinweis: Es dürfen Umgebungsvariablen verwendet werden (z. B. %windir%), sofern sie auf dem System definiert sind. Beispielsweise ist %programfiles% in manchen früheren Windows-Versionen nicht definiert.
+
+Hinweis: Nur Ordner auf dem lokalen Computer können in dieser Richtlinie angegeben werden. Wenn die CHM-Dateien auf einem zugeordneten Laufwerk gespeichert oder über UNC-Pfade zugänglich sind, können die Befehle "Shortcut" und "WinHelp" mit dieser Richtlinie nicht aktiviert werden.
+
+Weitere Möglichkeiten finden Sie unter der Richtlinie "Ausführung folgender Programme aus der Hilfe nicht zulassen".</string>
+      <string id="RestrictRunFromHelp">Ausführung folgender Programme aus der Hilfe nicht zulassen</string>
+      <string id="RestrictRunFromHelp_Comp">Ausführung folgender Programme aus der Hilfe nicht zulassen</string>
+      <string id="RestrictRunFromHelp_Help">Hiermit können Sie verhindern, dass Programme aus der Onlinehilfe heraus gestartet werden.
+
+Wenn Sie diese Einstellung aktivieren, können Sie verhindern, dass die von Ihnen angegebenen Programme von der Hilfefunktion aus gestartet werden. Wenn Sie diese Einstellung aktivieren, geben Sie die Liste der Programme ein, die Sie einschränken möchten. Geben Sie die Dateinamen der ausführbaren Dateien aller Programme durch Kommata getrennt ein.
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, können die Benutzer Anwendungen von der Onlinehilfe aus starten.
+
+Hinweis: Sie können auch verhindern, dass Benutzer Anwendungen starten, indem sie die Einstellungen für Softwareeinschränkungen verwenden, die in "Computerkonfiguration\Sicherheitseinstellungen" zur Verfügung stehen.
+
+Hinweis: Diese Einstellung steht unter "Computerkonfiguration" und "Benutzerkonfiguration" zur Verfügung. Wenn beide festgelegt sind, wird die Liste der in beiden Richtlinien angegebenen Programme eingeschränkt.</string>
+        <string id="DisableHHDEP">Datenausführungsverhinderung für die ausführbare HTML-Hilfsdatei deaktivieren</string>
+        <string id="DisableHHDEPText">
+            Mit dieser Richtlinieneinstellung können Sie die ausführbare HTML-Hilfsdatei von der Überwachung der Datenausführungsverhinderung (DEP, Data Execution Prevention) ausschließen, die seitens der Software erzwungen wird.
+            Die Datenausführungsverhinderung sperrt schädlichen Code, der die Ausnahmebehandlungsmechanismen in Windows ausnutzt. Wenn Sie diese Richtlinieneinstellung aktivieren, wird die Datenausführungsverhinderung für die ausführbare HTML-Hilfsdatei deaktiviert. Dadurch können bestimmte ältere ActiveX-Steuerelemente verwendet werden, ohne dass die Datenausführungsverhinderung die HTML-Hilfsdatei schließt.
+            Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird die Datenausführungsverhinderung für die ausführbare HTML-Hilfsdatei aktiviert.
+            Hinweis: Die Datenausführungsverhinderung ist ein Sicherheitsfeature, das Schäden aufgrund von Viren oder anderer Sicherheitsrisiken vom Computer abwenden kann. Um den Schutz Ihres Computers zu gewährleisten, überwacht die Datenausführungsverhinderung die ausgeführten Programme und stellt sicher, dass diese den Systemarbeitsspeicher sicher nutzen.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="HelpQualifiedRootDir_Comp">
+        <textBox refId="HelpQualifiedRootDir_Edit">
+          <label>Geben Sie Ordnernamen ein (durch Semikolons getrennt):</label>
+        </textBox>
+        <text>Beispiel: %windir%\Help;%windir%\pchealth;%programfiles%</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Ausführbare Dateien (durch Kommata getrennt):</label>
+        </textBox>
+        <text>Beispiel: calc.exe,paint.exe</text>
+      </presentation>
+      <presentation id="RestrictRunFromHelp_Comp">
+        <textBox refId="RestrictRunFromHelp_Edit">
+          <label>Ausführbare Dateien (durch Kommata getrennt):</label>
+        </textBox>
+        <text>Beispiel: calc.exe,paint.exe</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

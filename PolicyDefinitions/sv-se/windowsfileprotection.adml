@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>ange visningsnamn här</displayName>
+  <description>ange beskrivning här</description>
+  <resources>
+    <stringTable>
+      <string id="WFP">Windows Filskydd</string>
+      <string id="WFPDllCacheDir">Ange platsen för cacheminnet för Windows Filskydd</string>
+      <string id="WFPDllCacheDir_Help">Anger en alternativ plats för cachen för Windows Filskydd.
+
+Du använder den här inställningen genom att ange den fullständiga sökvägen till den nya lokala platsen i rutan "Sökväg till cachefilen".
+
+Om den här inställningen inaktiveras eller inte konfigureras, finns cachen i mappen %Systemroot%\System32\Dllcache.
+
+Obs! Placera inte cachen i en mapp som är delad på nätverket.</string>
+      <string id="WFPQuota">Begränsa storleken på cacheminnet för Windows Filskydd</string>
+      <string id="WFPQuota_Help">Anger den största mängd diskutrymme som kan användas av filcachen för Windows Filskydd.
+
+Windows Filskydd lägger till skyddade filer till cachen tills cachens innehåll når kvoten. Om kvoten är större än 50 MB, läggs andra viktiga Windows XP-filer till i cachen tills kvoten nås.
+
+Du använder den här inställningen genom att ange den största mängd diskutrymme som får användas (i MB). Om du vill att cachens storlek ska vara obegränsad, kan du ange värdet 4 294 967 295.
+
+Om den här inställningen inaktiveras eller inte konfigureras, används värdet 50 MB i Windows XP Professional och ett obegränsat värde (4 294 967 295 MB) används i Windows Server 2003.</string>
+      <string id="WFPScan">Ange sökfrekvens för Windows Filskydd</string>
+      <string id="WFPScan_AtBoot">Sök under start</string>
+      <string id="WFPScan_Help">Styr när skyddade filer ska avsökas med Windows Filskydd. Den här inställningen styr hur ofta alla systemfiler ska räknas upp och sökas igenom i Windows Filskydd efter ändringar.
+
+Du kan använda den här inställningen om du vill att filer ska sökas igenom oftare i Windows Filskydd. Som standard söks filer endast igenom vid installation.
+
+Du använder den här inställningen genom att aktivera den och ange intervall i rutan "Sökfrekvens".
+
+--  "Sök inte under start". Som standard söks filer igenom endast under installation.
+
+--  "Sök under start". Söker också igenom filer varje gång Windows startas. Den här inställningen fördröjer varje start.
+
+Obs! Den här inställningen påverkar endast filgenomsökning. Den påverkar inte standardavkänningen i bakgrunden i Windows Filskydd när filer ändras.</string>
+      <string id="WFPScan_NotAtBoot">Sök inte under start</string>
+      <string id="WFPShowProgress">Dölj filsökningens förlopp</string>
+      <string id="WFPShowProgress_Help">Döljer fönstret som visar filsökningens förlopp.
+
+Detta fönster visar statusinformation för avancerade användare, men kan förvirra nybörjare.
+
+Om inställningen aktiveras visas inte avsökningsförloppet när sökning sker.
+
+Fönstret visas om inställningen inaktiveras eller inte konfigureras.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="WFPDllCacheDir">
+        <textBox refId="WFPDllCacheDirBox">
+          <label>Sökväg till cachefilen:</label>
+        </textBox>
+      </presentation>
+      <presentation id="WFPQuota">
+        <text>Om du inte vill begränsa cachestorleken, kan du ange det</text>
+        <text> största värdet 4294967295.</text>
+        <decimalTextBox refId="WFPQuota_Size" defaultValue="50">Cachestorlek (i MB)</decimalTextBox>
+      </presentation>
+      <presentation id="WFPScan">
+        <dropdownList refId="WFPScanList" defaultItem="0">Sökfrekvens:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+
+  <policyNamespaces>
+    <target prefix="WindowsBranchCache" namespace="Microsoft.PoliciesContentWindowsBranchCache" />
+    <using prefix="windows" namespace="Microsoft.Policies.Windows" />
+  </policyNamespaces>
+
+  <resources minRequiredRevision="1.0" />
+
+  <categories>
+    <category name="WBC_Cat" displayName="$(string.WBC_Cat)">
+      <parentCategory ref="windows:Network" />
+    </category>
+  </categories>
+
+  <policies>
+
+   <policy name="EnableWindowsBranchCache" 
+            class="Machine" 
+		    displayName="$(string.WBC_Enable)" 
+		    explainText="$(string.WBC_Enable_Help)" 
+		    key="SOFTWARE\Policies\Microsoft\PeerDist\Service" 
+		    valueName="Enable">
+        <parentCategory ref="WBC_Cat" />
+		<supportedOn ref="windows:SUPPORTED_WindowsVista" />
+		<enabledValue> <decimal value="1" /> </enabledValue>
+	    <disabledValue> <decimal value="0" /> </disabledValue>
+    </policy>
+
+
+    <policy name="SetCachePercent" 
+		    class="Machine"
+            displayName="$(string.WBC_Cache_Percent)" 
+		    explainText="$(string.WBC_Cache_Percent_Help)"
+		    key="SOFTWARE\Policies\Microsoft\PeerDist\CacheMgr\Republication"
+            presentation="$(presentation.WBC_Cache_Size_Percent_Presentation)">
+        <parentCategory ref="WBC_Cat" />
+        <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      	<elements>
+        	<decimal id="WBC_Cache_Size_Percent_dctxtbox"
+                    valueName="SizePercent"
+                    minValue="1"
+                    maxValue="80"
+                    required="true"/>
+        </elements>
+    </policy>
+
+   <policy name="EnableWindowsBranchCache_Hosted" 
+            class="Machine" 
+		    displayName="$(string.WBC_HostedCache_Location)" 
+		    explainText="$(string.WBC_HostedCache_Location_Help)" 
+		    key="SOFTWARE\Policies\Microsoft\PeerDist\HostedCache\Connection" 
+		    presentation="$(presentation.WBC_Hosted_Cache_Location_TextBox)">
+		<parentCategory ref="WBC_Cat" />
+		<supportedOn ref="windows:SUPPORTED_WindowsVista" />
+        <elements>
+               <text id="WBC_Cache_TextBox" valueName="Location" required="true"/>
+        </elements>
+    </policy>
+
+   <policy name="EnableWindowsBranchCache_Distributed" 
+            class="Machine" 
+		    displayName="$(string.WBC_Distributed_Enable)" 
+		    explainText="$(string.WBC_Distributed_Enable_Help)" 
+		    key="SOFTWARE\Policies\Microsoft\PeerDist\CooperativeCaching" 
+		    valueName="Enable">
+        <parentCategory ref="WBC_Cat" />
+		<supportedOn ref="windows:SUPPORTED_WindowsVista" />
+		<enabledValue> <decimal value="1" /> </enabledValue>
+	    <disabledValue> <decimal value="0" /> </disabledValue>
+    </policy>
+
+   <policy name="EnableWindowsBranchCache_SMB" 
+            class="Machine" 
+		    displayName="$(string.WBC_SMB_Enable)" 
+		    explainText="$(string.WBC_SMB_Enable_Help)"
+        presentation="$(presentation.WBC_SMB_DecimalTextBox)"
+		    key="Software\Policies\Microsoft\Windows\NetCache">
+        <parentCategory ref="WBC_Cat" />
+		<supportedOn ref="windows:SUPPORTED_Windows7" />
+		<elements>
+        		<decimal id="WBC_SMBLatency_DecimalTextBox" valueName="PeerCachingLatencyThreshold" maxValue="100000000" />
+		</elements>
+    </policy>
+
+  </policies>
+</policyDefinitions>

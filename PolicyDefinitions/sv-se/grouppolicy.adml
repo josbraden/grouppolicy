@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>ange visningsnamn här</displayName>
+  <description>ange beskrivning här</description>
+  <resources>
+    <stringTable>
+      <string id="DisableLGPOProcessing">Inaktivera bearbetning av lokala grupprincipobjekt</string>
+      <string id="DisableLGPOProcessing_Help">Den här principinställningen förhindrar tillämpning av lokala grupprincipobjekt (lokala GPO).
+
+Standard är att principinställningarna i lokala grupprincipobjekt tillämpas före eventuella domänbaserade principinställningar för GPO. Dessa principinställningar kan gälla för både användare och den lokala datorn. Du kan inaktivera behandling och tillämpning av alla lokala grupprincipobjekt för att försäkra dig om att endast domänbaserade GPO tillämpas.
+
+Om du aktiverar den här principinställningen behandlar och tillämpar inte systemet eventuella lokala GPO.
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen fortsätts tillämpningen av lokala GPO.
+
+Obs! För domänanslutna datorer bör den här inställningen endast konfigureras i domänbaserade GPO. Inställningen ignoreras på datorer som är anslutna till en arbetsgrupp.
+</string>
+      <string id="SyncWaitTime">Väntetid för bearbetning av startprincip</string>
+      <string id="SyncWaitTime_Help">Den här principinställningen anger hur länge grupprincipen ska vänta på meddelanden om tillgång till nätverket under bearbetning av startprincip. Om bearbetning av startprincip är synkron blockeras datorn tills nätverket finns tillgängligt eller standardväntetiden har nåtts. Om bearbetning av startprincip är asynkron blockeras inte datorn och principbearbetningen sker i bakgrunden. I båda fallen åsidosätter konfigureringen av den här principinställningen alla systemberäknade väntetider.
+
+Om du aktiverar den här principinställningen använder grupprincipen denna administrativt konfigurerade maximala väntetid och åsidosätter all väntetid som är standard eller som har beräknats av systemet.
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen använder grupprincipen standardväntetiden 30 sekunder på datorer som kör Windows-operativsystemet Vista. 
+</string>
+
+      <string id="AllowX-ForestPolicy-and-RUP">Tillåt användarprinciper mellan skogar och centrala användarprofiler</string>
+      <string id="AllowX-ForestPolicy-and-RUP_Help">Tillåter användarbaserad principbehandling, centrala användarprofiler och inloggningsskript för användarobjekt för interaktiva inloggningar mellan skogar.
+
+Denna inställning påverkar alla användarkonton som interaktivt loggar in till en dator i en annan skog när det finns ett förtroende mellan skogar eller det finns en skog med tvåvägsförtroende.
+
+När denna inställning inte är konfigurerad gäller följande: - Inga användarbaserade principinställningar tillämpas från användarens skog - Användare får inte sina centrala profiler, de får en lokal profil på datorn från den lokala skogen. Användaren får ett varningsmeddelande och ett meddelande anslås i händelseloggen (1529). - Loopback-behandling av grupprincip tillämpas genom att använda GPO (grupprincipobjekt) vars omfång står i förhållande till datorn. - Det anslås ett meddelande i händelseloggen (1109) som talar om att loopback anropades i läget Ersätt.
+
+När den här inställningen är aktiverad är beteendet exakt detsamma som i Windows 2000: Användarprincip tillämpas och en central användarprofil tillåts från den betrodda skogen.
+
+När denna inställning är inaktiverad är beteendet detsamma som om den inte konfigurerats.</string>
+      <string id="CSE_AppMgmt">Behandling av princip för programvaruinstallation</string>
+      <string id="CSE_AppMgmt_Help">Bestämmer när principerna för programvaruinstallation uppdateras.
+
+Denna inställning påverkar alla principer som använder komponenten för programvaruinstallation av grupprincipen t.ex. principerna i Programvaruinställningar\Programvaruinstallation. Du kan endast ange princip för programvaruinstallation för grupprincipobjekt som lagras i Active Directory, inte för grupprincipobjekt på den lokala datorn.
+
+Denna princip åsidosätter anpassade inställningar som programmet som implementerade principen för programvaruinstallationen angav när det installerades.
+
+Om du aktiverar den här inställningen kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Tillåt behandling över långsam nätverksanslutning" uppdaterar principerna även när uppdateringen överförs via en långsam nätverksanslutning, till exempel en telefonlinje. Uppdateringar över långsamma anslutningar kan orsaka stora fördröjningar.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+      <string id="CSE_DiskQuota">Behandling av diskkvotsprincip</string>
+      <string id="CSE_DiskQuota_Help">Bestämmer när diskkvotsprinciperna uppdateras.
+
+Denna inställning påverkar alla principer som använder diskkvotkomponenten i grupprincipen t.ex. dem i Datorkonfiguration\Administrativa mallar\System\Diskkvoter.
+
+Den åsidosätter anpassade inställningar som programmet som implementerade diskkvotsprincipen angav när det installerades.
+
+Om du aktiverar den här inställningen kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Tillåt behandling över långsam nätverksanslutning" uppdaterar principerna även när uppdateringen överförs via en långsam nätverksanslutning, till exempel en telefonlinje. Uppdateringar över långsamma anslutningar kan orsaka stora fördröjningar.
+
+Alternativet "Använd inte under regelbunden behandling i bakgrunden" förhindrar att systemet uppdaterar påverkade principer i bakgrunden samtidigt som datorn används. När uppdateringar i bakgrunden har inaktiverats börjar principändringar inte gälla förrän nästa gång användaren loggar in eller när systemet startas om.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+      <string id="CSE_EFSRecovery">Behandling av princip för återställning av krypterande filsystem</string>
+      <string id="CSE_EFSRecovery_Help">Bestämmer när principerna för kryptering uppdateras.
+
+Denna inställning påverkar alla principer som använder krypteringskomponenten i grupprincipen t.ex. principerna som har att göra med kryptering i Windows-inställningar\Säkerhetsinställningar.
+
+Den åsidosätter anpassade inställningar som programmet som implementerade krypteringsprincipen angav när det installerades.
+
+Om du aktiverar den här inställningen kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Tillåt behandling över långsam nätverksanslutning" uppdaterar principerna även när uppdateringen överförs via en långsam nätverksanslutning, till exempel en telefonlinje. Uppdateringar över långsamma anslutningar kan orsaka stora fördröjningar.
+
+Alternativet "Använd inte under regelbunden behandling i bakgrunden" förhindrar att systemet uppdaterar påverkade principer i bakgrunden samtidigt som datorn används. När uppdateringar i bakgrunden har inaktiverats börjar principändringar inte gälla förrän nästa gång användaren loggar in eller när systemet startas om.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+      <string id="CSE_FolderRedirection">Behandling av princip för mappomdirigering</string>
+      <string id="CSE_FolderRedirection_Help">Bestämmer när principerna för mappomdirigering uppdateras.
+
+Den här inställningen påverkar alla principer som använder komponenten för mappomdirigering i grupprinciperna t.ex. dem i Windows-inställningar\Mappomdirigering. Du kan endast ange principen för mappomdirigering för grupprincipobjekt som lagras i Active Directory, inte för grupprincipobjekt på den lokala datorn.
+
+Denna princip åsidosätter anpassade inställningar som programmet som implementerade principen för mappomdirigeringen angav när det installerades.
+
+Om du aktiverar den här inställningen kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Tillåt behandling över långsam nätverksanslutning" uppdaterar principerna även när uppdateringen överförs via en långsam nätverksanslutning, till exempel en telefonlinje. Uppdateringar över långsamma anslutningar kan orsaka stora fördröjningar.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+      <string id="CSE_IEM">Behandling av princip för underhåll av Internet Explorer</string>
+      <string id="CSE_IEM_Help">Bestämmer när principerna för underhåll av Internet Explorer uppdateras.
+
+Denna inställning påverkar alla principer som använder komponenten för underhåll av Internet Explorer i grupprincipen t.ex. principerna i Windows-inställningar\Underhåll av Internet Explorer.
+
+Den åsidosätter anpassade inställningar som programmet som implementerade principen för underhåll av Internet Explorer angav när det installerades.
+
+Om du aktiverar den här inställningen kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Tillåt behandling över långsam nätverksanslutning" uppdaterar principerna även när uppdateringen överförs via en långsam nätverksanslutning, till exempel en telefonlinje. Uppdateringar över långsamma anslutningar kan orsaka stora fördröjningar.
+
+Alternativet "Använd inte under regelbunden behandling i bakgrunden" förhindrar att systemet uppdaterar påverkade principer i bakgrunden samtidigt som datorn används. När uppdateringar i bakgrunden har inaktiverats börjar principändringar inte gälla förrän nästa gång användaren loggar in eller när systemet startas om.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+      <string id="CSE_IPSecurity">Behandling av princip för IP-säkerhet</string>
+      <string id="CSE_IPSecurity_Help">Bestämmer när principerna för IP-säkerhet uppdateras.
+
+Denna inställning påverkar alla principer som använder komponenten för IP-säkerhet i grupprincipen t.ex. principerna i Datorkonfiguration\Windows-inställningar\Säkerhetsinställningar\IP-säkerhetsprinciper - Lokal dator.
+
+Den åsidosätter anpassade inställningar som programmet som implementerade principen för IP-säkerhet angav när det installerades.
+
+Om du aktiverar den här inställningen kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Tillåt behandling över långsam nätverksanslutning" uppdaterar principerna även när uppdateringen överförs via en långsam nätverksanslutning, till exempel en telefonlinje. Uppdateringar över långsamma anslutningar kan orsaka stora fördröjningar.
+
+Alternativet "Använd inte under regelbunden behandling i bakgrunden" förhindrar att systemet uppdaterar påverkade principer i bakgrunden samtidigt som datorn används. När uppdateringar i bakgrunden har inaktiverats börjar principändringar inte gälla förrän nästa gång användaren loggar in eller när systemet startas om.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+      <string id="CSE_Registry">Behandling av registerprincip</string>
+      <string id="CSE_Registry_Help">Bestämmer när registerprinciperna uppdateras.
+
+Denna inställning påverkar alla principer i mappen Administrativa mallar och alla andra principer som lagrar värden i registret.
+
+Den åsidosätter anpassade inställningar som programmet som implementerade en registerprincipen angav när det installerades.
+
+Om du aktiverar den här inställningen kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Använd inte under regelbunden behandling i bakgrunden" förhindrar att systemet uppdaterar påverkade principer i bakgrunden samtidigt som datorn används. När uppdateringar i bakgrunden har inaktiverats börjar principändringar inte gälla förrän nästa gång användaren loggar in eller när systemet startas om.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+      <string id="CSE_Scripts">Behandling av skriptprincip</string>
+      <string id="CSE_Scripts_Help">Bestämmer när principerna som tilldelar delade skript uppdateras.
+
+Denna inställning påverkar alla principer som använder skriptkomponenten i grupprincipen t.ex. dem i Windows-Inställningar\Skript.
+
+Den åsidosätter anpassade inställningar som programmet som implementerade skriptprincipen angav när det installerades.
+
+Om du aktiverar denna princip kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Tillåt behandling över långsam nätverksanslutning" uppdaterar principerna även när uppdateringen överförs via en långsam nätverksanslutning, till exempel en telefonlinje. Uppdateringar över långsamma anslutningar kan orsaka stora fördröjningar.
+
+Alternativet "Använd inte under regelbunden behandling i bakgrunden" förhindrar att systemet uppdaterar påverkade principer i bakgrunden samtidigt som datorn används. När uppdateringar i bakgrunden har inaktiverats börjar principändringar inte gälla förrän nästa gång användaren loggar in eller när systemet startas om.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+      <string id="CSE_Security">Behandling av säkerhetsprincip</string>
+      <string id="CSE_Security_Help">Bestämmer när säkerhetsprinciper uppdateras.
+
+Denna inställning påverkar alla principer som använder säkerhetskomponenten i grupprincipen t.ex. principerna i Windows-inställningar\Säkerhetsinställningar.
+
+Den åsidosätter anpassade inställningar som programmet som implementerade säkerhetsprincipen angav när det installerades.
+
+Om du aktiverar den här inställningen kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Använd inte under regelbunden behandling i bakgrunden" förhindrar att systemet uppdaterar påverkade principer i bakgrunden samtidigt som datorn används. När uppdateringar i bakgrunden har inaktiverats börjar principändringar inte gälla förrän nästa gång användaren loggar in eller när systemet startas om.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+      <string id="CSE_Wireless">Behandling av principer för trådlöst nätverk</string>
+      <string id="CSE_Wireless_Help">Bestämmer när principer som tilldelar inställningar för trådlösa nätverk uppdateras.
+
+Denna inställning påverkar alla principer som använder komponenten för trådlösa nätverk i grupprincipen t.ex. dem i Windows-inställningar\Principer för trådlöst nätverk.
+
+Den åsidosätter anpassade inställningar som programmet som implementerade det trådlösa nätverket angav när det installerades.
+
+Om du aktiverar denna princip kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Tillåt behandling över långsam nätverksanslutning" uppdaterar principerna även när uppdateringen överförs via en långsam nätverksanslutning, till exempel en telefonlinje. Uppdateringar över långsamma anslutningar kan orsaka stora fördröjningar.
+
+Alternativet "Använd inte under regelbunden behandling i bakgrunden" förhindrar att systemet uppdaterar påverkade principer i bakgrunden samtidigt som datorn används. När uppdateringar i bakgrunden har inaktiverats börjar principändringar inte gälla förrän nästa gång användaren loggar in eller när systemet startas om.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+      <string id="CSE_Wired">Behandling av fast princip</string>
+      <string id="CSE_Wired_Help">Bestämmer när principer som tilldelar inställningar för fasta nätverk uppdateras.
+
+Denna inställning påverkar alla principer som använder komponenten för fast nätverk i grupprincipen t.ex. principerna i Windows-inställningar\\Principer för kabelanslutna nätverk.
+
+Den åsidosätter anpassade inställningar som programmet som implementerade det fasta nätverket angav när det installerades.
+
+Om du aktiverar denna princip kan du använda de kryssrutor som visas för att ändra alternativen. Om du inaktiverar den här inställningen eller låter bli att konfigurera den påverkar den inte systemet.
+
+Alternativet "Tillåt behandling över långsam nätverksanslutning" uppdaterar principerna även när uppdateringen överförs via en långsam nätverksanslutning, till exempel en telefonlinje. Uppdateringar över långsamma anslutningar kan orsaka stora fördröjningar.
+
+Alternativet "Använd inte under regelbunden behandling i bakgrunden" förhindrar att systemet uppdaterar påverkade principer i bakgrunden samtidigt som datorn används. När uppdateringar i bakgrunden har inaktiverats börjar principändringar inte gälla förrän nästa gång användaren loggar in eller när systemet startas om.
+
+Alternativet "Behandla även om grupprincipobjekten inte har ändrats" uppdaterar och använder principer på nytt, även om principerna inte har ändrats. Många principimplementeringar anger att de endast uppdateras om de ändras. Trots detta kan det vara en god idé att uppdatera principer som inte har ändrats, så att en önskad inställning tillämpas igen om en användare har ändrat den.</string>
+
+      <string id="DenyRsopToInteractiveUser">Tillåt inte att interaktiva användare skapar data för Gällande principuppsättning</string>
+      <string id="DenyRsopToInteractiveUser_Help">Den här inställningen styr användares förmåga att visa data för Gällande principuppsättning.
+
+Standard är att interaktivt inloggade användare kan visa sina egna data för Gällande principuppsättning.
+
+Om denna inställning är aktiverad kan interaktiva användare inte generera data för Gällande principuppsättning.
+
+Om denna inställning inte är konfigurerad eller inaktiverad kan interaktiva användare generera data för Gällande principuppsättning.
+
+Obs! Den här inställningen gäller inte för administratörer. Om den här inställningen aktiveras eller inaktiveras kan administratörer som standard visa data för Gällande principuppsättning.
+
+Obs! Du kan se data för Gällande principuppsättning på en klientdator genom att använda snapin-modulen "Gällande principuppsättning" i MMC. Du kan starta snapin-modulen för gällande principuppsättning från kommandoraden genom att skriva RSOP.msc.
+
+Obs! Den här inställningen finns både som en inställning av typ Användarkonfiguration och Datorkonfiguration.
+
+Se även inställningen "Inaktivera loggning av Gällande principuppsättning" i Datorkonfiguration\Administrativa mallar\System\Grupprincip.</string>
+      <string id="DisableAutoADMUpdate">Inaktivera automatisk uppdatering av ADM-filer</string>
+      <string id="DisableAutoADMUpdate_Help">Förhindrar att källfiler för de administrativa mallarna uppdateras automatiskt när du öppnar Redigeraren för grupprincipobjekt. Administratörer kan använda detta om de bryr sig om hur mycket utrymme som används på systemvolymen för en DC.
+
+Standard är att när du startar Redigeraren för grupprincipobjekt utförs en jämförelse av tidsstämpel på källfilerna i den lokala katalogen %SYSTEMROOT%\inf och på de källfiler som lagras i grupprincipobjekt. Om de lokala filerna är nyare, kopieras de till grupprincipobjektet.
+
+Om du ändrar status för den här inställningen till Aktiverad förhindrar det att eventuella källfiler kopieras till grupprincipobjektet.
+
+Om du ändrar status för denna inställning till Inaktiverad framtvingar det standardbeteende. Filer kopieras alltid till grupprincipobjektet om de är nyare.
+
+Obs! Om principen "Använd alltid lokala ADM-filer för Redigeraren för grupprincipobjekt" är aktiverad i Datorkonfiguration ignoreras den här inställningen och förfarandet är samma som om den här principen var aktiverad.</string>
+      <string id="DisableBackgroundPolicy">Inaktivera uppdatering av grupprinciper i bakgrunden</string>
+      <string id="DisableBackgroundPolicy_Help">Förhindrar att grupprinciper uppdateras när datorn används. Den här inställningen gäller för grupprinciper för datorer, användare och domänkontrollanter.
+
+Om du aktiverar den här inställningen väntar systemet tills den aktuella användaren loggar ut ur systemet före uppdateringen av datorn och användarinställningarna.
+
+Om du inaktiverar den här inställningen kan uppdateringarna tillämpas när användarna arbetar. Uppdateringsintervall bestäms av inställningarna "Uppdateringsintervall för datorgrupprinciper" och "Uppdateringsintervall för användargrupprinciper".
+
+Obs! Om du gör ändringar i den här inställningen måste du starta om datorn innan inställningen börjar gälla.</string>
+      <string id="DisableUsersFromMachGP">Tillåt inte att användare startar uppdatering av datorprinciper</string>
+      <string id="DisableUsersFromMachGP_Help">Du kan använda den här inställningen för att styra en användares förmåga att starta en uppdatering av datorprinciper.
+
+Om du aktiverar den här inställningen kanske användare inte kan starta en uppdatering av datorprinciper. Datorprinciper tillämpas ändå vid start eller när det sker en officiell uppdatering av principer.
+
+Om du inaktiverar eller låter bli att konfigurera den här inställningen tillämpas standardbeteendet. Standard är att datorprincip tillämpas när datorn startas. Den tillämpas dessutom vid angivet uppdateringsintervall eller när användaren startar den manuelIt.
+
+Obs! Den här inställningen gäller endast dem som inte är administratörer. Administratörer kan fortfarande starta en uppdatering av datorprinciper när som helst, oavsett hur principen ifråga är konfigurerad.
+
+Om du vill ändra uppdateringsintervall för principer, se även inställningen "Uppdateringsintervall för datorgrupprinciper".
+
+Obs! Om du gör ändringar i den här inställningen måste du starta om datorn innan inställningen börjar gälla.</string>
+      <string id="EnforcePoliciesOnly">Använd Visa endast principer</string>
+      <string id="EnforcePoliciesOnly_Help">Förhindrar att administratörer från att visa eller använda grupprincipinställningar.
+
+En ADM-fil (administration) för grupprinciper kan innehålla både faktiska inställningar och önskade inställningar. Faktiska inställningar, som stöds helt och hållet av grupprinciper, måste använda registervärden i registerundernycklarna Software\Policies eller Software\Microsoft\Windows\CurrentVersion\Policies. Önskade inställningar, som inte stöds helt och hållet, använder registervärden i andra undernycklar.
+
+Om du aktiverar den här inställningen är kommandot "Visa endast principer" aktivt och administratörer kan inte inaktivera det. Resultatet blir att Redigeraren för grupprincipobjekt endast visar faktiska inställningar, önskade inställningar visas inte.
+
+Om du inaktiverar den här inställningen eller låter bli att konfigurera den är kommandot "Visa endast principer" aktivt som standard, men administratörer kan visa andra inställningar genom att inaktivera kommandot "Visa endast principer".
+
+Obs! Du hittar kommandot "Visa endast principer" från Redigeraren för grupprincipobjekt genom att klicka på en av mapparna Administrativa mallar, högerklicka på samma mapp och sedan peka på "Visa".
+
+I Redigeraren för grupprincipobjekt har önskade inställningar en röd ikon för att skilja dem från faktiska inställningar som har en blå ikon.</string>
+      <string id="GPDCOptionAny">Använda valfri tillgänglig domänkontrollant</string>
+      <string id="GPDCOptionInherit">Ärva från snapin-modulerna för Active Directory</string>
+      <string id="GPDCOptionPDC">Använda den primära domänkontrollanten</string>
+      <string id="GPDCOptions">Val av domänkontrollant</string>
+      <string id="GPDCOptions_Help">Bestämmer vilken domänkontrollant som används av snapin-modulen "Redigeraren för grupprincipobjekt".
+
+-- "Använda den primära domänkontrollanten" indikerar att snapin-modulen "Redigeraren för grupprincipobjekt" läser och skriver ändringar till den domänkontrollant som utsetts till verksamhetshanteraren för Primär domänkontrollant (PDC) för domänen.
+
+-- "Ärva från Active Directory-snapin-moduler" indikerar att snapin-modulen "Redigeraren för grupprincipobjekt" läser och skriver ändringar till domänkontrollanten som snapin-modulerna "Active Directory - användare och datorer" och/eller "Active Directory - platser och tjänster" använder.
+
+-- "Använda valfri tillgänglig domänkontrollant" indikerar att snapin-modulen "Redigeraren för grupprincipobjekt" kan läsa och skriva ändringar till valfri tillgänglig domänkontrollant.
+
+Om du inaktiverar den här inställningen eller låter bli att konfigurera den, använder snapin-modulen "Redigeraren för grupprincipobjekt" den domänkontrollant som utsetts till verksamhetshanteraren för Primär domänkontrollant (PDC) för domänen.
+
+Obs! Du kan ändra verksamhetshanteraren för Primär domänkontrollant (PDC) för en domän genom att öppna snapin-modulen "Active Directory - användare och datorer", högerklicka på en domän och klicka på "Verksamhetshanterare".</string>
+      <string id="GPTransferRate">Identifiering av långsam grupprinciplänk</string>
+      <string id="GPTransferRate_Help">Definierar en långsam anslutning för att tillämpa och uppdatera grupprincip.
+
+Om den frekvens med vilken data överförs från domänkontrollanten som förser datorerna med en uppdatering av principerna är långsammare än den frekvens som anges av den här inställningen, bedömer systemet anslutningen som långsam.
+
+Hur systemet reagerar på en långsam principanslutning varierar mellan olika principer. Det program som implementerar principen kan ange vad som ska ske vid en långsam anslutning. Med inställningarna för principbehandling i den här mappen kan du dessutom åsidosätta reaktioner som angetts för program när det gäller långsamma anslutningar.
+
+Om du vill använda den här inställningar anger du ett decimalvärde mellan 0 och 4 294 967 200 i rutan "Anslutningshastighet". Det värdet indikerar en överföringshastighet i kilobitar per sekund. Alla anslutningar som är långsammare än detta värde anses vara långsamma. Om du skriver 0 anses alla anslutningar vara snabba.
+
+Om du inaktiverar den här inställningen eller inte konfigurerar den använder systemet standardvärdet som är 500 kilobitar per sekund.
+
+Den här inställningen finns både i mappen Datorkonfiguration och i mappen Användarkonfiguration. Inställningen i Datorkonfiguration definierar en långsam länk för principer i mappen Datorkonfiguration. Inställningen i Användarkonfiguration definierar en långsam länk för inställningar i mappen Användarkonfiguration.
+
+Se även "Identifiera inte långsamma nätverksanslutningar" och tillhörande principer i Datorkonfiguration\Administrativa mallar\System\Användarprofil. Obs! Om profilservern använder ett IP-nätverk används inställningen för anslutningshastighet. Om profilservern inte använder ett IP-nätverk används SMB-timing.</string>
+      <string id="GroupPolicyRefreshRate">Uppdateringsintervall för datorgrupprinciper</string>
+      <string id="GroupPolicyRefreshRate_Help">Anger hur ofta grupprinciper för datorer uppdateras när datorn används (i bakgrunden). Den här inställningen anger en hastighetsfrekvens för bakgrunden men endast för grupprinciper i mappen Datorkonfiguration.
+
+Förutom uppdateringar i bakgrunden, uppdateras alltid grupprincipen när systemet startas.
+
+Standard är att datorns grupprinciper uppdateras i bakgrunden var 90:e minut, med en slumpmässig förskjutning på mellan 0 och 30 minuter.
+
+Du kan ange ett uppdateringsintervall från 0 till 64 800 minuter (45 dagar). Om du väljer 0 minuter försöker datorn uppdatera grupprinciper var sjunde sekund. Eftersom uppdateringarna kan påverka användares arbete och öka nätverkstrafiken är emellertid väldigt korta uppdateringsintervall inte lämpliga för de flesta installationer.
+
+Om du inaktiverar den här inställningen uppdateras grupprinciper var 90:e minut (standardvärdet). Om du vill ange att grupprinciper aldrig ska uppdateras när datorn används, markera principen "Inaktivera uppdatering av grupprinciper i bakgrunden".
+
+Med uppdateringsintervallet för grupprinciper för datorprinciper kan du också ange hur mycket det faktiska uppdateringsintervallet varierar. För att klienter med samma uppdateringsintervall inte ska begära uppdateringar samtidigt, varierar uppdateringsintervallet för varje klient med ett slumpvis valt antal minuter. Det värde du anger i rutan slumptid anger hur mycket uppdateringen kan variera. Om du till exempel anger 30 minuter, kommer uppdateringsintervallet att variera med mellan 0 och 30 minuter. Ett högre värde ger ett större intervall, vilket innebär att det är mindre troligt att klienternas begäranden sker samtidigt. Uppdateringar kan emellertid fördröjas avsevärt.
+
+Den här inställningen bestämmer uppdateringsintervall för datorgrupprinciper. Du kan ange uppdateringsintervall för användarprinciper med inställningen "Uppdateringsintervall för användargrupprinciper" (som finns i Användarkonfiguration\Administrativa mallar\System\Grupprincip).
+
+Den här inställningen används endast när inställningen "Inaktivera uppdatering av grupprinciper i bakgrunden" inte är aktiverad.
+
+Obs! Det är antagligen en god idé att meddela användarna att deras principer uppdateras regelbundet, så att de känner igen tecknen på en principuppdatering. När grupprinciper uppdateras, uppdateras Windows-skrivbordet. Det blinkar en kort stund och stänger öppna menyer. Restriktioner som införts av grupprinciper, t.ex. de som begränsar vilka program som användaren kan köra, kan också påverka aktiviteter som körs.</string>
+      <string id="GroupPolicyRefreshRateDC">Uppdateringsintervall för grupprinciper för domänkontrollanter</string>
+      <string id="GroupPolicyRefreshRateDC_Help">Anger hur ofta grupprinciper uppdateras (i bakgrunden) på domänkontrollanter medan de används. De uppdateringar som anges av den här inställningen sker i tillägg till de uppdateringar som utförs när systemet startar.
+
+Standard är att grupprinciper på domkontrollanter uppdateras var femte minut.
+
+Du kan ange ett uppdateringsintervall från 0 till 64 800 minuter (45 dagar). Om du anger 0 minuter, kommer domänkontrollanten att försöka uppdatera grupprincipen var sjunde sekund. Eftersom uppdateringarna kan påverka användares arbete och öka nätverkstrafiken är emellertid väldigt korta uppdateringsintervall inte lämpliga för de flesta installationer.
+
+Om du inaktiverar den här inställningen uppdaterar domänkontrollanten grupprinciperna var femte minut (standardvärdet). Om du vill ange att grupprinciper för användare aldrig ska uppdateras när datorn används, markera principen "Inaktivera uppdatering av grupprinciper i bakgrunden".
+
+Du kan också använda den här inställningen för att ange hur mycket det faktiska uppdateringsintervallet varierar. För att förhindra att domänkontrollanter med samma uppdateringsintervall begär uppdateringar samtidigt, varieras uppdateringsintervallet för varje domänkontrollant med ett slumpvis valt antal minuter. Det värde du anger i rutan slumptid anger hur mycket uppdateringen kan variera. Om du till exempel anger 30 minuter, kommer uppdateringsintervallet att variera med mellan 0 och 30 minuter. Ett stort värde gör att uppdateringstiden kan variera mycket, vilket gör det mindre troligt att uppdateringsbegäranden överlappas. Uppdateringar kan emellertid fördröjas avsevärt.
+
+Obs! Den här inställningen används endast när en princip upprättas för en domän, plats, organisationsenhet (OU) eller anpassad grupp. Om du upprättar en princip enbart för den lokala datorn, kommer denna inställning att ignoreras.</string>
+      <string id="GroupPolicyRefreshRateUser">Uppdateringsintervall för användargrupprinciper</string>
+      <string id="GroupPolicyRefreshRateUser_Help">Anger hur ofta grupprinciper för användare uppdateras när datorn används (i bakgrunden). Den här inställningen anger en uppdateringsfrekvens för bakgrunden men endast för grupprinciper i mappen Användarkonfiguration.
+
+I tillägg till de uppdateringar som sker i bakgrunden, uppdateras alltid grupprincipen för användare när användare loggar in.
+
+Standard är att användargrupprinciper uppdateras i bakgrunden var 90:e minut, med en slumpmässig förskjutning på mellan 0 och 30 minuter.
+
+Du kan ange ett uppdateringsintervall från 0 till 64 800 minuter (45 dagar). Om du anger 0 minuter, kommer datorn att försöka uppdatera användarens grupprincip var 7:e sekund. Eftersom uppdateringarna kan påverka användares arbete och öka nätverkstrafiken är emellertid väldigt korta uppdateringsintervall inte lämpliga för de flesta installationer.
+
+Om du inaktiverar den här inställningen uppdateras användargrupprinciper var 90:e minut (standardvärdet). Om du vill ange att användargrupprinciper aldrig ska uppdateras när datorn används, markera principen "Inaktivera uppdatering av grupprinciper i bakgrunden".
+
+Du kan också använda den här inställningen för att ange hur mycket det faktiska uppdateringsintervallet varierar. För att klienter med samma uppdateringsintervall inte ska begära uppdateringar samtidigt, varierar uppdateringsintervallet för varje klient med ett slumpvis valt antal minuter. Det värde du anger i rutan slumptid anger hur mycket uppdateringen kan variera. Om du t.ex. skriver 30 minuter varierar uppdateringsintervallet med mellan 0 och 30 minuter. Ett högre värde ger ett större intervall, vilket innebär att det är mindre troligt att klienternas begäranden sker samtidigt. Uppdateringar kan emellertid fördröjas avsevärt.
+
+Viktigt! Om inställningen "Inaktivera uppdatering av grupprinciper i bakgrunden" är aktiverad ignoreras denna inställning.
+
+Obs! Den här inställningen bestämmer uppdateringsintervall för användargrupprinciper. Du kan ange uppdateringsfrekvens för datorgrupprinciper genom att använda inställningen "Uppdateringsintervall för datorgrupprinciper" (som finns i Datorkonfiguration\Administrativa mallar\System\Grupprincip).
+
+Tips! Det är antagligen en god idé att meddela användarna att deras principer uppdateras regelbundet, så att de känner igen tecknen på en principuppdatering. När grupprinciper uppdateras, uppdateras Windows-skrivbordet. Det blinkar en kort stund och stänger öppna menyer. Restriktioner som införs av grupprinciperna, så som de som begränsar vilka program som användaren kan köra, kan påverka aktiviteter som körs.</string>
+      <string id="NewGPODisplayName">Standardnamn på nya grupprincipobjekt</string>
+      <string id="NewGPODisplayName_Help">Anger standardvisningsnamn för nya grupprincipobjekt.
+
+Du kan använda den här inställningen till att ange standardnamnet för nya grupprincipobjekt som skapats från principkompatibla hanteringsverktyg för grupprinciper, inklusive fliken "Grupprincip" i verktygen i Active Directory och visningsverktyget för grupprincipobjekt.
+
+Visningsnamnet kan innehålla miljövariabler och kan bestå av högst 255 tecken.
+
+Om den här inställningen är inaktiverad eller inte konfigurerad, används standardvisningsnamnet som är "Nytt grupprincipobjekt".</string>
+      <string id="NewGPOLinksDisabled">Länkar av typ "Skapa nytt grupprincipobjekt" inaktiveras som standard</string>
+      <string id="NewGPOLinksDisabled_Help">Skapar länkar till nya grupprincipobjekt i inaktiverat läge.
+
+Denna inställning skapar helt nya länkar till grupprincipobjekt i inaktiverat läge som standard. När du har konfigurerat och testat nya objektlänkar genom att använda ett principkompatibelt hanteringsverktyg för grupprinciper t.ex. "Active Directory - användare och datorer" eller "Active Directory - platser och tjänster", kan du aktivera objektlänkar för användning i systemet.
+
+Om du inaktiverar den här inställningen eller inte konfigurerar den skapas nya länkar för grupprincipobjekt i det aktiverade läget. Om du inte vill att de ska kunna användas förrän de konfigurerats och testats, måste du inaktivera objektlänkarna.</string>
+      <string id="OnlyUseLocalAdminFiles">Använd alltid lokala ADM-filer för Redigeraren för grupprincipobjekt</string>
+      <string id="OnlyUseLocalAdminFiles_Help">Använd alltid lokala ADM-filer för snapin-modulen "Grupprinciper".
+
+Som standard gäller att när du redigerar ett grupprincipobjekt med hjälp av snapin-modulen "Redigeraren för grupprincipobjekt", läses ADM-filer in från detta grupprincipobjekt till snapin-modulen "Redigeraren för grupprincipobjekt". Med detta kan du använda samma version av ADM-filer som användes för att skapa grupprincipobjekt under redigeringen av detta grupprincipobjekt.
+
+Detta leder till följande beteende:
+
+- Om du t.ex. ursprungligen skapade grupprincipobjekt med ett engelskt system innehåller grupprincipobjektet engelska ADM-filer.
+
+- Om du senare redigerar grupprincipobjektet från ett system med ett annat språk får du de engelska ADM-filerna som de var i grupprincipobjektet.
+
+Du kan ändra detta beteende med hjälp av denna inställning.
+
+Om du aktiverar denna inställning använder snapin-modulen "Redigeraren för grupprincipobjekt" alltid lokala ADM-filer i katalogen %windir%\inf när du redigerar grupprincipobjekt.
+
+Detta leder till följande beteende:
+
+- Om du ursprungligen skapat grupprincipobjektet med ett engelskt system, och du sedan redigerade grupprincipobjektet med ett japanskt system, använder snapin-modulen "Redigeraren för grupprincipobjekt" de lokala japanska ADM-filerna, och du ser texten på japanska under "Administrativa mallar".
+
+Om du inaktiverar eller inte konfigurerar den här inställningen, läser snapin-modulen "Redigeraren för grupprincipobjekt" alltid in alla ADM-filer från det faktiska grupprincipobjektet.
+
+Obs! Om inte alla de ADM-filer som krävs finns lokalt i mappen %windir%\inf går det kanske inte att se alla inställningar som konfigurerats i grupprincipobjektet.</string>
+      <string id="PolicyPolicies">Grupprincip</string>
+      <string id="RSoPLogging">Inaktivera loggning av Gällande principuppsättning</string>
+      <string id="RSoPLogging_Help">Du kan använda den här inställningen för att aktivera eller inaktivera loggning av Gällande principuppsättning på en klientdator.
+
+Gällande principuppsättning loggar information om grupprincipinställningar som har tillämpats på klienten. Denna information innehåller information så som vilka grupprincipobjekt som tillämpats, var de kom ifrån och vilka filnamnstilläggsinställningar som inkluderats på klientsidan.
+
+Om du aktiverar den här inställningen, inaktiveras loggning av Gällande principuppsättning.
+
+Om du inaktiverar eller inte konfigurerar denna inställning, aktiveras loggning av Gällande principuppsättning. Som standard är loggning av Gällande principuppsättning alltid på.
+
+Obs! Du kan visa information som loggats om Gällande principuppsättning på en klientdator genom att använda snapin-modulen "Gällande principuppsättning" i MMC.</string>
+      <string id="UserPolicyMode">Behandlingsläge för användargrupprincip-loopback</string>
+      <string id="UserPolicyMode_Help">Tillämpar andra användarinställningar när en användare loggar in till en dator som påverkas av den här inställningen.
+
+Denna inställning instruerar systemet att tillämpa uppsättningen med grupprincipobjekt för datorn för valfri användare som loggar in till en dator som påverkas av den här inställningen. Den är avsedd för datorer som tjänar ett speciellt syfte, t.ex. dem i offentliga miljöer, laboratorier och/eller klassrum, där du måste ändra användarinställningar beroende på vilken dator som används.
+
+Standard är att användarens grupprincipobjekt bestämmer vilka användarinställningar som gäller. Om denna inställning är aktiverad gäller att när en användare loggar in till den här datorn, bestämmer datorns grupprincipobjekt vilken uppsättning med grupprincipobjekt som gäller.
+
+Använd den här inställningen genom att markera ett av följande lägen i rutan "Läge":
+
+-- "Ersätt" anger att de användarinställningar som definierats i datorns grupprincipobjekt ersätter de användarinställningar som normalt tillämpas för användaren.
+
+-- "Slå samman" anger att de användarinställningar som definierats i datorns grupprincipobjekt och de användarinställningar som normalt tillämpas för användaren kombineras. Om inställningarna står i konflikt med varandra har användarinställningarna i datorns grupprincipobjekt prioritet över användarens normala inställningar.
+
+Om du inaktiverar den här inställningen, eller låter bli att konfigurera den, bestämmer användarens grupprincipobjekt vilka användarinställningar som gäller.
+
+Obs! Den här inställningen har endast effekt när både datorkontot och användarkontot finns i Windows 2000-domäner.</string>
+      <string id="UserPolicyMode_Merge">Slå samman</string>
+      <string id="UserPolicyMode_Replace">Ersätt</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="SyncWaitTime">
+        <decimalTextBox refId="SyncWaitTime_Minutes" defaultValue="120">Väntetid (i sekunder):</decimalTextBox>
+      </presentation>
+      <presentation id="CSE_AppMgmt">
+        <checkBox refId="CSE_SLOWLINK1">Tillåt behandling över långsam nätverksanslutning</checkBox>
+        <checkBox refId="CSE_NOCHANGES1">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="CSE_DiskQuota">
+        <checkBox refId="CSE_SLOWLINK2">Tillåt behandling över långsam nätverksanslutning</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND2">Använd inte under periodisk behandling i bakgrunden</checkBox>
+        <checkBox refId="CSE_NOCHANGES2">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="CSE_EFSRecovery">
+        <checkBox refId="CSE_SLOWLINK3">Tillåt behandling över långsam nätverksanslutning</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND3">Använd inte under periodisk behandling i bakgrunden</checkBox>
+        <checkBox refId="CSE_NOCHANGES3">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="CSE_FolderRedirection">
+        <checkBox refId="CSE_SLOWLINK4">Tillåt behandling över långsam nätverksanslutning</checkBox>
+        <checkBox refId="CSE_NOCHANGES4">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="CSE_IEM">
+        <checkBox refId="CSE_SLOWLINK5">Tillåt behandling över långsam nätverksanslutning</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND5">Använd inte under periodisk behandling i bakgrunden</checkBox>
+        <checkBox refId="CSE_NOCHANGES5">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="CSE_IPSecurity">
+        <checkBox refId="CSE_SLOWLINK6">Tillåt behandling över långsam nätverksanslutning</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND6">Använd inte under periodisk behandling i bakgrunden</checkBox>
+        <checkBox refId="CSE_NOCHANGES6">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="CSE_Registry">
+        <checkBox refId="CSE_NOBACKGROUND10">Använd inte under periodisk behandling i bakgrunden</checkBox>
+        <checkBox refId="CSE_NOCHANGES10">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="CSE_Scripts">
+        <checkBox refId="CSE_SLOWLINK7">Tillåt behandling över långsam nätverksanslutning</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND7">Använd inte under periodisk behandling i bakgrunden</checkBox>
+        <checkBox refId="CSE_NOCHANGES7">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="CSE_Security">
+        <checkBox refId="CSE_NOBACKGROUND11">Använd inte under periodisk behandling i bakgrunden</checkBox>
+        <checkBox refId="CSE_NOCHANGES11">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="CSE_Wired">
+        <checkBox refId="CSE_SLOWLINK8">Tillåt behandling över långsam nätverksanslutning</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND8">Använd inte under periodisk behandling i bakgrunden</checkBox>
+        <checkBox refId="CSE_NOCHANGES8">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="CSE_Wireless">
+        <checkBox refId="CSE_SLOWLINK9">Tillåt behandling över långsam nätverksanslutning</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND9">Använd inte under periodisk behandling i bakgrunden</checkBox>
+        <checkBox refId="CSE_NOCHANGES9">Behandla även om grupprincipobjekten inte har ändrats</checkBox>
+      </presentation>
+      <presentation id="GPDCOptions">
+        <dropdownList refId="GPDCOptionsDesc" noSort="true" defaultItem="0">När redigeraren för grupprincipobjekt väljer vilken domänkontrollant som ska användas, bör den:</dropdownList>
+      </presentation>
+      <presentation id="GPTransferRate_1">
+        <decimalTextBox refId="TransferRateOp1" defaultValue="500" spinStep="100">Anslutningshastighet (kbit/s):</decimalTextBox>
+        <text> </text>
+        <text>Ange 0 om du vill inaktivera identifiering av långsamma länkar.</text>
+      </presentation>
+      <presentation id="GPTransferRate_2">
+        <decimalTextBox refId="TransferRateOp2" defaultValue="500" spinStep="100">Anslutningshastighet (kbit/s):</decimalTextBox>
+        <text> </text>
+        <text>Ange 0 om du vill inaktivera identifiering av långsamma länkar.</text>
+      </presentation>
+      <presentation id="GroupPolicyRefreshRate">
+        <text>Denna inställning låter dig anpassa hur ofta grupprinciper används för</text>
+        <text>datorer. Giltigt intervall är mellan 0 och 64800 minuter (45 dagar).</text>
+        <decimalTextBox refId="GPRefreshRate1" defaultValue="90">Minuter:</decimalTextBox>
+        <text> </text>
+        <text>Detta är ett slumpvärde som läggs till uppdateringsintervallet</text>
+        <text>för att förhindra att alla klienter begär grupprincipen samtidigt.</text>
+        <text>Intervall är 0 till 1440 minuter (24 timmar)</text>
+        <decimalTextBox refId="GPRefreshRateOffset1" defaultValue="30">Minuter:</decimalTextBox>
+      </presentation>
+      <presentation id="GroupPolicyRefreshRateDC">
+        <text>Denna inställning låter dig anpassa hur ofta grupprinciper används för</text>
+        <text>domänkontrollanter. Giltigt intervall är mellan 0 och 64800 minuter (45 dagar).</text>
+        <decimalTextBox refId="GPRefreshRate2" defaultValue="5">Minuter:</decimalTextBox>
+        <text> </text>
+        <text>Detta är ett slumpvärde som läggs till uppdateringsintervallet</text>
+        <text>för att förhindra att alla klienter begär grupprincipen samtidigt.</text>
+        <text>Intervall är 0 till 1440 minuter (24 timmar)</text>
+        <decimalTextBox refId="GPRefreshRateOffset2" defaultValue="0">Minuter:</decimalTextBox>
+      </presentation>
+      <presentation id="GroupPolicyRefreshRateUser">
+        <text>Denna inställning låter dig anpassa hur ofta grupprinciper används för</text>
+        <text>användare. Giltigt intervall är mellan 0 och 64800 minuter (45 dagar).</text>
+        <decimalTextBox refId="GPRefreshRate3" defaultValue="90">Minuter:</decimalTextBox>
+        <text> </text>
+        <text>Detta är ett slumpvärde som läggs till uppdateringsintervallet</text>
+        <text>för att förhindra att alla klienter begär grupprincipen samtidigt.</text>
+        <text>Intervall är 0 till 1440 minuter (24 timmar)</text>
+        <decimalTextBox refId="GPRefreshRateOffset3" defaultValue="30">Minuter:</decimalTextBox>
+      </presentation>
+      <presentation id="NewGPODisplayName">
+        <textBox refId="NewGPODisplayNameHeading">
+          <label>Grupprincipobjektets namn:</label>
+        </textBox>
+      </presentation>
+      <presentation id="UserPolicyMode">
+        <dropdownList refId="UserPolicyModeOp" noSort="true" defaultItem="1">Läge:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

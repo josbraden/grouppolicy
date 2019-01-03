@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>escriba aquí el nombre</displayName>
+  <description>escriba aquí la descripción</description>
+  <resources>
+    <stringTable>
+      <string id="AddAdminGroupToRUP">Agregar el grupo de seguridad de administradores a los perfiles de usuarios móviles</string>
+      <string id="AddAdminGroupToRUP_Help">Esta opción agrega el grupo de seguridad de administradores al recurso compartido del perfil de usuario móvil.
+
+Una vez que un administrador ha configurado un perfil de usuario móvil, el perfil se creará en el próximo inicio de sesión del usuario. El perfil se creará en la ubicación especificada por el administrador.
+
+Para los sistemas operativos Windows 2000 Professional y Windows XP Professional, los permisos de archivo predeterminados para el perfil recién generado son control total o acceso de lectura y escritura para el usuario, y sin acceso a archivos para el grupo de administradores.
+
+Puede alterar ese comportamiento si configura esta opción.
+
+Si habilita esta opción, también se dará control total al grupo de administradores sobre la carpeta de perfil de usuario.
+
+Si la deshabilita o no la configura, solo el usuario tendrá control total de su perfil de usuario y el grupo de administradores no tendrá acceso al sistema de archivos de esta carpeta.
+
+Nota: si la opción se habilita después de que se cree el perfil, no tendrá efecto.
+
+Nota: para que la opción surta efecto, tiene que configurarse en el equipo cliente y no en el servidor, ya que es el equipo cliente el que establece los permisos de recursos compartidos de archivos para el perfil móvil en el momento de la creación.
+
+Nota: en el caso predeterminado, los administradores no tienen acceso a los archivos del perfil de usuario, pero pueden seguir tomando posesión de esta carpeta para concederse a sí mismos permisos de archivo.
+
+Nota: el comportamiento cuando esta opción está habilitada es exactamente el mismo que en Windows NT 4.0.</string>
+      <string id="CompatibleRUPSecurity">No comprobar a qué usuario pertenecen las carpetas de perfiles móviles</string>
+      <string id="CompatibleRUPSecurity_Help">Esta opción deshabilita la opción predeterminada más segura para la carpeta del perfil de usuario móvil.
+
+Una vez que un administrador ha configurado un perfil de usuario móvil, el perfil se creará en el próximo inicio de sesión del usuario. El perfil se creará en la ubicación especificada por el administrador.
+
+Para los sistemas operativos Windows 2000 Professional anteriores a SP4 y Windows XP anteriores a SP1, los permisos de archivo predeterminados para el perfil recién generado son acceso de control total para el usuario y sin acceso a archivos para el grupo de administradores. No se hará ninguna comprobación para los permisos correctos si la carpeta del perfil ya existe. Para la familia de servidores Windows Server 2003, Windows 2000 Professional SP4 y Windows XP SP1, el comportamiento predeterminado es comprobar si la carpeta tiene los permisos correctos, en el caso de que la carpeta del perfil ya exista, y no copiar archivos a la carpeta móvil ni desde ella si los permisos no son los correctos.
+
+Puede alterar ese comportamiento si configura esta opción.
+
+Si habilita esta opción, Windows no comprobará los permisos de la carpeta si la carpeta ya existía.
+
+Si la deshabilita o no la configura Y la carpeta del perfil móvil existe Y el usuario o el grupo de administradores no son los propietarios de la carpeta, Windows NO copiará archivos a la carpeta móvil ni desde ella. Se mostrará al usuario un mensaje de error y se escribirá una entrada en el registro de eventos. Se usará el perfil de usuario en caché o se emitirá un perfil temporal si no existe un perfil en caché. 
+
+Nota: para que la opción surta efecto, tiene que configurarse en el equipo cliente y no en el servidor, ya que es el equipo cliente el que establece los permisos de recursos compartidos de archivos para el perfil móvil en el momento de la creación.
+
+Nota: el comportamiento cuando esta opción está habilitada es exactamente el mismo que en Windows 2000 Professional anterior a SP4 y en Windows XP Professional.</string>
+      <string id="Connect_HomeDir_ToRoot">Conectar el directorio principal a la raíz del recurso compartido</string>
+      <string id="Connect_HomeDir_ToRoot_Explain">Restaura las definiciones de las variables de entorno %HOMESHARE% y %HOMEPATH% a las usadas en Windows NT 4.0 y versiones anteriores.
+
+Si habilita esta opción, el sistema usa las definiciones de Windows NT 4.0. Si deshabilita esta opción o no la configura, el sistema usa las nuevas definiciones diseñadas para el sistema operativo Windows 2000.
+
+Junto con %HOMEDRIVE%, estas variables definen el directorio principal de un perfil de usuario. Dicho directorio es una asignación persistente de una letra de unidad en el equipo local a un directorio local o remoto.
+
+De forma predeterminada, en la familia de servidores de Windows 2000, %HOMESHARE% almacena la ruta completa especificada en el directorio principal (por ejemplo, \\server\share\dir1\dir2\homedir). Los usuarios pueden tener acceso al directorio principal y cualquiera de sus subdirectorios desde la letra de unidad principal, pero no pueden ver sus directorios primarios ni tener acceso a ellos. %HOMEPATH% guarda una barra diagonal inversa final que se incluye por razones de compatibilidad con sistemas anteriores.
+
+En Windows NT 4.0 y versiones anteriores, %HOMESHARE% guarda solo el recurso compartido de red (por ejemplo, \\server\share). %HOMEPATH% guarda el resto de las rutas de acceso completas en el directorio principal (por ejemplo, \dir1\dir2\homedir). Como resultado, los usuarios pueden tener acceso a cualquier directorio en un recurso compartido principal usando la letra de unidad del directorio principal.
+
+Sugerencia: para especificar un directorio principal en la familia de servidores de Windows 2000, vaya a Usuarios y equipos de Active Directory o Usuarios y grupos locales, haga clic con el botón secundario en el nombre de cuenta de usuario, haga clic en Propiedades, luego en la ficha Perfil y, a continuación, en la sección "Carpeta particular", seleccione la opción "Conectar" y seleccione una letra de unidad y un directorio principal.
+
+Ejemplo: la unidad Z está asignada a \\server\share\dir1\dir2\homedir.
+
+Si esta opción se deshabilita o no se configura (comportamiento de la familia de servidores de Windows 2000):
+
+--  %HOMEDRIVE%  = Z: (se asigna a \\server\share\dir1\dir2\homedir)
+
+--  %HOMESHARE% = \\server\share\dir1\dir2\homedir
+
+--  %HOMEPATH% = \
+
+Si se habilita la opción (comportamiento de Windows NT 4.0):
+
+--  %HOMEDRIVE% = Z: (se asigna a \\server\share)
+
+--  %HOMESHARE% = \\server\share
+
+--  %HOMEPATH% = \dir1\dir2\homedir</string>
+      <string id="DeleteRoamingCachedProfiles">Eliminar copias en caché de perfiles móviles</string>
+      <string id="DeleteRoamingCachedProfiles_Help">Determina si el sistema guarda una copia del perfil móvil de un usuario en el disco duro de un equipo local cuando el usuario cierra sesión.
+
+Esta opción y las opciones relacionadas que se encuentran en esta carpeta describen una estrategia para administrar los perfiles de usuarios que residen en servidores remotos. En concreto, indican al sistema cómo debe responder cuando un perfil remoto tarda en cargarse.
+
+Los perfiles móviles residen en un servidor de red. De forma predeterminada, cuando los usuarios que tienen perfiles móviles cierran sesión, el sistema también guarda una copia de sus perfiles móviles en el disco duro del equipo que están usando, de modo que podrán tener acceso a sus perfiles si el servidor que almacena el perfil móvil no está disponible cuando el usuario vuelva a iniciar sesión. La copia local también se usa cuando la copia remota del perfil de usuario móvil tarda en cargarse.
+
+Si habilita esta opción, todas las copias locales del perfil móvil del usuario se eliminarán cuando el usuario cierre sesión. El perfil móvil permanece en el servidor de red que lo guarda.
+
+Importante: no habilite esta opción si está usando la característica de detección de vínculos de baja velocidad de Windows 2000 Professional y Windows XP Professional. Para responder a un vínculo de baja velocidad, el sistema necesita una copia local del perfil móvil del usuario.</string>
+      <string id="EnableSlowLinkDetect">No detectar las conexiones de red lentas</string>
+      <string id="EnableSlowLinkDetect_Help">Deshabilita la característica de detección de vínculos de baja velocidad.
+
+La detección de vínculos de baja velocidad mide la velocidad de la conexión entre el equipo de un usuario y el servidor remoto que almacena el perfil de usuario móvil. Cuando el sistema detecta un vínculo de baja velocidad, las opciones de configuración relacionadas de esta carpeta indican al sistema cómo responder.
+
+Si habilita esta opción, el sistema no detecta las conexiones lentas ni reconoce ninguna conexión como lenta. Como resultado, el sistema no responde a las conexiones lentas a perfiles de usuario y omite las opciones de configuración que indican al sistema cómo responder ante una conexión lenta.
+
+Si deshabilita esta opción o no la configura, se habilitará la detección de vínculos de baja velocidad. El sistema mide la velocidad de la conexión entre el equipo del usuario y el servidor del perfil. Si la conexión es lenta (según lo definido en la opción "Tiempo de espera de conexión de red de baja velocidad para los perfiles del usuario"), el sistema aplica las otras opciones de configuración definidas en esta carpeta para determinar cómo proceder. De manera predeterminada, cuando la conexión es lenta, el sistema carga la copia local del perfil del usuario.</string>
+      <string id="EnableSlowLinkUI">Avisar al usuario cuando se detecte una conexión de red de baja velocidad</string>
+      <string id="EnableSlowLinkUI_Help">Esta configuración de directiva ofrece a los usuarios la posibilidad de descargar sus perfiles móviles, aunque se detecte una conexión de red de baja velocidad con el servidor de perfiles móviles.
+
+Si habilita esta configuración de directiva, los usuarios podrán definir si desean descargar su perfil móvil cuando se detecte una vínculo de baja velocidad con el servidor de perfiles móviles.
+
+En sistemas operativos anteriores a Microsoft Windows Vista, se mostrará un cuadro de diálogo al usuario si se detecta una conexión de red de baja velocidad. El usuario podrá entonces decidir si desea descargar la copia remota del perfil de usuario. En Microsoft Windows Vista, se muestra una casilla en la pantalla de inicio de sesión y el usuario debe decidir si desea descargar el perfil de usuario antes de que Windows detecte la velocidad de la conexión de red.  
+
+Si deshabilita o no establece esta configuración de directiva, el sistema no consultará al usuario. En lugar de ello, el sistema usará la copia local del perfil de usuario. Si ha habilitado la configuración de directiva "Esperar el perfil remoto del usuario", el sistema descarga la copia remota del perfil de usuario sin preguntar al usuario. En Microsoft Windows Vista, el sistema omite la selección de usuario efectuada en la pantalla de inicio de sesión.
+
+Nota: esta configuración de directiva y las configuraciones de directiva relacionadas de esta carpeta definen la respuesta del sistema cuando los perfiles de usuarios móviles tardan en descargarse. Para ajustar el tiempo en el que el usuario debe responder a este aviso en sistemas operativos anteriores a Microsoft Windows Vista, use la configuración de directiva "Tiempo de espera para cuadros de diálogo".
+
+Importante: esta opción se omitirá si la configuración de directiva "No detectar las conexiones de red lentas" está habilitada. Asimismo, si la configuración de directiva "Eliminar copias en caché de perfiles móviles" está habilitada, no habrá copia local del perfil móvil que cargar cuando el sistema detecte una conexión lenta.</string>
+      <string id="ExcludeDirectories">Excluir directorios en el perfil móvil</string>
+      <string id="ExcludeDirectories_Help">Le permite agregar elementos a la lista de carpetas excluidas del perfil móvil del usuario.
+
+Esta opción le permite excluir carpetas que normalmente se incluyen en el perfil del usuario. Como resultado, estas carpetas no necesitan almacenarse en el servidor de red en que reside el perfil y no siguen a los usuarios a otros equipos.
+
+De forma predeterminada, las carpetas Appdata\Local and Appdata\LocalLow y sus subcarpetas, como las carpetas Historial, Temp y Archivos temporales de Internet, se excluyen del perfil móvil del usuario.
+
+Nota: en sistemas operativos anteriores a Microsoft Windows Vista, solo se excluyen del perfil móvil de usuario las carpetas Historial, Configuración local, Temp y Archivos temporales de Internet de forma predeterminada.
+
+Si habilita esta opción, puede excluir otras carpetas.
+
+Si deshabilita esta opción o no la configura, solo se excluirán las carpetas predeterminadas.
+
+Nota: no puede usar esta opción para incluir las carpetas predeterminadas en un perfil de usuario móvil.</string>
+      <string id="LeaveAppMgmtData">Conservar los datos de Windows Installer y de la Directiva de grupo de instalación de software</string>
+      <string id="LeaveAppMgmtData_Help">Determina si el sistema conserva los datos de instalación de software basados en Windows Installer y la directiva de grupo de un usuario móvil al eliminar su perfil.
+
+De manera predeterminada, toda la información relacionada con un usuario móvil (por ejemplo, la configuración y datos del usuario, los datos relacionados con Windows Installer, etc.) se elimina al eliminar su perfil. Como resultado, la próxima vez que un usuario móvil (cuyo perfil se eliminó del cliente) inicie sesión, necesitará volver a instalar todas las aplicaciones publicadas a través de directivas en el momento de iniciar la sesión, lo que incrementará el tiempo de inicio de sesión. Puede usar esta directiva para cambiar este comportamiento.
+
+Si habilita esta opción, Windows no eliminará los datos de instalación de software de Windows Installer y de la directiva de grupo para los usuarios móviles cuando se eliminen los perfiles del equipo. Esto mejorará el rendimiento de la instalación de software basada en la directiva de grupo durante el inicio de sesión de usuarios cuando se elimina un perfil de usuario y dicho usuario inicia sesión posteriormente en el equipo.
+
+Si deshabilita esta directiva o no la configura, Windows eliminará todo el perfil de los usuarios móviles, incluidos los datos de instalación de software de Windows Installer y de la directiva de grupo, cuando se eliminen dichos perfiles.
+
+Nota: si esta directiva está habilitada para un equipo, se requiere una acción del administrador local para quitar los datos de instalación de software de Windows Installer o de la directiva de grupo almacenados en el Registro y el sistema de archivos de los perfiles de usuarios móviles en el equipo.</string>
+      <string id="LimitSize">Limitar el tamaño del perfil</string>
+      <string id="LimitSize_Help">Esta configuración de directiva establece el tamaño máximo de cada perfil de usuario y determina la respuesta del sistema cuando un perfil alcanza el tamaño máximo. Esta configuración de directiva afecta a ambos perfiles, local y móvil.
+
+Si deshabilita esta configuración de directiva o no la configura, el sistema no limita el tamaño de los perfiles de usuario.
+
+Si habilita esta configuración de directiva, puede:
+
+-- Establecer el tamaño máximo permitido del perfil de usuario.
+-- Determinar si los archivos del Registro se incluyen en el cálculo del tamaño de perfil.
+-- Determinar si se avisa a los usuarios cuando el perfil supera el tamaño máximo permitido.
+-- Especificar un mensaje personalizado que notifique a los usuarios que se ha superado el tamaño del perfil.
+-- Determinar la frecuencia con que se muestra el mensaje personalizado.
+
+Nota: en sistemas operativos anteriores a Microsoft Windows Vista, Windows no permitirá que los usuarios cierren sesión hasta que el tamaño del perfil se reduzca al límite permitido. En Microsoft Windows Vista, Windows no bloqueará el cierre de sesión de los usuarios. En lugar de ello, si el usuario dispone de un perfil de usuario móvil, Windows no sincronizará el perfil del usuario con el servidor de perfiles móviles si se supera el límite máximo especificado para el tamaño de perfil.</string>
+      <string id="LocalProfile">Permitir solo perfiles de usuario locales</string>
+      <string id="LocalProfile_Help">Esta opción determina si los perfiles de usuarios móviles están disponibles en un equipo determinado. De forma predeterminada, cuando los usuarios de perfiles móviles inician sesión en un equipo, su perfil móvil se copia en el equipo local. Si ya han iniciado sesión en este equipo anteriormente, el perfil móvil se combina con el perfil local. De manera similar, cuando el usuario cierra sesión en este equipo, la copia local del perfil, incluidos los cambios realizados, se combina con la copia del servidor de su perfil.
+
+Con esta opción, puede impedir que los usuarios configurados para usar perfiles móviles reciban sus perfiles en un equipo específico.
+
+Si habilita esta opción, sucede lo siguiente en el equipo afectado: Durante el primer inicio de sesión, el usuario recibe un nuevo perfil local en vez de un perfil móvil. Al cerrar sesión, los cambios se guardan en el perfil local. Todos los inicios de sesión subsiguientes usan el perfil local. 
+
+Si deshabilita esta opción o no la configura, se produce el comportamiento predeterminado indicado arriba.
+
+Si habilita ambas opciones,"Impedir que se propaguen al servidor los cambios de perfil móvil" y "Permitir solo perfiles de usuario locales", se deshabilitarán los perfiles móviles.
+
+Nota: esta opción solo afecta a usuarios con perfiles móviles.</string>
+      <string id="ProfileDlgTimeOut">Tiempo de espera para cuadros de diálogo</string>
+      <string id="ProfileDlgTimeOut_Help">Determina cuánto tiempo debe esperar el sistema una respuesta del usuario antes de usar el valor predeterminado.
+
+El valor predeterminado se aplica cuando el usuario no responde a los mensajes que explican que se ha producido cualquiera de los eventos siguientes:
+
+--  El sistema detecta una conexión lenta entre el equipo del usuario y el servidor que almacena los perfiles móviles de los usuarios.
+
+--  El sistema no puede tener acceso a los perfiles de usuario basados en el servidor cuando los usuarios inician o cierran sesión.
+
+--  Los perfiles locales de los usuarios son más recientes que sus perfiles basados en el servidor.
+
+Puede usar esta opción para invalidar el valor predeterminado del sistema, que es 30 segundos. Para usar esta opción, escriba un número decimal entre 0 y 600 para indicar la longitud del intervalo.</string>
+     <string id="ProfileErrorAction">No iniciar sesión de usuarios con perfiles temporales</string>
+     <string id="ProfileErrorAction_Help">Esta directiva cerrará automáticamente la sesión de un usuario cuando Windows no pueda cargar su perfil.
+ 
+Si Windows no puede obtener acceso a la carpeta de perfiles de usuario o el perfil contiene errores que impiden que se cargue, Windows inicia la sesión del usuario con un perfil temporal. Esta directiva permite al administrador deshabilitar este comportamiento, lo que impide que Windows inicie la sesión del usuario con un perfil temporal. 
+ 
+Si habilita esta configuración de directiva, Windows no iniciará la sesión del usuario con un perfil temporal. Windows cerrará la sesión del usuario si no puede cargar su perfil. 
+ 
+Si deshabilita esta configuración de directiva o no la configura, Windows iniciará la sesión del usuario con un perfil temporal cuando Windows no pueda cargar su perfil de usuario.
+ 
+Consulte también la opción "Eliminar copias en caché de perfiles móviles".</string>
+      <string id="ProfileUnloadTimeout">Límite de reintentos para descargar y actualizar el perfil de usuario</string>
+      <string id="ProfileUnloadTimeout_Help">Determina el número de veces que el sistema intenta cargar y actualizar la parte del Registro de un perfil de usuario. Cuando se alcanza el número de intentos especificados por esta opción, el sistema deja de intentarlo. Como resultado, puede ser que el perfil de usuario no sea el actual y que no coincidan los perfiles de usuario local y móvil.
+
+Cuando un usuario cierra sesión en el equipo, el sistema descarga la sección específica del usuario del Registro (HKEY_CURRENT_USER) en un archivo (NTUSER.DAT) y lo actualiza. Sin embargo, si otro programa o servicio está leyendo o editando el Registro, el sistema no puede descargarla. El sistema intenta descargar y actualizar la configuración del Registro repetidamente (con una frecuencia de una vez por segundo). De manera predeterminada, el sistema repite los intentos periódicos 60 veces durante un minuto.
+
+Si habilita esta opción, puede ajustar el número de veces que el sistema intenta descargar y actualizar la configuración del Registro del usuario. No es posible ajustar la frecuencia de reintentos.
+
+Si deshabilita esta opción o no la configura, el sistema repite el intento 60 veces.
+
+Si establece el número de reintentos en 0, el sistema intenta descargar y actualizar la configuración del Registro del usuario solo una vez. No vuelve a intentarlo.
+
+Nota: esta opción es especialmente importante para los servidores que ejecutan Terminal Services. Dado que Servicios de Terminar Server edita la configuración del Registro de los usuarios cuando éstos cierran sesión, es más probable que los primeros intentos para descargar la configuración del usuario no sean satisfactorios.
+
+Esta opción no afecta a los intentos del sistema de actualizar los archivos del perfil de usuario.
+
+Sugerencia: considere la posibilidad de aumentar el número de reintentos especificados en esta opción si hay muchos perfiles de usuario almacenados en la memoria del equipo. Esto indica que el sistema no pudo descargar el perfil.
+
+Compruebe además el registro de la aplicación en el visor de eventos para ver los eventos generados por Userenv. El sistema registra un evento cuando intenta descargar la parte del Registro del perfil de usuario. El sistema también registra un evento cuando no puede actualizar los archivos de un perfil de usuario.</string>
+      <string id="Readonlyuserprofile">Impedir que se propaguen al servidor los cambios de perfil móvil</string>
+      <string id="Readonlyuserprofile_Help">Esta opción determina si los cambios que realiza un usuario en su perfil móvil se combinan con la copia del servidor de su perfil.
+
+De forma predeterminada, cuando un usuario con perfil móvil inicia sesión en un equipo, su perfil móvil se copia en el equipo local. Si ya han iniciado sesión en este equipo anteriormente, el perfil móvil se combina con el perfil local. De manera similar, cuando el usuario cierra sesión en este equipo, la copia local del perfil, incluidos los cambios realizados, se combina con la copia del servidor de su perfil.
+
+Con esta opción, puede impedir que persistan los cambios realizados en un perfil móvil en un equipo determinado.
+
+Si habilita esta opción, sucede lo siguiente en el equipo afectado: en el inicio de sesión, el usuario recibe su perfil móvil. Sin embargo, todos los cambios que realice el usuario en su perfil no se combinarán con su perfil móvil cuando cierre sesión.
+
+Si deshabilita esta opción o no la configura, se produce el comportamiento predeterminado indicado arriba.
+
+Nota: esta opción de configuración solo afecta a los usuarios con perfiles móviles.</string>
+      <string id="SlowLinkDefault">Esperar el perfil remoto del usuario</string>
+      <string id="SlowLinkDefault_Help">Indica al sistema que espere a que se cargue la copia remota del perfil de usuario móvil, incluso cuando el proceso de carga es lento. Asimismo, el sistema espera la copia remota cuando se notifica al usuario que la conexión es lenta, pero no responde durante el tiempo permitido.
+
+Esta opción y las opciones de configuración relacionadas de esta carpeta definen la respuesta del sistema cuando los perfiles de usuarios móviles tardan en cargarse.
+
+Si deshabilita esta opción o no la configura, cuando el perfil remoto tarda en cargarse, el sistema carga la copia local del perfil de usuario móvil. La copia local también se usa cuando se consulta al usuario (según lo definido en la opción "Avisar al usuario cuando se detecte un vínculo de baja velocidad"), pero no responde en el tiempo permitido (según lo definido en la opción "Tiempo de espera para cuadros de diálogo").
+
+Es apropiado esperar el perfil remoto cuando los usuarios cambian frecuentemente de equipo y la copia local de su perfil no está siempre actualizada. Es aconsejable usar una copia local cuando es prioritario iniciar sesión rápidamente.
+
+Importante: esta opción se omitirá si la opción "No detectar las conexiones de red lentas" está habilitada. Asimismo, si la opción "Eliminar copias en caché de perfiles móviles" está habilitada, no habrá copia local del perfil móvil que cargar cuando el sistema detecte una conexión lenta.</string>
+      <string id="SlowLinkTimeOut">Tiempo de espera de conexión de red de baja velocidad para los perfiles del usuario</string>
+      <string id="SlowLinkTimeOut_Help">Define una conexión lenta para perfiles de usuario móvil.
+
+Si el servidor en que reside el perfil de usuario móvil tarda más en responder de lo que permiten los umbrales definidos por esta opción, el sistema considerará que la conexión al perfil es lenta.
+
+Esta opción y las opciones de configuración relacionadas de esta carpeta definen la respuesta del sistema cuando los perfiles de usuarios móviles tardan en cargarse.
+
+Esta opción establece umbrales para dos pruebas. Para los equipos conectados a redes IP, el sistema mide la velocidad con la que el sistema remoto devuelve los datos como respuesta a un mensaje Ping de IP. Para establecer un umbral para esta prueba, en el cuadro Velocidad de conexión, escriba un número decimal entre 0 y 4.294.967.200, que represente la velocidad mínima de transferencia aceptable en kilobits por segundo. De manera predeterminada, si el servidor devuelve menos de 500 kilobits de datos por segundo, se considera que es lento.
+
+Para equipos que no usan IP, el sistema mide la capacidad de respuesta del sistema de archivos del servidor remoto. Para establecer un umbral para esta prueba, escriba un número decimal entre 0 y 20.000 en el cuadro Tiempo para indicar el retraso máximo aceptable en milisegundos. De manera predeterminada, si el sistema de archivos del servidor no responde en 120 milisegundos, se considera que es lento.
+
+Puede aumentar este valor para clientes que usan direcciones asignadas por el servicio DHCP o para equipos que tienen acceso a perfiles a través de conexiones de acceso telefónico.
+
+Importante: esta opción se omitirá si la opción "No detectar las conexiones de red lentas" está habilitada. Asimismo, si la opción "Eliminar copias en caché de perfiles móviles" está habilitada, no habrá copia local del perfil móvil que cargar cuando el sistema detecte una conexión lenta.</string>
+      <string id="UserProfiles">Perfiles de usuario</string>
+      <string id="CleanupProfiles">Eliminar perfiles de usuario con una antigüedad superior al número de días especificado al reiniciar el sistema</string>
+      <string id="CleanupProfiles_Help">Esta configuración de directiva permite a un administrador eliminar automáticamente, al reiniciar el sistema, los perfiles de usuario que no se hayan usado en un número de días especificado. Nota: un día se interpreta como 24 horas después de obtener acceso a un perfil de usuario específico por última vez.
+
+Si habilita esta configuración de directiva, el Servicio de perfiles de usuario eliminará automáticamente en el siguiente reinicio del sistema todos los perfiles de usuario del equipo que no se hayan usado en el número de días especificado. 
+
+Si deshabilita esta configuración de directiva o no la establece, el Servicio de perfiles de usuario no eliminará automáticamente ningún perfil en el siguiente reinicio del sistema.</string>
+      <string id="CscSuspendDirectories">Directorios de red que se sincronizarán solo al iniciar y cerrar sesión</string>
+      <string id="CscSuspendDirectories_Help">Esta configuración de directiva le permite especificar los directorios de red que deben sincronizarse únicamente al iniciar o cerrar sesión a través de Archivos sin conexión. Esta configuración de directiva está pensada para usarse junto con Redirección de carpetas, para ayudar a resolver problemas con aplicaciones que no funcionan correctamente con Archivos sin conexión mientras el usuario está conectado.
+
+Si habilita esta configuración de directiva, las rutas de red especificadas en esta configuración de directiva solo se sincronizarán a través de Archivos sin conexión durante el inicio y cierre de sesión del usuario, y se desconectarán mientras el usuario esté conectado.
+
+Si deshabilita o no establece esta configuración de directiva, las rutas especificadas en esta configuración de directiva se comportarán como cualquier otro tipo de datos en caché a través de Archivos sin conexión y permanecerán con conexión mientras el usuario esté conectado, si las rutas de red son accesibles.   
+
+Nota: no debe usar esta configuración de directiva para suspender ninguna de las carpetas redirigidas raíz, como Appdata\Roaming, Menú Inicio y Documentos. Solo debe suspender las subcarpetas de estas carpetas principales.</string>
+      <string id="DontForceUnloadHive">No descargar forzosamente el Registro de usuarios al cerrar la sesión de usuario</string>
+      <string id="DontForceUnloadHive_Help">Microsoft Windows descargará siempre el Registro de usuarios, aunque haya identificadores abiertos a las claves del Registro por usuario al cerrar la sesión de usuario. Con el uso de esta configuración de directiva, un administrador puede negar este comportamiento, lo que impide que Windows descargue forzosamente el Registro de usuarios al cerrar la sesión de usuario.
+
+Nota: esta directiva solo debe usarse en casos en los que se produzcan problemas de compatibilidad de aplicaciones debidos a este comportamiento específico de Windows. No se recomienda habilitar esta directiva de forma predeterminada ya que podría impedir a los usuarios obtener una versión actualizada de su perfil de usuario móvil.
+
+Si habilita esta configuración de directiva, Windows no descargará forzosamente el Registro de usuarios al cerrar la sesión de usuario, pero descargará el Registro cuando se cierren todos los identificadores abiertos a las claves del Registro por usuario.
+
+Si deshabilita o no establece esta configuración de directiva, Windows descargará siempre el Registro de usuarios al cerrar sesión, aunque haya identificadores abiertos a las claves del Registro por usuario al cerrar la sesión de usuario.</string>
+      <string id="WaitForNetwork">Establecer tiempo de espera máximo para la red si un usuario tiene un perfil de usuario móvil o directorio principal remoto</string>
+      <string id="WaitForNetwork_Help">Si el usuario tiene un perfil de usuario móvil o directorio principal remoto y la red no se encuentra disponible en esos momentos, Microsoft Windows espera 30 segundos a la red cuando el usuario inicia sesión en el equipo. Con esta configuración de directiva, un administrador puede especificar cuánto tiempo debe esperar Windows a que la red esté disponible. Si la red no está disponible una vez transcurrido el tiempo máximo de espera, Windows proseguirá con el inicio de sesión del usuario sin una conexión de red. El perfil móvil del usuario no está sincronizado con el servidor y el directorio principal remoto no se usa para la sesión de inicio. 
+
+Esta directiva resulta útil para casos en los que es normal que una red tarde en inicializarse, como en el caso de una red inalámbrica.
+
+Nota: si la red está disponible antes del tiempo máximo de espera, Windows proseguirá de forma inmediata con el inicio de sesión del usuario. Windows no esperará a la red si la conexión de red física no está disponible en el equipo (si los medios están desconectados o el adaptador de red no está disponible).
+ 
+Si habilita esta configuración de directiva, Windows esperará a que la red esté disponible el tiempo máximo especificado en esta configuración de directiva. Si este valor se establece en cero, Windows proseguirá sin esperar a la red. 
+
+Si deshabilita o no establece esta configuración de directiva, Windows esperará a la red un máximo de 30 segundos.</string>
+      <string id="MachineProfilePath">Establecer ruta de perfil móvil para todos los usuarios conectados a este equipo</string>
+      <string id="MachineProfilePath_Help">Especifica si Microsoft Windows debe usar la ruta de red especificada como ruta de perfil de usuario móvil para todos los usuarios conectados a este equipo. 
+
+Para usar esta opción, escriba la ruta de acceso al recurso compartido de red como \\NombreDelEquipo\NombreDelRecursoCompartido\. Se recomienda agregar %USERNAME% a la ruta para otorgar a cada usuario una carpeta de perfil individual. Si no se especifica, todos los usuarios conectados a este equipo usarán la misma carpeta de perfil móvil, como se especifica en esta directiva. Debe asegurarse de establecer la seguridad adecuada en la carpeta para que los usuarios puedan obtener acceso al perfil. 
+
+Si habilita esta configuración de directiva, todos los usuarios conectados a este equipo usarán la ruta de perfil móvil especificada en esta directiva. 
+
+Si deshabilita o no establece esta configuración de directiva, los usuarios conectados a este equipo usarán su perfil local o perfil de usuario móvil estándar.   
+
+Nota: hay 4 formas de configurar un perfil móvil para un usuario. Windows lee la configuración del perfil en el orden que se indica a continuación y usa la primera opción configurada que lee.
+ 
+Ruta de perfil móvil de Terminal Services especificada por la directiva de Terminal Services
+2. Ruta de perfil móvil de Terminal Services especificada por la directiva de Terminal Services
+2. Ruta de perfil móvil de Terminal Services especificada por el objeto de usuario
+3. Ruta de perfil móvil por equipo especificada en esta directiva
+4. Ruta de perfil móvil por usuario especificada en el objeto de usuario
+
+</string>
+      <string id="UploadHive">Carga en segundo plano del archivo del Registro del perfil de usuario móvil mientras el usuario tiene una sesión iniciada</string>
+      <string id="UploadHive_Help">Establece la programación de carga en segundo plano del archivo del Registro del perfil de un usuario móvil (ntuser.dat). Esta configuración cargará solamente el archivo del Registro del perfil del usuario móvil (otros datos de usuario no se cargarán) y solo lo hará si el usuario ha iniciado sesión. Solo se cargará el archivo del Registro del perfil de un usuario móvil; esta directiva no afecta a los perfiles normales. Esta directiva no impide que se cargue el archivo del Registro del perfil de un usuario móvil al cerrar sesión.
+
+Si se deshabilita esta opción o no se configura, no se cargará en segundo plano el archivo del Registro del perfil de un usuario móvil cuando haya iniciado sesión.
+
+Para usar esta opción, primero elija el método de programación que desea usar.
+
+Si se elige "Ejecutar a intervalos establecidos", deberá establecerse un intervalo con un valor de entre 1 y 720 horas. Una vez establecido, se cargará el archivo del Registro del perfil a los intervalos especificados después de que el usuario inicie sesión. Por ejemplo, con un valor de 6 horas, si un usuario inicia sesión a las 6:00 a.m. y aún está conectado a las 12:00 p.m., su archivo del Registro se cargará a esa hora. Además, si a las 6 p.m. aún está conectado, su archivo del Registro se volverá a cargar, y así sucesivamente cada 6 horas hasta que cierre la sesión. La siguiente vez que el usuario inicie sesión, el temporizador se iniciará de nuevo, de forma que el archivo del Registro se cargará 6 horas después (según nuestro ejemplo.)
+
+Si se elige "Ejecutar a la hora del día especificada", se deberá especificar una hora del día. Una vez establecida, el subárbol del Registro se cargará cada día a la misma hora, suponiendo que el usuario esté conectado a esa hora.
+
+Para ambas opciones de programación, hay un retraso aleatorio de una hora para cada desencadenador con el fin de evitar la sobrecarga del servidor con cargas simultáneas. Por ejemplo, si la configuración dicta que el archivo del Registro del usuario se cargue a las 6 p.m., en realidad se cargará a una hora aleatoria entre las 6 p.m. y las 7 p.m.
+
+Nota: si se selecciona "Ejecutar a intervalos establecidos", no se tendrá en cuenta la opción "Hora del día". De la misma forma, si se elige "Ejecutar a la hora del día especificada", no se tendrá en cuenta la opción "Intervalo (horas)".</string>
+      <string id="UploadHiveMethod_Interval">Ejecutar a intervalos establecidos</string>
+      <string id="UploadHiveMethod_Time">Ejecutar a la hora del día especificada</string>
+      <string id="ScheduleTime0">00:00</string>
+      <string id="ScheduleTime1">01:00</string>
+      <string id="ScheduleTime2">02:00</string>
+      <string id="ScheduleTime3">03:00</string>
+      <string id="ScheduleTime4">04:00</string>
+      <string id="ScheduleTime5">05:00</string>
+      <string id="ScheduleTime6">06:00</string>
+      <string id="ScheduleTime7">07:00</string>
+      <string id="ScheduleTime8">08:00</string>
+      <string id="ScheduleTime9">09:00</string>
+      <string id="ScheduleTime10">10:00</string>
+      <string id="ScheduleTime11">11:00</string>
+      <string id="ScheduleTime12">12:00</string>
+      <string id="ScheduleTime13">13:00</string>
+      <string id="ScheduleTime14">14:00</string>
+      <string id="ScheduleTime15">15:00</string>
+      <string id="ScheduleTime16">16:00</string>
+      <string id="ScheduleTime17">17:00</string>
+      <string id="ScheduleTime18">18:00</string>
+      <string id="ScheduleTime19">19:00</string>
+      <string id="ScheduleTime20">20:00</string>
+      <string id="ScheduleTime21">21:00</string>
+      <string id="ScheduleTime22">22:00</string>
+      <string id="ScheduleTime23">23:00</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ExcludeDirectories">
+        <textBox refId="ExcludeMessage">
+          <label>Evitar que los siguientes directorios tengan acceso móvil con el perfil:</label>
+        </textBox>
+        <text>Puede escribir varios nombres de directorios, separados por puntos y comas,</text>
+        <text>todos ellos relativos a la raíz del perfil del usuario</text>
+      </presentation>
+      <presentation id="LimitSize">
+        <textBox refId="SizeMessage">
+          <label>Mensaje personalizado</label>
+          <defaultValue>Ha excedido su espacio de almacenamiento de perfiles. Antes de poder cerrar sesión tiene que mover algunos elementos a la red o al almacenamiento local.</defaultValue>
+        </textBox>
+        <decimalTextBox refId="ProfileSize" defaultValue="30000" spinStep="100">Tamaño máx. del perfil (KB)</decimalTextBox>
+        <checkBox refId="IncludeRegInProQuota">Mostrar archivos de Registro en la lista de archivos</checkBox>
+        <checkBox refId="WarnUser">Notificar al usuario cuando se exceda el espacio de almacenamiento de perfiles.</checkBox>
+        <decimalTextBox refId="WarnUserTimeout" defaultValue="15" spinStep="5">Recordar al usuario cada X minutos:</decimalTextBox>
+      </presentation>
+      <presentation id="ProfileDlgTimeOut">
+        <decimalTextBox refId="ProfileDlgWaitInterval" defaultValue="30">Tiempo (segundos)</decimalTextBox>
+      </presentation>
+      <presentation id="ProfileUnloadTimeout">
+        <decimalTextBox refId="ProfileUnloadTimeoutPrompt" defaultValue="60" spinStep="5">Límite de reintentos:  </decimalTextBox>
+      </presentation>
+      <presentation id="SlowLinkTimeOut">
+        <decimalTextBox refId="TransferRateOp" defaultValue="500" spinStep="100">Velocidad de conexión (Kbps):</decimalTextBox>
+        <decimalTextBox refId="SlowLinkWaitInterval" defaultValue="120">Tiempo (milisegundos)</decimalTextBox>
+      </presentation>
+      <presentation id="CleanupProfiles">
+        <decimalTextBox refId="CleanupProfiles_Days" defaultValue="30">Eliminar perfiles de usuario con una antigüedad superior a (días)</decimalTextBox>
+      </presentation>
+      <presentation id="CscSuspendDirectories">
+        <textBox refId="CscSuspendDirectories_Message">
+          <label>Sincronizar estos directorios de red solo al iniciar y cerrar sesión:</label>
+        </textBox>
+        <text>Puede escribir varios nombres de directorios, separados por puntos y comas.</text>
+      </presentation>
+      <presentation id="WaitForNetwork">
+        <decimalTextBox refId="WaitForNetwork_Seconds" defaultValue="30">Esperar a la red el tiempo máximo (segundos)</decimalTextBox>
+      </presentation>
+      <presentation id="MachineProfilePath">
+        <textBox refId="MachineProfilePath_Message">
+          <label>Los usuarios conectados a este equipo deben usar esta ruta de perfil móvil:</label>
+        </textBox>
+        <text>Se recomienda agregar %USERNAME% a la ruta para otorgar a cada usuario un directorio de perfil distinto.</text>
+      </presentation>
+      <presentation id="UploadHive">
+        <dropdownList refId="UploadHiveMethod" noSort="true" defaultItem="0">Método de programación:</dropdownList>
+        <text>Las siguientes opciones de configuración son necesarias y aplicables solo</text>
+        <text>si se selecciona "Ejecutar a intervalos establecidos".</text>
+        <decimalTextBox refId="UploadHiveInterval" defaultValue="12" spinStep="1">Intervalo (horas):</decimalTextBox>
+        <text>Las siguientes opciones de configuración son necesarias y aplicables solo</text>
+        <text>si se selecciona "Ejecutar a la hora del día especificada".</text>
+        <dropdownList refId="UploadHiveTime" defaultItem="3">Hora del día:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

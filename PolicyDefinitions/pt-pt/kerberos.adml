@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Configurações de Kerberos</displayName>
+  <description>Definições de configuração do protocolo de autenticação Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Utilizar ordem de pesquisa de floresta</string>
+      <string id="forestsearch_explain">Esta definição de política configura a lista de florestas fidedignas que o cliente Kerberos procura quando tenta resolver os nomes do principal do serviço (SPNs) de duas partes.
+
+Se activar esta definição de política, o cliente Kerberos procurará as florestas desta lista, se não conseguir resolver um SPN de duas partes. Se for localizada uma correspondência, o cliente Kerberos pedirá uma permissão de referência para o domínio adequado.
+
+Se desactivar ou não configurar esta definição de política, o cliente Kerberos não procurará nas florestas listadas para resolver o SPN. Se o cliente Kerberos não conseguir resolver o SPN porque o nome não foi localizado, poderá ser utilizada a autenticação NTLM.</string>
+      <string id="hosttorealm">Definir os mapeamentos de realm de nome de anfitrião para Kerberos</string>
+      <string id="hosttorealm_explain">Esta definição de política permite especificar que nomes de anfitrião de DNS e que sufixos DNS são mapeados para um realm Kerberos.
+
+Se activar esta definição de política, poderá ver e alterar a lista de nomes de anfitrião de DNS e sufixos DNS mapeados para um realm Kerberos, conforme definido pela Política de Grupo. Para ver a lista de mapeamentos, active a definição de política e clique no botão Mostrar. Para adicionar um mapeamento, active a definição de política, anote a sintaxe e clique no botão Mostrar. Na caixa de diálogo Mostrar Conteúdo, na coluna Nome do Valor, escreva o nome de um realm. Na coluna Valor, escreva a lista de nomes de anfitrião de DNS e de sufixos DNS utilizando o formato de sintaxe adequado. Para remover um mapeamento da lista, clique na entrada de mapeamento a remover e prima a tecla DELETE. Para editar um mapeamento, remova a entrada actual da lista e adicione uma nova entrada com outros parâmetros.
+
+Se desactivar esta definição de política, a lista de mapeamentos de realm de nome de anfitrião para Kerberos definida pela Política de Grupo será eliminada.
+
+Se não configurar esta definição de política, o sistema utilizará os mapeamentos de realm de nome de anfitrião para Kerberos definidos no registo local, se existirem.</string>
+      <string id="MitRealms">Definições do realm Kerberos V5 interoperável</string>
+      <string id="MitRealms_explain">Esta definição de política configura o cliente Kerberos para que possa autenticar-se com os realms Kerberos V5 interoperáveis, conforme definido por esta definição de política.
+      
+Se activar esta definição de política, poderá ver e alterar a lista de realms Kerberos V5 interoperáveis e as suas definições. Para ver a lista de realms Kerberos V5 interoperáveis, active a definição de política e clique no botão Mostrar. Para adicionar um realm Kerberos V5 interoperável, active a definição de política, anote a sintaxe e clique no botão Mostrar. Na caixa de diálogo Mostrar Conteúdo, na coluna Nome do Valor, escreva o nome do realm Kerberos V5 interoperável. Na coluna Valor, escreva os sinalizadores de realm e os nomes de anfitrião dos KDCs de anfitrião utilizando o formato de sintaxe adequado. Para remover uma entrada Nome de Valor ou Valor do realm Kerberos V5 interoperável da lista, clique na entrada e prima a tecla DELETE. Para editar um mapeamento, remova a entrada actual da lista e adicione uma nova entrada com parâmetros diferentes.
+
+Se desactivar esta definição de política, as definições de realm Kerberos V5 interoperável definidas pela Política de Grupo serão eliminadas.
+
+Se não configurar esta definição de política, o sistema utilizará as definições de realm Kerberos V5 interoperável definidas no registo local, se existirem.</string>
+      <string id="ValidateKDC">Requerer validação KDC estrita</string>
+      <string id="ValidateKDC_explain">Esta definição de política controla o comportamento do cliente Kerberos ao validar o certificado KDC. 
+      
+Se activar esta definição de política, o cliente Kerberos requer que o certificado X.509 de KDC contenha o identificador de objecto de objectivo chave KDC nas extensões de Utilização Alargada de Chave (EKU) e que o certificado X.509 de KDC contenha uma extensão SAN (dNSName subjectAltName) que corresponda ao nome DNS do domínio. Se o computador fizer parte de um domínio, o cliente Kerberos requererá que o certificado X.509 de KDC seja assinado por uma Autoridade de Certificação (CA) no arquivo NTAUTH. Se o computador não fizer parte de um domínio, o cliente Kerberos permite que o certificado raiz de CA do smart card seja utilizado na validação do caminho do certificado X.509 de KDC.
+
+Se desactivar ou não configurar esta definição de política, o cliente Kerberos necessitará apenas que o certificado KDC contenha o identificador de objecto de objectivo de Autenticação do Servidor nas extensões EKU.
+</string>
+      <string id="StrictTarget">Exigir uma correspondência de SPN de destino restrita em chamadas de procedimento remoto</string>
+      <string id="StrictTarget_explain">Quando uma aplicação tentar efectuar uma chamada de procedimento remoto (RPC) para este servidor com um valor NULL para o nome do principal do serviço (SPN), os computadores com o Windows 7 tentarão utilizar o Kerberos gerando um SPN. Esta definição de política permite configurar este servidor de modo a que o Kerberos possa desencriptar uma permissão que contém este SPN gerado pelo sistema.
+
+Se activar esta definição de política, só os serviços em execução como LocalSystem ou NetworkService terão permissão para aceitar estas ligações. Os serviços em execução como identidades diferentes de LocalSystem ou NetworkService podem falhar a autenticação.
+
+Se desactivar ou não configurar esta definição de política, qualquer serviço terá permissão para aceitar ligações a receber utilizando este SPN gerado pelo sistema.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Definir os mapeamentos de nome de anfitrião para realm:</listBox>
+        <text></text>
+        <text>Sintaxe:</text>
+        <text>Introduza o nome de realm Kerberos como o Nome de Valor.</text>
+        <text>Introduza os nomes de anfitrião e sufixos de DNS que pretende</text>
+        <text>mapear para o realm Kerberos como o Valor. Para adicionar vários</text>
+        <text>nomes, separe as entradas com ";".</text>
+        <text></text>
+        <text>Nota: para especificar um sufixo de DNS, anteceda a entrada por um '.' (ponto final).</text>
+        <text>Para uma entrada de nome de anfitrião não especifique um '.' (ponto final) inicial.</text>
+        <text></text>
+        <text>Exemplo:</text>
+        <text>Nome de Valor: MICROSOFT.COM</text>
+        <text>Valor: .microsoft.com; .ms.com; computador1.fabrikam.com;</text>
+        <text></text>
+        <text>No exemplo acima, todos os principais com o sufixo DNS</text>
+        <text>*.microsoft.com ou *.ms.com serão mapeados para o realm Kerberos</text>
+        <text>MICROSOFT.COM. Adicionalmente, o nome de anfitrião</text>
+        <text>O computador1.fabricam.com também será mapeado para as </text>
+        <text>MICROSOFT.COM.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Definições do realm Kerberos V5 interoperável:</listBox>
+        <text></text>
+        <text>Sintaxe:</text>
+        <text>Introduza o nome do realm Kerberos V5 interoperável como o Nome de Valor.</text>
+        <text>Introduza os sinalizadores do realm e os nomes de anfitrião dos KDCs como</text>
+        <text>o Valor. Coloque os sinalizadores de realm entre os seguintes</text>
+        <text>tags &lt;f&gt; &lt;/f&gt;. Coloque a lista de KDCs entre as tags &lt;k&gt; &lt;/k&gt;</text>
+        <text>Para adicionar vários nomes KDC, separe as entradas por</text>
+        <text>um ponto e vírgula ";".</text>
+        <text></text>
+        <text>Exemplo:</text>
+        <text>Nome de Valor: TEST.COM</text>
+        <text>Valor: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Outro Exemplo:</text>
+        <text>Nome de Valor: REALM.FABRIKAM.COM</text>
+        <text>Valor: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Modo:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Florestas a Pesquisar</label>
+        </textBox>
+        <text>Sintaxe:</text>
+        <text>Introduza a lista de florestas a pesquisar quando esta política for activada.</text>
+        <text>Utilize o formato de nomes de domínio completamente qualificados (FQDN).</text>
+        <text>Separe múltiplas entradas de pesquisa com um ponto e vírgula ";".</text>
+        <text>Detalhes:</text>
+        <text>A floresta actual não precisa de ser listada porque a Ordem de Pesquisa de Floresta utiliza o catálogo global primeiro em seguida pesquisa na ordem listada.</text>
+        <text>Não precisa de listar separadamente todos os domínios na floresta.</text>
+        <text>Se for listada uma floresta fidedigna, todos os domínios nessa floresta serão pesquisados.</text>
+        <text>Para melhor desempenho, liste as florestas pela probabilidade de ordem de sucesso. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

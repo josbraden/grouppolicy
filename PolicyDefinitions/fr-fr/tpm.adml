@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>entrer le nom complet ici</displayName>
+  <description>entrer la description ici</description>
+  <resources>
+    <stringTable>
+      <string id="ActiveDirectoryBackup_Help">Ce paramètre de stratégie vous permet de gérer la sauvegarde des services de domaine Active Directory (AD DS) des informations du propriétaire du module de plateforme sécurisée (TPM, Trusted Platform Module). 
+
+Les informations du propriétaire du module de plateforme sécurisée comprennent un hachage chiffré du mot de passe de ce propriétaire. Certaines commandes du module de plateforme sécurisée peuvent être exécutées seulement par le propriétaire du module de plateforme sécurisée. Ce hachage autorise le module de plateforme sécurisée à exécuter ces commandes. 
+
+Si vous activez ce paramètre de stratégie, les informations du propriétaire du module de plateforme sécurisée sont sauvegardées vers les services de domaine Active Directory (AD DS) automatiquement et silencieusement quand vous utilisez Windows pour définir ou modifier un mot de passe de propriétaire de module de plateforme sécurisée. 
+
+Si vous sélectionnez l'option Requérir la sauvegarde du module de plateforme sécurisée vers les services de domaine Active Directory (AD DS), le mot de passe d'un propriétaire de module de plateforme sécurisée ne peut être défini ou modifié que si l'ordinateur est connecté au domaine et que la sauvegarde des services de domaine Active Directory (AD DS) réussit. Cette option est sélectionnée par défaut afin de garantir la disponibilité des informations du propriétaire de module de plateforme sécurisée. Dans le cas contraire, la sauvegarde des services de domaine Active Directory (AD DS) est tentée mais des échecs réseau ou d'autres échecs de sauvegarde n'ont pas d'impact sur la gestion du module de plateforme sécurisée. La sauvegarde n'est pas automatiquement réessayée et les informations du propriétaire de module de plateforme sécurisée peuvent ne pas avoir été stockées dans les services de domaine Active Directory (AD DS) lors de la configuration BitLocker.
+
+Si vous désactivez ce paramètre de stratégie ou si vous ne le configurez pas, les informations du propriétaire de module de plateforme sécurisée ne seront pas sauvegardées vers les services de domaine Active Directory (AD DS). 
+
+Remarque : vous devez d'abord configurer les extensions de schéma et les paramètres de contrôle d'accès appropriés sur le domaine pour que la sauvegarde des services de domaine Active Directory (AD DS) puisse réussir. Consultez la documentation en ligne pour plus d'informations sur la configuration des services de domaine Active Directory (AD DS) pour le module de plateforme sécurisée.
+
+Remarque : le module de plateforme sécurisée ne peut pas être utilisé pour fournir des fonctions de sécurité améliorées au chiffrement de lecteur BitLocker et à d'autres applications sans la définition préalable d'un propriétaire. Pour prendre la propriété du module de plateforme sécurisée avec un mot de passe de propriétaire, exécutez « tpm.msc » et sélectionnez l'action d'initialisation du module de plateforme sécurisée.
+
+Remarque : si les informations du propriétaire de module de plateforme sécurisée sont perdues ou indisponibles, une gestion limitée du module de plateforme sécurisée est possible en exécutant « tpm.msc » sur l'ordinateur local.</string>
+      <string id="ActiveDirectoryBackup_Name">Activer la sauvegarde du module de plateforme sécurisée dans les services de domaine Active Directory (AD DS)</string>
+      <string id="BlockedCommandsList_Help">Ce paramètre de stratégie vous permet de gérer la liste de la stratégie de groupe répertoriant les commandes de module de plateforme sécurisée bloquées par Windows.
+
+Si vous activez ce paramètre de stratégie, Windows bloque l'envoi des commandes spécifiées au module de plateforme sécurisée sur l'ordinateur. Les commandes de module de plateforme sécurisée sont référencées par un numéro de commande. Par exemple, le numéro de commande 129 est TPM_OwnerReadInternalPub et le numéro de commande 170 est TPM_FieldUpgrade. Pour trouver le numéro de commande associé à chaque commande de module de plateforme sécurisée, exécutez « tpm.msc » et allez à la section « Gestion des commandes ».
+
+Si vous désactivez ce paramètre de stratégie ou si vous ne le configurez pas, seules les commandes de module de plateforme sécurisée spécifiées via les listes par défaut ou locales peuvent être bloquées par Windows. La liste par défaut des commandes de module de plateforme sécurisée bloquées est préconfigurée par Windows. Vous pouvez afficher la liste par défaut en exécutant « tpm.msc », en allant à la section « Gestion des commandes » et en rendant visible la colonne « Sur la liste de blocage par défaut ». La liste locale des commandes de module de plateforme sécurisée bloquées est configurée en dehors de la stratégie de groupe en exécutant « tpm.msc » ou via des scripts avec l'interface WMI Win32_Tpm. Consultez les paramètres de stratégie concernés pour appliquer ou ignorer les listes par défaut et locales des commandes de module de plateforme sécurisée bloquées.</string>
+      <string id="BlockedCommandsList_Name">Configurer la liste des commandes de module de plateforme sécurisée bloquées</string>
+      <string id="IgnoreDefaultList_Help">Ce paramètre de stratégie vous permet d'appliquer ou d'ignorer la liste par défaut des commandes de module de plateforme sécurisée bloquées de l'ordinateur.
+
+Si vous activez ce paramètre de stratégie, Windows ignore la liste par défaut des commandes de module de plateforme sécurisée bloquées de l'ordinateur et bloque seulement les commandes de module de plateforme sécurisée spécifiées par la stratégie de groupe ou par la liste locale. 
+
+La liste par défaut des commandes de module de plateforme sécurisée bloquées est préconfigurée par Windows. Vous pouvez afficher la liste par défaut en exécutant « tpm.msc », en allant à la section « Gestion des commandes » et en rendant visible la colonne « Sur la liste de blocage par défaut ». La liste locale des commandes de module de plateforme sécurisée bloquées est configurée en dehors de la stratégie de groupe en exécutant « tpm.msc » ou via des scripts avec l'interface Win32_Tpm. Consultez le paramètre de stratégie associé pour configurer la liste de la stratégie de groupe répertoriant les commandes de module de plateforme sécurisée bloquées.
+
+Si vous désactivez ce paramètre de stratégie ou si vous ne le configurez pas, Windows bloque les commandes de module de plateforme sécurisée de la liste par défaut, en plus des commandes de la liste de la stratégie de groupe et de la liste locale répertoriant les commandes de module de plateforme sécurisée bloquées.  </string>
+      <string id="IgnoreDefaultList_Name">Ignorer la liste par défaut des commandes de module de plateforme sécurisée bloquées</string>
+      <string id="IgnoreLocalList_Help">Ce paramètre de stratégie vous permet d'appliquer ou d'ignorer la liste locale des commandes de module de plateforme sécurisée bloquées de l'ordinateur.
+
+Si vous activez ce paramètre de stratégie, Windows ignore la liste locale des commandes de module de plateforme sécurisée bloquées de l'ordinateur et bloque seulement les commandes de module de plateforme sécurisée spécifiées par la stratégie de groupe ou par la liste par défaut.
+
+La liste locale des commandes de module de plateforme sécurisée bloquées est configurée en dehors de la stratégie de groupe en exécutant « tpm.msc » ou via des scripts avec l'interface Win32_Tpm. La liste par défaut des commandes de module de plateforme sécurisée bloquées est préconfigurée par Windows. Consultez le paramètre de stratégie associé pour configurer la liste de la stratégie de groupe répertoriant les commandes de module de plateforme sécurisée bloquées. 
+
+Si vous désactivez ce paramètre de stratégie ou si vous ne configurez pas, Windows bloque les commandes de module de plateforme sécurisée figurant dans la liste locale, en plus des commandes de la liste de la stratégie de groupe et de la liste par défaut répertoriant les commandes de module de plateforme sécurisée bloquées.</string>
+      <string id="IgnoreLocalList_Name">Ignorer la liste locale des commandes de module de plateforme sécurisée bloquées</string>
+      <string id="TPMCategory">Services de module de plateforme sécurisée</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="ActiveDirectoryBackup_Name">
+        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Requérir la sauvegarde du module de plateforme sécurisée vers les services de domaine Active Directory (AD DS)</checkBox>
+        <text/>
+        <text>Si ce paramètre est sélectionné, il est impossible de définir ou de modifier un mot de passe de propriétaire de module de plateforme sécurisée </text>
+        <text>si la sauvegarde échoue (option par défaut recommandée).</text>
+        <text/>
+        <text>Si ce paramètre n'est pas sélectionné, il est possible de définir ou de modifier un mot de passe de propriétaire de module de plateforme sécurisée</text>
+        <text>même si la sauvegarde échoue. La sauvegarde n'est pas réessayée automatiquement.</text>
+      </presentation>
+      <presentation id="BlockedCommandsList_Name">
+        <text>Spécifiez les commandes à bloquer en ajoutant leur numéro à la liste.</text>
+
+        <listBox refId="BlockedCommandsList_Ordinals2">Liste des commandes de module de plateforme sécurisée bloquées :</listBox>
+        <text>Par exemple, pour bloquer les commandes TPM_OwnerReadInternalPub</text>
+        <text>et TPM_FieldUpgrade, ajoutez les éléments 129 et 170 à la liste.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

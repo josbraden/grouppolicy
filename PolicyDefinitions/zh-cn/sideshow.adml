@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>请在此处输入显示名称</displayName>
+  <description>请在此处输入描述</description>
+  <resources>
+    <stringTable>
+      <string id="DeleteDataOnLogoff">当用户从计算机注销时，删除运行 Microsoft 固件的设备中的数据。</string>
+      <string id="DeleteDataOnLogoff_Explain">当用户从计算机注销时，此策略设置将删除与 Windows SideShow 兼容的设备(运行 Microsoft 固件)上存储的所有数据。这是一项安全预防措施，但是会大大限制设备的有用性。
+
+如果启用此策略设置，则当用户从计算机注销时，将删除在运行 Microsoft 固件的设备上存储的所有数据。当用户再次登录时，数据会重新发送到设备。
+
+如果禁用或没有配置此策略设置，则当用户从计算机注销时，将不会删除这些设备中的数据。用户可以在 Windows SideShow 控制面板中启用此设置。
+
+注意: 未运行 Microsoft 固件的设备将不会受到此策略设置的影响。</string>
+      <string id="DisableWindowsSideShow">关闭 Windows SideShow</string>
+      <string id="DisableWindowsSideShow_Explain">此策略设置可以关闭 Windows SideShow。
+
+如果启用此策略设置，将禁用 Windows SideShow 控制面板，并且不会将与 Windows SideShow 兼容的小工具(应用程序)中的数据发送到已连接的设备。 
+
+如果禁用或没有配置此策略设置，则 Windows SideShow 默认处于启用状态。</string>
+      <string id="DisableAutoWake">关闭自动唤醒</string>
+      <string id="DisableAutoWake_Explain">此策略设置可以关闭用于定期唤醒计算机更新与 Windows SideShow 兼容的设备上的信息的选项。
+
+如果启用此策略设置，则在 Windows SideShow 控制面板中，自动唤醒计算机的选项将不可用。
+
+如果禁用或没有配置此策略设置，则可以使用 Windows SideShow 控制面板中的用于自动唤醒计算机的选项。但是，默认情况下将禁用此选项。
+
+注意: 当计算机被打开且处于唤醒状态时，只会更新有关与 Windows SideShow 兼容的设备的信息。</string>
+      <string id="PINTimeout_10Minutes">10 分钟</string>
+      <string id="PINTimeout_1Minute">1 分钟</string>
+      <string id="PINTimeout_2Minutes">2 分钟</string>
+      <string id="PINTimeout_30Minutes">30 分钟</string>
+      <string id="PINTimeout_5Minutes">5 分钟</string>
+      <string id="PINTimeout_Never">从不</string>
+      <string id="PINTimeout_WhenScreenIsOff">屏幕关闭时</string>
+      <string id="SetPIN">需要有 PIN 才能访问运行 Microsoft 固件的设备上的数据</string>
+      <string id="SetPIN_Explain">此策略设置要求用户输入默认的个人识别码 (PIN)，以在指定的非活动时间(超时期限)之后解锁并访问设备上的数据。此设置适用于运行 Microsoft 固件的与 Windows SideShow 兼容的设备。
+
+如果启用此策略设置，则将要求用户输入默认的 PIN，以在指定的超时期限之后解锁并访问设备上的数据。
+
+注意，用户可以在 Windows SideShow 控制面板中更改设备设置页上的 PIN 和超时期限。
+
+如果禁用或未配置此策略设置，则不会要求用户输入默认的 PIN，以在指定的超时期限之后解锁并访问设备上的数据。但是，用户可以选择打开 PIN 锁定，并可以在 Windows SideShow 控制面板中更改超时期限。
+
+注意: 未运行 Microsoft 固件的设备将不会受到此策略设置的影响。
+
+注意: 有一组固定的超时期限，包括: 1 分钟后、2 分钟后、5 分钟后、10 分钟后、30 分钟后、屏幕关闭时、从不。</string>
+      <string id="SideShow">Windows SideShow</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="SetPIN_1">
+        <decimalTextBox refId="PINNumber" defaultValue="9999" spinStep="0">4 位 PIN</decimalTextBox>
+        <dropdownList refId="PINTimeout" noSort="true" defaultItem="0">超时值</dropdownList>
+      </presentation>
+      <presentation id="SetPIN_2">
+        <text>用户必须输入以访问运行 Microsoft 固件的与 SideShow 兼容的</text>
+        <text>设备上数据的默认 PIN。</text>
+        <decimalTextBox refId="PINNumber" defaultValue="9999" spinStep="0">4 位 PIN</decimalTextBox>
+        <text>设备锁定之前，运行 Microsoft 固件</text>
+        <text>的与 SideShow 兼容的设备可以处于非活动状态的时间长度。</text>
+        <dropdownList refId="PINTimeout" noSort="true" defaultItem="0">超时值</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

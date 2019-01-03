@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+    <displayName>BranchCache</displayName>
+    <description>A BranchCache lehetővé teszi az ügyfeleknek, hogy biztonságosan kérjenek le tartalmat a fiókirodán belülről anélkül, hogy azt a tartalmat tároló kiszolgálóról kellene lekérniük. A telepítés módjától függően a tartalom lekérhető a fiókiroda más ügyfeleitől vagy a fiókiroda egy központi gyorsítótár-kiszolgálójától. Egy ügyfél csak akkor kérhet le tartalmat a fiókirodán belülről, ha arra engedélyt kap a kiszolgálótól. A BranchCache használata csökkenti a költségeket azon a nagytávolságú hálózati (WAN) kapcsolaton, amely a fiókirodákat az adatközponthoz vagy a központi irodához kapcsolja, és növeli a letöltési sebességet azon tartalmak esetén, amelyeket már letöltöttek a fiókirodába.
+    </description>
+
+    <resources>
+        <stringTable>
+            <string id="WBC_Cat">BranchCache</string>
+
+            <string id="WBC_Enable">BranchCache bekapcsolása</string>
+
+            <string id="WBC_Enable_Help">Ez a házirend-beállítás megadja, hogy a BranchCache engedélyezve van-e az ügyfélszámítógépen. A BranchCache csökkenti a kihasználtságot azokon a nagytávolságú (WAN) kapcsolatokon, amelyek a fiókirodát az adatközponttal vagy a központi irodával kötik össze, és növeli azon tartalmak hozzáférési sebességét, amelyeket már letöltöttek a fiókirodába. A BranchCache ezt úgy éri el, hogy a fiókiroda számítógépei számára lehetővé teszi, hogy a BranchCache szolgáltatást futtató intranetkiszolgáló fájljait és HTTP forgalmát gyorsítótárba helyezzék, és biztonságosan megosszák a fájlokat a fiókiroda más számítógépeivel. A fiókirodában lévő számítógépek tartalmat kérhetnek le a fiókiroda központi gyorsítótár-kiszolgálójától (központi gyorsítótáras mód esetén) vagy a fiókiroda más ügyfélszámítógépeitől (az elosztott gyorsítótáras mód esetén). A gyorsítótár tartalmának eléréséhez a számítógépnek rendelkeznie kell a forráskiszolgálón lévő tartalom hozzáféréséhez szükséges jogokkal.
+
+Ezt a házirend-beállítást olyan fiókirodák ügyfélszámítógépein engedélyezze, amelyekben a WAN-hálózat sávszélessége kicsi, és több ügyfélszámítógépnek kell hozzáférnie ugyanazokhoz az adatokhoz a központi iroda kiszolgálóiról.
+
+Ha engedélyezi ezt a házirend-beállítást, akkor a BranchCache be lesz kapcsolva. Ahhoz, hogy a házirend-beállítás hatással legyen, a BranchCache funkciót is telepítenie kell az ügyfélszámítógépre.
+
+Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, a BranchCache ki lesz kapcsolva.
+            </string>
+
+            <string id="WBC_Cache_Percent">Az ügyfélszámítógép gyorsítótáraként felhasznált lemezterület-százalék beállítása</string>
+
+            <string id="WBC_Cache_Percent_Help">Ez a házirend-beállítás megváltoztatja a teljes merevlemez-területnek azt az alapértelmezett százalékát, amelyet a rendszer a BranchCache szolgáltatással lekért tartalomnak a gyorsítótárban való elhelyezésére használ. Ezt a tartalmat a rendszer más, az adott tartalomhoz hozzáférni kívánó ügyfélszámítógépek számára is elérhetővé teszi, amennyiben a kiszolgáló ezt számukra engedélyezi.
+
+Ha engedélyezi ezt a házirend-beállítást, beállíthatja, hogy a teljes lemezterület hány százalékát használja fel gyorsítótárként.
+
+Ha letiltja vagy nem konfigurálja ezt a beállítást, akkor a gyorsítótár az ügyfélszámítógép teljes lemezterületének 5 százalékát foglalja el.
+            </string>
+
+            <string id="WBC_HostedCache_Location">BranchCache központi gyorsítótáras mód beállítása</string>
+
+            <string id="WBC_HostedCache_Location_Help">Ez a házirend-beállítás megadja, hogy az ügyfélszámítógép a központi gyorsítótáras módot használja-e, és ha igen, mi a címe a BranchCache-kiszolgálónak. A központi gyorsítótáras mód lehetővé teszi az ügyfélszámítógépnek, hogy tartalmat kérjen le egy olyan BranchCache-kiszolgálótól, amely a fiókiroda központi gyorsítótáraként szolgál. A központi gyorsítótáras mód használatakor a BranchCache szolgáltatást használó ügyfélszámítógép által letöltött tartalmat a rendszer a BranchCache-kiszolgálóra helyezi, amely ezután központi gyorsítótárként szolgál a fiókiroda más, a BranchCache szolgáltatást használó ügyfelei számára. Az ügyfélszámítógépek az SSL protokoll használatával kommunikálnak a BranchCache-kiszolgálóval.
+
+Ennek a házirend-beállításnak a használatához meg kell adnia a BranchCache-kiszolgáló címét, és ennek a címnek meg kell egyeznie a BranchCache-kiszolgáló tanúsítványában megadott kiszolgáló teljes tartománynevével (FQDN). Emellett a BranchCache-kiszolgáló főtanúsítványának az ügyfélszámítógép megbízható főtanúsítvány-tárolójában kell lennie.
+
+Ha engedélyezi ezt a házirend-beállítást, és megadja a központi gyorsítótár érvényes helyét, akkor a központi gyorsítótár mód bekapcsol. Ahhoz, hogy ez a házirend-beállítás érvényes legyen, engedélyeznie kell a „BranchCache bekapcsolása” házirend-beállítást is.
+
+Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, akkor a központi gyorsítótáras mód ki lesz kapcsolva.
+            </string>
+
+            <string id="WBC_Distributed_Enable">BranchCache elosztott gyorsítótáras mód beállítása</string>
+
+            <string id="WBC_Distributed_Enable_Help">Ez a házirend-beállítás adja meg, hogy az ügyfélszámítógép az elosztott gyorsítótáras módot használja-e. Ez a BranchCache-mód lehetővé teszi, hogy egy ügyfélszámítógép lekérje azokat a tartalmakat, amelyeket a fiókiroda más ügyfélszámítógépei már letöltöttek és a gyorsítótárba helyeztek. A fiókiroda más ügyfélszámítógépei által a gyorsítótárba helyezett tartalmak eléréséhez a számítógépnek rendelkeznie kell a forráskiszolgálón lévő tartalom hozzáféréséhez szükséges jogokkal.
+
+Ez a házirend-beállítás adja meg, hogy a rendszerben az elosztott gyorsítótáras módot szeretné-e használni. A házirend-beállítást akkor engedélyezze, ha a BranchCache szolgáltatást olyan fiókirodákban használja, amelyekben nincs központi gyorsítótárként működő kiszolgáló.
+
+Ha engedélyezi a házirend-beállítást, akkor a rendszer az elosztott gyorsítótáras módot használja. Ahhoz, hogy a házirend-beállítás érvényes legyen, engedélyeznie kell a „BranchCache bekapcsolása” házirend-beállítást is.
+
+Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, akkor az elosztott gyorsítótáras mód ki lesz kapcsolva.
+            </string>
+
+            <string id="WBC_SMB_Enable">A BranchCache beállítása hálózati fájlokhoz</string>
+
+            <string id="WBC_SMB_Enable_Help">Ez a házirend-beállítás megváltoztatja a körbejárási hálózati késésnek azt az alapértelmezett értékét, amely felett a hálózati fájlokat a fiókirodában lévő ügyfélszámítógépek a gyorsítótárba helyezik. A BranchCache alkalmazása a hálózati fájlokra lehetővé teszi, hogy a fiókiroda számítógépei a BranchCache szolgáltatást futtató intranetkiszolgálók adatait gyorsítótárba helyezze. Az egyik, gyorsítótárba helyezhető tartalomtípus az SMB protokollt használó fájlok.
+
+Alapértelmezés szerint a hálózati fájlokat a fiókirodában akkor helyezik gyorsítótárba, ha a nagytávolságú hálózat (WAN) körbejárási hálózati késése nagyobb mint 80 ms. Ha azt szeretné, hogy a rendszer mindig a gyorsítótárba helyezze a fiókiroda számítógépei által letöltött hálózati fájlokat, akkor állítsa a hálózati késés értékét 0-ra. Ha ki szeretné kapcsolni a hálózati fájlok fiókirodában való gyorsítótárazását, akkor állítsa az értéket nagyon nagyra.
+
+Ha engedélyezi ezt a házirend-beállítást, beállíthatja, hogy mekkora körbejárási hálózati késés felett helyezzék a gyorsítótárba a fiókiroda ügyfélszámítógépei a hálózati fájlokat.
+
+Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, akkor az ügyfélszámítógép a hálózati fájlokat akkor fogja a gyorsítótárba helyezni, ha a nagytávolságú hálózat (WAN) körbejárási hálózati késése 80 ms felett van.
+            </string>
+
+        </stringTable>
+
+        <presentationTable>
+            <presentation id="WBC_Cache_Size_Exact_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Exact_dctxtbox" defaultValue="10485760" spinStep="10485760">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Adja meg az ügyfélszámítógép gyorsítótárának helyét</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_Hosted_Cache_Location_TextBox">
+                <textBox refId="WBC_Cache_TextBox">
+                    <label>Adja meg a központi gyorsítótár helyét</label>
+                </textBox>
+            </presentation>
+
+            <presentation id="WBC_SMB_DecimalTextBox">
+              <text>Adja meg a körbejárási hálózati késés azon értékét (milliszekundumban), amely felett a hálózati fájlokat a gyorsítótárba kell helyezni a fiókirodában</text>  
+              <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+        </presentationTable>
+    </resources>
+</policyDefinitionResources>

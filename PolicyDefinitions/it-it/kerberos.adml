@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Impostazioni di Kerberos</displayName>
+  <description>Impostazioni di configurazione per il protocollo di autenticazione Kerberos.</description>
+  <resources>
+    <stringTable>
+      <string id="kerberos">Kerberos</string>
+      <string id="forestsearch">Usa ordine di ricerca nella foresta</string>
+      <string id="forestsearch_explain">Questa impostazione definisce l'elenco delle foreste trusting in cui il client Kerberos esegue la ricerca durante il tentativo di risolvere nomi principali di servizio (SPN) in due parti.
+
+Se si abilita questa impostazione, il client Kerberos eseguirà la ricerca nelle foreste incluse in questo elenco nel caso non sia in grado di risolvere un nome principale di servizio (SPN) in due parti. Se viene trovata una corrispondenza, il client Kerberos richiederà un ticket di riferimento al dominio appropriato.
+
+Se si disabilita o non si configura questa impostazione, il client Kerberos non eseguirà la ricerca nelle foreste elencate per risolvere l'SPN. Se il client Kerberos non è in grado di risolvere l'SPN a causa dell'impossibilità di trovare il nome, potrebbe venire utilizzata l'autenticazione NTLM.</string>
+      <string id="hosttorealm">Definisci mapping dei nomi host all'area di autenticazione Kerberos</string>
+      <string id="hosttorealm_explain">Questa impostazione consente di specificare i nomi host DNS e i suffissi DNS associati a un'area di autenticazione Kerberos.
+
+Se si abilita questa impostazione, sarà possibile visualizzare e modificare l'elenco dei nomi host DNS e dei suffissi DNS associati a un'area di autenticazione Kerberos in base a un criterio di gruppo. Per visualizzare l'elenco dei mapping, abilitare l'impostazione del criterio e quindi fare clic sul pulsante Mostra. Per aggiungere un mapping, abilitare l'impostazione del criterio, esaminare la sintassi, quindi fare clic sul pulsante Mostra. Nella colonna Nome valore della finestra di dialogo Mostra contenuto digitare il nome dell'area autenticazione. Nella colonna Valore digitare l'elenco di nomi host DNS e di suffissi DNS utilizzando il formato della sintassi appropriata. Per rimuovere un mapping dall'elenco, fare clic sulla voce di mapping da rimuovere, quindi premere il tasto CANC. Per modificare un mapping, rimuovere la voce corrente dall'elenco e aggiungere una nuova voce con parametri diversi.
+
+Se si disabilita questa impostazione, i mapping dei nomi host all'area di autenticazione Kerberos definiti nel criterio verranno eliminati.
+
+Se non si configura questa impostazione, verranno utilizzati i mapping dei nomi host all'area di autenticazione Kerberos definiti nel Registro di sistema locale, se presenti.</string>
+      <string id="MitRealms">Definisci impostazioni per le aree di autenticazione interoperative Kerberos V5</string>
+      <string id="MitRealms_explain">Questa impostazione configura il client Kerberos per consentire l'autenticazione con le aree di autenticazione interoperative Kerberos V5 definite nell'impostazione del criterio.
+      
+Se si abilita questa impostazione, sarà possibile visualizzare e modificare l'elenco delle aree di autenticazione interoperative Kerberos V5 e le relative impostazioni. Per visualizzare l'elenco delle aree di autenticazione interoperative Kerberos V5, abilitare l'impostazione del criterio e quindi fare clic sul pulsante Mostra. Per aggiungere un'area di autenticazione interoperativa Kerberos V5, abilitare l'impostazione del criterio, esaminare la sintassi, quindi fare clic sul pulsante Mostra. Nella colonna Nome valore della finestra di dialogo Mostra contenuto digitare il nome dell'area di autenticazione interoperativa Kerberos V5. Nella colonna Valore digitare i contrassegni dell'area di autenticazione e i nomi host dei KDC dell'host utilizzando il formato della sintassi appropriata. Per rimuovere dall'elenco la voce relativa al valore o al nome del valore di un'area di autenticazione interoperativa Kerberos V5, fare clic sulla voce, quindi premere CANC. Per modificare un mapping, rimuovere la voce corrente dall'elenco e aggiungere una nuova voce con parametri diversi.
+
+Se si disabilita questa impostazione, le impostazioni dell'area di autenticazione interoperativa Kerberos V5 definite nel criterio verranno eliminate.
+
+Se non si configura questa impostazione, verranno utilizzate le impostazioni dell'area di autenticazione interoperativa Kerberos V5 definite nel Registro di sistema locale, se presenti.</string>
+      <string id="ValidateKDC">Richiedi convalida KDC ristretta</string>
+      <string id="ValidateKDC_explain">Questa impostazione controlla il comportamento del client Kerberos durante la convalida del certificato KDC.
+      
+Se si abilita questa impostazione, il client Kerberos richiederà che il certificato X.509 di KDC contenga l'identificatore di oggetto con scopo delle chiavi KDC nelle estensioni EKU (utilizzo chiavi esteso) e che il certificato X.509 di KDC contenga un'estensione dNSName SAN (subjectAltName) corrispondente al nome DNS del dominio. Se il computer appartiene a un dominio, il client Kerberos richiederà che il certificato X.509 di KDC sia firmato da un'Autorità di certificazione nell'archivio NTAUTH. Se il computer non appartiene a un dominio, il client Kerberos consentirà l'utilizzo del certificato CA radice sulla smart card durante la convalida del percorso del certificato X.509 di KDC.
+
+Se si disabilita o non si configura questa impostazione, il client Kerberos richiederà solo che il certificato KDC contenga l'identificatore di oggetto con scopo Autenticazione server nelle estensioni EKU.
+</string>
+      <string id="StrictTarget">Richiedi corrispondenza SPN destinazione ristretta in chiamate a procedure remote</string>
+      <string id="StrictTarget_explain">Quando un'applicazione tenta di eseguire una chiamata RPC a questo server con un valore NULL per il nome principale di servizio (SPN), i computer che eseguono Windows 7 tenteranno di utilizzare Kerberos mediante la generazione di un SPN. Questa impostazione consente di configurare questo server in modo che Kerberos possa decrittografare un ticket che contiene l'SPN generato da questo sistema.
+
+Se si abilita questa impostazione, l'accettazione di tali connessioni sarà consentita solo ai servizi in esecuzione come LocalSystem o NetworkService. L'autenticazione dei servizi in esecuzione con identità diverse da LocalSystem o NetworkService potrebbe non riuscire.
+
+Se si disabilita o non si configura questa impostazione, a qualsiasi servizio sarà consentito accettare connessioni in ingresso utilizzando l'SPN generato da questo sistema.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="hosttorealm">
+        <listBox refId="hosttorealm">Definisci mapping dei nomi host all'area di autenticazione:</listBox>
+        <text></text>
+        <text>Sintassi:</text>
+        <text>Digitare il nome dell'area di autenticazione Kerberos nel campo Nome valore.</text>
+        <text>Digitare i nomi host e i suffissi DNS da associare all'area di autenticazione</text>
+        <text>Kerberos nel campo Valore. Per aggiungere più</text>
+        <text>nomi, separare le voci con un punto e virgola ";".</text>
+        <text></text>
+        <text>Nota: per specificare un suffisso DNS, inserire un punto "." prima della voce.</text>
+        <text>Per le voci nomi host, non inserire il punto "." iniziale.</text>
+        <text></text>
+        <text>Esempio:</text>
+        <text>Nome valore: MICROSOFT.COM</text>
+        <text>Valore: .microsoft.com; .ms.com; computer1.fabrikam.com;</text>
+        <text></text>
+        <text>Nell'esempio sopra. Tutte le entità con il suffisso DNS</text>
+        <text>di *.microsoft.com o *.ms.com verranno mappate all'area di autenticazione Kerberos</text>
+        <text>MICROSOFT.COM. Il nome host</text>
+        <text>computer1.fabrikam.com verrà inoltre mappato all'area di autenticazione Kerberos </text>
+        <text>MICROSOFT.COM.</text>
+      </presentation>
+      <presentation id="MitRealms">
+        <listBox refId="MitRealms">Definisci impostazioni per le aree di autenticazione interoperative Kerberos V5:</listBox>
+        <text></text>
+        <text>Sintassi:</text>
+        <text>Digitare il nome dell'area di autenticazione interoperativa Kerberos V5 nel campo Nome valore.</text>
+        <text>Digitare i flag dell'area di autenticazione e i nomi host dei KDC nel campo</text>
+        <text>Valore. Racchiudere i flag dell'area di autenticazione tra i</text>
+        <text>tag&lt;f&gt; &lt;/f&gt;. Racchiudere l'elenco dei KDC tra i tag &lt;k&gt; &lt;/k&gt;</text>
+        <text>Per aggiungere più nomi KDC, separare le voci con</text>
+        <text>un punto e virgola ";".</text>
+        <text></text>
+        <text>Esempio:</text>
+        <text>Nome valore: TEST.COM</text>
+        <text>Valore: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text></text>
+        <text>Altro esempio:</text>
+        <text>Nome valore: AREAAUTENT.FABRIKAM.COM</text>
+        <text>Valore: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+      </presentation>
+      <presentation id="ValidateKDC">
+        <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">Modalità:</dropdownList>
+      </presentation>
+      <presentation id="ForestSearch">
+        <textBox refId="ForestSearchList">
+          <label>Foreste in cui cercare</label>
+        </textBox>
+        <text>Sintassi:</text>
+        <text>Immettere l'elenco delle foreste in cui cercare quando questo criterio è abilitato.</text>
+        <text>Utilizzare il formato di assegnazione nomi Nome di dominio completo (FQDN).</text>
+        <text>Separare più voci di ricerca con un punto e virgola ";".</text>
+        <text>Dettagli:</text>
+        <text>Non è necessario includere la foresta corrente nell'elenco, in quanto Ordine di ricerca nella foresta utilizza innanzitutto il catalogo globale e quindi esegue la ricerca nell'ordine elencato.</text>
+        <text>Non è necessario elencare separatamente tutti i domini della foresta.</text>
+        <text>Se una foresta trusting è inclusa nell'elenco, la ricerca verrà eseguita in tutti i domini di tale foresta.</text>
+        <text>Per ottenere prestazioni ottimali, elencare le foreste secondo l'ordine di probabilità di successo della ricerca. </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>
