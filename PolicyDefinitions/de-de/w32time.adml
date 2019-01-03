@@ -5,22 +5,22 @@
   <description>Beschreibung hier eingeben</description>
   <resources>
     <stringTable>
-      <string id="W32TIME_CONFIG_EXPLAIN">Mit dieser Richtlinieneinstellung können Sie Uhrzeitparameter und allgemeine Wert für den Windows-Zeitdienst (W32time) für Domänencontroller (auch RODC) angeben.
+      <string id="W32TIME_CONFIG_EXPLAIN">Mit dieser Richtlinieneinstellung können Sie die Zeitdisziplin und allgemeine Werte für den Windows-Zeitdienst (W32time) für Domänencontroller (auch RODC) angeben.
 
-Wenn Sie diese Richtlinieneinstellung aktivieren, können Sie die folgenden Uhrzeit- und RODC-Parameter sowie allgemeinen Parameter für diesen Dienst festlegen.
+Wenn Sie diese Richtlinieneinstellung aktivieren, können Sie die folgenden Zeitdisziplin-, RODC- und allgemeinen Parameter für diesen Dienst festlegen.
 
-Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, verwendet der Windows-Zeitdienst die Standardwerte für die folgenden Parameter:
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, verwendet der Windows-Zeitdienst die Standardwerte für die folgenden Parameter.
 
-Einige der folgenden Werte sind skalar, was bedeutet, dass sie nur in Beziehung zueinander aussagekräftig und nicht in bestimmten Maßeinheiten definiert sind.
+Einige der folgenden Werte sind skalar. Das bedeutet, dass sie nur in Beziehung zueinander aussagekräftig und nicht in bestimmten Maßeinheiten definiert sind.
 
 FrequencyCorrectRate
-Dieser Parameter steuert die Rate, mit der die Frequenz der lokalen Uhrzeit von W32time korrigiert wird. Durch niedrigere Werte werden Korrekturen langsamer und durch höhere Werte schneller ausgeführt. Zu niedrige Werte können zur Überkorrektur und Instabilität führen. Zu hohe Werte können eine langsame Synchronisierung verursachen. Standardwert: 4 (Skalarwert).
+Dieser Parameter steuert die Rate, mit der die Frequenz der lokalen Uhrzeit von W32time korrigiert wird. Durch niedrigere Werte werden Korrekturen langsamer und durch höhere Werte häufiger ausgeführt. Zu niedrige Werte können zur Überkorrektur und Instabilität führen. Zu hohe Werte können eine langsame Synchronisierung verursachen. Standardwert: 4 (Skalarwert).
 
 HoldPeriod
-Dieser Parameter gibt an, wie viele potenziell genauen Zeitproben vom Clientcomputer in Folge empfangen werden müssen, bevor nachfolgende Zeitproben als mögliche Spikes ausgewertet werden. Wenn über einen bestimmten Zeitraum keine geeigneten Zeitproben empfangen wurden, stellt ein Zeitdienstclient die Auswertung von Zeitproben für Spikes sofort ein, sobald die erste potenziell genaue Zeitprobe empfangen wurde. Nachdem eine (durch "HoldPeriod" festgelegte) Reihe von Zeitproben empfangen wurde, wertet der Zeitdienstclient nachfolgende Zeitproben für Spikes aus. Eine Zeitprobe wird als Spike angesehen, wenn der Zeitunterschied zwischen einer Zeitprobe und der lokalen Clientzeit größer als der Wert unter "LargePhaseOffset" ist. Standardwert: Fünf Zeitproben.
+Dieser Parameter gibt an, wie viele potenziell genauen Zeitproben vom Clientcomputer in Folge empfangen werden müssen, bevor nachfolgende Zeitproben als mögliche Spikes ausgewertet werden. Wenn über einen bestimmten Zeitraum keine geeigneten Zeitproben empfangen wurden, stellt ein Zeitdienstclient die Auswertung von Zeitproben für Spikes sofort ein, sobald die erste potenziell genaue Zeitprobe empfangen wurde. Nachdem eine (durch HoldPeriod festgelegte) Reihe von Zeitproben empfangen wurde, wertet der Zeitdienstclient nachfolgende Zeitproben für Spikes aus. Eine Zeitprobe wird als Spike angesehen, wenn der Zeitunterschied zwischen einer Zeitprobe und der lokalen Zeit des Clientcomputers größer als der Wert unter LargePhaseOffset ist. Standardwert: 5 Zeitproben.
 
 LargePhaseOffset
-Dieser Parameter gibt an, wie weit eine Zeitprobe von der lokalen Uhrzeit (Phasenoffset) eines Clientcomputers abweichen muss, um als Spike eingestuft zu werden. Zeitproben mit einer größeren Zeitabweichung als im Wert "LargePhaseOffset" angegeben werden als Spikes betrachtet. Standardwert: 50.000.000 Einheiten von 100 Nanosekunden (ns), entspricht fünf Sekunden.
+Dieser Parameter gibt an, wie weit eine Zeitprobe von der lokalen Uhrzeit (Phasenoffset) eines Clientcomputers abweichen muss, um als Spike eingestuft zu werden. Zeitproben mit einer größeren Zeitabweichung als in LargePhaseOffset angegeben werden als Spikes betrachtet. Standardwert: 50.000.000 Einheiten von 100 Nanosekunden (ns), entspricht fünf Sekunden.
 
 MaxAllowedPhaseOffset
 Dieser Parameter steuert, auf welche Weise die Uhrzeit von W32time korrigiert wird. Grundlage hierfür ist die Größe der berechneten Zeitabweichung zwischen der Zeitprobe und der lokalen Uhrzeit des Clientcomputers. Wird eine Antwort empfangen, deren Zeitabweichung über diesem Wert liegt, wird die lokale Uhrzeit des Clientcomputers von W32time sofort auf die Zeit festgelegt, die als richtige Uhrzeit vom NTP (Network Time Protocol)-Server angesehen wird. Liegt die Zeitabweichung unter diesem Wert, wird die lokale Uhrzeit des Clientcomputers schrittweise korrigiert. Standardwert: 300 Sekunden.
@@ -32,10 +32,10 @@ MaxPosPhaseCorrection
 Dieser Parameter steuert, wie weit die Uhrzeit maximal vorgestellt werden darf. Falls eine Zeitprobe empfangen wird, die (bezogen auf die lokale Clientcomputeruhrzeit) einen Zeitpunkt in der Zukunft angibt und deren Zeitunterschied über dem Wert für "MaxPosPhaseCorrection" liegt, wird die Zeitprobe verworfen. Standardwert: 172.800 Sekunden.
 
 PhaseCorrectRate
-Dieser Parameter steuert, wie schnell die abweichende Uhrzeit des lokalen Clientcomputers in Anpassung an die Zeitproben korrigiert wird, die vom NTP-Server empfangen und als richtig angesehen werden. Durch niedrigere Werte wird die Uhrzeit langsamer und durch höhere Werte schneller korrigiert. Standardwert: 7 (Skalarwert).
+Dieser Parameter steuert, wie schnell W32time die Abweichung der lokalen Uhrzeit des Clientcomputers in Anpassung an die Zeitproben korrigiert, die vom NTP-Server empfangen und als richtig angesehen werden. Durch niedrigere Werte wird die Uhrzeit langsamer und durch höhere Werte schneller korrigiert. Standardwert: 7 (Skalarwert).
 
 PollAdjustFactor
-Dieser Parameter steuert, wie häufig Abfrageintervalle von W32time geändert werden. Wenn Antworten als genau angesehen werden, wird das Abfrageintervall automatisch verlängert. Wenn Antworten als ungenau angesehen werden, wird das Abfrageintervall automatisch verkürzt. Standardwert: 5 (Skalarwert).
+Dieser Parameter steuert, wie schnell Abfrageintervalle von W32time geändert werden. Wenn Antworten als genau angesehen werden, wird das Abfrageintervall automatisch verlängert. Wenn Antworten als ungenau angesehen werden, wird das Abfrageintervall automatisch verkürzt. Standardwert: 5 (Skalarwert).
 
 SpikeWatchPeriod
 Dieser Parameter gibt die Zeitspanne an, während der zweifelhafte Zeitproben von einer Zeitquelle empfangen werden, bevor diese Zeitproben als genau angesehen werden. Zeitproben werden als zweifelhaft eingestuft, wenn der Zeitunterschied zwischen der Zeitprobe und der lokalen Uhrzeit des Clientcomputers über dem Wert für "LargePhaseOffset" liegt. "SpikeWatchPeriod" wird zusammen mit "HoldPeriod" verwendet, um zu verhindern, dass ein Peer sporadische, ungenaue Zeitproben zurückgibt. Standardwert: 900 Sekunden.
@@ -46,10 +46,10 @@ Dieser Parameter gibt an, wie lange W32time zwischen Korrekturen wartet, wenn di
 Allgemeine Parameter:
 
 AnnounceFlags
-Dieser Parameter ist ein Bitmaskenwert, der steuert, wie die Zeitdienstverfügbarkeit über den Anmeldedienst (NetLogon) angekündigt wird. Standardwert: 0x0a hexadezimal. Weitere Informationen zu diesen Werten finden Sie unter "NtpClient\EventLogFlags (Unterschlüssel)" in der TechNet-Bibliothek von Microsoft.
+Dieser Parameter ist ein Bitmaskenwert, der steuert, wie die Zeitdienstverfügbarkeit über den Anmeldedienst (NetLogon) angekündigt wird. Standardwert: 0x0a hexadezimal. Weitere Informationen zu diesen Werten finden Sie in der Dokumentation zu "NtpClient\EventLogFlags (Unterschlüssel)" in der TechNet-Bibliothek von Microsoft.
 
 EventLogFlags
-Dieser Parameter steuert besondere Ereignisse, die im Systemprotokoll der Ereignisanzeige protokolliert werden können. Standardwert: 0x02 hexadezimaler Bitmaskenwert. Weitere Informationen zu diesen Werten finden Sie unter "NtpClient\EventLogFlags (Unterschlüssel)" in der TechNet-Bibliothek von Microsoft.
+Dieser Parameter steuert besondere Ereignisse, die im Systemprotokoll der Ereignisanzeige protokolliert werden können. Standardwert: 0x02 hexadezimaler Bitmaskenwert. Weitere Informationen zu diesen Werten finden Sie in der Dokumentation zu "NtpClient\EventLogFlags (Unterschlüssel)" in der TechNet-Bibliothek von Microsoft.
 
 LocalClockDispersion
 Gibt die maximale fehlerhafte Abweichung in Sekunden an, die vom NTP-Server an Clients übermittelt wird, die eine Zeitprobe anfordern. (Trifft nur zu, wenn der NTP-Server die Uhrzeit der lokalen CMOS-Uhr verwendet.) Standardwert: 10 Sekunden.
@@ -61,7 +61,10 @@ MinPollInterval
 Dieser Parameter steuert das minimale Abfrageintervall, das die minimale Zeitspanne zwischen Abfragen eines Peers festlegt. Standardwert: 6 im Logarithmus zur Basis 2, entspricht 64 Sekunden.
 
 RequireSecureTimeSyncRequests
-Dieser Parameter steuert, ob der Domänencontroller auf Zeitsynchronisierungsanfragen reagiert, die ältere Authentifizierungsprotokolle verwenden. Ist diese Option aktiviert (auf 1 festgelegt), reagiert der Domänencontroller nicht auf Anfragen, die derartige Protokolle verwenden. Standardwert: 0, boolescher Wert.
+Dieser Parameter steuert, ob der Domänencontroller auf Zeitsynchronisierungsanfragen reagiert, die ältere Authentifizierungsprotokolle verwenden. Ist diese Option aktiviert (auf 1 festgelegt), reagiert der Domänencontroller nicht auf Anforderungen, die derartige Protokolle verwenden. Standardwert: 0, boolescher Wert.
+
+UtilizeSslTimeData
+Dieser Parameter steuert, ob W32time Zeitdaten verwendet, die auf Grundlage des SSL-Datenverkehrs auf dem Computer berechnet werden und als zusätzliche Eingabe für die Korrektur der lokalen Zeit dienen. Standardwert: 1, boolescher Wert.
 
 RODC-Parameter:
 
@@ -78,8 +81,7 @@ ChainDisable
 Dieser Parameter steuert, ob der Verkettungsmechanismus deaktiviert ist. Wenn die Verkettung deaktiviert (auf 0 festgelegt) ist, kann der RODC Synchronisierungen mit beliebigen Domänencontroller ausführen. Hosts, deren Kennwort nicht auf dem RODC zwischengespeichert ist, können jedoch keine Synchronisierung mit dem RODC ausführen. Standardwert: 0, boolescher Wert.
 
 ChainLoggingRate
-Dieser Parameter steuert, wie häufig ein Ereignis, das die Anzahl erfolgreicher und fehlgeschlagener Verkettungsversuche angibt, im Systemprotokoll der Ereignisanzeige protokolliert wird. Standardwert: 30 Minuten.
-
+Dieser Parameter steuert, wie häufig ein Ereignis, das die Anzahl erfolgreicher und nicht erfolgreicher Verkettungsversuche angibt, im Systemprotokoll der Ereignisanzeige protokolliert wird. Standardwert: 30 Minuten.
 </string>
 
 <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">Diese Richtlinieneinstellung gibt eine Gruppe von Parametern zur Steuerung des Windows-NTP-Clients an.
@@ -160,6 +162,7 @@ Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, kan
         <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

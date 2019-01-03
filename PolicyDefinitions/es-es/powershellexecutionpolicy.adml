@@ -28,29 +28,58 @@ Si se deshabilita o no se establece esta configuración de directiva, se reviert
        
       <string id="EnableModuleLogging">Activar registro de módulos</string>
       <string id="EnableModuleLogging_Explain">
-        
         Esta configuración de directiva permite activar el registro de módulos de Windows PowerShell.
 
-        Si habilita esta configuración de directiva, los eventos de ejecución de la canalización para los miembros de los módulos especificados se graban en el registro de Windows PowerShell en el Visor de eventos. Habilitar esta configuración de directiva equivale a establecer la propiedad LogPipelineExecutionDetails del módulo en True.
+        Si habilitas esta configuración de directiva, se registrarán los eventos de ejecución de la canalización para los miembros de los módulos especificados en el registro de Windows PowerShell, en el Visor de eventos. Si habilitas esta configuración de directiva para un módulo, se establecerá la propiedad LogPipelineExecutionDetails del módulo en Verdadero.
 
-        Si deshabilita esta configuración de directiva, se deshabilita el registro de eventos de ejecución para todos los módulos de Windows PowerShell. Deshabilitar esta configuración de directiva equivale a establecer la propiedad LogPipelineExecutionDetails del módulo en False.
+        Si deshabilitas esta configuración de directiva, se deshabilitará el registro de eventos de ejecución para todos los módulos de Windows PowerShell. Si deshabilitas esta configuración de directiva, se establecerá la propiedad LogPipelineExecutionDetails del módulo en Falso.
 
-        Si no se establece esta configuración de directiva, la propiedad LogPipelineExecutionDetails de un módulo o complemento determina si se registran los eventos de ejecución de dicho módulo o complemento. De manera predeterminada, la propiedad LogPipelineExecutionDetails de todos los módulos y complementos se establece en False.
+        Si no estableces esta configuración de directiva, la propiedad LogPipelineExecutionDetails de un módulo o complemento determinará si se registran los eventos de ejecución de dicho módulo o complemento. De manera predeterminada, la propiedad LogPipelineExecutionDetails de todos los módulos y complementos se establece en Falso.
 
-        Para agregar módulos y complementos a la lista de opciones de configuración de directiva, haga clic en Mostrar; a continuación, escriba los nombres de módulos en la lista. Los módulos y complementos de la lista deben estar instalados en el equipo.
+        Para agregar módulos y complementos a la lista de opciones de configuración de directiva, haz clic en Mostrar y, a continuación, escribe los nombres de módulos en la lista. Los módulos y complementos de la lista deben estar instalados en el equipo.
 
-        Nota: esta configuración de directiva se encuentra en Configuración del equipo y Configuración del usuario en el Editor de directivas de grupo. La configuración de directiva de Configuración del equipo tiene prioridad sobre la de Configuración del usuario.
-      
+        Nota: Esta configuración de directiva se encuentra en Configuración del equipo y Configuración del usuario, en el Editor de directivas de grupo. La configuración de directiva de Configuración del equipo tiene prioridad sobre la de Configuración del usuario.
       </string>
-      <string id="EnableUpdateHelpDefaultSourcePath">Establecer la ruta de acceso de origen de Update-Help</string>
-      <string id="EnableUpdateHelpDefaultSourcePath_Explain">Esta configuración de directiva le permite establecer el valor predeterminado del parámetro SourcePath en el cmdlet Update-Help.
 
-Si habilita esta configuración de directiva, el cmdlet Update-Help usará el valor especificado como valor predeterminado para el parámetro SourcePath. Este valor predeterminado se puede invalidar especificando un valor diferente con el parámetro SourcePath en el cmdlet Update-Help.
+      <string id="EnableTranscripting">Activar la transcripción de PowerShell</string>
+      <string id="EnableTranscripting_Explain">
+        Esta configuración de directiva permite capturar la entrada y salida de comandos de Windows PowerShell en transcripciones basadas en texto.
 
-Si deshabilita o no establece esta configuración de directiva, no establece un valor predeterminado para el parámetro SourcePath del cmdlet Update-Help.
+	Si habilitas esta configuración de directiva, Windows PowerShell habilitará la transcripción de Windows PowerShell, Windows PowerShell ISE y cualquier otra
+        aplicación que use el motor de Windows PowerShell. De forma predeterminada, Windows PowerShell registrará la salida de transcripciones en el directorio Mis documentos de cada usuario
+        con un nombre de archivo que incluya "PowerShell_transcript" junto con el nombre del equipo y la hora de inicio. El hecho de habilitar esta directiva equivale a llamar
+        al cmdlet Start-Transcript en cada sesión de Windows PowerShell.
 
-Nota: esta configuración de directiva se encuentra en Configuración del equipo y Configuración del usuario en el Editor de directivas de grupo. La configuración de directiva de Configuración del equipo tiene prioridad sobre la de Configuración del usuario.
+	Si deshabilitas esta configuración de directiva, se deshabilitará la transcripción de aplicaciones basadas en PowerShell de forma predeterminada, aunque se podrá habilitar la transcripción
+        mediante el cmdlet Start-Transcript.
+        
+        Si usas la configuración OutputDirectory para habilitar el registro de transcripciones en una ubicación compartida, no olvides limitar el acceso a ese directorio para impedir que los usuarios
+        vean las transcripciones de otros usuarios o equipos.
+
+	 Nota: Esta configuración de directiva se encuentra en Configuración del equipo y Configuración del usuario en el Editor de directivas de grupo. La configuración de directiva de Configuración del equipo tiene prioridad sobre la de Configuración del usuario.
+      </string>
+
+      <string id="EnableScriptBlockLogging">Activar el registro de bloque de script de PowerShell</string>
+      <string id="EnableScriptBlockLogging_Explain">
+        Esta configuración de directiva permite el registro de todas las entradas de script de PowerShell en el registro de eventos Microsoft-Windows-PowerShell/Operational. Si habilitas esta configuración de directiva,
+        Windows PowerShell registrará el procesamiento de comandos, bloques de script, funciones y scripts, ya sea invocado de forma interactiva o mediante la automatización.
+        
+        Si deshabilitas esta configuración de directiva, se deshabilitará el registro de entradas de script de PowerShell.
+        
+        Si habilitas el registro de invocación de bloque de script, PowerShell también registrará los eventos cuando se inicie o se detenga la invocación de un comando, bloque de script, función o script.
+        Si habilitas el registro de invocación, se generará una gran cantidad de registros de eventos.
+        
+        Nota: Esta configuración de directiva se encuentra en Configuración del equipo y Configuración del usuario en el Editor de directivas de grupo. La configuración de directiva de Configuración del equipo tiene prioridad sobre la de Configuración del usuario.
+      </string>
       
+      <string id="EnableUpdateHelpDefaultSourcePath">Establecer la ruta de acceso de origen de Update-Help</string>
+      <string id="EnableUpdateHelpDefaultSourcePath_Explain">Esta configuración de directiva permite establecer el valor predeterminado del parámetro SourcePath en el cmdlet Update-Help.
+
+Si habilitas esta configuración de directiva, el cmdlet Update-Help usará el valor especificado como valor predeterminado para el parámetro SourcePath. Este valor predeterminado se puede invalidar especificando un valor distinto con el parámetro SourcePath en el cmdlet Update-Help.
+
+Si deshabilitas o no estableces esta configuración de directiva, no se establecerá ningún valor predeterminado para el parámetro SourcePath del cmdlet Update-Help.
+
+Nota: Esta configuración de directiva se encuentra en Configuración del equipo y Configuración del usuario en el Editor de directivas de grupo. La configuración de directiva de Configuración del equipo tiene prioridad sobre la de Configuración del usuario.
       </string>
       <!--<string id="PowerShell">Windows PowerShell</string>-->
     </stringTable>
@@ -60,14 +89,21 @@ Nota: esta configuración de directiva se encuentra en Configuración del equipo
       </presentation>
       <presentation id="EnableModuleLogging">
         <text>Para activar el registro para uno o varios módulos, haga clic en Mostrar y, a continuación, escriba los nombres de módulo en la lista. Se admiten caracteres comodín.</text>
-        <listBox refId="Listbox_ModuleNames" required="false">Nombres de módulos:  </listBox>
+        <listBox refId="Listbox_ModuleNames" required="false">Nombres de módulos</listBox>
         <text>Para activar el registro para los módulos centrales de Windows PowerShell, escriba los siguientes nombres de módulos en la lista:</text>
         <text>Microsoft.PowerShell.*</text>
         <text>Microsoft.WSMan.Management</text>
       </presentation>
+      <presentation id="EnableTranscripting">
+        <textBox refId="OutputDirectory"><label>Directorio de salida de la transcripción</label></textBox>
+        <checkBox refId="EnableInvocationHeader">Incluir encabezados de invocación:</checkBox>
+      </presentation>     
+      <presentation id="EnableScriptBlockLogging">
+        <checkBox refId="EnableScriptBlockInvocationLogging">Registrar eventos que inician o detienen la invocación de bloque de script:</checkBox>
+      </presentation>           
       <presentation id="EnableUpdateHelpDefaultSourcePath">
         <textBox refId="SourcePathForUpdateHelp">
-          <label>Ruta de acceso de origen predeterminada:  </label>
+          <label>Ruta de origen predeterminada</label>
         </textBox>
       </presentation>
     </presentationTable>    

@@ -123,6 +123,22 @@ Ha engedélyezi ezt a házirend-beállítást, és az erőforrás-tartomány ös
 Ha letiltja vagy nem konfigurálja a házirend-beállítást, és az erőforrás-tartomány összetett hitelesítést kér, az eszközök először nem összetett, majd ezt követően összetett hitelesítési kérelmet küldenek, ha a szolgáltatás összetett hitelesítést kér.
 
 </string>
+      <string id="DevicePKInitEnabled">Tanúsítványalapú eszközhitelesítés támogatása</string>
+      <string id="DevicePKInitEnabled_explain">A tanúsítványalapú eszközhitelesítés támogatásához szükséges, hogy a számítógép olyan tartományvezérlőhöz tudjon csatlakozni az eszközfiók tartományában, amely támogatja a számítógépfiókok tanúsítványalapú hitelesítését. 
+
+Ezzel a házirend-beállítással beállíthatja, hogy a számítógép támogassa az eszköz adott tartományhoz tartozó tanúsítványának Kerberos-hitelesítési kísérleteit.
+
+Ha engedélyezi ezt a házirend-beállítást, akkor a rendszer a következő beállítások alapján fogja kiválasztani az eszköz hitelesítő adatait:
+
+Automatikus: Az eszköz a saját tanúsítványával próbálja meg hitelesíteni magát. Ha a tartományvezérlő nem támogatja a számítógépfiókok tanúsítványalapú hitelesítését, akkor az eszköz jelszavas hitelesítéssel próbálkozik.
+
+Kényszerített: Az eszköz mindig a tanúsítványával fogja hitelesíteni magát. Ha nem található olyan tartományvezérlő, amely támogatja a számítógépfiókok tanúsítványalapú hitelesítését, akkor a hitelesítés sikertelen lesz.
+
+Ha letiltja ezt a házirend-beállítást, akkor a rendszer a Letiltás beállítást fogja használni.
+Ha nem konfigurálja ezt a házirend-beállítást, akkor a rendszer az Automatikus beállítást fogja használni.
+</string>
+      <string id="DevicePKInitBehavior_Automatic">Automatikus</string>
+      <string id="DevicePKInitBehavior_Force">Kényszerített</string>
     </stringTable>
     <presentationTable>
       <presentation id="hosttorealm">
@@ -215,6 +231,9 @@ Ha letiltja vagy nem konfigurálja a házirend-beállítást, és az erőforrás
         <decimalTextBox refId="MaxTokenSize" defaultValue="48000" spinStep="1000">Maximális méret</decimalTextBox>
       </presentation>
       <presentation id="EnableCbacAndArmor">
+      </presentation>
+      <presentation id="DevicePKInitBehavior">
+        <dropdownList refId="DevicePKInitBehavior" noSort="true" defaultItem="0">Eszközhitelesítés működése tanúsítvány használata esetén:</dropdownList>  
       </presentation>
     </presentationTable>
   </resources>

@@ -58,6 +58,43 @@ Versão de hash com suporte:
 - Para dar suporte somente a informações de conteúdo V2, configure "Versão de hash com suporte" com o valor 2.
 
 - Para dar suporte a informações de conteúdo V1 e V2, configure "Versão de hash com suporte" com o valor 3.</string>
+      <string id="Pol_CipherSuiteOrder_Name">Ordem do pacote de codificação</string>
+      <string id="Pol_CipherSuiteOrder_Help">Essa configuração de política determina o pacote de criptografia usado pelo servidor SMB.
+
+Se você habilitar essa configuração de política, os pacotes de codificação serão priorizados na ordem especificada.
+
+Se você habilitar essa configuração de política e não especificar pelo menos um pacote de criptografia com suporte, ou se você desabilitar ou não definir essa configuração de política, a ordem do pacote de codificação padrão será usada.
+
+Pacote de criptografia SMB 3.11:
+
+AES_128_GCM
+AES_128_CCM
+
+Pacotes de criptografia SMB 3.0 e 3.02:
+
+AES_128_CCM
+
+Como modificar essa configuração:
+
+Organize os pacotes de codificação desejados na caixa de edição, um pacote de codificação por linha, do mais ao menos preferencial, com o pacote de codificação preferencial na parte superior. Remova qualquer pacote de criptografia que você não deseja usar.
+
+Observação: ao definir esta configuração de segurança, as alterações só terão efeito depois que você reiniciar o Windows.</string>
+      <string id="HonorCipherSuiteOrder_Name">Obedecer ordem do pacote de codificação</string>
+      <string id="HonorCipherSuiteOrder_Help">Essa configuração de política determina como o servidor SMB seleciona um pacote de codificação ao negociar uma nova conexão com um cliente SMB.
+
+Se você habilitar essa configuração de política, o servidor SMB selecionará o pacote de codificação que ele prefere entre os pacotes de codificação do cliente SMB, ignorando as preferências de pacote de codificação do cliente.
+
+Se você desabilitar ou não definir essa configuração de política, o servidor SMB selecionará o pacote de codificação que o cliente SMB mais prefere entre os pacotes de codificação do servidor.
+
+Observação: ao definir esta configuração de segurança, as alterações só terão efeito depois que você reiniciar o Windows.</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">Obedecer ordem do pacote de codificação</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">Essa configuração de política determina como o servidor SMB seleciona um pacote de codificação ao negociar uma nova conexão com um cliente SMB.
+
+Se você habilitar essa configuração de política, o servidor SMB selecionará o pacote de codificação que ele prefere na lista de pacotes de codificação do cliente com suporte, ignorando as preferências de pacote de codificação do cliente.
+
+Se você desabilitar ou não definir essa configuração de política, o servidor SMB selecionará o pacote de codificação que o cliente SMB mais prefere na lista de pacotes de codificação do servidor com suporte.
+
+Observação: ao definir esta configuração de segurança, as alterações só terão efeito depois que você reiniciar o Windows.</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@ Versão de hash com suporte:
         <text>3 = Suporte a hashes V1 e V2</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Versão de hash com suporte:  </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>Pacotes de codificação:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

@@ -3122,6 +3122,7 @@ Om du inte konfigurerar den här principinställningen kan användaren aktivera 
       <string id="SUPPORTED_IE9">Minst Internet Explorer 9.0</string>
       <string id="SUPPORTED_IE10">Minst Internet Explorer 10.0</string>
       <string id="SUPPORTED_IE10WIN8">Minst Internet Explorer 10.0 i Windows 8</string>
+      <string id="SUPPORTED_IE11WIN8">Minst Internet Explorer 11.0 på Windows 8.1</string>
       <string id="SUPPORTED_IE11">Minst Internet Explorer 11.0</string>
       <string id="SUPPORTED_IE7_NONVISTA">Minst Internet Explorer 7.0. Stöds inte i Windows Vista</string>
       <string id="SUPPORTED_IE7VISTA">Minst Internet Explorer 7.0 och Windows Vista</string>
@@ -3173,16 +3174,6 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
       <string id="UTF8URLQuery_Intranet">Koda frågesträngar i UTF-8 enbart i intranät-URL:er</string>
       <string id="UTF8URLQuery_Never">Koda aldrig frågesträngar i UTF-8</string>
       <string id="UTF8URLQuery_NonIntranet">Koda frågesträngar i UTF-8 enbart i icke-intranät-URL:er</string>
-      <string id="TopResult0">Inaktivera sökning med bästa resultat</string>
-      <string id="TopResult1">Aktivera sökning med bästa resultat</string>
-      <string id="TopResultPol">Tillåt inte konfiguration av sökning med bästa resultat i adressfältet</string>
-      <string id="TopResultPol_Explain">Med den här principinställningen kan du ange om en användare kan gå till webbplatsen för ett bästa resultat när sökning har aktiverats i adressfältet. Du kan välja mellan följande alternativ:
-    • Inaktivera sökning med bästa resultat: När en användare söker i adressfältet visas en lista med sökresultat från den valda sökleverantören i huvudfönstret.
-    • Aktivera sökning med bästa resultat: När en användare söker i adressfältet omdirigeras han eller hon till en extern webbplats med de bästa resultaten (om en sådan finns), som bestäms av sökleverantören.
-
-Om du aktiverar den här principinställningen kan du välja vart användaren ska omdirigeras efter en sökning i adressfältet: En webbplats med de bästa resultaten eller en webbsida med sökresultat i huvudfönstret.
-
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan användaren välja inställning för det här beteendet. Som standard visas en webbplats med bästa resultat.</string>
       <string id="UseHomePage">Gå direkt till startsidan</string>
       <string id="UseHoverColor">Aktivera alternativet för hovringsfärg</string>
       <string id="UseHoverColor_Explain">Den här principinställningen gör att hyperlänkar ändrar färg när muspekaren placeras över dem.
@@ -3403,7 +3394,11 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
       <string id="Advanced_DisableEPMCompat">Tillåt inte att ActiveX-kontroller körs i kernelläge när utökat kernelläge är aktiverat</string>
       <string id="Advanced_EnableHttp1_1">Använd HTTP 1.1</string>
       <string id="Advanced_ProxyHttp1_1">Använd HTTP 1.1 genom proxyanslutningar</string>
-      <string id="Advanced_EnableSPDY3_0">Tillåt att nätverksprotokollet SPDY/3 används i Internet Explorer</string>
+      <string id="Advanced_EnableSSL3Fallback">Tillåt användning av SSL 3.0 i reserv (Internet Explorer)</string>
+      <string id="Advanced_FallbackNonProtected">Webbplatser som inte körs i kernelläge</string>
+      <string id="Advanced_FallbackAll">Alla webbplatser</string>
+      <string id="Advanced_FallbackNone">Inga webbplatser</string>
+      <string id="Advanced_EnableHTTP2">Tillåt att Internet Explorer använder nätverksprotokollet HTTP2</string>
       <string id="Advanced_SetWinInetProtocols">Inaktivera stöd för kryptering</string>
       <string id="NoPrinting">Inaktivera skriv ut-menyn</string>
       <string id="Advanced_DisableFlipAhead">Inaktivera funktionen för framåtbläddring med sidförutsägelse</string>
@@ -3456,13 +3451,21 @@ Om du aktiverar den här principinställningen använder Internet Explorer HTTP 
 Om du inaktiverar den här principinställningen använder Internet Explorer inte HTTP 1.1 via proxyanslutningar.
 
 Om du inte konfigurerar den här principinställningen kan användaren välja om Internet Explorer ska använda HTTP 1.1 via proxyanslutningar eller inte.</string>
-      <string id="Advanced_ExplainEnableSPDY3_0">Den här principinställningen bestämmer om Internet Explorer ska använda nätverksprotokollet SPDY/3. SPDY/3 fungerar tillsammans med HTTP-begäranden för att optimera fördröjningen av nätverksbegäranden genom komprimering, multiplexering och prioritering.
+      <string id="Advanced_ExplainEnableHTTP2">Den här principinställningen bestämmer om Internet Explorer ska använda nätverksprotokollet HTTP2. HTTP2-begäranden hjälper till att optimera fördröjningen av nätverksbegäranden genom komprimering, multiplexering och prioritering.
 
-Om du aktiverar den här principinställningen använder Internet Explorer nätverksprotokollet SPDY/3.
+Om du aktiverar den här principinställningen använder Internet Explorer nätverksprotokollet HTTP2.
 
-Om du inaktiverar den här principinställningen använder Internet Explorer inte nätverksprotokollet SPDY/3.
+Om du inaktiverar principinställningen använder Internet Explorer inte nätverksprotokollet HTTP2.
 
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan användarna aktivera eller inaktivera beteendet via Internet Explorers avancerade Internetalternativ.  Principinställningen är som standard aktiverad.</string>
+Om du låter bli att konfigurera principinställningen kan användarna aktivera eller inaktivera beteendet via Internet Explorers avancerade Internetalternativ. Principinställningen är som standard aktiverad.</string>
+      <string id="Advanced_ExplainEnableSSL3Fallback">Med den här principinställningen kan du blockera användningen av SSL 3.0 som inte är ett säkert protokoll. När den här principen är aktiverad försöker Internet Explorer ansluta till webbplatser med SSL 3.0 eller tidigare versioner när TLS 1.0 eller senare misslyckas.
+
+Vi rekommenderar att du inte tillåter användningen av protokollet i reserv för att förhindra MITM-attacker (man-in-the-middle).
+
+Den här principen påverkar inte vilka säkerhetsprotokoll som är aktiverade.
+
+Om du inaktiverar principen används systemets standardinställningar.
+</string>
       <string id="Advanced_ExplainSetWinInetProtocols">Du kan använda den här principinställningen för att stänga av stödet för Transport Layer Security (TLS) 1.0, TLS 1.1, TLS 1.2, Secure Sockets Layer (SSL) 2.0 och SSL 3.0 i webbläsaren. TLS och SSL är protokoll som skyddar kommunikationen mellan webbläsaren och målservern. När webbläsaren försöker skapa en säker anslutning till målservern kommer webbläsaren och servern att besluta vilket protokoll och vilken version de ska använda. Webbläsaren och servern försöker matcha varandras listor över protokoll och versioner som stöds och väljer den bästa matchningen.
 
 Om du aktiverar den här principinställningen kommer webbläsaren att förhandla eller inte förhandla om en krypteringstunnel med hjälp av de krypteringsmetoder som du väljer i listrutan.
@@ -3836,44 +3839,44 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
 Om du aktiverar principinställningen kan användarna se och använda alternativet Företagsläge på Verktyg-menyn. Om du aktiverar inställningen men inte anger någon rapportplats är alternativet Företagsläge fortfarande tillgängligt för användarna, men du får inga rapporter.
 
 Om du inaktiverar eller inte konfigurerar principinställningen visas inte menyalternativet och användarna kan inte köra webbplatser i företagsläget.</string>
-      <string id="VerMgmtDisable">Sluta blockera inaktuella ActiveX-kontroller för Internet Explorer</string>
-      <string id="IE_ExplainVerMgmtDisable">Den här principinställningen anger om Internet Explorer blockerar inaktuella ActiveX-kontroller. Inaktuella ActiveX-kontroller blockeras aldrig i zonen Intranät.
+      <string id="VerMgmtDisable">Inaktivera blockering av inaktuella ActiveX-kontroller för Internet Explorer</string>
+      <string id="IE_ExplainVerMgmtDisable">Den här principinställningen anger om Internet Explorer blockerar specifika inaktuella ActiveX-kontroller. Inaktuella ActiveX-kontroller blockeras aldrig i zonen Intranät.
 
-Om du aktiverar den här principinställningen slutar Internet Explorer blockera inaktuella ActiveX-kontroller.
+Om du aktiverar den här principinställningen blockerar Internet Explorer inte inaktuella ActiveX-kontroller.
 
-Om du inaktiverar eller inte konfigurerar principinställningen fortsätter Internet Explorer blockera inaktuella ActiveX-kontroller.
+Om du inaktiverar eller låter bli att konfigurera principinställningen fortsätter Internet Explorer blockera specifika inaktuella ActiveX-kontroller.
 
-Mer information finns i avsnittet Inaktuella ActiveX-kontroller i TechNet-biblioteket om Internet Explorer.</string>
+Mer information finns på sidan om inaktuella ActiveX-kontroller (Outdated ActiveX Controls) i Internet Explorer TechNet Library.</string>
       <string id="VerMgmtAuditModeEnable">Aktivera loggning av ActiveX-kontroller i Internet Explorer</string>
-      <string id="IE_ExplainVerMgmtAuditModeEnable">Den här principinställningen anger om Internet Explorer sparar logginformation för ActiveX-kontroller.
+      <string id="IE_ExplainVerMgmtAuditModeEnable">Den här principinställningen anger om Internet Explorer sparar logginformation om ActiveX-kontroller.
 
-Om du aktiverar den här principinställningen loggar Internet Explorer information om ActiveX-kontroller (med käll-URI:n som läste in kontrollen och om den blockerades) i en lokal fil.
+Om du aktiverar den här principinställningen loggar Internet Explorer information om ActiveX-kontroller (även käll-URI:erna som läste in kontrollerna och om de blockerades) i en lokal fil.
 
-Om du inaktiverar eller inte konfigurerar principinställningen loggar inte Internet Explorer information om ActiveX-kontroller.
+Om du inaktiverar eller låter bli att konfigurera principinställningen loggar Internet Explorer inte information om ActiveX-kontroller.
 
-Observera att du kan aktivera eller inaktivera den här principinställningen oavsett principinställningarna "Sluta blockera inaktuella ActiveX-kontroller för Internet Explorer" eller "Sluta blockera inaktuella ActiveX-kontroller för Internet Explorer på vissa domäner".
+Observera att du kan aktivera den här principinställningen oberoende av principinställningarna Inaktivera blockering av inaktuella ActiveX-kontroller för Internet Explorer och Inaktivera blockering av inaktuella ActiveX-kontroller för Internet Explorer i specifika domäner.
 
-Mer information finns i avsnittet Inaktuella ActiveX-kontroller i TechNet-biblioteket om Internet Explorer.</string>
-      <string id="VerMgmtDomainAllowlist">Sluta blockera inaktuella ActiveX-kontroller för Internet Explorer på vissa domäner</string>
-      <string id="IE_ExplainVerMgmtDomainAllowlist">Med den här principinställningen kan du hantera en lista med domäner i vilka Internet Explorer inte blockerar inaktuella ActiveX-kontroller. Inaktuella ActiveX-kontroller blockeras aldrig i zonen Intranät.
+Mer information finns på sidan om inaktuella ActiveX-kontroller (Outdated ActiveX Controls) i Internet Explorer TechNet Library.</string>
+      <string id="VerMgmtDomainAllowlist">Inaktivera blockering av inaktuella ActiveX-kontroller för Internet Explorer i specifika domäner</string>
+      <string id="IE_ExplainVerMgmtDomainAllowlist">Med den här principinställningen kan du hantera en lista över domäner som Internet Explorer inte blockerar inaktuella ActiveX-kontroller på. Inaktuella ActiveX-kontroller blockeras aldrig i zonen Intranät.
 
-Om du aktiverar den här principinställningen kan du ange en anpassad lista med domäner där inaktuella ActiveX-kontroller inte blockeras i Internet Explorer. Domänposterna måste ha något av följande format:
+Om du aktiverar den här principinställningen kan du ange en egen lista över domäner som Internet Explorer inte blockerar inaktuella ActiveX-kontroller på. Varje domänpost måste anges enligt någon av följande:
 
-1. "domain.name.TLD". Om du vill ta med *.contoso.com/* anger du "contoso.com".
-2. "hostname". Om du vill ta med http://exempel anger du "exempel".
-3. "file:///sökväg/filnamn.htm". Ange till exempel "file:///C:/Users/contoso/Desktop/index.htm".
+1. "domän.namn.TLD". Om du t.ex. vill ta med *.contoso.com/* anger du "contoso.com"
+2. "värdnamn". Om du t.ex. vill ta med http://example anger du "example"
+3. "file:///sökväg/filnamn.htm". Till exempel "file:///C:/Users/contoso/Desktop/index.htm"
 
-Om du inaktiverar eller inte konfigurerar principinställningen tas listan bort och Internet Explorer fortsätter blockera inaktuella ActiveX-kontroller i alla domäner i zonen Internet.
+Om du inaktiverar eller låter bli att konfigurera principinställningen tas listan bort och Internet Explorer fortsätter blockera specifika inaktuella ActiveX-kontroller på alla domäner i zonen Internet.
 
-Mer information finns i avsnittet om inaktuella ActiveX-kontroller i TechNet-biblioteket för Internet Explorer.</string>
-      <string id="VerMgmtDisableRunThisTime">Ta bort knappen "Kör den här gången" för inaktuella ActiveX-kontroller i Internet Explorer </string>
-      <string id="IE_ExplainVerMgmtDisableRunThisTime">Med den här principinställningen kan du dölja knappen "Kör den här gången" och hindra användare från att köra inaktuella ActiveX-kontroller i Internet Explorer.
+Mer information finns på sidan om inaktuella ActiveX-kontroller (Outdated ActiveX Controls) i Internet Explorer TechNet Library.</string>
+      <string id="VerMgmtDisableRunThisTime">Ta bort knappen Kör den här gången för inaktuella ActiveX-kontroller i Internet Explorer </string>
+      <string id="IE_ExplainVerMgmtDisableRunThisTime">Med den här principinställningen kan du ange att knappen Kör den här gången inte ska visas för användare samt hindra användare från att köra specifika inaktuella ActiveX-kontroller i Internet Explorer.
 
-Om du aktiverar den här principinställningen ser användarna inte knappen "Kör den här gången" i varningsmeddelandet som visas när Internet Explorer blockerar en inaktuell ActiveX-kontroll.
+Om du aktiverar den här principinställningen visas inte knappen Kör den här gången i varningsmeddelandet som utlöses när Internet Explorer blockerar en inaktuell ActiveX-kontroll.
 
-Om du inaktiverar eller inte konfigurerar principinställningen ser användarna knappen "Kör den här gången" i varningsmeddelandet. Användarna kan köra en inaktuell ActiveX-kontroll en gång genom att klicka på den här knappen.
+Om du inaktiverar eller låter bli att konfigurera principinställningen visas knappen Kör den här gången när Internet Explorer blockerar inaktuella ActiveX-kontroller. Användarna kan köra en inaktuell ActiveX-kontroll en gång genom att klicka på den här knappen.
 
-Mer information finns i avsnittet om inaktuella ActiveX-kontroller i TechNet-biblioteket för Internet Explorer.</string>
+Mer information finns på sidan om inaktuella ActiveX-kontroller (Outdated ActiveX Controls) i Internet Explorer TechNet Library.</string>
       <string id="EnterpriseModeSiteList">Använd listan över webbplatser i företagsläget</string>
       <string id="IE_ExplainEnterpriseModeSiteList">Med den här principinställningen kan du ange var listan över webbplatser som du vill ska öppnas i företagsläget (på grund av kompatibilitetsproblem) i stället för standardläget finns. Användare kan redigera den här listan.
 
@@ -3987,6 +3990,46 @@ Om du aktiverar den här principinställningen inaktiveras identifiering av tele
 Om du inaktiverar den här principinställningen aktiveras identifiering av telefonnummer. Användarna kan inte ändra den här inställningen.
 
 Om du låter bli att konfigurera den här principinställningen kan användarna aktivera eller inaktivera beteendet via Internet Explorer-inställningar. Principinställningen är som standard aktiverad.</string>
+      <string id="SiteDiscoveryEnableXML">Aktivera XML-utdata för webbplatsidentifiering</string>
+      <string id="SiteDiscoveryEnableWMI">Aktivera WMI-utdata för webbplatsidentifiering</string>
+      <string id="SiteDiscoveryDomainAllowList">Begränsa utdata för webbplatsidentifiering efter domän</string>
+      <string id="SiteDiscoveryZoneAllowList">Begränsa utdata för webbplatsidentifiering efter zon</string>
+      <string id="IE_Explain_SiteDiscoveryEnableXML">Med den här principinställningen kan du hantera XML-utdatafunktionen för Internet Explorer Site Discovery Toolkit (SDTK). När principinställningen är aktiverad skrivs data som samlas in till en XML-fil på den plats som anges när principen aktiveras. När principinställningen är inaktiverad skrivs inga data till XML-filen. Aktiveringen eller inaktiveringen av principinställningen påverkar inga andra utdatametoder för SDTK.</string>
+      <string id="IE_Explain_SiteDiscoveryEnableWMI">Med den här principinställningen kan du hantera WMI-utdatafunktionen för Internet Explorer Site Discovery Toolkit (SDTK). När principinställningen är aktiverad skrivs data som samlas in till en WMI-klass som sedan kan ackumuleras med till exempel en klienthanteringslösning (SCCM). När principinställningen är inaktiverad skrivs inga data till WMI-klassen. Aktiveringen eller inaktiveringen av principinställningen påverkar inga andra utdatametoder för SDTK.</string>
+      <string id="IE_Explain_SiteDiscoveryDomainAllowList">Med den här principinställningen kan du reglera vilka domäner som omfattas av webbplatsidentifieringsfunktionen i Internet Explorer Site Discovery Toolkit (SDTK). När principinställningen är aktiverad samlar funktionen in data från webbplatser som ingår i de domäner som angetts i principen. När principinställningen är inaktiverad, eller inte konfigurerad, identifieras alla domäner av webbplatsidentifieringsfunktionen. Den här principen kan användas i kombination med andra principer som reglerar vilka webbplatser som omfattas av webbplatsidentifieringen.
+
+Om du vill ange vilka domäner som ska tas med i datainsamling för IE Site Discovery Toolkit anger du en domän per rad i textrutan. Exempel:
+
+microsoft.sharepoint.com
+outlook.com
+onedrive.com
+timecard.contoso.com
+LOBApp.contoso.com</string>
+      <string id="IE_Explain_SiteDiscoveryZoneAllowList">Med den här principinställningen kan du reglera vilka zoner som omfattas av webbplatsidentifieringsfunktionen i Internet Explorer Site Discovery Toolkit (SDTK). När principinställningen är aktiverad samlar funktionen in data från webbplatser som ingår i de zoner som angetts i principen. När principinställningen är inaktiverad, eller inte konfigurerad, omfattas alla zoner av webbplatsidentifieringsfunktionen. Den här principen kan användas i kombination med andra principer som reglerar vilka webbplatser som omfattas av webbplatsidentifieringen.
+
+För att ange vilka zoner som omfattas av webbplatsidentifieringsfunktionen bildas ett binärtal baserat på de valda zonerna. Decimalrepresentationen av det här talet används för att representera talet i principen. Exempel:
+
+• 2 - Endast zonen Intranät
+  Binär representation - 00010
+	• 0 - Zonen Ej betrodda platser
+	• 0 - Zonen Internet
+	• 0 - Zonen Betrodda platser
+	• 1 - Zonen Lokalt intranät
+	• 0 - Zonen Lokal dator
+• 6 - Endast zonerna Intranät och Betrodda platser
+  Binär representation - 00110
+	• 0 - Zonen Ej betrodda platser
+	• 0 - Zonen Internet
+	• 1 - Zonen Betrodda platser
+	• 1 - Zonen Lokalt intranät
+	• 0 - Zonen Lokal dator
+• 22 - Endast zonerna Betrodda platser, Intranät och Ej betrodda platser 
+  Binär representation - 10110
+	• 1 - Zonen Ej betrodda platser
+	• 0 - Zonen Internet
+	• 1 - Zonen Betrodda platser
+	• 1 - Zonen Lokalt intranät
+	• 0 - Zonen Lokal dator</string>
     </stringTable>
     <presentationTable>
       <presentation id="VerMgmtDomainAllowlist_1">
@@ -4541,9 +4584,6 @@ Om du låter bli att konfigurera den här principinställningen kan användarna 
         <checkBox refId="Btn_Paste">Visa knappen Klistra in</checkBox>
         <checkBox refId="Btn_Encoding">Visa knappen Kodning</checkBox>
       </presentation>
-      <presentation id="TopResultPol">
-        <dropdownList refId="TopResult" noSort="true" defaultItem="0">Vid sökning från adressfältet:</dropdownList>
-      </presentation>
       <presentation id="UnderlineLinksPol">
         <dropdownList refId="UnderlineLinks" noSort="true" defaultItem="0">Stryk under länkar</dropdownList>
       </presentation>
@@ -4568,6 +4608,9 @@ Om du låter bli att konfigurera den här principinställningen kan användarna 
       <presentation id="Advanced_SetWinInetProtocols">
         <!-- defaultItem is zero based index into the item enumeration defined in inetres.admx. We want this to point at 'Use SSL 3.0 and TLS 1.0', the current default for IE -->
         <dropdownList refId="Advanced_WinInetProtocolOptions" noSort="true" defaultItem="6">Kombinationer av säkra protokoll</dropdownList>
+      </presentation>
+      <presentation id="Advanced_EnableSSL3Fallback">
+        <dropdownList refId="Advanced_EnableSSL3FallbackOptions" noSort="true" defaultItem="0">Tillåt användning av osäkert alternativ i reserv:</dropdownList>
       </presentation>
       <presentation id="NewTabAction_1">
         <dropdownList refId="NewTabActionOptions" noSort="true" defaultItem="2">Nytt flikbeteende</dropdownList>
@@ -4627,6 +4670,17 @@ Om du låter bli att konfigurera den här principinställningen kan användarna 
       </presentation>
       <presentation id="DefaultLinksView_1">
         <dropdownList refId="DefaultViewOptions" noSort="true" defaultItem="0">Standardbeteende för länkar när webbläsaren öppnas</dropdownList>
+      </presentation>
+      <presentation id="SiteDiscoveryEnableXML">
+        <textBox refId="SiteDiscoveryXMLPath">
+          <label>Utdatasökväg</label>
+        </textBox>
+      </presentation>
+      <presentation id="SiteDiscoveryZoneAllowList">
+        <decimalTextBox refId="SiteDiscoveryZoneAllowList" defaultValue="31">Zonmask</decimalTextBox>
+      </presentation>
+      <presentation id="SiteDiscoveryDomainAllowList">
+        <multiTextBox refId="SiteDiscoveryDomainAllowList">Domänlista</multiTextBox>
       </presentation>
     </presentationTable>
   </resources>

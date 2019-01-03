@@ -7,84 +7,31 @@
     <stringTable>
       <string id="SSLConfiguration">SSL 構成設定</string>
       <string id="SSLCipherSuiteOrder">SSL 暗号の順位</string>
-      <string id="SSLCipherSuiteOrder_Help">This policy setting determines the cipher suites used by the Secure Socket Layer (SSL).
+      <string id="SSLCipherSuiteOrder_Help">このポリシー設定では、Secure Socket Layer (SSL) で使用する暗号を決定します。
 
-          If you enable this policy setting, SSL cipher suites are prioritized in the order specified.
+このポリシー設定を有効にした場合、指定されている順位で SSL 暗号が優先されます。
 
-          If you disable or do not configure this policy setting, the factory default cipher suite order is used.
+このポリシー設定を無効にした場合、または構成しなかった場合、既定の暗号順位が使用されます。
 
-          SSL2, SSL3, TLS 1.0 and TLS 1.1 cipher suites:
+すべての暗号に関するリンク: http://go.microsoft.com/fwlink/?LinkId=517265
 
-          TLS_RSA_WITH_AES_128_CBC_SHA
-          TLS_RSA_WITH_AES_256_CBC_SHA
-          TLS_RSA_WITH_RC4_128_SHA
-          TLS_RSA_WITH_3DES_EDE_CBC_SHA
-          TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256
-          TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384
-          TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P521
-          TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256
-          TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384
-          TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P521
-          TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256
-          TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P384
-          TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P521
-          TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P256
-          TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384
-          TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P521
-          TLS_DHE_DSS_WITH_AES_128_CBC_SHA
-          TLS_DHE_DSS_WITH_AES_256_CBC_SHA
-          TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
-          TLS_RSA_WITH_RC4_128_MD5
-          SSL_CK_RC4_128_WITH_MD5
-          SSL_CK_DES_192_EDE3_CBC_WITH_MD5
-          TLS_RSA_WITH_NULL_SHA
-          TLS_RSA_WITH_NULL_MD5
+      </string>
 
-          TLS 1.2 SHA256 and SHA384 cipher suites:
+      <string id="SSLCurveOrder">ECC 曲線の順位</string>
+      <string id="SSLCurveOrder_Help">このポリシー設定では、ECDHE 暗号で使用される ECC 曲線の優先順位を決定します。
 
-          TLS_RSA_WITH_AES_128_CBC_SHA256
-          TLS_RSA_WITH_AES_256_CBC_SHA256
-          TLS_RSA_WITH_AES_128_GCM_SHA256
-          TLS_RSA_WITH_AES_256_GCM_SHA384
-          TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
-          TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P384
-          TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P521
-          TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256
-          TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
-          TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P521
-          TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256
-          TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P384
-          TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P521
-          TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384
-          TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P521
-          TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
-          TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
-          TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
-          TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
-          TLS_RSA_WITH_NULL_SHA256
+このポリシー設定を有効にした場合、指定されている順位で ECC 曲線が優先されます (1 行に 1 つずつ曲線名を入力してください)。
 
-          TLS 1.2 ECC GCM cipher suites:
+このポリシー設定を無効にした場合、または構成しなかった場合、既定の ECC 曲線の順位が使用されます。
 
-          TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256
-          TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P384
-          TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P521
-          TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384
-          TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P521
+既定の曲線の順位
+============
+NistP256
+NistP384
 
+システムでサポートされているすべての曲線を表示するには、次のコマンドを使用してください。
 
-          How to modify this setting:
-
-          1. Open a blank notepad document.
-
-          2. Copy and paste the list of available suites into it.
-
-          3. Arrange the suites in the correct order; remove any suites you don't want to use.
-
-          4. Place a comma at the end of every suite name except the last. Make sure there are NO embedded spaces.
-
-          5. Remove all the line breaks so that the cipher suite names are on a single, long line.
-
-          6. Copy the cipher-suite line to the clipboard, then paste it into the edit box. The maximum length is 1023 characters.
+CertUtil.exe -DisplayEccCurve
 
       </string>
     </stringTable>
@@ -92,8 +39,12 @@
       <presentation id="SSLCipherSuiteOrder">
         <textBox refId="Pol_SSLCipherSuiteOrder">
           <label>SSL 暗号</label>
-          <defaultValue>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P384,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P384,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P384,TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,TLS_DHE_DSS_WITH_AES_256_CBC_SHA,TLS_DHE_DSS_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_3DES_EDE_CBC_SHA,TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA,TLS_RSA_WITH_RC4_128_SHA,TLS_RSA_WITH_RC4_128_MD5,TLS_RSA_WITH_NULL_SHA256,TLS_RSA_WITH_NULL_SHA,SSL_CK_RC4_128_WITH_MD5,SSL_CK_DES_192_EDE3_CBC_WITH_MD5</defaultValue>
+          <defaultValue>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384、TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256、TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384、TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256、TLS_DHE_RSA_WITH_AES_256_GCM_SHA384、TLS_DHE_RSA_WITH_AES_128_GCM_SHA256、TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384、TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256、TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384、TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256、TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA、TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA、TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA、TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA、TLS_RSA_WITH_AES_256_GCM_SHA384、TLS_RSA_WITH_AES_128_GCM_SHA256、TLS_RSA_WITH_AES_256_CBC_SHA256、TLS_RSA_WITH_AES_128_CBC_SHA256、TLS_RSA_WITH_AES_256_CBC_SHA、TLS_RSA_WITH_AES_128_CBC_SHA、TLS_RSA_WITH_3DES_EDE_CBC_SHA、TLS_DHE_DSS_WITH_AES_256_CBC_SHA256、TLS_DHE_DSS_WITH_AES_128_CBC_SHA256、TLS_DHE_DSS_WITH_AES_256_CBC_SHA、TLS_DHE_DSS_WITH_AES_128_CBC_SHA、TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA、TLS_RSA_WITH_RC4_128_SHA、TLS_RSA_WITH_RC4_128_MD5、TLS_RSA_WITH_NULL_SHA256、TLS_RSA_WITH_NULL_SHA、SSL_CK_DES_192_EDE3_CBC_WITH_MD5、SSL_CK_RC4_128_WITH_MD5</defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="SSLCurveOrder">
+        <text>ECC 曲線名を優先順位で入力してください (1 行に 1 つの曲線名)。</text>
+        <multiTextBox refId="SSLCurveOrderList">ECC 曲線の順位:</multiTextBox>
       </presentation>
     </presentationTable>
   </resources>

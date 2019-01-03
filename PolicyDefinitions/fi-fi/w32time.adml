@@ -14,10 +14,10 @@ Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Wi
 Monet seuraavista arvoista ovat skalaarisia, eli ne ovat merkityksellisiä vain suhteessa toisiinsa, eivätkä ne ole määritetty mittayksiköin.
 
 FrequencyCorrectRate
-Tämä parametri säätelee, kuinka usein W32time-palvelu korjaa paikallisen kellon taajuutta. Pienillä arvoilla korjauksia tapahtuu harvoin ja suurilla usein. Liian pieni arvo saattaa aiheuttaa ylikorjauksia ja epävakautta. Liian suuret arvot voivat johtaa hitaaseen synkronointiin. Oletusarvo: 4 (skalaarinen).
+Tämä parametri säätelee, kuinka usein W32time-palvelu korjaa paikallisen kellon taajuutta. Pienillä arvoilla korjauksia tapahtuu harvoin ja suurilla usein. Liian pieni arvo saattaa aiheuttaa ylikorjauksia ja epävakautta. Liian suuri arvo voi johtaa hitaaseen synkronointiin. Oletusarvo: 4 (skalaarinen).
 
 HoldPeriod
-Tämä parametri ilmaisee, montako mahdollisesti tarkkaa aikanäytettä asiakastietokoneen on vastaanotettava sarjana, ennen kuin seuraavat aikanäytteet arvioidaan mahdollisiksi piikkiarvoiksi Kun käyttökelpoisia aikanäytteitä ei ole saatu tietyn ajanjakson aikana, aika-asiakas lopettaa aikanäytteiden arvioinnin piikkiarvojen suhteen, kun ensimmäinen mahdollinen tarkka aikanäyte vastaanotetaan. Kun vastaanotetaan sarja aikanäytteitä (HoldPeriod-määrityksen ilmaisemalla tavalla), aika-asiakas analysoi seuraavat aikanäytteet piikkiarvojen suhteen. Aikanäyte tulkitaan piikkiarvoksi, kun aikaero aikanäytteen ja asiakastietokoneen paikallisen kellon välillä on suurempi kuin LargePhaseOffset-arvo. Oletus: Viisi aikanäytettä.
+Tämä parametri ilmaisee, montako mahdollisesti tarkkaa aikanäytettä asiakastietokoneen on vastaanotettava sarjana, ennen kuin seuraavat aikanäytteet arvioidaan mahdollisiksi piikkiarvoiksi. Kun käyttökelpoisia aikanäytteitä ei ole saatu tietyn ajanjakson aikana, aika-asiakas lopettaa aikanäytteiden arvioinnin piikkiarvojen suhteen, kun ensimmäinen mahdollinen tarkka aikanäyte vastaanotetaan. Kun vastaanotetaan sarja aikanäytteitä (HoldPeriod-määrityksen ilmaisemalla tavalla), aika-asiakas analysoi seuraavat aikanäytteet piikkiarvojen suhteen. Aikanäyte tulkitaan piikkiarvoksi, kun aikaero aikanäytteen ja asiakastietokoneen paikallisen kellon välillä on suurempi kuin LargePhaseOffset-arvo. Oletusarvo: viisi aikanäytettä.
 
 LargePhaseOffset
 Tämä parametri määrittää asiakastietokoneen kellonajan eroavuuden (vaihesiirtymä), joka aikanäytteessä on oltava, jotta sitä pidetään piikkiarvona. Aikanäytteitä, joiden aikaero on suurempi kuin LargePhaseOffset-arvo, pidetään piikkiarvoina. Oletusarvo: 50 000 000 sadan nanosekunnin (ns) yksikköä eli viisi sekuntia.
@@ -61,7 +61,7 @@ MinPollInterval
 Tämä parametri ohjaa kyselyiden vähimmäisaikaväliä, joka määrittää lyhyimmän ajan vertaiskoneen kyselyiden välillä. Oletusarvo: 6, jonka kaksikantainen logaritmi antaa arvon 64 sekuntia.
 
 RequireSecureTimeSyncRequests
-Tämä parametri määrittää, vastaako toimialueen ohjauskone ajansynkronointipyyntöihin, jotka käyttävät vanhempia todennusprotokollia. Jos käytössä (eli arvona on 1), toimialueen ohjauskone ei vastaa tällaisia protokollia käyttäviin pyyntöihin. Oletusarvo: 0 (totuusarvo).
+Tämä parametri määrittää, vastaako toimialueen ohjauskone ajansynkronointipyyntöihin, jotka käyttävät vanhempia todennusprotokollia. Jos tämä on käytössä (eli arvona on 1), toimialueen ohjauskone ei vastaa tällaisia protokollia käyttäviin pyyntöihin. Oletusarvo: 0 (totuusarvo).
 
 RODC-parametrit:
 
@@ -79,7 +79,6 @@ Tämä parametri määrittää, onko ketjutusmekanismi poistettu käytöstä. Jo
 
 ChainLoggingRate
 Tämä parametri määrittää, kuinka usein onnistuneiden ja epäonnistuneiden ketjutusyritysten määrän ilmoittava tapahtuma kirjataan Tapahtumienvalvonnan järjestelmälokiin. Oletusarvo: 30 minuuttia.
-
 </string>
 
 <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">Tämä käytäntöasetus määrittää joukon parametreja, joilla voi ohjata Windows NTP -asiakasta.
@@ -160,6 +159,7 @@ Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, ti
         <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

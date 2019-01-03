@@ -5,6 +5,7 @@
   <description>immettere qui la descrizione</description>
   <resources>
     <stringTable>
+      <string id="SUPPORTED_Win7UntilThreshold">Almeno Windows Server 2008 R2 o Windows 7. Non supportato in Windows 10 o versioni successive</string>
       <string id="ClearRecentProgForNewUserInStartMenu">Cancella l'elenco programmi recenti per i nuovi utenti</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">Se si abilita questa impostazione, l'elenco dei programmi recenti nel menu Start sarà vuoto per tutti i nuovi utenti.
 
@@ -143,25 +144,24 @@ Se si disabilita o non si configura questa impostazione, tutti i testi popup del
 Se si abilita questa impostazione, si impedirà a un utente di selezionare un'app, ridimensionare un riquadro, aggiungere o rimuovere un riquadro principale o secondario, attivare la modalità di personalizzazione e ridisporre i riquadri all'interno di Start e app.
 
 Se si disabilita o non si configura questa impostazione, si consente a un utente di selezionare un'app, ridimensionare un riquadro, aggiungere o rimuovere un riquadro principale o secondario, attivare la modalità di personalizzazione e ridisporre i riquadri all'interno di Start e app.</string>
-      <string id="ClearTilesOnExit">Cancella la cronologia delle notifiche di tipo riquadro all'uscita</string>
-      <string id="ClearTilesOnExit_Help">Se si abilita questa impostazione, le notifiche di tipo riquadro verranno eliminate alla disconnessione dell'utente. Di conseguenza, i riquadri della visualizzazione Start mostreranno sempre il relativo contenuto predefinito all'accesso dell'utente. Inoltre, le eventuali versioni memorizzate nella cache di tali notifiche verranno cancellate alla disconnessione dell'utente.
+      <string id="ClearTilesOnExit">Cancella le notifiche di tipo riquadro durante l'accesso</string>
+      <string id="ClearTilesOnExit_Help">Se si abilita questa impostazione, le notifiche di tipo riquadro verranno eliminate all'accesso dell'utente. Di conseguenza, i riquadri della visualizzazione Start mostreranno sempre il relativo contenuto predefinito all'accesso dell'utente. Inoltre, le eventuali versioni memorizzate nella cache di tali notifiche verranno cancellate all'accesso dell'utente.
 
-Se si disabilita o non si configura questa impostazione, il sistema manterrà le notifiche e, all'accesso dell'utente, i riquadri verranno visualizzati esattamente come al momento della disconnessione, inclusa la cronologia delle notifiche precedenti per ogni riquadro.
+Se si disabilita o non si configura questa impostazione dei criteri, il sistema manterrà le notifiche e, all'accesso dell'utente, i riquadri verranno visualizzati esattamente come al momento della disconnessione, inclusa la cronologia delle notifiche precedenti per ogni riquadro.
 
 Questa impostazione non impedisce la visualizzazione delle nuove notifiche. Per impedire la visualizzazione delle nuove notifiche, vedere l'impostazione "Disattiva notifiche delle applicazioni".</string>
       <string id="StartPinAppsWhenInstalled">Aggiungi app a Start all'installazione</string>
       <string id="StartPinAppsWhenInstalled_Help">Questa impostazione dei criteri consente di aggiungere le app a Start per impostazione predefinita, quando sono incluse nell'elenco in base all'AppID.</string>
 
-      <string id="LockedStartLayout">Layout schermata Start</string>
-      <string id="LockedStartLayout_Help">Specifica il layout della schermata Start per gli utenti.
+      <string id="LockedStartLayout">Layout Start</string>
+      <string id="LockedStartLayout_Help">Specifica il layout di Start per gli utenti.
 
-Questa impostazione consente di specificare il layout della schermata Start per gli utenti e impedisce loro di modificarne la configurazione. Il layout della schermata Start specificato deve essere archiviato in un file XML generato mediante il cmdlet Export-StartLayout di PowerShell.
-Per utilizzare questa impostazione, è necessario innanzitutto configurare manualmente il layout della schermata Start di un dispositivo in modo che abbia l'aspetto desiderato. È quindi necessario eseguire il cmdlet Export-StartLayout di PowerShell sullo stesso dispositivo. Il cmdlet genererà un file XML che rappresenta il layout configurato.
+Questa impostazione consente di specificare il layout di Start per gli utenti e impedisce loro di modificarne la configurazione. Il layout di Start specificato deve essere archiviato in un file XML generato mediante il cmdlet Export-StartLayout di PowerShell.
+Per utilizzare questa impostazione, è necessario innanzitutto configurare manualmente il layout di Start di un dispositivo in modo che abbia l'aspetto desiderato. È quindi necessario eseguire il cmdlet Export-StartLayout di PowerShell sullo stesso dispositivo. Il cmdlet genererà un file XML che rappresenta il layout configurato.
 
-Dopo che il file XML è stato generato e spostato nel percorso desiderato, digitare il percorso completo e il nome di tale file. È possibile digitare un percorso locale, ad esempio C:\StartLayouts\myLayout.xml, oppure un percorso UNC, ad esempio \\Server\Condivisione\Layout.xml. Se il file specificato non è disponibile all'accesso dell'utente, il layout resterà invariato. Gli utenti non possono personalizzare la rispettiva schermata Start mentre questa impostazione è abilitata.
+Dopo che il file XML è stato generato e spostato nel percorso desiderato, digitare il percorso completo e il nome di tale file. È possibile digitare un percorso locale, ad esempio C:\LayoutStart\Layout.xml, oppure un percorso UNC, ad esempio \\Server\Condivisione\Layout.xml. Se il file specificato non è disponibile all'accesso dell'utente, il layout resterà invariato. Gli utenti non possono personalizzare la rispettiva schermata Start mentre questa impostazione è abilitata.
 
-Se si disabilita o non si configura questa impostazione, il layout della schermata Start resterà invariato e gli utenti potranno personalizzarlo.</string>
-
+Se si disabilita o non si configura questa impostazione, il layout di Start resterà invariato e gli utenti potranno personalizzarlo.</string>
       <string id="NoClose">Rimuovi e impedisci accesso ai comandi Arresta il sistema, Riavvia il sistema, Sospensione e Ibernazione</string>
       <string id="NoClose_Help">Questa impostazione impedisce agli utenti di eseguire i comandi seguenti dal menu Start o dalla finestra Sicurezza di Windows: Arresta il sistema, Riavvia il sistema, Sospensione e Ibernazione. Questa impostazione non impedisce agli utenti di eseguire i programmi basati su Windows che eseguono tali funzioni.
 
@@ -535,12 +535,14 @@ Se si abilita questa impostazione, gli utenti potranno accedere al comando "Eseg
 Se si disabilita o non si configura questa impostazione, gli utenti non potranno accedere al comando "Esegui come altro utente" dal menu Start per nessuna applicazione.
 
 Nota: questa impostazione non impedisce agli utenti di utilizzare altri metodi, ad esempio MAIUSC + menu di scelta rapida delle Jump List dell'applicazione nella barra delle applicazioni per visualizzare il comando "Esegui come altro utente".</string>
-      <string id="GoToDesktopOnSignIn">Passa al desktop anziché a Start in fase di accesso o quando tutte le app in una schermata sono chiuse</string>
-      <string id="GoToDesktopOnSignIn_Help">Questa impostazione dei criteri consente agli utenti di passare al desktop anziché alla schermata Start quando eseguono l'accesso o quando tutte le app in una schermata sono chiuse.  Questa impostazione dei criteri si applica a tutte le versioni di Windows e alle versioni di Windows Server con la funzionalità Esperienza desktop installata.
+      <string id="GoToDesktopOnSignIn">Passa al desktop anziché a Start all'accesso</string>
+      <string id="GoToDesktopOnSignIn_Help">Questa impostazione dei criteri consente agli utenti di passare al desktop anziché alla schermata Start quando eseguono l'accesso.
 
-Se si abilita questa impostazione dei criteri, gli utenti passeranno sempre al desktop quando eseguono l'accesso o quando tutte le app in una schermata sono chiuse.
+Se si abilita questa impostazione dei criteri, all'accesso gli utenti passeranno sempre al desktop.
 
-Se si disabilita o non si configura questa impostazione dei criteri, gli utenti passeranno alla schermata Start per impostazione predefinita quando eseguono l'accesso e potranno configurare questa impostazione.</string>
+Se si disabilita questa impostazione dei criteri, all'accesso gli utenti passeranno sempre alla schermata Start.
+
+Se non si configura questa impostazione dei criteri, verrà utilizzata l'impostazione predefinita del dispositivo dell'utente, che l'utente stesso può modificare se desidera.</string>
       <string id="ShowAppsViewOnStart">Mostra automaticamente la visualizzazione Tutte le app quando l'utente passa a Start</string>
       <string id="ShowAppsViewOnStart_Help">Questa impostazione dei criteri consente l'apertura della visualizzazione Tutte le app per impostazione predefinita quando l'utente passa a Start.
 
@@ -567,6 +569,12 @@ Se si disabilita o non si configura questa impostazione dei criteri, le app desk
 Se si abilita questa impostazione dei criteri, la schermata Start verrà visualizzata sullo schermo utilizzato dall'utente quando questo preme il tasto logo Windows.
 
 Se si disabilita o non si configura questa impostazione dei criteri, la schermata Start verrà sempre visualizzata sullo schermo principale quando l'utente preme il tasto logo Windows. Gli utenti potranno comunque aprire la schermata Start in altri schermi premendo il pulsante Start in tali schermi. L'utente potrà inoltre configurare questa impostazione.</string>
+      <string id="ForceStartSize_DisplayName">Forza le dimensioni di Start in modalità a schermo intero o come menu</string>
+      <string id="ForceStartSize_ExplainText">Se si abilita questa impostazione dei criteri e la si imposta su Menu Start o su Start in modalità a schermo intero, verranno applicate le dimensioni corrispondenti per Start e gli utenti non potranno modificarle nelle impostazioni. 
+
+Se si disabilita o non si configura questa impostazione dei criteri, Windows selezionerà automaticamente le dimensioni in base al fattore di forma dell'hardware e gli utenti potranno modificare le dimensioni di Start nelle impostazioni.</string>
+      <string id="ForceLauncherSize_Collapsed">Menu Start</string>
+      <string id="ForceLauncherSize_Expanded">Start in modalità a schermo intero</string>
     </stringTable>
     <presentationTable>
       <presentation id="PowerButtonAction">
@@ -580,6 +588,9 @@ Se si disabilita o non si configura questa impostazione dei criteri, la schermat
           <label>File layout Start</label>
           <defaultValue></defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="ForceStartSize">
+        <dropdownList refId="ForceStartSizeDropdown" noSort="true" defaultItem="0">Scegliere una delle seguenti dimensioni</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

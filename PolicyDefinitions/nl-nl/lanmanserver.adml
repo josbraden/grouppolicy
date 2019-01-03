@@ -58,6 +58,43 @@ Hash-versie ondersteund:
 - Om alleen V2 inhoudsinformatie te ondersteunen configureert u "Hash-versie ondersteund" met de waarde 2.
 
 - Om zowel V1 als V2 inhoudsinformatie te ondersteunen configureert u "Hash-versie ondersteund" met de waarde 3.</string>
+      <string id="Pol_CipherSuiteOrder_Name">Volgorde van coderingssuite</string>
+      <string id="Pol_CipherSuiteOrder_Help">Met deze beleidsinstelling wordt bepaald welke coderingssuites door de SMB-server worden gebruikt.
+
+Als u deze beleidsinstelling inschakelt, hebben de coderingssuites prioriteit in de opgegeven volgorde.
+
+Als u deze beleidsinstelling inschakelt en niet ten minste één ondersteunde coderingssuite opgeeft, of als u deze beleidsinstelling uitschakelt of niet configureert, wordt de standaardvolgorde voor de coderingssuites gebruikt.
+
+SMB 3.11-coderingssuites:
+
+AES_128_GCM
+AES_128_CCM
+
+SMB 3.0- en 3.02-coderingssuites:
+
+AES_128_CCM
+
+U kunt deze instelling als volgt wijzigen:
+
+Rangschik de gewenste coderingssuites in het invoervak (één coderingssuite per regel) in volgorde van meeste naar minste voorkeur, met de coderingssuite met de meeste voorkeur bovenaan. Verwijder eventuele coderingssuites die u niet wilt gebruiken.
+
+Opmerking: als u deze beveiligingsinstelling configureert, worden de wijzigingen pas doorgevoerd nadat Windows opnieuw is gestart.</string>
+      <string id="HonorCipherSuiteOrder_Name">Volgorde van coderingssuite respecteren</string>
+      <string id="HonorCipherSuiteOrder_Help">Met deze beleidsinstelling wordt bepaald hoe de SMB-server een coderingssuite selecteert bij het maken van een nieuwe verbinding met een SMB-client.
+
+Als u deze beleidsinstelling inschakelt, zal de SMB-server de coderingssuite selecteren die de meeste voorkeur heeft van alle coderingssuites van de SMB-client en wordt de coderingssuite waar de voorkeur van de client naar uitgaat genegeerd.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, zal de SMB-server de coderingssuite selecteren waar de meeste voorkeur van de SMB-client naar uitgaat.
+
+Opmerking: als u deze beveiligingsinstelling configureert, zullen de wijzigingen pas worden doorgevoerd nadat Windows opnieuw is gestart.</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">Volgorde van coderingssuite respecteren</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">Met deze beleidsinstelling wordt bepaald hoe de SMB-server een coderingssuite selecteert bij het maken van een nieuwe verbinding met een SMB-client.
+
+Als u deze beleidsinstelling inschakelt, zal de SMB-server de coderingssuite selecteren die de meeste voorkeur heeft in de lijst van door de client ondersteunde coderingssuites en wordt de coderingssuite waar de voorkeur van de client naar uitgaat genegeerd.
+
+Als u deze beleidsinstelling uitschakelt of niet configureert, zal de SMB-server de coderingssuite selecteren waar de meeste voorkeur van de client naar uitgaat in de lijst van door de server ondersteunde coderingssuites.
+
+Opmerking: als u deze beveiligingsinstelling configureert, zullen de wijzigingen pas worden doorgevoerd nadat Windows opnieuw is gestart.</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@ Hash-versie ondersteund:
         <text>3 = Ondersteun V1- V2-hashes</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Hash-versie ondersteund:  </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>Coderingssuites:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

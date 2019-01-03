@@ -58,6 +58,43 @@
 - 若只要支援 V2 內容資訊，請將 [支援的雜湊版本] 的值設為 2。
 
 - 若要支援 V1 和 V2 內容資訊，請將 [支援的雜湊版本] 的值設為 3。</string>
+      <string id="Pol_CipherSuiteOrder_Name">加密套件順序</string>
+      <string id="Pol_CipherSuiteOrder_Help">這個原則設定決定 SMB 伺服器所使用的加密套件。
+
+如果您啟用這個原則設定，指定的順序會是加密套件的優先順序。
+
+如果您啟用這個原則設定，且沒有指定至少一個支援的加密套件，或者您停用或不設定此原則設定，則會使用預設的加密套件順序。
+
+SMB 3.11 加密套件:
+
+AES_128_GCM
+AES_128_CCM
+
+SMB 3.0 和 3.02 加密套件:
+
+AES_128_CCM
+
+如何修改此設定:
+
+在編輯方塊中安排所需加密套件的順序，每行一個加密套件，最偏好的在最上方，接著是較不偏好的依序排列。刪除任何您不想使用的加密套件。
+
+注意：在設定此安全性設定時，直到您重新啟動 Windows 變更才會生效。</string>
+      <string id="HonorCipherSuiteOrder_Name">加密套件順序優先權</string>
+      <string id="HonorCipherSuiteOrder_Help">這個原則設定決定當 SMB 伺服器與 SMB 用戶端交涉新連線時，如何選取加密套件。
+
+如果您啟用這個原則設定，SMB 伺服器會從 SMB 用戶端加密套件選取它偏好的加密套件，並忽略用戶端上的加密套件喜好設定。
+
+如果您停用或未設定這個原則設定，SMB 伺服器會從伺服器加密套件中選擇取 SMB 用戶端偏好的加密套件。
+
+注意事項: 當設定這個安全性設定時，必須重新啟動 Windows，變更才會生效。</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">加密套件順序優先權</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">這個原則設定決定當 SMB 伺服器與 SMB 用戶端交涉新連線時，如何選擇加密套件。
+
+如果您啟用這個原則設定，SMB 伺服器會從用戶端支援的加密套件清單中選擇它偏好的加密套件，並忽略用戶端的喜好設定。
+
+如果您停用或未設定這個原則設定，SMB 伺服器會從伺服器支援的加密套件清單中，選擇客戶端偏好的加密套件。
+
+注意事項: 當設定這個安全性設定時，必須重新啟動 Windows，變更才會生效。</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@
         <text>3 = 支援 V1 和 V2 雜湊</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">支援的雜湊版本:  </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>加密套件:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

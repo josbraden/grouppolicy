@@ -63,7 +63,7 @@ BitLocker 恢复信息包括恢复密码和一些唯一的标识符数据。还�
 
 如果启用此策略，则配置了 BitLocker 网络解锁证书的客户端将能够创建并使用网络密钥保护程序。
 
-若要使用网络密钥保护程序解锁计算机，则必须用网络解锁证书配置计算机和 BitLocker 驱动器加密网络解锁服务器。网络解锁证书用于创建网络密钥保护程序，并保护与服务器交换以解锁计算机的信息。可以使用域控制器上的组策略设置(“计算机配置\Windows 设置\安全设置\公钥策略\BitLocker 驱动器加密网络解锁证书”)将此证书分发给组织中的计算机。此解锁方法使用计算机上的 TPM，因此，没有 TPM 的计算机将无法创建网络密钥保护程序，以使用网络解锁自动解锁。
+若要使用网络密钥保护程序解锁计算机，则必须用网络解锁证书预配计算机和 BitLocker 驱动器加密网络解锁服务器。网络解锁证书用于创建网络密钥保护程序，并保护与服务器交换以解锁计算机的信息。可以使用域控制器上的组策略设置(“计算机配置\Windows 设置\安全设置\公钥策略\BitLocker 驱动器加密网络解锁证书”)将此证书分发给组织中的计算机。此解锁方法使用计算机上的 TPM，因此，没有 TPM 的计算机将无法创建网络密钥保护程序，以使用网络解锁自动解锁。
 
 如果禁用或未配置此策略设置，则 BitLocker 客户端将无法创建和使用网络密钥保护程序。
 
@@ -232,23 +232,33 @@ BitLocker 恢复信息包括恢复密码和一些唯一的标识符数据。还�
       
 
       </string>
-      <string id="EncryptionMethodNoDiffuser_Help">
-          
-          使用此策略设置，可以配置 BitLocker 驱动器加密所使用的算法和密码长度。此策略设置将在打开 BitLocker 时应用。如果驱动器已加密或正在加密，则更改加密方法将不起作用。有关可用加密方法的详细信息，请参阅 Microsoft TechNet 上的 BitLocker 驱动器加密部署指南。此策略仅适用于运行 Windows 8 及更高版本的计算机。
+      <string id="EncryptionMethodNoDiffuser_Help">使用此策略设置，可以配置 BitLocker 驱动器加密所使用的算法和密码长度。此策略设置将在打开 BitLocker 时应用。如果驱动器已加密或正在加密，则更改加密方法将不起作用。有关可用加密方法的详细信息，请参阅 Microsoft TechNet 上的 BitLocker 驱动器加密部署指南。此策略仅适用于运行 Windows 8 及更高版本的计算机。
 
-          如果启用此策略设置，则可为 BitLocker 选择加密驱动器所用的加密算法和密钥密码长度。
+如果启用此策略设置，则可为 BitLocker 选择加密驱动器所用的加密算法和密钥密码长度。
 
-          如果禁用或未配置此策略设置，则 BitLocker 会将具有相同位强度(128 位或 256 位)的 AES 用作“选择驱动器加密方法和密码长度(Windows Vista、Windows Server 2008、Windows 7)”策略设置(如果已设置)。如果设置以上任一策略，则 BitLocker 将使用 AES 128 位默认加密方法，或使用由安装脚本指定的加密方法。
+如果禁用或未配置此策略设置，则 BitLocker 会将具有相同位强度(128 位或 256 位)的 AES 用作“选择驱动器加密方法和密码长度(Windows Vista、Windows Server 2008、Windows 7)”策略设置(如果已设置)。如果设置以上任一策略，则 BitLocker 将使用 AES 128 位默认加密方法，或使用由安装脚本指定的加密方法。   
 
-      
+      </string>
+      <string id="EncryptionMethodWithXts_Help">使用此策略设置，可以配置 BitLocker 驱动器加密所使用的算法和密码长度。此策略设置将在打开 BitLocker 时应用。如果驱动器已加密或正在加密，则更改加密方法将不起作用。
+
+如果启用此策略设置，你可以单独为固定数据驱动器、操作系统驱动器和可移动数据驱动器配置加密算法与密钥加密长度。对于固定驱动器和操作系统驱动器，我们建议使用 XTS-AES 算法。对于可移动驱动器，如果驱动器将在未运行 Windows 10 (版本 1511)的其他设备上使用，则应使用 AES-CBC 128 位或 AES-CBC 256 位。
+
+如果禁用或未配置此策略设置，则 BitLocker 会将具有相同位强度(128 位或 256 位)的 AES 用作“选择驱动器加密方法和密码长度(Windows Vista、Windows Server 2008、Windows 7)”和“选择驱动器加密方法和密码长度”策略设置(按该顺序，如果已设置)。如果未设置任何策略，则 BitLocker 将使用 XTS-AES 128 位默认加密方法，或使用由安装脚本指定的加密方法。
 
       </string>
       <string id="EncryptionMethod_Name">选择驱动器加密方法和密码长度(Windows Vista、Windows Server 2008、Windows 7、Windows Server 2008 R2)</string>
-      <string id="EncryptionMethodNoDiffuser_Name">选择驱动器加密方法和密码长度</string>
+      <string id="EncryptionMethodNoDiffuser_Name">选择驱动器加密方法和密码长度(Windows 8、Windows Server 2012、Windows 8.1、Windows Server 2012 R2、Windows 10 [版本 1507])</string>
+      <string id="EncryptionMethodWithXts_Name">选择驱动器加密方法和密码长度(Windows 10 [版本 1511] 和更高版本)</string>
       <string id="EncryptionMethodDropDown_AES128Diffuser_Name">含有扩散器的 AES 128 位</string>
       <string id="EncryptionMethodDropDown_AES256Diffuser_Name">含有扩散器的 AES 256 位</string>
       <string id="EncryptionMethodDropDown_AES128_Name">AES 128 位(默认)</string>
+      <string id="EncryptionMethodDropDown_AES128_Name2">AES-CBC 128 位</string>
+      <string id="EncryptionMethodDropDown_AES128_Name3">AES-CBC 128 位(默认)</string>
       <string id="EncryptionMethodDropDown_AES256_Name">AES 256 位</string>
+      <string id="EncryptionMethodDropDown_AES256_Name2">AES-CBC 256 位</string>
+      <string id="EncryptionMethodDropDown_XTS_AES128_Name">XTS-AES 128 位(默认)</string>
+      <string id="EncryptionMethodDropDown_XTS_AES128_Name2">XTS-AES 128 位</string>
+      <string id="EncryptionMethodDropDown_XTS_AES256_Name">XTS-AES 256 位</string>
 
       <string id="FVECategory">BitLocker 驱动器加密</string>
       <string id="PlatformValidation_Deprecated_Help">使用此策略设置，可以配置计算机的受信任平台模块(TPM)安全硬件如何保护 BitLocker 加密密钥。如果计算机没有兼容的 TPM 或者 BitLocker 已在 TPM 保护方式下打开，则此策略设置不适用。
@@ -408,7 +418,7 @@ BitLocker 恢复信息包括恢复密码和一些唯一的标识符数据。还�
 </string>
 
       <string id="OSPassphrase_Name">配置对操作系统驱动器使用密码</string>
-      <string id="OSPassphrase_Help">此策略设置指定用于解锁受 BitLocker 保护的操作系统驱动器的密码限制。如果允许在操作系统驱动器上使用非 TPM 保护程序，则可以配置密码、对密码强制执行复杂性要求以及为密码配置最小长度。要使复杂性要求设置发挥作用，还必须启用位于“计算机配置\Windows 设置\安全设置\帐户策略\密码策略”下的组策略设置“密码必须符合复杂性要求”。
+      <string id="OSPassphrase_Help">此策略设置指定用于解锁受 BitLocker 保护的操作系统驱动器的密码限制。如果允许在操作系统驱动器上使用非 TPM 保护程序，则可以预配密码、对密码强制执行复杂性要求以及为密码配置最小长度。要使复杂性要求设置发挥作用，还必须启用位于“计算机配置\Windows 设置\安全设置\帐户策略\密码策略”下的组策略设置“密码必须符合复杂性要求”。
 
 注意: 这些设置在打开 BitLocker 时强制执行，而在解除卷锁定时不强制执行。BitLocker 将允许使用驱动器上可用的任何保护器来解除驱动器锁定。
 
@@ -681,8 +691,8 @@ Windows 触摸键盘(如平板电脑使用的键盘)不可用于预启动环境�
       
       </string>
 
-    <string id="AllowSecureBootForIntegrity_Name">允许对完整性验证使用安全引导</string>
-    <string id="AllowSecureBootForIntegrity_Help">使用此策略设置，可以配置是否允许将安全引导作为 BitLocker 操作系统驱动器的平台完整性提供程序。
+      <string id="AllowSecureBootForIntegrity_Name">允许对完整性验证使用安全引导</string>
+      <string id="AllowSecureBootForIntegrity_Help">使用此策略设置，可以配置是否允许将安全引导作为 BitLocker 操作系统驱动器的平台完整性提供程序。
 
 安全引导确保电脑的预启动环境仅加载由授权软件发行商数字签名的固件。相对于旧 BitLocker 完整性检查，安全引导还为管理预启动配置提供更大的灵活性。
 
@@ -696,9 +706,25 @@ Windows 触摸键盘(如平板电脑使用的键盘)不可用于预启动环境�
 
 警告: 禁用此策略可能会导致在更新固件时恢复 BitLocker。如果禁用此策略，则在应用固件更新之前将挂起 BitLocker。
     
-    </string>
-    <string id="SUPPORTED_Windows8NoARM">至少 Windows Server 2012 或 Windows 8</string>  
-</stringTable>
+      </string>
+      <string id="SUPPORTED_Windows8NoARM">至少 Windows Server 2012 或 Windows 8</string>  
+      <string id="SUPPORTED_Windows_6_3ToVista">Windows Server 2012 R2、Windows 8.1、Windows Server 2012、Windows 8、Windows Server 2008、Windows 7 和 Windows Vista</string>
+      <string id="PrebootRecoveryInfo_Name">配置预启动恢复消息和 URL</string>
+      <string id="PrebootRecoveryInfoEmpty"></string>
+      <string id="PrebootRecoveryInfoUseDefault">使用默认恢复消息和 URL</string>
+      <string id="PrebootRecoveryInfoUseMessage">使用自定义恢复消息</string>
+      <string id="PrebootRecoveryInfoUseUrl">使用自定义恢复 URL</string>
+      <string id="PrebootRecoveryInfo_Help">使用此策略设置，可以在锁定 OS 驱动器时，配置整个恢复消息或替换现有的 URL，它们显示在预启动密钥恢复屏幕上。
+
+如果选择“使用默认恢复消息和 URL”选项，则默认的 BitLocker 恢复消息和 URL 将显示在预启动密钥恢复屏幕中。如果你以前已配置自定义恢复消息或 URL，并且希望转换为默认消息，则必须保持启用该策略，并选择“使用默认恢复消息和 URL”选项。
+
+如果你选择“使用自定义恢复消息”选项，则你在“自定义恢复消息选项”文本框中键入的消息将显示在预启动密钥恢复屏幕中。如果恢复 URL 可用，请将其包括在该消息中。
+
+如果你选择“使用自定义恢复 URL”选项，则你在“自定义恢复 URL 选项”文本框中键入的 URL 将替换默认恢复消息中的默认 URL，该 URL 将显示在预启动密钥恢复屏幕中。
+
+注意: 在预启动过程中，并非所有字符和语音都受支持。强烈建议你测试用于自定义消息或 URL 的字符是否正确显示在预启动恢复屏幕中。
+      </string>
+    </stringTable>
     <presentationTable>
       <presentation id="ActiveDirectoryBackup_Name">
         <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">要求 BitLocker 备份到 AD DS</checkBox>
@@ -789,6 +815,12 @@ Windows 触摸键盘(如平板电脑使用的键盘)不可用于预启动环境�
 
       <presentation id="EncryptionMethodNoDiffuser_Name">
         <dropdownList refId="EncryptionMethodNoDiffDropDown_Name" noSort="true" defaultItem="0">选择加密方法:</dropdownList>
+      </presentation>
+
+      <presentation id="EncryptionMethodWithXts_Name">
+        <dropdownList refId="EncryptionMethodWithXtsOsDropDown_Name" noSort="true" defaultItem="2">选择操作系统驱动器的加密方法:</dropdownList>
+        <dropdownList refId="EncryptionMethodWithXtsFdvDropDown_Name" noSort="true" defaultItem="2">选择固定数据驱动器的加密方法:</dropdownList>
+        <dropdownList refId="EncryptionMethodWithXtsRdvDropDown_Name" noSort="true" defaultItem="0">选择可移动数据驱动器的加密方法:</dropdownList>
       </presentation>
 
       <presentation id="OSEncryptionType">
@@ -1022,6 +1054,18 @@ Windows 触摸键盘(如平板电脑使用的键盘)不可用于预启动环境�
         <textBox refId="RDVAllowedAlgos">
           <label>将加密算法或密码套件限制为以下内容:</label>
           <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
+      </presentation>
+
+      <presentation id="PrebootRecoveryInfo">
+        <dropdownList refId="PrebootRecoveryInfoDropDown_Name" noSort="true" defaultItem="0">为预启动恢复消息选择一个选项:</dropdownList>
+        <textBox refId="RecoveryMessage_Input">
+          <label>自定义恢复消息选项:</label>
+          <defaultValue/>
+        </textBox>
+        <textBox refId="RecoveryUrl_Input">
+          <label>自定义恢复 URL 选项:</label>
+          <defaultValue/>
         </textBox>
       </presentation>
 

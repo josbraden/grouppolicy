@@ -232,23 +232,33 @@ Se desativar ou não configurar esta definição de política, o BitLocker utili
       
 
       </string>
-      <string id="EncryptionMethodNoDiffuser_Help">
-          
-          Esta definição de política permite configurar o algoritmo e a força de cifra utilizados pela Encriptação de Unidade BitLocker. Esta definição de política é aplicada quando o BitLocker é ativado. A alteração do método de encriptação não tem nenhum efeito se a unidade já estiver encriptada ou se a encriptação estiver em curso. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre os métodos de encriptação disponíveis. Esta política só é aplicável a computadores com o Windows 8 e superior.
+      <string id="EncryptionMethodNoDiffuser_Help">Esta definição de política permite configurar o algoritmo e a força de codificação utilizados pela Encriptação de Unidade BitLocker. Esta definição de política é aplicada quando ativa o BitLocker. Alterar o método de encriptação não tem efeito se a unidade já estiver encriptada ou se a encriptação estiver em curso. Consulte o Guia de Implementação de Encriptação da Unidade BitLocker no Microsoft TechNet para obter mais informações sobre os métodos de encriptação disponíveis. Esta política só é aplicável a computadores com o sistema operativo Windows 8 e posterior.
 
-          Se ativar esta definição de política, poderá escolher um algoritmo de encriptação e uma força de cifra de chave para o BitLocker utilizar para encriptar unidades.
+Se ativar esta definição de política, poderá escolher um algoritmo de encriptação e a força de codificação da chave que o BitLocker utilizará para encriptar dispositivos.
 
-          Se desativar ou não configurar esta definição de política, o BitLocker utilizará AES com a mesma força de bits (128 bits ou 256 bits) que a definição de política "Escolher método de encriptação da unidade e força de cifra (Windows Vista, Windows Server 2008, Windows 7)", caso configurada. Se nenhuma das políticas for configurada, o BitLocker utilizará o método de encriptação predefinido AES de 128 bits ou o método de encriptação especificado pelo script de configuração.
+Se desativar ou não configurar esta definição de política, o BitLocker irá utilizar AES com a mesma força de codificação (128 ou 256 bits) que a definição de política "Escolher método de encriptação da unidade e força da cifra (Windows Vista, Windows Server 2008, Windows 7)", se estiver definida. Se não for definida qualquer política, o BitLocker irá utilizar o método de encriptação padrão de AES de 128 bits ou o método de encriptação especificado pelo script de configuração.
 
-      
+      </string>
+      <string id="EncryptionMethodWithXts_Help">Esta definição de política permite configurar o algoritmo e a força de codificação utilizados pela Encriptação de Unidade BitLocker. Esta definição de política é aplicada quando ativa o BitLocker. Alterar o método de encriptação não tem efeito se a unidade já estiver encriptada ou se a encriptação estiver em curso.
+
+Se ativar esta definição de política, poderá configurar individualmente um algoritmo de encriptação e a força de codificação da chave para unidades de dados fixas, unidades de sistema operativo e unidades de dados amovíveis. Para unidades de sistema operativo e fixas, recomenda-se a utilização do algoritmo XTS-AES. Para unidades amovíveis, deve utilizar AES-CBC de 128 bits ou AES-CBC de 256 bits, se a unidade for utilizada em outros dispositivos que não estão a executar o Windows 10 (Versão 1511).
+
+Se desativar ou não configurar esta definição de política, o BitLocker irá utilizar AES com a mesma força de codificação (128 ou 256 bits) que as definições de política "Escolher método de encriptação da unidade e força de codificação (Windows Vista, Windows Server 2008, Windows 7)" ou "Escolher método de encriptação da unidade e força de codificação (nesse ordem), se estiverem definidas. Se nenhuma das políticas for definida, o BitLocker irá utilizar o método de encriptação predefinido de XTS-AES de 128 bits ou o método de encriptação especificado pelo script de configuração."
 
       </string>
       <string id="EncryptionMethod_Name">Escolher método de encriptação da unidade e força de cifra (Windows Vista, Windows Server 2008, Windows 7, Windows Server 2008 R2)</string>
-      <string id="EncryptionMethodNoDiffuser_Name">Escolher método de encriptação da unidade e força de cifra</string>
+      <string id="EncryptionMethodNoDiffuser_Name">Escolher método de encriptação da unidade e força de cifra (Windows 8, Windows Server 2012, Windows 8.1, Windows Server 2012 R2, Windows 10 [Versão 1507])</string>
+      <string id="EncryptionMethodWithXts_Name">Escolher método de encriptação da unidade e força de cifra (Windows 10 [Versão 1511] e posterior)</string>
       <string id="EncryptionMethodDropDown_AES128Diffuser_Name">AES 128 bits com Difusor</string>
       <string id="EncryptionMethodDropDown_AES256Diffuser_Name">AES 256 bits com Difusor</string>
       <string id="EncryptionMethodDropDown_AES128_Name">AES 128 bits (predefinição)</string>
+      <string id="EncryptionMethodDropDown_AES128_Name2">AES-CBC de 128 bits</string>
+      <string id="EncryptionMethodDropDown_AES128_Name3">AES-CBC de 128 bits (predefinição)</string>
       <string id="EncryptionMethodDropDown_AES256_Name">AES 256 bits</string>
+      <string id="EncryptionMethodDropDown_AES256_Name2">AES-CBC de 256 bits</string>
+      <string id="EncryptionMethodDropDown_XTS_AES128_Name">XTS-AES de 128 bits (predefinição)</string>
+      <string id="EncryptionMethodDropDown_XTS_AES128_Name2">XTS-AES de 128 bits</string>
+      <string id="EncryptionMethodDropDown_XTS_AES256_Name">XTS-AES de 256 bits</string>
 
       <string id="FVECategory">Encriptação de Unidade BitLocker</string>
       <string id="PlatformValidation_Deprecated_Help">Esta definição de política permite configurar a forma como o hardware de segurança de TPM (Trusted Platform Module) do computador protege a chave de encriptação BitLocker. Esta definição de política não é aplicável se o computador não tiver um TPM compatível ou se o BitLocker já estiver ativado com proteção TPM.
@@ -681,8 +691,8 @@ Tenha em atenção que se não ativar esta definição de política, as opções
       
       </string>
 
-    <string id="AllowSecureBootForIntegrity_Name">Permitir Arranque Seguro para validação de integridade</string>
-    <string id="AllowSecureBootForIntegrity_Help">Esta definição de política permite configurar se será permitido utilizar o Arranque Seguro como fornecedor de integridade de plataforma para unidades de sistema operativo BitLocker.
+      <string id="AllowSecureBootForIntegrity_Name">Permitir Arranque Seguro para validação de integridade</string>
+      <string id="AllowSecureBootForIntegrity_Help">Esta definição de política permite configurar se será permitido utilizar o Arranque Seguro como fornecedor de integridade de plataforma para unidades de sistema operativo BitLocker.
 
 O Arranque Seguro assegura que o ambiente de pré-arranque do PC apenas carrega firmware assinado digitalmente por fabricantes de software autorizados. O Arranque Seguro também fornece maior flexibilidade para gestão da configuração de pré-arranque do que as verificações de integridade BitLocker legadas.
 
@@ -696,9 +706,25 @@ Nota: se a definição de política de grupo "Configurar perfil de validação d
 
 Aviso: desativar esta política poderá resultar na recuperação BitLocker quando o firmware for atualizado. Se desativar esta política, suspenda o BitLocker antes de aplicar atualizações de firmware.
     
-    </string>
-    <string id="SUPPORTED_Windows8NoARM">Pelo menos o Windows Server 2012 ou o Windows 8</string>  
-</stringTable>
+      </string>
+      <string id="SUPPORTED_Windows8NoARM">Pelo menos o Windows Server 2012 ou o Windows 8</string>  
+      <string id="SUPPORTED_Windows_6_3ToVista">Windows Server 2012 R2, Windows 8.1, Windows Server 2012, Windows 8, Windows Server 2008, Windows 7 e Windows Vista</string>
+      <string id="PrebootRecoveryInfo_Name">Configurar URL e mensagem de recuperação pré-arranque</string>
+      <string id="PrebootRecoveryInfoEmpty"></string>
+      <string id="PrebootRecoveryInfoUseDefault">Utilizar mensagem de recuperação predefinida e URL</string>
+      <string id="PrebootRecoveryInfoUseMessage">Utilizar mensagem de recuperação personalizada</string>
+      <string id="PrebootRecoveryInfoUseUrl">Utilizar URL de recuperação personalizado</string>
+      <string id="PrebootRecoveryInfo_Help">Esta definição de política permite configurar a mensagem integral de recuperação ou substituir o URL existente que são apresentados no ecrã de recuperação de chave de pré-arranque quando a unidade de SO está bloqueada.
+
+Se selecionar a opção "Utilizar URL e mensagem de recuperação predefinida", a mensagem de recuperação predefinida da BitLocker e o URL serão apresentados no ecrã de recuperação de chave de pré-arranque. Se tiver configurado previamente uma mensagem de recuperação personalizada ou URL e pretender reverter para a mensagem predefinida, deve manter a política ativada e selecionar a opção "Utilizar mensagem de recuperação predefinida e URL".
+
+Se selecionar a opção "Utilizar mensagem de recuperação personalizada", a mensagem digitada na caixa de texto "Opção de mensagem de recuperação personalizada" será apresentada no ecrã de recuperação de chave de pré-arranque. Se estiver disponível um URL de recuperação, inclua-o na mensagem.
+
+Se selecionar a opção "Utilizar URL de recuperação personalizado", o URL digitado na caixa de texto "Opção de URL de recuperação personalizado" irá substituir o URL predefinido na mensagem de recuperação predefinida, que será apresentada no ecrã de recuperação de chave de pré-arranque.
+
+Nota: nem todos os carateres e idiomas são suportados no pré-arranque. É vivamente recomendado que teste se os carateres que utiliza para a mensagem personalizada ou URL aparecem corretamente no ecrã de recuperação de chave de pré-arranque.
+      </string>
+    </stringTable>
     <presentationTable>
       <presentation id="ActiveDirectoryBackup_Name">
         <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Pedir cópia de segurança do BitLocker para AD DS</checkBox>
@@ -789,6 +815,12 @@ Aviso: desativar esta política poderá resultar na recuperação BitLocker quan
 
       <presentation id="EncryptionMethodNoDiffuser_Name">
         <dropdownList refId="EncryptionMethodNoDiffDropDown_Name" noSort="true" defaultItem="0">Selecionar o método de encriptação:</dropdownList>
+      </presentation>
+
+      <presentation id="EncryptionMethodWithXts_Name">
+        <dropdownList refId="EncryptionMethodWithXtsOsDropDown_Name" noSort="true" defaultItem="2">Selecionar o método de encriptação para unidades de sistema operativo:</dropdownList>
+        <dropdownList refId="EncryptionMethodWithXtsFdvDropDown_Name" noSort="true" defaultItem="2">Selecionar o método de encriptação para unidades de dados fixas:</dropdownList>
+        <dropdownList refId="EncryptionMethodWithXtsRdvDropDown_Name" noSort="true" defaultItem="0">Selecionar o método de encriptação para unidades de dados amovíveis:</dropdownList>
       </presentation>
 
       <presentation id="OSEncryptionType">
@@ -1022,6 +1054,18 @@ Aviso: desativar esta política poderá resultar na recuperação BitLocker quan
         <textBox refId="RDVAllowedAlgos">
           <label>Restringir algoritmos de encriptação ou conjuntos de cifras permitidos aos seguintes:</label>
           <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
+      </presentation>
+
+      <presentation id="PrebootRecoveryInfo">
+        <dropdownList refId="PrebootRecoveryInfoDropDown_Name" noSort="true" defaultItem="0">Selecione uma opção para a mensagem de recuperação pré-arranque:</dropdownList>
+        <textBox refId="RecoveryMessage_Input">
+          <label>Opção de mensagem de recuperação personalizada:</label>
+          <defaultValue/>
+        </textBox>
+        <textBox refId="RecoveryUrl_Input">
+          <label>Opção de URL de recuperação personalizada:</label>
+          <defaultValue/>
         </textBox>
       </presentation>
 

@@ -14,6 +14,8 @@
       <string id="WU_SUPPORTED_Windows7_To_Win2kSP3_Or_XPSP1">Windows 7、Windows Server 2008 R2、Windows Vista、Windows Server 2003、Windows XP SP2、Windows XP SP1、Windows 2000 SP4、Windows 2000 SP3</string>
       <string id="WU_SUPPORTED_Win2kSP3_Or_XPSP1_NoWinRT">Windows XP Professional Service Pack 1 または Windows 2000 Service Pack 3 以降 (Windows RT を除く)</string>
       <string id="WU_SUPPORTED_WindowsXPSP1_NoWinRT">Windows Server 2003 オペレーティング システムまたは Windows XP Professional SP1 以降 (Windows RT を除く)</string>
+      <string id="WU_SUPPORTED_Win2kSP3_Or_XPSP1_Through_Win81_or_Server2012R2">Windows XP Professional Service Pack 1 以降、または Windows 2000 Service Pack 3 から最新の Service Pack が適用された Windows 8.1 または Windows Server 2012 R2 以降</string>
+      <string id="WU_SUPPORTED_WindowsVista_Through_Win81_or_Server2012R2">Windows Vista から最新の Service Pack が適用された Windows 8.1 または Windows Server 2012 R2 以降</string>
       <string id="AUDontShowUasHelp">このポリシー設定で、[Windows のシャットダウン] ダイアログ ボックスに [更新をインストールしてシャットダウン] オプションを表示するかどうか管理します。
 
 このポリシー設定を有効にすると、ユーザーが [スタート] メニューの [シャットダウン] を選択したとき、インストールできる更新がある場合でも、[更新をインストールしてシャットダウン] は [Windows のシャットダウン] ダイアログ ボックスに選択肢として表示されません。
@@ -292,6 +294,21 @@ Windows Update は、更新を自動的にインストールするように構�
 このポリシーを有効にすると、その機能は無効になり、Windows ストアなど公開されているサービスへの接続が動作しなくなる可能性があります。
 
 注: このポリシーは、"イントラネットの Microsoft 更新サービスの場所を指定する" ポリシーを使用してイントラネットの更新サービスに接続するようにこの PC が構成されているときにのみ適用されます。</string>
+
+      <string id="DeferUpgrade_Title">アップグレードおよび更新を延期する</string>
+      <string id="DeferUpgrade_Help">Enable this policy in order to defer upgrades for up to eight months.
+      
+You can also choose to delay updates for up to one month. If you do not delay updates, your PC will remain up to date with security updates as they become available.
+
+If an issue arises with an update or upgrade, select "Pause Upgrades and Updates". This will delay updates and upgrades until the next monthly update or upgrade becomes available. Once a new update or upgrade it available, the value will go back to the previously selected option, re-enabling your validation groups.
+
+Note: Definition updates will not be impacted by this policy.
+
+Note: If the "Specify intranet Microsoft update service location" policy is enabled, then the “Defer upgrades by”, “Defer updates by” and “Pause Updates and Upgrades” settings have no effect.
+ 
+Note: If the “Allow Telemetry” policy is enabled and the Options value is set to 0, then the “Defer upgrades by”, “Defer updates by” and “Pause Updates and Upgrades” settings have no effect.
+
+To stay informed about new features in Windows 10, see go.microsoft.com/fwlink/?LinkID=529169.</string>
     </stringTable>
     <presentationTable>
       <presentation id="RemoveWindowsUpdate">
@@ -345,6 +362,13 @@ Windows Update は、更新を自動的にインストールするように構�
         <text>再起動のタイマーで指定される、</text>
         <text>作業内容の保存にかかる</text>
         <decimalTextBox refId="AlwaysAutoRebootAtScheduledTime_Minutes" defaultValue="15">時間 (分):  </decimalTextBox>
+      </presentation>
+      <presentation id="DeferUpgrade_Title">
+        <text>以下についてアップグレードを延期する</text>
+        <decimalTextBox refId="DeferUpgradePeriodId" defaultValue="0">期間 (月): </decimalTextBox>
+        <text>以下について更新を延期する</text>
+        <decimalTextBox refId="DeferUpdatePeriodId" defaultValue="0">期間 (週): </decimalTextBox>
+        <checkBox refId="PauseDeferralsId" defaultChecked="false">アップグレードおよび更新を一時停止する</checkBox>
       </presentation>
     </presentationTable>
   </resources>

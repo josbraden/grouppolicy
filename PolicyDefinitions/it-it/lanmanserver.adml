@@ -58,6 +58,43 @@ Versione hash supportata:
 - Per supportare solo le informazioni sul contenuto di V2, configurare "Versione hash supportata" con valore 2.
 
 - Per supportare le informazioni sul contenuto sia di V1 che di V2, configurare "Versione hash supportata" con valore 3.</string>
+      <string id="Pol_CipherSuiteOrder_Name">Ordine dei pacchetti di crittografia</string>
+      <string id="Pol_CipherSuiteOrder_Help">Questa impostazione dei criteri determina i pacchetti di crittografia utilizzati dal server SMB.
+
+Se si abilita questa impostazione dei criteri, ai pacchetti di crittografia viene assegnata una priorità in base all'ordine specificato.
+
+Se si abilita questa impostazione dei criteri e non si specifica almeno un pacchetto di crittografia supportato oppure se si disabilita o non si configura questa impostazione dei criteri, verrà utilizzato l'ordine dei pacchetti di crittografia predefinito.
+
+Pacchetti di crittografia SMB 3.11:
+
+AES_128_GCM
+AES_128_CCM
+
+Pacchetti di crittografia SMB 3.0 e 3.02:
+
+AES_128_CCM
+
+Come modificare questa impostazione:
+
+Disporre i pacchetti di crittografia desiderati nella casella di modifica, un pacchetto di crittografia per riga, in ordine di preferenza decrescente, con il pacchetto di crittografia preferito all'inizio. Rimuovere gli eventuali pacchetti di crittografia che non si desidera utilizzare.
+
+Nota: quando si configura questa impostazione di sicurezza, le modifiche diventeranno effettive solo dopo il riavvio di Windows.</string>
+      <string id="HonorCipherSuiteOrder_Name">Rispetta ordine dei pacchetti di crittografia</string>
+      <string id="HonorCipherSuiteOrder_Help">Questa impostazione dei criteri determina il modo in cui il server SMB seleziona un pacchetto di crittografia durante la negoziazione di una nuova connessione con un client SMB.
+
+Se si abilita questa impostazione dei criteri, il server SMB selezionerà il pacchetto di crittografia preferito dai pacchetti di crittografia del client SMB, ignorando le preferenze per i pacchetti di crittografia del client.
+
+Se si disabilita o non si configura questa impostazione dei criteri, il server SMB selezionerà il pacchetto di crittografia preferito dal client SMB dai pacchetti di crittografia del server.
+
+Nota: quando si configura questa impostazione di sicurezza, le modifiche diventeranno effettive solo dopo il riavvio di Windows.</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">Rispetta ordine dei pacchetti di crittografia</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">Questa impostazione dei criteri determina il modo in cui il server SMB seleziona un pacchetto di crittografia durante la negoziazione di una nuova connessione con un client SMB.
+
+Se si abilita questa impostazione dei criteri, il server SMB selezionerà il pacchetto di crittografia preferito dall'elenco dei pacchetti di crittografia supportati dal client.
+
+Se si disabilita o non si configura questa impostazione dei criteri, il server SMB selezionerà il pacchetto di crittografia preferito dal client dall'elenco dei pacchetti di crittografia supportati dal server.
+
+Nota: quando si configura questa impostazione di sicurezza, le modifiche diventeranno effettive solo dopo il riavvio di Windows.</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@ Versione hash supportata:
         <text>3 = Supporta hash V1 e V2</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Versione hash supportata:  </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>Pacchetti di crittografia:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

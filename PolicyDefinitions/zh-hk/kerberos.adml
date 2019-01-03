@@ -123,6 +123,22 @@
 如果您停用或未設定這個原則設定且資源網域要求複合驗證，當服務要求複合驗證時，裝置將先傳送非複合驗證要求，然後才傳送複合驗證要求。
 
 </string>
+      <string id="DevicePKInitEnabled">支援使用憑證進行裝置驗證</string>
+      <string id="DevicePKInitEnabled_explain">要支援裝置使用憑證驗證，裝置帳戶網域需要支援使用憑證進行電腦帳戶驗證，並需要可連線至網域控制站 (DC) 的能力。
+
+這個原則設定可讓您設定 Kerberos 支援嘗試使用裝置的憑證驗證到網域。
+
+如果您啟用這個原則設定，裝置s憑證將根據下列選項選取:
+
+自動: 裝置將嘗試使用本身的憑證驗證。如果網域控制站 (DC) 不支援使用憑證進行電腦帳戶驗證，則會嘗試使用密碼驗證。
+
+強制: 裝置將總是使用本身的憑證驗證。如果找不到支援使用憑證進行電腦帳戶驗證的網域控制站 (DC)，則驗證會失敗。
+
+如果您停用這個原則設定，可使用「停用」。
+如果您沒有設定這個原則設定，可使用「自動」。
+</string>
+      <string id="DevicePKInitBehavior_Automatic">自動</string>
+      <string id="DevicePKInitBehavior_Force">強制</string>
     </stringTable>
     <presentationTable>
       <presentation id="hosttorealm">
@@ -215,6 +231,9 @@
         <decimalTextBox refId="MaxTokenSize" defaultValue="48000" spinStep="1000">大小上限</decimalTextBox>
       </presentation>
       <presentation id="EnableCbacAndArmor">
+      </presentation>
+      <presentation id="DevicePKInitBehavior">
+        <dropdownList refId="DevicePKInitBehavior" noSort="true" defaultItem="0">使用憑證的裝置驗證行為:</dropdownList>  
       </presentation>
     </presentationTable>
   </resources>

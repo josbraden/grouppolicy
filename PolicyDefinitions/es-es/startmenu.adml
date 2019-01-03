@@ -5,6 +5,7 @@
   <description>escriba aquí la descripción</description>
   <resources>
     <stringTable>
+      <string id="SUPPORTED_Win7UntilThreshold">Se requiere al menos Windows Server 2008 R2 o Windows 7. No es compatible con Windows 10 o versiones posteriores</string>
       <string id="ClearRecentProgForNewUserInStartMenu">Borrar lista de programas recientes para nuevos usuarios</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">Si habilita esta configuración de directiva, se borrará la lista de programas recientes del menú Inicio para un nuevo usuario.
 
@@ -143,8 +144,8 @@ Si deshabilita esta opción o no la configura, se mostrarán todos los textos em
 Si habilita esta configuración, impedirá que los usuarios seleccionen una aplicación, cambien el tamaño de un icono, anclen o desanclen un icono o un icono secundario, entren en el modo de personalización y reorganicen los iconos de Inicio y Aplicaciones.
 
 Si deshabilita o no establece esta configuración, permitirá que los usuarios seleccionen una aplicación, cambien el tamaño de un icono, anclen/desanclen un icono o un icono secundario, entren en el modo de personalización y reorganicen los iconos de Inicio y Aplicaciones.</string>
-      <string id="ClearTilesOnExit">Borrar el historial de las notificaciones en mosaico al salir</string>
-      <string id="ClearTilesOnExit_Help">Si habilita esta opción, el sistema elimina las notificaciones en mosaico cuando el usuario cierra la sesión. Como consecuencia, los mosaicos de la vista de inicio siempre mostrarán el contenido predeterminado cuando el usuario inicia sesión. Además, cualquier versión en caché de estas notificaciones se borrará cuando el usuario cierre la sesión.
+      <string id="ClearTilesOnExit">Borrar las notificaciones en mosaico durante el inicio de sesión</string>
+      <string id="ClearTilesOnExit_Help">Si habilita esta opción, el sistema elimina las notificaciones en mosaico cuando el usuario inicia la sesión. Como consecuencia, los mosaicos de la vista de inicio siempre mostrarán el contenido predeterminado cuando el usuario inicia sesión. Además, cualquier versión en caché de estas notificaciones se borrará cuando el usuario inicia la sesión.
 
 Si deshabilita o no establece esta configuración, el sistema conserva las notificaciones, y cuando un usuario inicia sesión, los mosaicos aparecen tal como estaban cuando el usuario cerró la sesión, incluso aparece el historial de las notificaciones previas de cada mosaico.
 
@@ -155,13 +156,12 @@ Esta configuración no impide la aparición de notificaciones nuevas. Consulte l
       <string id="LockedStartLayout">Diseño de la pantalla Inicio</string>
       <string id="LockedStartLayout_Help">Especifica el diseño de la pantalla Inicio para los usuarios.
 
-Esta configuración permite especificar el diseño de la pantalla Inicio para los usuarios e impide que cambien su configuración. El diseño de la pantalla Inicio que especifique debe almacenarse en un archivo XML generado por el cmdlet Export-StartLayout de PowerShell.
-Para usar esta configuración, primero debe configurar manualmente un diseño de pantalla Inicio de un dispositivo con la apariencia deseada. Cuando haya terminado, ejecute el cmdlet Export-StartLayout de PowerShell en el mismo dispositivo. El cmdlet generará una archivo XML que representa el diseño que ha configurado.
+Esta configuración permite especificar el diseño de la pantalla Inicio para los usuarios e impide que puedan cambiar su configuración. El diseño de la pantalla Inicio que especifique debe almacenarse en un archivo XML generado por el cmdlet Export-StartLayout de PowerShell.
+Para usar esta configuración, primero debes configurar de forma manual el diseño de la pantalla Inicio de un dispositivo con la apariencia que quieras. Cuando hayas terminado, ejecuta el cmdlet Export-StartLayout de PowerShell en el mismo dispositivo. El cmdlet generará un archivo XML que representará el diseño que hayas configurado.
 
-Una vez que el archivo XML se ha configurado y se ha movido a la ruta de acceso de archivo deseada, escriba la ruta de acceso completa y el nombre del archivo XML. Puede escribir una ruta de acceso local, como C:\StartLayouts\myLayout.xml o una ruta UNC, como \\servidor\recursoCompartido\Corp.jpg. Si el archivo especificado no está disponible cuando el usuario inicia la sesión, no se cambiará el diseño. Los usuarios no pueden personalizar su pantalla Inicio mientras esta configuración esté habilitada.
+Una vez que se haya generado el archivo XML y se haya movido a la ruta de archivo que quieras, escribe la ruta y el nombre completos del archivo XML. Puedes escribir una ruta local, como C:\StartLayouts\myLayout.xml, o una ruta UNC, como \\Server\Share\Layout.xml. Si el archivo especificado no está disponible cuando el usuario inicie sesión, no se cambiará el diseño. Los usuarios no podrán personalizar su pantalla Inicio si esta configuración está habilitada.
 
-Si deshabilita o no establece esta configuración, no se cambiará el diseño de la pantalla Inicio y los usuarios podrán personalizarlo.</string>
-
+Si deshabilitas o no estableces esta configuración, no se cambiará el diseño de la pantalla Inicio y los usuarios podrán personalizarlo.</string>
       <string id="NoClose">Quitar y evitar el acceso a los comandos Apagar, Reiniciar, Suspender e Hibernar.</string>
       <string id="NoClose_Help">Esta configuración de directiva impide que los usuarios ejecuten los siguientes comandos del menú Inicio o de la pantalla de Seguridad de Windows: Apagar, Reiniciar, Suspender e Hibernar. Esta configuración de directiva no impide que los usuarios ejecuten programas basados en Windows que realizan estas funciones.
 
@@ -569,6 +569,12 @@ Si deshabilita o no establece esta configuración de directiva, las aplicaciones
 Si deshabilita o no establece esta configuración de directiva, la pantalla Inicio aparecerá en la pantalla que esté usando el usuario cuando presione la tecla de logotipo de Windows.
 
 Si deshabilita o no establece esta configuración de directiva, la pantalla Inicio siempre aparecerá en la pantalla principal cuando el usuario presione la tecla de logotipo de Windows. Los usuarios podrán seguir abriendo Inicio en otras pantallas presionando el botón Inicio de esa pantalla. Además, el usuario podrá establecer esta configuración.</string>
+      <string id="ForceStartSize_DisplayName">Forzar el inicio para que sea el tamaño de pantalla completa o el tamaño de menú</string>
+      <string id="ForceStartSize_ExplainText">Si habilitas esta directiva y la estableces en el menú Inicio o pantalla de Inicio completa, Inicio será de ese tamaño y los usuarios no podrán cambiar el tamaño de Inicio en la Configuración. 
+
+Si deshabilitas o no estableces esta configuración de directiva, Windows seleccionará automáticamente el tamaño en función del factor de forma de hardware y los usuarios podrán cambiar el tamaño de Inicio en la Configuración.</string>
+      <string id="ForceLauncherSize_Collapsed">Menú Inicio</string>
+      <string id="ForceLauncherSize_Expanded">Pantalla de Inicio completa</string>
     </stringTable>
     <presentationTable>
       <presentation id="PowerButtonAction">
@@ -582,6 +588,9 @@ Si deshabilita o no establece esta configuración de directiva, la pantalla Inic
           <label>Iniciar el archivo de diseño</label>
           <defaultValue></defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="ForceStartSize">
+        <dropdownList refId="ForceStartSizeDropdown" noSort="true" defaultItem="0">Elija uno de los siguientes tamaños</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

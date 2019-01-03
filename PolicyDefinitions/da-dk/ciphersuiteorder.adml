@@ -11,87 +11,40 @@
 
 Hvis du aktiverer denne politikindstilling, prioriteres SSL-krypteringsprogrammerne i den angivne rækkefølge.
 
-Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, bruges den fabriksindstillede rækkefølge for krypteringsprogrammer.
-          
-Krypteringsprogrammerne SSL2, SSL3, TLS 1.0 og TLS 1.1:
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, bruges standardrækkefølgen for krypteringsprogrammer.
 
-TLS_RSA_WITH_AES_128_CBC_SHA                 
-TLS_RSA_WITH_AES_256_CBC_SHA                 
-TLS_RSA_WITH_RC4_128_SHA                     
-TLS_RSA_WITH_3DES_EDE_CBC_SHA                
-TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256      
-TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384      
-TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P521      
-TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256      
-TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384       
-TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P521
-TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256    
-TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P384    
-TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P521    
-TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P256    
-TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384    
-TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P521    
-TLS_DHE_DSS_WITH_AES_128_CBC_SHA             
-TLS_DHE_DSS_WITH_AES_256_CBC_SHA              
-TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
-TLS_RSA_WITH_RC4_128_MD5                                       
-SSL_CK_RC4_128_WITH_MD5                      
-SSL_CK_DES_192_EDE3_CBC_WITH_MD5             
-TLS_RSA_WITH_NULL_SHA
-TLS_RSA_WITH_NULL_MD5                        
+Link til alle krypteringsprogrammer: http://go.microsoft.com/fwlink/?LinkId=517265
 
-Krypteringsprogrammerne TLS 1.2 SHA256 og SHA384:
+      </string>
 
-TLS_RSA_WITH_AES_128_CBC_SHA256
-TLS_RSA_WITH_AES_256_CBC_SHA256
-TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
-TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P384
-TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P521
-TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256
-TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
-TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P521
-TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256
-TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P384
-TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P521
-TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384
-TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P521
-TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
-TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
-TLS_RSA_WITH_NULL_SHA256
+      <string id="SSLCurveOrder">Rækkefølge af ECC-kurver</string>
+      <string id="SSLCurveOrder_Help">Denne politik bestemmer prioritetsrækkefølgen af de ECC-kurver, der bruges sammen med ECDHE-krypteringsprogrammer.
 
-Krypteringsprogrammerne TLS 1.2 ECC GCM:
+Hvis du aktiverer denne politikindstilling, prioriteres ECC-kurver i den angivne rækkefølge. Angiv ét kurvenavn pr. linje.
 
-TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256
-TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P384
-TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P521
-TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384
-TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P521
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, anvendes standardrækkefølgen for ECC-kurver.
 
+Fabriksindstillet rækkefølge for kurver
+============
+NistP256
+NistP384
 
-Sådan redigeres denne indstilling:
+Hvis du vil se alle de kurver, der er understøttet i systemet, skal du bruge følgende kommando:
 
-1. Åbn et tomt dokument i Notesblok.
+CertUtil.exe -DisplayEccCurve
 
-2. Kopiér eller indsæt listen over tilgængelige krypteringsprogrammer i dokumentet.
-
-3. Placer programmerne i den rigtige rækkefølge; fjern de programmer, du ikke vil bruge.
-
-4. Sæt et komma efter hvert programnavn undtagen det sidste. Sørg for, at der IKKE er medtaget nogen mellemrum.
-
-5. Fjern alle linjeskift, så navne på krypteringsprogrammer står på én enkelt lang linje.
-
-6. Kopiér krypteringsprogramlinjen til Udklipsholder, og indsæt den derefter i redigeringsfeltet. Maksimumlængden er på 1023 tegn.
-
-
-
-</string>
+      </string>
     </stringTable>
     <presentationTable>
       <presentation id="SSLCipherSuiteOrder">
         <textBox refId="Pol_SSLCipherSuiteOrder">
           <label>SSL Cipher Suites</label>
-          <defaultValue>TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_RC4_128_SHA,TLS_RSA_WITH_3DES_EDE_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P384,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384,TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,TLS_DHE_DSS_WITH_AES_128_CBC_SHA,TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,TLS_DHE_DSS_WITH_AES_256_CBC_SHA,TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA,TLS_RSA_WITH_RC4_128_MD5,SSL_CK_RC4_128_WITH_MD5,SSL_CK_DES_192_EDE3_CBC_WITH_MD5,TLS_RSA_WITH_NULL_SHA256,TLS_RSA_WITH_NULL_SHA</defaultValue>
+          <defaultValue>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_3DES_EDE_CBC_SHA,TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,TLS_DHE_DSS_WITH_AES_256_CBC_SHA,TLS_DHE_DSS_WITH_AES_128_CBC_SHA,TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA,TLS_RSA_WITH_RC4_128_SHA,TLS_RSA_WITH_RC4_128_MD5,TLS_RSA_WITH_NULL_SHA256,TLS_RSA_WITH_NULL_SHA,SSL_CK_DES_192_EDE3_CBC_WITH_MD5,SSL_CK_RC4_128_WITH_MD5</defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="SSLCurveOrder">
+        <text>Skriv ECC-kurvenavnene i den foretrukne rækkefølge (ét kurvenavn pr. linje)</text>
+        <multiTextBox refId="SSLCurveOrderList">Rækkefølge af ECC-kurver:</multiTextBox>
       </presentation>
     </presentationTable>
   </resources>

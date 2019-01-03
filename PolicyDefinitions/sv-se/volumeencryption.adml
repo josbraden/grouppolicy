@@ -232,23 +232,33 @@ Om du inaktiverar eller låter bli att konfigurera inställningen, används stan
       
 
       </string>
-      <string id="EncryptionMethodNoDiffuser_Help">
-          
-          Du kan använda den här principinställningen för att konfigurera algoritm och chifferstyrka för BitLocker-diskkryptering. Principinställningen tillämpas när du aktiverar BitLocker. Det händer inget om du ändrar krypteringsmetod, om enheten redan är krypterad eller om kryptering pågår. Mer information om tillgängliga krypteringsmetoder finns i distribueringsanvisningarna för BitLocker-diskkryptering på Microsoft TechNet. Den här principen gäller bara datorer som kör Windows Server 8 eller senare.
+      <string id="EncryptionMethodNoDiffuser_Help">Du kan använda den här principinställningen för att konfigurera algoritm och krypteringsgrad för BitLocker-diskkryptering. Principinställningen tillämpas när du aktiverar BitLocker. Det händer inget om du ändrar krypteringsmetod, om enheten redan är krypterad eller om kryptering pågår. Mer information om tillgängliga krypteringsmetoder finns i distributionsanvisningarna för BitLocker-diskkryptering (BitLocker Drive Encryption Deployment Guide) på Microsoft TechNet. Den här principen gäller bara datorer som kör Windows 8 eller senare.
 
-          Om du aktiverar den här principinställningen kan du välja krypteringsalgoritm och önskad chifferstyrka som används av BitLocker vid kryptering av enheter.
+Om du aktiverar den här principinställningen kan du välja krypteringsalgoritm och önskad krypteringsgrad som används av BitLocker vid kryptering av enheter.
 
-          Om du inaktiverar eller låter bli att konfigurera den här principinställningen använder BitLocker AES med samma bitstyrka (128 eller 256 bitar) som principinställningen Välj metod och styrka för kryptering av enhet (Windows Vista, Windows Server 2008, Windows 7), om den har angetts. Om ingen av dessa principer har angetts används standardkrypteringsmetoden 128-bitars AES eller den krypteringsmetod som anges i startskriptet.
+Om du inaktiverar eller låter bli att konfigurera principinställningen använder BitLocker AES med samma krypteringsgrad (128 eller 256 bitar) som principinställningen Välj metod och styrka för kryptering av enhet (Windows Vista, Windows Server 2008, Windows 7), om den har angetts. Om ingen av dessa principer har angetts används standardkrypteringsmetoden 128-bitars AES eller den krypteringsmetod som anges i konfigurationsskriptet.
 
-      
+      </string>
+      <string id="EncryptionMethodWithXts_Help">Med den här principinställningen kan du konfigurera algoritm och chifferstyrka för BitLocker-diskkryptering. Principinställningen tillämpas när du aktiverar BitLocker. Det händer inget om du ändrar krypteringsmetod när enheten redan är krypterad eller om kryptering pågår.
+
+Om du aktiverar den här principinställningen kan du konfigurera en krypteringsalgoritm och önskad chifferstyrka för fasta dataenheter, operativsystemenheter respektive flyttbara dataenheter. För fasta enheter och operativsystemenheter rekommenderas XTS-AES-algoritmen. För flyttbara enheter bör du använda 128-bitars eller 256-bitars AES-CBC om enheten ska användas i andra enheter som inte kör Windows 10 (version 1511).
+
+Om du inaktiverar eller låter bli att konfigurera principinställningen använder BitLocker AES med samma krypteringsgrad (128 eller 256 bitar) som principinställningen Välj metod och styrka för kryptering av enhet (Windows Vista, Windows Server 2008, Windows 7) och principinställningen Välj metod och styrka för kryptering av enhet (i den ordningen), om de har angetts. Om ingen av principerna har angetts använder BitLocker standardkrypteringsmetoden 128-bitars XTS-AES eller den krypteringsmetod som anges i konfigurationsskriptet.
 
       </string>
       <string id="EncryptionMethod_Name">Välj metod och styrka för kryptering av enhet (Windows Vista, Windows Server 2008, Windows 7, Windows Server 2008 R2)</string>
-      <string id="EncryptionMethodNoDiffuser_Name">Välj metod och styrka för kryptering av enhet</string>
+      <string id="EncryptionMethodNoDiffuser_Name">Välj krypteringsmetod och chifferstyrka för enhet (Windows 8, Windows Server 2012, Windows 8.1, Windows Server 2012 R2, Windows 10 [version 1507])</string>
+      <string id="EncryptionMethodWithXts_Name">Välj krypteringsmetod och chifferstyrka för enhet (Windows 10 [version 1511] och senare)</string>
       <string id="EncryptionMethodDropDown_AES128Diffuser_Name">128-bitars AES med Diffuser</string>
       <string id="EncryptionMethodDropDown_AES256Diffuser_Name">256-bitars AES med Diffuser</string>
       <string id="EncryptionMethodDropDown_AES128_Name">128-bitars AES (standard)</string>
+      <string id="EncryptionMethodDropDown_AES128_Name2">128-bitars AES-CBC</string>
+      <string id="EncryptionMethodDropDown_AES128_Name3">128-bitars AES CBC (standard)</string>
       <string id="EncryptionMethodDropDown_AES256_Name">256-bitars AES</string>
+      <string id="EncryptionMethodDropDown_AES256_Name2">256-bitars AES-CBC</string>
+      <string id="EncryptionMethodDropDown_XTS_AES128_Name">128-bitars XTS-AES (standard)</string>
+      <string id="EncryptionMethodDropDown_XTS_AES128_Name2">128-bitars XTS-AES</string>
+      <string id="EncryptionMethodDropDown_XTS_AES256_Name">256-bitars XTS-AES</string>
 
       <string id="FVECategory">BitLocker-diskkryptering</string>
       <string id="PlatformValidation_Deprecated_Help">Med den här principinställningen kan du ange hur TPM-säkerhetsmaskinvaran (Trusted Platform Module) skyddar krypteringsnyckeln för BitLocker. Den här principinställningen gäller inte om datorn saknar kompatibel TPM-säkerhetsmaskinvara eller om BitLocker redan har aktiverats med TPM-skydd.
@@ -681,8 +691,8 @@ Observera att om du inte aktiverar den här principinställningen kanske inte al
       
       </string>
 
-    <string id="AllowSecureBootForIntegrity_Name">Tillåt säker start för integritetsverifiering</string>
-    <string id="AllowSecureBootForIntegrity_Help">Med den här principinställningen kan du ange huruvida Säker start tillåts vara provider för plattformsintegriteten för operativsystemenheter som skyddas med BitLocker.
+      <string id="AllowSecureBootForIntegrity_Name">Tillåt säker start för integritetsverifiering</string>
+      <string id="AllowSecureBootForIntegrity_Help">Med den här principinställningen kan du ange huruvida Säker start tillåts vara provider för plattformsintegriteten för operativsystemenheter som skyddas med BitLocker.
 
 Säker start ser till att datorns förstartsmiljö bara läser in inbyggd programvara som har signerats digitalt av auktoriserade programutgivare. Säker start ger även mer flexibilitet i fråga om att hantera konfigurationen före start än BitLockers gamla integritetskontroller.
 
@@ -696,9 +706,25 @@ Obs! Om grupprincipinställningen Konfigurera TPM-plattformens valideringsprofil
 
 Varning! Om den här principen inaktiveras kan det leda till BitLocker-återställning när inbyggd programvara uppdateras. Om du inaktiverar den här principen pausar du BitLocker innan du uppdaterar den inbyggda programvaran.
     
-    </string>
-    <string id="SUPPORTED_Windows8NoARM">Minst Windows Server 2012 eller Windows 8</string>  
-</stringTable>
+      </string>
+      <string id="SUPPORTED_Windows8NoARM">Minst Windows Server 2012 eller Windows 8</string>  
+      <string id="SUPPORTED_Windows_6_3ToVista">Windows Server 2012 R2, Windows 8.1, Windows Server 2012, Windows 8, Windows Server 2008, Windows 7 och Windows Vista</string>
+      <string id="PrebootRecoveryInfo_Name">Konfigurera återställningsmeddelande/URL i förstartsmiljön</string>
+      <string id="PrebootRecoveryInfoEmpty"></string>
+      <string id="PrebootRecoveryInfoUseDefault">Använd standardåterställningsmeddelande/URL</string>
+      <string id="PrebootRecoveryInfoUseMessage">Använd anpassat återställningsmeddelande</string>
+      <string id="PrebootRecoveryInfoUseUrl">Använd anpassad återställnings-URL</string>
+      <string id="PrebootRecoveryInfo_Help">Med den här principinställningen kan du konfigurera hela återställningsmeddelandet och byta ut befintlig URL som visas på nyckelåterställningsskärmen i förstartsmiljön.
+
+Om du väljer alternativet Använd standardåterställningsmeddelande/URL visas återställningsmeddelandet/URL:en som används som standard för BitLocker i nyckelåterställningsskärmen i förstartsmiljön. Om du tidigare angett ett anpassat återställningsmeddelande/URL och vill byta till standardmeddelandet måste du låta principen vara aktiverad och välja alternativet Använd standardåterställningsmeddelande/URL.
+
+Om du väljer alternativet Använd anpassat återställningsmeddelande visas meddelandet som du skriver i textrutan Anpassat återställningsmeddelande i nyckelåterställningsskärmen i förstartsmiljön. Om det finns en återställnings-URL lägger du till den i meddelandet.
+
+Om du väljer alternativet Använd anpassad återställnings-URL ersätter URL:en du skriver i textrutan Anpassad återställnings-URL standard-URL:en i standardåterställningsmeddelandet, som visas i nyckelåterställningsskärmen i förstartsmiljön.
+
+Obs! Det är inte alla tecken och språk som stöds i förstartsmiljön. Du bör testa att de tecken du använder i återställningsmeddelandet/URL:en visas korrekt i återställningsskärmen i förstartsmiljön.
+      </string>
+    </stringTable>
     <presentationTable>
       <presentation id="ActiveDirectoryBackup_Name">
         <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Kräv BitLocker-säkerhetskopiering till AD DS</checkBox>
@@ -789,6 +815,12 @@ Varning! Om den här principen inaktiveras kan det leda till BitLocker-återstä
 
       <presentation id="EncryptionMethodNoDiffuser_Name">
         <dropdownList refId="EncryptionMethodNoDiffDropDown_Name" noSort="true" defaultItem="0">Välj krypteringsmetod:</dropdownList>
+      </presentation>
+
+      <presentation id="EncryptionMethodWithXts_Name">
+        <dropdownList refId="EncryptionMethodWithXtsOsDropDown_Name" noSort="true" defaultItem="2">Välj krypteringsmetod för operativsystemenheter:</dropdownList>
+        <dropdownList refId="EncryptionMethodWithXtsFdvDropDown_Name" noSort="true" defaultItem="2">Välj krypteringsmetod för fasta dataenheter:</dropdownList>
+        <dropdownList refId="EncryptionMethodWithXtsRdvDropDown_Name" noSort="true" defaultItem="0">Välj krypteringsmetod för flyttbara dataenheter:</dropdownList>
       </presentation>
 
       <presentation id="OSEncryptionType">
@@ -1022,6 +1054,18 @@ Varning! Om den här principen inaktiveras kan det leda till BitLocker-återstä
         <textBox refId="RDVAllowedAlgos">
           <label>Begränsa till följande krypteringsalgoritmer eller chiffersviter</label>
           <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
+      </presentation>
+
+      <presentation id="PrebootRecoveryInfo">
+        <dropdownList refId="PrebootRecoveryInfoDropDown_Name" noSort="true" defaultItem="0">Välj ett alternativ för återställningsmeddelande i förstartsmiljön:</dropdownList>
+        <textBox refId="RecoveryMessage_Input">
+          <label>Anpassat återställningsmeddelande:</label>
+          <defaultValue/>
+        </textBox>
+        <textBox refId="RecoveryUrl_Input">
+          <label>Anpassad återställnings-URL:</label>
+          <defaultValue/>
         </textBox>
       </presentation>
 

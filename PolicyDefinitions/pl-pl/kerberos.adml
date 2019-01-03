@@ -123,6 +123,22 @@ Jeśli to ustawienie zasad zostanie włączone i domena zasobów zażąda uwierz
 Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane i domena zasobów zażąda uwierzytelniania złożonego, urządzenia będą najpierw wysyłać żądanie uwierzytelniania niezłożonego, a następnie żądanie uwierzytelniania złożonego, gdy usługa zażąda uwierzytelniania złożonego.
 
 </string>
+      <string id="DevicePKInitEnabled">Obsługa uwierzytelniania urządzeń przy użyciu certyfikatów</string>
+      <string id="DevicePKInitEnabled_explain">Obsługa uwierzytelniania urządzeń za pomocą certyfikatów wymaga połączenia z kontrolerem domeny konta urządzenia, który obsługuje uwierzytelnianie kont komputerów przy użyciu certyfikatów. 
+
+To ustawienie zasad umożliwia skonfigurowanie obsługi protokołu Kerberos w celu próby uwierzytelnienia urządzenia w domenie za pomocą jego certyfikatu.
+
+Jeśli to ustawienie zasad zostanie włączone, poświadczenia urządzenia zostaną wybrane w oparciu o następujące opcje:
+
+Automatycznie: urządzenie podejmie próbę uwierzytelnienia za pomocą swojego certyfikatu. Jeśli kontroler domeny nie obsługuje uwierzytelniania kont komputerów za pomocą certyfikatów, zostanie podjęta próba uwierzytelnienia przy użyciu hasła.
+
+Wymuś: urządzenie będzie zawsze uwierzytelniać się za pomocą swojego certyfikatu. Jeśli nie można znaleźć kontrolera domeny, który obsługuje uwierzytelnianie kont komputerów za pomocą certyfikatów, uwierzytelnianie nie powiedzie się.
+
+Jeśli to ustawienie zasad zostanie wyłączone, będzie używana opcja Wyłączone.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, będzie używana opcja Automatycznie.
+</string>
+      <string id="DevicePKInitBehavior_Automatic">Automatycznie</string>
+      <string id="DevicePKInitBehavior_Force">Wymuś</string>
     </stringTable>
     <presentationTable>
       <presentation id="hosttorealm">
@@ -215,6 +231,9 @@ Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane 
         <decimalTextBox refId="MaxTokenSize" defaultValue="48000" spinStep="1000">Rozmiar maksymalny</decimalTextBox>
       </presentation>
       <presentation id="EnableCbacAndArmor">
+      </presentation>
+      <presentation id="DevicePKInitBehavior">
+        <dropdownList refId="DevicePKInitBehavior" noSort="true" defaultItem="0">Zachowanie uwierzytelniania urządzeń przy użyciu certyfikatów:</dropdownList>  
       </presentation>
     </presentationTable>
   </resources>

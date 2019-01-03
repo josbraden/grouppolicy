@@ -5,6 +5,7 @@
   <description>kirjoita kuvaus tähän</description>
   <resources>
     <stringTable>
+      <string id="SUPPORTED_Win7UntilThreshold">Vähintään Windows Server 2008 R2 tai Windows 7. Ei tueta Windows 10:ssä tai uudemmassa</string>
       <string id="ClearRecentProgForNewUserInStartMenu">Tyhjennä viimeksi käytettyjen ohjelmien luettelo uusien käyttäjien kohdalla</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">Jos otat käytäntöasetuksen käyttöön, Käynnistä-valikon viimeksi käytettyjen ohjelmien luettelo tyhjennetään jokaisen uuden käyttäjän kohdalla.
 
@@ -143,8 +144,8 @@ Jos poistat tämän asetuksen käytöstä tai et määritä sitä, kaikki Käynn
 Jos otat tämän käytäntöasetuksen käyttöön, voit estää käyttäjää valitsemasta sovellusta, muuttamasta ruudun kokoa, kiinnittämästä ruutua tai toissijaista ruutua tai poistamasta niiden kiinnitystä, siirtymästä mukautustilaan tai järjestämästä ruutuja uudelleen aloitusnäytössä ja sovelluksissa.
 
 Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, voit sallia käyttäjän valita sovelluksen, muuttaa ruudun kokoa, kiinnittää ruudun tai toissijaisen ruudun tai poistaa niiden kiinnityksen, siirtyä mukautustilaan tai järjestää ruutuja uudelleen aloitusnäytössä ja sovelluksissa.</string>
-      <string id="ClearTilesOnExit">Tyhjennä ruutuilmoitusten historia poistuttaessa</string>
-      <string id="ClearTilesOnExit_Help">Jos otat tämän asetuksen käyttöön, järjestelmä poistaa ruutuilmoitukset, kun käyttäjä kirjautuu ulos. Tämän tuloksena aloitusnäytön ruudut näyttävät aina oletussisällön, kun käyttäjä kirjautuu sisään. Lisäksi ilmoitusten välimuistiin tallennetut versiot poistetaan, kun käyttäjä kirjautuu ulos.
+      <string id="ClearTilesOnExit">Tyhjennä ruutuilmoitukset kirjauduttaessa</string>
+      <string id="ClearTilesOnExit_Help">Jos otat tämän asetuksen käyttöön, järjestelmä poistaa ruutuilmoitukset, kun käyttäjä kirjautuu sisään. Tämän tuloksena aloitusnäytön ruudut näyttävät aina oletussisällön, kun käyttäjä kirjautuu sisään. Lisäksi ilmoitusten välimuistiin tallennetut versiot poistetaan, kun käyttäjä kirjautuu sisään.
 
 Jos poistat tämän asetuksen käytöstä tai et määritä sitä, järjestelmä säilyttää ilmoitukset, ja kun käyttäjä kirjautuu sisään, ruudut näkyvät samanlaisina kuin ne olivat käyttäjän uloskirjautuessa. Myös jokaisen ruudun aiempien ilmoitusten historia säilytetään.
 
@@ -153,15 +154,14 @@ Tämä asetus ei estä uusia ilmoituksia. Lisätietoja uusien ilmoitusten estäm
       <string id="StartPinAppsWhenInstalled_Help">Tämän käytäntöasetuksen avulla voit määrittää, että sovellukset kiinnitetään aloitusnäyttöön oletusarvoisesti, kun ne ovat luettelossa sovellustunnuksen mukaan.</string>
 
       <string id="LockedStartLayout">Aloitusnäytön asettelu</string>
-      <string id="LockedStartLayout_Help">Määrittää käyttäjien aloitusnäytön asettelun.
+      <string id="LockedStartLayout_Help">Määrittää aloitusnäytön asettelun käyttäjille.
 
-Tämän käytäntöasetuksen avulla voit määrittää käyttäjien aloitusnäytön asettelun ja estää käyttäjiä muuttamasta sen määritystä. Määrittämäsi aloitusnäytön asettelu on tallennettava XML-tiedostoon, jonka PowerShellin Export-StartLayout-cmdlet-komento loi.
-Jotta voit käyttää tätä käytäntöasetusta, sinun on ensin määritettävä manuaalisesti laitteen aloitusnäytön asettelu niin, että se näyttää ja tuntuu haluamaltasi. Kun olet valmis, suorita PowerShellin Export-StartLayout-cmdlet-komento samassa laitteessa. Cmdlet-komento luo XML-tiedoston, joka edustaa määrittämääsi asettelua.
+Tämän asetuksen avulla voit määrittää aloitusnäytön asettelun käytöstä ja estää heitä muuttamasta sen määrityksiä. Tallentamasi aloitusnäytön asettelu on tallennettava XML-tiedostoon, joka muodostettiin PowerShellin cmdlet-komennolla Export-StartLayout.
+Jotta voit käyttää tätä asetusta, sinun täytyy ensin manuaalisesti määrittää laitteen aloitusnäytön asettelu haluamasi näköiseksi ja tuntuiseksi. Kun olet valmis, suorita cmdlet-komento Export-StartLayout PowerShell samassa laitteessa. Cmdlet-komento muodostaa XML-tiedoston, joka edustaa määrittämääsi asettelua.
 
-Kun XML-tiedosto on luotu ja siirretty haluttuun polkuun, kirjoita täydellinen polku ja anna XML-tiedostolle nimi. Voit kirjoittaa paikallisen polun, kuten C:\StartLayouts\myLayout.xml, tai UNC-polun, kuten \\Server\Share\Layout.xml. Jos määritetty tiedosto ei ole käytettävissä, kun käyttäjä kirjautuu sisään, asettelua ei muuteta. Käyttäjät eivät voi mukauttaa aloitusnäyttöään, kun tämä käytäntöasetus on käytössä.
+Kun XML-tiedosto on muodostettu ja siirretty haluttuun tiedostopolkuun, kirjoita XML-tiedoston täydellinen polku ja nimi. Voit kirjoittaa paikallisen polun, kuten C:\AloitusnäytönAsettelut\OmaAsettelu.xml, tai UNC-polun, \\Palvelin\JaettuResurssi\Asettelu.xml. Jos määritetty tiedosto ei ole käytettävissä, kun käyttäjä kirjautuu sisään, asettelua ei muuteta. Käyttäjät eivät voi mukauttaa aloitusnäyttöään, kun tämä asetus on käytössä.
 
-Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, aloitusnäytön asettelua ei muuteta ja käyttäjät voivat mukauttaa sitä.</string>
-
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, aloitusnäytön asettelua ei muuteta, ja käyttäjät pystyvät mukauttamaan sitä.</string>
       <string id="NoClose">Poista käytöstä Sammuta-, Käynnistä uudelleen-, Lepotila- ja Horrostila-komennot ja estä niiden käyttäminen</string>
       <string id="NoClose_Help">Tämä käytäntöasetus estää käyttäjiä suorittamasta seuraavia komentoja Käynnistä-valikosta tai Windowsin suojaus -näytöstä: Sammuta, Käynnistä uudelleen, Lepotila ja Horrostila. Tämä käytäntöasetus ei estä käyttäjiä käyttämästä Windows-ohjelmia, jotka suorittavat edellä mainittuja toimintoja.
 
@@ -569,6 +569,12 @@ Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, ty
 Jos otat tämän käytäntöasetuksen käyttöön, aloitusnäyttö näytetään näytössä, jota käyttäjä käyttää painaessaan Windows-näppäintä.
 
 Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, aloitusnäyttö näytetään aina päänäytössä käyttäjän painaessa Windows-näppäintä. Käyttäjät voivat silti avata aloitusnäytön muissa näytöissä painamalla kyseisen näytön käynnistyspainiketta. Käyttäjä voi myös määrittää tämän käytäntöasetuksen.</string>
+      <string id="ForceStartSize_DisplayName">Pakota Aloitus joko koko näytön kokoon tai valikkokokoon</string>
+      <string id="ForceStartSize_ExplainText">Jos otat tämän käytännön käyttöön ja määrität joko aloitusvalikon tai koko näytön aloitusnäytön, Aloitus on samankokoinen kaikille käyttäjille, eivätkä käyttäjät voi muuttaa sen kokoa asetuksissa.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai jätät sen määrittämättä, Windows valitsee koon automaattisesti laitemuodon mukaan, ja käyttäjät voivat muuttaa sitä asetuksissa.</string>
+      <string id="ForceLauncherSize_Collapsed">Aloitusvalikko</string>
+      <string id="ForceLauncherSize_Expanded">Koko näytön kokoinen aloitusnäyttö</string>
     </stringTable>
     <presentationTable>
       <presentation id="PowerButtonAction">
@@ -582,6 +588,9 @@ Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, al
           <label>Aloitusnäytön asettelutiedosto</label>
           <defaultValue></defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="ForceStartSize">
+        <dropdownList refId="ForceStartSizeDropdown" noSort="true" defaultItem="0">Valitse jokin seuraavista kokovaihtoehdoista</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

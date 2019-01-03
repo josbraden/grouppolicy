@@ -5,6 +5,7 @@
   <description>请在此处输入描述</description>
   <resources>
     <stringTable>
+      <string id="SUPPORTED_Win7UntilThreshold">至少 Windows Server 2008 R2 或 Windows 7。在 Windows 10 或更高版本上不受支持</string>
       <string id="ClearRecentProgForNewUserInStartMenu">为新用户清除最近的程序列表</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">如果启用该策略设置，则“开始”菜单中最近使用的程序列表对每个新用户为空。
 
@@ -143,12 +144,12 @@ Windows 可以通过将最近使用的菜单项移至菜单顶部，并且隐藏
 如果启用此设置，将阻止用户选择应用、调整文件大小、固定/取消固定磁贴或辅助磁贴、进入自定义模式以及重新排列“开始”屏幕和“应用”中的磁贴。
 
 如果禁用或未配置此设置，将允许用户选择应用、调整文件大小、固定/取消固定磁贴或辅助磁贴、进入自定义模式以及重新排列“开始”屏幕和“应用”中的磁贴。</string>
-      <string id="ClearTilesOnExit">退出系统时清除瓦片通知的历史记录</string>
-      <string id="ClearTilesOnExit_Help">如果启用此设置，则系统将会在用户注销时删除瓦片通知。因此，用户登录时启动视图中的“瓦片”将始终显示其默认内容。此外，用户注销时将会清除这些通知的所有缓存版本。
+      <string id="ClearTilesOnExit">登录期间清除磁贴通知</string>
+      <string id="ClearTilesOnExit_Help">如果启用此设置，则系统将在用户登录时删除磁贴通知。因此，当用户登录时，开始视图中的磁贴将始终显示其默认内容。此外，当用户登录时，会清除这些通知的所有缓存版本。
 
-如果禁用或未配置此设置，则系统会保留通知，以便当用户登录时，瓦片通知显示内容与用户注销时显示的内容相同，其中包含每个瓦片通知的先前通知历史记录。
+如果你禁用或未配置此设置，则系统会保留通知，并且在用户登录时，将会像用户注销时一样显示磁贴，包括每个磁贴的先前通知历史记录。
 
-此设置不会阻止显示新通知。请参阅“关闭应用程序通知”设置以阻止新通知。</string>
+此设置不会阻止显示新通知。若要阻止新通知，请参阅“关闭应用程序通知”设置。</string>
       <string id="StartPinAppsWhenInstalled">在安装应用时将其固定到“开始”屏幕</string>
       <string id="StartPinAppsWhenInstalled_Help">当列表中包括应用的 AppID 时，使用此策略设置可以将应用默认固定到“开始”屏幕。</string>
 
@@ -156,12 +157,11 @@ Windows 可以通过将最近使用的菜单项移至菜单顶部，并且隐藏
       <string id="LockedStartLayout_Help">指定用户的“开始”屏幕布局。
 
 此设置可让你为用户指定“开始”屏幕布局并阻止他们更改其配置。必须将指定的“开始”屏幕布局存储到 Export-StartLayout PowerShell cmdlet 生成的 XML 文件中。
-要使用此设置，必须首先通过手动方式将设备的“开始”屏幕布局配置为所需的外观和感觉。完成此操作后，在同一台设备上运行 Export-StartLayout PowerShell cmdlet。该 cmdlet 将生成表示你配置的布局的 XML 文件。
+若要使用此设置，必须首先通过手动方式将设备的“开始”屏幕布局配置为所需的外观和感觉。完成此操作后，在同一台设备上运行 Export-StartLayout PowerShell cmdlet。该 cmdlet 将生成表示你配置的布局的 XML 文件。
 
-生成 XML 文件并将其移动到所需的文件路径后，键入该 XML 文件的完全限定路径和名称。可以键入本地路径（如 C:\StartLayouts\myLayout.xml）或 UNC 路径（如 \\Server\Share\Layout.xml）。如果指定的文件在用户登录时不可用，则不会更改布局。用户无法在启用此设置的情况下自定义“开始”屏幕。
+生成 XML 文件并将其移动到所需的文件路径后，键入该 XML 文件的完全限定路径和名称。可以键入本地路径(如 C:\StartLayouts\myLayout.xml)或 UNC 路径(如 \\Server\Share\Layout.xml)。如果指定的文件在用户登录时不可用，则不会更改布局。用户无法在启用此设置的情况下自定义“开始”屏幕。
 
 如果禁用或未配置此设置，将不会更改“开始”屏幕布局，用户可以对布局进行自定义。</string>
-
       <string id="NoClose">删除并阻止访问“关机”、“重新启动”、“睡眠”和“休眠”命令</string>
       <string id="NoClose_Help">该策略设置阻止用户从“开始”菜单或“Windows 安全”屏幕执行以下命令: “关机”、“重新启动”、“睡眠”和“休眠”。该策略设置不会阻止用户运行执行这些功能的基于 Windows 的程序。
 
@@ -535,12 +535,14 @@ Windows 更新是 Windows 的联机扩展，提供软件更新以使用户的系
 如果禁用或未配置此设置，则用户无法从任何应用程序的“开始”中访问“以其他用户身份运行”命令。
 
 注意: 此设置不会阻止用户使用其他方式(例如，任务栏中应用程序跳转列表上的 shift 右键单击菜单)来触发“以其他用户身份运行”命令。</string>
-      <string id="GoToDesktopOnSignIn">登录时或关闭屏幕上的所有应用后，转到桌面而非“开始”屏幕</string>
-      <string id="GoToDesktopOnSignIn_Help">使用此策略设置，则用户可以在登录时或关闭屏幕上的所有应用后，转到桌面而非“开始”屏幕。 此策略设置适用于所有版本的 Windows 以及安装桌面体验的多个版本的 Windows Server。
+      <string id="GoToDesktopOnSignIn">登录时转到桌面而非“开始”屏幕</string>
+      <string id="GoToDesktopOnSignIn_Help">使用此策略设置，用户可以在登录时转到桌面而非“开始”屏幕。
 
-如果启用此策略设置，当用户登录时或关闭屏幕上的所有应用后，将始终转到桌面。
+如果启用此策略设置，当用户登录时将始终转到桌面。
 
-如果禁用或未配置此策略设置，默认情况下，当用户登录时将转到“开始”屏幕，并且用户可以配置此设置。</string>
+如果禁用此策略设置，当用户登录时将始终转到“开始”屏幕。
+
+如果未配置此策略设置，则将使用用户设备的默认设置，并且用户可以选择更改它。</string>
       <string id="ShowAppsViewOnStart">当用户转到“开始”屏幕时自动显示“应用”视图</string>
       <string id="ShowAppsViewOnStart_Help">使用此策略设置，默认情况下，当用户转到“开始”屏幕时可以打开“应用”视图。
 
@@ -567,6 +569,12 @@ Windows 更新是 Windows 的联机扩展，提供软件更新以使用户的系
 如果启用此策略设置，当用户按 Windows 徽标键时，该用户正在使用的显示器上将显示“开始”屏幕。
 
 如果禁用或未配置此策略设置，当用户按 Windows 徽标键时，“开始”屏幕将始终显示在主显示器上。用户仍然可以通过按其他显示器上的“开始”按钮，打开该显示器上的“开始”屏幕。此外，用户也可以对此设置进行配置。</string>
+      <string id="ForceStartSize_DisplayName">将“开始”菜单强制为全屏大小或菜单大小</string>
+      <string id="ForceStartSize_ExplainText">如果你启用此策略并对“开始”菜单或全屏“开始”菜单设置此策略，则“开始”菜单将采用这种大小，用户将无法在“设置”中更改“开始”菜单的大小。
+
+如果你禁用或未配置此策略设置，Windows 将根据硬件外形规格自动选择大小，并且用户可以在“设置”中更改“开始”菜单的大小。</string>
+      <string id="ForceLauncherSize_Collapsed">“开始”菜单</string>
+      <string id="ForceLauncherSize_Expanded">全屏“开始”菜单</string>
     </stringTable>
     <presentationTable>
       <presentation id="PowerButtonAction">
@@ -580,6 +588,9 @@ Windows 更新是 Windows 的联机扩展，提供软件更新以使用户的系
           <label>“开始”屏幕布局文件</label>
           <defaultValue></defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="ForceStartSize">
+        <dropdownList refId="ForceStartSizeDropdown" noSort="true" defaultItem="0">在下面选择一种大小</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

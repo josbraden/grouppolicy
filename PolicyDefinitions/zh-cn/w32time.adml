@@ -20,10 +20,10 @@ HoldPeriod
 此参数指示客户端计算机在一个序列中必须收到多少可能精确的时间样本之后，才将随后的时间样本评估为可能的峰值。如果在一段时间之内没有收到任何可用的时间样本，则时间客户端一旦收到第一个可能精确的时间样本，就停止进行时间样本峰值评估。收到一系列时间样本(由 HoldPeriod 指定)之后，时间客户端将对后续时间样本进行峰值评估。当某时间样本与客户端计算机本地时钟之间的时间差大于 LargePhaseOffset 值时，该时间样本即被视为峰值。默认值: 5 个时间样本。
 
 LargePhaseOffset
-此参数指定与客户端计算机本地时钟的时间差(相位偏移)为多少时，时间样本必须被视为峰值。时间差大于 LargePhaseOffset 值的时间样本被视为峰值。默认值:默认值: 50,000,000 个 100 纳秒单位(ns)，即 5 秒。
+此参数指定与客户端计算机本地时钟的时间差(相位偏移)为多少时，时间样本必须被视为峰值。时间差大于 LargePhaseOffset 值的时间样本被视为峰值。默认值: 50,000,000 个 100 纳秒单位(ns)，即 5 秒。
 
 MaxAllowedPhaseOffset
-此参数控制 W32time 如何根据时间样本和客户端计算机本地时钟之间计算的时间差大小来校正时钟。如果收到的响应的时间差大于此值，W32time 会立即将客户端计算机本地时钟设置为从网络时间协议(NTP)服务器接受为精确时间的时间。如果该时间差小于此值，则将逐步校正客户端计算机本地时钟。默认值: 300 秒。
+此参数控制 W32time 如何根据时间样本和客户端计算机本地时钟之间计算的时间差大小来校正时钟。如果收到的响应的时间差大于此值，W32time 会立即将客户端计算机本地时钟设置为网络时间协议(NTP)服务器提供的确认为精确时间的时间。如果该时间差小于此值，则将逐步校正客户端计算机本地时钟。默认值: 300 秒。
 
 MaxNegPhaseCorrection
 此参数控制可以反向进行的可允许的最大时钟校正。如果收到的时间样本是一个过去的时间(与客户端计算机本地时钟相比)，且时间差大于 MaxNegPhaseCorrection 值，则丢弃该时间样本。如果发生这种情况，则 Windows Time 源将在事件查看器的系统日志中记录一个事件。默认值: 172,800 秒。
@@ -32,7 +32,7 @@ MaxPosPhaseCorrection
 此参数控制可以正向进行的可允许的最大时钟校正。如果收到的时间样本是一个将来的时间(与客户端计算机本地时钟相比)，且时间差大于 MaxPosPhaseCorrection 值，则丢弃该时间样本。默认值: 172,800 秒。
 
 PhaseCorrectRate
-此参数控制 W32time 以怎样的速度校正客户端计算机本地时钟时间差来匹配从 NTP 服务器接受为精确时间的时间样本。此值越低则时钟校正速度越慢，越高则时钟校正速度越快。默认值: 7 (标量)。
+此参数控制 W32time 以怎样的速度校正客户端计算机本地时钟时间差来匹配 NTP 服务器提供的确认为精确时间的时间样本。此值越低则时钟校正速度越慢，越高则时钟校正速度越快。默认值: 7 (标量)。
 
 PollAdjustFactor
 此参数控制 W32time 更改轮询间隔的速度。当认为响应精确时，轮询间隔自动延长。当认为响应不精确时，轮询间隔自动缩短。默认值: 5 (标量)。
@@ -63,6 +63,9 @@ MinPollInterval
 RequireSecureTimeSyncRequests
 此参数控制 DC 是否响应使用较旧的身份验证协议的时间同步请求。如果启用(设置为 1)，则 DC 将不会响应使用此类协议的请求。默认值: 0 (布尔值)。
 
+UtilizeSslTimeData
+此参数控制 W32time 是否使用基于计算机上的 SSL 流量计算的时间数据作为附加输入来更正本地时钟。默认值: 1 (布尔值)
+
 RODC 参数:
 
 ChainEntryTimeout
@@ -72,14 +75,13 @@ ChainMaxEntries
 此参数控制链表中允许的最大条目数。如果链表已满，并且没有能够删除的过期条目，则将丢弃所有传入请求。默认值: 128 个条目。
 
 ChainMaxHostEntries
-此参数控制链表中对于特定主机所允许的最大条目数。默认值: 4 个条目。
+此参数控制链表中允许用于特定主机的最大条目数。默认值: 4 个条目。
 
 ChainDisable
 此参数控制是否禁用链机制。如果禁用链(设置为 0)，则 RODC 可以与任何域控制器同步，但是没有在 RODC 上缓存密码的主机将无法与 RODC 同步。默认值: 0 (布尔值)。
 
 ChainLoggingRate
 此参数控制将事件(指示成功和不成功链接尝试次数)记录到事件查看器系统日志中的频率。默认值: 30 分钟。
-
 </string>
 
 <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">此策略设置指定一组用于控制 Windows NTP 客户端的参数。
@@ -160,6 +162,7 @@ EventLogFlags
         <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

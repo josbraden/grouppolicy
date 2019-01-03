@@ -58,6 +58,43 @@ Podporovaná verze hodnot hash:
 - Chcete-li podporovat informace o obsahu pouze ve verzi V2, nakonfigurujte pro možnost Podporovaná verze hodnot hash hodnotu 2.
 
 - Chcete-li podporovat informace o obsahu ve verzích V2 i V3, nakonfigurujte pro možnost Podporovaná verze hodnot hash hodnotu 3.</string>
+      <string id="Pol_CipherSuiteOrder_Name">Pořadí sad šifer</string>
+      <string id="Pol_CipherSuiteOrder_Help">Nastavení této zásady určuje sady šifrování používané serverem SMB.
+
+Pokud nastavení této zásady povolíte, budou se sady šifer prioritizovat v uvedeném pořadí.
+
+Pokud nastavení této zásady povolíte a nezadáte minimálně jednu podporovanou sadu šifer nebo pokud nastavení této zásady zakážete nebo nenakonfigurujete, použije se výchozí pořadí sad šifer.
+
+Sady šifer protokolu SMB 3.11:
+
+AES_128_GCM
+AES_128_CCM
+
+Sady šifer protokolu SMB 3.0 a 3.02:
+
+AES_128_CCM
+
+Jak změnit toto nastavení:
+
+Uspořádejte požadované sady šifer v textovém poli (jedna sada šifer na řádek) v pořadí od nejvíce po nejméně upřednostňovanou, přičemž nejvíce upřednostňovaná sada šifrování bude nahoře. Odeberte všechny sady šifer, které nechcete používat.
+
+Poznámka: Pokud nakonfigurujete toto nastavení zabezpečení, změny se projeví až po restartování systému Windows.</string>
+      <string id="HonorCipherSuiteOrder_Name">Respektovat pořadí sad šifer</string>
+      <string id="HonorCipherSuiteOrder_Help">Toto nastavení určuje, jakým způsobem server SMB vybere sadu šifrování při vyjednávání nového spojení s klientem SMB.
+
+Pokud nastavení této zásady povolíte, server SMB vybere ze seznamu sad šifrování klienta SMB sadu šifrování, kterou nejvíce upřednostňuje, přičemž se budou ignorovat preference klienta ohledně sad šifrování.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, vybere server SMB sadu šifrování, kterou klient SMB ze seznamu sad šifrování serveru nejvíce upřednostňuje.
+
+Poznámka: Při konfiguraci tohoto nastavení zabezpečení se změny projeví až po restartování systému Windows.</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">Respektovat pořadí sad šifer</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">Toto nastavení určuje, jakým způsobem server SMB vybere sadu šifrování při vyjednávání nového spojení s klientem SMB.
+
+Pokud nastavení této zásady povolíte, server SMB vybere sadu šifrování, kterou ze seznamu sad šifrování podporovaných klientem nejvíce upřednostňuje, přičemž se budou ignorovat preference klienta.
+
+Pokud nastavení této zásady zakážete nebo nenakonfigurujete, vybere server SMB ze seznamu sad šifrování podporovaných serverem sadu šifrování, kterou klient nejvíce upřednostňuje.
+
+Poznámka: Při konfiguraci tohoto nastavení zabezpečení se změny projeví až po restartování systému Windows.</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@ Podporovaná verze hodnot hash:
         <text>3 = Podporovat hodnoty hash verzí V1 a V2</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Podporovaná verze hodnot hash  </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>Sady šifer:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

@@ -58,6 +58,43 @@ Hash-versjon som støttes:
 - Konfigurer Hash-versjon som støttes med verdien 2 hvis bare V2-innholdsinformasjon støttes.
 
 - Konfigurer Hash-versjon som støttes med verdien 3 hvis både V1- og V2-innholdsinformasjon støttes.</string>
+      <string id="Pol_CipherSuiteOrder_Name">Rekkefølge for chiffreringssamling</string>
+      <string id="Pol_CipherSuiteOrder_Help">Denne policyen fastslår chiffreringssamlingene som brukes av SMB-serveren.
+
+Hvis du aktiverer denne policyinnstillingen, prioriteres chiffreringssamlingene i den angitte rekkefølgen.
+
+Hvis du aktiverer denne policyinnstillingen og ikke angir minst én støttet chiffreringssamling, eller du deaktiverer eller ikke konfigurerer denne policyinnstillingen, brukes standardrekkefølgen for chiffreringssamlingen.
+
+Chiffreringssamlinger for SMB 3.11:
+
+AES_128_GCM
+AES_128_CCM
+
+Chiffreringssamlinger for SMB 3.0 og 3.02:
+
+AES_128_CCM
+
+Endre denne innstillingen:
+
+Ordne de ønskede chiffreringssamlingene i redigeringsboksen med én chiffreringssamling per linje, i rekkefølgen fra mest til minst foretrukket, og med den mest foretrukkede chiffreringssamlingen øverst. Fjern alle chiffreringssamlinger du ikke vil bruke.
+
+Obs! Når du konfigurerer denne sikkerhetsinnstillingen, trer ikke endringer i kraft før du starter Windows på nytt.</string>
+      <string id="HonorCipherSuiteOrder_Name">Innfri rekkefølge for chiffreringssamling</string>
+      <string id="HonorCipherSuiteOrder_Help">Denne policyinnstillingen fastslår hvordan SMB-serveren velger en chiffreringssamling under forhandling om en ny tilkobling med en SMB-klient.
+
+Hvis du aktiverer denne policyinnstillingen, velger SMB-serveren chiffreringssamlingen den helst foretrekker blant SMB-klientens chiffreringssamlinger, og klientens innstillinger for chiffreringssamlinger blir ignorert.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, velger SMB-serveren chiffreringssamlingen som SMB-klienten helst foretrekker blant serverens chiffreringssamlinger.
+
+Obs! Når du konfigurerer denne sikkerhetsinnstillingen, trer ikke endringer i kraft før du starter Windows på nytt.</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">Innfri rekkefølge for chiffreringssamling</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">Denne policyinnstillingen fastslår hvordan SMB-serveren velger en chiffreringssamling under forhandling om en ny tilkobling med en SMB-klient.
+
+Hvis du aktiverer denne policyinnstillingen, velger SMB-serveren chiffreringssamlingen den helst foretrekker i listen over klientstøttede chiffreringssamlinger, og klientens innstillinger blir ignorert.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, velger SMB-serveren chiffreringssamlingen som klienten helst foretrekker i listen over serverstøttede chiffreringssamlinger.
+
+Obs! Når du konfigurerer denne sikkerhetsinnstillingen, trer ikke endringer i kraft før du starter Windows på nytt.</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@ Hash-versjon som støttes:
         <text>2 = Støtt V1- og V2-hash-koder</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Hash-versjon som støttes:  </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>Chiffreringssamlinger:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

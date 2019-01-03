@@ -5,6 +5,7 @@
   <description>skriv inn beskrivelse her</description>
   <resources>
     <stringTable>
+      <string id="SUPPORTED_Win7UntilThreshold">Minst Windows Server 2008 R2 eller Windows 7. Støttes ikke i Windows 10 eller nyere</string>
       <string id="ClearRecentProgForNewUserInStartMenu">Slett listen over nylig brukte programmer for nye brukere</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">Hvis du aktiverer denne policyinnstillingen, vil de nylig brukte programlistene i startmenyen være tomme for hver ny bruker.
 
@@ -143,25 +144,24 @@ Hvis du deaktiverer denne policyinnstillingen eller ikke konfigurerer den, vises
 Hvis du aktiverer denne innstillingen, forhindrer du at en bruker velger en app, endrer størrelsen på en flis, fester/løsner en flis eller sekundærflis, går inn i tilpassingsmodus og ordner fliser på nytt i Start og Apper.
 
 Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, kan en bruker velge en app, endre størrelsen på en flis, feste/løsne en flis eller sekundærflis, gå inn i tilpassingsmodus og ordne fliser på nytt i Start og Apper.</string>
-      <string id="ClearTilesOnExit">Tøm logg over flisvarslinger ved avslutning</string>
-      <string id="ClearTilesOnExit_Help">Hvis du aktiverer denne policyinnstillingen, slettes flisvarslinger når brukeren logger seg av. Fliser i startvisning vil derfor alltid vise standardinnholdet når brukeren logger seg på. I tillegg tømmes hurtigbufrede versjoner av disse varslingene når brukeren logger seg av.
+      <string id="ClearTilesOnExit">Fjern flisvarslinger under pålogging</string>
+      <string id="ClearTilesOnExit_Help">Hvis du aktiverer denne policyinnstillingen, slettes flisvarslinger når brukeren logger seg på. Fliser i startvisning vil derfor alltid vise standardinnholdet når brukeren logger seg på. I tillegg tømmes hurtigbufrede versjoner av disse varslingene når brukeren logger seg på.
 
 Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, beholdes varslinger, og når en bruker logger seg på, vises flisene som de var da brukeren logget seg av, inkludert loggen over tidligere varslinger for hver flis.
 
-Denne policyinnstillingen hindrer ikke nye varslinger fra å vises. Se policyinnstillingen Slå av programvarslinger for å hindre nye varslinger.</string>
+Denne policyinnstillingen hindrer ikke nye varslinger fra å vises. Se policyinnstillingen Deaktiver programvarslinger for å hindre nye varslinger.</string>
       <string id="StartPinAppsWhenInstalled">Fest apper på startskjermen når de er installert</string>
       <string id="StartPinAppsWhenInstalled_Help">Denne policyinnstillingen tillater festing av apper på startskjermen som standard når de er inkludert av AppID i listen.</string>
 
       <string id="LockedStartLayout">Startskjermoppsett</string>
-      <string id="LockedStartLayout_Help">Angir startskjermoppsettet for brukerne.
+      <string id="LockedStartLayout_Help">Angir startskjermoppsettet for brukere.
 
-Du kan bruke denne innstillingen til å angi startskjermoppsettet for brukerne og forhindre at de endrer konfigurasjonen. Startskjermoppsettet du angir, må lagres i en XML-fil som ble generert av PowerShell-cmdleten Export-StartLayout.
+Ved hjelp av denne innstillingen kan du angi startskjermoppsettet for brukere, og det hindrer at de endrer konfigurasjonen. Startskjermoppsettet du angir, må lagres i en XML-fil som ble generert av PowerShell-cmdleten Export-StartLayout.
 Hvis du vil bruke denne innstillingen, må du først manuelt konfigurere startskjermoppsettet for en enhet og gi det ønsket utseende og funksjonalitet. Når du er ferdig, kjører du PowerShell-cmdleten Export-StartLayout på den samme enheten. Cmdleten genererer en XML-fil som representerer oppsettet du konfigurerte.
 
 Når XML-filen er generert og flyttet til ønsket filbane, skriver du inn den fullstendige banen og navnet på XML-filen. Du kan skrive inn en lokal bane, for eksempel C:\Startoppsett\mittOppsett.xml, eller en UNC-bane, for eksempel \\Server\DeltRessurs\Oppsett.xml. Hvis den angitte filen ikke er tilgjengelig når brukeren logger på, endres ikke oppsettet. Brukere kan ikke tilpasse startskjermen mens denne innstillingen er aktivert.
 
-Hvis du deaktiverer denne innstillingen eller ikke konfigurerer den, endres ikke startskjermoppsettet, og brukerne kan ikke tilpasse det.</string>
-
+Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, endres ikke startskjermoppsettet, og brukere kan ikke tilpasse det.</string>
       <string id="NoClose">Fjerne og hindre tilgang til kommandoene Deaktiver, Start på nytt, Hvile og Dvale</string>
       <string id="NoClose_Help">Denne policyinnstillingen hindrer brukerne fra å utføre følgende kommandoer fra Startmenyen eller Windows sikkerhetsskjerm: Deaktiver, Start på nytt, Hvile og Dvale. Denne policyinnstillingen hindrer ikke brukerne fra å kjøre Windows-baserte programmer som utfører disse funksjonene.
 
@@ -221,7 +221,7 @@ Hvis du deaktiverer denne policyinnstillingen eller ikke konfigurerer den, spore
 
 Se også disse relaterte policyinnstillingene: "Fjern listen over ofte brukte programmer fra Start-menyen" og "Deaktiver tilpassede menyer".
 
-Denne policyinnstillingen hindrer ikke brukerne fra å låse programmer på Start-menyen eller oppgavelinjen. Se policyinnstillingene "Fjern listen over låste programmer fra Start-menyen" og "Ikke tillat låsing av programmer på oppgavelinjen".</string>
+Denne policyinnstillingen hindrer ikke brukerne fra å feste programmer på Start-menyen eller oppgavelinjen. Se policyinnstillingene "Fjern listen over festede programmer fra Start-menyen" og "Ikke tillat festing av programmer på oppgavelinjen".</string>
       <string id="NoMoreProgramsList">Fjern listen over alle programmer fra Start-menyen</string>
       <string id="NoMoreProgramsList_Help">Med denne policyinnstillingen kan du fjerne listen over alle programmer fra Start-menyen.
 
@@ -241,11 +241,11 @@ Hvis du deaktiverer denne policyinnstillingen eller ikke konfigurerer den, er Ne
 
 Se også policyinnstillingene "Deaktiver programmer på Innstillinger-menyen" og "Deaktiver Kontrollpanel" og policyinnstillingene i Nettverkstilkoblinger-mappen (Datamaskinkonfigurasjon og Brukerkonfigurasjon\Administrative maler\Nettverk\Nettverkstilkoblinger).</string>
       <string id="NoPinnedPrograms">Fjern listen over låste programmer fra Start-menyen</string>
-      <string id="NoPinnedPrograms_Help">Hvis du aktiverer denne innstillingen, fjernes listen over låste programmer fra Start-menyen. Brukerne kan ikke låse programmer på Start-menyen. 
+      <string id="NoPinnedPrograms_Help">Hvis du aktiverer denne innstillingen, fjernes listen over festede programmer fra Start-menyen. Brukerne kan ikke feste programmer på Start-menyen. 
 
 I Windows XP og Windows Vista er avmerkingsboksene for Internett og e-post fjernet fra dialogboksen Tilpass Start-menyen. 
 
-Hvis du deaktiverer denne policyinnstillingen eller ikke konfigurerer den, blir listen over låst programmer værende på Start-menyen. Brukerne kan låse og fjerne programmer fra Start-menyen.</string>
+Hvis du deaktiverer denne policyinnstillingen eller ikke konfigurerer den, blir listen over festede programmer værende på Start-menyen. Brukerne kan feste og fjerne programmer fra Start-menyen.</string>
       <string id="NoRecentDocsHistory">Ikke behold logg over nylig åpnede dokumenter</string>
       <string id="NoRecentDocsHistory_Help">Forhindrer operativsystemet og installerte programmer i å opprette og vise snarveier til dokumenter som nylig er åpnet.
 
@@ -261,7 +261,7 @@ Hvis du aktiverer denne policyinnstillingen, men ikke policyinnstillingen "Fjern
 
 Hvis du aktiverer denne innstillingen, men senere deaktiverer den eller setter den til Ikke konfigurert, vises dokumentsnarveier som ble lagret før policyinnstillingen ble aktivert, på nytt på menyen med nylig brukte elementer og Fil-menyen i programmer, i tillegg til i hurtiglister.
 
-Denne policyinnstillingen skjuler ikke eller forhindrer brukerne i å låse filer, mapper eller webområder i hurtiglistene. Se policyinnstillingen Ikke tillat låsing av elementer i hurtiglister. Denne policyinnstillingen skjuler heller ikke oppgaver som programmet har lagt til i hurtiglisten. Denne policyinnstillingen skjuler ikke dokumentsnarveier som vises i dialogboksen Åpne. Se policyinnstillingen Skjul rullegardinlisten over nylig åpnede filer.
+Denne policyinnstillingen skjuler ikke eller forhindrer brukerne i å feste filer, mapper eller webområder i hurtiglistene. Se policyinnstillingen Ikke tillat festing av elementer i hurtiglister. Denne policyinnstillingen skjuler heller ikke oppgaver som programmet har lagt til i hurtiglisten. Denne policyinnstillingen skjuler ikke dokumentsnarveier som vises i dialogboksen Åpne. Se policyinnstillingen Skjul rullegardinlisten over nylig åpnede filer.
 
 Obs!  Det kreves at tredjepartsprogrammer med Windows 2000-sertifisering eller senere sertifisering bruker denne innstillingen.</string>
       <string id="NoRecentDocsMenu">Fjern menyen med nylig brukte elementer fra Start-menyen</string>
@@ -535,12 +535,14 @@ Hvis du aktiverer denne innstillingen, kan brukerne få tilgang til kommandoen "
 Hvis du deaktiverer denne policyinnstillingen eller ikke konfigurerer den, får ikke brukerne tilgang til kommandoen "Kjør som annen bruker" på startlinjen i noen som helst programmer.
 
 Obs!  Denne policyinnstillingen forhindrer ikke brukerne i å bruke andre metoder, for eksempel SKIFT+høyreklikke menyen i hurtiglister på oppgavelinjen i programmer for å vise kommandoen "Kjør som annen bruker".</string>
-      <string id="GoToDesktopOnSignIn">Gå til skrivebordet i stedet for Start ved pålogging eller når alle appene på en skjerm er lukket</string>
-      <string id="GoToDesktopOnSignIn_Help">Denne policyinnstillingen tillater at brukerne går til skrivebordet i stedet for startskjermen når de logger på, eller når alle appene på skjermen er lukket.  Denne policyinnstillingen gjelder alle versjoner av Windows og versjoner av Windows Server der Skrivebordsopplevelse er installert.
+      <string id="GoToDesktopOnSignIn">Gå til skrivebordet i stedet for Start ved pålogging</string>
+      <string id="GoToDesktopOnSignIn_Help">Denne policyinnstillingen tillater at brukerne går til skrivebordet i stedet for startskjermen når de logger på.
 
-Hvis du aktiverer denne policyinnstillingen, går brukerne alltid til skrivebordet når de logger på, eller når alle appene på en skjerm er lukket.
+Hvis du aktiverer denne policyinnstillingen, går brukerne alltid til skrivebordet når de logger på.
 
-Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, går brukerne til startskjermen som standard når de logger på, og de kan ikke konfigurere denne innstillingen.</string>
+Hvis du deaktiverer denne policyinnstillingen, går brukerne alltid til startskjermen som standard når de logger på.
+
+Hvis du ikke konfigurerer denne policyinnstillingen, brukes standardinnstillingen for brukerens enhet, og brukeren kan velge å endre den.</string>
       <string id="ShowAppsViewOnStart">Vis Apper-visningen automatisk når brukeren går til Start</string>
       <string id="ShowAppsViewOnStart_Help">Denne policyinnstillingen gjør at Apper-visningen åpnes som standard når brukeren går til Start.
 
@@ -561,12 +563,18 @@ Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, kan bruke
 Hvis du aktiverer denne policyinnstillingen, vises skrivebordsapper først når appene sorteres etter kategori i Apper-visningen. De andre sorteringsalternativene er fortsatt tilgjengelige, og brukeren kan endre standardalternativet for sortering.
 
 Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, vises ikke skrivebordsappene først når appene sorteres etter kategori, og brukeren kan konfigurere denne innstillingen.</string>
-      <string id="ShowStartOnDisplayWithForegroundOnWinKey">Show Start on the display the user is using when they press the Windows logo key</string>
-      <string id="ShowStartOnDisplayWithForegroundOnWinKey_Help">This policy setting allows the Start screen to appear on the display the user is using when they press the Windows logo key. This setting only applies to users who are using multiple displays.
+      <string id="ShowStartOnDisplayWithForegroundOnWinKey">Vis Start på skjermen brukerne bruker når de trykker Windows-logotasten</string>
+      <string id="ShowStartOnDisplayWithForegroundOnWinKey_Help">Denne policyinnstillingen tillater at startskjermen vises på skjermen når brukerne trykker Windows-logotasten. Denne innstillingen gjelder bare for brukere som bruker flere skjermer.
 
-If you enable this policy setting, the Start screen will appear on the display the user is using when they press the Windows logo key.
+Hvis du aktiverer denne policyinnstillingen, vises startskjermen på skjermen som brukerne bruker når de trykker Windows-logotasten.
 
-If you disable or don't configure this policy setting, the Start screen will always appear on the main display when the user presses the Windows logo key. Users will still be able to open Start on other displays by pressing the Start button on that display. Also, the user will be able to configure this setting.</string>
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, vises startskjermen alltid når brukeren trykker Windows-logotasten. Brukerne kan fremdeles åpne Start på andre skjermer ved å trykke Start-knappen på den skjermen. Brukeren kan også konfigurere denne innstillingen.</string>
+      <string id="ForceStartSize_DisplayName">Tvinge Start til å være fullskjermstørrelse eller menystørrelse</string>
+      <string id="ForceStartSize_ExplainText">Hvis du bruker denne policyen og setter den til Start-meny eller Start i fullskjermmodus, får Start denne størrelsen, og brukere vil ikke kunne endre størrelsen på Start i innstillingene. 
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, vil Windows automatisk velge størrelse basert på maskinvareformfaktor, og brukerne vil kunne endre størrelsen på Start i innstillingene.</string>
+      <string id="ForceLauncherSize_Collapsed">Start-meny</string>
+      <string id="ForceLauncherSize_Expanded">Start i fullskjermmodus</string>
     </stringTable>
     <presentationTable>
       <presentation id="PowerButtonAction">
@@ -580,6 +588,9 @@ If you disable or don't configure this policy setting, the Start screen will alw
           <label>Startoppsettfil</label>
           <defaultValue></defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="ForceStartSize">
+        <dropdownList refId="ForceStartSizeDropdown" noSort="true" defaultItem="0">Velg en av følgende størrelser</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

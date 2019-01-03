@@ -58,6 +58,43 @@ Versão de hash suportada:
 - Para suportar apenas informações de conteúdo V2, configure "Versão de hash suportada" com o valor 2.
 
 - Para suportar informações de conteúdo V1 e V2, configure "Versão de hash suportada" com o valor 3.</string>
+      <string id="Pol_CipherSuiteOrder_Name">Ordem do conjunto de cifras</string>
+      <string id="Pol_CipherSuiteOrder_Help">Esta definição de política determina os conjuntos de cifras utilizados pelo servidor SMB.
+
+Se ativar esta definição de política, os conjuntos de cifras são priorizados na ordem especificada.
+
+Se ativar esta definição de política e não especificar pelo menos um conjunto de cifras suportado ou se desativar ou não configurar esta definição de política, a ordem do conjunto de cifras predefinida é utilizada.
+
+Conjunto de cifras SMB 3.11:
+
+AES_128_GCM
+AES_128_CCM
+
+Conjuntos de cifras SMB 3.0 e 3.02:
+
+AES_128_CCM
+
+Como modificar esta definição:
+
+Organize os conjuntos de cifras desejados na caixa de edição, um conjunto de cifras por linha, na ordem decrescente de preferência, com o conjunto de cifras mais preferido no topo. Retire quaisquer conjuntos de cifras que não pretenda utilizar.
+
+Nota: ao configurar esta definição de segurança, as alterações só entrarão em vigor quando reiniciar o Windows.</string>
+      <string id="HonorCipherSuiteOrder_Name">Ordem do conjunto de cifras honor</string>
+      <string id="HonorCipherSuiteOrder_Help">Esta definição de política determina como o servidor SMB seleciona um conjunto de cifras ao negociar uma nova ligação com um cliente SMB.
+
+Se ativar esta definição de política, o servidor SMB irá selecionar o conjunto de cifras mais preferível dos conjuntos de cifras do cliente SMB, ignorando as preferências do conjunto de cifras do cliente.
+
+Se desativar ou não configurar esta definição de política, o servidor SMB irá selecionar o conjunto de cifras que o cliente SMB prefere nos conjuntos de cifras do servidor.
+
+Nota: ao configurar esta definição de segurança, as alterações só entrarão em vigor quando reiniciar o Windows.</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">Ordem do conjunto de cifras honor</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">Esta definição de política determina como o cliente SMB seleciona um conjunto de cifras ao negociar uma nova ligação com um cliente SMB.
+
+Se ativar esta definição de política, o servidor SMB irá selecionar o conjunto de cifras mais preferível da lista de conjuntos de cifras suportadas pelo cliente, ignorando as preferências do cliente.
+
+Se desativar ou não configurar esta definição de política, o servidor SMB irá selecionar o conjunto de cifras que o cliente prefere na lista de conjuntos de cifras suportadas pelo servidor.
+
+Nota: ao configurar esta definição de segurança, as alterações só entrarão em vigor quando reiniciar o Windows.</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@ Versão de hash suportada:
         <text>3 = Suportar hashes V1 e V2</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Versão de hash suportada:  </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>Conjuntos de cifras:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

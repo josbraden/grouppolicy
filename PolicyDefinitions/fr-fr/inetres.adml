@@ -3118,6 +3118,7 @@ Si vous ne configurez pas ce paramètre de stratégie, l’utilisateur peut acti
       <string id="SUPPORTED_IE9">Au moins Internet Explorer 9.0</string>
       <string id="SUPPORTED_IE10">Au moins Internet Explorer 10.0</string>
       <string id="SUPPORTED_IE10WIN8">Au minimum Internet Explorer 10.0 sur Windows 8</string>
+      <string id="SUPPORTED_IE11WIN8">Au minimum Internet Explorer 11.0 sur Windows 8.1</string>
       <string id="SUPPORTED_IE11">Au moins Internet Explorer 11.0</string>
       <string id="SUPPORTED_IE7_NONVISTA">Au moins Internet Explorer 7.0. Non pris en charge par Windows Vista</string>
       <string id="SUPPORTED_IE7VISTA">Au moins Internet Explorer 7.0 dans Windows Vista</string>
@@ -3169,16 +3170,6 @@ Si vous désactivez ce paramètre de stratégie ou si vous ne le configurez pas,
       <string id="UTF8URLQuery_Intranet">Encoder les chaînes de requête au format UTF-8 uniquement pour les URL intranet</string>
       <string id="UTF8URLQuery_Never">Ne jamais encoder les chaînes de requête au format UTF-8</string>
       <string id="UTF8URLQuery_NonIntranet">Encoder les chaînes de requête au format UTF-8 uniquement pour les URL autres que les URL intranet</string>
-      <string id="TopResult0">Désactiver la recherche de résultat principal</string>
-      <string id="TopResult1">Activer la recherche de résultat principal</string>
-      <string id="TopResultPol">Empêcher la configuration de la recherche de résultat principal dans la barre d’adresses</string>
-      <string id="TopResultPol_Explain">Ce paramètre de stratégie vous permet de spécifier si un utilisateur peut accéder au site Web d’un résultat principal lorsque la recherche est activée dans la barre d’adresses. Les options possibles sont les suivantes :
-• Désactiver la recherche de résultat principal : lorsqu’un utilisateur effectue une recherche dans la barre d’adresses, une liste de résultats de la recherche en provenance du moteur de recherche s’affiche dans la fenêtre principale.
-    • Activer la recherche de résultat principal : lorsqu’un utilisateur effectue une recherche dans la barre d’adresses, il est dirigé vers un site Web externe de résultat principal en fonction du moteur de recherche, le cas échéant.
-
-Si vous activez ce paramètre de stratégie, vous pouvez choisir où diriger l’utilisateur après une recherche dans la barre d’adresses : un site Web de résultat principal ou une page Web de résultats de la recherche dans la fenêtre principale.
-
-Si vous désactivez ce paramètre de stratégie ou si vous ne le configurez pas, l’utilisateur peut sélectionner sa préférence pour ce comportement. L’accès au site Web de résultat principal est l’action par défaut.</string>
       <string id="UseHomePage">Aller directement à la page d’accueil</string>
       <string id="UseHoverColor">Activer l’option de sélection par pointage</string>
       <string id="UseHoverColor_Explain">Ce paramètre de stratégie permet de modifier la couleur des liens hypertexte lorsque le pointeur de la souris s’arrête dessus.
@@ -3399,7 +3390,11 @@ Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, l’uti
       <string id="Advanced_DisableEPMCompat">Ne pas autoriser les contrôles ActiveX à s’exécuter en mode protégé lorsque le mode protégé amélioré est activé</string>
       <string id="Advanced_EnableHttp1_1">Utiliser HTTP 1.1</string>
       <string id="Advanced_ProxyHttp1_1">Utiliser HTTP 1.1 avec une connexion par proxy</string>
-      <string id="Advanced_EnableSPDY3_0">Autoriser Internet Explorer à utiliser le protocole réseau SPDY/3</string>
+      <string id="Advanced_EnableSSL3Fallback">Autoriser le recours à SSL 3.0 (Internet Explorer)</string>
+      <string id="Advanced_FallbackNonProtected">Sites en mode non protégé</string>
+      <string id="Advanced_FallbackAll">Tous les sites</string>
+      <string id="Advanced_FallbackNone">Aucun site</string>
+      <string id="Advanced_EnableHTTP2">Autoriser Internet Explorer à utiliser le protocole de réseau HTTP2</string>
       <string id="Advanced_SetWinInetProtocols">Désactiver la prise en charge du chiffrement</string>
       <string id="NoPrinting">Désactiver le menu Imprimer</string>
       <string id="Advanced_DisableFlipAhead">Désactiver l’avance rapide avec la fonctionnalité de prédiction de page</string>
@@ -3452,13 +3447,21 @@ Si vous activez ce paramètre de stratégie, Internet Explorer utilise le protoc
 Si vous désactivez ce paramètre de stratégie, Internet Explorer n’utilise pas le protocole HTTP 1.1 avec une connexion par proxy.
 
 Si vous ne configurez pas ce paramètre de stratégie, les utilisateurs peuvent configurer Internet Explorer pour utiliser ou non le protocole HTTP 1.1 avec une connexion par proxy.</string>
-      <string id="Advanced_ExplainEnableSPDY3_0">Ce paramètre de stratégie détermine si Internet Explorer utilise le protocole réseau SPDY/3. SPDY/3 fonctionne avec des requêtes HTTP pour optimiser le temps de réponse des demandes réseau via la compression, le multiplexage et la définition des priorités.
+      <string id="Advanced_ExplainEnableHTTP2">Ce paramètre de stratégie détermine si Internet Explorer utilise le protocole réseau HTTP2. Les requêtes HTTP2 permettent d'optimiser la latence des requêtes réseau via la compression, le multiplexage et la définition des priorités.
 
-Si vous activez ce paramètre de stratégie, Internet Explorer utilise le protocole réseau SPDY/3.
+Si vous activez ce paramètre de stratégie, Internet Explorer utilise le protocole réseau HTTP2.
 
-Si vous désactivez ce paramètre de stratégie, Internet Explorer n’utilise pas le protocole réseau SPDY/3.
+Si vous désactivez ce paramètre de stratégie, Internet Explorer n'utilisera pas le protocole réseau HTTP2.
 
-Si vous ne configurez pas ce paramètre de stratégie, les utilisateurs peuvent activer ou désactiver ce comportement via les paramètres Options avancées d’Internet Explorer.  Ce paramètre est activé par défaut.</string>
+Si vous ne configurez pas ce paramètre de stratégie, les utilisateurs pourront activer ou désactiver ce comportement  à l'aide des paramètres des Options Internet avancées d'Internet Explorer. Par défaut, ce comportement est activé.</string>
+      <string id="Advanced_ExplainEnableSSL3Fallback">Ce paramètre de stratégie vous permet de bloquer tout recours non sécurisé à SSL 3.0. Lorsque cette stratégie est activée, Internet Explorer tente de se connecter aux sites à l'aide de SSL 3.0 ou version antérieure lorsque TLS 1.0 ou version supérieure échoue.
+
+Nous vous recommandons de ne pas autoriser le recours non sécurisé afin d'empêcher les attaques en intermédiaire.
+
+Cette stratégie n'a pas d'impact sur l'activation des protocoles de sécurité.
+
+Si vous désactivez cette stratégie, les paramètres système par défaut seront utilisés.
+</string>
       <string id="Advanced_ExplainSetWinInetProtocols">Ce paramètre de stratégie vous permet de désactiver la prise en charge des protocoles TLS (Transport Layer Security) 1.0, TLS 1.1, TLS 1.2, SSL (Secure Sockets Layer) 2.0 ou SSL 3.0 dans le navigateur. Les protocoles TLS et SSL sont des protocoles de protection des communications entre le navigateur et le serveur cible. Lorsque le navigateur tente d’établir une communication protégée avec le serveur cible, le navigateur et le serveur négocient le protocole et la version à utiliser. Le navigateur et le serveur comparent leur liste respective de protocoles et versions pris en charge, puis choisissent la solution la plus appropriée.
 
 Si vous activez ce paramètre de stratégie, le navigateur négocie ou non un tunnel de chiffrement à l’aide des méthodes de chiffrement que vous sélectionnez dans la liste déroulante.
@@ -3832,44 +3835,44 @@ Si vous désactivez ce paramètre de stratégie ou si vous ne le configurez pas,
 Si vous activez ce paramètre, les utilisateurs peuvent voir et utiliser l’option Mode Entreprise dans le menu Outils. Si vous activez ce paramètre mais ne spécifiez aucun emplacement pour les rapports, le mode Entreprise est toujours disponible pour vos utilisateurs, mais vous ne recevez aucun rapport.
 
 Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, l’option de menu ne s’affiche pas et les utilisateurs ne peuvent pas exécuter les sites Web en mode Entreprise.</string>
-      <string id="VerMgmtDisable">Désactiver le blocage des contrôles ActiveX obsolètes pour Internet Explorer</string>
-      <string id="IE_ExplainVerMgmtDisable">Ce paramètre de stratégie détermine si Internet Explorer bloque certains contrôles ActiveX spécifiques. Les contrôles ActiveX obsolètes ne sont jamais bloqués dans la zone Intranet.
+      <string id="VerMgmtDisable">Désactiver le blocage des contrôles ActiveX obsolètes par Internet Explorer</string>
+      <string id="IE_ExplainVerMgmtDisable">Ce paramètre de stratégie détermine si Internet Explorer bloque certains contrôles ActiveX obsolètes. Les contrôles ActiveX obsolètes ne sont jamais bloqués dans la Zone Intranet.
 
-Si vous activez ce paramètre de stratégie, Internet Explorer arrête de bloquer les contrôles ActiveX obsolètes.
+Si vous activez ce paramètre de stratégie, Internet Explorer ne bloque plus les contrôles ActiveX obsolètes.
 
-Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, Internet Explorer continue de bloquer certains contrôles ActiveX obsolètes.
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, Internet Explorer continue de bloquer certains contrôles ActiveX obsolètes.
 
-Pour plus d’informations, voir « Contrôles ActiveX obsolètes » dans la bibliothèque TechNet d’Internet Explorer.</string>
-      <string id="VerMgmtAuditModeEnable">Activer la journalisation des contrôles ActiveX dans Internet Explorer</string>
+Pour plus d'informations, voir « Contrôles ActiveX obsolètes » dans la bibliothèque TechNet d'Internet Explorer.</string>
+      <string id="VerMgmtAuditModeEnable">Activer le contrôle ActiveX de journalisation dans Internet Explorer</string>
       <string id="IE_ExplainVerMgmtAuditModeEnable">Ce paramètre de stratégie détermine si Internet Explorer enregistre les informations de journal pour les contrôles ActiveX.
 
-Si vous activez ce paramètre de stratégie, Internet Explorer consigne les informations sur les contrôles ActiveX (notamment l’URI source ayant chargé le contrôle et s’il était bloqué) dans un fichier local.
+Si vous activez ce paramètre de stratégie, Internet Explorer enregistre les informations de contrôle ActiveX (y compris la source URI qui a chargé le contrôle et les informations de blocage) dans un fichier local.
 
-Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, Internet Explorer ne consigne pas les informations sur les contrôles ActiveX.
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, Internet Explorer n'enregistre pas les informations de contrôle ActiveX.
 
-Notez que vous pouvez activer et désactiver ce paramètre de stratégie quels que soient les paramètres « Désactiver le blocage des contrôles ActiveX obsolètes pour Internet Explorer » ou « Désactiver le blocage des contrôles ActiveX obsolètes pour Internet Explorer pour des domaines spécifiques ».
+Notez que vous pouvez activer ou désactiver ce paramètre de stratégie indépendamment des paramètres de stratégie « Désactiver le blocage des contrôles ActiveX obsolètes par Internet Explorer » ou « Désactiver le blocage des contrôles ActiveX obsolètes par Internet Explorer sur certains domaines ».
 
-Pour plus d’informations, voir « Contrôles ActiveX obsolètes » dans la bibliothèque TechNet d’Internet Explorer.</string>
-      <string id="VerMgmtDomainAllowlist">Désactiver le blocage des contrôles ActiveX obsolètes pour Internet Explorer pour des domaines spécifiques</string>
-      <string id="IE_ExplainVerMgmtDomainAllowlist">Ce paramètre de stratégie vous permet de gérer une liste de domaines sur lesquels Internet Explorer ne bloquera plus les contrôles ActiveX obsolètes. Ces contrôles ActiveX obsolètes ne sont jamais bloqués dans la Zone intranet.
+Pour plus d'informations, voir « Contrôles ActiveX obsolètes » dans la bibliothèque TechNet d'Internet Explorer.</string>
+      <string id="VerMgmtDomainAllowlist">Désactiver le blocage des contrôles ActiveX obsolètes par Internet Explorer sur certains domaines</string>
+      <string id="IE_ExplainVerMgmtDomainAllowlist">Ce paramètre de stratégie vous permet de gérer la liste des domaines sur lesquels Internet Explorer ne bloquera plus les contrôles ActiveX obsolètes. Les contrôles ActiveX absolètes ne sont jamais bloqués dans la Zone Intranet.
 
-Si vous activez ce paramètre de stratégie, vous pouvez définir une liste personnalisée de domaines pour lesquels les contrôles ActiveX obsolètes ne sont pas bloqués dans Internet Explorer. Chaque entrée de domaine doit correspondre au format suivant :
+Si vous activez ce paramètre de stratégie, vous pouvez entrer une liste personnalisée de domaines dont les contrôles ActiveX absolètes ne seront pas bloqués dans Internet Explorer. Chaque entrée de domaine doit être formatée de l'une des trois manières suivantes :
 
-1. nom.domaine.extension. Par exemple, si vous souhaitez ajouter *.contoso.com/*, utilisez « contoso.com ».
-2. Nom_hôte. Par exemple, si vous souhaitez ajouter http://example, utilisez « example »
-3. file:///chemin/nom_fichier.htm. Par exemple, utilisez « file:///C:/Users/contoso/Desktop/index.htm »
+1. « domain.name.TLD ». Par exemple, si vous souhaitez inclure *.contoso.com/*, utilisez « contoso.com »
+2. « hostname ». Par exemple, si vous souhaitez inclure http://exemple, utilisez « exemple »
+3. « file:///path/filename.htm ». Par exemple, utilisez « file:///C:/Users/contoso/Desktop/index.htm »
 
-Si vous désactivez ce paramètre de stratégie ou que vous ne le configurez pas, la liste est supprimée et Internet Explorer continue à bloquer les contrôles ActiveX obsolètes sur tous les domaines dans la zone Internet.
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, la liste est supprimée et Internet Explorer continue de bloquer certains contrôles ActiveX obsolètes sur tous les domaines de la zone Internet.
 
-Pour plus d’informations, voir, « Contrôles ActiveX obsolètes » dans la bibliothèque TechNet d’Internet Explorer.</string>
-      <string id="VerMgmtDisableRunThisTime">Supprimer le bouton « Exécuter une fois » pour les contrôles ActiveX obsolètes dans Internet Explorer </string>
-      <string id="IE_ExplainVerMgmtDisableRunThisTime">Ce paramètre de stratégie permet d’empêcher les utilisateurs de voir le bouton « Exécuter une fois » et d’exécuter certains contrôles ActiveX obsolètes dans Internet Explorer.
+Pour plus d'informations, voir « Contrôles ActiveX obsolètes » dans la bibliothèque TechNet d'Internet Explorer.</string>
+      <string id="VerMgmtDisableRunThisTime">Supprimer le bouton de « Exécuter une fois » pour les contrôles ActiveX obsolètes dans Internet Explorer </string>
+      <string id="IE_ExplainVerMgmtDisableRunThisTime">Ce paramètre de stratégie permet de masquer le bouton « Exécuter une fois » et d'empêcher les utilisateurs d'exécuter certains contrôles ActiveX obsolètes dans Internet Explorer.
 
-Si vous activez ce paramètre de stratégie, les utilisateurs ne voient pas le bouton « Exécuter une fois » sur le message d’avertissement qui s’affiche lorsqu’Internet Explorer bloque un contrôle ActiveX obsolète.
+Si vous activez ce paramètre de stratégie, les utilisateurs ne verront pas le bouton « Exécuter une fois » sur le message d'avertissement qui apparaît lorsqu'Internet Explorer bloque un contrôle ActiveX obsolète.
 
-Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les utilisateurs voient le bouton « Exécuter une fois » sur le message d’avertissement qui s’affiche lorsqu’Internet Explorer bloque un contrôle ActiveX obsolète. Cliquez sur ce bouton pour que l’utilisateur puisse exécuter le contrôle ActiveX obsolète une fois.
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, les utilisateurs verront le bouton « Exécuter une fois » sur le message d'avertissement qui apparaît lorsqu'Internet Explorer bloque un contrôle ActiveX obsolète. Ce bouton permet à l'utilisateur d'exécuter le contrôle ActiveX obsolète une seule fois.
 
-Pour plus d’informations, voir « Contrôles ActiveX obsolètes » dans la bibliothèque TechNet d’Internet Explorer.</string>
+Pour plus d'informations, voir « Contrôles ActiveX obsolètes » dans la bibliothèque TechNet d'Internet Explorer.</string>
       <string id="EnterpriseModeSiteList">Utiliser la liste des sites Web en mode Entreprise d’Internet Explorer</string>
       <string id="IE_ExplainEnterpriseModeSiteList">Ce paramètre de stratégie permet de spécifier l’emplacement de la liste des sites Web à ouvrir à l’aide du mode Entreprise d’Internet Explorer, et non du mode Standard, en raison de problèmes de compatibilité. Les utilisateurs ne peuvent pas modifier cette liste.
 
@@ -3983,10 +3986,50 @@ Si vous activez ce paramètre de stratégie, la détection des numéros de tél�
 Si vous désactivez ce paramètre de stratégie, la détection des numéros de téléphone est activée. Les utilisateurs ne peuvent pas modifier ce paramètre.
 
 Si vous ne configurez pas ce paramètre de stratégie, les utilisateurs peuvent activer ou désactiver ce comportement via les paramètres d’Internet Explorer. Ce paramètre est activé par défaut.</string>
+      <string id="SiteDiscoveryEnableXML">Activer la sortie XML de découverte de sites</string>
+      <string id="SiteDiscoveryEnableWMI">Activer la sortie WMI de découverte de sites</string>
+      <string id="SiteDiscoveryDomainAllowList">Limiter la sortie de découverte de sites par domaine</string>
+      <string id="SiteDiscoveryZoneAllowList">Limiter la sortie de découverte de sites par zone</string>
+      <string id="IE_Explain_SiteDiscoveryEnableXML">Ce paramètre de stratégie vous permet de gérer la fonctionnalité de sortie XML du kit d'outils de découverte des sites pour Internet Explorer (SDTK). Lorsqu'elle est activée, la fonctionnalité enregistre les données collectées dans un fichier XML à un emplacement spécifié lors de la définition de cette stratégie. Lorsqu'elle est désactivée, aucune donnée n'est enregistrée dans le fichier XML. L'activation ou la désactivation de ce paramètre n'a pas d'impact sur les autres méthodes de sortie disponibles pour le SDTK.</string>
+      <string id="IE_Explain_SiteDiscoveryEnableWMI">Ce paramètre de stratégie vous permet de gérer la fonctionnalité de sortie WMI du kit d'outils de découverte des sites pour Internet Explorer (SDTK). Lorsqu'elle est activée, la fonctionnalité enregistre les données collectées dans une classe WMI qui peut ensuite être agrégée à l'aide d'une solution de gestion des clients ou autre. Lorsqu'elle est désactivée, aucune donnée n'est enregistrée dans la classe WMI. L'activation ou la désactivation de ce paramètre n'a pas d'impact sur les autres méthodes de sortie disponibles pour le SDTK.</string>
+      <string id="IE_Explain_SiteDiscoveryDomainAllowList">Ce paramètre de stratégie permet de contrôler les domaines inclus dans la fonctionnalité de découverte du kit d'outils de découverte des sites pour Internet Explorer (SDTK). Lorsqu'elle est activée, la fonctionnalité collecte des données à partir de sites qui font partie des domaines configurés dans la stratégie. Lorsqu'elle est désactivée ou non configurée, tous les domaines sont inclus dans la découverte de sites. Cette stratégie peut être utilisée conjointement avec d'autres sites de contrôle de stratégies inclus dans la découverte de sites.
+
+Pour configurer les domaines inclus dans la collecte de données pour le kit d'outils de découverte des sites pour Internet Explorer, ajoutez un domaine par ligne dans la zone de texte. Par exemple :
+
+microsoft.sharepoint.com
+outlook.com
+onedrive.com
+timecard.contoso.com
+LOBApp.contoso.com</string>
+      <string id="IE_Explain_SiteDiscoveryZoneAllowList">Ce paramètre de stratégie permet de contrôler les zones de sites incluses dans la fonctionnalité de découverte du kit d'outils de découverte des sites pour Internet Explorer (SDTK). Lorsqu'elle est activée, la fonctionnalité collecte des données à partir de sites qui font partie des zones configurées dans la stratégie. Lorsque cette fonctionnalité est désactivée ou non configurée, toutes les zones sont incluses dans la découverte de sites. Cette stratégie peut être utilisée conjointement avec d'autres stratégies de contrôle de sites incluses dans la découverte de sites.
+
+Pour configurer les zones incluses dans la découverte de sites, un nombre binaire est formé en fonction des zones sélectionnées. La représentation décimale de ce nombre est utilisée pour représenter ce nombre dans la stratégie. Par exemple :
+
+• 2 - Zone de site Intranet uniquement
+  Représentation binaire - 00010
+	• 0 - Zone de sites restreints
+	• 0 - Zone Internet
+	• 0 - Zone de sites de confiance
+	• 1 - Zone Intranet locale
+	• 0 - Zone ordinateur locale
+• 6 - Zones Intranet et de sites de confiance uniquement
+  Représentation binaire - 00110
+	• 0 - Zone de sites restreints
+	• 0 - Zone Internet
+	• 1 - Zone de sites de confiance
+	• 1 - Zone Intranet locale
+	• 0 - Zone ordinateur locale
+• 22 - Zones de sites de confiance, Intranet et restreintes uniquement 
+ Représentation binaire - 10110 
+	• 1 - Zone de sites restreints
+	• 0 - Zone Internet
+	• 1 - Zone de sites de confiance
+	• 1- Zone Intranet locale
+	• 0 - Zone ordinateur locale</string>
     </stringTable>
     <presentationTable>
       <presentation id="VerMgmtDomainAllowlist_1">
-        <listBox refId="DomainList">Liste verte de domaines</listBox>
+        <listBox refId="DomainList">Liste verte de domaine</listBox>
       </presentation>
       <presentation id="AddonManagement_AddOnList_1">
         <listBox refId="AddOnList">Liste des modules complémentaires</listBox>
@@ -4537,9 +4580,6 @@ Si vous ne configurez pas ce paramètre de stratégie, les utilisateurs peuvent 
         <checkBox refId="Btn_Paste">Afficher le bouton Coller</checkBox>
         <checkBox refId="Btn_Encoding">Afficher le bouton Encodage</checkBox>
       </presentation>
-      <presentation id="TopResultPol">
-        <dropdownList refId="TopResult" noSort="true" defaultItem="0">Rechercher à partir de la barre d’adresses :</dropdownList>
-      </presentation>
       <presentation id="UnderlineLinksPol">
         <dropdownList refId="UnderlineLinks" noSort="true" defaultItem="0">Souligner les liens</dropdownList>
       </presentation>
@@ -4564,6 +4604,9 @@ Si vous ne configurez pas ce paramètre de stratégie, les utilisateurs peuvent 
       <presentation id="Advanced_SetWinInetProtocols">
         <!-- defaultItem is zero based index into the item enumeration defined in inetres.admx. We want this to point at 'Use SSL 3.0 and TLS 1.0', the current default for IE -->
         <dropdownList refId="Advanced_WinInetProtocolOptions" noSort="true" defaultItem="6">Combinaisons sécurisées de protocoles</dropdownList>
+      </presentation>
+      <presentation id="Advanced_EnableSSL3Fallback">
+        <dropdownList refId="Advanced_EnableSSL3FallbackOptions" noSort="true" defaultItem="0">Autoriser la garantie de secours pour :</dropdownList>
       </presentation>
       <presentation id="NewTabAction_1">
         <dropdownList refId="NewTabActionOptions" noSort="true" defaultItem="2">Comportement d’un nouvel onglet</dropdownList>
@@ -4623,6 +4666,17 @@ Si vous ne configurez pas ce paramètre de stratégie, les utilisateurs peuvent 
       </presentation>
       <presentation id="DefaultLinksView_1">
         <dropdownList refId="DefaultViewOptions" noSort="true" defaultItem="0">Comportement de lancement par défaut du navigateur pour les liens</dropdownList>
+      </presentation>
+      <presentation id="SiteDiscoveryEnableXML">
+        <textBox refId="SiteDiscoveryXMLPath">
+          <label>Chemin de sortie</label>
+        </textBox>
+      </presentation>
+      <presentation id="SiteDiscoveryZoneAllowList">
+        <decimalTextBox refId="SiteDiscoveryZoneAllowList" defaultValue="31">Masque de zone</decimalTextBox>
+      </presentation>
+      <presentation id="SiteDiscoveryDomainAllowList">
+        <multiTextBox refId="SiteDiscoveryDomainAllowList">Liste de domaines</multiTextBox>
       </presentation>
     </presentationTable>
   </resources>

@@ -123,6 +123,22 @@ Se si abilita questa impostazione dei criteri e il dominio delle risorse richies
 Se si disabilita o non si configura questa impostazione dei criteri e il dominio delle risorse richiede l'autenticazione composta, i dispositivi invieranno innanzitutto una richiesta di autenticazione non composta e quindi una richiesta di autenticazione composta quando il servizio richiede l'autenticazione composta.
 
 </string>
+      <string id="DevicePKInitEnabled">Supporta autenticazione dei dispositivi tramite certificato</string>
+      <string id="DevicePKInitEnabled_explain">Per il supporto dell'autenticazione dei dispositivi tramite certificato sarà necessaria la connettività a un controller di dominio nel dominio dell'account del dispositivo che supporta l'autenticazione del certificato per gli account computer. 
+
+Questa impostazione dei criteri consente di impostare il supporto per Kerberos per i tentativi di autenticazione tramite il certificato per il dispositivo nel dominio.
+
+Se si abilita questa impostazione dei criteri, le credenziali del dispositivo verranno selezionate in base alle opzioni seguenti:
+
+Automatico: il dispositivo tenterà l'autenticazione tramite il relativo certificato. Se il controller di dominio non supporta l'autenticazione di account computer tramite certificati, verrà tentata l'autenticazione con password.
+
+Forza: il dispositivo eseguirà sempre l'autenticazione tramite il relativo certificato. Se non è possibile trovare un controller di dominio che supporta l'autenticazione di account computer tramite certificati, l'autenticazione avrà esito negativo.
+
+Se si disabilita questa impostazione dei criteri, verrà utilizzata l'opzione Disabilita.
+Se non si configura questa impostazione dei criteri, verrà utilizzata l'opzione Automatico.
+</string>
+      <string id="DevicePKInitBehavior_Automatic">Automatico</string>
+      <string id="DevicePKInitBehavior_Force">Forza</string>
     </stringTable>
     <presentationTable>
       <presentation id="hosttorealm">
@@ -215,6 +231,9 @@ Se si disabilita o non si configura questa impostazione dei criteri e il dominio
         <decimalTextBox refId="MaxTokenSize" defaultValue="48000" spinStep="1000">Dimensioni massime</decimalTextBox>
       </presentation>
       <presentation id="EnableCbacAndArmor">
+      </presentation>
+      <presentation id="DevicePKInitBehavior">
+        <dropdownList refId="DevicePKInitBehavior" noSort="true" defaultItem="0">Comportamento di autenticazione del dispositivo tramite certificato:</dropdownList>  
       </presentation>
     </presentationTable>
   </resources>

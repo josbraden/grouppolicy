@@ -232,23 +232,33 @@ Se si disabilita o non si configura questa impostazione dei criteri, BitLocker u
       
 
       </string>
-      <string id="EncryptionMethodNoDiffuser_Help">
-          
-          Questa impostazione dei criteri consente di configurare l'algoritmo e il livello di codifica utilizzati da Crittografia unità BitLocker. Questa impostazione dei criteri viene applicata quando si abilita BitLocker. La modifica del metodo di crittografia non ha alcun effetto se l'unità è già crittografata o se la crittografia è in corso. Per ulteriori informazioni sui metodi di crittografia disponibili, consultare il documento BitLocker Drive Encryption Deployment Guide su Microsoft TechNet. Questa impostazione dei criteri è applicabile solo ai computer che eseguono Windows 8 e versioni successive.
+      <string id="EncryptionMethodNoDiffuser_Help">Questa impostazione dei criteri consente di configurare l'algoritmo e il livello di codifica utilizzati da Crittografia unità BitLocker. Questa impostazione dei criteri viene applicata quando si abilita BitLocker. La modifica del metodo di crittografia non ha alcun effetto se l'unità è già crittografata o se la crittografia è in corso. Per ulteriori informazioni sui metodi di crittografia disponibili, vedere la guida alla distribuzione di Crittografia unità BitLocker su Microsoft TechNet. Questa impostazione dei criteri è applicabile solo ai computer che eseguono Windows 8 e versioni successive.
 
-          Se si abilita questa impostazione dei criteri, sarà possibile scegliere un algoritmo di crittografia e un livello di codifica per la crittografia delle unità mediante BitLocker.
+Se si abilita questa impostazione dei criteri, sarà possibile scegliere un algoritmo di crittografia e un livello di codifica per la crittografia delle unità mediante BitLocker.
 
-          Se si disabilita o non si configura questa impostazione dei criteri, BitLocker utilizzerà AES con lo stesso livello di bit (128 bit o 256 bit) dell'impostazione dei criteri "Scegli metodo di crittografia dell'unità e livello di codifica (Windows Vista, Windows Server 2008, Windows 7)", se impostato. Se nessuno dei due criteri è impostato, BitLocker utilizzerà il metodo di crittografia predefinito AES 128 bit con diffusione o il metodo di crittografia specificato dallo script di configurazione.
+Se si disabilita o non si configura questa impostazione dei criteri, BitLocker utilizzerà AES con lo stesso livello di bit (128 bit o 256 bit) dell'impostazione dei criteri "Scegli metodo di crittografia dell'unità e livello di codifica (Windows Vista, Windows Server 2008, Windows 7)", se impostato. Se nessuno dei due criteri è impostato, BitLocker utilizzerà il metodo di crittografia predefinito AES 128 bit con diffusione o il metodo di crittografia specificato dallo script di configurazione.
 
-      
+      </string>
+      <string id="EncryptionMethodWithXts_Help">Questa impostazione dei criteri consente di configurare l'algoritmo e il livello di codifica usati da Crittografia unità BitLocker. Questa impostazione dei criteri viene applicata quando si attiva BitLocker. La modifica del metodo di crittografia non ha alcun effetto se l'unità è già stata crittografata o se la crittografia è in corso.
+
+Se si abilita questa impostazione dei criteri, sarà possibile configurare singolarmente un algoritmo di crittografia e un livello di codifica delle chiavi per le unità dati fisse, le unità del sistema operativo e le unità dati rimovibili. Per le unità del sistema operativo e fisse, è consigliabile usare l'algoritmo XTS-AES. Per le unità rimovibili, è necessario usare AES-CBC a 128 bit o AES-CBC a 256 bit se l'unità verrà usata in altri dispositivi in cui non è in esecuzione Windows 10 (versione 1511).
+
+Se si disabilita o non si configura questa impostazione dei criteri, BitLocker userà AES con lo stesso livello di bit (128 bit o 256 bit) delle impostazioni dei criteri "Scegli metodo di crittografia dell'unità e livello di codifica (Windows Vista, Windows Server 2008, Windows 7)" e "Scegli metodo di crittografia dell'unità e livello di codifica" (in questo ordine), se sono impostate. Se non è impostato alcun criterio, BitLocker userà il metodo di crittografia predefinito XTS-AES a 128 bit o il metodo di crittografia specificato dallo script di configurazione.”
 
       </string>
       <string id="EncryptionMethod_Name">Scegli metodo di crittografia dell'unità e livello di codifica (Windows Vista, Windows Server 2008, Windows 7, Windows Server 2008 R2)</string>
-      <string id="EncryptionMethodNoDiffuser_Name">Scegli metodo di crittografia dell'unità e livello di codifica</string>
+      <string id="EncryptionMethodNoDiffuser_Name">Scegli il metodo e il livello di codifica per la crittografia delle unità (Windows 8, Windows Server 2012, Windows 8.1, Windows Server 2012 R2, Windows 10 versione 1507)</string>
+      <string id="EncryptionMethodWithXts_Name">Scegli il metodo e il livello di codifica per la crittografia delle unità (Windows 10 versione 1511 e successive)</string>
       <string id="EncryptionMethodDropDown_AES128Diffuser_Name">AES 128 bit con diffusione</string>
       <string id="EncryptionMethodDropDown_AES256Diffuser_Name">AES 256 bit con diffusione</string>
       <string id="EncryptionMethodDropDown_AES128_Name">AES 128 bit (predefinito)</string>
+      <string id="EncryptionMethodDropDown_AES128_Name2">AES-CBC a 128 bit</string>
+      <string id="EncryptionMethodDropDown_AES128_Name3">AES-CBC a 128 bit (impostazione predefinita)</string>
       <string id="EncryptionMethodDropDown_AES256_Name">AES 256 bit</string>
+      <string id="EncryptionMethodDropDown_AES256_Name2">AES-CBC a 256 bit</string>
+      <string id="EncryptionMethodDropDown_XTS_AES128_Name">XTS-AES a 128 bit (impostazione predefinita)</string>
+      <string id="EncryptionMethodDropDown_XTS_AES128_Name2">XTS-AES a 128 bit</string>
+      <string id="EncryptionMethodDropDown_XTS_AES256_Name">XTS-AES a 256 bit</string>
 
       <string id="FVECategory">Crittografia unità BitLocker</string>
       <string id="PlatformValidation_Deprecated_Help">Questa impostazione dei criteri consente di configurare la modalità di protezione della chiave di crittografia di BitLocker da parte del modulo TPM (Trusted Platform Module) del computer. Questa impostazione dei criteri non si applica se il computer non è provvisto di un TPM compatibile o se BitLocker è già stato abilitato con protezione TPM.
@@ -681,8 +691,8 @@ Si noti che se non si abilita questa impostazione dei criteri, le opzioni per l'
       
       </string>
 
-    <string id="AllowSecureBootForIntegrity_Name">Consenti avvio protetto per la convalida dell'integrità</string>
-    <string id="AllowSecureBootForIntegrity_Help">Questa impostazione dei criteri consente di specificare se consentire l'avvio protetto come provider di integrità della piattaforma per le unità del sistema operativo BitLocker.
+      <string id="AllowSecureBootForIntegrity_Name">Consenti avvio protetto per la convalida dell'integrità</string>
+      <string id="AllowSecureBootForIntegrity_Help">Questa impostazione dei criteri consente di specificare se consentire l'avvio protetto come provider di integrità della piattaforma per le unità del sistema operativo BitLocker.
 
 L'avvio protetto assicura che l'ambiente di preavvio del PC carichi solo firmware firmato digitalmente da autori di software autorizzati. Offre inoltre maggiore flessibilità per la gestione della configurazione dell'ambiente di preavvio rispetto ai controlli di integrità BitLocker legacy.
 
@@ -696,9 +706,25 @@ Nota: se l'impostazione del Criterio di gruppo "Configurazione profilo di conval
 
 Avviso: la disabilitazione di questa impostazione dei criteri potrebbe comportare il ripristino di BitLocker in caso di aggiornamento del firmware. Se si disabilita questa impostazione dei criteri, sospendere BitLocker prima di applicare aggiornamenti del firmware.
     
-    </string>
-    <string id="SUPPORTED_Windows8NoARM">Almeno Windows Server 2012 o Windows 8</string>  
-</stringTable>
+      </string>
+      <string id="SUPPORTED_Windows8NoARM">Almeno Windows Server 2012 o Windows 8</string>  
+      <string id="SUPPORTED_Windows_6_3ToVista">Windows Server 2012 R2, Windows 8.1, Windows Server 2012, Windows 8, Windows Server 2008, Windows 7 e Windows Vista</string>
+      <string id="PrebootRecoveryInfo_Name">Configura il messaggio e l'URL di recupero prima dell'avvio</string>
+      <string id="PrebootRecoveryInfoEmpty"></string>
+      <string id="PrebootRecoveryInfoUseDefault">Usa il messaggio e l'URL di recupero predefiniti</string>
+      <string id="PrebootRecoveryInfoUseMessage">Usa il messaggio di recupero personalizzato</string>
+      <string id="PrebootRecoveryInfoUseUrl">Usa l'URL di recupero personalizzato</string>
+      <string id="PrebootRecoveryInfo_Help">Questa impostazione dei criteri consente di configurare l'intero messaggio di recupero o di sostituire l'URL esistente visualizzati nella schermata di recupero chiavi prima dell'avvio quando l'unità del sistema operativo è bloccata.
+
+Se si seleziona l'opzione "Usa messaggio e URL di recupero predefiniti", il messaggio e l'URL di recupero predefiniti di BitLocker verranno visualizzati nella schermata di recupero chiavi prima dell'avvio. Se è stato configurato in precedenza un messaggio o un URL di recupero personalizzato e si desidera ripristinare il messaggio predefinito, è necessario mantenere abilitato il criterio e selezionare l'opzione "Usa messaggio e URL di recupero predefiniti".
+
+Se si seleziona l'opzione "Usa messaggio di recupero personalizzato", il messaggio digitato nella casella di testo "Opzione messaggio di recupero personalizzato" verrà visualizzato nella schermata di recupero chiavi prima dell'avvio. Se è disponibile un URL di recupero, includerlo nel messaggio.
+
+Se si seleziona l'opzione "Usa URL di recupero personalizzato", l'URL digitato nella casella di testo "Opzione URL di recupero personalizzato" sostituirà l'URL predefinito nel messaggio di recupero predefinito, che verrà visualizzato nella schermata di recupero chiavi prima dell'avvio.
+
+Nota: non tutti i caratteri e le lingue sono supportati prima dell'avvio. È consigliabile verificare che i caratteri utilizzati per il messaggio o l'URL personalizzato vengano visualizzati correttamente nella schermata di recupero prima dell'avvio.
+      </string>
+    </stringTable>
     <presentationTable>
       <presentation id="ActiveDirectoryBackup_Name">
         <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Richiedi backup BitLocker su Servizi di dominio Active Directory</checkBox>
@@ -789,6 +815,12 @@ Avviso: la disabilitazione di questa impostazione dei criteri potrebbe comportar
 
       <presentation id="EncryptionMethodNoDiffuser_Name">
         <dropdownList refId="EncryptionMethodNoDiffDropDown_Name" noSort="true" defaultItem="0">Seleziona il metodo di crittografia:</dropdownList>
+      </presentation>
+
+      <presentation id="EncryptionMethodWithXts_Name">
+        <dropdownList refId="EncryptionMethodWithXtsOsDropDown_Name" noSort="true" defaultItem="2">Selezionare il metodo di crittografia per le unità del sistema operativo:</dropdownList>
+        <dropdownList refId="EncryptionMethodWithXtsFdvDropDown_Name" noSort="true" defaultItem="2">Selezionare il metodo di crittografia per le unità dati fisse:</dropdownList>
+        <dropdownList refId="EncryptionMethodWithXtsRdvDropDown_Name" noSort="true" defaultItem="0">Selezionare il metodo di crittografia per le unità dati rimovibili:</dropdownList>
       </presentation>
 
       <presentation id="OSEncryptionType">
@@ -1022,6 +1054,18 @@ Avviso: la disabilitazione di questa impostazione dei criteri potrebbe comportar
         <textBox refId="RDVAllowedAlgos">
           <label>Limita gli algoritmi o i pacchetti di crittografia ai seguenti:</label>
           <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
+      </presentation>
+
+      <presentation id="PrebootRecoveryInfo">
+        <dropdownList refId="PrebootRecoveryInfoDropDown_Name" noSort="true" defaultItem="0">Selezionare un'opzione per il messaggio di recupero prima dell'avvio:</dropdownList>
+        <textBox refId="RecoveryMessage_Input">
+          <label>Opzione messaggio di recupero personalizzato:</label>
+          <defaultValue/>
+        </textBox>
+        <textBox refId="RecoveryUrl_Input">
+          <label>Opzione URL di recupero personalizzato:</label>
+          <defaultValue/>
         </textBox>
       </presentation>
 

@@ -28,14 +28,13 @@ BitLocker 回復情報には、回復パスワードと一意の識別子デー�
 
 注: このポリシーは Windows Server 2008 または Windows Vista を実行しているコンピューターにのみ適用できます。
 
-互換性のあるトラステッド プラットフォーム モジュール (TPM) が装備されているコンピューターでは、スタートアップ時に 2 種類の認証方法を使用して暗号化されたデータの保護を強化できます。コンピューターが起動すると、ユーザーに、スタートアップ キーが格納された USB フラッシュ ドライブを挿入するように要求できます。また、4 ～ 20 桁のスタートアップ暗証番号 (PIN) を入力するように要求することもできます。
+互換性のあるトラステッド プラットフォーム モジュール (TPM) が装備されているコンピューターでは、スタートアップ時に 2 種類の認証方法を使用して暗号化されたデータの保護を強化できます。コンピューターが起動すると、ユーザーに、スタートアップ キーが格納された USB フラッシュ ドライブを挿入するように要求できます。また、4 ～ 20 桁のスタートアップ PIN を入力するように要求することもできます。
 
 互換性のある TPM が装備されていないコンピューターでは、スタートアップ キーを含む USB フラッシュ ドライブが必要です。TPM が装備されていない場合、BitLocker 暗号化データは、この USB フラッシュ ドライブのキー マテリアルのみで保護されます。
 
 このポリシー設定を有効にすると、ウィザードによって、BitLocker の詳細なスタートアップ オプションを構成できるページが表示されます。TPM が装備されているコンピューターおよび TPM が装備されていないコンピューターについて、さらに設定オプションを構成できます。
 
 このポリシー設定を無効にするか、または構成しない場合、BitLocker セットアップ ウィザードは、TPM が装備されているコンピューターで BitLocker を有効にできる基本的な手順を表示します。この基本のウィザードでは、追加のスタートアップ キーまたはスタートアップ PIN は構成できません。
-
 </string>
 
       <string id="ConfigureStartupUsage_Name">スタートアップ時に追加の認証を要求する (Windows Server 2008 および Windows Vista)</string>
@@ -47,15 +46,13 @@ BitLocker 回復情報には、回復パスワードと一意の識別子デー�
 
 複数のオプションを追加すると、ポリシー エラーが発生します。TPM が装備されていないコンピューターで BitLocker を使用する場合は、[互換性のある TPM が装備されていない BitLocker を許可する] チェック ボックスをオンにします。このモードでは、スタートアップにパスワードまたは USB ドライブが必要です。スタートアップ キーを使用する場合、ドライブの暗号化に使用されるキー情報は USB ドライブに格納され、USB キーが作成されます。USB キーが挿入されると、ドライブへのアクセスが認証され、ドライブにアクセスできるようになります。USB キーが失われたり、使用できなくなった場合、またはパスワードを忘れた場合は、BitLocker 回復オプションのいずれかを使用してドライブにアクセスする必要があります。
 
-互換性のある TPM が装備されているコンピューターでは、スタートアップ時に 4 種類の認証方法を使用して暗号化されたデータの保護を強化できます。コンピューターの起動時に、認証に TPM のみを使用することも、スタートアップ キーを含む USB フラッシュ ドライブの挿入または 4 ～ 20 桁の暗証番号 (PIN) の入力、あるいはその両方を要求することもできます。
+互換性のある TPM が装備されているコンピューターでは、スタートアップ時に 4 種類の認証方法を使用して暗号化されたデータの保護を強化できます。コンピューターの起動時に、認証に TPM のみを使用することも、スタートアップ キーを含む USB フラッシュ ドライブの挿入または 4 ～ 20 桁の PIN の入力、あるいはその両方を要求することもできます。
 
 このポリシー設定を有効にすると、BitLocker セットアップ ウィザードで詳細なスタートアップ オプションを構成できます。
 
 このポリシー設定を無効にするか、または構成しない場合、TPM が装備されているコンピューターで基本オプションのみを構成できます。
 
 注: スタートアップ PIN および USB フラッシュ ドライブを使用する必要がある場合は、BitLocker ドライブ暗号化セットアップ ウィザードではなく、コマンドライン ツール manage-bde を使用して BitLocker 設定を構成する必要があります。
-
-
 
 </string>
       <string id="AllowNetworkUnlockAtStartup_Name">スタートアップ時にネットワーク ロック解除を許可する</string>
@@ -232,23 +229,33 @@ BitLocker で保護されているリムーバブル データ ドライブで�
       
 
       </string>
-      <string id="EncryptionMethodNoDiffuser_Help">
-          
-          このポリシー設定を使用すると、BitLocker ドライブ暗号化で使用されるアルゴリズムと暗号強度を構成できます。このポリシー設定は、BitLocker を有効にすると適用されます。ドライブが既に暗号化されているか、暗号化が進行中の場合は、暗号化方法を変更しても影響はありません。使用可能な暗号化方法の詳細については、Microsoft TechNet の『BitLocker Drive Encryption Deployment Guide』を参照してください。このポリシーは、Windows 8 以降を実行しているコンピューターにのみ適用できます。
+      <string id="EncryptionMethodNoDiffuser_Help">このポリシー設定を使用すると、BitLocker ドライブ暗号化で使用されるアルゴリズムと暗号強度を構成できます。このポリシー設定は、BitLocker を有効にすると適用されます。ドライブが既に暗号化されている場合または暗号化が進行中の場合は、暗号化方法を変更しても影響はありません。使用可能な暗号化方法の詳細については、Microsoft TechNet の BitLocker ドライブ暗号化の展開ガイドを参照してください。このポリシーは、Windows 8 以降を実行しているコンピューターにのみ適用できます。
 
-          このポリシー設定を有効にすると、BitLocker がドライブの暗号化に使用する暗号化アルゴリズムおよびキーの暗号強度を選択できます。
+このポリシー設定を有効にした場合、BitLocker がドライブの暗号化に使用する暗号化アルゴリズムおよびキーの暗号強度を選択できます。
 
-          このポリシー設定を無効にするか、または構成しない場合、BitLocker は、[ドライブの暗号化方法と暗号強度を選択する (Windows Vista、Windows Server 2008、Windows 7)] ポリシー設定とビット強度 (128 ビットまたは 256 ビット) が同じ AES が設定されていればそれを使用します。いずれのポリシーも設定されていない場合、BitLocker は、AES 128 ビットの既定の暗号化方法か、セットアップ スクリプトで指定された暗号化方法を使用します。
+このポリシー設定を無効にした場合、または構成しなかった場合、BitLocker は、"ドライブの暗号化方法と暗号強度を選択する (Windows Vista、Windows Server 2008、Windows 7)" ポリシー設定とビット強度 (128 ビットまたは 256 ビット) が同じ AES が設定されていればそれを使用します。いずれのポリシーも設定されていない場合、BitLocker は、既定の暗号化方法である AES 128 ビット、またはセットアップ スクリプトで指定された暗号化方法を使用します。
 
-      
+      </string>
+      <string id="EncryptionMethodWithXts_Help">このポリシー設定を使用すると、BitLocker ドライブ暗号化で使用されるアルゴリズムと暗号強度を構成できます。このポリシー設定は、BitLocker を有効にすると適用されます。ドライブが既に暗号化されているか、暗号化が進行中の場合は、暗号化方法を変更しても影響はありません。
+
+このポリシー設定を有効にすると、固定データ ドライブ、オペレーティング システム ドライブ、リムーバブル データ ドライブの暗号化アルゴリズムおよびキーの暗号強度を別々に構成できます。固定ドライブとオペレーティング システム ドライブでは、XTS-AES アルゴリズムの使用をお勧めします。リムーバブル ドライブでは、Windows 10 (Version 1511) が実行されていない他のデバイスで使用する場合、AES-CBC 128 ビットまたは AES-CBC 256 ビットを使用する必要があります。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、BitLocker は、"ドライブの暗号化方法と暗号強度を選択する (Windows Vista、Windows Server 2008、Windows 7)" ポリシー設定および "ドライブの暗号化方法と暗号強度を選択する" ポリシー設定が設定されていれば、これら (ここに示した順序で) と同じビット強度 (128 ビットまたは 256 ビット) の AES を使用します。いずれのポリシーも設定されていない場合、BitLocker は、既定の暗号化方法である XTS-AES 128 ビット、またはセットアップ スクリプトで指定された暗号化方法を使用します。
 
       </string>
       <string id="EncryptionMethod_Name">ドライブの暗号化方法と暗号強度を選択する (Windows Vista、Windows Server 2008、Windows 7、Windows Server 2008 R2)</string>
-      <string id="EncryptionMethodNoDiffuser_Name">ドライブの暗号化方法と暗号強度を選択する</string>
+      <string id="EncryptionMethodNoDiffuser_Name">ドライブの暗号化方法と暗号強度を選択する (Windows 8、Windows Server 2012、Windows 8.1、Windows Server 2012 R2、Windows 10 [Version 1507])</string>
+      <string id="EncryptionMethodWithXts_Name">ドライブの暗号化方法と暗号強度を選択してください (Windows 10 [Version 1511] 以降)</string>
       <string id="EncryptionMethodDropDown_AES128Diffuser_Name">ディフューザーを使用した AES 128 ビット</string>
       <string id="EncryptionMethodDropDown_AES256Diffuser_Name">ディフューザーを使用した AES 256 ビット</string>
       <string id="EncryptionMethodDropDown_AES128_Name">AES 128 ビット (既定)</string>
+      <string id="EncryptionMethodDropDown_AES128_Name2">AES-CBC 128 ビット</string>
+      <string id="EncryptionMethodDropDown_AES128_Name3">AES-CBC 128 ビット (既定)</string>
       <string id="EncryptionMethodDropDown_AES256_Name">AES 256 ビット</string>
+      <string id="EncryptionMethodDropDown_AES256_Name2">AES-CBC 256 ビット</string>
+      <string id="EncryptionMethodDropDown_XTS_AES128_Name">XTS-AES 128 ビット (既定)</string>
+      <string id="EncryptionMethodDropDown_XTS_AES128_Name2">XTS-AES 128 ビット</string>
+      <string id="EncryptionMethodDropDown_XTS_AES256_Name">XTS-AES 256 ビット</string>
 
       <string id="FVECategory">BitLocker ドライブ暗号化</string>
       <string id="PlatformValidation_Deprecated_Help">このポリシー設定を使用すると、コンピューターのトラステッド プラットフォーム モジュール (TPM) セキュリティ ハードウェアが BitLocker の暗号化キーをセキュリティで保護する方法を構成できます。コンピューターに互換性のある TPM が装備されていない場合、または BitLocker の TPM 保護が既に有効になっている場合は、このポリシー設定は適用されません。
@@ -681,8 +688,8 @@ BitLocker で PIN やパスワードなどの追加の情報が要求される�
       
       </string>
 
-    <string id="AllowSecureBootForIntegrity_Name">セキュア ブートによる整合性の検証を許可する</string>
-    <string id="AllowSecureBootForIntegrity_Help">このポリシー設定では、BitLocker のオペレーティング システム ドライブのプラットフォーム整合性の検証でセキュア ブートを使用できるようにするかどうかを構成できます。
+      <string id="AllowSecureBootForIntegrity_Name">セキュア ブートによる整合性の検証を許可する</string>
+      <string id="AllowSecureBootForIntegrity_Help">このポリシー設定では、BitLocker のオペレーティング システム ドライブのプラットフォーム整合性の検証でセキュア ブートを使用できるようにするかどうかを構成できます。
 
 セキュア ブートを使用すると、PC のプリブート環境で、承認済みのソフトウェアの発行元によってデジタル署名されたファームウェアだけが読み込まれるようにすることができます。また、セキュア ブートでは、BitLocker の従来の整合性チェックよりも柔軟にプリブート構成を管理できます。
 
@@ -696,9 +703,25 @@ BitLocker で PIN やパスワードなどの追加の情報が要求される�
 
 警告: このポリシーを無効にすると、ファームウェアの更新時に BitLocker 回復が実行される可能性があります。このポリシーを無効にした場合は、ファームウェアの更新を適用する前に BitLocker を中断してください。
     
-    </string>
-    <string id="SUPPORTED_Windows8NoARM">Windows Server 2012 または Windows 8 以降</string>  
-</stringTable>
+      </string>
+      <string id="SUPPORTED_Windows8NoARM">Windows Server 2012 または Windows 8 以降</string>  
+      <string id="SUPPORTED_Windows_6_3ToVista">Windows Server 2012 R2、Windows 8.1、Windows Server 2012、Windows 8、Windows Server 2008、Windows 7、および Windows Vista</string>
+      <string id="PrebootRecoveryInfo_Name">プリブート回復メッセージと URL を構成する</string>
+      <string id="PrebootRecoveryInfoEmpty"></string>
+      <string id="PrebootRecoveryInfoUseDefault">既定の回復メッセージと URL を使用する</string>
+      <string id="PrebootRecoveryInfoUseMessage">カスタム回復メッセージを使用する</string>
+      <string id="PrebootRecoveryInfoUseUrl">カスタム回復 URL を使用する</string>
+      <string id="PrebootRecoveryInfo_Help">このポリシー設定では、OS のドライブがロックされたときにプリブート キー回復画面に表示される、回復のメッセージ全体を構成するか既存の URL を置き換えることができます。
+
+[既定の回復メッセージと URL を使用する] オプションを選択した場合は、既定の BitLocker 回復メッセージと URL がプリブート キー回復画面に表示されます。カスタム回復メッセージまたは URL を既に構成していて、既定のメッセージに戻す場合は、このポリシーを有効にしたまま、[既定の回復メッセージと URL を使用する] オプションを選択してください。
+
+[カスタム回復メッセージを使用する] オプションを選択した場合は、[カスタム回復メッセージのオプション] ボックスに入力したメッセージがプリブート キー回復画面に表示されます。回復 URL が利用できる場合は、その URL をメッセージに含めてください。
+
+[カスタム回復 URL を使用する] オプションを選択した場合は、(プリブート キー回復画面に表示される) 既定の回復メッセージの既定の URL が、[カスタム回復 URL オプション] ボックスに入力した URL で置き換えられます。
+
+注: プリブートでは、一部の文字と言語がサポートされていません。カスタム メッセージまたは URL に使用する文字がプリブート回復画面に正しく表示されるかどうかをテストすることを強くお勧めします。
+      </string>
+    </stringTable>
     <presentationTable>
       <presentation id="ActiveDirectoryBackup_Name">
         <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">AD DS への BitLocker バックアップが必要</checkBox>
@@ -789,6 +812,12 @@ BitLocker で PIN やパスワードなどの追加の情報が要求される�
 
       <presentation id="EncryptionMethodNoDiffuser_Name">
         <dropdownList refId="EncryptionMethodNoDiffDropDown_Name" noSort="true" defaultItem="0">暗号化方法を選択してください:</dropdownList>
+      </presentation>
+
+      <presentation id="EncryptionMethodWithXts_Name">
+        <dropdownList refId="EncryptionMethodWithXtsOsDropDown_Name" noSort="true" defaultItem="2">オペレーティング システム ドライブの暗号化方法を選択してください:</dropdownList>
+        <dropdownList refId="EncryptionMethodWithXtsFdvDropDown_Name" noSort="true" defaultItem="2">固定データ ドライブの暗号化方法を選択してください:</dropdownList>
+        <dropdownList refId="EncryptionMethodWithXtsRdvDropDown_Name" noSort="true" defaultItem="0">リムーバブル データ ドライブの暗号化方法を選択してください:</dropdownList>
       </presentation>
 
       <presentation id="OSEncryptionType">
@@ -1022,6 +1051,18 @@ BitLocker で PIN やパスワードなどの追加の情報が要求される�
         <textBox refId="RDVAllowedAlgos">
           <label>暗号化アルゴリズムまたは暗号を次のものに制限する:</label>
           <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
+      </presentation>
+
+      <presentation id="PrebootRecoveryInfo">
+        <dropdownList refId="PrebootRecoveryInfoDropDown_Name" noSort="true" defaultItem="0">プリブート回復メッセージのオプションを選択してください:</dropdownList>
+        <textBox refId="RecoveryMessage_Input">
+          <label>カスタム回復メッセージのオプション:</label>
+          <defaultValue/>
+        </textBox>
+        <textBox refId="RecoveryUrl_Input">
+          <label>カスタム回復 URL オプション:</label>
+          <defaultValue/>
         </textBox>
       </presentation>
 

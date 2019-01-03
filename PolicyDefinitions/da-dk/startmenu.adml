@@ -5,6 +5,7 @@
   <description>indtast beskrivelsen her</description>
   <resources>
     <stringTable>
+      <string id="SUPPORTED_Win7UntilThreshold">Som minimum Windows Server 2008 R2 eller Windows 7. Er ikke understøttet på Windows 10 eller senere</string>
       <string id="ClearRecentProgForNewUserInStartMenu">Ryd listen over senest anvendte programmer for nye brugere</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">Hvis du aktiverer denne politikindstilling, bliver listen over senest anvendte programmer tom for hver ny bruger.
 
@@ -143,8 +144,8 @@ Hvis du deaktiverer eller ikke konfigurerer denne indstilling, vises al pop op-t
 Hvis du aktiverer denne indstilling, forhindrer du, at en bruger kan vælge en app, ændre størrelsen på et felt, fastgøre eller frigøre et felt eller et sekundært felt, aktivere tilpasningstilstand og omarrangere felter i Start og Apps.
 
 Hvis du deaktiverer eller undlader at konfigurere denne indstilling, gør du det muligt for en bruger at vælge en app, ændre størrelsen på et felt, fastgøre eller frigøre et felt eller et sekundært felt, aktivere tilpasningstilstand og omarrangere felter i Start og apps.</string>
-      <string id="ClearTilesOnExit">Ryd historik for feltmeddelelser ved afslutning</string>
-      <string id="ClearTilesOnExit_Help">Hvis du aktiverer denne indstilling, slettes feltmeddelelser, når brugeren logger af. Derfor vil felterne i startvisningen altid vise deres standardindhold, når brugeren logger på. Desuden ryddes alle cachelagrede versioner af disse meddelelser, når brugeren logger af.
+      <string id="ClearTilesOnExit">Ryd feltmeddelelser under logon</string>
+      <string id="ClearTilesOnExit_Help">Hvis du aktiverer denne indstilling, slettes feltmeddelelser, når brugeren logger på. Derfor vil felterne i startvisningen altid vise deres standardindhold, når brugeren logger på. Desuden ryddes alle cachelagrede versioner af disse meddelelser, når brugeren logger på.
 
 Hvis du deaktiverer eller ikke konfigurerer denne indstilling, bevares meddelelser på systemet, og når en bruger logger på, vises felterne på samme måde, som de gjorde, da brugeren loggede af. Det gælder også historikken for forrige meddelelser for hvert felt.
 
@@ -152,16 +153,15 @@ Denne indstilling forhindrer ikke visning af nye meddelelser. Vælg indstillinge
       <string id="StartPinAppsWhenInstalled">Fastgør apps til Start, når de installeres</string>
       <string id="StartPinAppsWhenInstalled_Help">Med denne politikindstilling kan du som standard fastgøre apps til Start, når de er medtaget af AppID på listen.</string>
 
-      <string id="LockedStartLayout">Startskærmslayout</string>
-      <string id="LockedStartLayout_Help">Angiver startskærmlayoutet for brugere.
+      <string id="LockedStartLayout">Startlayout</string>
+      <string id="LockedStartLayout_Help">Angiver startlayoutet for brugere.
 
-Denne indstilling giver dig mulighed for at angive startskærmlayoutet for brugere og forhindrer dem i at ændre denne konfiguration. Det startskærmlayout, du angiver, skal gemmes i en XML-fil, som blev oprettet af Export-StartLayout PowerShell-cmdlet'en.
-Når du vil bruge denne indstilling, skal du først konfigurere en enheds startskærmlayout med ønsket udseende og funktionalitet. Når du har gjort det, skal du køre Export-StartLayout PowerShell-cmdlet'en på enheden. Cmdlet'en opretter en XML-fil, som repræsenterer det layout, du har konfigureret.
+Denne indstilling giver dig mulighed for at angive startlayoutet for brugere og forhindre dem i at ændre denne konfiguration. Det startlayout, du angiver, skal gemmes i en XML-fil, som blev oprettet af Export-StartLayout PowerShell-cmdlet'en.
+Når du vil bruge denne indstilling, skal du først konfigurere en enheds startlayout med ønsket udseende og funktionalitet. Når du har gjort det, skal du køre Export-StartLayout PowerShell-cmdlet'en på enheden. Cmdlet'en opretter en XML-fil, som repræsenterer det layout, du har konfigureret.
 
 Når XML-filen er oprettet og flyttet til den ønskede filsti, skal du angive det fulde navn på og den fuldstændige sti til XML-filen. Du kan angive en lokal sti, f.eks. C:\StartLayouts\mitLayout.xml, eller en UNC-sti, f.eks. \\Server\Share\Layout.jpg. Hvis den angivne fil ikke er tilgængelig, når en bruger logger på, ændres layoutet ikke. Brugerne kan ikke tilpasse deres startskærm, når denne indstilling er aktiveret.
 
 Hvis du deaktiverer denne indstilling eller undlader at konfigurere den, ændres startskærmlayoutet ikke, og brugerne kan tilpasse det.</string>
-
       <string id="NoClose">Fjern og nægt adgang til kommandoerne Luk computeren, Genstart, Slumre og Dvale</string>
       <string id="NoClose_Help">Denne politikindstilling forhindrer brugere i at udføre følgende kommandoer fra menuen Start eller skærmen Windows Sikkerhed: Luk kommandoen, Genstart, Dvale og Standby. Denne politikindstilling forhindrer ikke brugere i at køre Windows-baserede programmer, som udfører disse funktioner.
 
@@ -535,12 +535,14 @@ Hvis du aktiverer denne indstilling, kan brugere få adgang til kommandoen Kør 
 Hvis du deaktiverer eller ikke konfigurerer indstillingen, kan brugere ikke få adgang til kommandoen Kør som en anden bruger i menuen Start for nogen programmer.
 
 Bemærk! Denne indstilling forhindrer ikke brugerne i at anvende andre metoder, f.eks. genvejsmenuen for programmets jumplister på proceslinjen til at afgive kommandoen Kør som en anden bruger.</string>
-      <string id="GoToDesktopOnSignIn">Gå til skrivebordet i stedet for Start, når du logger på, eller når alle apps på et skærmbillede er lukket</string>
-      <string id="GoToDesktopOnSignIn_Help">Med denne politikindstilling kan brugerne gå til skrivebordet i stedet for til startskærmen, når de logger på, eller når alle apps på et skærmbillede er lukket.  Denne politikindstilling gælder for alle versioner af Windows og versioner af Windows Server, hvor Desktop Experience er installeret.
+      <string id="GoToDesktopOnSignIn">Gå til skrivebordet i stedet for Start, når du logger på</string>
+      <string id="GoToDesktopOnSignIn_Help">Med denne politikindstilling kan brugerne gå til skrivebordet i stedet for til startskærmen, når de logger på.
 
-Hvis du aktiverer denne politikindstilling, kan brugerne altid gå til skrivebordet, når de logger på, eller når alle apps på et skærmbillede er lukket.
+Hvis du slår denne politikindstilling til, vil brugerne altid gå til skrivebordet, når de logger på.
 
-Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kommer brugerne som standard til startskærmen, når de logger på, og brugeren kan konfigurere denne politikindstilling.</string>
+Hvis du slår denne politikindstilling fra, vil brugerne altid gå til startskærmen, når de logger på.
+
+Hvis du ikke konfigurerer denne politikindstilling, bruges standardindstillingen for brugerens enhed, og brugeren kan vælge at ændre den.</string>
       <string id="ShowAppsViewOnStart">Åbn automatisk visningen Apps, når brugeren går til Start</string>
       <string id="ShowAppsViewOnStart_Help">Med denne politikindstilling kan visningen Apps åbnes som standard, når brugeren går til Start.
 
@@ -564,9 +566,15 @@ Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vise
       <string id="ShowStartOnDisplayWithForegroundOnWinKey">Vis Start på brugerens aktive skærmbillede, når brugeren trykker på Windows-tasten</string>
       <string id="ShowStartOnDisplayWithForegroundOnWinKey_Help">Med denne politikindstilling vises startskærmen altid på brugerens aktive skærmbillede, når brugeren trykker på Windows-tasten. Denne indstilling gælder kun for brugere, som bruger flere skærme.
 
-Hvis du aktiverer eller undlader at konfigurere denne politikindstilling, vises startskærmen på den skærm, brugeren anvender, når han eller hun trykker på Windows-tasten.
+Hvis du slår denne politikindstilling til, vises startskærmen på den skærm, brugeren anvender, når der trykkes på Windows-tasten.
 
-Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vises startskærmen altid på den skærm, brugeren anvender, når han eller hun trykker på Windows-tasten. Brugerne vil fortsat kunne åbne Start på andre skærme ved at trykke på knappen Start på den pågældende skærm. Brugeren vil desuden kunne konfigurere denne politikindstilling.</string>
+Hvis du slår denne politikindstilling fra eller undlader at konfigurere den, vises startskærmen altid på den primære skærm, når brugeren trykker på Windows-tasten. Brugerne vil fortsat kunne åbne startskærmen på andre skærme ved at trykke på knappen Start på den pågældende skærm. Brugeren vil desuden kunne konfigurere denne politikindstilling.</string>
+      <string id="ForceStartSize_DisplayName">Gennemtving, at start enten skal være i fuld skærmstørrelse eller i menustørrelse</string>
+      <string id="ForceStartSize_ExplainText">Hvis du aktiverer denne politik og indstiller den for menuen Start eller Start i fuld skærm, får Start den størrelse, og brugerne vil ikke kunne ændre størrelsen på Start under Indstillinger. 
+
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, vælger Windows automatisk størrelsen baseret på hardwarens formfaktor, og brugerne vil kunne ændre størrelsen på Start under Indstillinger.</string>
+      <string id="ForceLauncherSize_Collapsed">Menuen Start</string>
+      <string id="ForceLauncherSize_Expanded">Start i fuld skærm</string>
     </stringTable>
     <presentationTable>
       <presentation id="PowerButtonAction">
@@ -580,6 +588,9 @@ Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vise
           <label>Startlayoutfil</label>
           <defaultValue></defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="ForceStartSize">
+        <dropdownList refId="ForceStartSizeDropdown" noSort="true" defaultItem="0">Vælg en af følgende størrelser</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

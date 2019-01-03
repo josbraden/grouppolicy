@@ -1526,6 +1526,11 @@ Se você desabilitar essa política ou não a configurar, os usuários poderão 
 Cuidado: essa política não impede que os usuários exibam e alterem configurações da Internet clicando no ícone Opções da Internet no Painel de Controle do Windows.
 
 Consulte também as políticas para opções da Internet nas pastas \Modelos Administrativos\Componentes do Windows\Internet Explorer e \Modelos Administrativos\Componentes do Windows\Internet Explorer\Painel de Controle de Internet.</string>
+      <string id="IE_ExplainNoReportSiteProblems">Esta configuração de política permite gerenciar se os usuários podem iniciar a caixa de diálogo relatar problemas do site usando uma opção de menu.
+
+Se você ativar essa configuração de política, uma opção de menu não estará disponível nas configurações do Internet Explorer ou no menu ferramentas da área de trabalho. Os usuários não poderão usá-la para iniciar a caixa de diálogo relatar problemas do site.
+
+Se você desativar ou não configurar esta configuração de política, as opções de menu estarão disponíveis.</string>
       <string id="IE_ExplainUserProxy">Aplica configurações de proxy a todos os usuários do mesmo computador.
 
 Se você habilitar essa política, os usuários não poderão definir configurações de proxy específicas do usuário. Eles deverão usar as zonas criadas para todos os usuários do computador.
@@ -3117,6 +3122,7 @@ Se você não definir essa configuração de política, o usuário poderá ativa
       <string id="SUPPORTED_IE9">Internet Explorer 9.0 ou posterior</string>
       <string id="SUPPORTED_IE10">Internet Explorer 10.0 ou posterior</string>
       <string id="SUPPORTED_IE10WIN8">Internet Explorer 10.0 ou posterior no Windows 8</string>
+      <string id="SUPPORTED_IE11WIN8">Pelo menos Internet Explorer 11.0 no Windows 8.1</string>
       <string id="SUPPORTED_IE11">Internet Explorer 11.0 ou posterior</string>
       <string id="SUPPORTED_IE7_NONVISTA">Internet Explorer 7.0 ou posterior Sem suporte no Windows Vista</string>
       <string id="SUPPORTED_IE7VISTA">Internet Explorer 7.0 ou posterior no Windows Vista</string>
@@ -3131,6 +3137,7 @@ Se você desabilitar ou não definir essa configuração de política, o usuári
       <string id="ToolbarButtons">Configurar Botões da Barra de Ferramentas</string>
       <string id="Toolbars">Barras de Ferramentas</string>
       <string id="Tools_Menu">Menu Ferramentas: Desativar a opção de menu Opções da Internet...</string>
+      <string id="NoReportSiteProblems">Desativar a capacidade de iniciar relatar problemas do site usando uma opção de menu</string>
       <string id="TurnOnActiveXFiltering">Ativar Filtro de ActiveX</string>
       <string id="UnderlineLinksPol">Desativar a opção de sublinhar links</string>
       <string id="UnderlineLinksPol_Explain">Essa configuração de política determina a forma como links em páginas da web são sublinhados.
@@ -3167,16 +3174,6 @@ Se você desabilitar essa configuração de política, o usuário poderá especi
       <string id="UTF8URLQuery_Intranet">Codificar cadeias de caracteres de consulta usando UTF-8 apenas para URLs de Intranet</string>
       <string id="UTF8URLQuery_Never">Nunca codificar cadeias de caracteres de consulta usando UTF-8</string>
       <string id="UTF8URLQuery_NonIntranet">Codificar cadeias de caracteres de consulta usando UTF-8 apenas para URLs não relacionadas à Intranet</string>
-      <string id="TopResult0">Desabilitar pesquisa do primeiro resultado</string>
-      <string id="TopResult1">Habilitar pesquisa do primeiro resultado</string>
-      <string id="TopResultPol">Impedir configuração da pesquisa do primeiro resultado na barra de Endereços</string>
-      <string id="TopResultPol_Explain">A configuração dessa diretiv permite especificar se um usuário pode navegar para um site do primeiro resultado quando a pesquisa estiver habilitada na barra de Endereços. As opções possíveis são:
-    • Desabilitar pesquisa do primeiro resultado: quando um usuário realiza uma pesquisa na barra de Endereços, uma lista de resultados da pesquisa do provedor de pesquisa selecionado é exibida na janela principal.
-    • Habilitar pesquisa do primeiro resultado: quando um usuário executa uma pesquisa na barra de Endereços, o usuário é direcionado ao site externo do primeiro resultado determinado pelo provedor de pesquisa, se disponível.
-
-Se você habilitar essa configuração de política, poderá escolher para onde direcionar o usuário depois de uma pesquisa na barra de Endereços; um site do primeiro resultado ou uma página de resultados de pesquisa na janela principal.
-
-Se você desabilitar ou não configurar esta política, o usuário poderá selecionar sua preferência para este comportamento. Navegar para o site do primeiro resultado é o padrão.</string>
       <string id="UseHomePage">Ir direto para a home page</string>
       <string id="UseHoverColor">Ativar a opção de cor de foco</string>
       <string id="UseHoverColor_Explain">Essa configuração de política faz com que a cor de hiperlinks mude quando o ponteiro do mouse pausar neles.
@@ -3397,7 +3394,11 @@ Se você desativar ou não definir essa configuração de política, o usuário 
       <string id="Advanced_DisableEPMCompat">Não permitir que controles do ActiveX executem em Modo Protegido quando o Modo Protegido Aprimorado estiver habilitado</string>
       <string id="Advanced_EnableHttp1_1">Usar HTTP 1.1</string>
       <string id="Advanced_ProxyHttp1_1">Usar HTTP 1.1 através de conexões via proxy</string>
-      <string id="Advanced_EnableSPDY3_0">Permitir que o Internet Explorer use o protocolo de rede SPDY/3</string>
+      <string id="Advanced_EnableSSL3Fallback">Permitir fallback para SSL 3.0 (Internet Explorer)</string>
+      <string id="Advanced_FallbackNonProtected">Sites de Modo Não Protegido</string>
+      <string id="Advanced_FallbackAll">Todos os Sites</string>
+      <string id="Advanced_FallbackNone">Não há Sites</string>
+      <string id="Advanced_EnableHTTP2">Permitir que o Internet Explorer use o protocolo de rede HTTP2</string>
       <string id="Advanced_SetWinInetProtocols">Desativar suporte a criptografia</string>
       <string id="NoPrinting">Desativar Menu Imprimir</string>
       <string id="Advanced_DisableFlipAhead">Desativar o recurso de virar a página com o recurso de previsão de página</string>
@@ -3450,13 +3451,21 @@ Se você habilitar essa configuração de política, Internet Explorer usará HT
 Se você desabilitar essa configuração de política, o Internet Explorer não usará HTTP 1.1 em conexões proxy.
 
 Se você não definir essa configuração de política, os usuários poderão configurar o Internet Explorer para usar ou não HTTP 1.1 em conexões proxy.</string>
-      <string id="Advanced_ExplainEnableSPDY3_0">Essa configuração de política determina se o Internet Explorer usa ou não o protocolo de rede SPDY/3. O SPDY/3 funciona com solicitações HTTP para otimizar a latência de solicitações de rede por meio de compactação, multiplexação e priorização.
+      <string id="Advanced_ExplainEnableHTTP2">Essa configuração de política determina se o Internet Explorer usa o protocolo de rede HTTP2. As solicitações de HTTP2 ajudam a otimizar a latência de solicitações de rede por meio de compactação, multiplexação e priorização.
 
-Se você habilitar essa configuração de política, o Internet Explorer usará o protocolo de rede SPDY/3.
+Se você habilitar essa configuração de política, o Internet Explorer usará o protocolo de rede HTTP2.
 
-Se desabilitar essa configuração de política, o Internet Explorer não usará o protocolo de rede SPDY/3.
+Se você desabilitar essa configuração de política, o Internet Explorer não usará o protocolo de rede HTTP2.
 
-Se você não definir essa configuração de política, os usuários poderão ativar ou desativar esse comportamento usando as configurações Opções Avançadas, do Internet Explorer.  O padrão é ativado.</string>
+Se você não definir essa configuração de política, os usuários poderão ativar ou desativar esse comportamento, usando as configurações de opções de Internet avançadas do Internet Explorer. O padrão é ativado.</string>
+      <string id="Advanced_ExplainEnableSSL3Fallback">Essa configuração de política permite bloquear um fallback não seguro para SSL 3.0. Quando essa política for habilitada, o Internet Explorer tentará se conectar a sites que usam SSL 3.0 ou inferior quando TLS 1.0 ou posterior falhar.
+
+É recomendável que você não permita fallback não seguro para impedir um ataque humano.
+
+Essa política não afeta quais protocolos de segurança são ativados.
+
+Se essa política for desabilitada, os padrões do sistema serão usados.
+</string>
       <string id="Advanced_ExplainSetWinInetProtocols">Esta configuração de política permite que você desative o suporte a TLS 1.0, TLS 1.1, TLS 1.2, SSL 2.0 ou SSL 3.0 no navegador. O TLS e o SSL são protocolos que ajudam a proteger a comunicação entre o navegador e o servidor de destino. Quando o navegador tenta estabelecer uma comunicação protegida com o servidor de destino, o navegador e o servidor negociam qual protocolo e versão serão usados. O navegador e o servidor tentam coincidir suas listas de protocolos e versões com suporte e escolhem a melhor correspondência.
 
 Se você habilitar essa configuração de política, o navegador negociará ou não um túnel criptografado usando os métodos de criptografia selecionados na lista suspensa.
@@ -3824,6 +3833,56 @@ Se você desabilitar ou não definir essa configuração de política, o usuári
 Se você habilitar essa configuração de política, os usuários não poderão fixar sites.
 
 Se você desabilitar ou não definir essa configuração de política, os usuários poderão fixar sites.</string>
+      <string id="EnterpriseModeEnable">Permita que os usuários ativem e usem o Modo Empresarial Empresa a partir do menu Ferramentas</string>
+      <string id="IE_ExplainEnterpriseModeEnable">Esta configuração de política permite que você decida se os usuários podem ativar o Modo Empresarial para sites com problemas de compatibilidade. Opcionalmente, esta política também permite especificar onde obter relatórios (através de mensagens de correio) sobre os sites para os quais os usuários ativam o Modo Empresarial usando o menu Ferramentas.
+
+Se você ativar essa configuração, os usuários podem ver e usar a opção Modo Empresarial a partir do menu Ferramentas. Se você ativar esta configuração, mas não especificar um local de relatório, o Modo Empresarial ainda estará disponível para seus usuários, mas você não obtém nenhum relatório.
+
+Se você desabilitar ou não definir essa configuração de política, a opção de menu não aparecerá e os usuários não conseguirão executar sites no Modo Empresarial.</string>
+      <string id="VerMgmtDisable">Desativar bloqueio de controles ActiveX desatualizados do Internet Explorer</string>
+      <string id="IE_ExplainVerMgmtDisable">Essa configuração de política determina se o Internet Explorer bloqueia controles ActiveX desatualizados específicos. Controles ActiveX desatualizados nunca são bloqueados na zona da Intranet.
+
+Se você habilitar essa configuração de política, o Internet Explorer parará de bloquear controles ActiveX desatualizados.
+
+Se você desabilitar ou não definir essa configuração de política, o Internet Explorer continuará a bloquear controles ActiveX desatualizados específicos.
+
+Para obter mais informações, consulte "Controles ActiveX desatualizados" na biblioteca do TechNet do Internet Explorer.</string>
+      <string id="VerMgmtAuditModeEnable">Ativar registro de controles ActiveX no Internet Explorer</string>
+      <string id="IE_ExplainVerMgmtAuditModeEnable">Essa configuração de política determina se o Internet Explorer salvará informações de log para controles ActiveX.
+
+Se você habilitar essa configuração de política, o Internet Explorer registrará informações do controle ActiveX (incluindo o URI de origem que carregou o controle e se ele foi bloqueado) em um arquivo local.
+
+Se você desabilitar ou não definir essa configuração de política, o Internet Explorer não registrará informações do controle ActiveX.
+
+Observe que você pode ativar ou desativar essa configuração de política independentemente das configurações de política "Desativar bloqueio dos controles ActiveX desatualizados do Internet Explorer" ou "Desativar bloqueio dos controles ActiveX desatualizados do Internet Explorer em domínios específicos".
+
+Para obter mais informações, consulte "Controles ActiveX desatualizados" na biblioteca do TechNet do Internet Explorer.</string>
+      <string id="VerMgmtDomainAllowlist">Desativar bloqueio dos controles ActiveX desatualizados do Internet Explorer em domínios específicos</string>
+      <string id="IE_ExplainVerMgmtDomainAllowlist">Essa configuração de política permite que você gerencie uma lista de domínios em que o Internet Explorer irá parar de bloquear controles ActiveX desatualizados. Controles ActiveX desatualizados nunca são bloqueados na zona da Intranet.
+
+Se você habilitar essa configuração de política, poderá digitar uma lista personalizada de domínios para os quais não serão bloqueados controles ActiveX desatualizados no Internet Explorer. Cada entrada de domínio deve ser formatada como uma das opções a seguir:
+
+1. "domain.name.TLD". Por exemplo, se você desejar incluir *.contoso.com/*, use "contoso.com"
+2. "nome do host". Por exemplo, se você desejar incluir http://example, use o "example"
+3. "file:///path/filename.htm". Por exemplo, use "file:///C:/Users/contoso/Desktop/index.htm"
+
+Se você desabilitar ou não definir essa configuração de política, a lista será excluída e o Internet Explorer continuará bloqueando controles ActiveX desatualizados específicos em todos os domínios na zona da Internet.
+
+Para obter mais informações, consulte "Controles ActiveX desatualizados" na biblioteca do TechNet do Internet Explorer.</string>
+      <string id="VerMgmtDisableRunThisTime">Remover o botão "Executar dessa vez" para controles ActiveX desatualizados no Internet Explorer </string>
+      <string id="IE_ExplainVerMgmtDisableRunThisTime">Essa configuração de política permite evitar que os usuários vejam o botão "Executar dessa vez" e a execução de controles ActiveX desatualizados específicos no Internet Explorer.
+
+Se você habilitar essa configuração de política, os usuários não verão o botão "Executar dessa vez" na mensagem de aviso que aparece quando o Internet Explorer bloqueia um controle ActiveX desatualizado.
+
+Se você desabilitar ou não definir essa configuração de política, os usuários verão o botão "Executar dessa vez" na mensagem de aviso que aparece quando o Internet Explorer bloqueia um controle ActiveX desatualizado. Clicar nesse botão permite ao usuário executar o controle ActiveX desatualizado uma vez.
+
+Para obter mais informações, consulte "Controles ActiveX desatualizados" na biblioteca do TechNet do Internet Explorer.</string>
+      <string id="EnterpriseModeSiteList">Usar a lista de sites do Modo Empresarial IE</string>
+      <string id="IE_ExplainEnterpriseModeSiteList">Esta política de configuração permite que você especifique onde encontrar a lista de sites que você quer abertos usando o Modo Empresarial IE, em vez do modo Padrão, devido a problemas de compatibilidade. Os usuários não podem editar essa lista.
+
+Se você ativar essa configuração de política, o Internet Explorer fará download da lista de sites de sua localização (HKCU ou HKLM\Software\policies\Microsoft\Internet Explorer\Main\EnterpriseMode), abrindo todos os sites listados que utilizam o Modo Empresarial IE.
+
+Se você desativar ou não definir essa configuração de política, os usuários não verão a opção Modo Empresarial no menu Ferramentas e eles não conseguirão executar sites no modo Empresarial.</string>
       <string id="CategoryGeneralPage">Página Geral</string>
       <string id="CategoryBrowsingHistory">Histórico de Navegação</string>
       <string id="DefaultDomainCacheLimitInMB">Definir limites padrão de armazenamento para sites</string>
@@ -3931,8 +3990,51 @@ Se você habilitar essa configuração de política, a detecção de número de 
 Se você desabilitar essa configuração de política, a detecção de número de telefone será ativada. Os usuários não poderão modificar essa configuração.
 
 Se você não definir essa configuração de política, os usuários poderão ativar ou desativar esse comportamento usando as configurações do Internet Explorer. O padrão é ativado.</string>
+      <string id="SiteDiscoveryEnableXML">Ativar saída XML de Descoberta do Site</string>
+      <string id="SiteDiscoveryEnableWMI">Ativar saída WMI de Descoberta do Site</string>
+      <string id="SiteDiscoveryDomainAllowList">Limitar a saída de Descoberta de Site por Domínio</string>
+      <string id="SiteDiscoveryZoneAllowList">Limitar a saída de Descoberta de Site por Zona</string>
+      <string id="IE_Explain_SiteDiscoveryEnableXML">Essa configuração de política permite gerenciar a funcionalidade de saída XML do Kit de ferramentas de descoberta de Site do Internet Explorer (SDTK). Quando habilitado, o recurso grava dados coletados em um arquivo XML em um local especificado durante a configuração desta política. Quando desabilitado, nenhum dado será gravado no arquivo XML. Habilitar ou desabilitar essa configuração não afeta outros métodos de saída disponíveis para o SDTK.</string>
+      <string id="IE_Explain_SiteDiscoveryEnableWMI">Essa configuração de política permite gerenciar a funcionalidade de saída do WMI do Kit de ferramentas de descoberta de Site do Internet Explorer (SDTK). Quando habilitado, o recurso grava dados coletados em uma classe WMI que, em seguida, podem ser agregados usando uma solução de gerenciamento de clientes (SCCM) ou outros meios. Quando desabilitado, nenhum dado será gravado na classe WMI. Habilitar ou desabilitar essa configuração não afeta outros métodos de saída disponíveis para o SDTK.</string>
+      <string id="IE_Explain_SiteDiscoveryDomainAllowList">Essa configuração de política permite que você controle quais domínios são incluídos na funcionalidade de descoberta do Kit de ferramentas de descoberta de Site do Internet Explorer (SDTK). Quando habilitado, o recurso coleta dados de sites que fazem parte dos domínios configurados na política. Quando desabilitado ou não configurado, todos os domínios serão incluídos na descoberta de site. Essa política pode ser usada em conjunto com outras políticas que controlam sites incluídos na Descoberta de Site.
+
+Para configurar os domínios incluídos na coleta de dados para o Kit de ferramentas de descoberta de Site do IE, adicione um domínio por linha à caixa de texto. Por exemplo:
+
+microsoft.sharepoint.com
+outlook.com
+onedrive.com
+timecard.contoso.com
+LOBApp.contoso.com</string>
+      <string id="IE_Explain_SiteDiscoveryZoneAllowList">Essa configuração de política permite que você controle quais zonas de site são incluídas na funcionalidade de descoberta do Kit de ferramentas de descoberta de Site do Internet Explorer (SDTK). Quando habilitado, o recurso coleta dados de sites que fazem parte das zonas configuradas na política. Quando desabilitado ou não configurado, todas as zonas serão incluídas na descoberta de site. Essa política pode ser usada em conjunto com outras políticas que controlam sites incluídos na Descoberta de Site.
+
+Para configurar as zonas incluídas na descoberta de site, um número binário é formado com base nas zonas selecionadas. A representação decimal desse número é usada para representar esse número na política. Por exemplo:
+
+• 2 - Somente zona de site da intranet
+  Representação binária - 00010
+	• 0 - Zona de Sites Restritos
+	• 0 - Zona da Internet
+	• 0 - Zona de Sites Confiáveis
+	• 1 - Zona de Intranet Local
+	• 0 - Zona do Computador Local
+• 6 - Somente zonas da intranet e de sites confiáveis
+  Representação binária - 00110
+	• 0 - Zona de Sites Restritos
+	• 0 - Zona da Internet
+	• 1 - Zona de Sites Confiáveis
+	• 1 - Zona de Intranet Local
+	• 0 - Zona do Computador Local
+• 22 - Somente zonas de intranet, sites confiáveis e restritos 
+  Representação binária - 10110
+	• 1 - Zona de Sites Restritos
+	• 0 - Zona da Internet
+	• 1 - Zona de Sites Confiáveis
+	• 1 - Zona de Intranet Local
+	• 0 - Zona do Computador Local</string>
     </stringTable>
     <presentationTable>
+      <presentation id="VerMgmtDomainAllowlist_1">
+        <listBox refId="DomainList">Lista de permissões de domínio</listBox>
+      </presentation>
       <presentation id="AddonManagement_AddOnList_1">
         <listBox refId="AddOnList">Lista de Complementos</listBox>
       </presentation>
@@ -3983,6 +4085,16 @@ Se você não definir essa configuração de política, os usuários poderão at
       </presentation>
       <presentation id="Disable_Managing_Safety_Filter_IE9">
         <dropdownList refId="IE9SafetyFilterOptions">Selecionar Modo do Filtro do SmartScreen</dropdownList>
+      </presentation>
+      <presentation id="EnterpriseModeEnable_1">
+        <textBox refId="EnterReportBackPrompt">
+          <label>Digite o local (URL) de onde receber relatórios sobre os sites para os quais os usuários ativam e usam o Modo Empresarial</label>
+        </textBox>
+      </presentation>
+      <presentation id="EnterpriseModeSiteList_1">
+        <textBox refId="EnterSiteListPrompt">
+          <label>Digite o local (URL) da sua lista de sites do Modo Empresarial IE</label>
+        </textBox>
       </presentation>
       <presentation id="Flash">
         <checkBox refId="Flash">Shockwave Flash</checkBox>
@@ -4472,9 +4584,6 @@ Se você não definir essa configuração de política, os usuários poderão at
         <checkBox refId="Btn_Paste">Mostrar botão Colar</checkBox>
         <checkBox refId="Btn_Encoding">Mostrar botão Codificação</checkBox>
       </presentation>
-      <presentation id="TopResultPol">
-        <dropdownList refId="TopResult" noSort="true" defaultItem="0">Ao procurar a partir da barra de Endereços:</dropdownList>
-      </presentation>
       <presentation id="UnderlineLinksPol">
         <dropdownList refId="UnderlineLinks" noSort="true" defaultItem="0">Sublinhar links</dropdownList>
       </presentation>
@@ -4499,6 +4608,9 @@ Se você não definir essa configuração de política, os usuários poderão at
       <presentation id="Advanced_SetWinInetProtocols">
         <!-- defaultItem is zero based index into the item enumeration defined in inetres.admx. We want this to point at 'Use SSL 3.0 and TLS 1.0', the current default for IE -->
         <dropdownList refId="Advanced_WinInetProtocolOptions" noSort="true" defaultItem="6">Combinações de Protocolos Seguros</dropdownList>
+      </presentation>
+      <presentation id="Advanced_EnableSSL3Fallback">
+        <dropdownList refId="Advanced_EnableSSL3FallbackOptions" noSort="true" defaultItem="0">Permitir fallback não seguro para:</dropdownList>
       </presentation>
       <presentation id="NewTabAction_1">
         <dropdownList refId="NewTabActionOptions" noSort="true" defaultItem="2">Comportamento de nova guia</dropdownList>
@@ -4558,6 +4670,17 @@ Se você não definir essa configuração de política, os usuários poderão at
       </presentation>
       <presentation id="DefaultLinksView_1">
         <dropdownList refId="DefaultViewOptions" noSort="true" defaultItem="0">Comportamento padrão de execução do navegador para links</dropdownList>
+      </presentation>
+      <presentation id="SiteDiscoveryEnableXML">
+        <textBox refId="SiteDiscoveryXMLPath">
+          <label>Caminho de saída</label>
+        </textBox>
+      </presentation>
+      <presentation id="SiteDiscoveryZoneAllowList">
+        <decimalTextBox refId="SiteDiscoveryZoneAllowList" defaultValue="31">Máscara de zona</decimalTextBox>
+      </presentation>
+      <presentation id="SiteDiscoveryDomainAllowList">
+        <multiTextBox refId="SiteDiscoveryDomainAllowList">Lista de domínios</multiTextBox>
       </presentation>
     </presentationTable>
   </resources>

@@ -5,6 +5,7 @@
   <description>introduzir a descrição aqui</description>
   <resources>
     <stringTable>
+      <string id="SUPPORTED_Win7UntilThreshold">Pelo menos, Windows Server 2008 R2 ou Windows 7. Não suportado no Windows 10 ou posterior</string>
       <string id="ClearRecentProgForNewUserInStartMenu">Limpar a lista de programas recentes para novos utilizadores</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">Se ativar esta definição de política, a lista de programas recentes do menu iniciar estará vazia para cada novo utilizador.
 
@@ -143,8 +144,8 @@ Se desativar esta definição ou não a configurar, o texto de pop-up será apre
 Se ativar esta definição, impede um utilizador de selecionar uma aplicação, redimensionar um mosaico, afixar/remover um mosaico ou um mosaico secundário, ativar o modo de personalização e reorganizar os mosaicos em Início e Aplicações.
 
 Se desativar ou não configurar esta definição, permite que um utilizador selecione uma aplicação, redimensione um mosaico, afixe/remova um mosaico ou um mosaico secundário, ative o modo de personalização e reorganize os mosaicos em Início e Aplicações.</string>
-      <string id="ClearTilesOnExit">Limpar histórico de notificações de mosaico ao sair</string>
-      <string id="ClearTilesOnExit_Help">Se ativar esta definição, o sistema elimina as notificações de mosaico quando o utilizador termina sessão. Consequentemente, os Mosaicos na vista de início apresentarão sempre o conteúdo predefinido quando o utilizador inicia sessão. Adicionalmente, quaisquer versões em cache destas notificações serão limpas quando o utilizador termina sessão.
+      <string id="ClearTilesOnExit">Limpar notificações de mosaico durante o início de sessão</string>
+      <string id="ClearTilesOnExit_Help">Se ativar esta definição, o sistema elimina as notificações de mosaico quando o utilizador inicia sessão. Consequentemente, os Mosaicos na vista de início apresentarão sempre o conteúdo predefinido quando o utilizador inicia sessão. Adicionalmente, quaisquer versões em cache destas notificações serão limpas quando o utilizador inicia sessão.
 
 Se desativar ou não configurar esta definição, o sistema retém as notificações e, quando um utilizador inicia sessão, os mosaicos aparecem tal como quando o utilizador terminou sessão, incluindo o histórico de notificações anteriores de cada mosaico.
 
@@ -152,16 +153,15 @@ Esta definição não impede o aparecimento de novas notificações. Consulte a 
       <string id="StartPinAppsWhenInstalled">Afixar Aplicações no Ecrã Inicial quando instaladas</string>
       <string id="StartPinAppsWhenInstalled_Help">Esta definição de política permite afixar aplicações no ecrã inicial por predefinição, quando incluídas na lista pelo AppID.</string>
 
-      <string id="LockedStartLayout">Esquema do Ecrã Inicial</string>
-      <string id="LockedStartLayout_Help">Especifica o esquema do ecrã inicial dos utilizadores.
+      <string id="LockedStartLayout">Esquema do Ecrã Iniciar</string>
+      <string id="LockedStartLayout_Help">Especifica o esquema do ecrã Início dos utilizadores.
 
-Esta definição permite especificar o esquema do ecrã inicial dos utilizadores e impede-os de alterar a configuração. O esquema do ecrã inicial especificado tem de ser armazenado num ficheiro XML gerado pelo cmdlet Export-StartLayout do PowerShell.
-Para usar esta definição, tem de primeiro configurar manualmente o esquema do ecrã inicial do dispositivo com base no aspeto e funcionalidades pretendidos. Em seguida, execute o cmdlet Export-StartLayout do PowerShell nesse dispositivo. O cmdlet gerará um ficheiro XML que representa o esquema configurado.
+Esta definição permite especificar o esquema do ecrã Iniciar dos utilizadores e impede-os de alterar a configuração. O esquema do ecrã Iniciar especificado tem de ser armazenado num ficheiro XML gerado pelo cmdlet Export-StartLayout do PowerShell.
+Para usar esta definição, tem de primeiro configurar manualmente o esquema do ecrã Iniciar do dispositivo com base no aspeto e funcionalidades pretendidos. Em seguida, execute o cmdlet Export-StartLayout do PowerShell nesse dispositivo. O cmdlet gerará um ficheiro XML que representa o esquema configurado.
 
-Assim que o ficheiro XML é gerado e movido para o caminho de ficheiro pretendido, escreva o nome e o caminho completamente qualificado do ficheiro XML. Pode escrever um caminho local como, por exemplo, C:\StartLayouts\myLayout.xml ou um caminho UNC como, por exemplo, \\Servidor\Partilha\Layout.xml. Se o ficheiro especificado não estiver disponível quando o utilizador inicia sessão, o esquema não será alterado. Os utilizadores não podem personalizar o ecrã inicial quando esta definição está ativada.
+Assim que o ficheiro XML é gerado e movido para o caminho de ficheiro pretendido, escreva o nome e o caminho completamente qualificado do ficheiro XML. Pode escrever um caminho local como, por exemplo, C:\StartLayouts\myLayout.xml ou um caminho UNC como, por exemplo, \\Servidor\Partilha\Layout.xml. Se o ficheiro especificado não estiver disponível quando o utilizador inicia sessão, o esquema não será alterado. Os utilizadores não podem personalizar o ecrã Iniciar quando esta definição está ativada.
 
-Se desativar ou não configurar esta definição, o esquema do ecrã inicial não será alterado e os utilizadores poderão personalizá-lo.</string>
-
+Se desativar ou não configurar esta definição, o esquema do ecrã Iniciar não será alterado e os utilizadores poderão personalizá-lo.</string>
       <string id="NoClose">Remover e impedir o acesso aos comandos Encerrar, Reiniciar, Suspender e Hibernar</string>
       <string id="NoClose_Help">Esta definição de política impede que os utilizadores executem os seguintes comandos a partir do menu Iniciar ou ecrã Segurança do Windows: Encerrar, Reiniciar, Suspender e Hibernar. Esta definição de política não impede que os utilizadores executem programas baseados no Windows que levem a cabo estas funções.
 
@@ -569,6 +569,12 @@ Se desativar ou não configurar esta definição de política, as aplicações d
 Se ativar esta definição de política, o ecrã inicial será apresentado no monitor usado pelo utilizador quando prime a tecla do logótipo do Windows.
 
 Se desativar ou não configurar esta definição de política, o ecrã inicial será sempre apresentado no monitor principal quando o utilizador premir a tecla do logótipo do Windows. Os utilizadores continuarão a conseguir abrir o ecrã inicial noutros monitores premindo o botão Iniciar nesse ecrã. O utilizador também conseguirá configurar esta definição.</string>
+      <string id="ForceStartSize_DisplayName">Forçar Iniciar em tamanho de menu ou tamanho de ecrã inteiro</string>
+      <string id="ForceStartSize_ExplainText">Se ativar esta política e a definir para menu Iniciar ou Iniciar em ecrã inteiro, Iniciar será apresentado nesse mesmo tamanho e os utilizadores não poderão alterar o tamanho de Iniciar em Definições. 
+
+Se desativar ou não configurar esta definição de política, o Windows irá selecionar automaticamente o tamanho com base no fator de forma do hardware e os utilizadores poderão alterar o tamanho de Iniciar em Definições.</string>
+      <string id="ForceLauncherSize_Collapsed">Menu Iniciar</string>
+      <string id="ForceLauncherSize_Expanded">Iniciar em ecrã inteiro</string>
     </stringTable>
     <presentationTable>
       <presentation id="PowerButtonAction">
@@ -582,6 +588,9 @@ Se desativar ou não configurar esta definição de política, o ecrã inicial s
           <label>Ficheiro de Esquema do Ecrã Inicial</label>
           <defaultValue></defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="ForceStartSize">
+        <dropdownList refId="ForceStartSizeDropdown" noSort="true" defaultItem="0">Escolher um dos seguintes tamanhos</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

@@ -5,6 +5,7 @@
   <description>tutaj wprowadź opis</description>
   <resources>
     <stringTable>
+      <string id="SUPPORTED_Win7UntilThreshold">Co najmniej Windows Server 2008 R2 lub Windows 7. Nieobsługiwane w systemie Windows 10 lub nowszym</string>
       <string id="ClearRecentProgForNewUserInStartMenu">Wyczyść listę ostatnio uruchamianych programów dla nowych użytkowników</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">Po włączeniu tego ustawienia zasad dla każdego nowego użytkownika lista ostatnio używanych programów w menu Start będzie pusta.
 
@@ -143,8 +144,8 @@ Jeśli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, w men
 Jeśli to ustawienie zostanie włączone, użytkownik nie będzie mógł wybrać aplikacji, zmienić rozmiaru kafelka, przypiąć/odpiąć kafelka lub kafelka pomocniczego, przejść w tryb dostosowywania ani zmienić układu kafelków na ekranie startowym i w widoku Aplikacje.
 
 Jeśli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, użytkownik będzie mógł wybrać aplikację, zmienić rozmiar kafelka, przypiąć/odpiąć kafelek lub kafelek pomocniczy, przejść w tryb dostosowywania oraz zmienić układ kafelków na ekranie startowym i w widoku Aplikacje.</string>
-      <string id="ClearTilesOnExit">Wyczyść historię powiadomień na kafelkach przy zakończeniu</string>
-      <string id="ClearTilesOnExit_Help">Jeśli to ustawienie zostanie włączone, system usunie powiadomienia na kafelkach, gdy użytkownik się wyloguje. W rezultacie po zalogowaniu na kafelkach w widoku startowym będzie wyświetlana zawartość domyślna. Ponadto buforowane wersje tych powiadomień zostaną usunięte, gdy użytkownik się wyloguje.
+      <string id="ClearTilesOnExit">Wyczyść powiadomienia na kafelkach podczas logowania</string>
+      <string id="ClearTilesOnExit_Help">Jeśli to ustawienie zostanie włączone, system usunie powiadomienia na kafelkach, gdy użytkownik się zaloguje. W rezultacie po zalogowaniu na kafelkach w widoku startowym będzie wyświetlana zawartość domyślna. Ponadto buforowane wersje tych powiadomień zostaną usunięte, gdy użytkownik się zaloguje.
 
 Jeśli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, system zachowa powiadomienia, a gdy użytkownik się zaloguje, kafelki będą wyglądać tak samo jak przed wylogowaniem, z uwzględnieniem historii poprzednich powiadomień dla każdego kafelka.
 
@@ -156,12 +157,11 @@ To ustawienie nie blokuje wyświetlania nowych powiadomień. Aby zablokować now
       <string id="LockedStartLayout_Help">Określa układ ekranu startowego użytkowników.
 
 To ustawienie pozwala określić układ ekranu startowego użytkowników i uniemożliwia im zmianę konfiguracji. Układ ekranu startowego musi być przechowywany w pliku XML wygenerowanym przez polecenie cmdlet programu PowerShell Export-StartLayout.
-Aby można było użyć tego ustawienia, należy wcześniej ręcznie skonfigurować układ ekranu startowego urządzenia w celu uzyskania żądanego wyglądu i działania. Po wykonaniu tej czynności należy uruchomić polecenie cmdlet programu PowerShell Export-StartLayout na tym samym urządzeniu. Polecenie cmdlet wygeneruje plik XML reprezentujący skonfigurowany układ.
+Aby można było użyć tego ustawienia, wcześniej ręcznie skonfiguruj układ ekranu startowego urządzenia w celu uzyskania żądanego wyglądu i działania. Po wykonaniu tej czynności uruchom polecenie cmdlet programu PowerShell Export-StartLayout na tym samym urządzeniu. Polecenie cmdlet wygeneruje plik XML reprezentujący skonfigurowany układ.
 
-Po wygenerowaniu pliku XML i przeniesieniu go do odpowiedniej ścieżki pliku należy wpisać w pełni kwalifikowaną ścieżkę i nazwę pliku XML. Można wpisać ścieżkę lokalną, taką jak C:\Układy_ekranu_startowego\mój_układ.xml, lub ścieżkę UNC, taką jak \\Serwer\Udział\Układ.xml. Jeśli po zalogowaniu się użytkownika określony plik będzie niedostępny, układ nie zostanie zmieniony. Jeśli to ustawienie zostanie włączone, użytkownicy nie będą mogli dostosować ekranu startowego.
+Po wygenerowaniu pliku XML i przeniesieniu go do odpowiedniej ścieżki pliku wpisz w pełni kwalifikowaną ścieżkę i nazwę pliku XML. Możesz wpisać ścieżkę lokalną, np. C:\Układy_ekranu_startowego\mój_układ.xml, lub ścieżkę UNC, np. \\Serwer\Udział\Układ.xml. Jeśli po zalogowaniu się użytkownika określony plik będzie niedostępny, układ nie zostanie zmieniony. Jeśli to ustawienie zostanie włączone, użytkownicy nie będą mogli dostosować ekranu startowego.
 
-Jeśli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, układ ekranu startowego nie zostanie zmieniony i użytkownicy nie będą mogli go dostosować.</string>
-
+Jeśli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, układ ekranu startowego nie zostanie zmieniony i użytkownicy będą mogli go dostosować.</string>
       <string id="NoClose">Usuń polecenia Zamknij, Uruchom ponownie, Uśpienie i Hibernacja oraz wyłącz dostęp do nich</string>
       <string id="NoClose_Help">To ustawienie zasad uniemożliwia użytkownikom wykonanie następujących poleceń z menu Start lub z ekranu Zabezpieczenia systemu Windows: Zamknij, Uruchom ponownie, Uśpienie i Hibernacja. To ustawienie zasad nie zapobiega natomiast uruchamianiu programów systemu Windows, które wykonują takie funkcje.
 
@@ -535,12 +535,14 @@ Jeśli to ustawienie zostanie włączone, użytkownicy będą mogli uzyskiwać d
 Jeśli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, użytkownicy nie będą mogli uzyskiwać dostępu do polecenia „Uruchom jako inny użytkownik” z poziomu menu Start dla żadnej aplikacji.
 
 Uwaga: to ustawienie nie uniemożliwia użytkownikom stosowania innych metod, takich jak jednoczesne naciśnięcie przycisku Shift i kliknięcie prawym przyciskiem myszy listy szybkiego dostępu aplikacji na pasku zadań, aby wydać polecenie „Uruchom jako inny użytkownik”.</string>
-      <string id="GoToDesktopOnSignIn">Przejdź do pulpitu zamiast ekranu startowego po zalogowaniu się lub gdy wszystkie aplikacje na ekranie są zamknięte</string>
-      <string id="GoToDesktopOnSignIn_Help">To ustawienie zasad umożliwia użytkownikom przejście do pulpitu zamiast ekranu startowego po zalogowaniu się lub gdy wszystkie aplikacje na ekranie są zamknięte.  To ustawienie zasad dotyczy wszystkich wersji systemu Windows oraz wersji systemu Windows Server z zainstalowanym środowiskiem pulpitu.
+      <string id="GoToDesktopOnSignIn">Po zalogowaniu przejdź do pulpitu zamiast do ekranu startowego</string>
+      <string id="GoToDesktopOnSignIn_Help">To ustawienie zasad umożliwia użytkownikom przejście do pulpitu zamiast ekranu startowego po zalogowaniu się.
 
-Jeśli to ustawienie zasad zostanie włączone, użytkownicy będą zawsze przechodzić do pulpitu po zalogowaniu się lub gdy wszystkie aplikacje na ekranie będą zamknięte.
+Jeśli to ustawienie zasad zostanie włączone, użytkownicy będą zawsze przechodzić do pulpitu po zalogowaniu się.
 
-Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, użytkownicy będą domyślnie przechodzić do ekranu startowego po zalogowaniu się i użytkownik może skonfigurować to ustawienie.</string>
+Jeśli to ustawienie zasad zostanie wyłączone, użytkownicy będą zawsze przechodzić do ekranu startowego po zalogowaniu się.
+
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, zostanie użyte ustawienie domyślne urządzenia użytkownika i użytkownik będzie mógł je zmienić.</string>
       <string id="ShowAppsViewOnStart">Automatycznie pokaż widok Aplikacje po przejściu do ekranu startowego</string>
       <string id="ShowAppsViewOnStart_Help">To ustawienie zasad umożliwia domyślne otwieranie widoku Aplikacje, gdy użytkownik przejdzie do ekranu startowego.
 
@@ -567,6 +569,12 @@ Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane,
 Jeśli to ustawienie zasad zostanie włączone, ekran startowy będzie wyświetlany na używanym ekranie, gdy użytkownik naciśnie klawisz z logo systemu Windows.
 
 Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, ekran startowy będzie wyświetlany na ekranie głównym za każdym razem, gdy użytkownik naciśnie klawisz z logo systemu Windows. Użytkownicy nadal będą mogli otwierać ekran startowy na innych ekranach przez naciśnięcie przycisku Start na tych ekranach. Ponadto użytkownik będzie mógł skonfigurować to ustawienie.</string>
+      <string id="ForceStartSize_DisplayName">Wymuś rozmiar elementu Start: pełny ekran lub menu</string>
+      <string id="ForceStartSize_ExplainText">Jeśli włączysz te zasady i ustawisz wartość dla menu Start lub ekranu startowego, element Start będzie odpowiedniego rozmiaru, a użytkownicy nie będą mogli zmienić jego rozmiaru w obszarze Ustawienia. 
+
+Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, system Windows automatycznie wybierze rozmiar na podstawie typu urządzenia, a użytkownicy będą mogli zmienić rozmiar elementu Start w obszarze Ustawienia.</string>
+      <string id="ForceLauncherSize_Collapsed">Menu Start</string>
+      <string id="ForceLauncherSize_Expanded">Pełny ekran startowy</string>
     </stringTable>
     <presentationTable>
       <presentation id="PowerButtonAction">
@@ -580,6 +588,9 @@ Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane,
           <label>Plik układu ekranu startowego</label>
           <defaultValue></defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="ForceStartSize">
+        <dropdownList refId="ForceStartSizeDropdown" noSort="true" defaultItem="0">Wybierz jeden z następujących rozmiarów</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

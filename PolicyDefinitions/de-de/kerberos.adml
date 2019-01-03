@@ -123,6 +123,22 @@ Wenn Sie diese Richtlinieneinstellung aktivieren und die Ressourcendomäne die V
 Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren und die Ressourcendomäne die Verbundauthentifizierung anfordert, senden Geräte zunächst eine Nicht-Verbundauthentifizierungsanforderung. Wenn der Dienst eine Verbundauthentifizierung anfordert, wird anschließend eine Verbundauthentifizierungsanforderung gesendet.
 
 </string>
+      <string id="DevicePKInitEnabled">Geräteauthentifizierung mittels Zertifikat unterstützen</string>
+      <string id="DevicePKInitEnabled_explain">Die Unterstützung der Geräteauthentifizierung mittels Zertifikat erfordert eine Verbindung mit einem DC in der Gerätekontodomäne, die die Zertifikatauthentifizierung für Computerkonten unterstützt. 
+
+Mit dieser Richtlinieneinstellung können Sie die Unterstützung für Kerberos festlegen, um das Gerät mithilfe des Zertifikats bei der Domäne zu authentifizieren.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, werden die Geräteanmeldeinformationen basierend auf den folgenden Optionen ausgewählt:
+
+Automatisch: Das Gerät versucht, sich mithilfe des Zertifikats zu authentifizieren. Wenn der DC keine Computerkontoauthentifizierung mittels Zertifikat unterstützt, wird versucht, die Authentifizierung mithilfe des Kennworts durchzuführen.
+
+Erzwingen: Das Gerät wird immer mithilfe seines Zertifikats authentifiziert. Wenn kein DC gefunden wird, der die Computerkontoauthentifizierung mithilfe von Zertifikaten unterstützt, schlägt die Authentifizierung fehl.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren, wird "Deaktivieren" verwendet.
+Wenn Sie diese Richtlinieneinstellung nicht konfigurieren, wird "Automatisch" verwendet.
+</string>
+      <string id="DevicePKInitBehavior_Automatic">Automatisch</string>
+      <string id="DevicePKInitBehavior_Force">Erzwingen</string>
     </stringTable>
     <presentationTable>
       <presentation id="hosttorealm">
@@ -215,6 +231,9 @@ Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren und 
         <decimalTextBox refId="MaxTokenSize" defaultValue="48000" spinStep="1000">Maximale Größe</decimalTextBox>
       </presentation>
       <presentation id="EnableCbacAndArmor">
+      </presentation>
+      <presentation id="DevicePKInitBehavior">
+        <dropdownList refId="DevicePKInitBehavior" noSort="true" defaultItem="0">Geräteauthentifizierungsverhalten mittels Zertifikat:</dropdownList>  
       </presentation>
     </presentationTable>
   </resources>

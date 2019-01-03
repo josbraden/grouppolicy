@@ -58,6 +58,43 @@
 - 若要仅支持 V2 内容信息，请将“支持的哈希版本”的值设置为2。
 
 - 若要同时支持 V1 和 V2 内容信息，请将“支持的哈希版本”的值设置为3。</string>
+      <string id="Pol_CipherSuiteOrder_Name">密码套件顺序</string>
+      <string id="Pol_CipherSuiteOrder_Help">此策略设置确定 SMB 服务器使用的密码套件。
+
+如果启用此策略设置，密码套件的优先级别是指定的顺序。
+
+如果你启用此策略设置，请不要指定至少一个受支持的密码套件，或者如果禁用或未配置此策略设置，将使用默认的密码套件顺序。
+
+SMB 3.11 密码套件: 
+
+AES_128_GCM
+AES_128_CCM
+
+SMB 3.0 和 3.02 密码套件: 
+
+AES_128_CCM
+
+修改此设置的方式:
+
+排列编辑框中的所需的密码套件，每行，从最的顺序，以最低优先级，与位于最上面的优先级最高的密码套件中的一个密码套件。删除任何不希望使用的密码套件。
+
+注意: 在配置此安全设置时，更改才会生效之前重新启动 Windows。</string>
+      <string id="HonorCipherSuiteOrder_Name">提供密码套件顺序</string>
+      <string id="HonorCipherSuiteOrder_Help">此策略设置可确定 SMB 服务器在与 SMB 客户端协商新连接时如何选择密码套件。
+
+如果启用此策略设置，则 SMB 服务器将从 SMB 客户端的密码套件中选择最喜欢的密码套件。
+
+如果禁用或未配置此策略设置，则 SMB 服务器将从服务器的密码套件中选择 SMB 客户端最喜欢的密码套件。
+
+注意: 在配置此安全设置时，更改在重新启动 Windows 前不会生效。</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">提供密码套件顺序</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">此策略设置可确定 SMB 服务器在与 SMB 客户端协商新连接时如何选择密码套件。
+
+如果启用此策略设置，则 SMB 服务器将从客户端支持的密码套件列表中选择最喜欢的密码套件。
+
+如果禁用或未配置此策略设置，则 SMB 服务器将从服务器支持的密码套件列表中选择客户端最喜欢的密码套件。
+
+注意: 在配置此安全设置时，更改在重新启动 Windows 前不会生效。</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@
         <text>3 = 支持 V1 和 V2 哈希</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">支持的哈希版本:  </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>密码套件:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

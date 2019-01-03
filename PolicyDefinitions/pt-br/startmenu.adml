@@ -5,6 +5,7 @@
   <description>digite a descrição aqui</description>
   <resources>
     <stringTable>
+      <string id="SUPPORTED_Win7UntilThreshold">Pelo menos Windows Server 2008 R2 ou Windows 7. Não tem suporte no Windows 10 ou posterior</string>
       <string id="ClearRecentProgForNewUserInStartMenu">Limpar a lista de programas recentes para novos usuários</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">Se você habilitar esta configuração de política, a lista de programas recentes no menu Iniciar será exibida em branco para cada novo usuário.
 
@@ -143,12 +144,12 @@ Se esta configuração for desabilitada ou não for definida, todos os textos po
 Se você habilitar essa configuração, impedirá que o usuário selecione aplicativos, redimensione blocos, fixe/desafixe blocos ou blocos secundários, entre no modo de personalização e reorganize blocos na tela inicial e em Aplicativos.
 
 Se você desabilitar ou não definir essa configuração, permitirá que o usuário selecione aplicativos, redimensione blocos, fixe/desafixe blocos ou blocos secundários, entre no modo de personalização e reorganize blocos na tela inicial e em Aplicativos.</string>
-      <string id="ClearTilesOnExit">Limpar o histórico de notificações de mosaico ao sair</string>
-      <string id="ClearTilesOnExit_Help">Se você habilitar esta configuração, o sistema excluirá as notificações de mosaico quando o usuário fizer logoff. Consequentemente, os Mosaicos na exibição inicial sempre mostrarão o conteúdo padrão quando o usuário fizer logon. Além disso, quaisquer versões em cache dessas notificações serão limpas quando o usuário fizer logoff.
+      <string id="ClearTilesOnExit">Limpar notificações de bloco durante o logon</string>
+      <string id="ClearTilesOnExit_Help">Se você habilitar essa configuração, o sistema excluirá as notificações de bloco quando o usuário fizer logon. Consequentemente, os Blocos na exibição inicial sempre mostrarão o conteúdo padrão quando o usuário fizer logon. Além disso, todas as versões dessas notificações em cache serão limpas quando o usuário fizer logon.
 
-Se você desabilitar ou não definir esta configuração, o sistema manterá as notificações e, quando o usuário fizer logon, os mosaicos aparecerão exatamente como estavam quando o usuário fez logoff, inclusive o histórico das notificações anteriores para cada mosaico.
+Se você desabilitar ou não definir essa configuração, o sistema manterá as notificações e, quando o usuário fizer logon, os blocos serão exibidos exatamente como estavam quando o usuário fez logoff, inclusive o histórico de notificações anteriores de cada bloco.
 
-Esta configuração não impede que novas notificações apareçam. Consulte a configuração "Desligar Notificações de Aplicativos" para impedir novas notificações.</string>
+Essa configuração não impede que novas notificações sejam exibidas. Consulte a configuração "Desligar Notificações de Aplicativos" para impedir novas notificações.</string>
       <string id="StartPinAppsWhenInstalled">Fixar aplicativos na tela inicial quando instalados</string>
       <string id="StartPinAppsWhenInstalled_Help">Essa configuração de política permite fixar os aplicativos na tela inicial por padrão, quando eles são incluídos na lista por AppID.</string>
 
@@ -161,7 +162,6 @@ Para usar essa configuração, primeiro você deve configurar manualmente um lay
 Depois que o arquivo XML for gerado e movido para o caminho desejado, digite o caminho totalmente qualificado e o nome do arquivo XML. Você pode digitar um caminho local, como C:\StartLayouts\myLayout.xml, ou um caminho UNC, como \\Server\Share\Layout.xml. Se o arquivo especificado não estiver disponível quando o usuário fizer logon, o layout não será alterado. Os usuários não podem personalizar a tela inicial enquanto essa configuração estiver habilitada.
 
 Se você desabilitar essa configuração ou não defini-la, o layout da tela inicial não será alterado, e os usuários poderão personalizá-lo.</string>
-
       <string id="NoClose">Remover e impedir o acesso aos comandos Desligar, Reiniciar, Dormir e Hibernar</string>
       <string id="NoClose_Help">Esta configuração de política impede que os usuários executem os comandos a seguir do menu Iniciar ou da tela Segurança do Windows: Desligar, Reiniciar, Dormir e Hibernar. Esta configuração de política não impede que os usuários executem programas baseados no Windows que realizam essas funções.
 
@@ -535,12 +535,14 @@ Se você habilitar esta configuração, os usuários poderão acessar o comando 
 Se você desabilitar ou não definir esta configuração de política, os usuários não poderão acessar o comando "Executar como usuário diferente" em Iniciar para nenhum aplicativo.
 
 Observação: esta configuração não impede que os usuários utilizem outros métodos, como "Shift + clicar no botão direito do mouse" em listas de atalhos de aplicativos na barra de tarefas para utilizar o comando "Executar como usuário diferente".</string>
-      <string id="GoToDesktopOnSignIn">Ir para a área de trabalho, e não para a tela inicial, quando eu entrar, ou quando todos os aplicativos de uma tela forem fechados</string>
-      <string id="GoToDesktopOnSignIn_Help">Essa configuração de política permite aos usuários ir para a área de trabalho, em vez de para a tela inicial, ao entrar, ou quando todos os aplicativos de uma tela forem fechados.  Essa configuração de política se aplica a todas as versões do Windows e às versões do Windows Server com a Experiência Desktop instalada.
+      <string id="GoToDesktopOnSignIn">Ir para a área de trabalho, e não para a tela inicial, quando entrar</string>
+      <string id="GoToDesktopOnSignIn_Help">Essa política permite que os usuários, ao entrar, acessem a área de trabalho, e não a tela inicial.
 
-Se você habilitar essa configuração de política, os usuários sempre irão para a área de trabalho quando entrarem ou quando todos os aplicativos de uma tela forem fechados.
+Se habilitar essa configuração de política, os usuários irão sempre para a área de trabalho, quando entrarem.
 
-Se você desabilitar ou não definir essa configuração de política, por padrão, os usuários irão para a tela inicial ao entrar e poderão definir essa configuração.</string>
+Se desabilitar essa configuração de política, os usuários irão sempre para a tela inicial, quando entrarem.
+
+Se não definir essa configuração de política, a configuração padrão do dispositivo do usuário será utilizada, e o usuário poderá optar por alterá-la.</string>
       <string id="ShowAppsViewOnStart">Mostrar o modo de exibição Aplicativos quando o usuário for para Iniciar</string>
       <string id="ShowAppsViewOnStart_Help">Essa configuração de política permite que o modo de exibição Aplicativos seja aberto por padrão quando o usuário for para Iniciar.
 
@@ -567,6 +569,12 @@ Se você desabilitar ou não definir essa configuração de política, os aplica
 Se você habilitar essa configuração de política, a tela inicial aparecerá na tela usada pelo usuário quando ele pressionar a tecla do logotipo do Windows.
 
 Se você desabilitar ou não definir essa configuração de política, a tela inicial sempre aparecerá na tela principal quando o usuário pressionar a tecla do logotipo do Windows. Os usuários ainda poderão abrir a tela inicial em outras exibições, pressionando o botão Iniciar na exibição correspondente. Além disso, o usuário poderá definir essa configuração.</string>
+      <string id="ForceStartSize_DisplayName">Forçar para Iniciar ser do tamanho da tela inteira ou do tamanho do menu</string>
+      <string id="ForceStartSize_ExplainText">Se você habilitar essa política e defini-la como Menu Iniciar ou Iniciar em tela inteira, Iniciar terá esse tamanho e os usuários não poderão alterar o tamanho de Iniciar em Configurações. 
+
+Se você desabilitar ou não definir essa configuração de política, o Windows selecionará automaticamente o tamanho com base no fator forma de hardware e os usuários poderão alterar o tamanho de Iniciar em Configurações.</string>
+      <string id="ForceLauncherSize_Collapsed">Menu Iniciar</string>
+      <string id="ForceLauncherSize_Expanded">Iniciar em tela inteira</string>
     </stringTable>
     <presentationTable>
       <presentation id="PowerButtonAction">
@@ -580,6 +588,9 @@ Se você desabilitar ou não definir essa configuração de política, a tela in
           <label>Arquivo de layout de Iniciar</label>
           <defaultValue></defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="ForceStartSize">
+        <dropdownList refId="ForceStartSizeDropdown" noSort="true" defaultItem="0">Escolha um dos tamanhos a seguir</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

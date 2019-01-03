@@ -5,54 +5,54 @@
   <description>Sem zadejte popis.</description>
   <resources>
     <stringTable>
-      <string id="W32TIME_CONFIG_EXPLAIN">Toto nastavení zásad umožňuje určit disciplínu hodin a obecné hodnoty pro službu Systémový čas (W32time) pro řadiče domény včetně řadičů domény pouze pro čtení.
+      <string id="W32TIME_CONFIG_EXPLAIN">Tato zásada umožňuje určit disciplínu hodin a obecné hodnoty pro službu Systémový čas (W32time) pro řadiče domény, včetně těch jen pro čtení.
 
-Pokud toto nastavení zásad povolíte, můžete určit následující disciplínu hodin a obecné parametry a parametry řadiče domény pouze pro čtení.
+Pokud tuto zásadu povolíte, můžete určit následující disciplínu hodin a obecné parametry a parametry řadiče domény jen pro čtení.
 
-Pokud toto nastavení zásad zakážete nebo nenakonfigurujete, použije služba Systémový čas pro každý z následujících parametrů výchozí hodnoty.
+Pokud tuto zásadu zakážete nebo nenakonfigurujete, použije služba Systémový čas pro každý z následujících parametrů výchozí hodnoty.
 
-Několik z následujících hodnot je skalárních, což znamená, že mají význam pouze ve vzájemném vztahu a nejsou definovány konkrétními měrnými jednotkami.
+Několik z následujících hodnot je skalárních, což znamená, že mají význam jen ve vzájemném vztahu a nejsou definované konkrétními měrnými jednotkami.
 
 FrequencyCorrectRate
-Tento parametr řídí, jak často služba W32time provádí korekci frekvence místních hodin. Nižší hodnoty způsobí méně časté korekce, vyšší hodnoty způsobí častější korekce. Příliš nízké hodnoty mohou vést k příliš častým korekcím času a mohou způsobit nestabilitu. Hodnoty, kterou jsou příliš vysoké, mohou vést k pomalé synchronizaci. Výchozí hodnota: 4 (skalární).
+Tento parametr řídí, jak často služba W32time provádí korekci frekvence místních hodin. Nižší hodnoty způsobí méně časté korekce, vyšší hodnoty způsobí častější korekce. Příliš nízké hodnoty můžou vést k příliš častým korekcím času a způsobovat nestabilitu. Hodnoty, kterou jsou příliš vysoké, můžou vést k pomalé synchronizaci. Výchozí hodnota: 4 (skalární).
 
 HoldPeriod
-Tento parametr značí, kolik potenciálně přesných časových vzorků v řadě musí klientský počítač přijmout před tím, než jsou následné časové vzorky vyhodnoceny jako potenciální špičky. Po období, kdy nejsou přijaty žádné použitelné časové vzorky, přestane klient času vyhodnocovat časové vzorky pro špičky, jakmile je přijat první potenciálně přesný časový vzorek. Když je přijata řada časových vzorků (jak indikuje parametr HoldPeriod), klient času vyhodnotí následné časové vzorky z hlediska špiček. Časový vzorek je považován za špičku, když je časový rozdíl mezi časovým vzorkem a místním časem klientského počítače větší, než určuje hodnota parametru LargePhaseOffset. Výchozí hodnota: Pět časových vzorků.
+Tento parametr značí, kolik potenciálně přesných časových vzorků v řadě musí klientský počítač přijmout před tím, než se následné časové vzorky vyhodnotí jako potenciální špičky. Po období, kdy se nepřijmou žádné použitelné časové vzorky, přestane klient času vyhodnocovat časové vzorky pro špičky, jakmile je přijatý první potenciálně přesný časový vzorek. Když je přijata řada časových vzorků (jak indikuje HoldPeriod), klient času vyhodnotí následné časové vzorky z hlediska špiček. Časový vzorek se považuje za špičku, když je časový rozdíl mezi časovým vzorkem a místním časem klientského počítače větší, než určuje hodnota parametru LargePhaseOffset. Výchozí hodnota: 5 časových vzorků.
 
 LargePhaseOffset
-Tento parametr určuje časovou odchylku od místního času klientského počítače (fázový posun), jakou musí časový vzorek mít, aby byl považován za špičku. Za špičky jsou považovány časové vzorky s časovými odchylkami času většími, než je hodnota parametru LargePhaseOffset. Výchozí hodnota: 50 000 000 jednotek v délce 100nanosekund (ns), což je 5 sekund.
+Tento parametr určuje časovou odchylku od místního času klientského počítače (fázový posun), jakou musí časový vzorek mít, aby byl považován za špičku. Za špičky jsou považovány časové vzorky s časovými odchylkami času většími, než je hodnota LargePhaseOffset. Výchozí hodnota: 50 000 000 jednotek v délce 100 ns, což je 5 sekund.
 
 MaxAllowedPhaseOffset
-Tento parametr řídí, jakým způsobem služba W32time provádí korekci hodin na základě velikosti vypočítané časové odchylky mezi časovým vzorkem a místním časem klientského počítače. Pokud je přijata odezva s časovou odchylkou větší, než je tato hodnota, nastaví služba W32time místní čas klientského počítače okamžitě na čas, který je akceptován jako přesný ze serveru NTP (Network Time Protocol). Pokud je časová odchylka menší než tato hodnota, je korekce místního času klientského počítače prováděna postupně. Výchozí hodnota: 300 sekund.
+Tento parametr řídí, jakým způsobem služba W32time provádí korekci hodin na základě velikosti vypočítané časové odchylky mezi časovým vzorkem a místním časem klientského počítače. Pokud přijde odezva s časovou odchylkou větší, než je tato hodnota, nastaví služba W32time místní čas klientského počítače okamžitě na čas, který se přijme jako přesný ze serveru NTP (Network Time Protocol). Pokud je časová odchylka menší než tato hodnota, provádí se korekce místního času klientského počítače postupně. Výchozí hodnota: 300 sekund.
 
 MaxNegPhaseCorrection
-Tento parametr řídí maximální přípustnou korekci času, kterou lze provést směrem dozadu. Pokud je přijat časový vzorek udávající čas v minulosti (v porovnání s místním časem klientského počítače), jehož časový rozdíl je větší, než určuje hodnota parametru MaxNegPhaseCorrection, je časový vzorek ignorován. Pokud k tomu dojde, zaprotokoluje zdroj služby Systémový čas událost do systémového protokolu Prohlížeče událostí. Výchozí hodnota: 172 800 sekund.
+Tento parametr řídí maximální přípustnou korekci času, kterou jde provést směrem dozadu. Pokud přijde časový vzorek udávající čas v minulosti (v porovnání s místním časem klientského počítače), jehož časový rozdíl je větší, než určuje hodnota parametru MaxNegPhaseCorrection, bude se ignorovat. Pokud k tomu dojde, zaprotokoluje zdroj služby Systémový čas událost do systémového protokolu Prohlížeče událostí. Výchozí hodnota: 172 800 sekund.
 
 MaxPosPhaseCorrection
-Tento parametr řídí maximální přípustnou korekci času, kterou lze provést směrem dopředu. Pokud je přijat časový vzorek udávající čas v budoucnosti (v porovnání s místním časem klientského počítače), jehož časový rozdíl je větší, než určuje hodnota parametru MaxPosPhaseCorrection, je časový vzorek ignorován. Výchozí hodnota: 172 800 sekund.
+Tento parametr řídí maximální přípustnou korekci času, kterou jde provést směrem dopředu. Pokud přijde časový vzorek udávající čas v budoucnosti (v porovnání s místním časem klientského počítače), jehož časový rozdíl je větší, než určuje hodnota parametru MaxPosPhaseCorrection, bude se ignorovat. Výchozí hodnota: 172 800 sekund.
 
 PhaseCorrectRate
-Tento parametr určuje, jak rychle bude služba W32time provádět korekce odchylky od místního času klientského počítače, aby byla zajištěna shoda s časovými vzorky, které jsou ze serveru NTP akceptovány jako přesné. Nižší hodnoty způsobí, že se bude čas upravovat pomaleji; větší hodnoty budou znamenat rychlejší úpravu času. Výchozí hodnota: 7 (skalární).
+Tento parametr určuje, jak rychle bude služba W32time provádět korekce odchylky od místního času klientského počítače, aby se zajistila shoda s časovými vzorky, které se ze serveru NTP akceptují jako přesné. Nižší hodnoty způsobí, že se bude čas upravovat pomaleji; větší hodnoty budou znamenat rychlejší úpravu času. Výchozí hodnota: 7 (skalární).
 
 PollAdjustFactor
-Tento parametr řídí, jak rychle bude služba W32time měnit intervaly dotazování. Pokud jsou odezvy považovány za přesné, bude interval dotazování automaticky prodloužen. Pokud jsou odpovědi považovány za nepřesné, bude interval dotazování automaticky zkrácen. Výchozí hodnota: 5 (skalární).
+Tento parametr řídí, jak rychle bude služba W32time měnit intervaly dotazování. Pokud se odezvy považují za přesné, interval dotazování se automaticky prodlouží. Pokud se odpovědi považují za nepřesné, interval dotazování se automaticky zkrátí. Výchozí hodnota: 5 (skalární).
 
 SpikeWatchPeriod
-Tento parametr určuje, po jakou dobu jsou podezřelé časové vzorky přijímány ze zdroje času, než jsou akceptovány jako přesné. Časové vzorky jsou považovány za podezřelé v případě, že je odchylka času mezi časovým vzorkem a místním časem klientského počítače větší než hodnota parametru LargePhaseOffset. Hodnota SpikeWatchPeriod se používá ve spojení s hodnotou HoldPeriod, čímž lze eliminovat sporadické, nepřesné časové vzorky vracené z partnerského počítače. Výchozí hodnota: 900 sekund.
+Tento parametr určuje, po jakou dobu se podezřelé časové vzorky přijímají ze zdroje času, než se akceptují jako přesné. Časové vzorky se považují za podezřelé v případě, že je odchylka času mezi časovým vzorkem a místním časem klientského počítače větší než hodnota parametru LargePhaseOffset. Hodnota SpikeWatchPeriod se používá ve spojení s hodnotou HoldPeriod, čímž jde eliminovat sporadické, nepřesné časové vzorky vracené z partnerského počítače. Výchozí hodnota: 900 sekund.
 
 UpdateInterval
-Tento parametr určuje dobu, po kterou bude služba W32time čekat mezi korekcemi při postupném provádění korekcí času. Pokud služba provádí postupnou opravu času, mírně upraví čas, počká tuto dobu a následně zkontroluje, zda je potřeba provést další opravu. Tento postup je opakován, dokud není úprava dokončena. Výchozí hodnota: 100 jednotek v délce jedné setiny sekundy, což je 1 sekunda.
+Tento parametr určuje dobu, po kterou bude služba W32time čekat mezi korekcemi při postupném provádění korekcí času. Pokud provádí postupnou opravu času, mírně upraví čas, počká tuto dobu a následně zkontroluje, jestli je potřeba provést další opravu. Tento postup se opakuje až do dokončení úpravy. Výchozí hodnota: 100 jednotek v délce jedné setiny sekundy, což je 1 sekunda.
 
 Obecné parametry:
 
 AnnounceFlags
-Tento parametr je hodnota bitové masky, která řídí, jak je dostupnost časové služby inzerována prostřednictvím služby NetLogon. Výchozí hodnota: 0x0a (hexadecimální). Možné hodnoty naleznete v dokumentaci k podklíči NtpClient\EventLogFlags na webu Microsoft TechNet.
+Tento parametr je hodnota bitové masky, která řídí, jak se dostupnost časové služby inzeruje prostřednictvím služby NetLogon. Výchozí hodnota: 0x0a (hexadecimální). Možné hodnoty najdete v dokumentaci k podklíči NtpClient\EventLogFlags na webu Microsoft TechNet.
 
 EventLogFlags
-Tento parametr řídí speciální události, které mohou být zaprotokolovány do systémového protokolu Prohlížeče událostí. Výchozí hodnota: hexadecimální bitová maska 0x02. Možné hodnoty naleznete v dokumentaci k podklíči NtpClient\EventLogFlags na webu Microsoft TechNet.
+Tento parametr řídí speciální události, které se můžou zaprotokolovat do systémového protokolu Prohlížeče událostí. Výchozí hodnota: hexadecimální bitová maska 0x02. Možné hodnoty najdete v dokumentaci k podklíči NtpClient\EventLogFlags na webu Microsoft TechNet.
 
 LocalClockDispersion
-Tento parametr udává maximální chybu v sekundách, která je hlášena serverem NTP klientům vyžadujícím časový vzorek. (Platí pouze v případě, že server NTP používá místní čas obvodu CMOS.) Výchozí hodnota: 10 sekund.
+Tento parametr udává maximální chybu v sekundách, která se hlásí serverem NTP klientům vyžadujícím časový vzorek. (Platí jen v případě, že server NTP používá místní čas CMOS.) Výchozí hodnota: 10 sekund.
 
 MaxPollInterval
 Tento parametr řídí maximální interval dotazování, který definuje maximální dobu mezi dotazováními partnerského počítače. Výchozí hodnota: 10 ve dvojkovém logaritmu, což je 1024 sekund. (Nenastavujte na vyšší hodnotu než 15.)
@@ -61,25 +61,27 @@ MinPollInterval
 Tento parametr řídí minimální interval dotazování, který definuje minimální dobu mezi dotazováními partnerského počítače. Výchozí hodnota: 6 ve dvojkovém logaritmu, což je 64 sekund.
 
 RequireSecureTimeSyncRequests
-Tento parametr řídí, zda bude řadič domény reagovat na požadavek synchronizace času využívající starší ověřovací protokol. Pokud povolen (nastaven na 1), nebude řadič domény reagovat na požadavky použití takových protokolů. Výchozí hodnota: 0 (logická hodnota).
+Tento parametr řídí, jestli bude řadič domény reagovat na požadavek synchronizace času využívající starší ověřovací protokol. Pokud je povolený (nastavení na 1), nebude řadič domény reagovat na požadavky použití takových protokolů. Výchozí hodnota: 0 (logická hodnota).
 
-Parametry řadiče domény pouze pro čtení:
+UtilizeSslTimeData
+Tento parametr řídí, jestli bude W32time používat časová data vypočítaná z přenosů SSL v počítači jako doplňující vstup pro korekci místních hodin. Výchozí hodnota: 0 (logická hodnota).
+
+Parametry řadiče domény jen pro čtení:
 
 ChainEntryTimeout
-Tento parametr určuje maximální dobu, po kterou může záznam zůstat v tabulce řetězení, než je považován za záznam, jehož platnost vypršela. Takovéto neplatné položky mohou být odebrány při zpracování dalších požadavků nebo odpovědí. Výchozí hodnota: 16 sekund.
+Tento parametr určuje maximální dobu, po kterou může záznam zůstat v tabulce řetězení, než se bude považovat za záznam, jehož platnost vypršela. Takovéto neplatné položky se můžou odebrat při zpracování dalších požadavků nebo odpovědí. Výchozí hodnota: 16 sekund.
 
 ChainMaxEntries
-Tento parametr řídí maximální počet záznamů, které jsou povoleny v tabulce řetězení. Jestliže je tabulka řetězení plná a žádné položky, jejichž platnost vypršela, nelze odebrat, budou všechny příchozí požadavky ignorovány. Výchozí hodnota: 128 záznamů.
+Tento parametr řídí maximální počet záznamů, které jsou povolené v tabulce řetězení. Jestliže je tabulka řetězení plná a žádné položky, jejichž platnost vypršela, nejde odebrat, budou se všechny příchozí požadavky ignorovat. Výchozí hodnota: 128 záznamů.
 
 ChainMaxHostEntries
-Tento parametr řídí maximální počet záznamů, které jsou povoleny v tabulce řetězení pro konkrétního hostitele. Výchozí hodnota: 4 záznamy.
+Tento parametr řídí maximální počet záznamů, které jsou povolené v tabulce řetězení pro konkrétního hostitele. Výchozí hodnota: 4 záznamy.
 
 ChainDisable
-Tento parametr řídí, zda je mechanismus řetězení povolen či zakázán. Jestliže je řetězení zakázáno (nastaveno na hodnotu 0), lze řadič domény jen pro čtení synchronizovat s libovolným řadičem domény, ale hostitele, jejichž hesla se neukládají do mezipaměti na řadiči domény jen pro čtení, nebude možné s řadičem domény jen pro čtení synchronizovat. Výchozí hodnota: 0 (logická hodnota).
+Tento parametr řídí, jestli je mechanismus řetězení povolený, nebo zakázaný. Pokud je zakázané (nastavené na 0), jde řadič domény jen pro čtení synchronizovat s libovolným řadičem domény, ale hostitele, jejichž hesla se neukládají do mezipaměti na tomto řadiči domény, nebude možné s řadičem synchronizovat. Výchozí hodnota: 0 (logická hodnota).
 
 ChainLoggingRate
-Tento parametr řídí četnost, s jakou je událost udávající počet úspěšných a neúspěšných pokusů o řetězení protokolována do systémového protokolu v Prohlížeči událostí. Výchozí hodnota: 30 minut.
-
+Tento parametr řídí četnost, s jakou se událost udávající počet úspěšných a neúspěšných pokusů o řetězení protokoluje do systémového protokolu v Prohlížeči událostí. Výchozí hodnota: 30 minut.
 </string>
 
 <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">Toto nastavení zásad určuje sadu parametrů pro řízení klienta protokolu NTP systému Windows.
@@ -160,6 +162,7 @@ Pokud toto nastavení zásad zakážete nebo nenakonfigurujete, váš počítač
         <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

@@ -3112,6 +3112,7 @@ Si no establece esta configuración de directiva, el usuario puede activar o des
       <string id="SUPPORTED_IE9">Al menos Internet Explorer 9.0</string>
       <string id="SUPPORTED_IE10">Al menos Internet Explorer 10.0</string>
       <string id="SUPPORTED_IE10WIN8">Al menos Internet Explorer 10.0 en Windows 8</string>
+      <string id="SUPPORTED_IE11WIN8">Se requiere al menos Internet Explorer 11.0 en Windows 8.1</string>
       <string id="SUPPORTED_IE11">Al menos Internet Explorer 11.0</string>
       <string id="SUPPORTED_IE7_NONVISTA">Al menos Internet Explorer 7.0. No compatible con Windows Vista</string>
       <string id="SUPPORTED_IE7VISTA">Al menos Internet Explorer 7.0 en Windows Vista</string>
@@ -3163,16 +3164,6 @@ Si deshabilita o no establece esta configuración de directiva, el usuario puede
       <string id="UTF8URLQuery_Intranet">Codificar las cadenas de consulta en UTF-8 solo en las direcciones URL de la intranet</string>
       <string id="UTF8URLQuery_Never">No codificar nunca las cadenas de consulta en UTF-8</string>
       <string id="UTF8URLQuery_NonIntranet">Codificar las cadenas de consulta en UTF-8 solo en las direcciones URL que no sean de la intranet</string>
-      <string id="TopResult0">Deshabilitar la búsqueda de resultado principal</string>
-      <string id="TopResult1">Habilitar la búsqueda de resultado principal</string>
-      <string id="TopResultPol">Impedir la configuración de la búsqueda de resultado principal en la barra de direcciones</string>
-      <string id="TopResultPol_Explain">Esta configuración de directiva permite especificar si un usuario puede explorar la página web de un resultado principal cuando la búsqueda está habilitada en la barra de direcciones. Las opciones posibles son:
-    • Deshabilitar la búsqueda de resultado principal: cuando un usuario realiza una búsqueda en la barra de direcciones, se muestra en la ventana principal una lista de resultados de la búsqueda del proveedor de búsqueda seleccionado.
-    • Habilitar la búsqueda de resultado principal: cuando un usuario realiza una búsqueda en la barra de direcciones, se dirige al usuario a un sitio web de resultado principal externo determinado por el proveedor de búsqueda, si está disponible.
-
-Si habilita esta configuración de directiva, puede elegir dónde se dirige al usuario después de una búsqueda en la barra de direcciones: un sitio web de resultado principal o una página web de resultados de la búsqueda en la ventana principal.
-
-Si deshabilita o no establece esta configuración de directiva, el usuario puede seleccionar sus preferencias en cuanto a este comportamiento. Explorar el sitio web de resultado principal es el comportamiento predeterminado.</string>
       <string id="UseHomePage">Ir directamente a la página principal</string>
       <string id="UseHoverColor">Activar la opción de color de desplazamiento</string>
       <string id="UseHoverColor_Explain">Esta configuración de directiva hace que los hipervínculos cambien de color cuando el puntero del mouse se detiene momentáneamente sobre ellos.
@@ -3393,7 +3384,11 @@ Si deshabilita o no establece esta configuración de directiva, el usuario puede
       <string id="Advanced_DisableEPMCompat">No permitir que los controles ActiveX se ejecuten en modo protegido cuando el modo protegido mejorado está habilitado</string>
       <string id="Advanced_EnableHttp1_1">Usar HTTP 1.1</string>
       <string id="Advanced_ProxyHttp1_1">Usar HTTP 1.1 a través de conexiones proxy</string>
-      <string id="Advanced_EnableSPDY3_0">Permitir que Internet Explorer use el protocolo de red SPDY/3</string>
+      <string id="Advanced_EnableSSL3Fallback">Permitir reserva para SSL 3.0 (Internet Explorer)</string>
+      <string id="Advanced_FallbackNonProtected">Sitios en modo no protegido</string>
+      <string id="Advanced_FallbackAll">Todos los sitios</string>
+      <string id="Advanced_FallbackNone">No hay sitios</string>
+      <string id="Advanced_EnableHTTP2">Permitir que Internet Explorer use el protocolo de red HTTP2</string>
       <string id="Advanced_SetWinInetProtocols">Desactivar soporte de cifrado</string>
       <string id="NoPrinting">Desactivar menú de impresión</string>
       <string id="Advanced_DisableFlipAhead">Desactivar la característica para pasar de página con predicción de página</string>
@@ -3446,13 +3441,21 @@ Si habilita esta configuración de directiva, Internet Explorer usa HTTP 1.1 med
 Si deshabilita esta configuración de directiva, Internet Explorer no usa HTTP 1.1 mediante conexiones proxy.
 
 Si no establece la configuración de directiva, los usuarios pueden configurar Internet Explorer para usar o no HTTP 1.1 mediante conexiones proxy.</string>
-      <string id="Advanced_ExplainEnableSPDY3_0">Esta configuración de directiva determina si Internet Explorer usa el protocolo de red SPDY/3. SPDY/3 funciona con solicitudes HTTP para optimizar la latencia de las solicitudes de red mediante la compresión, multiplexación y priorización.
+      <string id="Advanced_ExplainEnableHTTP2">Esta configuración de directiva determina si Internet Explorer usa el protocolo de red HTTP2. Las solicitudes de HTTP2 ayudan a optimizar la latencia de las solicitudes de red mediante la compresión, multiplexación y priorización.
 
-Si habilita esta configuración de directiva, Internet Explorer usa el protocolo de red SPDY/3.
+Si habilitas esta configuración de directiva, Internet Explorer usará el protocolo de red HTTP2.
 
-Si deshabilita esta configuración de directiva, Internet Explorer no usará el protocolo de red SPDY/3.
+Si deshabilitas esta configuración de directiva, Internet Explorer no usará el protocolo de red HTTP2.
 
-Si no establece esta configuración de directiva, los usuarios pueden activar y desactivar este comportamiento en la configuración de Opciones avanzadas de Internet Explorer.  Este comportamiento está activado de forma predeterminada.</string>
+Si no estableces esta configuración de directiva, los usuarios podrán activar o desactivar esta característica mediante la configuración de opciones avanzadas de Internet Explorer. Está activada de forma predeterminada.</string>
+      <string id="Advanced_ExplainEnableSSL3Fallback">Esta configuración de directiva permite bloquear una reserva no segura para SSL 3.0. Cuando esté habilitada, Internet Explorer intentará conectarse a los sitios con SSL 3.0 o una versión anterior cuando se produzca un error en TLS 1.0 o una versión posterior.
+
+Recomendamos que no permitas la reserva no segura con el fin de evitar un ataque de tipo "Man in the middle".
+
+Esta directiva no afecta a la selección de protocolos de seguridad habilitados.
+
+Si deshabilitas esta directiva, se usarán los valores predeterminados del sistema.
+</string>
       <string id="Advanced_ExplainSetWinInetProtocols">Esta configuración de directiva le permite desactivar el soporte de Seguridad de la capa de transporte (TLS, Transport Layer Security) 1.0, TLS 1.1, TLS 1.2, Capa de sockets seguros (SSL, Secure Sockets Layer) 2.0 o SSL 3.0 en el explorador. TLS y SSL son protocolos que ayudan a proteger la comunicación entre el explorador y el servidor de destino. Cuando el explorador intenta establecer una comunicación protegida con el servidor de destino, el explorador y el servidor negocian el protocolo y la versión que se deberá usar. El explorador y el servidor intentan que coincidan sus listas de protocolos y versiones admitidos y eligen la coincidencia preferida.
 
 Si habilita esta configuración de directiva, el explorador negocia, o no, un túnel de cifrado con los métodos de cifrado seleccionados en la lista desplegable.
@@ -3826,44 +3829,44 @@ Si deshabilita o no establece esta configuración de directiva, los usuarios pue
 Si activa esta configuración, los usuarios podrán ver y usar la opción del modo de empresa desde el menú Herramientas. Si activa esta configuración pero no indica una ubicación para los informes, el modo de empresa seguirá estando disponible para los usuarios, pero usted no recibirá ningún informe.
 
 Si deshabilita esta configuración de directiva o no la define, la opción de menú no aparecerá y los usuarios no podrán ejecutar los sitios web en el modo de empresa.</string>
-      <string id="VerMgmtDisable">Desactivar bloqueo de controles ActiveX obsoletos para Internet Explorer</string>
-      <string id="IE_ExplainVerMgmtDisable">Esta configuración de directiva establece si Internet Explorer va a bloquear controles ActiveX específicos que están obsoletos. Los controles ActiveX obsoletos nunca se bloquean en la zona Intranet.
+      <string id="VerMgmtDisable">Desactivar el bloqueo de controles ActiveX obsoletos para Internet Explorer</string>
+      <string id="IE_ExplainVerMgmtDisable">Esta configuración de directiva determina si Internet Explorer bloquea determinados controles ActiveX obsoletos. Nunca se bloquean los controles ActiveX obsoletos en la zona de Intranet.
 
-Si habilita esta configuración de directiva, Internet Explorer dejará de bloquear controles ActiveX obsoletos.
+Si habilitas esta configuración de directiva, Internet Explorer dejará de bloquear los controles ActiveX obsoletos.
 
-Si deshabilita o no define esta configuración de directiva, Internet Explorer seguirá bloqueando controles ActiveX específicos que estén obsoletos.
+Si deshabilitas o no estableces esta configuración de directiva, Internet Explorer seguirá bloqueando determinados controles ActiveX obsoletos.
 
-Para obtener más información, consulte el tema sobre controles ActiveX obsoletos en la biblioteca de TechNet de Internet Explorer.</string>
-      <string id="VerMgmtAuditModeEnable">Activar registro de controles ActiveX en Internet Explorer</string>
-      <string id="IE_ExplainVerMgmtAuditModeEnable">Esta configuración de directiva establece si Internet Explorer va a guardar información de registro sobre los controles ActiveX.
+Para obtener más información, consulta "Controles ActiveX obsoletos" en la biblioteca de TechNet de Internet Explorer.</string>
+      <string id="VerMgmtAuditModeEnable">Activar el registro de controles ActiveX en Internet Explorer</string>
+      <string id="IE_ExplainVerMgmtAuditModeEnable">Esta configuración de directiva determina si Internet Explorer guarda la información de registro de los controles ActiveX.
 
-Si habilita esta configuración de directiva, Internet Explorer registrará información sobre los controles ActiveX (como el URI de origen que cargó el control y si este está bloqueado) en un archivo local.
+Si habilitas esta configuración de directiva, Internet Explorer registrará la información de los controles ActiveX (incluido el URI de origen que haya cargado el control y si está o no bloqueado) en un archivo local.
 
-Si deshabilita o no define esta configuración de directiva, Internet Explorer no registrará información de los controles ActiveX.
+Si deshabilitas o no estableces esta configuración de directiva, Internet Explorer no registrará la información de los controles ActiveX.
 
-Recuerde que esta configuración de directiva se puede activar o desactivar de manera independiente de las configuraciones de directiva "Desactivar bloqueo de controles ActiveX obsoletos para Internet Explorer" o "Desactivar bloqueo de controles ActiveX obsoletos para Internet Explorer en dominios específicos".
+Ten en cuenta que puedes activar o desactivar esta configuración de directiva independientemente de las configuraciones de directiva "Desactivar el bloqueo de controles ActiveX obsoletos para Internet Explorer" o "Desactivar el bloqueo de controles ActiveX obsoletos para Internet Explorer en dominios específicos".
 
-Para obtener más información, consulte el tema sobre controles ActiveX obsoletos en la biblioteca de TechNet de Internet Explorer.</string>
-      <string id="VerMgmtDomainAllowlist">Desactivar bloqueo de controles ActiveX obsoletos para Internet Explorer en dominios específicos</string>
-      <string id="IE_ExplainVerMgmtDomainAllowlist">Esta configuración de directiva permite administrar una lista de dominios en los que Internet Explorer detendrá el bloqueo de los controles ActiveX que estén obsoletos. Los controles ActiveX obsoletos nunca se bloquean en la zona de Intranet.
+Para obtener más información, consulta "Controles ActiveX obsoletos" en la biblioteca de TechNet de Internet Explorer.</string>
+      <string id="VerMgmtDomainAllowlist">Desactivar el bloqueo de controles ActiveX obsoletos para Internet Explorer en dominios específicos</string>
+      <string id="IE_ExplainVerMgmtDomainAllowlist">Esta configuración de directiva permite administrar una lista de dominios en los que Internet Explorer dejará de bloquear los controles ActiveX obsoletos. Nunca se bloquean los controles ActiveX obsoletos en la zona de Intranet.
 
-Si habilita esta configuración de directiva, puede introducir una lista personalizada de dominios para los que los controles ActiveX obsoletos no estarán bloqueados en Internet Explorer. Todas las entradas de dominio deben estar formateadas del siguiente modo:
+Si habilitas esta configuración de directiva, podrás especificar una lista personalizada de dominios en los que no se bloquearán los controles ActiveX obsoletos en Internet Explorer. Cada entrada de dominio debe tener uno de los siguientes formatos:
 
-1. "dominio.nombre.TLD". Por ejemplo, si quiere incluir *.contoso.com/*, utilice "contoso.com"
-2. "nombre de host". Por ejemplo, si quiere incluir http://ejemplo, utilice "ejemplo"
-3. "archivo:///ruta/nombrearchivo.htm". Por ejemplo, utilice "archivo:///C:/Users/contoso/Desktop/index.htm"
+1. "domain.name.TLD". Por ejemplo, para incluir *.contoso.com/*, usa "contoso.com".
+2. "hostname". Por ejemplo, para incluir http://ejemplo, usa "ejemplo".
+3. "file:///path/filename.htm". Por ejemplo, usa "file:///C:/Users/contoso/Desktop/index.htm".
 
-Si inhabilita o no configura esta configuración de directiva, la lista se elimina e Internet Explorer continúa bloqueando los controles ActiveX obsoletos específicos en todos los dominios en la zona de Internet.
+Si deshabilitas o no estableces esta configuración de directiva, se eliminará la lista e Internet Explorer seguirá bloqueando determinados controles ActiveX obsoletos en todos los dominios de la zona de Internet.
 
-Para obtener más información, consulte "Controles ActiveX obsoletos" en la biblioteca TechNet de Internet Explorer.</string>
-      <string id="VerMgmtDisableRunThisTime">Quitar botón "Ejecutar esta vez" para controles ActiveX obsoletos en Internet Explorer </string>
-      <string id="IE_ExplainVerMgmtDisableRunThisTime">Esta configuración de directiva permite impedir que los usuarios vean el botón "Ejecutar esta vez" y ejecuten controles ActiveX concretos que estén obsoletos en Internet Explorer.
+Para obtener más información, consulta "Controles ActiveX obsoletos" en la biblioteca de TechNet de Internet Explorer.</string>
+      <string id="VerMgmtDisableRunThisTime">Quitar el botón "Ejecutar esta vez" para los controles ActiveX obsoletos en Internet Explorer </string>
+      <string id="IE_ExplainVerMgmtDisableRunThisTime">Esta configuración de directiva permite impedir que otros usuarios vean el botón "Ejecutar esta vez" y ejecuten determinados controles ActiveX obsoletos en Internet Explorer.
 
-Si habilita esta configuración de directiva, los usuarios no verán el botón "Ejecutar esta vez" en el mensaje de advertencia que aparece cuando Internet Explorer bloquea un control ActiveX obsoleto.
+Si habilitas esta configuración de directiva, los usuarios no verán el botón "Ejecutar esta vez" en el mensaje de advertencia que aparece cuando Internet Explorer bloquea un control ActiveX obsoleto.
 
-Si deshabilita o no define esta configuración de directiva, los usuarios verán el botón "Ejecutar esta vez" en el mensaje de advertencia que aparece cuando Internet Explorer bloquea un control ActiveX obsoleto. Si hacen clic en este botón, ejecutarán el control ActiveX obsoleto una vez.
+Si deshabilitas o no estableces esta configuración de directiva, los usuarios verán el botón "Ejecutar esta vez" en el mensaje de advertencia que aparece cuando Internet Explorer bloquea un control ActiveX obsoleto. Este botón permite al usuario ejecutar el control ActiveX obsoleto una vez.
 
-Para obtener más información, consulte el tema sobre controles ActiveX obsoletos en la biblioteca de TechNet de Internet Explorer.</string>
+Para obtener más información, consulta "Controles ActiveX obsoletos" en la biblioteca de TechNet de Internet Explorer.</string>
       <string id="EnterpriseModeSiteList">Usar la lista de sitios web de IE del modo de empresa</string>
       <string id="IE_ExplainEnterpriseModeSiteList">Esta configuración de directiva le permite indicar dónde encontrar la lista de sitios web que quiere que se abran usando IE en el modo de empresa en lugar de en el modo estándar por problemas de compatibilidad. Los usuarios no pueden editar esta lista.
 
@@ -3977,10 +3980,50 @@ Si habilita esta configuración de directiva, se desactiva la detección de núm
 Si deshabilita esta configuración de directiva, se activa la detección de número de teléfono. Los usuarios no podrán modificar esta configuración.
 
 Si no establece esta configuración de directiva, los usuarios pueden activar y desactivar este comportamiento en la configuración de Internet Explorer. Este comportamiento está activado de forma predeterminada.</string>
+      <string id="SiteDiscoveryEnableXML">Activar la salida XML de detección del sitio</string>
+      <string id="SiteDiscoveryEnableWMI">Activar la salida WMI de detección del sitio</string>
+      <string id="SiteDiscoveryDomainAllowList">Limitar la salida de detección del sitio por dominio</string>
+      <string id="SiteDiscoveryZoneAllowList">Limitar la salida de detección del sitio por zona</string>
+      <string id="IE_Explain_SiteDiscoveryEnableXML">Esta configuración de directiva permite administrar la funcionalidad de salida XML del kit de herramientas de detección del sitio (SDTK) de Internet Explorer. Al configurar esta directiva, la característica escribirá los datos recopilados en un archivo XML en la ubicación especificada cuando esté habilitada. Cuando esté deshabilitada, no se escribirá ningún dato en el archivo XML. El hecho de habilitar o deshabilitar esta configuración no afecta a otros métodos de salida disponibles para el SDTK.</string>
+      <string id="IE_Explain_SiteDiscoveryEnableWMI">Esta configuración de directiva permite administrar la funcionalidad de salida WMI del kit de herramientas de detección del sitio (SDTK) de Internet Explorer. Cuando esté habilitada, la característica escribirá los datos recopilados en una clase WMI que se puede agregar mediante una solución de administración de clientes (SCCM) u otros medios. Cuando esté deshabilitada, no se escribirá ningún dato en la clase WMI. El hecho de habilitar o deshabilitar esta configuración no afecta a otros métodos de salida disponibles para el SDTK.</string>
+      <string id="IE_Explain_SiteDiscoveryDomainAllowList">Esta configuración de directiva permite controlar qué dominios se incluyen en la funcionalidad del kit de herramientas de detección del sitio (SDTK) de Internet Explorer. Cuando esté habilitada, la característica recopilará datos de los sitios que forman parte de los dominios configurados en la directiva. Cuando esté deshabilitada, o no esté configurada, se incluirán todos los dominios en la detección del sitio. Se puede usar esta directiva junto con otras directivas que controlen los sitios incluidos en la detección del sitio.
+
+Para configurar los dominios incluidos en la recopilación de datos para el kit de herramientas de detección del sitio de Internet Explorer, agregue un dominio por línea en el cuadro de texto. Por ejemplo:
+
+microsoft.sharepoint.com
+outlook.com
+onedrive.com
+timecard.contoso.com
+LOBApp.contoso.com</string>
+      <string id="IE_Explain_SiteDiscoveryZoneAllowList">Esta configuración de directiva permite controlar qué zonas de sitios se incluyen en la funcionalidad del kit de herramientas de detección del sitio (SDTK) de Internet Explorer. Cuando esté habilitada, la característica recopilará datos de los sitios que forman parte de las zonas configuradas en la directiva. Cuando esté deshabilitada o no esté configurada, se incluirán todas las zonas en la detección del sitio. Se puede usar esta directiva junto con otras directivas que controlen los sitios incluidos en la detección del sitio.
+
+Para configurar las zonas incluidas en la detección del sitio, se forma un número binario en función de las zonas seleccionadas. La representación decimal de este número se usa para representarlo en la directiva. Por ejemplo:
+
+• 2: solo zona de sitios de Intranet
+  Representación binaria: 00010
+	• 0: zona de sitios restringidos
+	• 0: zona de Internet
+	• 0: zona de sitios de confianza
+	• 1: zona de Intranet local
+	• 0: zona de equipo local
+• 6: solo zonas de sitios de Intranet y de confianza
+  Representación binaria: 00110
+	• 0: zona de sitios restringidos
+	• 0: zona de Internet
+	• 1: zona de sitios de confianza
+	• 1: zona de Intranet local
+	• 0: zona de equipo local
+• 22: solo zonas de sitios de confianza, de Intranet y restringidos 
+  Representación binaria: 10110
+	• 1: zona de sitios restringidos
+	• 0: zona de Internet
+	• 1: zona de sitios de confianza
+	• 1: zona de Intranet local
+	• 0: zona de equipo local</string>
     </stringTable>
     <presentationTable>
       <presentation id="VerMgmtDomainAllowlist_1">
-        <listBox refId="DomainList">Lista de permitidos del dominio</listBox>
+        <listBox refId="DomainList">Lista de dominios permitidos</listBox>
       </presentation>
       <presentation id="AddonManagement_AddOnList_1">
         <listBox refId="AddOnList">Lista de complementos</listBox>
@@ -4531,9 +4574,6 @@ Si no establece esta configuración de directiva, los usuarios pueden activar y 
         <checkBox refId="Btn_Paste">Mostrar botón Pegar</checkBox>
         <checkBox refId="Btn_Encoding">Mostrar botón Codificación</checkBox>
       </presentation>
-      <presentation id="TopResultPol">
-        <dropdownList refId="TopResult" noSort="true" defaultItem="0">Al buscar desde la barra de direcciones:</dropdownList>
-      </presentation>
       <presentation id="UnderlineLinksPol">
         <dropdownList refId="UnderlineLinks" noSort="true" defaultItem="0">Subrayar vínculos</dropdownList>
       </presentation>
@@ -4558,6 +4598,9 @@ Si no establece esta configuración de directiva, los usuarios pueden activar y 
       <presentation id="Advanced_SetWinInetProtocols">
         <!-- defaultItem is zero based index into the item enumeration defined in inetres.admx. We want this to point at 'Use SSL 3.0 and TLS 1.0', the current default for IE -->
         <dropdownList refId="Advanced_WinInetProtocolOptions" noSort="true" defaultItem="6">Combinaciones de protocolos seguros</dropdownList>
+      </presentation>
+      <presentation id="Advanced_EnableSSL3Fallback">
+        <dropdownList refId="Advanced_EnableSSL3FallbackOptions" noSort="true" defaultItem="0">Permitir reserva no segura para:</dropdownList>
       </presentation>
       <presentation id="NewTabAction_1">
         <dropdownList refId="NewTabActionOptions" noSort="true" defaultItem="2">Comportamiento de la nueva pestaña</dropdownList>
@@ -4617,6 +4660,17 @@ Si no establece esta configuración de directiva, los usuarios pueden activar y 
       </presentation>
       <presentation id="DefaultLinksView_1">
         <dropdownList refId="DefaultViewOptions" noSort="true" defaultItem="0">Comportamiento predeterminado de inicio del explorador para los vínculos</dropdownList>
+      </presentation>
+      <presentation id="SiteDiscoveryEnableXML">
+        <textBox refId="SiteDiscoveryXMLPath">
+          <label>Ruta de salida</label>
+        </textBox>
+      </presentation>
+      <presentation id="SiteDiscoveryZoneAllowList">
+        <decimalTextBox refId="SiteDiscoveryZoneAllowList" defaultValue="31">Máscara de zona</decimalTextBox>
+      </presentation>
+      <presentation id="SiteDiscoveryDomainAllowList">
+        <multiTextBox refId="SiteDiscoveryDomainAllowList">Lista de dominios</multiTextBox>
       </presentation>
     </presentationTable>
   </resources>

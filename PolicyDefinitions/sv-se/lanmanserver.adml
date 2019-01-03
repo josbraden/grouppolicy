@@ -58,6 +58,43 @@ Hash-versioner som stöds (Hash version supported):
 - Om du bara vill tillåta V2-innehållsinformation konfigurerar du Hash-versioner som stöds (Hash version supported) med värdet 2.
 
 - Om du vill tillåta både V1- och V2-innehållsinformation konfigurerar du Hash-versioner som stöds (Hash version supported) med värdet 3.</string>
+      <string id="Pol_CipherSuiteOrder_Name">Chiffersvitordning</string>
+      <string id="Pol_CipherSuiteOrder_Help">Den här inställningen anger vilka chiffersviter som används av SMB-servern.
+
+Om du aktiverar den här principinställningen prioriteras chiffersviter i den ordning som du anger.
+
+Om du aktiverar inställningen och inte anger minst en chiffersvit som stöds, eller om du inaktiverar eller låter bli att konfigurera principinställningen, används standardordningen för chiffersviter.
+
+SMB 3.11-chiffersviter:
+
+AES_128_GCM
+AES_128_CCM
+
+SMB 3.0- och 3.02-chiffersviter:
+
+AES_128_CCM
+
+Så här ändrar du inställningen:
+
+Ordna chiffersviterna i den ordning du vill ha i redigeringsrutan enligt följande: En chiffersvit per rad och i prioritetsordning med högst prioritet överst och lägst prioritet längst ned. Ta bort eventuella chiffersviter du inte vill använda.
+
+Obs! Ändringen av den här säkerhetsinställningen börjar inte gälla förrän du startar om Windows.</string>
+      <string id="HonorCipherSuiteOrder_Name">Använd den chiffersvitordning som föredras</string>
+      <string id="HonorCipherSuiteOrder_Help">Den här principinställningen anger hur SMB-servern väljer en chiffersvit när en ny anslutning med en SMB-klient förhandlas.
+
+Om du aktiverar den här principinställningen väljer SMB-servern den chiffersvit den föredrar bland SMB-klientens chiffersviter, oavsett vad klienten föredrar.
+
+Om du inaktiverar eller låter bli att konfigurera principinställningen väljer SMB-servern den chiffersvit som SMB-klienten föredrar bland serverns chiffersviter.
+
+Obs! Ändringen av den här säkerhetsinställningen börjar inte gälla förrän du startar om Windows.</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">Använd den chiffersvitordning som föredras</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">Den här principinställningen anger hur SMB-servern väljer en chiffersvit när en ny anslutning med en SMB-klient förhandlas.
+
+Om du aktiverar den här principinställningen väljer SMB-servern den chiffersvit den föredrar i klientens lista över chiffersviter som stöds, oavsett vad klienten föredrar.
+
+Om du inaktiverar eller låter bli att konfigurera principinställningen väljer SMB-servern den chiffersvit som klienten föredrar i serverns lista över chiffersviter som stöds.
+
+Obs! Ändringen av den här säkerhetsinställningen börjar inte gälla förrän du startar om Windows.</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@ Hash-versioner som stöds (Hash version supported):
         <text>3 = Aktivera stöd för V1- och V2-hashar</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Hash-versioner som stöds (Hash version supported):  </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>Chiffersviter:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

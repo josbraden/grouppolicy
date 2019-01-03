@@ -58,6 +58,43 @@
 - V2 のコンテンツ情報のみをサポートするには、[サポートするハッシュ バージョン] の値を 2 に構成します。
 
 - V1 と V2 の両方のコンテンツ情報をサポートするには、[サポートするハッシュ バージョン] の値を 3 に構成します。</string>
+      <string id="Pol_CipherSuiteOrder_Name">暗号の順位</string>
+      <string id="Pol_CipherSuiteOrder_Help">このポリシー設定では、SMB サーバーで使用する暗号を決定します。
+
+このポリシー設定を有効にした場合、指定されている順位で暗号が優先されます。
+
+このポリシー設定を有効にしても、サポートされている暗号を 1 つも指定しなかった場合、またはこのポリシー設定を無効にした場合や構成しなかった場合は、既定の暗号の順位が使用されます。
+
+SMB 3.11 の暗号:
+
+AES_128_GCM
+AES_128_CCM
+
+SMB 3.0 および 3.02 の暗号:
+
+AES_128_CCM
+
+この設定の変更方法:
+
+編集ボックスで、希望する暗号を、優先順位が高い方から 1 行に 1 つずつ配置します (優先順位の最も高い暗号が一番上になります)。使用しない暗号は削除します。
+
+注: このセキュリティ設定を構成した場合、変更は Windows を再起動するまで有効になりません。</string>
+      <string id="HonorCipherSuiteOrder_Name">暗号の順位を遵守する</string>
+      <string id="HonorCipherSuiteOrder_Help">このポリシー設定では、SMB サーバーが SMB クライアントと新しい接続をネゴシエートするときに暗号を選択する方法を決定します。
+
+このポリシー設定を有効にした場合、SMB サーバーは、SMB クライアントの暗号の基本設定を無視して、最も優先する暗号をそのクライアントの暗号から選択します。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、SMB サーバーは、SMB クライアントが最も優先する暗号をサーバーの暗号から選択します。
+
+注: このセキュリティ設定を構成した場合、変更は Windows を再起動するまで有効になりません。</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">暗号の順位を遵守する</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">このポリシー設定では、SMB サーバーが SMB クライアントと新しい接続をネゴシエートするときにどのように暗号を選択するかを決定します。
+
+このポリシー設定を有効にした場合、SMB サーバーは、クライアントの暗号の優先設定を無視して、最も優先する暗号をクライアントでサポートされている暗号のリストから選択します。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、SMB サーバーは、クライアントが最も優先する暗号をサーバーでサポートされている暗号のリストから選択します。
+
+注: このセキュリティ設定を構成する場合、変更は Windows を再起動するまで有効になりません。</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@
         <text>3= V1 ハッシュと V2 ハッシュをサポートする</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">サポートするハッシュ バージョン: </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>暗号:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

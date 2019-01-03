@@ -5,6 +5,7 @@
   <description>在此輸入描述</description>
   <resources>
     <stringTable>
+      <string id="SUPPORTED_Win7UntilThreshold">至少需要 Windows Server 2008 R2 或 Windows 7。不支援 Windows 10 或更新版本</string>
       <string id="ClearRecentProgForNewUserInStartMenu">清除新使用者的最近使用程式清單</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">如果您啟用這個原則設定，則每一個新使用者在 [開始] 功能表中看到的最新程式清單機將會是空白。
 
@@ -143,8 +144,8 @@ Windows 會將最近使用過的項目移到功能表頂端，並隱藏最近未
 如果您啟用這個設定，將防止使用者在 [開始] 和 [應用程式] 內選取應用程式、調整磚的大小、釘選/取消釘選磚或次要磚、進入自訂模式以及重新排列磚。
 
 如果您停用或未設定這個設定，將允許使用者在 [開始] 和 [應用程式] 內選取應用程式、調整磚的大小、釘選/取消釘選磚或次要磚、進入自訂模式以及重新排列磚。</string>
-      <string id="ClearTilesOnExit">結束時清除磚通知記錄</string>
-      <string id="ClearTilesOnExit_Help">如果您啟用這個設定，系統會在使用者登出時刪除磚通知。因此，當使用者登入時，啟動畫面中的磚永遠會顯示它們的預設內容。此外，當使用者登出後，會清除任何快取的通知版本。
+      <string id="ClearTilesOnExit">登入期間清除磚通知</string>
+      <string id="ClearTilesOnExit_Help">若啟用此設定，系統會在使用者登入時刪除磚通知。因此，當使用者登入時，啟動畫面中的磚永遠會顯示它們的預設內容。此外，當使用者登入後，會清除任何快取的通知版本。
 
 如果您停用或者未設定這個設定，系統會保留通知，而且當使用者登入時，磚和使用者登出時顯示的內容一樣，其中包括每一個磚以前的通知歷史。
 
@@ -152,16 +153,15 @@ Windows 會將最近使用過的項目移到功能表頂端，並隱藏最近未
       <string id="StartPinAppsWhenInstalled">安裝時將應用程式釘選到 [開始]</string>
       <string id="StartPinAppsWhenInstalled_Help">這個原則設定可讓依 AppID 而包含於清單中的應用程式，預設被釘選到 [開始]。</string>
 
-      <string id="LockedStartLayout">[開始] 畫面配置</string>
-      <string id="LockedStartLayout_Help">為使用者指定 [開始] 畫面配置。
+      <string id="LockedStartLayout">[開始] 的配置</string>
+      <string id="LockedStartLayout_Help">為使用者指定 [開始] 配置。
 
-這個設定可讓您為使用者指定 [開始] 畫面配置，並防止他們變更其設定。您指定的 [開始] 畫面配置必須儲存在 Export-StartLayout PowerShell Cmdlet 產生的 XML 檔案中。
-若要使用這個設定，您必須先手動將裝置的 [開始] 畫面配置設定為想要的外觀和樣式。完成之後，在該相同的裝置上執行 Export-StartLayout PowerShell Cmdlet。這個 Cmdlet 將產生一個 XML 檔案，代表您設定的配置。
+這個設定可讓您為使用者指定 [開始] 配置，並防止他們變更其設定。您指定之 [開始] 配置必須儲存在 Export-StartLayout PowerShell Cmdlet 產生的 XML 檔案中。
+若要使用這個設定，您必須先手動將裝置的 [開始] 配置設定為想要的外觀和樣式。完成之後，在該相同的裝置上執行 Export-StartLayout PowerShell Cmdlet。這個 Cmdlet 將產生一個 XML 檔案，代表您設定的配置。
 
 XML 檔案產生並移到想要的檔案路徑之後，請輸入 XML 檔案的完整路徑及名稱。您可以輸入本機路徑，例如 C:\StartLayouts\myLayout.xml，或是 UNC 路徑，例如 \\Server\Share\Layout.xml。如果指定的檔案在使用者登入時無法使用，就不會變更配置。啟用這個設定時，使用者無法自訂他們的 [開始] 畫面。
 
 如果您停用或未設定這個設定，[開始] 畫面配置不會變更，而且使用者也不能加以自訂。</string>
-
       <string id="NoClose">移除並禁止存取 [關機]、[重新啟動]、[睡眠] 及 [休眠] 命令</string>
       <string id="NoClose_Help">這個原則設定會防止使用者從 [開始] 功能表或 [Windows 安全性] 畫面中執行下列命令:[關機]、[重新啟動]、[ 睡眠] 和 [休眠]。這個原則設定不會防止使用者執行 Windows 程式 (執行這些功能的 Windows 程式)。
 
@@ -535,12 +535,14 @@ Windows Update 是 Windows 的線上延伸，提供軟體更新讓使用者的�
 如果您停用或未設定這個設定，則使用者無法從任何應用程式存取 [開始] 功能表的 [以不同的使用者身分執行] 命令。
 
 注意: 這個設定不會限制使用者使用其他方法，例如在工作列上的應用程式捷徑清單按 Shift + 按一下滑鼠右鍵功能表，以顯示 [以不同的使用者身分執行] 命令。</string>
-      <string id="GoToDesktopOnSignIn">登入或螢幕上所有應用程式都關閉時，顯示桌面而不要顯示 [開始] 畫面</string>
-      <string id="GoToDesktopOnSignIn_Help">這個設定可讓使用者在登入或螢幕上所有應用程式都關閉時，顯示桌面而不要顯示 [開始] 畫面。 這個設定適用於所有版本的 Windows，以及安裝了桌面體驗的 Windows Server 版本。
+      <string id="GoToDesktopOnSignIn">當我登入時顯示桌面，而不要顯示開始畫面</string>
+      <string id="GoToDesktopOnSignIn_Help">此設定可讓系統在使用者登入時顯示桌面，而非開始畫面。
 
-如果您啟用這個原則設定，使用者在登入或螢幕上所有應用程式都關閉時，一律會顯示桌面。
+若啟用此原則設定，使用者登入時將一律會看到桌面。
 
-如果您停用或未設定這個原則設定，使用者在登入時預設會顯示 [開始] 畫面，而且使用者可以設定這個設定。</string>
+若停用此原則設定，使用者登入時將一律會看到開始畫面。
+
+若未設定此原則設定，將使用使用者裝置的預設設定，而且使用者可以選擇變更設定。</string>
       <string id="ShowAppsViewOnStart">當使用者移至 [開始] 畫面時，自動顯示應用程式檢視</string>
       <string id="ShowAppsViewOnStart_Help">這個原則設定可在使用者移至 [開始] 畫面時，預設開啟應用程式檢視。
 
@@ -567,6 +569,12 @@ Windows Update 是 Windows 的線上延伸，提供軟體更新讓使用者的�
 如果您啟用這個原則設定，當使用者按下 Windows 標誌鍵時，會在使用者正在使用的顯示器上顯示 [開始] 畫面。
 
 如果您停用或未設定這個原則設定，當使用者按下 Windows 標誌鍵時，一律在主顯示器上顯示 [開始] 畫面。使用者按下其他顯示器上的 [開始] 按鈕時，仍然能夠開啟該顯示器上的 [開始] 畫面。此外，使用者也能夠設定這個設定。</string>
+      <string id="ForceStartSize_DisplayName">強制 [開始] 以全螢幕方式顯示或以功能表大小顯示</string>
+      <string id="ForceStartSize_ExplainText">若啟用此原則並將它設定為 [開始] 功能表或全螢幕的 [開始]，[開始] 將會是該大小，而且使用者將無法在 [設定] 中變更 [開始] 的大小。
+
+若停用或未設定此原則設定，Windows 將會根據硬體尺寸自動選取大小，而且使用者將可以在 [設定] 中變更 [開始] 的大小。</string>
+      <string id="ForceLauncherSize_Collapsed">[開始] 功能表</string>
+      <string id="ForceLauncherSize_Expanded">全螢幕的 [開始]</string>
     </stringTable>
     <presentationTable>
       <presentation id="PowerButtonAction">
@@ -580,6 +588,9 @@ Windows Update 是 Windows 的線上延伸，提供軟體更新讓使用者的�
           <label>啟動配置檔案</label>
           <defaultValue></defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="ForceStartSize">
+        <dropdownList refId="ForceStartSizeDropdown" noSort="true" defaultItem="0">選擇下列其中一個大小</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

@@ -5,43 +5,43 @@
   <description>entrer la description ici</description>
   <resources>
     <stringTable>
-      <string id="W32TIME_CONFIG_EXPLAIN">Ce paramètre de stratégie permet de spécifier la discipline d’horloge et les valeurs générales du service de temps Windows (W32time) pour les contrôleurs de domaine, y compris les contrôleurs de domaine en lecture seule.
+      <string id="W32TIME_CONFIG_EXPLAIN">Ce paramètre de stratégie permet de spécifier la discipline d'horloge et les valeurs générales du service de temps Windows (W32time) pour les contrôleurs de domaine, y compris les contrôleurs de domaine en lecture seule.
 
-Si vous activez ce paramètre de stratégie, vous pouvez définir les paramètres de discipline d’horloge, les paramètres généraux et  les paramètres de contrôleur de domaine en lecture seule pour ce service.
+Si vous activez ce paramètre de stratégie, vous pouvez définir les paramètres de discipline d'horloge, les paramètres généraux et les paramètres de contrôleur de domaine en lecture seule pour ce service.
 
 Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, le service de temps Windows utilise les valeurs par défaut de chacun des paramètres suivants.
 
-Plusieurs des valeurs suivantes sont scalaires, ce qui signifie qu’elles n’ont de sens que l’une par rapport à l’autre ; elles ne sont pas définies par des unités de mesure spécifiques.
+Plusieurs des valeurs suivantes sont scalaires, ce qui signifie qu'elles n'ont de sens que l'une par rapport à l'autre ; elles ne sont pas définies par des unités de mesure spécifiques.
 
 FrequencyCorrectRate
-Contrôle la fréquence à laquelle W32time corrige la fréquence de l’horloge locale. Plus la valeur est élevée, plus les corrections sont fréquentes. Des valeurs trop basses peuvent entraîner une correction excessive et une certaine instabilité. Des valeurs trop élevées peuvent ralentir la synchronisation. Valeur par défaut : 4 (scalaire).
+Contrôle la fréquence à laquelle W32time corrige la fréquence de l'horloge locale. Plus la valeur est élevée, plus les corrections sont fréquentes. Des valeurs trop basses peuvent entraîner une correction excessive et une certaine instabilité. Des valeurs trop élevées peuvent ralentir la synchronisation. Valeur par défaut : 4 (scalaire).
 
 HoldPeriod
-Ce paramètre indique le nombre d’échantillons de temps plus ou moins précis que l’ordinateur client doit recevoir dans une série avant que les échantillons de temps suivants soient considérés comme de possibles pointes. En l’absence d’échantillons de temps utilisables pendant un certain laps de temps, un client cesse de rechercher des pointes parmi les échantillons de temps dès que lui parvient un échantillon plus ou moins précis. Lorsqu’une série d’échantillons de temps (déterminée par le paramètre HoldPeriod) est reçue, le client évalue les pointes parmi les échantillons suivants. Un échantillon est considéré comme une pointe si la différence entre l’échantillon et l’horloge locale de l’ordinateur client est supérieure à la valeur LargePhaseOffset. Valeur par défaut : cinq échantillons de temps.
+Ce paramètre indique le nombre d'échantillons de temps plus ou moins précis que l'ordinateur client doit recevoir dans une série avant que les échantillons de temps suivants soient considérés comme de possibles pointes. En l'absence d'échantillons de temps utilisables pendant un certain laps de temps, un client cesse de rechercher des pointes parmi les échantillons de temps dès que lui parvient un échantillon plus ou moins précis. Lorsqu'une série d'échantillons de temps (déterminée par le paramètre HoldPeriod) est reçue, le client évalue les pointes parmi les échantillons suivants. Un échantillon est considéré comme une pointe si la différence entre l'échantillon et l'horloge locale de l'ordinateur client est supérieure à la valeur LargePhaseOffset. Valeur par défaut : cinq échantillons de temps.
 
 LargePhaseOffset
-Ce paramètre spécifie l’écart de temps d’un échantillon de temps par rapport à l’horloge locale de l’ordinateur client (décalage de phase) pour que cet échantillon soit classé comme une pointe. Tout échantillon de temps dont l’écart de temps est supérieur à la valeur LargePhaseOffset est une pointe. Valeur par défaut : 50 000 000 unités de 100 nanosecondes (ns), soit cinq secondes.
+Ce paramètre spécifie l'écart de temps d'un échantillon de temps par rapport à l'horloge locale de l'ordinateur client (décalage de phase) pour que cet échantillon soit classé comme une pointe. Tout échantillon de temps dont l'écart de temps est supérieur à la valeur LargePhaseOffset est une pointe. Valeur par défaut : 50 000 000 unités de 100 nanosecondes (ns), soit cinq secondes.
 
 MaxAllowedPhaseOffset
-Ce paramètre contrôle la manière dont W32time corrige l’horloge en fonction de l’importance de l’écart calculé entre l’échantillon de temps et l’horloge locale de l’ordinateur client. Si la réponse reçue indique que l’écart est supérieur à cette valeur, W32time définit immédiatement l’horloge locale de l’ordinateur client sur l’heure acceptée comme heure précise par le serveur NTP (Network Time Protocol). Si l’écart est inférieur à cette valeur, l’horloge locale de l’ordinateur client est progressivement corrigée. Valeur par défaut : 300 secondes.
+Ce paramètre contrôle la manière dont W32time corrige l'horloge en fonction de l'importance de l'écart calculé entre l'échantillon de temps et l'horloge locale de l'ordinateur client. Si la réponse reçue indique que l'écart est supérieur à cette valeur, W32time définit immédiatement l'horloge locale de l'ordinateur client sur l'heure acceptée comme heure précise par le serveur NTP (Network Time Protocol). Si l'écart est inférieur à cette valeur, l'horloge locale de l'ordinateur client est progressivement corrigée. Valeur par défaut : 300 secondes.
 
 MaxNegPhaseCorrection
-Ce paramètre contrôle la correction maximale autorisée de l’horloge dans le sens antihoraire. Si un échantillon de temps reçu fait référence à une date/heure passée (par rapport à l’horloge locale de l’ordinateur client) dont la différence est supérieure à la valeur MaxNegPhaseCorrection, l’échantillon de temps est ignoré. Si cela se produit, la source de temps Windows consigne un événement dans le journal système de l’Observateur d’événements. Valeur par défaut : 172 800 secondes.
+Ce paramètre contrôle la correction maximale autorisée de l'horloge dans le sens antihoraire. Si un échantillon de temps reçu fait référence à une date/heure passée (par rapport à l'horloge locale de l'ordinateur client) dont la différence est supérieure à la valeur MaxNegPhaseCorrection, l'échantillon de temps est ignoré. Si cela se produit, la source de temps Windows consigne un événement dans le journal système de l'Observateur d'événements. Valeur par défaut : 172 800 secondes.
 
 MaxNegPhaseCorrection
-Ce paramètre contrôle la correction maximale autorisée de l’horloge dans le sens horaire. Si un échantillon de temps reçu fait référence à une date/heure future (par rapport à l’horloge locale de l’ordinateur client) dont la différence est supérieure à la valeur MaxPosPhaseCorrection, l’échantillon de temps est ignoré. Valeur par défaut : 172 800 secondes.
+Ce paramètre contrôle la correction maximale autorisée de l'horloge dans le sens horaire. Si un échantillon de temps reçu fait référence à une date/heure future (par rapport à l'horloge locale de l'ordinateur client) dont la différence est supérieure à la valeur MaxPosPhaseCorrection, l'échantillon de temps est ignoré. Valeur par défaut : 172 800 secondes.
 
 PhaseCorrectRate
-Ce paramètre contrôle la vitesse à laquelle W32time corrige la différence de l’horloge locale de l’ordinateur client pour faire correspondre les échantillons de temps acceptés comme étant précis par le serveur NTP. Des valeurs faibles entraînent une correction plus lente de l’horloge tandis que des valeurs élevées entraînent une correction plus rapide. Valeur par défaut : 7 (scalaire).
+Ce paramètre contrôle la vitesse à laquelle W32time corrige la différence de l'horloge locale de l'ordinateur client pour faire correspondre les échantillons de temps acceptés comme étant précis par le serveur NTP. Des valeurs faibles entraînent une correction plus lente de l'horloge tandis que des valeurs élevées entraînent une correction plus rapide. Valeur par défaut : 7 (scalaire).
 
 PollAdjustFactor
-Ce paramètre contrôle la vitesse à laquelle W32time modifie la fréquence d’interrogation. Lorsque les réponses sont jugées précises, la durée entre deux intervalles d’interrogation s’allonge automatiquement. Lorsque les réponses ne sont pas précises, la durée entre deux intervalles d’interrogation se réduit automatiquement. Valeur par défaut : 5 (scalaire).
+Ce paramètre contrôle la vitesse à laquelle W32time modifie la fréquence d'interrogation. Lorsque les réponses sont jugées précises, la durée entre deux intervalles d'interrogation s'allonge automatiquement. Lorsque les réponses ne sont pas précises, la durée entre deux intervalles d'interrogation se réduit automatiquement. Valeur par défaut : 5 (scalaire).
 
 SpikeWatchPeriod
-Ce paramètre spécifie le laps de temps pendant lequel des échantillons suspects sont reçus d’une source de temps avant que ces échantillons soient acceptés comme des échantillons précis. Un échantillon est suspect dès lors que la différence de temps entre l’échantillon et l’horloge locale de l’ordinateur client est supérieure à la valeur de LargePhaseOffset. SpikeWatchPeriod est utilisé avec HoldPeriod pour contribuer à éliminer les échantillons imprécis sporadiques renvoyés par un pair. Valeur par défaut : 900 secondes.
+Ce paramètre spécifie le laps de temps pendant lequel des échantillons suspects sont reçus d'une source de temps avant que ces échantillons soient acceptés comme des échantillons précis. Un échantillon est suspect dès lors que la différence de temps entre l'échantillon et l'horloge locale de l'ordinateur client est supérieure à la valeur de LargePhaseOffset. SpikeWatchPeriod est utilisé avec HoldPeriod pour contribuer à éliminer les échantillons imprécis sporadiques renvoyés par un pair. Valeur par défaut : 900 secondes.
 
 UpdateInterval
-Ce paramètre spécifie le délai d’attente de W32time entre deux corrections lorsque l’horloge est progressivement réglée. Lorsqu’il apporte une correction graduelle, le service ajuste légèrement l’horloge, attend un certain laps de temps, puis vérifie la nécessité d’un ajustement supplémentaire jusqu’à ce que l’horloge soit réglée. Valeur par défaut : 100 unités de 1/100e de secondes, ce qui correspond à 1 seconde.
+Ce paramètre spécifie le délai d'attente de W32time entre deux corrections lorsque l'horloge est progressivement réglée. Lorsqu'il apporte une correction graduelle, le service ajuste légèrement l'horloge, attend un certain laps de temps, puis vérifie la nécessité d'un ajustement supplémentaire jusqu'à ce que l'horloge soit réglée. Valeur par défaut : 100 unités de 1/100e de seconde, ce qui correspond à 1 seconde.
 
 Paramètres généraux :
  
@@ -49,37 +49,36 @@ AnnounceFlags
 Ce paramètre est une valeur de masque de bits qui gère la manière dont la disponibilité du service de temps est annoncée par le composant NetLogon. Valeur par défaut : 0x0a hexadécimal. Pour connaître les valeurs possibles, consultez la documentation relative à la sous-clé NtpClient\EventLogFlags dans la bibliothèque TechNet de Microsoft.
 
 EventLogFlags
-Ce paramètre contrôle les événements spéciaux susceptibles d’être consignés dans le journal système de l’observateur d’événements. Valeur par défaut : 0x02 (valeur hexadécimale de masque de bits). Pour connaître les valeurs possibles, consultez la documentation relative à la sous-clé NtpClient\EventLogFlags dans la bibliothèque TechNet de Microsoft.
+Ce paramètre contrôle les événements spéciaux susceptibles d'être consignés dans le journal système de l'observateur d'événements. Valeur par défaut : 0x02 (valeur hexadécimale de masque de bits). Pour connaître les valeurs possibles, consultez la documentation relative à la sous-clé NtpClient\EventLogFlags dans la bibliothèque TechNet de Microsoft.
 
 LocalClockDispersion
-Ce paramètre indique l’erreur maximale en nombre de secondes qui est signalée par le serveur NTP aux clients demandant un échantillon de temps. (uniquement si le serveur NTP utilise le temps de l’horloge CMOS locale). Valeur par défaut : 10 secondes.
+Ce paramètre indique l'erreur maximale en nombre de secondes qui est signalée par le serveur NTP aux clients demandant un échantillon de temps. (Uniquement si le serveur NTP utilise le temps de l'horloge CMOS locale). Valeur par défaut : 10 secondes.
 
 MaxPollInterval
-Ce paramètre contrôle la fréquence d’interrogation maximale, qui définit le délai maximal entre deux interrogations d’un pair. Valeur par défaut : logarithme de 10 base 2, ce qui correspond à 1 024 secondes. (Ne doit pas dépasser 15.)
+Ce paramètre contrôle la fréquence d'interrogation maximale, qui définit le délai maximal entre deux interrogations d'un pair. Valeur par défaut : logarithme de 10 base 2, ce qui correspond à 1 024 secondes. (Ne doit pas dépasser 15.)
 
 MinPollInterval
-Ce paramètre contrôle la fréquence d’interrogation minimale, qui définit le délai minimal entre deux interrogations d’un pair. Par défaut : 6 base 2, ce qui correspond à 64 secondes.
+Ce paramètre contrôle la fréquence d'interrogation minimale, qui définit le délai minimal entre deux interrogations d'un pair. Par défaut : 6 base 2, ce qui correspond à 64 secondes.
 
 RequireSecureTimeSyncRequests
-Ce paramètre contrôle si le contrôleur de domaine répond ou non aux demandes de synchronisation de temps qui utilisent des protocoles d’authentification plus anciens. Si ce paramètre est activé (défini sur 1), le contrôleur de domaine répond aux demandes utilisant de tels protocoles. Valeur par défaut : 0 booléen.
+Ce paramètre contrôle si le contrôleur de domaine répond ou non aux demandes de synchronisation de temps qui utilisent des protocoles d'authentification plus anciens. Si ce paramètre est activé (défini sur 1), le contrôleur de domaine répond aux demandes utilisant de tels protocoles. Valeur par défaut : 0 booléen.
 
 Paramètres du contrôleur de domaine en lecture seule :
 
 ChainEntryTimeout
-Ce paramètre spécifie le délai maximal pendant lequel une entrée peut rester dans la table d’enchaînement avant d’être considérée comme ayant expiré. Les entrées arrivées à expiration peuvent être supprimées lorsque la demande ou la réponse suivante est traitée. Valeur par défaut : 16 secondes.
+Ce paramètre spécifie le délai maximal pendant lequel une entrée peut rester dans la table d'enchaînement avant d'être considérée comme ayant expiré. Les entrées arrivées à expiration peuvent être supprimées lorsque la demande ou la réponse suivante est traitée. Valeur par défaut : 16 secondes.
 
 ChainMaxEntries
-Ce paramètre contrôle le nombre maximal d’entrées autorisées dans la table d’enchaînement. Si la table d’enchaînement est pleine et qu’elle ne comporte aucune entrée arrivée à expiration susceptible d’être supprimée, toute demande entrante sera rejetée. Valeur par défaut : 128 entrées.
+Ce paramètre contrôle le nombre maximal d'entrées autorisées dans la table d'enchaînement. Si la table d'enchaînement est pleine et qu'elle ne comporte aucune entrée arrivée à expiration susceptible d'être supprimée, toute demande entrante sera rejetée. Valeur par défaut : 128 entrées.
 
 ChainMaxHostEntries
-Ce paramètre contrôle le nombre maximal d’entrées autorisées dans la table d’enchaînement pour un hôte donné. Valeur par défaut : 4 entrées.
+Ce paramètre contrôle le nombre maximal d'entrées autorisées dans la table d'enchaînement pour un hôte donné. Valeur par défaut : 4 entrées.
 
 ChainDisable
-Ce paramètre contrôle si le mécanisme d’enchaînement est désactivé ou non. Si l’enchaînement est désactivé (défini sur 0), le contrôleur de domaine en lecture seule (RODC) peut le synchroniser avec n’importe quel contrôleur de domaine.Toutefois, les hôtes dont le mot de passe n’est pas mis en cache sur le RODC ne seront pas en mesure d’effectuer la synchronisation par rapport au RODC. Valeur par défaut : 0 booléen.
+Ce paramètre contrôle si le mécanisme d'enchaînement est désactivé ou non. Si l'enchaînement est désactivé (défini sur 0), le contrôleur de domaine en lecture seule (RODC) peut le synchroniser avec n'importe quel contrôleur de domaine. Toutefois, les hôtes dont le mot de passe n'est pas mis en cache sur le RODC ne seront pas en mesure d'effectuer la synchronisation par rapport au RODC. Valeur par défaut : 0 booléen.
 
 ChainLoggingRate
-Ce paramètre gère la fréquence à laquelle un événement indiquant le nombre de tentatives d’enchaînement, abouties ou non, est consigné dans le journal système de l’Observateur d’événements. Valeur par défaut : 30 minutes.
-
+Ce paramètre gère la fréquence à laquelle un événement indiquant le nombre de tentatives d'enchaînement, abouties ou non, est consigné dans le journal système de l'Observateur d'événements. Valeur par défaut : 30 minutes.
 </string>
 
 <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">Ce paramètre de stratégie spécifie un ensemble de paramètres visant à contrôler le client NTP Windows.
@@ -160,6 +159,7 @@ Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, votre o
         <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

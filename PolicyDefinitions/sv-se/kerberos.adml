@@ -123,6 +123,22 @@ Om du aktiverar den här principinställningen och resursdomänen begär sammans
 Om du inaktiverar eller inte konfigurerar den här principinställningen och resursdomänen begär sammansatt autentisering, skickar enheterna först en begäran om icke-sammansatt autentisering och sedan en begäran om sammansatt autentisering när tjänsten begär sammansatt autentiseringen.
 
 </string>
+      <string id="DevicePKInitEnabled">Stöd för enhetsautentisering med certifikat</string>
+      <string id="DevicePKInitEnabled_explain">Det krävs anslutning till en domänkontrollant i enhetskontots domän som stöder certifikatautentisering för datorkonton för att kunna ge stöd åt enhetsautentisering med certifikat. 
+
+Med den här principinställningen kan du ange stöd för Kerberos att försöka autentisera med enhetscertifikatet i domänen.
+
+Om du aktiverar principinställningen väljs enhetsautentiseringsuppgifter baserat på följande alternativ:
+
+Automatiskt: Enheten försöker autentisera med dess certifikat. Om domänkontrollanten inte stöder autentisering av datorkonton med certifikat görs ett försök att autentisera med lösenord i stället.
+
+Framtvinga: Enheten autentiserar alltid med dess certifikat. Autentiseringen misslyckas om en domänkontrollant inte kan hittas som stöder autentisering av datorkonton med certifikat.
+
+Om du inaktiverar principinställningen används alternativet Inaktivera.
+Om du låter bli att konfigurera principinställningen används alternativet Automatiskt.
+</string>
+      <string id="DevicePKInitBehavior_Automatic">Automatiskt</string>
+      <string id="DevicePKInitBehavior_Force">Framtvinga</string>
     </stringTable>
     <presentationTable>
       <presentation id="hosttorealm">
@@ -215,6 +231,9 @@ Om du inaktiverar eller inte konfigurerar den här principinställningen och res
         <decimalTextBox refId="MaxTokenSize" defaultValue="48000" spinStep="1000">Största storlek</decimalTextBox>
       </presentation>
       <presentation id="EnableCbacAndArmor">
+      </presentation>
+      <presentation id="DevicePKInitBehavior">
+        <dropdownList refId="DevicePKInitBehavior" noSort="true" defaultItem="0">Enhetsautentisering med certifikat:</dropdownList>  
       </presentation>
     </presentationTable>
   </resources>

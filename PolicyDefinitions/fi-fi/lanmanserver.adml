@@ -58,6 +58,43 @@ Tuettu hajautusarvoversio:
 - Jos haluat tukea vain V2-sisältötietoja, määritä Tuettu hajautusarvoversio -asetuksen arvoksi 2.
 
 - Jos haluat tukea sekä V1- että V2-sisältötietoja, määritä Tuettu hajautusarvoversio -asetuksen arvoksi 3.</string>
+      <string id="Pol_CipherSuiteOrder_Name">Salausohjelmistojärjestys</string>
+      <string id="Pol_CipherSuiteOrder_Help">Tällä käytäntöasetuksella määritetään SMB-palvelimen käyttämät salausohjelmistot.
+
+Jos otat tämän käytäntöasetuksen käyttöön, salausohjelmistoja priorisoidaan määritetyssä järjestyksessä.
+
+Jos otat tämän käytäntöasetuksen käyttöön, mutta et määritä vähintään yhtä tuettua salausohjelmistoa, tai jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, käytetään oletusarvon mukaista salauspakettijärjestystä.
+
+SMB 3.11 -salausohjelmistot:
+
+AES_128_GCM
+AES_128_CCM
+
+SMB 3.0- ja 3.02-salausohjelmistot:
+
+AES_128_CCM
+
+Tämän asetuksen muokkaaminen:
+
+Järjestä halutut salausohjelmistot muokkausruudussa yksi salausohjelmisto per rivi siinä järjestyksessä, että halutuin salausohjelmisto on yläreunassa ja vähiten haluttu alareunassa. Poista ne salausohjelmistot, joita et halua käyttää.
+
+Huomautus: kun määrität tämän suojausasetuksen, muutokset eivät tule voimaan, ennen kuin käynnistät Windowsin uudelleen.</string>
+      <string id="HonorCipherSuiteOrder_Name">Noudata salausohjelmistojärjestystä</string>
+      <string id="HonorCipherSuiteOrder_Help">Tämä käytäntöasetus määrittää, miten SMB-palvelin valitsee salausohjelmiston neuvotellessaan uutta yhteyttä SMB-asiakkaan kanssa.
+
+Jos otat tämän käytäntöasetuksen käyttöön, SMB-palvelin valitsee salausohjelmiston, jota se pitää SMB-asiakkaan salausohjelmistoille ensisijaisimpana, ja ohittaa asiakkaan salausohjelmistoasetukset.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, SMB-palvelin valitsee palvelimen salausohjelmistoista salausohjelmiston, joka on ensisijaisin SMB-asiakkaalle.
+
+Huomautus: kun määrität tämän suojausasetuksen, muutokset eivät tule voimaan, ennen kuin käynnistät Windowsin uudelleen.</string>
+       <string id="Pol_HonorCipherSuiteOrder_Name">Noudata salausohjelmistojärjestystä</string>
+       <string id="Pol_HonorCipherSuiteOrder_Help">Tämä käytäntöasetus määrittää, miten SMB-palvelin valitsee salausohjelmiston neuvotellessaan uutta yhteyttä SMB-asiakkaan kanssa.
+
+Jos otat tämän käytäntöasetuksen käyttöön, SMB-palvelin valitsee asiakkaan tukemien salausohjelmistojen luettelosta salausohjelmiston, jota se pitää ensisijaisimpana, ja ohittaa asiakkaan salausohjelmistoasetukset.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, SMB-palvelin valitsee palvelimen tukemien salausohjelmistojen luettelosta salausohjelmiston, joka on ensisijaisin asiakkaalle.
+
+Huomautus: kun määrität tämän suojausasetuksen, muutokset eivät tule voimaan, ennen kuin käynnistät Windowsin uudelleen.</string>
       </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
@@ -75,6 +112,10 @@ Tuettu hajautusarvoversio:
         <text>3 = Tue sekä V1- että V2-hajautusarvoja.</text>
         <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Tuettu hajautusarvoversio:  </dropdownList>
         <text> </text>
+      </presentation>
+      <presentation id="Pol_CipherSuiteOrder">
+        <text>Salausohjelmistot:</text>
+        <multiTextBox refId="MultiText_CipherSuiteOrder"/>
       </presentation>
     </presentationTable>
   </resources>

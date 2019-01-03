@@ -32,7 +32,7 @@ MaxPosPhaseCorrection
 這個參數控制可向前調整的時鐘校正容許上限。如果收到的時間取樣指示未來的時間 (與用戶端電腦本機時鐘相較)，而且時間差大於 MaxPosPhaseCorrection 值，就會捨棄該時間取樣。預設值: 172,800 秒。
 
 PhaseCorrectRate
-這個參數控制 W32time 會以多快的速度校正用戶端電腦本機時鐘差異，以符合從 NTP 伺服器收到的精確時間取樣。值越小，時鐘校正速度越慢；值越大，時鐘校正速度越快。預設值: 7 (純量值)。
+這個參數控制 W32time 會以多快的速度校正用戶端電腦本機時鐘差異，以符合從 NTP 伺服器收到的精確時間取樣。值越小，時鐘校正速度越慢; 值越大，時鐘校正速度越快。預設值: 7 (純量值)。
 
 PollAdjustFactor
 這個參數控制 W32time 會以多快的速度變更輪詢間隔。當回應被視為精確時，輪詢間隔會自動加長。當回應被視為不精確時，輪詢間隔會自動縮短。預設值: 5 (純量值)。
@@ -63,6 +63,9 @@ MinPollInterval
 RequireSecureTimeSyncRequests
 這個參數控制 DC 是否回應使用舊驗證通訊協定的時間同步要求。如果啟用這個參數 (設定為 1)，DC 不會回應使用這種通訊協定的要求。預設值: 0 布林植。
 
+UtilizeSslTimeData
+這個參數控制 W32time 是否將使用從電腦上的 SSL 流量計算的時間資料，做為校正本機時鐘的額外輸入。預設值: 1 布林值這個參數控制 W32time 是否將使用從電腦上的 SSL 流量計算的時間資料，做為校正本機時鐘的額外輸入。預設值: 1 布林值
+
 RODC 參數:
 
 ChainEntryTimeout
@@ -79,7 +82,6 @@ ChainDisable
 
 ChainLoggingRate
 這個參數控制將指示鏈結嘗試成功和不成功次數的事件記錄到事件檢視器中系統記錄檔的頻率。預設值: 30 分鐘。
-
 </string>
 
 <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">這個原則設定指定用於控制 Windows NTP 用戶端的參數組。
@@ -160,6 +162,7 @@ EventLogFlags
         <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

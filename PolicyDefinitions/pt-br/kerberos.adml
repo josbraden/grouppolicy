@@ -123,6 +123,22 @@ Se você habilitar essa configuração de política e o domínio do recurso soli
 Se você desabilitar ou não definir essa configuração de política e o domínio do recurso solicitar autenticação composta, os dispositivos enviarão uma solicitação de autenticação não composta primeiro e depois uma solicitação de autenticação composta, quando o serviço solicitar a autenticação composta.
 
 </string>
+      <string id="DevicePKInitEnabled">Suporte para autenticação do dispositivo usando o certificado</string>
+      <string id="DevicePKInitEnabled_explain">Suporte para autenticação de dispositivo usando o certificado exigirá a conectividade com um controlador de domínio no domínio de conta de dispositivo que dá suporte à autenticação de certificados de contas de computador. 
+
+Essa configuração de política permite definir o suporte a Kerberos para tentar a autenticação usando o certificado do dispositivo para o domínio.
+
+Se você habilitar essa configuração de política, as credenciais do dispositivo serão selecionadas com base nas seguintes opções:
+
+Automático: o dispositivo tentará autenticar usando seu certificado. Se o controlador de domínio não oferecer suporte para a autenticação de conta de computador usando certificados, a autenticação com senha será tentada.
+
+Forçar: o dispositivo será sempre autenticado usando seu certificado. Se não for possível localizar um controlador de domínio que suporte autenticação de conta de computador usando certificados, a autenticação irá falhar.
+
+Se você desabilitar essa configuração de política, Desabilitar será usado.
+Se você não definir essa configuração de política, Automático será usado.
+</string>
+      <string id="DevicePKInitBehavior_Automatic">Automático</string>
+      <string id="DevicePKInitBehavior_Force">Forçar</string>
     </stringTable>
     <presentationTable>
       <presentation id="hosttorealm">
@@ -215,6 +231,9 @@ Se você desabilitar ou não definir essa configuração de política e o domín
         <decimalTextBox refId="MaxTokenSize" defaultValue="48000" spinStep="1000">Tamanho máximo</decimalTextBox>
       </presentation>
       <presentation id="EnableCbacAndArmor">
+      </presentation>
+      <presentation id="DevicePKInitBehavior">
+        <dropdownList refId="DevicePKInitBehavior" noSort="true" defaultItem="0">Comportamento de autenticação do dispositivo usando o certificado:</dropdownList>  
       </presentation>
     </presentationTable>
   </resources>
