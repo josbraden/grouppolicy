@@ -116,6 +116,21 @@ Hvis du deaktiverer denne innstillingen, brukes bare elementer som er definert a
     Hvis du aktiverer denne innstillingen, kjører tjenesten for beskyttelse mot skadelig programvare alltid, selv om både definisjoner av antivirus og antispionvare deaktiveres.
 
     Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, stoppes tjenesten for beskyttelse mot skadelig programvare når både definisjoner av antivirus og antispionvare deaktiveres. Hvis datamaskinen startes på nytt, startes tjenesten hvis den er satt til å startes automatisk. Etter at tjenesten har startet, kontrolleres det om definisjonene av antivirus og antispionvare er aktivert. Hvis minst én av dem aktiveres, fortsetter tjenesten å kjøre. Hvis begge deaktiveres, blir tjenesten stoppet.</string>
+    <string id="Root_PUAProtection">Konfigurer gjenkjenning av potensielt uønskede programmer</string>
+    <string id="Root_PUAProtection_Explain">
+        Aktiver eller deaktiver gjenkjenning av potensielt uønskede programmer. Du kan velge å blokkere, overvåke eller tillate når potensielt uønsket programvare blir lastet ned eller prøver å installere seg på datamaskinen.
+
+        Aktivert:
+        Angi modusen i Alternativer-delen:
+        - Blokker: Potensielt uønsket programvare blir blokkert.
+        - Overvåkingsmodus: Potensielt uønsket programvare blir ikke blokkert, men hvis denne funksjonen hadde blokkert tilgangen hvis den var satt til å blokkere, vises en oppføring av hendelsen i hendelsesloggene.
+
+        Deaktivert:
+        Potensielt uønsket programvare blir ikke blokkert.
+
+        Ikke konfigurert:
+        Samme som deaktivert.
+    </string>
     <string id="Exclusions_Extensions">Utvidelsesutelatelser</string>
     <string id="Exclusions_Extensions_Explain">Med denne policyinnstillingen kan du angi en liste over filtyper som skal utelates fra planlagt skanning, tilpasset skanning og sanntidsskanning. Filtyper må legges til under Alternativer for denne innstillingen. Hver oppføring må være oppført som et navn/verdi-par, der navnet må være en strengrepresentasjon av filtypen (for eksempel "obj" eller "lib"). Verdien er ikke i bruk, og det anbefales at den settes til 0.</string>
     <string id="Exclusions_Paths">Baneutelatelser</string>
@@ -520,6 +535,14 @@ Hvis du deaktiverer denne innstillingen, brukes bare elementer som er definert a
     Hvis du aktiverer denne innstillingen, blir det utført en oppsamlingsskanning etter angitt antall utelatte planlagte skanninger.
 
     Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, utføres en oppsamlingsskanning etter den andre etterfølgende utelatte planlagte skanningen.</string>
+    <string id="Scan_LowCpuPriority">Konfigurer lav CPU-prioritet for planlagte søk</string>
+    <string id="Scan_LowCpuPriority_Explain">
+        Med denne policyinnstillingen kan du aktivere eller deaktivere lav CPU-prioritet for planlagte søk.
+
+        Hvis du aktiverer denne innstillingen, blir lav CPU-prioritet brukt under planlagte søk.
+
+        Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, blir det ikke gjort endringer i CPU-prioritet for planlagte søk.
+    </string>
     <string id="SignatureUpdate_ASSignatureDue">Definere antallet dager før spionvaredefinisjoner anses som utdaterte</string>
     <string id="SignatureUpdate_ASSignatureDue_Explain">Med denne policyinnstillingen kan du definere antallet dager som må forløpe før spionvaredefinisjoner anses som utdaterte. Hvis definisjoner anses å være utdaterte, kan det hende denne tilstanden utløser flere handlinger, inkludert et tilbakefall til en alternativ oppdateringskilde eller visning av et advarselsikon i brukergrensesnittet. Som standard er verdien satt til 14 dager.
 
@@ -912,25 +935,25 @@ Hvis du deaktiverer denne innstillingen, brukes bare elementer som er definert a
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Konfigurer beskyttede mapper</string>
     <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
-    Angi flere mapper som skal beskyttes av beskyttet mappetilgang-funksjonen.
+    Angi flere mapper som skal beskyttes av funksjonen Kontrollert mappetilgang.
 
-        Filer i disse mappene kan ikke endres eller slettes av apper som ikke er klarert.
+    Filer i disse mappene kan ikke endres eller slettes av uklarerte apper.
 
-        Standard systemmapper beskyttes automatisk. Du kan konfigurere denne innstillingen for å legge til flere mapper.
-        Listen over standard systemmapper som beskyttes, vises i Windows Defender Sikkerhetssenter.
+    Standard systemmapper beskyttes automatisk. Du kan konfigurere denne innstillingen for å legge til flere mapper. 
+    Listen over standard systemmapper som er beskyttet, vises i Windows Sikkerhet.
 
-        Aktivert:
-        Angi flere mapper som skal beskyttes i Alternativer-delen.
+    Aktivert:
+    Angi flere mapper som skal beskyttes i Alternativer-delen.
 
-        Deaktivert:
-        Ingen flere mapper beskyttes.
+    Deaktivert:
+    Ingen flere mapper blir beskyttet.
 
-        Ikke konfigurert:
-        Samme som Deaktivert.
+    Ikke konfigurert:
+    Samme som deaktivert.
 
-        Du kan aktivere kontrollert mappetilgang i gruppepolicyinnstillingen Konfigurer kontrollert mappetilgang.
+    Du kan aktivere kontrollert mappetilgang i GP-innstillingen for Konfigurer kontrollert mappetilgang.
 
-        Windows Defender Antivirus fastsetter automatisk hvilke apper som kan klareres. Du kan legge til flere klarerte apper i gruppepolicyinnstillingen Konfigurer tillatte apper.
+    Windows Defender Antivirus bestemmer automatisk hvilke apper du kan stole på. Du kan legge til flere klarerte apper i GP-innstillingen Konfigurer tillatte apper.
     </string>
     </stringTable>
     <presentationTable>
@@ -1095,6 +1118,9 @@ Hvis du deaktiverer denne innstillingen, brukes bare elementer som er definert a
     </presentation>
     <presentation id="ExploitGuard_EnableNetworkProtection">
         <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+    <presentation id="Root_PUAProtection">
+        <dropdownList refId="Root_PUAProtection" noSort="true" defaultItem="0"></dropdownList>
     </presentation>
    </presentationTable>
 </resources>

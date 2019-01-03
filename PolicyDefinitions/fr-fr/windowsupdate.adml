@@ -72,6 +72,8 @@ Ce paramètre de stratégie vous permet de spécifier si les mises à jour autom
 
         4 = Télécharger automatiquement les mises à jour et les installer selon la planification spécifié.
 
+        Lorsque « Automatique » est sélectionné comme heure d'installation planifiée, Windows vérifie, télécharge et installe automatiquement les mises à jour. L'appareil redémarrera conformément aux paramètres par défaut, à moins qu'il ait été configuré par une stratégie de groupe (s'applique à Windows 10, version 1809 et supérieure)
+
         Spécifiez la planification à l’aide des options dans le paramètre de stratégie de groupe. Si aucune planification n’est spécifiée, la planification par défaut pour toutes les installations est chaque jour à 3h00. Si des mises à jour requièrent un démarrage pour terminer l’installation, Windows redémarre l’ordinateur automatiquement. (Si un utilisateur est connecté à l’ordinateur lorsque Windows est prêt à redémarrer, il en est informé par un message qui lui donne la possibilité de retarder le redémarrage.)
 
         Sur Windows 8 et versions ultérieures, vous pouvez configurer l’installation des mises à jour durant la maintenance automatique plutôt que selon une planification spécifique. La maintenance automatique installe les mises à jour quand l’ordinateur n’est pas en cours d’utilisation et évite de le faire quand il fonctionne sur batterie. Si la maintenance automatique n’est pas en mesure d’installer les mises à jour pendant deux jours, Windows Update les installe immédiatement. Les utilisateurs sont informés quant à l’imminence d’un redémarrage, qui n’a lieu que s’il n’y a aucun risque de perte accidentelle de données.
@@ -79,6 +81,8 @@ Ce paramètre de stratégie vous permet de spécifier si les mises à jour autom
         La maintenance automatique peut être configurée de manière plus poussée à l’aide des paramètres de stratégie de groupe accessibles à l’emplacement suivant : Configuration ordinateur-&gt;Modèles d’administration-&gt;Composants Windows-&gt;Planificateur de maintenance 
 
         5 = Autoriser les administrateurs locaux à sélectionner le mode configuration selon lequel les Mises à jour automatiques doivent informer l’utilisateur et installer les mises à jour.
+
+        Remarque : cette option n'est pas pris en charge sous Windows 10.
 
         Avec cette option, les administrateurs locaux sont autorisés à utiliser le Panneau de configuration Windows Update pour sélectionner l’option de configuration de leur choix. En revanche, ils ne sont pas autorisés à désactiver la configuration des mises à jour automatiques.
 
@@ -122,6 +126,7 @@ Si l’état est Non configurée, l’utilisation des Mises à jour automatiques
       <string id="AutoUpdateSchTime7">07:00</string>
       <string id="AutoUpdateSchTime8">08:00</string>
       <string id="AutoUpdateSchTime9">09:00</string>
+      <string id="AutoUpdateSchTimeAuto">Automatique</string>
       <string id="CorpWuURL">Spécifier l’emplacement intranet du service de mise à jour Microsoft</string>
       <string id="CorpWuURL_Help">
         Spécifie un serveur intranet qui héberge les mises à jour provenant de Microsoft Update. Vous pouvez ensuite utiliser ce service de mise à jour pour procéder à la mise à jour automatique des ordinateurs de votre réseau.
@@ -209,11 +214,11 @@ Si le paramètre de stratégie « Configurer les mises à jour automatiques »
       <string id="FeaturedSoftwareNotification_Title">Activer les notifications d’applications</string>
       <string id="AUPowerManagement_Help">Spécifie si Windows Update doit utiliser les fonctionnalités de gestion de l’alimentation Windows pour effectuer automatiquement la sortie de veille du système, lorsqu’une installation des mises à jour est planifiée.
 
-Windows Update n’effectue la sortie de veille automatique du système que s’il est configuré pour l’installation automatique des mises à jour. Si le système est en mise en veille prolongée au moment où l’installation planifiée doit avoir lieu et si des mises à jour doivent être appliquées, Windows Update utilise les fonctionnalités de gestion de l’alimentation Windows pour effectuer automatiquement la sortie de veille du système et permettre l’installation des mises à jour.
+Windows Update n’effectue la sortie de veille automatique du système que s’il est configuré pour l’installation automatique des mises à jour. Si le système est en mise en veille au moment où l’installation planifiée doit avoir lieu et si des mises à jour doivent être appliquées, Windows Update utilise les fonctionnalités de gestion de l’alimentation Windows pour effectuer automatiquement la sortie de veille du système et permettre l’installation des mises à jour.
 
 Windows update effectue également la sortie de veille du système et procède à l’installation d’une mise à jour, lorsqu’il existe une date limite d’installation.
 
-Le système ne sort pas de la mise en veille tant qu’il n’y a pas de mises à jour à installer.  Si le système fonctionne sur batterie, lorsque Windows Update le fait sortir de la mise en veille, les mises à jour ne sont pas installées ; par ailleurs, le système retourne automatiquement en mise en veille prolongée en moins de 2 minutes.</string>
+Le système ne sort pas de la mise en veille tant qu’il n’y a pas de mises à jour à installer.  Si le système fonctionne sur batterie, lorsque Windows Update le fait sortir de la mise en veille, les mises à jour ne sont pas installées ; par ailleurs, le système retourne automatiquement en mise en veille en moins de 2 minutes.</string>
       <string id="AUPowerManagement_Title">Activation de la fonctionnalité de gestion de l’alimentation par Windows Update pour la sortie de veille automatique du système lors de l’installation de mises à jour planifiées</string>
       <string id="NoAutoRebootWithLoggedOnUsers_Help">Spécifie que pour terminer une installation planifiée, le service Mises à jour automatiques va attendre le prochain démarrage de l’ordinateur par un utilisateur connecté au lieu de provoquer un démarrage automatique.
 
@@ -398,17 +403,15 @@ Notez que la durée maximale d’activité par défaut est de 18 heures à part
       <string id="ActiveHoursTime9PM">21 h 00</string>
 
       <string id="AutoRestartDeadline_Title">Spécifier une date d’échéance avant le redémarrage automatique pour l’installation de la mise à jour</string>
-      <string id="AutoRestartDeadline_Help">Spécifiez la date d’échéance en jours avant d’exécuter automatiquement un redémarrage planifié en dehors des heures d’activité. La date d’échéance peut être définie entre 2 et 14 jours à partir du moment où le redémarrage est planifié.
+      <string id="AutoRestartDeadline_Help">Spécifiez la date d'échéance avant le redémarrage automatique du PC pour appliquer les mises à jour. La date d'échéance peut être définie entre 2 et 14 jours après la date de redémarrage par défaut.
 
-La prise en compte de certaines mises à jour nécessite le redémarrage du PC.
+Le redémarrage peut se produire dans les heures d'activité.
 
-Si vous activez cette stratégie, un redémarrage aura automatiquement lieu après le nombre de jours spécifiés.
+Si vous désactivez cette stratégie ou ne la configurez pas, le PC redémarrera en fonction de la planification par défaut.
 
-Si vous désactivez cette stratégie ou que vous ne la configurez pas, le PC redémarrera en fonction de la planification par défaut.
-
-Cette stratégie n’a aucun effet si l’une ou l’autre des stratégies suivantes est activée :
-    1. Pas de redémarrage automatique avec des utilisateurs connectés pour les installations planifiées de mises à jour automatiques.
-    2. Toujours redémarrer automatiquement à l’heure planifiée.
+L'activation de l'une des deux stratégies remplace la stratégie ci-dessus :
+    1. Pas de redémarrage automatique avec des utilisateurs connectés pour l'installations planifiée des mises à jour automatiques.
+    2. Toujours redémarrer automatiquement à l'heure planifiée.
       </string>
       <string id="AutoRestartDeadlineDay2">2</string>
       <string id="AutoRestartDeadlineDay3">3</string>
@@ -445,6 +448,13 @@ Cette stratégie n’a aucun effet si l’une ou l’autre des stratégies suiva
 
 L’activation de ce paramètre supprime l’accès utilisateur à l’analyse, au téléchargement et à l'installation Windows Update.
       </string>
+
+      <string id="DisablePauseUXAccess_Title">Supprimer l'accès à la fonctionnalité Interrompre les mises à jour</string>
+      <string id="DisablePauseUXAccess_Help">Ce paramètre vous permet de supprimer l’accès à la fonctionnalité Interrompre les mises à jour.
+
+Une fois activé, l'accès utilisateur pour l'interruption des mises à jour est supprimé.
+      </string>
+
       <string id="ActiveHoursMaxRange_Title">Spécifier une plage d’heures d’activité pour les redémarrages automatiques</string>
       <string id="ActiveHoursMaxRange_Help">Activez cette stratégie pour spécifier le nombre maximum d’heures pendant lesquelles les utilisateurs peuvent définir leurs heures d’activité à partir de l’heure de début.
 
@@ -513,22 +523,23 @@ Si vous désactivez cette stratégie ou si vous ne la configurez pas, les compor
       <string id="RestartWarnMins30">30</string>
       <string id="RestartWarnMins60">60</string>
       <string id="EngagedRestartTransitionSchedule_Title">Spécifier une transition de redémarrage commencé et une planification des notifications des mises à jour</string>
-      <string id="EngagedRestartTransitionSchedule_Help">Activez cette stratégie pour contrôler le minutage avant de passer des redémarrages automatiques planifiés en dehors des heures d’activité au redémarrage commencé, qui nécessite la planification de l’utilisateur. La période définie peut être comprise entre 2 et 30 jours à partir du moment où le redémarrage est en attente.
+      <string id="EngagedRestartTransitionSchedule_Help">Activez cette stratégie pour contrôler le minutage avant de passer des redémarrages automatiques planifiés en dehors des heures d’activité au redémarrage commencé, qui nécessite la planification de l’utilisateur. La période définie peut être comprise entre 0 et 30 jours à partir du moment où le redémarrage est en attente.
 
-Vous pouvez spécifier le nombre de jours pendant lesquels un utilisateur peut répéter les notifications de rappel de redémarrage commencé. La période de répétition définie peut être comprise entre 1 et 3 jours.
+Vous pouvez spécifier le nombre de jours pendant lesquels un utilisateur peut répéter les notifications de rappel de redémarrage commencé. La période de répétition définie peut être comprise entre 1 et 3 jours.
 
-Vous pouvez spécifier l’échéance en jours avant la planification et l’exécution automatiques d’un redémarrage en attente en dehors des heures d’activité. L’échéance définie peut être comprise entre 2 et 30 jours à partir du moment où le redémarrage est en attente. Si cette stratégie est configurée, le redémarrage en attente passe du redémarrage automatique au redémarrage commencé (planification de l’utilisateur en attente), puis à l’exécution automatique pendant la période spécifiée.
+Vous pouvez spécifier l’échéance en jours avant la planification et l’exécution automatiques d’un redémarrage, quelles que soient les heures d’activité. L’échéance peut être définie entre 2 et 30 jours à partir du moment où le redémarrage est en attente. Si cette stratégie est configurée, le redémarrage en attente passe du redémarrage automatique au redémarrage commencé (planification de l’utilisateur en attente), puis à l’exécution automatique pendant la période spécifiée.
 
-Si aucune échéance n’est spécifiée ou que l’échéance est définie sur 0, le redémarrage n’est pas exécuté automatiquement et reste commencé (planification de l’utilisateur en attente).
+Si aucune échéance n’est spécifiée ou que l’échéance est définie sur 0, le PC ne redémarre pas automatiquement et nécessite que la personne le planifie avant le redémarrage.
 
-Si vous désactivez cette stratégie ou ne la configurez pas, les comportements par défaut sont utilisés.
+Si vous désactivez cette stratégie ou ne la configurez pas, le PC redémarre conformément à la planification par défaut.
 
-Si aucune des stratégies suivantes n’est configurée, cette stratégie n’a aucun effet :
-    1. Pas de redémarrage automatique avec des utilisateurs connectés pour les installations planifiées de mises à jour automatiques
+Si une des stratégies suivantes est activée, cela remplace la stratégie ci-dessus :
+    1. Pas de redémarrage automatique avec des utilisateurs connectés pour l'installation planifiée de mises à jour automatiques
     2. Toujours redémarrer automatiquement à l’heure planifiée
     3. Spécifier une échéance avant le redémarrage automatique pour l’installation des mises à jour
       </string>
       <string id="EngagedRestart_0">0</string>
+      <string id="EngagedRestart_1">1</string>
       <string id="EngagedRestart_2">2</string>
       <string id="EngagedRestart_3">3</string>
       <string id="EngagedRestart_4">4</string>
@@ -561,7 +572,7 @@ Si aucune des stratégies suivantes n’est configurée, cette stratégie n’a 
       <string id="EngagedRestartSnooze_1">1</string>
       <string id="EngagedRestartSnooze_2">2</string>
       <string id="EngagedRestartSnooze_3">3</string>
-      
+
       <string id="SetEDURestart_Title">Mettre à jour la stratégie d’alimentation pour les redémarrages de paniers</string>
       <string id="SetEDURestart_Help">L'activation de cette stratégie pour les appareils EDU qui restent sur Paniers pendant la nuit permet d'ignorer les vérifications d'alimentation pour s'assurer que les redémarrages de mise à jour ont lieu à l'heure prévue pour l'installation.</string>
 
@@ -569,10 +580,23 @@ Si aucune des stratégies suivantes n’est configurée, cette stratégie n’a 
       <string id="AllowAutoWindowsUpdateDownloadOverMeteredNetwork_Help">L'activation de cette stratégie téléchargera automatiquement les mises à jour, même sur des connexions limitées (des frais peuvent s'appliquer)</string>
 
       <string id="DisableDualScan_Title">Ne pas autoriser les stratégies de report des mises à jour à effectuer des analyses vis-à-vis de Windows Update</string>
-      <string id="DisableDualScan_Help">Définissez cette stratégie de manière à ce qu'elle ne permette pas à des stratégies de report des mises à jour d'effectuer des analyses par rapport à Windows Update.
+      <string id="DisableDualScan_Help">Activez cette stratégie pour ne pas autoriser les stratégies de report de mise à jour pour provoquer des analyses sur Windows Update.
 
-Si cette stratégie est désactivée ou n'est pas configurée, il se peut que le client Windows Update initie des analyses automatiques par rapport à Windows Update, alors que des stratégies de report de mises à jour sont activées.</string>
+Si cette stratégie est désactivée ou n'est pas configurée, le client Windows Update peut lancer des analyses automatiques sur Windows Update, tandis que les stratégies de report de mise à jour sont activées.
+Remarque : cette stratégie s'applique uniquement lorsque le service intranet Microsoft Update auquel cet ordinateur est dirigé est configuré pour prendre en charge le ciblage côté client. Si la stratégie « spécifier l'emplacement du service de mise à jour intranet Microsoft Update » est désactivée ou n'est pas configurée, cette stratégie n'a aucun effet.
+      </string>
+      <string id="UpdateNotificationLevel_Title">Options d’affichage des notifications de mise à jour</string>
+      <string id="UpdateNotificationLevel_Help">0 (par défaut) – Utilisez les notifications par défaut de Windows Update
+1 – Désactivez toutes les notifications, hormis les avertissements de redémarrage
+2 – Désactivez toutes les notifications, y compris les avertissements de redémarrage
 
+Cette stratégie nous permet de déterminer les notifications Windows Update que les utilisateurs voient. Cette stratégie ne contrôle pas la manière dont les mises à jour sont téléchargées et installées ni le moment.
+
+Important : si vous choisissez de recevoir les notifications de mise à jour et que vous définissez « Configurer les mises à jour automatique » pour que les appareils ne reçoivent pas automatiquement les mises à jour, ni vous ni les utilisateurs des appareils ne serez mis au courant des mises à jour critiques de sécurité, de qualité ou des fonctionnalités, et vos appareils pourront avoir des problèmes de sécurité.
+      </string>
+      <string id="DefaultNotification">0 (par défaut) : notifications Windows Update par défaut du système d'exploitation</string>
+      <string id="ExcludingRebootWarnings">1 – désactiver toutes les notifications, à l'exclusion des avertissements de redémarrage</string>
+      <string id="IncludingRebootWarnings">2 – désactiver toutes les notifications, y compris les avertissements de redémarrage</string>
     </stringTable>
 
     <presentationTable>
@@ -664,7 +688,9 @@ Si cette stratégie est désactivée ou n'est pas configurée, il se peut que le
         <dropdownList refId="ActiveHoursEndTime" noSort="true" defaultItem="17">Fin :</dropdownList>
       </presentation>
       <presentation id="AutoRestartDeadline_Title">
-        <dropdownList refId="AutoRestartDeadline" noSort="true" defaultItem="5">Spécifiez le nombre de jours avant l’exécution automatique d’un redémarrage en attente en dehors des heures d’activité : </dropdownList>
+        <text>Spécifiez le nombre de jours avant l’exécution automatique d’un redémarrage en attente en dehors des heures d’activité : </text>
+        <dropdownList refId="AutoRestartDeadline" noSort="true" defaultItem="5">Mises à jour de qualité (jours) : </dropdownList>
+        <dropdownList refId="AutoRestartDeadlineForFeatureUpdates" noSort="true" defaultItem="5">Mises à jour des fonctionnalités (jours) : </dropdownList>
       </presentation>
       <presentation id="ActiveHoursMaxRange_Title">
         <text>Spécifiez la plage maximale d’heures actives :</text>
@@ -685,12 +711,22 @@ Si cette stratégie est désactivée ou n'est pas configurée, il se peut que le
         <dropdownList refId="RestartWarn" noSort="true" defaultItem="0">Avertissement (minutes) : </dropdownList>
       </presentation>
       <presentation id="EngagedRestartTransitionSchedule_Title">
-        <text>Spécifiez le minutage avant de passer du redémarrage automatique au redémarrage commencé (planification de l’utilisateur en attente) :</text>
-        <dropdownList refId="EngagedRestartTransitionSchedule" noSort="true" defaultItem="5">Transition (jours) : </dropdownList>
-        <text>Spécifiez Répéter pour les notifications de rappel de redémarrage commencé :</text>
-        <dropdownList refId="EngagedRestartSnoozeSchedule" noSort="true" defaultItem="2">Répéter (jours) :     </dropdownList>
-        <text>Spécifiez l’échéance avant l’exécution automatique d’un redémarrage en attente en dehors des heures d’activité :</text>
-        <dropdownList refId="EngagedRestartDeadline" noSort="true" defaultItem="0">Échéance (jours) :  </dropdownList>
+        <text>Transition : spécifiez la durée avant la transition du redémarrage automatique au Redémarrage commencé (calendrier utilisateur en attente).</text>
+        <text>Répéter : spécifiez les répétitions pour les notifications de rappel de Redémarrage commencé.</text>
+        <text>Date limite : spécifiez l’échéance avant l'exécution automatique d'un redémarrage en attente en dehors des heures d'activité.</text>
+        <text></text>
+        <text>Pour les mises à jour qualité : </text>
+        <dropdownList refId="EngagedRestartTransitionSchedule" noSort="true" defaultItem="7">Transition (jours) : </dropdownList>
+        <dropdownList refId="EngagedRestartSnoozeSchedule" noSort="true" defaultItem="2">Répéter (jours) :     </dropdownList>
+        <dropdownList refId="EngagedRestartDeadline" noSort="true" defaultItem="0">Échéance (jours) :  </dropdownList>
+        <text></text>
+        <text>Pour les mises à jour des fonctionnalités : </text>
+        <dropdownList refId="EngagedRestartTransitionScheduleForFeatureUpdates" noSort="true" defaultItem="7">Transition (jours) : </dropdownList>
+        <dropdownList refId="EngagedRestartSnoozeScheduleForFeatureUpdates" noSort="true" defaultItem="2">Répéter (jours) :     </dropdownList>
+        <dropdownList refId="EngagedRestartDeadlineForFeatureUpdates" noSort="true" defaultItem="0">Échéance (jours) :  </dropdownList>
+      </presentation>
+      <presentation id="UpdateNotificationLevel_Title">
+        <dropdownList refId="UpdateNotificationLevel" noSort="true" defaultItem="0">Spécifier les options d’affichage des notifications de mise à jour :</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

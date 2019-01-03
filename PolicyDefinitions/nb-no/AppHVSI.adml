@@ -58,12 +58,32 @@ Hvis du aktiverer denne innstillingen, må du velge én eller mange av følgende
 
 Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, er alle utskriftsfunksjoner deaktivert i Application Guard.
         </string>
+
+        <string id="AppHVSI_CertificateThumbprints_DisplayName">Tillat Windows Defender Application Guard å bruke rotsertifiseringsinstanser fra brukerens enhet</string>
+        <string id="AppHVSI_CertificateThumbprints_Explain">Denne policyinnstillingen tillater deling av enkelte rotsertifikater med Windows Defender Application Guard-beholderen.
+
+Ved å aktivere denne innstillingen blir sertifikater med et avtrykk som samsvarer med de som er angitt, overført til beholderen. Du kan angi flere sertifikater ved å bruke komma til å skille avtrykk for hvert sertifikat som du ønsker å overføre.
+
+Hvis du deaktiverer eller lar være å konfigurere denne innstillingen, deles ikke sertifikater med Windows Defender Application Guard-beholderen.
+
+Eksempel: b4e72779a8a362c860c36a6461f31e3aa7e58c14,1b1d49f06d2a697a544a1059bd59a7b058cda924
+        </string>
+
         <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Hindre virksomhetsnettsteder fra å laste inn ikke-virksomhetsinnhold i Microsoft Edge og Internet Explorer</string>
         <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Med denne policyinnstillingen kan du bestemme om nettsteder kan laste inn ikke-virksomhetsinnhold i Microsoft Edge og Internet Explorer.
 
 Hvis du aktiverer denne innstillingen, hindres ikke-virksomhetsinnhold innebygd på virksomhetsnettsteder fra å åpne i Internet Explorer eller Microsoft Edge utenfor Windows Defender Application Guard.
 
 Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, kan ikke-virksomhetsnettsteder åpnes utenfor Windows Defender Application Guard-beholderen, direkte i Internet Explorer og Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_DisplayName">Gi tilgang til kamera og mikrofon i Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_Explain">Policyen lar deg bestemme om programmer i Windows Defender Application Guard kan få tilgang til enhetens kamera og mikrofon når disse innstillingene aktiveres på brukerens enhet.
+
+Hvis du aktiverer denne policyen, kan programmer i Windows Defender Application Guard få tilgang til kameraet og mikrofonen på brukerens enhet.
+
+Hvis du deaktiverer eller lar være å konfigurere denne policyen, kan ikke programmer i Windows Defender Application Guard få tilgang til kameraet og mikrofonen på brukerens enhet.
+
+Viktig: Hvis du aktiverer denne policyen, kan en manipulert beholder omgå kamera- og mikrofontillatelsene og få tilgang til kameraet og mikrofonen uten at brukeren vet om det. For å hindre uberettiget tilgang anbefaler vi at personverninnstillingene for kamera og mikrofoner deaktiveres på brukerens enhet når det ikke er behov for dem.
         </string>
         <string id="AppHVSI_AllowPersistence_DisplayName">Tillat databevaring for Windows Defender Application Guard</string>
         <string id="AppHVSI_AllowPersistence_Explain">Med denne policyinnstillingen kan du bestemme om data skal beholdes på tvers av ulike økter i Windows Defender Application Guard (Application Guard).
@@ -102,9 +122,42 @@ Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, vil ikke Window
 
         Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, kan ikke personer lagre nedlastede filer fra Windows Defender Application Guard-beholderen til vertsoperativsystemet.
         </string>
+        <string id="AppHVSI_FileTrustCriteria_DisplayName">Tillat brukere å klarere filer som åpnes i Windows Defender Application Guard</string>
+        <string id="AppHVSI_FileTrustCriteria_Explain">Med denne policyinnstillingen kan du konfigurere nødvendige handlinger og valideringer som gjør brukere i stand til å klarere filer som åpnes i Application Guard. Når konfigureringen er fullført, kan filene åpnes på verten. 
+
+Hvis du aktiverer denne innstillingen, må du velge ett eller flere av følgende:
+0. Ikke tillat brukere å klarere filer manuelt: Brukere får ikke mulighet til å klarere filer.
+1. Tillat brukere å klarere filer manuelt: Brukere kan åpne grensesnitt i Windows som gjør dem i stand til å klarere valgte filer eksplisitt.
+2. Tillat brukere å klarere manuelt etter en antiviruskontroll: Brukere kan åpne grensesnitt i Windows som gjør dem i stand til å klarere valgte filer eksplisitt. Filene klareres først etter at de har blitt godkjent av antivirusprogrammet installert på brukerens enhet.  
+
+Hvis du deaktiverer eller lar være å konfigurere denne innstillingen, kan ikke brukere klarere filer som åpnes i Application Guard.
+</string>
+
+        <string id="AppHVSI_FileTrustOrigin_DisplayName">Konfigurer flere kilder til ikke-klarerte filer i Windows Defender Application Guard.</string>
+        <string id="AppHVSI_FileTrustOrigin_Explain">Med denne policyinnstillingen kan du konfigurere flere kilder til ikke-klarerte filer.
+Hvis du aktiverer denne innstillingen, må du velge ett eller flere av følgende:
+1. Flyttbart medium: Filer som åpnes eller kopieres fra flyttbare medier, åpnes alltid i Windows Defender Application Guard.  
+
+2. Nettverksressurser: Filer som åpnes eller kopieres fra nettverksressurser, åpnes alltid i Windows Defender Application Guard. Hvis du vil klarere en nettverksplassering eksplisitt og hindre at filer fra denne plasseringen blir åpnet i Application Guard, kan du bruke en av policyene for nettverksisolering.
+
+3. Filer med Mark of the Web (MOTW): Filer som er merket med MotW, åpnes alltid i Windows Defender Application Guard.
+
+Hvis du deaktiverer eller lar være å konfigurere denne innstillingen, blir bare filer lastet ned fra Application Guard for Microsoft Edge åpnet i Application Guard for Word, Excel eller PowerPoint.
+</string>
+
     </stringTable>
     <presentationTable>
-      <presentation id="AppHVSIClipboardSettings_Presentation">
+      <presentation id="AppHVSI_AllowAppHVSI_Presentation">
+        <decimalTextBox refId="AppHVSI_AllowAppHVSI_TextBox" defaultValue="1"></decimalTextBox>
+        <text>
+Alternativer:
+0. Deaktiver Windows Defender Application Guard
+1. Aktiver Windows Defender Application Guard BARE for Microsoft Edge
+2. Aktiver Windows Defender Application Guard BARE for Microsoft Office
+3. Aktiver Windows Defender Application Guard for Microsoft Edge OG Microsoft Office
+        </text>
+      </presentation>
+    <presentation id="AppHVSIClipboardSettings_Presentation">
         <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Innstillinger for utklippstavlevirkemåte.</dropdownList>
         <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Alternativer for utklippstavleinnhold.
         </decimalTextBox>
@@ -131,6 +184,24 @@ Hvis du deaktiverer eller ikke konfigurerer denne innstillingen, vil ikke Window
      – 15. Aktiverer alle typer utskrift.
         </text>
       </presentation>
-    </presentationTable>
+      <presentation id="AppHVSI_FileTrustCriteria_Presentation">
+        <decimalTextBox refId="AppHVSI_FileTrustCriteria_TextBox" defaultValue="0"></decimalTextBox>
+        <text>Konfigurer handlinger og valideringer som en sluttbruker må fullføre for å klarere en ikke-klarert fil og åpne, vise og redigere den på brukerens enhet.
+0. Ikke tillat brukere å klarere filer manuelt
+1. Tillat brukere å klarere filer manuelt
+2. Tillat brukere å klarere filer manuelt etter en antiviruskontroll</text>
+      </presentation>
+      <presentation id="AppHVSI_FileTrustOrigin_Presentation">
+         <checkBox refId="AppHVSI_FileTrustOrigin_RemovableMedia_Checkbox" defaultChecked="true">Flyttbare medier</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_NetworkShares_Checkbox" defaultChecked="true">Nettverksressurser</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_MOTW_Checkbox" defaultChecked="true">Filer med Mark of the Web (MOTW)</checkBox>
+      </presentation>
+
+      <presentation id="AppHVSICertificateThumbprints_Presentation">
+        <textBox refId="AppHVSICertificateThumbprints_TextBox">
+          <label>Avtrykk av sertifikatene som skal deles</label>
+        </textBox>
+      </presentation>
+  </presentationTable>
   </resources>
 </policyDefinitionResources>

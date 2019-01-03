@@ -72,6 +72,8 @@ Med denne innstillingen kan du angi om automatiske oppdateringer skal aktiveres 
 
         4 = Last ned oppdateringer automatisk og installer dem i henhold til tidsplanen nedenfor.
 
+        Når "Automatisk" er valgt som planlagt installasjonstidspunkt, vil Windows automatisk se etter, laste ned og installere oppdateringer. Enheten starter på nytt som angitt i standardinnstillingene for Windows med mindre det er konfigurert i gruppepolicy. (Gjelder Windows 10 versjon 1809 og senere)
+
         Angi tidsplanen med alternativene i gruppepolicyinnstillingen. Hvis det ikke er angitt en tidsplan, er standard tidsplan for alle installasjoner hver dag kl. 03:00. Hvis en oppdatering krever omstart for å fullføre installasjonen, vil Windows automatisk starte datamaskinen på nytt. (Hvis en bruker er logget på datamaskinen når Windows er klar for omstart, får brukeren en varsling samt muligheten til å utsette omstarten.)
 
         I Windows 8 og senere kan du angi at oppdateringer skal installeres under automatisk vedlikehold i stedet for etter en bestemt tidsplan. Automatisk vedlikehold installerer oppdateringer når datamaskinen ikke er i bruk, og unngår å gjøre det når datamaskinen går på batteristrøm. Hvis det går to dager uten at Automatisk oppdatering får installert oppdateringer, installerer Windows Update oppdateringene med en gang. Brukerne blir deretter varslet om en kommende omstart, og denne omstarten skjer bare hvis det ikke er mulighet for utilsiktet datatap.
@@ -79,6 +81,8 @@ Med denne innstillingen kan du angi om automatiske oppdateringer skal aktiveres 
         Automatisk vedlikehold kan konfigureres ytterligere ved hjelp av gruppepolicyinnstillingene her: Datamaskinkonfigurasjon-&gt;Administrative maler-&gt;Windows-komponenter-&gt;Vedlikeholdsplanlegger
 
         5 = Tillat at lokale administratorer kan velge konfigurasjonsmodusen der Automatiske oppdateringer skal varsle og installere oppdateringer.
+
+        Obs!  Dette alternativet støttes ikke på Windows 10.
 
         Med dette alternativet kan lokale administratorer bruke kontrollpanelet for Windows Update til å velge et konfigurasjonsalternativ etter eget skjønn. Lokale administratorer tillates ikke å deaktivere konfigurasjonen av automatiske oppdateringer.
 
@@ -122,6 +126,7 @@ Hvis Ikke konfigurert er angitt for denne statusen, angis ikke bruken av automat
       <string id="AutoUpdateSchTime7">07:00</string>
       <string id="AutoUpdateSchTime8">08:00</string>
       <string id="AutoUpdateSchTime9">09:00</string>
+      <string id="AutoUpdateSchTimeAuto">Automatisk</string>
       <string id="CorpWuURL">Angi en plassering på intranettet for Microsofts oppdateringstjeneste</string>
       <string id="CorpWuURL_Help">
         Angir en server på intranett som er vert for oppdateringer fra Microsoft Update. Du kan deretter bruke denne oppdateringstjenesten til automatisk å oppdatere datamaskiner på nettverket.
@@ -207,13 +212,13 @@ Hvis policyinnstillingen Konfigurer automatiske oppdateringer er deaktivert elle
       
       </string>
       <string id="FeaturedSoftwareNotification_Title">Aktiver programvarevarsler</string>
-      <string id="AUPowerManagement_Help">Angir om Windows Update skal bruke funksjoner for strømstyring i Windows til å vekke systemet fra dvalemodus automatisk hvis det er planlagt installasjon av oppdateringer.
+      <string id="AUPowerManagement_Help">Angir om Windows Update skal bruke funksjoner for strømstyring i Windows til å vekke systemet fra hvilemodus automatisk hvis det er planlagt installasjon av oppdateringer.
 
-Systemet vekkes bare automatisk hvis Windows Update er konfigurert til å installere oppdateringer automatisk. Hvis systemet er i dvalemodus på det planlagte installasjonstidspunktet og det er oppdateringer som skal utføres, brukes funksjonene for strømstyring i Windows til å vekke systemet for å installere oppdateringene.
+Systemet reaktiveres bare automatisk hvis Windows Update er konfigurert til å installere oppdateringer automatisk. Hvis systemet er i hvilemodus på det planlagte installasjonstidspunktet og det er oppdateringer som skal utføres, brukes funksjonene for strømstyring i Windows til å reaktivere systemet for å installere oppdateringene.
 
-Systemet vekkes også for å installere en oppdatering hvis en tidsfrist for installasjon er nådd.
+Systemet reaktiveres også for å installere en oppdatering hvis en tidsfrist for installasjon er nådd.
 
-Systemet vekkes ikke med mindre det er oppdateringer som skal installeres.  Hvis systemet går på batteristrøm, installeres ingen oppdateringer når det vekkes, og systemet går automatisk tilbake til dvalemodus etter to minutter.</string>
+Systemet reaktiveres ikke med mindre det er oppdateringer som skal installeres. Hvis systemet går på batteristrøm, installeres ingen oppdateringer når det reaktiveres, og systemet går automatisk tilbake til hvilemodus etter to minutter.</string>
       <string id="AUPowerManagement_Title">Aktivere Windows Update til å bruke Strømstyring til å vekke systemet automatisk for å installere planlagte oppdateringer</string>
       <string id="NoAutoRebootWithLoggedOnUsers_Help">Angir at Automatiske oppdateringer venter til datamaskinen startes på nytt av en bruker som er logget på, i stedet for å starte datamaskinen på nytt automatisk, for å fullføre en planlagt installasjon.
 
@@ -307,7 +312,7 @@ Obs!  Denne policyen gjelder bare når denne PCen er konfigurert slik at den ko
       <string id="ManagePreviewBuilds_Title">Administrer forhåndsversjonsbygg</string>
       <string id="ManagePreviewBuilds_Help">Hvis du velger Deaktiver forhåndsversjonsbygg, blir forhåndsversjonsbygg hindret fra å installere på denne enheten. Dette hindrer at brukere kan velg Windows Insider Program gjennom Innstillinger -&gt; Oppdatering og sikkerhet.
 
-Hvis du velger Deaktiver forhåndsversjonsbygg når den neste versjonen offentliggjøres, hindrer det at forhåndsversjonsbygg installeres når neste Windows-versjon offentliggjøres. Dette alternativet er nyttig når enheten er konfigurert til å installere forhåndsversjonen og du vil si nei takk til å bruke testversjonen på enheten. Dette alternativet gir forhåndsversjonsbygg til enheten når den neste offentlige versjonen. 
+Hvis du velger Deaktiver forhåndsversjonsbygg når den neste versjonen offentliggjøres, hindrer det at forhåndsversjonsbygg installeres når neste Windows-versjon offentliggjøres. Dette alternativet er nyttig når enheten er konfigurert til å installere forhåndsversjonen og du vil si nei takk til å bruke testversjonen på enheten. Dette alternativet gir forhåndsversjonsbygg til enheten når den neste offentlige versjonen.
 
 Hvis du velger Aktiver forhåndsversjonsbygg, kan forhåndsversjonsbygg installeres på enheten. Brukere kan laste ned og installere Windows forhåndsversjonsbygg på enhetene sine ved å takke ja gjennom Innstillinger -&gt; Oppdatering og sikkerhet -&gt; Windows Insider Program. Administratorer kan også bruke andre policyer til å administrere testversjonsinnstillinger på vegne av brukere når denne verdien er angitt.</string>
       <string id="DisablePreviewBuilds">Deaktiver forhåndsversjonsbuilds</string>
@@ -398,17 +403,15 @@ Vær oppmerksom på at aktivitetsperiodens maksimale standardvarighet er 18 time
       <string id="ActiveHoursTime9PM">21.00</string>
 
       <string id="AutoRestartDeadline_Title">Angi tidsfrist før automatisk omstart for oppdateringsinstallasjon</string>
-      <string id="AutoRestartDeadline_Help">Angi tidsfristen i dager før en planlagt omstart utenfor aktivitetsperioden skal utføres automatisk. Tidsfristen kan settes til mellom 2 og 14 dager fra tidspunktet for den planlagte omstarten.
+      <string id="AutoRestartDeadline_Help">Angi tidsfristen før PC-en starter på nytt automatisk for å ta i bruk oppdateringer. Tidsfristen kan settes 2 til 14 dager etter standard omstartsdato.
 
-Vær oppmerksom på at PC-en må startes på nytt for at enkelte oppdateringer skal tre i kraft.
+Omstarten kan finne sted innenfor aktivitetsperioder.
 
-Hvis du aktiverer denne policyen, utføres det automatisk en omstart på det angitte antallet dager etter at omstarten var planlagt.
+Hvis du deaktiverer eller ikke konfigurerer denne policyen, starter PC-en på nytt i henhold til standardtidsplanen.
 
-Hvis du deaktiverer eller ikke konfigurerer denne policyen, startes PC-en på nytt i henhold til standard tidsplan.
-
-Hvis noen av følgende to policyer er aktivert, har denne policyen ingen innvirkning:
-    1. Ingen automatisk omstart med påloggede brukere for planlagte installasjoner av automatiske oppdateringer.
-    2. Utfør alltid automatisk omstart på planlagt tidspunkt.
+Hvis du aktiverer en av følgende to policyer, overstyres policyen ovenfor:
+    1. Ingen automatisk omstart med påloggede brukere for installasjoner planlagt av automatiske oppdateringer.
+    2. Start alltid automatisk til planlagt tid.
       </string>
       <string id="AutoRestartDeadlineDay2">2</string>
       <string id="AutoRestartDeadlineDay3">3</string>
@@ -445,6 +448,13 @@ Hvis noen av følgende to policyer er aktivert, har denne policyen ingen innvirk
 
 Hvis du aktiverer denne innstillingen for brukertilgang til skanning av Windows Update, fjernes nedlasting og installering.
       </string>
+
+      <string id="DisablePauseUXAccess_Title">Fjern tilgang til Stans oppdateringer midlertidig</string>
+      <string id="DisablePauseUXAccess_Help">Denne innstillingen lar deg fjerne tilgang til funksjonen Stans oppdateringer midlertidig.
+
+Brukertilgang til Stans oppdateringer midlertidig fjernes etter at den har blitt aktivert.
+      </string>
+
       <string id="ActiveHoursMaxRange_Title">Angi intervall for aktivitetsperiode for automatiske omstarter</string>
       <string id="ActiveHoursMaxRange_Help">Aktiver denne policyen for å angi det maksimale antallet timer fra starttidspunktet som brukere kan angi sine aktivitetsperioder.
 
@@ -513,22 +523,23 @@ Hvis du deaktiverer eller ikke konfigurerer denne policyen, brukes standard vars
       <string id="RestartWarnMins30">30</string>
       <string id="RestartWarnMins60">60</string>
       <string id="EngagedRestartTransitionSchedule_Title">Angi overgang til Interaktiv omstart og varslingstidsplan for oppdateringer</string>
-      <string id="EngagedRestartTransitionSchedule_Help">Aktiver denne policyen for å styre når det går over fra automatisk omstart som er planlagt utenfor aktivitetsperioden, til Interaktiv omstart, som brukeren må planlegge selv. Perioden kan angis fra 2 til 30 dager, fra det tidspunktet som statusen for omstart blir Venter.
+      <string id="EngagedRestartTransitionSchedule_Help">Aktiver denne policyen for å bestemme når datamaskinen går over fra automatisk omstart som er planlagt utenom aktivitetsperioden, til interaktiv omstart, som brukeren må planlegge selv. Perioden kan settes til alt mellom 0 og 30 dager fra tidspunktet da omstartsstatusen blir Venter.
 
-Du kan angi antall dager en bruker kan utsette påminnelser om Interaktiv omstart. Utsettelsesperioden kan angis fra 1 til 3 dager.
+Du kan spesifisere antall dager en bruker kan utsette påminnelser om interaktiv omstart. Utsettelsesperioden kan settes til alt mellom én og tre dager.
 
-Du kan angi tidsfristen i dager før en ventende omstart utenfor aktivitetsperioden planlegges og utføres automatisk. Tidsfristen kan angis fra 2 til 30 dager, fra det tidspunktet som statusen for omstart blir Venter. Hvis konfigurert, blir den ventende omstarten endret fra automatisk omstart til Interaktiv omstart (i henhold til brukerplanlegging), og deretter til automatisk utført innenfor den angitte perioden.
+Du kan spesifisere en tidsfrist i dager før en ventende omstart utenom aktivitetsperioden planlegges og utføres automatisk. Tidsfristen kan settes til alt mellom 2 og 30 dager fra tidspunktet da omstartsstatusen blir Venter. Hvis dette konfigureres, blir den ventende omstarten endret fra automatisk omstart til interaktiv omstart (i henhold til brukerens tidsplan) og blir deretter utført automatisk innenfor den spesifiserte perioden.
 
-Hvis det ikke er angitt noen tidsfrist, blir ikke omstarten automatisk utført og forblir en Interaktiv omstart (for eksempel i henhold til brukerplanlegging).
+Hvis det ikke er spesifisert noen tidsfrist, eller hvis tidsfristen er satt til 0, blir ikke omstarten utført automatisk og forblir en interaktiv omstart (for eksempel i henhold til brukerens tidsplan).
 
-Hvis du deaktiverer eller ikke konfigurerer denne policyen, brukes standardvirkemåten.
+Hvis du deaktiverer eller ikke konfigurerer denne policyen, brukes standard virkemåte.
 
-Denne policyen har ingen effekt hvis noen av disse policyene konfigureres:
-    1. Ingen automatisk omstart med påloggede brukere for installasjoner planlagt av Automatiske oppdateringer
-    2. Alltid start på nytt automatisk til planlagt tid
+Denne policyen har ingen effekt hvis noen av disse policyene er konfigurert:
+    1. Ingen automatisk omstart med påloggede brukere for installasjoner planlagt av automatiske oppdateringer
+    2. Start alltid på nytt automatisk til planlagt tid
     3. Angi tidsfrist før automatisk omstart for oppdateringsinstallasjon
       </string>
       <string id="EngagedRestart_0">0</string>
+      <string id="EngagedRestart_1">1</string>
       <string id="EngagedRestart_2">2</string>
       <string id="EngagedRestart_3">3</string>
       <string id="EngagedRestart_4">4</string>
@@ -561,7 +572,7 @@ Denne policyen har ingen effekt hvis noen av disse policyene konfigureres:
       <string id="EngagedRestartSnooze_1">1</string>
       <string id="EngagedRestartSnooze_2">2</string>
       <string id="EngagedRestartSnooze_3">3</string>
-      
+
       <string id="SetEDURestart_Title">Oppdateringsstrømpolicy for omstarter med vogner</string>
       <string id="SetEDURestart_Help">Hvis du aktiverer denne policyen for EDU-enheter som står på vogner over natten, blir strømkontroller hoppet over for å sikre at omstarter skjer på planlagte installeringstidspunktet.</string>
 
@@ -569,10 +580,23 @@ Denne policyen har ingen effekt hvis noen av disse policyene konfigureres:
       <string id="AllowAutoWindowsUpdateDownloadOverMeteredNetwork_Help">Hvis du aktiverer denne policyen, lastes oppdateringer automatisk ned, selv om tilkoblingen er forbruksmålt (kostnader kan påløpe)</string>
 
       <string id="DisableDualScan_Title">Ikke tillat at oppdateringsutsettelsespolicyer forårsaker skanninger mot Windows Update</string>
-      <string id="DisableDualScan_Help">Aktiver denne policyen for å ikke tillate at oppdateringsutsettelsespolicyer forårsaker skanninger mot Windows Update.
+      <string id="DisableDualScan_Help">Aktiver denne policyen til å ikke tillate at oppdateringsutsettelsespolicyer forårsaker søk mot Windows Update.
 
-Hvis denne policyen er deaktivert eller ikke konfigurert, kan Windows Update-klienten initiere automatiske skanninger mot Windows Update mens oppdateringsutsettelsespolicyer er aktivert.</string>
+Hvis policyen deaktiveres eller ikke konfigureres, kan Windows Update-klienten sette i gang automatiske skanninger mot Windows Update mens oppdateringsutsettelsespolicyer er aktivert.
+Note: Denne policyen gjelder bare når intranett-Microsoft-oppdateringstjenesten som datamaskinen dirigeres til, er konfigurert til å støtte målretting på klientsiden. Denne policyen har ingen virkning hvis policyen "Angi en plassering på intranettet for Microsofts oppdateringstjeneste" er deaktivert eller ikke konfigurert.
+      </string>
+      <string id="UpdateNotificationLevel_Title">Visningsalternativer for oppdateringsvarsler</string>
+      <string id="UpdateNotificationLevel_Help">0 (standard) – Bruk standard oppdateringsvarslinger for Windows
+1 – Deaktiver alle varslinger, unntatt advarsler om omstart
+2 – Deaktiver alle varslinger, inkludert advarsler om omstart
 
+Denne policyen lar deg definere hvilke oppdateringsvarslinger for Windows brukere ser. Policyen kontrollerer ikke hvordan og når oppdateringer lastes ned og installeres.
+
+Viktig!  Hvis du velger å ikke få oppdateringsvarslinger og også definerer Konfigurer automatiske oppdateringer, slik at enheter ikke får oppdateringer automatisk, vil ikke du eller enhetsbrukere bli oppmerksomme på kritiske sikkerhets-, kvalitets- eller funksjonsoppdateringer, og enheten kan være i fare.
+      </string>
+      <string id="DefaultNotification">0 (standard) – Standard oppdateringsvarslinger for Windows-operativsystemet</string>
+      <string id="ExcludingRebootWarnings">1 – Deaktiver alle varslinger, unntatt advarsler om omstart</string>
+      <string id="IncludingRebootWarnings">2 – Deaktiver alle varslinger, inkludert advarsler om omstart</string>
     </stringTable>
 
     <presentationTable>
@@ -664,7 +688,9 @@ Hvis denne policyen er deaktivert eller ikke konfigurert, kan Windows Update-kli
         <dropdownList refId="ActiveHoursEndTime" noSort="true" defaultItem="17">Slutt:</dropdownList>
       </presentation>
       <presentation id="AutoRestartDeadline_Title">
-        <dropdownList refId="AutoRestartDeadline" noSort="true" defaultItem="5">Angi hvor mange dager før en ventende omstart vil automatisk bli utført utenfor aktivitetsperioden: </dropdownList>
+        <text>Angi hvor mange dager før en ventende omstart vil automatisk bli utført utenfor aktivitetsperioden: </text>
+        <dropdownList refId="AutoRestartDeadline" noSort="true" defaultItem="5">Kvalitetsoppdateringer (dager): </dropdownList>
+        <dropdownList refId="AutoRestartDeadlineForFeatureUpdates" noSort="true" defaultItem="5">Funksjonsoppdateringer (dager): </dropdownList>
       </presentation>
       <presentation id="ActiveHoursMaxRange_Title">
         <text>Angi maksimumsintervallet for aktivitetsperioder:</text>
@@ -685,12 +711,22 @@ Hvis denne policyen er deaktivert eller ikke konfigurert, kan Windows Update-kli
         <dropdownList refId="RestartWarn" noSort="true" defaultItem="0">Advarsel (minutter): </dropdownList>
       </presentation>
       <presentation id="EngagedRestartTransitionSchedule_Title">
-        <text>Angi tid før overgang fra Automatisk omstart til Interaktiv omstart (i henhold til brukerplanlegging):</text>
-        <dropdownList refId="EngagedRestartTransitionSchedule" noSort="true" defaultItem="5">Overgang (dager): </dropdownList>
-        <text>Angi hvor lenge påminnelser om Interaktiv omstart skal utsettes:</text>
+        <text>Overgang: Angi tid før overgang fra Automatisk omstart til Interaktiv omstart (i henhold til brukerplanlegging).</text>
+        <text>Utsett: Angi hvor lenge påminnelser om Interaktiv omstart skal utsettes.</text>
+        <text>Tidsfrist: Angi tidsfristen før en ventende omstart blir automatisk utført utenfor aktivitetsperioden.</text>
+        <text></text>
+        <text>For kvalitetsoppdateringer: </text>
+        <dropdownList refId="EngagedRestartTransitionSchedule" noSort="true" defaultItem="7">Overgang (dager): </dropdownList>
         <dropdownList refId="EngagedRestartSnoozeSchedule" noSort="true" defaultItem="2">Utsett (dager):     </dropdownList>
-        <text>Angi tidsfristen før en ventende omstart blir automatisk utført utenfor aktivitetsperioden:</text>
         <dropdownList refId="EngagedRestartDeadline" noSort="true" defaultItem="0">Tidsfrist (dager):  </dropdownList>
+        <text></text>
+        <text>For funksjonsoppdateringer: </text>
+        <dropdownList refId="EngagedRestartTransitionScheduleForFeatureUpdates" noSort="true" defaultItem="7">Overgang (dager): </dropdownList>
+        <dropdownList refId="EngagedRestartSnoozeScheduleForFeatureUpdates" noSort="true" defaultItem="2">Utsett (dager):     </dropdownList>
+        <dropdownList refId="EngagedRestartDeadlineForFeatureUpdates" noSort="true" defaultItem="0">Tidsfrist (dager):  </dropdownList>
+      </presentation>
+      <presentation id="UpdateNotificationLevel_Title">
+        <dropdownList refId="UpdateNotificationLevel" noSort="true" defaultItem="0">Angi visningsalternativer for oppdateringsvarsler:</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

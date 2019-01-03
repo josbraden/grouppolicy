@@ -58,12 +58,32 @@ Pokud toto nastavení povolíte, musíte zvolit některé z následujících cho
 
 Pokud toto nastavení zakážete nebo nenakonfigurujete, budou všechny funkce tisku pro Ochranu Application Guard vypnuté.
         </string>
+
+        <string id="AppHVSI_CertificateThumbprints_DisplayName">Povolit kontejneru Ochrany Application Guard v programu Windows Defender používat kořenové certifikační autority ze zařízení uživatele</string>
+        <string id="AppHVSI_CertificateThumbprints_Explain">Toto nastavení zásady umožňuje, aby se určité kořenové certifikáty sdílely s kontejnerem Ochrany Application Guard v programu Windows Defender.
+
+Pokud toto nastavení povolíte, přenesou se do kontejneru certifikáty s kryptografickým otiskem odpovídající zadaným certifikátům. Můžete zadat více certifikátů a kryptografické otisky jednotlivých certifikátů, které chcete přenést, oddělit čárkami.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, certifikáty se s kontejnerem Ochrany Application Guard v programu Windows Defender sdílet nebudou.
+
+Příklad:  b4e72779a8a362c860c36a6461f31e3aa7e58c14,1b1d49f06d2a697a544a1059bd59a7b058cda924
+        </string>
+
         <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Zabránit podnikovým webům v načítání mimopodnikového obsahu do Microsoft Edge a Internet Explorer</string>
         <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Pomocí této zásady můžete rozhodnout, jestli weby můžou načítat nefiremní obsah v prohlížečích Microsoft Edge a Internet Explorer.
 
 Pokud toto nastavení povolíte, zastaví se otevírání nefiremního obsahu vloženého na firemní weby v prohlížečích Internet Explorer nebo Microsoft Edge mimo Ochranu Application Guard v programu Windows Defender.
 
 Pokud toto nastavení zakážete nebo nenakonfigurujete, nefiremní weby se můžou otevírat mimo kontejner Ochrany Application Guard v programu Windows Defender, a to přímo v prohlížečích Internet Explorer a Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_DisplayName">Povolit přístup kamery a mikrofonu v kontejneru Ochrany Application Guard v programu Windows Defender</string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_Explain">Tato zásada umožňuje určit, zda aplikace v kontejneru Ochrany Application Guard v programu Windows Defender mají přístup ke kameře a mikrofonu zařízení v případě, že jsou tato nastavení na zařízení uživatele povolena.
+
+Pokud tuto zásadu povolíte, aplikace v kontejneru Ochrany Application Guard v programu Windows Defender budou mít přístup ke kameře a mikrofonu na zařízení uživatele.
+
+Pokud tuto zásadu zakážete nebo nenakonfigurujete, nebudou mít aplikace v kontejneru Ochrany Application Guard v programu Windows Defender přístup ke kameře a mikrofonu na zařízení uživatele.
+
+Důležité: Pokud tuto zásadu zapnete, mohl by kontejner s ohroženým zabezpečením obejít oprávnění kamery a mikrofonu a získat k nim přístup bez vědomí uživatele. Pokud chcete zabránit neoprávněnému přístupu, doporučujeme nastavení ochrany osobních údajů pro kameru a mikrofon na zařízení uživatele vypnout v případě, že je nepotřebujete.
         </string>
         <string id="AppHVSI_AllowPersistence_DisplayName">Povolit trvalost dat pro Ochranu Application Guard v programu Windows Defender</string>
         <string id="AppHVSI_AllowPersistence_Explain">Pomocí této zásady můžete rozhodnout, jestli se má zajistit trvalost dat mezi různými relacemi Ochrany Application Guard v programu Windows Defender.
@@ -102,9 +122,42 @@ Pokud toto nastavení zakážete nebo nenakonfigurujete, bude Ochrana Applicatio
 
         Pokud toto nastavení zakážete nebo nenakonfigurujete, uživatelé nebudou moct stažené soubory ukládat z kontejneru Ochrany Application Guard do hostitelského operačního systému.
         </string>
+        <string id="AppHVSI_FileTrustCriteria_DisplayName">Povolit uživatelům označení souborů, které se otevřou v Ochraně Application Guard v programu Windows Defender, jako důvěryhodných</string>
+        <string id="AppHVSI_FileTrustCriteria_Explain">Tato zásada vám umožňuje nakonfigurovat požadované akce a ověření, které uživatelům povolí důvěřovat souborům otevíraným v kontejneru Ochrany Application Guard. Po úspěšném dokončení se soubory otevřou na hostiteli. 
+
+Pokud toto nastavení povolíte, musíte vybrat minimálně jednu z těchto možností:
+0. Nepovolit uživatelům ručně důvěřovat souborům: Uživatelé nebudou mít možnost důvěřovat souborům.
+1. Povolit uživatelům ručně důvěřovat souborům: Uživatelé můžou otevřít uživatelské rozhraní ve Windows, které jim umožní explicitně důvěřovat vybraným souborům.
+2. Povolit uživatelům ručně důvěřovat souborům po antivirové kontrole: Uživatelé můžou otevřít uživatelské rozhraní ve Windows, které jim umožní explicitně důvěřovat vybraným souborům. Soubory se považují za důvěryhodné, pouze pokud je zkontroloval antivirový program nainstalovaný na zařízení uživatele.  
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, uživatelé nebudou moct důvěřovat souborům, které se otevírají v kontejneru Ochrany Application Guard.
+</string>
+
+        <string id="AppHVSI_FileTrustOrigin_DisplayName">Konfigurovat další zdroje pro nedůvěryhodné soubory v kontejneru Ochrany Application Guard v programu Windows Defender</string>
+        <string id="AppHVSI_FileTrustOrigin_Explain">Toto nastavení zásady vám umožňuje nakonfigurovat další zdroje pro nedůvěryhodné soubory.
+Pokud toto nastavení povolíte, musíte vybrat minimálně jednu z následujících možností:
+1. Vyměnitelné médium: Soubory otevřené nebo zkopírované z vyměnitelného média se vždy otevřou v kontejneru Ochrany Application Guard v programu Windows Defender.  
+
+2. Sdílené síťové složky: Soubory otevřené nebo zkopírované ze sdílených síťových složek se vždy otevřou v kontejneru Ochrany Application Guard v programu Windows Defender. Pokud chcete explicitně důvěřovat síťovému umístění a zabránit tomu, aby se soubory z tohoto umístění otevíraly v kontejneru Ochrany Application Guard, použijte jednu ze zásad izolace sítě.
+
+3. Soubory se značkou MotW (Mark of the Web): Soubory se značkou MotW se vždy otevřou v kontejneru Ochrany Application Guard v programu Windows Defender.
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, otevřou se v kontejneru Ochrany Application Guard pro Microsoft Word, Excel nebo PowerPoint pouze soubory stažené z kontejneru Ochrany Application Guard pro Microsoft Edge.
+</string>
+
     </stringTable>
     <presentationTable>
-      <presentation id="AppHVSIClipboardSettings_Presentation">
+      <presentation id="AppHVSI_AllowAppHVSI_Presentation">
+        <decimalTextBox refId="AppHVSI_AllowAppHVSI_TextBox" defaultValue="1"></decimalTextBox>
+        <text>
+Možnosti:
+0. Zakázat Ochranu Application Guard v programu Windows Defender
+1. Povolit Ochranu Application Guard v programu Windows Defender JEN pro Microsoft Edge
+2. Povolit Ochranu Application Guard v programu Windows Defender JEN pro Microsoft Office
+3. Povolit Ochranu Application Guard v programu Windows Defender pro Microsoft Edge A Microsoft Office
+        </text>
+      </presentation>
+    <presentation id="AppHVSIClipboardSettings_Presentation">
         <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Nastavení chování schránky</dropdownList>
         <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Možnosti pro obsah schránky
         </decimalTextBox>
@@ -131,6 +184,24 @@ Pokud toto nastavení zakážete nebo nenakonfigurujete, bude Ochrana Applicatio
      - 15. Povolí veškerý tisk.
         </text>
       </presentation>
-    </presentationTable>
+      <presentation id="AppHVSI_FileTrustCriteria_Presentation">
+        <decimalTextBox refId="AppHVSI_FileTrustCriteria_TextBox" defaultValue="0"></decimalTextBox>
+        <text>Nakonfigurujte požadované akce a ověření, které musí koncový uživatel dokončit, aby mohl zvýšit úroveň nedůvěryhodného souboru a otevřít, zobrazit a upravit ho na svém zařízení.
+0. Nepovolit uživatelům ručně důvěřovat souborům
+1. Povolit uživatelům ručně důvěřovat souborům
+2. Povolit uživatelům ručně důvěřovat souborům po antivirové kontrole</text>
+      </presentation>
+      <presentation id="AppHVSI_FileTrustOrigin_Presentation">
+         <checkBox refId="AppHVSI_FileTrustOrigin_RemovableMedia_Checkbox" defaultChecked="true">Vyměnitelné médium</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_NetworkShares_Checkbox" defaultChecked="true">Sdílené síťové složky</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_MOTW_Checkbox" defaultChecked="true">Soubory se značkou MotW (Mark of the Web)</checkBox>
+      </presentation>
+
+      <presentation id="AppHVSICertificateThumbprints_Presentation">
+        <textBox refId="AppHVSICertificateThumbprints_TextBox">
+          <label>Kryptografické otisky certifikátů ke sdílení</label>
+        </textBox>
+      </presentation>
+  </presentationTable>
   </resources>
 </policyDefinitionResources>

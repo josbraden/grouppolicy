@@ -58,12 +58,32 @@ Se abiliti questa impostazione, devi scegliere uno o più dei seguenti comportam
 
 Se disabiliti o non configuri questa impostazione, la funzionalità di stampa viene disattivata del tutto in Application Guard.
         </string>
+
+        <string id="AppHVSI_CertificateThumbprints_DisplayName">Consenti a Windows Defender Application Guard di utilizzare le autorità di certificazione radice dal dispositivo dell'utente</string>
+        <string id="AppHVSI_CertificateThumbprints_Explain">Questa impostazione dei criteri consente di condividere alcuni certificati radice con il contenitore Windows Defender Application Guard.
+
+Se abiliti questa impostazione, i certificati con un'identificazione personale che corrisponde a quelle specificate verranno trasferiti nel contenitore. È possibile specificare più certificati usando una virgola per separare le identificazioni personali per ogni certificato da trasferire.
+
+Se disabiliti o non configuri questa impostazione, i certificati non vengono condivisi con il contenitore Windows Defender Application Guard.
+
+Esempio: b4e72779a8a362c860c36a6461f31e3aa7e58c14,1b1d49f06d2a697a544a1059bd59a7b058cda924
+        </string>
+
         <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Impedisci ai siti Web aziendali di caricare contenuto non aziendale in Microsoft Edge e Internet Explorer</string>
         <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Questa impostazione dei criteri consente di specificare se i siti Web possono caricare contenuto non aziendale in Microsoft Edge e Internet Explorer.
 
 Se abiliti questa impostazione, il contenuto non aziendale incorporato nei siti aziendali non può più essere aperto in Internet Explorer o Microsoft Edge all'esterno di Windows Defender Application Guard.
 
 Se disabiliti o non configuri questa impostazione, i siti non aziendali possono essere aperti all'esterno del contenitore Windows Defender Application Guard direttamente in Internet Explorer e Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_DisplayName">Consenti l'accesso della fotocamera e del microfono in Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_Explain">I criteri consentono di determinare se le applicazioni all'interno di Windows Defender Application Guard possono accedere alla fotocamera e al microfono del dispositivo quando queste impostazioni sono abilitate sul dispositivo dell'utente.
+
+Se abiliti questi criteri, le applicazioni all'interno di Windows Defender Application Guard saranno in grado di accedere alla fotocamera e al microfono sul dispositivo dell'utente.
+
+Se disabiliti o non configuri questi criteri, le applicazioni all'interno di Windows Defender Application Guard non saranno in grado di accedere alla fotocamera e al microfono sul dispositivo dell'utente.
+
+Importante: se attivi questi criteri, un contenitore compromesso potrebbe ignorare le autorizzazioni della fotocamera e del microfono e accedere alla fotocamera e al microfono senza che l'utente ne sia a conoscenza. Per impedire l'accesso non autorizzato, è consigliabile disattivare le impostazioni della privacy della fotocamera e del microfono sul dispositivo dell'utente quando non sono necessarie.
         </string>
         <string id="AppHVSI_AllowPersistence_DisplayName">Consenti persistenza dei dati per Windows Defender Application Guard</string>
         <string id="AppHVSI_AllowPersistence_Explain">Questa impostazione di criteri consente di definire la persistenza dei dati in diverse sessioni quando si usa Windows Defender Application Guard (Application Guard).
@@ -102,9 +122,42 @@ Se si disabilita o non si configura questa impostazione, Windows Defender Applic
 
         Se si disabilita o non si configura questa impostazione, gli utenti non possono salvare i file scaricati dal contenitore Windows Defender Application Guard nel sistema operativo host.
         </string>
+        <string id="AppHVSI_FileTrustCriteria_DisplayName">Consenti agli utenti di considerare attendibili i file aperti in Windows Defender Application Guard</string>
+        <string id="AppHVSI_FileTrustCriteria_Explain">Questa impostazione dei criteri consente di configurare le azioni e le convalide obbligatorie che permettono agli utenti di considerare affidabili i file aperti in Application Guard. Al completamento dell'operazione i file vengono aperti nell'host. 
+
+Se abiliti questa impostazione, devi selezionare uno o più dei seguenti comportamenti:
+0. Non consentire agli utenti di considerare attendibili i file manualmente: agli utenti non viene concessa l'opzione di considerare attendibili i file.
+1. Consenti agli utenti di considerare attendibili i file manualmente: gli utenti possono avviare l'interfaccia utente in Windows per considerare esplicitamente attendibili i file selezionati.
+2. Consenti agli utenti di considerare attendibili i file manualmente dopo la verifica antivirus: gli utenti possono avviare l'interfaccia utente in Windows per considerare esplicitamente attendibili i file selezionati. I file sono attendibili solo dopo che sono stati cancellati dal programma antivirus installato sul dispositivo dell'utente. 
+
+Se disabiliti o non configuri questa impostazione, gli utenti non saranno in grado di considerare attendibili i file che vengono aperti in Application Guard.
+</string>
+
+        <string id="AppHVSI_FileTrustOrigin_DisplayName">Configura altre origini di file non attendibili in Windows Defender Application Guard.</string>
+        <string id="AppHVSI_FileTrustOrigin_Explain">Questa impostazione dei criteri consente di configurare ulteriori origini di file non attendibili.
+Se abiliti questa impostazione, devi scegliere uno o più dei seguenti comportamenti:
+1. Supporti rimovibili: i file aperti o copiati dai supporti rimovibili verranno sempre aperti in Windows Defender Application Guard.  
+
+2. Condivisioni di rete: i file aperti o copiati dalle condivisioni di rete verranno sempre aperti in Windows Defender Application Guard. Per considerare esplicitamente attendibile un percorso di rete e non aprire i file da tale percorso in Application Guard, usa uno dei criteri di isolamento rete.
+
+3. File con Mark of the Web (MOTW): i file contrassegnati con MotW verranno sempre aperti in Windows Defender Application Guard.
+
+Se disabiliti o non configuri questa impostazione, solo i file scaricati da Application Guard per Microsoft Edge verranno aperti in Application Guard per Microsoft Word, Excel o PowerPoint.
+</string>
+
     </stringTable>
     <presentationTable>
-      <presentation id="AppHVSIClipboardSettings_Presentation">
+      <presentation id="AppHVSI_AllowAppHVSI_Presentation">
+        <decimalTextBox refId="AppHVSI_AllowAppHVSI_TextBox" defaultValue="1"></decimalTextBox>
+        <text>
+Opzioni:
+0. Disabilita Windows Defender Application Guard
+1. Abilita Windows Defender Application Guard solo per Microsoft Edge
+2. Abilita Windows Defender Application Guard solo per Microsoft Office
+3. Abilita Windows Defender Application Guard per Microsoft Edge e Microsoft Office
+        </text>
+      </presentation>
+    <presentation id="AppHVSIClipboardSettings_Presentation">
         <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Impostazioni comportamento degli Appunti.</dropdownList>
         <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Opzioni del contenuto degli Appunti.
         </decimalTextBox>
@@ -131,6 +184,24 @@ Se si disabilita o non si configura questa impostazione, Windows Defender Applic
      - 15. Abilita tutti i tipi di stampa.
         </text>
       </presentation>
-    </presentationTable>
+      <presentation id="AppHVSI_FileTrustCriteria_Presentation">
+        <decimalTextBox refId="AppHVSI_FileTrustCriteria_TextBox" defaultValue="0"></decimalTextBox>
+        <text>Configura le azioni e le convalide obbligatorie che devono essere completate da un utente finale per promuovere un file non attendibile e aprirlo, visualizzarlo e modificarlo sul dispositivo dell'utente.
+0. Non consentire agli utenti di considerare attendibili i file manualmente
+1. Consentire agli utenti di considerare attendibili i file manualmente
+2. Consentire agli utenti di considerare attendibili i file manualmente dopo la verifica antivirus</text>
+      </presentation>
+      <presentation id="AppHVSI_FileTrustOrigin_Presentation">
+         <checkBox refId="AppHVSI_FileTrustOrigin_RemovableMedia_Checkbox" defaultChecked="true">Supporti rimovibili</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_NetworkShares_Checkbox" defaultChecked="true">Condivisioni di rete</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_MOTW_Checkbox" defaultChecked="true">File con Mark of the Web</checkBox>
+      </presentation>
+
+      <presentation id="AppHVSICertificateThumbprints_Presentation">
+        <textBox refId="AppHVSICertificateThumbprints_TextBox">
+          <label>Identificazioni personali dei certificati da condividere</label>
+        </textBox>
+      </presentation>
+  </presentationTable>
   </resources>
 </policyDefinitionResources>

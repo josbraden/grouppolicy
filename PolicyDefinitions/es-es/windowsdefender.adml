@@ -116,6 +116,21 @@ Si deshabilita esta configuración, las tareas programadas comenzarán a la hora
 Si habilita esta configuración, el servicio antimalware permanecerá siempre en ejecución, aun cuando las definiciones tanto de antivirus como de antispyware estén deshabilitadas.
 
 Si deshabilita o no establece esta configuración, el servicio antimalware se detendrá cuando las definiciones tanto de antivirus como de antispyware estén deshabilitadas. Si el equipo se reinicia, también lo hará el servicio si está configurado para iniciarse automáticamente. Una vez que el servicio se haya iniciado, se realizará una comprobación para ver si las definiciones de antivirus y antispyware están habilitadas. Si hay al menos una habilitada, el servicio seguirá ejecutándose. Si ambas están habilitadas, se detendrá.</string>
+    <string id="Root_PUAProtection">Configurar detección de aplicaciones potencialmente no deseadas</string>
+    <string id="Root_PUAProtection_Explain">
+        Habilita o deshabilita la detección de aplicaciones potencialmente no deseadas. Puedes bloquear, auditar o permitir la descarga de software potencialmente no deseado o los intentos de instalarse automáticamente en el equipo.
+
+        Habilitado:
+        Especifica el modo en la sección Opciones:
+        -Bloquear: se bloquea el software potencialmente no deseado.
+        -Modo auditoría: no se bloquea el software potencialmente no deseado. Sin embargo, si esta característica bloquea el acceso porque se la ha establecido en Bloquear, se almacenará un registro del evento en los registros de eventos.
+
+        Deshabilitado:
+        no se bloquea el software potencialmente no deseado.
+
+        No configurado:
+        Igual que Deshabilitado.
+    </string>
     <string id="Exclusions_Extensions">Exclusiones de extensión</string>
     <string id="Exclusions_Extensions_Explain">Esta configuración de directiva permite especificar una lista de los tipos de archivo que deben quedar excluidos de la detección programada, personalizada y en tiempo real. Los tipos de archivo se deben agregar mediante las opciones de esta configuración. Cada entrada debe figurar como un par nombre-valor, donde el nombre debe ser una representación en forma de cadena de la extensión del tipo de archivo (como "obj" o "lib"). El valor no se usa y se recomienda establecerlo en 0.</string>
     <string id="Exclusions_Paths">Exclusiones de ruta de acceso</string>
@@ -520,6 +535,14 @@ Si deshabilita o no establece esta configuración, se ejecutará un examen progr
     Si habilita esta configuración, se realizará un examen de puesta al día después de omitir el número especificado de exámenes programados consecutivos.
 
     Si deshabilita o no establece esta configuración, se realizará un examen de puesta al día después de omitir 2 exámenes programados consecutivos.</string>
+    <string id="Scan_LowCpuPriority">Configurar prioridad baja de CPU para exámenes programados</string>
+    <string id="Scan_LowCpuPriority_Explain">
+        Esta configuración de directiva permite habilitar o deshabilitar la prioridad baja de la CPU para los exámenes programados.
+
+        Si habilitas esta configuración, se usará una prioridad baja de CPU durante los exámenes programados.
+
+        Si deshabilitas o no configuras esta configuración, no se realizarán cambios en la prioridad de la CPU para los exámenes programados.
+    </string>
     <string id="SignatureUpdate_ASSignatureDue">Definir el número de días que debe transcurrir para considerar las definiciones de spyware como caducadas</string>
     <string id="SignatureUpdate_ASSignatureDue_Explain">Esta configuración de directiva permite definir el número de días que debe transcurrir para considerar las definiciones de spyware como caducadas. Si se establece que las definiciones están caducadas, este estado puede desencadenar más acciones, como revertir a un origen de actualización alternativo o mostrar un icono de advertencia en la interfaz de usuario. Este valor está establecido de forma predeterminada en 14 días.
 
@@ -912,25 +935,25 @@ Si deshabilita o no establece esta configuración, no se mostrará ningún texto
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Configurar carpetas protegidas</string>
     <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
-    Especifica carpetas adicionales que deba proteger la característica Acceso controlado a carpetas.
+    Especifica las carpetas adicionales que se deben proteger mediante la característica de acceso controlado a carpetas.
 
     Las aplicaciones que no son de confianza no pueden modificar ni eliminar los archivos de estas carpetas.
 
-    Las carpetas del sistema predeterminadas se protegen automáticamente. Puedes configurar esta opción para agregar carpetas adicionales. 
-    La lista de carpetas del sistema predeterminadas protegidas se muestra en el Centro de seguridad de Windows Defender.
+    Las carpetas del sistema predeterminadas se protegen automáticamente. Puedes establecer esta configuración para agregar carpetas adicionales. 
+    La lista de carpetas del sistema predeterminadas que se protegen se muestra en Seguridad de Windows.
 
-    Habilitado:
-    Especifica carpetas adicionales que se deben proteger en la sección Opciones.
+    Habilitada:
+    Especifica las carpetas adicionales que deben protegerse en la sección Opciones.
 
-    Deshabilitado:
+    Deshabilitada:
     No se protegerá ninguna carpeta adicional.
 
-    No configurado:
-    Lo mismo que Deshabilitado.
+    No configurada:
+    Igual que Deshabilitada.
 
     Puedes habilitar el acceso controlado a carpetas en la opción de GP Configurar el acceso controlado a carpetas.
 
-    El Antivirus de Windows Defender determina automáticamente qué aplicaciones son de confianza. Puedes agregar aplicaciones de confianza adicionales en la opción de GP Configurar aplicaciones permitidas.
+    El Antivirus de Windows Defender determina automáticamente las aplicaciones que pueden ser de confianza. Puedes agregar aplicaciones de confianza adicionales en la opción de GP Configurar aplicaciones permitidas.
     </string>
     </stringTable>
     <presentationTable>
@@ -1095,6 +1118,9 @@ Si deshabilita o no establece esta configuración, no se mostrará ningún texto
     </presentation>
     <presentation id="ExploitGuard_EnableNetworkProtection">
         <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+    <presentation id="Root_PUAProtection">
+        <dropdownList refId="Root_PUAProtection" noSort="true" defaultItem="0"></dropdownList>
     </presentation>
    </presentationTable>
 </resources>

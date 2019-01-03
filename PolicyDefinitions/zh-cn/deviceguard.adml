@@ -9,16 +9,16 @@
       <string id="VirtualizationBasedSecurity">打开基于虚拟化的安全</string>
       <string id="VirtualizationBasedSecurityHelp">指定是否启用基于虚拟化的安全性。
 
-基于虚拟化的安全性使用 Windows 虚拟机监控程序支持安全服务。基于虚拟化的安全性需要安全启动，并且可以使用 DMA 保护进行有选择的启用。DMA 保护需要硬件支持，只能在配置正确的设备上启用。
+基于虚拟化的安全性使用 Windows 虚拟机监控程序支持安全服务。基于虚拟化的安全性需要安全启动，并且可选择使用 DMA 保护来启用。DMA 保护需要硬件支持，只能在配置正确的设备上启用。
 
 基于虚拟化的代码完整性保护
 
 此设置可实现基于虚拟化的内核模式代码完整性保护。如果启用此设置，则将强制实施内核模式内存保护，并且代码完整性验证路径受基于虚拟化的安全功能保护。
 
 “禁用”选项将远程关闭基于虚拟化的代码完整性保护(如果之前已使用“无锁启用”选项启用)。
-
+ 
 “启用时带 UEFI 锁”选项可确保无法远程禁用基于虚拟化的代码完整性保护。若要禁用该功能，必须将组策略设为“禁用”并通过真实存在的用户从每台计算机中删除该安全功能，然后才能清除 UEFI 中永久保留的配置。
-
+ 
 “无锁启用”选项允许使用组策略远程禁用基于虚拟化的代码完整性保护。
 
 “未配置”选项使策略设置未定义。组策略不会将策略设置写入注册表，因此它对计算机或用户没有影响。如果注册表中有当前设置，则不会被修改。
@@ -29,7 +29,7 @@
 
 Credential Guard
 
-此设置允许用户使用基于虚拟化的安全性启用 Credential Guard，以便保护凭据。
+此设置允许用户使用基于虚拟化的安全性启用 Credential Guard，以便帮助保护凭据。
 
 “禁用”选项将远程关闭 Credential Guard (如果之前已使用“无锁启用”选项启用)。
 
@@ -38,6 +38,16 @@ Credential Guard
 “无锁启用”选项允许使用组策略远程禁用 Credential Guard。使用此设置的设备必须至少运行 Windows 10 (1511 版)。
 
 “未配置”选项使策略设置未定义。组策略不会将策略设置写入注册表，因此它对计算机或用户没有影响。如果注册表中有当前设置，则不会被修改。
+      
+安全启动
+
+此设置可设置“安全启动”的配置以保护启动链。
+
+“未配置”设置是默认设置，并允许管理用户配置该功能。
+
+“已启用”选项可在支持的硬件上打开“安全启动”。
+
+无论硬件支持如何，“禁用”选项都会关闭“安全启动”。
       </string>
       <string id="SecureBoot">安全启动</string>
       <string id="SecureBootAndDmaProtection">安全启动和 DMA 保护</string>
@@ -66,7 +76,8 @@ Credential Guard
         <dropdownList refId="RequirePlatformSecurityFeaturesDrop" defaultItem="1">选择平台安全级别:</dropdownList>
         <dropdownList refId="HypervisorEnforcedCodeIntegrityDrop" defaultItem="3">基于虚拟化的代码完整性保护:</dropdownList>        
         <checkBox refId="CheckboxMAT">需要 UEFI 内存属性表</checkBox>        
-        <dropdownList refId="CredentialIsolationDrop" defaultItem="3">Credential Guard 配置:</dropdownList>                
+        <dropdownList refId="CredentialIsolationDrop" defaultItem="3">Credential Guard 配置:</dropdownList>
+        <dropdownList refId="SystemGuardDrop" defaultItem="2">安全启动配置:</dropdownList>                
       </presentation>
       <presentation id="ConfigCIPolicy">
         <textBox refId="ConfigCIPolicyFilePathText">

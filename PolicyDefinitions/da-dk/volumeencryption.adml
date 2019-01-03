@@ -291,10 +291,15 @@ Vigtigt! Denne gruppepolitik gælder kun for computere med en indbygget UEFI-fir
 
 Hvis du aktiverer denne politikindstilling, inden du aktiverer BitLocker, kan du konfigurere de startkomponenter, som TPM validerer, inden der låses op for adgang til det BitLocker-krypterede operativsystemdrev. Hvis nogle af disse komponenter ændres, mens BitLocker-beskyttelse er aktiveret, frigiver TPM ikke krypteringsnøglen, som kan låse drevet op, men computeren viser i stedet BitLocker-genoprettelseskonsollen og kræver, at enten genoprettelsesadgangskoden eller genoprettelsesnøglen angives, så drevet kan låses op.
 
-Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, bruger BitLocker standardprofilen til platformsvalidering eller den profil til platformsvalidering, der er angivet i installationsscriptet. En profil til platformsvalidering består af et sæt PCR-indekser (Platform Configuration Register) i intervallet fra 0 til 23. Standardprofilen til platformsvalidering sikrer krypteringsnøglen mod ændringer i PCR 0 (kernesystemets eksekverbare firmwarekode), PCR 2 (udvidet eller tilslutningsbar eksekverbar kode), PCR 4 (Boot Manager) og PCR 11 (BitLocker-adgangskontrol).
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, bruger BitLocker standardprofilen til platformsvalidering for tilgængelig hardware eller den profil til platformsvalidering, der er angivet i installationsscriptet. En profil til platformsvalidering består af et sæt PCR-indekser (Platform Configuration Register) i intervallet fra 0 til 23.
+
+På pc'er, der mangler understøttelse af sikker bootstarttilstand (PCR 7), sikrer standardprofilen til platformsvalidering krypteringsnøglen mod ændringer i PCR 0 (kernesystemets eksekverbare firmwarekode), PCR 2 (udvidet eller tilslutningsbar eksekverbar kode), PCR 4 (Boot Manager) og PCR 11 (BitLocker-adgangskontrol).
+
+Når understøttelse af sikker bootstart (PCR7) er tilgængelig, sikrer standardprofilen til platformsvalidering krypteringsnøglen ved at bruge sikker bootstarttilstand (PCR 7) og BitLocker-adgangskontrol (PCR 11). 
 
 Advarsel! Hvis der vælges en anden profil end standardprofilen til platformsvalidering, påvirker det sikkerheden og administrationen af computeren. BitLockers følsomhed over for platformændringer (skadelige eller godkendte) øges eller mindskes, afhængigt af om PCR'er henholdsvis medtages eller udelades. Hvis du angiver denne politikindstilling og udelader PCR 7, tilsidesættes gruppepolitikken "Tillad sikker bootstart ved integritetsvalidering", og BitLocker forhindres i at bruge sikker bootstart til validering af platforms- eller BCD-integritet (Boot Configuration Data). Angivelse af denne politikindstilling kan resultere i BitLocker-genoprettelse, når firmware opdateres. Hvis du angiver, at denne politikindstilling skal inkludere PCR 0, skal du afbryde BitLocker før anvendelse af firmwareopdateringer.
-      
+
+Det anbefales ikke at konfigurere denne politik, så Windows kan vælge PCR-profilen til den bedste kombination af sikkerhed og anvendelig baseret på den tilgængelige hardware på hver pc.
       </string>
 
       <string id="PlatformValidation_UEFI_Name">Konfigurer TPM-profil til platformsvalidering for indbyggede UEFI-firmwarekonfigurationer</string>

@@ -58,12 +58,32 @@ Als u deze instelling inschakelt, moet u een of meer van de volgende opties kiez
 
 Als u deze instelling uitschakelt of niet configureert, wordt alle afdrukfunctionaliteit in Application Guard uitgeschakeld.
         </string>
+
+        <string id="AppHVSI_CertificateThumbprints_DisplayName">Toestaan dat Windows Defender Application Guard gebruikmaakt van basiscertificeringsinstanties van het apparaat van de gebruiker</string>
+        <string id="AppHVSI_CertificateThumbprints_Explain">Op basis van deze beleidsinstelling kunnen basiscertificaten worden gedeeld met de Windows Defender Application Guard-container.
+
+Als u deze instelling inschakelt, worden certificaten waarvan de vingerafdruk overeenkomt met een van de opgegeven waarden, overgedragen naar de container. U kunt meerdere certificaten opgeven door de vingerafdrukken van alle over te dragen certificaten te scheiden met een komma.
+
+Als u deze instelling uitschakelt of niet configureert, worden certificaten niet gedeeld met de Windows Defender Application Guard-container.
+
+Voorbeeld: b4e72779a8a362c860c36a6461f31e3aa7e58c14,1b1d49f06d2a697a544a1059bd59a7b058cda924
+        </string>
+
         <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Voorkomen dat Enterprise-websites niet-Enterprise-inhoud laden in Microsoft Edge en Internet Explorer</string>
         <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Met deze beleidsinstelling kunt u bepalen of websites niet-Enterprise inhoud mogen laden in Microsoft Edge en Internet Explorer.
 
 Als u deze beleidsinstelling inschakelt, wordt niet-Enterprise inhoud die is ingesloten op enterprise-sites niet geopend in Internet Explorer of Microsoft Edge buiten Windows Defender Application Guard.
 
 Als u deze instelling uitschakelt of niet configureert, kunnen niet-Enterprise sites buiten de container van Windows Defender Application Guard worden geopend, direct in Internet Explorer en Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_DisplayName">Toegang tot camera en microfoon toestaan in Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_Explain">Met dit beleid kunt u bepalen of toepassingen in Windows Defender Application Guard toegang hebben tot de camera en microfoon van het apparaat wanneer deze instellingen zijn ingeschakeld op het apparaat van de gebruiker.
+
+Als u dit beleid inschakelt, hebben toepassingen in Windows Defender Application Guard toegang tot de camera en microfoon op het apparaat van de gebruiker.
+
+Als u dit beleid uitschakelt of niet configureert, hebben toepassingen in Windows Defender Application Guard geen toegang tot de camera en microfoon op het apparaat van de gebruiker.
+
+Belangrijk: Als u dit beleid inschakelt, kan een aangetaste container camera- en microfoonmachtigingen omzeilen en toegang krijgen tot de camera en de microfoon zonder dat de gebruiker dit weet. Om ongeautoriseerde toegang te voorkomen, raden we aan om de privacyinstellingen van de camera en de microfoon op het apparaat van de gebruiker uit te schakelen wanneer deze niet nodig zijn.
         </string>
         <string id="AppHVSI_AllowPersistence_DisplayName">Datapersistentie voor Windows Defender Application Guard toestaan</string>
         <string id="AppHVSI_AllowPersistence_Explain">Met deze beleidsinstelling kunt u bepalen of gegevens in verschillende sessies in Windows Defender Application Guard (Application Guard) mogen blijven bestaan.
@@ -102,9 +122,42 @@ Als u deze instelling uitschakelt of niet configureert, wordt software-rendering
 
         Als u deze instelling uitschakelt of niet configureert, kunnen personen gedownloade bestanden niet via de Windows Defender Application Guard-container opslaan op het hostbesturingssysteem.
         </string>
+        <string id="AppHVSI_FileTrustCriteria_DisplayName">Toestaan dat gebruikers bestanden vertrouwen die worden geopend in Windows Defender Application Guard</string>
+        <string id="AppHVSI_FileTrustCriteria_Explain">Met deze beleidsinstelling kunt u vereiste acties en validaties configureren waarmee gebruikers bestanden kunnen vertrouwen die worden geopend in Application Guard. Wanneer dit is voltooid, worden de bestanden geopend op de host. 
+
+Als u deze instelling inschakelt, moet u een of meer van de volgende opties selecteren:
+0. Niet toestaan dat gebruikers bestanden handmatig vertrouwen: gebruikers krijgen geen optie om bestanden te vertrouwen
+1. Toestaan dat gebruikers bestanden handmatig vertrouwen: gebruikers kunnen UI openen in Windows waarmee ze geselecteerde bestanden expliciet kunnen vertrouwen.
+2. Toestaan dat gebruikers bestanden handmatig vertrouwen na viruscontrole: gebruikers kunnen UI openen in Windows waarmee ze geselecteerde bestanden expliciet kunnen vertrouwen. De bestanden worden pas vertrouwd als deze zijn gecontroleerd door een antivirusprogramma dat op het apparaat van de gebruiker is geïnstalleerd. 
+
+Als u deze instelling uitschakelt of niet configureert, kunnen gebruikers geen bestanden vertrouwen die worden geopend in Application Guard.
+</string>
+
+        <string id="AppHVSI_FileTrustOrigin_DisplayName">Extra bronnen voor niet-vertrouwde bestanden in Windows Defender Application Guard configureren.</string>
+        <string id="AppHVSI_FileTrustOrigin_Explain">Met deze beleidsinstelling kunt u aanvullende bronnen voor niet-vertrouwde bestanden configureren.
+Als u deze instelling inschakelt, moet u een of meer van de volgende opties kiezen:
+1. Verwisselbare media: bestanden die van verwisselbare media zijn geopend of gekopieerd, worden altijd geopend in Windows Defender Application Guard. 
+
+2. Netwerkshares: bestanden die vanaf netwerkshares zijn geopend of gekopieerd, worden altijd geopend in Windows Defender Application Guard. Gebruik een van de beleidsregels voor netwerkisolatie als u een netwerklocatie expliciet wilt vertrouwen en wilt voorkomen dat bestanden van die locatie niet worden geopend in Application Guard.
+
+3. Bestanden met Mark of the Web (MOTW): bestanden met de markering Mark-of-the-Web worden altijd geopend in Windows Defender Application Guard.
+
+Als u deze instelling uitschakelt of niet configureert, worden alleen bestanden die zijn gedownload met Application Guard voor Microsoft Edge, geopend in Application Guard voor Microsoft Word, Excel of PowerPoint.
+</string>
+
     </stringTable>
     <presentationTable>
-      <presentation id="AppHVSIClipboardSettings_Presentation">
+      <presentation id="AppHVSI_AllowAppHVSI_Presentation">
+        <decimalTextBox refId="AppHVSI_AllowAppHVSI_TextBox" defaultValue="1"></decimalTextBox>
+        <text>
+Opties:
+0. Windows Defender Application Guard uitschakelen
+1. Windows Defender Application Guard alleen inschakelen voor Microsoft Edge
+2. Windows Defender Application Guard alleen inschakelen voor Microsoft Office
+3. Windows Defender Application Guard inschakelen voor Microsoft Edge en Microsoft Office
+        </text>
+      </presentation>
+    <presentation id="AppHVSIClipboardSettings_Presentation">
         <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">De werking van Klembord instellen.</dropdownList>
         <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Opties voor inhoud van Klembord.
         </decimalTextBox>
@@ -131,6 +184,24 @@ Als u deze instelling uitschakelt of niet configureert, wordt software-rendering
      - 15. Alle afdrukken toegestaan.
         </text>
       </presentation>
-    </presentationTable>
+      <presentation id="AppHVSI_FileTrustCriteria_Presentation">
+        <decimalTextBox refId="AppHVSI_FileTrustCriteria_TextBox" defaultValue="0"></decimalTextBox>
+        <text>Configureer de vereiste acties en validaties die door een eindgebruiker moeten worden uitgevoerd om een niet-vertrouwd bestand te promoveren en dit te openen, te bekijken en te bewerken op het apparaat van de gebruiker.
+0. Niet toestaan dat gebruikers bestanden handmatig vertrouwen
+1. Toestaan dat gebruikers bestanden handmatig vertrouwen
+2. Toestaan dat gebruikers bestanden handmatig vertrouwen na een viruscontrole</text>
+      </presentation>
+      <presentation id="AppHVSI_FileTrustOrigin_Presentation">
+         <checkBox refId="AppHVSI_FileTrustOrigin_RemovableMedia_Checkbox" defaultChecked="true">Verwisselbare media</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_NetworkShares_Checkbox" defaultChecked="true">Netwerkshares</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_MOTW_Checkbox" defaultChecked="true">Bestanden met Mark of the Web</checkBox>
+      </presentation>
+
+      <presentation id="AppHVSICertificateThumbprints_Presentation">
+        <textBox refId="AppHVSICertificateThumbprints_TextBox">
+          <label>Vingerafdrukken van de te delen certificaten</label>
+        </textBox>
+      </presentation>
+  </presentationTable>
   </resources>
 </policyDefinitionResources>

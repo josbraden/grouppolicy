@@ -116,6 +116,21 @@ Se si disabilita questa impostazione dei criteri, le attività pianificate inizi
 Se si abilita questa impostazione dei criteri, il servizio antimalware rimarrà sempre in esecuzione anche se sono disabilitate sia le definizioni antivirus che antispyware.
 
 Se si disabilita o non si configura questa impostazione dei criteri, il servizio antimalware verrà arrestato quando vengono disabilitate sia le definizioni antivirus che antispyware. In caso di riavvio del computer, il servizio verrà avviato se è impostato per l'avvio automatico. Dopo l'avvio del servizio, verrà eseguito un controllo per stabilire se le definizioni antivirus e antispyware sono abilitate. Se almeno uno dei gruppi di definizioni è abilitato, il servizio rimarrà in esecuzione. Se entrambi sono disabilitati, il servizio verrà arrestato.</string>
+    <string id="Root_PUAProtection">Configura il rilevamento di applicazioni potenzialmente indesiderate</string>
+    <string id="Root_PUAProtection_Explain">
+        Abilita o disabilita il rilevamento di applicazioni potenzialmente indesiderate. Puoi scegliere di bloccare, controllare o consentire il software potenzialmente indesiderato quando viene scaricato o tenta di installarsi sul computer.
+
+Abilitato:
+        specifica la modalità nella sezione Opzioni:
+        -Blocca: il software potenzialmente indesiderato sarà bloccato.
+        -Modalità di controllo: il software potenzialmente indesiderato non verrà bloccato, ma se questa funzione avesse bloccato l'accesso qualora fosse stata impostata su Blocca, un record dell'evento sarà presente nei registri eventi.
+
+Disabilato:
+        il software potenzialmente indesiderato non verrà bloccato.
+
+Non configurato:
+        come Disabilitato.
+    </string>
     <string id="Exclusions_Extensions">Esclusioni di estensioni</string>
     <string id="Exclusions_Extensions_Explain">Questa impostazione dei criteri consente di specificare un elenco di tipi di file da escludere dall'analisi pianificata, personalizzata e in tempo reale. I tipi di file devono essere aggiunti nelle opzioni per questa impostazione dei criteri. Ogni voce deve essere elencata come coppia nome-valore, nella quale il nome deve essere una rappresentazione stringa dell'estensione del tipo di file (ad esempio, "obj" o "lib"). Il valore non viene utilizzato ed è consigliabile impostarlo su 0.</string>
     <string id="Exclusions_Paths">Esclusioni di percorsi</string>
@@ -520,6 +535,14 @@ Se si disabilita o non si configura questa impostazione dei criteri, verrà eseg
     Se si abilita questa impostazione, verrà eseguita un'analisi di recupero dopo il numero specificato di analisi pianificate consecutive non eseguite.
 
     Se si disabilita o non si configura questa impostazione, verrà eseguita un'analisi di recupero dopo 2 analisi pianificate consecutive non eseguite.</string>
+    <string id="Scan_LowCpuPriority">Configura la priorità bassa della CPU per le analisi pianificate</string>
+    <string id="Scan_LowCpuPriority_Explain">
+        Questa impostazione dei criteri ti consente di abilitare o disabilitare la priorità bassa della CPU per le scansioni pianificate.
+
+        Se abiliti questa impostazione, durante le analisi pianificate verrà utilizzata la priorità bassa della CPU.
+
+Se disabiliti o non configuri questa impostazione, non verranno apportate modifiche alla priorità della CPU per le scansioni pianificate.
+    </string>
     <string id="SignatureUpdate_ASSignatureDue">Definisci numero di giorni trascorsi i quali le definizioni di spyware sono considerate non aggiornate</string>
     <string id="SignatureUpdate_ASSignatureDue_Explain">Questa impostazione dei criteri consente di definire il numero di giorni che devono trascorrere prima che le definizioni di spyware siano considerate non aggiornate. Se si stabilisce che le definizioni non sono aggiornate, questo stato può attivare varie ulteriori azioni, incluso il fallback a un'origine di aggiornamento alternativa o la visualizzazione di un'icona di avviso nell'interfaccia utente. Per impostazione predefinita, il valore è impostato su 14 giorni.
 
@@ -913,7 +936,7 @@ Non configurato:
     I file in queste cartelle non possono essere modificati o eliminati dalle applicazioni non attendibili.
 
     Le cartelle di sistema predefinite sono protette automaticamente. Puoi configurare questa impostazione per aggiungere altre cartelle. 
-    L'elenco delle cartelle di sistema predefinite protette è riportato in Windows Defender Security Center.
+    L'elenco delle cartelle di sistema predefinite protette è riportato in Sicurezza di Windows.
 
     Abilitato:
     Specifica le altre cartelle che devono essere protette nella sezione Opzioni.
@@ -1091,6 +1114,9 @@ Non configurato:
     </presentation>
     <presentation id="ExploitGuard_EnableNetworkProtection">
         <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+    <presentation id="Root_PUAProtection">
+        <dropdownList refId="Root_PUAProtection" noSort="true" defaultItem="0"></dropdownList>
     </presentation>
    </presentationTable>
 </resources>

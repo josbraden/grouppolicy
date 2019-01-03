@@ -14,7 +14,7 @@
 
 如果启用此设置，你可以决定向 Microsoft 发送的诊断数据的级别，包括:
 
-  - 0 (安全)。只向 Microsoft 发送所需的少量数据，以帮助确保 Windows 安全。Windows 安全组件(如恶意软件删除工具(MSRT)和 Windows Defender)可能会以该级别向 Microsoft 发送数据(如果已启用)。将值设置为 0 适用于仅运行企业版、教育版、IoT 版本或 Windows Server 版本的设备。对于其他版本，将值设置为 0 等同于将值设置为 1。
+  - 0 (安全)。只向 Microsoft 发送所需的少量数据，以帮助确保 Windows 安全。Windows 安全中心组件(如恶意软件删除工具(MSRT)和 Windows Defender)可能会以该级别向 Microsoft 发送数据(如果已启用)。将值设置为 0 适用于仅运行企业版、教育版、IoT 版本或 Windows Server 版本的设备。对于其他版本，将值设置为 0 等同于将值设置为 1。
   - 1 (基本)。发送与值为 0 时相同的数据，外加数量非常有限的诊断数据，如基本设备信息、质量相关数据和应用兼容性信息。请注意，将值设置为 0 或 1 会降低设备上的某些体验。
   - 2 (增强)。发送与值为 1 时相同的数据，外加 Windows、Windows Server、System Center 和应用的使用方式、执行方式以及高级可靠性数据等附加数据。
   - 3 (完全)。发送与值为 2 时相同的数据，外加用于诊断和修复设备问题的高级诊断数据，包括可能导致设备问题的文件和内容。
@@ -40,6 +40,7 @@
       <string id="DisableEnterpriseAuthProxy_1">允许使用经验证的代理</string>
       <string id="DisableEnterpriseAuthProxy_2">禁止使用经验证的代理</string>
       <string id="DisableEnterpriseAuthProxy_Explain">此策略设置阻止“已连接的用户体验和遥测”服务在 Windows 10 上自动使用经验证的代理将数据发送回 Microsoft。如果禁用或未配置此策略设置，“已连接的用户体验和遥测”服务将自动使用经验证的代理将数据发送回 Microsoft。启用此策略将阻止“已连接的用户体验和遥测”服务自动使用经验证的代理。</string>
+
       <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">将增强诊断数据限制为 Windows 分析所需的最低水平</string>
       <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">启用 Windows 分析集合</string>
       <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">禁用 Windows 分析集合</string>
@@ -80,9 +81,30 @@
       <string id="ConfigureTelemetryOptInChangeNotification_1">禁用遥测更改通知</string>
       <string id="ConfigureTelemetryOptInChangeNotification_2">启用遥测更改通知</string>
       <string id="ConfigureTelemetryOptInChangeNotification_Explain">
-          此策略设置确定设备是在首次登录时还是在“设置”中发生更改时向用户显示有关遥测级别的通知。
+          此策略设置控制设备是在首次登录时还是“设置”发生更改时向用户显示有关遥测级别的通知。
           如果将此策略设置设为“禁用遥测更改通知”，则遥测级别通知将停止显示。
-          如果将此策略设置设为“启用遥测更改通知”或不配置此策略设置，则在首次登录时以及在“设置”中发生更改时都会显示遥测通知。
+          如果将此策略设置设为“启用遥测更改通知”或不配置此策略设置，则在首次登录时以及“设置”发生更改时都会显示遥测通知。
+      </string>
+
+      <string id="DisableDeviceDelete">禁止删除诊断数据 </string>
+      <string id="DisableDeviceDelete_Explain">
+          此策略设置控制“诊断和反馈设置”页面中是否启用了“删除诊断数据”按钮。
+          如果启用此策略设置，则将在“设置”页面中禁用“删除诊断数据”按钮，并阻止删除 Microsoft 从设备中收集的诊断数据。
+          如果你禁用或不配置此策略设置，则将在“设置”页面中启用“删除诊断数据”按钮，从而允许用户擦除 Microsoft 从该设备收集的所有诊断数据。
+      </string>
+
+      <string id="DisableDiagnosticDataViewer">禁用诊断数据查看器。 </string>
+      <string id="DisableDiagnosticDataViewer_Explain">
+          此策略设置控制用户是否能够从“诊断和反馈设置”页面中启用和启动诊断数据查看器。
+          如果启用此策略设置，则将不会在“设置”页面中启用诊断数据查看器，并且将阻止查看器显示 Microsoft 从设备中收集的诊断数据。
+          如果你禁用或不配置此策略设置，则将在“设置”页面中启用诊断数据查看器。
+      </string>
+
+      <string id="ConfigureMicrosoft365UploadEndpoint">配置 Microsoft 365 更新准备上传端点</string>
+      <string id="ConfigureMicrosoft365UploadEndpoint_Explain">
+          此策略将此设备诊断数据的上传端点设置为 Microsoft 365 更新准备计划的一部分。
+          如果您的组织正在参与该项目，并且已被指示配置自定义上传端点，则使用此设置来定义该端点。
+          此设置值将由 Microsoft 提供，作为项目加入流程的一部分。 
       </string>
     </stringTable>
     <presentationTable>
@@ -110,6 +132,11 @@
       </presentation>
       <presentation id="ConfigureTelemetryOptInChangeNotification">
         <dropdownList refId="ConfigureTelemetryOptInChangeNotification" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureMicrosoft365UploadEndpoint">
+        <textBox refId="ConfigureMicrosoft365UploadEndpointValue">
+          <label>Microsoft 365 更新准备自定义上传端点：</label>
+        </textBox>
       </presentation>
     </presentationTable>
   </resources>

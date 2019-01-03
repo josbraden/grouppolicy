@@ -58,12 +58,32 @@ Caso ative esta definição, tem de escolher um ou vários dos seguintes comport
 
 Caso desative ou não configure esta definição, todas as funcionalidades de impressão são desativadas no Application Guard.
         </string>
+
+        <string id="AppHVSI_CertificateThumbprints_DisplayName">Permitir que o Windows Defender Application Guard utilize as Autoridades de Certificação de Raiz do dispositivo do utilizador</string>
+        <string id="AppHVSI_CertificateThumbprints_Explain">Esta definição de política permite que determinados Certificados de Raiz sejam partilhados com o contentor do Windows Defender Application Guard.
+
+Se ativar esta definição, os certificados com um thumbprint correspondente aos especificados serão transferidos para o contentor. Podem ser especificados vários certificados utilizando uma vírgula para separar os thumbprints de cada certificado que pretende transferir.
+
+Se desativar ou não configurar esta definição, os certificados não são partilhados com o contentor do Windows Defender Application Guard.
+
+Exemplo:  b4e72779a8a362c860c36a6461f31e3aa7e58c14,1b1d49f06d2a697a544a1059bd59a7b058cda924
+        </string>
+
         <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Impedir que sites empresariais carreguem conteúdos não empresariais no Microsoft Edge e Internet Explorer</string>
         <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Esta definição de política permite-lhe decidir se os sites podem carregar conteúdos não empresariais no Microsoft Edge e Internet Explorer.
 
 Caso ative esta definição, os conteúdos não empresariais incorporados em sites empresariais são impedidos de abrir no Internet Explorer ou Microsoft Edge fora do Windows Defender Application Guard.
 
 Caso desative ou não configure esta definição, os sites não empresariais podem abrir fora do contentor do Windows Defender Application Guard, diretamente no Internet Explorer e Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_DisplayName">Permitir que o Windows Defender Application Guard aceda à câmara e ao microfone</string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_Explain">A política permite determinar se as aplicações dentro do Windows Defender Application Guard podem aceder à câmara e ao microfone deste dispositivo quando estas definições estão ativadas no dispositivo do utilizador.
+
+Se ativar esta política, as aplicações dentro do Windows Defender Application Guard conseguirão aceder à câmara e ao microfone do dispositivo do utilizador.
+
+Se desativar ou não configurar esta política, as aplicações dentro do Windows Defender Application Guard não conseguirão aceder à câmara e ao microfone do dispositivo do utilizador.
+
+Importante: Se ativar esta política, é possível que um contentor comprometido ignore as permissões da câmara e do microfone e aceda a estes sem o conhecimento do utilizador.  Para impedir o acesso não autorizado, recomendamos que as definições de privacidade da câmara e do microfone estejam desligadas no dispositivo do utilizador quando não forem necessárias.
         </string>
         <string id="AppHVSI_AllowPersistence_DisplayName">Permitir persistência de dados para o Windows Defender Application Guard</string>
         <string id="AppHVSI_AllowPersistence_Explain">Esta definição de política permite-lhe decidir se os dados devem persistir em diferentes sessões no Windows Defender Application Guard (Application Guard).
@@ -102,9 +122,42 @@ Se desativar ou não configurar esta definição, o Windows Defender Application
 
         Se desativar ou não configurar esta definição, os utilizadores não podem guardar os ficheiros transferidos do contentor do Windows Defender Application Guard no sistema operativo anfitrião.
         </string>
+        <string id="AppHVSI_FileTrustCriteria_DisplayName">Permitir que os utilizadores confiem em ficheiros que sejam abertos no Windows Defender Application Guard</string>
+        <string id="AppHVSI_FileTrustCriteria_Explain">Esta definição de política permite-lhe configurar as ações e validações necessárias que permitem que os utilizadores confiem nos ficheiros que são abertos no Application Guard. Após a conclusão com êxito, os ficheiros serão abertos no anfitrião. 
+
+Se ativar esta definição, tem de selecionar pelo menos uma das seguintes opções:
+0. Não permitir que os utilizadores confiem manualmente nos ficheiros: Os utilizadores não terão a opção de confiar em ficheiros.
+1. Permitir que os utilizadores confiem manualmente nos ficheiros: Os utilizadores podem abrir a IU do Windows que lhes permite confiar explicitamente em ficheiros selecionados.
+2. Permitir que os utilizadores confiem manualmente após uma verificação do antivírus: Os utilizadores podem abrir a IU do Windows que lhes permite confiar explicitamente em ficheiros selecionados. Os ficheiros apenas são considerados fidedignos depois de serem verificados pelo programa antivírus instalado no dispositivo do utilizador.  
+
+Se desativar ou não configurar esta definição, os utilizadores não conseguirão confiar nos ficheiros que são abertos no Application Guard.
+</string>
+
+        <string id="AppHVSI_FileTrustOrigin_DisplayName">Configurar origens adicionais para ficheiros não fidedignos no Windows Defender Application Guard.</string>
+        <string id="AppHVSI_FileTrustOrigin_Explain">Esta definição de política permite-lhe configurar origens adicionais para ficheiros não fidedignos.
+Se ativar esta definição, tem de selecionar pelo menos uma das seguintes opções:
+1. Suporte de dados amovível: Os ficheiros abertos ou copiados a partir de suportes de dados amovíveis abrirão sempre no Windows Defender Application Guard.  
+
+2. Partilhas de rede: Os ficheiros abertos ou copiados de partilhas de rede abrirão sempre no Windows Defender Application Guard. Se pretender confiar explicitamente numa localização de rede e impedir que os ficheiros dessa localização sejam abertos no Application Guard, utilize uma das Políticas de isolamento de rede.
+
+3. Ficheiros com Mark of the Web (MotW): Os ficheiros com MotW abrirão sempre no Windows Defender Application Guard.
+
+Se desativar ou não configurar esta definição, apenas os ficheiros transferidos do Application Guard para o Microsoft Edge serão abertos no Application Guard para o Microsoft Word, Excel ou PowerPoint.
+</string>
+
     </stringTable>
     <presentationTable>
-      <presentation id="AppHVSIClipboardSettings_Presentation">
+      <presentation id="AppHVSI_AllowAppHVSI_Presentation">
+        <decimalTextBox refId="AppHVSI_AllowAppHVSI_TextBox" defaultValue="1"></decimalTextBox>
+        <text>
+Opções:
+0. Desativar o Windows Defender Application Guard
+1. Ativar o Windows Defender Application Guard APENAS para o Microsoft Edge
+2. Ativar o Windows Defender Application Guard APENAS para o Microsoft Office
+3. Ativar o Windows Defender Application Guard para o Microsoft Edge e o Microsoft Office
+        </text>
+      </presentation>
+    <presentation id="AppHVSIClipboardSettings_Presentation">
         <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Definição do comportamento da área de transferência.</dropdownList>
         <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Opções do conteúdo da área de transferência.
         </decimalTextBox>
@@ -131,6 +184,24 @@ Se desativar ou não configurar esta definição, o Windows Defender Application
      - 15. Ativa todos os tipos de impressão.
         </text>
       </presentation>
-    </presentationTable>
+      <presentation id="AppHVSI_FileTrustCriteria_Presentation">
+        <decimalTextBox refId="AppHVSI_FileTrustCriteria_TextBox" defaultValue="0"></decimalTextBox>
+        <text>Configure as ações e validação necessárias que têm de ser concluídas por um utilizador final para promover um ficheiro não fidedigno e abrir, ver e editá-lo no dispositivo do utilizador.
+0. Não permitir que os utilizadores confiem manualmente nos ficheiros
+1. Permitir que os utilizadores confiem manualmente nos ficheiros
+2. Permitir que os utilizadores confiem manualmente nos ficheiros após uma verificação do antivírus</text>
+      </presentation>
+      <presentation id="AppHVSI_FileTrustOrigin_Presentation">
+         <checkBox refId="AppHVSI_FileTrustOrigin_RemovableMedia_Checkbox" defaultChecked="true">Suporte de dados amovível</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_NetworkShares_Checkbox" defaultChecked="true">Partilhas de rede</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_MOTW_Checkbox" defaultChecked="true">Ficheiros com Mark of the Web</checkBox>
+      </presentation>
+
+      <presentation id="AppHVSICertificateThumbprints_Presentation">
+        <textBox refId="AppHVSICertificateThumbprints_TextBox">
+          <label>Thumbprints dos certificados para partilhar</label>
+        </textBox>
+      </presentation>
+  </presentationTable>
   </resources>
 </policyDefinitionResources>

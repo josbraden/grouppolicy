@@ -58,12 +58,32 @@
 
 如果你禁用或未配置此设置，则将在应用程序防护中关闭所有打印功能。
         </string>
+
+        <string id="AppHVSI_CertificateThumbprints_DisplayName">允许 Windows Defender 应用程序防护使用来自用户设备的根证书颁发机构</string>
+        <string id="AppHVSI_CertificateThumbprints_Explain">此策略设置允许与 Windows Defender 应用程序防护容器共享某些根证书。
+
+如果启用此设置，指纹与指定指纹匹配的证书将转移到容器中。可以使用逗号分隔每个要传输的证书指纹，以指定多个证书。
+
+如果禁用或不配置此设置，则不会与 Windows Defender 应用程序防护容器共享证书。
+
+示例: b4e72779a8a362c860c36a6461f31e3aa7e58c14,1b1d49f06d2a697a544a1059bd59a7b058cda924
+        </string>
+
         <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">阻止企业网站在 Microsoft Edge 和 Internet Explorer 中加载非企业内容</string>
         <string id="AppHVSI_BlockNonEnterpriseContent_Explain">此策略设置允许你决定网站是否可以在 Microsoft Edge 和 Internet Explorer 中加载非企业内容。
 
 如果你启用此设置，将阻止在 Windows Defender 应用程序防护外的 Internet Explorer 或 Microsoft Edge 中打开企业网站中嵌入的非企业内容。
 
 如果你禁用或未配置此设置，非企业网站可在 Windows Defender 应用程序防护容器外的 Internet Explorer 和 Microsoft Edge 中直接打开。
+        </string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_DisplayName">在 Windows Defender 应用程序防护中允许访问相机和麦克风</string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_Explain">该策略允许你确定当用户设备中已启用相关设置时，Windows Defender 应用程序防护内的应用程序是否可以访问用户设备中的相机和麦克风。
+
+如果启用此策略，Windows Defender 应用程序防护内的应用程序将能够访问用户设备中的相机和麦克风。
+
+如果禁用或不配置此策略，Windows Defender 应用程序防护内的应用程序将无法访问用户设备中的相机和麦克风。
+
+重要提示: 如果启用此策略，则泄露的容器可以绕过相机和麦克风权限，并在用户不知情的情况下访问相机和麦克风。为防止未经授权的访问，建议在不需要相机和麦克风时关闭用户设备上的相机和麦克风隐私设置。
         </string>
         <string id="AppHVSI_AllowPersistence_DisplayName">允许保留 Windows Defender 应用程序防护的数据</string>
         <string id="AppHVSI_AllowPersistence_Explain">此策略设置允许你决定是否应在 Windows Defender 应用程序防护(应用程序防护)中跨不同会话保留数据。
@@ -102,9 +122,42 @@
 
 如果你禁用或不配置此设置，则用户无法将下载的文件从 Windows Defender 应用程序防护容器保存到主机操作系统。
         </string>
+        <string id="AppHVSI_FileTrustCriteria_DisplayName">允许用户信任在 Windows Defender 应用程序防护中打开的文件</string>
+        <string id="AppHVSI_FileTrustCriteria_Explain">通过此策略设置，可以配置所需操作和验证，使用户能够信任在应用程序防护中打开的文件。成功完成后，将在主机中打开这些文件。
+
+如果启用此设置，则必须选择下列一项或多项:
+0. 不允许用户手动信任文件：不为用户提供信任文件的选项。
+1. 允许用户手动信任文件: 用户可以打开 Windows 中的 UI，使其可以显式信任选定的文件。
+2. 允许用户在防病毒检查后手动信任: 用户可以打开 Windows 中的 UI，使其可以显式信任选定的文件。只有被用户设备上安装的防病毒程序清除后，才可信任这些文件。
+
+如果禁用或不配置此策略，用户将无法信任在应用程序防护中打开的文件。
+</string>
+
+        <string id="AppHVSI_FileTrustOrigin_DisplayName">为 Windows Defender 应用程序防护配置不受信任文件的其他来源。</string>
+        <string id="AppHVSI_FileTrustOrigin_Explain">通过此策略设置，可以配置其他不受信任的文件来源。
+如果启用此设置，则必须选择下列一项或多项:
+1. 可移动媒体: 从可移动媒体打开或复制的文件将始终在 Windows Defender 应用程序防护中打开。
+
+2. 网络共享: 从网络共享打开或复制的文件将始终在 Windows Defender 应用程序防护中打开。如果要显式信任网络位置并阻止该位置的文件在应用程序防护中打开，请使用网络隔离策略之一。
+
+3. 带有 Web 标记(MOTW)的文件: 带有 MotW 戳记的文件始终在 Windows Defender 应用程序防护中打开。
+
+如果禁用或不配置此设置，则只有使用“应用程序防护 - Microsoft Edge”下载的文件才将在“应用程序防护 - Microsoft Word、Excel 或 PowerPoint”中打开。
+</string>
+
     </stringTable>
     <presentationTable>
-      <presentation id="AppHVSIClipboardSettings_Presentation">
+      <presentation id="AppHVSI_AllowAppHVSI_Presentation">
+        <decimalTextBox refId="AppHVSI_AllowAppHVSI_TextBox" defaultValue="1"></decimalTextBox>
+        <text>
+选项：
+0. 禁用 Windows Defender 应用程序防护
+1. 仅为 Microsoft Edge 启用 Windows Defender 应用程序防护
+2. 仅为 Microsoft Office 启用 Windows Defender 应用程序防护
+3. 为 Microsoft Edge 和 Microsoft Office 启用 Windows Defender 应用程序防护
+        </text>
+      </presentation>
+    <presentation id="AppHVSIClipboardSettings_Presentation">
         <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">剪贴板行为设置。</dropdownList>
         <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">剪贴板内容选项。
         </decimalTextBox>
@@ -131,6 +184,24 @@
      - 15. 启用所有打印。
         </text>
       </presentation>
-    </presentationTable>
+      <presentation id="AppHVSI_FileTrustCriteria_Presentation">
+        <decimalTextBox refId="AppHVSI_FileTrustCriteria_TextBox" defaultValue="0"></decimalTextBox>
+        <text>配置最终用户必须完成的所需操作和验证，以升级不受信任的文件并在用户设备上打开、查看和编辑该文件。
+0. 不允许用户手动信任文件
+1. 允许用户手动信任文件
+2. 允许用户在防病毒检查后手动信任文件</text>
+      </presentation>
+      <presentation id="AppHVSI_FileTrustOrigin_Presentation">
+         <checkBox refId="AppHVSI_FileTrustOrigin_RemovableMedia_Checkbox" defaultChecked="true">可移动媒体</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_NetworkShares_Checkbox" defaultChecked="true">网络共享</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_MOTW_Checkbox" defaultChecked="true">带有 Web 标记的文件</checkBox>
+      </presentation>
+
+      <presentation id="AppHVSICertificateThumbprints_Presentation">
+        <textBox refId="AppHVSICertificateThumbprints_TextBox">
+          <label>要共享的证书的指纹</label>
+        </textBox>
+      </presentation>
+  </presentationTable>
   </resources>
 </policyDefinitionResources>

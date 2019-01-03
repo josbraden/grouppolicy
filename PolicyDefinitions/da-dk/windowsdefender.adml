@@ -116,6 +116,21 @@ Hvis du deaktiverer denne politikindstilling, starter planlagte opgaver på det 
 Hvis du aktiverer denne politikindstilling, kører antimalwaretjenesten altid, selv om både antivirus- og antispywaredefinitioner er deaktiverede.
 
 Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, stoppes antimalwaretjenesten, når både antivirus- og antispywaredefinitioner er deaktiverede. Hvis computeren genstartes, startes tjenesten, hvis den er indstillet til Automatisk start (Automatic startup). Når tjenesten er startet, kontrolleres det, om antivirus- og antispywaredefinitioner er aktiverede. Hvis mindst én af dem er aktiveret, fortsætter tjenesten med at køre. Hvis de begge er deaktiverede, stoppes tjenesten.</string>
+    <string id="Root_PUAProtection">Konfigurer genkendelse for potentielt uønskede applikationer</string>
+    <string id="Root_PUAProtection_Explain">
+        Aktivér eller deaktiver registrering af potentielt uønskede applikationer. Du kan vælge at blokere, overvåge eller tillade, når potentielt uønsket software downloades eller forsøger at installere sig selv på din computer.
+
+        Aktiveret:
+        Angiv tilstanden i afsnittet Indstillinger i afsnittet:
+        -Bloker: Potentielt uønsket software bliver blokeret.
+        -Overvågningstilstand: Potentielt uønsket software blokeres ikke, men hvis denne funktion ville have blokeret adgang, hvis den var indstillet til Bloker, oprettes der en post for hændelsen i hændelsesloggene.
+
+        Deaktiveret:
+        Potentielt uønsket software bliver ikke blokeret.
+
+        Ikke konfigureret:
+        Samme som deaktiveret.
+    </string>
     <string id="Exclusions_Extensions">Udeladelse af filtypenavne</string>
     <string id="Exclusions_Extensions_Explain">Med denne politikindstilling kan du angive en liste over filtyper, som skal springes over i planlagte og brugerdefinerede scanninger samt realtidsscanninger. Filetyper skal tilføjes under Indstillinger for denne politikindstilling. Hver filtype skal angives som et navneværdipar, hvor navnet skal være en strengrepræsentation af filetypenavnet (f.eks. "obj" eller "lib"). Værdien bruges ikke, og du anbefales at indstille den til 0.</string>
     <string id="Exclusions_Paths">Udeladelser af stier</string>
@@ -520,6 +535,14 @@ Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kør
     Hvis du aktiverer denne indstilling, sker der en opfølgningsscanning efter det angivne antal på hinanden følgende planlagte scanninger, der er mistet.
 
     Hvis du deaktiverer eller ikke konfigurerer denne indstilling, foretages der en opfølgningsscanning efter de to på hinanden følgende planlagte scanninger, der er mistet.</string>
+    <string id="Scan_LowCpuPriority">Konfigurer lav CPU-prioritet for planlagte scanninger</string>
+    <string id="Scan_LowCpuPriority_Explain">
+        Denne politikindstilling giver dig mulighed for at aktivere eller deaktivere lav CPU-prioritet for planlagte scanninger.
+
+        Hvis du aktiverer denne indstilling, bruges der CPU-prioritet under planlagte scanninger.
+
+        Hvis du deaktiverer eller undlader at konfigurere denne indstilling, foretages der ikke ændringer af CPU-prioritet for planlagte scanninger.
+    </string>
     <string id="SignatureUpdate_ASSignatureDue">Definer antallet af dage, før spywaredefinitioner anses for at være forældede</string>
     <string id="SignatureUpdate_ASSignatureDue_Explain">Med denne politikindstilling kan du definere det antal dage, der skal gå, før spywaredefinitioner anses for at være forældede. Hvis definitioner anses for at være forældede, kan denne tilstand udløse en række yderligere handlinger, herunder tilbagevenden til en alternativ opdateringskilde eller visning af et advarselsikon i brugergrænsefladen. Som standard er denne værdi indstillet til 14 sekunder.
 
@@ -912,25 +935,25 @@ Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vise
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">Konfigurer beskyttede mapper</string>
     <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
-    Angiv yderligere mapper, der skal beskyttes ved hjælp af funktionen til beskyttet mappeadgang.
+    Angiv yderligere mapper, der skal beskyttes af funktionen Kontrolleret mappeadgang.
 
-    Filer i disse mapper kan ikke ændres eller slettes af applikationer, der ikke er tillid til.
+    Filer i disse mapper kan ikke ændres eller slettes af upålidelige programmer.
 
     Standardsystemmapper beskyttes automatisk. Du kan konfigurere denne indstilling for at tilføje yderligere mapper. 
-    Listen over standardsystemmapper, der er beskyttet, vises i Windows Defender Security Center.
+    Listen over de standardsystemmapper, der er beskyttet, vises i Windows Sikkerhed.
 
     Aktiveret:
-    Angiv yderligere mapper, der skal beskyttes, i afsnittet Indstillinger.
+    Angiv yderligere mapper, der skal beskyttes, i sektionen Indstillinger.
 
     Deaktiveret:
-    Ingen yderligere mapper beskyttes.
+    Ingen yderligere mapper vil blive beskyttet.
 
     Ikke konfigureret:
-    Samme som Deaktiveret.
+    Samme som deaktiveret.
 
-    Du kan aktivere kontrolleret mappeadgang i gruppepolitikindstillingen Konfigurer kontrolleret mappeadgang.
+	Du kan aktivere kontrolleret mappeadgang i gruppepolitikindstillingen Konfigurer kontrolleret mappeadgang.
 
-    Windows Defender Antivirus fastslår automatisk, hvilke applikationer der er tillid til. Du kan tilføje yderligere applikationer i gruppepolitikindstillingen Konfigurer tilladte applikationer.
+    Windows Defender Antivirus afgør automatisk, hvilke programmer der er tillid til. Du kan tilføje flere programmer, der er tillid til, i gruppepolitikindstillingen Konfigurer tilladte programmer.
     </string>
     </stringTable>
     <presentationTable>
@@ -1095,6 +1118,9 @@ Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vise
     </presentation>
     <presentation id="ExploitGuard_EnableNetworkProtection">
         <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+    <presentation id="Root_PUAProtection">
+        <dropdownList refId="Root_PUAProtection" noSort="true" defaultItem="0"></dropdownList>
     </presentation>
    </presentationTable>
 </resources>

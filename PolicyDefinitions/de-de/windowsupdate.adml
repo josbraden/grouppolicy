@@ -72,6 +72,8 @@ Mit dieser Einstellung können Sie festlegen, ob auf dem Computer automatische U
 
         4 = Updates automatisch herunterladen und laut angegebenem Zeitplan installieren.
 
+        Wenn "Automatisch" als die geplante Installationszeit angegeben ist, führt Windows das Prüfen, Herunterladen und Installieren von Updates automatisch durch. Das Gerät wird gemäß Windows-Standardeinstellungen neu gestartet, sofern keine Gruppenrichtlinie konfiguriert ist. (Gilt für Windows 10, Version 1809, und höher.)
+
         Geben Sie den Zeitplan mithilfe der Optionen in der Gruppenrichtlinieneinstellung an. Standardmäßig sind Installationen täglich für 3 Uhr morgens geplant, falls kein Zeitplan angegeben wird. Wenn zum Abschluss der Updateinstallation ein Neustart erforderlich ist, startet Windows den Computer automatisch neu. (Falls ein Benutzer am Computer angemeldet ist, wenn Windows neu gestartet werden soll, wird der Benutzer benachrichtigt und kann den Neustart verzögern.)
 
         Unter Windows 8 und höher können Sie festlegen, dass Updates nicht nach einem bestimmten Zeitplan, sondern während der automatischen Wartung installiert werden. Die automatische Wartung installiert Updates, wenn der Computer nicht verwendet wird; befindet sich der Computer im Akkubetrieb, werden keine Updates installiert. Wenn Updates zwei Tage lang nicht von der automatischen Wartung installiert werden können, werden Updates von Windows Update sofort installiert. Benutzer werden über einen bevorstehenden Neustart benachrichtigt, und der Neustart wird nur durchgeführt, wenn keine Gefahr für zufällige Datenverluste besteht.
@@ -79,6 +81,8 @@ Mit dieser Einstellung können Sie festlegen, ob auf dem Computer automatische U
         Die automatische Wartung kann mit diesen Gruppenrichtlinien weiter konfiguriert werden: Computerkonfiguration-&gt;Administrative Vorlagen-&gt;Windows-Komponenten-&gt;Wartungszeitplan
 
         5 = Lokalen Administratoren erlauben, über automatische Updates den Konfigurationsmodus für die Updateinstallation auszuwählen.
+
+        Hinweis: Diese Option wird in Windows 10 nicht unterstützt.
 
         Mit dieser Option wird es lokalen Administratoren ermöglicht, über die Systemsteuerung von Windows Update eine Konfigurationsoption auszuwählen. Lokalen Administratoren wird nicht gestattet, die Konfiguration für "Automatische Updates" zu deaktivieren.
 
@@ -122,6 +126,7 @@ Falls der Status auf "Nicht konfiguriert" festgelegt ist, ist die Verwendung von
       <string id="AutoUpdateSchTime7">07:00</string>
       <string id="AutoUpdateSchTime8">08:00</string>
       <string id="AutoUpdateSchTime9">09:00</string>
+      <string id="AutoUpdateSchTimeAuto">Automatisch</string>
       <string id="CorpWuURL">Internen Pfad für den Microsoft Updatedienst angeben</string>
       <string id="CorpWuURL_Help">
         Gibt einen Intranetserver an, der als Host für Updates von Microsoft Update fungiert. Mit diesem Updatedienst können Sie dann die Computer in Ihrem Netzwerk automatisch aktualisieren.
@@ -213,7 +218,7 @@ Windows Update reaktiviert das System nur dann automatisch, wenn Windows Update 
 
 Darüber hinaus reaktiviert Windows Update das System und installiert ein Update, wenn ein Installationszeitlimit erreicht wird.
 
-Das System wird nur reaktiviert, wenn zu installierende Updates verfügbar sind.  Wenn das System zum Zeitpunkt der Reaktivierung durch Windows Update mit Akkus betrieben wird, werden keine Updates installiert, und das System wird nach 2 Minuten automatisch in den Ruhezustand versetzt.</string>
+Das System wird nur reaktiviert, wenn zu installierende Updates verfügbar sind. Wenn das System zum Zeitpunkt der Reaktivierung durch Windows Update mit Akkus betrieben wird, werden keine Updates installiert, und das System wird nach 2 Minuten automatisch in den Ruhezustand versetzt.</string>
       <string id="AUPowerManagement_Title">Windows Update-Energieverwaltung aktivieren, um das System zur Installation von geplanten Updates automatisch zu reaktivieren</string>
       <string id="NoAutoRebootWithLoggedOnUsers_Help">Gibt an, dass zum Abschließen einer geplanten Installation gewartet wird, bis der Computer von einem beliebigen angemeldeten Benutzer neu gestartet wird, und der Computer nicht automatisch neu gestartet wird.
 
@@ -307,7 +312,7 @@ Hinweis: Diese Richtlinie gilt nur, wenn dieser PC so konfiguriert ist, dass die
       <string id="ManagePreviewBuilds_Title">Vorabversionen verwalten</string>
       <string id="ManagePreviewBuilds_Help">Bei Auswahl von "Vorabversionen deaktivieren" werden keine Vorabversionen auf dem Gerät installiert. Dadurch wird verhindert, dass Benutzer über "Einstellungen -&gt; Update und Sicherheit" am Windows-Insider-Programm teilnehmen.
 
-Bei Auswahl von "Vorabversionen deaktivieren, sobald die nächste Version veröffentlicht wurde" wird verhindert, dass Vorabversionen installiert werden, sobald die neueste Windows-Version veröffentlicht wurde. Diese Option ist hilfreich, wenn Ihr Gerät für die Installation von Vorabversionen eingerichtet wurde und Test-Flights für das Gerät kontrolliert beendet werden sollen. Durch diese Option erhält das Gerät Vorabversionen, bis die nächste veröffentlichte Version verfügbar ist. 
+Bei Auswahl von "Vorabversionen deaktivieren, sobald die nächste Version veröffentlicht wurde" wird verhindert, dass Vorabversionen installiert werden, sobald die neueste Windows-Version veröffentlicht wurde. Diese Option ist hilfreich, wenn Ihr Gerät für die Installation von Vorabversionen eingerichtet wurde und Test-Flights für das Gerät kontrolliert beendet werden sollen. Durch diese Option erhält das Gerät Vorabversionen, bis die nächste veröffentlichte Version verfügbar ist.
 
 Bei Auswahl von "Vorabversionen aktivieren" werden Vorabversionen auf dem Gerät installiert. Benutzer können Windows-Vorabversionen auf ihren Geräten herunterladen und installieren, indem sie über "Einstellungen -&gt; Update und Sicherheit -&gt; Windows-Insider-Programm" am Programm teilnehmen. Wenn dieser Wert festgelegt ist, können Administratoren die Test-Flight-Einstellungen für Benutzer auch mithilfe anderer Richtlinien verwalten.</string>
       <string id="DisablePreviewBuilds">Vorabversionen deaktivieren</string>
@@ -398,17 +403,15 @@ Beachten Sie, dass der standardmäßige maximale Nutzungszeitbereich ab dem Star
       <string id="ActiveHoursTime9PM">21:00</string>
 
       <string id="AutoRestartDeadline_Title">Frist angeben, nach der ein automatischer Neustart zur Updateinstallation ausgeführt wird</string>
-      <string id="AutoRestartDeadline_Help">Geben Sie die Frist in Tagen an, nach denen ein geplanter Neustart außerhalb der Nutzungszeit automatisch ausgeführt wird. Die Frist kann zwischen zwei und 14 Tagen ab Planung des Neustarts betragen.
+      <string id="AutoRestartDeadline_Help">Geben Sie die Frist an, nach der der PC automatisch neu gestartet wird, um Updates anzuwenden. Die Frist kann zwischen zwei und 14 Tagen nach dem standardmäßigen Neustartdatum liegen.
 
-Beachten Sie, dass bestimmte Updates erst wirksam werden, nachdem der PC neu gestartet wurde.
-
-Wenn Sie die Richtlinie aktivieren, wird nach der angegebenen Anzahl von Tagen ab Planung des Neustarts automatisch ein Neustart ausgeführt.
+Der Neustart kann innerhalb der Nutzungszeit erfolgen.
 
 Wenn Sie die Richtlinie deaktivieren oder nicht konfigurieren, wird der PC gemäß dem Standardzeitplan neu gestartet.
 
-Wenn eine der beiden folgenden Richtlinien aktiviert ist, hat diese Richtlinie keine Auswirkung:
-    1. Keinen automatischen Neustart für geplante Installationen automatischer Updates durchführen, wenn Benutzer angemeldet sind.
-    2. Neustart immer automatisch zur geplanten Zeit durchführen.
+Wenn eine der beiden folgenden Richtlinien aktiviert ist, wird die oben aufgeführte Richtlinie außer Kraft gesetzt:
+    1. Keinen automatischen Neustart für geplante Installationen automatischer Updates durchführen, wenn Benutzer angemeldet sind
+    2. Neustart immer automatisch zur geplanten Zeit durchführen
       </string>
       <string id="AutoRestartDeadlineDay2">2</string>
       <string id="AutoRestartDeadlineDay3">3</string>
@@ -445,6 +448,13 @@ Wenn eine der beiden folgenden Richtlinien aktiviert ist, hat diese Richtlinie k
 
 Wenn Sie die Einstellung aktivieren, wird der Benutzerzugriff auf die Überprüfungs-, Download- und Installationsfunktion für Windows Update entfernt.
       </string>
+
+      <string id="DisablePauseUXAccess_Title">Zugriff auf Feature "Updates aussetzen" entfernen</string>
+      <string id="DisablePauseUXAccess_Help">Mit dieser Einstellung können Sie den Zugriff auf das Feature "Updates aussetzen" entfernen.
+
+Nach der Aktivierung wird der Benutzerzugriff auf das Aussetzen von Updates entfernt.
+      </string>
+
       <string id="ActiveHoursMaxRange_Title">Nutzungszeitbereich für automatische Neustarts angeben</string>
       <string id="ActiveHoursMaxRange_Help">Aktivieren Sie diese Richtlinie, um die maximale Stundenanzahl ab der Startzeit anzugeben, die die Benutzer als Nutzungszeit festlegen können.
 
@@ -513,22 +523,23 @@ Wenn Sie die Richtlinie deaktivieren oder nicht konfigurieren, wird das Standard
       <string id="RestartWarnMins30">30</string>
       <string id="RestartWarnMins60">60</string>
       <string id="EngagedRestartTransitionSchedule_Title">Wechsel zum erzwungenen Neustart und Benachrichtigungszeitplan für Updates festlegen</string>
-      <string id="EngagedRestartTransitionSchedule_Help">Aktivieren Sie diese Richtlinie, um festzulegen, wann der Starttyp vom automatischen Neustart, der außerhalb der Nutzungszeit geplant ist, zum erzwungenen Neustart wechselt, der vom Benutzer geplant werden muss. Der Zeitraum kann auf 2 bis 30 Tage festgelegt werden, und zwar ab dem Zeitpunkt, ab dem sich der Status des Neustarts in "Ausstehend" ändert.
+      <string id="EngagedRestartTransitionSchedule_Help">Aktivieren Sie diese Richtlinie, um festzulegen, wann der Starttyp vom automatischen Neustart, der außerhalb der Nutzungszeit geplant ist, zum erzwungenen Neustart wechselt, der vom Benutzer geplant werden muss. Der Zeitraum kann auf 0 bis 30 Tage festgelegt werden, und zwar ab dem Zeitpunkt, ab dem sich der Status des Neustarts in "Ausstehend" ändert.
 
 Sie können die Anzahl der Tage angeben, die ein Benutzer Erinnerungsbenachrichtigungen zu einem erzwungenen Neustart verzögern kann. Der Verzögerungszeitraum kann auf 1 bis 3 Tage festgelegt werden.
 
-Sie können die Frist in Tagen festlegen, bevor automatisch ein ausstehender Neustart außerhalb der Nutzungszeit geplant und ausgeführt wird. Die Frist kann auf 2 bis 30 Tage festgelegt werden, und zwar ab dem Zeitpunkt, ab dem sich der Status des Neustarts in "Ausstehend" ändert. Falls konfiguriert, ändert sich der ausstehende Neustart innerhalb des angegebenen Zeitraums vom automatischen Neustart in einen erzwungenen Neustart (ausstehende Benutzerplanung) und wird automatisch ausgeführt.
+Sie können die Frist in Tagen festlegen, nach der ein ausstehender Neustart unabhängig von der Nutzungszeit automatisch geplant und ausgeführt wird. Die Frist kann auf 2 bis 30 Tage festgelegt werden, und zwar ab dem Zeitpunkt, ab dem sich der Status des Neustarts in "Ausstehend" ändert. Falls konfiguriert, ändert sich der ausstehende Neustart innerhalb des angegebenen Zeitraums vom automatischen Neustart in einen erzwungenen Neustart (ausstehende Benutzerplanung) und wird automatisch ausgeführt.
 
-Wenn die Frist nicht angegeben oder auf 0 festgelegt ist, wird der Neustart nicht automatisch ausgeführt und bleibt ein erzwungener Neustart (z. B. ausstehende Benutzerplanung).
+Wenn die Frist nicht angegeben oder auf 0 festgelegt ist, wird der Neustart des PCs nicht automatisch ausgeführt und muss von der verantwortlichen Person entsprechend geplant werden.
 
-Wenn Sie die Richtlinie deaktivieren oder nicht konfigurieren, gilt das Standardverhalten.
+Wenn Sie die Richtlinie deaktivieren oder nicht konfigurieren, wird der PC gemäß dem Standardzeitplan neu gestartet.
 
-Wenn eine der folgenden Richtlinien konfiguriert ist, hat diese Richtlinie keine Auswirkung:
-    1. Keinen automatischen Neustart für geplante Installationen automatischer Updates durchführen, wenn Benutzer angemeldet sind.
+Wenn eine der folgenden Richtlinien aktiviert ist, wird die oben aufgeführte Richtlinie außer Kraft gesetzt:
+    1. Keinen automatischen Neustart für geplante Installationen automatischer Updates durchführen, wenn Benutzer angemeldet sind
     2. Neustart immer automatisch zur geplanten Zeit durchführen
     3. Frist angeben, nach der ein automatischer Neustart zur Updateinstallation ausgeführt wird
       </string>
       <string id="EngagedRestart_0">0</string>
+      <string id="EngagedRestart_1">1</string>
       <string id="EngagedRestart_2">2</string>
       <string id="EngagedRestart_3">3</string>
       <string id="EngagedRestart_4">4</string>
@@ -561,7 +572,7 @@ Wenn eine der folgenden Richtlinien konfiguriert ist, hat diese Richtlinie keine
       <string id="EngagedRestartSnooze_1">1</string>
       <string id="EngagedRestartSnooze_2">2</string>
       <string id="EngagedRestartSnooze_3">3</string>
-      
+
       <string id="SetEDURestart_Title">Energierichtlinie für den Neustart nach einem Update, die für Geräte in Ladevorrichtungen gilt</string>
       <string id="SetEDURestart_Help">Wenn Sie diese Richtlinie für EDU-Geräte aktivieren, die über Nacht in Ladevorrichtungen aufbewahrt werden, werden Energiestatusüberprüfungen ausgelassen, um sicherzustellen, dass Neustarts nach einem Update zur geplanten Installationszeit erfolgen.</string>
 
@@ -569,10 +580,23 @@ Wenn eine der folgenden Richtlinien konfiguriert ist, hat diese Richtlinie keine
       <string id="AllowAutoWindowsUpdateDownloadOverMeteredNetwork_Help">Wenn diese Richtlinie aktiviert ist, werden Updates selbst über getaktete Datenverbindungen automatisch heruntergeladen (Gebühren können anfallen).</string>
 
       <string id="DisableDualScan_Title">Keine Richtlinien für Updaterückstellungen zulassen, durch die Windows Update überprüft wird</string>
-      <string id="DisableDualScan_Help">Aktivieren Sie diese Richtlinie, um keine Richtlinien für Updaterückstellungen zuzulassen, durch die Windows Update überprüft wird.
+      <string id="DisableDualScan_Help">Aktivieren Sie diese Richtlinie, damit Richtlinien zum Zurückstellen von Updates nicht dazu führen, dass Windows-Updates gescannt werden.
 
-Wenn diese Richtlinie deaktiviert oder nicht konfiguriert wird, kann der Windows Update-Client automatische Überprüfungen von Windows Update initiieren, während Richtlinien für Updaterückstellungen aktiviert sind.</string>
+Wenn diese Richtlinie deaktiviert oder nicht konfiguriert ist, kann der Windows Update-Client automatische Scans von Windows Update initiieren, wenn Richtlinien zum Zurückstellen von Updates aktiviert sind.
+Hinweis: Diese Richtlinie gilt nur, wenn der Microsoft-Intranetupdatedienst, an den dieser Computer gerichtet ist, zur Unterstützung der clientseitigen Zielgruppenadressierung konfiguriert ist. Wenn die Richtlinie "Internen Pfad für den Microsoft Updatedienst angeben" deaktiviert oder nicht konfiguriert ist, hat diese Richtlinie keine Auswirkungen.
+      </string>
+      <string id="UpdateNotificationLevel_Title">Anzeigeoptionen für Updatebenachrichtigungen</string>
+      <string id="UpdateNotificationLevel_Help">0 (Standard): Verwenden der standardmäßigen Windows Update-Benachrichtigungen
+1: Deaktivieren aller Benachrichtigungen, mit Ausnahme von Neustartwarnungen
+2: Deaktivieren aller Benachrichtigungen, einschließlich Neustartwarnungen 
 
+Mit dieser Richtlinie können Sie definieren, welche Windows Update-Benachrichtigungen für Benutzer angezeigt werden. Mit dieser Richtlinie wird nicht gesteuert, wie und wann Updates heruntergeladen und installiert werden.
+
+Wichtig! Wenn Sie entscheiden, keine Updatebenachrichtigungen zu erhalten und außerdem die Richtlinie "Automatische Updates konfigurieren" so definieren, dass Geräte keine automatischen Updates erhalten, sind weder Sie noch Gerätebenutzer darüber informiert, dass wichtige Sicherheits-, Qualitäts- oder Featureupdates verfügbar sind, wodurch Ihre Geräte möglicherweise gefährdet sind.
+      </string>
+      <string id="DefaultNotification">0 (Standard): Standardmäßige Windows Update-Betriebssystembenachrichtigungen</string>
+      <string id="ExcludingRebootWarnings">1: Deaktivieren aller Benachrichtigungen, mit Ausnahme von Neustartwarnungen</string>
+      <string id="IncludingRebootWarnings">2: Deaktivieren aller Benachrichtigungen, einschließlich Neustartwarnungen</string>
     </stringTable>
 
     <presentationTable>
@@ -664,7 +688,9 @@ Wenn diese Richtlinie deaktiviert oder nicht konfiguriert wird, kann der Windows
         <dropdownList refId="ActiveHoursEndTime" noSort="true" defaultItem="17">Ende:</dropdownList>
       </presentation>
       <presentation id="AutoRestartDeadline_Title">
-        <dropdownList refId="AutoRestartDeadline" noSort="true" defaultItem="5">Geben Sie die Anzahl von Tagen an, nach denen ein ausstehender Neustart außerhalb der Nutzungszeit automatisch ausgeführt wird: </dropdownList>
+        <text>Geben Sie die Anzahl von Tagen an, nach denen ein ausstehender Neustart außerhalb der Nutzungszeit automatisch ausgeführt wird: </text>
+        <dropdownList refId="AutoRestartDeadline" noSort="true" defaultItem="5">Qualitätsupdates (Tage): </dropdownList>
+        <dropdownList refId="AutoRestartDeadlineForFeatureUpdates" noSort="true" defaultItem="5">Funktionsupdates (Tage): </dropdownList>
       </presentation>
       <presentation id="ActiveHoursMaxRange_Title">
         <text>Geben Sie den maximalen Nutzungszeitbereich an:</text>
@@ -685,12 +711,22 @@ Wenn diese Richtlinie deaktiviert oder nicht konfiguriert wird, kann der Windows
         <dropdownList refId="RestartWarn" noSort="true" defaultItem="0">Warnung (Min.): </dropdownList>
       </presentation>
       <presentation id="EngagedRestartTransitionSchedule_Title">
-        <text>Zeit für den Wechsel vom automatischen Neustart zum erzwungenen Neustart festlegen (ausstehende Benutzerplanung):</text>
-        <dropdownList refId="EngagedRestartTransitionSchedule" noSort="true" defaultItem="5">Wechsel (Tage): </dropdownList>
-        <text>Festlegen, wie lange Erinnerungsbenachrichtigungen zu einem erzwungenen Neustart verzögert werden sollen:</text>
+        <text>Wechsel: Zeit für den Wechsel vom automatischen Neustart zum erzwungenen Neustart festlegen (ausstehende Benutzerplanung).</text>
+        <text>Erneut erinnern: Festlegen, wie lange Erinnerungsbenachrichtigungen zu einem erzwungenen Neustart verzögert werden sollen.</text>
+        <text>Frist: Frist festlegen, nach der ein ausstehender Neustart außerhalb der Nutzungszeit automatisch ausgeführt wird.</text>
+        <text></text>
+        <text>Für Qualitätsupdates: </text>
+        <dropdownList refId="EngagedRestartTransitionSchedule" noSort="true" defaultItem="7">Wechsel (Tage): </dropdownList>
         <dropdownList refId="EngagedRestartSnoozeSchedule" noSort="true" defaultItem="2">Verzögern (Tage):     </dropdownList>
-        <text>Frist festlegen, nach der ein ausstehender Neustart außerhalb der Nutzungszeit automatisch ausgeführt wird:</text>
         <dropdownList refId="EngagedRestartDeadline" noSort="true" defaultItem="0">Frist (Tage):  </dropdownList>
+        <text></text>
+        <text>Für Funktionsupdates: </text>
+        <dropdownList refId="EngagedRestartTransitionScheduleForFeatureUpdates" noSort="true" defaultItem="7">Wechsel (Tage): </dropdownList>
+        <dropdownList refId="EngagedRestartSnoozeScheduleForFeatureUpdates" noSort="true" defaultItem="2">Verzögern (Tage):     </dropdownList>
+        <dropdownList refId="EngagedRestartDeadlineForFeatureUpdates" noSort="true" defaultItem="0">Frist (Tage):  </dropdownList>
+      </presentation>
+      <presentation id="UpdateNotificationLevel_Title">
+        <dropdownList refId="UpdateNotificationLevel" noSort="true" defaultItem="0">Anzeigeoptionen für Updatebenachrichtigungen angeben:</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

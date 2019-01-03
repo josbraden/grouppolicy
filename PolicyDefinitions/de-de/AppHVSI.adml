@@ -58,12 +58,32 @@ Wenn Sie diese Einstellung aktivieren, müssen Sie mindestens eine der folgenden
 
 Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, werden sämtliche Druckfunktionen in Application Guard deaktiviert.
         </string>
+
+        <string id="AppHVSI_CertificateThumbprints_DisplayName">Verwendung von Host-Stammzertifizierungsstellen des Benutzergeräts durch Windows Defender Application Guard zulassen</string>
+        <string id="AppHVSI_CertificateThumbprints_Explain">Mit dieser Richtlinieneinstellung können bestimmte Stammzertifikate mit dem Windows Defender Application Guard-Container geteilt werden.
+
+Wenn Sie diese Einstellung aktivieren, werden Zertifikate mit einem Fingerabdruck, der mit den angegebenen übereinstimmt, in den Container übertragen. Sie können mehrere Zertifikate angegeben, indem Sie die Fingerabdrücke der einzelnen Zertifikate durch ein Komma trennen.
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, werden Zertifikate nicht mit dem Windows Defender Application Guard-Container geteilt.
+
+Beispiel: b4e72779a8a362c860c36a6461f31e3aa7e58c14,1b1d49f06d2a697a544a1059bd59a7b058cda924
+        </string>
+
         <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Unternehmenswebsites am Laden von Nicht-Unternehmensinhalten in Internet Explorer und Microsoft Edge hindern</string>
         <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Mit dieser Richtlinieneinstellung können Sie bestimmen, ob Nicht-Unternehmensinhalte von Websites in Microsoft Edge und Internet Explorer geladen werden können.
 
 Wenn Sie diese Einstellung aktivieren, werden in Unternehmenswebsites eingebettete Nicht-Unternehmensinhalte außerhalb von Windows Defender Application Guard nicht mehr in Internet Explorer oder Microsoft Edge geöffnet.
 
 Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, können Nicht-Unternehmenswebsites außerhalb des Windows Defender Application Guard-Containers direkt in Internet Explorer und Microsoft Edge geöffnet werden.
+        </string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_DisplayName">Kamera- und Mikrofonzugriff in Windows Defender Application Guard zulassen</string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_Explain">Mit der Richtlinie können Sie festlegen, ob Anwendungen in Windows Defender Application Guard auf die Kamera und das Mikrofon des Geräts zugreifen können, wenn diese Einstellungen auf dem Gerät des Benutzers aktiviert sind.
+
+Wenn Sie diese Richtlinie aktivieren, können Anwendungen in Windows Defender Application Guard auf die Kamera und das Mikrofon auf dem Gerät des Benutzers zugreifen.
+
+Wenn Sie diese Richtlinie deaktivieren oder nicht konfigurieren, können Anwendungen in Windows Defender Application Guard nicht auf die Kamera und das Mikrofon auf dem Gerät des Benutzers zugreifen.
+
+Wichtig: Wenn Sie diese Richtlinie aktivieren, kann ein kompromittierter Container die Kamera- und Mikrofonberechtigungen umgehen und ohne Wissen des Benutzers auf Kamera und Mikrofon zugreifen. Um unbefugten Zugriff zu verhindern, empfehlen wir, die Datenschutzeinstellungen für Kamera und Mikrofon auf dem Gerät des Benutzers zu deaktivieren, wenn sie nicht benötigt werden.
         </string>
         <string id="AppHVSI_AllowPersistence_DisplayName">Datenpersistenz für Windows Defender Application Guard zulassen</string>
         <string id="AppHVSI_AllowPersistence_Explain">Mit dieser Richtlinieneinstellung können Sie bestimmen, ob Daten über verschiedene Sitzungen in Windows Defender Application Guard (Application Guard) beibehalten werden sollen.
@@ -102,9 +122,42 @@ Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, verwendet Wind
 
         Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, können Benutzer heruntergeladene Dateien aus dem Windows Defender Application Guard-Container nicht im Hostbetriebssystem speichern.
         </string>
+        <string id="AppHVSI_FileTrustCriteria_DisplayName">Zulassen, dass Benutzer Dateien vertrauen, die in Windows Defender Application Guard geöffnet werden</string>
+        <string id="AppHVSI_FileTrustCriteria_Explain">Mit dieser Richtlinieneinstellung können Sie erforderliche Aktionen und Validierungen konfigurieren, mit denen Benutzer Dateien vertrauen können, die in Application Guard geöffnet werden. Nach dem erfolgreichen Abschluss werden die Dateien auf dem Host geöffnet.
+
+Wenn Sie diese Einstellung aktivieren, müssen Sie eine oder mehrere der folgenden Optionen auswählen:
+0. Benutzer dürfen Dateien nicht manuell vertrauen: Benutzern wird die Option zum Vertrauen von Dateien nicht erteilt.
+1. Benutzer dürfen Dateien manuell vertrauen: Benutzer können die Benutzeroberfläche in Windows öffnen, sodass sie ausgewählten Dateien explizit vertrauen können.
+2. Benutzer dürfen Dateien nach einer Antivirenprüfung manuell vertrauen: Benutzer können die Benutzeroberfläche in Windows öffnen, sodass sie ausgewählten Dateien explizit vertrauen können. Die Dateien werden erst dann als vertrauenswürdig eingestuft, wenn sie vom Antivirenprogramm, das auf dem Gerät des Benutzers installiert ist, überprüft wurden.
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, können Benutzer Dateien, die in Application Guard geöffnet werden, nicht vertrauen.
+</string>
+
+        <string id="AppHVSI_FileTrustOrigin_DisplayName">Konfigurieren zusätzlicher Quellen für nicht vertrauenswürdige Dateien in Windows Defender Application Guard.</string>
+        <string id="AppHVSI_FileTrustOrigin_Explain">Mit dieser Richtlinieneinstellung können Sie zusätzliche Quellen für nicht vertrauenswürdige Dateien konfigurieren.
+Wenn Sie diese Einstellung aktivieren, müssen Sie mindestens eine der folgenden Optionen auswählen:
+1. Wechseldatenträger: Dateien, die von Wechselmedien geöffnet oder kopiert werden, werden immer in Windows Defender Application Guard geöffnet.
+
+2. Dateien, die von Netzwerkfreigaben geöffnet oder kopiert werden, werden immer in Windows Defender Application Guard geöffnet. Wenn Sie explizit einem Netzwerkspeicherort vertrauen und verhindern möchten, dass Dateien von diesem Speicherort in Application Guard geöffnet werden, verwenden Sie eine der Netzwerkisolationsrichtlinien
+
+3. Dateien mit Mark of the Web (MotW): Dateien, die mit MotW markiert sind, werden immer in Windows Defender Application Guard geöffnet.
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, werden nur von Application Guard für Microsoft Edge heruntergeladene Dateien in Application Guard für Microsoft Word, Excel oder PowerPoint geöffnet.
+</string>
+
     </stringTable>
     <presentationTable>
-      <presentation id="AppHVSIClipboardSettings_Presentation">
+      <presentation id="AppHVSI_AllowAppHVSI_Presentation">
+        <decimalTextBox refId="AppHVSI_AllowAppHVSI_TextBox" defaultValue="1"></decimalTextBox>
+        <text>
+Optionen:
+0. Windows Defender Application Guard deaktivieren
+1. Windows Defender Application Guard NUR für Microsoft Edge aktivieren
+2. Windows Defender Application Guard NUR für Microsoft Office aktivieren
+3. Windows Defender Application Guard für Microsoft Edge UND Microsoft Office aktivieren
+        </text>
+      </presentation>
+    <presentation id="AppHVSIClipboardSettings_Presentation">
         <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Einstellung für das Verhalten der Zwischenablage</dropdownList>
         <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Optionen für den Inhalt der Zwischenablage
         </decimalTextBox>
@@ -131,6 +184,24 @@ Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, verwendet Wind
      – 15. Aktiviert alle Druckfunktionen.
         </text>
       </presentation>
-    </presentationTable>
+      <presentation id="AppHVSI_FileTrustCriteria_Presentation">
+        <decimalTextBox refId="AppHVSI_FileTrustCriteria_TextBox" defaultValue="0"></decimalTextBox>
+        <text>Konfigurieren Sie erforderliche Aktionen und Validierungen, die von einem Endbenutzer ausgeführt werden müssen, um eine nicht vertrauenswürdige Datei zu promoten und sie auf dem Gerät des Benutzers zu öffnen, anzuzeigen und zu bearbeiten.
+0. Benutzer dürfen Dateien nicht manuell vertrauen
+1. Benutzer dürfen Dateien manuell vertrauen
+2. Benutzer dürfen Dateien nach einer Virenprüfung manuell vertrauen</text>
+      </presentation>
+      <presentation id="AppHVSI_FileTrustOrigin_Presentation">
+         <checkBox refId="AppHVSI_FileTrustOrigin_RemovableMedia_Checkbox" defaultChecked="true">Wechselmedien</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_NetworkShares_Checkbox" defaultChecked="true">Netzwerkfreigaben</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_MOTW_Checkbox" defaultChecked="true">Dateien mit Mark of the Web (MOTW)</checkBox>
+      </presentation>
+
+      <presentation id="AppHVSICertificateThumbprints_Presentation">
+        <textBox refId="AppHVSICertificateThumbprints_TextBox">
+          <label>Fingerabdrücke der zu teilenden Zertifikate</label>
+        </textBox>
+      </presentation>
+  </presentationTable>
   </resources>
 </policyDefinitionResources>

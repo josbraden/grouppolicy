@@ -9,19 +9,19 @@
       <string id="VirtualizationBasedSecurity">Aktivera virtualiseringsbaserad säkerhet</string>
       <string id="VirtualizationBasedSecurityHelp">Anger om Virtualiseringsbaserad säkerhet är aktiverat.
 
-Virtualiseringsbaserad säkerhet använder Hypervisor-programmet i Windows för att ge stöd åt säkerhetstjänster. Virtualiseringsbaserad säkerhet kräver Säker start, och det kan aktiveras för att användas med DMA-skydd. För DMA-skydd krävs maskinvarustöd och det kan endast aktiveras på enheter som är korrekt konfigurerade.
+Virtualiseringsbaserad säkerhet använder Windows-hypervisorn för att ge stöd åt säkerhetstjänster. Virtualiseringsbaserad säkerhet kräver Säker start, och det kan aktiveras för att användas med DMA-skydd. DMA-skydd kräver maskinvarustöd och det kan endast aktiveras på enheter som är korrekt konfigurerade.
 
 Virtualiseringsbaserat skydd för kodintegritet
 
 Den här inställningen aktiverar virtualiseringsbaserat skydd för kodintegritet i kernelläge. När den är aktiverad framtvingas minnesskydd i kernelläge, och sökvägen för kodintegritetsverifiering skyddas av funktionen Virtualiseringsbaserad säkerhet.
 
-Alternativet Inaktiverat fjärrinaktiverar Virtualiseringsbaserat skydd för kodintegritet om det tidigare var aktiverat med alternativet Aktiverat utan lås.
+Alternativet Inaktiverad fjärrinaktiverar Virtualiseringsbaserat skydd för kodintegritet om det tidigare var aktiverat med alternativet Aktiverat utan lås.
  
-Alternativet Aktiverat med UEFI-lås säkerställer att Virtualiseringsbaserat skydd för kodintegritet inte kan fjärrinaktiveras. Om du vill inaktivera funktionen måste du sätta grupprincipen till Inaktiverat och ta bort säkerhetsfunktionen från alla datorer (med användarna fysiskt närvarande), för att kunna rensa den sparade konfigurationen i UEFI.
+Alternativet Aktiverat med UEFI-lås säkerställer att Virtualiseringsbaserat skydd för kodintegritet inte kan fjärrinaktiveras. Om du vill inaktivera funktionen måste du sätta grupprincipen till Inaktiverad och ta bort säkerhetsfunktionen från alla datorer (med användarna fysiskt närvarande), för att kunna rensa den sparade konfigurationen i UEFI.
  
 Alternativet Aktiverat utan lås gör att Virtualiseringsbaserat skydd för kodintegritet kan fjärrinaktiveras med hjälp av en grupprincip. 
 
-Alternativet Inte konfigurerad innebär att principinställningen inte är definierad. Grupprincip anger inte principinställningen i registret vilket innebär att den inte har någon effekt för datorer och användare. Om det redan finns en inställning i registret ändras den inte.
+Alternativet Inte konfigurerad innebär att principinställningen inte är definierad. Grupprincipen skriver inte principinställningen i registret, vilket innebär att den inte har någon effekt för datorer och användare. Om det redan finns en inställning i registret ändras den inte.
 
 Alternativet Kräv UEFI-stöd för minnesattributtabellen aktiverar endast Virtualiseringsbaserat skydd för kodintegritet på enheter med UEFI-stöd för minnesattributtabellen. Enheter utan UEFI-stöd för minnesattributtabellen kan ha inbyggd programvara som är inkompatibel med Virtualiseringsbaserat skydd för kodintegritet vilket i vissa fall kan leda till krascher eller dataförlust eller inkompatibilitet med vissa plugin-kort. Om den här inställningen inte används bör målenheterna testas för att säkerställa kompatibilitet.
 
@@ -31,13 +31,23 @@ Credential Guard
 
 Med den här inställningen kan användare aktivera Credential Guard med virtualiseringsbaserad säkerhet för att bättre skydda autentiseringsuppgifter.
 
-Alternativet Inaktiverat fjärrinaktiverar Credential Guard om det tidigare var aktiverat med alternativet Aktiverat utan lås.
+Alternativet Inaktiverad fjärrinaktiverar Credential Guard om det tidigare var aktiverat med alternativet Aktiverat utan lås.
 
-Alternativet Aktiverat med UEFI-lås säkerställer att Credential Guard inte kan fjärrinaktiveras. Om du vill inaktivera funktionen måste du sätta grupprincipen till Inaktiverat och ta bort säkerhetsfunktionen från alla datorer (med användarna fysiskt närvarande), för att kunna rensa den sparade konfigurationen i UEFI.
+Alternativet Aktiverat med UEFI-lås säkerställer att Credential Guard inte kan fjärrinaktiveras. Om du vill inaktivera funktionen måste du sätta grupprincipen till Inaktiverad och ta bort säkerhetsfunktionen från alla datorer (med användarna fysiskt närvarande), för att kunna rensa den sparade konfigurationen i UEFI.
 
-Alternativet Aktiverat utan lås gör att Credential Guard kan fjärrinaktiveras med hjälp av en grupprincip. Windows 10 (version 1511) eller senare måste köras på de enheter som använder den här inställningen.
+Alternativet Aktiverat utan lås gör att Credential Guard kan fjärrinaktiveras med hjälp av en grupprincip. Windows 10 version 1511 eller senare måste köras på de enheter som använder den här inställningen.
 
-Alternativet Inte konfigurerad innebär att principinställningen inte är definierad. Grupprincip anger inte principinställningen i registret vilket innebär att den inte har någon effekt för datorer och användare. Om det redan finns en inställning i registret ändras den inte.
+Alternativet Inte konfigurerad innebär att principinställningen inte är definierad. Grupprincipen skriver inte principinställningen i registret, vilket innebär att den inte har någon effekt för datorer och användare. Om det redan finns en inställning i registret ändras den inte.
+      
+Säker start
+
+Med den här inställningen ställs konfigurationen för Säker start in till att säkra startkedjan.
+
+Inställningen Inte konfigurerad är standard och gör att administratörsanvändare kan ställa in funktionen.
+
+Alternativet Aktiverad aktiverar Säker start på maskinvara som stöds.
+
+Alternativet Inaktiverad inaktiverar Säker start oavsett maskinvarustöd.
       </string>
       <string id="SecureBoot">Säker start</string>
       <string id="SecureBootAndDmaProtection">Säker start och DMA-skydd</string>
@@ -66,7 +76,8 @@ Om en signerad och skyddad princip används tas inte funktionen bort från dator
         <dropdownList refId="RequirePlatformSecurityFeaturesDrop" defaultItem="1">Välj säkerhetsnivå för plattform:</dropdownList>
         <dropdownList refId="HypervisorEnforcedCodeIntegrityDrop" defaultItem="3">Virtualiseringsbaserat skydd för kodintegritet:</dropdownList>        
         <checkBox refId="CheckboxMAT">Kräv UEFI-stöd för minnesattributtabellen</checkBox>        
-        <dropdownList refId="CredentialIsolationDrop" defaultItem="3">Konfiguration för Credential Guard:</dropdownList>                
+        <dropdownList refId="CredentialIsolationDrop" defaultItem="3">Konfiguration för Credential Guard:</dropdownList>
+        <dropdownList refId="SystemGuardDrop" defaultItem="2">Konfiguration för säker start:</dropdownList>                
       </presentation>
       <presentation id="ConfigCIPolicy">
         <textBox refId="ConfigCIPolicyFilePathText">

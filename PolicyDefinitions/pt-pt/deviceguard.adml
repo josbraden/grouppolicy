@@ -23,9 +23,9 @@ A opção "Ativado sem bloqueio" permite desativar remotamente a Proteção Base
 
 A opção "Não Configurado" deixa a definição de política indefinida. A Política de Grupo não escreve a definição de política no registo, pelo que não tem qualquer impacto nos computadores ou utilizadores. Se existir uma definição atual no registo, não será modificada.
 
-A opção "Exigir Tabela de Atributos de Memória UEFI" apenas irá ativar a Proteção Baseada em Virtualização da Integridade do Código em dispositivos com suporte de firmware UEFI para a Tabela de Atributos de Memória UEFI. Os dispositivos sem a Tabela de Atributos de Memória podem ter firmware incompatível com a Proteção Baseada em Virtualização da Integridade do Código, o que, em alguns casos, pode originar falhas ou perdas de dados ou incompatibilidades com determinadas placas de encaixe. Caso contrário, deverá testar-se a definição desta opção nos dispositivos de destino, de forma a garantir a compatibilidade.
+A opção "Exigir Tabela de Atributos de Memória UEFI" apenas irá ativar a Proteção Baseada em Virtualização da Integridade do Código em dispositivos com suporte de firmware UEFI para a Tabela de Atributos de Memória UEFI. Os dispositivos sem a Tabela de Atributos de Memória UEFI podem ter firmware incompatível com a Proteção Baseada em Virtualização da Integridade do Código, o que, em alguns casos, pode originar falhas ou perdas de dados ou incompatibilidades com determinadas placas plug-in. Caso contrário, deverá testar-se a definição desta opção nos dispositivos de destino, de forma a garantir a compatibilidade.
 
-Aviso: todas as unidades no sistema devem ser compatíveis com esta funcionalidade ou pode ocorrer uma falha de sistema. Certifique-se de que esta definição de política apenas é implementada em computadores cuja compatibilidade seja conhecida. 
+Aviso: Todos os controladores no sistema têm de ser compatíveis com esta funcionalidade ou pode ocorrer uma falha de sistema. Certifique-se de que esta definição de política apenas é implementada em computadores cuja compatibilidade seja conhecida. 
 
 Credential Guard
 
@@ -38,6 +38,16 @@ A opção "Ativado com bloqueio UEFI" assegura que o Credential Guard não pode 
 A opção "Ativado sem bloqueio" permite desativar remotamente o Credential Guard através da utilização da Política de Grupo. Os dispositivos que utilizam esta definição têm de ter, pelo menos, o Windows 10 (Versão 1511).
 
 A opção "Não Configurado" deixa a definição de política indefinida. A Política de Grupo não escreve a definição de política no registo, pelo que não tem qualquer impacto nos computadores ou utilizadores. Se existir uma definição atual no registo, não será modificada.
+      
+Iniciação Segura
+
+Esta definição configura a Iniciação Segura para proteger a cadeia de arranque.
+
+A definição "Não Configurado" é a predefinição e permite a configuração da funcionalidade por utilizadores Administrativos.
+
+A opção "Ativado" liga a Iniciação Segura no hardware suportado.
+
+A opção "Desativado" desliga a Iniciação Segura, independentemente do suporte de hardware.
       </string>
       <string id="SecureBoot">Arranque Seguro</string>
       <string id="SecureBootAndDmaProtection">Arranque Seguro e Proteção DMA</string>
@@ -66,7 +76,8 @@ Caso esteja a utilizar uma política assinada e protegida, a desativação desta
         <dropdownList refId="RequirePlatformSecurityFeaturesDrop" defaultItem="1">Selecionar Nível de Segurança da Plataforma:</dropdownList>
         <dropdownList refId="HypervisorEnforcedCodeIntegrityDrop" defaultItem="3">Proteção Baseada em Virtualização da Integridade do Código:</dropdownList>        
         <checkBox refId="CheckboxMAT">Exigir Tabela de Atributos de Memória UEFI</checkBox>        
-        <dropdownList refId="CredentialIsolationDrop" defaultItem="3">Configuração do Credential Guard:</dropdownList>                
+        <dropdownList refId="CredentialIsolationDrop" defaultItem="3">Configuração do Credential Guard:</dropdownList>
+        <dropdownList refId="SystemGuardDrop" defaultItem="2">Configuração do Início Seguro:</dropdownList>                
       </presentation>
       <presentation id="ConfigCIPolicy">
         <textBox refId="ConfigCIPolicyFilePathText">

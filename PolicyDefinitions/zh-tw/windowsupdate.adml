@@ -58,9 +58,9 @@
       <string id="AutoUpdateCfg">設定自動更新</string>
       <string id="AutoUpdateCfg_Help">指定這部電腦是否將經由 Windows 的自動更新服務接收安全性更新和其他重要的下載。
 
-注意: Windows RT 不適用這個原則。
+注意：Windows RT 不適用這個原則。
 
-這個設定可以讓您指定這部電腦是否啟用自動更新。如果啟用服務，您必須於群組原則設定中選取以下四個選項的其中一個:
+這個設定可以讓您指定這部電腦是否啟用自動更新。如果啟用服務，您必須於群組原則設定中選取以下四個選項的其中一個：
 
         2 = 下載和安裝任何更新之前先通知。
 
@@ -72,6 +72,8 @@
 
         4 = 自動下載更新，並於以下指定的排程安裝更新。
 
+        當「自動」選擇為排定的安裝時間時，Windows 會自動檢查、下載和安裝更新。除非透過群組原則進行設定，否則裝置將依據 Windows 預設設定重新開機。(適用於 Windows 10，版本 1809 和更高版本)
+
         使用群組原則設定中的選項指定排程。如果未指定排程，所有安裝的預設排程是每天早上 3:00。如果有任何更新需要重新開機才能完成安裝，Windows 將自動重新啟動電腦。(如果使用者在 Windows 準備好重新啟動時登入電腦，使用者將收到通知，並且可以選擇延後重新啟動。)
 
         在 Windows 8 和更新版本中，您可以設定在自動維護期間而不是特定排程安裝更新。自動維護會在電腦不在使用中的時候安裝更新，也會避免在電腦使用電池電力時安裝更新。如果自動維護連續兩天無法安裝更新，Windows Update 將立即安裝更新。接著會通知使用者即將重新啟動系統，而且只在不會意外遺失資料的情形下才會重新啟動。
@@ -79,6 +81,8 @@
         您可以使用這裡的群組原則設定，進一步設定自動維護: 電腦設定 -&gt; 系統管理範本 -&gt; Windows 元件 -&gt; 維護排程器
 
         5 = 允許本機系統管理員選取自動更新應該通知並安裝更新的設定模式。
+
+        注意！Windows 10 不支援此選項。
 
         使用這個選項，將允許本機系統管理員使用 Windows Update 控制台選取他們所需的設定選項。本機系統管理員無法停用自動更新的設定。
 
@@ -122,6 +126,7 @@
       <string id="AutoUpdateSchTime7">07:00</string>
       <string id="AutoUpdateSchTime8">08:00</string>
       <string id="AutoUpdateSchTime9">09:00</string>
+      <string id="AutoUpdateSchTimeAuto">自動</string>
       <string id="CorpWuURL">指定近端內部網路 Microsoft 更新服務的位置</string>
       <string id="CorpWuURL_Help">
         指定一部內部網路伺服器來裝載來自 Microsoft Update 的更新。接著，您可以使用此更新服務自動更新您網路上的電腦。
@@ -213,7 +218,7 @@ Windows Update 只會在設定為自動安裝更新時，才會自動喚醒系�
 
 如果到達安裝期限，Windows Update 也會喚醒系統，安裝更新。
 
-除非有要安裝的更新，否則不會喚醒系統。 如果系統是使用電池電力，當 Windows Update 喚醒系統時，系統不會安裝更新，而是會在 2 分鐘內自動返回休眠狀態。</string>
+除非有要安裝的更新，否則不會喚醒系統。如果系統是使用電池電力，當 Windows Update 喚醒系統時，系統不會安裝更新，而是會在 2 分鐘內自動返回休眠狀態。</string>
       <string id="AUPowerManagement_Title">啟用 Windows Update 電源管理以自動喚醒系統安裝排程的更新</string>
       <string id="NoAutoRebootWithLoggedOnUsers_Help">指定為了要完成已排程的安裝，自動更新將等待由任何已登入的使用者來重新啟動電腦，而不是造成電腦自動重新啟動。
 
@@ -398,17 +403,15 @@ Windows Update 只會在設定為自動安裝更新時，才會自動喚醒系�
       <string id="ActiveHoursTime9PM">下午 9 點</string>
 
       <string id="AutoRestartDeadline_Title">指定安裝更新後的自動重新啟動期限</string>
-      <string id="AutoRestartDeadline_Help">指定將在使用時間之外自動執行已排定之重新啟動的期限 (天數)。期限可設定為已排定之重新啟動時間後的 2 到 14 天之間。
+      <string id="AutoRestartDeadline_Help">指定截止日期，讓電腦自動在截止日期前重新開機，以應用更新內容。截止日期可以設定為 2 到 14 天。
 
-請注意，電腦必須重新啟動，特定更新才會生效。
+電腦可能會在活動時間內重新開機。
 
-若啟用此原則，將在已排定之重新啟動時間後的指定天數自動重新啟動。
+若禁用或不設定此原則，電腦將根據預設排程重新開機。
 
-若停用或未設定此原則，電腦將根據預設排程重新啟動。
-
-若啟用下列兩個原則其中的任何一個，此原則將不會有作用:
-    1. 有使用者登入時不自動重新開機以完成排定的自動更新安裝。
-    2. 一律在排定的時間自動重新啟動。
+若啟用以下兩個原則之一，將覆寫上述原則：
+    1. 不以登錄使用者以依照排程進行自動更新安裝的方式自動重新開機。
+    2. 總是在排程時間自動重新開機。
       </string>
       <string id="AutoRestartDeadlineDay2">2</string>
       <string id="AutoRestartDeadlineDay3">3</string>
@@ -445,6 +448,13 @@ Windows Update 只會在設定為自動安裝更新時，才會自動喚醒系�
 
 若啟用此設定，將會移除 Windows Update 掃描、下載和安裝的使用者存取權。
       </string>
+
+      <string id="DisablePauseUXAccess_Title">移除「暫停更新」功能的存取權</string>
+      <string id="DisablePauseUXAccess_Help">此設定允許移除「暫停更新」功能的存取權。
+
+一旦啟用，將會移除使用者對暫停更新的存取權。
+      </string>
+
       <string id="ActiveHoursMaxRange_Title">指定自動重新啟動的使用時間範圍</string>
       <string id="ActiveHoursMaxRange_Help">啟用此原則以指定使用者可設定其使用時間的小時數上限 (從開始時間起算)。
 
@@ -513,22 +523,23 @@ Windows Update 只會在設定為自動安裝更新時，才會自動喚醒系�
       <string id="RestartWarnMins30">30</string>
       <string id="RestartWarnMins60">60</string>
       <string id="EngagedRestartTransitionSchedule_Title">為更新指定預約重新啟動轉換和通知排程</string>
-      <string id="EngagedRestartTransitionSchedule_Help">啟用此原則，以控制從排定在使用時間之外的自動重新啟動轉換為預約重新啟動之前的時間，然而預約重新啟動需要經使用者排定。期間可以設定為從重新啟動變成擱置中開始算起的 2 到 30 天。
+      <string id="EngagedRestartTransitionSchedule_Help">啟用此原則以控制重新開機時間，將原定的活動時間外重新開機，變更為依使用者排程預約重新啟動的時間。您可以將時間設定在重新開機變更為擱置的 0 到 30 天內。
 
-您可以指定使用者可以延遲預約重新啟動提醒通知的天數。延遲期間可以設定為 1 到 3 天。
+您可以指定使用者延遲重新開機提醒通知的天數。延遲時間可設定為 1 至 3 天。
 
-您可以指定要在使用時間之外自動排定和執行擱置中重新啟動之前的期限 (天數)。期間可以設定為從重新啟動變成擱置中開始算起的 2 到 30 天。設定時，擱置中重新啟動將在指定的期間內自動執行從自動重新啟動到預約重新啟動的轉換 (視使用者排程)。
+在自動排程並不考慮活動時間的情況下執行重新開機延遲前，您有數天的時間可以指定截止日期。截止時間可設定在重新開機變更為擱置的 2 到 30 天內。如果已設定完成，則延遲重新開機將會從自動重新開機變更為預約重新啟動 (依使用者排程延遲)。
 
-如果未指定期限，重新啟動將不會自動執行並保持為預約重新啟動 (例如視使用者排程)。
+如果您沒有指定截止日期，或將截止日期設定為 0，電腦將不會自動重新開機，需經使用者排程後才能重新開機。
 
-如果您停用或未設定此原則，將會使用預設行為。
+若您未啟用或不設定此原則，電腦將按照預設排程重新開機。
 
-如果設定下列任何原則，則此原則不會作用:
-    1. 有使用者登入時不自動重新開機以完成排定的自動更新安裝
-    2. 一律在排定的時間自動重新啟動
-    3. 指定安裝更新後的自動重新啟動期限
+啟用下列任一原則將覆寫上述原則：
+    1. 不以登錄使用者以依照排程進行自動更新安裝的方式自動重新開機
+    2. 總是在排程時間自動重新開機
+    3. 在自動重新開機以進行更新安裝前指定截止日期
       </string>
       <string id="EngagedRestart_0">0</string>
+      <string id="EngagedRestart_1">1</string>
       <string id="EngagedRestart_2">2</string>
       <string id="EngagedRestart_3">3</string>
       <string id="EngagedRestart_4">4</string>
@@ -561,7 +572,7 @@ Windows Update 只會在設定為自動安裝更新時，才會自動喚醒系�
       <string id="EngagedRestartSnooze_1">1</string>
       <string id="EngagedRestartSnooze_2">2</string>
       <string id="EngagedRestartSnooze_3">3</string>
-      
+
       <string id="SetEDURestart_Title">更新購物車重新啟動的電源原則</string>
       <string id="SetEDURestart_Help">對隔夜留在購物車的 EDU 裝置啟用此原則將會略過電源檢查，以確保在排程的安裝時間進行更新重新開機。</string>
 
@@ -569,10 +580,23 @@ Windows Update 只會在設定為自動安裝更新時，才會自動喚醒系�
       <string id="AllowAutoWindowsUpdateDownloadOverMeteredNetwork_Help">啟用此原則將會自動下載更新，即使在計量付費數據連線上也一樣 (可能需要支付費用)</string>
 
       <string id="DisableDualScan_Title">不允許更新延遲原則導致系統根據 Windows Update 掃描</string>
-      <string id="DisableDualScan_Help">啟用此原則便不允許更新延遲原則導致系統根據 Windows Update 掃描。
+      <string id="DisableDualScan_Help">啟用這項原則以禁止更新延遲原則對 Windows Update 進行掃描。
 
-如果此原則已停用或未設定，則 Windows Update 用戶端就可以在啟用更新延遲原則時，根據 Windows Update 起始自動掃描。</string>
+若這項原則已停用或未設定，Windows Update 用戶端就有可能在延遲原則未啟用的情況下對 Windows Update 起始自動掃描。
+注意: 只有在這部電腦導向的內部網路 Microsoft 更新服務已設為支援用戶端目標時，才會套用這項原則。若 [指定內部網路 Microsoft 更新服務位置] 原則已停用或未設定，這項原則即無效。
+      </string>
+      <string id="UpdateNotificationLevel_Title">顯示更新通知的選項</string>
+      <string id="UpdateNotificationLevel_Help">0 (預設) – 使用預設的 Windows Update 通知
+1 – 關閉所有通知，排除重新開機警告
+2 – 關閉所有通知，包括重新開機警告
 
+此原則允許定義使用者可以查看的 Windows Update 通知。此原則並不控制下載和安裝更新的方式和時間。
+
+重要注意事項！如果您選擇不獲取更新通知，並且定義「設定自動更新」原則，則裝置不會自動獲取更新，您或者裝置使用者都不會知悉關鍵的安全性、品質或功能更新，而且您的裝置可能處於危險之中。
+      </string>
+      <string id="DefaultNotification">0 (預設) – 預設作業系統的Windows Update 通知</string>
+      <string id="ExcludingRebootWarnings">1 – 停用所有通知，排除重新開機警告</string>
+      <string id="IncludingRebootWarnings">2 – 停用所有通知，包括重新開機警告</string>
     </stringTable>
 
     <presentationTable>
@@ -664,7 +688,9 @@ Windows Update 只會在設定為自動安裝更新時，才會自動喚醒系�
         <dropdownList refId="ActiveHoursEndTime" noSort="true" defaultItem="17">結束:</dropdownList>
       </presentation>
       <presentation id="AutoRestartDeadline_Title">
-        <dropdownList refId="AutoRestartDeadline" noSort="true" defaultItem="5">指定將在使用時間之外自動執行擱置中的重新啟動的天數: </dropdownList>
+        <text>指定將在使用時間之外自動執行擱置中的重新啟動的天數: </text>
+        <dropdownList refId="AutoRestartDeadline" noSort="true" defaultItem="5">品質更新 (天): </dropdownList>
+        <dropdownList refId="AutoRestartDeadlineForFeatureUpdates" noSort="true" defaultItem="5">功能更新 (天): </dropdownList>
       </presentation>
       <presentation id="ActiveHoursMaxRange_Title">
         <text>指定最大使用時間範圍:</text>
@@ -685,12 +711,22 @@ Windows Update 只會在設定為自動安裝更新時，才會自動喚醒系�
         <dropdownList refId="RestartWarn" noSort="true" defaultItem="0">警告 (分鐘): </dropdownList>
       </presentation>
       <presentation id="EngagedRestartTransitionSchedule_Title">
-        <text>指定從自動重新啟動轉換為預約重新啟動之前的時間 (視使用者排程):</text>
-        <dropdownList refId="EngagedRestartTransitionSchedule" noSort="true" defaultItem="5">轉換 (天): </dropdownList>
-        <text>指定延遲預約重新啟動提醒通知的時間:</text>
-        <dropdownList refId="EngagedRestartSnoozeSchedule" noSort="true" defaultItem="2">延遲 (天):     </dropdownList>
-        <text>指定將在使用時間之外自動執行擱置中重新啟動的期限:</text>
-        <dropdownList refId="EngagedRestartDeadline" noSort="true" defaultItem="0">期限 (天):  </dropdownList>
+        <text>轉換：指定從自動重新啟動轉換為預約重新啟動 （視使用者排程） 之前的時間。</text>
+        <text>延遲：指定延遲預約重新啟動提醒通知。</text>
+        <text>期限：指定將在使用時間之外將自動執行擱置中重新啟動之前的期限。</text>
+        <text></text>
+        <text>品質更新： </text>
+        <dropdownList refId="EngagedRestartTransitionSchedule" noSort="true" defaultItem="7">轉換 （天）： </dropdownList>
+        <dropdownList refId="EngagedRestartSnoozeSchedule" noSort="true" defaultItem="2">延遲 （天）：     </dropdownList>
+        <dropdownList refId="EngagedRestartDeadline" noSort="true" defaultItem="0">期限 （天）：  </dropdownList>
+        <text></text>
+        <text>功能更新： </text>
+        <dropdownList refId="EngagedRestartTransitionScheduleForFeatureUpdates" noSort="true" defaultItem="7">轉換 （天）： </dropdownList>
+        <dropdownList refId="EngagedRestartSnoozeScheduleForFeatureUpdates" noSort="true" defaultItem="2">延遲 （天）：     </dropdownList>
+        <dropdownList refId="EngagedRestartDeadlineForFeatureUpdates" noSort="true" defaultItem="0">期限 （天）：  </dropdownList>
+      </presentation>
+      <presentation id="UpdateNotificationLevel_Title">
+        <dropdownList refId="UpdateNotificationLevel" noSort="true" defaultItem="0">指定更新通知的顯示選項:</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

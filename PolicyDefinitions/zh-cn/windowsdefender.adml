@@ -116,6 +116,21 @@
     如果启用此设置，反恶意软件服务会始终保持运行状态，即便防病毒定义和反恶意软件定义都被禁用。
 
     如果禁用或未配置此设置，则当防病毒定义和反间谍软件定义都被禁用时，反恶意软件服务会被停止。如果重新启动计算机，则当该服务设置为“自动启动”时会启动该服务。服务启动后，系统会检查是否启用防病毒定义和反间谍软件定义。如果启用了一个或更多，则该服务会保持运行状态。如果二者都被禁用，则会停止该服务。</string>
+    <string id="Root_PUAProtection">配置针对潜在的垃圾应用程序的检测</string>
+    <string id="Root_PUAProtection_Explain">
+        对潜在的垃圾应用程序启用或禁用检测。当潜在的垃圾应用程序正在下载或试图在计算机上安装时，你可以选择阻止、审核或允许。
+
+        启用:
+        在“选项”部分中指定模式:
+        -阻止: 阻止潜在的垃圾软件。
+        -审核模式: 潜在的垃圾软件可能不会被阻止，但如果此功能在设置为“阻止”时曾阻止访问，则事件日志中将有一条事件记录。
+
+        禁用:
+        潜在的垃圾软件将不会被阻止。
+
+        未配置:
+        同“已禁用”。
+    </string>
     <string id="Exclusions_Extensions">扩展名排除项</string>
     <string id="Exclusions_Extensions_Explain">使用此策略设置，可以指定应从计划、自定义以及实时扫描中排除的一系列文件类型。应在“选项”下为此设置添加文件类型。必须将每个条目作为名称值对列出，其中名称应为文件类型扩展名（如“obj”或“lib”）的字符串表示。不使用该值且建议将此值设置为 0。</string>
     <string id="Exclusions_Paths">路径排除项</string>
@@ -520,6 +535,14 @@
     如果启用此设置，将在指定次数的连续错过计划扫描后执行后续扫描。
 
     如果禁用或未配置此设置，则将在 2 个连续错过计划扫描后执行后续扫描。</string>
+    <string id="Scan_LowCpuPriority">配置计划扫描的低 CPU 优先级</string>
+    <string id="Scan_LowCpuPriority_Explain">
+        通过此策略设置，可以启用或禁用定时扫描的低 CPU 优先级。
+
+        如果启用此设置，则在定时扫描期间将使用低 CPU 优先级。
+
+        如果禁用或不配置此设置，则不会对定时扫描的 CPU 优先级进行更改。
+    </string>
     <string id="SignatureUpdate_ASSignatureDue">定义间谍软件定义视为过期前的天数</string>
     <string id="SignatureUpdate_ASSignatureDue_Explain">使用此策略设置，可以定义在间谍软件定义视为过期前必须经过的天数。如果确定定义过期，则此状态可能会触发多个其他操作，包括回退到备用更新源或在用户界面上显示警告图标。默认情况下，此值设置为 14 天。
 
@@ -912,12 +935,12 @@
     </string>
     <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders">配置受保护的文件夹</string>
     <string id="ExploitGuard_ControlledFolderAccess_ProtectedFolders_Explain">
-    指定其他应该受到受控文件夹访问权限功能保护的文件夹。
+    指定应由受控文件夹访问权限功能保护的其他文件夹。
 
-    这些文件夹内的文件不能被不受信任的应用程序修改或删除。
+    这些文件夹中的文件不能被不受信任的应用程序修改或删除。
 
     默认的系统文件夹自动受保护。你可以配置此设置以添加其他文件夹。
-    受保护的默认系统文件夹的列表在 Windows Defender 安全中心显示。
+    受保护的默认系统文件夹的列表在 Windows 安全中心显示。
 
     启用:
     在“选项”部分指定其他应受保护的文件夹。
@@ -1095,6 +1118,9 @@
     </presentation>
     <presentation id="ExploitGuard_EnableNetworkProtection">
         <dropdownList refId="ExploitGuard_EnableNetworkProtection" noSort="true" defaultItem="0"></dropdownList>
+    </presentation>
+    <presentation id="Root_PUAProtection">
+        <dropdownList refId="Root_PUAProtection" noSort="true" defaultItem="0"></dropdownList>
     </presentation>
    </presentationTable>
 </resources>

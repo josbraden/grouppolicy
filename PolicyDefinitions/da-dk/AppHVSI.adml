@@ -58,12 +58,32 @@ Hvis du aktiverer denne indstilling, skal du vælge én eller flere af følgende
 
 Hvis du deaktiverer eller undlader at konfigurere denne indstilling, er alle udskrivningsfunktioner slået fra i Application Guard.
         </string>
+
+        <string id="AppHVSI_CertificateThumbprints_DisplayName">Tillad, at Windows Defender Application Guard bruger nøglecentre fra brugerens enhed</string>
+        <string id="AppHVSI_CertificateThumbprints_Explain">Denne politikindstilling tillader, at visse rodcertifikater deles med Windows Defender Application Guard-beholderen.
+
+Hvis du aktiverer denne indstilling, vil certifikater med et aftryk, der matcher de angivne, blive overført til beholderen. Du kan angive flere certifikater ved at bruge et komma til at adskille aftryk for hvert certifikat, du vil overføre.
+
+Hvis du deaktiverer eller ikke konfigurerer denne indstilling, deles certifikaterne ikke med Windows Defender Application Guard-beholderen.
+
+Eksempel: b4e72779a8a362c860c36a6461f31e3aa7e58c14,1b1d49f06d2a697a544a1059bd59a7b058cda924
+        </string>
+
         <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Forhindre virksomhedswebsites fra at indlæse indhold uden for virksomheden i Microsoft Edge og Internet Explorer</string>
         <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Med denne politikindstilling kan du bestemme, om websites kan indlæse ikke-virksomhedsindhold i Microsoft Edge og Internet Explorer.
 
 Hvis du aktiverer denne indstilling, hindres ikke-virksomhedsindhold integreret på virksomhedswebsites i at åbne i Internet Explorer eller Microsoft Edge uden for Windows Defender Application Guard.
 
 Hvis du deaktiverer eller undlader at konfigurere denne indstilling, kan ikke-virksomhedswebsites åbnes uden for Windows Defender Application Guard-objektbeholderen, direkte i Internet Explorer og Microsoft Edge.
+        </string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_DisplayName">Tillad kamera-og mikrofonadgang i Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_Explain">Politikken giver dig mulighed for at bestemme, om programmer i Windows Defender Application Guard kan få adgang til enhedens kamera og mikrofon, når disse indstillinger er aktiveret på brugerens enhed.
+
+Hvis du aktiverer denne politik, vil programmer i Windows Defender Application Guard kunne få adgang til kameraet og mikrofonen på brugerens enhed.
+
+Hvis du deaktiverer eller ikke konfigurerer denne politik, vil programmer i Windows Defender Application Guard ikke kunne få adgang til kameraet og mikrofonen på brugerens enhed.
+
+Vigtigt: Hvis du slår denne politik til, kan en kompromitteret beholder omgå kamera- og mikrofontilladelser og få adgang til kameraet og mikrofonen uden brugerens vidende. Vi anbefaler, at du, for at forhindre uautoriseret adgang, slår indstillingerne for beskyttelse af personlige oplysninger for kamera og mikrofon fra på brugerens enhed, når de ikke er nødvendige.
         </string>
         <string id="AppHVSI_AllowPersistence_DisplayName">Tillad databevaring for Windows Defender Application Guard</string>
         <string id="AppHVSI_AllowPersistence_Explain">Med denne politikindstilling kan du bestemme, om data skal beholdes på tværs af forskellige sessioner i Windows Defender Application Guard (Application Guard).
@@ -102,9 +122,42 @@ Hvis du deaktiverer eller undlader at konfigurere denne indstilling, bruger Wind
 
         Hvis du deaktiverer eller undlader at konfigurere indstillingen, kan brugerne ikke gemme downloadede filer fra Windows Defender Application Guard-objektbeholderen i værtsoperativsystemet.
         </string>
+        <string id="AppHVSI_FileTrustCriteria_DisplayName">Lad brugerne vælge at have tillid til filer, der åbnes i Windows Defender Application Guard</string>
+        <string id="AppHVSI_FileTrustCriteria_Explain">Med denne politikindstilling kan du konfigurere påkrævede handlinger og valideringer, der gør det muligt for brugere at have tillid til filer, der åbnes i Application Guard. Efter en vellykket afslutning er filerne åbne på værten. 
+
+Hvis du aktiverer denne indstilling, skal du vælge en eller flere af følgende:
+0. Tillad ikke brugere manuelt at have tillid til filer: Brugere får ikke mulighed for at have tillid til filer.
+1. Tillad brugere manuelt at have tillid til filer: Brugere kan åbne grænsefladen i Windows, der gør det muligt for dem eksplicit at have tillid til udvalgte filer.
+2. Tillad brugere manuelt at have tillid efter et antivirustjek: Brugere kan åbne brugergrænsefladen i Windows, der gør det muligt for dem eksplicit at have tillid til udvalgte filer. Der er kun tillid til filerne, når de er blevet clearet af det antivirusprogram, der er installeret på brugerens enhed.  
+
+Hvis du deaktiverer eller ikke konfigurere indstillingen, kan brugerne ikke have tillid til de filer, der åbnes i Application Guard.
+</string>
+
+        <string id="AppHVSI_FileTrustOrigin_DisplayName">Konfigurer yderligere kilder til filer, der ikke er tillid til, i Windows Defender Application Guard.</string>
+        <string id="AppHVSI_FileTrustOrigin_Explain">Denne politikindstilling giver dig mulighed for at konfigurere yderligere kilder til filer, der ikke er tillid til.
+Hvis du aktiverer denne indstilling, skal du vælge en eller flere af følgende:
+1. Flytbart medie: Filer, der åbnes eller kopieres fra flytbare medier, åbnes altid i Windows Defender Application Guard.  
+
+2. Netværksshares: Filer, der åbnes eller kopieres fra netværksshares, åbnes altid i Windows Defender Application Guard. Hvis du eksplicit har tillid til en netværksplacering og vil forhindre, at filer fra denne placering åbnes i Application Guard, skal du bruge en af politikkerne til Netværksisolation.
+
+3. Filer med MotW (Mark of the Web): Filer, der er stemplet med MotW, vil altid åbnes i Windows Defender Application Guard.
+
+Hvis du deaktiverer eller ikke konfigurerer denne indstilling, åbnes kun filer, der er downloadet fra Application Guard til Microsoft Edge, i Application Guard til Microsoft Word, Excel eller PowerPoint.
+</string>
+
     </stringTable>
     <presentationTable>
-      <presentation id="AppHVSIClipboardSettings_Presentation">
+      <presentation id="AppHVSI_AllowAppHVSI_Presentation">
+        <decimalTextBox refId="AppHVSI_AllowAppHVSI_TextBox" defaultValue="1"></decimalTextBox>
+        <text>
+Muligheder:
+0. Deaktiver Windows Defender Application Guard
+1. Aktivér Windows Defender Application Guard KUN til Microsoft Edge
+2. Aktivér Windows Defender Application Guard KUN til Microsoft Office
+3. Aktivér Windows Defender Application Guard til Microsoft Edge og Microsoft Office
+        </text>
+      </presentation>
+    <presentation id="AppHVSIClipboardSettings_Presentation">
         <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Indstillinger for funktionsmåde af udklipsholder.</dropdownList>
         <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Indstillinger for indhold i udklipsholderen.
         </decimalTextBox>
@@ -131,6 +184,24 @@ Hvis du deaktiverer eller undlader at konfigurere denne indstilling, bruger Wind
      - 15. Aktiverer al udskrivning.
         </text>
       </presentation>
-    </presentationTable>
+      <presentation id="AppHVSI_FileTrustCriteria_Presentation">
+        <decimalTextBox refId="AppHVSI_FileTrustCriteria_TextBox" defaultValue="0"></decimalTextBox>
+        <text>Konfigurer påkrævede handlinger og valideringer, der skal udfyldes af en slutbruger for at promovere en fil, der ikke er tillid til, og åbn, få vist og rediger den på brugerens enhed.
+0. Tillad ikke brugere manuelt at have tillid til filer
+1. Tillad brugere manuelt at have tillid til filer
+2. Tillad brugere manuelt at have tillid til filer efter et antivirustjek</text>
+      </presentation>
+      <presentation id="AppHVSI_FileTrustOrigin_Presentation">
+         <checkBox refId="AppHVSI_FileTrustOrigin_RemovableMedia_Checkbox" defaultChecked="true">Flytbart medie</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_NetworkShares_Checkbox" defaultChecked="true">Netværksshares</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_MOTW_Checkbox" defaultChecked="true">Filer mærket med Mark of the Web</checkBox>
+      </presentation>
+
+      <presentation id="AppHVSICertificateThumbprints_Presentation">
+        <textBox refId="AppHVSICertificateThumbprints_TextBox">
+          <label>Aftryk af certifikaterne, der skal deles</label>
+        </textBox>
+      </presentation>
+  </presentationTable>
   </resources>
 </policyDefinitionResources>
