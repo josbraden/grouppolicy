@@ -136,7 +136,7 @@
           <range ref="products:InternetExplorer" minVersionIndex="8" maxVersionIndex="10"/>
         </or>
       </definition>
-      
+
       <!--Only Internet Explorer 8.0-->
       <definition name="SUPPORTED_IE8ONLY" displayName="$(string.SUPPORTED_IE8ONLY)">
         <or>
@@ -156,6 +156,14 @@
         <or>
           <range ref="products:InternetExplorer" minVersionIndex="9"/>
         </or>
+      </definition>
+
+      <!--Only Internet Explorer 9.0 through 11.0. Not supported on Windows 10-->
+      <definition name="SUPPORTED_IE9_IE11NONWIN10" displayName="$(string.SUPPORTED_IE9_IE11NONWIN10)">
+        <and>
+          <range ref="products:InternetExplorer" minVersionIndex="9" maxVersionIndex="11"/>
+          <reference ref="windows:SUPPORTED_Windows_6_3ToVista"/>
+        </and>
       </definition>
 
       <!--At least Internet Explorer 10.0-->
@@ -185,6 +193,22 @@
         <and>
           <range ref="products:InternetExplorer" minVersionIndex="11"/>
           <reference ref="windows:SUPPORTED_Windows_6_3"/>
+        </and>
+      </definition>
+
+      <!--Only Internet Explorer 11.0 on Windows 8-->
+      <definition name="SUPPORTED_IE11WIN8ONLY" displayName="$(string.SUPPORTED_IE11WIN8ONLY)">
+        <and>
+          <range ref="products:InternetExplorer110"/>
+          <reference ref="windows:SUPPORTED_Windows_6_3only"/>
+        </and>
+      </definition>
+
+      <!--At least Internet Explorer 11.0 on Windows 10-->
+      <definition name="SUPPORTED_IE11WIN10" displayName="$(string.SUPPORTED_IE11WIN10)">
+        <and>
+          <range ref="products:InternetExplorer" minVersionIndex="11"/>
+          <reference ref="windows:SUPPORTED_Windows_10_0"/>
         </and>
       </definition>
 
@@ -790,9 +814,19 @@
         <decimal value="0" />
       </disabledValue>
     </policy>
+    <policy name="Advanced_EnableSPDY3_0" class="Both" displayName="$(string.Advanced_EnableSPDY3_0)" explainText="$(string.Advanced_ExplainEnableSPDY3_0)" key="SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" valueName="EnableSPDY3_0">
+      <parentCategory ref="AdvancedPage" />
+      <supportedOn ref="SUPPORTED_IE11WIN8ONLY" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
     <policy name="Advanced_EnableHTTP2" class="Both" displayName="$(string.Advanced_EnableHTTP2)" explainText="$(string.Advanced_ExplainEnableHTTP2)" key="SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" valueName="EnableHTTP2">
       <parentCategory ref="AdvancedPage" />
-      <supportedOn ref="SUPPORTED_IE11WIN8" />
+      <supportedOn ref="SUPPORTED_IE11WIN10" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -1213,6 +1247,16 @@
         <decimal value="1" />
       </disabledValue>
     </policy>
+    <policy name="HideNewEdgeButton" class="User" displayName="$(string.HideNewEdgeButton)" explainText="$(string.HideNewEdgeButton_Explain)" key="Software\Policies\Microsoft\Internet Explorer\Main" valueName="HideNewEdgeButton">
+      <parentCategory ref="Browsing" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
     <policy name="UnderlineLinksPol" class="User" displayName="$(string.UnderlineLinksPol)" explainText="$(string.UnderlineLinksPol_Explain)" presentation="$(presentation.UnderlineLinksPol)" key="Software\Policies\Microsoft\Internet Explorer\Main">
       <parentCategory ref="Browsing" />
       <supportedOn ref="SUPPORTED_IE7" />
@@ -1534,6 +1578,16 @@
         <decimal value="0" />
       </disabledValue>
     </policy>
+    <policy name="VersionListAutomaticDownloadDisable" class="User" displayName="$(string.VersionListAutomaticDownloadDisable)" explainText="$(string.IE_Explain_VersionListAutomaticDownloadDisable)" key="Software\Microsoft\Internet Explorer\VersionManager" valueName="DownloadVersionList">
+      <parentCategory ref="IESF_AddOnManagement" />
+      <supportedOn ref="SUPPORTED_IE8" />
+      <enabledValue>
+        <decimal value="0" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="1" />
+      </disabledValue>
+    </policy>
    <policy name="VerMgmtDisableRunThisTime" class="Both" displayName="$(string.VerMgmtDisableRunThisTime)" explainText="$(string.IE_ExplainVerMgmtDisableRunThisTime)" key="Software\Microsoft\Windows\CurrentVersion\Policies\Ext" valueName="RunThisTimeEnabled">
       <parentCategory ref="IESF_AddOnManagement" />
       <supportedOn ref="SUPPORTED_IE8" />
@@ -1628,7 +1682,7 @@
     </policy>
     <policy name="IESF_ENABLE_MD2_MD4" class="Both" displayName="$(string.IESF_ENABLE_MD2_MD4)" explainText="$(string.IESF_Explain_ENABLE_MD2_MD4)" key="Software\Policies\Microsoft\Internet Explorer\Security" valueName="ENABLE_MD2_MD4">
       <parentCategory ref="IESF_CategoryBinaryBehaviorSecurityRestriction" />
-      <supportedOn ref="SUPPORTED_IE9" />      
+      <supportedOn ref="SUPPORTED_IE9" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -2938,19 +2992,24 @@
       <supportedOn ref="SUPPORTED_IE8" />
       <elements>
         <enum id="NewTabActionOptions" valueName="NewTabPageShow" required="true">
+          <item displayName="$(string.NewTab_AboutNewsFeed)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
           <item displayName="$(string.NewTab_AboutBlank)">
             <value>
               <decimal value="0" />
             </value>
           </item>
-          <item displayName="$(string.NewTab_Homepage)">
-            <value>
-              <decimal value="1" />
-            </value>
-          </item>
           <item displayName="$(string.NewTab_AboutTabs)">
             <value>
               <decimal value="2" />
+            </value>
+          </item>
+          <item displayName="$(string.NewTab_Homepage)">
+            <value>
+              <decimal value="1" />
             </value>
           </item>
         </enum>
@@ -3859,6 +3918,186 @@
       <supportedOn ref="SUPPORTED_IE8" />
       <elements>
         <enum id="IZ_Partname120b" valueName="120b" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowTDCControl_Both_LocalMachine" class="Both" displayName="$(string.IZ_PolicyAllowTDCControl)" explainText="$(string.IZ_EXPLAIN_PolicyAllowTDCControl)" presentation="$(presentation.IZ_PolicyAllowTDCControl_DefaultOn)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0">
+      <parentCategory ref="IZ_LocalMachineZone" />
+      <supportedOn ref="SUPPORTED_IE10" />
+      <elements>
+        <enum id="IZ_Partname120c" valueName="120c" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowTDCControl_Both_Intranet" class="Both" displayName="$(string.IZ_PolicyAllowTDCControl)" explainText="$(string.IZ_EXPLAIN_PolicyAllowTDCControl)" presentation="$(presentation.IZ_PolicyAllowTDCControl_DefaultOn)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1">
+      <parentCategory ref="IZ_IntranetZone" />
+      <supportedOn ref="SUPPORTED_IE10" />
+      <elements>
+        <enum id="IZ_Partname120c" valueName="120c" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowTDCControl_Both_Trusted" class="Both" displayName="$(string.IZ_PolicyAllowTDCControl)" explainText="$(string.IZ_EXPLAIN_PolicyAllowTDCControl)" presentation="$(presentation.IZ_PolicyAllowTDCControl_DefaultOn)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2">
+      <parentCategory ref="IZ_TrustedSitesZone" />
+      <supportedOn ref="SUPPORTED_IE10" />
+      <elements>
+        <enum id="IZ_Partname120c" valueName="120c" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowTDCControl_Both_Internet" class="Both" displayName="$(string.IZ_PolicyAllowTDCControl)" explainText="$(string.IZ_EXPLAIN_PolicyAllowTDCControl)" presentation="$(presentation.IZ_PolicyAllowTDCControl_DefaultOff)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3">
+      <parentCategory ref="IZ_InternetZone" />
+      <supportedOn ref="SUPPORTED_IE10" />
+      <elements>
+        <enum id="IZ_Partname120c" valueName="120c" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowTDCControl_Both_Restricted" class="Both" displayName="$(string.IZ_PolicyAllowTDCControl)" explainText="$(string.IZ_EXPLAIN_PolicyAllowTDCControl)" presentation="$(presentation.IZ_PolicyAllowTDCControl_DefaultOff)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4">
+      <parentCategory ref="IZ_RestrictedSitesZone" />
+      <supportedOn ref="SUPPORTED_IE10" />
+      <elements>
+        <enum id="IZ_Partname120c" valueName="120c" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowTDCControl_Both_LocalMachineLockdown" class="Both" displayName="$(string.IZ_PolicyAllowTDCControl)" explainText="$(string.IZ_EXPLAIN_PolicyAllowTDCControl)" presentation="$(presentation.IZ_PolicyAllowTDCControl_DefaultOn)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0">
+      <parentCategory ref="IZ_LocalMachineZoneLockdown" />
+      <supportedOn ref="SUPPORTED_IE10" />
+      <elements>
+        <enum id="IZ_Partname120c" valueName="120c" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowTDCControl_Both_IntranetLockdown" class="Both" displayName="$(string.IZ_PolicyAllowTDCControl)" explainText="$(string.IZ_EXPLAIN_PolicyAllowTDCControl)" presentation="$(presentation.IZ_PolicyAllowTDCControl_DefaultOn)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1">
+      <parentCategory ref="IZ_IntranetZoneLockdown" />
+      <supportedOn ref="SUPPORTED_IE10" />
+      <elements>
+        <enum id="IZ_Partname120c" valueName="120c" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowTDCControl_Both_TrustedLockdown" class="Both" displayName="$(string.IZ_PolicyAllowTDCControl)" explainText="$(string.IZ_EXPLAIN_PolicyAllowTDCControl)" presentation="$(presentation.IZ_PolicyAllowTDCControl_DefaultOn)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2">
+      <parentCategory ref="IZ_TrustedSitesZoneLockdown" />
+      <supportedOn ref="SUPPORTED_IE10" />
+      <elements>
+        <enum id="IZ_Partname120c" valueName="120c" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowTDCControl_Both_InternetLockdown" class="Both" displayName="$(string.IZ_PolicyAllowTDCControl)" explainText="$(string.IZ_EXPLAIN_PolicyAllowTDCControl)" presentation="$(presentation.IZ_PolicyAllowTDCControl_DefaultOff)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3">
+      <parentCategory ref="IZ_InternetZoneLockdown" />
+      <supportedOn ref="SUPPORTED_IE10" />
+      <elements>
+        <enum id="IZ_Partname120c" valueName="120c" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowTDCControl_Both_RestrictedLockdown" class="Both" displayName="$(string.IZ_PolicyAllowTDCControl)" explainText="$(string.IZ_EXPLAIN_PolicyAllowTDCControl)" presentation="$(presentation.IZ_PolicyAllowTDCControl_DefaultOff)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4">
+      <parentCategory ref="IZ_RestrictedSitesZoneLockdown" />
+      <supportedOn ref="SUPPORTED_IE10" />
+      <elements>
+        <enum id="IZ_Partname120c" valueName="120c" required="true">
           <item displayName="$(string.IZ_ItemnameEnable)">
             <value>
               <decimal value="3" />
@@ -4794,6 +5033,29 @@
       <supportedOn ref="SUPPORTED_IE6SP2" />
       <elements>
         <enum id="IZ_Partname2101" valueName="2101" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnamePrompt)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowVBScript_1" class="Both" displayName="$(string.IZ_PolicyAllowVBScript)" explainText="$(string.IZ_PolicyAllowVBScript_ExplainDefaultEnable)" presentation="$(presentation.IZ_PolicyAllowVBScript_1)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3">
+      <parentCategory ref="IZ_InternetZone" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <elements>
+        <enum id="IZ_Partname140C" valueName="140C" required="true">
           <item displayName="$(string.IZ_ItemnameEnable)">
             <value>
               <decimal value="0" />
@@ -5867,6 +6129,29 @@
       <supportedOn ref="SUPPORTED_IE6SP2" />
       <elements>
         <enum id="IZ_Partname2101" valueName="2101" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnamePrompt)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowVBScript_2" class="Both" displayName="$(string.IZ_PolicyAllowVBScript)" explainText="$(string.IZ_PolicyAllowVBScript_ExplainDefaultPrompt)" presentation="$(presentation.IZ_PolicyAllowVBScript_3)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3">
+      <parentCategory ref="IZ_InternetZoneLockdown" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <elements>
+        <enum id="IZ_Partname140C" valueName="140C" required="true">
           <item displayName="$(string.IZ_ItemnameEnable)">
             <value>
               <decimal value="0" />
@@ -6981,6 +7266,29 @@
         </enum>
       </elements>
     </policy>
+    <policy name="IZ_PolicyAllowVBScript_3" class="Both" displayName="$(string.IZ_PolicyAllowVBScript)" explainText="$(string.IZ_PolicyAllowVBScript_ExplainDefaultEnable)" presentation="$(presentation.IZ_PolicyAllowVBScript_1)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1">
+      <parentCategory ref="IZ_IntranetZone" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <elements>
+        <enum id="IZ_Partname140C" valueName="140C" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnamePrompt)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
     <policy name="IZ_Policy_AddressStatusBar_4" class="Both" displayName="$(string.IZ_Policy_AddressStatusBar)" explainText="$(string.IZ_Policy_AddressStatusBar_Explain)" presentation="$(presentation.IZ_Policy_AddressStatusBar_1)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1">
       <parentCategory ref="IZ_IntranetZoneLockdown" />
       <supportedOn ref="SUPPORTED_IE7" />
@@ -8036,6 +8344,29 @@
       <supportedOn ref="SUPPORTED_IE6SP2" />
       <elements>
         <enum id="IZ_Partname2101" valueName="2101" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnamePrompt)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowVBScript_4" class="Both" displayName="$(string.IZ_PolicyAllowVBScript)" explainText="$(string.IZ_PolicyAllowVBScript_ExplainDefaultPrompt)" presentation="$(presentation.IZ_PolicyAllowVBScript_3)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1">
+      <parentCategory ref="IZ_IntranetZoneLockdown" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <elements>
+        <enum id="IZ_Partname140C" valueName="140C" required="true">
           <item displayName="$(string.IZ_ItemnameEnable)">
             <value>
               <decimal value="0" />
@@ -9150,6 +9481,29 @@
         </enum>
       </elements>
     </policy>
+    <policy name="IZ_PolicyAllowVBScript_9" class="Both" displayName="$(string.IZ_PolicyAllowVBScript)" explainText="$(string.IZ_PolicyAllowVBScript_ExplainDefaultEnable)" presentation="$(presentation.IZ_PolicyAllowVBScript_1)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0">
+      <parentCategory ref="IZ_LocalMachineZone" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <elements>
+        <enum id="IZ_Partname140C" valueName="140C" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnamePrompt)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
     <policy name="IZ_Policy_AddressStatusBar_10" class="Both" displayName="$(string.IZ_Policy_AddressStatusBar)" explainText="$(string.IZ_Policy_AddressStatusBar_Explain)" presentation="$(presentation.IZ_Policy_AddressStatusBar_1)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0">
       <parentCategory ref="IZ_LocalMachineZoneLockdown" />
       <supportedOn ref="SUPPORTED_IE7" />
@@ -10205,6 +10559,29 @@
       <supportedOn ref="SUPPORTED_IE6SP2" />
       <elements>
         <enum id="IZ_Partname2101" valueName="2101" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnamePrompt)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="IZ_PolicyAllowVBScript_10" class="Both" displayName="$(string.IZ_PolicyAllowVBScript)" explainText="$(string.IZ_PolicyAllowVBScript_ExplainDefaultPrompt)" presentation="$(presentation.IZ_PolicyAllowVBScript_3)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0">
+      <parentCategory ref="IZ_LocalMachineZoneLockdown" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <elements>
+        <enum id="IZ_Partname140C" valueName="140C" required="true">
           <item displayName="$(string.IZ_ItemnameEnable)">
             <value>
               <decimal value="0" />
@@ -11319,6 +11696,29 @@
         </enum>
       </elements>
     </policy>
+    <policy name="IZ_PolicyAllowVBScript_7" class="Both" displayName="$(string.IZ_PolicyAllowVBScript)" explainText="$(string.IZ_PolicyAllowVBScript_ExplainDefaultEnable)" presentation="$(presentation.IZ_PolicyAllowVBScript_1)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4">
+      <parentCategory ref="IZ_RestrictedSitesZone" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <elements>
+        <enum id="IZ_Partname140C" valueName="140C" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnamePrompt)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
     <policy name="IZ_Policy_AddressStatusBar_8" class="Both" displayName="$(string.IZ_Policy_AddressStatusBar)" explainText="$(string.IZ_Policy_AddressStatusBar_Explain)" presentation="$(presentation.IZ_Policy_AddressStatusBar_1)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4">
       <parentCategory ref="IZ_RestrictedSitesZoneLockdown" />
       <supportedOn ref="SUPPORTED_IE7" />
@@ -12392,6 +12792,29 @@
         </enum>
       </elements>
     </policy>
+    <policy name="IZ_PolicyAllowVBScript_8" class="Both" displayName="$(string.IZ_PolicyAllowVBScript)" explainText="$(string.IZ_PolicyAllowVBScript_ExplainDefaultPrompt)" presentation="$(presentation.IZ_PolicyAllowVBScript_3)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4">
+      <parentCategory ref="IZ_RestrictedSitesZoneLockdown" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <elements>
+        <enum id="IZ_Partname140C" valueName="140C" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnamePrompt)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
     <policy name="IZ_IncludeUnspecifiedLocalSites" class="Both" displayName="$(string.IZ_IncludeUnspecifiedLocalSites)" explainText="$(string.IZ_ExplainIncludeUnspecifiedLocalSites)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap" valueName="IntranetName">
       <parentCategory ref="IZ_SecurityPage" />
       <supportedOn ref="SUPPORTED_IE6SP2" />
@@ -12465,6 +12888,11 @@
           </value>
         </item>
         <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="120b">
+          <value>
+            <delete />
+          </value>
+        </item>
+        <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="120c">
           <value>
             <delete />
           </value>
@@ -12782,6 +13210,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -13090,6 +13523,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -13406,6 +13844,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -13718,6 +14161,11 @@
                   <decimal value="3" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="120c">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -14026,6 +14474,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="120b">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3" valueName="120c">
                 <value>
                   <decimal value="3" />
                 </value>
@@ -14350,6 +14803,11 @@
             <delete />
           </value>
         </item>
+        <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="120c">
+          <value>
+            <delete />
+          </value>
+        </item>
         <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="1400">
           <value>
             <delete />
@@ -14664,6 +15122,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -14985,6 +15448,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -15298,6 +15766,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -15619,6 +16092,11 @@
                   <decimal value="3" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="120c">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -15932,6 +16410,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="120b">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" valueName="120c">
                 <value>
                   <decimal value="3" />
                 </value>
@@ -16261,6 +16744,11 @@
             <delete />
           </value>
         </item>
+        <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="120c">
+          <value>
+            <delete />
+          </value>
+        </item>
         <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="1400">
           <value>
             <delete />
@@ -16570,6 +17058,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -16886,6 +17379,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -17194,6 +17692,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -17510,6 +18013,11 @@
                   <decimal value="3" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="120c">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -17818,6 +18326,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="120b">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1" valueName="120c">
                 <value>
                   <decimal value="3" />
                 </value>
@@ -18142,6 +18655,11 @@
             <delete />
           </value>
         </item>
+        <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="120c">
+          <value>
+            <delete />
+          </value>
+        </item>
         <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="1400">
           <value>
             <delete />
@@ -18456,6 +18974,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -18777,6 +19300,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -19090,6 +19618,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -19411,6 +19944,11 @@
                   <decimal value="3" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="120c">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -19724,6 +20262,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="120b">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" valueName="120c">
                 <value>
                   <decimal value="3" />
                 </value>
@@ -20053,6 +20596,11 @@
             <delete />
           </value>
         </item>
+        <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="120c">
+          <value>
+            <delete />
+          </value>
+        </item>
         <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="1400">
           <value>
             <delete />
@@ -20362,6 +20910,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -20678,6 +21231,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -20986,6 +21544,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -21302,6 +21865,11 @@
                   <decimal value="3" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="120c">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -21610,6 +22178,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="120b">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0" valueName="120c">
                 <value>
                   <decimal value="3" />
                 </value>
@@ -21934,6 +22507,11 @@
             <delete />
           </value>
         </item>
+        <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="120c">
+          <value>
+            <delete />
+          </value>
+        </item>
         <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="1400">
           <value>
             <delete />
@@ -22248,6 +22826,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -22569,6 +23152,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -22882,6 +23470,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -23203,6 +23796,11 @@
                   <decimal value="3" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="120c">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -23516,6 +24114,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="120b">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" valueName="120c">
                 <value>
                   <decimal value="3" />
                 </value>
@@ -23845,6 +24448,11 @@
             <delete />
           </value>
         </item>
+        <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="120c">
+          <value>
+            <delete />
+          </value>
+        </item>
         <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="1400">
           <value>
             <delete />
@@ -24154,6 +24762,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -24470,6 +25083,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -24778,6 +25396,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -25094,6 +25717,11 @@
                   <decimal value="3" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="120c">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -25402,6 +26030,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="120b">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4" valueName="120c">
                 <value>
                   <decimal value="3" />
                 </value>
@@ -25726,6 +26359,11 @@
             <delete />
           </value>
         </item>
+        <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="120c">
+          <value>
+            <delete />
+          </value>
+        </item>
         <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="1400">
           <value>
             <delete />
@@ -26040,6 +26678,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -26361,6 +27004,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -26674,6 +27322,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -26995,6 +27648,11 @@
                   <decimal value="3" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="120c">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -27308,6 +27966,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="120b">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" valueName="120c">
                 <value>
                   <decimal value="3" />
                 </value>
@@ -27637,6 +28300,11 @@
             <delete />
           </value>
         </item>
+        <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="120c">
+          <value>
+            <delete />
+          </value>
+        </item>
         <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="1400">
           <value>
             <delete />
@@ -27946,6 +28614,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -28262,6 +28935,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -28570,6 +29248,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -28886,6 +29569,11 @@
                   <decimal value="3" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="120c">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="1400">
                 <value>
                   <decimal value="1" />
@@ -29194,6 +29882,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="120b">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2" valueName="120c">
                 <value>
                   <decimal value="3" />
                 </value>
@@ -29816,6 +30509,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -30129,6 +30827,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" valueName="120b">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" valueName="120c">
                 <value>
                   <decimal value="0" />
                 </value>
@@ -30450,6 +31153,11 @@
                   <decimal value="0" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" valueName="120c">
+                <value>
+                  <decimal value="0" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -30767,6 +31475,11 @@
                   <decimal value="3" />
                 </value>
               </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" valueName="120c">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" valueName="1400">
                 <value>
                   <decimal value="0" />
@@ -31080,6 +31793,11 @@
                 </value>
               </item>
               <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" valueName="120b">
+                <value>
+                  <decimal value="3" />
+                </value>
+              </item>
+              <item key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" valueName="120c">
                 <value>
                   <decimal value="3" />
                 </value>
@@ -32498,6 +33216,29 @@
         </enum>
       </elements>
     </policy>
+    <policy name="IZ_PolicyAllowVBScript_5" class="Both" displayName="$(string.IZ_PolicyAllowVBScript)" explainText="$(string.IZ_PolicyAllowVBScript_ExplainDefaultEnable)" presentation="$(presentation.IZ_PolicyAllowVBScript_1)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2">
+      <parentCategory ref="IZ_TrustedSitesZone" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <elements>
+        <enum id="IZ_Partname140C" valueName="140C" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnamePrompt)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
     <policy name="IZ_Policy_AddressStatusBar_6" class="Both" displayName="$(string.IZ_Policy_AddressStatusBar)" explainText="$(string.IZ_Policy_AddressStatusBar_Explain)" presentation="$(presentation.IZ_Policy_AddressStatusBar_1)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2">
       <parentCategory ref="IZ_TrustedSitesZoneLockdown" />
       <supportedOn ref="SUPPORTED_IE7" />
@@ -33571,6 +34312,29 @@
         </enum>
       </elements>
     </policy>
+    <policy name="IZ_PolicyAllowVBScript_6" class="Both" displayName="$(string.IZ_PolicyAllowVBScript)" explainText="$(string.IZ_PolicyAllowVBScript_ExplainDefaultPrompt)" presentation="$(presentation.IZ_PolicyAllowVBScript_3)" key="Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2">
+      <parentCategory ref="IZ_TrustedSitesZoneLockdown" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <elements>
+        <enum id="IZ_Partname140C" valueName="140C" required="true">
+          <item displayName="$(string.IZ_ItemnameEnable)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnameDisable)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+          <item displayName="$(string.IZ_ItemnamePrompt)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
     <policy name="AnchorColorHoverPol" class="User" displayName="$(string.AnchorColorHoverPol)" explainText="$(string.AnchorColorHover_Explain)" presentation="$(presentation.AnchorColorHoverPol)" key="Software\Policies\Microsoft\Internet Explorer\Settings">
       <parentCategory ref="LinkColors" />
       <supportedOn ref="SUPPORTED_IE7" />
@@ -33909,6 +34673,24 @@
             </value>
           </item>
           <item displayName="$(string.AutoSearch0)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="TopResultPol" class="Both" displayName="$(string.TopResultPol)" explainText="$(string.TopResultPol_Explain)" presentation="$(presentation.TopResultPol)" key="Software\Policies\Microsoft\Internet Explorer\SearchScopes">
+      <parentCategory ref="Searching" />
+      <supportedOn ref="SUPPORTED_IE9_IE11NONWIN10" />
+      <elements>
+        <enum id="TopResult" valueName="TopResult">
+          <item displayName="$(string.TopResult1)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+          <item displayName="$(string.TopResult0)">
             <value>
               <decimal value="0" />
             </value>
@@ -34489,7 +35271,7 @@
       <elements>
         <list id="QuirksMode_SiteList" additive="true" />
       </elements>
-    </policy>    
+    </policy>
     <policy name="CompatView_UseMSList" class="Both" displayName="$(string.CompatView_UseMSList)" explainText="$(string.IE_ExplainCompatView_UseMSList)" key="Software\Policies\Microsoft\Internet Explorer\BrowserEmulation" valueName="MSCompatibilityMode">
       <parentCategory ref="CategoryCompatView" />
       <supportedOn ref="SUPPORTED_IE8" />
@@ -34523,6 +35305,26 @@
       <elements>
         <text id="EnterSiteListPrompt" valueName="SiteList" required="true" />
       </elements>
+    </policy>
+    <policy name="RestrictInternetExplorer" class="Both" displayName="$(string.RestrictInternetExplorer)" explainText="$(string.IE_ExplainRestrictInternetExplorer)" key="Software\Policies\Microsoft\Internet Explorer\Main\EnterpriseMode" valueName="RestrictIE">
+      <parentCategory ref="InternetExplorer" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="ShowMessageWhenOpeningSitesInMicrosoftEdge" class="Both" displayName="$(string.ShowMessageWhenOpeningSitesInMicrosoftEdge)" explainText="$(string.IE_ExplainShowMessageWhenOpeningSitesInMicrosoftEdge)" key="Software\Policies\Microsoft\Internet Explorer\Main\EnterpriseMode" valueName="ShowMessageWhenOpeningSitesInMicrosoftEdge">
+      <parentCategory ref="InternetExplorer" />
+      <supportedOn ref="SUPPORTED_IE11" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
     </policy>
     <policy name="DefaultDomainCacheLimitInMB" class="Both" displayName="$(string.DefaultDomainCacheLimitInMB)" explainText="$(string.IE_ExplainDefaultDomainCacheLimitInMB)" presentation="$(presentation.DefaultDomainCacheLimitInMB)" key="Software\Policies\Microsoft\Internet Explorer\BrowserStorage">
       <parentCategory ref="CategoryBrowsingHistory" />

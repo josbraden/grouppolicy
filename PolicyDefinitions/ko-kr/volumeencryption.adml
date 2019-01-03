@@ -28,14 +28,13 @@ BitLocker 복구 정보에는 복구 암호와 일부 고유한 식별 데이터
 
 참고: 이 정책은 Windows Server 2008 또는 Windows Vista를 실행하는 컴퓨터에만 적용됩니다.
 
-호환되는 TPM(신뢰할 수 있는 플랫폼 모듈)이 있는 컴퓨터에서는 시작 시 두 가지 인증 방법을 사용하여 암호화된 데이터에 대한 추가 보호 기능을 제공할 수 있습니다. 컴퓨터 시작 시 시작 키를 포함하는 USB 플래시 드라이브를 넣도록 사용자에게 요구할 수 있습니다. 또한 4-20자리의 시작 PIN(개인 식별 번호)을 입력하도록 사용자에게 요구할 수도 있습니다.
+호환되는 TPM(신뢰할 수 있는 플랫폼 모듈)이 있는 컴퓨터에서는 시작 시 두 가지 인증 방법을 사용하여 암호화된 데이터에 대한 추가 보호 기능을 제공할 수 있습니다. 컴퓨터 시작 시 시작 키를 포함하는 USB 플래시 드라이브를 넣도록 사용자에게 요구할 수 있습니다. 또한 6-20자리의 시작 PIN(개인 식별 번호)을 입력하도록 사용자에게 요구할 수도 있습니다.
 
 호환되는 TPM(신뢰할 수 있는 플랫폼 모듈)이 없는 컴퓨터에서는 시작 키를 포함하는 USB 플래시 드라이브가 필요합니다. TPM이 없으면 BitLocker로 암호화된 데이터가 이 USB 플래시 드라이브의 키 정보로만 보호됩니다.
 
 이 정책 설정을 사용하면 사용자가 BitLocker에 대한 고급 시작 옵션을 구성할 수 있는 페이지가 마법사에 표시됩니다. TPM이 있거나 없는 컴퓨터에 대한 설정 옵션을 보다 구체적으로 구성할 수 있습니다.
 
 이 정책 설정을 사용하지 않거나 구성하지 않으면 BitLocker 설치 마법사에 사용자가 TPM이 있는 컴퓨터에서 BitLocker를 사용할 수 있도록 하는 기본 단계가 표시됩니다. 이 기본 마법사에서는 시작 키나 시작 PIN을 추가적으로 구성할 수 없습니다.
-
 </string>
 
       <string id="ConfigureStartupUsage_Name">시작 시 추가 인증 요구(Windows Server 2008 및 Windows Vista)</string>
@@ -47,15 +46,13 @@ BitLocker 복구 정보에는 복구 암호와 일부 고유한 식별 데이터
 
 TPM이 없는 컴퓨터에서 BitLocker를 사용하려면 "호환되는 TPM 없이 BitLocker 허용" 확인란을 선택합니다. 이 모드에서는 시작 시 암호나 USB 드라이브가 필요합니다. 시작 키를 사용하는 경우 드라이브를 암호화하는 데 사용되는 키 정보가 USB 드라이브에 저장되어 USB 키를 만듭니다. USB 키를 넣으면 드라이브에 대한 액세스가 인증되고 드라이브를 액세스할 수 있게 됩니다. USB 키를 분실했거나 사용할 수 없는 경우 또는 암호를 잊은 경우에는 BitLocker 복구 옵션 중 하나를 사용하여 드라이브에 액세스해야 합니다.
 
-호환되는 TPM이 있는 컴퓨터에서는 시작 시 네 가지 유형의 인증 방법을 사용하여 암호화된 데이터에 대한 보호를 강화할 수 있습니다. 컴퓨터를 시작할 때 인증에 TPM만 사용하거나, 시작 키 또는 4-20자리의 PIN(개인 식별 번호) 또는 둘 다 들어 있는 USB 플래시 드라이브를 넣도록 요구할 수 있습니다.
+호환되는 TPM이 있는 컴퓨터에서는 시작 시 네 가지 유형의 인증 방법을 사용하여 암호화된 데이터에 대한 보호를 강화할 수 있습니다. 컴퓨터를 시작할 때 인증에 TPM만 사용하거나, 시작 키 또는 6-20자리의 PIN(개인 식별 번호) 또는 둘 다 들어 있는 USB 플래시 드라이브를 넣도록 요구할 수 있습니다.
 
 이 정책 설정을 사용하면 사용자가 BitLocker 설치 마법사에서 고급 시작 옵션을 구성할 수 있습니다.
 
 이 정책 설정을 사용하지 않거나 구성하지 않으면 TPM이 있는 컴퓨터에서 사용자가 기본 옵션만 구성할 수 있습니다.
 
 참고: 시작 PIN 및 USB 플래시 드라이브를 사용하도록 하려면 BitLocker 드라이브 암호화 설정 마법사 대신 명령줄 도구인 manage-bde를 사용하여 BitLocker 설정을 구성해야 합니다.
-
-
 
 </string>
       <string id="AllowNetworkUnlockAtStartup_Name">시작 시 네트워크 잠금 해제 허용</string>
@@ -312,6 +309,11 @@ BitLocker를 사용하도록 설정하기 전에 이 정책 설정을 사용하�
       </string>
       <string id="MorBehavior_Name">다시 시작할 때 메모리 덮어쓰기 방지</string>
 
+      <string id="DisableExternalDMAUnderLock_Help">이 설정을 사용하면 사용자가 Windows에 로그인할 때까지 모든 핫 플러그형 PCI 다운스트림 포트에 대한 DMA(직접 메모리 액세스)를 차단할 수 있습니다. 사용자가 로그인하면 Windows가 호스트 플러그 PCI 포트에 연결된 PCI 장치를 열거합니다. 사용자가 컴퓨터를 잠그면 사용자가 로그인할 때까지 하위 장치 없는 핫 플러그 PCI 포트에 대한 DMA가 차단됩니다. 잠금이 해제되었을 때 이미 나열된 장치는 분리될 때까지 계속 작동합니다. 이 정책 설정은 BitLocker나 장치 암호화를 사용하는 경우에만 적용됩니다.
+
+      </string>
+      <string id="DisableExternalDMAUnderLock_Name">이 컴퓨터가 잠긴 경우 새 DMA 장치 사용 중지</string>
+
       <string id="FVEOSCategory">운영 체제 드라이브</string>
       <string id="FVEFDVCategory">고정 데이터 드라이브</string>
       <string id="FVERDVCategory">이동식 데이터 드라이브</string>
@@ -373,26 +375,22 @@ BitLocker로 보호되는 드라이브가 BitLocker를 사용하는 다른 컴�
 
 
       <string id="MinimumPINLength_Name">시작 PIN의 최소 길이 구성</string>
-      <string id="MinimumPINLength_Help">이 정책 설정으로 TPM(신뢰할 수 있는 플랫폼 모듈) 시작 PIN에 대한 최소 길이를 구성할 수 있습니다. 이 정책 설정은 BitLocker를 사용하는 경우에 적용됩니다. 시작 PIN의 최소 길이는 4자리이고 최대 길이는 20자리여야 합니다.
+      <string id="MinimumPINLength_Help">이 정책 설정으로 TPM(신뢰할 수 있는 플랫폼 모듈) 시작 PIN에 대한 최소 길이를 구성할 수 있습니다. 이 정책 설정은 BitLocker를 사용하는 경우에 적용됩니다. 시작 PIN의 최소 길이는 6자리이고 최대 길이는 20자리여야 합니다.
 
 이 정책 설정을 사용하면 시작 PIN을 설정할 때 사용될 최소 자릿수를 지정할 수 있습니다.
 
-이 정책 설정을 사용하지 않거나 구성하지 않으면 사용자가 4-20자리 사이에서 시작 PIN을 구성할 수 있습니다.
-
-      
+이 정책 설정을 사용하지 않거나 구성하지 않으면 사용자가 6-20자리 사이에서 시작 PIN을 구성할 수 있습니다.
 
       </string>
 
       <string id="OSAllowDRA_Name">인증서 기반 데이터 복구 에이전트 허용</string>
 
       <string id="FDVDenyWriteAccess_Name">BitLocker로 보호되지 않은 고정 드라이브에 대한 쓰기 권한 거부</string>
-      <string id="FDVDenyWriteAccess_Help">이 정책 설정으로 컴퓨터에서 고정 데이터 드라이브를 쓰기 가능으로 설정할 때 BitLocker 보호가 필요한지 여부를 정의할 수 있습니다. 이 정책 설정은 BitLocker를 사용하는 경우에 적용됩니다.
+      <string id="FDVDenyWriteAccess_Help">이 정책 설정은 컴퓨터에서 고정 데이터 드라이브를 쓰기 가능으로 설정할 때 BitLocker 보호가 필요한지 여부를 결정합니다.
 
 이 정책 설정을 사용하면 BitLocker로 보호되지 않는 모든 고정 데이터 드라이브가 읽기 전용으로 탑재됩니다. 드라이브가 BitLocker로 보호될 경우에는 읽기 및 쓰기 권한이 할당되어 탑재됩니다.
 
-이 설정을 사용하지 않거나 구성하지 않으면 컴퓨터의 모든 고정 데이터 드라이브가 읽기 및 쓰기 권한이 할당되어 탑재됩니다.
-
-      
+이 정책 설정을 사용하지 않거나 구성하지 않으면 컴퓨터의 모든 고정 데이터 드라이브가 읽기 및 쓰기 권한이 할당되어 탑재됩니다.
 
       </string>
 
@@ -691,6 +689,14 @@ PIN 또는 암호 등 추가 정보를 입력해야만 BitLocker를 사용할 �
       
       </string>
 
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Name">InstantGo 또는 HSTI와 호환되는 장치에서 사전 부팅 PIN을 사용하지 않도록 허용합니다.</string>
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Help">이 설정은 InstantGo 또는 Microsoft HSTI(Hardware Security Test Interface)와 호환되는 장치를 사용하는 사용자가 사전 부팅 인증용 PIN을 가지고 있지 않아도 되도록 허용합니다. 이 설정은 호환되는 하드웨어의 "시작 시 추가 인증 요구" 정책의 "TPM과 함께 시작 PIN 요구" 및 "TPM과 함께 시작 키 및 PIN 요구" 옵션을 재정의합니다.
+
+이 설정을 사용하면, InstantGo 및 HSTI 호환 장치의 사용자가 사전 부팅 인증 없이 BitLocker를 켤 수 있습니다.
+
+이 정책이 사용 중이지 않으면 "시작 시 추가 인증 요구" 정책 옵션이 적용됩니다.
+      </string>
+
       <string id="AllowSecureBootForIntegrity_Name">무결성 확인 시 보안 부팅 허용</string>
       <string id="AllowSecureBootForIntegrity_Help">이 정책 설정을 사용하면 보안 부팅이 BitLocker 운영 체제 드라이브의 플랫폼 무결성 공급자로 허용되는지 여부를 구성할 수 있습니다.
 
@@ -968,7 +974,7 @@ PIN 또는 암호 등 추가 정보를 입력해야만 BitLocker를 사용할 �
       </presentation>
 
      <presentation id="MinimumPINLength">
-        <decimalTextBox refId="MinPINLength" defaultValue="4">최소 문자:</decimalTextBox>
+        <decimalTextBox refId="MinPINLength" defaultValue="6">최소 문자:</decimalTextBox>
       </presentation>
 
      <presentation id="FDVPassphrase_Name">

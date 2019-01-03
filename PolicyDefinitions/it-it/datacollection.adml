@@ -10,9 +10,17 @@
       <string id="AllowTelemetry_1">1 - Dati di base</string>
       <string id="AllowTelemetry_2">2 - Dati avanzati</string>
       <string id="AllowTelemetry_3">3 - Dati completi</string>
-      <string id="AllowTelemetry_Explain">Questa impostazione dei criteri determina la quantità di dati di diagnostica e di utilizzo inviati a Microsoft. Il valore 0 consente di inviare dati minimi a Microsoft, inclusi i dati dello Strumento di rimozione malware Microsoft e di Windows Defender, se abilitati, e le impostazioni del client di telemetria. L'impostazione del valore 0 è applicabile solo ai dispositivi Enterprise, EDU, IoT e server. L'impostazione del valore 0 per altri dispositivi equivale a scegliere il valore 1. Il valore 1 consente di inviare solo una quantità di base di dati di diagnostica e di utilizzo. Si noti che l'impostazione dei valori 0 e 1 comporterà un peggioramento dell'esperienza nel dispositivo. Il valore 2 consente di inviare informazioni avanzate di diagnostica e di utilizzo. Il valore 3 invia gli stessi dati del valore 2, oltre a dati diagnostici aggiuntivi, come i file e il contenuto che potrebbero aver causato il problema. Le impostazioni di telemetria di Windows 10 si applicano al sistema operativo Windows e ad alcune app proprietarie. Questa impostazione non si applica alle app di terze parti in esecuzione in Windows 10
+      <string id="AllowTelemetry_Explain">Questa impostazione dei criteri determina la quantità di dati di diagnostica inviati a Microsoft. Il valore 0 (sicurezza) consente di inviare dati minimi a Microsoft per mantenere Windows protetto. Se abilitati, i componenti di sicurezza di Windows, quali lo Strumento di rimozione malware (MSRT) e Windows Defender potrebbero inviare dati Microsoft a questo livello. L'impostazione del valore 0 è applicabile solo ai dispositivi Enterprise, EDU, IoT e server. L'impostazione del valore 0 per altri dispositivi equivale a scegliere il valore 1. 
 
-Se si disabilita o non si configura questa impostazione dei criteri, gli utenti possono configurare il livello di telemetria in Impostazioni.
+Il valore 1 (di base) invia gli stessi dati del valore 0, oltre a un numero molto limitato di dati di diagnostica, ad esempio informazioni di base del dispositivo, dati relativi alla qualità e informazioni sulla compatibilità delle app. Si noti che l'impostazione dei valori 0 e 1 comporterà un peggioramento dell'esperienza nel dispositivo.
+
+Il valore 2 (avanzato) invia gli stessi dati del valore 1, oltre a dati aggiuntivi quali quelli relativi alla modalità di utilizzo e di esecuzione di Windows, Windows Server, System Center e delle app, nonché quelli di affidabilità avanzati.
+
+Il valore 3 (completo) invia gli stessi dati del valore 2, oltre a dati di diagnostica avanzati utilizzati per eseguire la diagnosi dei dispositivi e correggerne eventuali problemi, in cui possono essere inclusi i file e il contenuto che possono aver causato un problema del dispositivo.
+
+Le impostazioni dei dati di diagnostica di Windows 10 si applicano al sistema operativo Windows e alle relative app. Questa impostazione non si applica alle app di terze parti in esecuzione in Windows 10.
+
+Se disabiliti o non configuri questa impostazione dei criteri, gli utenti possono configurare il livello di telemetria in Impostazioni.
 
 </string>
       <string id="EnableExperimentation">Disabilita funzionalità o impostazioni non definitive</string>
@@ -24,6 +32,25 @@ Se si disabilita questa impostazione dei criteri, tutte le sperimentazioni verra
 
 Se non si configura questa impostazione dei criteri, l'utente può configurare l'opzione “Consenti a Microsoft di provare funzionalità in questa build” in Impostazioni.
 </string>
+      <string id="TelemetryProxy">Configura esperienze utente connesse e telemetria</string>
+      <string id="TelemetryProxy_Explain">Questa impostazione dei criteri consente di inoltrare a un server proxy le richieste di Esperienze utente connesse e telemetria.
+
+Se si abilita questa impostazione dei criteri, è possibile specificare il FQDN o l'indirizzo IP del dispositivo di destinazione nella rete dell'organizzazione (ed eventualmente un numero di porta). La connessione verrà stabilita tramite una connessione SSL (Secure Sockets Layer). In caso di problemi del proxy denominato, o se si disabilita o non si configura questa impostazione dei criteri, i dati di Esperienze utente connesse e telemetria verranno inviati a Microsoft usando la configurazione del proxy predefinita.
+
+Il formato per questa impostazione è &lt;server&gt;:&lt;porta&gt; 
+</string>
+      
+      <string id="CommercialId">Configura l'ID commerciale</string>
+      <string id="CommercialId_Explain">Questa impostazione dei criteri definisce l'identificatore usato per associare in modo univoco i dati di telemetria di questo dispositivo come appartenenti a una determinata organizzazione. Se la tua organizzazione partecipa a un programma che richiede l'identificazione del dispositivo come appartenente all'organizzazione, usa questa impostazione per fornire tale identificazione. Il valore di questa impostazione sarà fornito da Microsoft nell'ambito del processo di caricamento per il programma. 
+
+Se si disabilita o non si configura questa impostazione dei criteri, Microsoft non sarà in grado di usare questo identificatore per associare il dispositivo e i relativi dati di telemetria all'organizzazione.
+</string>
+
+      <string id="DisableEnterpriseAuthProxy">Configura l'utilizzo del proxy autenticato per il servizio Esperienze utente connesse e telemetria</string>
+      <string id="DisableEnterpriseAuthProxy_1">Abilita utilizzo proxy autenticato</string>
+      <string id="DisableEnterpriseAuthProxy_2">Disabilita utilizzo proxy autenticato</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">Questa impostazione dei criteri impedisce al servizio Esperienze utente connesse e telemetria di usare automaticamente un proxy autenticato per l'invio di dati a Microsoft in Windows 10. Se disabiliti o non configuri questa impostazione, il servizio Esperienze utente connesse e telemetria userà automaticamente un proxy autenticato per inviare dati a Microsoft. L'abilitazione di questo criterio consente di impedire al servizio Esperienze utente connesse e telemetria di usare automaticamente un proxy autenticato.</string>
+
     </stringTable>
     <presentationTable>
       <presentation id="AllowTelemetry">
@@ -31,6 +58,19 @@ Se non si configura questa impostazione dei criteri, l'utente può configurare l
       </presentation>
       <presentation id="EnableExperimentation">
         <dropdownList refId="EnableExperimentation" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+        <label>Nome server proxy:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+        <label>ID commerciale:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
       </presentation>
     </presentationTable>
   </resources>

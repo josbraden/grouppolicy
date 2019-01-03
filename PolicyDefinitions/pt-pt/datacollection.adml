@@ -10,9 +10,17 @@
       <string id="AllowTelemetry_1">1 - Básico</string>
       <string id="AllowTelemetry_2">2 - Melhorado</string>
       <string id="AllowTelemetry_3">3 - Completo</string>
-      <string id="AllowTelemetry_Explain">Esta definição de política determina a quantidade de dados de diagnóstico e de utilização comunicados à Microsoft. Um valor de 0 irá enviar dados mínimos para a Microsoft. Estes dados incluem a Ferramenta de Remoção de Software Malicioso (MSRT) &amp; dados do Windows Defender, se ativado, e definições de cliente de telemetria. A definição de um valor de 0 é aplicável apenas a dispositivos da empresa, EDU, IoT e do servidor. A definição de um valor de 0 para outros dispositivos é equivalente a escolher um valor de 1. Um valor de 1 envia apenas uma quantidade básica de dados de diagnóstico e de utilização. Note-se que definir valores de 0 ou 1 irá degradar determinadas experiências no dispositivo. Um valor de 2 envia dados de diagnóstico e de utilização melhorados. Um valor de 3 envia os mesmos dados que um valor de 2, bem como dados de diagnóstico adicionais, incluindo os ficheiros e conteúdos que podem ter originado o problema. As definições de telemetria do Windows 10 são aplicáveis ao sistema operativo Windows e a algumas aplicações originais. Esta definição não é aplicável a aplicações de outros fornecedores em execução no Windows 10.   
+      <string id="AllowTelemetry_Explain">Esta definição de política determina a quantidade de dados de diagnóstico do Windows enviados para a Microsoft. Um valor de 0 (Segurança) envia o mínimo de dados para a Microsoft, para manter o Windows seguro. Os componentes de segurança do Windows, tais como a Ferramenta de Remoção de Software Malicioso (MSRT) e o Windows Defender, podem enviar dados para a Microsoft neste nível se estiverem ativados. Definir um valor de 0 aplica-se apenas a dispositivos Enterprise, EDU, IoT e Server. Definir um valor de 0 para outros dispositivos é equivalente a definir um valor de 1. 
 
-Se desativar esta definição de política ou não a configurar, os utilizadores podem configurar o Nível de telemetria em Definições.
+Um valor de 1 (Básico) envia os mesmos dados que um valor de 0, acrescidos de uma quantidade muito limitada de dados de diagnóstico, tais como informações básicas do dispositivo, dados relacionados com qualidade e informações de compatibilidade de aplicações. Tenha em atenção que definir valores de 0 ou 1 degrada determinadas experiências no dispositivo.
+
+Um valor de 2 (Avançado) envia os mesmos dados que um valor de 1, acrescidos de dados adicionais, tais como a forma como o Windows, Windows Server, System Center e as aplicações são utilizadas, qual o seu desempenho e dados de fiabilidade avançados.
+
+Um valor de 3 (Completo) envia os mesmos dados que um valor de 2, acrescidos de dados de diagnóstico avançados utilizados para diagnosticar e corrigir problemas com dispositivos, podendo incluir os ficheiros e o conteúdo que podem ter causado um problema no dispositivo.
+
+As definições de dados de diagnóstico do Windows 10 são aplicáveis ao sistema operativo Windows e às aplicações incluídas no Windows. Esta definição não se aplica a aplicações de terceiros em execução no Windows 10.
+
+Se desativar ou não configurar esta definição de política, os utilizadores podem configurar o nível de Telemetria em Definições.
 
 </string>
       <string id="EnableExperimentation">Desativar as definições ou funcionalidades de pré-lançamento</string>
@@ -24,6 +32,25 @@ Se desativar esta definição de política, todas as experiências serão deslig
 
 Se não configurar esta definição de política, o utilizador pode configurar a opção "Permitir que a Microsoft experimente funcionalidades nesta compilação", em Definições.
 </string>
+      <string id="TelemetryProxy">Configurar Experiência de Utilizador e Telemetria Interligadas</string>
+      <string id="TelemetryProxy_Explain">Com esta definição de política, pode reencaminhar pedidos de Experiência de Utilizador e Telemetria Interligadas para um servidor proxy.
+
+Se ativar esta definição de política, pode especificar o endereço IP ou FQDN do dispositivo de destino na rede da sua organização (e, como opção, um número de porta). A ligação será estabelecida através de uma ligação SSL (Secure Sockets Layer). Se ocorrer uma falha no proxy nomeado ou se desativar ou não configurar esta definição de política, os dados de Experiência de Utilizador e Telemetria Interligadas serão enviados para a Microsoft utilizando a configuração de proxy predefinida.
+
+O formato desta definição é &lt;servidor&gt;:&lt;porta&gt; 
+</string>
+      
+      <string id="CommercialId">Configurar o ID Comercial</string>
+      <string id="CommercialId_Explain">Esta definição de política define o identificador utilizado para associar unicamente dados de telemetria deste dispositivo como pertencendo a uma determinada organização. Se a sua organização está a participar num programa que requer que este dispositivo seja identificado como pertencente à sua organização, utilize esta definição para fornecer essa identificação. O valor desta definição será fornecido pela Microsoft como parte do processo de integração do programa. 
+
+Se desativar ou não configurar esta definição de política, a Microsoft não poderá utilizar este identificador para associar esta máquina e respetivos dados de telemetria à sua organização.
+</string>
+
+      <string id="DisableEnterpriseAuthProxy">Configurar a utilização de Proxy Autenticado para o serviço de Experiência de Utilizador e Telemetria Interligadas</string>
+      <string id="DisableEnterpriseAuthProxy_1">Ativar utilização de Proxy Autenticado</string>
+      <string id="DisableEnterpriseAuthProxy_2">Desativar utilização de Proxy Autenticado</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">Esta definição de política impede que o serviço de Experiência de Utilizador e Telemetria Interligadas utilize automaticamente um proxy autenticado para enviar dados à Microsoft no Windows 10. Se desativar ou não configurar esta definição de política, o serviço de Experiência de Utilizador e Telemetria Interligadas irá utilizar automaticamente um proxy autenticado para enviar dados à Microsoft. Ativar esta política irá impedir o serviço de Experiência de Utilizador e Telemetria Interligadas de utilizar automaticamente um proxy autenticado.</string>
+
     </stringTable>
     <presentationTable>
       <presentation id="AllowTelemetry">
@@ -31,6 +58,19 @@ Se não configurar esta definição de política, o utilizador pode configurar a
       </presentation>
       <presentation id="EnableExperimentation">
         <dropdownList refId="EnableExperimentation" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+        <label>Nome do Servidor Proxy:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+        <label>ID Comercial:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
       </presentation>
     </presentationTable>
   </resources>

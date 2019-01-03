@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>Configuration pour Windows Defender Application Guard</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Activer/Désactiver Windows Defender Application Guard (WDAG)</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Cette stratégie active l’isolation d’applications à l’aide de Windows Defender Application Guard.
+
+Windows Defender Application Guard utilise l’hyperviseur Windows pour exécuter les applications dans un environnement virtualisé. Lorsque les applications sont configurées pour utiliser la sécurité basée sur la virtualisation, le comportement d’un utilisateur non approuvé lors de l’utilisation de ces applications, ainsi que les vulnérabilités de ces applications, ne peuvent en aucun cas compromettre le noyau et les autres applications en cours d’exécution à l’extérieur de l’environnement virtualisé.
+Avant d’activer cette stratégie, vous devez définir des listes de sites approuvés par l’entreprise, configurables via la stratégie d’isolation du réseau (insérer le lien vers une stratégie de réseau spécifique). La configuration de la liste des sites d’entreprise garantit que seuls les sites n’appartenant pas à l’entreprise s’ouvrent dans l’environnement virtualisé.
+Remarque : pour verrouiller un système, vérifiez que les fonctionnalités de sécurité Device Guard sont activées en plus de l’isolation d’applications. Reportez-vous à la documentation pour connaître la configuration requise verrouiller un système de manière sécurisée.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Configurer les paramètres du Presse-papiers de Windows Defender Application Guard</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Spécifie le comportement des opérations de Presse-papiers en cas d’utilisation de l’isolation d’applications avec Windows Defender Application Guard.
+
+Les administrateurs peuvent choisir d’effectuer les opérations suivantes :-
+Interdire totalement la fonctionnalité de Presse-papiers lorsque la sécurité basée sur la virtualisation est activée 
+Activer la copie de certains types de contenu de la session isolée vers l’hôte 
+Activer la copie de certains types de contenu de l’hôte vers la session isolée.
+
+Remarque : nous recommandons aux administrateurs de pas activer la copie du contenu de l’hôte vers la session isolée. Cela signifierait qu’une session compromise isolée pourrait accéder au Presse-papiers de l’hôte et à son contenu.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Bloquer les opérations de Presse-papiers(par défaut)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Activer l’opération du Presse-papiers à partir de la session isolée vers l’hôte</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Activer l’opération du Presse-papiers à partir d’un hôte vers la session isolée</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Activer l’opération du Presse-papiers dans les deux sens</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Configurer les paramètres d’impression Windows Defender Application Guard</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Si l’option Activer l’impression au format XPS est sélectionnée, les utilisateurs peuvent imprimer les documents au format XPS depuis le conteneur.
+Si l’option Activer l’impression au format PDF est sélectionnée, les utilisateurs peuvent imprimer les documents au format PDF depuis le conteneur.
+Si l’option Activer l’impression vers les imprimantes locales est sélectionnée, les utilisateurs peuvent imprimer les documents depuis le conteneur sur une imprimante connectée localement.
+Si l’option Activer l’impression vers des imprimantes réseau existantes est sélectionnée, les utilisateurs peuvent imprimer des documents depuis le conteneur isolé sur les imprimantes réseau existantes. Les utilisateurs ne peuvent pas accéder aux nouvelles imprimantes réseau.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Bloquer les sites web d’entreprise pour charger le contenu non entreprise dans IE et Edge</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Lorsque cette option est activée, le trafic réseau Internet Explorer et Microsoft Edge vers des sites n’appartenant pas à l’entreprise qui ne peut pas être lancé depuis un conteneur Windows Defender Application Guard sera bloqué.
+
+Lorsqu’elle est désactivée, le trafic réseau vers des sites n’appartenant pas à l’entreprise qui ne peut pas être lancé depuis un conteneur Windows Defender Application Guard sera restitué sur l’hôte.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Sélectionnez une option :</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Spécifie ce qui est autorisé pour le comportement du Presse-papiers lorsque ces dernières sont activées (en décimale) :
+        </decimalTextBox>
+        <text>Cette valeur est un masque de bits qui contrôle le type de fichiers pouvant être utilisé pour les opérations de Presse-papiers.
+
+b0001 - fichier TEXTE
+b0010 - fichier bitmap
+b0011 - les fichiers TEXTE et bitmap sont pris en charge
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Spécifie les imprimantes activées (en décimale) :
+        </decimalTextBox>
+        <text>Cette valeur est un masque de bits qui contrôle les imprimantes activées dans la session isolée    
+b0000 - Impression désactivée
+b0001 - Activer l’impression au format XPS (valeur par défaut)
+b0010 - Activer l’impression au format PDF
+b0100 - Activer l’impression vers les imprimantes locales
+b1000 - Activer l’impression vers les imprimantes réseau existantes
+
+Par exemple :
+Si les imprimantes locales et XPS sont activées, la valeur devient b0001 | b0100, ce qui est b0101 (décimal 5)
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

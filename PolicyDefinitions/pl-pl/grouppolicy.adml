@@ -11,6 +11,32 @@
       <string id="FontMitigation_On">Blokuj niezaufane czcionki i rejestruj zdarzenia</string>
       <string id="FontMitigation_Off">Nie blokuj niezaufanych czcionek</string>
       <string id="FontMitigation_Audit">Rejestruj zdarzenia, ale nie blokuj niezaufanych czcionek</string>
+	  
+	  <string id="ProcessMitigationOptions_List">Opcje ograniczania ryzyka procesów</string>
+      <string id="ProcessMitigationOptions_List_Help">
+        Ta funkcja zabezpieczeń umożliwia zastępowanie poszczególnych ustawień opcji ograniczania ryzyka procesów. Służy ona do wymuszania różnych zasad zabezpieczeń dla określonych aplikacji. Nazwa aplikacji jest określana jako nazwa wartości (wraz z rozszerzeniem). Wartość jest określana jako pole bitowe z flagami w odpowiednich pozycjach. Bity mogą przyjmować wartości 0 (wymuszone wyłączenie ustawienia), 1 (wymuszone włączenie ustawienia) lub ? (ustawienie zachowuje wartość istniejącą przed wyznaczeniem wartości obiektu GPO). Rozpoznawane lokalizacje bitów:
+
+        PROCESS_CREATION_MITIGATION_POLICY_DEP_ENABLE (0x00000001)
+        Włącza zapobieganie wykonywaniu danych dla procesu podrzędnego
+
+        PROCESS_CREATION_MITIGATION_POLICY_DEP_ATL_THUNK_ENABLE (0x00000002)
+        Włącza emulację wywołania 32-bitowego DEP-ATL dla procesu podrzędnego. Emulacja wywołania 32-bitowego DEP-ATL powoduje przechwytywanie przez system błędów NX pochodzących z warstwy wywołań 32-bitowych biblioteki ATL.
+
+        PROCESS_CREATION_MITIGATION_POLICY_SEHOP_ENABLE (0x00000004)
+        Włącza funkcję ochrony przed zastępowaniem strukturalnej obsługi wyjątków (SEHOP) dla procesu podrzędnego. Funkcja SEHOP blokuje możliwość wykorzystania luk z użyciem techniki zastępowania strukturalnej obsługi wyjątków.
+
+        PROCESS_CREATION_MITIGATION_POLICY_FORCE_RELOCATE_IMAGES_ALWAYS_ON (0x00000100)
+        Zasady losowego generowania układu przestrzeni adresowej (ASLR) wymuszają zmianę bazy obrazów niezgodnych z bazą dynamiczną, symulując konflikt baz obrazów podczas ładowania. Jeśli wymagane są relokacje, obrazy bez sekcji relokacji bazy nie zostaną załadowane.
+
+        PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_ON (0x00010000) 
+        PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_OFF (0x00020000) 
+        Zasady generowania losowego od dołu do góry, które uwzględniają opcje generowania losowego stosu, powodują używanie losowej lokalizacji jako najniższego adresu użytkownika.
+
+        Na przykład w celu włączenia ustawień PROCESS_CREATION_MITIGATION_POLICY_DEP_ENABLE oraz PROCESS_CREATION_MITIGATION_POLICY_FORCE_RELOCATE_IMAGES_ALWAYS_ON należy wyłączyć ustawienie PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_OFF, a w celu pozostawienia wartości domyślnych wszystkich pozostałych opcji należy podać wartość: 
+        ???????????????0???????1???????1
+ 
+        Ustawienie niewymienionych tutaj flag na wartości inne niż ? spowoduje niezdefiniowane działanie.	  
+</string>
 
       <string id="ResetDfsClientInfoDuringRefreshPolicy">Włącz synchronizację kontrolera domeny AD/DFS podczas odświeżania zasad</string>
       <string id="ResetDfsClientInfoDuringRefreshPolicy_Help">Włączenie tego ustawienia spowoduje połączenie klienta zasad grupy z tym samym kontrolerem domeny dla udziałów DFS, który jest używany w przypadku usługi Active Directory.
@@ -24,6 +50,37 @@
 
 
 </string>
+      <string id="EnableCDP">Ciągłość środowiska na tym urządzeniu</string>
+      <string id="EnableCDP_Help">
+To ustawienie zasad określa, czy urządzenie z systemem Windows może być częścią środowiska wielu urządzeń (ciągłość środowiska).
+
+Jeśli to ustawienie zasad zostanie włączone, urządzenie z systemem Windows będzie możliwe do wykrycia przez inne urządzenia z systemem Windows należące do tego samego użytkownika oraz będzie mogło być częścią środowiska wielu urządzeń.
+
+Jeśli to ustawienie zasad zostanie wyłączone, urządzenie z systemem Windows nie będzie możliwe do wykrycia przez inne urządzenia z systemem Windows i nie będzie mogło być częścią środowiska wielu urządzeń.
+
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, działanie domyślne będzie zależne od wersji systemu Windows. Zmiany tego ustawienia zasad są stosowane po ponownym uruchomieniu.
+      </string>
+      <string id="EnableAppUriHandlers">Konfiguruj połączenia sieć web-aplikacja z użyciem programów obsługi identyfikatorów URI aplikacji</string>
+      <string id="EnableAppUriHandlers_Help">
+To ustawienie zasad określa, czy system Windows obsługuje połączenia sieć web-aplikacja z użyciem programów obsługi identyfikatorów URI aplikacji.
+
+Włączenie tego ustawienia zasad spowoduje włączenie połączeń sieć web-aplikacja, dzięki czemu będzie można uruchamiać aplikacje przy użyciu identyfikatorów URI protokołu HTTP(S).
+
+Wyłączenie tej zasady spowoduje wyłączenie połączeń sieć web-aplikacja, przez co identyfikatory URI protokołu HTTP(S) będą otwierane w przeglądarce domyślnej, zamiast powodować uruchomienie skojarzonych aplikacji.
+
+Jeśli nie skonfigurujesz tego ustawienia zasad, zachowanie domyślne będzie zależne od wersji systemu Windows. Zmiany w tej zasadzie zaczynają obowiązywać po ponownym rozruchu.
+      </string>
+      <string id="Fonts">Czcionki</string>
+      <string id="EnableFontProviders">Włącz dostawców czcionek</string>
+      <string id="EnableFontProviders_Help">
+        To ustawienie zasad określa, czy system Windows może pobierać czcionki i dane wykazu czcionek od dostawcy czcionek online.
+        
+        Jeśli to ustawienie zasad zostanie włączone, system Windows będzie okresowo wysyłał zapytanie do dostawcy czcionek online w celu sprawdzenia, czy jest dostępny nowy wykaz czcionek. System Windows będzie również mógł pobierać dane czcionek, jeśli będzie to wymagane do formatowania lub renderowania tekstu.
+        
+        Jeśli to ustawienie zasad zostanie wyłączone, system Windows nie będzie łączyć się z dostawcą czcionek online i będzie wyliczać tylko lokalnie zainstalowane czcionki.
+      
+        Jeśli to ustawienie zasad nie zostanie skonfigurowane, domyślne zachowanie będzie zależeć od wersji systemu Windows. Zmiany tych zasad są stosowane po ponownym uruchomieniu.
+      </string>
       <string id="EnableLogonOptimization">Konfiguruj buforowanie zasad grupy</string>
       <string id="EnableLogonOptimization_Help">
         
@@ -491,6 +548,12 @@ Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane,
     <presentationTable>
       <presentation id="Font_List">
         <dropdownList refId="FontMitigation_DL" defaultItem="0" noSort="true">Opcje łagodzenia</dropdownList>
+      </presentation>
+      <presentation id="ProcessMitigationOptions_List">
+        <listBox refId="ProcessMitigationOptionsList">Opcje ograniczania ryzyka procesów</listBox>
+      </presentation>
+      <presentation id="FontProvidersPolicy">
+        <dropdownList refId="FontProvidersOption" noSort="true" defaultItem="0">Usługa systemu Windows buforowania czcionek musi mieć możliwość pobierania czcionek i danych wykazu czcionek od dostawców czcionek online.</dropdownList>
       </presentation>
       <presentation id="SyncModeThreshold">
         <decimalTextBox refId="SyncModeSlowLinkThreshold1" defaultValue="500">Wartość powolnego połączenia:[pole liczbowe] milisekund</decimalTextBox>

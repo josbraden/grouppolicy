@@ -5,7 +5,7 @@
   <description>escriba aquí la descripción</description>
   <resources>
     <stringTable>
-      <string id="TS_SUPPORTED_Windows10">Se requiere al menos Windows 10 o Windows Server 2016 Technical Preview 4</string>
+      <string id="TS_SUPPORTED_Windows10">Al menos Windows 10 o Windows Server 2016</string>
       <string id="TS_SUPPORTED_Windows8_or_ARM">Al menos Windows 8 o Windows RT</string>
       <string id="TS_SUPPORTED_Windows8_Server">Se requiere al menos Windows Server 2012</string>
       <string id="TS_SUPPORTED_Windows8_Enterprise_AND_Server"> Se requiere al menos Windows 8 Enterprise o Windows Server 2012</string>
@@ -320,12 +320,13 @@ Nota: la sesión de la consola se conoce también como Sesión 0. Se puede obten
       <string id="TS_GATEWAY_BASIC">Pedir credenciales, usar el protocolo Básico</string>
       <string id="TS_GATEWAY_LOGGED_ON_CREDS">Usar credenciales de inicio de sesión local</string>
       <string id="TS_GATEWAY_NTLM">Pedir credenciales, usar el protocolo NTLM</string>
+      <string id="TS_GATEWAY_NEGOTIATE">Pedir credenciales, usar el protocolo Negotiate</string>
       <string id="TS_GATEWAY_POLICY_AUTH_METHOD">Establecer el método de autenticación de la puerta de enlace de Escritorio remoto</string>
-      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Especifica el método de autenticación que los clientes deben usar cuando intenten conectarse a un servidor host de sesión de Escritorio remoto a través de un servidor de puerta de enlace de Escritorio remoto. Puede aplicar esta configuración de directiva o permitir que los usuarios la sobrescriban. De forma predeterminada, cuando se habilita esta configuración de directiva, se aplica. Cuando se aplica esta configuración de directiva, los usuarios no la pueden invalidar, incluso si seleccionan la opción "Usar esta configuración de servidor de Puerta de enlace de Escritorio remoto" en el cliente.
+      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Especifica el método de autenticación que los clientes deben usar cuando intenten conectarse a un servidor host de sesión de Escritorio remoto a través de un servidor de puerta de enlace de Escritorio remoto. Puedes aplicar esta configuración de directiva o permitir que los usuarios la sobrescriban. De forma predeterminada, cuando se habilita esta configuración de directiva, se aplica. Cuando se aplica esta configuración de directiva, los usuarios no la pueden invalidar, incluso si seleccionan la opción "Usar esta configuración de servidor de puerta de enlace de Escritorio remoto" en el cliente.
 
-Para permitir a los usuarios que sobrescriban esta configuración de directiva, seleccione la casilla "Permitir que los usuarios cambien esta configuración". Si lo hace, los usuarios podrán especificar un método de autenticación alternativo estableciendo la configuración en el cliente o usando un archivo RDP o un script HTML. Si los usuarios no especifican un método de autenticación alternativo, se usará de forma predeterminada el que usted especifique en esta configuración de directiva.
+Para permitir que los usuarios sobrescriban esta configuración de directiva, selecciona la casilla "Permitir que los usuarios cambien esta configuración". Si lo haces, los usuarios podrán especificar un método de autenticación alternativo estableciendo la configuración en el cliente o usando un archivo RDP o un script HTML. Si los usuarios no especifican un método de autenticación alternativo, se usará de forma predeterminada el que especifiques en esta configuración de directiva.
 
-Si deshabilita o no establece esta configuración de directiva, se usará el método de autenticación especificado por el usuario, en el caso de que se especifique uno. Si no se especifica un método de autenticación, se puede usar el protocolo NTLM habilitado en el cliente o una tarjeta inteligente para la autenticación.</string>
+Si deshabilitas o no estableces esta configuración de directiva, se usará el método de autenticación especificado por el usuario, en el caso de que se especifique uno. Si no se especifica un método de autenticación, se puede usar el protocolo Negotiate habilitado en el cliente o una tarjeta inteligente para la autenticación.</string>
       <string id="TS_GATEWAY_POLICY_ENABLE">Habilitar conexión a través de puerta de enlace de Escritorio remoto</string>
       <string id="TS_GATEWAY_POLICY_ENABLE_HELP">Si habilita esta configuración de directiva, cuando Conexión a Escritorio remoto no pueda conectar directamente con un equipo remoto (un servidor host de sesión de Escritorio remoto o un equipo con Escritorio remoto habilitado), los clientes intentarán conectarse al equipo remoto a través de un servidor de puerta de enlace de Escritorio remoto. En este caso, los clientes intentarán conectarse al servidor de puerta de enlace de Escritorio remoto que se especifica en la configuración de directiva "Establecer la dirección del servidor de puerta de enlace de Escritorio remoto".
 
@@ -1169,6 +1170,18 @@ Si habilita esta configuración de directiva, se bloqueará el inicio de sesión
 
 Si deshabilita o no establece esta configuración de directiva, aparecerá la pantalla Inicio y las aplicaciones se registrarán en segundo plano.</string>
 
+      <string id="TS_DX_USE_FULL_HWGPU">Usar la tarjeta de gráficos predeterminada del hardware para todas las sesiones de Servicios de Escritorio remoto.</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">Esta configuración de directiva permite a los administradores del sistema cambiar el procesamiento de gráficos para todas las sesiones de Servicios de Escritorio remoto.
+
+Si habilitas esta configuración de directiva, todas las sesiones de Servicios de Escritorio remoto usarán el procesador gráfico de hardware en lugar del controlador de representación básica de Microsoft como adaptador predeterminado.
+
+Si deshabilitas o no estableces esta configuración de directiva, todas las sesiones de Servicios de Escritorio remoto usarán el controlador de representación básica de Microsoft como adaptador predeterminado.
+
+Si no estableces esta configuración de directiva, las sesiones de Servicios de Escritorio remoto en el servidor de host de sesión de Escritorio remoto usarán el controlador de representación básica de Microsoft como adaptador predeterminado. En todos los demás casos, las sesiones de Servicios de Escritorio remoto usarán el procesador gráfico de hardware de forma predeterminada.
+
+NOTA: Esta configuración de directiva afecta solo a la unidad de procesamiento de gráficos (GPU) predeterminada en un equipo que tiene más de una GPU instalada. Todas las GPU adicionales se consideran adaptadores secundarios y se usan como representadores de hardware. Esta configuración de directiva no afecta a la configuración de la GPU de la sesión local.
+</string>
+      
     </stringTable>
     <presentationTable>
       <presentation id="TS_COLORDEPTH">

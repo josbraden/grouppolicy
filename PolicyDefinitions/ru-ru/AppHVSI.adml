@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Application Guard в Защитнике Windows</displayName>
+  <description>Настройка параметров Application Guard в Защитнике Windows</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Application Guard в Защитнике Windows</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Включение и выключение Application Guard в Защитнике Windows (WDAG)</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Эта политика включает изоляцию приложений с использованием Application Guard в Защитнике Windows.
+
+Application Guard в Защитнике Windows с помощью низкоуровневой оболочки Windows запускает приложения в виртуализированной среде. Когда в приложениях включено использование изоляции на базе виртуализованной системы безопасности, опасное поведение пользователя при работе с такими приложениями, а также уязвимости в них не смогут поставить под угрозу ядро и другие приложения, выполняемые вне виртуализированной среды.
+Перед тем как включить эту политику, необходимо определить списки доверенных корпоративных сайтов и настроить их с помощью политики изоляции сети (вставить ссылку на конкретную политику использования сети). Это нужно для того, чтобы в виртуализированной среде открывались только некорпоративные сайты.
+Примечание. Чтобы можно было блокировать систему, должны быть включены функции защиты Device Guard и изоляции для приложений. Все требования к безопасному блокированию системы см. в документации.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Настройка параметров буфера обмена Application Guard в Защитнике Windows</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Задаются параметры поведения буфера обмена при включенной изоляции приложений с помощью Application Guard в Защитнике Windows.
+
+Администраторы могут:
+полностью заблокировать функции буфера обмена при включенной безопасной виртуализации;
+разрешить копирование определенных типов содержимого из изолированного сеанса на главный компьютер;
+разрешить копирование определенных типов содержимого с главного компьютера в изолированный сеанс.
+
+Примечание. Мы не советуем администраторам разрешать копирование содержимого с главного компьютера в изолированный сеанс, поскольку к буферу обмена главного компьютера и его содержимому может получить доступ опасный изолированный сеанс.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Блокировать операции буфера обмена (по умолчанию)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Разрешить операции буфера обмена из изолированного сеанса на узел</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Разрешить операции буфера обмена с узла в изолированный сеанс</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Включить операции буфера обмена в обоих направлениях</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Настройка параметров печати Application Guard в Защитнике Windows</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Если выбран вариант "Печать в формате XPS", пользователи могут печатать документы из контейнера в формате XPS.
+Если выбран вариант "Печать в формате PDF", пользователи могут печатать документы из контейнера в формате PDF..
+Если выбран вариант "Печать на локальных принтерах", пользователи могут печатать документы из контейнера на локально подключенных принтерах.
+Если выбран вариант "Печать на имеющихся сетевых принтерах", пользователи могут печатать документы из изолированного контейнера на имеющихся сетевых принтерах, при этом они не могут находить новые сетевые принтеры.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Блокирование загрузки некорпоративного содержимого на корпоративных веб-сайтах в IE и Edge</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Когда этот параметр включен, блокируется любой сетевой трафик в Internet Explorer и Microsoft Edge на некорпоративные сайты, которые не запускаются в контейнере Application Guard в Защитнике Windows.
+
+Когда этот параметр выключен, сетевой трафик на некорпоративные сайты, которые не запускаются в контейнере Application Guard в Защитнике Windows, обрабатывается на главном компьютере.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Выберите параметр:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Указывается, что разрешено для поведения буфера обмена, когда операции буфера обмена включены (в десятичной системе):
+        </decimalTextBox>
+        <text>Это значение является битовой маской, определяющей типы файлов, для которых можно выполнять операции буфера обмена:
+
+b0001 — текстовый файл
+b0010 — файл точечного рисунка
+b0011 — текстовый файл и файл точечного рисунка
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Указываются включенные принтеры (в десятичной системе)
+        </decimalTextBox>
+        <text>Это значение является битовой маской, определяющей принтеры, доступные для изолированного сеанса    
+b0000 — печать отключена
+b0001 — печать в формате XPS (по умолчанию)
+b0010 — печать в формате PDF
+b0100 — печать на локальных принтерах
+b1000 — печать на имеющихся сетевых принтерах
+
+Например:
+если включена печать в формате XPS и печать на локальных принтерах, значение будет таким — b0001 | b0100, то есть b0101 (в десятичной системе — 5)
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

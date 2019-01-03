@@ -5,7 +5,7 @@
   <description>请在此处输入描述</description>
   <resources>
     <stringTable>
-      <string id="TS_SUPPORTED_Windows10">至少为 Windows 10 或 Windows Server 2016 Technical Preview 4</string>
+      <string id="TS_SUPPORTED_Windows10">至少为 Windows 10 或 Windows Server 2016</string>
       <string id="TS_SUPPORTED_Windows8_or_ARM">Windows 8 或 Windows RT 及以上版本</string>
       <string id="TS_SUPPORTED_Windows8_Server">至少为 Windows Server 2012</string>
       <string id="TS_SUPPORTED_Windows8_Enterprise_AND_Server"> 至少为 Windows 8 企业版或 Windows Server 2012</string>
@@ -320,12 +320,13 @@ c.	客户端请求的值
       <string id="TS_GATEWAY_BASIC">询问凭据，使用基本协议</string>
       <string id="TS_GATEWAY_LOGGED_ON_CREDS">使用本地登录凭据</string>
       <string id="TS_GATEWAY_NTLM">询问凭据，使用 NTLM 协议</string>
+      <string id="TS_GATEWAY_NEGOTIATE">询问凭据，使用协商协议</string>
       <string id="TS_GATEWAY_POLICY_AUTH_METHOD">设置 RD 网关身份验证方法</string>
       <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">指定客户端尝试通过 RD 网关服务器连接到 RD 会话主机服务器时必须使用的身份验证方法。可以强制执行此策略设置或允许用户覆盖此策略设置。默认情况下，将在启用此策略设置时强制执行。强制执行此策略设置时，用户将无法覆盖此设置，即使他们在客户端上选择了“使用这些 RD 网关服务器设置”选项也是如此。
 
-若要允许用户覆盖此策略设置，请选中“允许用户更改此设置”复选框。执行此操作时，用户可通过配置客户端上的设置或者通过使用 RDP 文件或 HTML 脚本指定备用身份验证方法。如果用户没有指定备用身份验证方法，则默认情况下，使用你在此策略设置中指定的身份验证方法。
+若要允许用户覆盖此策略设置，请选中“允许用户更改此设置”复选框。执行此操作时，用户可通过配置客户端上的设置或者通过使用 RDP 文件或 HTML 脚本指定备用身份验证方法。如果用户没有指定备用身份验证方法，则默认情况下，使用您在此策略设置中指定的身份验证方法。
 
-如果禁用或未配置此策略设置，则使用用户指定的身份验证方法(如果已指定)。如果未指定身份验证方法，则可以使用客户端或智能卡上启用的 NTLM 协议进行身份验证。</string>
+如果禁用或未配置此策略设置，则使用用户指定的身份验证方法(如果已指定)。如果未指定身份验证方法，则可以使用客户端或智能卡上启用的协商协议进行身份验证。</string>
       <string id="TS_GATEWAY_POLICY_ENABLE">启用通过 RD 网关连接</string>
       <string id="TS_GATEWAY_POLICY_ENABLE_HELP">如果启用此策略设置，则当远程桌面连接无法直接连接到远程计算机(RD 会话主机服务器或启用了远程桌面的计算机)时，客户端会尝试通过 RD 网关服务器连接到远程计算机。这种情况下，客户端将尝试连接到“设置 RD 网关服务器地址”策略设置中指定的 RD 网关服务器。
 
@@ -1169,6 +1170,18 @@ RD 会话主机服务器客户端与 RD 会话主机服务器断开连接后，R
 
 如果禁用或未配置此策略设置，则可显示“开始”屏幕，且可在后台注册应用。</string>
 
+      <string id="TS_DX_USE_FULL_HWGPU">为所有远程桌面服务会话使用硬件默认图形适配器</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">系统管理员可以使用此策略设置来更改所有远程桌面服务会话的图形呈现方式。
+
+如果你启用此策略设置，所有远程桌面服务会话将使用硬件图形呈现器而不是 Microsoft 基本呈现驱动程序作为默认适配器。
+
+如果你禁用此策略设置，所有远程桌面服务会话将使用 Microsoft 基本呈现驱动程序作为默认适配器。
+
+如果你不配置此策略设置，RD 会话主机服务器上的远程桌面服务将使用 Microsoft 基本呈现驱动程序作为默认适配器。对于其他所有情况，远程桌面服务会话将默认使用硬件图形呈现器。
+
+注意: 该策略设置只会影响装有多个 GPU 的计算机上的默认图形处理单元(GPU)。其他所有 GPU 将被视为辅助适配器，并用作硬件呈现器。本地会话的 GPU 配置不受此策略设置的影响。
+</string>
+      
     </stringTable>
     <presentationTable>
       <presentation id="TS_COLORDEPTH">

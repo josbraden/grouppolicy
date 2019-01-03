@@ -28,14 +28,13 @@ BitLocker 恢复信息包括恢复密码和一些唯一的标识符数据。还�
 
 注意: 此策略仅适用于运行 Windows Server 2008 或 Windows Vista 的计算机。
 
-在含有兼容的受信任平台模块(TPM)的计算机上，启动时可以使用两种身份验证方法，以便为加密数据提供附加保护。当计算机启动时，它会要求用户插入包含启动密钥的 U 盘。另外还会要求用户输入一个 4 到 20 位数的启动个人标识号(PIN)。
+在含有兼容的受信任平台模块(TPM)的计算机上，启动时可以使用两种身份验证方法，以便为加密数据提供附加保护。当计算机启动时，它会要求用户插入包含启动密钥的 U 盘。另外还会要求用户输入一个 6 到 20 位数的启动个人标识号(PIN)。
 
 在没有兼容的 TPM 的计算机上，需要一个包含启动密钥的 U 盘。如果没有 TPM，则 BitLocker 加密数据只能受此 U 盘上的密钥资料保护。
 
 如果启用此策略设置，则该向导将显示允许用户为 BitLocker 配置高级启动选项的页面。可以为含有 TPM 和没有 TPM 的计算机进一步配置设置选项。
 
 如果禁用或未配置此策略设置，则 BitLocker 安装向导将显示用户可用来在含有 TPM 的计算机上启用 BitLocker 的基本步骤。在此基本向导中，无法配置任何其他启动密钥或启动 PIN。
-
 </string>
 
       <string id="ConfigureStartupUsage_Name">启动时需要附加身份验证(Windows Server 2008 和 Windows Vista)</string>
@@ -47,15 +46,13 @@ BitLocker 恢复信息包括恢复密码和一些唯一的标识符数据。还�
 
 如果要在没有 TPM 的计算机上使用 BitLocker，则应选中“没有兼容的 TPM 时允许 BitLocker”复选框。在此模式下，需要密码或 USB 驱动器才能启动。使用启动密钥时，用于加密驱动器的密钥信息存储在 USB 驱动器中，以创建 USB 密钥。当插入 USB 密钥时，对该驱动器的访问将通过身份验证，驱动器处于可访问状态。如果 USB 密钥丢失或不可用，或者忘记了密码，则需要使用其中一个 BitLocker 恢复选项才能访问该驱动器。
 
-在含有兼容的 TPM 的计算机上，启动时可使用四种身份验证方法，以便为加密数据提供附加保护。计算机启动时，可只使用 TPM 进行身份验证，也可同时要求插入包含启动密钥和/或 4 到 20 位数个人标识号(PIN)的 U 盘。
+在含有兼容的 TPM 的计算机上，启动时可使用四种身份验证方法，以便为加密数据提供附加保护。计算机启动时，可只使用 TPM 进行身份验证，也可同时要求插入包含启动密钥和/或 6 到 20 位数个人标识号(PIN)的 U 盘。
 
 如果启用此策略设置，则用户可在 BitLocker 安装向导中配置高级启动选项。
 
 如果禁用或未配置此策略设置，则用户在含有 TPM 的计算机上只能配置基本选项。
 
 注意: 如果希望要求使用启动 PIN 和 U 盘，则必须使用命令行工具 manage-bde 而不是 BitLocker 驱动器加密安装向导来配置 BitLocker 设置。
-
-
 
 </string>
       <string id="AllowNetworkUnlockAtStartup_Name">允许启动时网络解锁</string>
@@ -312,6 +309,11 @@ BitLocker 恢复信息包括恢复密码和一些唯一的标识符数据。还�
       </string>
       <string id="MorBehavior_Name">禁止在重新启动时覆盖内存</string>
 
+      <string id="DisableExternalDMAUnderLock_Help">此策略设置允许你阻止所有热插拔 PCI 下游端口直接内存存取 (DMA)，直到用户登录 Windows。用户登录后，Windows 会枚举连接到热插拔 PCI 端口的 PCI 设备。每次用户锁定计算机，都将阻止无子设备的热插拔 PCI 端口进行 DMA，直到用户再次登录。计算机解锁时枚举的设备将继续工作，直到拔出。只在启用 BitLocker 或设备加密时才执行此策略设置。
+
+      </string>
+      <string id="DisableExternalDMAUnderLock_Name">此计算机锁定时禁用新的 DMA 设备</string>
+
       <string id="FVEOSCategory">操作系统驱动器</string>
       <string id="FVEFDVCategory">固定数据驱动器</string>
       <string id="FVERDVCategory">可移动数据驱动器</string>
@@ -373,26 +375,22 @@ BitLocker 恢复信息包括恢复密码和一些唯一的标识符数据。还�
 
 
       <string id="MinimumPINLength_Name">为启动配置最小的 PIN 长度</string>
-      <string id="MinimumPINLength_Help">使用此策略设置可以为受信任平台模块(TPM)的启动 PIN 配置最小长度。此策略设置将在打开 BitLocker 时应用。启动 PIN 的最小长度必须是 4 位数，最大长度可达 20 位数。
+      <string id="MinimumPINLength_Help">使用此策略设置可以为受信任平台模块(TPM)的启动 PIN 配置最小长度。此策略设置将在打开 BitLocker 时应用。启动 PIN 的最小长度必须是 6 位数，最大长度可达 20 位数。
 
 如果启用此策略设置，则可要求在设置启动 PIN 时使用最少的位数。
 
-如果禁用或未配置此策略设置，则用户可以配置 4 到 20 位数之间任意长度的启动 PIN。
-
-      
+如果禁用或未配置此策略设置，则用户可以配置 6 到 20 位数之间任意长度的启动 PIN。
 
       </string>
 
       <string id="OSAllowDRA_Name">允许基于证书的数据恢复代理</string>
 
       <string id="FDVDenyWriteAccess_Name">拒绝对不受 BitLocker 保护的固定驱动器的写访问</string>
-      <string id="FDVDenyWriteAccess_Help">此策略设置决定是否需要 BitLocker 保护才能使计算机上的固定数据驱动器可写。此策略设置将在打开 BitLocker 时应用。
+      <string id="FDVDenyWriteAccess_Help">此策略设置决定了是否需要启用 BitLocker 保护才能使计算机上的固定数据驱动器可写。
 
-如果启用此策略设置，则所有不受 BitLocker 保护的固定数据驱动器都安装成只读驱动器。受 BitLocker 保护的驱动器将安装成可读写驱动器。
+如果启用此策略设置，则所有不受 BitLocker 保护的固定数据驱动器都将安装成只读驱动器。受 BitLocker 保护的驱动器将安装成可读写驱动器。
 
 如果禁用或未配置此策略设置，则计算机上的所有固定数据驱动器都将安装成可读写驱动器。
-
-      
 
       </string>
 
@@ -691,6 +689,14 @@ Windows 触摸键盘(如平板电脑使用的键盘)不可用于预启动环境�
       
       </string>
 
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Name">允许与 InstantGo 或 HSTI 兼容的设备选择不使用预启动 PIN。</string>
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Help">此策略设置允许与 InstantGo 或 Microsoft 硬件安全测试接口 (HSTI)兼容的设备上的用户不必具有用于预启动身份验证的 PIN。此设置将覆盖兼容硬件上“启动时需要附加身份验证”策略的“有 TPM 时需要启动 PIN”和“有 TPM 时需要启动密钥和 PIN”选项。
+
+如果启用此策略设置，则 InstantGo 和 HSTI 兼容设备上的用户将可以选择无需预启动身份验证即可启用 BitLocker。
+
+如果未启用此策略，则“启动时需要附加身份验证”策略的选项适用。
+      </string>
+
       <string id="AllowSecureBootForIntegrity_Name">允许对完整性验证使用安全引导</string>
       <string id="AllowSecureBootForIntegrity_Help">使用此策略设置，可以配置是否允许将安全引导作为 BitLocker 操作系统驱动器的平台完整性提供程序。
 
@@ -968,7 +974,7 @@ Windows 触摸键盘(如平板电脑使用的键盘)不可用于预启动环境�
       </presentation>
 
      <presentation id="MinimumPINLength">
-        <decimalTextBox refId="MinPINLength" defaultValue="4">最小字符数:</decimalTextBox>
+        <decimalTextBox refId="MinPINLength" defaultValue="6">最小字符数:</decimalTextBox>
       </presentation>
 
      <presentation id="FDVPassphrase_Name">

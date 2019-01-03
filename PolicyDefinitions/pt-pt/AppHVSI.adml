@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>Configuração do Windows Defender Application Guard</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Ligar/Desligar o Windows Defender Application Guard (WDAG)</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Esta política ativa o isolamento de aplicações utilizando o Windows Defender Application Guard.
+
+O Windows Defender Application Guard utiliza o Windows Hypervisor para iniciar aplicações num ambiente virtualizado. Quando as aplicações são configuradas para utilizar a virtualização com base no isolamento de segurança, nem o comportamento do utilizador não fidedigno ao utilizar estas aplicações, nem as vulnerabilidades nessas aplicações podem comprometer o kernel e outras aplicações em execução fora do ambiente virtualizado.
+Antes de ativar esta política, tem de definir listas de sites empresariais fidedignos e estas podem ser configuradas através da utilização da política de isolamento de Rede (inserir ligação à política de rede específica). Garantem que apenas são abertos os sites não empresariais no ambiente virtualizado.
+Nota: Para bloquear um sistema, certifique-se de que as funcionalidades de segurança do Device Guard e de isolamento de aplicações estão ambas ativadas. Consulte a documentação para conhecer um conjunto completo de requisitos para bloquear um sistema de forma segura.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Configurar definições da área de transferência do Windows Defender Application Guard</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Especifica o comportamento da área de transferência ao utilizar o isolamento de aplicações com o Windows Defender Application Guard.
+
+Os administradores podem:
+Desativar completamente a funcionalidade de área de transferência quando a Segurança de Virtualização está ativada.
+Ativar a cópia de alguns conteúdos de uma sessão isolada para o computador anfitrião.
+Ativar a cópia de alguns conteúdos do computador anfitrião para a sessão isolada.
+
+Nota: Recomendamos que os administradores não ativem a cópia de conteúdo do computador anfitrião para a sessão isolada. Isto faria com que uma sessão isolada comprometida pudesse aceder à área de transferência do computador anfitrião e ao respetivo conteúdo.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Bloquear as operações (padrão) da área de transferência</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Ativar a operação da área de transferência de uma sessão isolada para um anfitrião</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Ativar a operação da área de transferência de um anfitrião para a sessão isolada</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Ativar a operação da área de transferência em ambas as direções</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Configurar Definições de Impressão do Windows Defender Application Guard</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Se a opção para ativar a impressão para XPS estiver selecionada, os utilizadores podem imprimir documentos a partir do contentor para o formato XPS.
+Se a opção para ativar a impressão para PDF estiver selecionada, os utilizadores podem imprimir documentos a partir do contentor para o formato PDF.
+Se a opção para ativar a impressão para impressoras locais estiver selecionada, os utilizadores podem imprimir documentos a partir do contentor para uma impressora ligada localmente.
+Se a opção para ativar a impressão em impressoras de rede existentes estiver selecionada, os utilizadores podem imprimir documentos a partir do contentor isolado utilizando as impressoras de rede existentes. Os utilizadores não podem procurar novas impressoras de rede.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Bloquear sites Empresariais para carregar conteúdos não Empresariais no IE e Edge</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Se estiver ativada, esta opção bloqueia qualquer tráfego de rede do Internet Explorer e Microsoft Edge para sites não empresariais em que não seja possível iniciar num contentor do Windows Defender Application Guard.
+
+Se estiver desativada, esta opção processa no computador anfitrião qualquer tráfego de rede para sites não empresariais em que não seja possível iniciar num contentor do Windows Defender Application Guard.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Selecione uma Opção:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Especifica o que é permitido para o comportamento da área de transferência quando as operações desta área estão ativadas (decimal):
+        </decimalTextBox>
+        <text>Este valor é uma máscara de bits que controla os tipos de ficheiro que podem ser utilizados para operações da área de transferência:
+
+b0001 - Ficheiro de TEXTO
+b0010 - Ficheiro de Mapa de bits
+b0011 - São suportados ficheiros de TEXTO e de Mapa de bits
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Especifica as impressoras que são ativadas (decimal)
+        </decimalTextBox>
+        <text>Este valor é uma máscara de bits que controla que impressoras são ativadas numa sessão isolada    
+b0000 - A impressão está desativada
+b0001 - Ativar a Impressão XPS (Predefinição)
+b0010 - Ativar a Impressão para PDF
+b0100 - Ativar a Impressão para Impressoras Locais
+b1000 - Ativar a Impressão para impressoras de Rede existentes
+
+Por exemplo:
+Se as impressoras XPS e Local estiverem ativadas, o valor passará a ser b0001 | b0100, ou seja, b0101 (decimal 5)
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

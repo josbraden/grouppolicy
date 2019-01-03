@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>Konfiguration für Windows Defender Application Guard</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Windows Defender Application Guard (WDAG) aktivieren/deaktivieren</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Durch diese Richtlinie wird die Anwendungsisolation unter Verwendung von Windows Defender Application Guard aktiviert.
+
+Windows Defender Application Guard nutzt Windows-Hypervisor, um Anwendungen in einer virtualisierten Umgebung zu starten. Wenn Anwendungen für die Verwendung der virtualisierungsbasierten Sicherheitsisolation konfiguriert sind, können nicht vertrauenswürdiges Benutzerverhalten bei Verwendung dieser Anwendungen sowie Sicherheitsrisiken in diesen Anwendungen nicht zur Kompromittierung des Kernels und anderer Anwendungen führen, die außerhalb der virtualisierten Umgebung ausgeführt werden.
+Bevor Sie diese Richtlinie aktivieren, müssen Sie Listen vertrauenswürdiger Unternehmenswebsites definieren, die über die Richtlinie für die Netzwerkisolation eingerichtet werden können (Link zur spezifischen Netzwerkrichtlinie einfügen). Sie stellen sicher, dass nur Nicht-Unternehmenswebsites innerhalb der virtualisierten Umgebung geöffnet werden.
+Hinweis: Wenn Sie ein System sperren möchten, vergewissern Sie sich, dass Device Guard-Sicherheitsfeatures und zusätzlich die Anwendungsisolation für Anwendungen aktiviert sind. Informationen zu den vollständigen Anforderungen zum sicheren Sperren eines Systems finden Sie in der Dokumentation.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Zwischenablageeinstellungen für Windows Defender Application Guard konfigurieren</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Gibt an, wie sich die Zwischenablage bei Verwendung der Anwendungsisolation mit Windows Defender Application Guard verhält.
+
+Administratoren können
+Zwischenablagefunktionen vollständig deaktivieren, wenn die Virtualisierungssicherheit aktiviert ist.
+das Kopieren bestimmter Inhalte aus einer isolierten Sitzung auf den Hostcomputer aktivieren.
+das Kopieren bestimmter Inhalte vom Hostcomputer in eine isolierte Sitzung aktivieren.
+
+Hinweis: Administratoren wird davon abgeraten, das Kopieren von Inhalten vom Hostcomputer in die isolierte Sitzung zu aktivieren. Dies würde bedeuten, dass von einer kompromittierten isolierten Sitzung auf die Zwischenablage des Hostcomputers sowie auf die darin abgelegten Inhalte zugegriffen werden könnte.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Zwischenablagevorgänge blockieren (Standard)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Zwischenablagevorgänge von einer isolierten Sitzung zum Host aktivieren</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Zwischenablagevorgänge von einem Host zur isolierten Sitzung aktivieren</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Bidirektionale Zwischenablagevorgänge aktivieren</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Druckeinstellungen für Windows Defender Application Guard konfigurieren</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Bei Auswahl von "Drucken in XPS aktivieren" können Benutzer Dokumente innerhalb des Containers im XPS-Format drucken.
+Bei Auswahl von "Drucken in PDF aktivieren" können Benutzer Dokumente innerhalb des Containers im PDF-Format drucken.
+Bei Auswahl von "Drucken auf lokalen Druckern aktivieren" können Benutzer Dokumente innerhalb des Containers auf einem lokal angeschlossenen Drucker drucken.
+Bei Auswahl von "Drucken auf vorhandenen Netzwerkdruckern aktivieren" können Benutzer die vorhandenen Netzwerkdrucker verwenden, um Dokumente innerhalb des isolierten Containers zu drucken. Benutzer können nicht nach neuen Netzwerkdruckern suchen.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Unternehmenswebsites am Laden von Nicht-Unternehmensinhalten in Internet Explorer und Edge hindern</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Falls aktiviert, wird Netzwerkdatenverkehr von Internet Explorer und Microsoft Edge zu Nicht-Unternehmenswebsites blockiert, die nicht in einem Windows Defender Application Guard-Container gestartet werden können.
+
+Falls deaktiviert, wird Netzwerkdatenverkehr zu Nicht-Unternehmenswebsites, die nicht in einem Windows Defender Application Guard-Container gestartet werden können, auf dem Hostcomputer gerendert.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Wählen Sie eine Option aus:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Gibt an, welches Verhalten der Zwischenablage zulässig ist, wenn Zwischenablagevorgänge aktiviert sind (Dezimalwert):
+        </decimalTextBox>
+        <text>Dieser Wert ist eine Bitmaske, die steuert, welche Dateitypen für Zwischenablagevorgänge verwendet werden können:
+
+b0001 – TEXT-Datei
+b0010 – Bitmapdatei
+b0011 – sowohl TEXT- als auch Bitmapdateien werden unterstützt.
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Gibt an, welche Drucker aktiviert sind (Dezimalwert).
+        </decimalTextBox>
+        <text>Dieser Wert ist eine Bitmaske, die steuert, welche Drucker in einer isolierten Sitzung aktiviert sind.    
+b0000 – Das Drucken ist deaktiviert.
+b0001 – Drucken in XPS aktivieren (Standard)
+b0010 – Drucken in PDF aktivieren
+b0100 – Drucken auf lokalen Druckern aktivieren
+b1000 – Drucken auf vorhandenen Netzwerkdruckern aktivieren
+
+Beispiel:
+Wenn XPS und lokale Drucker aktiviert sind, wird der Wert zu b0001 | b0100, was b0101 (Dezimalwert 5) entspricht.
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

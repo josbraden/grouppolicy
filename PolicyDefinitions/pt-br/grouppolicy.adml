@@ -11,6 +11,32 @@
       <string id="FontMitigation_On">Bloquear fontes não confiáveis e registrar eventos</string>
       <string id="FontMitigation_Off">Não bloquear fontes não confiáveis</string>
       <string id="FontMitigation_Audit">Registrar eventos sem bloquear fontes não confiáveis</string>
+	  
+	  <string id="ProcessMitigationOptions_List">Opções de mitigação de processo</string>
+      <string id="ProcessMitigationOptions_List_Help">
+        Esse recurso de segurança fornece um meio para substituir configurações MitigationOptions de processos individuais. Isso pode ser usado para impor diversas políticas de segurança específicas aos aplicativos. O nome do aplicativo é especificado como o nome do valor, incluindo a extensão. O valor é especificado como um campo de bits com uma série de sinalizadores em posições específicas. Os bits podem ser definidos como 0 (desativação forçada da configuração), 1 (ativação forçada da configuração), ou ? (a configuração retém seu valor existente antes da avaliação do GPO). Os locais de bits reconhecidos são:
+
+       PROCESS_CREATION_MITIGATION_POLICY_DEP_ENABLE (0x00000001)
+        Habilita a prevenção de execução de dados (DEP) para o processo filho
+
+       PROCESS_CREATION_MITIGATION_POLICY_DEP_ATL_THUNK_ENABLE (0x00000002)
+        Habilita a emulação de conversão DEP-ATL para o processo filho. Emulação de conversão DEP ATL faz com que o sistema intercepte falhas NX originadas da camada de conversão da ATL (Active Template Library). 
+
+       PROCESS_CREATION_MITIGATION_POLICY_SEHOP_ENABLE (0x00000004)
+        Permite que o manipulador de exceção estruturado substitua a proteção (SEHOP) para o processo filho. SEHOP bloqueia explorações que usam a técnica de substituição do manipulador de exceção estruturada (SEH). 
+
+       PROCESS_CREATION_MITIGATION_POLICY_FORCE_RELOCATE_IMAGES_ALWAYS_ON (0x00000100)
+        A política ASLR (Address Space Layout Randomization) forçosamente troca a base das imagens que não são compatíveis com a base dinâmica agindo como se ocorresse uma colisão de base de imagem no tempo de carregamento. Se realocações forem necessárias, as imagens que não tenham uma seção de realocação de base não serão carregadas. 
+
+         PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_ON (0x00010000)
+        PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_OFF (0x00020000)
+        A política aleatória ascendente, que inclui as opções de randomização de pilha, faz com que um local aleatório seja usado como o endereço do usuário mais baixo. 
+
+        Por exemplo, para habilitar PROCESS_CREATION_MITIGATION_POLICY_DEP_ENABLE e PROCESS_CREATION_MITIGATION_POLICY_FORCE_RELOCATE_IMAGES_ALWAYS_ON, desabilite PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_OFF e para deixar todas as outras opções em seus valores padrão, especifique um valor de:
+        ??? 0??????? 1??????? 1
+
+        Sinalizadores de configuração não especificados aqui para qualquer valor diferente de ? resultam em um comportamento indefinido.	  
+</string>
 
       <string id="ResetDfsClientInfoDuringRefreshPolicy">Habilitar sincronização do controlador de domínio AD/DFS durante atualização da política</string>
       <string id="ResetDfsClientInfoDuringRefreshPolicy_Help">A habilitação dessa configuração faz com que o Cliente da Política de Grupo se conecte ao mesmo controlador de domínio para compartilhamentos DFS que o que está sendo usado para o Active Directory.
@@ -24,6 +50,37 @@
 
 
 </string>
+      <string id="EnableCDP">Continuar experiências neste dispositivo</string>
+      <string id="EnableCDP_Help">
+Essa configuração de política determina se o dispositivo Windows tem permissão para participar de experiências entre dispositivos (experiências contínuas).
+
+Se você habilitar essa configuração de política, o dispositivo Windows poderá ser descoberto por outros dispositivos Windows que pertencem ao mesmo usuário e podem participar de experiências entre dispositivos.
+
+Se você desabilitar essa configuração de política, o dispositivo Windows não poderá ser descoberto por outros dispositivos e não poderá participar de experiências entre dispositivos.
+
+Se você não definir essa configuração de política, o comportamento padrão dependerá da edição do Windows. As alterações dessa política entram em vigor na reinicialização.
+      </string>
+      <string id="EnableAppUriHandlers">Configurar a criação de link da Web para aplicativo com manipuladores de URI de aplicativo</string>
+      <string id="EnableAppUriHandlers_Help">
+Essa configuração de política determina se o Windows dá suporte à criação de link da Web para aplicativo com manipuladores de URI de aplicativo.
+
+Habilitar essa configuração de política habilita a criação de link da Web para aplicativo, para que os aplicativos possam ser iniciados com um URI http(s).
+
+Desabilitar esta política desabilita a criação de link da Web para aplicativo, e os URIs http(s) serão abertos no navegador padrão, em vez de iniciar o aplicativo associado.
+
+Se você não definir essa configuração de política, o comportamento padrão dependerá da edição do Windows. As alterações nessa política entram em vigor na reinicialização.
+      </string>
+      <string id="Fonts">Fontes</string>
+      <string id="EnableFontProviders">Habilitar Provedores de Fontes</string>
+      <string id="EnableFontProviders_Help">
+        Essa configuração de política determina se o Windows tem permissão para baixar fontes e dados de catálogos de fontes de um provedor de fontes online.
+        
+        Se você habilitar essa configuração de política, o Windows consultará periodicamente um provedor de fontes online para determinar se um novo catálogo de fontes está disponível. Se necessário, o Windows também poderá baixar dados de fontes para formatar ou renderizar texto.
+        
+        Se você desabilitar essa configuração de política, o Windows não vai se conectar a um provedor de fontes online e só vai enumerar fontes instaladas localmente.
+      
+        Se você não definir essa configuração de política, o comportamento padrão dependerá da edição do Windows. Alterações nessa política entram em vigor na reinicialização.
+      </string>
       <string id="EnableLogonOptimization">Configurar o armazenamento em cache da Política de Grupo</string>
       <string id="EnableLogonOptimization_Help">
         
@@ -491,6 +548,12 @@ Se você desabilitar ou não definir esta configuração de política, a Políti
     <presentationTable>
       <presentation id="Font_List">
         <dropdownList refId="FontMitigation_DL" defaultItem="0" noSort="true">Opções de Mitigação</dropdownList>
+      </presentation>
+      <presentation id="ProcessMitigationOptions_List">
+        <listBox refId="ProcessMitigationOptionsList">Opções de mitigação de processo</listBox>
+      </presentation>
+      <presentation id="FontProvidersPolicy">
+        <dropdownList refId="FontProvidersOption" noSort="true" defaultItem="0">O Serviço de Cache de Fontes do Windows deve ter permissão para baixar fontes e dados de catálogos de fontes de provedores de fontes online.</dropdownList>
       </presentation>
       <presentation id="SyncModeThreshold">
         <decimalTextBox refId="SyncModeSlowLinkThreshold1" defaultValue="500">Valor de link lento:[campo de número] milissegundos</decimalTextBox>

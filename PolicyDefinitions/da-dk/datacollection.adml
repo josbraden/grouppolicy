@@ -10,9 +10,17 @@
       <string id="AllowTelemetry_1">1 – Standard</string>
       <string id="AllowTelemetry_2">2 - Forbedret</string>
       <string id="AllowTelemetry_3">3 - Fuld</string>
-      <string id="AllowTelemetry_Explain">Denne politikindstilling bestemmer mængden af de diagnosticerings- og brugsdata, der rapporteres til Microsoft. Hvis værdien er 0, sendes der et minimum af data til Microsoft. Disse data omfatter Værktøj til fjernelse af skadelig software (MSRT) og Windows Defender-data, hvis det er aktiveret, samt indstillinger for telemetriklienten. Hvis værdien indstilles til 0, gælder den kun for Enterprise-, EDU-, IoT- og serverenheder. Hvis værdien indstilles til 0 for andre enheder, svarer det til at vælge værdien 1. Hvis værdien er 1, bliver der kun sendt en grundlæggende mængde diagnosticerings- og brugsdata. Bemærk, hvis værdien 0 eller 1 indstilles, vil det forringe oplevelsen på enheden. Hvis værdien er 2, sendes der udvidede diagnosticerings- og forbrugsdata. Hvis værdien er 3, sendes de samme data som ved værdien 2 plus yderligere diagnosticeringsdata, herunder de filer og det indhold, der kan have forårsaget problemet. Telemetrindstillingen for Windows 10 gælder for Windows-operativsystemet og visse førstepartsapps. Denne indstilling gælder ikke tredjepartsapps, der kører på Windows 10.
+      <string id="AllowTelemetry_Explain">Denne politikindstilling bestemmer, hvor mange Windows-diagnosticeringsdata der sendes til Microsoft. Ved værdien 0 (Sikkerhed) sendes færrest mulige data til Microsoft for at beskytte Windows mest muligt. Windows-sikkerhedskomponenter som Værktøj til fjernelse af skadelig software (MSRT) og Windows Defender kan sende data til Microsoft på dette niveau, hvis de er aktiveret. Angivelsen af en værdi på 0 gælder kun for Enterprise-, EDU-, IoT- og Server-enheder. Hvis du angiver en værdi på 0 for andre enheder, svarer det til at angive en værdi på 1. 
 
-Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kan brugerne konfigurere telemetriniveauet under Indstillinger.
+Ved værdien 1 (Grundlæggende) sendes de samme data som ved værdien 0 samt en meget begrænset mængde diagnosticeringsdata, f.eks. grundlæggende enhedsoplysninger, kvalitetsrelaterede data og oplysninger om appkompatibilitet. Bemærk, at hvis du angiver værdien 0 eller 1, vil det medføre, at visse oplevelser på enheden forringes.
+
+Ved værdien 2 (Udvidet) sendes de samme data som ved værdien 1 samt yderligere data, f.eks. hvordan Windows, Windows Server, Systemcenter og apps bruges, hvordan de fungerer, samt avancerede pålidelighedsdata.
+
+Ved værdien 3 (Fuld) sendes de samme data som ved værdien 2 samt avancerede diagnosticeringsdata, der bruges til at diagnosticere og løse problemer med enheder. Disse data kan omfatte de filer og det indhold, der kan være årsag til et problem med enheden.
+
+Indstillingerne for Windows 10-diagnosticeringsdata gælder for Windows-operativsystemet og apps, der er inkluderet i Windows. Indstillingen gælder ikke for tredjepartsapps på Windows 10.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kan brugere konfigurere telemetriniveauet under Indstillinger.
 
 </string>
       <string id="EnableExperimentation">Deaktiver foreløbige funktioner eller indstillinger</string>
@@ -24,6 +32,25 @@ Hvis du deaktiverer denne politikindstilling, slås alle eksperimenter fra.
 
 Hvis du undlader at konfigurere denne indstilling, kan brugeren konfigurere indstillingen "Lad Microsoft prøve funktioner på dette build" under Indstillinger.
 </string>
+      <string id="TelemetryProxy">Konfigurer brugeroplevelser for tilsluttede brugere samt telemetri</string>
+      <string id="TelemetryProxy_Explain">Med denne politikindstilling kan du videresende anmodninger om Tilsluttet brugeroplevelse og telemetri til en proxyserver.
+
+Hvis du aktiverer politikindstillingen, kan du angive FQDN eller IP-adressen på destinationsenheden i din organisations netværk (og eventuelt et portnummer, hvis der er brug for det). Tilslutningen sker via en SSL-forbindelse (Secure Sockets Layer). Hvis den navngivne proxyanmodning ikke lykkes, eller hvis du deaktiverer eller undlader at konfigurere politikindstillingen, bliver data om Tilsluttet brugeroplevelse og telemetri sendt til Microsoft ved brug af standardproxykonfigurationen.
+
+Formatet af denne indstilling er &lt;server&gt;:&lt;port&gt; 
+</string>
+      
+      <string id="CommercialId">Konfigurer det kommercielle id</string>
+      <string id="CommercialId_Explain">Denne politikindstilling definerer det id, der bruges til entydigt at tilknytte denne enheds telemetridata som tilhørende en given organisation. Hvis din organisation deltager i et program, der kræver, at denne enhed skal identificeres som tilhørende din organisation, kan du bruge denne indstilling til at levere dette id. Værdien til denne indstilling leveres af Microsoft som en del af programmets onboardingproces. 
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, vil Microsoft ikke kunne bruge dette id til at knytte denne computer og dens telemetridata til din organisation.
+</string>
+
+      <string id="DisableEnterpriseAuthProxy">Konfigurer brugen af godkendt proxy for tjenesten Tilsluttet brugeroplevelse og telemetri</string>
+      <string id="DisableEnterpriseAuthProxy_1">Aktivér brug af godkendt proxy</string>
+      <string id="DisableEnterpriseAuthProxy_2">Deaktiver brug af godkendt proxy</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">Denne politikindstilling forhindrer tjenesten Tilsluttet brugeroplevelse og telemetri i automatisk at bruge en godkendt proxy til at sende data tilbage til Microsoft på Windows 10. Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, bruger tjenesten Tilsluttet brugeroplevelse og telemetri automatisk en godkendt proxy til at sende data tilbage til Microsoft. Hvis du aktiverer denne politik, forhindres tjenesten Tilsluttet brugeroplevelse og telemetri i automatisk at bruge en godkendt proxy.</string>
+
     </stringTable>
     <presentationTable>
       <presentation id="AllowTelemetry">
@@ -31,6 +58,19 @@ Hvis du undlader at konfigurere denne indstilling, kan brugeren konfigurere inds
       </presentation>
       <presentation id="EnableExperimentation">
         <dropdownList refId="EnableExperimentation" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+        <label>Navn på proxyserver:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+        <label>Kommercielt id:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
       </presentation>
     </presentationTable>
   </resources>

@@ -28,14 +28,13 @@ Nota: durante l'installazione di BitLocker potrebbe verificarsi l'inizializzazio
 
 Nota: questa impostazione dei criteri è applicabile solo ai computer che eseguono Windows Server 2008 o Windows Vista.
 
-In un computer con un TPM (Trusted Platform Module) compatibile è possibile utilizzare due tipi di autenticazione all'avvio per garantire una protezione aggiuntiva per i dati crittografati. Il primo tipo di autenticazione richiede agli utenti di inserire un'unità flash USB contenente una chiave di avvio all'avvio del computer. Il secondo tipo richiede agli utenti di inserire un codice PIN di avvio composto da un minimo di 4 e un massimo di 20 cifre.
+In un computer con un TPM (Trusted Platform Module) compatibile è possibile utilizzare due tipi di autenticazione all'avvio per garantire una protezione aggiuntiva per i dati crittografati. Il primo tipo di autenticazione richiede agli utenti di inserire un'unità flash USB contenente una chiave di avvio all'avvio del computer. Il secondo tipo richiede agli utenti di inserire un codice PIN di avvio composto da un minimo di 6 e un massimo di 20 cifre.
 
 Nei computer senza un TPM compatibile è necessaria un'unità flash USB contenente una chiave di avvio. Senza un TPM, i dati crittografati tramite BitLocker vengono protetti soltanto dal materiale della chiave nell'unità flash USB.
 
 Se si abilita questa impostazione dei criteri, la procedura guidata visualizzerà la pagina per consentire all'utente di configurare opzioni di avvio avanzate per BitLocker. È possibile configurare ulteriormente le opzioni relative alle impostazioni per i computer con e senza un TPM.
 
 Se si disabilita o non si configura questa impostazione dei criteri, la configurazione guidata BitLocker visualizzerà i passaggi di base che consentono agli utenti di attivare BitLocker nei computer con un TPM. In questa procedura di base non è possibile configurare chiavi o PIN di avvio aggiuntivi.
-
 </string>
 
       <string id="ConfigureStartupUsage_Name">Richiedi autenticazione aggiuntiva all'avvio (Windows Server 2008 e Windows Vista)</string>
@@ -47,15 +46,13 @@ Nota: è possibile richiedere all'avvio una sola opzione di autenticazione aggiu
 
 Se si desidera utilizzare BitLocker in un computer privo di TPM, selezionare la casella di controllo "Consenti BitLocker senza un TPM compatibile". In questa modalità è necessaria una password o un'unità USB per l'avvio. Se si utilizza una chiave di avvio, le informazioni sulla chiave utilizzate per crittografare l'unità saranno archiviate nell'unità USB, creando così una chiave USB. Quando si inserirà la chiave USB, l'accesso all'unità verrà autenticato e l'unità sarà accessibile. In caso di smarrimento o indisponibilità della chiave USB o se si dimentica la password, per accedere all'unità sarà necessario utilizzare una delle opzioni di ripristino di BitLocker.
 
-Per fornire protezione aggiuntiva ai dati crittografati in un computer dotato di un TPM compatibile, è possibile utilizzare all'avvio quattro tipi di autenticazione differenti. All'avvio del computer, è possibile utilizzare solo il TPM per l'autenticazione o richiedere anche l'inserimento di un'unità flash USB contenente una chiave di avvio, l'immissione di un PIN costituito da un minimo di 4 e un massimo di 20 cifre o entrambi i metodi.
+Per fornire protezione aggiuntiva ai dati crittografati in un computer dotato di un TPM compatibile, è possibile utilizzare all'avvio quattro tipi di autenticazione differenti. All'avvio del computer, è possibile utilizzare solo il TPM per l'autenticazione o richiedere anche l'inserimento di un'unità flash USB contenente una chiave di avvio, l'immissione di un PIN costituito da un minimo di 6 e un massimo di 20 cifre o entrambi i metodi.
 
 Se si abilita questa impostazione dei criteri, gli utenti potranno configurare opzioni di avvio avanzate nella configurazione guidata BitLocker.
 
 Se si disabilita o non si configura questa impostazione dei criteri, gli utenti potranno configurare solo le opzioni di base nei computer dotati di un TPM.
 
 Nota: se si desidera imporre l'utilizzo di un PIN e di un'unità flash USB all'avvio, è necessario configurare le impostazioni di BitLocker mediante lo strumento da riga di comando manage-bde anziché tramite la configurazione guidata Crittografia unità BitLocker.
-
-
 
 </string>
       <string id="AllowNetworkUnlockAtStartup_Name">Consenti sblocco rete all'avvio</string>
@@ -312,6 +309,11 @@ Se si disabilita o non si configura questa impostazione dei criteri, i segreti B
       </string>
       <string id="MorBehavior_Name">Non sovrascrivere la memoria al riavvio</string>
 
+      <string id="DisableExternalDMAUnderLock_Help">Questa impostazione dei criteri consente di bloccare DMA (Direct Memory Access) per tutte le porte downstream PCI collegabili " hot" finché l'utente non accede a Windows. Una volta eseguito l'accesso, Windows enumererà i dispositivi PCI connessi alle porte PCI con collegamento "hot". Ogni volta che l'utente blocca il computer, DMA sarà bloccato nelle porte PCI con collegamento "hot" senza alcun dispositivo figlio, finché l'utente non accede di nuovo. I dispositivi che sono già stati enumerati quando il computer era bloccato continueranno a funzionare fino a quando non saranno scollegati. Questa impostazione di criterio viene forzata solo quando è abilitato BitLocker o la crittografia del dispositivo.
+
+      </string>
+      <string id="DisableExternalDMAUnderLock_Name">Disabilita nuovi dispositivi DMA quando il computer è bloccato</string>
+
       <string id="FVEOSCategory">Unità del sistema operativo</string>
       <string id="FVEFDVCategory">Unità dati fisse</string>
       <string id="FVERDVCategory">Unità dati rimovibili</string>
@@ -373,26 +375,22 @@ L'impostazione che controlla il debugger di avvio (0x16000010) verrà sempre con
 
 
       <string id="MinimumPINLength_Name">Configura lunghezza minima PIN per l'avvio</string>
-      <string id="MinimumPINLength_Help">Questa impostazione dei criteri consente di configurare la lunghezza minima per il PIN di avvio di un TPM (Trusted Platform Module). Questa impostazione dei criteri viene applicata quando si abilita BitLocker. Il PIN di avvio deve contenere almeno 4 e non più di 20 cifre.
+      <string id="MinimumPINLength_Help">Questa impostazione dei criteri consente di configurare la lunghezza minima per il PIN di avvio di un TPM (Trusted Platform Module). Questa impostazione dei criteri viene applicata quando si abilita BitLocker. Il PIN di avvio deve contenere almeno 6 e non più di 20 cifre.
 
 Se si abilita questa impostazione dei criteri, sarà possibile richiedere un numero minimo di cifre da utilizzare per l'impostazione del PIN di avvio.
 
-Se si disabilita o non si configura questa impostazione dei criteri, gli utenti potranno configurare un PIN di avvio di qualsiasi lunghezza compresa tra 4 e 20 cifre.
-
-      
+Se si disabilita o non si configura questa impostazione dei criteri, gli utenti potranno configurare un PIN di avvio di qualsiasi lunghezza compresa tra 6 e 20 cifre.
 
       </string>
 
       <string id="OSAllowDRA_Name">Consenti agenti recupero dati basati su certificato</string>
 
       <string id="FDVDenyWriteAccess_Name">Nega accesso in scrittura per unità fisse non protette da BitLocker</string>
-      <string id="FDVDenyWriteAccess_Help">Questa impostazione dei criteri determina se è richiesta la protezione con BitLocker per consentire la scrittura sulle unità dati fisse di un computer. Questa impostazione dei criteri viene applicata quando si abilita BitLocker.
+      <string id="FDVDenyWriteAccess_Help">Questa impostazione dei criteri determina se è richiesta la protezione con BitLocker per consentire la scrittura sulle unità dati fisse di un computer.
 
 Se si abilita questa impostazione dei criteri, tutte le unità dati fisse non protette con BitLocker verranno montate come unità in sola lettura. Se l'unità è protetta con BitLocker, verrà montata con accesso in lettura e in scrittura.
 
 Se si disabilita o non si configura questa impostazione dei criteri, tutte le unità dati fisse nel computer verranno montate con accesso in lettura e in scrittura.
-
-      
 
       </string>
 
@@ -691,6 +689,14 @@ Si noti che se non si abilita questa impostazione dei criteri, le opzioni per l'
       
       </string>
 
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Name">Consenti a dispositivi conformi a InstantGo o HSTI di escludere la richiesta di PIN prima dell'avvio.</string>
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Help">Questa impostazione dei criteri consente agli utenti su dispositivi conformi con InstantGo o Microsoft Hardware Security Test Interface (HSTI) di non avere un PIN per l'autenticazione prima dell'avvio. Questa opzione sostituisce le opzioni "Richiedi PIN di avvio con il TPM" e "Richiedi chiave e PIN di avvio con il TPM" del criterio "Richiedi autenticazione aggiuntiva all'avvio" su hardware conforme.
+
+Se si abilita questa impostazione dei criteri, gli utenti su dispositivi conformi a InstantGo e HSTI potranno scegliere di attivare BitLocker senza autenticazione prima dell'avvio.
+
+Se questo criterio non è abilitato, verranno applicate le opzioni del criterio "Richiedi autenticazione aggiuntiva all'avvio".
+      </string>
+
       <string id="AllowSecureBootForIntegrity_Name">Consenti avvio protetto per la convalida dell'integrità</string>
       <string id="AllowSecureBootForIntegrity_Help">Questa impostazione dei criteri consente di specificare se consentire l'avvio protetto come provider di integrità della piattaforma per le unità del sistema operativo BitLocker.
 
@@ -968,7 +974,7 @@ Nota: non tutti i caratteri e le lingue sono supportati prima dell'avvio. È con
       </presentation>
 
      <presentation id="MinimumPINLength">
-        <decimalTextBox refId="MinPINLength" defaultValue="4">Numero minimo caratteri:</decimalTextBox>
+        <decimalTextBox refId="MinPINLength" defaultValue="6">Numero minimo caratteri:</decimalTextBox>
       </presentation>
 
      <presentation id="FDVPassphrase_Name">

@@ -28,14 +28,13 @@ Obs! TPM-initiering kan krävas under BitLocker-konfigurationen. Aktivera princi
 
 Obs! Den här principen gäller bara datorer som kör Windows Server 2008 eller Windows Vista.
 
-På datorer med en kompatibel TPM (Trusted Platform Module) kan två metoder användas under starten för ytterligare skydd av krypterade data. När datorn startas kan användaren uppmanas sätta i ett USB-flashminne med en startnyckel. Användaren måste även ange en PIN-kod på mellan 4 och 20 siffror.
+På datorer med en kompatibel TPM (Trusted Platform Module) kan två metoder användas under starten för ytterligare skydd av krypterade data. När datorn startas kan användaren uppmanas sätta i ett USB-flashminne med en startnyckel. Användaren måste även ange en PIN-kod på mellan 6 och 20 siffror.
 
 USB-flashminnen med startnycklar måste användas på datorer som saknar kompatibel TPM (Trusted Platform Module). Utan TPM skyddas BitLocker-krypterade data endast av nyckeln på USB-flashminnet.
 
 Om du aktiverar den här principinställningen visas en sida i guiden där användaren kan konfigurera avancerade startalternativ för BitLocker. Du kan konfigurera fler alternativ för datorer med och utan TPM.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen visas grundläggande steg i BitLocker-installationsguiden där användaren kan aktivera BitLocker på datorer med TPM. I den grundläggande guiden går det inte att konfigurera någon ytterligare startnyckel eller start-PIN-kod.
-
 </string>
 
       <string id="ConfigureStartupUsage_Name">Kräv ytterligare autentisering vid start (Windows Server 2008 och Windows Vista)</string>
@@ -43,19 +42,17 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
 
       <string id="ConfigureAdvancedStartup_Help">Den här principinställningen gör att du kan konfigurera om BitLocker kräver ytterligare autentisering varje gång datorn startas och om du använder BitLocker med eller utan en betrodd plattformsmodul (TPM). Principinställningen tillämpas när du aktiverar BitLocker.
 
-Obs! Enbart ett av de ytterligare alternativen för autentisering kan krävas vid start, annars inträffar ett principfel.
+Obs! Enbart ett av de ytterligare alternativen för autentisering kan krävas vid start, annars uppstår ett principfel.
 
-Om du vill använda BitLocker på en dator utan en TPM väljer du kryssrutan Tillåt BitLocker om kompatibel TPM saknas. I det här läget krävs antingen ett lösenord eller en USB-enhet för att datorn ska starta. Med en startnyckel används nyckelinformationen för att kryptera enheten som lagras på USB-enheten, vilket skapar en USB-nyckel. När USB-nyckeln sätts in autentiseras åtkomsten till enheten och enheten är sedan tillgänglig. Om USB-nyckeln försvinner eller inte är tillgänglig eller om du har glömt lösenordet måste du använda något av återställningsalternativen för BitLocker för att komma åt enheten.
+Om du vill använda BitLocker på en dator utan en TPM markerar du kryssrutan Tillåt BitLocker om kompatibel TPM saknas. I det här läget krävs antingen ett lösenord eller en USB-enhet för att datorn ska starta. Med en startnyckel används nyckelinformationen för att kryptera enheten som lagras på USB-enheten, vilket skapar en USB-nyckel. När USB-nyckeln sätts in autentiseras åtkomsten till enheten och enheten är sedan tillgänglig. Om USB-nyckeln försvinner eller inte är tillgänglig eller om du har glömt lösenordet måste du använda något av återställningsalternativen för BitLocker för att komma åt enheten.
 
-På en dator med kompatibel TPM finns det fyra typer av autentiseringsmetoder som kan användas vid start som ytterligare skydd av krypterade data. När datorn startas kan den bara använda TPM för autentisering eller också krävs att användaren sätter in ett USB-flashminne med en startnyckel, att användaren anger en PIN-kod på mellan 4 och 20 siffror eller båda delarna.
+På en dator med kompatibel TPM finns det fyra typer av autentiseringsmetoder som kan användas vid start som ytterligare skydd av krypterade data. När datorn startas kan den bara använda TPM för autentisering eller också krävs att användaren sätter in ett USB-flashminne med en startnyckel, att användaren anger en PIN-kod på mellan 6 och 20 siffror eller båda delarna.
 
 Om du aktiverar den här principinställningen kan användaren konfigurera avancerade startalternativ i installationsguiden för BitLocker.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan användare enbart konfigurera grundläggande alternativ på datorer med TPM.
 
 Obs! Om du vill kräva att både en start-PIN och ett USB-flashminne används måste du konfigurera BitLocker-inställningar med hjälp av kommandoradsverktyget manage-bde istället för med installationsguiden för BitLocker-diskkryptering.
-
-
 
 </string>
       <string id="AllowNetworkUnlockAtStartup_Name">Tillåt nätverksupplåsning vid start</string>
@@ -312,6 +309,11 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
       </string>
       <string id="MorBehavior_Name">Förhindra att minne skrivs över vid omstart</string>
 
+      <string id="DisableExternalDMAUnderLock_Help">Med den här principinställningen kan du blockera direkt minnesåtkomst (DMA) för alla PCI Downstream-portar (som stöder anslutning under körning) tills en användare loggar in i Windows. När en användare loggar in räknar Windows upp PCI-enheterna som är anslutna till PCI-portar. Varje gång användaren låser datorn blockeras DMA i PCI-portar utan underenheter tills användaren loggar in igen. Enheter som redan räknats upp medan datorn inte var låst fortsätter fungera tills de kopplas från. Den här principinställningen tillämpas endast när BitLocker-kryptering eller enhetskryptering är aktiverat.
+
+      </string>
+      <string id="DisableExternalDMAUnderLock_Name">Inaktivera nya DMA-enheter när datorn är låst</string>
+
       <string id="FVEOSCategory">Operativsystemenheter</string>
       <string id="FVEFDVCategory">Fasta dataenheter</string>
       <string id="FVERDVCategory">Flyttbara dataenheter</string>
@@ -373,26 +375,22 @@ Inställningen som styr avlusningen vid start (0x16000010) verifieras alltid och
 
 
       <string id="MinimumPINLength_Name">Konfigurera minsta PIN-kodslängd för start</string>
-      <string id="MinimumPINLength_Help">Du kan använda den här principinställningen för att konfigurera en minimilängd för start-PIN-koden för en betrodd plattformsmodul (TPM). Principinställningen tillämpas när du aktiverar BitLocker. Start-PIN-koden måste innehålla minst 4 men inte fler än 20 siffror.
+      <string id="MinimumPINLength_Help">Du kan använda den här principinställningen för att konfigurera en minimilängd för start-PIN-koden för en betrodd plattformsmodul (TPM). Principinställningen tillämpas när du aktiverar BitLocker. Start-PIN-koden måste innehålla minst 6 siffror men inte fler än 20.
 
-Om du aktiverar den här principinställningen kan du kräva att ett minsta antal siffror används när start-PIN-koden anges.
+Om du aktiverar den här principinställningen kan du kräva att ett minsta antal siffror ska användas när start-PIN-koden anges.
 
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan användarna konfigurera en start-PIN-kod av valfri längd, bestående av mellan 4 och 20 siffror.
-
-      
+Om du inaktiverar eller låter bli att konfigurera principinställningen kan användarna konfigurera en start-PIN-kod av valfri längd, bestående av mellan 6 och 20 siffror.
 
       </string>
 
       <string id="OSAllowDRA_Name">Tillåt certifikatbaserade dataåterställningsagenter</string>
 
       <string id="FDVDenyWriteAccess_Name">Neka skrivbehörighet till fasta enheter som inte skyddas med BitLocker</string>
-      <string id="FDVDenyWriteAccess_Help">Den här principinställningen avgör om BitLocker-skydd krävs för att fasta dataenheter ska vara skrivbara på en dator. Principinställningen tillämpas när du aktiverar BitLocker.
+      <string id="FDVDenyWriteAccess_Help">Den här principinställningen avgör om BitLocker-skydd krävs för att fasta dataenheter ska vara skrivbara på en dator.
 
-Om du aktiverar den här principinställningen monteras alla fasta dataenheter som inte är BitLocker-skyddade som skrivskyddade. Om enheten skyddas av BitLocker monteras den med skrivbehörighet.
+Om du aktiverar principinställningen monteras alla fasta dataenheter som inte är BitLocker-skyddade som skrivskyddade. Om enheten skyddas av BitLocker monteras den med skrivbehörighet.
 
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen monteras alla fasta dataenheter på datorn med läs- och skrivåtkomst.
-
-      
+Om du inaktiverar eller låter bli att konfigurera principinställningen monteras alla fasta dataenheter på datorn med läs- och skrivbehörighet.
 
       </string>
 
@@ -691,6 +689,14 @@ Observera att om du inte aktiverar den här principinställningen kanske inte al
       
       </string>
 
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Name">Tillåt att användare med InstantGo- eller HSTI-kompatibla enheter kan välja bort förtstarts-PIN.</string>
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Help">Den här principinställningen gör att användare med enheter som är kompatibla med InstantGo eller Microsoft Hardware Security Test Interface (HSTI) inte behöver en PIN för förstartsautentisering. Detta åsidosätter alternativen "Kräv start-PIN med TPM" och "Kräv startnyckel och start-PIN med TPM" i principen "Ytterligare autentisering krävs vid start" på kompatibel maskinvara.
+
+Om du aktiverar principinställningen kan användare med InstantGo- och HSTI-kompatibla enheter välja om de vill aktivera BitLocker utan förstartsautentisering.
+
+Om den här principen inte aktiveras tillämpas alternativen för principen "Ytterligare autentisering krävs vid start".
+      </string>
+
       <string id="AllowSecureBootForIntegrity_Name">Tillåt säker start för integritetsverifiering</string>
       <string id="AllowSecureBootForIntegrity_Help">Med den här principinställningen kan du ange huruvida Säker start tillåts vara provider för plattformsintegriteten för operativsystemenheter som skyddas med BitLocker.
 
@@ -968,7 +974,7 @@ Obs! Det är inte alla tecken och språk som stöds i förstartsmiljön. Du bör
       </presentation>
 
      <presentation id="MinimumPINLength">
-        <decimalTextBox refId="MinPINLength" defaultValue="4">Minsta antal tecken:</decimalTextBox>
+        <decimalTextBox refId="MinPINLength" defaultValue="6">Minsta antal tecken:</decimalTextBox>
       </presentation>
 
      <presentation id="FDVPassphrase_Name">

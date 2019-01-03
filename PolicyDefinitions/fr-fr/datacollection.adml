@@ -10,9 +10,17 @@
       <string id="AllowTelemetry_1">1 - De base</string>
       <string id="AllowTelemetry_2">2 - Améliorée</string>
       <string id="AllowTelemetry_3">3 - Complète</string>
-      <string id="AllowTelemetry_Explain">Cette stratégie détermine la quantité de données d'utilisation et de diagnostic renvoyées à Microsoft. Une valeur de 0 indique que des données minimales sont envoyées à Microsoft. Ces données incluent les données Malicious Software Removal Tool (MSRT)  Windows Defender, si activés, et les paramètres client de télémétrie. La définition d'une valeur de 0 est applicable pour les appareils d'entreprise, EDU, IoT et serveur uniquement. La définition d'une valeur de 0 pour d'autres appareils revient à choisir une valeur de 1. Une valeur de 1 envoie une quantité de données de diagnostic et d'utilisation élémentaire uniquement. Remarque : la définition de valeurs de 0 ou 1 entraîne une dégradation de l'expérience de l'appareil. Une valeur de 2 envoie des données de diagnostic et d'utilisation améliorées. Une valeur de 3 envoie les mêmes données que la valeur de 2, plus des données de diagnostics supplémentaires comme l'état du système au moment d'un arrêt intempestif ou d'un incident, ainsi que les fichiers et contenus pouvant être à l'origine du problème. Les paramètres de télémétrie de Windows 10 s'appliquent aux système d'exploitation Windows et à certaines applications principales. Ce paramètre ne s'applique pas aux applications tierces exécutées sous Windows 10.
+      <string id="AllowTelemetry_Explain">Ce paramètre de stratégie détermine la quantité de données de diagnostic Windows envoyées à Microsoft. La valeur 0 (Sécurité) envoie une quantité minimale de données à Microsoft afin de maintenir Windows sécurisé. Les composants de sécurité Windows comme l’outil de suppression de logiciels malveillants et Windows Defender peuvent envoyer des données à Microsoft à ce niveau s’ils sont activés. La définition de la valeur 0 s’applique uniquement aux appareils EDU, IoT, pour entreprises et serveurs. Définir la valeur 0 pour d’autres appareils revient à définir la valeur 1. 
 
-Si vous désactivez ce paramètre de stratégie ou si vous ne le configurez pas, les utilisateurs peuvent configurer le niveau de télémétrie dans les paramètres.
+La valeur 1 (De base) envoie les mêmes données que la valeur 0, plus une quantité très limitée de données de diagnostic comme des informations de base sur les appareils, des données liées à la qualité et des informations sur la compatibilité des applications. Notez que la définition des valeurs 0 ou 1 réduit les performances de certaines expériences sur l’appareil.
+
+La valeur 2 (Renforcé) envoie les mêmes données que la valeur 1, plus des données supplémentaires sur l’utilisation de Windows, Windows Server, System Center et des applications, et sur leurs performances, ainsi que des données de fiabilité avancées.
+
+La valeur 3 (Complet) envoie les mêmes données que la valeur 2, plus des données de diagnostic avancées qui permettent de diagnostiquer et de résoudre les problèmes liés aux appareils, par exemple les fichiers et tout contenu susceptibles d’avoir provoqué un problème sur l’appareil.
+
+Le paramètre des données de diagnostic Windows 10 s’applique au système d’exploitation Windows et aux applications incluses avec Windows. Ce paramètre ne s’applique pas aux applications tierces s’exécutant sur Windows 10.
+
+Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les utilisateurs peuvent configurer le niveau de télémétrie dans Paramètres.
 
 </string>
       <string id="EnableExperimentation">Désactiver les fonctionnalités ou paramètres de pré-version</string>
@@ -24,6 +32,25 @@ Si vous désactivez ce paramètre de stratégie, toutes les expérimentations se
 
 Si vous ne configurez pas ce paramètre de stratégie, l'utilisateur peut configurer l'option “Laisser Microsoft essayer des fonctionnalités sur ce build” dans Paramètres.
 </string>
+      <string id="TelemetryProxy">Configurer les expériences utilisateur de connexion et la télémétrie</string>
+      <string id="TelemetryProxy_Explain">Ce paramètre de stratégie permet de transférer les demandes d’expériences des utilisateurs connectés et de télémétrie à un serveur proxy.
+
+Si vous activez ce paramètre de stratégie, vous pouvez spécifier le nom de domaine complet ou l’adresse IP de l’appareil de destination au sein du réseau de votre organisation (et éventuellement un numéro de port si vous le souhaitez). La connexion est effectuée via une connexion SSL (Secure Sockets Layer). En cas d’échec du proxy nommé, ou si vous désactivez ce paramètre de stratégie ou si vous ne le configurez pas, les données d’expériences des utilisateurs connectés et de télémétrie sont adressées à Microsoft à l’aide de la configuration du proxy par défaut.
+
+Format de ce paramètre : &lt;serveur&gt;:&lt;port&gt; 
+</string>
+      
+      <string id="CommercialId">Configurer l’ID commercial</string>
+      <string id="CommercialId_Explain">Ce paramètre de stratégie définit l’identificateur utilisé pour associer de façon unique les données de télémétrie de cet appareil à une organisation donnée. Si votre organisation participe à un programme qui nécessite l’identification de cet appareil comme appartenant à votre organisation, utilisez ce paramètre pour fournir cette identification. La valeur de ce paramètre est fournie par Microsoft dans le cadre du processus d’intégration au programme. 
+
+Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, Microsoft ne sera pas en mesure d’utiliser cet identificateur pour associer cet ordinateur et ses données de télémétrie à votre organisation.
+</string>
+
+      <string id="DisableEnterpriseAuthProxy">Configurer l’utilisation du proxy authentifié pour le service Expériences des utilisateurs connectés et télémétrie</string>
+      <string id="DisableEnterpriseAuthProxy_1">Activer l’utilisation du proxy authentifié</string>
+      <string id="DisableEnterpriseAuthProxy_2">Désactiver l’utilisation du proxy authentifié</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">Ce paramètre de stratégie empêche le service Expériences des utilisateurs connectés et télémétrie d’utiliser automatiquement un proxy authentifié pour renvoyer des données à Microsoft sur Windows 10. Si vous désactivez ou que vous ne configurez pas ce paramètre de stratégie, le service Expériences des utilisateurs connectés et télémétrie utilise automatiquement un proxy authentifié pour renvoyer des données à Microsoft. L’activation de cette stratégie empêche le service Expériences des utilisateurs connectés et télémétrie d’utiliser automatiquement un proxy authentifié.</string>
+
     </stringTable>
     <presentationTable>
       <presentation id="AllowTelemetry">
@@ -31,6 +58,19 @@ Si vous ne configurez pas ce paramètre de stratégie, l'utilisateur peut config
       </presentation>
       <presentation id="EnableExperimentation">
         <dropdownList refId="EnableExperimentation" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+        <label>Nom du serveur proxy :</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+        <label>ID commercial :</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
       </presentation>
     </presentationTable>
   </resources>

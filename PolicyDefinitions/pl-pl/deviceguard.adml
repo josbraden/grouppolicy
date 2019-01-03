@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2015 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>Ochrona urządzenia z systemem Microsoft Windows</displayName>
-  <description>Zabezpieczenia Ochrony urządzenia z systemem Windows</description>
+  <displayName>Microsoft Windows Device Guard</displayName>
+  <description>Zabezpieczenia funkcji Windows Device Guard</description>
   <resources>
     <stringTable>
-      <string id="DeviceGuard">Ochrona urządzenia</string>
+      <string id="DeviceGuard">Device Guard</string>
       <string id="VirtualizationBasedSecurity">Włącz zabezpieczenia oparte na wirtualizacji</string>
       <string id="VirtualizationBasedSecurityHelp">Określa, czy zabezpieczenia oparte na wirtualizacji mają być włączone.
 
@@ -15,17 +15,29 @@ Ochrona integralności kodu oparta na wirtualizacji
 
 To ustawienie włącza opartą na wirtualizacji ochronę integralności kodu trybu jądra. Jeśli to ustawienie zostanie włączone, będzie wymuszana ochrona pamięci trybu jądra, a ścieżka weryfikacji integralności będzie chroniona przez funkcję zabezpieczeń opartych na wirtualizacji.
 
-Ostrzeżenie: wszystkie sterowniki w systemie muszą być zgodne z tą funkcją. W przeciwnym razie system może ulec awarii. Upewnij się, że to ustawienie zasad jest wdrażane tylko na zgodnych komputerach.
+Ustawienie opcji „Wyłączone” powoduje zdalne wyłączenie ochrony integralności kodu opartej na wirtualizacji, jeśli została ona wcześniej włączona za pomocą opcji „Włączone bez blokady”.
+ 
+Opcja „Włączone z blokadą UEFI” uniemożliwia zdalne wyłączenie ochrony integralności kodu opartej na wirtualizacji. Aby wyłączyć tę funkcję, musisz ustawić opcję „Wyłączone” dla zasad grupy, a także usunąć funkcję zabezpieczeń z każdego komputera, gdy użytkownik jest przy komputerze, aby wyczyścić konfigurację w interfejsie UEFI.
+ 
+Opcja „Wyłączone bez blokady” umożliwia zdalne wyłączenie ochrony integralności kodu opartej na wirtualizacji za pomocą zasad grupy.
 
-Ochrona poświadczeń
+Opcja „Nie skonfigurowano” powoduje pozostawienie tego ustawienia zasad w stanie niezdefiniowanym. Zasady grupy nie zapisują tego ustawienia w rejestrze, więc nie ma ono wpływu na komputery i użytkowników. Bieżące ustawienie rejestru nie zostanie zmodyfikowane.
 
-To ustawienie umożliwia użytkownikom włączanie ochrony poświadczeń z zabezpieczeniami opartymi na wirtualizacji w celu lepszej ochrony poświadczeń.
+Opcja „Wymagaj tabeli atrybutów pamięci UEFI” będzie włączać ochronę integralności kodu opartą na wirtualizacji tylko na urządzeniach zawierających oprogramowanie układowe UEFI obsługujące tabelę atrybutów pamięci. Urządzenia bez tabeli atrybutów pamięci UEFI mogą mieć oprogramowanie układowe niezgodne z ochroną integralności kodu opartą na wirtualizacji, co w pewnych sytuacjach może powodować awarie lub utratę danych albo brak zgodności z niektórymi wkładanymi kartami. Jeśli ta opcja nie zostanie ustawiona, należy przetestować docelowe urządzenia pod kątem zgodności.
 
-Ustawienie opcji „Wyłączone” powoduje zdalne wyłączenie ochrony poświadczeń, jeśli została ona wcześniej włączona za pomocą opcji „Włączone bez blokady”.
+Ostrzeżenie: wszystkie sterowniki w systemie muszą być zgodne z tą funkcją. W przeciwnym razie system może ulec awarii. Upewnij się, że to ustawienie zasad jest wdrażane tylko na zgodnych komputerach. 
 
-Opcja „Włączone z blokadą UEFI” uniemożliwia zdalne wyłączenie ochrony poświadczeń. Aby wyłączyć tę funkcję, musisz ustawić opcję „Wyłączone” dla zasad grupy, a także usunąć funkcję zabezpieczeń z każdego komputera, gdy użytkownik jest przy komputerze, aby wyczyścić konfigurację w interfejsie UEFI.
+Credential Guard
 
-Opcja „Wyłączone bez blokady” umożliwia zdalne wyłączenie ochrony poświadczeń za pomocą zasad grupy. Tego ustawienia można używać wyłącznie na urządzeniach z systemem Windows 10 (wersja 1511) lub nowszym.
+To ustawienie umożliwia użytkownikom włączanie funkcji Credential Guard z zabezpieczeniami opartymi na wirtualizacji w celu lepszej ochrony poświadczeń.
+
+Ustawienie opcji „Wyłączone” powoduje zdalne wyłączenie funkcji Credential Guard, jeśli została ona wcześniej włączona za pomocą opcji „Włączone bez blokady”.
+
+Opcja „Włączone z blokadą UEFI” uniemożliwia zdalne wyłączenie funkcji Credential Guard. Aby wyłączyć tę funkcję, musisz ustawić opcję „Wyłączone” dla zasad grupy, a także usunąć funkcję zabezpieczeń z każdego komputera, gdy użytkownik jest przy komputerze, aby wyczyścić konfigurację w interfejsie UEFI.
+
+Opcja „Wyłączone bez blokady” umożliwia zdalne wyłączenie funkcji Credential Guard za pomocą zasad grupy. Tego ustawienia można używać wyłącznie na urządzeniach z systemem Windows 10 (wersja 1511) lub nowszym.
+
+Opcja „Nie skonfigurowano” powoduje pozostawienie tego ustawienia zasad w stanie niezdefiniowanym. Zasady grupy nie zapisują tego ustawienia w rejestrze, więc nie ma ono wpływu na komputery i użytkowników. Bieżące ustawienie rejestru nie zostanie zmodyfikowane.
       </string>
       <string id="SecureBoot">Bezpieczny rozruch</string>
       <string id="SecureBootAndDmaProtection">Bezpieczny rozruch i ochrona DMA</string>
@@ -33,6 +45,7 @@ Opcja „Wyłączone bez blokady” umożliwia zdalne wyłączenie ochrony pośw
       <string id="Enabled">Włączone</string>
       <string id="EnabledWithoutLock">Włączone bez blokady</string>
       <string id="EnabledWithUefiLock">Włączone z blokadą UEFI</string>
+      <string id="NotConfigured">Nie skonfigurowano</string>
       <string id="ConfigCIPolicy">Wdróż zasady integralności kodu</string>
       <string id="ConfigCIPolicyHelp">Wdróż zasady integralności kodu
 
@@ -50,9 +63,10 @@ Jeśli użycie podpisanych i chronionych zasad oraz wyłączenie tego ustawienia
     </stringTable>
     <presentationTable>
       <presentation id="VirtualizationBasedSecurity">
-        <dropdownList refId="RequirePlatformSecurityFeaturesDrop" defaultItem="0">Wybierz poziom zabezpieczeń platformy:</dropdownList>
-        <checkBox refId="HypervisorEnforcedCodeIntegrityCheck" defaultChecked="false">Włącz ochronę integralności kodu opartą na wirtualizacji</checkBox>
-        <dropdownList refId="CredentialIsolationDrop" defaultItem="0">Konfiguracja ochrony poświadczeń:</dropdownList>
+        <dropdownList refId="RequirePlatformSecurityFeaturesDrop" defaultItem="1">Wybierz poziom zabezpieczeń platformy:</dropdownList>
+        <dropdownList refId="HypervisorEnforcedCodeIntegrityDrop" defaultItem="3">Ochrona integralności kodu oparta na wirtualizacji:</dropdownList>        
+        <checkBox refId="CheckboxMAT">Wymagaj tabeli atrybutów pamięci UEFI</checkBox>        
+        <dropdownList refId="CredentialIsolationDrop" defaultItem="3">Konfiguracja funkcji Credential Guard:</dropdownList>                
       </presentation>
       <presentation id="ConfigCIPolicy">
         <textBox refId="ConfigCIPolicyFilePathText">

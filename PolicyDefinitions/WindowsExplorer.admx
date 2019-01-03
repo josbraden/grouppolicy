@@ -691,21 +691,22 @@
     <policy name="EnableSmartScreen" class="Machine" displayName="$(string.EnableSmartScreen)" explainText="$(string.EnableSmartScreen_Help)" key="Software\Policies\Microsoft\Windows\System" valueName="EnableSmartScreen" presentation="$(presentation.EnableSmartScreen)">
       <parentCategory ref="windows:WindowsExplorer" />
       <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
       <elements>
-        <enum id="EnableSmartScreenDropdown" valueName="EnableSmartScreen" required="true">
-          <item displayName="$(string.SmartScreen_RequireAdmin)">
+        <enum id="EnableSmartScreenDropdown" key="Software\Policies\Microsoft\Windows\System" valueName="ShellSmartScreenLevel" required="true">
+          <item displayName="$(string.SmartScreen_PreventBypass)">
             <value>
-              <decimal value="2" />
+              <string>Block</string>
             </value>
           </item>
-          <item displayName="$(string.SmartScreen_Prompt)">
+          <item displayName="$(string.SmartScreen_Warn)">
             <value>
-              <decimal value="1" />
-            </value>
-          </item>
-          <item displayName="$(string.SmartScreen_Off)">
-            <value>
-              <decimal value="0" />
+              <string>Warn</string>
             </value>
           </item>
         </enum>
@@ -751,12 +752,12 @@
         <decimal value="0" />
       </disabledValue>
     </policy>
-    <policy name="ExplorerRibbonStartsMinimized" 
-            class="Both" 
-            displayName="$(string.ExplorerRibbonStartsMinimized_DisplayName)" 
-            explainText="$(string.ExplorerRibbonStartsMinimized_ExplainText)" 
+    <policy name="ExplorerRibbonStartsMinimized"
+            class="Both"
+            displayName="$(string.ExplorerRibbonStartsMinimized_DisplayName)"
+            explainText="$(string.ExplorerRibbonStartsMinimized_ExplainText)"
             presentation="$(presentation.ExplorerRibbonStartsMinimized)"
-            key="Software\Policies\Microsoft\Windows\Explorer" 
+            key="Software\Policies\Microsoft\Windows\Explorer"
             valueName="ExplorerRibbonStartsMinimized">
         <parentCategory ref="windows:WindowsExplorer" />
         <supportedOn ref="windows:SUPPORTED_Windows8" />

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Ochrana Application Guard v programu Windows Defender</displayName>
+  <description>Konfigurace Ochrany Application Guard v programu Windows Defender</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Ochrana Application Guard v programu Windows Defender</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Zapnout/vypnout Ochranu Application Guard v programu Windows Defender (WDAG)</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Tato zásada povoluje izolaci aplikací pomocí Ochrany Application Guard v programu Windows Defender.
+
+Ochrana Application Guard v programu Windows Defender používá hypervisor Windows ke spouštění aplikací ve virtualizovaném prostředí. Když jsou aplikace nakonfigurované na používání bezpečnostní izolace na základě virtualizace, nemohou nezodpovědné chování uživatelů při používání těchto aplikací ani slabá místa zabezpečení v těchto aplikacích vést k ohrožení jádra a jiných aplikací běžících mimo dané virtualizované prostředí.
+Před povolením tohoto nastavení musíte definovat seznamy důvěryhodných podnikových webů. Nastavit je můžete pomocí zásady izolace sítí (vložit odkaz na konkrétní síťovou zásadu). Seznamy zajistí, aby se ve virtualizovaném prostředí otevíraly jenom weby mimo podnikovou síť.
+Poznámka: Pokud chcete uzamknout systém, zajistěte, aby byly pro aplikace zapnuty bezpečnostní funkce Device Guard i izolace aplikací. Kompletní sadu požadavků k bezpečnému uzamknutí systému najdete v dokumentaci.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Konfigurace nastavení schránky Ochrany Application Guard v programu Windows Defender</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Určuje chování schránky při využívání izolace aplikací v prostředí Ochrana Application Guard v programu Windows Defender.
+
+Správci mohou:
+Úplně zakázat funkce schránky, když je povoleno zabezpečení na základě virtualizace
+Povolit kopírování určitého obsahu z izolované relace do počítače hostitele.
+Povolit kopírování určitého obsahu z počítače hostitele do izolované relace.
+
+Poznámka: Doporučujeme, aby správci nepovolovali kopírování obsahu z počítače hostitele do izolované relace. Znamenalo by to, že napadená izolovaná relace by mohla získat přístup ke schránce počítače hostitele a obsahu v ní.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Blokovat operace se schránkou (výchozí)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Povolit operace se schránkou z izolované relace do hostitele</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Povolit operace se schránkou z hostitele do izolované relace</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Povolit operace se schránkou v obou směrech</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Konfigurace nastavení tisku v prostředí Ochrana Application Guard v programu Windows Defender</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Pokud je vybrána možnost Povolit tisk do XPS, mohou uživatelé z kontejneru tisknout dokumenty do formátu XPS.
+Pokud je vybrána možnost Povolit tisk do PDF, mohou uživatelé z kontejneru tisknout dokumenty do formátu PDF.
+Pokud je vybrána možnost Povolit tisk na místních tiskárnách, mohou uživatelé z kontejneru tisknout dokumenty na místně připojené tiskárně.
+Pokud je vybrána možnost Povolit tisk na stávajících síťových tiskárnách, mohou uživatelé z izolovaného kontejneru tisknout dokumenty na stávajících síťových tiskárnách. Nemohou ale vyhledávat nové síťové tiskárny.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Bránit podnikovým webům v načítání mimopodnikového obsahu do IE a Edge</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Pokud je tato možnost povolená, zablokuje veškerou síťovou komunikaci Internet Explorer a Microsoft Edge s mimopodnikovými weby, kterou nelze spustit v kontejneru Ochrana Application Guard v programu Windows Defender.
+
+Pokud je zakázaná, tak bude síťová komunikace s mimopodnikovými weby, kterou nejde spustit v kontejneru Ochrana Application Guard v programu Windows Defender, na počítači hostitele zpracována.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Vyberte možnost:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Určuje, co je povoleno u chování schránky, pokud jsou operace schránky povoleny (formou desítkového čísla):
+        </decimalTextBox>
+        <text>Tato hodnota je bitová maska, která určuje, jaké typy souborů lze použít u operací se schránkou.
+
+b0001 – Textové soubory
+b0010 – Rastrové soubory
+b0011 – Jsou podporovány textové i rastrové soubory
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Určuje, jaké tiskárny jsou povoleny (formou desítkového čísla)
+        </decimalTextBox>
+        <text>Tato hodnota je bitová maska, která určuje, jaké tiskárny jsou povolené v izolované relaci.    
+b0000 – Zakázat tisk
+b0001 – Povolit tisk do XPS (výchozí)
+b0010 – Povolit tisk do PDF
+b0100 – Povolit tisk na místních tiskárnách
+b1000 – Povolit tisk na stávajících síťových tiskárnách
+
+Příklad:
+Pokud chcete povolit formát XPS a místní tiskárny, jde o hodnotu b0001 | b0100, což je b0101 (desítkově 5).
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

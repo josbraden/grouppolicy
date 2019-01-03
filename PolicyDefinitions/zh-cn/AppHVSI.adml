@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender 应用程序防护</displayName>
+  <description>Windows Defender 应用程序防护的配置</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender 应用程序防护</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">打开/关闭 Windows Defender 应用程序防护(WDAG)</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">此策略使用 Windows Defender 应用程序防护启用应用程序隔离。
+
+Windows Defender 应用程序防护使用 Windows 虚拟机监控程序在虚拟环境下启动应用程序。当应用程序配置为使用基于虚拟化的安全隔离时，使用这些应用程序时的不受信任的用户行为以及这些应用程序中的漏洞不能威胁内核以及虚拟化环境之外运行的其他应用程序。
+在启用此策略之前，需要定义企业信任的站点列表。可以通过使用网络隔离策略(插入指向特定网络策略的链接)来设置这些列表。它们可确保只有非企业站点才会在虚拟环境中打开。
+注意: 若要锁定系统，请确保同时启用 Device Guard 安全功能和应用程序的应用程序隔离。有关安全锁定系统的一整套完整要求，请参阅相关文档。
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">配置 Windows Defender 应用程序防护剪贴板设置</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">指定结合使用应用程序隔离与 Windows Defender 应用程序防护时的剪贴板行为。
+
+管理员可以:
+在虚拟化安全启用时完全禁用剪贴板功能。
+启用特定内容从独立会话向主计算机的复制。
+启用特定内容从主计算机向独立会话的复制。
+
+注意: 我们建议管理员不要启用特定内容从主计算机向独立会话的复制。这意味着受到安全威胁的独立会话可能会访问主计算机的剪贴板和剪贴板上的内容。
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">阻止剪贴板操作(默认)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">启用从隔离会话到主机的剪贴板操作</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">启用从主机到隔离会话的剪贴板操作</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">启用双向剪贴板操作</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">配置 Windows Defender 应用程序防护打印设置</string>
+        <string id="AppHVSI_PrintingSettings_Explain">如果选择“启用打印为 XPS 格式”，则用户可以将容器内的文档打印为 XPS 格式。
+如果选择“启用打印为 PDF 格式”，则用户可以将容器内的文档打印为 PDF 格式。
+如果选择“启用打印到本地打印机”，则用户可以将容器内的文档打印到本地连接的打印机。
+如果选择“启用打印到现有网络打印机”，则用户可以使用现有的网络打印机打印独立容器内的文档。用户无法浏览新的网络打印机。
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">在 IE 和 Edge 中阻止企业网站以加载非企业内容</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">如果启用，则会阻止以无法在 Windows Defender 应用程序防护容器内启动的非企业站点为目标的任何 Internet Explorer 和 Microsoft Edge 网络流量。
+
+如果禁用，则会在主计算机上呈现针对无法在 Windows Defender 应用程序防护容器内启动的非企业站点的任何网络流量。
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">选择选项:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">指定在启用剪贴板操作时所允许的剪贴板行为(十进制):
+        </decimalTextBox>
+        <text>此值是一个位掩码，用于控制可以对剪贴板操作使用哪些文件类型:
+
+b0001 - 文本文件
+b0010 - 位图文件
+b0011 - 同时支持文本和位图文件
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">指定启用了哪些打印机(用十进制表示)
+        </decimalTextBox>
+        <text>此值是一个位掩码，用于控制在独立会话中启用哪些打印机
+b0000 - 打印已禁用
+b0001 - 启用打印为 XPS 格式(默认)
+b0010 - 启用打印为 PDF 格式
+b0100 - 启用打印到本地打印机
+b1000 - 启用打印到现有网络打印机
+
+例如:
+如果启用了 XPS 和本地打印机，该值将变为 b0001 | b0100，即 b0101 (十进制 5)
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

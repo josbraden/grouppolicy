@@ -5,7 +5,7 @@
   <description>tutaj wprowadź opis</description>
   <resources>
     <stringTable>
-      <string id="TS_SUPPORTED_Windows10">Co najmniej Windows 10 lub Windows Server 2016 Technical Preview 4</string>
+      <string id="TS_SUPPORTED_Windows10">Co najmniej Windows 10 lub Windows Server 2016</string>
       <string id="TS_SUPPORTED_Windows8_or_ARM">Co najmniej system Windows 8 lub Windows RT</string>
       <string id="TS_SUPPORTED_Windows8_Server">Co najmniej Windows Server 2012</string>
       <string id="TS_SUPPORTED_Windows8_Enterprise_AND_Server"> Co najmniej Windows 8 Enterprise lub Windows Server 2012</string>
@@ -320,12 +320,13 @@ Uwaga: Sesja konsoli jest nazywana również sesją 0. Dostęp do konsoli można
       <string id="TS_GATEWAY_BASIC">Pytaj o poświadczenia, użyj protokołu podstawowego</string>
       <string id="TS_GATEWAY_LOGGED_ON_CREDS">Użyj lokalnie zalogowanych poświadczeń</string>
       <string id="TS_GATEWAY_NTLM">Pytaj o poświadczenia, użyj protokołu NTLM</string>
+      <string id="TS_GATEWAY_NEGOTIATE">Pytaj o poświadczenia, użyj protokołu negocjacji</string>
       <string id="TS_GATEWAY_POLICY_AUTH_METHOD">Ustaw metodę uwierzytelniania bramy usług pulpitu zdalnego</string>
-      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Określa metodę uwierzytelniania, która musi zostać użyta przez klientów przy próbie nawiązania połączenia z serwerem hosta sesji pulpitu zdalnego za pośrednictwem serwera bramy usług pulpitu zdalnego. Można wymusić to ustawienie zasad lub pozwolić użytkownikom na zastąpienie go. Domyślnie włączenie tego ustawienia zasad powoduje jego wymuszenie. Gdy to ustawienie zasad jest wymuszane, użytkownicy nie mogą go zastąpić, nawet jeśli wybiorą opcję Użyj następujących ustawień serwera bramy usług pulpitu zdalnego na kliencie.
+      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Określa metodę uwierzytelniania, której klienci muszą używać przy próbie nawiązania połączenia z serwerem hosta sesji pulpitu zdalnego za pośrednictwem serwera bramy usług pulpitu zdalnego. Można wymusić to ustawienie zasad lub zezwolić użytkownikom na zastąpienie go. Domyślnie włączenie tego ustawienia zasad powoduje jego wymuszenie. Gdy to ustawienie zasad jest wymuszane, użytkownicy nie mogą go zastąpić, nawet jeśli wybiorą opcję Użyj następujących ustawień serwera bramy usług pulpitu zdalnego na kliencie.
 
-Aby zezwolić użytkownikom na zastąpienie tego ustawienia zasad, zaznacz pole wyboru Umożliwienie zmieniania tego ustawienia przez użytkowników. Użytkownicy będą mogli wtedy określić alternatywną metodę uwierzytelniania przez skonfigurowanie ustawień klienta lub przez użycie pliku RDP bądź skryptu HTML. Jeżeli użytkownicy nie określą alternatywnej metody uwierzytelniania, domyślnie zostanie użyta metoda uwierzytelniania określona w ustawieniu zasad.
+Aby zezwolić użytkownikom na zastąpienie tego ustawienia zasad, zaznacz pole wyboru Umożliwienie zmieniania tego ustawienia przez użytkowników. Użytkownicy będą mogli wtedy określić alternatywną metodę uwierzytelniania, konfigurując ustawienia klienta lub używając pliku RDP bądź skryptu HTML. Jeżeli użytkownicy nie określą alternatywnej metody uwierzytelniania, domyślnie będzie używana metoda uwierzytelniania określona w tym ustawieniu zasad.
 
-Gdy to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, zostanie użyta metoda uwierzytelniania określona przez użytkownika (jeśli jest taka). Jeżeli metoda uwierzytelniania nie została określona, do uwierzytelniania będzie można używać protokołu NTLM włączonego na komputerze klienckim lub karty inteligentnej.</string>
+Jeśli wyłączysz to ustawienie zasad lub go nie skonfigurujesz, będzie używana metoda uwierzytelniania określona przez użytkownika, o ile ją określił. Jeśli metoda uwierzytelnianie nie zostanie określona, na potrzeby uwierzytelniania będzie używany protokół negocjacji włączony na kliencie albo karta inteligentna.</string>
       <string id="TS_GATEWAY_POLICY_ENABLE">Włącz połączenie przez bramę usług pulpitu zdalnego</string>
       <string id="TS_GATEWAY_POLICY_ENABLE_HELP">Jeżeli to ustawienie zasad zostanie włączone, to gdy usługa Podłączanie pulpitu zdalnego nie może połączyć się bezpośrednio z komputerem zdalnym (serwerem hosta sesji pulpitu zdalnego lub komputerem z włączoną funkcją Pulpit zdalny), klienci będą podejmować próby nawiązania połączenia z komputerem zdalnym za pośrednictwem serwera bramy usług pulpitu zdalnego. W takiej sytuacji klienci będą podejmować próby nawiązania połączenia z serwerem bramy usług pulpitu zdalnego określonym w ustawieniu zasad Ustaw adres serwera bramy usług pulpitu zdalnego.
 
@@ -1169,6 +1170,18 @@ Jeśli to ustawienie zasad zostanie włączone, logowanie użytkownika zostanie 
 
 Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, ekran startowy zostanie wyświetlony, a aplikacje będą rejestrowane w tle.</string>
 
+      <string id="TS_DX_USE_FULL_HWGPU">Użyj sprzętowej domyślnej karty graficznej dla wszystkich sesji usług pulpitu zdalnego</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">To ustawienie zasad umożliwia administratorom systemu zmianę renderowania grafiki dla wszystkich sesji usług pulpitu zdalnego.
+
+Jeśli to ustawienie zasad zostanie włączone, wszystkie sesje usług pulpitu zdalnego będą używać sprzętowego modułu renderowania grafiki zamiast podstawowego sterownika renderowania firmy Microsoft jako karty domyślnej.
+
+Jeśli to ustawienie zasad zostanie wyłączone, wszystkie sesje usług pulpitu zdalnego będą używać podstawowego sterownika renderowania firmy Microsoft jako karty domyślnej.
+
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, sesje usług pulpitu zdalnego na serwerze hosta sesji pulpitu zdalnego będą używać podstawowego sterownika renderowania firmy Microsoft jako karty domyślnej. We wszystkich pozostałych przypadkach sesje usług pulpitu zdalnego będą domyślnie używać sprzętowego modułu renderowania.
+
+UWAGA: ustawienie zasad ma wpływ tylko na domyślny procesor GPU na komputerze z zainstalowanym więcej niż jednym procesorem GPU. Wszystkie inne procesory GPU są uznawane za karty dodatkowe i są używane jako sprzętowe moduły renderowania. To ustawienie zasad nie ma wpływu na konfigurację procesora GPU sesji lokalnej.
+</string>
+      
     </stringTable>
     <presentationTable>
       <presentation id="TS_COLORDEPTH">

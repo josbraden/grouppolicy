@@ -5,7 +5,7 @@
   <description>digite a descrição aqui</description>
   <resources>
     <stringTable>
-      <string id="TS_SUPPORTED_Windows10">No mínimo, o Windows 10 ou o Windows Server 2016 Technical Preview 4</string>
+      <string id="TS_SUPPORTED_Windows10">Pelo menos Windows 10 ou Windows Server 2016</string>
       <string id="TS_SUPPORTED_Windows8_or_ARM">Windows 8 ou Windows RT ou posterior</string>
       <string id="TS_SUPPORTED_Windows8_Server">No mínimo, o Windows Server 2012</string>
       <string id="TS_SUPPORTED_Windows8_Enterprise_AND_Server"> No mínimo, o Windows 8 Enterprise ou o Windows Server 2012</string>
@@ -320,12 +320,13 @@ Observação: a sessão do console também é conhecida como Sessão 0. O acesso
       <string id="TS_GATEWAY_BASIC">Solicitar credenciais, usar protocolo Básico</string>
       <string id="TS_GATEWAY_LOGGED_ON_CREDS">Usar credenciais que fizeram logon localmente</string>
       <string id="TS_GATEWAY_NTLM">Solicitar credenciais, usar protocolo NTLM</string>
+      <string id="TS_GATEWAY_NEGOTIATE">Solicitar credenciais, usar protocolo de Negociação</string>
       <string id="TS_GATEWAY_POLICY_AUTH_METHOD">Definir método de autenticação do Gateway RD</string>
-      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Especifica o método de autenticação que os clientes deverão usar quando tentarem se conectar a um servidor Host de Sessão da Área de Trabalho Remota por meio de um servidor Gateway RD. Você pode aplicar esta configuração de diretiva ou pode permitir que os usuários a substituam. Por padrão, quando você habilita esta configuração de diretiva, ela é aplicada. Se for aplicada, os usuários não poderão substituí-la, mesmo que selecionem a opção "Usar estas configurações do servidor Gateway RD" no cliente.
+      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Especifica o método de autenticação que os clientes deverão usar quando tentarem se conectar a um servidor Host da Sessão RD por meio de um servidor Gateway de Área de Trabalho Remota. Você pode aplicar esta configuração de política ou pode permitir que os usuários a substituam. Por padrão, quando você habilita esta configuração de política, ela é aplicada. Se for aplicada, os usuários não poderão substituí-la, mesmo que selecionem a opção "Usar estas configurações do servidor Gateway de Área de Trabalho Remota" no cliente.
 
-Para permitir que os usuários substituam esta configuração de diretiva, você deve marcar a caixa de seleção "Permitir que os usuários alterem esta configuração". Ao fazer isso, os usuários poderão especificar um método de autenticação alternativo ao definir as configurações no cliente, usando um arquivo RDP ou um script HTML. Se os usuários não especificarem um método de autenticação alternativo, o método de autenticação especificado nesta configuração de diretiva será usado por padrão.
+Para permitir que os usuários substituam esta configuração de política, você deve marcar a caixa de seleção "Permitir que os usuários alterem esta configuração". Ao fazer isso, os usuários poderão especificar um método de autenticação alternativo ao definir as configurações no cliente, usando um arquivo RDP ou um script HTML. Se os usuários não especificarem um método de autenticação alternativo, o método de autenticação especificado nesta configuração de política será usado por padrão.
 
-Se você desabilitar ou não definir esta configuração de diretiva, o método de autenticação especificado pelo usuário será utilizado, se houver algum. Se um método de autenticação não for especificado, o protocolo NTLM habilitado no cliente ou um cartão inteligente poderá ser usado na autenticação.</string>
+Se você desabilitar ou não definir esta configuração de política, o método de autenticação especificado pelo usuário será utilizado, se houver algum. Se um método de autenticação não for especificado, o protocolo NTLM habilitado no cliente ou um cartão inteligente poderá ser usado na autenticação.</string>
       <string id="TS_GATEWAY_POLICY_ENABLE">Habilitar conexão por meio do Gateway RD</string>
       <string id="TS_GATEWAY_POLICY_ENABLE_HELP">Se você habilitar esta configuração de diretiva, quando a Conexão de Área de Trabalho Remota não puder ser feita diretamente a um computador remoto (um servidor Host de Sessão de Área de Trabalho Remota ou um computador com Área de Trabalho Remota habilitada), os clientes tentarão se conectar ao computador remoto por meio de um servidor Gateway RD. Neste caso, os clientes tentarão se conectar ao servidor Gateway RD especificado na configuração de diretiva "Definir endereço do servidor Gateway RD".
 
@@ -1169,6 +1170,18 @@ Se você habilitar essa configuração de política, a entrada do usuário será
 
 Se você desabilitar ou não definir essa configuração de política, a tela inicial será mostrada e os aplicativos serão registrados em segundo plano.</string>
 
+      <string id="TS_DX_USE_FULL_HWGPU">Usar o adaptador gráfico padrão de hardware para todas as sessões dos Serviços de Área de Trabalho Remota</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">Esta configuração de política permite que os administradores do sistema alterem a renderização de elementos gráficos para todas as sessões dos Serviços de Área de Trabalho Remota em um servidor Host da Sessão RD.
+
+Se você habilitar esta configuração de política, todas as sessões dos Serviços de Área de Trabalho Remota no servidor Host da Sessão RD usarão como adaptador padrão o renderizador de elementos gráficos de hardware, em vez do Driver de Renderização Básico da Microsoft.
+
+Se você desabilitar ou não definir esta configuração de política, todas as sessões dos Serviços de Área de Trabalho Remota no servidor Host da Sessão RD usarão o Driver de Renderização Básico da Microsoft como adaptador padrão.
+
+Se você não configurar esta política, as sessões dos Serviços de Área de Trabalho Remota no servidor Host da Sessão de Área de Trabalho Remota usarão o Driver de Renderização Básico da Microsoft como o adaptador padrão. Em todos os outros casos, as sessões dos Serviços de Área de Trabalho Remota usam o renderizador de elementos gráficos de hardware por padrão.
+
+OBSERVAÇÃO: a configuração de política afeta apenas a GPU (unidade de processamento gráfico) padrão em um computador com mais de uma GPU instalada. Todas as demais são consideradas adaptadores secundários e são usadas como renderizadores de hardware. A configuração da GPU da sessão local não é afetada por esta configuração de política.
+</string>
+      
     </stringTable>
     <presentationTable>
       <presentation id="TS_COLORDEPTH">

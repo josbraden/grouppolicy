@@ -5,7 +5,7 @@
   <description>itt adja meg a leírást</description>
   <resources>
     <stringTable>
-      <string id="TS_SUPPORTED_Windows10">Legalább Windows 10 vagy Windows Server 2016 Technical Preview 4</string>
+      <string id="TS_SUPPORTED_Windows10">Legalább Windows 10 vagy Windows Server 2016</string>
       <string id="TS_SUPPORTED_Windows8_or_ARM">Legalább Windows 8 vagy Windows RT</string>
       <string id="TS_SUPPORTED_Windows8_Server">Legalább Windows Server 2012</string>
       <string id="TS_SUPPORTED_Windows8_Enterprise_AND_Server"> Legalább Windows 8 Enterprise vagy Windows Server 2012</string>
@@ -320,12 +320,13 @@ Megjegyzés: A konzolmunkamenetet 0-s munkamenetnek is nevezik. A konzolelérés
       <string id="TS_GATEWAY_BASIC">Hitelesítő adatok kérése, alapszintű protokoll használata</string>
       <string id="TS_GATEWAY_LOGGED_ON_CREDS">Helyi bejelentkezés hitelesítő adatainak használata</string>
       <string id="TS_GATEWAY_NTLM">Hitelesítő adatok kérése, NTLM protokoll használata</string>
+      <string id="TS_GATEWAY_NEGOTIATE">Hitelesítő adatok kérése, Negotiate protokoll használata</string>
       <string id="TS_GATEWAY_POLICY_AUTH_METHOD">A Távoli asztali átjáró hitelesítési módszerének beállítása</string>
-      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Meghatározza, hogy melyik hitelesítési módszert kell az ügyfeleknek használni, amikor a Távoli asztali átjárókiszolgálón keresztül próbálnak csatlakozni a távoli asztali munkamenetgazda kiszolgálóhoz. A házirend-beállítás használata lehet kötelező, vagy engedélyezheti a felhasználók számára a beállítás felülírását. Alapértelmezés szerint a házirend-beállítás engedélyezés esetén kötelező. Ha ez a házirend-beállítás kötelező, a felhasználók még akkor sem tudják felülírni a beállítást, ha az ügyfélen megadják a „Távoli asztali átjárókiszolgáló beállításainak használata” beállítást.
+      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Meghatározza, hogy az ügyfeleknek melyik hitelesítési módszert kell használniuk, amikor Távoli asztali átjárókiszolgálón keresztül próbálnak csatlakozni egy távoli asztali munkamenet gazdakiszolgálójához. Kötelezővé teheti e házirend-beállítás használatát, vagy engedélyezheti a felhasználók számára a házirend-beállítás felülírását. Alapértelmezés szerint a házirend-beállítás engedélyezése esetén a rendszer kötelezővé teszi annak betartását. Ha ez a házirend-beállítás kötelező érvényű, a felhasználók még akkor sem tudják felülírni a beállítást, ha az ügyfélen kiválasztják a „Távoli asztali átjárókiszolgáló beállításainak használata” lehetőséget.
 
-Ha engedélyezni szeretné a felhasználók számára a házirend-beállítás felülírását, jelölje be „A felhasználók módosíthatják ezt a beállítást” jelölőnégyzetet. Ha így tesz, a felhasználók az ügyfél megfelelő beállításainak meghatározásával, illetve egy RDP-fájllal vagy HTML-parancsfájllal megadhatnak egy alternatív hitelesítési módszert. Ha a felhasználó nem határoz meg alternatív hitelesítési módszert, a házirend-beállításban meghatározott hitelesítési módszer az alapértelmezett.
+Ha engedélyezni szeretné a felhasználók számára e házirend-beállítás felülírását, jelölje be „A beállítás módosításának engedélyezése a felhasználók számára” jelölőnégyzetet. Ha így tesz, a felhasználók az ügyfél megfelelő beállításainak konfigurálásával, illetve egy RDP-fájl vagy HTML-parancsfájl használatával megadhatnak egy alternatív hitelesítési módszert. Ha a felhasználók nem határoznak meg alternatív hitelesítési módszert, a rendszer az ebben a házirend-beállításban meghatározott hitelesítési módszert használja alapértelmezettként.
 
-Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, a rendszer a felhasználó által meghatározott hitelesítési módszert alkalmazza (ha van ilyen). Ha nincs megadott hitelesítési módszer, hitelesítésre az ügyfélszámítógépen engedélyezett NTLM protokoll vagy egy intelligens kártya használható.</string>
+Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, a rendszer a felhasználó által meghatározott hitelesítési módszert alkalmazza (ha van ilyen). Ha nincs megadva hitelesítési módszer, az ügyfélszámítógépen engedélyezett Negotiate protokoll vagy egy intelligens kártya használható hitelesítésre.</string>
       <string id="TS_GATEWAY_POLICY_ENABLE">Kapcsolat engedélyezése távoli asztali átjárón keresztül</string>
       <string id="TS_GATEWAY_POLICY_ENABLE_HELP">Ha engedélyezi ezt a házirend-beállítást, amikor a Távoli asztali kapcsolat eszköz nem tud közvetlenül csatlakozni egy távoli számítógéphez (távoli asztali munkamenetgazda kiszolgálóhoz vagy Távoli asztal szolgáltatást használó számítógéphez), az ügyfelek a távoli asztali átjárókiszolgálón keresztül kísérlik meg a kapcsolatot. Ebben az esetben az ügyfelek a „Távoli asztali átjárókiszolgáló címének beállítása” házirend-beállításban megadott átjárókiszolgálóhoz próbálnak kapcsolódni.
 
@@ -1169,6 +1170,18 @@ Ha engedélyezi ezt a házirend-beállítást, a rendszer akár 6 percig is blok
 
 Ha letiltja vagy nem konfigurálja a házirend-beállítást, a kezdőképernyő megjelenik, és a rendszer a háttérben regisztrálja az alkalmazásokat.</string>
 
+      <string id="TS_DX_USE_FULL_HWGPU">Alapértelmezett hardveres grafikus adapter használata az összes Távoli asztali munkamenethez</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">Ezzel a házirend-beállítással szabályozhatják a rendszergazdák a grafikus képalkotást az összes távoli asztali munkamenetre vonatkozóan.
+
+Ha engedélyezi ezt a házirend-beállítást, az összes távoli asztali munkamenet a hardveres grafikus megjelenítőt használja alapértelmezettként az Általános leképezési Microsoft-illesztő helyett.
+
+Ha letiltja ezt a házirend-beállítást, az összes távoli asztali munkamenet az Általános leképezési Microsoft-illesztőt használja alapértelmezettként.
+
+Ha nem konfigurálja ezt a házirend-beállítást, a Távoli asztali munkamenetgazdán futó távoli asztali munkamenetek az Általános leképezési Microsoft-illesztőt használják alapértelmezettként. A távoli asztali munkamenetek az összes többi esetben a hardveres grafikus megjelenítőt használják alapértelmezettként.
+
+MEGJEGYZÉS: a házirend-beállítás a több grafikus processzorral (GPU-val) ellátott rendszerekben csak az alapértelmezett GPU-ra érvényes. A rendszer az összes többi GPU-t másodlagos adapterként kezeli, és hardveres megjelenítőként használja. A házirend-beállítás nincs hatással a helyi munkamenet GPU-konfigurációjára.
+</string>
+      
     </stringTable>
     <presentationTable>
       <presentation id="TS_COLORDEPTH">

@@ -28,14 +28,13 @@ Megjegyzés: Előfordulhat, hogy a platformmegbízhatósági modul (TPM) inicial
 
 Megjegyzés: Ez a házirend csak a Windows Server 2008 vagy a Windows Vista operációs rendszer futtató számítógépekre vonatkozik.
 
-Kompatibilis platformmegbízhatósági modult (TPM) tartalmazó számítógépen két hitelesítési módszer használható az induláskor a titkosított adatok bővített védelmére. A számítógép az indításkor megkövetelheti, hogy a felhasználó indítókulcsot tartalmazó USB flash meghajtót helyezzen be. A rendszer megkövetelheti a felhasználóktól egy 4-20 számjegyű indító PIN-kód megadását is.
+Kompatibilis platformmegbízhatósági modult (TPM) tartalmazó számítógépen két hitelesítési módszer használható az induláskor a titkosított adatok bővített védelmére. A számítógép az indításkor megkövetelheti, hogy a felhasználó indítókulcsot tartalmazó USB flash meghajtót helyezzen be. A rendszer megkövetelheti a felhasználóktól egy 6-20 számjegyű indító PIN-kód megadását is.
 
 Az indítókulcsot tartalmazó USB flash meghajtók a kompatibilis TPM modul nélküli számítógépeken szükségesek. TPM nélkül a BitLocker által titkosított adatokat kizárólag az adott USB flash meghajtón tárolt kulcsanyag védi.
 
 Ha engedélyezi ezt a házirend-beállítást, a varázsló megjeleníti a BitLocker speciális indítási beállításait tartalmazó oldalt a felhasználó számára. További beállítások érhetők el a TPM modullal rendelkező és nem rendelkező számítógépekhez.
 
-Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, a BitLocker telepítővarázsló megjeleníti az alapvető lépéseket ahhoz, hogy a felhasználó bekapcsolja a BitLocker titkosítást a platformmegbízhatósági modullal rendelkező számítógépeken. Ebben az alapszintű varázslóban nem lehet további indítókulcsot vagy indító PIN-kódot konfigurálni.
-
+Ha letiltja, vagy nem konfigurálja ezt a házirend-beállítást, a BitLocker telepítővarázsló megjeleníti az alapvető lépéseket ahhoz, hogy a felhasználó bekapcsolja a BitLocker titkosítást a platformmegbízhatósági modullal rendelkező számítógépeken. Ebben az alapszintű varázslóban nem lehet további indítókulcsot vagy indító PIN-kódot konfigurálni.
 </string>
 
       <string id="ConfigureStartupUsage_Name">További hitelesítés megkövetelése indításkor (Windows Server 2008 és Windows Vista esetében)</string>
@@ -47,15 +46,13 @@ Megjegyzés: A további hitelesítési lehetőségekből csak egyet igényelhet 
 
 Ha a BitLocker eszközt TPM nélküli számítógépen szeretné használni, jelölje be „A BitLocker engedélyezése kompatibilis TPM nélkül” jelölőnégyzetet. Ebben az üzemmódban az indításhoz jelszó vagy USB-meghajtó szükséges. Indítókulcs használata esetén a rendszer a meghajtó titkosításához használt kulcsadatokat az USB-meghajtón tárolja, ezzel USB-kulcsot hozva létre. Amikor behelyezik az USB-kulcsot, a rendszer hitelesíti a meghajtó használatát, és a meghajtó elérhető lesz. Ha az USB-kulcs elveszik vagy nem áll rendelkezésre, illetve ha elfelejtette a jelszót, a meghajtó eléréséhez a BitLocker helyreállítási lehetőségeinek egyikét kell használnia.
 
-Kompatibilis TPM modult tartalmazó számítógépen négy hitelesítési módszer használható az induláskor a titkosított adatok bővített védelméhez. Amikor a számítógép elindul, használhatja csak a TPM modult a hitelesítésre, vagy ezen felül kérheti az indítókulcsot tartalmazó USB flash meghajtó behelyezését is, illetve egy 4-20 számjegyű személyes azonosítószám (PIN-kód) megadását, avagy mindkettőt.
+Kompatibilis TPM modult tartalmazó számítógépen négy hitelesítési módszer használható az induláskor a titkosított adatok bővített védelméhez. Amikor a számítógép elindul, használhatja csak a TPM modult a hitelesítésre, vagy ezen felül kérheti az indítókulcsot tartalmazó USB flash meghajtó behelyezését is, illetve egy 6-20 számjegyű személyes azonosítószám (PIN-kód) megadását, avagy mindkettőt.
 
 Ha engedélyezi ezt a házirend-beállítást, a felhasználók speciális rendszerindítási beállításokat konfigurálhatnak a BitLocker telepítővarázslóban.
 
 Ha letiltja ezt a házirend-beállítást, a felhasználók csak alapvető beállításokat konfigurálhatnak a TPM modult tartalmazó számítógépeken.
 
 Megjegyzés: Ha indítási PIN-kód és USB flash meghajtó alkalmazását szeretné előírni, akkor a BitLocker beállításait a BitLocker meghajtótitkosítás telepítővarázslója helyett a manage-bde parancssori eszközzel kell konfigurálnia.
-
-
 
 </string>
       <string id="AllowNetworkUnlockAtStartup_Name">Hálózati feloldás engedélyezése indításkor</string>
@@ -310,6 +307,11 @@ Ha letiltja vagy nem konfigurálja a beállítást, a számítógép újraindít
       </string>
       <string id="MorBehavior_Name">Memóriatartalom rendszerindítás általi felülírásának megakadályozása</string>
 
+      <string id="DisableExternalDMAUnderLock_Help">Ez a házirend-beállítás lehetővé teszi, hogy letiltsa az összes üzem közben csatlakoztatható PCI lefelé irányuló port közvetlen memória-hozzáférését (DMA), amíg a felhasználó be nem jelentkezik a Windowsba. Miután a felhasználó bejelentkezett, a Windows számba veszi az üzem közben csatlakoztatható PCI-portokhoz csatlakoztatott PCI-eszközöket. Minden alkalommal, amikor a felhasználó zárolja a gépet, a rendszer letiltja a DMA-t azokon az üzem közben csatlakoztatható PCI-portokon, amelyekhez nem tartozik alárendelt eszköz, amíg a felhasználó újból be nem jelentkezik. A gép zárolásának feloldásakor már számba vett eszközök továbbra is működni fognak, amíg le nem választják őket. Ez a házirend-beállítás csak akkor lép érvénybe, ha a BitLocker vagy az eszköztitkosítás engedélyezve van.
+
+      </string>
+      <string id="DisableExternalDMAUnderLock_Name">Az új DMA-eszközök letiltása, amikor a számítógép zárolva van</string>
+
       <string id="FVEOSCategory">Operációsrendszer-meghajtók</string>
       <string id="FVEFDVCategory">Rögzített adatmeghajtók</string>
       <string id="FVERDVCategory">Cserélhető adatmeghajtók</string>
@@ -371,26 +373,22 @@ A rendszerindítási hibakeresést vezérlő beállítás (0x16000010) érvénye
 
 
       <string id="MinimumPINLength_Name">Az indításkor szükséges PIN-kód minimális hosszának beállítása</string>
-      <string id="MinimumPINLength_Help">Ezzel a házirend-beállítással beállíthatja a platformmegbízhatósági modul (TPM) indító PIN-kódjának minimális hosszát. Ezt a házirend-beállítást a rendszer a BitLocker bekapcsolásakor alkalmazza. Az indító PIN-kód legalább 4, legfeljebb 20 számjegyből állhat.
+      <string id="MinimumPINLength_Help">Ezzel a házirend-beállítással beállíthatja a platformmegbízhatósági modul (TPM) indító PIN-kódjának minimális hosszát. Ezt a házirend-beállítást a rendszer a BitLocker bekapcsolásakor alkalmazza. Az indító PIN-kód legalább 6, legfeljebb 20 számjegyből állhat.
 
 Ha engedélyezi ezt a házirend-beállítást, akkor beállíthat egy ettől eltérő minimális hosszat az indító PIN-kódhoz.
 
-Ha letiltja vagy nem konfigurálja a házirend-beállítást, az indító PIN-kód 4 és 20 számjegy között tetszőleges hosszúságú lehet.
-
-      
+Ha letiltja vagy nem konfigurálja a házirend-beállítást, az indító PIN-kód 6 és 20 számjegy között tetszőleges hosszúságú lehet.
 
       </string>
 
       <string id="OSAllowDRA_Name">Tanúsítványalapú adat-helyreállítási megbízottak engedélyezése</string>
 
       <string id="FDVDenyWriteAccess_Name">Írási hozzáférés megtagadása a BitLocker által nem védett rögzített meghajtókhoz</string>
-      <string id="FDVDenyWriteAccess_Help">Ez a házirend-beállítás határozza meg, hogy szükséges-e BitLocker meghajtótitkosítás ahhoz, hogy a rögzített adatmeghajtók írhatók legyenek a számítógépen. Ezt a házirend-beállítást a rendszer a BitLocker bekapcsolásakor alkalmazza.
+      <string id="FDVDenyWriteAccess_Help">Ez a házirend-beállítás határozza meg, hogy szükséges-e BitLocker meghajtótitkosítás ahhoz, hogy a rögzített adatmeghajtók írhatók legyenek a számítógépen.
 
 Ha engedélyezi ezt a házirend-beállítást, az összes, BitLocker által nem védett rögzített meghajtó csak olvasható meghajtóként lesz csatlakoztatva. Ha a meghajtót a BitLocker védi, akkor olvasási és írási hozzáféréssel lesz csatlakoztatva.
 
 Ha letiltja vagy nem konfigurálja ezt a házirend-beállítást, akkor a számítógépen lévő összes rögzített meghajtó olvasási és írási hozzáféréssel lesz csatlakoztatva.
-
-      
 
       </string>
 
@@ -561,12 +559,12 @@ Ha nem konfigurálja a házirend-beállítást, használhatók intelligens kárt
 
       </string>
 
-      <string id="EnhancedPIN_Name">Bővített PIN kódok engedélyezése az indításhoz</string>
+      <string id="EnhancedPIN_Name">Bővített-PIN kódok engedélyezése az indításhoz</string>
       <string id="EnhancedPIN_Help">Ezzel a házirend-beállítással azt konfigurálhatja, hogy használhatók-e bővített PIN-kódok a BitLocker eszközben.
 
 A bővített indító PIN kódok lehetővé teszik az olyan karakterek használatát, mint a kis- és nagybetűk, a szimbólumok, a számok és a szóköz. Ezt a házirend-beállítást a rendszer a BitLocker bekapcsolásakor alkalmazza.
 
-Ha engedélyezi ezt a házirend-beállítást, minden új BitLocker indító PIN kód bővített PIN kód lesz.
+Ha engedélyezi ezt a házirend-beállítást, minden új BitLocker indító PIN-kód bővített PIN-kód lesz.
 
 Megjegyzés: Előfordulhat, hogy nem minden számítógép támogatja a bővített PIN-kódok használatát a rendszerindítás előtti környezetben. Mindenképpen ajánlott a felhasználók számára rendszerellenőrzés végrehajtása a BitLocker telepítésekor.
 
@@ -684,6 +682,14 @@ Ha nem engedélyezi ezt a házirend-beállítást, akkor előfordulhat, hogy a �
 - TPM indító PIN-kód konfigurálása: Kötelező/Engedélyezve
 - TPM-indítókulcs és TPM indító PIN-kód konfigurálása: Kötelező/Engedélyezve
 - A jelszavak használatának konfigurálása operációsrendszer-meghajtók esetében.
+      </string>
+
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Name">Rendszerindítás előtti PIN kihagyásának engedélyezése az InstantGo- vagy HSTI-kompatibilis eszközök számára.</string>
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Help">Ez a házirend-beállítás lehetővé teszi az InstantGo- vagy HSTI-kompatibilis eszközök felhasználói számára, hogy ne használjanak PIN-kódot a rendszerindítás előtti hitelesítéshez. A beállítás felülbírálja a "További hitelesítés megkövetelése indításkor" házirendben lévő "Indító PIN-kód megkövetelése TPM alkalmazásakor" és "Indítókulcs és PIN-kód megkövetelése TPM alkalmazásakor" beállításokat a megfelelő hardvereken.
+
+Ha engedélyezi ezt a házirend-beállítást, akkor az InstantGo- és HSTI-kompatibilis eszközök felhasználói rendszerindítás előtti hitelesítés nélkül is bekapcsolhatják a BitLockert.
+
+Ha a házirend-beállítás nincs engedélyezve, akkor a "További hitelesítés megkövetelése indításkor" házirend beállításai érvényesülnek.
       </string>
 
       <string id="AllowSecureBootForIntegrity_Name">Biztonságos rendszerindítás engedélyezése az integritás-ellenőrzéshez</string>
@@ -963,7 +969,7 @@ Megjegyzés: A rendszer nem támogat minden karaktert és nyelvet a rendszerind�
       </presentation>
 
      <presentation id="MinimumPINLength">
-        <decimalTextBox refId="MinPINLength" defaultValue="4">Karakterek minimális száma:</decimalTextBox>
+        <decimalTextBox refId="MinPINLength" defaultValue="6">Karakterek minimális száma:</decimalTextBox>
       </presentation>
 
      <presentation id="FDVPassphrase_Name">

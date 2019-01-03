@@ -155,18 +155,39 @@ Værten for Fjernskrivebordssessionen TERMSRV/*.humanresources.fabrikam.com kør
 
 Denne politikindstilling kan bruges i kombination med "Tillad delegering af gemte legitimationsoplysninger" for at definere undtagelser for specifikke servere, der ellers er tilladt, når der bruges jokertegn i serverlisten "Tillad delegering af gemte legitimationsoplysninger".</string>
       <string id="RestrictedRemoteAdministration">Begræns delegering af legitimationsoplysninger til fjernservere</string>
-      <string id="RestrictedRemoteAdministration_Explain">Når deltagende apps kører i begrænset tilstand, viser de ikke legitimationsoplysninger til fjerncomputere (uanset delegeringsmetoden). Begrænset tilstand kan give begrænset adgang til ressourcer, som findes på andre servere eller netværk end destinationscomputerens, fordi legitimationsoplysninger ikke delegeres.
+      <string id="RestrictedRemoteAdministration_Explain">Når du kører tilstanden Begrænset administration eller bruger tilstanden Remote Credential Guard, er de medvirkende apps ikke logget på eller fremviser ikke legitimationsoplysninger til en ekstern vært. Remote Credential Guard begrænser adgangen til ressourcer, som findes på andre servere eller netværk, fra den eksterne vært, fordi legitimationsoplysninger ikke delegeres. Remote Credential Guard begrænser ikke adgangen til ressourcer, fordi den dirigerer alle anmodninger tilbage til klientenheden.
 
-Deltagende apps:
+Medvirkende apps:
 Fjernskrivebord-klient
 
-Hvis du aktiverer denne politikindstilling, gennemtvinges begrænset tilstand, og deltagende apps delegerer ikke legitimationsoplysninger til fjerncomputere.
+Hvis du aktiverer denne politikindstilling, understøttes følgende indstillinger:
+ 
+Begræns delegering af legitimationsoplysninger: Medvirkende programmer skal bruge Begrænset administration eller Remote Credential Guard til at oprette forbindelse til eksterne værter.
+ 
+Kræver Remote Credential Guard: Medvirkende programmer skal bruge Remote Credential Guard til at oprette forbindelse til eksterne værter.
+ 
+Kræver Begrænset administration: Medvirkende programmer skal bruge begrænset administration til at oprette forbindelse til eksterne værter.
 
-Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, gennemtvinges begrænset tilstand ikke, og deltagende apps kan delegere legitimationsoplysninger til fjerncomputere.
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, gennemtvinges tilstandene Begrænset administration og Remote Credential Guard ikke, og medvirkende apps kan delegere legitimationsoplysninger til eksterne enheder.
 
-Bemærk! Du kan evt. deaktivere delegering af de fleste legitimationsoplysninger ved at nægte delegering i CredSSP (Credential Security Support Provider). Det gør du ved at ændre indstillinger for Administrative skabeloner (som findes i Computerkonfiguration\Administrative skabeloner\System\Delegering af legitimationsoplysninger).</string>
+Bemærk Hvis du vil deaktivere de fleste delegeringer af legitimationsoplysninger, kan det være tilstrækkeligt at nægte delegering i CredSSP (Credential Security Support Provider) ved at ændre de administrative skabelonindstillinger (findes i Computerkonfiguration\Administrative skabeloner\System\Delegering af legitimationsoplysninger).
+
+Bemærk: Hvis du aktiverer denne politik på Windows 8.1 og Windows Server 2012 R2, gennemtvinges tilstanden Begrænset administration uanset den valgte tilstand. Disse versioner understøtter ikke Remote Credential Guard.
+</string>
       <string id="SUPPORTED_VISTA">Windows Vista</string>
+      <string id="PreferRemoteCredentialGuard">Begræns delegering af legitimationsoplysninger</string>
+      <string id="RequireRemoteCredentialGuard">Kræve Remote Credential Guard</string>
+      <string id="RequireRestrictedAdmin">Kræve begrænset administration</string>
+      <string id="AllowProtectedCreds">Fjernvært tillader delegering af legitimationsoplysninger, som ikke kan eksporteres</string>
+      <string id="AllowProtectedCreds_Explain">Fjernvært tillader delegering af legitimationsoplysninger, som ikke kan eksporteres
+
+Når du bruger delegering af legitimationsoplysninger, skal enheder leverer en version af legitimationsoplysninger, som kan eksporteres til fjernværten. Det udgør en risiko for, at hackere kan stjæle legitimationsoplysninger på den eksterne vært.
+
+Hvis du aktiverer denne politikindstilling, understøtter værten tilstanden Begrænset administration eller tilstanden Remote Credential Guard.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, understøttes tilstanden Begrænset administration og tilstanden Remote Credential Guard ikke. Brugeren skal altid videresende deres legitimationsoplysninger til værten.</string>
     </stringTable>
+    
     <presentationTable>
       <presentation id="AllowDefaultCredentials">
         <listBox refId="AllowDefaultCredentials_Name">Føj servere til listen:</listBox>
@@ -204,6 +225,12 @@ Bemærk! Du kan evt. deaktivere delegering af de fleste legitimationsoplysninger
         <listBox refId="DenySavedCredentials_Name">Føj servere til listen:</listBox>
         <checkBox refId="ConcatenateDefaults_DSC" defaultChecked="true">Sammensæt operativsystemstandarder med input ovenfor</checkBox>
       </presentation>
+      <presentation id="RestrictedRemoteAdministration">
+        <dropdownList refId="RestrictedRemoteAdministrationDrop" defaultItem="0">Bruge følgende begrænsede tilstand:</dropdownList>
+      </presentation>
+      <presentation id="AllowProtectedCreds">
+      </presentation>
     </presentationTable>
+    
   </resources>
 </policyDefinitionResources>

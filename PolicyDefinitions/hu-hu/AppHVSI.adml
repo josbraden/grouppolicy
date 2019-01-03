@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>A Windows Defender Application Guard konfigurációja</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">A Windows Defender Application Guard (WDAG) be-/kikapcsolása</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Ez a házirend engedélyezi az alkalmazáselszigetelést a Windows Defender Application Guard használatával.
+
+A Windows Defender Application Guard a Windows-hipervizorral, virtualizált környezetben futtatja az alkalmazásokat. Ha az alkalmazások a virtualizáláson alapuló biztonsági elszigetelés használatára vannak konfigurálva, az alkalmazások használata során végzett nem megbízható felhasználói tevékenységek, illetve az adott alkalmazások biztonsági rései nem vezethetnek a rendszermag, valamint a virtualizált környezeten kívül futó alkalmazások biztonságának sérüléséhez.
+Mielőtt engedélyezné ezt a házirendet, definiálnia kell a megbízható vállalati webhelyeket tartalmazó listákat. Ezek a hálózatelszigetelési házirenddel állíthatók össze (hivatkozás az adott hálózati házirendre). A listák biztosítják, hogy csak a vállalaton kívüli webhelyek nyíljanak meg a virtualizált környezetben.
+Megjegyzés: Ha zárolni szeretne egy rendszert, győződjön meg arról, hogy az alkalmazáselszigetelés mellett a Device Guard biztonsági funkciói is engedélyezve vannak. A rendszerek biztonságos zárolásának teljes követelménylistáját a dokumentációban találja.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">A Windows Defender Application Guard vágólap-beállításainak konfigurálása</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Itt lehet megadni a vágólap működését a Windows Defender Application Guard által biztosított alkalmazáselszigetelés használatakor.
+
+A rendszergazdák a következők közül választhatnak:
+Vágólapfunkciók teljes körű letiltása a Virtualizált biztonság használatakor
+Bizonyos tartalmak másolásának engedélyezése egy elszigetelt munkamenetből a gazdaszámítógépre
+Bizonyos tartalmak másolásának engedélyezése a gazdaszámítógépről egy elszigetelt munkamenetbe
+
+Megjegyzés: Azt javasoljuk, hogy a rendszergazdák ne engedélyezzék a tartalom másolását a gazdaszámítógépről az elszigetelt munkamenetbe. Ez ugyanis azt jelentené, hogy egy biztonságosnak nem tekinthető elszigetelt munkamenet hozzáférhet a gazdaszámítógép vágólapjához és az ott levő tartalomhoz.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Vágólapműveletek blokkolása (alapértelmezett)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Az elszigetelt munkamenetből a gazdagépre irányuló vágólapműveletek engedélyezése</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">A gazdagépről az elszigetelt munkamenetbe irányuló vágólapműveletek engedélyezése</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Vágólapműveletek engedélyezése mindkét irányban</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">A Windows Defender Application Guard nyomtatási beállításainak konfigurálása</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Ha a Nyomtatás engedélyezése XPS-be lehetőséget választották, a felhasználók dokumentumokat nyomtathatnak a tárolóból XPS formátumba.
+Ha a Nyomtatás engedélyezése PDF-be lehetőséget választották, a felhasználók dokumentumokat nyomtathatnak a tárolóból PDF formátumba.
+Ha a Nyomtatás engedélyezése helyi nyomtatóra lehetőséget választották, a felhasználók dokumentumokat nyomtathatnak a tárolóból helyileg csatlakoztatott nyomtatóra.
+Ha a Nyomtatás engedélyezése hálózati nyomtatóra lehetőséget választották, a felhasználók használhatják a korábban telepített hálózati nyomtatókat dokumentumoknak az elszigetelt tárolóból való kinyomtatására. Új hálózati nyomtatókat azonban nem kereshetnek tallózással.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">A vállalati webhelyek nem tölthetnek be vállalaton kívüli tartalmat az IE-ben és az Edge-ben</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Ha engedélyezve van, blokkolja az Internet Explorer és a Microsoft Edge minden olyan hálózati forgalmát, amely vállalaton kívüli, Windows Defender Application Guard-tárolóban nem indítható webhelyekre irányul.
+
+Ha le van tiltva, a vállalaton kívüli, Windows Defender Application Guard-tárolóban nem indítható webhelyekre irányuló hálózati forgalom megjelenik a gazdaszámítógépen.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Válasszon:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Megadja, hogy a vágólap milyen viselkedése engedélyezett, amikor engedélyezve vannak a vágólapműveletek (számjeggyel):
+        </decimalTextBox>
+        <text>Ez a bitmaszk szabályozza, hogy mely fájltípusok használhatók a vágólapműveletekben:
+
+b0001 – Szövegfájlok
+b0010 – Bitképfájlok
+b0011 – Szövegfájlok és bitképfájlok is
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Megadja, hogy mely nyomtatók vannak engedélyezve (számjeggyel).
+        </decimalTextBox>
+        <text>Ez a bitmaszk szabályozza, hogy mely nyomtatók érhetők el egy elszigetelt munkamenetben. 
+b0000 – Nyomtatás letiltása
+b0001 – Nyomtatás engedélyezése XPS-be (alapértelmezés)
+b0010 – Nyomtatás engedélyezése PDF-be
+b0100 – Nyomtatás engedélyezése helyi nyomtatókra
+b1000 – Nyomtatás engedélyezése korábban telepített hálózati nyomtatókra
+
+Példa:
+Az XPS formátum és a helyi nyomtatók használatát a b0001 | b0100, azaz a b0101 (tízes számrendszerben 5) értékkel lehet engedélyezni.
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

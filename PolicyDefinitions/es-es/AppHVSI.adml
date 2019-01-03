@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Protección de aplicaciones de Windows Defender</displayName>
+  <description>Configuración de Protección de aplicaciones de Windows Defender</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Protección de aplicaciones de Windows Defender</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Activar o desactivar Protección de aplicaciones de Windows Defender (WDAG)</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Esta directiva habilita el aislamiento de aplicaciones mediante Protección de aplicaciones de Windows Defender.
+
+Protección de aplicaciones de Windows Defender usa el hipervisor de Windows para iniciar aplicaciones en un entorno virtualizado. Cuando las aplicaciones están configuradas para usar el aislamiento de seguridad basado en virtualización, el comportamiento de los usuarios que no sean de confianza mientras usan estas aplicaciones y las vulnerabilidades de dichas aplicaciones no pueden llegar a comprometer el kernel ni otras aplicaciones que se ejecutan fuera del entorno virtualizado.
+Antes de habilitar la directiva, hay que elaborar listas con los sitios de confianza para la empresa y estas se pueden configurar mediante la directiva de aislamiento de redes (insertar vínculo a la directiva de red específica). Estas listas garantizan que solo los sitios ajenos a la empresa se abrirán en el entorno virtualizado.
+Nota: Para bloquear un sistema, la función de seguridad Device Guard debe estar habilitada, además del aislamiento de aplicaciones para las aplicaciones. Consulta la documentación para conocer todos los requisitos a fin de garantizar el bloqueo de un sistema.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Establecer la configuración de portapapeles de Protección de aplicaciones de Windows Defender</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Especifica el comportamiento del portapapeles cuando se usa el aislamiento de aplicaciones con Protección de aplicaciones de Windows Defender.
+
+Los administradores pueden:
+Deshabilitar la funcionalidad de portapapeles por completo cuando la seguridad de virtualización está habilitada.
+Habilitar la copia de cierto contenido de una sesión aislada al equipo host.
+Habilitar la copia de cierto contenido del equipo host a la sesión aislada.
+
+Nota: Recomendamos que los administradores no permitan copiar contenido del equipo host a la sesión aislada. Esto significa que una sesión aislada comprometida podría tener acceso al portapapeles del equipo host y su contenido.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Bloquear las operaciones del Portapapeles (valor predeterminado)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Habilitar las operaciones del Portapapeles desde una sesión aislada hasta el host</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Habilitar las operaciones del Portapapeles desde un host hasta la sesión aislada</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Habilitar operaciones de Portapapeles en ambas direcciones</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Establecer la configuración de impresión de Protección de aplicaciones de Windows Defender</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Si está seleccionada la opción Habilitar impresión en XPS, los usuarios pueden imprimir documentos desde dentro del contenedor en formato XPS.
+Si está seleccionada la opción Habilitar impresión en PDF, los usuarios pueden imprimir documentos desde dentro del contenedor en formato PDF.
+Si está seleccionada la opción Habilitar impresión en impresoras locales, los usuarios pueden imprimir documentos desde dentro del contenedor en una impresora conectada localmente.
+Si está seleccionada la opción Habilitar impresión en impresoras de red existentes, los usuarios pueden usar las impresoras de red existentes para imprimir documentos desde dentro del contenedor aislado. Los usuarios no pueden buscar impresoras de red nuevas.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Bloquear sitios web de la empresa para cargar contenido ajeno a la empresa en IE y Edge</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Si esta opción está habilitada, bloquea cualquier tráfico de red de Internet Explorer y Microsoft Edge a sitios ajenos a la empresa que no se puedan iniciar en un contenedor de Protección de aplicaciones de Windows Defender.
+
+Si está deshabilitada, representa en el equipo host cualquier tráfico de red a sitios ajenos a la empresa que no se puedan iniciar en un contenedor de Protección de aplicaciones de Windows Defender.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Elige una opción:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Especifica qué comportamientos se permiten en el portapapeles cuando están habilitadas las operaciones del portapapeles (formato decimal):
+        </decimalTextBox>
+        <text>Este valor es una máscara de bits que controla qué tipos de archivo se pueden usar para las operaciones de portapapeles:
+
+b0001: archivo de TEXTO
+b0010: archivo de mapa de bits
+b0011: se admiten archivos de TEXTO y de mapa de bits
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Especifica qué impresoras están habilitadas (en formato decimal).
+        </decimalTextBox>
+        <text>Este valor es una máscara de bits que controla qué impresoras están habilitadas en una sesión aislada    
+b0000: la impresión está deshabilitada
+b0001: habilitar impresión en XPS (predeterminado)
+b0010: habilitar impresión en PDF
+b0100: habilitar impresión en impresoras locales
+b1000: habilitar impresión en impresoras de red existentes
+
+Por ejemplo:
+si están habilitadas las opciones para imprimir en XPS y en impresoras locales, el valor es b0001 | b0100, que es b0101 (decimal 5)
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

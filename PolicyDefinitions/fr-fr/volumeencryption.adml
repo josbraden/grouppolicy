@@ -26,9 +26,9 @@ Remarque : l’initialisation du module de plateforme sécurisée peut être n�
 
       <string id="ConfigureStartupUsage_Help">Ce paramètre de stratégie vous permet d’indiquer si l’Assistant Installation du chiffrement de lecteur BitLocker peut configurer une méthode d’authentification supplémentaire qui est demandée à chaque démarrage de l’ordinateur. Ce paramètre de stratégie est appliqué lorsque vous activez BitLocker.
 
-Remarque : ce paramètre de stratégie n’est applicable qu’aux ordinateurs Windows Server 2008 et Windows Vista.
+Remarque : ce paramètre de stratégie n’est applicable qu’aux ordinateurs Windows Server 2008 et Windows Vista.
 
-Sur un ordinateur avec un module de plateforme sécurisée, deux méthodes d’authentification peuvent être utilisées au démarrage pour offrir une protection renforcée des données chiffrées. Lorsque l’ordinateur démarre, il peut demander à l’utilisateur d’insérer un lecteur flash USB contenant une clé de démarrage. Il peut également demander à l’utilisateur d’entrer un code PIN de démarrage constitué de 4 à 20 chiffres.
+Sur un ordinateur avec un module de plateforme sécurisée, deux méthodes d’authentification peuvent être utilisées au démarrage pour offrir une protection renforcée des données chiffrées. Lorsque l’ordinateur démarre, il peut demander à l’utilisateur d’insérer un lecteur flash USB contenant une clé de démarrage. Il peut également demander à l’utilisateur d’entrer un code PIN de démarrage constitué de 6 à 20 chiffres.
 
 Un lecteur flash USB contenant une clé de démarrage est nécessaire sur les ordinateurs sans module de plateforme sécurisée compatible. Sans module de plateforme sécurisée, les données chiffrées par BitLocker sont protégées seulement par le support de gestion des clés qui se trouve sur ce lecteur flash USB.
 
@@ -42,11 +42,11 @@ Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, l’Ass
 
       <string id="ConfigureAdvancedStartup_Help">Ce paramètre de stratégie vous permet de configurer si BitLocker exige une authentification supplémentaire à chaque démarrage de l’ordinateur et si vous utilisez BitLocker avec ou sans module de plateforme sécurisée. Ce paramètre de stratégie est appliqué lorsque vous activez BitLocker.
 
-Remarque : une seule des options d’authentification supplémentaire peut être exigée au démarrage, sans générer d’erreur de stratégie.
+Remarque : une seule des options d’authentification supplémentaire peut être exigée au démarrage, sans générer d’erreur de stratégie.
 
 Si vous voulez utiliser BitLocker sur un ordinateur sans un module de plateforme sécurisée, activez la case à cocher « Autoriser BitLocker sans un module de plateforme autorisée compatible ». Dans ce mode, un mot de passe ou un lecteur USB est requis pour le démarrage. Si une clé de démarrage est utilisée, les informations de clé utilisées pour chiffrer le lecteur sont stockées sur ce lecteur USB, créant une clé USB. Lorsque la clé USB est insérée, l’accès au lecteur est authentifié et le lecteur est accessible. Si la clé USB est perdue ou non disponible, ou bien encore si vous oubliez le mot de passe, vous devez utiliser l’une des options de récupération BitLocker pour accéder au lecteur.
 
-Sur un ordinateur avec un module de plateforme sécurisée compatible, quatre types de méthode d’authentification peuvent être utilisés au démarrage pour renforcer la protection de l’accès aux données chiffrées. Au démarrage, l’ordinateur ne peut utiliser que le module de plateforme sécurisée pour l’authentification ; ou il peut exiger l’insertion d’un lecteur flash USB contant une clé de démarrage et/ou la saisie d’un code PIN composé de 4 à 20 chiffres.
+Sur un ordinateur avec un module de plateforme sécurisée compatible, quatre types de méthode d’authentification peuvent être utilisés au démarrage pour renforcer la protection de l’accès aux données chiffrées. Au démarrage, l’ordinateur ne peut utiliser que le module de plateforme sécurisée pour l’authentification ; ou il peut exiger l’insertion d’un lecteur flash USB contant une clé de démarrage et/ou la saisie d’un code PIN composé de 6 à 20 chiffres.
 
 Si vous activez ce paramètre de stratégie, les utilisateurs peuvent définir les options de démarrage avancées dans l’Assistant d’installation de BitLocker.
 
@@ -236,7 +236,7 @@ Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, BitLock
       </string>
       <string id="EncryptionMethodWithXts_Help">Ce paramètre de stratégie vous permet de configurer l'algorithme et de chiffrement minimal utilisé par le chiffrement de lecteur BitLocker. Ce paramètre de stratégie est appliqué lorsque vous activez BitLocker. La modification de la méthode de chiffrement n'a aucun effet si le lecteur est déjà chiffré ou si le chiffrement est en cours d'exécution.
 
-Si vous activez ce paramètre de stratégie, vous serez en mesure de configurer un algorithme de chiffrement et la puissance de chiffrement de clé pour les lecteurs de données fixes, les lecteurs de système d'exploitation et les lecteurs de données amovibles individuellement. Pour les lecteurs du système fixe et de fonctionnement, nous vous recommandons d'utiliser l'algorithme AES-XTS. Pour les lecteurs amovibles, vous devez utiliser AES 128 bits ou AES 256 bits.
+Si vous activez ce paramètre de stratégie, vous serez en mesure de configurer un algorithme de chiffrement et la puissance de chiffrement de clé pour les lecteurs de données fixes, les lecteurs de système d'exploitation et les lecteurs de données amovibles individuellement. Pour les lecteurs du système fixe et de fonctionnement, nous vous recommandons d'utiliser l'algorithme AES-XTS. Pour les lecteurs amovibles, vous devez utiliser AES 128 bits ou AES 256 bits si le lecteur est utilisé sur d’autres appareils qui n’exécutent pas Windows 10 (version 1511).
 
 Si vous désactivez ce paramètre de stratégie ou si vous ne le configurez pas, BitLocker utiliser AES avec la même force bits (128 bits ou 256 bits) en tant que le « Choisir la méthode de chiffrement de lecteur et de chiffrement minimal (Windows Vista, Windows Server 2008, Windows 7) » paramètre de stratégie, si elle est définie. Si aucune stratégie n'est définie, BitLocker utilise la méthode de chiffrement par défaut AES 128 bits ou la méthode de chiffrement spécifié par le script de configuration.
 
@@ -307,6 +307,11 @@ Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les sec
       </string>
       <string id="MorBehavior_Name">Empêcher le remplacement des données en mémoire au redémarrage</string>
 
+      <string id="DisableExternalDMAUnderLock_Help">Ce paramètre de stratégie vous permet de bloquer l’accès direct à la mémoire (DMA) pour tous les ports en aval PCI enfichables à chaud tant que l’utilisateur ne se connecte pas à Windows. Une fois l’utilisateur connecté, Windows énumère les périphériques PCI connectés aux ports PCI enfichables à chaud. À chaque verrouillage de l’ordinateur par l’utilisateur, l’accès DMA est bloqué sur les ports PCI enfichables à chaud sans périphériques enfants tant que l’utilisateur ne se reconnecte pas. Les périphériques déjà énumérés lorsque l’ordinateur a été déverrouillé continuent de fonctionner tant qu’ils sont branchés. Ce paramètre de stratégie est appliqué uniquement lorsque BitLocker ou le chiffrement de l’appareil est activé.
+
+      </string>
+      <string id="DisableExternalDMAUnderLock_Name">Désactiver les nouveaux périphériques DMA lorsque cet ordinateur est verrouillé</string>
+
       <string id="FVEOSCategory">Lecteurs du système d’exploitation</string>
       <string id="FVEFDVCategory">Lecteurs de données fixes</string>
       <string id="FVERDVCategory">Lecteurs de données amovibles</string>
@@ -368,26 +373,22 @@ Le paramètre qui contrôle le débogage du démarrage (0x16000010) sera toujour
 
 
       <string id="MinimumPINLength_Name">Configurer la longueur minimale du code PIN de démarrage</string>
-      <string id="MinimumPINLength_Help">Ce paramètre de stratégie permet de configurer la longueur minimale du code PIN de démarrage du module de plateforme sécurisée. Ce paramètre est appliqué lorsque vous activez BitLocker. Le code PIN de démarrage doit comporter entre 4 et 20 chiffres.
+      <string id="MinimumPINLength_Help">Ce paramètre de stratégie permet de configurer la longueur minimale du code PIN de démarrage du module de plateforme sécurisée. Ce paramètre est appliqué lorsque vous activez BitLocker. Le code PIN de démarrage doit comporter entre 6 et 20 chiffres.
 
 Si vous activez ce paramètre de stratégie, vous pouvez préciser le nombre minimal de chiffres que l’utilisateur doit entrer lorsqu’il définit le code PIN de démarrage.
 
-Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les utilisateurs peuvent définir un code PIN comportant entre 4 et 20 chiffres.
-
-
+Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les utilisateurs peuvent définir un code PIN comportant entre 6 et 20 chiffres.
 
       </string>
 
       <string id="OSAllowDRA_Name">Autoriser les agents de récupération de données basés sur des certificats</string>
 
       <string id="FDVDenyWriteAccess_Name">Refuser l’accès en écriture aux lecteurs fixes non protégés par BitLocker</string>
-      <string id="FDVDenyWriteAccess_Help">Ce paramètre de stratégie détermine si les lecteurs de données fixes d’un ordinateur doivent être protégés par BitLocker pour être accessibles en écriture. Ce paramètre est appliqué lorsque vous activez BitLocker.
+      <string id="FDVDenyWriteAccess_Help">Ce paramètre de stratégie détermine si les lecteurs de données fixes accessibles en écriture sur un ordinateur doivent être protégés par BitLocker.
 
-Si vous activez ce paramètre, les lecteurs de données fixes non protégés par BitLocker seront montés en lecture seule. En revanche, les lecteurs protégés par BitLocker sont accessibles en lecture et en écriture.
+Si vous activez ce paramètre de stratégie, tous les lecteurs de données fixes non protégés par BitLocker sont montés en lecture seule. En revanche, les lecteurs protégés par BitLocker sont accessibles en lecture et en écriture.
 
 Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, tous les lecteurs de données fixes de l’ordinateur sont montés en lecture et en écriture.
-
-      
 
       </string>
 
@@ -683,6 +684,14 @@ Notez que si vous n’activez pas ce paramètre de stratégie, les options de la
 - Configurer l’utilisation de mots de passe pour les lecteurs du système d’exploitation. 
       </string>
 
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Name">Autoriser les appareils compatibles avec InstantGo ou HSTI à refuser le code PIN préalable au démarrage.</string>
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Help">Ce paramètre de stratégie permet aux utilisateurs des appareils compatibles avec InstantGo ou HSTI (Microsoft Hardware Security Test Interface) de ne pas avoir de code PIN pour l’authentification préalable au démarrage. Ce paramètre remplace les options Exiger un code PIN de démarrage avec le module de plateforme sécurisée et Exiger une clé et un code PIN de démarrage avec le module de plateforme sécurisée de la stratégie Exiger une authentification supplémentaire au démarrage sur le matériel compatible.
+
+Si vous activez ce paramètre de stratégie, les utilisateurs des appareils compatibles avec InstantGo et HSTI auront la possibilité d’activer BitLocker sans authentification préalable au démarrage.
+
+Si cette stratégie n’est pas activée, les options de la stratégie Exiger une authentification supplémentaire au démarrage s’appliquent.
+      </string>
+
       <string id="AllowSecureBootForIntegrity_Name">Autoriser le démarrage sécurisé pour la validation de l’intégrité</string>
       <string id="AllowSecureBootForIntegrity_Help">Ce paramètre de stratégie permet de configurer si le démarrage sécurisé est autorisé comme fournisseur d’intégrité de plateforme pour les lecteurs du système d’exploitation protégés par BitLocker.
 
@@ -960,7 +969,7 @@ Remarque : tous les caractères et toutes les langues ne sont pas pris en charge
       </presentation>
 
      <presentation id="MinimumPINLength">
-        <decimalTextBox refId="MinPINLength" defaultValue="4">Nombre minimal de caractères :</decimalTextBox>
+        <decimalTextBox refId="MinPINLength" defaultValue="6">Nombre minimal de caractères :</decimalTextBox>
       </presentation>
 
      <presentation id="FDVPassphrase_Name">

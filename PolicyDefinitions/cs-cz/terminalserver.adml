@@ -5,7 +5,7 @@
   <description>Sem zadejte popis.</description>
   <resources>
     <stringTable>
-      <string id="TS_SUPPORTED_Windows10">Minimálně Windows 10 nebo Windows Server 2016 Technical Preview 4</string>
+      <string id="TS_SUPPORTED_Windows10">Minimálně Windows 10 nebo Windows Server 2016</string>
       <string id="TS_SUPPORTED_Windows8_or_ARM">Minimálně systém Windows 8 nebo Windows RT</string>
       <string id="TS_SUPPORTED_Windows8_Server">Minimálně Windows Server 2012</string>
       <string id="TS_SUPPORTED_Windows8_Enterprise_AND_Server"> Minimálně Windows 8 Enterprise nebo Windows Server 2012</string>
@@ -320,12 +320,13 @@ Poznámka: Relace konzoly je také známá jako relace 0. Přístup ke konzole l
       <string id="TS_GATEWAY_BASIC">Požádat o přihlašovací údaje, použít protokol Basic</string>
       <string id="TS_GATEWAY_LOGGED_ON_CREDS">Použít přihlašovací údaje místního přihlášení</string>
       <string id="TS_GATEWAY_NTLM">Požádat o přihlašovací údaje, použít protokol NTLM</string>
+      <string id="TS_GATEWAY_NEGOTIATE">Požádat o přihlašovací údaje, použít protokol vyjednávání</string>
       <string id="TS_GATEWAY_POLICY_AUTH_METHOD">Nastavit metodu ověřování služby Brána VP</string>
-      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Určuje metodu ověřování, kterou klienti musí použít při pokusu o připojení k serveru hostitele relací VP prostřednictvím serveru Brána VP. Nastavení této zásady můžete vynutit nebo můžete povolit, aby je uživatelé mohli přepsat. Ve výchozím nastavení platí, že pokud toto nastavení povolíte, bude vynucováno. Je-li nastavení této zásady vynucováno, uživatelé nemohou toto nastavení přepsat, ani když v klientovi vyberou možnost Použít toto nastavení serveru služby Brána VP.
+      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Určuje metodu ověřování, kterou klienti musí použít při pokusu o připojení k serveru hostitele relací VP prostřednictvím serveru Brána VP. Nastavení této zásady můžete vynutit nebo můžete povolit, aby je uživatelé mohli přepsat. Ve výchozím nastavení platí, že pokud toto nastavení povolíte, bude vynucováno. Je-li nastavení této zásady vynucováno, uživatelé nemohou toto nastavení obejít, ani když v klientovi vyberou možnost Použít toto nastavení serveru služby Brána VP.
 
-Pokud chcete uživatelům povolit přepsání nastavení této zásady, zaškrtněte políčko Povolit uživatelům změnit toto nastavení. Uživatelé pak budou pomocí konfigurace nastavení v klientovi určit alternativní metodu ověřování – pomocí souboru RDP nebo pomocí skriptu HTML. Pokud uživatelé neurčí alternativní metodu ověřování, bude podle výchozího nastavení použita metoda ověřování určená v nastavení této zásady.
+Pokud chcete uživatelům povolit přepsání nastavení této zásady, zaškrtněte políčko Povolit uživatelům změnit toto nastavení. Uživatelé pak budou pomocí konfigurace nastavení v klientovi určit alternativní metodu ověřování – pomocí souboru RDP nebo pomocí skriptu HTML. Pokud uživatelé neurčí alternativní metodu ověřování, bude podle výchozího nastavení použita metoda ověřování určená v nastavení této zásady.
 
-Pokud toto nastavení zakážete nebo nenakonfigurujete, bude použita metoda ověřování určená uživatelem, pokud je zadána. Pokud není určena žádná metoda ověřování, k ověření lze použít protokol NTLM, který je povolen v klientovi, nebo čipovou kartu.</string>
+Pokud toto nastavení zakážete nebo nenakonfigurujete, bude použita metoda ověřování určená uživatelem, pokud je zadána. Pokud není určena žádná metoda ověřování, lze k ověření použít protokol vyjednávání, který je povolen v klientovi, nebo čipovou kartu.</string>
       <string id="TS_GATEWAY_POLICY_ENABLE">Povolit připojení prostřednictvím služby Brána VP</string>
       <string id="TS_GATEWAY_POLICY_ENABLE_HELP">Pokud nastavení této zásady povolíte a Připojení ke vzdálené ploše se nemůže připojit přímo ke vzdálenému počítači (serveru hostitele relací VP nebo počítači s povolenou službou Vzdálená plocha), pokusí se klienti připojit ke vzdálenému počítači prostřednictvím serveru služby Brána VP. V tomto případě se klienti pokusí připojit k serveru služby Brána VP, který je zadán v nastavení zásady Nastavit adresu serveru služby Brána VP.
 
@@ -1169,6 +1170,18 @@ Pokud toto nastavení zásad povolíte, bude přihlášení uživatele blokován
 
 Pokud toto nastavení zásad zakážete nebo nenakonfigurujete, zobrazí se úvodní obrazovka a aplikace jsou registrovány na pozadí.</string>
 
+      <string id="TS_DX_USE_FULL_HWGPU">Použít výchozí hardwarový grafický adaptér pro všechny relace Vzdálené plochy</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">Nastavení této zásady umožňuje správcům systému změnit vykreslování grafiky pro všechny relace Vzdálené plochy.
+
+Když nastavení této zásady povolíte, všechny relace Vzdálené plochy budou jako výchozí adaptér používat hardwarové vykreslování grafiky místo základního ovladače vykreslování Microsoft.
+
+Když nastavení této zásady naopak zakážete, budou všechny relace Vzdálené plochy jako výchozí adaptér používat základní ovladač vykreslování Microsoft.
+
+Pokud nastavení této zásady nenakonfigurujete, relace Vzdálené plochy na serveru Hostitele relace VP budou jako výchozí adaptér používat základní ovladač vykreslování Microsoft. V ostatních případech budou relace Vzdálené plochy ve výchozím nastavení používat hardwarové vykreslování.
+
+POZNÁMKA: Na počítači s víc nainstalovanými grafickými procesory (GPU) nastavení této zásady ovlivňuje jenom výchozí GPU. Všechna ostatní GPU se považují za sekundární a používají se jako hardwarové zobrazovací jednotky. Konfiguraci GPU místní relace nastavení této zásady neovlivňuje.
+</string>
+      
     </stringTable>
     <presentationTable>
       <presentation id="TS_COLORDEPTH">

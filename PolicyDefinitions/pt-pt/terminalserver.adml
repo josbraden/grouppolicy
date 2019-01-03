@@ -5,7 +5,7 @@
   <description>introduzir a descrição aqui</description>
   <resources>
     <stringTable>
-      <string id="TS_SUPPORTED_Windows10">Pelo menos, Windows 10 ou Windows Server 2016 Technical Preview 4</string>
+      <string id="TS_SUPPORTED_Windows10">Pelo menos Windows 10 ou Windows Server 2016</string>
       <string id="TS_SUPPORTED_Windows8_or_ARM">Pelo menos, Windows 8 ou Windows RT</string>
       <string id="TS_SUPPORTED_Windows8_Server">Pelo menos, Windows Server 2012</string>
       <string id="TS_SUPPORTED_Windows8_Enterprise_AND_Server"> Pelo menos, Windows 8 Enterprise ou Windows Server 2012</string>
@@ -320,12 +320,13 @@ Nota: A sessão da consola também é conhecida como Sessão 0. O acesso à cons
       <string id="TS_GATEWAY_BASIC">Pedir credenciais, utilizar protocolo Básico</string>
       <string id="TS_GATEWAY_LOGGED_ON_CREDS">Utilizar credenciais com início de sessão local</string>
       <string id="TS_GATEWAY_NTLM">Pedir credenciais, utilizar protocolo NTLM</string>
+      <string id="TS_GATEWAY_NEGOTIATE">Pedir credenciais, utilizar protocolo Negotiate</string>
       <string id="TS_GATEWAY_POLICY_AUTH_METHOD">Definir método de autenticação de Gateway RD</string>
-      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Especifica o método de autenticação que os clientes têm de utilizar quando tentarem ligar a um servidor Anfitrião de Sessões de RD através de um servidor de Gateway de RD. Pode impor esta definição de política ou pode permitir que os utilizadores a substituam. Por predefinição, quando ativa esta definição de política, ela é imposta. Quando esta definição de política é imposta, os utilizadores não podem substituir esta definição, mesmo que selecionem a opção "Utilizar estas definições de servidor de Gateway de RD" no cliente.
+      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Especifica o método de autenticação que os clientes têm de utilizar quando tentarem ligar a um servidor Anfitrião de Sessões de RD através de um servidor de Gateway de RD. Pode impor esta definição de política ou pode permitir que os utilizadores a substituam. Por predefinição, quando ativa esta definição de política, a mesma é imposta. Quando esta definição de política é imposta, os utilizadores não podem substituir esta definição, mesmo que selecionem a opção "Utilizar estas definições de servidor de Gateway de RD" no cliente.
 
-Para permitir que os utilizadores substituam esta definição de política, selecione a caixa de verificação "Permitir aos utilizadores alterar esta definição". Quando opta por esta solução, os utilizadores podem especificar um método de autenticação alternativo configurando definições no cliente, utilizando um ficheiro RDP ou um script de HTML. Se os utilizadores não especificarem um método de autenticação alternativo, por predefinição, será utilizado o método de autenticação especificado nesta definição de política.
+Para permitir que os utilizadores substituam esta definição de política, selecione a caixa de verificação "Permitir aos utilizadores alterar esta definição". Ao optar por esta solução, os utilizadores podem especificar um método de autenticação alternativo configurando definições no cliente, utilizando um ficheiro RDP ou um script de HTML. Se os utilizadores não especificarem um método de autenticação alternativo, por predefinição, será utilizado o método de autenticação especificado nesta definição de política.
 
-Se desativar ou não configurar esta definição de política, será utilizado o método de autenticação especificado pelo utilizador, caso seja especificado um. Se não for especificado um método de autenticação, é possível utilizar para autenticação o protocolo NTLM ativado no cliente ou um smart card.</string>
+Se desativar ou não configurar esta definição de política, será utilizado o método de autenticação especificado pelo utilizador, caso seja especificado algum. Se não for especificado um método de autenticação, é possível utilizar para autenticação o protocolo Negotiate ativado no cliente ou um smart card.</string>
       <string id="TS_GATEWAY_POLICY_ENABLE">Permitir ligação através do Gateway de RD</string>
       <string id="TS_GATEWAY_POLICY_ENABLE_HELP">Se ativar esta definição de política, quando a Ligação ao Ambiente de Trabalho Remoto não conseguir ligar diretamente a um computador remoto (um servidor Anfitrião de Sessões de RD ou um computador com o Ambiente de Trabalho Remoto ativado), os clientes tentarão ligar ao computador remoto através de um servidor de Gateway de RD. Neste caso, os clientes tentarão ligar ao servidor de Gateway de RD especificado na definição de política "Definir o endereço do servidor de Gateway de RD".
 
@@ -1170,6 +1171,18 @@ Se ativar esta definição de política, o início de sessão do utilizador é b
 
 Se desativar ou não configurar esta definição de política, é mostrado o ecrã Iniciar e as aplicações são registadas em segundo plano.</string>
 
+      <string id="TS_DX_USE_FULL_HWGPU">Utilizar a placa gráfica predefinida para o hardware em todas as sessões de Serviços de Ambiente de Trabalho Remoto</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">Esta definição de política permite que os administradores do sistema alterem a composição dos gráficos em todas as sessões de Serviços de Ambiente de Trabalho Remoto.
+
+Se ativar esta definição de política, todas as sessões de Serviços de Ambiente de Trabalho Remoto utilizam o compositor de gráficos por hardware em vez do Controlador de Composição Básica da Microsoft como adaptador predefinido.
+
+Se desativar esta definição de política, todas as sessões de Serviços de Ambiente de Trabalho Remoto utilizam o Controlador de Composição Básica da Microsoft como adaptador predefinido.
+
+Se não configurar esta definição de política, as sessões de Serviços de Ambiente de Trabalho Remoto no servidor do Anfitrião de Sessões de RD utilizam o Controlador de Composição Básica da Microsoft como adaptador predefinido. Em todos os outros casos, as sessões dos Serviços de Ambiente de Trabalho Remoto utilizam o compositor de gráficos de hardware por defeito.
+
+NOTA: A definição de política afeta apenas a unidade de processamento de gráficos (GPU) predefinida num computador com mais do que um GPU instalado. Todos os GPUs adicionais são considerados adaptadores secundários e utilizados como compositores por hardware. A configuração do GPU da sessão local não é afetada por esta definição de política.
+</string>
+      
     </stringTable>
     <presentationTable>
       <presentation id="TS_COLORDEPTH">

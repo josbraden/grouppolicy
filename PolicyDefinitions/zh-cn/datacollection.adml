@@ -10,7 +10,15 @@
       <string id="AllowTelemetry_1">1 - 基本</string>
       <string id="AllowTelemetry_2">2 - 增强</string>
       <string id="AllowTelemetry_3">3 - 完整</string>
-      <string id="AllowTelemetry_Explain">此策略设置决定了报告给 Microsoft 的诊断和使用情况数据量。值为 0 表示将最少的数据发送到 Microsoft。这些数据包括恶意软件删除工具(MSRT)和 Windows Defender 数据(如果已启用)以及遥测客户端设置。将值设为 0 仅适用于企业、EDU、IoT 和服务器设备。对于其他设备，将值设为 0 相当于选择值 1。值为 1 时，只发送基本数量的诊断和使用情况数据。请注意，将值设为 0 或 1 会降低有关设备的特定体验。值为 2 时，会发送增强的诊断和使用情况数据。值为 3 时，会发送与值为 2 时相同的数据，以及额外的诊断数据(包括可能已导致问题的文件和内容)。Windows 10 遥测设置适用于 Windows 操作系统和一些第一方应用。此设置不适用于在 Windows 10 上运行的第三方应用。
+      <string id="AllowTelemetry_Explain">此策略设置确定发送给 Microsoft 的 Windows 诊断数据数量。如果值为 0 (安全)只会向 Microsoft 发送足以确保 Windows 安全的最少数据。如果启用了 Windows 安全组件，例如恶意软件删除工具(MSRT) 和 Windows Defender，在这一级别它们可能会向 Microsoft 发送数据。只有企业、EDU、IoT 和服务器设备可以将值设为 0。对于其他设备，将值设为 0 或 1 效果相同。
+
+如果值为 1 (基本)，除了发送值为 0 时的数据以外，还发送非常有限的诊断数据，例如基本设备信息、与质量相关的数据，以及应用兼容性信息。请注意，将值设为 0 或 1 会使设备的某些体验降低。
+
+如果值为 2 (增强)，除了发送值为 1 时的数据以外，还发送其他数据，例如 Windows、Windows Server、System Center 和应用的使用方式、性能，以及高级可靠性数据。
+
+如果值为 3 (完全)，除了发送值为 2 时的数据以外，还发送用于诊断和修复设备问题的高级诊断数据，可能包括引起设备问题的文件和内容。
+
+Windows 10 诊断数据设置适用于 Windows 操作系统和 Windows 附带的应用。此设置不适用于 Windows 10 中运行的第三方应用。
 
 如果你禁用或未配置此策略设置，用户可以在“设置”中配置“遥测级别”。
 
@@ -24,6 +32,25 @@
 
 如果你未配置此策略设置，则用户可以配置“设置”中的“让 Microsoft 试验此版本的功能”选项。
 </string>
+      <string id="TelemetryProxy">配置互连用户体验和遥测</string>
+      <string id="TelemetryProxy_Explain">使用此策略设置可将连接用户体验和遥测请求转发到代理服务器。
+
+如果启用此策略设置，则可以指定组织网络中目标设备的 FQDN 或 IP 地址(如果需要，还可以选择性地指定端口号)。将通过安全套接字层(SSL)连接来建立连接。如果指定的代理发生故障或者禁用或未配置此策略设置，则会使用默认代理配置将连接用户体验和遥测数据发送到 Microsoft。
+
+此设置的格式为 &lt;服务器&gt;:&lt;端口&gt; 
+</string>
+      
+      <string id="CommercialId">配置商用 ID</string>
+      <string id="CommercialId_Explain">此策略设置所定义的标识符用于通过唯一方式将该设备的遥测数据进行关联，使之属于给定的组织。如果你的组织参加的计划要求将该设备标识为属于你的组织，则可使用此设置来提供该标识。在加入该计划时，Microsoft 将提供此设置的值。
+
+如果禁用或未配置此策略设置，则 Microsoft 将无法使用该标识符将此计算机及其遥测数据与你的组织关联起来。
+</string>
+
+      <string id="DisableEnterpriseAuthProxy">为“已连接的用户体验和遥测”服务进行经验证的代理使用配置</string>
+      <string id="DisableEnterpriseAuthProxy_1">允许使用经验证的代理</string>
+      <string id="DisableEnterpriseAuthProxy_2">禁止使用经验证的代理</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">此策略设置阻止“已连接的用户体验和遥测”服务在 Windows 10 上自动使用经验证的代理将数据发送回 Microsoft。如果禁用或未配置此策略设置，“已连接的用户体验和遥测”服务将自动使用经验证的代理将数据发送回 Microsoft。启用此策略将阻止“已连接的用户体验和遥测”服务自动使用经验证的代理。</string>
+
     </stringTable>
     <presentationTable>
       <presentation id="AllowTelemetry">
@@ -31,6 +58,19 @@
       </presentation>
       <presentation id="EnableExperimentation">
         <dropdownList refId="EnableExperimentation" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+        <label>代理服务器名称:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+        <label>商用 ID:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
       </presentation>
     </presentationTable>
   </resources>

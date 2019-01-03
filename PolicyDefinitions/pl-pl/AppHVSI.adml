@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>Konfiguracja funkcji Windows Defender Application Guard</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Włącz/wyłącz funkcję Windows Defender Application Guard (WDAG)</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Ta zasada włącza izolację aplikacji przy użyciu funkcji Windows Defender Application Guard.
+
+Funkcja Windows Defender Application Guard uruchamia aplikacje w środowisku zwirtualizowanym, korzystając z funkcji hypervisor systemu Windows. Gdy aplikacje są skonfigurowane do używania izolacji zabezpieczeń opartej na wirtualizacji, działania niezaufanych użytkowników podczas używania tych aplikacji oraz luki w zabezpieczeniach tych aplikacji nie mogą złamać zabezpieczeń jądra ani innych aplikacji uruchomionych poza tym środowiskiem zwirtualizowanym.
+Przed włączeniem tej zasady musisz zdefiniować listy zaufanych witryn przedsiębiorstwa. Te listy można skonfigurować, używając zasad izolacji sieci (wstaw link do określonej zasady dotyczącej sieci). Umożliwi to zagwarantowanie, że w środowisku zwirtualizowanym będą otwierane tylko witryny spoza przedsiębiorstwa.
+Uwaga: Aby zablokować system, włącz dla aplikacji zarówno funkcje zabezpieczeń funkcji Device Guard, jak i izolację aplikacji. Pełny zestaw wymagań, których spełnienie jest konieczne do bezpiecznego zablokowania systemu, można znaleźć w dokumentacji.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Konfiguruj ustawienia schowka funkcji Windows Defender Application Guard</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Określa zachowanie schowka, gdy jest używana izolacja aplikacji oraz funkcja Windows Defender Application Guard.
+
+Administratorzy mogą:
+Całkowicie wyłączyć funkcje schowka, gdy są włączone zabezpieczenia wirtualizacji.
+Włączyć kopiowanie pewnej zawartości z sesji izolowanej na komputer-host.
+Włączyć kopiowanie pewnej zawartości z komputera-hosta do sesji izolowanej.
+
+Uwaga: Zalecamy, aby administratorzy nie włączali kopiowania zawartości z komputera-hosta do sesji izolowanej. Mogłoby to spowodować, że izolowana sesja, której zabezpieczenia zostały złamane, mogłaby uzyskać dostęp do schowka komputera-hosta i przechowywanej na nim zawartości.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Blokuj operacje z użyciem schowka (domyślnie)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Włącz operacje z użyciem schowka z sesji izolowanej do hosta</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Włącz operacje z użyciem schowka z hosta do sesji izolowanej</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Włącz operacje z użyciem schowka w obu kierunkach</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Konfiguruj ustawienia drukowania funkcji Windows Defender Application Guard</string>
+        <string id="AppHVSI_PrintingSettings_Explain">W przypadku wyboru opcji Włącz drukowanie do pliku XPS użytkownicy mogą drukować dokumenty z poziomu kontenera do pliku w formacie XPS.
+W przypadku wyboru opcji Włącz drukowanie do pliku PDF użytkownicy mogą drukować dokumenty z poziomu kontenera do pliku w formacie PDF.
+W przypadku wyboru opcji Włącz drukowanie na drukarkach lokalnych użytkownicy mogą drukować dokumenty z poziomu kontenera na drukarce podłączonej lokalnie.
+W przypadku wyboru opcji Włącz drukowanie na istniejących drukarkach sieciowych użytkownicy mogą używać istniejących drukarek sieciowych do drukowania dokumentów z poziomu izolowanego kontenera. Nie jest możliwe dodawanie nowych drukarek sieciowych.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Blokuj witrynom internetowym przedsiębiorstwa możliwość ładowania zawartości spoza przedsiębiorstwa w przeglądarkach IE i Edge</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Jeśli to ustawienie zostanie włączone, cały ruch sieciowy generowany przez przeglądarki Internet Explorer i Microsoft Edge skierowany do witryn spoza przedsiębiorstwa, których nie można uruchomić w kontenerze funkcji Windows Defender Application Guard, będzie blokowany.
+
+Jeśli to ustawienie zostanie wyłączone, ruch sieciowy skierowany do witryn spoza przedsiębiorstwa, których nie można uruchomić w kontenerze funkcji Windows Defender Application Guard, będzie renderowany na komputerze-hoście.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Wybierz opcję:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Określa, co jest dozwolone w operacjach z użyciem schowka, gdy są one włączone (zapis dziesiętny):
+        </decimalTextBox>
+        <text>Ta wartość jest maską bitów określającą, których typów plików można używać w operacjach z użyciem schowka:
+
+b0001 — plik tekstowy
+b0010 — plik mapy bitowej
+b0011 — obsługiwane są oba typy plików
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Określa, które drukarki są włączone (zapis dziesiętny)
+        </decimalTextBox>
+        <text>Ta wartość jest maską bitów określającą, które drukarki są włączone w sesji izolowanej. 
+b0000 — drukowanie jest wyłączone
+b0001 — włącz drukowanie do pliku XPS (domyślne)
+b0010 — włącz drukowanie do pliku PDF
+b0100 — włącz drukowanie na drukarkach lokalnych
+b1000 — włącz drukowanie na istniejących drukarkach sieciowych
+
+Na przykład:
+W przypadku włączenia opcji XPS i drukarek lokalnych wartością będzie b0001 | b0100, czyli b0101 (w zapisie dziesiętnym 5).
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

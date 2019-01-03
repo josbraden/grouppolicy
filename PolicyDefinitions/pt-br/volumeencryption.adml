@@ -28,14 +28,13 @@ Observação: a inicialização do TPM (Trusted Platform Module) pode ocorrer du
 
 Observação: essa política só é aplicável aos computadores executando o Windows Server 2008 ou o Windows Vista.
 
-Em um computador com um TPM compatível, dois métodos de autenticação podem ser usados na inicialização para oferecer proteção adicional de dados criptografados. Quando o computador é iniciado, ele pode exigir que os usuários insiram uma unidade flash USB que contém uma chave de inicialização. Ele também pode exigir que os usuários insiram um PIN (número de identificação pessoal) de inicialização de 4 a 20 dígitos.
+Em um computador com um TPM compatível, dois métodos de autenticação podem ser usados na inicialização para oferecer proteção adicional de dados criptografados. Quando o computador é iniciado, ele pode exigir que os usuários insiram um pen drive que contém uma chave de inicialização. Ele também pode exigir que os usuários insiram um PIN (número de identificação pessoal) de inicialização de 6 a 20 dígitos.
 
-Uma unidade flash USB que contém uma chave de inicialização é necessária em computadores que não possuem um TPM compatível. Sem um TPM, os dados criptografados por BitLocker são protegidos apenas pelo material da chave contido na unidade flash USB.
+Um pen drive que contém uma chave de inicialização é necessária em computadores que não possuem um TPM compatível. Sem um TPM, os dados criptografados por BitLocker são protegidos apenas pelo material da chave contido no pen drive.
 
 Se você habilitar essa configuração de política, o assistente exibirá a página para permitir que o usuário configure opções avançadas de inicialização do BitLocker. Você pode definir mais opções de configuração para computadores com e sem TPM.
 
 Se você desabilitar ou não definir essa configuração de política, o Assistente para Instalação do BitLocker exibirá etapas básicas que permitem ao usuário ativar o BitLocker em computadores com TPM. Nesse assistente básico, não é possível configurar chaves ou PINs de inicialização adicionais.
-
 </string>
 
       <string id="ConfigureStartupUsage_Name">Exigir autenticação adicional na inicialização (Windows Server 2008 e Windows Vista)</string>
@@ -47,15 +46,13 @@ Observação: somente uma das opções adicionais de autenticação pode ser exi
 
 Se você quiser usar o BitLocker em um computador sem um TPM, marque a caixa de seleção "Permitir BitLocker sem um TPM compatível". Neste modo, uma senha ou uma unidade USB é necessária para inicialização. Ao usar uma chave de inicialização, as informações da chave utilizadas para criptografar a unidade são armazenadas na unidade USB, criando uma chave USB. Quando a chave USB for inserida, o acesso à unidade será autenticado e a unidade ficará acessível. Se a chave USB for perdida ou estiver indisponível ou se você tiver esquecido a senha, então precisará usar uma das opções de recuperação de BitLocker para acessar a unidade.
 
-Em um computador com um TPM compatível, quatro tipos de métodos de autenticação podem ser usados na inicialização para oferecer proteção adicional de dados criptografados. Quando o computador for iniciado, poderá usar apenas o TPM para autenticação ou também poderá exigir a inserção de uma unidade flash USB contendo uma chave de inicialização, a entrada de um PIN de 4 a 20 dígitos ou ambas.
+Em um computador com um TPM compatível, quatro tipos de métodos de autenticação podem ser usados na inicialização para oferecer proteção adicional de dados criptografados. Quando o computador for iniciado, poderá usar apenas o TPM para autenticação ou também poderá exigir a inserção de um pen drive contendo uma chave de inicialização, a entrada de um PIN de 4 a 20 dígitos ou ambas.
 
-Se você habilitar essa configuração de política, os usuários poderão configurar opções avançadas de inicialização no Assistente para Instalação do BitLocker.
+Se você habilitar essa configuração de política, os usuários poderão configurar opções avançadas de inicialização no assistente para instalação do BitLocker.
 
 Se você desabilitar ou não definir essa configuração de política, os usuários poderão configurar apenas as opções básicas nos computadores com um TPM.
 
-Observação: se você quiser exigir o uso de um PIN de inicialização e uma unidade flash USB, será preciso definir as configurações de BitLocker usando a ferramenta de linha de comando manage-bde em vez do Assistente para Instalação da Criptografia de Unidade de Disco BitLocker.
-
-
+Observação: se você quiser exigir o uso de um PIN de inicialização e um pen drive, será preciso definir as configurações de BitLocker usando a ferramenta de linha de comando manage-bde em vez do assistente para instalação da Criptografia de Unidade de Disco BitLocker.
 
 </string>
       <string id="AllowNetworkUnlockAtStartup_Name">Permitir desbloqueio de rede na inicialização</string>
@@ -312,6 +309,11 @@ Se você desabilitar ou não definir essa configuração de política, os segred
       </string>
       <string id="MorBehavior_Name">Evitar substituição de memória ao reiniciar</string>
 
+      <string id="DisableExternalDMAUnderLock_Help">Essa configuração de política permite bloquear o DMA (acesso direto à memória) para todas as portas PCI de downstream hot plug até que um usuário faça logon no Windows. Depois que um usuário fizer logon, o Windows vai enumerar os dispositivos PCI conectados às portas PCI host plug. Sempre que o usuário bloquear a máquina, o DMA será bloqueado em portas PCI hot plug sem dispositivos filho, até que o usuário faça logon novamente. Os dispositivos já enumerados quando a máquina foi desbloqueada continuarão a funcionar até que sejam desconectados. Essa configuração de política será imposta somente quando a criptografia BitLocker ou de dispositivo estiver habilitada.
+
+      </string>
+      <string id="DisableExternalDMAUnderLock_Name">Desabilitar novos dispositivos DMA quando este computador estiver bloqueado</string>
+
       <string id="FVEOSCategory">Unidades do Sistema Operacional</string>
       <string id="FVEFDVCategory">Unidades de Dados Fixas</string>
       <string id="FVERDVCategory">Unidades de Dados Removíveis</string>
@@ -373,26 +375,22 @@ A configuração que controla a depuração de inicialização (0x16000010) semp
 
 
       <string id="MinimumPINLength_Name">Configurar tamanho mínimo do PIN para inicialização</string>
-      <string id="MinimumPINLength_Help">Essa configuração de política permite configurar um tamanho mínimo para um PIN de inicialização do TPM. Essa configuração de política é aplicada ao ativar o BitLocker. O PIN de inicialização deve ter um tamanho mínimo de 4 dígitos e pode ter um tamanho máximo de 20 dígitos.
+      <string id="MinimumPINLength_Help">Essa configuração de política permite configurar um tamanho mínimo para um PIN de inicialização do TPM. Essa configuração de política é aplicada ao ativar o BitLocker. O PIN de inicialização deve ter um tamanho mínimo de 6 dígitos e pode ter um tamanho máximo de 20 dígitos.
 
 Se você habilitar essa configuração de política, poderá exigir um número mínimo de dígitos a serem usados ao configurar o PIN de inicialização.
 
-Se você desabilitar ou não definir essa configuração de política, os usuários poderão configurar um PIN de inicialização com tamanho entre 4 e 20 dígitos.
-
-      
+Se você desabilitar ou não definir essa configuração de política, os usuários poderão configurar um PIN de inicialização com tamanho entre 6 e 20 dígitos.
 
       </string>
 
       <string id="OSAllowDRA_Name">Permitir agentes de recuperação de dados com base em certificado</string>
 
       <string id="FDVDenyWriteAccess_Name">Negar acesso de gravação a unidades fixas não protegidas por BitLocker</string>
-      <string id="FDVDenyWriteAccess_Help">Essa configuração de política determina se a proteção do BitLocker é necessária para que unidades de dados fixas sejam graváveis em um computador. Essa configuração de política é aplicada ao ativar o BitLocker.
+      <string id="FDVDenyWriteAccess_Help">Essa configuração de política determina se a proteção do BitLocker é necessária para que unidades de dados fixas sejam graváveis em um computador. Essa configuração de política é aplicada ao ativar o BitLocke.
 
 Se você habilitar essa configuração de política, todas as unidades de dados fixas que não estiverem protegidas por BitLocker serão montadas como somente leitura. Se a unidade estiver protegida por BitLocker, ela será montada com acesso de leitura e gravação.
 
 Se você desabilitar ou não definir essa configuração de política, todas as unidades de dados fixas no computador serão montadas com acesso de leitura e gravação.
-
-      
 
       </string>
 
@@ -691,10 +689,18 @@ Observe que, se você não habilitar essa configuração de política, as opçõ
       
       </string>
 
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Name">Permitir que dispositivos compatíveis com InstantGo ou HSTI recusem a pré-inicialização PIN.</string>
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Help">Essa configuração de política permite que os usuários que usem dispositivos compatíveis com InstantGo ou HSTI (Microsoft Hardware Security Test Interface) não ter um PIN para autenticação de pré-inicialização. Isso substitui as opções "Exigir PIN de inicialização com TPM" e "Exigir chave de inicialização e PIN com TPM" da política "Exigir autenticação adicional na inicialização" no hardware compatível.
+
+Se você habilitar essa configuração de política, os usuários com dispositivos compatíveis InstantGo e HSTI terão a opção de ativar o BitLocker sem autenticação de pré-inicialização.
+
+Se essa política não estiver habilitada, a opção de política "Exigir autenticação adicional na inicialização" será aplicada.
+      </string>
+
       <string id="AllowSecureBootForIntegrity_Name">Permitir Inicialização Segura para validação de integridade</string>
       <string id="AllowSecureBootForIntegrity_Help">Esta configuração de política permite configurar se a Inicialização Segura poderá funcionar como provedor de integridade da plataforma para unidades do sistema operacional do BitLocker.
 
-A Inicialização Segura garante que o ambiente pré-inicialização do computador só carregará firmwares digitalmente assinados por editores de software autorizados. A Inicialização Segura também fornece mais flexibilidade para gerenciar a configuração pré-inicialização do que as verificações de integridade herdadas do BitLocker.
+A Inicialização Segura garante que o ambiente pré-inicialização do computador só carregará firmwares digitalmente assinados por fornecedores de software autorizados. A Inicialização Segura também fornece mais flexibilidade para gerenciar a configuração pré-inicialização do que as verificações de integridade herdadas do BitLocker.
 
 Se você habilitar ou não definir essa configuração de política, o BitLocker usará Inicialização Segura para integridade de plataforma se a plataforma for compatível com a validação de integridade com base na Inicialização Segura.
 
@@ -968,7 +974,7 @@ Observação: nem todos os caracteres e idiomas têm suporte em pré-inicializa�
       </presentation>
 
      <presentation id="MinimumPINLength">
-        <decimalTextBox refId="MinPINLength" defaultValue="4">Mínimo de caracteres:</decimalTextBox>
+        <decimalTextBox refId="MinPINLength" defaultValue="6">Mínimo de caracteres:</decimalTextBox>
       </presentation>
 
      <presentation id="FDVPassphrase_Name">

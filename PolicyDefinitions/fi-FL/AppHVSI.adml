@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defenderin sovellussuoja</displayName>
+  <description>Windows Defenderin sovellussuojan määritys</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defenderin sovellussuoja</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Ota käyttöön tai poista käytöstä Windows Defenderin sovellussuoja (WDAG)</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Tämän käytännön avulla voit ottaa käyttöön sovelluksen eristämisen käyttämällä Windows Defenderin sovellussuojaa.
+\r\Windows Defenderin sovellussuoja käynnistää sovelluksia virtualisoidussa ympäristössä Windows Hypervisorin avulla. Kun sovellukset on määritetty käyttämään virtualisointiin perustuvaa suojausta, kyseisten sovellusten käytön aikana tapahtuva käyttäjien toiminta, johon ei luoteta, ja heikkoudet kyseisissä sovelluksissa eivät voi vaarantaa ydintä ja muita virtualisoidun ympäristön ulkopuolella suoritettavia sovelluksia.
+Ennen kuin otat tämän käytännön käyttöön, määritä yrityksen luotettujen sivustojen luettelo. Nämä luettelot voidaan määrittää käyttämällä verkon eristämiskäytäntöä (lisää linkki tiettyyn verkkokäytäntöön). Luettelojen avulla voidaan varmistaa, että vain muut kuin yrityksen sivustot avataan virtualisoidussa ympäristössä.
+Huomautus: Jos haluat lukita ympäristön, varmista, että sovellussuojan suojausominaisuudet ovat käytössä sovellusten eristämisen lisäksi. Lisätietoja järjestelmän turvallista lukitsemista koskevista vaatimuksista on ohjeissa.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Määritä Windows Defenderin sovellussuojan leikepöydän asetukset</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Määrittää leikepöydän toiminnan, kun sovelluksen eristämistä käytetään Windows Defenderin sovellussuojan kanssa.
+
+Järjestelmänvalvojat voivat suorittaa seuraavat toimet:
+Poistaa käytöstä leikepöytätoiminnon kokonaan, kun virtualisointisuojaus on käytössä.
+Ottaa käyttöön tietyn sisällön kopioimisen eristetystä istunnosta isäntätietokoneeseen.
+Ottaa käyttöön tietyn sisällön kopioimisen isäntätietokoneesta eristettyyn istuntoon.
+
+Huomautus: Suosittelemme, että järjestelmänvalvojat eivät ota käyttöön kopioimista isäntätietokoneesta eristettyyn istuntoon. Tällöin vaarantunut eristetty istunto voi käyttää isäntätietokoneen leikepöytää ja sen sisältöä.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Estä leikepöytätoiminnot (oletus)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Ota käyttöön leikepöytätoiminto eristetystä istunnosta isäntään</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Ota käyttöön leikepöytätoiminto isännästä eristettyyn istuntoon</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Ota käyttöön leikepöytätoiminto molempiin suuntiin</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Määritä Windows Defenderin sovellussuojan tulostusasetukset</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Jos Ota käyttöön XPS-asiakirjoihin tulostaminen -asetus on valittuna, käyttäjät voivat tulostaa asiakirjoja säilöstä XPS-muotoon.
+Jos Ota käyttöön PDF-asiakirjoihin tulostaminen -asetus on valittuna, käyttäjät voivat tulostaa asiakirjoja säilöstä PDF-muotoon.
+Jos Ota käyttöön paikallisiin tulostimiin tulostaminen -asetus on valittuna, käyttäjät voivat tulostaa asiakirjoja säilöstä paikallisesti liitettyyn tulostimeen.
+Jos Ota käyttöön nykyisiin verkkotulostimiin tulostaminen -asetus on valittuna, käyttäjät voivat tulostaa asiakirjoja eristetystä säilöstä nykyisten verkkotulostimien avulla. Käyttäjät eivät voi etsiä uusia verkkotulostimia.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Estä yrityssivustoja lataamasta muuta kuin yrityssisältöä IE:ssä ja Edgessä</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Jos tämä asetus on käytössä, Internet Explorerin ja Microsoft Edgen verkkoliikenne estetään sellaisiin muihin kuin yrityksen sivustoihin, jotka eivät voi käynnistää Windows Defenderin sovellussuojan säilöä.
+
+Jos tämä asetus on poistettu käytöstä, verkkoliikenne hahmonnetaan isäntätietokoneessa sellaisiin muihin kuin yrityksen sivustoihin, jotka eivät voi käynnistää Windows Defenderin sovellussuojan säilöä.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Valitse asetus:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Määrittää, millainen leikepöydän toiminta sallitaan, kun leikepöytätoiminnot on otettu käyttöön (desimaaleina):
+        </decimalTextBox>
+        <text>Tämä arvo on bittipeite, joka määrittää tiedostotyypit, joita voi käyttää leikepöytätoiminnoissa:
+
+b0001 – tekstitiedosto
+b0010 – bittikarttatiedosto
+b0011 – sekä teksti- että bittikarttatiedostot ovat tuettuja
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Määrittää, mitkä tulostimet on otettu käyttöön (desimaaleina)
+        </decimalTextBox>
+        <text>Tämä arvo on bittipeite, joka määrittää, mitkä tulostimet otetaan käyttöön eristetyssä istunnossa    
+b0000 – Tulostaminen poistettu käytöstä
+b0001 – Ota käyttöön XPS-asiakirjoihin tulostaminen (oletus)
+b0010 – Ota käyttöön PDF-asiakirjoihin tulostaminen
+b0100 – Ota käyttöön paikallisiin tulostimiin tulostaminen
+b1000 – Ota käyttöön nykyisiin verkkotulostimiin tulostaminen
+
+Esimerkki:
+Jos XPS ja paikalliset tulostimet on otettu käyttöön, arvo on b0001 | b0100 eli b0101 (desimaali 5)
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

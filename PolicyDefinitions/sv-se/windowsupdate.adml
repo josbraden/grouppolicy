@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
-<!-- 
+<!--
   Note that white space is preserved as is in the text shown in the Group Policy UI.
   Don't add extra line breaks at the beginning and end of text strings,
   and make sure that lines of text start in the FIRST column.
@@ -85,11 +85,11 @@ Med den här inställningen kan du ange om automatiska uppdateringar är aktiver
 Om status för den här principen är Inaktiverad måste tillgängliga uppdateringar på webbplatsen Windows Update laddas ned och installeras manuellt. Det gör du genom att söka efter Windows Update på Start.
 
 Om statusen är Inte konfigurerad så är inte användningen av automatiska uppdateringar angiven på grupprincipsnivå. En administratör kan emellertid fortfarande konfigurera automatiska uppdateringar från Kontrollpanelen.</string>
-      
+
       <string id="AutoUpdateModeAdminChooses">5 - Låt lokala administratörer välja inställning</string>
       <string id="AutoUpdateModeAuto">4 - Hämta automatiskt och schemalägg installationen</string>
       <string id="AutoUpdateModeDownload">3 - Hämta automatiskt och meddela om installation</string>
-      <string id="AutoUpdateModeNotify">2 - Meddela om hämtning och installation</string>
+      <string id="AutoUpdateModeNotify">2 - Meddela om nedladdning och automatisk installation</string>
       <string id="AutoUpdateSchDay_Everyday">0 - varje dag</string>
       <string id="AutoUpdateSchDay_Friday">6 - varje fredag</string>
       <string id="AutoUpdateSchDay_Monday">2 - varje måndag</string>
@@ -123,19 +123,28 @@ Om statusen är Inte konfigurerad så är inte användningen av automatiska uppd
       <string id="AutoUpdateSchTime8">08:00</string>
       <string id="AutoUpdateSchTime9">09:00</string>
       <string id="CorpWuURL">Ange sökväg till tjänsten Microsoft Update på intranätet</string>
-      <string id="CorpWuURL_Help">Anger en intranätserver som är värd för uppdateringar från Microsoft Update. Du kan sedan använda den här uppdateringstjänsten för att automatiskt uppdatera datorer på nätverket.
+      <string id="CorpWuURL_Help">
+        Anger en intranätserver som värd för uppdateringar från Microsoft Update. Du kan använda den här uppdateringstjänsten för att automatiskt uppdatera datorer i nätverket.
 
-Du kan använda den här inställningen för att ange en server på nätverket som kan fungera som en intern uppdateringstjänst. Klienter för automatisk uppdatering söker igenom den här tjänsten för att hitta uppdateringar som kan tillämpas på datorerna på nätverket.
+        Använd den här inställningen om du vill ange en server i nätverket som kan fungera som en intern uppdateringstjänst. Klienten Automatiska uppdateringar söker igenom den här tjänsten för att hitta uppdateringar som kan tillämpas på datorerna i nätverket.
 
-Du kan använda den här inställningen genom att ange två servernamn: den server som klienten för automatiska uppdateringar upptäcker och hämtar uppdateringar från, och den server som statistik om hämtning skrivs till. Du kan ange samma server för båda dessa.
+        Du måste ange två servrar för den här inställningen: servern som klienten Automatiska uppdateringar identifierar och laddar ned uppdateringar från, och servern som uppdaterade datorer laddar upp statistik till. Du kan ange samma server för båda dessa. En valfri server kan anges för att konfigurera Windows Update-agenten till att ladda ned uppdateringar från en alternativ nedladdningsserver i stället för intranätuppdateringstjänsten.
 
-Om status är Aktiverad ansluter klienten för automatiska uppdateringar till den uppdateringstjänst på intranätet som anges i stället för Windows Update när uppdateringar ska hämtas. Om inställningen aktiveras behöver slutanvändare i organisationen alltså inte hämta data utanför en brandvägg och uppdateringarna kan testas innan de distribueras.
+        Om statusen är Aktiverad ansluter klienten Automatiska uppdateringar till den angivna Microsoft-uppdateringstjänsten i intranätet (eller den alternativa nedladdningsservern) i stället för Windows Update för att söka efter och ladda ned uppdateringar. Om du aktiverar den här inställningen behöver användarna i din organisation inte gå via en brandvägg för att hämta uppdateringar, och du ges möjlighet att testa uppdateringarna innan du distribuerar dem.
 
-Om status är Inaktiverad eller Inte konfigurerad och om automatiska uppdateringar inte inaktiverats genom principer eller användarnas inställningar kan klienten för automatiska uppdateringar ansluta direkt till webbplatsen Windows Update på Internet.
+        Om statusen är Inaktiverad eller Inte konfigurerad, och Automatiska uppdateringar inte är inaktiverat av en princip eller användarinställning, ansluter klienten Automatiska uppdateringar direkt till Windows Update-webbplatsen på Internet.
 
-Obs! Om principen "Konfigurera automatiska uppdateringar" är inaktiverad har den här principen ingen effekt.
+        Den alternativa nedladdningsservern konfigurerar Windows Update-agenten till att ladda ned filer från en alternativ nedladdningsserver i stället för intranätuppdateringstjänsten.
 
-Obs! Den här principinställningen stöds inte på Windows RT. Den här principinställningen har ingen inverkan på Windows RT-datorer.</string>
+        Alternativet för att ladda ned filer med saknade URL:er gör att innehåll kan laddas ned från en alternativ nedladdningsserver när det inte finns några nedladdnings-URL:er för filer i uppdateringsmetadata. Det här alternativet ska endast användas när intranätuppdateringstjänsten inte tillhandahåller nedladdnings-URL:er i uppdateringsmetadata för filer som finns på den alternativa nedladdningsservern.
+
+        Anmärkning: Om principen "Konfigurera automatiska uppdateringar" är inaktiverad har den här principen ingen effekt.
+
+        Anmärkning: Om den alternativa nedladdningsservern inte anges används intranätuppdateringstjänsten som standard för att ladda ned uppdateringar.
+
+        Anmärkning: Alternativet "Ladda ned filer utan URL:er i metadata om en alternativ nedladdningsserver har angetts" används endast om "Alternativ nedladdningsserver" anges.
+
+        Anmärkning: Den här principinställningen stöds inte på Windows RT, och om den anges har den ingen effekt på Windows RT-datorer.</string>
       <string id="DetectionFrequency_Help">Anger vilka timmar som ska användas för att avgöra väntetid innan sökning görs efter tillgängliga uppdateringar. Exakt väntetid avgörs genom att de timmar som anges här används, minus mellan 0 och 20 procent av de timmar som anges. Om den här principen till exempel används för att ange att sökning ska ske var 20:e timme kommer alla klienter som den här principen tillämpas på att söka efter uppdateringar mellan var 16:e och var 20:e timme.
 
 Om status är Aktiverad sker sökning efter tillgängliga uppdateringar enligt det intervall som anges.
@@ -148,21 +157,21 @@ Obs! Om principen Konfigurera Automatiska uppdateringar är inaktiverad har den 
 
 Obs! Den här principinställningen stöds inte på Windows RT. Den här principinställningen har ingen inverkan på Windows RT-datorer.</string>
       <string id="DetectionFrequency_Title">Frekvens för sökning efter automatiska uppdateringar</string>
-      <string id="ElevateNonAdmins_Help">Med den här principinställningen kan du kontrollera om andra användare än administratörer tar emot uppdateringsmeddelanden baserat på principinställningen Konfigurera automatiska uppdateringar.
-      
-Om du aktiverar den här principinställningen inkluderar Automatiska uppdateringar och Microsoft Update användare som inte är administratörer när det avgörs vilka inloggade användare som ska få ta emot uppdateringsmeddelanden. Användare som inte är administratörer kan då installera allt ytterligare, rekommenderat och viktigt innehåll som de tar emot i ett meddelande. Användarna kan inte se ett fönster för kontroll av Användarkonto och behöver inte någon utökad behörighet för att installera uppdateringarna, förutom i de fall då uppdateringarna innehåller användargränssnitt, licensavtal (EULA) eller ändringar i inställningen för Windows Update.
+      <string id="ElevateNonAdmins_Help">Med den här principinställningen kan du reglera om andra användare än administratörer ska få uppdateringsmeddelanden baserat på principinställningen Konfigurera automatiska uppdateringar.
 
-Det finns två tillfällen då effekten av den här inställningen beror på operativsystemet: Dölj/återställ uppdateringar och Avbryt en installation.
+Om du aktiverar den här principinställningen inkluderar Automatiska uppdateringar och Microsoft Update användare som inte är administratörer när det avgörs vilka inloggade användare som ska få uppdateringsmeddelanden. Användare som inte är administratörer kan då installera allt ytterligare, rekommenderat och viktigt innehåll som de får meddelanden om. Inget User Account Control-fönster (UAC) visas för användarna och de behöver inte utökad behörighet för att installera uppdateringarna, förutom i de fall då uppdateringarna innehåller inställningsändringar för användargränssnitt, licensavtal (EULA) eller Windows Update.
 
-För XP: Om du aktiverar den här principinställningen kan inte användarna se ett fönster för kontroll av Användarkonto och behöver ingen utökad behörighet för att utföra någon av dessa uppdateringsrelaterade uppgifter.
+Det finns två tillfällen då effekten av den här inställningen beror på operativsystemet: Dölja/återställa uppdateringar och Avbryta en installation.
 
-För Vista: Om du aktiverar den här principinställningen kan användarna inte se ett fönster för kontroll av Användarkonto och behöver ingen utökad behörighet för att utföra någon av dessa uppgifter. Om du inte aktiverar den här principinställningen ser användarna alltid ett fönster för kontroll av Konto och behöver utökad behörighet för att utföra någon av dessa uppgifter.
+För XP: Om du aktiverar den här principinställningen visas inte ett User Account Control-fönster (UAC) för användarna och de behöver inte utökad behörighet för att utföra dessa uppdateringsrelaterade uppgifter.
 
-För Windows 7: Den här principinställningen har ingen inverkan. Användarna ser alltid ett fönster för kontroll av Konto och behöver utökad behörighet för att utföra någon av de här uppgifterna.
+För Vista: Om du aktiverar den här principinställningen visas inte ett User Account Control-fönster (UAC) för användarna och de behöver inte utökad behörighet för att utföra någon av dessa uppgifter. Om du inte aktiverar principinställningen visas alltid ett User Account Control-fönster (UAC) och de behöver utökad behörighet för att utföra dessa uppgifter.
 
-I Windows 8 och Windows RT: Den här principinställningen har ingen inverkan. Användarna ser alltid ett fönster för kontroll av Konto och behöver utökad behörighet för att utföra någon av de här uppgifterna.
+För Windows 7: Den här principinställningen har ingen inverkan. Ett User Account Control-fönster (UAC) visas alltid för användarna och de behöver utökad behörighet för att utföra de här uppgifterna.
 
-Om du inaktiverar den här principinställningen är det bara administrativa användare som tar emot uppdateringsmeddelanden.
+I Windows 8 och Windows RT: Den här principinställningen har ingen inverkan. Ett User Account Control-fönster (UAC) visas alltid för användarna och de behöver utökad behörighet för att utföra de här uppgifterna.
+
+Om du inaktiverar principinställningen är det bara administrativa användare som får uppdateringsmeddelanden.
 
 Obs! I Windows 8 och Windows RT är den här principinställningen aktiverad som standard. I alla tidigare versioner av Windows är den inaktiverad som standard.
 
@@ -280,11 +289,11 @@ Obs! Den här principinställningen stöds inte på Windows RT. Den här princip
       <string id="TargetGroup_Title">Aktivera anpassning efter klienter</string>
       <string id="WindowsUpdateCat">Windows Update</string>
       <string id="TrustedPublisher_Title">Tillåt signerade uppdateringar från en Microsoft-uppdateringstjänst på intranätet  </string>
-      <string id="TrustedPublisher_Help">Med den här principinställningen hanterar du om Automatiska uppdateringar accepterar uppdateringar som har signerats av andra än Microsoft när uppdateringen kommer från en Microsoft-uppdateringstjänst på ett intranät. 
+      <string id="TrustedPublisher_Help">Med den här principinställningen anger du om Automatiska uppdateringar accepterar uppdateringar som har signerats av andra än Microsoft när uppdateringen kommer från en Microsoft-uppdateringstjänst på ett intranät.
 
-Om du aktiverar den här principinställningen accepterar Automatiska uppdateringar från en Microsoft-uppdateringstjänst på intranätet om de har signerats med ett certifikat som finns i certifikatarkivet Betrodda utgivare på den lokala datorn.
+Om du aktiverar principinställningen accepteras automatiska uppdateringar från en Microsoft-uppdateringstjänst på intranätet om de har signerats med ett certifikat som finns i certifikatarkivet Betrodda utgivare på den lokala datorn.
 
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen måste uppdateringar från en Microsoft-uppdateringstjänst på intranätet vara signerade av Microsoft.
+Om du inaktiverar eller låter bli att konfigurera principinställningen måste uppdateringar från en Microsoft-uppdateringstjänst på intranätet vara signerade av Microsoft.
 
 Obs! Uppdateringar från andra tjänster än Microsoft-uppdateringstjänster på intranät måste alltid vara signerade av Microsoft och påverkas inte av den här principinställningen.
 Obs! Den här principinställningen stöds inte på Windows RT. Den här principinställningen har ingen inverkan på Windows RT-datorer.</string>
@@ -294,22 +303,246 @@ Obs! Den här principinställningen stöds inte på Windows RT. Den här princip
 Om du aktiverar den här principen inaktiveras den funktionen och det kan innebära att anslutningen till offentliga tjänster som Windows Store slutar fungera.
 
 Obs! Den här principen gäller endast när datorn är konfigurerad för att ansluta till en uppdateringstjänst på intranätet med principen "Ange sökväg till tjänsten Microsoft Update på intranätet".</string>
+      <string id="DeferUpdateCat">Skjut upp Windows-uppdateringar</string>
+      <string id="CurrentBranchFeatureUpdates">Current Branch</string>
+      <string id="BusinessReadyFeatureUpdates">Current Branch for Business</string>
+      <string id="DeferFeatureUpdates_Title">Välj när funktionsuppdateringar tas emot</string>
+      <string id="DeferFeatureUpdates_Help">Aktivera den här principen om du vill ange vilken typ av funktionsuppdateringar du vill ta emot och när.
 
-      <string id="DeferUpgrade_Title">Skjut upp uppgraderingar och uppdateringar</string>
-      <string id="DeferUpgrade_Help">Enable this policy in order to defer upgrades for up to eight months.
+Branch-beredskapsnivån för varje ny Windows 10-funktionsuppdatering sätts först till Current Branch (CB) och används av organisationer för initial distribution. När Microsoft har verifierat att funktionsuppdateringen är lämplig för företagsdistribution sätts den till Branch-beredskapsnivån Current Branch for Business (CBB).
+
+Du kan skjuta upp funktionsuppdateringar i upp till 365 dagar.
+
+Om du inte vill ta emot funktionsuppdateringar den schemalagda tiden kan du tillfälligt pausa funktionsuppdateringar. Då pausas de i 60 dagar eller tills du rensar fältet för startdatum.
+
+Rensa fältet för startdatum om du vill återuppta funktionsuppdateringar som pausats.
+
+Om du inaktiverar eller låter bli att konfigurera principen kommer Windows Update inte att ändra sin uppdateringsprocess.
+
+Obs! Den här principen har ingen effekt om principen Tillåt telemetri är inställd på 0.</string>
+      <string id="DeferQualityUpdates_Title">Välj när kvalitetsuppdateringar tas emot</string>
+      <string id="DeferQualityUpdates_Help">Aktivera den här principen om du vill ange när du vill ta emot kvalitetsuppdateringar.
+
+Du kan skjuta upp kvalitetsuppdateringar i upp till 30 dagar.
+
+Om du inte vill ta emot kvalitetsuppdateringar den schemalagda tiden kan du tillfälligt pausa kvalitetsuppdateringar. Då pausas de i 35 dagar eller tills du rensar fältet för startdatum.
+
+Rensa fältet för startdatum om du vill återuppta kvalitetsuppdateringar som pausats.
+
+Om du inaktiverar eller låter bli att konfigurera principen kommer Windows Update inte att ändra sin uppdateringsprocess.
+
+Obs! Den här principen har ingen effekt om principen Tillåt telemetri är inställd på 0.</string>
+      <string id="ExcludeWUDriversInQualityUpdate_Title">Ta inte med drivrutiner med Windows-uppdateringar</string>
+      <string id="ExcludeWUDriversInQualityUpdate_Help">Aktivera den här principen om du inte vill inkludera drivrutiner i kvalitetsuppdateringar för Windows.
+
+Om du inaktiverar eller låter bli att konfigurera principen kommer Windows Update att inkludera uppdateringar för drivrutiner.</string>
+      <string id="ActiveHours_Title">Inaktivera automatisk omstart för uppdateringar under aktiva timmar</string>
+      <string id="ActiveHours_Help">Om du aktiverar den här principen startas inte datorn om automatiskt efter uppdateringar under aktiva timmar. Försök att starta om datorn görs i stället utanför aktiva timmar.
+
+Observera att datorn måste startas om för vissa uppdateringar för att de ska börja gälla.
+
+Om du inaktiverar eller låter bli att konfigurera principen och inte har några andra grupprinciper för omstart gäller användarens valda aktiva timmar.
+
+Om någon av följande två principer aktiveras har den här principen ingen effekt:
+    1. Ingen automatisk omstart med inloggade användare efter schemalagda installationer av automatiska uppdateringar.
+    2. Starta alltid om automatiskt vid den schemalagda tiden.
+
+Observera att det maximala intervallet för aktiva timmar är 18 timmar från starttiden för aktiva timmar såvida inget annat anges via principen Ange intervallet för aktiva timmar för automatiska omstarter.</string>
+      <string id="ActiveHoursTime10AM">10:00</string>
+      <string id="ActiveHoursTime10PM">22:00</string>
+      <string id="ActiveHoursTime11AM">11:00</string>
+      <string id="ActiveHoursTime11PM">23:00</string>
+      <string id="ActiveHoursTime12AM">00:00</string>
+      <string id="ActiveHoursTime12PM">12:00</string>
+      <string id="ActiveHoursTime1AM">01:00</string>
+      <string id="ActiveHoursTime1PM">13:00</string>
+      <string id="ActiveHoursTime2AM">02:00</string>
+      <string id="ActiveHoursTime2PM">14:00</string>
+      <string id="ActiveHoursTime3AM">03:00</string>
+      <string id="ActiveHoursTime3PM">15:00</string>
+      <string id="ActiveHoursTime4AM">04:00</string>
+      <string id="ActiveHoursTime4PM">16:00</string>
+      <string id="ActiveHoursTime5AM">05:00</string>
+      <string id="ActiveHoursTime5PM">17:00</string>
+      <string id="ActiveHoursTime6AM">06:00</string>
+      <string id="ActiveHoursTime6PM">18:00</string>
+      <string id="ActiveHoursTime7AM">07:00</string>
+      <string id="ActiveHoursTime7PM">19:00</string>
+      <string id="ActiveHoursTime8AM">08:00</string>
+      <string id="ActiveHoursTime8PM">20:00</string>
+      <string id="ActiveHoursTime9AM">09:00</string>
+      <string id="ActiveHoursTime9PM">21:00</string>
+
+      <string id="AutoRestartDeadline_Title">Ange en tidsgräns för automatisk omstart för uppdateringsinstallation</string>
+      <string id="AutoRestartDeadline_Help">Ange en tidsgräns i dagar innan en schemalagd omstart görs utanför aktiva timmar automatiskt. Tidsgränsen kan vara mellan 2 och 14 dagar från tidpunkten omstarten är schemalagd.
+
+Observera att datorn måste startas om för att vissa uppdateringar ska träda ikraft.
+
+Om du aktiverar den här principen görs en omstart automatiskt efter det antal dagar du angett från tidpunkten omstarten är schemalagd.
+
+Om du inaktiverar eller låter bli att konfigurera principinställningen startar datorn om enligt standardschemat.
+
+Om någon av följande två principer är aktiverad har den här principen ingen effekt:
+    1. Ingen automatisk omstart med inloggade användare efter schemalagda installationer av automatiska uppdateringar.
+    2. Starta alltid om automatiskt vid den schemalagda tiden.
+      </string>
+      <string id="AutoRestartDeadlineDay2">2</string>
+      <string id="AutoRestartDeadlineDay3">3</string>
+      <string id="AutoRestartDeadlineDay4">4</string>
+      <string id="AutoRestartDeadlineDay5">5</string>
+      <string id="AutoRestartDeadlineDay6">6</string>
+      <string id="AutoRestartDeadlineDay7">7</string>
+      <string id="AutoRestartDeadlineDay8">8</string>
+      <string id="AutoRestartDeadlineDay9">9</string>
+      <string id="AutoRestartDeadlineDay10">10</string>
+      <string id="AutoRestartDeadlineDay11">11</string>
+      <string id="AutoRestartDeadlineDay12">12</string>
+      <string id="AutoRestartDeadlineDay13">13</string>
+      <string id="AutoRestartDeadlineDay14">14</string>
+      <string id="AutoRestartDeadlineDay15">15</string>
+      <string id="AutoRestartDeadlineDay16">16</string>
+      <string id="AutoRestartDeadlineDay17">17</string>
+      <string id="AutoRestartDeadlineDay18">18</string>
+      <string id="AutoRestartDeadlineDay19">19</string>
+      <string id="AutoRestartDeadlineDay20">20</string>
+      <string id="AutoRestartDeadlineDay21">21</string>
+      <string id="AutoRestartDeadlineDay22">22</string>
+      <string id="AutoRestartDeadlineDay23">23</string>
+      <string id="AutoRestartDeadlineDay24">24</string>
+      <string id="AutoRestartDeadlineDay25">25</string>
+      <string id="AutoRestartDeadlineDay26">26</string>
+      <string id="AutoRestartDeadlineDay27">27</string>
+      <string id="AutoRestartDeadlineDay28">28</string>
+      <string id="AutoRestartDeadlineDay29">29</string>
+      <string id="AutoRestartDeadlineDay30">30</string>
+
+      <string id="DisableUXWUAccess_Title">Neka åtkomst till alla Windows Update-funktioner</string>
+      <string id="DisableUXWUAccess_Help">Med den här inställningen kan du neka åtkomst till Windows Update-sökning.
+
+Om du aktiverar inställningen nekas användare sökning i och nedladdning och installation från Windows Update.
+      </string>
+      <string id="ActiveHoursMaxRange_Title">Ange intervallet för aktiva timmar för automatiska omstarter</string>
+      <string id="ActiveHoursMaxRange_Help">Aktivera den här principen om du vill ange det maximala antal timmar från starttiden då användaren kan ställa in sina aktiva timmar.
+
+Det maximala intervallet för aktiva timmar kan vara mellan 8 och 18 timmar.
+
+Om du inaktiverar eller låter bli att konfigurera den här principen används standardintervallet för aktiva timmar.
+      </string>
+      <string id="ActiveHoursMaxRange8">8</string>
+      <string id="ActiveHoursMaxRange9">9</string>
+      <string id="ActiveHoursMaxRange10">10</string>
+      <string id="ActiveHoursMaxRange11">11</string>
+      <string id="ActiveHoursMaxRange12">12</string>
+      <string id="ActiveHoursMaxRange13">13</string>
+      <string id="ActiveHoursMaxRange14">14</string>
+      <string id="ActiveHoursMaxRange15">15</string>
+      <string id="ActiveHoursMaxRange16">16</string>
+      <string id="ActiveHoursMaxRange17">17</string>
+      <string id="ActiveHoursMaxRange18">18</string>
+
+      <string id="AutoRestartRequiredNotificationDismissal_Title">Konfigurera meddelandet om att automatisk omstart krävs för uppdateringar</string>
+      <string id="AutoRestartRequiredNotificationDismissal_Help">Aktivera den här principen om du vill ange metoden för hur meddelandet om automatisk start krävs ska stängas. När en omstart krävs för att installera uppdateringar visas meddelandet om automatisk start. Meddelandet stängs som standard efter 25 sekunder.
+
+Du kan ange att en användaråtgärd krävs för att stänga meddelandet.
+
+Om du inaktiverar eller låter bli att konfigurera den här principen används standardinställningarna.
+      </string>
+      <string id="AutoDismissal">1 - Automatisk</string>
+      <string id="UserAction">2 - Användaråtgärd</string>
+
+      <string id="AutoRestartNotificationConfig_Title">Konfigurera påminnelsemeddelanden om automatisk omstart för uppdateringar</string>
+      <string id="AutoRestartNotificationConfig_Help">Aktivera den här principen om du vill ange när påminnelser om automatisk omstart ska visas.
+
+Du kan ange hur lång tid före en schemalagd omstart som påminnelsen ska visas för användaren.
+
+Om du inaktiverar eller låter bli att konfigurera den här principen används standardtiden för påminnelsen.
+      </string>
+      <string id="AutoRestartNotificationSchd15">15</string>
+      <string id="AutoRestartNotificationSchd30">30</string>
+      <string id="AutoRestartNotificationSchd60">60</string>
+      <string id="AutoRestartNotificationSchd120">120</string>
+      <string id="AutoRestartNotificationSchd240">240</string>
+
+      <string id="AutoRestartNotificationDisable_Title">Inaktivera meddelanden om automatisk omstart för uppdateringsinstallationer</string>
+      <string id="AutoRestartNotificationDisable_Help">Med den här principinställningen kan du ange om användarna ska få meddelanden om automatisk omstart för uppdateringsinstallationer, samt påminnelse- och varningsmeddelanden.
+
+Aktivera den här principen om du vill inaktivera alla meddelanden om automatisk omstart.
+
+Om du inaktiverar eller låter bli att konfigurera den här principen används standardinställningarna för meddelanden.
+      </string>
+
+      <string id="RestartWarningSchd_Title">Konfigurera varningsmeddelanden om schemalagd automatisk omstart för uppdateringar</string>
+      <string id="RestartWarningSchd_Help">Aktivera den här principen om du vill ange när meddelanden ska visas som varnar användarna om en schemalagd tvingande omstart för uppdateringsinstallation.
+
+Användarna kan inte skjuta upp den schemalagda omstarten när den schemalagda tidpunkten väl nås.
+
+Du kan ange hur lång tid före en schemalagd omstart varningsmeddelandet ska visas för användarna så att de hinner spara eventuellt arbete de gjort.
+
+Om du inaktiverar eller låter bli att konfigurera den här principen används standardinställningarna.
+      </string>
+      <string id="RestartWarnRemindHours2">2</string>
+      <string id="RestartWarnRemindHours4">4</string>
+      <string id="RestartWarnRemindHours8">8</string>
+      <string id="RestartWarnRemindHours12">12</string>
+      <string id="RestartWarnRemindHours24">24</string>
+      <string id="RestartWarnMins15">15</string>
+      <string id="RestartWarnMins30">30</string>
+      <string id="RestartWarnMins60">60</string>
+      <string id="EngagedRestartTransitionSchedule_Title">Definiera övergång till att användaren behöver schemalägga omstart och meddelandeschema för uppdateringar</string>
+      <string id="EngagedRestartTransitionSchedule_Help">Aktivera den här principen för att reglera tidsperioden innan en övergång görs från automatisk omstart schemalagd utanför aktiva timmar till att användaren behöver schemalägga omstarten. Tidsperioden kan vara mellan 2 och 30 dagar från det att omstarten blir väntande.
+
+Du kan ange antalet dagar en användare kan snooza påminnelser om att denne behöver schemalägga en omstart. Snoozeperioden kan vara mellan 1 och 3 dagar.
+
+Du kan ange tidsgränsen i dagar innan en väntande omstart automatiskt schemaläggs och körs utanför aktiva timmar. Tidsgränsen kan vara mellan 2 och 30 dagar från det att omstarten blir väntande. Om du konfigurerar den här principen övergår den väntande omstarten från automatisk omstart till att användaren behöver schemalägga omstarten till att automatiskt utföras inom den angivna perioden.
+
+Om ingen tidsgräns anges, eller tidsgränsen sätts till 0, görs ingen automatisk omstart utan användaren behöver schemalägga omstarten.
+
+Om du inaktiverar eller låter bli att konfigurera den här principen används standardinställningarna.
+
+Om någon av följande principer konfigureras har den här principen ingen effekt:
+    1. Ingen automatisk omstart med inloggade användare efter schemalagda installationer av automatiska uppdateringar
+    2. Starta alltid om automatiskt vid den schemalagda tiden
+    3. Ange en tidsgräns för automatisk omstart för uppdateringsinstallation
+      </string>
+      <string id="EngagedRestart_0">0</string>
+      <string id="EngagedRestart_2">2</string>
+      <string id="EngagedRestart_3">3</string>
+      <string id="EngagedRestart_4">4</string>
+      <string id="EngagedRestart_5">5</string>
+      <string id="EngagedRestart_6">6</string>
+      <string id="EngagedRestart_7">7</string>
+      <string id="EngagedRestart_8">8</string>
+      <string id="EngagedRestart_9">9</string>
+      <string id="EngagedRestart_10">10</string>
+      <string id="EngagedRestart_11">11</string>
+      <string id="EngagedRestart_12">12</string>
+      <string id="EngagedRestart_13">13</string>
+      <string id="EngagedRestart_14">14</string>
+      <string id="EngagedRestart_15">15</string>
+      <string id="EngagedRestart_16">16</string>
+      <string id="EngagedRestart_17">17</string>
+      <string id="EngagedRestart_18">18</string>
+      <string id="EngagedRestart_19">19</string>
+      <string id="EngagedRestart_20">20</string>
+      <string id="EngagedRestart_21">21</string>
+      <string id="EngagedRestart_22">22</string>
+      <string id="EngagedRestart_23">23</string>
+      <string id="EngagedRestart_24">24</string>
+      <string id="EngagedRestart_25">25</string>
+      <string id="EngagedRestart_26">26</string>
+      <string id="EngagedRestart_27">27</string>
+      <string id="EngagedRestart_28">28</string>
+      <string id="EngagedRestart_29">29</string>
+      <string id="EngagedRestart_30">30</string>
+      <string id="EngagedRestartSnooze_1">1</string>
+      <string id="EngagedRestartSnooze_2">2</string>
+      <string id="EngagedRestartSnooze_3">3</string>
       
-You can also choose to delay updates for up to one month. If you do not delay updates, your PC will remain up to date with security updates as they become available.
+      <string id="SetEDURestart_Title">Uppdatera energiprincipen för omstarter med vagnar</string>
+      <string id="SetEDURestart_Help">Om du aktiverar den här principen för EDU-enheter som står på vagnar under natten görs ingen energikontroll för att säkerställa att omstarter sker den schemalagda installationstiden.</string>
 
-If an issue arises with an update or upgrade, select "Pause Upgrades and Updates". This will delay updates and upgrades until the next monthly update or upgrade becomes available. Once a new update or upgrade it available, the value will go back to the previously selected option, re-enabling your validation groups.
-
-Note: Definition updates will not be impacted by this policy.
-
-Note: If the "Specify intranet Microsoft update service location" policy is enabled, then the “Defer upgrades by”, “Defer updates by” and “Pause Updates and Upgrades” settings have no effect.
- 
-Note: If the “Allow Telemetry” policy is enabled and the Options value is set to 0, then the “Defer upgrades by”, “Defer updates by” and “Pause Updates and Upgrades” settings have no effect.
-
-To stay informed about new features in Windows 10, see go.microsoft.com/fwlink/?LinkID=529169.</string>
     </stringTable>
+
     <presentationTable>
       <presentation id="RemoveWindowsUpdate">
         <dropdownList refId="RemoveWindowsUpdateMode" defaultItem="0">Konfigurera meddelanden:</dropdownList>
@@ -317,9 +550,10 @@ To stay informed about new features in Windows 10, see go.microsoft.com/fwlink/?
       <presentation id="AutoUpdateCfg">
         <dropdownList refId="AutoUpdateMode" defaultItem="1">Konfigurera automatisk uppdatering:</dropdownList>
         <text>De följande inställningarna krävs och är tillämpliga endast om 4 har valts.</text>
-        <checkBox refId="AutoUpdateAutomaticMaintenanceEnabled" defaultChecked="false">Installera vid automatiskt underhåll</checkBox>          
+        <checkBox refId="AutoUpdateAutomaticMaintenanceEnabled" defaultChecked="false">Installera vid automatiskt underhåll</checkBox>
         <dropdownList refId="AutoUpdateSchDay" defaultItem="0">Schemalagd installationsdag:  </dropdownList>
         <dropdownList refId="AutoUpdateSchTime" defaultItem="3">Schemalagd installationstid:</dropdownList>
+        <checkBox refId="AllowMUUpdateServiceId" defaultChecked="false">Installera uppdateringar för andra Microsoft-produkter</checkBox>
       </presentation>
       <presentation id="CorpWuURL">
         <textBox refId="CorpWUURL_Name">
@@ -328,7 +562,11 @@ To stay informed about new features in Windows 10, see go.microsoft.com/fwlink/?
         <textBox refId="CorpWUStatusURL_Name">
           <label>Ange intranätserver för statistik:</label>
         </textBox>
+        <textBox refId="CorpWUContentHost_Name">
+          <label>Ange en alternativ nedladdningsserver:</label>
+        </textBox>
         <text>(till exempel: http://IntranetUpd01)</text>
+        <checkBox refId="CorpWUFillEmptyContentUrls" defaultChecked="false">Ladda ned filer utan URL:er i metadata om en alternativ nedladdningsserver har angetts.</checkBox>
       </presentation>
       <presentation id="DetectionFrequency_Title">
         <text>Sök efter uppdateringar enligt följande</text>
@@ -358,17 +596,59 @@ To stay informed about new features in Windows 10, see go.microsoft.com/fwlink/?
         <text>tjänsten stängs</text>
         <decimalTextBox refId="IdleShutdownTimerDuration_Minutes" defaultValue="10">när den är inaktiv (minuter):  </decimalTextBox>
       </presentation>
-      <presentation id="AlwaysAutoRebootAtScheduledTime_Presentation">       
+      <presentation id="AlwaysAutoRebootAtScheduledTime_Presentation">
         <text>Omstartstimern ger användarna</text>
         <text>så här mycket tid att spara sitt</text>
         <decimalTextBox refId="AlwaysAutoRebootAtScheduledTime_Minutes" defaultValue="15">arbete (minuter):  </decimalTextBox>
       </presentation>
-      <presentation id="DeferUpgrade_Title">
-        <text>Skjut upp uppgraderingar för följande</text>
-        <decimalTextBox refId="DeferUpgradePeriodId" defaultValue="0">varaktighet (månader): </decimalTextBox>
-        <text>Skjut upp uppdateringar för följande</text>
-        <decimalTextBox refId="DeferUpdatePeriodId" defaultValue="0">varaktighet (veckor): </decimalTextBox>
-        <checkBox refId="PauseDeferralsId" defaultChecked="false">Pausa uppgraderingar och uppdateringar</checkBox>
+      <presentation id="DeferFeatureUpdates">
+        <dropdownList refId="BranchReadinessLevelId" noSort="true" defaultItem="0">Välj Branch-beredskapsnivån för de funktionsuppdateringar du vill ta emot:</dropdownList>
+        <decimalTextBox refId="DeferFeatureUpdatesPeriodId" defaultValue="0">När en funktionsuppdatering släpps, skjut upp den i följande antal dagar:</decimalTextBox>
+        <textBox refId="PauseFeatureUpdatesStartId">
+          <label>Pausa funktionsuppdateringar</label>
+        </textBox>
+        <text>(exempel på formatet åååå-mm-dd: 2016-09-16)</text>
+      </presentation>
+      <presentation id="DeferQualityUpdates">
+        <decimalTextBox refId="DeferQualityUpdatesPeriodId" defaultValue="0">När en kvalitetsuppdatering släpps, skjut upp den i följande antal dagar:</decimalTextBox>
+        <textBox refId="PauseQualityUpdatesStartId">
+          <label>Pausa kvalitetsuppdateringar</label>
+        </textBox>
+        <text>(exempel på formatet åååå-mm-dd: 2016-09-16)</text>
+      </presentation>
+      <presentation id="ActiveHours_Title">
+        <text>Aktiva timmar</text>
+        <dropdownList refId="ActiveHoursStartTime" noSort="true" defaultItem="8">Start: </dropdownList>
+        <dropdownList refId="ActiveHoursEndTime" noSort="true" defaultItem="17">Slut:</dropdownList>
+      </presentation>
+      <presentation id="AutoRestartDeadline_Title">
+        <dropdownList refId="AutoRestartDeadline" noSort="true" defaultItem="5">Ange efter hur många dagar en väntande omstart görs automatiskt utanför aktiva timmar: </dropdownList>
+      </presentation>
+      <presentation id="ActiveHoursMaxRange_Title">
+        <text>Ange det maximala intervallet för aktiva timmar:</text>
+        <dropdownList refId="ActiveHoursMaxRange" noSort="true" defaultItem="10">Maxintervall: </dropdownList>
+      </presentation>
+      <presentation id="AutoRestartRequiredNotificationDismissal_Title">
+        <text>Ange metoden för hur meddelanden om automatisk omstart krävs ska stängas:</text>
+        <dropdownList refId="AutoRestartRequiredNotificationDismissal" noSort="true" defaultItem="0">Metod: </dropdownList>
+      </presentation>
+      <presentation id="AutoRestartNotificationConfig_Title">
+        <text>Ange tiden för påminnelser om automatisk omstart:</text>
+        <dropdownList refId="AutoRestartNotificationSchd" noSort="true" defaultItem="0">Tid (min): </dropdownList>
+      </presentation>
+      <presentation id="RestartWarningSchd_Title">
+        <text>Ange tiden för varningsmeddelanden om automatisk omstart:</text>
+        <dropdownList refId="RestartWarnRemind" noSort="true" defaultItem="1">Påminnelse (timmar): </dropdownList>
+        <text>Ange tiden för varningsmeddelanden om överhängande automatisk omstart:</text>
+        <dropdownList refId="RestartWarn" noSort="true" defaultItem="0">Varning (minuter): </dropdownList>
+      </presentation>
+      <presentation id="EngagedRestartTransitionSchedule_Title">
+        <text>Ange tidsperioden innan övergång görs från automatisk omstart till att användaren behöver schemalägga omstart:</text>
+        <dropdownList refId="EngagedRestartTransitionSchedule" noSort="true" defaultItem="5">Övergång (dagar): </dropdownList>
+        <text>Ange snoozetiden för påminnelser om att användaren behöver schemalägga omstart:</text>
+        <dropdownList refId="EngagedRestartSnoozeSchedule" noSort="true" defaultItem="2">Snooze (dagar):     </dropdownList>
+        <text>Ange tidsgränsen innan en väntande omstart görs automatiskt utanför aktiva timmar:</text>
+        <dropdownList refId="EngagedRestartDeadline" noSort="true" defaultItem="0">Tidsgräns (dagar):  </dropdownList>
       </presentation>
     </presentationTable>
   </resources>

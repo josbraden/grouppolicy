@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>Konfigurasjon for Windows Defender Application Guard</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Aktivere/deaktivere Windows Defender Application Guard (WDAG)</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Denne policyen aktiverer applikasjonsisolasjon ved hjelp av Windows Defender Application Guard.
+
+Windows Defender Application Guard bruker Windows Hypervisor til å starte applikasjoner i et virtualisert miljø. Når applikasjoner er konfigurert til å bruke virtualiseringsbasert sikkerhetsisolasjon, kan ikke uklarert brukeratferd under bruk av disse applikasjonene og sårbarheter i applikasjonene utsette kjernen og andre applikasjoner som kjører utenfor det virtualiserte miljøet, for risiko.
+Før du aktiverer denne policyen, må du angi lister over nettsteder som er klarert av organisasjonen. Du kan opprette disse listene ved å bruke isolasjonspolicyen for nettverk (sett inn kobling til spesifikk nettverkspolicy). Listene sørger for at bare private nettsteder åpnes i det virtualiserte miljøet.
+Merknad: Hvis du vil låse et system, sørger du for både Device Guard-sikkerhetsfunksjoner og applikasjonsisolasjon for applikasjoner er aktivert. En fullstendig liste over kravene som må oppfylles for at et system skal låses på en sikker måte, finner du i dokumentasjonen.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Konfigurere utklippstavleinnstillinger for Windows Defender Application Guard</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Angir utklippstavlens virkemåte når du bruker applikasjonsisolering med Windows Defender Application Guard.
+
+Administratorer kan:
+deaktivere utklippstavlefunksjonen helt når virtualiseringssikkerhet er aktivert
+aktivere kopiering av et visst innhold fra en isolert økt til vertsdatamaskinen
+aktivere kopiering av et visst innhold fra vertsdatamaskinen til den isolerte økten
+
+Obs: Vi anbefaler at administratorer ikke aktiverer kopiering av innhold fra vertsdatamaskinen til den isolerte økten. Dette ville bety at en risikoutsatt isolert økt kunne få tilgang til vertsdatamaskinens utklippstavle og innholdet på den.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Blokker utklippstavleoperasjoner (standard)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Aktiver utklippstavleoperasjon fra en isolert økt til verten</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Aktiver utklippstavleoperasjon fra en vert til den isolerte økten</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Aktiver utklippstavleoperasjon i begge retninger</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Konfigurere utskriftsinnstillinger for Windows Defender Application Guard</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Hvis Aktiver utskrift til XPS er valgt, kan brukere skrive ut dokumenter fra beholderen til XPS-format.
+Hvis Aktiver utskrift til PDF er valgt, kan brukere skrive ut dokumenter fra beholderen til PDF-format.
+Hvis Aktiver utskrift til lokale skrivere er valgt, kan brukere skrive ut dokumenter fra beholderen til en lokalt tilkoblet skriver.
+Hvis Aktiver utskrift til eksisterende nettverksskrivere er valgt, kan brukere skrive ut dokumenter fra den isolerte beholderen ved hjelp av de eksisterende nettverksskriverne. Brukere kan ikke søke etter nye nettverksskrivere.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Blokkere organisasjonsnettsteder for å laste inn privat innhold i IE og Edge</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Hvis innstillingen aktiveres, blokkeres all nettverkstrafikk i Internet Explorer og Microsoft Edge til private nettsteder som ikke kan starte i en Windows Defender Application Guard-beholder.
+
+Hvis innstillingen deaktiveres, gjengis all nettverkstrafikk til private områder som ikke kan starte i en Windows Defender Application Guard-beholder, på vertsdatamaskinen .
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Velg et alternativ:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Angir hvordan utklippstavlen kan brukes, når utklippstavleoperasjoner er aktivert (i desimalformat):
+        </decimalTextBox>
+        <text>Denne verdien er en bitmaske som kontrollerer hvilke filtyper som kan brukes til utklippstavleoperasjoner:
+
+b0001 – tekstfil
+b0010 – punktgrafikkfil
+b0011 – både tekst- og punktgrafikkfiler støttes
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Angir hvilke skrivere som aktiveres (i desimalformat)
+        </decimalTextBox>
+        <text>Denne verdien er en bitmaske som kontrollerer hvilke skrivere som aktiveres i en isolert økt    
+b0000 – Utskrift er deaktivert
+b0001 – Aktiver utskrift til XPS (standard)
+b0010 – Aktiver utskrift til PDF
+b0100 – Aktiver utskrift på lokale skrivere
+b1000 – Aktiver utskrift til eksisterende nettverksskrivere
+
+Eksempel:
+Hvis XPS-skrivere og lokale skrivere er aktivert, blir verdien b0001 | b0100, som er b0101 (desimal 5)
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

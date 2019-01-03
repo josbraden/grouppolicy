@@ -7,7 +7,7 @@
   </policyNamespaces>
   <resources minRequiredRevision="1.0" />
   <policies>
-    <policy name="AllowTelemetry" class="Machine" displayName="$(string.AllowTelemetry)" explainText="$(string.AllowTelemetry_Explain)" presentation="$(presentation.AllowTelemetry)" key="Software\Policies\Microsoft\Windows\DataCollection">
+    <policy name="AllowTelemetry" class="Both" displayName="$(string.AllowTelemetry)" explainText="$(string.AllowTelemetry_Explain)" presentation="$(presentation.AllowTelemetry)" key="Software\Policies\Microsoft\Windows\DataCollection">
       <parentCategory ref="windows:DataCollectionAndPreviewBuilds" />
       <supportedOn ref="windows:SUPPORTED_Windows_10_0" />
       <elements>
@@ -52,6 +52,38 @@
             </value>
           </item>
           <item displayName="$(string.EnableExperimentation_2)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="TelemetryProxy" class="Machine" displayName="$(string.TelemetryProxy)" explainText="$(string.TelemetryProxy_Explain)" presentation="$(presentation.TelemetryProxy)" key="Software\Policies\Microsoft\Windows\DataCollection" >
+      <parentCategory ref="windows:DataCollectionAndPreviewBuilds" />
+      <supportedOn ref="windows:SUPPORTED_Windows_10_0" />
+      <elements>
+        <text id="TelemetryProxyName" valueName="TelemetryProxyServer" required="true"/>
+      </elements>
+    </policy>
+    <policy name="CommercialIdPolicy" class="Machine" displayName="$(string.CommercialId)" explainText="$(string.CommercialId_Explain)" presentation="$(presentation.CommercialID)" key="Software\Policies\Microsoft\Windows\DataCollection" >
+      <parentCategory ref="windows:DataCollectionAndPreviewBuilds" />
+      <supportedOn ref="windows:SUPPORTED_Windows_10_0" />
+      <elements>
+        <text id="CommercialIdValue" valueName="CommercialId" required="true"/>
+      </elements>
+    </policy>
+    <policy name="DisableEnterpriseAuthProxy" class="Machine" displayName="$(string.DisableEnterpriseAuthProxy)" explainText="$(string.DisableEnterpriseAuthProxy_Explain)" presentation="$(presentation.DisableEnterpriseAuthProxy)" key="Software\Policies\Microsoft\Windows\DataCollection" valueName="DisableEnterpriseAuthProxy">
+      <parentCategory ref="windows:DataCollectionAndPreviewBuilds" />
+      <supportedOn ref="windows:SUPPORTED_Windows_10_0" />
+      <elements>
+        <enum id="DisableEnterpriseAuthProxy" valueName="DisableEnterpriseAuthProxy" required="true">
+          <item displayName="$(string.DisableEnterpriseAuthProxy_1)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.DisableEnterpriseAuthProxy_2)">
             <value>
               <decimal value="1" />
             </value>

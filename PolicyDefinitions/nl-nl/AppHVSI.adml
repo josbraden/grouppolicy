@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>Configuratie voor Windows Defender Application Guard</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Windows Defender Application Guard (WDAG) in-/uitschakelen</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Met dit beleid wordt applicatie-isolatie ingeschakeld met behulp van Windows Defender Application Guard.
+
+In Windows Defender Application Guard wordt de Windows Hypervisor gebruikt om applicaties te starten in een gevirtualiseerde omgeving. Wanneer applicaties zijn geconfigureerd voor het gebruik van beveiligingsisolatie op basis van virtualisatie, kan niet-vertrouwd gedrag van gebruikers tijdens het gebruik van deze applicaties, en kwetsbaarheden binnen die applicaties, geen gevaar opleveren voor de kernel en andere applicaties die buiten de gevirtualiseerde omgeving worden uitgevoerd.
+Voordat u dit beleid inschakelt, moet u lijsten maken met door de onderneming vertrouwde sites. Deze lijsten kunt u instellen met behulp van het beleid voor netwerkisolatie (koppeling invoegen naar het specifieke netwerkbeleid). Het beleid zorgt ervoor dat alleen niet-ondernemingssites kunnen worden geopend binnen de gevirtualiseerde omgeving.
+Opmerking: als u een systeem vergrendelt, moet u ervoor zorgen dat beveiligingsfuncties van Device Guard en applicatie-isolatie voor applicaties beide zijn ingeschakeld. Zie de documentatie voor een volledige lijst met vereisten voor het veilig vergrendelen van een systeem.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Klembordinstellingen voor Windows Defender Application Guard configureren</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Hiermee wordt het gedrag van het Klembord opgegeven wanneer applicatie-isolatie wordt gebruikt in Windows Defender Application Guard.
+
+Beheerders kunnen:
+Klembord-functionaliteit in het geheel uitschakelen wanneer Virtualization Security is ingeschakeld.
+Het kopiëren van bepaalde typen inhoud van een geïsoleerde sessie naar de hostcomputer toestaan.
+Het kopiëren van bepaalde typen inhoud van de hostcomputer naar de geïsoleerde sessie toestaan.
+
+Opmerking: Administrators wordt aangeraden het kopiëren van inhoud van de hostcomputer naar de geïsoleerde sessie niet toe te staan. Anders zou een geïsoleerde sessie die wordt aangevallen, toegang hebben tot het Klembord van de hostcomputer en de inhoud van het Klembord.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Klembord-bewerkingen blokkeren (standaard)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Klembord-bewerking van een geïsoleerde sessie naar de host inschakelen</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Klembord-bewerking van een host naar de geïsoleerde sessie inschakelen</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Klembord-bewerking in beide richtingen inschakelen</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Afdrukinstellingen voor Windows Defender Application Guard configureren</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Als Afdrukken naar XPS inschakelen is geselecteerd, kunnen gebruikers documenten afdrukken vanuit de container naar de XPS-indeling.
+Als Afdrukken naar PDF inschakelen is geselecteerd, kunnen gebruikers documenten afdrukken vanuit de container naar de PDF-indeling.
+Als Afdrukken naar lokale printers inschakelen is geselecteerd, kunnen gebruikers documenten afdrukken vanuit de container naar een lokaal aangesloten printer.
+Als Afdrukken naar bestaande netwerkprinters inschakelen is geselecteerd, kunnen gebruikers met behulp van de bestaande netwerkprinters documenten afdrukken vanuit de geïsoleerde container. Gebruikers kunnen niet zoeken naar nieuwe netwerkprinters.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Enterprise-websites geen niet-Enterprise inhoud laten weergeven in IE en Edge</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Als u dit beleid inschakelt, wordt al het Internet Explorer- en Microsoft Edge-netwerkverkeer geblokkeerd naar niet-bedrijfssites die niet kunnen worden gestart in een Windows Defender Application Guard-container.
+
+Als u dit beleid uitschakelt, wordt op de hostcomputer al het netwerkverkeer toegestaan naar niet-bedrijfssites die niet kunnen worden gestart in een Windows Defender Application Guard-container.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Selecteer een optie:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Hiermee geeft u op welk Klembord-gedrag is toegestaan wanneer Klembord-bewerkingen zijn ingeschakeld (in decimalen):
+        </decimalTextBox>
+        <text>Deze waarde is een bitmasker waarmee wordt bepaald welke bestandstypen kunnen worden gebruik voor Klembord-bewerkingen:
+
+b0001 - TEKST-bestand
+b0010 - Bitmap-bestand
+b0011 - zowel TEKST- als Bitmap-bestanden worden ondersteund
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Hiermee geeft u op welke printers zijn ingeschakeld (in decimalen).
+        </decimalTextBox>
+        <text>Deze waarde is een bitmasker waarmee wordt bepaald welke printers worden ingeschakeld in een geïsoleerde sessie.    
+b0000 - Afdrukken is uitgeschakeld
+b0001 - Afdrukken naar XPS inschakelen (Standaard)
+b0010 - Afdrukken naar PDF inschakelen
+b0100 - Afdrukken naar lokale printers inschakelen
+b1000 - Afdrukken naar bestaande netwerkprinters inschakelen
+
+Voorbeeld:
+Als XPS en lokale printers zijn ingeschakeld, wordt de waarde b0001 | b0100, hetgeen b0101 is (decimaal 5).
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

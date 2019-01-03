@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>Konfiguration för Windows Defender Application Guard</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Aktivera/inaktivera Windows Defender Application Guard (WDAG)</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Den här principen aktiverar programisolering genom att använda Windows Defender Application Guard.
+
+Windows Defender Application Guard använder hypervisor-programmet i Windows för att starta program i en virtualiserad miljö. När program är konfigurerade till att använda virtualiseringsbaserad säkerhetsisolering utgör inte icke-betrodda användaråtgärder eller sårbarheter i de programmen någon risk för kerneln och andra program som körs utanför den virtualiserade miljön.
+Innan du aktiverar den här principen behöver du definiera listor med betrodda företagswebbplatser. De här listorna kan du konfigurera via principen Nätverksisolering (infoga länk till specifik nätverksprincip). De säkerställer att endast icke-företagswebbplatser öppnas i den virtualiserade miljön.
+Obs! Om du vill begränsa ett system måste du se till att både Device Guard-säkerhetsfunktioner och programisolering aktiveras. I dokumentationen kan du läsa om de fullständiga kraven för att begränsa ett system på ett säkert sätt.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Konfigurera urklippsinställningar för Windows Defender Application Guard</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Anger vilka urklippsåtgärder som tillåts när programisolering används med Windows Defender Application Guard.
+
+Administratörer kan:
+Inaktivera urklippsåtgärder helt när virtualiseringssäkerhet är aktiverat.
+Aktivera kopiering av visst innehåll från en isolerad session till värddatorn.
+Aktivera kopiering av visst innehåll från värddatorn till en isolerad session.
+
+Obs! Vi rekommenderar inte att administratörer aktiverar kopiering av innehåll från värddatorn till en isolerad session eftersom det skulle kunna innebära att en komprometterad isolerad session får tillgång till värddatorns urklippsinnehåll.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Blockera urklippsåtgärder (standard)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Aktivera urklippsåtgärder från en isolerad session till värden</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Aktivera urklippsåtgärder från en värd till den isolerade sessionen</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Aktivera urklippsåtgärder i båda riktningarna</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Konfigurera utskriftsinställningar för Windows Defender Application Guard</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Om Aktivera utskrift till XPS väljs kan användare skriva ut dokument inifrån behållaren till XPS-format.
+Om Aktivera utskrift till PDF väljs kan användare skriva ut dokument inifrån behållaren till PDF-format.
+Om Aktivera utskrift till lokala skrivare väljs kan användare skriva ut dokument inifrån behållaren till en lokalt ansluten skrivare.
+Om Aktivera utskrift till befintliga nätverksskrivare väljs kan användare skriva ut dokument inifrån den isolerade behållaren med de befintliga nätverksskrivarna. Användarna kan inte välja nya nätverksskrivare.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Hindra företagswebbplatser från att läsa in innehåll från icke-företagswebbplatser i IE och Edge</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Om detta aktiveras blockeras all Internet Explorer- och Microsoft Edge-nätverkstrafik till icke-företagswebbplatser som inte går att starta i en Windows Defender Application Guard-behållare.
+
+Om detta inaktiveras kommer all nätverkstrafik till icke-företagswebbplatser som inte går att starta i en Windows Defender Application Guard-behållare att renderas på värddatorn.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Välj ett alternativ:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Ange vad som tillåts för urklippsåtgärder när urklippsåtgärder har aktiverats (i decimalform):
+        </decimalTextBox>
+        <text>Detta värde är en bitmask som anger vilka filtyper som kan användas i urklippsåtgärder:
+
+b0001 - Textfil
+b0010 - Bitmappsfil
+b0011 - Både text- och bitmappsfiler stöds
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Ange vilka skrivare som är aktiverade (i decimalform)
+        </decimalTextBox>
+        <text>Detta värde är en bitmask som styr vilka skrivare som aktiveras i en isolerad session    
+b0000 - Utskrift är inaktiverad
+b0001 - Aktivera utskrift till XPS (standard)
+b0010 - Aktivera utskrift till PDF
+b0100 - Aktivera utskrift till lokala skrivare
+b1000 - Aktivera utskrift till befintliga nätverksskrivare
+
+Exempel:
+Om både XPS-skrivare och lokala skrivare är aktiverade blir värdet b0001 | b0100, d.v.s. b0101 (decimal 5).
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

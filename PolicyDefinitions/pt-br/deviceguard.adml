@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2015 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>Proteção de Dispositivo do Microsoft Windows</displayName>
-  <description>Segurança da Proteção de Dispositivo Windows</description>
+  <displayName>Device Guard do Microsoft Windows</displayName>
+  <description>Segurança do Device Guard do Windows</description>
   <resources>
     <stringTable>
-      <string id="DeviceGuard">Proteção de Dispositivo</string>
+      <string id="DeviceGuard">Device Guard</string>
       <string id="VirtualizationBasedSecurity">Ativar Segurança Baseada em Virtualização</string>
       <string id="VirtualizationBasedSecurityHelp">Especifica se a Segurança Baseada em Virtualização está habilitada.
 
-A Segurança Baseada em Virtualização usa o Hipervisor do Windows para dar suporte a serviços de segurança. A Segurança Baseada em Virtualização requer Inicialização Segura e, opcionalmente, pode ser habilitada com o uso de Proteções DMA. As Proteções DMA exigem suporte de hardware e serão habilitadas apenas em dispositivos configurados corretamente.
+A Segurança Baseada em Virtualização usa o Hipervisor do Windows para dar suporte a serviços de segurança. A Segurança Baseada em Virtualização requer a Inicialização Segura e, opcionalmente, pode ser habilitada com o uso de Proteções DMA. As Proteções DMA requerem suporte de hardware e serão habilitadas somente em dispositivos configurados corretamente.
 
-Proteção de Integridade do Código Baseada em Virtualização
+Proteção com Base em Virtualização de Integridade de Código
 
-Esta configuração habilita a proteção da Integridade do Código de Modo Kernel baseada em virtualização. Quando esta opção está habilitada, proteções de memória de modo kernel são impostas, e o caminho de validação da Integridade do Código fica protegido pelo recurso de segurança baseada em virtualização.
+Essa configuração permite a proteção com base em virtualização de Integridade do Código de Modo Kernel. Quando essa configuração é habilitada, as proteções de memória de modo kernel são impostas e o caminho de validação de Integridade do Código é protegido pelo recurso Segurança Baseada em Virtualização.
 
-Aviso: todos os drivers no sistema devem ser compatíveis com esse recurso ou o sistema poderá travar. Certifique-se de que esta configuração de política seja implantada somente em computadores compatíveis. 
+A opção "Desabilitada" desativa a Proteção com Base em Virtualização de Integridade de Código remotamente caso ela tenha sido ativada anteriormente com a opção "Habilitada sem bloqueio".
+ 
+A opção "Habilitada com o bloqueio UEFI" garante que a Proteção com Base em Virtualização de Integridade de Código não seja desabilitada remotamente. Para desabilitar o recurso, é necessário definir a Política de Grupo como "Desabilitada", além de remover a funcionalidade de segurança de cada computador, com um usuário fisicamente presente, para limpar a configuração persistente em UEFI.
+ 
+A opção "Habilitada sem bloqueio" permite que a Proteção com Base em Virtualização de Integridade de Código seja desabilitada remotamente com o uso da Política de Grupo. 
 
-Proteção de Credenciais
+A opção "Não Configurada" deixa a configuração de política indefinida. A Política de Grupo não grava a configuração de política no Registro e, portanto, não tem impacto nos computadores ou usuários. Se houver uma configuração atual no Registro, ela não será modificada.
 
-Esta configuração permite que os usuários ativem a Proteção de Credenciais com segurança baseada em virtualização para ajudar a proteger credenciais.
+A opção "Exigir Tabela de Atributos de Memória UEFI" habilitará a Proteção com Base em Virtualização de Integridade de Código em dispositivos com suporte para firmware UEFI da Tabela de Atributos de Memória. Os dispositivos sem a Tabela de Atributos de Memória UEFI podem ter firmware incompatível com a Proteção com Base em Virtualização de Integridade de Código, o que, em alguns casos, pode resultar em falhas, perda de dados ou incompatibilidade com certos cartões de plug-in. Se essa opção não for configurada, os dispositivos-alvo deverão ser testados para garantir a compatibilidade.
 
-A opção "Desabilitada" desativa a Proteção de Credenciais remotamente caso ela tenha sido ativada anteriormente com a opção "Habilitada sem bloqueio".
+Aviso: todos os drivers no sistema devem ser compatíveis com esse recurso. Caso contrário, o sistema poderá falhar. Essa configuração de política deve ser implantada somente em computadores reconhecidamente compatíveis. 
 
-A opção "Habilitada com bloqueio UEFI" assegura que a Proteção de Credenciais não será desabilitada remotamente. Para desabilitar o recurso, você deve definir a Política de Grupo como "Desabilitada" e remover a funcionalidade de segurança de cada computador, com um usuário fisicamente presente, para limpar a configuração persistente em UEFI.
+Credential Guard
 
-A opção "Habilitada sem bloqueio" permite que a Proteção de Credenciais seja desabilitada remotamente usando a Política de Grupo. Os dispositivos que usam esta configuração devem estar executando no mínimo o Windows 10 (Versão 1511).
+Essa configuração permite que os usuários ativem o recurso Credential Guard com segurança baseada em virtualização para ajudar a proteger credenciais.
+
+A opção "Desabilitada" desativa o Credential Guard remotamente caso ele tenha sido ativado anteriormente com a opção "Habilitada sem bloqueio".
+
+A opção "Habilitada com o bloqueio UEFI" garante que o Credential Guard não seja desabilitado remotamente. Para desabilitar o recurso, defina a Política de Grupo como "Desabilitada" e remova a funcionalidade de segurança de cada computador, com um usuário fisicamente presente, para limpar a configuração persistente em UEFI.
+
+A opção "Habilitada sem bloqueio" permite que o Credential Guard seja desabilitado remotamente com o uso da Política de Grupo. Os dispositivos que usam essa configuração devem executar pelo menos o Windows 10 (Versão 1511).
+
+A opção "Não Configurada" deixa a configuração de política indefinida. A Política de Grupo não grava a configuração de política no Registro e, portanto, não tem impacto nos computadores ou usuários. Se houver uma configuração atual no Registro, ela não será modificada.
       </string>
       <string id="SecureBoot">Inicialização Segura</string>
       <string id="SecureBootAndDmaProtection">Inicialização segura e a proteção de DMA</string>
@@ -33,6 +45,7 @@ A opção "Habilitada sem bloqueio" permite que a Proteção de Credenciais seja
       <string id="Enabled">Habilitado</string>
       <string id="EnabledWithoutLock">Habilitada sem bloqueio</string>
       <string id="EnabledWithUefiLock">Habilitada com o bloqueio UEFI</string>
+      <string id="NotConfigured">Não Configurado</string>
       <string id="ConfigCIPolicy">Implantar política de integridade de código</string>
       <string id="ConfigCIPolicyHelp">Implantar política de integridade de código
 
@@ -50,9 +63,10 @@ Se usar uma política protegida e assinada, desabilitar essa configuração de p
     </stringTable>
     <presentationTable>
       <presentation id="VirtualizationBasedSecurity">
-        <dropdownList refId="RequirePlatformSecurityFeaturesDrop" defaultItem="0">Selecione o Nível de Segurança da Plataforma:</dropdownList>
-        <checkBox refId="HypervisorEnforcedCodeIntegrityCheck" defaultChecked="false">Habilitar Proteção com Base em Virtualização de Integridade de Código</checkBox>
-        <dropdownList refId="CredentialIsolationDrop" defaultItem="0">Configuração da Proteção de Credenciais:</dropdownList>
+        <dropdownList refId="RequirePlatformSecurityFeaturesDrop" defaultItem="1">Selecione o Nível de Segurança da Plataforma:</dropdownList>
+        <dropdownList refId="HypervisorEnforcedCodeIntegrityDrop" defaultItem="3">Proteção com Base em Virtualização de Integridade de Código:</dropdownList>        
+        <checkBox refId="CheckboxMAT">Exigir Tabela de Atributos de Memória UEFI</checkBox>        
+        <dropdownList refId="CredentialIsolationDrop" defaultItem="3">Configuração do Credential Guard:</dropdownList>                
       </presentation>
       <presentation id="ConfigCIPolicy">
         <textBox refId="ConfigCIPolicyFilePathText">

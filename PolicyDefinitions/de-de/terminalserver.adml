@@ -5,7 +5,7 @@
   <description>Beschreibung hier eingeben</description>
   <resources>
     <stringTable>
-      <string id="TS_SUPPORTED_Windows10">Mindestens Windows 10 oder Windows Server 2016 Technical Preview 4</string>
+      <string id="TS_SUPPORTED_Windows10">Mindestens Windows 10 oder Windows Server 2016</string>
       <string id="TS_SUPPORTED_Windows8_or_ARM">Mindestens Windows 8 oder Windows RT</string>
       <string id="TS_SUPPORTED_Windows8_Server">Mindestens Windows Server 2012</string>
       <string id="TS_SUPPORTED_Windows8_Enterprise_AND_Server"> Mindestens Windows 8 Enterprise oder Windows Server 2012</string>
@@ -320,12 +320,13 @@ Hinweis: Die Konsolensitzung wird auch als "Sitzung 0" bezeichnet. Der Konsolenz
       <string id="TS_GATEWAY_BASIC">Anmeldeinformationen anfordern, Standardprotokoll verwenden</string>
       <string id="TS_GATEWAY_LOGGED_ON_CREDS">Lokale Anmeldeinformationen verwenden</string>
       <string id="TS_GATEWAY_NTLM">Anmeldeinformationen anfordern, NTLM-Protokoll verwenden</string>
+      <string id="TS_GATEWAY_NEGOTIATE">Anmeldeinformationen anfordern, Negotiate-Protokoll verwenden</string>
       <string id="TS_GATEWAY_POLICY_AUTH_METHOD">Authentifizierungsmethode für Remotedesktopgateway festlegen</string>
-      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Legt die Authentifizierungsmethode fest, die Clients verwenden müssen, wenn sie über einen Remotedesktop-Gatewayserver eine Verbindung mit einem Remotedesktopsitzungs-Hostserver herstellen. Sie können diese Richtlinieneinstellung erzwingen oder Benutzern das Außerkraftsetzen dieser Richtlinieneinstellung erlauben. Wenn Sie diese Richtlinieneinstellung aktivieren, wird sie standardmäßig erzwungen. Bei Erzwingung dieser Richtlinieneinstellung können Benutzer die Einstellung nicht außer Kraft setzen, auch dann nicht, wenn sie auf dem Client die Option "Diese Einstellungen für den Remotedesktop-Gatewayserver verwenden" wählen.
+      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Legt die Authentifizierungsmethode fest, die Clients verwenden müssen, wenn sie über einen Remotedesktop-Gatewayserver eine Verbindung mit einem Remotedesktopsitzungs-Hostserver herstellen. Sie können diese Richtlinieneinstellung erzwingen oder Benutzern das Außerkraftsetzen dieser Richtlinieneinstellung erlauben. Wenn Sie diese Richtlinieneinstellung aktivieren, wird sie standardmäßig erzwungen. Bei Erzwingung dieser Richtlinieneinstellung können Benutzer die Einstellung nicht außer Kraft setzen, auch dann nicht, wenn sie auf dem Client die Option "Diese Einstellungen für Remotedesktop-Gatewayserver verwenden" auswählen.
 
 Wenn Sie Benutzern das Außerkraftsetzen dieser Richtlinieneinstellung erlauben möchten, aktivieren Sie das Kontrollkästchen "Benutzer können diese Einstellung ändern". In diesem Fall können Benutzer eine alternative Authentifizierungsmethode festlegen, indem sie mit einer RDP-Datei oder einem HTML-Skript Einstellungen auf dem Client konfigurieren. Wenn Benutzer keine alternative Authentifizierungsmethode festlegen, wird standardmäßig die von Ihnen in dieser Richtlinieneinstellung angegebene Methode verwendet.
 
-Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird die vom Benutzer festgelegte Authentifizierungsmethode (sofern angegeben) verwendet. Wenn keine Authentifizierungsmethode angegeben wurde, können das auf dem Client aktivierte NTLM-Protokoll oder eine Smartcard zur Authentifizierung verwendet werden.</string>
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird die vom Benutzer festgelegte Authentifizierungsmethode (sofern angegeben) verwendet. Wenn keine Authentifizierungsmethode angegeben wurde, können das auf dem Client aktivierte Negotiate-Protokoll oder eine Smartcard zur Authentifizierung verwendet werden.</string>
       <string id="TS_GATEWAY_POLICY_ENABLE">Verbindung über Remotedesktopgateway aktivieren</string>
       <string id="TS_GATEWAY_POLICY_ENABLE_HELP">Wenn Sie diese Richtlinieneinstellung aktivieren und über die Remotedesktopverbindung keine direkte Verbindung mit einem Remotecomputer (Remotedesktopsitzungs-Hostserver oder Computer mit aktiviertem Remotedesktop) hergestellt werden kann, versuchen die Clients, über einen Remotedesktop-Gatewayserver eine Verbindung mit dem Remotecomputer herzustellen. In diesem Fall versuchen die Clients, eine Verbindung mit dem Remotedesktop-Gatewayserver herzustellen, der in der Richtlinieneinstellung "Adresse des Remotedesktop-Gatewayservers festlegen" angegeben ist.
 
@@ -1169,6 +1170,18 @@ Wenn Sie diese Richtlinieneinstellung aktivieren, wird die Benutzeranmeldung bis
 
 Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird der Startbildschirm angezeigt, während Apps im Hintergrund registriert werden.</string>
 
+      <string id="TS_DX_USE_FULL_HWGPU">Standard-Hardwaregrafikadapter für alle Remotedesktopdienste-Sitzungen verwenden</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">Mit dieser Richtlinieneinstellung können Systemadministratoren das Rendern von Grafiken für alle Remotedesktopdienste-Sitzungen ändern.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, wird der Hardwaregrafikrenderer anstelle von Microsoft Basic Render Driver als Standardadapter für alle Remotedesktopdienste-Sitzungen verwendet.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren, verwenden alle Remotedesktopdienste-Sitzungen Microsoft Basic Render Driver als Standardadapter.
+
+Wenn Sie diese Richtlinieneinstellung nicht konfigurieren, verwenden Remotedesktopdienste-Sitzungen auf dem RD-Sitzungshostserver Microsoft Basic Render Driver als Standardadapter. In allen anderen Fällen verwenden Remotedesktopdienste-Sitzungen standardmäßig den Hardwaregrafikrenderer.
+
+HINWEIS: Die Richtlinieneinstellung betrifft nur den Standardgrafikprozessor (Graphics Processing Unit, GPU) auf Computern mit mehreren GPUs. Alle zusätzlichen GPUs werden als sekundäre Adapter betrachtet und als Hardwarerenderer verwendet. Diese Richtlinieneinstellung wirkt sich nicht auf die GPU-Konfiguration der lokalen Sitzung aus.
+</string>
+      
     </stringTable>
     <presentationTable>
       <presentation id="TS_COLORDEPTH">

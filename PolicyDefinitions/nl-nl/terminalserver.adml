@@ -5,7 +5,7 @@
   <description>typ hier een beschrijving</description>
   <resources>
     <stringTable>
-      <string id="TS_SUPPORTED_Windows10">Minimaal Windows 10 of Windows Server 2016 Technical Preview 4</string>
+      <string id="TS_SUPPORTED_Windows10">Minimaal Windows 10 of Windows Server 2016</string>
       <string id="TS_SUPPORTED_Windows8_or_ARM">Minimaal Windows 8 of Windows RT</string>
       <string id="TS_SUPPORTED_Windows8_Server">Minimaal Windows Server 2012</string>
       <string id="TS_SUPPORTED_Windows8_Enterprise_AND_Server"> Minimaal Windows 8 Enterprise of Windows Server 2012</string>
@@ -164,9 +164,9 @@ Als u deze beleidsinstelling inschakelt, is de opgegeven kleurdiepte de maximale
 Als u deze beleidsinstelling uitschakelt of niet configureert, is de kleurdiepte van de verbinding niet gedefinieerd in Groepsbeleid.
 
 Opmerking:
-1.	Een kleurdiepte van 24 bits wordt alleen ondersteund op Windows Server 2003 en Windows XP Professional.
-2.	De waarde opgegeven in deze beleidsinstelling wordt niet toegepast op verbindingen van clientcomputers met minimaal Extern bureaublad Protocol 8.0 (computers met minimaal Windows 8 of Windows Server 2012). De kleurdiepte van 32 bits wordt altijd gebruikt voor deze verbindingen.
-3.	Voor verbindingen van clientcomputers met Extern bureaublad Protocol 7.1 of eerdere versies die verbinding maken met computers met minimaal Windows 8 of Windows Server 2016 Technical Preview 3, worden minimaal de volgende waarden voor kleurdiepte gebruikt:
+1. Een kleurdiepte van 24 bits wordt alleen ondersteund op Windows Server 2003 en Windows XP Professional.
+2. De waarde opgegeven in deze beleidsinstelling wordt niet toegepast op verbindingen van clientcomputers met minimaal Extern bureaublad Protocol 8.0 (computers met minimaal Windows 8 of Windows Server 2012). De kleurdiepte van 32 bits wordt altijd gebruikt voor deze verbindingen.
+3. Voor verbindingen van clientcomputers met Extern bureaublad Protocol 7.1 of eerdere versies die verbinding maken met computers met minimaal Windows 8 of Windows Server 2012, wordt de laagste van de volgende waarden gebruikt als kleurdiepte:
 a.	Waarde die is opgegeven bij deze beleidsinstelling
 b.	Maximale kleurdiepte die op de client wordt ondersteund
 c.	Waarde die de client heeft aangevraagd
@@ -320,12 +320,13 @@ Opmerking: de consolesessie wordt ook wel sessie 0 genoemd. Toegang tot de conso
       <string id="TS_GATEWAY_BASIC">Vragen om referenties, basisprotocol gebruiken</string>
       <string id="TS_GATEWAY_LOGGED_ON_CREDS">Lokaal aangemelde referenties gebruiken</string>
       <string id="TS_GATEWAY_NTLM">Vragen om referenties, NTLM-protocol gebruiken</string>
+      <string id="TS_GATEWAY_NEGOTIATE">Vragen om referenties, Negotiate-protocol gebruiken</string>
       <string id="TS_GATEWAY_POLICY_AUTH_METHOD">Verificatiemethode van extern-bureaubladgateway instellen</string>
-      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Hiermee bepaalt u welke verificatiemethode moet worden gebruikt door clients die proberen via een extern-bureaubladgateway verbinding te maken met een hostserver voor extern-bureaubladsessies. U kunt deze beleidsinstelling afdwingen of u kunt gebruikers toestaan deze beleidsinstelling te overschrijven. Als u deze beleidsinstelling inschakelt, wordt deze standaard afgedwongen. Als deze beleidsinstelling wordt afgedwongen, kunnen gebruikers deze niet negeren, zelfs niet wanneer ze de optie Deze instellingen voor de Extern bureaublad-gatewayserver gebruiken op de client selecteren.
+      <string id="TS_GATEWAY_POLICY_AUTH_METHOD_HELP">Hiermee bepaalt u welke authenticatiemethode moet worden gebruikt door clients die proberen via een extern-bureaubladgateway verbinding te maken met een hostserver voor extern-bureaubladsessies. U kunt deze beleidsinstelling afdwingen of u kunt gebruikers toestaan deze beleidsinstelling te overschrijven. Als u deze beleidsinstelling inschakelt, wordt deze standaard afgedwongen. Als deze beleidsinstelling wordt afgedwongen, kunnen gebruikers deze niet negeren, zelfs niet wanneer ze de optie Deze instellingen voor de Extern bureaublad-gatewayserver gebruiken op de client selecteren.
 
-Als u gebruikers wilt toestaan om deze beleidsinstelling te overschrijven, schakelt u het desbetreffende selectievakje in. In dat geval kunnen gebruikers een alternatieve verificatiemethode opgeven door instellingen op de client te configureren met behulp van een RDP-bestand, of door een HTML-script te gebruiken. Als gebruikers geen alternatieve verificatiemethode opgeven, wordt standaard de verificatiemethode gebruikt die u in deze beleidsinstelling opgeeft.
+Als u gebruikers wilt toestaan om deze beleidsinstelling te overschrijven, schakelt u het desbetreffende selectievakje in. In dat geval kunnen gebruikers een alternatieve authenticatiemethode opgeven door instellingen op de client te configureren met behulp van een RDP-bestand, of door een HTML-script te gebruiken. Als gebruikers geen alternatieve authenticatiemethode opgeven, wordt standaard de authenticatiemethode gebruikt die u in deze beleidsinstelling opgeeft.
 
-Als u deze beleidsinstelling uitschakelt of niet configureert, wordt de verificatiemethode gebruikt die door de gebruiker is opgegeven. Als er geen verificatiemethode is opgegeven, kan voor verificatie gebruik worden gemaakt van het NTLM-protocol dat op de client is ingeschakeld of van een smartcard.</string>
+Als u deze beleidsinstelling uitschakelt of niet configureert, wordt de authenticatiemethode gebruikt die door de gebruiker is opgegeven. Als er geen authenticatiemethode is opgegeven, kan voor authenticatie gebruik worden gemaakt van het NTLM-protocol dat op de client is ingeschakeld of van een smartcard.</string>
       <string id="TS_GATEWAY_POLICY_ENABLE">Verbinding via extern-bureaubladgateway inschakelen</string>
       <string id="TS_GATEWAY_POLICY_ENABLE_HELP">Als u deze beleidsinstelling inschakelt, en Verbinding met extern bureaublad niet rechtstreeks verbinding kan maken met een externe computer (een hostserver voor extern-bureaubladsessies of een computer waarop Extern bureaublad is ingeschakeld), proberen de clients verbinding te maken met de externe computer via een extern-bureaubladgatewayserver. In dit geval proberen de clients een verbinding te maken met de extern-bureaubladgatewayserver die is opgegeven in de beleidsinstelling 'Adres van extern-bureaubladgatewayserver instellen'.
 
@@ -559,17 +560,17 @@ Opmerkingen:
       <string id="TS_SD_Loc">RD Connection Broker-servernaam configureren</string>
       <string id="TS_SD_Loc_Explain">U kunt met deze beleidsinstelling de RD Connection Broker-server opgeven die door de hostserver voor Extern bureaublad-sessies wordt gebruikt voor het traceren en omleiden van gebruikerssessies voor een farm met gelijke taakverdeling voor hostservers voor Extern bureaublad-sessies. Op de opgegeven server moet de service Extern bureaublad Connection Broker worden uitgevoerd. Alle hostservers voor Extern bureaublad-sessies in een farm met gelijke taakverdeling moeten dezelfde RD Connection Broker-server gebruiken.
 
-Als u deze beleidsinstelling inschakelt, moet u de server voor RD Connection Broker-server opgeven met de FQDN (Fully Qualified Domain Name) van de desbetreffende server. In Windows Server 2016 Technical Preview 3 moet u een door puntkomma's gescheiden lijst met FQDN's van alle RD Connection Broker-servers maken voor een setup met hoge beschikbaarheid en meerdere RD Connection Broker-servers.
+Als u deze beleidsinstelling inschakelt, moet u de server voor RD Connection Broker-server opgeven met de FQDN (Fully Qualified Domain Name) van de desbetreffende server. In Windows Server 2012 moet u een door puntkomma's gescheiden lijst met FQDN's van alle RD Connection Broker-servers maken voor een setup met hoge beschikbaarheid en meerdere RD Connection Broker-servers.
 
 Als u deze beleidsinstelling uitschakelt of niet configureert, is de beleidsinstelling niet opgegeven op groepsbeleidsniveau.
 
 Opmerkingen:
 
-     1. Voor Windows Server 2008 wordt deze beleidsinstelling minimaal ondersteund voor Windows Server 2008 Standard.
+ 1. Voor Windows Server 2008 wordt deze beleidsinstelling minimaal ondersteund voor Windows Server 2008 Standard.
 
-     2. Deze beleidsinstelling is niet effectief, tenzij de beleidsinstelling Deelnemen aan RD Connection Broker is ingeschakeld.
+ 2. Deze beleidsinstelling is niet effectief, tenzij de beleidsinstelling Deelnemen aan RD Connection Broker is ingeschakeld.
 
-     3. Voor een actief lidmaatschap van een farm met hostservers voor Extern bureaublad-sessies moeten de computeraccounts voor de afzonderlijke hostservers in de farm lid zijn van één van de volgende groepen op de RD Connection Broker-server: Session Directory Computers, Session Broker Computers of RDS Endpoint Servers.
+ 3. Voor een actief lidmaatschap van een farm met hostservers voor Extern bureaublad-sessies moeten de computeraccounts voor de afzonderlijke hostservers van RD Session Host in de farm lid zijn van een van de volgende lokale groepen op de HD Connection Broker-server: Sessiemapcomputers, Session Broker-computers of RDS-eindpuntservers.
 
 </string>
       <string id="TS_SD_Node">RD Connection Broker</string>
@@ -1167,6 +1168,18 @@ Als u deze beleidsinstelling inschakelt, wordt de aanmelding van gebruikers gebl
 
 Als u deze beleidsinstelling uitschakelt of niet configureert, wordt het startscherm weergegeven en worden apps geregistreerd op de achtergrond.</string>
 
+      <string id="TS_DX_USE_FULL_HWGPU">Standaard grafische adapter in hardware gebruiken voor alle Extern bureaublad-servicesessies</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">Deze beleidsinstelling stelt systeembeheerders in staat om de grafische weergave voor alle Remote Desktop Services-sessies te wijzigen.
+
+Als u deze beleidsinstelling inschakelt, maken alle Remote Desktop Services-sessies gebruik van de afbeeldingsrenderer van de hardware in plaats van de Microsoft Basic Render Driver als de standaardadapter.
+
+Als u deze beleidsinstelling uitschakelt, maken alle Remote Desktop Services-sessies gebruik van de Microsoft Basic Render Driver als de standaardadapter.
+
+Als u deze beleidsinstelling niet configureert, maken de Remote Desktop Services-sessies op de RD Session Host-server gebruik van de Microsoft Basic Render Driver als de standaardadapter. In alle andere gevallen maken de Remote Desktop Services-sessies standaard gebruik van de afbeeldingsrenderer van de hardware.
+
+OPMERKING: de beleidsinstelling beïnvloedt alleen de standaard-GPU (graphics processing unit) op een computer waarop meer dan een GPU is geïnstalleerd. Alle aanvullende GPU's worden als secundaire adapters beschouwd en als hardwarerenderers gebruikt. De GPU-configuratie van de lokale sessie wordt niet beïnvloed door deze beleidsinstelling.
+</string>
+      
     </stringTable>
     <presentationTable>
       <presentation id="TS_COLORDEPTH">

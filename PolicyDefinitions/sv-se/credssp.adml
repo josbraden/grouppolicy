@@ -155,18 +155,39 @@ TERMSRV/*.humanresources.fabrikam.com Värddator för fjärrskrivbordssession so
 
 Den här principinställningen kan användas tillsammans med principinställningen "Tillåt delegering av sparade autentiseringsuppgifter" för att undanta specifika servrar som annars skulle tillåtas när jokertecken används i serverlistan för "Tillåt delegering av sparade autentiseringsuppgifter".</string>
       <string id="RestrictedRemoteAdministration">Begränsa delegering av autentiseringsuppgifter till fjärrservrar</string>
-      <string id="RestrictedRemoteAdministration_Explain">När de körs i begränsat läge visas inte deltagande appars autentiseringsuppgifter för fjärrdatorer (oavsett delegeringsmetod). Begränsat läge kan begränsa åtkomsten till resurser på andra servrar eller nätverk utanför måldatorn, eftersom autentiseringsuppgifterna inte delegeras.
+      <string id="RestrictedRemoteAdministration_Explain">Om du använder något av lägena Begränsad administration eller Remote Credential Guard lämnar anslutna appar inte ut inloggningsautentiseringsuppgifter eller angivna autentiseringsuppgifter till en fjärrvärd. Begränsad administration begränsar åtkomsten till resurser på andra servrar eller nätverk från fjärrvärden eftersom autentiseringsuppgifter inte delegeras. Remote Credential Guard begränsar inte åtkomsten till resurser eftersom den omdirigerar alla begäranden tillbaka till klientenheten.
 
-Deltagande appar:
-Fjärrskrivbordsklient
+Anslutna appar:
+Fjärrskrivbordsklienten
 
-Om du aktiverar den här principinställningen tillämpas begränsat läge och deltagande appar delegerar inte autentiseringsuppgifter till fjärrdatorer.
+Om du aktiverar den här principinställningen stöds följande alternativ:
+ 
+Begränsa delegering av autentiseringsuppgifter: Anslutna appar måste använda Begränsad administration eller Remote Credential Guard för att ansluta till fjärrvärdar.
+ 
+Kräv Remote Credential Guard: Anslutna appar måste använda Remote Credential Guard för att ansluta till fjärrvärdar.
+ 
+Kräv begränsad administration: Anslutna appar måste använda Begränsad administration för att ansluta till fjärrvärdar.
 
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen tillämpas inte begränsat läge och deltagande appar kan delegera autentiseringsuppgifter till fjärrdatorer.
+Om du inaktiverar eller låter bli att konfigurera principinställningen framtvingas inte lägena Begränsad administration och Remote Credential Guard och anslutna appar kan delegera autentiseringsuppgifter till fjärrenheter.
 
-Obs! För att inaktivera de flesta delegeringar av autentiseringsuppgifter kan det vara tillräckligt att neka delegering i CredSSP (Credential Security Support Provider) genom att ändra inställningarna i den administrativa mallen (i Datorkonfiguration\Administrativa mallar\System\Delegering av autentiseringsuppgifter).</string>
+Obs! Om du vill inaktivera huvuddelen av delegering av autentiseringsuppgifter kan det räcka med att neka delegering i CredSSP (Credential Security Support Provider) genom att ändra inställningarna i den administrativa mallen (i Datorkonfiguration\Administrativa mallar\System\Delegering av autentiseringsuppgifter).
+
+Obs! Om den här principen aktiveras på Windows 8.1 och Windows Server 2012 R2 tillämpas läget Begränsad administration oavsett vilket läge som väljs. De här versionerna stöder inte Remote Credential Guard.
+</string>
       <string id="SUPPORTED_VISTA">Windows Vista</string>
+      <string id="PreferRemoteCredentialGuard">Begränsa delegering av autentiseringsuppgifter</string>
+      <string id="RequireRemoteCredentialGuard">Kräv Remote Credential Guard</string>
+      <string id="RequireRestrictedAdmin">Kräv begränsad administration</string>
+      <string id="AllowProtectedCreds">Fjärrvärden tillåter delegering av autentiseringsuppgifter som inte kan exporteras</string>
+      <string id="AllowProtectedCreds_Explain">Fjärrvärden tillåter delegering av autentiseringsuppgifter som inte kan exporteras
+
+När du använder delegering av autentiseringsuppgifter tillhandahåller enheter en exporterad version av autentiseringsuppgifterna till fjärrvärden. Detta utgör en risk för användarna eftersom hackare på fjärrvärden kan försöka komma över användarnas autentiseringsuppgifter.
+
+Om du aktiverar den här principinställningen stöder värden lägena Begränsad administration och Remote Credential Guard.
+
+Om du inaktiverar eller låter bli att konfigurera principinställningen stöds inte lägena Begränsad administration och Remote Credential Guard. Användaren kommer då alltid att behöva ange sina autentiseringsuppgifter för värden.</string>
     </stringTable>
+    
     <presentationTable>
       <presentation id="AllowDefaultCredentials">
         <listBox refId="AllowDefaultCredentials_Name">Lägg till servrar i listan:</listBox>
@@ -204,6 +225,12 @@ Obs! För att inaktivera de flesta delegeringar av autentiseringsuppgifter kan d
         <listBox refId="DenySavedCredentials_Name">Lägg till servrar i listan:</listBox>
         <checkBox refId="ConcatenateDefaults_DSC" defaultChecked="true">Sammanför OS-standarder med indata över</checkBox>
       </presentation>
+      <presentation id="RestrictedRemoteAdministration">
+        <dropdownList refId="RestrictedRemoteAdministrationDrop" defaultItem="0">Använd följande begränsat läge:</dropdownList>
+      </presentation>
+      <presentation id="AllowProtectedCreds">
+      </presentation>
     </presentationTable>
+    
   </resources>
 </policyDefinitionResources>

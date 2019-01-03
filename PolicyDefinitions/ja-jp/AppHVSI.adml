@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>Windows Defender Application Guard の構成</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Windows Defender Application Guard (WDAG) をオン/オフにします</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">このポリシーは、Windows Defender Application Guard を使用したアプリケーション分離を有効にします。
+
+Windows Defender Application Guard は、Windows ハイパーバイザーを使用して、仮想化された環境でアプリケーションを実行します。アプリケーションが仮想化ベースのセキュリティ分離を使用するように構成されていれば、それらのアプリケーションの使用時における未信頼のユーザー動作や、それらのアプリケーション内の脆弱性によって、仮想化環境の外部で実行されているカーネルやその他のアプリケーションが侵害されることはありません。
+このポリシーを有効にする前に、エンタープライズの信頼済みサイトのリストを定義する必要があります。これらのリストは、ネットワーキング分離ポリシーを使用して設定できます (特定のネットワーキング ポリシーにリストを挿入します)。これによって、非エンタープライズ サイトだけが仮想化環境内で開かれるようになります。
+注意: システムをロック ダウンするには、アプリケーションに対し、Device Guard セキュリティ機能とアプリケーション分離の両方を有効にする必要があります。システムを安全にロック ダウンするための詳細な要件については、ドキュメントを参照してください。
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Windows Defender Application Guard のクリップボード設定を構成します</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Windows Defender Application Guard でアプリケーション分離を使用する場合は、クリップボードの動作を指定します。
+
+管理者は以下の設定を指定できます:
+仮想化セキュリティが有効になっている場合には、クリップボード機能を完全に無効にする。
+特定のコンテンツを、分離セッションからホスト コンピューターへコピーできるようにする。
+特定のコンテンツを、ホスト コンピューターから分離セッションへコピーできるようにする。
+
+注意: ホスト コンピューターから分離セッションへのコンテンツ コピーを有効にすることはお勧めしません。これを有効にすると、セキュリティ侵害された分離セッションからホスト コンピューターのクリップボードやコンテンツにアクセスできるようになる可能性があります。
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">クリップボードの操作をブロックする (既定)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">分離セッションからホストへのクリップボード操作を有効にする</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">ホストから分離セッションへのクリップボード操作を有効にする</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">双方向のクリップボード操作を有効にする</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Windows Defender Application Guard の印刷設定を構成します</string>
+        <string id="AppHVSI_PrintingSettings_Explain">"XPS への印刷を有効にする" を選択すると、ユーザーはコンテナー内から XPS 形式にドキュメントを印刷できます。
+"PDF への印刷を有効にする" を選択すると、ユーザーはコンテナー内から PDF 形式にドキュメントを印刷できます。
+"ローカル プリンターへの印刷を有効にする" を選択すると、ユーザーはコンテナー内からローカルに接続されたプリンターにドキュメントを印刷できます。
+"既存のネットワーク プリンターへの印刷を有効にする" を選択すると、ユーザーは既存のネットワーク プリンターを使用して分離されたコンテナー内からドキュメントを印刷できます。ユーザーは新しいネットワーク プリンターを参照することはできません。
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">IE および Edge の非エンタープライズ コンテンツをエンタープライズ Web サイトに読み込まない</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">有効にした場合、Windows Defender Application Guard のコンテナー内では起動できない非エンタープライズ サイトに対する Internet Explorer と Microsoft Edge のネットワーク トラフィックは、すべてブロックされます。
+
+無効にした場合、Windows Defender Application Guard のコンテナー内では起動できない非エンタープライズ サイトへのネットワーク トラフィックは、すべてホスト コンピューター上にレンダリングされます。
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">オプションを選択してください:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">クリップボード操作が有効なときに許可するクリップボード動作を指定します (10 進数で):
+        </decimalTextBox>
+        <text>この値は、クリップボード操作に対して使用できるファイルの種類を制御するビットマスクです:
+
+b0001 - テキスト ファイル
+b0010 - ビットマップ ファイル
+b0011 - テキスト ファイルとビットマップ ファイルの両方がサポートされます
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">有効にするプリンターを指定します (10 進数で)
+        </decimalTextBox>
+        <text>この値は、分離セッションで有効なプリンターを制御するビットマスクです
+b0000 - 印刷は無効です
+b0001 - XPS への印刷を有効にします (既定)
+b0010 - PDF への印刷を有効にします
+b0100 - ローカル プリンターへの印刷を有効にします
+b1000 - 既存のネットワーク プリンターへの印刷を有効にします
+
+例:
+XPS とローカル プリンターが有効な場合、値は 0001 | b0101 になり、これは b0100 (10 進数の 5) です
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

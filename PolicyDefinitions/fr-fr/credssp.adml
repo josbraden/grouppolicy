@@ -156,18 +156,39 @@ TERMSRV/*.humanresources.fabrikam.com Hôte de session Bureau à distance exécu
 
 Ce paramètre de stratégie peut être utilisé avec le paramètre « Autoriser la délégation d’informations d’identification enregistrées » pour définir des exceptions pour des serveurs spécifiques étant normalement autorisés lors de l’utilisation de caractères génériques dans la liste de serveurs « Autoriser la délégation d’informations d’identification enregistrées ».</string>
       <string id="RestrictedRemoteAdministration">Limiter la délégation d’informations d’identification à des serveurs distants</string>
-      <string id="RestrictedRemoteAdministration_Explain">Lors d’une exécution en mode restreint, les applications participantes n’exposent pas les informations d’identification à des ordinateurs distants (quelle que soit la méthode de délégation). Le mode restreint peut limiter l’accès à des ressources situées sur d’autres serveurs ou réseaux au-delà de l’ordinateur cible, car les informations d’identification ne sont pas déléguées.
+      <string id="RestrictedRemoteAdministration_Explain">Lors d’une exécution en mode d’administration restreinte ou Credential Guard à distance, les applications participantes n’exposent pas les informations d’identification fournies ou utilisées pour la connexion à un hôte distant. Le mode d’administration restreinte limite l’accès aux ressources situées sur d’autres serveurs ou réseaux vis-à-vis de l'hôte distant car les informations d’identification ne sont pas déléguées. Credential Guard à distance ne limite pas l’accès aux ressources car il redirige de nouveau toutes les demandes vers l’appareil client.
 
-Applications participantes :
+Applications participantes :
 Client Bureau à distance
 
-Si vous activez ce paramètre de stratégie, le mode restreint est appliqué et les applications participantes ne délèguent pas les informations d’identification à des ordinateurs distants.
+Si vous activez ce paramètre de stratégie, les options suivantes sont prises en charge :
+ 
+Limiter la délégation d’informations d’identification : les applications participantes doivent utiliser le mode d’administration restreinte ou Credential Guard à distance pour se connecter aux hôtes distants.
+ 
+Requérir Credential Guard à distance : les applications participantes doivent utiliser Credential Guard à distance pour se connecter aux hôtes distants
+ 
+Requérir une administration restreinte : les applications participantes doivent utiliser le mode d'administration restreinte pour se connecter aux hôtes distants.
 
-Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, le mode restreint n’est pas appliqué et les applications participantes peuvent déléguer les informations d’identification à des ordinateurs distants.
+Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, le mode d’administration restreinte et Credential Guard à distance ne sont pas appliqués, et les applications participantes peuvent déléguer les informations d’identification aux appareils distants.
 
-Remarque : pour désactiver la délégation de la plupart des informations d’identification, il peut être suffisant de refuser la délégation dans le protocole CredSSP (Credential Security Support Provider) en modifiant les paramètres des modèles d’administration (situés dans Configuration ordinateur\Modèles d’administration\Système\Délégation d’informations d’identification).</string>
+Remarque : pour désactiver la délégation de la plupart des informations d’identification, il peut être suffisant de refuser la délégation dans le protocole CredSSP (Credential Security Support Provider) en modifiant les paramètres des modèles d’administration (situés dans Configuration ordinateur\Modèles d’administration\Système\Délégation d’informations d’identification).
+
+Remarque : sur Windows 8.1 et Windows Server 2012 R2, l’activation de cette stratégie applique le mode d’administration restreinte, quel que soit le mode choisi. Ces versions ne prennent pas en charge Credential Guard à distance.
+</string>
       <string id="SUPPORTED_VISTA">Windows Vista</string>
+      <string id="PreferRemoteCredentialGuard">Limiter la délégation d’informations d’identification</string>
+      <string id="RequireRemoteCredentialGuard">Requérir Credential Guard à distance</string>
+      <string id="RequireRestrictedAdmin">Requérir une administration restreinte</string>
+      <string id="AllowProtectedCreds">L'hôte distant autorise la délégation d'informations d'identification non exportables</string>
+      <string id="AllowProtectedCreds_Explain">L'hôte distant autorise la délégation d'informations d'identification non exportables
+
+Lorsque la délégation d'informations d'identification est utilisée, les appareils fournissent une version exportable des informations d'identification à l'hôte distant. Les utilisateurs courent alors le risque de voir leurs informations d'identification volées par des personnes malveillantes sur l'hôte distant.
+
+Si vous activez ce paramètre de stratégie, l'hôte prend en charge le mode d'administration restreinte ou Credential Guard à distance.
+
+Si vous désactivez ce paramètre de stratégie ou ne le configurez pas, les modes d'administration restreinte et Credential Guard à distance ne sont pas pris en charge. L'utilisateur devra toujours transmettre ses informations d'identification à l'hôte.</string>
     </stringTable>
+    
     <presentationTable>
       <presentation id="AllowDefaultCredentials">
         <listBox refId="AllowDefaultCredentials_Name">Ajoutez des serveurs à la liste :</listBox>
@@ -205,6 +226,12 @@ Remarque : pour désactiver la délégation de la plupart des informations d’
         <listBox refId="DenySavedCredentials_Name">Ajoutez des serveurs à la liste :</listBox>
         <checkBox refId="ConcatenateDefaults_DSC" defaultChecked="true">Concaténer les valeurs par défaut du système d’exploitation supérieures à</checkBox>
       </presentation>
+      <presentation id="RestrictedRemoteAdministration">
+        <dropdownList refId="RestrictedRemoteAdministrationDrop" defaultItem="0">Utiliser le mode restreint suivant :</dropdownList>
+      </presentation>
+      <presentation id="AllowProtectedCreds">
+      </presentation>
     </presentationTable>
+    
   </resources>
 </policyDefinitionResources>

@@ -6,6 +6,7 @@
   <resources>
     <stringTable>
       <string id="SUPPORTED_Win7UntilThreshold">Windows Server 2008 R2 または Windows 7 以降。ただし、Windows 10 以降ではサポートされません。</string>
+      <string id="SUPPORTED_Win7AndRedstone2">Windows 7 および Windows 10</string>
       <string id="ClearRecentProgForNewUserInStartMenu">新しいユーザーに対して最近使ったプログラムの一覧をクリアする</string>
       <string id="ClearRecentProgForNewUserInStartMenu_Help">このポリシー設定を有効にすると、各新規ユーザーに対して [スタート] メニュー内の最近使ったプログラムの一覧を空白にすることができます。
 
@@ -150,8 +151,8 @@ Windows 2000 Professional および Windows XP Professional 上では、すべ�
 この設定を無効にした場合、または構成しなかった場合は、通知が保持され、ユーザーがログオンすると、ユーザーがログオフしたときに表示されていたタイルが、各タイルの以前の通知の履歴を含めてそのまま表示されます。
 
 この設定では、新しい通知が表示されます。新しい通知を表示しないようにするには、[アプリケーション通知を無効にする] 設定を参照してください。</string>
-      <string id="StartPinAppsWhenInstalled">インストール時にスタート画面にアプリをピン留めする</string>
-      <string id="StartPinAppsWhenInstalled_Help">このポリシー設定を使用すると、アプリが AppID によって一覧に含まれている場合、既定でスタート画面にアプリをピン留めできます。</string>
+      <string id="StartPinAppsWhenInstalled">インストール時にアプリをスタートにピン留めする</string>
+      <string id="StartPinAppsWhenInstalled_Help">このポリシー設定を使用すると、アプリが AppID によって一覧に含まれている場合、既定でアプリをスタートにピン留めできます。</string>
 
       <string id="LockedStartLayout">スタート画面のレイアウト</string>
       <string id="LockedStartLayout_Help">ユーザーのスタート画面のレイアウトを指定します。
@@ -222,12 +223,22 @@ XML ファイルを生成して目的のファイル パスに移動したら、
 関連するポリシー設定 [[スタート] メニューから頻繁に利用するプログラムの一覧を削除する] および [カスタマイズ メニューをオフにする] も参照してください。
 
 このポリシー設定を有効にしても、ユーザーは [スタート] メニューまたはタスク バーにプログラムを固定できます。[[スタート] メニューからピンされたプログラムの一覧を削除する] および [タスク バーへのプログラムの固定を許可しない] ポリシー設定を参照してください。</string>
+
       <string id="NoMoreProgramsList">[スタート] メニューから [すべてのプログラム] を削除する</string>
-      <string id="NoMoreProgramsList_Help">このポリシー設定を使用すると、[スタート] メニューから [すべてのプログラム] の一覧を削除できます。
+      <string id="NoMoreProgramsList_Help">この設定を有効にした場合、スタート メニューが折りたたまれた状態になるか、スタート メニューからすべてのアプリの一覧が削除されます。
 
-このポリシー設定を有効にした場合、簡易 [スタート] メニューの [すべてのプログラム] は削除されます。 スタート画面には [すべてのアプリ] ビューが表示されますが、[スタート] に固定された項目のみが含まれます。
+[折りたたむ] を選択すると、スタートにピン留めしたタイルの横にアプリの一覧が表示されません。すべてのアプリの一覧を開く [すべてのアプリ] ボタンがスタートに表示されます。これは、[設定] で [スタートにアプリの一覧を表示する] をオフにすることに相当します。
 
-このポリシー設定を無効にした場合、または構成しなかった場合は、簡易 [スタート] メニューに [すべてのプログラム] が表示されます。</string>
+[折りたたんで設定を無効にする] を選択した場合、折りたたみオプションを選択して [設定] で [スタート メニューにアプリの一覧を表示する] を無効にしたときと同じになり、ユーザーはそれをオンにできません。
+
+[削除して設定を無効にする] を選択すると、スタートからすべてのアプリの一覧が削除され、[設定] の [スタート メニューにアプリの一覧を表示する] が無効になり、ユーザーはそれをオンにできません。このオプションは、以前のバージョンの Windows との互換性を保つために選択します。
+
+この設定を無効にした場合、または構成しなかった場合、すべてのアプリの一覧が既定で表示され、ユーザーは [設定] の [スタートにアプリの一覧を表示する] を変更できます。</string>
+      <string id="APPLIST_NONE">なし</string>
+      <string id="APPLIST_COLLAPSE">折りたたむ</string>
+      <string id="APPLIST_COLLAPSESETTING">折りたたんで設定を無効にする</string>
+      <string id="APPLIST_REMOVESETTING">削除して設定を無効にする</string>    
+
       <string id="NoNetAndDialupConnect">[スタート] メニューから [ネットワーク接続] を削除する</string>
       <string id="NoNetAndDialupConnect_Help">このポリシー設定を使用すると、[スタート] メニューから [ネットワーク接続] を削除できます。
 
@@ -515,6 +526,18 @@ Windows のオンライン拡張である Windows Update を使うと、シス�
 このポリシー設定を有効にすると、[スタート] メニューに [ダウンロード] フォルダーへのリンクが表示されなくなります。
 
 このポリシー設定を無効にした場合、または構成しなかった場合、[スタート] メニューの [ダウンロード] リンクを利用できます。</string>
+      <string id="NoStartMenuExplorerPlace">[スタート メニューの場所] バーから [エクスプローラー] リンクを削除する</string>
+      <string id="NoStartMenuExplorerPlace_Help">このポリシー設定では、[スタート メニューの場所] バーから [エクスプローラー] リンクを削除できます。
+
+このポリシー設定を有効にすると、[スタート メニューの場所] の一覧に [エクスプローラー] が表示されなくなります。
+
+このポリシー設定を無効にするか、または構成しなかった場合には、[スタート メニューの場所] の一覧に [エクスプローラー] が表示されます。</string>
+      <string id="NoStartMenuSettingsPlace">[スタート メニューの場所] バーから [設定] リンクを削除する</string>
+      <string id="NoStartMenuSettingsPlace_Help">このポリシー設定では、[スタート メニューの場所] バーから [設定] リンクを削除できます。
+
+このポリシー設定を有効にすると、[スタート メニューの場所] の一覧に [設定] が表示されなくなります。
+
+このポリシー設定を無効にするか、または構成しなかった場合には、[スタート メニューの場所] の一覧に [設定] が表示されます。</string>
       <string id="NoStartMenuRecordedTV">[スタート] メニューから [録画一覧] リンクを削除する</string>
       <string id="NoStartMenuRecordedTV_Help">このポリシー設定を使用すると、[スタート] メニューから [録画一覧] リンクを削除できます。
 
@@ -577,6 +600,9 @@ Windows のオンライン拡張である Windows Update を使うと、シス�
       <string id="ForceLauncherSize_Expanded">スタートの全画面表示</string>
     </stringTable>
     <presentationTable>
+      <presentation id="NoMoreProgramsList">
+        <dropdownList refId="NoMoreProgramsListDropdown" noSort="true" defaultItem="0">次の操作から 1 つ選択してください</dropdownList>
+      </presentation>
       <presentation id="PowerButtonAction">
         <dropdownList refId="PowerButtonActionDropdown" noSort="true" defaultItem="0">次の操作から 1 つ選択してください</dropdownList>
       </presentation>

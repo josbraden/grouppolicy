@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>Konfiguration af Windows Defender Application Guard</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Slå Windows Defender Application Guard (WDAG) til/fra</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">Denne politik aktiverer applikationsisolering ved brug af Windows Defender Application Guard.
+
+Windows Defender Application Guard bruger Windows Hypervisor til at starte applikationer i et virtualiseret miljø. Når applikationer er konfigureret til at bruge virtualiseringsbaseret sikkerhedsisolering, kan upålidelig brugeradfærd under brug af disse applikationer samt sårbarheder i applikationerne ikke føre til kompromittering af kernen eller andre applikationer, der kører uden for det virtualiserede miljø.
+Inden du aktiverer denne politik, skal du definere lister over websteder, der er tillid til i virksomheden. Disse lister kan konfigureres via politikken for netværksisolering (indsæt link til specifik netværkspolitik). De sikrer, at det kun er websteder uden for virksomheden, der åbnes i det virtualiserede miljø.
+Bemærk! Hvis du vil låse et system, skal du sørge for, at både Device Guard-sikkerhedsfunktioner og applikationsisolering i forbindelse med applikationer er aktiveret. I dokumentationen finder du en fuldstændig liste over krav til sikker låsning af et system.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Konfigurer udklipsholderindstillinger for Windows Defender Application Guard</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">Angiver funktionsmåden af udklipsholderen, når du bruger applikationsisolering sammen med Windows Defender Application Guard.
+
+Administratorer kan:
+deaktivere udklipsholderfunktionalitet helt, når virtualiseringssikkerhed er aktiveret
+aktivere kopiering af visse typer indhold fra en isoleret session til værtscomputeren
+aktivere kopiering af visse typer indhold fra værtscomputeren til en isoleret session.
+
+Bemærk! Det anbefales, at administratorer ikke aktiverer kopiering af indhold fra værtscomputeren til den isolerede session. Det ville medføre, at en kompromitteret isoleret session kunne få adgang til værtscomputerens udklipsholder og dens indhold.
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">Bloker udklipsholderhandlinger (standard)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">Aktivér udklipsholderhandling fra en isoleret sessionen til værten</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">Aktivér udklipsholderhandling fra en vært til den isolerede sessionen</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">Aktivér udklipsholderhandling i begge retninger</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Konfigurer udskrivningsindstillinger for Windows Defender Application Guard</string>
+        <string id="AppHVSI_PrintingSettings_Explain">Hvis Aktivér udskrivning til XPS er valgt, kan brugerne udskrive dokumenter fra objektbeholderen til XPS-format.
+Hvis Aktivér udskrivning til PDF er valgt, kan brugere udskrive dokumenter fra objektbeholderen til PDF-format.
+Hvis Aktivér udskrivning til lokale printere er valgt, kan brugerne kan udskrive dokumenter fra objektbeholderen til en lokalt tilknyttet printer.
+Hvis Aktivér udskrivning til eksisterende netværksprintere er valgt, kan brugerne bruge de eksisterende netværksprintere til at udskrive dokumenter i den isolerede objektbeholder. Brugerne kan ikke søge efter nye netværksprintere.
+        </string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Bloker virksomhedswebsteder, så de ikke kan indlæse indhold fra websteder uden for virksomheden i Internet Explorer og Edge</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">Hvis politikken er aktiveret, blokeres al Internet Explorer- og Microsoft Edge-netværkstrafik til websteder uden for virksomheden, der ikke kan starte i en objektbeholder til Windows Defender Application Guard.
+
+Hvis politikken er deaktiveret, bliver netværkstrafik til websteder uden for virksomheden, der ikke kan starte i en objektbeholder til Windows Defender Application Guard, gengivet på værtscomputeren.
+        </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">Vælg en indstilling:</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">Angiver, hvad der er tilladt for funktionsmåden af udklipsholderen, når udklipsholderhandlinger er aktiveret (i decimalt format):
+        </decimalTextBox>
+        <text>Denne værdi er en bitmaske, der styrer, hvilke filtyper der kan bruges til udklipsholderhandlinger:
+
+b0001 - tekstfil
+b0010 - bitmapfil
+b0011 - både tekst- og bitmapfiler understøttes
+        </text>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">Angiver, hvilke printere der er aktiveret (i decimalt format):
+        </decimalTextBox>
+        <text>Denne værdi er en bitmaske, der styrer, hvilke printere der er aktiveret i en isoleret session    
+b0000 - Udskrivning er deaktiveret
+b0001 - Aktivér udskrivning til XPS (standard)
+b0010 - Aktivér udskrivning til PDF
+b0100 - Aktivér udskrivning til lokale printere
+b1000 - Aktivér udskrivning til eksisterende netværksprintere
+
+Eksempel:
+Hvis XPS og lokale printere er aktiveret, bliver værdien b0001 | b0100, som er b0101 (decimal 5)
+        </text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

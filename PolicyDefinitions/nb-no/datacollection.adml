@@ -10,9 +10,17 @@
       <string id="AllowTelemetry_1">1 – Standard</string>
       <string id="AllowTelemetry_2">2 – Utvidet</string>
       <string id="AllowTelemetry_3">3 – Full</string>
-      <string id="AllowTelemetry_Explain">Denne policyinnstillingen bestemmer hvor mye diagnose- og bruksdata som rapporteres til Microsoft. Verdien 0 betyr at et minimum av data blir sendt til Microsoft. Disse dataene omfatter data fra verktøy for fjerning av skadelig programvare (MSRT) og Windows Defender, hvis aktivert, og innstillinger for telemetriklient. Bare for bedrifts-, EDU-, IoT- og serverenheter kan bruke verdien 0. Hvis andre enheter bruker verdien 0, vil dette være det samme som å bruke verdien 1. Verdien 1 sender bare et begrenset utvalg diagnose- og bruksdata. Merk at bruk av verdien 0 og 1 vil gi en redusert opplevelse for bestemte ting på enheten. Verdien 2 sender mer diagnose- og bruksdata. Verdien 3 sender samme data som verdien 2 samt ekstra diagnosedata, for eksempel filene og innholdet som kan ha forårsaket problemet. Telemetriinnstillinger for Windows 10 gjelder for operativsystemet Windows og noen førstepartsapper. Innstillingen gjelder ikke for tredjepartsapper som kjører i Windows 10.
+      <string id="AllowTelemetry_Explain">Denne policyinnstillingen fastsetter mengden Windows-diagnosedata som sendes til Microsoft. Verdien 0 (sikkerhet) sender minimalt med data til Microsoft for å holde Windows sikkert. Sikkerhetskomponenter i Windows, for eksempel Verktøy for fjerning av skadelig programvare og Windows Defender, kan sende data til Microsoft på dette nivået hvis de er aktivert. Det er bare Enterprise-, EDU-, IoT- og Server-enheter som kan bruke verdien 0. Hvis du angir verdien 0 for andre enheter, er dette det samme som å angi verdien 1. 
 
-Hvis du deaktiver eller ikke konfigurerer denne policyinnstillingen, kan brukerne konfigurere telemetrinivået under Innstillinger.
+Verdien 1 (grunnleggende) sender de samme dataene som verdien 0, i tillegg til en svært begrenset mengde diagnosedata, for eksempel grunnleggende enhetsinformasjon, kvalitetsrelaterte data og informasjon om appkompatibilitet. Vær oppmerksom på at hvis du angir verdien 0 eller 1, begrenses opplevelsen av bestemte ting på enheten.
+
+Verdien 2 (utvidet) sender de samme dataene som verdien 1 pluss tilleggsdata, for eksempel hvordan Windows, Windows Server, System Center og apper brukes, ytelsen deres og avanserte pålitelighetsdata.
+
+Verdien 3 (fullstendig) sender de samme dataene som verdien 2 pluss avanserte diagnosedata som brukes til å diagnostisere og løse problemer med enheter. Disse dataene kan omfatte filene og innholdet som kan ha forårsaket problemer med enheten.
+
+Innstillinger for Windows 10-diagnosedata gjelder selve Windows og apper som følger med Windows. De gjelder ikke for tredjepartsapper som kjører i Windows 10.
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, kan brukere konfigurere telemetrinivået i Innstillinger.
 
 </string>
       <string id="EnableExperimentation">Deaktiver funksjoner eller innstillinger for forhåndsversjon</string>
@@ -24,6 +32,25 @@ Hvis du deaktiverer denne policyinnstillingen, blir all eksperimentering deaktiv
 
 Hvis du ikke konfigurerer denne policyinnstillingen, kan brukere gå til Innstillinger og konfigurere alternativet La Microsoft prøve funksjoner i denne builden.
 </string>
+      <string id="TelemetryProxy">Konfigurer tilkoblede brukeropplevelser og telemetri</string>
+      <string id="TelemetryProxy_Explain">Med denne policyinnstillingen kan du videresende forespørsler om tilkoblet brukeropplevelse og telemetri til en proxy-server.
+
+Hvis du aktiverer denne policyinnstillingen, kan du angi FQDN- eller IP-adressen til målenheten i organisasjonens nettverk (og eventuelt et portnummer hvis du ønsker det). Tilkoblingen foregår gjennom Secure Sockets Layer (SSL). Hvis den navngitte proxyen mislykkes, eller hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, sendes dataene for tilkoblet brukeropplevelse og telemetri til Microsoft med standardkonfigurasjon for proxy.
+
+Formatet for denne innstillingen er &lt;server&gt;:&lt;port&gt; 
+</string>
+      
+      <string id="CommercialId">Konfigurer kommersiell-ID</string>
+      <string id="CommercialId_Explain">Denne policyinnstillingen definerer identifikatoren som brukes til å indikere at enhetens telemetridata tilhører en bestemt organisasjon. Hvis organisasjonen deltar i et program hvor det kreves identifikasjon av at enheten tilhører organisasjonen din, kan du bruke denne innstillingen til å angi denne identifikasjonen. Verdien for denne innstillingen oppgis av Microsoft som en del av iverksettelsesprosessen for programmet. 
+
+Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, kan ikke Microsoft bruke denne identifikatoren til å knytte denne maskinen og telemetridataene til organisasjonen din.
+</string>
+
+      <string id="DisableEnterpriseAuthProxy">Konfigurer bruk av Godkjent proxy for tjenesten Tilkoblet brukeropplevelse og telemetri</string>
+      <string id="DisableEnterpriseAuthProxy_1">Aktiver bruk av Godkjent proxy</string>
+      <string id="DisableEnterpriseAuthProxy_2">Deaktiver bruk av Godkjent proxy</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">Denne policyinnstillingen hindrer at tjenesten Tilkoblet brukeropplevelse og telemetri bruker en godkjent proxy automatisk til å sende data tilbake til Microsoft på Windows 10. Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, bruker tjenesten Tilkoblet brukeropplevelse og telemetri automatisk en godkjent proxy til å sende data tilbake til Microsoft. Hvis du aktiverer denne policyen, hindres tjenesten Tilkoblet brukeropplevelse og telemetri i å bruke en godkjent proxy automatisk.</string>
+
     </stringTable>
     <presentationTable>
       <presentation id="AllowTelemetry">
@@ -31,6 +58,19 @@ Hvis du ikke konfigurerer denne policyinnstillingen, kan brukere gå til Innstil
       </presentation>
       <presentation id="EnableExperimentation">
         <dropdownList refId="EnableExperimentation" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+        <label>Navn på proxy-server:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+        <label>Kommersiell-ID:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
       </presentation>
     </presentationTable>
   </resources>

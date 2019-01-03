@@ -26,16 +26,15 @@ Obs! Det kan hende at TPM-initialisering (Trusted Platform Module) forekommer un
 
       <string id="ConfigureStartupUsage_Help">Med denne policyinnstillingen kan du angi om installasjonsveiviseren for BitLocker-stasjonskryptering skal kunne konfigurere en ekstra godkjenningsmetode som skal kreves hver gang datamaskinen startes. Denne policyinnstillingen brukes når du aktiverer BitLocker.
 
-Obs! Denne policyen gjelder bare for datamaskiner som kjører Windows Server 2008 eller Windows Vista.
+Obs!  Denne policyen gjelder bare for datamaskiner som kjører Windows Server 2008 eller Windows Vista.
 
-På en datamaskin med en kompatibel TPM-modul (Trusted Platform Module) kan to godkjenningsmetoder brukes ved oppstart for å gi ekstra beskyttelse for krypterte data. Når datamaskinen starter, kan den be brukerne om å sette inn en USB-flash-stasjon som inneholder en oppstartsnøkkel. Den kan også be brukerne om å skrive inn en PIN-oppstartskode på 4–20 sifre.
+På en datamaskin med en kompatibel TPM-modul (Trusted Platform Module) kan to godkjenningsmetoder brukes ved oppstart for å gi ekstra beskyttelse for krypterte data. Når datamaskinen starter, kan den be brukerne om å sette inn en USB-flash-stasjon som inneholder en oppstartsnøkkel. Den kan også be brukerne om å skrive inn en PIN-oppstartskode på 6–20 sifre.
 
 En USB-flash-stasjon som inneholder en oppstartsnøkkel, kreves på datamaskiner uten en kompatibel TPM-modul. Uten en TPM-modul beskyttes BitLocker-krypterte data bare av nøkkelmaterialet på denne USB-flash-stasjonen.
 
 Hvis du aktiverer denne policyinnstillingen, viser veiviseren den siden som tillater at brukeren konfigurerer avanserte oppstartsalternativer for BitLocker. Du kan også angi policyinnstillingsalternativer for datamaskiner med og uten en TPM-modul.
 
 Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, viser installasjonsveiviseren for BitLocker grunnleggende trinn som gjør at brukere kan aktivere BitLocker på datamaskiner med en TPM. I denne grunnleggende veiviseren kan det ikke konfigureres noen ekstra oppstartsnøkkel eller PIN-oppstartskode.
-
 </string>
 
       <string id="ConfigureStartupUsage_Name">Krev ekstra godkjenning ved oppstart (Windows Server 2008 og Windows Vista)</string>
@@ -43,19 +42,17 @@ Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, viser ins
 
       <string id="ConfigureAdvancedStartup_Help">Med denne policyinnstillingen kan du konfigurere om BitLocker skal kreve ekstra godkjenning hver gang datamaskinen startes, og om du vil bruke BitLocker med eller uten en TPM-modul (Trusted Platform Module). Denne policyinnstillingen brukes når du aktiverer BitLocker.
 
-Obs! Bare ett av alternativene for ekstra godkjenning kan kreves ved oppstart, ellers oppstår det en policyinnstillingsfeil.
+Obs!  Bare ett av alternativene for ekstra godkjenning kan kreves ved oppstart, ellers oppstår det en policyinnstillingsfeil.
 
 Hvis du vil bruke BitLocker på en datamaskin uten en TPM-modul, merker du av for Tillat BitLocker uten en kompatibel TPM. I denne modusen kreves det enten et passord eller en USB-stasjon for oppstart. Når du bruker en oppstartsnøkkel, lagres nøkkelinformasjonen som brukes til å kryptere stasjonen, på USB-stasjonen, og det opprettes en USB-nøkkel. Når USB-nøkkelen settes inn, godkjennes tilgangen til stasjonen, og stasjonen er tilgjengelig. Hvis USB-nøkkelen går tapt eller er utilgjengelig, eller hvis du har glemt passordet, må du bruke ett av BitLocker-gjenopprettingsalternativene for å få tilgang til stasjonen.
 
-På en datamaskin med en kompatibel TPM-modul kan fire godkjenningsmetoder brukes ved oppstart for å gi ekstra beskyttelse for krypterte data. Når datamaskinen startes, kan den bare bruke TPM-modulen for godkjenning, eller den kan også kreve at en USB-flash-stasjon med en oppstartsnøkkel settes inn, at brukeren taster inn en PIN-kode på 4–20 sifre, eller begge deler.
+På en datamaskin med en kompatibel TPM-modul kan fire godkjenningsmetoder brukes ved oppstart for å gi ekstra beskyttelse for krypterte data. Når datamaskinen startes, kan den bare bruke TPM-modulen for godkjenning, eller den kan også kreve at en USB-flash-stasjon med en oppstartsnøkkel settes inn, at brukeren taster inn en PIN-kode på 6–20 sifre, eller begge deler.
 
 Hvis du aktiverer denne policyinnstillingen, kan brukerne konfigurere avanserte oppstartsalternativer i veiviseren for BitLocker-installasjon.
 
 Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, kan brukerne bare konfigurere grunnleggende alternativer på datamaskiner med en TPM-modul.
 
-Obs! Hvis du vil kreve at en PIN-kode for oppstart og en USB-flash-stasjon brukes, må du konfigurere BitLocker-innstillinger ved hjelp av kommandolinjeverktøyet manage-bde i stedet for veiviseren for installasjon av BitLocker-stasjonskryptering.
-
-
+Obs!  Hvis du vil kreve at en PIN-kode for oppstart og en USB-flash-stasjon brukes, må du konfigurere BitLocker-innstillinger ved hjelp av kommandolinjeverktøyet manage-bde i stedet for veiviseren for installasjon av BitLocker-stasjonskryptering.
 
 </string>
       <string id="AllowNetworkUnlockAtStartup_Name">Tillat opplåsing av nettverk ved oppstart</string>
@@ -312,6 +309,11 @@ Hvis du deaktiverer eller ikke konfigurerer denne policyinnstillingen, fjernes B
       </string>
       <string id="MorBehavior_Name">Forhindre minneoverskriving ved omstart</string>
 
+      <string id="DisableExternalDMAUnderLock_Help">Med denne policyinnstillingen kan du blokkere direkte minnetilgang (DMA) for alle direkte tilkoblede PCI-nedstrømsporter til en bruker logger på Windows. Når en bruker logger seg på, viser Windows PCI-enhetene som er koblet til vertens PCI-porter. Hver gang brukeren låser maskinen, blokkeres DMA på direkte tilkoblede PCI-porter uten underordnede enheter, til brukeren logger på igjen. Enheter som allerede var nummerert da maskinen ble låst opp, fortsetter å fungere til de kobles fra. Denne policyinnstillingen trer bare i kraft når BitLocker eller enhetskryptering er aktivert.
+
+      </string>
+      <string id="DisableExternalDMAUnderLock_Name">Deaktiver nye DMA-enheter når datamaskinen er låst</string>
+
       <string id="FVEOSCategory">Operativsystemstasjoner</string>
       <string id="FVEFDVCategory">Faste datastasjoner</string>
       <string id="FVERDVCategory">Flyttbare datastasjoner</string>
@@ -379,20 +381,16 @@ Hvis du aktiverer denne policyinnstillingen, kan du kreve at et minimum antall s
 
 Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, kan brukerne konfigurere en PIN-kode for oppstart fra fire til 20 sifre.
 
-      
-
       </string>
 
       <string id="OSAllowDRA_Name">Tillat sertifikatbaserte datagjenopprettingsagenter</string>
 
       <string id="FDVDenyWriteAccess_Name">Avslå skrivetilgang til faste stasjoner som ikke er beskyttet av BitLocker</string>
-      <string id="FDVDenyWriteAccess_Help">Denne policyinnstillingen bestemmer om BitLocker-beskyttelse skal være påkrevd for at brukerne skal kunne skrive til faste datastasjoner på en datamaskin. Denne policyinnstillingen brukes når du aktiverer BitLocker.
+      <string id="FDVDenyWriteAccess_Help">Denne policyinnstillingen bestemmer om BitLocker-beskyttelse skal være påkrevd for at brukerne skal kunne skrive til faste datastasjoner på en datamaskin.
 
 Hvis du aktiverer denne policyinnstillingen, monteres alle faste datastasjoner som ikke er BitLocker-beskyttet, som skrivebeskyttet. Hvis stasjonen er beskyttet av BitLocker, monteres den med lese- og skrivetilgang.
 
 Hvis du deaktiverer eller lar være å konfigurere denne policyinnstillingen, monteres alle faste datastasjoner på datamaskinen med lese- og skrivetilgang.
-
-      
 
       </string>
 
@@ -691,10 +689,18 @@ Vær oppmerksom på at hvis du ikke aktiverer denne policyinnstillingen, kan det
       
       </string>
 
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Name">Tillat at brukere med InstantGo- eller HSTI-kompatible enheter kan velge bort PIN-kode før oppstart.</string>
+      <string id="EnablePreBootPinExceptionOnDECapableDevice_Help">Denne policyinnstillingen gjør at brukere med enheter som er kompatible med InstantGo eller Microsoft Hardware Security Test Interface (HSTI), ikke trenger en PIN-kode for godkjenning før oppstart. Dette overstyrer alternativene Krev PIN-oppstartskode med TPM og Krev oppstartsnøkkel og PIN-kode med TPM i policyen Krev ekstra godkjenning ved oppstart på kompatibel maskinvare.
+
+Hvis du aktiverer denne policyinnstillingen, kan brukere med InstantGo- og HSTI-kompatible enheter velge om de vil aktivere BitLocker uten godkjenning før oppstart.
+
+Hvis du ikke aktiverer denne policyen, gjelder alternativene i policyen Krev ekstra godkjenning ved oppstart.
+      </string>
+
       <string id="AllowSecureBootForIntegrity_Name">Tillat integritetsvalidering for sikker oppstart</string>
       <string id="AllowSecureBootForIntegrity_Help">Med denne policyinnstillingen kan du konfigurere om sikker oppstart skal være tillatt som leverandør av plattformintegritet for BitLocker-operativsystemstasjoner.
 
-Sikker oppstart sikrer at miljøet før oppstart for PCer bare laster inn fastvare som er signert digitalt av autoriserte programvareleverandører. Sikker oppstart gir også mer fleksibilitet for behandling av konfigurasjon før oppstart enn gamle BitLocker-integritetskontroller.
+Sikker oppstart sikrer at miljøet før oppstart for PCer bare laster inn fastvare som er signert digitalt av autoriserte programvareutgivere. Sikker oppstart gir også mer fleksibilitet for behandling av konfigurasjon før oppstart enn gamle BitLocker-integritetskontroller.
 
 Hvis du aktiverer denne policyinnstillingen eller ikke konfigurerer den, bruker BitLocker sikker oppstart for plattformintegritet hvis plattformen er konfigurert for integritetsvalidering basert på sikker oppstart.
 
@@ -968,7 +974,7 @@ Obs! Ikke alle tegn og språk støttes før oppstart. Det anbefales på det ster
       </presentation>
 
      <presentation id="MinimumPINLength">
-        <decimalTextBox refId="MinPINLength" defaultValue="4">Minimum antall tegn:</decimalTextBox>
+        <decimalTextBox refId="MinPINLength" defaultValue="6">Minimum antall tegn:</decimalTextBox>
       </presentation>
 
      <presentation id="FDVPassphrase_Name">

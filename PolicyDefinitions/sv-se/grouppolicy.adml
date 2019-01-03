@@ -11,6 +11,32 @@
       <string id="FontMitigation_On">Blockera teckensnitt som inte är betrodda och logga händelser</string>
       <string id="FontMitigation_Off">Blockera inte teckensnitt som inte är betrodda</string>
       <string id="FontMitigation_Audit">Logga händelser utan att blockera teckensnitt som inte är betrodda</string>
+	  
+	  <string id="ProcessMitigationOptions_List">Åtgärdsalternativ för processer</string>
+      <string id="ProcessMitigationOptions_List_Help">
+        Den här säkerhetsfunktionen kan du använda för att åsidosätta MitigationOptions-inställningar för enskilda processer. Du kan tillämpa ett antal säkerhetsprinciper specifikt för program. Programnamnet anges som värdenamnet, inklusive tillägget. Värdet anges som ett bitfält med en serie flaggor på särskilda positioner. Bitarna kan vara antingen 0 (inställningen sätts till av), 1 (inställningen sätts till på) eller ? (inställningen behåller sitt tidigare värde från före GPO-utvärderingen). Bitplatser som känns igen är:
+
+        PROCESS_CREATION_MITIGATION_POLICY_DEP_ENABLE (0x00000001)
+        Aktiverar Dataexekveringsskydd (DEP) för underprocessen
+
+        PROCESS_CREATION_MITIGATION_POLICY_DEP_ATL_THUNK_ENABLE (0x00000002)
+        Aktiverar DEP-ATL-thunk-emulering för underprocessen. DEP-ATL-thunk-emulering gör att systemet fångar upp NX-fel som har sitt ursprung i Active Template Library-thunk-skiktet (ATL). 
+
+        PROCESS_CREATION_MITIGATION_POLICY_SEHOP_ENABLE (0x00000004)
+        Aktiverar överskrivningsskydd för strukturerade undantagshanterare (SEHOP) för underprocessen. SEHOP blockerar försök att utnyttja överskrivningstekniken med strukturerade undantagshanterare (SEH).
+
+        PROCESS_CREATION_MITIGATION_POLICY_FORCE_RELOCATE_IMAGES_ALWAYS_ON (0x00000100)
+        Principen för att framtvinga ASLR (Address Space Layout Randomization) utför rebase för avbildningar som inte stöder dynamiska baser genom att agera som om en avbildningsbaskollision inträffade vid inläsningen. Om en omflyttning krävs läses inte avbildningar som saknar basomflyttningsavnitt in.
+
+        PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_ON (0x00010000)
+        PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_OFF (0x00020000)
+        Nerifrån och upp-slummässighetsprincipen som omfattar alternativ för stackslummässighet gör att en slumpmässsig plats används som lägsta användaradress.
+
+        Om du till exempel vill aktivera PROCESS_CREATION_MITIGATION_POLICY_DEP_ENABLE och PROCESS_CREATION_MITIGATION_POLICY_FORCE_RELOCATE_IMAGES_ALWAYS_ON inaktiverar du PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_OFF, och för att låta alla andra alternativ behålla sina standardvärden anger du värdet:
+        ???????????????0???????1???????1
+
+        Om du anger flaggor som har specificerats här till något annat värde än ? ger det oväntade resultat.	  
+</string>
 
       <string id="ResetDfsClientInfoDuringRefreshPolicy">Aktivera synkronisering av domänkontrollant för AD/DFS vid uppdatering av princip</string>
       <string id="ResetDfsClientInfoDuringRefreshPolicy_Help">Om du aktiverar den här inställningen kommer grupprincipklienten att ansluta till samma domänkontrollant för DFS-resurser som används för Active Directory.
@@ -24,6 +50,37 @@
 
 
 </string>
+      <string id="EnableCDP">Fortsätt användningsupplevelser på den här enheten</string>
+      <string id="EnableCDP_Help">
+Den här principinställningen bestämmer om Windows-enheten tillåts dela användningsupplevelser mellan enheter (fortsätta användningsupplevelser).
+
+Om du aktiverar den här principinställningen kan Windows-enheten upptäckas av andra Windows-enheter som tillhör användaren och dela användningsupplevelser mellan enheter.
+
+Om du inaktiverar principinställningen kan Windows-enheten inte upptäckas av andra enheter och heller inte dela användningsupplevelser mellan enheter.
+
+Om du inte konfigurerar principinställningen avgörs standardbeteendet av vilken Windows-utgåva som används. Ändringar av den här principen börjar först gälla efter en omstart.
+      </string>
+      <string id="EnableAppUriHandlers">Konfigurera webb-till-app-länkning med URI-referenser</string>
+      <string id="EnableAppUriHandlers_Help">
+Den här principinställningen anger om Windows stöder webb-till-app-länkning med URI-referenser.
+
+Om du aktiverar den här principinställningen aktiveras webb-till-app-länkning så att appar kan startas med en http(s)-URI.
+
+Om du inaktiverar principinställningen inaktiveras webb-till-app-länkning och http(s)-URI:er öppnas med standardwebbläsaren i stället för den associerade appen.
+
+Om du inte konfigurerar principinställningen beror användningen ovan på Windows-utgåvan. Ändring av principen börjar gälla först efter en omstart.
+      </string>
+      <string id="Fonts">Teckensnitt</string>
+      <string id="EnableFontProviders">Tillåt teckensnittsnedladdning</string>
+      <string id="EnableFontProviders_Help">
+        Den här principinställningen bestämmer om Windows får ladda ned teckensnitt och teckensnittskatalogdata från leverantörer online.
+        
+        Om du aktiverar den här principinställningen kan Windows regelbundet kontrollera med leverantören om en ny teckensnittskatalog finns tillgänglig. Windows kan också ladda ned teckensnittsdata om det behövs för att formatera eller återge text.
+        
+        Om du inaktiverar den här principinställningen kan Windows inte ansluta till en teckensnittsleverantör online och endast lokalt installerade teckensnitt används.
+      
+        Om du inte konfigurerar den här principinställningen beror standardbeteendet på Windows-utgåvan. Principändringar börjar gälla vid omstart.
+      </string>
       <string id="EnableLogonOptimization">Konfigurera grupprincipens cachelagring</string>
       <string id="EnableLogonOptimization_Help">
         
@@ -489,6 +546,12 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
     <presentationTable>
       <presentation id="Font_List">
         <dropdownList refId="FontMitigation_DL" defaultItem="0" noSort="true">Åtgärdsalternativ</dropdownList>
+      </presentation>
+      <presentation id="ProcessMitigationOptions_List">
+        <listBox refId="ProcessMitigationOptionsList">Åtgärdsalternativ för processer</listBox>
+      </presentation>
+      <presentation id="FontProvidersPolicy">
+        <dropdownList refId="FontProvidersOption" noSort="true" defaultItem="0">Windows-tjänsten för teckensnittscache bör tillåtas ladda ned teckensnitt och teckensnittskatalogdata från teckensnittsleverantörer online.</dropdownList>
       </presentation>
       <presentation id="SyncModeThreshold">
         <decimalTextBox refId="SyncModeSlowLinkThreshold1" defaultValue="500">Värde för långsam länk: [sifferfält] millisekunder</decimalTextBox>

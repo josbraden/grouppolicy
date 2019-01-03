@@ -1,43 +1,113 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0">
-  <displayName>Delivery Optimization GP</displayName>
-  <description>This file describes the Delivery Optimization GP settings</description>
+  <displayName>Групповая политика оптимизации доставки</displayName>
+  <description>Данный файл описывает параметры групповой политики оптимизации доставки</description>
   <resources>
     <stringTable>
-      <string id="DeliveryOptimizationCat">Delivery Optimization</string>
-      <string id="DownloadMode">Download Mode</string>
-      <string id="DownloadMode_Help">Set this policy to configure the use of Windows Update Delivery Optimization in downloads of Windows Apps and Updates. Available mode are: 0=disable  1=peers on same NAT only 2=Local Network / Private Peering (PCs in the same domain by default) 3= Internet Peering</string>
-      <string id="DownloadMode_None">None</string>
-      <string id="DownloadMode_Lan">LAN</string>
-      <string id="DownloadMode_Group">Group</string>
-      <string id="DownloadMode_Internet">Internet</string>
-      <string id="GroupId">Group ID</string>
-      <string id="GroupId_Help">Set this policy to specify an arbitrary group ID that the device belongs to. Use this if you need to: 1. Limit the #of devices participating in peering in a domain network with many users. 2. Create a single group for Local Network Peering for branches that are on different domains or are not on the same NAT. Note: this is a best effort optimization and should not be relied on for an authentication of identity. You must use a GUID as the group ID.</string>
-      <string id="MaxUploadBandwidth">Max Upload Bandwidth</string>
-      <string id="MaxUploadBandwidth_Help">Set this policy to define a cap for the upload bandwidth a device will utilize across all concurrent upload activity via Delivery Optimization (set in KB/s)</string>
-      <string id="MaxCacheSize">Max Cache Size</string>
-      <string id="MaxCacheSize_Help">Set this policy to define the max cache size Delivery Optimization can utilize, as a percentage of available disk space.</string>
-      <string id="MaxCacheAge">Max Cache Age</string>
-      <string id="MaxCacheAge_Help">Set this policy to define the max time that each file is held in the Delivery Optimization cache.</string>
+      <string id="DeliveryOptimizationCat">Оптимизация доставки</string>
+      <string id="DownloadMode">Режим скачивания</string>
+      <string id="DownloadMode_Help">Указывает способ скачивания, который служба оптимизации доставки может использовать при скачивании обновлений Windows, приложений и обновлений для них. Поддерживаемые значения: 0=только HTTP, без пиринга. 1=сочетание HTTP с пирингом, осуществляющимся за одним средством преобразования сетевых адресов (NAT). 2=сочетание HTTP с пирингом, осуществляющимся в частной группе. По умолчанию пиринг осуществляется на устройствах, находящихся на одном сайте Active Directory (при наличии) или в одном домене. При выборе этого варианта пиринг будет выходить за пределы средств преобразования сетевых адресов (NAT). Чтобы создать настраиваемую группу, используйте идентификатор группы в сочетании с режимом 2. 3=сочетание HTTP с интернет-пирингом. 99=режим простого скачивания без пиринга. Служба оптимизации доставки скачивает файлы только с помощью HTTP и не пытается связаться со своими облачными службами. 100=режим обхода. Вместо службы оптимизации доставки используется BITS.</string>
+      <string id="DownloadMode_CdnOnly">Только HTTP (0)</string>
+      <string id="DownloadMode_Lan">Локальная сеть (1)</string>
+      <string id="DownloadMode_Group">Группа (2)</string>
+      <string id="DownloadMode_Internet">Интернет (3)</string>
+      <string id="DownloadMode_Simple">Простой (99)</string>
+      <string id="DownloadMode_Bypass">Обход (100)</string>
+      <string id="GroupId">ИД группы</string>
+      <string id="GroupId_Help">Идентификатор группы необходимо задать как идентификатор GUID. Эта политика указывает произвольный идентификатор группы, к которому относится устройство. Используйте этот идентификатор, если нужно создать единую группу для пиринга локальных сетей при расположении ветвей в разных доменах или нескольких локальных сетях. Примечание. Это оптимизация с выбором лучших из доступных вариантов, поэтому на нее не следует полагаться при проверке подлинности удостоверения.</string>
+      <string id="MaxUploadBandwidth">Максимальная пропускная способность выкладывания (в КБ/с)</string>
+      <string id="MaxUploadBandwidth_Help">Указывает максимальную пропускную способность выкладывания, которую служба оптимизации доставки использует для всех одновременных выкладываний (в килобайтах в секунду). Значение по умолчанию "0" (ноль) делает возможным неограниченное использование, при котором выкладывания динамически оптимизируются так, чтобы минимально использовать пропускную способность выкладывания.</string>
+      <string id="MaxCacheSize">Максимальный размер кэша (в процентах)</string>
+      <string id="MaxCacheSize_Help">Указывает максимальный размер кэша, который использует служба оптимизации доставки, как процент от доступной емкости диска (1–100).</string>
+      <string id="AbsoluteMaxCacheSize">Абсолютный максимальный размер кэша (в ГБ)</string>
+      <string id="AbsoluteMaxCacheSize_Help">Указывает максимальный размер кэша оптимизации доставки (в ГБ). Эта политика переопределяет политику DOMaxCacheSize. Значение "0" (ноль) означает неограниченный кэш. Служба оптимизации доставки очищает кэш, когда на устройстве заканчивается дисковое пространство.</string>
+      <string id="MaxCacheAge">Максимальный срок хранения в кэше (в секундах)</string>
+      <string id="MaxCacheAge_Help">Указывает максимальный срок (в секундах), в течение которого каждый файл хранится в кэше оптимизации доставки после успешного скачивания. Значение "0" (ноль) означает неограниченный срок. Служба оптимизации доставки будет хранить файлы в кэше дольше и делать их доступными для выкладывания на другие устройства, пока не будет превышен размер кэша.</string>
+      <string id="MonthlyUploadDataCap">Ограничение ежемесячной передачи данных (в ГБ)</string>
+      <string id="MonthlyUploadDataCap_Help">Указывает максимальное число байтов (в ГБ), которые служба оптимизации доставки может выложить на одноранговые узлы в Интернете в каждом календарном месяце. Значение "0" (ноль) означает неограниченное число, т. е. на месячное выкладывание не накладываются ограничения.</string>
+      <string id="MinBackgroundQos">Минимальное качество фонового обслуживания (в КБ/с)</string>
+      <string id="MinBackgroundQos_Help">Указывает минимальное качество обслуживания (скорость) для фоновых скачиваний (в килобайтах в секунду). Эта политика определяет принцип сочетания источников одноранговых узлов и HTTP. Служба оптимизации доставки дополняет скачивание из источника HTTP, чтобы достичь указанного минимального значения качества обслуживания.</string>
+      <string id="ModifyCacheDrive">Изменить диск для хранения кэша</string>
+      <string id="ModifyCacheDrive_Help">Указывает диск, который служба оптимизации доставки должна использовать для своего кэша. По умолчанию для хранения кэша используется %SystemDrive% . Расположение диска можно указать с помощью переменных среды, буквы диска или полного пути.</string>
+      <string id="MaxDownloadBandwidth">Максимальная пропускная способность скачивания (в КБ/с)</string>
+      <string id="MaxDownloadBandwidth_Help">Указывает максимальную пропускную способность скачивания (в килобайтах в секунду), которую устройство может использовать для всех одновременных скачиваний, осуществляющихся с помощью службы оптимизации доставки. Значение по умолчанию "0" (ноль) означает, что эта служба динамически корректирует свою работу, чтобы использовать для скачиваний доступную пропускную способность.</string>
+      <string id="PercentageMaxDownloadBandwidth">Максимальная пропускная способность скачивания (в процентах)</string>
+      <string id="PercentageMaxDownloadBandwidth_Help">Указывает максимальную пропускную способность скачивания, которую служба оптимизации доставки использует для всех параллельных скачиваний, как процент от доступной пропускной способности скачивания. Значение по умолчанию "0" (ноль) означает, что эта служба динамически корректирует свою работу, чтобы использовать для скачиваний доступную пропускную способность.</string>
+      <string id="MinFileSizeToCache">Минимальный размер файла содержимого однорангового кэширования (в МБ)</string>
+      <string id="MinFileSizeToCache_Help">Задает минимальный размер файла содержимого в МБ, необходимый для использования однорангового кэширования. Значение "0" означает "не ограничено", т. е. будет использоваться значение по умолчанию, установленное облачными службами. Рекомендуемые значения: от 1 МБ до 100 000 МБ.</string>
+      <string id="AllowVPNPeerCaching">Включить одноранговое кэширование, когда устройство подключается через VPN</string>
+      <string id="AllowVPNPeerCaching_Help">Задайте значение "true", чтобы разрешить устройству участвовать в одноранговом кэшировании при подключении через VPN к доменной сети. Это означает, что устройство сможет скачивать данные с других сетевых устройств домена или выкладывать на них данные через VPN или корпоративную сеть домена.</string>
+      <string id="MinRAMAllowedToPeer">Минимальная емкость ОЗУ (включительно), требуемая, чтобы обеспечить использование однорангового кэширования (в ГБ)</string>
+      <string id="MinRAMAllowedToPeer_Help">Задает минимальный размер ОЗУ в ГБ, требуемый для однорангового кэширования. Значение "0" означает "не ограничено", т. е. будет использоваться значение по умолчанию, установленное облачными службами. Например, если минимальное значение равно 1 ГБ, устройства с доступной оперативной памятью размером 1 ГБ или больше смогут использовать одноранговое кэширование. Рекомендуемые значения: от 1 ГБ до 4 ГБ.</string>
+      <string id="MinDiskSizeAllowedToPeer">Минимальный размер диска, для которого разрешено использовать одноранговое кэширование (в ГБ)</string>
+      <string id="MinDiskSizeAllowedToPeer_Help">Задает минимальный размер диска (емкость в ГБ), необходимый устройству для использования однорангового кэширования. Значение "0" означает "не ограничено". Будет использоваться значение по умолчанию, заданное облачными службами. Рекомендуемые значения: от 64 ГБ до 256 ГБ. Примечание. Если установлена политика DOModifyCacheDrive, к новому рабочему каталогу, заданному этой политикой, будет применена проверка размера диска.</string>
+      <string id="MinBatteryPercentageAllowedToUpload">Разрешить отправку при работе устройства от батареи и уровне заряда ниже установленного значения (в процентах)</string>
+      <string id="MinBatteryPercentageAllowedToUpload_Help">Чтобы разрешить устройству отправку данных в локальной сети и группе одноранговых узлов при работе от источника питания постоянного тока (батареи), укажите любое значение от 1 до 100 (в процентах). Отправка будет автоматически приостановлена, если уровень заряда батареи упадет ниже установленной минимальной отметки. Если разрешается отправка при питании от батареи, рекомендуемое значение — 40 (40%). Устройство может выполнять загрузку с одноранговых узлов при работе от батареи независимо от этой политики. Значение "0" означает "не ограничено". Будет использоваться значение по умолчанию, установленное для облачной службы.</string>
     </stringTable>
     <presentationTable>
       <presentation id="DownloadMode">
-        <dropdownList defaultItem="1" refId="DownloadMode">Download Mode:</dropdownList>
+        <dropdownList defaultItem="1" noSort="true" refId="DownloadMode">Режим скачивания:</dropdownList>
       </presentation>
       <presentation id="GroupId">
         <textBox refId="GroupId">
-          <label>Group ID:</label>
+          <label>ИД группы:</label>
         </textBox>
       </presentation>
       <presentation id="MaxUploadBandwidth">
-        <decimalTextBox defaultItem="0" refId="MaxUploadBandwidth">Max Upload Bandwidth:</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="MaxUploadBandwidth">Максимальная пропускная способность выкладывания (в КБ/с):</decimalTextBox>
+        <text>Значение по умолчанию: 0 (без ограничений)</text>
       </presentation>
       <presentation id="MaxCacheSize">
-        <decimalTextBox defaultItem="20" refId="MaxCacheSize">Max Cache Size:</decimalTextBox>
-        <text>Range is 0 to 100</text>
+        <decimalTextBox defaultValue="20" refId="MaxCacheSize">Максимальный размер кэша (в процентах):</decimalTextBox>
+        <text>Значение по умолчанию: 20%</text>
+      </presentation>
+      <presentation id="AbsoluteMaxCacheSize">
+        <decimalTextBox defaultValue="10" refId="AbsoluteMaxCacheSize">Абсолютный максимальный размер кэша (в ГБ):</decimalTextBox>
+        <text>Значение по умолчанию: 10 ГБ</text>
       </presentation>
       <presentation id="MaxCacheAge">
-        <decimalTextBox MaxCacheAge="0" refId="MaxCacheAge">Max Cache Age:</decimalTextBox>
+        <decimalTextBox defaultValue="259200" refId="MaxCacheAge">Максимальный срок хранения в кэше (в секундах):</decimalTextBox>
+        <text>Значение по умолчанию: 3 дня.</text>
+      </presentation>
+      <presentation id="MonthlyUploadDataCap">
+        <decimalTextBox defaultValue="20" refId="MonthlyUploadDataCap">Ограничение ежемесячной передачи данных (в ГБ):</decimalTextBox>
+        <text>Значение по умолчанию: 20 ГБ.</text>
+      </presentation>
+      <presentation id="MinBackgroundQos">
+        <decimalTextBox defaultValue="500" refId="MinBackgroundQos">Минимальное качество фонового обслуживания (в КБ/с):</decimalTextBox>
+        <text>Значение по умолчанию: 500 МБ/с.</text>
+      </presentation>
+      <presentation id="ModifyCacheDrive">
+        <textBox refId="ModifyCacheDrive">
+          <label>Изменить диск для хранения кэша:</label>
+        </textBox>
+      </presentation>
+      <presentation id="MaxDownloadBandwidth">
+        <decimalTextBox defaultValue="0" refId="MaxDownloadBandwidth">Максимальная пропускная способность скачивания (в КБ/с):</decimalTextBox>
+        <text>Значение по умолчанию: 0 (без ограничений)</text>
+      </presentation>
+      <presentation id="PercentageMaxDownloadBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxDownloadBandwidth">Максимальная пропускная способность скачивания (в процентах):</decimalTextBox>
+        <text>Значение по умолчанию: 0 (без ограничений)</text>
+      </presentation>
+      <presentation id="MinFileSizeToCache">
+        <decimalTextBox defaultValue="100" refId="MinFileSizeToCache">Минимальный размер файла содержимого однорангового кэширования (в МБ):</decimalTextBox>
+        <text>Значение по умолчанию: 100 МБ</text>
+      </presentation>
+      <presentation id="AllowVPNPeerCaching">
+        <checkBox defaultChecked="false" refId="AllowVPNPeerCaching">Включить одноранговое кэширование, когда устройство подключается через VPN</checkBox>
+      </presentation>
+      <presentation id="MinRAMAllowedToPeer">
+        <decimalTextBox defaultValue="4" refId="MinRAMAllowedToPeer">Минимальная емкость ОЗУ (включительно), требуемая, чтобы обеспечить использование однорангового кэширования (в ГБ):</decimalTextBox>
+        <text>Значение по умолчанию: 4 ГБ</text>
+      </presentation>
+      <presentation id="MinDiskSizeAllowedToPeer">
+        <decimalTextBox defaultValue="32" refId="MinDiskSizeAllowedToPeer">Минимальный размер диска, для которого разрешено использовать одноранговое кэширование (в ГБ):</decimalTextBox>
+        <text>Значение по умолчанию: 32 ГБ</text>
+      </presentation>
+      <presentation id="MinBatteryPercentageAllowedToUpload">
+        <decimalTextBox defaultValue="0" refId="MinBatteryPercentageAllowedToUpload">Минимальный уровень заряда батареи (в процентах):</decimalTextBox>
+        <text>Значение по умолчанию: 0 (без ограничений)</text>
       </presentation>
     </presentationTable>
   </resources>
