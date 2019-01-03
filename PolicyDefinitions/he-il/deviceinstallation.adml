@@ -1,241 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>הזן שם תצוגה כאן</displayName>
-  <description>הזן תיאור כאן</description>
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
   <resources>
     <stringTable>
-      <string id="DeviceInstall_AllowAdminInstall">אפשר למנהלים לעקוף מדיניות של מגבלות התקנה של התקנים</string>
-      <string id="DeviceInstall_AllowAdminInstall_Help">הגדרת מדיניות זו מאפשרת לך לקבוע אם לחברי קבוצת המנהלים תהיה אפשרות להתקין ולעדכן את מנהלי ההתקנים עבור כל התקן, ללא תלות בהגדרות מדיניות אחרות.
+      <string id="DeviceInstall_AllowAdminInstall">Allow administrators to override Device Installation Restriction policies</string>
+      <string id="DeviceInstall_AllowAdminInstall_Help">This policy setting allows you to determine whether members of the Administrators group can install and update the drivers for any device, regardless of other policy settings.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, חברי קבוצת המנהלים יוכלו להשתמש באשף הוספת החומרה או באשף עדכון מנהלי ההתקנים כדי להתקין ולעדכן את מנהלי ההתקנים עבור התקן כלשהו. אם תהפוך הגדרת מדיניות זו לזמינה בשרת שולחן עבודה מרוחק, הגדרת המדיניות תשפיע על ניתוב מחדש של ההתקנים שצוינו מלקוח שולחן עבודה מרוחק אל שרת שולחן העבודה המרוחק.
+If you enable this policy setting, members of the Administrators group can use the Add Hardware wizard or the Update Driver wizard to install and update the drivers for any device. If you enable this policy setting on a remote desktop server, the policy setting affects redirection of the specified devices from a remote desktop client to the remote desktop server.
 
-אם תהפוך הגדרת מדיניות זו לזמינה או לא תקבע את תצורתה, חברי קבוצת המנהלים יהיו כפופים לכל הגדרות המדיניות שמגבילות התקנה של התקנים.</string>
-      <string id="DeviceInstall_AllSigningEqual">קבע סדר עדיפויות שווה לכל מנהלי ההתקנים החתומים דיגיטלית בתהליך בחירה ודירוג של מנהלי התקנים</string>
-      <string id="DeviceInstall_AllSigningEqual_Help">הגדרת מדיניות זו מאפשרת לך לקבוע כיצד מנהלי התקנים החתומים על-ידי אישור של Microsoft Windows Publisher מדורגים לעומת מנהלי התקנים החתומים בחתימות Authenticode אחרות תוך כדי תהליך הבחירה וההתקנה של מנהל ההתקן. ללא תלות בהגדרת המדיניות, מנהל התקן חתום עדיין יועדף על-פני מנהל התקנים שאינו חתום כלל.
+If you disable or do not configure this policy setting, members of the Administrators group are subject to all policy settings that restrict device installation.</string>
+      <string id="DeviceInstall_AllSigningEqual">Prioritize all digitally signed drivers equally during the driver ranking and selection process</string>
+      <string id="DeviceInstall_AllSigningEqual_Help">This policy setting allows you to determine how drivers signed by a Microsoft Windows Publisher certificate are ranked with drivers signed by other valid Authenticode signatures during the driver selection and installation process. Regardless of this policy setting, a signed driver is still preferred over a driver that is not signed at all.
 
-אם תהפוך הגדרת מדיניות זו לזמינה או לא תגדיר את תצורתה, מנהלי ההתקנים החתומים על-ידי אישור Microsoft Windows Publisher ומנהלי התקנים שנחתמו על-ידי אישורי Authenticode אחרים מקבלים עדיפות שווה בעת תהליך הבחירה של מנהל ההתקן. הבחירה מבוססת על קריטריונים אחרים, כגון מספר גירסה או מועד היצירה של מנהל ההתקן. 
+If you enable or do not configure this policy setting, drivers that are signed by a Microsoft Windows Publisher certificate and drivers that are signed by other Authenticode certificates are prioritized equally during the driver selection process. Selection is based on other criteria, such as version number or when the driver was created. 
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה, מנהלי התקנים החתומים על-ידי אישור של  Microsoft Windows Publisher יקבלו עדיפות להתקנה על פני מנהלי התקנים החתומים על-ידי אישורי Authenticode  אחרים.</string>
-      <string id="DeviceInstall_BalloonTips">בטל בועות "זוהתה חומרה חדשה" במהלך התקנת התקן</string>
-      <string id="DeviceInstall_BalloonTips_Help">הגדרת מדיניות זו מאפשרת לך לבטל את בועות "נמצאה חומרה חדשה" במהלך התקנת שירות.
+If you disable this policy setting, drivers that are signed by a Microsoft Windows Publisher certificate are selected for installation over drivers that are signed by other Authenticode certificates.</string>
+      <string id="DeviceInstall_Category">Device Installation</string>
+      <string id="DeviceInstall_Classes_Allow">Allow installation of devices using drivers that match these device setup classes</string>
+      <string id="DeviceInstall_Classes_Allow_Help">This policy setting allows you to specify a list of device setup class globally unique identifiers (GUIDs) for device drivers that Windows is allowed to install. Use this policy setting only when the "Prevent installation of devices not described by other policy settings" policy setting is enabled. Other policy settings that prevent device installation take precedence over this one.
 
-אם תהפוך הגדרה זו לזמינה, בועות "זוהתה חומרה חדשה" לא יופיעו בעת התקנת התקן.
+If you enable this policy setting, Windows is allowed to install or update device drivers whose device setup class GUIDs appear in the list you create, unless another policy setting specifically prevents installation (for example, the "Prevent installation of devices that match these device IDs" policy setting, the "Prevent installation of devices for these device classes" policy setting, or the "Prevent installation of removable devices" policy setting). If you enable this policy setting on a remote desktop server, the policy setting affects redirection of the specified devices from a remote desktop client to the remote desktop server.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, בועות "זוהתה חומרה חדשה" יופיעו בעת התקנת התקן, אלא אם כן מנהל ההתקנים עבור ההתקן העלים את הבועות.</string>
-      <string id="DeviceInstall_Category">התקנת התקנים</string>
-      <string id="DeviceInstall_Classes_Allow">אפשר התקנת התקנים באמצעות מנהלי התקנים עבור מחלקות אלה של התקנים</string>
-      <string id="DeviceInstall_Classes_Allow_Help">הגדרת מדיניות זו מאפשרת לך לציין רשימה של מזהים ייחודיים גלובליים (GUID) של מחלקת התקנה למנהלי התקנים של התקנים ש- Windows מורשה להתקין. השתמש בהגדרת מדיניות זו רק כאשר הגדרת המדיניות "מנע התקנת התקנים שאינם מתוארים על-ידי הגדרות מדיניות אחרות" זמינה. הגדרות מדיניות אחרות אשר מונעות התקנה של התקנים גוברות על הגדרה זו.
-
-אם תהפוך הגדרת מדיניות זו לזמינה, Windows יורשה להתקין או לעדכן מנהלי התקנים שרכיבי ה- GUID של מחלקת ההתקנה שלהם מופיעים ברשימה שיצרת, אלא אם הגדרת מדיניות אחרת מונעת התקנה באופן ספציפי (לדוגמה, הגדרת המדיניות "מנע התקנת התקנים התואמים למזהי התקנים אלה", הגדרת המדיניות "מנע התקנת התקנים עבור מחלקות התקנה אלה" או הגדרת המדיניות "מנע התקנה של התקנים נשלפים"). אם תהפוך הגדרת מדיניות זו לזמינה בשרת שולחן עבודה מרוחק, הגדרת המדיניות תשפיע על ניתוב מחדש של ההתקנים שצוינו מלקוח שולחן עבודה מרוחק אל שרת שולחן העבודה המרוחק.
-
-אם תהפוך הגדרת מדיניות זו ללא זמינה או אם לא תקבע את תצורתה ואין הגדרת מדיניות אחרת המתארת את ההתקן, הגדרת המדיניות "מנע התקנת התקנים שאינם מתוארים על-ידי הגדרות מדיניות אחרות" תקבע אם ניתן להתקין את ההתקן.</string>
-      <string id="DeviceInstall_Classes_Deny">מנע התקנת התקנים באמצעות מנהלי התקנים אשר תואמים למחלקות התקנה אלו של התקנים</string>
-      <string id="DeviceInstall_Classes_Deny_Help">הגדרת מדיניות זו מאפשרת לך לציין רשימה של מזהים ייחודיים גלובליים (GUID) של מחלקת התקנה למנהלי התקנים שמ- Windows נמנע להתקין. הגדרת מדיניות זו גוברת על כל הגדרת מדיניות אחרת אשר מאפשרת ל- Windows להתקין התקן.
+If you disable or do not configure this policy setting, and no other policy setting describes the device, the "Prevent installation of devices not described by other policy settings" policy setting determines whether the device can be installed.</string>
+      <string id="DeviceInstall_Classes_Deny">Prevent installation of devices using drivers that match these device setup classes</string>
+      <string id="DeviceInstall_Classes_Deny_Help">This policy setting allows you to specify a list of device setup class globally unique identifiers (GUIDs) for device drivers that Windows is prevented from installing. This policy setting takes precedence over any other policy setting that allows Windows to install a device.
  
-אם תהפוך הגדרת מדיניות זו לזמינה, תימנע מ- Windows האפשרות להתקין או לעדכן מנהלי התקנים שרכיבי ה- GUID של מחלקת ההתקנה שלהם מופיעים ברשימה שיצרת. אם תהפוך הגדרת מדיניות זו לזמינה בשרת שולחן עבודה מרוחק, הגדרת המדיניות תשפיע על ניתוב מחדש של ההתקנים שצוינו מלקוח שולחן עבודה מרוחק אל שרת שולחן העבודה המרוחק.
+If you enable this policy setting, Windows is prevented from installing or updating device drivers whose device setup class GUIDs appear in the list you create. If you enable this policy setting on a remote desktop server, the policy setting affects redirection of the specified devices from a remote desktop client to the remote desktop server.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, ל- Windows תהיה אפשרות להתקין ולעדכן התקנים כפי שהגדרות מדיניות אחרות יאפשרו או ימנעו.</string>
-      <string id="DeviceInstall_Help">הגדרות מדיניות השולטות בהתקנת התקנים.</string>
-      <string id="DeviceInstall_IDs_Allow">אפשר התקנת התקנים התואמים לכל אחד ממזהי התקנים אלה</string>
-      <string id="DeviceInstall_IDs_Allow_Help">הגדרת מדיניות זו מאפשרת לך לציין רשימת מזהי חומרה מסוג הכנס-הפעל ומזהים תואמים עבור התקנים ש- Windows מורשה להתקין. השתמש בהגדרת מדיניות זו רק כאשר הגדרת המדיניות "מנע התקנת התקנים שאינם מתוארים על-ידי הגדרות מדיניות אחרות" זמינה. הגדרות מדיניות אחרות אשר מונעות התקנה של התקנים גוברות על הגדרה זו.
+If you disable or do not configure this policy setting, Windows can install and update devices as allowed or prevented by other policy settings.</string>
+      <string id="DeviceInstall_Help">Policy settings that control the installation of devices.</string>
+      <string id="DeviceInstall_IDs_Allow">Allow installation of devices that match any of these device IDs</string>
+      <string id="DeviceInstall_IDs_Allow_Help">This policy setting allows you to specify a list of Plug and Play hardware IDs and compatible IDs for devices that Windows is allowed to install. Use this policy setting only when the "Prevent installation of devices not described by other policy settings" policy setting is enabled. Other policy settings that prevent device installation take precedence over this one.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, Windows יורשה להתקין או לעדכן כל התקן שמזהה החומרה מסוג הכנס-הפעל או מזהה תואם שלו מופיע ברשימה שיצרת, אלא אם הגדרת מדיניות אחרת מונעת את ההתקנה באופן ספציפי (לדוגמה, הגדרת המדיניות "מנע התקנת התקנים התואמים למזהי התקנים אלה", הגדרת המדיניות "מנע התקנת התקנים עבור מחלקות התקנה אלה" או הגדרת המדיניות "מנע התקנה של התקנים נשלפים"). אם תהפוך הגדרת מדיניות זו לזמינה בשרת שולחן עבודה מרוחק, הגדרת המדיניות תשפיע על ניתוב מחדש של ההתקנים שצוינו מלקוח שולחן עבודה מרוחק אל שרת שולחן העבודה המרוחק.
+If you enable this policy setting, Windows is allowed to install or update any device whose Plug and Play hardware ID or compatible ID appears in the list you create, unless another policy setting specifically prevents that installation (for example, the "Prevent installation of devices that match any of these device IDs" policy setting, the "Prevent installation of devices for these device classes" policy setting, or the "Prevent installation of removable devices" policy setting). If you enable this policy setting on a remote desktop server, the policy setting affects redirection of the specified devices from a remote desktop client to the remote desktop server.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או אם לא תקבע את תצורתה ואין הגדרת מדיניות אחרת המתארת את ההתקן, הגדרת המדיניות "מנע התקנת התקנים שאינם מתוארים על-ידי הגדרות מדיניות אחרות" תקבע אם ניתן להתקין את ההתקן.</string>
-      <string id="DeviceInstall_IDs_Deny">מנע התקנת התקנים התואמים למזהי התקנים אלה</string>
-      <string id="DeviceInstall_IDs_Deny_Help">הגדרת מדיניות זו מאפשרת לך לציין רשימת מזהי חומרה מסוג הכנס-הפעל ומזהים תואמים עבור התקנים שהתקנתם נמנעה מ- Windows. הגדרת מדיניות זו גוברת על כל הגדרת מדיניות אחרת אשר מאפשרת ל- Windows להתקין התקן.
+If you disable or do not configure this policy setting, and no other policy setting describes the device, the "Prevent installation of devices not described by other policy settings" policy setting determines whether the device can be installed.</string>
+      <string id="DeviceInstall_IDs_Deny">Prevent installation of devices that match any of these device IDs</string>
+      <string id="DeviceInstall_IDs_Deny_Help">This policy setting allows you to specify a list of Plug and Play hardware IDs and compatible IDs for devices that Windows is prevented from installing. This policy setting takes precedence over any other policy setting that allows Windows to install a device.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, מ- Windows תימנע האפשרות להתקין התקן שמזהה החומרה או המזהה התואם שלו מופיעים ברשימה שיצרת. אם תהפוך הגדרת מדיניות זו לזמינה בשרת שולחן עבודה מרוחק, הגדרת המדיניות תשפיע על ניתוב מחדש של ההתקנים שצוינו מלקוח שולחן עבודה מרוחק אל שרת שולחן העבודה המרוחק.
+If you enable this policy setting, Windows is prevented from installing a device whose hardware ID or compatible ID appears in the list you create. If you enable this policy setting on a remote desktop server, the policy setting affects redirection of the specified devices from a remote desktop client to the remote desktop server.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, תהיה אפשרות להתקין ולעדכן התקנים כפי שהגדרות מדיניות אחרות יאפשרו או ימנעו.</string>
-      <string id="DeviceInstall_InstallTimeout">קבע תצורה של זמן קצוב עבור התקנת התקן</string>
-      <string id="DeviceInstall_InstallTimeout_Help">הגדרת מדיניות זו מאפשרת להגדיר את מספר השניות שבהן Windows מחכה להשלמת משימת התקנה של התקן. 
+If you disable or do not configure this policy setting, devices can be installed and updated as allowed or prevented by other policy settings.</string>
+      <string id="DeviceInstall_InstallTimeout">Configure device installation time-out</string>
+      <string id="DeviceInstall_InstallTimeout_Help">This policy setting allows you to configure the number of seconds Windows waits for a device installation task to complete. 
 
-אם תהפוך הגדרת מדיניות זו לזמינה, Windows יחכה את מספר השניות שתציין לפני סיום ההתקנה.
+If you enable this policy setting, Windows waits for the number of seconds you specify before terminating the installation.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, Windows ימתין 300 שניות להשלמת משימת התקנה של התקן לפני סיום ההתקנה.</string>
-      <string id="DeviceInstall_Removable_Deny">מנע התקנה של התקנים נשלפים</string>
-      <string id="DeviceInstall_Removable_Deny_Help">הגדרת מדיניות זו מאפשרת לך למנוע מ- Windows להתקין התקנים נשלפים. התקן נחשב כנשלף כאשר מנהל ההתקן שאליו ההתקן מקושר מציין שההתקן נשלף. לדוגמה, התקן אפיק טורי אוניברסלי (USB) מדווח כהתקן נשלף על-ידי מנהלי ההתקן של רכזת ה- USB שאליה ההתקן מחובר. הגדרת מדיניות זו גוברת על כל הגדרת מדיניות אחרת אשר מאפשרת ל- Windows להתקין התקן.
+If you disable or do not configure this policy setting, Windows waits 300 seconds for a device installation task to complete before terminating the installation.</string>
+      <string id="DeviceInstall_Removable_Deny">Prevent installation of removable devices</string>
+      <string id="DeviceInstall_Removable_Deny_Help">This policy setting allows you to prevent Windows from installing removable devices. A device is considered removable when the driver for the device to which it is connected indicates that the device is removable. For example, a Universal Serial Bus (USB) device is reported to be removable by the drivers for the USB hub to which the device is connected. This policy setting takes precedence over any other policy setting that allows Windows to install a device.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, מ- Windows תימנע האפשרות להתקין התקנים נשלפים ולהתקנים נשלפים קיימים לא תהיה אפשרות לעדכן את מנהלי ההתקנים שלהם. אם תהפוך הגדרת מדיניות זו לזמינה בשרת שולחן עבודה מרוחק, הגדרת המדיניות תשפיע על ניתוב מחדש של התקנים נשלפים מלקוח שולחן עבודה מרוחק אל שרת שולחן העבודה המרוחק.
+If you enable this policy setting, Windows is prevented from installing removable devices and existing removable devices cannot have their drivers updated. If you enable this policy setting on a remote desktop server, the policy setting affects redirection of removable devices from a remote desktop client to the remote desktop server.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, ל- Windows תהיה אפשרות להתקין ולעדכן מנהלי התקנים להתקנים נשלפים כפי שהגדרות מדיניות אחרות יאפשרו או ימנעו.</string>
-      <string id="DeviceInstall_Restrictions_Category">מגבלות של התקנת התקנים</string>
-      <string id="DeviceInstall_Restrictions_Help">הגדרות מדיניות המתארות אילו התקנים ניתנים או אינם ניתנים להתקנה.</string>
-      <string id="DeviceInstall_SystemRestore">מנע יצירה של נקודת שחזור מערכת במהלך פעילות של התקן שבמצב רגיל יציג הנחיה ליצירת נקודת שחזור</string>
-      <string id="DeviceInstall_SystemRestore_Help">הגדרת מדיניות זו מאפשרת לך למנוע מ- Windows ליצור נקודת שחזור מערכת במהלך פעילות של התקן שבמצב רגיל ינחה את Windows ליצור נקודת שחזור מערכת. בדרך כלל, Windows יוצר נקודות שחזור מערכת עבור פעילות מסוימת של מנהל התקן, כגון התקנת מנהל התקן לא חתום. נקודת שחזור מערכת מאפשרת לך לשחזר את המערכת שלך למצבה לפני הפעילות בקלות רבה יותר. 
+If you disable or do not configure this policy setting, Windows can install and update device drivers for removable devices as allowed or prevented by other policy settings.</string>
+      <string id="DeviceInstall_Restrictions_Category">Device Installation Restrictions</string>
+      <string id="DeviceInstall_Restrictions_Help">Policy settings that describe which devices can or cannot be installed.</string>
+      <string id="DeviceInstall_SystemRestore">Prevent creation of a system restore point during device activity that would normally prompt creation of a restore point</string>
+      <string id="DeviceInstall_SystemRestore_Help">This policy setting allows you to prevent Windows from creating a system restore point during device activity that would normally prompt Windows to create a system restore point. Windows normally creates restore points for certain driver activity, such as the installation of an unsigned driver. A system restore point enables you to more easily restore your system to its state before the activity. 
 
-אם תהפוך הגדרת מדיניות זו לזמינה, Windows לא ייצור נקודת שחזור מערכת כשנקודה כזו תיווצר במצב רגיל.
+If you enable this policy setting, Windows does not create a system restore point when one would normally be created.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, Windows ייצור נקודת שחזור מערכת באופן הרגיל.</string>
-	  <string id="DeviceManagement_RPCInterface_Allow">אפשר גישה מרחוק לממשק הכנס-הפעל</string>
-      <string id="DeviceManagement_RPCInterface_Allow_Help">הגדרת מדיניות זו מאפשרת לך להתיר או לדחות גישה מאחור לממשק הכנס-הפעל. 
+If you disable or do not configure this policy setting, Windows creates a system restore point as it normally would.</string>
+	  <string id="DeviceManagement_RPCInterface_Allow">Allow remote access to the Plug and Play interface</string>
+      <string id="DeviceManagement_RPCInterface_Allow_Help">This policy setting allows you to allow or deny remote access to the Plug and Play interface. 
 	  
-אם תהפוך הגדרת מדיניות זו לזמינה, החיבורים המרוחקים לממשק הכנס-הפעל יותרו.
+If you enable this policy setting, remote connections to the Plug and Play interface are allowed.
 	  
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, החיבורים המרוחקים לממשק הכנס-הפעל לא יותרו.</string>
-      <string id="DeviceInstall_GenericDriverSendToWER">אל תשלח דוח שגיאות של Windows כאשר מנהל התקן כללי מותקן בהתקן</string>
-      <string id="DeviceInstall_GenericDriverSendToWER_Help">הגדרת מדיניות זו מאפשרת לך לציין אם לשלוח דוח שגיאות של Windows כאשר מנהל התקן כללי מותקן בהתקן.
+If you disable or do not configure this policy setting, remote connections to the Plug and Play interface are not allowed.</string>
+      <string id="DeviceInstall_Unspecified_Deny">Prevent installation of devices not described by other policy settings</string>
+      <string id="DeviceInstall_Unspecified_Deny_Help">This policy setting allows you to prevent the installation of devices that are not specifically described by any other policy setting.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, דוח שגיאות של Windows לא יישלח כאשר מנהל התקן כללי מותקן.
+If you enable this policy setting, Windows is prevented from installing or updating the device driver for any device that is not described by either the "Allow installation of devices that match any of these device IDs" or the "Allow installation of devices for these device classes" policy setting.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, דוח שגיאות של Windows יישלח כאשר מנהל התקן כללי מותקן.</string>
-      <string id="DeviceInstall_RequestAdditionalSoftwareSendToWER">מנע מ- Windows לשלוח דוח שגיאות כאשר מנהל התקן מבקש תוכנה נוספת במהלך התקנה</string>
-      <string id="DeviceInstall_RequestAdditionalSoftwareSendToWER_Help">מדיניות זו מאפשרת לך למנוע מ- Windows לשלוח דוח שגיאות כאשר מנהל התקן מבקש תוכנה נוספת במהלך התקנה.
+If you disable or do not configure this policy setting, Windows is allowed to install or update the device driver for any device that is not described by the "Prevent installation of devices that match any of these device IDs," "Prevent installation of devices for these device classes," or "Prevent installation of removable devices" policy setting.</string>
+      <string id="DeviceInstall_DeniedPolicy_SimpleText">Display a custom message title when device installation is prevented by a policy setting</string>
+      <string id="DeviceInstall_DeniedPolicy_SimpleText_Help">This policy setting allows you to display a custom message title in a notification when a device installation is attempted and a policy setting prevents the installation.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, Windows לא יישלח דוח שגיאות כאשר מנהל התקן שמבקש תוכנה נוספת מותקן.
+If you enable this policy setting, Windows displays the text you type in the Main Text box as the title text of a notification when a policy setting prevents device installation.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תגדיר את תצורתה, Windows יישלח דוח שגיאות כאשר מנהל התקן אשר מבקש תוכנה נוספת מותקן.</string>
-      <string id="DeviceInstall_Unspecified_Deny">מנע התקנת התקנים שאינם מתוארים על-ידי הגדרות מדיניות אחרות</string>
-      <string id="DeviceInstall_Unspecified_Deny_Help">הגדרת מדיניות זו מאפשרת לך למנוע התקנה של התקנים שאינם מתוארים באופן ספציפי על-ידי הגדרת מדיניות אחרת כלשהי.
+If you disable or do not configure this policy setting, Windows displays a default title in a notification when a policy setting prevents device installation.</string>
+      <string id="DeviceInstall_DeniedPolicy_DetailText">Display a custom message when installation is prevented by a policy setting</string>
+      <string id="DeviceInstall_DeniedPolicy_DetailText_Help">This policy setting allows you to display a custom message to users in a notification when a device installation is attempted and a policy setting prevents the installation.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, מ- Windows יימנע להתקין או לעדכן את מנהל ההתקן של ההתקן עבור כל התקן שאינו מתואר על-ידי הגדרות המדיניות "אפשר התקנת התקנים התואמים לכל אחד ממזהי התקנים אלה" או "אפשר התקנת התקנים עבור מחלקות התקנים אלה".
+If you enable this policy setting, Windows displays the text you type in the Detail Text box when a policy setting prevents device installation.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, Windows יורשה להתקין או לעדכן את מנהל ההתקן של ההתקן עבור כל התקן שאינו מתואר על-ידי הגדרות המדיניות "מנע התקנים התקנים התואמים למזהי התקנים אלה," "מנע התקנה של התקנים עבור מחלקות התקנים אלה" או "מנע התקנה של התקנים נשלפים".</string>
-      <string id="DeviceInstall_DeniedPolicy_SimpleText">הצג כותרת הודעה מותאמת אישית כאשר הגדרת מדיניות מונעת התקנה של התקן</string>
-      <string id="DeviceInstall_DeniedPolicy_SimpleText_Help">הגדרת מדיניות זו מאפשרת לך להציג כותרת הודעה מותאמת אישית בבועת ההערה כאשר מתבצע ניסיון להתקנת התקן והגדרת המדיניות מונעת את ההתקנה.
-      
-אם תהפוך הגדרת מדיניות זו לזמינה, Windows יציג את הטקסט שאתה מקליד בתיבה 'טקסט ראשי' כטקסט הכותרת של בועת ההערה כשהגדרת מדיניות מונעת התקנה של התקן.
+If you disable or do not configure this policy setting, Windows displays a default message when a policy setting prevents device installation.</string>
+      <string id="DriverInstall_Category">Driver Installation</string>
+      <string id="DriverInstall_Classes_AllowUser">Allow non-administrators to install drivers for these device setup classes</string>
+      <string id="DriverInstall_Classes_AllowUser_Help">This policy setting specifies a list of device setup class GUIDs describing device drivers that non-administrator members of the built-in Users group may install on the system.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, Windows יציג כותרת ברירת מחדל בבועת ההערה כשהגדרת מדיניות מונעת התקנה של התקן.</string>
-      <string id="DeviceInstall_DeniedPolicy_DetailText">הצג הודעה מותאמת אישית כאשר הגדרת מדיניות מונעת התקנה של התקן</string>
-      <string id="DeviceInstall_DeniedPolicy_DetailText_Help">הגדרת מדיניות זו מאפשרת לך להציג הודעה מותאמת אישית למשתמשים בבועת ההערה כאשר מתבצע ניסיון להתקנת התקן והגדרת המדיניות מונעת את ההתקנה.
-      
-אם תהפוך הגדרת מדיניות זו לזמינה, Windows יציג את הטקסט שאתה מקליד בתיבה 'פירוט טקסט' כאשר הגדרת מדיניות מונעת התקנה של התקן.
-      
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, Windows יציג הודעת ברירת מחדל כשהגדרת מדיניות מונעת התקנה של התקן.</string>
-      <string id="DriverInstall_Category">התקנת מנהל התקן</string>
-      <string id="DriverInstall_Classes_AllowUser">אפשר לאדם שאינו מנהל להתקין מנהלי התקן עבור מחלקות אלה של התקנים</string>
-      <string id="DriverInstall_Classes_AllowUser_Help">ציון רשימת מזהים ייחודיים כלליים (GUID) של מחלקות התקנת התקנים, המתארים מנהלי התקנים הניתנים להתקנה במערכת על-ידי חברים בקבוצת המשתמשים המוכללת שאינם מנהלים. 
+If you enable this policy setting, members of the Users group may install new drivers for the specified device setup classes. The drivers must be signed according to Windows Driver Signing Policy, or be signed by publishers already in the TrustedPublisher store.
 
-כאשר הגדרה זו זמינה, התקנים חדשים עבור מחלקות הגדרת ההתקנים שצוינו ניתנים להתקנה על-ידי משתמשים השייכים לקבוצה 'משתמשים'. על מנהלי ההתקנים להיות חתומים בהתאם למדיניות חתימת מנהלי ההתקנים של Windows או להיות חתומים על-ידי מפרסמים קיימים במאגר TrustedPublisher.
+If you disable or do not configure this policy setting, only members of the Administrators group are allowed to install new device drivers on the system.</string>
+      <string id="DriverInstall_Help">Policy settings controlling the installation of device drivers on the system.</string>
+      <string id="DriverSign_Block">Block</string>
+      <string id="DriverSign_None">Ignore</string>
+      <string id="DriverSign_Warn">Warn</string>
+      <string id="DriverSigning">Code signing for device drivers</string>
+      <string id="DriverSigning_Help">Determines how the system responds when a user tries to install device driver files that are not digitally signed.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, רק למשתמשים השייכים לקבוצה 'מנהלים' תינתן הרשות להתקין מנהלי התקנים חדשים במערכת.</string>
-      <string id="DriverInstall_Help">הגדרות מדיניות השולטות בהתקנת מנהלי התקנים במערכת.</string>
-      <string id="DriverSearchPlaces">קבע תצורה של מיקומים לחיפוש מנהלי התקנים</string>
-      <string id="DriverSearchPlaces_Help">הגדרה זו קובעת את תצורת המיקום שבו יתבצע חיפוש של מנהלי התקנים כאשר זוהה פריט חומרה חדש. 
+This setting establishes the least secure response permitted on the systems of users in the group. Users can use System in Control Panel to select a more secure setting, but when this setting is enabled, the system does not implement any setting less secure than the one the setting established.
 
-כברירת מחדל, חיפוש מנהלי התקנים יתבצע במקומות הבאים: התקנה מקומית, כונני תקליטונים, כונני תקליטורים, Windows Update.
+When you enable this setting, use the drop-down box to specify the desired response.
 
-באמצעות הגדרה זו, באפשרותך להסיר את כונני התקליטונים והתקליטורים מאלגוריתם החיפוש.
+--   "Ignore" directs the system to proceed with the installation even if it includes unsigned files.
 
-אם תהפוך הגדרה זו לזמינה, באפשרותך להסיר את המיקומים על-ידי בחירת תיבת הסימון המשויכת לצד שם המיקום.
+--   "Warn" notifies the user that files are not digitally signed and lets the user decide whether to stop or to proceed with the installation and whether to permit unsigned files to be installed. "Warn" is the default.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תגדיר את תצורתה, חיפוש מנהלי התקנים יתבצע במיקום ההתקנה, בכונני התקליטונים ובכונני התקליטורים.
+--   "Block" directs the system to refuse to install unsigned files. As a result, the installation stops, and none of the files in the driver package are installed.
 
-‏‏הערה: כדי למנוע חיפוש מנהלי התקנים ב- Windows Update, ראה גם "בטל בקשה לחיפוש מנהלי התקנים ב- Windows Update" בתבניות מנהליות/מערכת/ניהול התקשרויות באינטרנט/הגדרות התקשרות באינטרנט.</string>
-      <string id="DriverSearchPlaces_DontPromptForWindowsUpdate">בטל את ההודעה של Windows Update לחיפוש מנהל התקן  </string>
-      <string id="DriverSearchPlaces_DontPromptForWindowsUpdate_Help">ציון אם תוצג בפני המנהל בקשה למעבר אל Windows Update לצורך חיפוש מנהלי התקנים באמצעות האינטרנט.
+To change driver file security without specifying a setting, use System in Control Panel. Right-click My Computer, click Properties, click the Hardware tab, and then click the Driver Signing button.</string>
+      <string id="DeviceInstall_Policy_RebootTime">Time (in seconds) to force reboot when required for policy changes to take effect</string>
+      <string id="DeviceInstall_Policy_RebootTime_Help">This policy setting establishes the amount of time (in seconds) that the system will wait to reboot in order to enforce a change in device installation restriction policies.
 
-‏‏הערה: הגדרה זו בתוקף רק אם הגדרת המדיניות "בטל בקשה לחיפוש מנהלי התקנים ב- Windows Update" הנמצאת ב"תבניות מנהליות/מערכת/ניהול התקשרויות באינטרנט/הגדרות התקשרות באינטרנט" אינה זמינה או לא נקבעה תצורתה.
+If you enable this policy setting, set the amount of seconds you want the system to wait until a reboot.
 
-אם הגדרה זו זמינה, לא תוצג בפני מנהלים בקשה לחיפוש ב- Windows Update.
+If you disable or do not configure this policy setting, the system does not force a reboot.
 
-אם הגדרה זו אינה זמינה או תצורתה לא נקבעה ו"בטל בקשה לחיפוש מנהלי התקנים ב- Windows Update" אינה זמינה או תצורתה לא נקבעה, תוצג בפני המנהל בקשה לאישור מעבר ל-  Windows Update לצורך חיפוש מנהלי התקנים.</string>
-      <string id="DriverSearchPlaces_SearchOrderConfiguration">ציין סדר חיפוש עבור מיקומי מקור של מנהל התקן</string>
-      <string id="DriverSearchPlaces_SearchOrderConfiguration_Help">הגדרת מדיניות זו מאפשרת לך לציין את הסדר שבו Windows יחפש מיקומי מקור של מנהלי התקנים. 
-
-אם תהפוך הגדרת מדיניות זו לזמינה, תוכל לבחור אם Windows יחפש ב- Windows Update בהתחלה, יחפש ב- Windows Update בסוף או לא יחפש ב- Windows Update כלל.
-
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, לחברים בקבוצת מנהלי המערכת תהיה אפשרות לקבוע את הסדר שבו Windows יחפש מיקומי מקור של מנהלי התקנים.</string>
-      <string id="DriverSearchPlaces_SearchOrderConfiguration_First">חפש ב- Windows Update בהתחלה</string>
-      <string id="DriverSearchPlaces_SearchOrderConfiguration_Last">חפש ב- Windows Update בסוף</string>
-      <string id="DriverSearchPlaces_SearchOrderConfiguration_Never">אל תחפש ב- Windows Update</string>
-      
-      <string id="DriverSign_Block">חסום</string>
-      <string id="DriverSign_None">התעלם</string>
-      <string id="DriverSign_Warn">הזהר</string>
-      <string id="DriverSigning">חתימת קוד עבור מנהלי התקנים</string>
-      <string id="DriverSigning_Help">קביעה של תגובת המערכת כאשר משתמש מנסה להתקין קבצים של מנהל התקן שאינם חתומים דיגיטלית.
-
-הגדרה זו קובעת את התגובה בעלת רמת האבטחה הנמוכה ביותר המותרת במערכות של המשתמשים בקבוצה. המשתמשים יכולים להשתמש באפשרות 'מערכת' שבלוח הבקרה כדי לבחור בהגדרה מאובטחת יותר, אך כאשר הגדרה זו מוגדרת כזמינה, המערכת לא תיישם כל הגדרה בעלת רמת אבטחה נמוכה מזו שנקבעה על-ידי ההגדרה.
-
-כאשר תהפוך הגדרה זו לזמינה, השתמש בתיבה הנפתחת כדי לציין את התגובה הרצויה.
-
--- "התעלם" מורה למערכת להמשיך בהתקנה גם אם היא כוללת קבצים שאינם חתומים.
-
--- "הזהר" מודיעה למשתמש שקבצים אינם חתומים דיגיטלית ומאפשרת למשתמש להחליט אם להמשיך בהתקנה או להפסיקה ואם להתיר התקנה של קבצים שאינם חתומים. "הזהר" היא אפשרות ברירת המחדל.
-
---  "חסום" מורה למערכת לא לאפשר התקנה של קבצים שאינם חתומים. כתוצאה מכך, ההתקנה תופסק ולא יותקן אף קובץ בחבילת מנהל ההתקן.
-
-כדי לשנות את רמת האבטחה של קבצי מנהל ההתקן מבלי לציין הגדרה, השתמש באפשרות 'מערכת' שבלוח הבקרה. לחץ באמצעות לחצן העכבר הימני על 'המחשב שלי', לחץ על 'מאפיינים', לחץ על הכרטיסיה 'חומרה' ולאחר מכן לחץ על לחצן חתימת מנהלי התקנים.</string>
-      <string id="DeviceMetadata_PreventDeviceMetadataFromNetwork">מנע אחזור מטה-נתונים של התקן מהאינטרנט</string>
-      <string id="DeviceMetadata_PreventDeviceMetadataFromNetwork_Help">הגדרת מדיניות זו מאפשרת לך למנוע מ- Windows לאחזר מטה-נתונים של התקן מהאינטרנט.
-          
-אם תהפוך הגדרת מדיניות זו לזמינה, Windows לא יאחזר מטה-נתונים של התקן עבור התקנים שהותקנו מהאינטרנט. הגדרת מדיניות זו עוקפת את ההגדרה בתיבת הדו-שיח 'הגדרות התקנת התקן' (לוח הבקרה &gt; מערכת ואבטחה &gt; מערכת &gt; הגדרות מערכת מתקדמות &gt; הכרטיסיה 'חומרה').
-
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, ההגדרה בתיבת הדו-שיח 'הגדרות התקנת התקן' תקבע אם Windows יאחזר מטה-נתונים של התקן מהאינטרנט.</string>
-      <string id="DeviceInstall_Policy_RebootTime">זמן (בשניות) לכפיית אתחול מחדש כאשר נדרש לשם כניסת שינויי מדיניות לתוקף</string>
-      <string id="DeviceInstall_Policy_RebootTime_Help">הגדר את משך הזמן (בשניות) שהמערכת תחכה לפני אתחול מחדש כדי לכפות שינוי במדיניות ההגבלה של התקנת התקן.
-
-אם אתה הופך הגדרה זו לזמינה, קבע את מספר השניות שבהן המערכת תחכה עד לאתחול מחדש.
-
-אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, המערכת לא תכפה אתחול מחדש.
-
-הערה: אם לא נכפה אתחול מחדש, זכות הגבלת ההתקנה של ההתקן לא תיכנס לתוקף עד שהמערכת תופעל מחדש.</string>
+Note: If no reboot is forced, the device installation restriction right will not take effect until the system is restarted.</string>
     </stringTable>
     <presentationTable>
       <presentation id="DeviceInstall_Classes_Allow">
-        <listBox refId="DeviceInstall_Classes_Allow_List">אפשר התקנת התקנים באמצעות מנהלי התקנים עבור מחלקות התקן אלה:</listBox>
-        <text>כדי ליצור רשימה של מחלקות התקנים, לחץ על 'הצג'. בתיבת הדו-שיח 'הצגת תוכן', בעמודה 'ערך',</text>
-        <text>הקלד GUID המייצג מחלקת התקנת התקן</text>
-        <text>(לדוגמה, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
+        <listBox refId="DeviceInstall_Classes_Allow_List">Allow installation of devices using drivers for these device classes:</listBox>
+        <text>To create a list of device classes, click Show. In the Show Contents dialog box, in the Value column,</text>
+        <text>type a GUID that represents a device setup class</text>
+        <text>(for example, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
       </presentation>
       <presentation id="DeviceInstall_Classes_Deny">
-        <listBox refId="DeviceInstall_Classes_Deny_List">מנע התקנת התקנים באמצעות מנהלי התקנים עבור מחלקות התקנת התקן אלה:</listBox>
-        <text>כדי ליצור רשימה של מחלקות התקנים, לחץ על 'הצג'. בתיבת הדו-שיח 'הצגת תוכן', בעמודה 'ערך',</text>
-        <text>הקלד GUID המייצג מחלקת התקנת התקן</text>
-        <text>(לדוגמה, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
-        <checkBox refId="DeviceInstall_Classes_Deny_Retroactive">כמו כן, החל על התקנים תואמים שכבר מותקנים.</checkBox>
+        <listBox refId="DeviceInstall_Classes_Deny_List">Prevent installation of devices using drivers for these device setup classes:</listBox>
+        <text>To create a list of device classes, click Show. In the Show Contents dialog box, in the Value column,</text>
+        <text>type a GUID that represents a device setup class</text>
+        <text>(for example, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
+        <checkBox refId="DeviceInstall_Classes_Deny_Retroactive">Also apply to matching devices that are already installed.</checkBox>
       </presentation>
       <presentation id="DeviceInstall_IDs_Allow">
-        <listBox refId="DeviceInstall_IDs_Allow_List">אפשר התקנת התקנים התואמים לכל אחד ממזהי התקנים אלה:</listBox>
-        <text>כדי ליצור רשימה של התקנים, לחץ על 'הצג'. בתיבת הדו-שיח 'הצגת תוכן', בעמודה 'ערך',</text>
-        <text>ציין מזהה חומרה מסוג הכנס-הפעל או מזהה תואם</text>
-        <text>(לדוגמה, gendisk, USB\COMPOSITE, USB\Class_ff).</text>
+        <listBox refId="DeviceInstall_IDs_Allow_List">Allow installation of devices that match any of these Device IDs:</listBox>
+        <text>To create a list of devices, click Show. In the Show Contents dialog box, in the Value column,</text>
+        <text>type a Plug and Play hardware ID or compatible ID</text>
+        <text>(for example, gendisk, USB\COMPOSITE, USB\Class_ff).</text>
       </presentation>
       <presentation id="DeviceInstall_IDs_Deny">
-        <listBox refId="DeviceInstall_IDs_Deny_List">מנע התקנת התקנים התואמים למזהי התקנים אלה:</listBox>
-        <text>כדי ליצור רשימה של התקנים, לחץ על 'הצג'. בתיבת הדו-שיח 'הצגת תוכן', בעמודה 'ערך',</text>
-        <text>ציין מזהה חומרה מסוג הכנס-הפעל או מזהה תואם</text>
-        <text>(לדוגמה, gendisk, USB\COMPOSITE, USB\Class_ff).</text>
-        <checkBox refId="DeviceInstall_IDs_Deny_Retroactive">כמו כן, החל על התקנים תואמים שכבר מותקנים.</checkBox>
+        <listBox refId="DeviceInstall_IDs_Deny_List">Prevent installation of devices that match any of these Device IDs:</listBox>
+        <text>To create a list of devices, click Show. In the Show Contents dialog box, in the Value column,</text>
+        <text>type a Plug and Play hardware ID or compatible ID</text>
+        <text>(for example, gendisk, USB\COMPOSITE, USB\Class_ff).</text>
+        <checkBox refId="DeviceInstall_IDs_Deny_Retroactive">Also apply to matching devices that are already installed.</checkBox>
       </presentation>
       <presentation id="DeviceInstall_InstallTimeout">
-        <decimalTextBox refId="DeviceInstall_InstallTimeout_Time" defaultValue="300" spinStep="15">זמן קצוב של התקנת התקן (בשניות)</decimalTextBox>
+        <decimalTextBox refId="DeviceInstall_InstallTimeout_Time" defaultValue="300" spinStep="15">Device Installation Timeout (in seconds)</decimalTextBox>
       </presentation>
       <presentation id="DeviceInstall_Policy_RebootTime">
-        <decimalTextBox refId="DeviceInstall_Policy_RebootTime_Time" defaultValue="120" spinStep="10">זמן קצוב לאתחול מחדש (בשניות)</decimalTextBox>
+        <decimalTextBox refId="DeviceInstall_Policy_RebootTime_Time" defaultValue="120" spinStep="10">Reboot Timeout (in seconds)</decimalTextBox>
       </presentation>
       <presentation id="DeviceInstall_DeniedPolicy_SimpleText">
-        <text>הזן את הטקסט אותו אתה מעונין שיראו המשתמשים (עד 63 תווים)</text>
+        <text>Enter the text you wish users to see (Max 63 chars)</text>
         <textBox refId="DeviceInstall_DeniedPolicy_SimpleText_Text">
-          <label>טקסט עיקרי</label>
+          <label>Main Text</label>
         </textBox>
       </presentation>
       <presentation id="DeviceInstall_DeniedPolicy_DetailText">
-        <text>הזן את הטקסט אותו אתה מעונין שיראו המשתמשים (עד 128 תווים)</text>
+        <text>Enter the text you wish users to see (Max 128 chars)</text>
         <textBox refId="DeviceInstall_DeniedPolicy_DetailText_Text">
-          <label>פירוט טקסט</label>
+          <label>Detail Text</label>
         </textBox>
       </presentation>
       <presentation id="DriverInstall_Classes_AllowUser">
-        <listBox refId="DriverInstall_Classes_AllowUser_List">אפשר למשתמשים להתקין מנהלי התקנים עבור מחלקות אלה:</listBox>
-        <text>כדי ליצור רשימה של מחלקות התקנים, לחץ על 'הצג'. בתיבת הדו-שיח 'הצגת תוכן', בעמודה 'ערך',</text>
-        <text>הקלד GUID המייצג מחלקת התקנת התקן</text>
-        <text>(לדוגמה, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
-      </presentation>
-      <presentation id="DriverSearchPlaces">
-        <checkBox refId="DriverSearchPlaces_Floppies">אל תחפש בכונני תקליטונים</checkBox>
-        <checkBox refId="DriverSearchPlaces_CD">אל תחפש בכונני תקליטורים</checkBox>
-        <checkBox refId="DriverSearchPlaces_WindowsUpdate">אל תחפש ב- Windows Update</checkBox>
+        <listBox refId="DriverInstall_Classes_AllowUser_List">Allow Users to install device drivers for these classes:</listBox>
+        <text>To create a list of device classes, click Show. In the Show Contents dialog box, in the Value column,</text>
+        <text>type a GUID that represents a device setup class</text>
+        <text>(for example, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
       </presentation>
       <presentation id="DriverSigning">
-        <dropdownList refId="DriverSigningOp" noSort="true" defaultItem="1">כאשר Windows מאתר קובץ של מנהל התקן ללא חתימה דיגיטלית:</dropdownList>
-      </presentation>
-      <presentation id="DriverSearchPlaces_SearchOrderConfiguration">
-        <dropdownList refId="DriverSearchPlaces_SearchOrderConfiguration_dropdown" noSort="true" defaultItem="1">בחר סדר חיפוש:</dropdownList>        
+        <dropdownList refId="DriverSigningOp" noSort="true" defaultItem="1">When Windows detects a driver file without a digital signature:</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

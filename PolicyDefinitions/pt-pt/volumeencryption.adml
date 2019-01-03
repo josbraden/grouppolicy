@@ -1,57 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>introduzir o nome a apresentar aqui</displayName>
-  <description>introduzir a descrição aqui</description>
+  <displayName>introduza o nome a apresentar aqui</displayName>
+  <description>introduza a descrição aqui</description>
   <resources>
     <stringTable>
-      <string id="ActiveDirectoryBackup_Help">Esta definição de política permite-lhe gerir cópias de segurança dos Serviços de Domínio do Active Directory (AD DS) das informações de recuperação da Encriptação de Unidade BitLocker. Isto fornece um método administrativo de recuperação de dados encriptados pelo BitLocker, para impedir a perda de dados devido à falta de informações de chave. Esta política só é aplicável a computadores com o Windows Server 2008 ou Windows Vista.
+      <string id="ActiveDirectoryBackup_Help">Esta definição de política permite-lhe gerir cópias de segurança dos Serviços de Domínio do Active Directory (AD DS) das informações de recuperação da Encriptação de Unidade BitLocker. Isto fornece um método administrativo de recuperação de dados encriptados pelo BitLocker, para impedir a perda de dados devido à falta de informações de chave. Esta definição de política só é aplicável a computadores com o Windows Server 2008 ou Windows Vista.
 
-Se activar esta definição de política, as informações de recuperação do BitLocker serão incluídas de forma automática e silenciosa numa cópia de segurança do AD DS, quando o BitLocker estiver activado para um computador. Esta definição de política é aplicada quando activa o BitLocker.
+Se ativar esta definição de política, será efetuada uma cópia de segurança automática e silenciosa de informações de recuperação BitLocker no AD DS, quando o BitLocker estiver ativado para um computador. Esta definição de política é aplicada quando o BitLocker é ativado.
 
-Nota: Primeiro tem de configurar as extensões de esquema adequadas e aceder a definições de controlo do domínio antes de as cópias de segurança do AD DS terem êxito. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre como configurar cópias de segurança do AD DS para o BitLocker.
+Nota: poderá ser necessário configurar extensões de esquema adequadas e definições de controlo de acesso no domínio para que a cópia de segurança do AD DS seja efetuada com êxito. No Microsoft TechNet, estão disponíveis mais informações sobre a configuração de uma cópia de segurança de AD DS para o BitLocker.
 
-As informações de recuperação do BitLocker incluem a palavra-passe de recuperação e alguns dados de identificador exclusivos. Também pode incluir um pacote que contenha uma chave de encriptação da unidade protegida pelo BitLocker. Este pacote de chaves é protegido por uma ou mais palavras-passe de recuperação e pode ajudar a efectuar uma recuperação especializada quando o disco é danificado.
+As informações de recuperação do BitLocker incluem a palavra-passe de recuperação e alguns dados de identificador exclusivos. Também pode incluir um pacote que contenha uma chave de encriptação da unidade protegida por BitLocker. Este pacote de chave é protegido por uma ou mais palavras-passe de recuperação e pode ajudar a efetuar uma recuperação especializada quando o disco está danificado.
 
-Se tiver seleccionado a opção "Pedir cópia de segurança BitLocker para AD DS", o BitLocker só pode ser activado se o computador estiver ligado ao domínio e a cópia de segurança das informações de recuperação do BitLocker para o AD DS tiver êxito. Esta opção é seleccionada por predefinição para ajudar a assegurar que a recuperação do BitLocker é possível. Se esta opção não for seleccionada, a cópia de segurança de AD DS é tentada, mas a rede ou outras falhas de segurança não impedem a configuração do BitLocker. A tentativa de fazer a cópia de segurança não é repetida automaticamente e a palavra-passe de recuperação poderá não ter sido armazenada no AD DS durante a configuração do BitLocker.
+Se selecionar a opção "Pedir cópia de segurança do BitLocker para AD DS", o BitLocker só poderá ser ativado se o computador estiver ligado ao domínio e se a cópia de segurança das informações de recuperação BitLocker no AD DS for efetuada com êxito. Esta opção está selecionada por predefinição para ajudar a assegurar que a recuperação do BitLocker é possível. Se esta opção não for selecionada, a cópia de segurança de AD DS será tentada, mas falhas de rede ou outras falhas de segurança não impedirão a configuração do BitLocker. A tentativa de fazer a cópia de segurança não é repetida automaticamente e a palavra-passe de recuperação poderá não ter sido armazenada no AD DS durante a configuração do BitLocker.
 
-Se desactivar ou não configurar esta definição de política, não será feita uma cópia de segurança das informações de recuperação do BitLocker para o AD DS.
+Se desativar ou não configurar esta definição de política, não será feita uma cópia de segurança das informações de recuperação do BitLocker no AD DS.
 
-Nota: A inicialização do TPM (Trusted Platform Module) pode ser necessária durante a configuração do BitLocker. Active a definição de política "Activar a cópia de segurança do TPM para os Serviços Trusted Platform Module" em Sistema\Serviços Trusted Platform Module para assegurar que as informações do TPM também são incluídas na cópia de segurança.
-</string>
+Nota: poderá ocorrer uma inicialização do TPM (Trusted Platform Module) durante a configuração do BitLocker. Ative a definição de política "Ativar a cópia de segurança do TPM para os Serviços Trusted Platform Module" em Sistema\Serviços Trusted Platform Module para assegurar que as informações do TPM também são incluídas na cópia de segurança.
+      
+      </string>
       <string id="ActiveDirectoryBackup_Name">Armazenar informações de recuperação do BitLocker nos Serviços de Domínio do Active Directory (Windows Server 2008 e Windows Vista)</string>
       <string id="ActiveDirectoryBackupDropDown_1">Palavras-passe recuperação e pacotes de chave</string>
       <string id="ActiveDirectoryBackupDropDown_2">Só palavras-passe de recuperação</string>
-      
-      <string id="ConfigureStartupUsage_Help">Esta definição de política permite controlar se o assistente de configuração da Encriptação de Unidade BitLocker conseguirá configurar um método de autenticação adicional que será pedido sempre que o computador for iniciado. Esta definição de política é aplicada quando activa o BitLocker.
-        
-Nota:  Esta política só é aplicável a computadores com o Windows Server 2008 ou Windows Vista.
 
-Num computador com um TPM (Trusted Platform Module) compatível, podem ser utilizados dois tipos de autenticação no arranque para fornecer protecção adicional para dados encriptados. Quando o computador é iniciado, pode pedir aos utilizadores que insiram uma unidade Flash USB que contém uma chave de arranque. Também pode pedir aos utilizadores que introduzam um número de identificação pessoal (PIN) de arranque com 4 a 20 dígitos.
+      <string id="ConfigureStartupUsage_Help">Esta definição de política permite controlar se o assistente de configuração da Encriptação de Unidade BitLocker conseguirá configurar um método de autenticação adicional que será pedido sempre que o computador for iniciado. Esta definição de política é aplicada quando o BitLocker é ativado.
 
-Uma unidade Flash USB que contenha uma chave de arranque é necessária em computadores sem um TPM compatível. Sem um TPM, os dados encriptados pelo BitLocker são protegidos apenas pelo material de chave desta unidade Flash USB.
+Nota: esta política só é aplicável a computadores com o Windows Server 2008 ou Windows Vista.
 
-Se activar esta definição de política, o assistente apresentará a página que permite ao utilizador configurar as opões de arranque avançadas para o BitLocker. As opções podem ser objecto de configuração adicional para computadores com e sem um TPM.
+Num computador com um TPM (Trusted Platform Module) compatível, é possível utilizar dois tipos de autenticação no arranque para fornecer proteção adicional para dados encriptados. Quando é iniciado, o computador pode pedir aos utilizadores que insiram uma pen USB com uma chave de arranque. Também pode pedir aos utilizadores que introduzam um número de identificação pessoal (PIN) de arranque com 4 a 20 dígitos.
 
-Se desactivar ou não configurar esta definição de política, o assistente de configuração do BitLocker apresentará os passos básicos que permitem aos utilizadores activar o BitLocker em computadores com um TPM. Neste assistente básico, não é possível configurar uma chave ou um PIN de arranque adicional.
+Uma pen USB que contenha uma chave de arranque é necessária em computadores sem um TPM compatível. Sem um TPM, os dados encriptados pelo BitLocker são protegidos apenas pelo material de chave nesta pen USB.
+
+Se ativar esta definição de política, o assistente apresentará a página que permite ao utilizador configurar opões de arranque avançadas para o BitLocker. As opções de definição podem ser alvo de configuração adicional para computadores com e sem um TPM.
+
+Se desativar ou não configurar esta definição de política, o assistente de configuração do BitLocker apresentará passos básicos que permitem aos utilizadores ativar o BitLocker em computadores com um TPM. Neste assistente básico, não é possível configurar uma chave ou um PIN de arranque adicional.
+
 </string>
-      
+
       <string id="ConfigureStartupUsage_Name">Exigir autenticação adicional no arranque (Windows Server 2008 e Windows Vista)</string>
       <string id="ConfigureAdvancedStartup_Name">Exigir autenticação adicional durante o arranque</string>
-      
-      <string id="ConfigureAdvancedStartup_Help">Esta definição de política permite configurar se o BitLocker exige autenticação adicional sempre que o computador for iniciado, quer esteja a utilizar o BitLocker com ou sem um TPM (Trusted Platform Module). Esta definição de política é aplicada quando activa o BitLocker.
 
-Nota: Apenas uma das opções de autenticação pode ser exigida no arranque, caso contrário, ocorre um erro de política.
+      <string id="ConfigureAdvancedStartup_Help">Esta definição de política permite configurar se o BitLocker exige autenticação adicional sempre que o computador for iniciado, quer esteja a utilizar o BitLocker com ou sem um TPM (Trusted Platform Module). Esta definição de política é aplicada quando o BitLocker é ativado.
 
-Se pretende utilizar o BitLocker num computador sem um TPM, seleccione a caixa de verificação "Permitir o BitLocker sem um TPM compatível". Neste modo, é obrigatória uma unidade USB para arranque e as informações de chave utilizadas para encriptar a unidade são armazenadas na unidade USB, criando uma chave USB. Quando a chave USB é inserida o acesso à unidade é autenticado e a unidade fica acessível. Se a chave USB se perder ou ficar indisponível, necessitará de utilizar uma das opções de recuperação do BitLocker para aceder à unidade.
+Nota: apenas uma das opções de autenticação pode ser exigida no arranque; caso contrário, ocorre um erro de política.
 
-Num computador com um TPM compatível, os quatros tipos de método de autenticação podem ser utilizados no arranque para fornecer protecção adicional para os dados encriptados. Quando o computador é iniciado, só pode utilizar o TPM para autenticação ou também pode exigir a introdução de uma unidade Flash USB que contenha uma chave de arranque, a introdução de um número de identificação pessoal (PIN) de 4 a 20 dígitos ou ambos.
+Se pretender utilizar o BitLocker num computador sem um TPM, selecione a caixa de verificação "Permitir o BitLocker sem um TPM compatível". Neste modo, é necessária uma palavra-passe ou uma pen USB para o arranque. Ao utilizar uma chave de arranque, as informações de chave utilizadas para encriptar a unidade são armazenadas na pen USB, criando uma chave USB. Quando a chave USB é inserida, o acesso à unidade é autenticado e a unidade fica acessível. Se a chave USB se perder ou ficar indisponível, ou se o utilizador se esquecer da palavra-passe, será necessário utilizar uma das opções de recuperação do BitLocker para aceder à unidade.
 
-Se activar esta definição de política, os utilizadores podem configurar opções de arranque avançadas no assistente de configuração do BitLocker.
+Num computador com um TPM compatível, é possível utilizar quatros tipos de método de autenticação no arranque para fornecer proteção adicional para os dados encriptados. Quando é iniciado, o computador pode utilizar apenas o TPM para autenticação, ou também pode exigir que seja inserida uma pen USB que contenha uma chave de arranque, que seja introduzido um número de identificação pessoal (PIN) de 4 a 20 dígitos, ou ambos.
 
-Se desactivar ou não configurar esta definição de política, os utilizadores podem configurar apenas opções básicas em computadores com um TPM.
+Se ativar esta definição de política, os utilizadores poderão configurar opções de arranque avançadas no assistente de configuração do BitLocker.
 
-Nota: Se pretender exigir a utilização de um PIN de arranque e de uma unidade Flash USB, tem de configurar as definições do BitLocker utilizando a ferramenta de linha de comandos manage-bde, em vez do assistente de configuração de Encriptação de Unidade BitLocker.
+Se desativar ou não configurar esta definição de política, os utilizadores poderão configurar apenas opções básicas em computadores com um TPM.
+
+Nota: se pretender exigir a utilização de um PIN de arranque e de uma pen USB, terá de configurar as definições do BitLocker utilizando a ferramenta de linha de comandos manage-bde em vez do assistente de configuração de Encriptação de Unidade BitLocker.
+
+
+
+</string>
+      <string id="AllowNetworkUnlockAtStartup_Name">Permitir desbloqueio da rede no arranque</string>
+      <string id="AllowNetworkUnlockAtStartup_Help">Esta definição de política controla se um computador protegido por BitLocker que esteja ligado a uma rede local (LAN) com fios fidedigna e associado a um domínio pode criar e utilizar Protetores de Chave de Rede em computadores com capacidade TPM para desbloquear automaticamente a unidade do sistema operativo quando o computador é iniciado.
+
+Se ativar esta política, os clientes configurados com um certificado de Desbloqueio de Rede BitLocker conseguirão criar e utilizar Protetores de Chave de Rede.
+
+Para utilizar um Protetor de Chave de Rede para desbloquear o computador, o computador e o servidor de Desbloqueio de Rede de Encriptação de Unidade BitLocker têm de ser aprovisionados com um certificado de Desbloqueio de Rede. O certificado de Desbloqueio de Rede é utilizado para criar Protetores de Chave de Rede e protege as informações trocadas com o servidor para desbloquear o computador. Pode utilizar a definição de política de grupo "Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas de Chave Pública\Certificado de Desbloqueio de Rede de Encriptação de Unidade BitLocker" no controlador de domínio para distribuir este certificado a computadores na organização. Este método de desbloqueio utiliza o TPM no computador, pelo que os computadores que não tenham um TPM não podem criar Protetores de Chave de Rede para desbloquear automaticamente com o Desbloqueio de Rede.
+
+Se desativar ou não configurar esta definição de política, os clientes BitLocker não conseguirão criar e utilizar Protetores de Chave de Rede.
+
+Nota: para fiabilidade e segurança, os computadores também devem ter um PIN de arranque de TPM que possa ser utilizado quando o computador estiver desligado da rede com fios ou do computador aquando do arranque.
+
+
 
 </string>
 
@@ -72,23 +90,25 @@ Nota: Se pretender exigir a utilização de um PIN de arranque e de uma unidade 
       <string id="ConfigureTPMStartupKeyUsageDropDown_Disallow">Não permitir chave de arranque com TPM</string>
 
 
-      <string id="ConfigureRecoveryUsage_Help">Esta definição de política permite controlar se o assistente de configuração da Encriptação de Unidade BitLocker pode apresentar e especificar opções de recuperação BitLocker. Esta política só é aplicável a computadores com o Windows Server 2008 ou Windows Vista. Esta definição de política é aplicada quando activa o BitLocker.
+      <string id="ConfigureRecoveryUsage_Help">Esta definição de política permite controlar se o assistente de configuração da Encriptação de Unidade BitLocker pode apresentar e especificar opções de recuperação BitLocker. Esta política só é aplicável a computadores com o Windows Server 2008 ou Windows Vista. Esta definição de política é aplicada quando o BitLocker é ativado.
 
-Podem ser utilizadas duas opções de recuperação para desbloquear os dados encriptados pelo BitLocker na ausência das informações de chave necessárias. O utilizador pode escrever uma palavra-passe de recuperação numérica de 48 dígitos ou inserir uma unidade Flash USB com uma chave de recuperação de 256 bits.
+Podem ser utilizadas duas opções de recuperação para desbloquear os dados encriptados pelo BitLocker na ausência das informações de chave necessárias. O utilizador pode escrever uma palavra-passe de recuperação numérica de 48 dígitos ou inserir uma pen USB com uma chave de recuperação de 256 bits.
 
-Se activar esta definição de política, pode configurar as opções que o assistente de configuração apresenta aos utilizadores para recuperar os dados encriptados do BitLocker. Ao guardar numa unidade Flash USB armazenará a palavra-passe de 48 dígitos como um ficheiro de texto e a chave de recuperação de 256 bits como um ficheiro oculto. Ao guardar numa pasta armazenará a palavra-passe de 48 dígitos como um ficheiro de texto. Ao imprimir enviará a palavra-passe de recuperação de 48 dígitos para a impressora predefinida. Por exemplo, não permitir a palavra-passe de recuperação de 48 dígitos impedirá os utilizadores de imprimirem ou guardarem informações de recuperação para uma pasta.
+Se ativar esta definição de política, poderá configurar as opções que o assistente de configuração apresenta aos utilizadores para recuperar os dados encriptados do BitLocker. Guardar numa pen USB armazenará a palavra-passe de 48 dígitos como um ficheiro de texto e a chave de recuperação de 256 bits como um ficheiro oculto. Guardar numa pasta armazenará a palavra-passe de 48 dígitos como um ficheiro de texto. Imprimir enviará a palavra-passe de recuperação de 48 dígitos para a impressora predefinida. Por exemplo, não permitir a palavra-passe de recuperação de 48 dígitos impedirá os utilizadores de imprimirem ou guardarem informações de recuperação para uma pasta.
 
-Se desactivar ou não configurar esta definição de política, o assistente de configuração do BitLocker apresentará aos utilizadores formas de armazenar as opções de recuperação.
+Se desativar ou não configurar esta definição de política, o assistente de configuração do BitLocker apresentará aos utilizadores formas de armazenar as opções de recuperação.
 
-Nota: Se a inicialização do TPM (Trusted Platform Module) for necessária durante a configuração do BitLocker, as informações de proprietário do TPM serão guardadas ou impressas com as informações de recuperação do BitLocker.
+Nota: se a inicialização do TPM (Trusted Platform Module) for necessária durante a configuração do BitLocker, as informações de proprietário do TPM serão guardadas ou impressas com as informações de recuperação do BitLocker.
 
-Nota: A palavra-passe de recuperação de 48 dígitos não estará disponível no modo compatível com FIPS.
+Nota: a palavra-passe de recuperação de 48 dígitos não estará disponível no modo de conformidade com FIPS.
 
-Importante: Esta definição de política fornece um método administrativo de recuperação de dados encriptados pelo BitLocker, para impedir a perda de dados devido à falta de informações de chave. Se não permitir ambas as opções de recuperação de utilizador abaixo, tem de activar a definição de política "Armazenar informações de recuperação do BitLocker nos Serviços de Domínio do Active Directory (Windows Server 2008 e Windows Vista)" para impedir um erro de política.
+Importante: esta definição de política fornece um método administrativo de recuperação de dados encriptados pelo BitLocker, para impedir a perda de dados devido à falta de informações de chave. Se não permitir ambas as opções de recuperação de utilizador, terá de ativar a definição de política "Armazenar informações de recuperação do BitLocker nos Serviços de Domínio do Active Directory (Windows Server 2008 e Windows Vista)" para impedir um erro de política.
+
+      
 
       </string>
-      
-      <string id="ConfigureRecoveryUsage_Name">Escolher a forma como os utilizadores podem recuperar unidades protegidas pelo BitLocker (Windows Server 2008 e Windows Vista)</string>
+
+      <string id="ConfigureRecoveryUsage_Name">Escolher a forma como os utilizadores podem recuperar unidades protegidas por BitLocker (Windows Server 2008 e Windows Vista)</string>
       <string id="ConfigureRecoveryPasswordUsageDropDown_Require">Pedir uma palavra-passe de recuperação (predefinição)</string>
       <string id="ConfigureRecoveryPasswordUsageDropDown_Disallow">Não permitir palavra-passe de recuperação</string>
 
@@ -96,28 +116,30 @@ Importante: Esta definição de política fornece um método administrativo de r
       <string id="ConfigureRecoveryKeyUsageDropDown_Disallow">Não permitir chave de recuperação</string>
 
 
-      <string id="OSRecoveryUsage_Name">Escolher o modo de recuperação de unidades do sistema operativo protegidas pelo BitLocker</string>
-      
-      <string id="OSRecoveryUsage_Help">Esta definição de política permite controlar o modo de recuperação das unidades do sistema operativo protegidas pelo BitLocker na ausência das informações de chave necessárias. Esta definição de política é aplicada quando activa o BitLocker.
+      <string id="OSRecoveryUsage_Name">Escolher o modo de recuperação de unidades do sistema operativo protegidas por BitLocker</string>
 
-A caixa de verificação "Permitir agentes de recuperação de dados baseados em certificados" para especificar se o agente de recuperação de dados pode ser utilizado com unidades do sistema operativo protegidas pelo BitLocker. Antes de poder utilizar um agente de recuperação de dados, este tem de ser adicionado a partir do item Políticas de Chaves Públicas na Consola de Gestão de Políticas de Grupo ou no Editor de Políticas de Grupo Local. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre como adicionar agentes de recuperação de dados.
+      <string id="OSRecoveryUsage_Help">Esta definição de política permite controlar o modo de recuperação de unidades de sistema operativo protegidas por BitLocker na ausência das informações de chave de arranque necessárias. Esta definição de política é aplicada quando o BitLocker é ativado.
 
-Em "Configurar armazenamento do utilizador das informações de recuperação do BitLocker" seleccione se é permitido, exigido ou não permitido aos utilizadores gerar uma palavra-passe de recuperação de 48 dígitos ou uma chave de recuperação de 256 bits.
+A caixa de verificação "Permitir agentes de recuperação de dados baseados em certificados" é utilizada para especificar se o agente de recuperação de dados pode ser utilizado com unidades de sistema operativo protegidas por BitLocker. Antes de poder utilizar um agente de recuperação de dados, este tem de ser adicionado a partir do item Políticas de Chaves Públicas na Consola de Gestão de Políticas de Grupo ou no Editor de Políticas de Grupo Local. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre como adicionar agentes de recuperação de dados.
 
-Seleccione "Omitir opções de recuperação do assistente de configuração do BitLocker" para impedir os utilizadores de especificar opções de recuperação quando activam o BitLocker numa unidade. Isto significa que não conseguirá especificar a opção de recuperação utilizar quando activa o BitLocker, uma vez que as opções de recuperação do BitLocker para a unidade são determinadas pela definição de política.
+Em "Configurar armazenamento do utilizador das informações de recuperação do BitLocker" selecione se é permitido, exigido ou não permitido aos utilizadores gerar uma palavra-passe de recuperação de 48 dígitos ou uma chave de recuperação de 256 bits.
 
-Em "Guardar informações de recuperação do BitLocker nos Serviços de Domínio do Active Directory", escolha que informações de recuperação do BitLocker deve armazenar no AD DS para unidades do sistema operativo. Se seleccionar "Fazer cópia de segurança de palavras-passe de recuperação e pacotes de chaves",  as palavras-passe de recuperação do BitLocker e os pacotes de chaves são ambos armazenados no AD DS. Ao armazenar o pacote de chaves suporta os dados de recuperação de uma unidade que tenha sido fisicamente danificada. Se seleccionar "Fazer cópia de segurança de palavras-passe de recuperação apenas", só as palavras-passe de recuperação serão armazenadas no AD DS.
+Selecione "Omitir opções de recuperação do assistente de configuração do BitLocker" para impedir os utilizadores de especificar opções de recuperação quando ativam o BitLocker numa unidade. Isto significa que não conseguirá especificar qual a opção de recuperação a utilizar quando o BitLocker é ativado, pois as opções de recuperação do BitLocker para a unidade são determinadas pela definição de política.
 
-Seleccione a caixa de verificação "Não activar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades do sistema operativo", se pretender impedir os utilizadores de activar o BitLocker a menos que o computador esteja ligado ao domínio e a cópia de segurança de informações de recuperação do BitLocker para o AD DS tenha êxito.
+Em "Guardar informações de recuperação do BitLocker nos Serviços de Domínio do Active Directory", escolha que informações de recuperação do BitLocker deve armazenar no AD DS para unidades do sistema operativo. Se selecionar "Fazer cópia de segurança de palavras-passe de recuperação e pacotes de chaves", a palavra-passe de recuperação BitLocker e os pacotes de chave serão armazenados no AD DS. Ao armazenar o pacote de chaves suporta os dados de recuperação de uma unidade que tenha sido fisicamente danificada. Se selecionar "Fazer cópia de segurança de palavras-passe de recuperação apenas", só a palavra-passe de recuperação será armazenada no AD DS.
 
-Nota: Se a caixa de verificação "Não activar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades do sistema operativo" for seleccionada, é automaticamente gerada uma palavra-passe de recuperação.
+Selecione a caixa de verificação "Não ativar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades do sistema operativo", se pretender impedir os utilizadores de ativar o BitLocker a menos que o computador esteja ligado ao domínio e a cópia de segurança de informações de recuperação BitLocker no AD DS seja efetuada com êxito.
 
-Se activar esta definição de política, pode controlar os métodos disponíveis aos utilizadores para recuperar dados das unidades do sistema operativo protegidas pelo BitLocker.
+Nota: se a caixa de verificação "Não ativar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades do sistema operativo" for selecionada, será gerada automaticamente uma palavra-passe de recuperação.
 
-Se esta definição de política estiver desactivada ou não configurada, as opções de recuperação predefinidas são suportadas para a recuperação do BitLocker. Por predefinição, é permitido um DRA, as opções de recuperação podem ser especificadas pelo utilizador, incluindo a recuperação de palavra-passe e a chave de recuperação, e as informações de recuperação não são incluídas na cópia de segurança para o AD DS.
+Se ativar esta definição de política, poderá controlar os métodos disponíveis aos utilizadores para recuperar dados de unidades de sistema operativo protegidas por BitLocker.
+
+Se esta definição de política for desativada ou não for configurada, serão suportadas as opções de recuperação predefinidas para recuperação BitLocker. Por predefinição, é permitido um DRA, as opções de recuperação podem ser especificadas pelo utilizador, incluindo a recuperação de palavra-passe e a chave de recuperação, e as informações de recuperação não são incluídas na cópia de segurança para o AD DS.
+
+
 
 </string>
-      
+
       <string id="OSRecoveryPasswordUsageDropDown_Require">Exigir palavra-passe de recuperação de 48 dígitos</string>
       <string id="OSRecoveryPasswordUsageDropDown_Allow">Permitir palavra-passe de recuperação de 48 dígitos</string>
       <string id="OSRecoveryPasswordUsageDropDown_Disallow">Não permitir palavra-passe de recuperação de 48 dígitos</string>
@@ -126,27 +148,29 @@ Se esta definição de política estiver desactivada ou não configurada, as op�
       <string id="OSRecoveryKeyUsageDropDown_Disallow">Não permitir chave de recuperação de 256 bits</string>
       <string id="OSRecoveryKeyUsageDropDown_Allow">Permitir chave de recuperação de 256 bits</string>
 
-      <string id="FDVRecoveryUsage_Name">Escolher o modo de recuperação das unidades fixas protegidas pelo BitLocker</string>
-      <string id="FDVRecoveryUsage_Help">Esta definição de política permite controlar o modo de recuperação das unidades de dados fixas protegidas pelo BitLocker na ausência das credenciais necessárias. Esta definição de política é aplicada quando activa o BitLocker.
+      <string id="FDVRecoveryUsage_Name">Escolher o modo de recuperação de unidades fixas protegidas por BitLocker</string>
+      <string id="FDVRecoveryUsage_Help">Esta definição de política permite controlar o modo de recuperação de unidades de dados fixas protegidas por BitLocker na ausência das credenciais necessárias. Esta definição de política é aplicada quando o BitLocker é ativado.
 
-A caixa de verificação "Permitir agente de recuperação de dados" para especificar se o agente de recuperação de dados pode ser utilizado com unidades de dados fixas protegidas pelo BitLocker. Antes de poder utilizar um agente de recuperação de dados, este tem de ser adicionado a partir do item Políticas de Chaves Públicas na Consola de Gestão de Políticas de Grupo ou no Editor de Políticas de Grupo Local. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre como adicionar agentes de recuperação de dados.
+A caixa de verificação "Permitir agente de recuperação de dados" é utilizada para especificar se o agente de recuperação de dados pode ser utilizado com unidades de dados fixas protegidas por BitLocker. Antes de poder utilizar um agente de recuperação de dados, este tem de ser adicionado a partir do item Políticas de Chaves Públicas na Consola de Gestão de Políticas de Grupo ou no Editor de Políticas de Grupo Local. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre como adicionar agentes de recuperação de dados.
 
-Em "Configurar armazenamento do utilizador das informações de recuperação do BitLocker" seleccione se é permitido, exigido ou não permitido aos utilizadores gerar uma palavra-passe de recuperação de 48 dígitos ou uma chave de recuperação de 256 bits.
+Em "Configurar armazenamento do utilizador das informações de recuperação do BitLocker" selecione se é permitido, exigido ou não permitido aos utilizadores gerar uma palavra-passe de recuperação de 48 dígitos ou uma chave de recuperação de 256 bits.
 
-Seleccione "Omitir opções de recuperação do assistente de configuração do BitLocker" para impedir os utilizadores de especificar opções de recuperação quando activam o BitLocker numa unidade. Isto significa que não conseguirá especificar que opção de recuperação utilizar quando activa o BitLocker, uma vez que as opções de recuperação do BitLocker para a unidade são determinadas pela definição de política.
+Selecione "Omitir opções de recuperação do assistente de configuração do BitLocker" para impedir os utilizadores de especificar opções de recuperação quando ativam o BitLocker numa unidade. Isto significa que não conseguirá especificar qual a opção de recuperação a utilizar quando o BitLocker é ativado, pois as opções de recuperação do BitLocker para a unidade são determinadas pela definição de política.
 
-Em "Guardar informações de recuperação do BitLocker nos Serviços de Domínio do Active Directory" escolha que informações de recuperação do BitLocker deve armazenar no AD DS para unidades de dados fixas. Se seleccionar "Fazer cópia de segurança de palavras-passe de recuperação e pacotes de chaves",  as palavras-passe de recuperação do BitLocker e os pacotes de chaves são ambos armazenados no AD DS. Ao armazenar o pacote de chaves suporta os dados de recuperação de uma unidade que tenha sido fisicamente danificada. Se seleccionar "Fazer cópia de segurança de palavras-passe de recuperação apenas", só as palavras-passe de recuperação serão armazenadas no AD DS.
+Em "Guardar informações de recuperação do BitLocker nos Serviços de Domínio do Active Directory", escolha que informações de recuperação do BitLocker devem ser armazenadas no AD DS para unidades de dados fixas. Se selecionar "Fazer cópia de segurança de palavras-passe de recuperação e pacotes de chaves", a palavra-passe de recuperação BitLocker e os pacotes de chave serão armazenados no AD DS. Ao armazenar o pacote de chaves suporta os dados de recuperação de uma unidade que tenha sido fisicamente danificada. Se selecionar "Fazer cópia de segurança de palavras-passe de recuperação apenas", só a palavra-passe de recuperação será armazenada no AD DS.
 
-Seleccione a caixa de verificação "Não activar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados fixas", se pretender impedir os utilizadores de activar o BitLocker a menos que o computador esteja ligado ao domínio e a cópia de segurança de informações de recuperação do BitLocker para o AD DS tenha êxito.
+Selecione a caixa de verificação "Não ativar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados fixas", se pretender impedir os utilizadores de ativar o BitLocker a menos que o computador esteja ligado ao domínio e a cópia de segurança de informações de recuperação BitLocker no AD DS seja efetuada com êxito.
 
-Nota: Se a caixa de verificação "Não activar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados fixas" for seleccionada, é automaticamente gerada uma palavra-passe de recuperação.
+Nota: se a caixa de verificação "Não ativar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados fixas" for selecionada, é gerada automaticamente uma palavra-passe de recuperação.
 
-Se activar esta definição de política, pode controlar os métodos disponíveis aos utilizadores para recuperar dados das unidades de dados fixas protegidas pelo BitLocker.
+Se ativar esta definição de política, poderá controlar os métodos disponíveis aos utilizadores para recuperar dados de unidades de dados fixas protegidas por BitLocker.
 
-Se esta definição de política não estiver configurada ou estiver desactivada, as opções de recuperação predefinidas são suportadas para a recuperação do BitLocker. Por predefinição, é permitido um DRA, as opções de recuperação podem ser especificadas pelo utilizador, incluindo a recuperação de palavras-passe e a chave de recuperação, e as informações de recuperação não são incluídas na cópia de segurança para o AD DS.
+Se esta definição de política não for configurada ou for desativada, as opções de recuperação predefinidas serão suportadas para recuperação BitLocker. Por predefinição, é permitido um DRA, as opções de recuperação podem ser especificadas pelo utilizador, incluindo a recuperação de palavras-passe e a chave de recuperação, e as informações de recuperação não são incluídas na cópia de segurança para o AD DS.
+
+
 
 </string>
-      
+
       <string id="FDVRecoveryPasswordUsageDropDown_Require">Exigir palavra-passe de recuperação de 48 dígitos</string>
       <string id="FDVRecoveryPasswordUsageDropDown_Allow">Permitir palavra-passe de recuperação de 48 dígitos</string>
       <string id="FDVRecoveryPasswordUsageDropDown_Disallow">Não permitir palavra-passe de recuperação de 48 dígitos</string>
@@ -155,25 +179,26 @@ Se esta definição de política não estiver configurada ou estiver desactivada
       <string id="FDVRecoveryKeyUsageDropDown_Disallow">Não permitir chave de recuperação de 256 bits</string>
       <string id="FDVRecoveryKeyUsageDropDown_Allow">Permitir chave de recuperação de 256 bits</string>
 
-      <string id="RDVRecoveryUsage_Name">Escolher o modo de recuperação das unidades amovíveis protegidas pelo BitLocker</string>
+      <string id="RDVRecoveryUsage_Name">Escolher o modo de recuperação de unidades amovíveis protegidas por BitLocker</string>
+
+      <string id="RDVRecoveryUsage_Help">Esta definição de política permite controlar o modo de recuperação de unidades de dados amovíveis protegidas por BitLocker na ausência das credenciais necessárias. Esta definição de política é aplicada quando o BitLocker é ativado.
+
+A caixa de verificação "Permitir agente de recuperação de dados" é utilizada para especificar se o agente de recuperação de dados pode ser utilizado com unidades de dados amovíveis protegidas por BitLocker. Antes de poder utilizar um agente de recuperação de dados, este tem de ser adicionado a partir do item Políticas de Chaves Públicas na Consola de Gestão de Políticas de Grupo ou no Editor de Políticas de Grupo Local. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre como adicionar agentes de recuperação de dados.
+
+Em "Configurar armazenamento do utilizador das informações de recuperação do BitLocker" selecione se é permitido, exigido ou não permitido aos utilizadores gerar uma palavra-passe de recuperação de 48 dígitos ou uma chave de recuperação de 256 bits.
+
+Selecione "Omitir opções de recuperação do assistente de configuração do BitLocker" para impedir os utilizadores de especificar opções de recuperação quando ativam o BitLocker numa unidade. Isto significa que não conseguirá especificar qual a opção de recuperação a utilizar quando o BitLocker é ativado, pois as opções de recuperação do BitLocker para a unidade são determinadas pela definição de política.
+
+Em "Guardar informações de recuperação do BitLocker nos Serviços de Domínio do Active Directory" escolha que informações de recuperação do BitLocker deve armazenar no AD DS para unidades de dados amovíveis. Se selecionar "Fazer cópia de segurança de palavras-passe de recuperação e pacotes de chaves", a palavra-passe de recuperação BitLocker e os pacotes de chave serão armazenados no AD DS. Se selecionar "Fazer cópia de segurança de palavras-passe de recuperação apenas", só a palavra-passe de recuperação será armazenada no AD DS.
+
+Selecione a caixa de verificação "Não ativar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados amovíveis", se pretender impedir os utilizadores de ativar o BitLocker a menos que o computador esteja ligado ao domínio e a cópia de segurança de informações de recuperação BitLocker no AD DS seja efetuada com êxito.
+
+Nota: se a caixa de verificação "Não ativar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados fixas" for selecionada, é gerada automaticamente uma palavra-passe de recuperação.
+
+Se ativar esta definição de política, poderá controlar os métodos disponíveis aos utilizadores para recuperar dados de unidades de dados amovíveis protegidas por BitLocker.
+
+Se esta definição de política não for configurada ou for desativada, as opções de recuperação predefinidas serão suportadas para recuperação BitLocker. Por predefinição, é permitido um DRA, as opções de recuperação podem ser especificadas pelo utilizador, incluindo a recuperação de palavras-passe e a chave de recuperação, e as informações de recuperação não são incluídas na cópia de segurança para o AD DS.
       
-      <string id="RDVRecoveryUsage_Help">Esta definição de política permite controlar o modo de recuperação das unidades de dados amovíveis protegidas pelo BitLocker na ausência das credenciais necessárias. Esta definição de política é aplicada quando activa o BitLocker.
-
-A caixa de verificação "Permitir agente de recuperação de dados" para especificar se o agente de recuperação de dados pode ser utilizado com unidades de dados amovíveis protegidas pelo BitLocker. Antes de poder utilizar um agente de recuperação de dados, este tem de ser adicionado a partir do item Políticas de Chaves Públicas na Consola de Gestão de Políticas de Grupo ou no Editor de Políticas de Grupo Local. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre como adicionar agentes de recuperação de dados.
-
-Em "Configurar armazenamento do utilizador das informações de recuperação do BitLocker" seleccione se é permitido, exigido ou não permitido aos utilizadores gerar uma palavra-passe de recuperação de 48 dígitos ou uma chave de recuperação de 256 bits.
-
-Seleccione "Omitir opções de recuperação do assistente de configuração do BitLocker" para impedir os utilizadores de especificar opções de recuperação quando activam o BitLocker numa unidade. Isto significa que não conseguirá especificar que opção de recuperação utilizar quando activa o BitLocker, uma vez que as opções de recuperação do BitLocker para a unidade são determinadas pela definição de política.
-
-Em "Guardar informações de recuperação do BitLocker nos Serviços de Domínio do Active Directory" escolha que informações de recuperação do BitLocker deve armazenar no AD DS para unidades de dados amovíveis. Se seleccionar "Fazer cópia de segurança de palavras-passe de recuperação e pacotes de chaves",  as palavras-passe de recuperação do BitLocker e os pacotes de chaves são ambos armazenados no AD DS. Se seleccionar "Fazer cópia de segurança de palavras-passe de recuperação apenas", só as palavras-passe de recuperação serão armazenadas no AD DS.
-
-Seleccione a caixa de verificação "Não activar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados amovíveis", se pretender impedir os utilizadores de activar o BitLocker a menos que o computador esteja ligado ao domínio e a cópia de segurança de informações de recuperação do BitLocker para o AD DS tenha êxito.
-
-Nota: Se a caixa de verificação "Não activar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados fixas" for seleccionada, é automaticamente gerada uma palavra-passe de recuperação.
-
-Se activar esta definição de política, pode controlar os métodos disponíveis aos utilizadores para recuperar dados das unidades de dados amovíveis protegidas pelo BitLocker.
-
-Se esta definição de política não estiver configurada ou estiver desactivada, as opções de recuperação predefinidas são suportadas para a recuperação do BitLocker. Por predefinição, é permitido um DRA, as opções de recuperação podem ser especificadas pelo utilizador, incluindo a recuperação de palavras-passe e a chave de recuperação, e as informações de recuperação não são incluídas na cópia de segurança para o AD DS.
       </string>
       <string id="RDVRecoveryPasswordUsageDropDown_Require">Exigir palavra-passe de recuperação de 48 dígitos</string>
       <string id="RDVRecoveryPasswordUsageDropDown_Allow">Permitir palavra-passe de recuperação de 48 dígitos</string>
@@ -182,50 +207,97 @@ Se esta definição de política não estiver configurada ou estiver desactivada
       <string id="RDVRecoveryKeyUsageDropDown_Require">Exigir chave de recuperação de 256 bits</string>
       <string id="RDVRecoveryKeyUsageDropDown_Disallow">Não permitir chave de recuperação de 256 bits</string>
       <string id="RDVRecoveryKeyUsageDropDown_Allow">Permitir chave de recuperação de 256 bits</string>
-      
-      
-      <string id="ConfigureRecoveryFolder_Help">Esta definição de política permite especificar o caminho predefinido apresentado quando o assistente de configuração de Encriptação de Unidade BitLocker pede ao utilizador para introduzir a localização de uma pasta na qual irá guardar a palavra-passe de recuperação. Esta definição de política é aplicada quando activa o BitLocker.
 
-Se activar esta definição de política, pode especificar o caminho que será utilizado como a localização da pasta predefinida quando o utilizador escolher a opção para guardar a palavra-passe de recuperação numa pasta. Pode especificar um caminho completamente qualificado ou incluir as variáveis de ambiente do computador de destino no caminho. Se o caminho não for válido, o assistente de configuração do BitLocker apresentará a vista da pasta de nível superior do computador.
 
-Se desactivar ou não configurar esta definição de política, o assistente de configuração do BitLocker apresentará a vista da pasta de nível superior do computador quando o utilizador escolher a opção para guardar a palavra-passe de recuperação numa pasta.
+      <string id="ConfigureRecoveryFolder_Help">Esta definição de política permite especificar o caminho predefinido apresentado quando o assistente de configuração de Encriptação de Unidade BitLocker pede ao utilizador para introduzir a localização de uma pasta na qual irá guardar a palavra-passe de recuperação. Esta definição de política é aplicada quando o BitLocker é ativado.
 
-Nota: Esta definição de política não impede o utilizador de guardar a palavra-passe de recuperação noutra pasta.
+Se ativar esta definição de política, poderá especificar o caminho que será utilizado como localização de pasta predefinida quando o utilizador escolher a opção para guardar a palavra-passe de recuperação numa pasta. Pode especificar um caminho completamente qualificado ou incluir as variáveis de ambiente do computador de destino no caminho. Se o caminho não for válido, o assistente de configuração do BitLocker apresentará a vista da pasta de nível superior do computador.
+
+Se desativar ou não configurar esta definição de política, o assistente de configuração do BitLocker apresentará a vista de pastas de nível superior do computador quando o utilizador escolher a opção para guardar a palavra-passe de recuperação numa pasta.
+
+Nota: esta definição de política não impede o utilizador de guardar a palavra-passe de recuperação noutra pasta.
+
+
 
 </string>
-      
+
       <string id="ConfigureRecoveryFolder_Name">Escolher a pasta predefinida para palavra-passe de recuperação</string>
 
-      <string id="EncryptionMethod_Help">Esta definição de política permite configurar o algoritmo e a força da cifra utilizados pela Encriptação de Unidade BitLocker. Esta definição de política é aplicada quando activa o BitLocker. A alteração do método de encriptação não tem nenhum efeito se a unidade já estiver encriptada ou se a encriptação estiver em curso. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre os métodos de encriptação disponíveis.
-        
-Se activar esta definição de política conseguirá escolher um algoritmo de encriptação e uma força de cifra-chave para o BitLocker utilizar para encriptar unidades.
+      <string id="EncryptionMethod_Help">Esta definição de política permite configurar o algoritmo e a força de cifra utilizados pela Encriptação de Unidade BitLocker. Esta definição de política é aplicada quando o BitLocker é ativado. A alteração do método de encriptação não tem nenhum efeito se a unidade já estiver encriptada ou se a encriptação estiver em curso. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre os métodos de encriptação disponíveis. Esta política só é aplicável a computadores com o Windows Server 2008, Windows Vista, Windows Server 2008 R2 ou Windows 7.
 
-Se desactivar ou não configurar esta definição de política, o BitLocker utilizará o método de encriptação predefinido AES 128 bits com Difusor ou o método de encriptação especificado pelo script de configuração.
+Se ativar esta definição de política, poderá escolher um algoritmo de encriptação e uma força de cifra de chave para o BitLocker utilizar para encriptar unidades.
+
+Se desativar ou não configurar esta definição de política, o BitLocker utilizará o método de encriptação predefinido AES 128 bits com Difusor ou o método de encriptação especificado pelo script de configuração.
+
+      
 
       </string>
-      <string id="EncryptionMethod_Name">Escolher método de encriptação da unidade e força da cifra</string>
-      <string id="EncryptionMethodDropDown_AES128Diffuser_Name">AES 128 bits com Difusor (predefinição)</string>
+      <string id="EncryptionMethodNoDiffuser_Help">
+          
+          Esta definição de política permite configurar o algoritmo e a força de cifra utilizados pela Encriptação de Unidade BitLocker. Esta definição de política é aplicada quando o BitLocker é ativado. A alteração do método de encriptação não tem nenhum efeito se a unidade já estiver encriptada ou se a encriptação estiver em curso. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre os métodos de encriptação disponíveis. Esta política só é aplicável a computadores com o Windows 8 e superior.
+
+          Se ativar esta definição de política, poderá escolher um algoritmo de encriptação e uma força de cifra de chave para o BitLocker utilizar para encriptar unidades.
+
+          Se desativar ou não configurar esta definição de política, o BitLocker utilizará AES com a mesma força de bits (128 bits ou 256 bits) que a definição de política "Escolher método de encriptação da unidade e força de cifra (Windows Vista, Windows Server 2008, Windows 7)", caso configurada. Se nenhuma das políticas for configurada, o BitLocker utilizará o método de encriptação predefinido AES de 128 bits ou o método de encriptação especificado pelo script de configuração.
+
+      
+
+      </string>
+      <string id="EncryptionMethod_Name">Escolher método de encriptação da unidade e força de cifra (Windows Vista, Windows Server 2008, Windows 7, Windows Server 2008 R2)</string>
+      <string id="EncryptionMethodNoDiffuser_Name">Escolher método de encriptação da unidade e força de cifra</string>
+      <string id="EncryptionMethodDropDown_AES128Diffuser_Name">AES 128 bits com Difusor</string>
       <string id="EncryptionMethodDropDown_AES256Diffuser_Name">AES 256 bits com Difusor</string>
-      <string id="EncryptionMethodDropDown_AES128_Name">AES 128 bits</string>
+      <string id="EncryptionMethodDropDown_AES128_Name">AES 128 bits (predefinição)</string>
       <string id="EncryptionMethodDropDown_AES256_Name">AES 256 bits</string>
-      
+
       <string id="FVECategory">Encriptação de Unidade BitLocker</string>
-      <string id="PlatformValidation_Help">Esta definição de política permite-lhe configurar o modo como o hardware de segurança do TPM (Trusted Platform Module) do computador protege a chave de encriptação BitLocker. Esta definição de política não se aplica se o computador não tiver um TPM compatível ou se o BitLocker já estiver activado com protecção TPM.
+      <string id="PlatformValidation_Deprecated_Help">Esta definição de política permite configurar a forma como o hardware de segurança de TPM (Trusted Platform Module) do computador protege a chave de encriptação BitLocker. Esta definição de política não é aplicável se o computador não tiver um TPM compatível ou se o BitLocker já estiver ativado com proteção TPM.
 
-Se activar esta definição de política antes de activar o BitLocker, pode configurar os componentes de arranque que o TPM validará antes de desbloquear o acesso à unidade de sistema operativo encriptada pelo BitLocker. Se qualquer um destes componentes for alterado enquanto a protecção do BitLocker permanecer em vigor, o TPM não libertará a chave de encriptação para desbloquear a unidade e, em vez disso, o computador apresentará a consola Recuperação do BitLocker e exigirá que seja fornecida a palavra-passe ou chave de recuperação para desbloquear a unidade.
+Se ativar esta definição de política antes de ativar o BitLocker, poderá configurar os componentes de arranque que o TPM validará antes de desbloquear o acesso à unidade de sistema operativo encriptada por BitLocker. Se qualquer um destes componentes for alterado enquanto a proteção BitLocker estiver em vigor, o TPM não libertará a chave de encriptação para desbloquear a unidade e, em vez disso, o computador apresentará a consola Recuperação BitLocker e exigirá que seja fornecida a palavra-passe ou chave de recuperação para desbloquear a unidade.
 
-Se desactivar ou não configurar esta definição de política, o TPM utiliza o perfil de validação da plataforma predefinido ou o perfil de validação da plataforma especificado pelo script de configuração. O perfil de validação da plataforma consiste num conjunto de índices do Registo de Configuração de Plataforma (PCR) de 0 a 23. O perfil de validação de plataforma predefinido protege a chave de encriptação contra alterações no CRTM (Core Root of Trust of Measurement), BIOS e Extensões de Plataforma (PCR 0), no Código ROM de Opções (PCR 2), no Código do Registo de Arranque Principal (MBR) (PCR 4), no Sector de Arranque NTFS (PCR 8), no Bloco de Arranque NTFS (PCR 9), no Gestor de Arranque (PCR 10) e no Controlo de Acesso do BitLocker (PCR 11). As descrições das definições de PCR para computadores que utilizam uma interface EFI (Extensible Firmware Interface) são diferentes das definições de PCR descritas para computadores que utilizam um BIOS padrão. O Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, contém uma lista completa das definições de PCR para a EFI e o BIOS padrão.
+Se desativar ou não configurar esta definição de política, o TPM utilizará o perfil de validação de plataforma predefinido ou o perfil de validação de plataforma especificado pelo script de configuração. O perfil de validação da plataforma consiste num conjunto de índices do Registo de Configuração de Plataforma (PCR) de 0 a 23. O perfil de validação de plataforma predefinido protege a chave de encriptação contra alterações no CRTM (Core Root of Trust of Measurement), BIOS e Extensões de Plataforma (PCR 0), no Código ROM de Opções (PCR 2), no Código do Registo de Arranque Principal (MBR) (PCR 4), no Setor de Arranque NTFS (PCR 8), no Bloco de Arranque NTFS (PCR 9), no Gestor de Arranque (PCR 10) e no Controlo de Acesso do BitLocker (PCR 11). As descrições das definições de PCR para computadores que utilizam uma interface EFI (Extensible Firmware Interface) são diferentes das definições de PCR descritas para computadores que utilizam um BIOS padrão.
 
-Aviso: Efectuar alterações a partir do perfil de validação de plataforma predefinido afecta a segurança e a capacidade de gestão do computador. A sensibilidade do BitLocker a modificações de plataforma (maliciosas ou autorizadas) aumenta ou diminui dependendo da inclusão ou exclusão (respectivamente) dos PCRs.
-      </string>
+Aviso: efetuar alterações a partir do perfil de validação de plataforma predefinido afeta a segurança e a capacidade de gestão do computador. A sensibilidade do BitLocker a modificações de plataforma (maliciosas ou autorizadas) aumenta ou diminui dependendo da inclusão ou exclusão (respetivamente) dos PCRs.
       
-      <string id="PlatformValidation_Name">Configurar perfil de validação da plataforma TPM</string>
+      </string>
 
-      <string id="MorBehavior_Help">Esta definição de política controla o desempenho do reinício do computador sob o risco de exposição dos segredos do BitLocker. Esta definição de política é aplicada quando activa o BitLocker. Os segredos do BitLocker incluem material-chave utilizado para encriptar dados. Esta definição de política só se aplica quando a protecção BitLocker está activada.
+      <string id="PlatformValidation_Deprecated_Name">Configurar perfil de validação da plataforma TPM (Windows Vista, Windows Server 2008, Windows 7, Windows Server 2008 R2)</string>
 
-Se activar esta definição de política, a memória não será substituída quando o computador for reiniciado. O facto de impedir a substituição da memória poderá melhorar o desempenho do sistema, mas aumenta o risco de exposição dos segredos do BitLocker.
+      <string id="PlatformValidation_BIOS_Help">Esta definição de política permite configurar a forma como o hardware de segurança de TPM (Trusted Platform Module) do computador protege a chave de encriptação BitLocker. Esta definição de política não é aplicável se o computador não tiver um TPM compatível ou se o BitLocker já estiver ativado com proteção TPM.
 
-Se desactivar ou não configurar esta definição de política, os segredos de BitLocker serão removidos da memória quando o computador for reiniciado.
+Importante: esta política de grupo só é aplicável a computadores com configurações BIOS ou a computadores com firmware UEFI com um módulo CSM (Compatibility Service Module) ativado.  Os computadores que utilizam uma configuração de firmware UEFI nativo armazenam valores diferentes nos Registos de Configuração de Plataforma (PCR).  Utilize a definição de política de grupo "Configurar perfil de validação da plataforma TPM para configurações de firmware UEFI nativo" para configurar o perfil PCR de TPM para computadores que utilizam firmware UEFI nativo.
+
+Se ativar esta definição de política antes de ativar o BitLocker, poderá configurar os componentes de arranque que o TPM validará antes de desbloquear o acesso à unidade de sistema operativo encriptada por BitLocker. Se qualquer um destes componentes for alterado enquanto a proteção BitLocker estiver em vigor, o TPM não libertará a chave de encriptação para desbloquear a unidade e, em vez disso, o computador apresentará a consola Recuperação BitLocker e exigirá que seja fornecida a palavra-passe ou chave de recuperação para desbloquear a unidade.
+
+Se desativar ou não configurar esta definição de política, o BitLocker utilizará o perfil de validação de plataforma predefinido ou o perfil de validação de plataforma especificado pelo script de configuração. O perfil de validação de plataforma consiste num conjunto de índices de Registo de Configuração de Plataforma (PCR), de 0 a 23. O perfil de validação de plataforma predefinido protege a chave de encriptação contra alterações no CRTM (Core Root of Trust of Measurement), BIOS e Extensões de Plataforma (PCR 0), no Código ROM de Opções (PCR 2), no Código do Registo de Arranque Principal (MBR) (PCR 4), no Setor de Arranque NTFS (PCR 8), no Bloco de Arranque NTFS (PCR 9), no Gestor de Arranque (PCR 10) e no Controlo de Acesso do BitLocker (PCR 11).
+
+Aviso: efetuar alterações a partir do perfil de validação de plataforma predefinido afeta a segurança e a capacidade de gestão do computador. A sensibilidade do BitLocker a modificações de plataforma (maliciosas ou autorizadas) aumenta ou diminui dependendo da inclusão ou exclusão (respetivamente) dos PCRs.
+      
+      </string>
+
+      <string id="PlatformValidation_BIOS_Name">Configurar perfil de validação da plataforma TPM para configurações de firmware baseado em BIOS</string>
+
+      <string id="PlatformValidation_UEFI_Help">Esta definição de política permite configurar a forma como o hardware de segurança de TPM (Trusted Platform Module) do computador protege a chave de encriptação BitLocker. Esta definição de política não é aplicável se o computador não tiver um TPM compatível ou se o BitLocker já estiver ativado com proteção TPM.
+
+Importante: esta política de grupo só é aplicável a computadores com uma configuração de firmware UEFI nativo. Os computadores com BIOS ou firmware UEFI com um módulo CSM (Compatibility Service Module) ativado armazenam valores diferentes nos Registos de Configuração de Plataforma (PCRs). Utilize a definição de política de grupo "Configurar perfil de validação da plataforma TPM para configurações de firmware baseado em BIOS" para configurar o perfil PCR de TPM para computadores com configurações BIOS ou computadores com firmware UEFI com um módulo CSM ativado.
+
+Se ativar esta definição de política antes de ativar o BitLocker, poderá configurar os componentes de arranque que o TPM validará antes de desbloquear o acesso à unidade de sistema operativo encriptada por BitLocker. Se qualquer um destes componentes for alterado enquanto a proteção BitLocker estiver em vigor, o TPM não libertará a chave de encriptação para desbloquear a unidade e, em vez disso, o computador apresentará a consola Recuperação BitLocker e exigirá que seja fornecida a palavra-passe ou chave de recuperação para desbloquear a unidade.
+
+Se desativar ou não configurar esta definição de política, o BitLocker utilizará o perfil de validação de plataforma predefinido ou o perfil de validação de plataforma especificado pelo script de configuração. O perfil de validação de plataforma consiste num conjunto de índices de Registo de Configuração de Plataforma (PCR), de 0 a 23. O perfil de validação de plataforma predefinido protege a chave de encriptação contra alterações no código executável de firmware do sistema principal (PCR 0), no código executável expandido ou incorporável (PCR 2), no gestor de arranque (PCR 4) e no controlo de acesso do BitLocker (PCR 11).
+
+Aviso: efetuar alterações a partir do perfil de validação de plataforma predefinido afeta a segurança e a capacidade de gestão do computador. A sensibilidade do BitLocker a modificações de plataforma (maliciosas ou autorizadas) aumenta ou diminui dependendo da inclusão ou exclusão (respetivamente) dos PCRs. Especificamente, definir esta política com PCR 7 omitido substituirá a política de grupo "Permitir Arranque Seguro para validação de integridade", impedindo o BitLocker de utilizar o Arranque Seguro para validação de integridade da plataforma ou dos Dados de Configuração de Arranque (BCD). A definição desta política poderá resultar na recuperação BitLocker quando o firmware for atualizado. Se definir esta política para incluir PCR 0, suspenda o BitLocker antes de aplicar atualizações de firmware.
+      
+      </string>
+
+      <string id="PlatformValidation_UEFI_Name">Configurar perfil de validação da plataforma TPM para configurações de firmware UEFI nativo</string>
+
+      <string id="MorBehavior_Help">Esta definição de política controla o desempenho do reinício do computador sob o risco de exposição dos segredos do BitLocker. Esta definição de política é aplicada quando o BitLocker é ativado. Os segredos do BitLocker incluem material-chave utilizado para encriptar dados. Esta definição de política só é aplicável quando a proteção BitLocker está ativada.
+
+Se ativar esta definição de política, a memória não será substituída quando o computador for reiniciado. O facto de impedir a substituição da memória poderá melhorar o desempenho do sistema, mas aumenta o risco de exposição dos segredos do BitLocker.
+
+Se desativar ou não configurar esta definição de política, os segredos de BitLocker serão removidos da memória quando o computador for reiniciado.
+
+      
 
       </string>
       <string id="MorBehavior_Name">Impedir substituição da memória durante o reinício</string>
@@ -235,158 +307,213 @@ Se desactivar ou não configurar esta definição de política, os segredos de B
       <string id="FVERDVCategory">Unidades de Dados Amovíveis</string>
 
       <string id="IdentificationField_Name">Fornecer identificadores exclusivos para a sua organização</string>
-      <string id="IdentificationField_Help">Esta definição de política permite associar identificadores organizacionais a uma nova unidade que é activada com o BitLocker. Estes identificadores são armazenados como o campo de identificação e o campo de identificação permitido. O campo de identificação permite associar um identificador organizacional a unidades protegidas pelo BitLocker. Este identificador é automaticamente adicionado às novas unidades protegidas pelo BitLocker e pode ser actualizado nas unidades protegidas pelo BitLocker existentes utilizando a ferramenta de linha de comandos Manage-BDE. Um campo de identificação é necessário para gestão dos agentes de recuperação de dados baseados em certificados em unidades protegidas pelo BitLocker e para actualizações potenciais para o Leitor BitLocker To Go. O BitLocker só gere e actualiza agentes de recuperação de dados quando o campo de identificação na unidade corresponde ao valor configurado no campo de identificação. De forma semelhante, o BitLocker só actualizará o Leitor BitLocker To Go quando o campo e identificação na unidade corresponder ao valor configurado para o campo de identificação.
+      <string id="IdentificationField_Help">Esta definição de política permite associar identificadores organizacionais exclusivos a uma nova unidade ativada com o BitLocker. Estes identificadores são armazenados como o campo de identificação e o campo de identificação permitido. O campo de identificação permite associar um identificador organizacional exclusivo a unidades protegidas por BitLocker. Este identificador é adicionado automaticamente às novas unidades protegidas por BitLocker e pode ser atualizado nas unidades protegidas por BitLocker já existentes utilizando a ferramenta de linha de comandos manage-bde. Um campo de identificação é necessário para gestão dos agentes de recuperação de dados baseados em certificado em unidades protegidas por BitLocker e para atualizações potenciais para o Leitor BitLocker To Go. O BitLocker só efetuará a gestão e atualização de agentes de recuperação de dados quando o campo de identificação na unidade corresponder ao valor configurado no campo de identificação. De forma semelhante, o BitLocker só atualizará o Leitor BitLocker To Go quando o campo de identificação na unidade corresponder ao valor configurado para o campo de identificação.
 
 O campo de identificação permitido é utilizado em combinação com a definição de política "Negar acesso de escrita a unidades amovíveis não protegidas pelo BitLocker" para ajudar a controlar a utilização de unidades amovíveis na sua organização. É uma lista separada por vírgulas de campos de identificação da sua organização ou outras organizações externas.
 
-Pode configurar os campos de identificação nas unidades existentes utilizando o manage-BDE.exe.
+Pode configurar os campos de identificação nas unidades existentes utilizando o manage-bde.exe.
 
-Se activar esta definição de política, pode configurar o campo de identificação na unidade protegida pelo BitLocker e qualquer campo de identificação permitido utilizado pela sua organização.
+Se ativar esta definição de política, poderá configurar o campo de identificação na unidade protegida por BitLocker e qualquer campo de identificação permitido utilizado pela sua organização.
 
-Quando uma unidade protegida pelo BitLocker é montada noutro computador activado para o BitLocker, o campo de identificação e o campo de identificação permitido serão utilizados para determinar se a unidade pertence a uma organização externa.
+Quando uma unidade protegida por BitLocker é montada noutro computador ativado para o BitLocker, o campo de identificação e o campo de identificação permitido serão utilizados para determinar se a unidade pertence a uma organização externa.
 
-Se desactivar ou não configurar esta definição de política, o campo de identificação não é necessário.
+Se desativar ou não configurar esta definição de política, o campo de identificação não será necessário.
 
-Nota: Os campos de identificação são necessários para gestão dos agentes de recuperação de dados baseados em certificados em unidades protegidas pelo BitLocker. O BitLocker só gere e actualiza agentes de recuperação de dados baseados em certificados quando o campo de identificação estiver presente numa unidade e for idêntico ao valor configurado no computador. O campo de identificação pode ser qualquer valor de 260 caracteres ou menos.
+Nota: os campos de identificação são necessários para gestão dos agentes de recuperação de dados baseados em certificados em unidades protegidas por BitLocker. O BitLocker só efetuará a gestão e atualização de agentes de recuperação de dados baseados em certificados quando o campo de identificação estiver presente numa unidade e for idêntico ao valor configurado no computador. O campo de identificação pode ser qualquer valor de 260 carateres ou menos.
+
+      
 
       </string>
 
-      
+
       <string id="UserCertificateOID_Name">Validar conformidade de regras de utilização de certificado de smart card</string>
-     <string id="UserCertificateOID_Help">Esta definição de política permite associar um identificador de objecto de um certificado de smart card a uma unidade protegida pelo BitLocker. Esta definição de política é aplicada quando activa o BitLocker.
+     <string id="UserCertificateOID_Help">Esta definição de política permite associar um identificador de objeto de um certificado de smart card a uma unidade protegida por BitLocker. Esta definição de política é aplicada quando o BitLocker é ativado.
 
-O identificador de objecto é especificado na utilização de chave avançada (EKU) de um certificado. O BitLocker pode identificar que certificados podem ser utilizados para autenticar um certificado de utilizador para uma unidade protegida pelo BitLocker através da correspondência do identificador de objecto no certificado ao identificador de objecto configurado por esta definição de política.
+O identificador de objeto é especificado na utilização de chave avançada (EKU) de um certificado.  O BitLocker pode identificar os certificados que podem ser utilizados para autenticar um certificado de utilizador numa unidade protegida por BitLocker fazendo corresponder o identificador de objeto no certificado com o identificador de objeto configurado por esta definição de política.
 
-O identificador de objecto predefinido é 1.3.6.1.4.1.311.67.1.1
+O identificador de objeto predefinido é 1.3.6.1.4.1.311.67.1.1
 
-Nota:  O BitLocker não exige que um certificado tenha um atributo de EKU, mas se estiver configurado um para o certificado, este terá de estar definido como um identificador de objecto (OID) que corresponde ao OID configurado pelo BitLocker.
+Nota: o BitLocker não exige que um certificado tenha um atributo EKU. Contudo, se estiver configurado um para o certificado, o mesmo terá de estar definido como um identificador de objeto (OID) que corresponda ao OID configurado para o BitLocker.
 
-Se activar esta definição de política, o identificador de objecto especificado na caixa "Identificador de objecto" terá de corresponder ao identificador de objecto do certificado de smart card.
+Se ativar esta definição de política, o identificador de objeto especificado na caixa "Identificador de objeto" terá de corresponder ao identificador de objeto do certificado de smart card.
 
-Se desactivar ou não configurar esta definição de política, será utilizado um identificador de objecto predefinido.
+Se desativar ou não configurar esta definição de política, será utilizado um identificador de objeto predefinido.
+
+     
 
      </string>
 
-       <string id="OSActiveDirectoryBackupDropDown_1">Armazenar palavras-passe de recuperação e pacotes de chaves</string>
+      <string id="UseEnhancedBcdProfile_Name">Utilizar perfil de validação de Dados de Configuração de Arranque avançado</string>
+      <string id="UseEnhancedBcdProfile_Help">Esta definição de política permite escolher definições específicas de Dados de Configuração de Arranque (BCD) a verificar durante a validação da plataforma.
+
+Se ativar esta definição de política, conseguirá acrescentar definições adicionais, remover as predefinições, ou ambos.
+
+Se desativar esta definição de política, o computador reverterá para um perfil BCD semelhante ao perfil BCD predefinido utilizado pelo Windows 7.
+
+Se não configurar esta definição de política, o computador verificará as predefinições BCD do Windows. 
+
+Nota: quando o BitLocker estiver a utilizar o Arranque Seguro para validação de integridade da plataforma e de Dados de Configuração de Arranque (BCD), conforme definido pela política de grupo "Permitir Arranque Seguro para validação de integridade", a política de grupo "Utilizar perfil de validação de Dados de Configuração de Arranque avançado" é ignorada.
+
+A definição que controla a depuração do arranque (0x16000010) será sempre validada e não surtirá efeito se incluída nos campos fornecidos.
+      
+      </string>
+
+      <string id="OSActiveDirectoryBackupDropDown_1">Armazenar palavras-passe de recuperação e pacotes de chaves</string>
       <string id="OSActiveDirectoryBackupDropDown_2">Armazenar apenas palavras-passe de recuperação</string>
 
-      
+
       <string id="MinimumPINLength_Name">Configurar o comprimento mínimo do PIN para o arranque</string>
-      <string id="MinimumPINLength_Help">Esta definição de política permite-lhe configurar um comprimento mínimo para um PIN de arranque do TPM (Trusted Platform Module). Esta definição de política é aplicada quando activa o BitLocker. O PIN de arranque tem de ter um comprimento mínimo de 4 dígitos e pode ter um comprimento máximo de 20 dígitos.
+      <string id="MinimumPINLength_Help">Esta definição de política permite-lhe configurar um comprimento mínimo para um PIN de arranque do TPM (Trusted Platform Module). Esta definição de política é aplicada quando o BitLocker é ativado. O PIN de arranque tem de ter um comprimento mínimo de 4 dígitos e pode ter um comprimento máximo de 20 dígitos.
 
-Se activar esta definição de política, pode exigir que seja utilizado um número mínimo de dígitos quando definir o PIN de arranque.
+Se ativar esta definição de política, poderá exigir que seja utilizado um número mínimo de dígitos aquando da definição do PIN de arranque.
 
-Se desactivar ou não configurar esta definição de política, estes utilizadores podem configurar um PIN de arranque com qualquer comprimento entre 4 e 20 dígitos.
+Se desativar ou não configurar esta definição de política, os utilizadores poderão configurar um PIN de arranque com qualquer comprimento entre 4 e 20 dígitos.
+
+      
 
       </string>
 
       <string id="OSAllowDRA_Name">Permitir agentes de recuperação de dados baseados em certificados</string>
-          
-      <string id="FDVDenyWriteAccess_Name">Negar acesso de escrita a unidades fixas não protegidas pelo BitLocker</string>
-      <string id="FDVDenyWriteAccess_Help">Esta definição de política determina se a protecção pelo BitLocker é necessária para que seja possível escrever nas unidades de dados fixas de um computador. Esta definição de política é aplicada quando activa o BitLocker.
 
-Se activar esta definição de política, todas as unidades de dados fixas que não são protegidas como BitLocker serão montadas como só de leitura. Se a unidade for protegida pelo BitLocker, será montada com acesso de leitura e escrita.
+      <string id="FDVDenyWriteAccess_Name">Negar acesso de escrita a unidades fixas não protegidas por BitLocker</string>
+      <string id="FDVDenyWriteAccess_Help">Esta definição de política determina se a proteção BitLocker é necessária para que seja possível escrever nas unidades de dados fixas de um computador. Esta definição de política é aplicada quando o BitLocker é ativado.
 
-Se desactivar ou não configurar esta definição de política, todas as unidades de dados fixas do computador serão montadas com acesso de leitura e escrita.
+Se ativar esta definição de política, todas as unidades de dados fixas que não estejam protegidas por BitLocker serão montadas como só de leitura. Se a unidade estiver protegida por BitLocker, será montada com acesso de leitura e escrita.
+
+Se desativar ou não configurar esta definição de política, todas as unidades de dados fixas do computador serão montadas com acesso de leitura e escrita.
+
+      
 
       </string>
 
       <string id="FDVPassphrase_Name">Configurar a utilização de palavras-passe para unidades de dados fixas</string>
-      <string id="FDVPassphrase_Help">Esta definição de política especifica se é necessária uma palavra-passe para desbloquear unidades de dados fixas protegidas pelo BitLocker. Se optar por permitir a utilização de uma palavra-passe, pode exigir a utilização de uma palavra-passe, impor requisitos de complexidade à palavra-passe e configurar um comprimento mínimo para a palavra-passe. Para a definição de requisitos de complexidade ser eficaz, a definição de Política de Grupo "A palavra-passe tem de satisfazer requisitos de complexidade" localizada em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas de Conta\Política de Palavras-passe\ também tem de estar activada.
-        
-Nota: Estas definições são impostas ao activar o BitLocker, não ao desbloquear um volume. O BitLocker permitirá o desbloqueio de uma unidade com qualquer dos protectores disponíveis na unidade.
+      <string id="FDVPassphrase_Help">Esta definição de política especifica se é necessária uma palavra-passe para desbloquear unidades de dados fixas protegidas por BitLocker. Se optar por permitir a utilização de uma palavra-passe, pode exigir a utilização de uma palavra-passe, impor requisitos de complexidade à palavra-passe e configurar um comprimento mínimo para a palavra-passe. Para que a definição de requisitos de complexidade seja aplicada, a definição de Política de Grupo "A palavra-passe tem de satisfazer requisitos de complexidade" localizada em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas de Contas\Política de Palavras-passe\ também tem de ser ativada.
 
-Se activar esta definição de política, os utilizadores podem configurar uma palavra-passe que preenche os requisitos que definir. Para exigir a utilização de uma palavra-passe, seleccione "Exigir palavra-passe para unidade de dados fixa". Para impor requisitos de complexidade à palavra-passe, seleccione "Exigir a complexidade de palavras-passe".
+Nota: estas definições são impostas ao ativar o BitLocker, não ao desbloquear um volume. O BitLocker permitirá o desbloqueio de uma unidade com qualquer um dos protetores disponíveis na unidade.
 
-Quando estiver definida como "Exigir a complexidade de palavras-passe", é necessária uma ligação a um controlador de domínio quando o BitLocker estiver activado para validar a complexidade da palavra-passe. Quando definida como "Permitir a complexidade de palavras-passe", será tentada uma ligação a um controlador de domínio para validar se a complexidade adere às regras definidas pela política, mas se nenhum controlador de domínio for localizado a palavra-passe será aceite na mesma, independentemente da complexidade de palavra-passe real, e a unidade será encriptada utilizando a palavra-passe como um protector. Quando definida como "Não permitir a complexidade de palavras-passe", não será efectuada nenhuma validação da complexidade da palavra-passe.
+Se ativar esta definição de política, os utilizadores poderão configurar uma palavra-passe que preencha os requisitos que definir. Para exigir a utilização de uma palavra-passe, selecione "Exigir palavra-passe para unidade de dados fixa". Para impor requisitos de complexidade à palavra-passe, selecione "Exigir a complexidade de palavras-passe".
 
-As palavras-passe têm de ter, pelo menos, 8 caracteres. Para configurar um comprimento mínimo superior para a palavra-passe, introduza o número pretendido de caracteres na caixa "Comprimento mínimo de palavra-passe".
+Quando definida como "Exigir a complexidade de palavras-passe", é necessária uma ligação a um controlador de domínio quando o BitLocker está ativado para validar a complexidade da palavra-passe. Quando definida como "Permitir a complexidade de palavras-passe", será tentada uma ligação a um controlador de domínio para validar se a complexidade cumpre as regras definidas pela política. Contudo, se não for encontrado nenhum controlador de domínio, a palavra-passe será aceite na mesma, independentemente da complexidade de palavra-passe real, e a unidade será encriptada utilizando essa palavra-passe como um protetor. Quando definida como "Não permitir a complexidade de palavras-passe", não será efetuada nenhuma validação da complexidade da palavra-passe.
 
-Se desactivar esta definição de política, não será permitido ao utilizador utilizar uma palavra-passe.
+As palavras-passe têm de ter, pelo menos, 8 carateres. Para configurar um comprimento mínimo superior para a palavra-passe, introduza o número de carateres pretendido na caixa "Comprimento mínimo da palavra-passe".
 
-Se não configurar esta definição de política, as palavras-passe serão suportadas pelas predefinições, que não incluem requisitos de complexidade de palavra-passe e exigem apenas 8 caracteres.
+Se desativar esta definição de política, o utilizador não terá permissão para utilizar uma palavra-passe.
 
-Nota: As palavras-passe não podem ser utilizadas se estiver activada a compatibilidade com o FIPS. A definição de política "Criptografia de sistema: Utilizar algoritmos compatíveis com o FIPS para encriptação, hashes e assinatura" em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas Locais\Opções de Segurança especifica se a compatibilidade com o FIPS está activada.
+Se não configurar esta definição de política, as palavras-passe serão suportadas com as predefinições, que não incluem requisitos de complexidade de palavra-passe e exigem apenas 8 carateres.
+
+Nota: não é possível utilizar palavras-passe se a conformidade com FIPS estiver ativada. A definição de política "Criptografia de sistema: Utilizar algoritmos compatíveis com o FIPS para encriptação, hashes e assinatura" em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas Locais\Opções de Segurança especifica se a conformidade com FIPS está ativada.
+
+
 
 </string>
+
+      <string id="OSPassphrase_Name">Configurar a utilização de palavras-passe para unidades de sistema operativo</string>
+      <string id="OSPassphrase_Help">Esta definição de política especifica as restrições para palavras-passe utilizadas para desbloquear unidades de sistema operativo protegidas por BitLocker. Se forem permitidos protetores não TPM em unidades de sistema operativo, poderá aprovisionar uma palavra-passe, impor requisitos de complexidade à palavra-passe e configurar um comprimento mínimo para a palavra-passe. Para que a definição de requisitos de complexidade seja aplicada, a definição de Política de Grupo "A palavra-passe tem de satisfazer requisitos de complexidade" localizada em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas de Contas\Política de Palavras-passe\ também tem de ser ativada.
+
+Nota: estas definições são impostas ao ativar o BitLocker, não ao desbloquear um volume. O BitLocker permitirá o desbloqueio de uma unidade com qualquer um dos protetores disponíveis na unidade.
+
+Se ativar esta definição de política, os utilizadores poderão configurar uma palavra-passe que preencha os requisitos que definir. Para impor requisitos de complexidade à palavra-passe, selecione "Exigir a complexidade de palavras-passe".
+
+Quando definida como "Exigir a complexidade de palavras-passe", é necessária uma ligação a um controlador de domínio quando o BitLocker está ativado para validar a complexidade da palavra-passe. Quando definida como "Permitir a complexidade de palavras-passe", será tentada uma ligação a um controlador de domínio para validar se a complexidade cumpre as regras definidas pela política. Contudo, se não for encontrado nenhum controlador de domínio, a palavra-passe será aceite na mesma, independentemente da complexidade de palavra-passe real, e a unidade será encriptada utilizando essa palavra-passe como um protetor. Quando definida como "Não permitir a complexidade de palavras-passe", não será efetuada nenhuma validação da complexidade da palavra-passe.
+
+As palavras-passe têm de ter, pelo menos, 8 carateres. Para configurar um comprimento mínimo superior para a palavra-passe, introduza o número de carateres pretendido na caixa "Comprimento mínimo da palavra-passe".
+
+Se desativar ou não configurar esta definição de política, a restrição de comprimento predefinido de 8 carateres será aplicada a palavras-passe de unidades de sistema operativo e não serão efetuadas verificações de complexidade.
+
+Nota: não é possível utilizar palavras-passe se a conformidade com FIPS estiver ativada. A definição de política "Criptografia de sistema: Utilizar algoritmos compatíveis com o FIPS para encriptação, hashes e assinatura" em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas Locais\Opções de Segurança especifica se a conformidade com FIPS está ativada.
+
+
+
+</string>
+
 
       <string id="PassphraseComplexityDropDown_2">Permitir a complexidade de palavras-passe</string>
       <string id="PassphraseComplexityDropDown_0">Não permitir a complexidade de palavras-passe</string>
       <string id="PassphraseComplexityDropDown_1">Exigir a complexidade de palavras-passe</string>
-      
+
       <string id="FDVActiveDirectoryBackupDropDown_1">Fazer cópia de segurança de palavras-passe recuperação e pacotes de chave</string>
       <string id="FDVActiveDirectoryBackupDropDown_2">Fazer cópia de segurança de palavras-passe de recuperação apenas</string>
 
-      
+
       <string id="FDVHybrid_Name">Permitir o acesso a unidades de dados fixas protegidas pelo BitLocker a partir de versões anteriores do Windows</string>
       <string id="FDVHybrid_Help">Esta definição de política configura se as unidades de dados fixas formatadas com o sistema de ficheiros FAT podem ou não ser desbloqueadas e vistas em computadores com os sistemas operativos Windows Server 2008, Windows Vista, Windows XP com o Service Pack 3 (SP3) ou Windows XP com o Service Pack 2 (SP2).
 
-Se esta definição de política estiver activada ou não configurada, as unidades de dados fixas formatadas com o sistema de ficheiros FAT podem ser desbloqueadas em computadores com o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2, e o conteúdo delas pode ser visto. Estes sistemas operativos têm acesso só de leitura a unidades protegidas pelo BitLocker.
+Se esta definição de política for ativada ou não for configurada, as unidades de dados fixas formatadas com o sistema de ficheiros FAT poderão ser desbloqueadas em computadores a executar o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2, e o conteúdo delas poderá ser visto. Estes sistemas operativos têm acesso só de leitura a unidades protegidas pelo BitLocker.
 
-Quando esta definição de política estiver activada, seleccione a caixa de verificação "Não instalar o Leitor BitLocker To Go em unidades fixas formatadas com FAT" para ajudar a impedir utilizadores de executarem o Leitor BitLocker To Go a partir das unidades fixas deles. Se o Leitor BitLocker To Go (bitlockertogo.exe) estiver presente numa unidade que não tem um campo de identificação especificado ou se a unidade tiver o mesmo campo de identificação conforme especificado na definição de política "Fornecer identificadores exclusivos para a sua organização", será pedido ao utilizador que actualize o BitLocker e o Leitor BitLocker To Go será eliminado da unidade. Nesta situação, para a unidade fixa ser desbloqueada em computadores com o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2, o Leitor BitLocker To Go tem de estar instalado no computador. Se esta caixa de verificação não estiver seleccionada, o Leitor BitLocker To Go será instalado na unidade fixa para permitir que os utilizadores desbloqueiem a unidade em computadores com o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2 que não têm o Leitor BitLocker To Go instalado.
+Quando esta definição de política estiver ativada, selecione a caixa de verificação "Não instalar o Leitor BitLocker To Go em unidades fixas formatadas com FAT" para ajudar a impedir os utilizadores de executar o Leitor BitLocker To Go a partir das unidades fixas deles. Se o Leitor BitLocker To Go (bitlockertogo.exe) estiver presente numa unidade que não tenha um campo de identificação especificado, ou se a unidade tiver o mesmo campo de identificação conforme especificado na definição de política "Fornecer identificadores exclusivos para a sua organização", será pedido ao utilizador que atualize o BitLocker, e o Leitor BitLocker To Go será eliminado da unidade. Nesta situação, para a unidade fixa ser desbloqueada em computadores com o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2, o Leitor BitLocker To Go tem de estar instalado no computador. Se esta caixa de verificação não for selecionada, o Leitor BitLocker To Go será instalado na unidade fixa para permitir que os utilizadores desbloqueiem a unidade em computadores a executar o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com SP2 que não tenham o Leitor BitLocker To Go instalado.
 
-Se esta definição de política estiver desactivada, as unidades de dados fixas formatadas com o sistema de ficheiros FAT que são protegidas pelo BitLocker não podem ser desbloqueadas em computadores com o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2. Bitlockertogo.exe não será instalado.
+Se esta definição de política for desativada, as unidades de dados fixas formatadas com o sistema de ficheiros FAT que estejam protegidas por BitLocker não poderão ser desbloqueadas em computadores a executar o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com SP2. Bitlockertogo.exe não será instalado.
 
-Nota: Esta definição de política não se aplica a unidades formatadas com o sistema de ficheiros NTFS.
+Nota: esta definição de política não é aplicável a unidades formatadas com o sistema de ficheiros NTFS.
+
+      
 
       </string>
 
-      
+
       <string id="FDVAllowDRA_Name">Permitir agentes de recuperação de dados baseados em certificados</string>
-      
+
       <string id="FDVConfigureSmartCard_Name">Configurar a utilização de smart cards em unidades de dados fixas</string>
       <string id="FDVConfigureSmartCard_Help">Esta definição de política permite especificar se os smart cards podem ser utilizados para autenticar o acesso de utilizador a unidades de dados fixas protegidas pelo BitLocker num  computador.
 
-Se activar esta definição de política os smart cards podem ser utilizados para autenticar o acesso de utilizador à unidade. Pode exigir a autenticação de smart cards seleccionando a caixa de verificação "Exigir a utilização de smart cards em unidades de dados fixas".
+Se ativar esta definição de política, será possível utilizar smart cards para autenticar o acesso de utilizador à unidade. Pode exigir a autenticação de smart card selecionando a caixa de verificação "Exigir a utilização de smart cards em unidades de dados fixas".
 
-Nota:  Estas definições são impostas ao activar o BitLocker, não ao desbloquear uma unidade. O BitLocker permitirá o desbloqueio de uma unidade com qualquer dos protectores disponíveis na unidade.
+Nota: estas definições são impostas ao ativar o BitLocker, não ao desbloquear uma unidade. O BitLocker permitirá o desbloqueio de uma unidade com qualquer um dos protetores disponíveis na unidade.
 
-Se desactivar esta definição de política, não será permitido aos utilizadores utilizar smart cards para autenticar o acesso a unidades de dados fixas protegidas pelo BitLocker.
+Se desativar esta definição de política, os utilizadores não terão permissão para utilizar smart cards para autenticar o acesso deles a unidades de dados fixas protegidas por BitLocker.
 
 Se não configurar esta definição de política, os smart cards podem ser utilizados para autenticar o acesso de utilizador a uma unidade protegida pelo BitLocker.
 
-      </string>
       
+
+      </string>
+
       <string id="RDVPassphrase_Name">Configurar a utilização de palavras-passe para unidades de dados amovíveis</string>
-      <string id="RDVPassphrase_Help">Esta definição de política especifica se é necessária uma palavra-passe para desbloquear unidades de dados amovíveis protegidas pelo BitLocker. Se optar por permitir a utilização de uma palavra-passe, pode exigir a utilização de uma palavra-passe, impor requisitos de complexidade e configurar um comprimento mínimo. Para a definição de requisitos de complexidade ser eficaz a definição de Política de Grupo "A palavra-passe tem de satisfazer requisitos de complexidade" localizada em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas de Conta\Política de Palavras-passe\ também tem de estar activada.
+      <string id="RDVPassphrase_Help">Esta definição de política especifica se é necessária uma palavra-passe para desbloquear unidades de dados amovíveis protegidas pelo BitLocker. Se optar por permitir a utilização de uma palavra-passe, pode exigir a utilização de uma palavra-passe, impor requisitos de complexidade e configurar um comprimento mínimo. Para que a definição de requisitos de complexidade seja aplicada, a definição de Política de Grupo "A palavra-passe tem de satisfazer requisitos de complexidade" localizada em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas de Contas\Política de Palavras-passe\ também tem de ser ativada.
 
-Nota: Estas definições são impostas ao activar o BitLocker, não ao desbloquear um volume. O BitLocker permitirá o desbloqueio de uma unidade com qualquer dos protectores disponíveis na unidade.
+Nota: estas definições são impostas ao ativar o BitLocker, não ao desbloquear um volume. O BitLocker permitirá o desbloqueio de uma unidade com qualquer um dos protetores disponíveis na unidade.
 
-Se activar esta definição de política, os utilizadores podem configurar uma palavra-passe que preenche os requisitos que definir. Para exigir a utilização de uma palavra-passe, seleccione "Exigir palavra-passe para unidade de dados amovível". Para impor requisitos de complexidade à palavra-passe, seleccione "Exigir a complexidade de palavras-passe".
+Se ativar esta definição de política, os utilizadores poderão configurar uma palavra-passe que preencha os requisitos que definir. Para exigir a utilização de uma palavra-passe, selecione "Exigir palavra-passe para unidade de dados amovível". Para impor requisitos de complexidade à palavra-passe, selecione "Exigir a complexidade de palavras-passe".
 
-Quando estiver definida como "Exigir a complexidade de palavras-passe", é necessária uma ligação a um controlador de domínio quando o BitLocker estiver activado para validar a complexidade da palavra-passe. Quando definida como "Permitir a complexidade de palavras-passe", será tentada uma ligação a um controlador de domínio para validar se a complexidade adere às regras definidas pela política, mas se nenhum controlador de domínio for localizado a palavra-passe será aceite na mesma, independentemente da complexidade de palavra-passe real, e a unidade será encriptada utilizando a palavra-passe como um protector. Quando definida como "Não permitir a complexidade de palavras-passe", não será efectuada nenhuma validação da complexidade da palavra-passe.
+Quando definida como "Exigir a complexidade de palavras-passe", é necessária uma ligação a um controlador de domínio quando o BitLocker está ativado para validar a complexidade da palavra-passe. Quando definida como "Permitir a complexidade de palavras-passe", será tentada uma ligação a um controlador de domínio para validar se a complexidade cumpre as regras definidas pela política. Contudo, se não for encontrado nenhum controlador de domínio, a palavra-passe será aceite na mesma, independentemente da complexidade de palavra-passe real, e a unidade será encriptada utilizando essa palavra-passe como um protetor. Quando definida como "Não permitir a complexidade de palavras-passe", não será efetuada nenhuma validação da complexidade da palavra-passe.
 
-As palavras-passe têm de ter, pelo menos, 8 caracteres. Para configurar um comprimento mínimo superior para a palavra-passe, introduza o número pretendido de caracteres na caixa "Comprimento mínimo de palavra-passe".
+As palavras-passe têm de ter, pelo menos, 8 carateres. Para configurar um comprimento mínimo superior para a palavra-passe, introduza o número de carateres pretendido na caixa "Comprimento mínimo da palavra-passe".
 
-Se desactivar esta definição de política, não será permitido ao utilizador utilizar uma palavra-passe.
+Se desativar esta definição de política, o utilizador não terá permissão para utilizar uma palavra-passe.
 
-Se não configurar esta definição de política, as palavras-passe serão suportadas pelas predefinições, que não incluem requisitos de complexidade de palavra-passe e exigem apenas 8 caracteres.
+Se não configurar esta definição de política, as palavras-passe serão suportadas com as predefinições, que não incluem requisitos de complexidade de palavra-passe e exigem apenas 8 carateres.
 
-Nota: As palavras-passe não podem ser utilizadas se estiver activada a compatibilidade com o FIPS. A definição de política "Criptografia de sistema: Utilizar algoritmos compatíveis com o FIPS para encriptação, hashes e assinatura" em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas Locais\Opções de Segurança especifica se a compatibilidade com o FIPS está activada.
+Nota: não é possível utilizar palavras-passe se a conformidade com FIPS estiver ativada. A definição de política "Criptografia de sistema: Utilizar algoritmos compatíveis com o FIPS para encriptação, hashes e assinatura" em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas Locais\Opções de Segurança especifica se a conformidade com FIPS está ativada.
+
+      
 
       </string>
 
       <string id="RDVDenyWriteAccess_Name">Negar acesso de escrita a unidades amovíveis não protegidas pelo BitLocker</string>
-      <string id="RDVDenyWriteAccess_Help">Esta definição de política configura se a protecção do BitLocker é necessária para um computador conseguir escrever dados numa unidade de dados amovível.
+      <string id="RDVDenyWriteAccess_Help">Esta definição de política configura se a proteção BitLocker é necessária para um computador conseguir escrever dados numa unidade de dados amovível.
 
-Se activar esta definição de política, todas as unidades de dados amovíveis que não são protegidas pelo BitLocker serão montadas como só de leitura. Se a unidade for protegida pelo BitLocker, será montada com acesso de leitura e escrita.
+Se ativar esta definição de política, todas as unidades de dados amovíveis que não estejam protegidas por BitLocker serão montadas como só de leitura. Se a unidade estiver protegida por BitLocker, será montada com acesso de leitura e escrita.
 
-Se a opção "Negar acesso de escrita a dispositivos configurados noutra organização" estiver seleccionada, apenas será concedido acesso de escrita a unidades com campos de identificação que correspondam aos campos de identificação do computador. Quando uma unidade de dados amovível for acedida, serão verificados o campo de identificação válido e os campos de identificação permitidos. Estes campos são configurados pela definição de política "Fornecer identificadores exclusivos para a sua organização".
+Se a opção "Negar acesso de escrita a dispositivos configurados noutra organização" for selecionada, apenas será concedido acesso de escrita a unidades com campos de identificação que correspondam aos campos de identificação do computador. Quando uma unidade de dados amovível for acedida, serão verificados o campo de identificação válido e os campos de identificação permitidos. Estes campos são configurados pela definição de política "Fornecer identificadores exclusivos para a sua organização".
 
-Se desactivar ou não configurar esta definição de política, todas as unidades de dados amovíveis do computador serão montadas com acesso de leitura e escrita.
+Se desativar ou não configurar esta definição de política, todas as unidades de dados amovíveis do computador serão montadas com acesso de leitura e escrita.
 
-Nota: Esta definição de política poderá ser substituída pelas definições de política em Configuração do Utilizador\Modelos Administrativos\Sistema\Acesso ao Armazenamento Amovível. Se a definição de política "Discos Amovíveis: Negar acesso de escrita" estiver activada esta definição de política será ignorada.
+Nota: esta definição de política pode ser substituída pelas definições de política em Configuração do Utilizador\Modelos Administrativos\Sistema\Acesso ao Armazenamento Amovível. Se a definição de política "Discos Amovíveis: Negar acesso de escrita" estiver ativada, esta definição de política será ignorada.
+
+      
 
       </string>
 
       <string id="RDVConfigureBDE_Name">Controlar a utilização do BitLocker em unidades amovíveis</string>
-      <string id="RDVConfigureBDE_Help">Esta definição de política controla a utilização do BitLocker em unidades de dados amovíveis. Esta definição de política é aplicada quando activa o BitLocker.
+      <string id="RDVConfigureBDE_Help">Esta definição de política controla a utilização do BitLocker em unidades de dados amovíveis. Esta definição de política é aplicada quando o BitLocker é ativado.
 
-Quando esta definição de política está activada, pode seleccionar definições de propriedade que controlam a forma como os utilizadores podem configurar o BitLocker. Escolha "Permitir que os utilizadores apliquem a protecção BitLocker em unidades de dados amovíveis" para permitir ao utilizador que execute o assistente de configuração do BitLocker numa unidade de dados amovível. Escolha "Permitir que utilizadores suspendam e desencriptem a protecção BitLocker em unidades de dados amovíveis" para permitir que o utilizador remova a encriptação de Unidade BitLocker a partir da unidade ou suspenda a encriptação enquanto a manutenção é efectuada. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre como suspender a protecção do BitLocker.
+Quando esta definição de política está ativada, é possível selecionar definições de propriedade que controlam a forma como os utilizadores podem configurar o BitLocker. Escolha "Permitir que os utilizadores apliquem a proteção BitLocker em unidades de dados amovíveis" para permitir que o utilizador execute o assistente de configuração do BitLocker numa unidade de dados amovível. Escolha "Permitir que utilizadores suspendam e desencriptem a proteção BitLocker em unidades de dados amovíveis" para permitir que o utilizador remova a encriptação de Unidade BitLocker a partir da unidade ou suspenda a encriptação enquanto a manutenção é efetuada. Consulte o Guia de Implementação de Encriptação de Unidade BitLocker na Microsoft TechNet, para mais informações sobre como suspender a proteção BitLocker.
 
 Se não configurar esta definição de política, os utilizadores poderão utilizar o BitLocker nas unidades de dados amovíveis.
 
-Se desactivar esta definição de política, os utilizadores não poderão utilizar o BitLocker em unidades de dados amovíveis.
+Se desativar esta definição de política, os utilizadores não poderão utilizar o BitLocker em unidades de dados amovíveis.
+
+      
 
       </string>
 
@@ -397,71 +524,205 @@ Se desactivar esta definição de política, os utilizadores não poderão utili
       <string id="RDVHybrid_Name">Permitir o acesso a unidades de dados amovíveis protegidas pelo BitLocker a partir de versões anteriores do Windows</string>
       <string id="RDVHybrid_Help">Esta definição de política configura se as unidades de dados amovíveis formatadas com o sistema de ficheiros FAT podem ou não ser desbloqueadas e vistas em computadores com os sistemas operativos Windows Server 2008, Windows Vista, Windows XP com o Service Pack 3 (SP3) ou Windows XP com o Service Pack 2 (SP2).
 
-Se esta definição de política estiver activada ou não configurada, as unidades de dados amovíveis formatadas com o sistema de ficheiros FAT podem ser desbloqueadas em computadores com o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2, e o seu conteúdo pode ser visto. Estes sistemas operativos têm acesso só de leitura a unidades protegidas pelo BitLocker.
+Se esta definição de política for ativada ou não for configurada, as unidades de dados amovíveis formatadas com o sistema de ficheiros FAT poderão ser desbloqueadas em computadores a executar o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com SP2, e o conteúdo delas poderá ser visto. Estes sistemas operativos têm acesso só de leitura a unidades protegidas pelo BitLocker.
 
-Quando esta definição de política estiver activada, seleccione a caixa de verificação "Não instalar o Leitor BitLocker To Go em unidades amovíveis formatadas com FAT" para ajudar a impedir utilizadores de executarem o Leitor BitLocker To Go a partir das unidades amovíveis deles. Se o Leitor BitLocker To Go (bitlockertogo.exe) estiver presente numa unidade que não tem um campo de identificação especificado ou se a unidade tiver o mesmo campo de identificação conforme especificado na definição de política "Fornecer identificadores exclusivos para a sua organização", será pedido ao utilizador que actualize o BitLocker e o Leitor BitLocker To Go será eliminado da unidade. Nesta situação, para a unidade amovível ser desbloqueada em computadores com o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2, o Leitor BitLocker To Go tem de estar instalado no computador. Se esta caixa de verificação não estiver seleccionada, o Leitor BitLocker To Go será instalado na unidade amovível para permitir que os utilizadores desbloqueiem a unidade em computadores com o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2 que não têm o Leitor BitLocker To Go instalado.
+Quando esta definição de política estiver ativada, selecione a caixa de verificação "Não instalar o Leitor BitLocker To Go em unidades amovíveis formatadas com FAT" para ajudar a impedir os utilizadores de executar o Leitor BitLocker To Go a partir das unidades amovíveis deles. Se o Leitor BitLocker To Go (bitlockertogo.exe) estiver presente numa unidade que não tenha um campo de identificação especificado, ou se a unidade tiver o mesmo campo de identificação conforme especificado na definição de política "Fornecer identificadores exclusivos para a sua organização", será pedido ao utilizador que atualize o BitLocker, e o Leitor BitLocker To Go será eliminado da unidade. Nesta situação, para a unidade amovível ser desbloqueada em computadores com o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2, o Leitor BitLocker To Go tem de estar instalado no computador. Se esta caixa de verificação não for selecionada, o Leitor BitLocker To Go será instalado na unidade amovível para permitir que os utilizadores desbloqueiem a unidade em computadores a executar o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2 que não tenham o Leitor BitLocker To Go instalado.
 
-Se esta definição de política estiver desactivada, as unidades de dados amovíveis formatadas com o sistema de ficheiros FAT que são protegidas pelo BitLocker não podem ser desbloqueadas em computadores com o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2. Bitlockertogo.exe não será instalado.
+Se esta definição de política for desativada, as unidades de dados amovíveis formatadas com o sistema de ficheiros FAT que estejam protegidas por BitLocker não poderão ser desbloqueadas em computadores a executar o Windows Server 2008, Windows Vista, Windows XP com o SP3 ou Windows XP com o SP2. Bitlockertogo.exe não será instalado.
 
-Nota: Esta definição de política não se aplica a unidades formatadas com o sistema de ficheiros NTFS.
+Nota: esta definição de política não é aplicável a unidades formatadas com o sistema de ficheiros NTFS.
+
+      
 
       </string>
 
       <string id="RDVAllowDRA_Name">Permitir agentes de recuperação de dados baseados em certificados</string>
- 
+
       <string id="RDVConfigureSmartCard_Name">Configurar a utilização de smart cards em unidades de dados amovíveis</string>
       <string id="RDVConfigureSmartCard_Help">Esta definição de política permite especificar se os smart cards podem ser utilizados para autenticar o acesso de utilizador a unidades de dados amovíveis protegidas pelo BitLocker num  computador.
 
-Se activar esta definição de política os smart cards podem ser utilizados para autenticar o acesso de utilizador à unidade. Pode exigir a autenticação de smart cards seleccionando a caixa de verificação "Exigir a utilização de smart cards em unidades de dados amovíveis".
+Se ativar esta definição de política, será possível utilizar smart cards para autenticar o acesso de utilizador à unidade. Pode exigir a autenticação de smart card selecionando a caixa de verificação "Exigir a utilização de smart cards em unidades de dados amovíveis".
 
-Nota:  Estas definições são impostas ao activar o BitLocker, não ao desbloquear uma unidade. O BitLocker permitirá o desbloqueio de uma unidade com qualquer dos protectores disponíveis na unidade.
+Nota: estas definições são impostas ao ativar o BitLocker, não ao desbloquear uma unidade. O BitLocker permitirá o desbloqueio de uma unidade com qualquer um dos protetores disponíveis na unidade.
 
-Se desactivar esta definição de política, não será permitido aos utilizadores utilizar smart cards para autenticar o seu acesso a unidades de dados amovíveis protegidas pelo BitLocker.
+Se desativar esta definição de política, os utilizadores não terão permissão para utilizar smart cards para autenticar o acesso deles a unidades de dados amovíveis protegidas por BitLocker.
 
 Se não configurar esta definição de política, os smart cards estão disponíveis para autenticar o acesso de utilizador a uma unidade de dados amovível protegida pelo BitLocker.
+
+      
 
       </string>
 
       <string id="EnhancedPIN_Name">Permitir PINs avançados para arranque</string>
       <string id="EnhancedPIN_Help">Esta definição de política permite configurar se os PINs de arranque avançados são utilizados ou não com o BitLocker.
 
-Os PINs de arranque avançados permitem a utilização de caracteres incluindo letras maiúsculas e minúsculas, símbolos, números e espaços. Esta definição de política é aplicada quando activa o BitLocker.
+Os PINs de arranque avançados permitem a utilização de carateres incluindo letras maiúsculas e minúsculas, símbolos, números e espaços. Esta definição de política é aplicada quando o BitLocker é ativado.
 
-Se activar esta definição de política, todos os novos PINs de arranque do BitLocker definidos serão PINs avançados.
+Se ativar esta definição de política, todos os novos PINs de arranque do BitLocker definidos serão PINs avançados.
 
-Nota:   Nem todos os computadores podem suportar os PINs avançados no ambiente de pré-arranque. É vivamente recomendado que os utilizadores efectuem uma verificação de sistema durante a configuração do BitLocker.
+Nota: nem todos os computadores poderão suportar os PINs avançados no ambiente de pré-arranque. É vivamente recomendado que os utilizadores efetuem uma verificação de sistema durante a configuração do BitLocker.
 
-Se desactivar ou não configurar esta definição de política, os PINs avançados não serão utilizados.
+Se desativar ou não configurar esta definição de política, não serão utilizados PINs avançados.
+
+      
 
       </string>
 
+      <string id="TPMAutoReseal_Name">Repor dados de validação da plataforma após recuperação BitLocker</string>
+      <string id="TPMAutoReseal_Help">Esta definição de política permite controlar se os dados de validação da plataforma devem ou não ser atualizados quando o Windows é iniciado após uma recuperação BitLocker.
+
+Se ativar esta definição de política, os dados de validação da plataforma serão atualizados quando o Windows for iniciado após uma recuperação BitLocker.
+
+Se desativar esta definição de política, os dados de validação da plataforma não serão atualizados quando o Windows for iniciado após uma recuperação BitLocker.
+
+Se não configurar esta definição de política, os dados de validação da plataforma serão atualizados quando o Windows for iniciado após uma recuperação BitLocker.
+
+      
+
+      </string>
+
+      <string id="OSEncryptionType_Name">Impor tipo de encriptação de unidade em unidades de sistema operativo</string>
+
+      <string id="FDVEncryptionType_Name">Impor tipo de encriptação de unidade em unidades de dados fixas</string>
+
+      <string id="RDVEncryptionType_Name">Impor tipo de encriptação de unidade em unidades de dados amovíveis</string>
+
+      <string id="EncryptionType_Help">Esta definição de política permite configurar o tipo de encriptação utilizado pela Encriptação de Unidade BitLocker. Esta definição de política é aplicada quando o BitLocker é ativado. A alteração do tipo de encriptação não tem nenhum efeito se a unidade já estiver encriptada ou se a encriptação estiver em curso. Escolha a encriptação total para que toda a unidade seja encriptada quando o BitLocker está ativado. Escolha a encriptação apenas do espaço utilizado para que apenas a parte da unidade que é utilizada para armazenar dados seja encriptada quando o BitLocker está ativado.
+
+Se ativar esta definição de política, o tipo de encriptação que o BitLocker utilizará para encriptar unidades será definido por esta política e a opção de tipo de encriptação não será apresentada no assistente de configuração do BitLocker.
+
+Se desativar ou não configurar esta definição de política, o assistente de configuração do BitLocker pedirá ao utilizador que selecione o tipo de encriptação antes de ativar o BitLocker.
+
+      
+
+      </string>
+
+      <string id="EncryptionTypeDropDown_UserChooses_Name">Permitir que o utilizador escolha (predefinição)</string>
+      <string id="EncryptionTypeDropDown_FullEncryption_Name">Encriptação total</string>
+      <string id="EncryptionTypeDropDown_DataOnlyEncryption_Name">Encriptação Apenas do Espaço Utilizado</string>
+
+      <string id="DisallowStandardUsersCanChangePIN_Name">Não permitir que utilizadores padrão alterem o PIN ou a palavra-passe</string>
+      <string id="DisallowStandardUsersCanChangePIN_Help">Esta definição de política permite configurar se os utilizadores padrão têm ou não permissão para alterar PINs de volume BitLocker, desde que saibam fornecer primeiro o PIN existente.
+
+Esta definição de política é aplicada quando o BitLocker é ativado.
+
+Se ativar esta definição de política, os utilizadores padrão não terão permissão para alterar PINs ou palavras-passe do BitLocker.
+
+Se desativar ou não configurar esta definição de política, os utilizadores padrão terão permissão para alterar PINs e palavras-passe do BitLocker.
+
+      
+
+      </string>
+
+      <string id="OSEDrive_Name">Configurar a utilização de encriptação baseada em hardware para unidades de sistema operativo</string>
+
+      <string id="FDVEDrive_Name">Configurar a utilização de encriptação baseada em hardware para unidades de dados fixas</string>
+
+      <string id="RDVEDrive_Name">Configurar a utilização de encriptação baseada em hardware para unidades de dados amovíveis</string>
+
+      <string id="OSEDrive_Help">Esta definição de política permite gerir a utilização de encriptação baseada em hardware por parte do BitLocker em unidades de sistema operativo, bem como especificar os algoritmos de encriptação que o BitLocker pode utilizar com a encriptação baseada em hardware. A utilização de encriptação baseada em hardware pode melhorar o desempenho de operações de unidade que envolvam a leitura ou escrita frequente de dados na unidade.
+
+Se ativar esta definição de política, poderá especificar opções adicionais para controlar se a encriptação baseada em software BitLocker deve ser utilizada em vez da encriptação baseada em hardware no caso de computadores que não suportem encriptação baseada em hardware, bem como especificar se pretende restringir os algoritmos de encriptação e os conjuntos de cifras utilizados com a encriptação baseada em hardware.
+
+Se desativar esta definição de política, o BitLocker não poderá utilizar encriptação baseada em hardware com unidades de sistema operativo, sendo que a encriptação baseada em software BitLocker será utilizada por predefinição quando a unidade estiver encriptada.
+
+Se não configurar esta definição de política, o BitLocker utilizará a encriptação baseada em hardware com o algoritmo de encriptação definido para a unidade. Se a encriptação baseada em hardware não estiver disponível, será utilizada a encriptação baseada em software BitLocker.
+
+Nota: a definição de política “Escolher método de encriptação da unidade e força de cifra” não é aplicável à encriptação baseada em hardware. O algoritmo de encriptação utilizado pela encriptação baseada em hardware é definido aquando da partição da unidade. Por predefinição, o BitLocker utiliza o algoritmo configurado na unidade para encriptar a unidade. A opção “Restringir algoritmos de encriptação e conjuntos de cifras permitidos para encriptação baseada em hardware” permite-lhe restringir os algoritmos de encriptação que o BitLocker pode utilizar com a encriptação de hardware. Se o algoritmo definido para a unidade não estiver disponível, o BitLocker desativará a utilização de encriptação baseada em hardware.
+Os algoritmos de encriptação são especificados por identificadores de objeto (OID). Por exemplo:
+- AES 128 em modo CBC, OID: 2.16.840.1.101.3.4.1.2
+- AES 256 em modo CBC, OID: 2.16.840.1.101.3.4.1.42
+      
+      </string>
+
+      <string id="FDVEDrive_Help">Esta definição de política permite gerir a utilização de encriptação baseada em hardware por parte do BitLocker em unidades de dados fixas, bem como especificar os algoritmos de encriptação que o BitLocker pode utilizar com a encriptação baseada em hardware. A utilização de encriptação baseada em hardware pode melhorar o desempenho de operações de unidade que envolvam a leitura ou escrita frequente de dados na unidade.
+
+Se ativar esta definição de política, poderá especificar opções adicionais para controlar se a encriptação baseada em software BitLocker deve ser utilizada em vez da encriptação baseada em hardware no caso de computadores que não suportem encriptação baseada em hardware, bem como especificar se pretende restringir os algoritmos de encriptação e os conjuntos de cifras utilizados com a encriptação baseada em hardware.
+
+Se desativar esta definição de política, o BitLocker não poderá utilizar encriptação baseada em hardware com unidades de sistema operativo, sendo que a encriptação baseada em software BitLocker será utilizada por predefinição quando a unidade estiver encriptada.
+
+Se não configurar esta definição de política, o BitLocker utilizará a encriptação baseada em hardware com o algoritmo de encriptação definido para a unidade. Se a encriptação baseada em hardware não estiver disponível, será utilizada a encriptação baseada em software BitLocker.
+
+Nota: a definição de política “Escolher método de encriptação da unidade e força de cifra” não é aplicável à encriptação baseada em hardware. O algoritmo de encriptação utilizado pela encriptação baseada em hardware é definido aquando da partição da unidade. Por predefinição, o BitLocker utiliza o algoritmo configurado na unidade para encriptar a unidade. A opção “Restringir algoritmos de encriptação e conjuntos de cifras permitidos para encriptação baseada em hardware” permite-lhe restringir os algoritmos de encriptação que o BitLocker pode utilizar com a encriptação de hardware. Se o algoritmo definido para a unidade não estiver disponível, o BitLocker desativará a utilização de encriptação baseada em hardware.
+Os algoritmos de encriptação são especificados por identificadores de objeto (OID). Por exemplo:
+- AES 128 em modo CBC, OID: 2.16.840.1.101.3.4.1.2
+- AES 256 em modo CBC, OID: 2.16.840.1.101.3.4.1.42
+      
+      </string>
+
+      <string id="RDVEDrive_Help">Esta definição de política permite gerir a utilização de encriptação baseada em hardware por parte do BitLocker em unidades de dados amovíveis, bem como especificar os algoritmos de encriptação que o BitLocker pode utilizar com a encriptação baseada em hardware. A utilização de encriptação baseada em hardware pode melhorar o desempenho de operações de unidade que envolvam a leitura ou escrita frequente de dados na unidade.
+
+Se ativar esta definição de política, poderá especificar opções adicionais para controlar se a encriptação baseada em software BitLocker deve ser utilizada em vez da encriptação baseada em hardware no caso de computadores que não suportem encriptação baseada em hardware, bem como especificar se pretende restringir os algoritmos de encriptação e os conjuntos de cifras utilizados com a encriptação baseada em hardware.
+
+Se desativar esta definição de política, o BitLocker não poderá utilizar encriptação baseada em hardware com unidades de sistema operativo, sendo que a encriptação baseada em software BitLocker será utilizada por predefinição quando a unidade estiver encriptada.
+
+Se não configurar esta definição de política, o BitLocker utilizará a encriptação baseada em hardware com o algoritmo de encriptação definido para a unidade. Se a encriptação baseada em hardware não estiver disponível, será utilizada a encriptação baseada em software BitLocker.
+
+Nota: a definição de política “Escolher método de encriptação da unidade e força de cifra” não é aplicável à encriptação baseada em hardware. O algoritmo de encriptação utilizado pela encriptação baseada em hardware é definido aquando da partição da unidade. Por predefinição, o BitLocker utiliza o algoritmo configurado na unidade para encriptar a unidade. A opção “Restringir algoritmos de encriptação e conjuntos de cifras permitidos para encriptação baseada em hardware” permite-lhe restringir os algoritmos de encriptação que o BitLocker pode utilizar com a encriptação de hardware. Se o algoritmo definido para a unidade não estiver disponível, o BitLocker desativará a utilização de encriptação baseada em hardware.
+Os algoritmos de encriptação são especificados por identificadores de objeto (OID). Por exemplo:
+- AES 128 em modo CBC, OID: 2.16.840.1.101.3.4.1.2
+- AES 256 em modo CBC, OID: 2.16.840.1.101.3.4.1.42
+      
+      </string>
+
+      <string id="EnablePrebootInputProtectorsOnSlates_Name">Ativar utilização de autenticação BitLocker que exija introdução por teclado de pré-arranque em slates</string>
+      <string id="EnablePrebootInputProtectorsOnSlates_Help">Esta definição de política permite que os utilizadores ativem opções de autenticação que exigem introdução de dados pelo utilizador a partir do ambiente de pré-arranque, mesmo que a plataforma não tenha capacidade de introdução de pré-arranque.
+
+O teclado tátil do Windows (como o utilizado por tablets) não está disponível no ambiente de pré-arranque quando o BitLocker necessita de informações adicionais, tais como um PIN ou Palavra-passe.
+
+Se ativar esta definição de política, os dispositivos terão de possuir um meio alternativo de introdução pré-arranque (como por exemplo um teclado USB ligado).
+
+Se esta política não estiver ativada, o Ambiente de Recuperação do Windows terá de ser ativado nos tablets para suportar a introdução da palavra-passe de recuperação BitLocker. Quando o Ambiente de Recuperação do Windows e esta política não estiverem ativados, não poderá ativar o BitLocker num dispositivo que utilize o teclado tátil do Windows.
+
+Tenha em atenção que se não ativar esta definição de política, as opções da política "Exigir autenticação adicional no arranque" poderão não estar disponíveis nesses dispositivos. Estas opções incluem:
+- Configurar o PIN de arranque do TPM: Necessário/Permitido
+- Configurar o PIN e a chave de arranque do TPM: Necessário/Permitido
+- Configurar a utilização de palavras-passe para unidades de sistema operativo.
+      
+      </string>
+
+    <string id="AllowSecureBootForIntegrity_Name">Permitir Arranque Seguro para validação de integridade</string>
+    <string id="AllowSecureBootForIntegrity_Help">Esta definição de política permite configurar se será permitido utilizar o Arranque Seguro como fornecedor de integridade de plataforma para unidades de sistema operativo BitLocker.
+
+O Arranque Seguro assegura que o ambiente de pré-arranque do PC apenas carrega firmware assinado digitalmente por fabricantes de software autorizados. O Arranque Seguro também fornece maior flexibilidade para gestão da configuração de pré-arranque do que as verificações de integridade BitLocker legadas.
+
+Se ativar ou não configurar esta definição de política, o BitLocker utilizará o Arranque Seguro para efeitos de integridade de plataforma, caso a plataforma tenha capacidade para validação de integração baseada em Arranque Seguro.
+
+Se desativar esta definição de política, o BitLocker utilizará a validação de integridade de plataforma legada, mesmo em sistemas com capacidade para validação de integridade baseada em Arranque Seguro.
+
+Quando esta política estiver ativada e o hardware tiver capacidade para utilizar o Arranque Seguro para cenários BitLocker, a definição de política de grupo "Utilizar perfil de validação de Dados de Configuração de Arranque avançado" é ignorada e o Arranque Seguro verifica as definições BCD de acordo com a definição de política de Arranque Seguro, que é configurada à parte do BitLocker.
+
+Nota: se a definição de política de grupo "Configurar perfil de validação da plataforma TPM para configurações de firmware UEFI nativo" estiver ativada e PCR 7 estiver omitido, o Bitlocker será impedido de utilizar o Arranque Seguro para validação de integridade da plataforma ou de Dados de Configuração de Arranque (BCD).
+
+Aviso: desativar esta política poderá resultar na recuperação BitLocker quando o firmware for atualizado. Se desativar esta política, suspenda o BitLocker antes de aplicar atualizações de firmware.
+    
+    </string>
+    <string id="SUPPORTED_Windows8NoARM">Pelo menos o Windows Server 2012 ou o Windows 8</string>  
 </stringTable>
     <presentationTable>
       <presentation id="ActiveDirectoryBackup_Name">
         <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Pedir cópia de segurança do BitLocker para AD DS</checkBox>
-        <text>Se estiver seleccionada, não é possível activar o BitLocker se a cópia de segurança falhar (predefinição recomendada). </text>
-        <text>Se não estiver seleccionada, é possível activar o BitLocker mesmo que a cópia de segurança falhe. A tentativa de cópia de segurança não é repetida automaticamente.</text>
-        <dropdownList refId="ActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Seleccionar as informações de recuperação do BitLocker para armazenar:</dropdownList>
+        <text>Se for selecionada, não será possível ativar o BitLocker se a cópia de segurança falhar (predefinição recomendada).  </text>
+        <text>Se não for selecionada, será possível ativar o BitLocker mesmo que a cópia de segurança falhe. A tentativa de cópia de segurança não é repetida automaticamente.</text>
+        <dropdownList refId="ActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Selecionar as informações de recuperação do BitLocker para armazenar:</dropdownList>
         <text/>
         <text>Um palavra-passe de recuperação é um número de 48 dígitos que desbloqueia o acesso à unidade protegida pelo BitLocker.</text>
         <text>Um pacote de chaves contém a chave de encriptação BitLocker de uma unidade protegida por uma ou mais palavras-passe de recuperação</text>
-	    	<text>Os pacotes de chaves podem ajudar a efectuar uma recuperação especializada quando o disco está danificado. </text>
+            <text>Os pacotes de chave podem ajudar a efetuar uma recuperação especializada quando o disco está danificado.  </text>
       </presentation>
-      
+
       <presentation id="ConfigureStartupUsage_Name">
-        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Permitir o BitLocker sem um TPM compatível</checkBox>
-        <text>(requer uma chave de arranque numa unidade Flash USB)</text>
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Permitir o BitLocker sem um TPM compatível (é necessária uma palavra-passe ou chave de arranque numa pen USB)</checkBox>
         <text>Definições para computadores com um TPM:</text>
         <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">Configurar a chave de arranque do TPM:</dropdownList>
         <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Configurar o PIN de arranque do TPM:</dropdownList>
-        <text>Importante: Se exigir uma chave de arranque, não deve permitir o PIN de arranque. </text>
+        <text>Importante: se exigir uma chave de arranque, não pode permitir o PIN de arranque.  </text>
         <text>Se exigir um PIN de arranque, não deve permitir a chave de arranque. Caso contrário, ocorre um erro de política.</text>
-        <text>Nota: Não permite que ambas as opções de PIN de arranque e chave de arranque ocultem a página avançada num computador com um TPM.</text>
+        <text>Nota: não permita que ambas as opções de PIN de arranque e chave de arranque ocultem a página avançada num computador com um TPM.</text>
       </presentation>
 
       <presentation id="ConfigureAdvancedStartup_Name">
-        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Permitir o BitLocker sem um TPM compatível</checkBox>
-        <text>(requer uma chave de arranque numa unidade Flash USB)</text>
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Permitir o BitLocker sem um TPM compatível (é necessária uma palavra-passe ou chave de arranque numa pen USB)</checkBox>
         <text>Definições para computadores com um TPM:</text>
         <dropdownList refId="ConfigureTPMUsageDropDown_Name" noSort="true" defaultItem="0">Configurar o arranque do TPM:</dropdownList>
         <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Configurar o PIN de arranque do TPM:</dropdownList>
@@ -469,12 +730,12 @@ Se desactivar ou não configurar esta definição de política, os PINs avançad
         <dropdownList refId="ConfigureTPMPINKeyUsageDropDown_Name" noSort="true" defaultItem="0">Configurar o PIN e a chave de arranque do TPM:</dropdownList>
         <text/>
       </presentation>
-      
+
       <presentation id="ConfigureRecoveryUsage_Name">
-        <text>Importante: Para evitar a perda de dados, tem de ter uma forma de recuperar as chaves de encriptação BitLocker. Se não permitir ambas as opções de recuperação abaixo, tem de activar a cópia de segurança das informações de recuperação do BitLocker para o AD DS. Caso contrário, ocorre um erro de política.</text>
+        <text>Importante: para evitar a perda de dados, tem de ter uma forma de recuperar as chaves de encriptação BitLocker. Se não permitir ambas as opções de recuperação abaixo, terá de ativar a cópia de segurança de informações de recuperação BitLocker no AD DS. Caso contrário, ocorre um erro de política.</text>
         <dropdownList refId="ConfigureRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0">Configurar palavra-passe de recuperação de 48 dígitos:</dropdownList>
         <dropdownList refId="ConfigureRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0">Configurar chave de recuperação de 256 bits:</dropdownList>
-        <text>Nota: Se não permitir a palavra-passe de recuperação e exigir a chave de recuperação, os utilizadores não poderão activar o BitLocker sem guardar para USB.</text>
+        <text>Nota: se não permitir a palavra-passe de recuperação e exigir a chave de recuperação, os utilizadores não conseguirão ativar o BitLocker sem guardar na pen USB.</text>
         <text/>
       </presentation>
 
@@ -486,7 +747,7 @@ Se desactivar ou não configurar esta definição de política, os PINs avançad
        <checkBox refId="OSHideRecoveryPage_Name" defaultChecked="false">Omitir opções de recuperação do assistente de configuração do BitLocker</checkBox>
         <checkBox refId="OSActiveDirectoryBackup_Name" defaultChecked="true">Guardar informações de recuperação do BitLocker no AD DS para unidades do sistema operativo</checkBox>
         <dropdownList refId="OSActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Configurar armazenamento das informações de recuperação do BitLocker para o AD DS:</dropdownList>
-        <checkBox refId="OSRequireActiveDirectoryBackup_Name">Não activar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades do sistema operativo</checkBox>
+        <checkBox refId="OSRequireActiveDirectoryBackup_Name">Não ativar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades do sistema operativo</checkBox>
        </presentation>
 
       <presentation id="FDVRecoveryUsage_Name">
@@ -497,7 +758,7 @@ Se desactivar ou não configurar esta definição de política, os PINs avançad
        <checkBox refId="FDVHideRecoveryPage_Name" defaultChecked="false">Omitir opções de recuperação do assistente de configuração do BitLocker</checkBox>
         <checkBox refId="FDVActiveDirectoryBackup_Name" defaultChecked="true">Guardar informações de recuperação do BitLocker no AD DS para unidades de dados fixas</checkBox>
         <dropdownList refId="FDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Configurar armazenamento das informações de recuperação do BitLocker para o AD DS:</dropdownList>
-        <checkBox refId="FDVRequireActiveDirectoryBackup_Name">Não activar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados fixas</checkBox>
+        <checkBox refId="FDVRequireActiveDirectoryBackup_Name">Não ativar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados fixas</checkBox>
       </presentation>
 
       <presentation id="RDVRecoveryUsage_Name">
@@ -506,64 +767,149 @@ Se desactivar ou não configurar esta definição de política, os PINs avançad
         <dropdownList refId="RDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
         <dropdownList refId="RDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
        <checkBox refId="RDVHideRecoveryPage_Name" defaultChecked="false">Omitir opções de recuperação do assistente de configuração do BitLocker</checkBox>
-        <checkBox refId="RDVActiveDirectoryBackup_Name" defaultChecked="true">Guardar informações de recuperação do BitLocker no AD DS para unidades de dados amovíveis</checkBox> 
+        <checkBox refId="RDVActiveDirectoryBackup_Name" defaultChecked="true">Guardar informações de recuperação do BitLocker no AD DS para unidades de dados amovíveis</checkBox>
         <dropdownList refId="RDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Configurar armazenamento das informações de recuperação do BitLocker para o AD DS:</dropdownList>
-        <checkBox refId="RDVRequireActiveDirectoryBackup_Name">Não activar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados amovíveis</checkBox>
+        <checkBox refId="RDVRequireActiveDirectoryBackup_Name">Não ativar o BitLocker enquanto as informações de recuperação não forem armazenadas no AD DS para unidades de dados amovíveis</checkBox>
       </presentation>
-      
+
       <presentation id="ConfigureRecoveryFolder_Name">
         <textBox refId="ConfigureRecoveryFolderPath_Input">
           <label>Configurar o caminho de pasta predefinido:</label>
           <defaultValue/>
         </textBox>
-        <text>Especifique um caminho completamente qualificado ou inclua as variáveis de ambiente do computador no caminho. </text>
+        <text>Especifique um caminho completamente qualificado ou inclua as variáveis de ambiente do computador no caminho.  </text>
         <text>Por exemplo, introduza "\\servidor\pastacópiadesegurança" ou "%SecureDriveEnvironmentVariable%\pastacópiadesegurança"</text>
-        <text>Nota: Em todos os casos, o utilizador poderá seleccionar outras pastas nas quais irá guardar a palavra-passe de recuperação.</text>
+        <text>Nota: em todos os casos, o utilizador poderá selecionar outras pastas onde guardar a palavra-passe de recuperação.</text>
         <text/>
       </presentation>
-      
-      
+
       <presentation id="EncryptionMethod_Name">
-        <dropdownList refId="EncryptionMethodDropDown_Name" noSort="true" defaultItem="0">Seleccionar o método de encriptação:</dropdownList>
+        <dropdownList refId="EncryptionMethodDropDown_Name" noSort="true" defaultItem="2">Selecionar o método de encriptação:</dropdownList>
       </presentation>
-      
-      <presentation id="PlatformValidation_Name">
+
+      <presentation id="EncryptionMethodNoDiffuser_Name">
+        <dropdownList refId="EncryptionMethodNoDiffDropDown_Name" noSort="true" defaultItem="0">Selecionar o método de encriptação:</dropdownList>
+      </presentation>
+
+      <presentation id="OSEncryptionType">
+        <dropdownList refId="OSEncryptionTypeDropDown_Name" noSort="true" defaultItem="0">Selecionar o tipo de encriptação:</dropdownList>
+      </presentation>
+
+      <presentation id="FDVEncryptionType">
+        <dropdownList refId="FDVEncryptionTypeDropDown_Name" noSort="true" defaultItem="0">Selecionar o tipo de encriptação:</dropdownList>
+      </presentation>
+
+      <presentation id="RDVEncryptionType">
+        <dropdownList refId="RDVEncryptionTypeDropDown_Name" noSort="true" defaultItem="0">Selecionar o tipo de encriptação:</dropdownList>
+      </presentation>
+
+      <presentation id="PlatformValidation_Deprecated_Name">
         <text>O perfil de validação da plataforma consiste num conjunto de índices de Registo de Configuração de Plataforma (PCR). Cada índice de PCR está associado a componentes que são executados quando o Windows é iniciado.</text>
-        <text>Utilize as caixas de verificação abaixo para escolher os índices de PCR a incluir no perfil. </text>
+        <text>Utilize as caixas de verificação abaixo para escolher os índices de PCR a incluir no perfil.</text>
         <text>Tenha cuidado quando alterar esta definição.</text>
-        <text>Recomendamos a predefinição dos PCRs 0, 2, 4, 5, 8, 9, 10 e 11.</text>
-        <text>Para que e protecção do BitLocker entre em vigor, deve incluir o PCR 11.</text>
+        <text>Recomendamos a predefinição dos PCR 0, 2, 4, 8, 9, 10 e 11.</text>
+        <text>Para que a proteção BitLocker produza efeitos, tem de incluir PCR 11.</text>
 
         <text>Consulte a documentação online, para mais informações sobre os benefícios e riscos de alterar o perfil de validação da plataforma TPM predefinida.</text>
-        
-        <checkBox refId="PlatformValidation_Setting0" defaultChecked="true">PCR 0: Core Root of Trust of Measurement (CRTM), BIOS e Extensões da Plataforma</checkBox>
-        <checkBox refId="PlatformValidation_Setting1">PCR 1: Dados e Configuração da Plataforma e da Placa Principal</checkBox>
-        <checkBox refId="PlatformValidation_Setting2" defaultChecked="true">PCR 2: Código ROM de Opção</checkBox>
-        <checkBox refId="PlatformValidation_Setting3">PCR 3: Dados e Configuração de ROM de Opção</checkBox>
-        <checkBox refId="PlatformValidation_Setting4" defaultChecked="true">PCR 4: Código do Registo de Arranque Principal (MBR)</checkBox>
-        <checkBox refId="PlatformValidation_Setting5" defaultChecked="true">PCR 5: Tabela de Partições do Registo de Arranque Principal (MBR)</checkBox>
-        <checkBox refId="PlatformValidation_Setting6">PCR 6: Transição de Estado e Eventos de Activação</checkBox>
-        <checkBox refId="PlatformValidation_Setting7">PCR 7: Específico do Fabricante do Computador</checkBox>
-        <checkBox refId="PlatformValidation_Setting8" defaultChecked="true">PCR 8: Sector de Arranque NTFS</checkBox>
-        <checkBox refId="PlatformValidation_Setting9" defaultChecked="true">PCR 9: Bloco de Arranque NTFS</checkBox>
-        <checkBox refId="PlatformValidation_Setting10" defaultChecked="true">PCR 10: Gestor de Arranque</checkBox>
-        <checkBox refId="PlatformValidation_Setting11" defaultChecked="true">PCR 11: Controlo de Acesso do BitLocker</checkBox>
-        <checkBox refId="PlatformValidation_Setting12">PCR 12: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting13">PCR 13: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting14">PCR 14: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting15">PCR 15: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting16">PCR 16: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting17">PCR 17: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting18">PCR 18: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting19">PCR 19: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting20">PCR 20: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting21">PCR 21: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting22">PCR 22: Reservado para Utilização Futura</checkBox>
-        <checkBox refId="PlatformValidation_Setting23">PCR 23: Reservado para Utilização Futura</checkBox>
+
+        <checkBox refId="PlatformValidation_Deprecated_Setting0" defaultChecked="true">PCR 0: Core Root of Trust of Measurement (CRTM), BIOS e Extensões da Plataforma</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting1">PCR 1: Dados e Configuração da Plataforma e da Placa Principal</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting2" defaultChecked="true">PCR 2: Código ROM de Opção</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting3">PCR 3: Dados e Configuração de ROM de Opção</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting4" defaultChecked="true">PCR 4: Código do Registo de Arranque Principal (MBR)</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting5">PCR 5: Tabela de Partições do Registo de Arranque Principal (MBR)</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting6">PCR 6: Eventos de Reativação e Transição de Estado</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting7">PCR 7: Específico do Fabricante do Computador</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting8" defaultChecked="true">PCR 8: Setor de Arranque NTFS</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting9" defaultChecked="true">PCR 9: Bloco de Arranque NTFS</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting10" defaultChecked="true">PCR 10: Gestor de Arranque</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting11" defaultChecked="true">PCR 11: Controlo de Acesso do BitLocker</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting12">PCR 12: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting13">PCR 13: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting14">PCR 14: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting15">PCR 15: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting16">PCR 16: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting17">PCR 17: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting18">PCR 18: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting19">PCR 19: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting20">PCR 20: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting21">PCR 21: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting22">PCR 22: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting23">PCR 23: Reservado para Utilização Futura</checkBox>
       </presentation>
-      
+
+      <presentation id="PlatformValidation_BIOS_Name">
+        <text>O perfil de validação da plataforma consiste num conjunto de índices de Registo de Configuração de Plataforma (PCR). Cada índice de PCR está associado a componentes que são executados quando o Windows é iniciado.</text>
+        <text>Utilize as caixas de verificação abaixo para escolher os índices de PCR a incluir no perfil.</text>
+        <text>Tenha cuidado quando alterar esta definição.</text>
+        <text>Recomendamos a predefinição dos PCR 0, 2, 4, 8, 9, 10 e 11.</text>
+        <text>Para que a proteção BitLocker produza efeitos, tem de incluir PCR 11.</text>
+
+        <text>Consulte a documentação online, para mais informações sobre os benefícios e riscos de alterar o perfil de validação da plataforma TPM predefinida.</text>
+
+        <checkBox refId="PlatformValidation_BIOS_Setting0" defaultChecked="true">PCR 0: Core Root of Trust of Measurement (CRTM), BIOS e Extensões da Plataforma</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting1">PCR 1: Dados e Configuração da Plataforma e da Placa Principal</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting2" defaultChecked="true">PCR 2: Código ROM de Opção</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting3">PCR 3: Dados e Configuração de ROM de Opção</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting4" defaultChecked="true">PCR 4: Código do Registo de Arranque Principal (MBR)</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting5">PCR 5: Tabela de Partições do Registo de Arranque Principal (MBR)</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting6">PCR 6: Eventos de Reativação e Transição de Estado</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting7">PCR 7: Específico do Fabricante do Computador</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting8" defaultChecked="true">PCR 8: Setor de Arranque NTFS</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting9" defaultChecked="true">PCR 9: Bloco de Arranque NTFS</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting10" defaultChecked="true">PCR 10: Gestor de Arranque</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting11" defaultChecked="true">PCR 11: Controlo de Acesso do BitLocker</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting12">PCR 12: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting13">PCR 13: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting14">PCR 14: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting15">PCR 15: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting16">PCR 16: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting17">PCR 17: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting18">PCR 18: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting19">PCR 19: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting20">PCR 20: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting21">PCR 21: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting22">PCR 22: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting23">PCR 23: Reservado para Utilização Futura</checkBox>
+      </presentation>
+
+      <presentation id="PlatformValidation_UEFI_Name">
+        <text>O perfil de validação da plataforma consiste num conjunto de índices de Registo de Configuração de Plataforma (PCR). Cada índice de PCR está associado a componentes que são executados quando o Windows é iniciado.</text>
+        <text>Utilize as caixas de verificação abaixo para escolher os índices de PCR a incluir no perfil.</text>
+        <text>Tenha cuidado quando alterar esta definição.</text>
+        <text>Recomendamos a predefinição dos PCR 0, 2, 4 e 11.</text>
+        <text>Para que a proteção BitLocker produza efeitos, tem de incluir PCR 11.</text>
+
+        <text>Consulte a documentação online, para mais informações sobre os benefícios e riscos de alterar o perfil de validação da plataforma TPM predefinida.</text>
+
+        <checkBox refId="PlatformValidation_UEFI_Setting0" defaultChecked="true">PCR 0: código executável de Firmware do Sistema Principal</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting1">PCR 1: dados de Firmware do Sistema Principal</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting2" defaultChecked="true">PCR 2: código executável expandido ou incorporável</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting3">PCR 3: dados de firmware expandido ou incorporável</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting4" defaultChecked="true">PCR 4: Gestor de Arranque</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting5">PCR 5: GPT/Tabela de Partições</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting6">PCR 6: Retomar a partir de Eventos de Estado de Energia S4 e S5</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting7">PCR 7: Estado do Arranque Seguro</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting8">PCR 8: Inicializado como 0 sem Expansões (reservado para utilização futura)</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting9">PCR 9: Inicializado como 0 sem Expansões (reservado para utilização futura)</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting10">PCR 10: Inicializado como 0 sem Expansões (reservado para utilização futura)</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting11" defaultChecked="true">PCR 11: Controlo de Acesso do BitLocker</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting12">PCR 12: Eventos de dados e eventos de volatilidade elevada</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting13">PCR 13: Detalhes do Módulo de Arranque</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting14">PCR 14: Autoridades de Arranque</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting15">PCR 15: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting16">PCR 16: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting17">PCR 17: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting18">PCR 18: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting19">PCR 19: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting20">PCR 20: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting21">PCR 21: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting22">PCR 22: Reservado para Utilização Futura</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting23">PCR 23: Reservado para Utilização Futura</checkBox>
+      </presentation>
+
       <presentation id="MorBehavior_Name">
-     
+
       </presentation>
 
       <presentation id="IdentificationField">
@@ -577,36 +923,50 @@ Se desactivar ou não configurar esta definição de política, os PINs avançad
 
       <presentation id="UserCertificateOID">
         <textBox refId="UserCertificateOID">
-          <label>Identificador de objecto:</label>
+          <label>Identificador de objeto:</label>
           <defaultValue>1.3.6.1.4.1.311.67.1.1</defaultValue>
         </textBox>
         </presentation>
 
-     <presentation id="MinimumPINLength">
-        <decimalTextBox refId="MinPINLength" defaultValue="4">Caracteres mínimos:</decimalTextBox>
-      </presentation>
-      
-     <presentation id="FDVPassphrase_Name">
-        <checkBox refId="FDVRequirePassphrase">Exigir palavra-passe para unidade de dados fixa</checkBox>
-        <dropdownList refId="FDVPassphraseComplexity" noSort="true" defaultItem="0">Configurar a complexidade de palavra-passe para unidades de dados fixas:</dropdownList>
-        <decimalTextBox refId="FDVMinPassphraseLength" defaultValue="8">Comprimento mínimo de palavra-passe para unidade de dados fixa:</decimalTextBox>
-       <text>Nota: Tem de activar a definição de política "A palavra-passe tem de satisfazer requisitos de complexidade" para a definição de complexidade de palavra-passe entrar em vigor.</text>
+      <presentation id="UseEnhancedBcdProfile">
+        <text>Verificar as seguintes definições BCD adicionais:</text>
+        <multiTextBox refId="EnhancedBcdProfile_AdditionalSecurityCriticalSettings"/>
+        <text>Excluir as seguintes definições BCD adicionais:</text>
+        <multiTextBox refId="EnhancedBcdProfile_AdditionalExcludedSettings"/>
       </presentation>
 
-       <presentation id="FDVConfigureSmartCard">
-        <checkBox refId="FDVRequireSmartCard_Name">Exigir a utilização de smart cards em unidades de dados fixas</checkBox>
+     <presentation id="MinimumPINLength">
+        <decimalTextBox refId="MinPINLength" defaultValue="4">Carateres mínimos:</decimalTextBox>
       </presentation>
+
+     <presentation id="FDVPassphrase_Name">
+        <checkBox refId="FDVRequirePassphrase">Exigir palavra-passe para unidade de dados fixa</checkBox>
+        <dropdownList refId="FDVPassphraseComplexity" noSort="true" defaultItem="0">Configurar a complexidade de palavras-passe para unidades de dados fixas:</dropdownList>
+        <decimalTextBox refId="FDVMinPassphraseLength" defaultValue="8">Comprimento mínimo de palavra-passe para unidade de dados fixa:</decimalTextBox>
+       <text>Nota: tem de ativar a definição de política "A palavra-passe tem de satisfazer requisitos de complexidade" para que a definição de complexidade de palavras-passe produza efeitos.</text>
+      </presentation>
+
+     <presentation id="OSPassphrase_Name">
+       <dropdownList refId="OSPassphraseComplexity_Name" noSort="true" defaultItem="0">Configurar a complexidade de palavras-passe para unidades de sistema operativo:</dropdownList>
+       <decimalTextBox refId="OSPassphraseLength_Name" defaultValue="8">Comprimento mínimo de palavra-passe para unidades de sistema operativo:</decimalTextBox>
+       <text>Nota: tem de ativar a definição de política "A palavra-passe tem de satisfazer requisitos de complexidade" para que a definição de complexidade de palavras-passe produza efeitos.</text>
+       <checkBox refId="OSPassphraseASCIIOnly_Name">Exigir palavras-passe de apenas ASCII para unidades de sistema operativo amovíveis</checkBox>
+     </presentation>
+
+     <presentation id="FDVConfigureSmartCard">
+       <checkBox refId="FDVRequireSmartCard_Name">Exigir a utilização de smart cards em unidades de dados fixas</checkBox>
+     </presentation>
 
      <presentation id="RDVPassphrase_Name">
         <checkBox refId="RDVRequirePassphrase">Exigir palavra-passe para unidade de dados amovível</checkBox>
        <dropdownList refId="RDVPassphraseComplexity" noSort="true" defaultItem="0">Configurar a complexidade de palavra-passe para unidades de dados amovíveis:</dropdownList>
         <decimalTextBox refId="RDVMinPassphraseLength" defaultValue="8">Comprimento mínimo de palavra-passe para unidade de dados amovível:</decimalTextBox>
-<text>Nota: Tem de activar a definição de política "A palavra-passe tem de satisfazer requisitos de complexidade" para a definição de complexidade de palavra-passe entrar em vigor.</text>
+<text>Nota: tem de ativar a definição de política "A palavra-passe tem de satisfazer requisitos de complexidade" para que a definição de complexidade de palavras-passe produza efeitos.</text>
       </presentation>
 
       <presentation id="RDVConfigureBDE">
-        <checkBox refId="RDVAllowBDE_Name" noSort="true" defaultChecked="true">Permitir que os utilizadores apliquem a protecção BitLocker em unidades de dados amovíveis</checkBox>
-        <checkBox refId="RDVDisableBDE_Name" noSort="true" defaultChecked="true">Permitir que utilizadores suspendam e desencriptem a protecção BitLocker em unidades de dados amovíveis</checkBox>
+        <checkBox refId="RDVAllowBDE_Name" noSort="true" defaultChecked="true">Permitir que os utilizadores apliquem a proteção BitLocker em unidades de dados amovíveis</checkBox>
+        <checkBox refId="RDVDisableBDE_Name" noSort="true" defaultChecked="true">Permitir que utilizadores suspendam e desencriptem a proteção BitLocker em unidades de dados amovíveis</checkBox>
       </presentation>
 
       <presentation id="RDVDenyWriteAccess">
@@ -617,8 +977,16 @@ Se desactivar ou não configurar esta definição de política, os PINs avançad
       <presentation id="RDVConfigureSmartCard">
         <checkBox refId="RDVRequireSmartCard_Name" noSort="true" defaultItem="0">Exigir a utilização de smart cards em unidades de dados amovíveis</checkBox>
         </presentation>
-          
+
       <presentation id="EnhancedPIN">
+
+      </presentation>
+
+      <presentation id="TPMAutoReseal">
+
+      </presentation>
+
+      <presentation id="DisallowStandardUsersCanChangePIN">
 
       </presentation>
 
@@ -628,6 +996,33 @@ Se desactivar ou não configurar esta definição de política, os PINs avançad
 
       <presentation id="RDVDiscoveryVolumeType">
         <checkBox refId="RDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">Não instalar o Leitor BitLocker To Go em unidades amovíveis formatadas com FAT</checkBox>
+      </presentation>
+
+      <presentation id="OSEDrive_Name">
+        <checkBox refId="OSUseSW" noSort="true" defaultChecked="true">Utilizar encriptação baseada em software BitLocker quando a encriptação de hardware não está disponível</checkBox>
+        <checkBox refId="OSRestrictAlgos" noSort="true" defaultChecked="false">Restringir algoritmos de encriptação e conjuntos de cifras permitidos para encriptação baseada em hardware</checkBox>
+        <textBox refId="OSAllowedAlgos">
+          <label>Restringir algoritmos de encriptação ou conjuntos de cifras permitidos aos seguintes:</label>
+          <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
+      </presentation>
+
+      <presentation id="FDVEDrive_Name">
+        <checkBox refId="FDVUseSW" noSort="true" defaultChecked="true">Utilizar encriptação baseada em software BitLocker quando a encriptação de hardware não está disponível</checkBox>
+        <checkBox refId="FDVRestrictAlgos" noSort="true" defaultChecked="false">Restringir algoritmos de encriptação e conjuntos de cifras permitidos para encriptação baseada em hardware</checkBox>
+        <textBox refId="FDVAllowedAlgos">
+          <label>Restringir algoritmos de encriptação ou conjuntos de cifras permitidos aos seguintes:</label>
+          <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
+      </presentation>
+
+      <presentation id="RDVEDrive_Name">
+        <checkBox refId="RDVUseSW" noSort="true" defaultChecked="true">Utilizar encriptação baseada em software BitLocker quando a encriptação de hardware não está disponível</checkBox>
+        <checkBox refId="RDVRestrictAlgos" noSort="true" defaultChecked="false">Restringir algoritmos de encriptação e conjuntos de cifras permitidos para encriptação baseada em hardware</checkBox>
+        <textBox refId="RDVAllowedAlgos">
+          <label>Restringir algoritmos de encriptação ou conjuntos de cifras permitidos aos seguintes:</label>
+          <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
       </presentation>
 
     </presentationTable>

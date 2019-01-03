@@ -1,65 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>enter display name here</displayName>
-  <description>enter description here</description>
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
   <resources>
     <stringTable>
-      <string id="HelpQualifiedRootDir_Comp">Restrict potentially unsafe HTML Help functions to specified folders</string>
-      <string id="HelpQualifiedRootDir_Help">With this policy, you can restrict certain HTML Help commands to function only in HTML Help (.chm) files within specified folders and their subfolders.  Alternatively, you can disable these commands on the entire system.  It is strongly recommended that only folders requiring administrative privileges be added to this policy.
+      <string id="HelpQualifiedRootDir_Comp">將可能不安全的 HTML 說明功能限制於指定的資料夾</string>
+      <string id="HelpQualifiedRootDir_Help">這個原則設定可讓您將某些 HTML 說明命令限制為只能在指定的資料夾和子資料夾內的 HTML 說明 (.chm) 檔案中發揮作用。或者，您也可以停用整個系統中的這些命令。強烈建議您只將需要系統管理權限的資料夾加入這個原則設定。
 
-The "Shortcut" command is used to add a link to a Help topic, and runs executables that are external to the Help file. The "WinHelp" command is used to add a link to a Help topic, and runs a WinHLP32.exe Help (.hlp) file.
+        如果您啟用這個原則設定，這些命令將只會對指定的資料夾和其子資料夾內的 .chm 檔案發揮作用。
 
-When this policy is disabled, or not configured, these commands are fully functional for all Help files.  
+        如果要將命令限制在一或多個資料夾中執行，請啟用這個原則設定，並在 [原則內容] 對話方塊的 [設定] 索引標籤上，將需要的資料夾輸入文字方塊中。請使用分號分隔資料夾。例如，如果要將命令限制於僅在 %windir%\help 資料夾及 D:\somefolder 中的 .chm 檔案發揮作用，請將下列字串加入編輯方塊中: "%windir%\help;D:\somefolder"。
 
-When this policy is enabled, the commands will function only for .chm files in the specified folders and their subfolders. 
+        注意: 只要是系統中已定義的環境變數即可使用 (例如 %windir%)。例如，某些較舊的 Windows 版本中並未定義 %programfiles%。
 
-To restrict the commands to one or more folders, enable the policy and enter the desired folders in the text box on the settings tab of the Policy Properties dialog box. Use a semicolon to separate folders. For example, to restrict the commands to only .chm files in the %windir%\help folder and D:\somefolder, add the following string to the edit box: "%windir%\help;D:\somefolder".
+        "Shortcut" 命令是用來新增說明主題的連結，並執行該說明檔外部的執行檔。"WinHelp" 命令則是用來新增說明主題的連結，並執行 WinHLP32.exe 說明檔 (.hlp)。
 
-To disallow the "Shortcut" and "WinHelp" commands on the entire local system, enable the policy and leave the text box on the settings tab of the Policy Properties dialog box blank.
+        若是要對整個本機系統禁止 "Shortcut" 及 "WinHelp" 命令，請啟用這個原則設定，並讓 [原則內容] 對話方塊中 [設定] 索引標籤上的文字方塊保持空白。
 
-Note: An environment variable may be used, (for example, %windir%), so long as it is defined on the system. For example, %programfiles% is not defined on some early versions of Windows.
+        如果您停用或未設定這個原則設定，則這些命令將會在所有說明檔案中發揮作用。
 
-Note: Only folders on the local computer can be specified in this policy. You cannot use this policy to enable the "Shortcut" and "WinHelp" commands for .chm files that are stored on mapped drives or accessed using UNC paths.
+        注意: 這個原則設定中僅能指定本機電腦上的資料夾。若 .chm 檔案儲存於對應磁碟機上或是使用 UNC 路徑存取時，則不能使用這個原則設定啟用 "Shortcut" 和 "WinHelp" 命令。
 
-For additional options, see the "Restrict these programs from being launched from Help" policy.</string>
-      <string id="RestrictRunFromHelp">Restrict these programs from being launched from Help</string>
-      <string id="RestrictRunFromHelp_Comp">Restrict these programs from being launched from Help</string>
-      <string id="RestrictRunFromHelp_Help">Allows you to restrict programs from being run from online Help.
+        如需其他選項資訊，請參閱 [限制這些程式從說明中啟動] 原則。
+      
+      </string>
+      <string id="RestrictRunFromHelp">限制這些程式從說明中啟動</string>
+      <string id="RestrictRunFromHelp_Comp">限制這些程式從說明中啟動</string>
+      <string id="RestrictRunFromHelp_Help">
+        
+        這個原則設定可讓您禁止程式從線上說明中啟動。
+        
+        如果您啟用這個原則設定，您可以禁止指定的程式從說明中啟動。啟用這個原則設定時，請輸入您想禁止的程式檔案名稱，並使用逗號分隔。
+        
+        如果您停用或未設定這個原則設定，使用者就能從線上說明啟動所有應用程式。
+        
+        注意: 您也可以使用 [電腦設定\安全性設定] 中的軟體限制原則設定，來禁止使用者執行應用程式。
+        
+        注意: 在 [電腦設定] 和 [使用者設定] 下都可以使用這個原則設定。如果這兩個設定同時使用，列在任一位置的程式都無法從說明啟動
+      
+      </string>
+        <string id="DisableHHDEP">關閉 HTML Help 可執行檔的資料執行防止</string>
+        <string id="DisableHHDEPText">這個原則設定可讓您排除 HTML Help 可執行檔，使其不受軟體強制的資料執行防止所監視。
 
-If you enable this setting, you can prevent programs that you specify from being allowed to be run from Help. When you enable this setting, enter the list of the programs you want to restrict. Enter the file name of the executable for each application, separated by commas.
+          資料執行防止 (DEP) 的設計目的是為了封鎖利用 Windows 例外狀況處理機制的惡意程式碼，其方法是透過監視程式以確保程式以安全的方法使用系統記憶體。
 
-If you disable or do not configure this setting, users will be able to run applications from online Help.
+          如果您啟用這個原則設定，會關閉 HTML Help 可執行檔的 DEP。這樣一來，DEP 不須關閉 HTML Help 可執行檔，某些舊版 ActiveX 控制項就可以運作。
 
-Note: You can also restrict users from running applications by using the Software Restriction settings available in Computer Configuration\Security Settings.
-
-Note: This setting is available under Computer Configuration and User Configuration. If both are set, the list of programs specified in each of these will be restricted.</string>
-        <string id="DisableHHDEP">Turn off Data Execution Prevention for HTML Help Executible</string>
-        <string id="DisableHHDEPText">
-            This policy setting allows you to exclude HTML Help Executable from being monitored by software-enforced DEP.
-            DEP is designed to block malicious code that takes advantage of exception-handling mechanisms in Windows. If you enable this policy setting, DEP for HTML Help Executable will be turned off. This will allow certain legacy ActiveX controls to function without DEP shutting down HTML Help Executable.
-            If you disable or do not configure this policy setting, DEP will be turned on for HTML Help Executable.
-            Note :  Data Execution Prevention (DEP) is a security feature that can help prevent damage to your computer from viruses and other security threats. DEP can help protect your computer by monitoring your programs to make sure that they use system memory safely.
+          如果您停用或未設定這個原則設定，就會開啟 HTML Help 可執行檔的 DEP。這可以提供額外的安全性優點，但如果 DEP 偵測到系統記憶體異常，則 HTLM Help 就會停止。
+        
         </string>
     </stringTable>
     <presentationTable>
       <presentation id="HelpQualifiedRootDir_Comp">
         <textBox refId="HelpQualifiedRootDir_Edit">
-          <label>Enter folder names separated by semi-colons:</label>
+          <label>輸入資料夾名稱 (以分號分隔):</label>
         </textBox>
-        <text>Example: %windir%\Help;%windir%\pchealth;%programfiles%</text>
+        <text>範例: %windir%\Help;%windir%\pchealth;%programfiles%</text>
       </presentation>
       <presentation id="RestrictRunFromHelp">
         <textBox refId="RestrictRunFromHelp_Edit">
-          <label>Enter executables separated by commas:</label>
+          <label>輸入執行檔名稱 (以逗號分隔):</label>
         </textBox>
-        <text>Example: calc.exe,paint.exe</text>
+        <text>範例: calc.exe,paint.exe</text>
       </presentation>
       <presentation id="RestrictRunFromHelp_Comp">
         <textBox refId="RestrictRunFromHelp_Edit">
-          <label>Enter executables separated by commas:</label>
+          <label>輸入執行檔名稱 (以逗號分隔):</label>
         </textBox>
-        <text>Example: calc.exe,paint.exe</text>
+        <text>範例: calc.exe,paint.exe</text>
       </presentation>
     </presentationTable>
   </resources>

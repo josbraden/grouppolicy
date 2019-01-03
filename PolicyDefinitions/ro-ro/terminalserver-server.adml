@@ -17,15 +17,17 @@ If you disable or do not configure this policy setting, the client computer does
 Note: Time zone redirection is possible only when connecting to at least a Microsoft Windows Server 2003 terminal server with a client using RDP 5.1 or later.
       </string>
       
-      <string id="TS_CLIENT_CLIPBOARD">Do not allow clipboard redirection</string>
-      <string id="TS_CLIPBOARDMAP_EXPLAIN">This policy setting allows you to specify whether to prevent the sharing of clipboard contents (clipboard redirection) between a remote computer and a client computer during a Remote Desktop Services session. 
+      <string id="TS_CLIENT_CLIPBOARD">Do not allow Clipboard redirection</string>
+      <string id="TS_CLIPBOARDMAP_EXPLAIN">This policy setting specifies whether to prevent the sharing of Clipboard contents (Clipboard redirection) between a remote computer and a client computer during a Remote Desktop Services session.
 
-You can use this setting to prevent users from redirecting clipboard data to and from the remote computer and the local computer. 
+You can use this setting to prevent users from redirecting Clipboard data to and from the remote computer and the local computer. By default, Remote Desktop Services allows Clipboard redirection.
 
-If you enable this policy setting, users cannot redirect clipboard data. 
+If you enable this policy setting, users cannot redirect Clipboard data.
 
-If you disable this policy setting, Remote Desktop Services always allows clipboard redirection. If you do not configure this policy setting, Remote Desktop Services allows clipboard redirection unless an administrator disables clipboard redirection by using the Remote Desktop Session Host Configuration tool.
-      </string>
+If you disable this policy setting, Remote Desktop Services always allows Clipboard redirection.
+
+If you do not configure this policy setting, Clipboard redirection is not specified at the Group Policy level. 
+ </string>
       
       <string id="TS_DISABLE_REMOTE_DESKTOP_WALLPAPER">Remove remote desktop wallpaper</string>
       <string id="TS_DISABLE_REMOTE_DESKTOP_WALLPAPER_EXPLAIN">This policy setting allows you to specify whether desktop wallpaper is displayed to clients when they are connected to a remote server using RDP. 
@@ -50,14 +52,17 @@ Note: If this policy setting is enabled, then the "Start a program on connection
       </string>
       
       <string id="TS_ALLOW_APPS">Allow remote start of unlisted programs</string>
-      <string id="TS_ALLOW_APPS_EXPLAIN">This policy setting allows you to specify whether remote users can start any program on the RD Session Host server when they start a Remote Desktop Services session, or whether they can only start programs that are listed in the RemoteApp Programs list.
+      <string id="TS_ALLOW_APPS_EXPLAIN">This policy setting allows you to specify whether remote users can start any program on the RD Session Host server when they start a Remote Desktop Services session, or whether they can only start programs that are listed in the RemoteApp programs list.
 
-You can control which programs on an RD Session Host server can be started remotely by using the RemoteApp Manager tool to create a list of RemoteApp programs. By default, only programs in the RemoteApp Programs list can be started when a user starts a Remote Desktop Services session.
+You can control which programs on an RD Session Host server can be started remotely by using the RemoteApp Manager on Windows Server 2008 R2 and Windows Server 2008. If you are using Windows Server 2012 R2, you can configure this in the Collection properties sheet by using Server Manager.
 
-If you enable this policy setting, remote users can start any program on the RD Session Host server when they start a Remote Desktop Services session. For example, a remote user can do this by specifying the program's executable path at connection time by using the Remote Desktop Connection client.
+By default, only programs in the RemoteApp Programs list can be started when a user starts a Remote Desktop Services session.
 
-If you disable or do not configure this policy setting, remote users can only start programs that are listed in the RemoteApp Programs list in RemoteApp Manager when they start a Remote Desktop Services session.
-      </string>
+If you enable this policy setting, remote users can start any program on the RD Session Host server when they start a Remote Desktop Services session. 
+For example, a remote user can do this by specifying the program's executable path at connection time by using the Remote Desktop Connection client.
+
+If you disable or do not configure this policy setting, remote users can only start programs that are listed in the RemoteApp programs list when they start a Remote Desktop Services session.
+</string>
 
       <string id="TS_ALLOW_DESKTOPCOMPOSITION">Allow desktop composition for remote desktop sessions</string>
       <string id="TS_ALLOW_DESKTOPCOMPOSITION_EXPLAIN">This policy setting allows you to specify whether desktop composition is allowed for remote desktop sessions. This policy setting does not apply to RemoteApp sessions.
@@ -78,9 +83,9 @@ If you enable this policy setting, RD Connection Broker redirects users who do n
 
 If you disable this policy setting, users who do not have an existing session log on to the first RD Session Host server to which they connect.
 
-If you do not configure this policy setting, you can configure the RD Session Host server to participate in RD Connection Broker load balancing by using the Remote Desktop Session Host Configuration tool or the Terminal Services WMI provider.
+If you do not configure this policy setting, you can configure the RD Session Host server to participate in RD Connection Broker load balancing by using the Remote Desktop Session Host Configuration tool or the Remote Desktop Services WMI provider.
 
-Note: If you enable this policy setting, you must also enable the "Join RD Connection Broker", the "Configure RD Connection Broker farm name", and the "Configure RD Connection Broker server name" policy settings. 
+Note: If you enable this policy setting, you must also enable the Join RD Connection Broker, the Configure RD Connection Broker farm name, and the Configure RD Connection Broker server name policy settings. 
       </string>
 
       <string id="TS_REDIRECT_CLIENT_PRN_ONLY">Redirect only the default client printer</string>
@@ -92,13 +97,13 @@ If you disable or do not configure this policy setting, all client printers are 
 	  </string>
 	  
       <string id="TS_SESSIONS_RemoteApp_End_Timeout">Set time limit for logoff of RemoteApp sessions</string>
-      <string id="TS_SESSIONS_RemoteApp_End_Timeout_EXPLAIN">This policy setting allows you to specify how long a user's RemoteApp session will remain in a disconnected state before the session is logged off from the RD Session Host server.
+      <string id="TS_SESSIONS_RemoteApp_End_Timeout_EXPLAIN">This policy setting allows you to specify how long a user's RemoteApp session will remain in a disconnected state after closing all RemoteApp programs before the session is logged off from the RD Session Host server.
 
-By default, if a user closes a RemoteApp program, the session is disconnected from the RD Session Host server. 
+By default, if a user closes a RemoteApp program, the session is disconnected from the RD Session Host server, but it is not logged off.
 
-If you enable this policy setting, when a user closes a RemoteApp program, the RemoteApp session will remain in a disconnected state until the time limit that you specify is reached. When the time limit specified is reached, the RemoteApp session will be logged off from the RD Session Host server. If the user starts a RemoteApp program before the time limit is reached, the user will reconnect to the disconnected session on the RD Session Host server.
+If you enable this policy setting, when a user closes the last running RemoteApp program associated with a session, the RemoteApp session will remain in a disconnected state until the time limit that you specify is reached. When the time limit specified is reached, the RemoteApp session will be logged off from the RD Session Host server. If the user starts a RemoteApp program before the time limit is reached, the user will reconnect to the disconnected session on the RD Session Host server.
 
-If you disable or do not configure this policy setting, when a user closes a RemoteApp program, the session will be disconnected from the RD Session Host server.
+If you disable or do not configure this policy setting, when a user closes the last RemoteApp program, the session will be disconnected from the RD Session Host server but it is not logged off.
 
 Note: This policy setting appears in both Computer Configuration and User Configuration. If both policy settings are configured, the Computer Configuration policy setting takes precedence.
       </string>
@@ -179,6 +184,18 @@ If you disable or do not configure this policy setting, Fair Share CPU Schedulin
 If you enable this policy setting, Windows Installer RDS Compatibility is turned off, and only one instance of the msiexec process can run at a time.
  
 If you disable or do not configure this policy setting, Windows Installer RDS Compatibility is turned on, and multiple per user application installation requests are queued and handled by the msiexec process in the order in which they are received. 
+      </string>
+
+      <string id="RDS_VM_HOST_Node">Remote Desktop Virtualization Host</string>
+      <string id="RDS_VM_HOST_Node_Help">Controls configuration of an RD Virtualization Host server</string>
+      <string id="TS_DX_USE_FULL_HWGPU">Use the hardware default graphics adapter for all Remote Desktop Services sessions</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">This policy setting enables system administrators to change the graphics rendering for all Remote Desktop Services sessions on a Remote Desktop Session Host (RD Session Host) server.
+
+If you enable this policy setting, all Remote Desktop Services sessions on the RD Session Host server use the hardware graphics renderer instead of the Microsoft Basic Render Driver as the default adapter.
+
+If you disable or do not configure this policy setting, all Remote Desktop Services sessions on the RD Session Host server use the Microsoft Basic Render Driver as the default adapter.
+
+NOTE: The policy setting affects only the default graphics processing unit (GPU) on a computer with more than one GPU installed. All additional GPUs are considered secondary adapters and used as hardware renderers. The GPU configuration of the local session is not affected by this policy setting.
       </string>
    
    </stringTable>

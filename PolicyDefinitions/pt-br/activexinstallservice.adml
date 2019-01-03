@@ -6,28 +6,37 @@
   <resources>
     <stringTable>
       <string id="AxInstSv">Serviço Instalador do ActiveX</string>
-      <string id="AxISURLZonePolicies">Diretiva de instalação do ActiveX para sites em Zonas confiáveis</string>        
-      <string id="AxISURLZonePolicies_explain">Esta configuração de diretiva controla a instalação de controles ActiveX para sites em Zonas confiáveis. Se a configuração estiver habilitada, controles ActiveX serão instalados de acordo com as configurações definidas pela configuração dessa diretiva. 
-      
-Se a configuração estiver desabilitada ou não configurada, controles ActiveX sempre serão solicitados ao usuário antes da instalação. 
+      <string id="AxISURLZonePolicies">Estabelecer política de instalação do ActiveX para sites em Zonas confiáveis</string>        
+      <string id="AxISURLZonePolicies_explain">Esta configuração de política controla a instalação de controles ActiveX para sites em Zonas confiáveis. 
 
-Se o site confiável usar o protocolo HTTPS, esta configuração de diretiva também poderá controlar como o Serviço Instalador do ActiveX responde a erros de certificado. Por padrão, todas as conexões HTTPS devem fornecer um certificado de servidor que transmita todos os critérios de validação. Se você souber que um site confiável possui um erro de certificado, mas deseja confiar nele mesmo assim, poderá selecionar os erros do certificado que deseja ignorar.
+Se você habilitar esta configuração de política, controles ActiveX serão instalados de acordo com as configurações definidas pela configuração de política. 
+      
+Se você desabilitar ou não definir essa configuração de política, controles ActiveX questionarão o usuário antes da instalação. 
+
+Se o site confiável usar o protocolo HTTPS, esta configuração de política também poderá controlar como o Serviço Instalador do ActiveX responde a erros de certificado. Por padrão, todas as conexões HTTPS devem fornecer um certificado de servidor que transmita todos os critérios de validação. Se você souber que um site confiável possui um erro de certificado, mas deseja confiar nele mesmo assim, poderá selecionar os erros do certificado que deseja ignorar. 
     
-Observação: esta configuração se aplica a todos os sites em Zonas confiáveis.
+Observação: esta configuração de política se aplica a todos os sites em Zonas confiáveis.
+
 </string>
       <string id="TrustedZoneDisabled">Não instalar</string>
       <string id="TrustedZonePrompt">Solicitar ao usuário</string>
       <string id="TrustedZoneSilentInstall">Instalar silenciosamente</string>
       <string id="ApprovedActiveXInstallSites">Locais de instalação aprovados dos controles ActiveX</string>
-      <string id="ApprovedActiveXInstallSites_explain">O Serviço Instalador do ActiveX é a solução para delegar a instalação dos controles ActiveX por computador a um Usuário Padrão na empresa.
+      <string id="ApprovedActiveXInstallSites_explain">Esta configuração de política determina quais sites de instalação do ActiveX os usuários padrão em sua organização podem usar para instalar controles ActiveX em seus computadores. Quando essa configuração está habilitada, o administrador pode criar uma lista de sites de instalação do ActiveX aprovados especificados pela URL de host. 
 
-A lista de locais de Instalação Aprovados do ActiveX contém a URL do host e as configurações de diretiva para cada URL de host. Não há suporte para caracteres curinga.</string>
+Se você habilitar essa configuração, o administrador pode criar uma lista de sites de instalação do ActiveX aprovados especificados pela URL de host. 
+      
+Se você desabilitar ou não definir essa configuração de política, controles ActiveX solicitarão o usuário as credenciais administrativas antes da instalação. 
+
+Observação: caracteres curingas não podem ser usados ao especificar as URLs de host.
+
+</string>
     </stringTable>
     <presentationTable>
       <presentation id="AxISURLZonePolicies">
-        <dropdownList refId="InstallTrustedOCX" noSort="true" defaultItem="2">Diretiva de Instalação para controle ActiveX assinado por fornecedor confiável</dropdownList>
-        <dropdownList refId="InstallSignedOCX" noSort="true" defaultItem="1">Diretiva de Instalação para controle ActiveX assinado</dropdownList>
-        <dropdownList refId="InstallUnSignedOCX" noSort="true" defaultItem="0">Diretiva de Instalação para controle ActiveX não assinado</dropdownList>
+        <dropdownList refId="InstallTrustedOCX" noSort="true" defaultItem="2">Política de Instalação para controle ActiveX assinado por fornecedor confiável</dropdownList>
+        <dropdownList refId="InstallSignedOCX" noSort="true" defaultItem="1">Política de Instalação para controle ActiveX assinado</dropdownList>
+        <dropdownList refId="InstallUnSignedOCX" noSort="true" defaultItem="0">Política de Instalação para controle ActiveX não assinado</dropdownList>
         <text>Permitir conexão a sites confiáveis com os erros de certificado do servidor a seguir.</text>
         <checkBox refId="IgnoreUnknownCA" defaultChecked="false">CA (autoridade de certificação) desconhecida</checkBox>
         <checkBox refId="IgnoreInvalidCN" defaultChecked="false">CN (nome de certificado) inválido</checkBox>
@@ -37,21 +46,21 @@ A lista de locais de Instalação Aprovados do ActiveX contém a URL do host e a
 
       <presentation id="ApprovedActiveXInstallSites">
         <listBox refId="ApprovedActiveXInstallSiteslist">URLs de host</listBox>
-        <text>Contém a diretiva para o URL de host.</text>
-        <text>Por exemplo </text>
+        <text>Contém a política para o URL de host.</text>
+        <text>Por exemplo  </text>
         <text>Nome do host: http://activex.microsoft.com</text>
         <text>Valor: 2,1,0,0</text>
         <text>O valor para cada URL de host são quatro configurações no formato CSV.</text>
-        <text>Isso representa "ControleAssinadoTPS,ControleAssinado,ControleNãoAssinado,DiretivaCertificadoServidor</text>
-        <text>Os três valores mais à esquerda na diretiva controlam a instalação dos controles ActiveX com base em sua assinatura.</text>
+        <text>Isso representa "ControleAssinadoTPS,ControleAssinado,ControleNãoAssinado,PolíticaCertificadoServidor</text>
+        <text>Os três valores mais à esquerda na política controlam a instalação dos controles ActiveX com base em sua assinatura.</text>
         <text>Eles podem ser qualquer um dos apresentados a seguir.</text>
         <text>0: O controle ActiveX não será instalado</text>
         <text>1: Solicita que o usuário instale o controle ActiveX</text>
         <text>2: O controle ActiveX será instalado silenciosamente</text>
-        <text>Controles assinados por certificados em repositórios do fornecedor confiável serão instalados silenciosamente </text>
+        <text>Controles assinados por certificados em repositórios do fornecedor confiável serão instalados silenciosamente  </text>
         <text>Não há suporte para instalação silenciosa dos controles não assinados</text>
         <text></text>
-        <text>O valor mais à direita na diretiva é um sinalizador de bit de mascaramento</text>
+        <text>O valor mais à direita na política é um sinalizador de bit de mascaramento</text>
         <text>Os sinalizadores são usados para ignorar erros de certificado https.</text>
         <text>O valor padrão é 0.</text>
         <text>Isso significa que as conexões https devem passar em todas as verificações de segurança</text>

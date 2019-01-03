@@ -3,63 +3,241 @@
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
     <displayName>BranchCache</displayName>
     <description>BranchCache ermöglicht es Clients, Inhalte sicher innerhalb der Zweigstelle abzurufen, anstatt über den Server, auf dem sich der Inhalt befindet. Je nach Art der Bereitstellung kann der Inhalt von anderen Clients in der Zweigstelle oder von einem in der Zweigstelle gehosteten Cacheserver abgerufen werden. Inhalte können von einem Client nur innerhalb der Zweigstelle abgerufen werden, wenn der Client vom Server dazu autorisiert wird. Die Verwendung von BranchCache senkt die Kosten einer WAN-Verbindung (Wide Area Network), die die Zweigstellen mit dem Rechenzentrum oder der Hauptniederlassung verbindet, und erhöht die Geschwindigkeit beim Herunterladen von Inhalten, die bereits an die Zweigstelle übertragen wurden.
+    
     </description>
 
     <resources>
         <stringTable>
+            <!-- Supported Platforms -->
+            <string id="SUPPORTED_Windows7OrBITS4">Mindestens Windows 7 oder Windows Server 2008 R2*</string>
+            <!-- Supported Platforms -->
+
             <string id="WBC_Cat">BranchCache</string>
 
             <string id="WBC_Enable">BranchCache aktivieren</string>
 
-            <string id="WBC_Enable_Help">Durch diese Richtlinieneinstellung wird festgelegt, ob BranchCache auf dem Clientcomputer aktiviert wird. BranchCache reduziert die Auslastung von WAN-Verbindungen (Wide Area Network), die Zweigstellen mit dem Rechenzentrum oder der Hauptniederlassung verbinden, und erhöht die Geschwindigkeit beim Herunterladen von Inhalten, die bereits an die Zweigstelle übertragen wurden. Um dies zu erreichen, ermöglicht BranchCache Zweigstellencomputern das Zwischenspeichern von Dateien und Daten, die mittels HTTP von BranchCache-fähigen Intranetservern abgerufen werden; anschließend werden die Dateien sicher für andere Zweigstellencomputer freigegeben. Zweigstellencomputer können Inhalte (bei Verwendung des Modus "Gehosteter Cache") von einem gehosteten Cacheserver in der Zweigstelle oder (bei Verwendung des Modus "Verteilter Cache") von anderen Clientcomputern in der Zweigstelle abrufen. Um auf zwischengespeicherten Inhalt zuzugreifen, benötigt der Computer Zugriffsberechtigungen für Inhalte auf dem Quellserver.
+            <string id="WBC_Enable_Help">Durch diese Richtlinieneinstellung wird festgelegt, ob BranchCache auf den Clientcomputern aktiviert wird, auf die die Richtlinie angewendet wird. Neben dieser Richtlinieneinstellung müssen Sie angegeben, ob die Clientcomputer Clients im Modus "Gehosteter Cache" oder im Modus "Verteilter Cache" sind. Dazu konfigurieren Sie eine der folgenden Richtlinieneinstellungen: 
 
-Aktivieren Sie diese Richtlinieneinstellung auf Clientcomputern in Zweigstellen, die über eine geringe WAN-Bandbreite, hohe Latenzzeiten und eine Reihe von Clientcomputern verfügen, die auf identische Daten auf Servern in der Hauptniederlassung zugreifen müssen.
+- BranchCache-Modus "Verteilter Cache" festlegen
 
-Wenn Sie diese Richtlinieneinstellung aktivieren, wird BranchCache aktiviert. Damit diese Richtlinieneinstellung wirksam wird, müssen Sie zusätzlich das BranchCache-Feature auf dem Clientcomputer installieren.
+- BranchCache-Modus "Gehosteter Cache" festlegen
 
-Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, ist BranchCache deaktiviert.
+- Gehostete Cache-Server konfigurieren
+
+Richtlinien konfigurieren
+
+Wählen Sie eine der folgenden Optionen aus:
+
+- Nicht konfiguriert. Mit dieser Auswahl werden BranchCache-Einstellungen nicht auf Clientcomputer mit dieser Richtlinieneinstellung angewendet. Für den Fall, dass Clientcomputer Domänenmitglieder sind und Sie BranchCache jedoch nicht auf allen Clientcomputern aktivieren möchten, geben Sie für diese Domänengruppen-Richtlinieneinstellung "Nicht konfiguriert" an. Anschließend konfigurieren Sie die lokalen Computerrichtlinien, um BranchCache auf einzelnen Clientcomputern zu aktivieren. Da die Domänengruppen-Richtlinieneinstellung nicht konfiguriert wurde, wird die auf einzelnen Clientcomputern aktivierte BranchCache-Einstellung nicht überschrieben.
+
+- Aktiviert. Mit dieser Auswahl wird BranchCache auf allen Computern aktiviert, auf denen die Richtlinie angewendet wird. Ist diese Richtlinie z. B. in der Domänengruppen-Richtlinie aktiviert, wird BranchCache auf allen Computern der Domäne aktiviert, auf die die Richtlinie angewendet wird.
+
+- Deaktiviert. Mit dieser Auswahl wird BranchCache auf allen Computern deaktiviert, auf denen die Richtlinie angewendet wird.
+
+* Diese Richtlinieneinstellung wird auf Computern unterstützt, auf denen Windows Vista Business, Enterprise und Ultimate Editions mit installiertem Background Intelligent Transfer Service (BITS) 4.0 ausgeführt wird.
+            
             </string>
 
             <string id="WBC_Cache_Percent">Prozentuale Speicherplatzbelegung durch Clientcomputercache festlegen</string>
 
-            <string id="WBC_Cache_Percent_Help">Mit dieser Richtlinieneinstellung wird der prozentuale Anteil des Gesamtspeicherplatzes geändert, der bei Verwendung von BranchCache standardmäßig zum Zwischenspeichern abgerufener Inhalte reserviert wird. Dieser Inhalt wird anderen anfordernden Clientcomputern zur Verfügung gestellt, wenn diese vom Server für den Zugriff auf den Inhalt autorisiert wurden.
+            <string id="WBC_Cache_Percent_Help">This policy setting specifies the default percentage of total disk space that is allocated for the BranchCache disk cache on client computers.
 
-Wenn Sie diese Richtlinieneinstellung aktivieren, können Sie den prozentualen Anteil des Gesamtspeicherplatzes konfigurieren, der vom Cache belegt wird.
+If you enable this policy setting, you can configure the percentage of total disk space to allocate for the cache.
 
-Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird der Cache auf fünf Prozent des Gesamtspeicherplatzes auf dem Clientcomputer festgelegt.
+If you disable or do not configure this policy setting, the cache is set to 5 percent of the total disk space on the client computer.
+
+Policy configuration
+
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache client computer cache settings are not applied to client computers by this policy. In the circumstance where client computers are domain members but you do not want to configure a BranchCache client computer cache setting on all client computers, you can specify Not Configured for this domain Group Policy setting, and then configure local computer policy to enable BranchCache client computer cache settings on individual client computers. Because the domain Group Policy setting is not configured, it will not over-write the client computer cache setting that you use on individual client computers.
+
+- Enabled. With this selection, the BranchCache client computer cache setting is enabled for all client computers where the policy is applied. For example, if Set percentage of disk space used for client computer cache is enabled in domain Group Policy, the BranchCache client computer cache setting that you specify in the policy is turned on for all domain member client computers to which the policy is applied.
+
+- Disabled. With this selection, BranchCache client computers use the default client computer cache setting of five percent of the total disk space on the client computer.
+
+In circumstances where this setting is enabled, you can also select and configure the following option:
+
+- Specify the percentage of total disk space allocated for the cache. Specifies an integer that is the percentage of total client computer disk space to use for the BranchCache client computer cache.
+
+* This policy setting is supported on computers that are running Windows Vista Business, Enterprise, and Ultimate editions with Background Intelligent Transfer Service (BITS) 4.0 installed.
             </string>
 
             <string id="WBC_HostedCache_Location">BranchCache-Modus "Gehosteter Cache" festlegen</string>
 
-            <string id="WBC_HostedCache_Location_Help">Mit dieser Richtlinieneinstellung wird angegeben, ob der Clientcomputer den Modus "Gehosteter Cache" verwenden soll, und wie die Adresse des BranchCache-Servers im gegebenen Fall lautet. Mit dem Modus "Gehosteter Cache" kann ein Clientcomputer Inhalte von einem BranchCache-Server abrufen, der als zentraler (gehosteter) Cache für eine Zweigstelle fungiert. Bei Verwendung des Modus "Gehosteter Cache" wird der von BranchCache-fähigen Clientcomputern heruntergeladene Inhalt mithilfe von Push auf den BranchCache-Server übertragen, der daraufhin als zentraler Cache für andere BranchCache-fähige Clientcomputer in der Zweigstelle fungiert. Clientcomputer kommunizieren über Secure Sockets Layer (SSL) mit dem BranchCache-Server.
+            <string id="WBC_HostedCache_Location_Help">Durch diese Richtlinieneinstellung wird festgelegt, ob der BranchCache-Modus "Gehosteter Cache" auf den Clientcomputern aktiviert wird, für den diese Richtlinie angewendet wird. Zusätzlich zu dieser Richtlinie müssen Sie die Richtlinieneinstellung "BranchCache aktivieren" verwenden, um BranchCache auf Clientcomputern zu aktivieren.
 
-Um diese Richtlinieneinstellung zu verwenden, müssen Sie die Adresse des BranchCache-Servers angeben, die mit dem vollqualifizierten Domänennamen (FQDN) des Servers übereinstimmen muss, der im Zertifikat des BranchCache-Servers festgelegt wurde. Der Zertifikatstamm für das Zertifikat des BranchCache-Servers muss sich außerdem im vertrauenswürdigen Stammspeicher des Clientcomputers befinden.
+Wenn ein Clientcomputer im Modus "Gehosteter Cache" konfiguriert wird, kann er Inhalt aus dem Cache eines gehosteten Cacheservers herunterladen, der sich in der Zweigstelle befindet. Wenn der gehostete Cacheclient Inhalt von einem Inhaltsserver erhält, kann der Client außerdem den Inhalt auf den gehosteten Cacheserver hochladen, damit andere gehostete Cacheclients in der Zweigstelle darauf zugreifen können.
 
-Wenn Sie diese Richtlinieneinstellung aktivieren und einen gültigen Ort für den gehosteten Cache angeben, wird der Modus "Gehosteter Cache" aktiviert. Damit diese Richtlinieneinstellung wirksam wird, müssen Sie außerdem die Richtlinieneinstellung "BranchCache aktivieren" aktivieren.
+Richtlinienkonfiguration
 
-Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird der Modus "Gehosteter Cache" deaktiviert.
+Wählen Sie eine der folgenden Einstellungen aus:
+
+- Nicht konfiguriert. Mit dieser Auswahl werden BranchCache-Einstellungen nicht auf Clientcomputer mit dieser Richtlinieneinstellung angewendet. Für den Fall, dass Clientcomputer Domänenmitglieder sind und Sie BranchCache jedoch nicht auf allen Clientcomputern aktivieren möchten, geben Sie für diese Domänengruppen-Richtlinieneinstellung "Nicht konfiguriert" an. Anschließend konfigurieren Sie die lokalen Computerrichtlinien, um BranchCache auf einzelnen Clientcomputern zu aktivieren. Da die Domänengruppen-Richtlinieneinstellung nicht konfiguriert wurde, wird die auf einzelnen Clientcomputern aktivierte BranchCache-Einstellung nicht überschrieben.
+
+- Aktiviert. Mit dieser Auswahl wird der BranchCache-Modus "Gehosteter Cache" auf allen Clientcomputern aktiviert, auf denen die Richtlinie angewendet wird. Wenn diese Richtlinie z. B. in einer Domänengruppen-Richtlinie aktiviert ist, wird der BranchCache-Modus "Gehosteter Cache" für alle Clientcomputer in der Domäne aktiviert, auf die die Richtlinie angewendet wird.
+
+- Deaktiviert. Mit dieser Auswahl wird der BranchCache-Modus "Gehosteter Cache" für alle Clientcomputer deaktiviert, auf denen die Richtlinie angewendet wird.
+
+Für den Fall, dass diese Einstellung aktiviert ist, können Sie auch folgende Option auswählen und konfigurieren:
+
+- Den Namen des gehosteten Cacheservers eingeben. Hier wird der Computername des gehosteten Cacheservers angegeben. Da der gehostete Cacheserver auch im Zertifikat angegeben wird, das auf dem gehosteten Cacheserver registriert ist, muss der Namen, den Sie hier eingeben, mit dem Namen des gehosteten Cacheservers übereinstimmen, der im Serverzertifikat angegeben ist. 
+
+Gehostete Cacheclients müssen dem Serverzertifikat vertrauen, das auf dem gehosteten Cacheserver ausgestellt ist. Stellen Sie sicher dass die Ausstellung eines Zertifizierungsstellenzertifikats auf allen Clientcomputern mit gehostetem Cache im Zertifikatspeicher der Vertrauenswürdigen Stammzertifizierungsstellen installiert ist.
+
+* Diese Richtlinieneinstellung wird auf Computern unterstützt, auf denen Windows Vista Business, Enterprise und Ultimate Editions mit installiertem Background Intelligent Transfer Service (BITS) 4.0 ausgeführt wird.
+            
             </string>
 
             <string id="WBC_Distributed_Enable">BranchCache-Modus "Verteilter Cache" festlegen</string>
 
-            <string id="WBC_Distributed_Enable_Help">Mit dieser Richtlinieneinstellung geben Sie an, ob der Clientcomputer den Modus "Verteilter Cache" verwenden soll. In diesem BranchCache-Modus ist ein Clientcomputer in der Lage, Inhalt abzurufen, der von anderen Clientcomputern in der Zweigstelle heruntergeladen und zwischengespeichert wurde. Um auf zwischengespeicherten Inhalt anderer Clientcomputer in der Zweigstelle zuzugreifen, benötigt der Computer Zugriffsberechtigungen für Inhalte auf dem Quellserver.
+            <string id="WBC_Distributed_Enable_Help">Durch diese Richtlinieneinstellung wird festgelegt, ob der BranchCache-Modus "Verteilter Cache" auf den Clientcomputern aktiviert wird, für die die Richtlinie angewendet wird. Zusätzlich zu dieser Richtlinie müssen Sie die Richtlinieneinstellung "BranchCache aktivieren" verwenden, um BranchCache auf Clientcomputern zu aktivieren.
 
-Mit dieser Richtlinieneinstellung wird angegeben, ob der Modus "Verteilter Cache" verwendet wird. Aktivieren Sie diese Richtlinieneinstellung bei Verwendung von BranchCache in Zweigstellen, in denen kein Server als gehosteter Cache eingesetzt wird.
+Im Modus "Verteilter Cache" laden die Clientcomputer Inhalt von den Inhaltsservern des Hauptbüros herunter, auf denen BranchCache aktiviert ist, speichern diesen Inhalt lokal im Zwischenspeicher und geben ihn an andere Clients in der Zweigstelle weiter, für die der BranchCache-Modus "Verteilter Cache" aktiviert ist.
 
-Wenn Sie diese Richtlinieneinstellung aktivieren, wird der Modus "Verteilter Cache" verwendet. Damit diese Richtlinieneinstellung wirksam wird, müssen Sie außerdem die Richtlinieneinstellung "BranchCache aktivieren" aktivieren.
+Richtlinienkonfiguration
 
-Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird der Modus "Verteilter Cache" deaktiviert.
+Wählen Sie eine der folgenden Einstellungen aus:
+
+- Nicht konfiguriert. Mit dieser Auswahl werden BranchCache-Einstellungen nicht auf Clientcomputer mit dieser Richtlinieneinstellung angewendet. Für den Fall, dass Clientcomputer Domänenmitglieder sind und Sie BranchCache jedoch nicht auf allen Clientcomputern aktivieren möchten, geben Sie für diese Domänengruppen-Richtlinieneinstellung "Nicht konfiguriert" an. Anschließend konfigurieren Sie die lokalen Computerrichtlinien, um BranchCache auf einzelnen Clientcomputern zu aktivieren. Da die Domänengruppen-Richtlinieneinstellung nicht konfiguriert wurde, wird die auf einzelnen Clientcomputern aktivierte BranchCache-Einstellung nicht überschrieben.
+
+- Aktiviert. Mit dieser Auswahl wird der BranchCache-Modus "Verteilter Cache" auf allen Clientcomputern aktiviert, auf denen die Richtlinie angewendet wird. Ist diese Richtlinie z. B. in der Domänengruppen-Richtlinie aktiviert, wird BranchCache auf allen Computern der Domäne aktiviert, auf denen die Richtlinie angewendet wird.
+
+- Deaktiviert. Mit dieser Auswahl wird der BranchCache-Modus "Verteilter Cache" auf allen Clientcomputern deaktiviert, auf denen die Richtlinie angewendet wird.
+
+* Diese Richtlinieneinstellung wird auf Computern unterstützt, auf denen Windows Vista Business, Enterprise und Ultimate Editions mit installiertem Background Intelligent Transfer Service (BITS) 4.0 ausgeführt wird.
+            
             </string>
 
             <string id="WBC_SMB_Enable">BranchCache für Netzwerkdateien konfigurieren</string>
 
-            <string id="WBC_SMB_Enable_Help">Mit dieser Richtlinieneinstellung wird der Standardwert für die Roundtrip-Netzwerklatenz geändert, oberhalb dessen Netzwerkdateien von Clientcomputern in der Zweigstelle zwischengespeichert werden. BranchCache für Netzwerkdateien ermöglicht Computern in einer Zweigstelle das Zwischenspeichern von Daten von Intranetservern, auf denen BranchCache aktiviert ist; anschließend werden die Dateien sicher für andere Zweigstellencomputer freigegeben. Einer der Inhaltstypen, die in einer Zweigstelle zwischengespeichert werden können, sind mit dem SMB-(Server Message Block-)Protokoll übertragene Netzwerkdateien.
+            <string id="WBC_SMB_Enable_Help">Diese Richtlinieneinstellung für nur verwendet, wenn einer oder mehrere Dateiserver mit aktiviertem BranchCache im Hauptbüro bereitgestellt werden. Mit dieser Richtlinieneinstellung wird angegeben, wann die Clientcomputer in den Zweigstellen mit dem Zwischenspeichern von Inhalt von den Dateiservern beginnen. Diese Angabe erfolgt auf der Grundlage der Netzwerklatenzzeit bzw. der Verzögerungszeit, die auftritt, wenn Clients Inhalt über eine WAN-Verbindung (Wide Area Network) vom Hauptbüro herunterladen.  Wenn Sie einen Wert für diese Einstellung konfigurieren, der die maximal zulässige Roundtrip-Netzwerklatenzzeit vor dem Start der Zwischenspeicherung festlegt, legen die Clients erst Inhalt im Zwischenspeicher ab, wenn die Netzwerklatenzzeit den angegebenen Wert erreicht. Ist die Netzwerklatenzzeit größer als dieser Wert beginnen die Clients die Zwischenspeicherung von Inhalt, wenn sie den Inhalt von den Dateiservern erhalten haben.
 
-Netzwerkdateien werden standardmäßig in der Zweigstelle zwischengespeichert, wenn die Roundtrip-Netzwerklatenz der WAN-Verbindung (Wide Area Network) über 80 ms liegt. Um die auf die Zweigstellencomputer heruntergeladenen Netzwerkdateien immer zwischenzuspeichern, legen Sie den Wert für die Netzwerklatenz auf 0 fest. Um das Zwischenspeichern von Netzwerkdateien in Zweigstellen zu deaktivieren, legen Sie die Latenz auf einen sehr hohen Wert fest.
+Richtlinienkonfiguration
 
-Wenn Sie diese Richtlinieneinstellung aktivieren, können Sie die Roundtrip-Netzwerklatenz auf einen Wert festlegen, oberhalb dessen Netzwerkdateien von Clientcomputern in der Zweigstelle zwischengespeichert werden sollen.
+Wählen Sie eine der folgenden Einstellungen aus:
 
-Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, werden Netzwerkdateien vom Clientcomputer zwischengespeichert, wenn der Wert für die Roundtrip-Netzwerklatenz der WAN-Verbindung (Wide Area Network) über 80 ms liegt.
+- Nicht konfiguriert. Mit dieser Auswahl werden die Latenzzeiteinstellungen für BranchCache nicht auf Clientcomputern mit dieser Richtlinie angewendet. In dem Fall, dass Clientcomputer Domänenmitglieder sind und Sie jedoch keine Latenzzeiteinstellung für BranchCache auf allen Clientcomputern konfigurieren möchten, können Sie für diese Domänengruppen-Richtlinieneinstellung "Nicht konfiguriert" angegeben. Anschließend konfigurieren Sie die lokale Computerrichtlinie, um Latenzzeiteinstellungen für BranchCache auf einzelnen Clientcomputern zu aktivieren. Da die Domänengruppen-Richtlinieneinstellung nicht konfiguriert wurde, wird die auf einzelnen Clientcomputern aktivierte Latenzzeiteinstellung nicht überschrieben.
+
+- Aktiviert. Mit dieser Auswahl wird die maximale Roundtrip-Latenzzeiteinstellung für alle Clientcomputer aktiviert, auf denen die Richtlinie angewendet wird. Ist z. B. "BranchCache für Netzwerkdateien konfigurieren" in der Domänengruppen-Richtlinie aktiviert, wird die Latenzzeiteinstellung für BranchCache, die Sie in der Richtlinie angeben, für alle Clientcomputer der Domäne aktiviert, auf die die Richtlinie angewendet wird.
+
+- Deaktiviert. Mit dieser Auswahl verwenden Clientcomputer mit BranchCache die Standardeinstellung für die Latenzzeit von 80 Millisekunden.
+
+Für den Fall, dass diese Richtlinieneinstellung aktiviert ist, können Sie auch folgende Option auswählen und konfigurieren:
+
+- Roundtrip-Netzwerklatenzwert (ms) eingeben, oberhalb dessen Netzwerkdateien in der Zweigstelle zwischengespeichert werden müssen. Hier wird die Zeit in Millisekunden angegeben, nach deren Ablauf Clientcomputer mit BranchCache mit der lokalen Zwischenspeicherung von Inhalt beginnen.
+            
+            </string>
+
+            <string id="WBC_HostedCacheDiscovery_Enable">Automatische Erkennung von gehostetem Cache pro Dienstverbindungspunkt aktivieren</string>
+
+            <string id="WBC_HostedCacheDiscovery_Enable_Help">Mit dieser Richtlinieneinstellung wird angegeben, ob Clientcomputer versuchen sollen, den Modus "Gehosteter Cache" automatisch zu konfigurieren, indem sie nach gehosteten Cacheservern suchen, die Dienstverbindungspunkte veröffentlichen, die der aktuellen Active Directory-Website des Clients zugeordnet sind.  Wenn diese Richtlinieneinstellung aktiviert ist, suchen die Clientcomputer, auf die diese Richtlinieneinstellung angewendet wird, nach gehosteten Cacheservern, die Active Directory verwenden, und bevorzugen sowohl diese Server als auch den Modus "Gehosteter Cache" vor manuell konfiguriertem BranchCache oder der BranchCache-Konfiguration durch andere Gruppenrichtlinien.
+
+Wenn Sie diese Richtlinieneinstellung zusätzlich zur Richtlinieneinstellung "BranchCache aktivieren" aktivieren, versuchen BranchCache-Clients gehostete Cacheserver in der lokalen Zweigstelle zu erkennen.  Wenn die Clientcomputer gehostete Cacheserver finden, wird der Modus "Gehosteter Cache" aktiviert.  Wenn sie keine gehosteten Cacheserver finden, wird der Modus "Gehosteter Cache" nicht aktiviert, und der Client verwendet eine beliebige andere Konfiguration, die manuell oder über eine Gruppenrichtlinie angegeben wurde.
+
+Wird dieser Richtlinieneinstellung angewendet, führt der Clientcomputer unter folgenden Voraussetzungen die automatische Erkennung von gehosteten Cacheserver durch bzw. führt die automatische Erkennung nicht durch:
+
+Wenn keine anderen Richtlinieneinstellungen für BranchCache angewendet werden, führt der Clientcomputer die automatische Erkennung von gehosteten Cacheservern durch. Wenn mindestens ein gehosteter Cacheserver gefunden wurde, konfiguriert sich der Clientcomputer selbst im Modus "Gehosteter Cache".
+
+Wenn neben dieser Richtlinieneinstellung auch die Richtlinieneinstellung "BranchCache-Modus "Verteilter Cache" festlegen" angewendet wird, führt der Clientcomputer die automatische Erkennung von gehosteten Cacheservern durch. Wenn mindestens ein gehosteter Cacheserver gefunden wurde, konfiguriert sich der Clientcomputer selbst nur im Modus "Gehosteter Cache".
+
+Wenn neben dieser Richtlinieneinstellung auch die Richtlinieneinstellung BranchCache-Modus "Gehosteter Cache" festlegen" angewendet wird, führt der Clientcomputer keine automatische Erkennung von gehosteten Cacheservern durch. Dies gilt auch für den Fall, dass die Richtlinieneinstellung  "Gehostete Cacheserver konfigurieren" angewendet wird.
+
+Diese Richtlinieneinstellung kann nur auf Clientcomputern verwendet werden, auf denen mindestens Windows 8 ausgeführt wird.  Diese Richtlinieneinstellung bleibt unter Windows 7 oder Windows Vista wirkungslos.  
+
+Wenn Sie diese Einstellung deaktivieren oder nicht konfigurieren, versucht der Client nicht, gehostete Cacheserver pro Dienstverbindungspunkt automatisch zu erkennen.
+
+Richtlinienkonfiguration
+
+Wählen Sie eine der folgenden Einstellungen aus:
+
+- Nicht konfiguriert. Mit dieser Auswahl werden BranchCache-Einstellungen nicht auf Clientcomputer mit dieser Richtlinieneinstellung angewendet, und die Clientcomputer führen keine automatische Erkennung von gehosteten Cacheservern durch.
+
+- Aktiviert. Mit dieser Auswahl wird die Richtlinieneinstellung auf Clientcomputer angewendet, die die automatische Erkennung von gehosteten Cacheservern durchführen und die als Clients im Modus "Gehosteter Cache" konfiguriert sind.
+
+- Deaktiviert. Mit dieser Auswahl wird diese Richtlinie nicht auf Clientcomputern angewendet.
+            
+            </string>
+
+            <string id="WBC_HostedCache_MultipleServers">Gehostete Cacheserver konfigurieren</string>
+
+            <string id="WBC_HostedCache_MultipleServers_Help">Mit dieser Richtlinieneinstellung wird angegeben, ob Clientcomputer für die Verwendung des Modus "Gehosteter Cache" konfiguriert werden. Außerdem wird hier der Computername der gehosteten Cacheserver angegeben, die für die Clientcomputer verfügbar sind.  Mit dem Modus "Gehosteter Cache" können Clientcomputer in Zweigstellen Inhalt von einem oder mehreren gehosteten Cacheservern abrufen, die am selben Standort installiert sind.  Mit dieser Einstellung können Sie auf Clientcomputern, die für den Modus "Gehosteter Cache" konfiguriert sind, automatisch die Computernamen der gehosteten Cacheserver in der Zweigstelle konfigurieren.
+
+Wenn diese Richtlinieneinstellung aktiviert ist und gültige Computernamen der gehosteten Cacheserver angegeben wurden, wird der Modus "Gehosteter Cache" für alle Clientcomputer aktiviert, auf die die Richtlinie angewendet wird. Damit diese Richtlinieneinstellung wirksam wird, müssen Sie außerdem die Richtlinieneinstellung "BranchCache aktivieren" aktivieren.
+
+Diese Richtlinieneinstellung kann nur auf Clientcomputern verwendet werden, auf denen mindestens Windows 8 ausgeführt wird.  Diese Richtlinieneinstellung bleibt unter Windows 7 oder Windows Vista wirkungslos.  Clientcomputer, auf die diese Richtlinieneinstellung zusätzlich zur Richtlinieneinstellung "BranchCache-Modus "Gehosteter Cache" festlegen" angewendet wird, verwenden die gehosteten Cacheserver, die in dieser Richtlinieneinstellung angegeben sind, und nicht den gehosteten Cacheserver, der in der Richtlinieneinstellen "BranchCache-Modus "Gehosteter Cache" festlegen" konfiguriert ist.
+
+Wenn Sie diese Richtlinieneinstellung nicht konfigurieren oder wenn Sie sie deaktivieren, funktionieren die Clientcomputer, für die der Modus "Gehosteter Cache" konfiguriert ist, immer noch ordnungsgemäß.
+
+Richtlinienkonfiguration
+
+Wählen Sie eine der folgenden Einstellungen aus:
+
+- Nicht konfiguriert. Mit dieser Auswahl werden BranchCache-Einstellungen nicht auf Clientcomputer mit dieser Richtlinieneinstellung angewendet.
+
+- Aktiviert. Mit dieser Auswahl wird die Richtlinieneinstellung auf Clientcomputer angewendet, die als Clients im Modus "Gehosteter Cache" konfiguriert sind und die gehosteten Cacheserver verwenden, die unter "Gehostete Cacheserver" angegeben sind.
+
+- Deaktiviert. Mit dieser Auswahl wird diese Richtlinie nicht auf Clientcomputern angewendet.
+
+Für den Fall, dass diese Einstellung aktiviert ist, können Sie auch folgende Option auswählen und konfigurieren:
+
+- Gehostete Cacheserver. Wenn Sie die Computernamen gehosteter Cacheserver zu dieser Richtlinieneinstellung hinzufügen möchten, klicken Sie auf "Aktiviert" und anschließend auf "Anzeigen". Das Dialogfeld "Inhalt anzeigen" wird angezeigt. Klicken Sie auf "Wert", und geben Sie die Computernamen der gehosteten Cacheserver ein.
+            
+            </string>
+
+            <string id="WBC_Downgrading">Versionsunterstützung für BranchCache für Clients konfigurieren</string>
+
+            <string id="WBC_Downgrading_Help">Mit dieser Richtlinieneinstellung wird angegeben, ob Clientcomputer, auf denen BranchCache aktiviert werden kann, im heruntergestuften Modus laufen sollen, damit die Kompatibilität mit vorherigen Versionen von BranchCache erhalten bleibt.  Wenn Clientcomputer nicht dieselbe BranchCache-Version verwenden, wird die Wirksamkeit von BranchCache möglicherweise reduziert, weil die Clientcomputer, die unterschiedliche BranchCache-Versionen verwenden, zwischengespeicherte Daten in nicht kompatiblen Formaten speichern könnten. 
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, verwenden alle Clients die BranchCache-Version, die Sie unter "Aus folgenden Versionen auswählen" angeben.
+
+Wenn Sie diese Einstellung nicht konfigurieren, verwenden alle Clients die BranchCache-Version, die zu dem jeweiligen Betriebssystem passt.
+
+Richtlinienkonfiguration
+
+Wählen Sie eine der folgenden Einstellungen aus:
+
+- Nicht konfiguriert. Mit dieser Auswahl wird diese Richtlinie nicht auf Clientcomputern angewendet. Die Clients führen in diesem Fall die im jeweiligen Betriebssystem enthaltene Version von BranchCache aus.
+
+- Aktiviert. Mit dieser Auswahl wird diese Richtlinieneinstellung basierend auf dem von Ihnen angegebenen Wert der Option "Aus folgenden Versionen auswählen" auf Clientcomputer angewendet.
+
+- Deaktiviert. Mit dieser Auswahl wird diese Richtlinie nicht auf Clientcomputern angewendet. Die Clients führen in diesem Fall die im jeweiligen Betriebssystem enthaltene Version von BranchCache aus.
+
+Für den Fall, dass diese Einstellung aktiviert ist, können Sie auch folgende Option auswählen und konfigurieren:
+
+Aus folgenden Versionen auswählen
+
+- Windows Vista mit installiertem BITS 4.0, Windows 7 oder Windows Server 2008 R2. Wenn Sie diese Version auswählen, führen höhere Versionen von Windows die BranchCache-Version aus, die in den jeweiligen Betriebssystemen enthalten ist, und nicht eine höhere Version von BranchCache.
+
+- Windows 8. Wenn Sie diese Version auswählen, führt Windows 8 die BranchCache-Version aus, die im Betriebssystem enthalten ist.
+            
+            </string>
+
+            <string id="WBC_Downgrading_Version_Win7">Windows Vista mit installiertem BITS 4.0, Windows 7 oder Windows Server 2008 R2</string>
+            <string id="WBC_Downgrading_Version_Win8">Windows 8</string>
+
+            <string id="WBC_Cache_MaxAge">Alter für Segmente im Datencache festlegen</string>
+
+            <string id="WBC_Cache_MaxAge_Help">Diese Richtlinieneinstellung legt die standardmäßige Dauer (in Tagen) fest, für die Segmente im BranchCache-Datencache auf Clientcomputern gültig sind.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, können Sie das Alter für Segmente im Datencache festlegen.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird das Alter auf 28 Tage gesetzt.
+
+Richtlinienkonfiguration
+
+Wählen Sie eine der folgenden Einstellungen aus:
+
+- Nicht konfiguriert. Mit dieser Auswahl werden die BranchCache-Einstellungen für das Cachealter auf Clientcomputern nicht auf Clientcomputer mit dieser Richtlinieneinstellung angewendet. Für den Fall, dass Clientcomputer Domänenmitglieder sind und Sie die Cachealtereinstellung für BranchCache-Clientcomputer jedoch nicht auf allen Clientcomputern aktivieren möchten, geben Sie für diese Domänengruppen-Richtlinieneinstellung "Nicht konfiguriert" an. Anschließend konfigurieren Sie die lokalen Computerrichtlinien, um das Cachealter für BranchCache-Clientcomputer auf einzelnen Clientcomputern zu aktivieren. Da die Domänengruppen-Richtlinieneinstellung nicht konfiguriert wurde, wird die auf einzelnen Clientcomputern aktivierte Cachealtereinstellung nicht überschrieben.
+
+- Aktiviert. Mit dieser Auswahl wird die Cachealtereinstellung für BranchCache-Clientcomputer für alle Clientcomputer aktiviert, auf denen die Richtlinie angewendet wird. Ist z. B. diese Richtlinieneinstellung in der Domänengruppen-Richtlinie aktiviert, wird die Cachealtereinstellung für BranchCache-Clientcomputer, die Sie in der Richtlinie angeben, für alle Clientcomputer der Domäne aktiviert, auf die die Richtlinie angewendet wird.
+
+- Deaktiviert. Mit dieser Auswahl verwenden die BranchCache-Clientcomputer das standardmäßige Cachealter für Clientcomputer von 28 Tagen.
+
+Für den Fall, dass diese Einstellung aktiviert ist, können Sie auch folgende Option auswählen und konfigurieren:
+
+- Alter in Tagen angeben, das Segmente im Datencache gültig sind.
+            
             </string>
 
         </stringTable>
@@ -71,6 +249,7 @@ Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wer
             </presentation>
 
             <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <text>Prozentualen Anteil des Gesamtspeicherplatzes festlegen, der dem Cache zugeordnet wird.</text>
                 <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
                 </decimalTextBox>
             </presentation>
@@ -83,13 +262,28 @@ Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wer
 
             <presentation id="WBC_Hosted_Cache_Location_TextBox">
                 <textBox refId="WBC_Cache_TextBox">
-                    <label>Speicherort des gehosteten Caches eingeben</label>
+                    <label>Hier wird der Computername des gehosteten Cacheservers eingegeben.</label>
                 </textBox>
             </presentation>
 
             <presentation id="WBC_SMB_DecimalTextBox">
-              <text>Roundtrip-Netzwerklatenzwert (ms) eingeben, oberhalb dessen Netzwerkdateien in der Zweigstelle zwischengespeichert werden müssen</text>  
+              <text>Den maximalen Roundtrip-Netzwerklatenzwert (ms) eingeben, oberhalb dessen die Zwischenspeicherung beginnt.</text>  
               <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_MultipleServers">
+              <text>Gehostete Cacheserver</text>  
+              <listBox refId="WBC_MultipleServers_Listbox"/>
+            </presentation>
+
+            <presentation id="WBC_Downgrading_VersionSelection">
+              <dropdownList refId="Downgrading_Version" noSort="true" defaultItem="0">Aus folgenden Versionen auswählen:</dropdownList>
+            </presentation>
+
+            <presentation id="WBC_Cache_MaxAge_Presentation">
+                <text>Geben Sie das Alter in Tagen an, das Segmente im Datencache gültig sind.</text>
+                <decimalTextBox refId="WBC_Cache_MaxAge_dctxtbox" defaultValue="28" spinStep="5">
                 </decimalTextBox>
             </presentation>
 

@@ -10,32 +10,70 @@
       <string id="Lbl_DisableOnAllShares">Tillad ikke hashudgivelse for alle delte mapper</string>
       <string id="Lbl_EnableOnAllShares">Tillad hashudgivelse til alle delte mapper</string>
       <string id="Pol_HashPublication">Hashudgivelse til BranchCache</string>
-      <string id="Pol_HashPublication_Help">Denne politik aktiverer en hashoprettelsestjeneste, som opretter hashværdier for data, der er gemt i delte mapper. Disse hashværdier leveres derefter til klientcomputere, som BranchCache er aktiveret på. Hashværdier er matematisk afledte digitale fingeraftryk af filer, som entydigt identificerer indholdet af filer. Disse digitale fingeraftryk er meget små, hvilket gør det muligt for Windows at sammenligne filer uden at lægge beslag på en meget stor mængde WAN-båndbredde (Wide Area Network).
+      <string id="Pol_HashPublication_Help">Denne politikindstilling angiver, om en tjeneste til hashoprettelse opretter hashværdier, også kaldet indholdsoplysninger, for data, der er gemt i delte mapper. Denne politikindstilling skal anvendes på servercomputere, der har rollen Filtjenester, og både rolletjenesten Filserver og BranchCache for netværksfiler skal være installeret.
 
-En klientcomputer på et afdelingskontor kan hente en hashværdi til en fil på tværs af en WAN-forbindelse, hvis alle følgende betingelser er sande:      
-1) Brugeren har tilladelser til at åbne filen.
-2) BranchCache er aktiveret på klientcomputeren.
-3) Hashudgivelse er tilladt for den delte mappe, som klientcomputeren åbner. 
+Politikkonfiguration
 
-Hvis klientcomputeren finder hashværdien, kan computeren derefter søge efter en identisk version af filen i cachelageret på andre computere i afdelingskontoret. Hvis Windows finder en identisk version af filen i afdelingskontoret, overfører klientcomputeren kopien i det lokale cachelager i stedet for at overføre filen på tværs af WAN-forbindelsen. 
+Vælg en af følgende:
 
-Hvis du vælger indstillingen "Tillad kun hashudgivelse til delte mapper, som BranchCache er aktiveret for" (værdi = 0) for denne politik, oprettes der kun hashværdier til delte mapper, som BranchCache er aktiveret på. Der oprettes hashværdier til disse delte mapper, når et af følgende sker:
-1) Der oprettes en fil i en delt mappe, som en klient med aktiveret BranchCache-understøttelse har aktiveret BranchCache for.
-2) En administrator opretter hashværdier manuelt ved hjælp af kommandolinjeværktøjet Hashgen.
- 
-Hvis du indstiller denne politik til "Tillad ikke hashudgivelse for alle delte mapper" (værdi = 1), oprettes der aldrig hashværdier af og leveres der aldrig hashværdier fra computere, som denne politik anvendes på.
- 
-Hvis du indstiller denne politik til "Tillad hashudgivelse til alle delte mapper" (værdi = 2), oprettes der hashværdier til alle delte mapper på serveren, når et af følgende sker: 
-1) En fil åbnes i en delt mappe på serveren af en klient med BranchCache-understøttelse aktiveret.
-2) En administrator opretter hashværdier manuelt ved hjælp af kommandolinjeværktøjet Hashgen.</string>
-    </stringTable>
+- Ikke konfigureret. Med dette valg anvendes indstillinger for hashudgivelse ikke på filservere. I de tilfælde, hvor filservere er domænemedlemmer, men du ikke ønsker at aktivere BranchCache på alle filservere, kan du angive Ikke konfigureret som denne indstilling for domænegruppepolitik, og derefter kan du konfigurere lokal computerpolitik til at aktivere BranchCache på de enkelte filservere. Da indstillingen for domænegruppepolitik ikke er konfigureret, vil den ikke overskrive den aktiverede indstilling, som du bruger på individuelle servere, hvor du vil aktivere BranchCache.
+
+- Aktiveret. Med dette valg aktiveres hashudgivelse for alle filservere, hvor gruppepolitik anvendes. Hvis hashudgivelse for BranchCache f.eks. aktiveres i domænegruppepolitikken, aktiveres hashudgivelse for alle domænemedlemsfilservere, hvor politikken anvendes. Derefter kan filserverne oprette indholdsoplysninger for alt indhold, der er gemt i BranchCache-baserede filshares.
+
+- Deaktiveret. Med dette valg deaktiveres hashudgivelse for alle filservere, hvor gruppepolitik anvendes.
+
+I de tilfælde, hvor denne politikindstilling er aktiveret, kan du også vælge følgende konfigurationsindstillinger:
+
+- Tillad hashudgivelse til alle delte mapper. Med denne indstilling opretter BranchCache indholdsoplysninger for alt indhold i alle shares på filserveren. 
+
+- Tillad kun hashudgivelse til delte mapper, som BranchCache er aktiveret for. Med denne indstilling oprettes kun indholdsoplysninger for delte mapper, hvor BranchCache er aktiveret. Hvis du bruger denne politikindstilling, skal du aktivere BranchCache for individuelle shares i share- og lagerstyring på filserveren.
+
+- Tillad ikke hashudgivelse for alle delte mapper. Med denne indstilling opretter BranchCache ikke indholdsoplysninger for nogen shares på computeren og sender ingen indholdsoplysninger til klientcomputere, der anmoder om indhold.
+      
+      </string>
+      <string id="Lbl_SupportV1">Understøtter kun hashversion V1</string>
+      <string id="Lbl_SupportV2">Understøtter kun hashversion V2</string>
+      <string id="Lbl_SupportV1andV2">Understøtter både hashversion V1 og V2</string>
+      <string id="Pol_HashSupportVersion">Understøttelse af hashversion for BranchCache</string>
+      <string id="Pol_HashSupportVersion_Help">Denne politikindstilling angiver, om tjenesten til oprettelse af BranchCache-hash understøtter version 1-hashværdier (V1), version 2-hashværdier (V2) eller både V1- og V2-hashværdier. Hashværdier, der også kaldes indholdsoplysninger, oprettes ud fra data i delte mapper, hvor BranchCache er aktiveret. 
+
+Hvis du kun angiver én version, der understøttes, oprettes kun indholdsoplysninger til denne version af BranchCache, og det er den eneste type af indholdsoplysninger, der kan hentes af klientcomputere. Hvis du f.eks. aktiverer understøttelse af V1-hashværdier, opretter BranchCache kun V1-hashværdier, og klientcomputere kan kun hente V1-hashværdier.
+
+Politikkonfiguration
+
+Vælg en af følgende:
+
+- Ikke konfigureret. Med dette valg anvendes BranchCache-indstillinger for ventetid ikke på klientcomputere af denne politikindstilling. I dette tilfælde, som er standarden, understøttes oprettelse og hentning af både V1- og V2-hashværdier.
+
+- Aktiveret. Med dette valg anvendes politikindstillingen, og den eller de hashversioner, der er angivet i "Understøttet hashversion", oprettes og hentes.
+
+- Deaktiveret. Med dette valg understøttes oprettelse og hentning af både V1- og V2-hashværdier.
+
+I de tilfælde, hvor denne indstilling er aktiveret, kan du også markere og konfigurere følgende indstilling:
+
+Understøttet hashversion:
+
+- Hvis du kun vil understøtte V1-indholdsoplysninger, skal du konfigurere "Understøttet hashversion" med værdien 1.
+
+- Hvis du kun vil understøtte V2-indholdsoplysninger, skal du konfigurere "Understøttet hashversion" med værdien 2.
+
+- Hvis du vil understøtte både V1- og V2-indholdsoplysninger, skal du konfigurere "Understøttet hashversion" med værdien 3.</string>
+      </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
         <text>Værdier:</text>
         <text>0 = Tillad kun hashudgivelse til delte mapper, som BranchCache er aktiveret for</text>
         <text>1 = Tillad ikke hashudgivelse for alle delte mapper</text>
         <text>2 = Tillad hashudgivelse til alle delte mapper</text>
-        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Hashudgivelseshandlinger: </dropdownList>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Hashudgivelseshandlinger:  </dropdownList>
+        <text> </text>
+      </presentation>
+      <presentation id="Pol_HashSupportVersion">
+        <text>Værdier:</text>
+        <text>1 = Understøt V1-hashværdier</text>
+        <text>2 = Understøt V2-hashværdier</text>
+        <text>3 = Understøt V1- og V2-hashværdier</text>
+        <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Understøttet hashversion:  </dropdownList>
         <text> </text>
       </presentation>
     </presentationTable>

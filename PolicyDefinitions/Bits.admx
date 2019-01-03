@@ -32,7 +32,12 @@
           <reference ref="products:BITS35"/>
         </or>
       </definition>
-    </definitions>
+      <definition name="SUPPORTED_Windows8OrBITS5" displayName="$(string.SUPPORTED_Windows8OrBITS5)">
+          <or>
+              <reference ref="windows:SUPPORTED_Windows8"/>
+          </or>
+      </definition>
+  </definitions>
   </supportedOn>
 
   <categories>
@@ -1184,6 +1189,183 @@
 
 <!-- JobLimit changes -->
 
+
+    <!-- Win8  jobs cost transfer  policies-->
+
+    <policy name="BITS_SetTransferPolicyOnCostedNetwork" class="Machine" displayName="$(string.BITS_SetTransferPolicyOnCostedNetwork)" explainText="$(string.BITS_SetTransferPolicyOnCostedNetwork_Help)" presentation="$(presentation.BITS_SetTransferPolicyOnCostedNetwork)" key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy">
+      <parentCategory ref="BITS" />
+      <supportedOn ref="SUPPORTED_Windows8OrBITS5" />
+      <elements>
+        <enum id="BITS_TransferPolicyForegroundPriorityValue" key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="ForegroundTransferPolicy">
+          <item displayName="$(string.BITS_TransferPolicyAlwaysTransfer)">
+            <value>
+              <decimal value="2147483903" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyNotRoamingTransfer)">
+            <value>
+              <decimal value="2147483775" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyNoSurcharge)">
+            <value>
+              <decimal value="2147483759" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyStandard)">
+            <value>
+              <decimal value="2147483751" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyUnrestricted)">
+            <value>
+              <decimal value="2147483681" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_Custom)">
+            <value>
+              <decimal value="255" />
+            </value>
+            <valueList>
+              <item key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="ForegroundTransferPolicy">
+                <value>
+                  <delete />
+                </value>
+              </item>
+            </valueList>
+          </item>
+        </enum>
+        <decimal id="BITS_TransferPolicyForegroundPriorityValueCustom" key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="ForegroundTransferPolicyCustom" maxValue="2147483647" />
+
+
+        <enum id="BITS_TransferPolicyHighPriorityValue" key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="HighTransferPolicy">
+          <item displayName="$(string.BITS_TransferPolicyAlwaysTransfer)">
+            <value>
+              <decimal value="255" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyNotRoamingTransfer)">
+            <value>
+              <decimal value="127" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyNoSurcharge)">
+            <value>
+              <decimal value="111" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyStandard)">
+            <value>
+              <decimal value="103" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyUnrestricted)">
+            <value>
+              <decimal value="33" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_Custom)">
+            <value>
+              <decimal value="255" />
+            </value>
+            <valueList>
+              <item key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="HighTransferPolicy">
+                <value>
+                  <delete />
+                </value>
+              </item>
+            </valueList>
+          </item>
+        </enum>
+        <decimal id="BITS_TransferPolicyHighPriorityValueCustom" key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="HighTransferPolicyCustom" maxValue="2147483647" />
+
+        <enum id="BITS_TransferPolicyNormalPriorityValue" key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="NormalTransferPolicy">
+          <item displayName="$(string.BITS_TransferPolicyAlwaysTransfer)">
+            <value>
+              <decimal value="255" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyNotRoamingTransfer)">
+            <value>
+              <decimal value="127" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyNoSurcharge)">
+            <value>
+              <decimal value="111" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyStandard)">
+            <value>
+              <decimal value="103" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyUnrestricted)">
+            <value>
+              <decimal value="33" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_Custom)">
+            <value>
+              <decimal value="255" />
+            </value>
+            <valueList>
+              <item key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="NormalTransferPolicy">
+                <value>
+                  <delete />
+                </value>
+              </item>
+            </valueList>
+          </item>
+        </enum>
+        <decimal id="BITS_TransferPolicyNormalPriorityValueCustom" key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="NormalTransferPolicyCustom" maxValue="2147483647" />
+
+        <enum id="BITS_TransferPolicyLowPriorityValue" key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="LowTransferPolicy">
+          <item displayName="$(string.BITS_TransferPolicyAlwaysTransfer)">
+            <value>
+              <decimal value="255" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyNotRoamingTransfer)">
+            <value>
+              <decimal value="127" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyNoSurcharge)">
+            <value>
+              <decimal value="111" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyStandard)">
+            <value>
+              <decimal value="103" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_TransferPolicyUnrestricted)">
+            <value>
+              <decimal value="33" />
+            </value>
+          </item>
+          <item displayName="$(string.BITS_Custom)">
+            <value>
+              <decimal value="255" />
+            </value>
+            <valueList>
+              <item key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="LowTransferPolicy">
+                <value>
+                  <delete />
+                </value>
+              </item>
+            </valueList>
+          </item>
+        </enum>
+        <decimal id="BITS_TransferPolicyLowPriorityValueCustom" key="Software\Policies\Microsoft\Windows\BITS\TransferPolicy" valueName="LowTransferPolicyCustom" maxValue="2147483647" />        
+      </elements>
+    </policy>
+    
+    
+    
+    
 <!-- MaxJobsPerMachine -->
 
     <policy name="BITS_MaxJobsPerMachine" class="Machine" displayName="$(string.BITS_MaxJobsPerMachine)" explainText="$(string.BITS_MaxJobsPerMachineText)" presentation="$(presentation.BITS_MaxJobsPerMachine)" key="Software\Policies\Microsoft\Windows\BITS">

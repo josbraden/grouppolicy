@@ -1,67 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>אופן הפעולה של רשת מנוהלת</displayName>
-  <description>התקנת פקדי ActiveX מאתרי התקנה מאושרים</description>
+  <displayName>ActiveX Installer Service</displayName>
+  <description>Installs ActiveX controls from approved installation sites</description>
   <resources>
     <stringTable>
-      <string id="AxInstSv">שירות מתקין ActiveX</string>
-      <string id="AxISURLZonePolicies">מדיניות התקנת ActiveX לאתרים באזורים מהימנים</string>        
-      <string id="AxISURLZonePolicies_explain">הגדרת מדיניות זו שולטת בהתקנה של פקדי ActiveX עבור אתרים באזור מהימן. אם הגדרה זו זמינה, פקדי ActiveX יותקנו בהתאם להגדרות שנקבעו בהגדרת מדיניות זו. 
+      <string id="AxInstSv">ActiveX Installer Service</string>
+      <string id="AxISURLZonePolicies">Establish ActiveX installation policy for sites in Trusted zones</string>        
+      <string id="AxISURLZonePolicies_explain">This policy setting controls the installation of ActiveX controls for sites in Trusted zone. 
+
+If you enable this policy setting, ActiveX controls are installed according to the settings defined by this policy setting. 
       
-אם הגדרה זו אינה זמינה או שתצורתה לא נקבעה, פקדי ActiveX תמיד יציגו למשתמש הנחיה לפני ההתקנה. 
+If you disable or do not configure this policy setting, ActiveX controls prompt the user before installation. 
 
-אם האתר המהימן משתמש בפרוטוקול HTTPS, להגדרת מדיניות זו יש גם אפשרות לשלוט באופן שבו שירות מתקין ActiveX יגיב לשגיאות אישור. כברירת מחדל, כל חיבורי ה- HTTPS נדרשים לספק אישור שרת שיענה על כל קריטריוני האימות. אם אתה מודע לכך שאתר מהימן כולל שגיאת אישור אך עדיין מעוניין לתת בו אמון, באפשרותך לבחור את שגיאות האישור שמהן ברצונך להתעלם.
+If the trusted site uses the HTTPS protocol, this policy setting can also control how ActiveX Installer Service responds to certificate errors. By default all HTTPS connections must supply a server certificate that passes all validation criteria. If you are aware that a trusted site has a certificate error but you want to trust it anyway you can select the certificate errors that you want to ignore. 
     
-הערה: הגדרה זו חלה על כל האתרים באזורים מהימנים.
+Note: This policy setting applies to all sites in Trusted zones.
 </string>
-      <string id="TrustedZoneDisabled">אל תתקין</string>
-      <string id="TrustedZonePrompt">הצג הנחיה למשתמש</string>
-      <string id="TrustedZoneSilentInstall">התקנה שקטה</string>
-      <string id="ApprovedActiveXInstallSites">אתרי התקנה מאושרים עבור פקדי ActiveX</string>
-      <string id="ApprovedActiveXInstallSites_explain">שירות מתקין ActiveX הוא הפתרון להקצאת ההתקנה של פקדי ActiveX לפי מחשב, למשתמש רגיל בארגון.
+      <string id="TrustedZoneDisabled">Don't install</string>
+      <string id="TrustedZonePrompt">Prompt the user</string>
+      <string id="TrustedZoneSilentInstall">Silently install</string>
+      <string id="ApprovedActiveXInstallSites">Approved Installation Sites for ActiveX Controls</string>
+      <string id="ApprovedActiveXInstallSites_explain">This policy setting determines which ActiveX installation sites standard users in your organization can use to install ActiveX controls on their computers. When this setting is enabled, the administrator can create a list of approved Activex Install sites specified by host URL. 
 
-רשימת אתרי ההתקנה המאושרים של ActiveX מכילה את כתובת ה- URL של המארח ואת הגדרות המדיניות עבור כל כתובת URL של מארח. ‏‏תווים כלליים אינם נתמכים.      </string>
+If you enable this setting, the administrator can create a list of approved ActiveX Install sites specified by host URL. 
+      
+If you disable or do not configure this policy setting, ActiveX controls prompt the user for administrative credentials before installation. 
+
+Note: Wild card characters cannot be used when specifying the host URLs.
+</string>
     </stringTable>
     <presentationTable>
       <presentation id="AxISURLZonePolicies">
-        <dropdownList refId="InstallTrustedOCX" noSort="true" defaultItem="2">מדיניות התקנה עבור פקד ActiveX חתום על-ידי מפרסם מהימן</dropdownList>
-        <dropdownList refId="InstallSignedOCX" noSort="true" defaultItem="1">מדיניות ההתקנה עבור פקד ActiveX חתום</dropdownList>
-        <dropdownList refId="InstallUnSignedOCX" noSort="true" defaultItem="0">מדיניות ההתקנה עבור פקד ActiveX לא חתום</dropdownList>
-        <text>אשר התחברות לאתרים מהימנים עם שגיאות אישור השרת שלהלן.</text>
-        <checkBox refId="IgnoreUnknownCA" defaultChecked="false">רשות אישורים (CA) לא ידועה</checkBox>
-        <checkBox refId="IgnoreInvalidCN" defaultChecked="false">שם אישור (CN) לא חוקי</checkBox>
-        <checkBox refId="IgnoreInvalidCertDate" defaultChecked="false">תאריך פקיעת תוקף של אישור</checkBox>
-        <checkBox refId="IgnoreWrongCertUsage" defaultChecked="false">שימוש שגוי באישור</checkBox>
+        <dropdownList refId="InstallTrustedOCX" noSort="true" defaultItem="2">Installation Policy for ActiveX control signed by trusted publisher</dropdownList>
+        <dropdownList refId="InstallSignedOCX" noSort="true" defaultItem="1">Installation Policy for signed ActiveX control</dropdownList>
+        <dropdownList refId="InstallUnSignedOCX" noSort="true" defaultItem="0">Installation Policy for unsigned ActiveX control</dropdownList>
+        <text>Permit connection to trusted sites with the following server certificate errors.</text>
+        <checkBox refId="IgnoreUnknownCA" defaultChecked="false">Unknown certifcation authority (CA)</checkBox>
+        <checkBox refId="IgnoreInvalidCN" defaultChecked="false">Invalid certificate name (CN)</checkBox>
+        <checkBox refId="IgnoreInvalidCertDate" defaultChecked="false">Expired certificate validation date</checkBox>
+        <checkBox refId="IgnoreWrongCertUsage" defaultChecked="false">Wrong certificate usage</checkBox>
       </presentation>
 
       <presentation id="ApprovedActiveXInstallSites">
-        <listBox refId="ApprovedActiveXInstallSiteslist">כתובות URL של מארחים</listBox>
-        <text>מכילה מדיניות עבור כתובת ה- URL של המארח.</text>
-        <text>למשל </text>
+        <listBox refId="ApprovedActiveXInstallSiteslist">Host URLs</listBox>
+        <text>Contains policy for the host URL.</text>
+        <text>For example </text>
         <text>HostName: http://activex.microsoft.com</text>
-        <text>ערך: 2,1,0,0</text>
-        <text>הערך עבור כל כתובת URL של מארח הוא ארבע הגדרות בתבנית CSV.</text>
-        <text>לייצוג "TPSSignedControl,SignedControl,UnsignedControl,ServerCertificatePolicy</text>
-        <text>שלושת הערכים השמאליים ביותר במדיניות שולטים בהתקנה של פקדי ActiveX בהתבסס על החתימה שלהם.</text>
-        <text>הם יכולים להיות אחד מהערכים שלהלן.</text>
-        <text>0: פקד ActiveX לא יותקן</text>
-        <text>1: הצגת הנחיה למשתמש להתקנת פקד ActiveX</text>
-        <text>2: פקד ActiveX יותקן בצורה שקטה</text>
-        <text>פקדים הנושאים חתימות של אישורים במאגר המפרסמים המהימנים יותקנו בצורה שקטה </text>
-        <text>אין תמיכה בהתקנה שקטה של פקדים ללא חתימה</text>
+        <text>Value: 2,1,0,0</text>
+        <text>The value for each Host URL is four settings in CSV format.</text>
+        <text>Which represents "TPSSignedControl,SignedControl,UnsignedControl,ServerCertificatePolicy</text>
+        <text>The three left most values in the policy control the installation of ActiveX controls based on their signature.</text>
+        <text>They can be one of the following.</text>
+        <text>0: ActiveX control will not be installed</text>
+        <text>1: Prompt the user to install ActiveX control</text>
+        <text>2: ActiveX control will be silently installed</text>
+        <text>Controls signed by certificates in trusted publisher store will be silently installed </text>
+        <text>Silent installation for unsigned controls is not supported</text>
         <text></text>
-        <text>הערך הימני ביותר במדיניות הוא דגל עם מסיכת סיביות</text>
-        <text>הדגלים משמשים להתעלמות משגיאות אישורי https.</text>
-        <text>ערך ברירת המחדל הוא 0.</text>
-        <text>כלומר, חיבורי https חייבים לעבור את כל בדיקות האבטחה</text>
+        <text>The right most value in the policy is a bitmasked flag</text>
+        <text>The flags are used for ignoring https certificate errors.</text>
+        <text>The default value is 0.</text>
+        <text>Which means that the https connections must pass all security checks</text>
         <text></text>
-        <text>השתמש בשילוב של הערכים הבאים</text>
-        <text>כדי להתעלם משגיאות אישורים לא חוקיים</text>
-        <text>0x00000100  התעלם מרשות אישורים לא ידועה</text>
-        <text>0x00001000  התעלם משם אישור לא חוקי</text>
-        <text>0x00002000  התעלם מתאריך אישור לא חוקי</text>
-        <text>0x00000200  התעלם משימוש שגוי באישור</text>
+        <text>Use the combination of the following values</text>
+        <text>to ignore invalid certificate errors</text>
+        <text>0x00000100  Ignore Unknown CA</text>
+        <text>0x00001000  Ignore invalid CN</text>
+        <text>0x00002000  Ignore invalid certificate date</text>
+        <text>0x00000200  Ignore wrong certificate usage</text>
         <text></text>
         
       </presentation>

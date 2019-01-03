@@ -10,17 +10,25 @@
 
 			<string id="EventForwarding">Inoltro eventi</string>
 
-                        <string id="ForwarderResourceUsage">ForwarderResourceUsage</string>
-                        <string id="ForwarderResourceUsage_Help">Controlla l'utilizzo delle risorse per il server di inoltro. Ogni impostazione si applica a tutte le sottoscrizioni per il server di inoltro.</string>
+                        <string id="ForwarderResourceUsage">Configura utilizzo risorse server d'inoltro</string>
+                        <string id="ForwarderResourceUsage_Help">Questa impostazione dei criteri controlla l'utilizzo delle risorse per il server d'inoltro (computer di origine) verificando gli eventi/al secondo inviati al servizio Raccolta eventi.
+
+Se si abilita questa impostazione dei criteri, è possibile controllare il volume di eventi inviati al servizio Raccolta eventi dal computer di origine. Questa impostazione potrebbe essere obbligatoria in ambienti con volumi elevati.
+
+Se si disabilita o non si configura questa impostazione dei criteri, l'utilizzo delle risorse del server d'inoltro non verrà specificato,.
+
+Questa impostazione si applica a tutte le sottoscrizioni per il server d'inoltro (computer di origine).</string>
  
-			<string id="SubscriptionManager">Configura indirizzo del server, intervallo di aggiornamento e Autorità di certificazione emittente di un gestore sottoscrizioni di destinazione</string>
+			<string id="SubscriptionManager">Configura gestore sottoscrizioni di destinazione</string>
 
-			<string id="Subscription_Help">Questa impostazione consente di configurare l'indirizzo del server, l'intervallo di aggiornamento e l'Autorità di certificazione (CA) emittente di un gestore sottoscrizioni di destinazione. Il gestore sottoscrizioni di destinazione è il computer a cui vengono inoltrati gli eventi.
+			<string id="Subscription_Help">Questa impostazione dei criteri consente di configurare l'indirizzo del server, l'intervallo di aggiornamento e l'Autorità di certificazione (CA) emittente di un gestore sottoscrizioni di destinazione.
 
-Sintassi: Opzione=Valore[,Opzione=Valore]*
-Opzioni:
-Server (obbligatoria) - Indirizzo del computer a cui devono essere inoltrati gli eventi. Se il server utilizza il protocollo di trasporto (HTTP) e la porta (5985) predefiniti, utilizzare "Server=&lt;FQDN&gt;", dove &lt;FQDN&gt; è il nome di dominio completo del server. In caso contrario, specificare l'URL completo. Se, ad esempio, si utilizza il protocollo HTTPS, immettere "Server=https://&lt;FQDN&gt;:5986/wsman/SubscriptionManager/WEC"
-</string>
+Se si abilita questa impostazione dei criteri, è possibile configurare il computer di origine in modo da contattare un nome di dominio completo (FQDN) o un indirizzo IP e richiedere le specifiche della sottoscrizione.
+
+Utilizzare la sintassi seguente con il protocollo HTTPS:
+Server=https://&lt;FQDN del servizio Raccolta eventi&gt;:5986/wsman/SubscriptionManager/WEC,Refresh=&lt;Intervallo di aggiornamento in secondi&gt;,IssuerCA=&lt;Identificazione personale del certificato di autenticazione client&gt;. Con il protocollo HTTP, utilizzare la porta 5985.
+
+Se si disabilita o non si configura questa impostazione dei criteri, il computer Raccolta eventi non verrà specificato.</string>
 
 			<string id="SubscriptionManager_Listbox">SubscriptionManagers</string>
 		</stringTable>
@@ -36,7 +44,7 @@ Server (obbligatoria) - Indirizzo del computer a cui devono essere inoltrati gli
 
                         <presentation id="ForwarderResourceUsage">
 
-                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">Frequenza di inoltro massima (eventi/sec) consentita per il server di inoltro: </decimalTextBox>
+                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">Frequenza di inoltro massima (eventi/sec) consentita per il server di inoltro:  </decimalTextBox>
 
                         </presentation>
 

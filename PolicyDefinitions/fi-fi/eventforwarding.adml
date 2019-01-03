@@ -10,17 +10,25 @@
 
 			<string id="EventForwarding">Tapahtumien välitys</string>
 
-                        <string id="ForwarderResourceUsage">ForwarderResourceUsage</string>
-                        <string id="ForwarderResourceUsage_Help">Määrittää välittäjän resurssien käytön. Kukin asetus koskee välittäjän kaikkia tilauksia.</string>
+                        <string id="ForwarderResourceUsage">Määritä välittäjän resurssien käyttö</string>
+                        <string id="ForwarderResourceUsage_Help">Tämä käytäntöasetus ohjaa (lähdetietokoneen) välittäjän resurssien käyttöä hallitsemalla tapahtumien keräystoiminnolle lähetettyjen tapahtumien määrää sekunnissa.
+
+Jos otat tämän käytäntöasetuksen käyttöön, voit hallita lähdetietokoneen tapahtumien keräystoiminnolle lähettämien tapahtumien määrää. Tämä saattaa olla pakollinen asetus suuren kuormituksen ympäristöissä.
+
+Jos poistat tämän asetuksen käytöstä tai et määritä sitä, välittäjän resurssien käyttöä ei määritetä.
+
+Tämä asetus on voimassa kaikissa (lähdetietokoneen) välittäjän tilauksissa.</string>
  
-			<string id="SubscriptionManager">Määritä kohteena olevan tilauksen hallintaohjelman palvelinosoite, päivitysväli ja varmenteen myöntäjä</string>
+			<string id="SubscriptionManager">Kohteena olevan tilauksen hallintaohjelman määritys</string>
 
-			<string id="Subscription_Help">Tämän käytäntöasetuksen avulla voit määrittää kohteena olevan tilauksen hallintaohjelman palvelinosoitteen, päivitysvälin ja varmenteen myöntäjän. Tilauksen hallintaohjelmasta huolehtii tietokone, johon tapahtumia välitetään.
+			<string id="Subscription_Help">Tämän käytäntöasetuksen avulla voit määrittää kohteena olevan tilauksen hallintaohjelman palvelinosoitteen, päivitysvälin ja varmenteen myöntäjän.
 
-Syntaksi: Valitsin=Arvo[,Valitsin=Arvo]*
-Valitsimet:
-Server (pakollinen) - Sen tietokoneen osoite, johon tapahtumia välitetään. Kun palvelin käyttää oletussiirtoprotokollaa (HTTP) ja oletusporttia (5 985), käytä asetusta "Server=&lt;FQDN&gt;", jossa &lt;FQDN&gt; on palvelimen täydellinen toimialuenimi. Muussa tapauksessa määritä täydellinen URL-osoite. Esimerkki käytettäessä HTTPS-protokollaa: "Server=https://&lt;FQDN&gt;:5986/wsman/SubscriptionManager/WEC"
-</string>
+Jos otat tämän käytäntöasetuksen käyttöön, voit määrittää lähdetietokoneen muodostamaan yhteyden tiettyyn täydelliseen toimialuenimeen (FQDN) tai IP-osoitteeseen ja pyytämään tilauksen tekniset tiedot.
+
+Käytä seuraavaa syntaksia HTTPS-protokollassa:
+Server=https://&lt;keräystoiminnon täydellinen toimialuenimi&gt;:5986/wsman/SubscriptionManager/WEC,Refresh=&lt;Päivitysväli sekunteina&gt;,IssuerCA=&lt;asiakkaan todennusvarmenteen allekirjoitus&gt;. Kun käytät HTTP-protokollaa, käytä porttia 5985.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, tapahtumien keräystoiminnon tietokonetta ei määritetä.</string>
 
 			<string id="SubscriptionManager_Listbox">SubscriptionManagers</string>
 		</stringTable>
@@ -36,7 +44,7 @@ Server (pakollinen) - Sen tietokoneen osoite, johon tapahtumia välitetään. Ku
 
                         <presentation id="ForwarderResourceUsage">
 
-                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">Suurin välitysnopeus (tapahtumaa/sekunnissa), jonka välittäjä sallii: </decimalTextBox>
+                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">Suurin välitysnopeus (tapahtumaa/sekunnissa), jonka välittäjä sallii:  </decimalTextBox>
 
                         </presentation>
 

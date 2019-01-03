@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
   <policyNamespaces>
@@ -6,8 +6,7 @@
     <using prefix="windows" namespace="Microsoft.Policies.Windows" />
   </policyNamespaces>
   <resources minRequiredRevision="1.0" />
-  <categories>
-    <category name="Filesystem" displayName="$(string.Filesystem)">
+  <categories>    <category name="Filesystem" displayName="$(string.Filesystem)">
       <parentCategory ref="windows:System"/>
     </category>
     <category name="NTFS" displayName="$(string.NTFS)">
@@ -66,7 +65,7 @@
     key="System\CurrentControlSet\Policies" 
     valueName="NtfsDisableCompression">
       <parentCategory ref="NTFS" />
-      <supportedOn ref="windows:SUPPORTED_Win7" />
+      <supportedOn ref="windows:SUPPORTED_Windows7" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -81,7 +80,7 @@
     key="System\CurrentControlSet\Policies" 
     valueName="NtfsDisableEncryption">
       <parentCategory ref="NTFS" />
-      <supportedOn ref="windows:SUPPORTED_Win7" />
+      <supportedOn ref="windows:SUPPORTED_Windows7" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -96,7 +95,7 @@
     key="System\CurrentControlSet\Policies" 
     valueName="NtfsEncryptPagingFile">
       <parentCategory ref="NTFS" />
-      <supportedOn ref="windows:SUPPORTED_Win7" />
+      <supportedOn ref="windows:SUPPORTED_Windows7" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -110,7 +109,7 @@
     presentation="$(presentation.ShortNameCreationSettings)"
     key="System\CurrentControlSet\Policies" >
       <parentCategory ref="NTFS" />
-      <supportedOn ref="windows:SUPPORTED_Win7" />
+      <supportedOn ref="windows:SUPPORTED_Windows7" />
       <elements>
           <enum id="ShortNameCreationSetting_Levels" valueName="NtfsDisable8dot3NameCreation">
               <item displayName="$(string.ShortNameCreationSetting_0)">
@@ -143,13 +142,28 @@
     key="System\CurrentControlSet\Policies" 
     valueName="DisableDeleteNotification">
         <parentCategory ref="Filesystem" />
-        <supportedOn ref="windows:SUPPORT_Win7" />
+        <supportedOn ref="windows:SUPPORTED_Windows7" />
         <enabledValue>
             <decimal value="1" />
         </enabledValue>
         <disabledValue>
             <decimal value="0" />
         </disabledValue>
+    </policy>
+    <policy name="TxfDeprecatedFunctionality" class="Machine" 
+    displayName="$(string.TxfDeprecatedFunctionality)" 
+    explainText="$(string.TxfDeprecatedFunctionalityText)" 
+    presentation="$(presentation.TxfDeprecatedFunctionalityOptions)" 
+    key="System\CurrentControlSet\Policies" 
+    valueName="NtfsEnableTxfDeprecatedFunctionality">
+      <parentCategory ref="NTFS" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
     </policy>
   </policies>
 </policyDefinitions>

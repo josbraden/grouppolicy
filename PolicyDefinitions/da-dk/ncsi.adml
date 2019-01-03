@@ -6,16 +6,18 @@
   <resources>
     <stringTable>
       <string id="NCSI_Category">Indikator for netværksforbindelse</string>
-      <string id="NCSI_CorpWebProbeUrl">Test-URL-adresse til firmawebsted</string>
-      <string id="NCSI_CorpWebProbeUrl_Help">Dette er den URL-adresse til firmaets websted, som bruges til at udføre en aktiv test på.</string>
-      <string id="NCSI_CorpDnsProbeHost">Testværtsnavn for firma-DNS</string>
-      <string id="NCSI_CorpDnsProbeHost_Help">Dette er værtsnavnet på en pc, som med sikkerhed findes på firmaets netværk. Fortolkes dette navn korrekt til den forventede adresse, angiver det, at der er firmaforbindelse.</string>
-      <string id="NCSI_CorpDnsProbeContent">Testværtsadresse for firma-DNS</string>
-      <string id="NCSI_CorpDnsProbeContent_Help">Dette er den forventede adresse på værtsnavnet, som bruges til DNS-testen. Fortolkes dette navn korrekt til denne adresse, angiver det, at der er firmaforbindelse.</string>
-      <string id="NCSI_CorpSitePrefixes">Præfiksliste for firmawebsted</string>
-      <string id="NCSI_CorpSitePrefixes_Help">Dette er listen over IPv6-præfikser for firmawebsteder, som firmaforbindelse skal overvåges for. Hvis der kan opnås forbindelse til adresserne med et af disse præfikser, angiver det, at der er firmaforbindelse.</string>
-      <string id="NCSI_DomainLocationDeterminationUrl">URL-adresse til bestemmelse af domæneplacering</string>
-      <string id="NCSI_DomainLocationDeterminationUrl_Help">Dette er HTTPS URL-adressen på det firmawebsted, der bruges til at bestemme den aktuelle domæneplacering, dvs. i eller uden for firmaet. Hvis der kan opnås forbindelse til URL-adressen, angiver det, at placeringen er i firmaet, og ellers at den er uden for firmaet.</string>
+      <string id="NCSI_CorpWebProbeUrl">Angiv URL-testadresse til firmawebsted</string>
+      <string id="NCSI_CorpWebProbeUrl_Help">Brug denne politikindstilling til at angive URL-adressen til firmawebstedet, som der udføres en aktiv test mod.</string>
+      <string id="NCSI_CorpDnsProbeHost">Angiv DNS-testfirmaværtsnavnet</string>
+      <string id="NCSI_CorpDnsProbeHost_Help">Brug denne politikindstilling til at angive værtsnavnet på en computer, der findes på firmanetværket. Fortolkes dette navn korrekt til den forventede adresse, angiver det, at der er firmaforbindelse.</string>
+      <string id="NCSI_CorpDnsProbeContent">Angiv DNS-testfirmaværtsadressen</string>
+      <string id="NCSI_CorpDnsProbeContent_Help">Brug denne politikindstilling til at angive den forventede adresse på værtsnavnet for DNS-testen. Fortolkes dette navn korrekt til denne adresse, angiver det, at der er firmaforbindelse.</string>
+      <string id="NCSI_CorpSitePrefixes">Angiv præfiksliste til firmawebsted</string>
+      <string id="NCSI_CorpSitePrefixes_Help">Brug denne politikindstilling til at angive listen over præfikser for de IPv6-firmawebsteder, der skal overvåges på firmanetværket. Hvis der kan opnås forbindelse til adresserne med et af disse præfikser, angiver det, at der er firmaforbindelse.</string>
+      <string id="NCSI_DomainLocationDeterminationUrl">Angiv bestemmelses-URL-adressen for domæneplacering</string>
+      <string id="NCSI_DomainLocationDeterminationUrl_Help">Du kan bruge denne politikindstilling til at angive HTTPS URL-adressen for det firmawebsted, som klienter bruger til at bestemme den aktuelle domæneplacering, dvs. om computeren er inden for eller uden for firmanetværket. Hvis der kan fås forbindelse til URL-destinationen, angiver det, at klientplaceringen er inden for firmanetværket. Ellers er den uden for netværket.</string>
+      <string id="NCSI_PassivePolling">Angiv passiv forespørgsler</string>
+      <string id="NCSI_PassivePolling_Help">Ved hjælp af denne politikindstilling kan du angive funktionsmåden for passive forespørgsler. NCSI opretter forespørgsler til forskellige målinger via netværksstakken på et hyppigt interval for at bestemme, om netværksforbindelsen er gået tabt.  Brug indstillingerne til at styre funktionsmåden for passive forespørgsler</string>
     </stringTable>
     <presentationTable>
       <presentation id="NCSI_CorpWebProbeUrl">
@@ -53,8 +55,8 @@
         <text>hvis muligheder for at opnå firmaforbindelse</text>
         <text>skal registreres.</text>
         <text>Syntaks:</text>
-        <text>  Listen skal være kommasepareret og uden</text>
-        <text>  ekstra mellemrum.</text>
+        <text>    Listen skal være kommasepareret og uden</text>
+        <text>    ekstra mellemrum.</text>
         <text>Eksempel:</text>
         <text>  fe80::/9,fe81::/9</text>
       </presentation>
@@ -66,6 +68,10 @@
         <text>skal bruges til at bestemme domæneplacering i eller uden for firmaet.</text>
         <text>Eksempel:</text>
         <text>  https://nid.corp.microsoft.com/</text>
+      </presentation>
+      <presentation id="NCSI_PassivePolling">
+        <text>Følgende afkrydsningsfelt deaktiverer funktionen til passive forespørgsler i NCSI.   Dette kan forbedre CPU-belastningen på servere eller andre computere, hvor netværksforbindelsen er statisk.</text>
+        <checkBox refId="NCSI_DisablePassivePolling_Checkbox">Deaktiver passive forespørgsler</checkBox>  
       </presentation>
     </presentationTable>
   </resources>

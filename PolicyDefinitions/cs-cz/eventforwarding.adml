@@ -1,28 +1,36 @@
 <?xml version="1.0"?>
 <policyDefinitionResources revision="1.0" schemaVersion="1.0">
-	<displayName>Předávání událostí</displayName>
+	<displayName>Event Forwarding</displayName>
 
-	<description>Definice zásad pro předávání událostí</description>
+	<description>Policy Definitions For Event Forwarding</description>
 
 	<resources>
 
 		<stringTable>
 
-			<string id="EventForwarding">Předávání událostí</string>
+			<string id="EventForwarding">Event Forwarding</string>
 
-                        <string id="ForwarderResourceUsage">ForwarderResourceUsage</string>
-                        <string id="ForwarderResourceUsage_Help">Řídí využití zdrojů pro server pro předávání. Každé nastavení platí u všech odběrů daného serveru pro předávání.</string>
+                        <string id="ForwarderResourceUsage">Configure forwarder resource usage</string>
+                        <string id="ForwarderResourceUsage_Help">This policy setting controls resource usage for the forwarder (source computer) by controlling the events/per second sent to the Event Collector.
+
+If you enable this policy setting, you can control the volume of events sent to the Event Collector by the source computer. This may be required in high volume environments.
+
+If you disable or do not configure this policy setting, forwarder resource usage is not specified.
+
+This setting applies across all subscriptions for the forwarder (source computer).</string>
  
-			<string id="SubscriptionManager">Konfigurovat adresu serveru, interval aktualizace a certifikační autoritu vydavatele pro cílového správce odběrů</string>
+			<string id="SubscriptionManager">Configure target Subscription Manager</string>
 
-			<string id="Subscription_Help">Nastavení této zásady umožňuje nakonfigurovat adresu serveru, interval aktualizace a certifikační autoritu vydavatele pro cílového správce odběrů. Správcem odběrů je počítač, do něhož jsou předávány události.
+			<string id="Subscription_Help">This policy setting allows you to configure the server address, refresh interval, and issuer certificate authority (CA) of a target Subscription Manager.
 
-Syntaxe: Možnost=Hodnota[,Možnost=Hodnota]*
-Možnosti:
-Server (povinné) – Adresa počítače, do kterého mají být předávány události. Pokud server používá výchozí transportní protokol (HTTP) a port (5985), použijte nastavení Server=&lt;FQDN&gt;, kde &lt;FQDN&gt; je plně kvalifikovaný název domény serveru. V opačném případě zadejte úplnou adresu URL. Při použití protokolu HTTPS například zadejte adresu v tomto tvaru: Server=https://&lt;FQDN&gt;:5986/wsman/SubscriptionManager/WEC.
-</string>
+If you enable this policy setting, you can configure the Source Computer to contact a specific FQDN (Fully Qualified Domain Name) or IP Address and request subscription specifics.
 
-			<string id="SubscriptionManager_Listbox">Správci odběrů</string>
+Use the following syntax when using the HTTPS protocol:
+Server=https://&lt;FQDN of the collector&gt;:5986/wsman/SubscriptionManager/WEC,Refresh=&lt;Refresh interval in seconds&gt;,IssuerCA=&lt;Thumb print of the client authentication certificate&gt;. When using the HTTP protocol, use port 5985.
+
+If you disable or do not configure this policy setting, the Event Collector computer will not be specified.</string>
+
+			<string id="SubscriptionManager_Listbox">SubscriptionManagers</string>
 		</stringTable>
 
 	
@@ -30,13 +38,13 @@ Server (povinné) – Adresa počítače, do kterého mají být předávány ud
 
 			<presentation id="SubscriptionManager">
                                 
-				<listBox refId="SubscriptionManager_Listbox">Správci odběrů</listBox>
+				<listBox refId="SubscriptionManager_Listbox">SubscriptionManagers</listBox>
 
 			</presentation>
 
                         <presentation id="ForwarderResourceUsage">
 
-                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">Maximální rychlost přesměrování (události/s) povolená pro server pro předávání: </decimalTextBox>
+                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">The maximum forwarding rate ( events/sec ) allowed for the forwarder: </decimalTextBox>
 
                         </presentation>
 

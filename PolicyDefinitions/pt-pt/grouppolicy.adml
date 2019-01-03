@@ -1,339 +1,434 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>introduzir o nome a apresentar aqui</displayName>
-  <description>introduzir a descrição aqui</description>
+  <displayName>introduza o nome a apresentar aqui</displayName>
+  <description>introduza a descrição aqui</description>
   <resources>
     <stringTable>
-      <string id="DisableLGPOProcessing">Desactivar processamento de objectos de Política de Grupo Locais</string>
-      <string id="DisableLGPOProcessing_Help">Esta definição de política impede a aplicação de Objectos de Política de Grupo locais (GPOs Locais).
+      <string id="ResetDfsClientInfoDuringRefreshPolicy">Ativar sincronização do controlador de domínio do AD/DFS durante a atualização da política</string>
+      <string id="ResetDfsClientInfoDuringRefreshPolicy_Help">A ativação desta definição levará o Cliente de Política de Grupo a ligar ao mesmo controlador de domínio para as partilhas DFS que está a ser utilizado para o Active Directory.
 
-Por predefinição, as definições de política dos GPOs Locais são aplicadas antes de quaisquer definições de política de GPOs baseados em domínio. Estas definições podem aplicar-se tanto a utilizadores como ao computador local. Pode desactivar o processamento e a aplicação de todos os GPOs Locais para assegurar que são apenas aplicados GPOs baseados em domínio.
 
-Se activar esta definição de política, o sistema não irá processar e aplicar quaisquer GPOs Locais.
 
-Se desactivar ou não configurar esta definição de política, os GPOs Locais continuarão a ser aplicados.
-
-Nota:  Para computadores que aderiram a um domínio, recomenda-se vivamente que esta definição de política seja configurada apenas em GPOs baseados em domínio. Esta definição será ignorada em computadores que aderiram a um grupo de trabalho.
 </string>
-      <string id="SyncWaitTime">Tempo de espera de processamento de política de arranque</string>
-      <string id="SyncWaitTime_Help">Esta definição de política especifica o período de tempo que a Política de Grupo deve esperar por notificações de disponibilidade da rede durante o processamento de política de arranque. Se o processamento da política de arranque for síncrono, o computador é bloqueado até a rede ficar disponível ou até o tempo de espera predefinido ser atingido. Se o processamento da política de arranque for assíncrono, o computador não é bloqueado e o processamento da política é efectuado em segundo plano. Em qualquer dos casos, a configuração desta definição de política substitui quaisquer tempos de espera calculados pelo sistema.
+      <string id="DisableAOACProcessing">Desativar otimização do AOAC do Serviço do Cliente da Política de Grupo</string>
+      <string id="DisableAOACProcessing_Help">Esta definição de política impede o Serviço do Cliente da Política de Grupo de parar quando está inativo.
 
-Se activar esta definição de política, a Política de Grupo irá utilizar este tempo de espera máximo configurado administrativamente e substituirá qualquer tempo de espera predefinido ou calculado pelo sistema.
 
-Se desactivar ou não configurar esta definição de política, a Política de Grupo utilizará o tempo de espera predefinido de 30 segundos em computadores com o sistema operativo Windows Vista. 
+
+</string>
+      <string id="EnableLogonOptimization">Configurar Colocação de Política de Grupo em Cache</string>
+      <string id="EnableLogonOptimization_Help">
+        
+        Esta definição de política permite configurar o comportamento de colocação de Política de Grupo em cache.
+        
+        Se ativar ou não configurar esta definição de política, a Política de Grupo colocará as informações de política em cache após cada sessão de processamento em segundo plano. Esta cache guarda os GPOs aplicáveis e as definições neles contidas. Quando a Política de Grupo é executada em modo síncrono em primeiro plano, refere-se a esta cache, o que lhe permite uma execução mais rápida. Quando a cache é lida, a Política de Grupo tenta contactar um controlador de domínio de início de sessão para determinar a velocidade da ligação. Quando a Política de Grupo é executada em modo de segundo plano ou em modo assíncrono em primeiro plano, continua a transferir a versão mais recente das informações de política, utilizando uma estimativa de largura de banda para determinar os limiares de ligações lentas. (Consulte a definição de política “Configurar Deteção de Ligação Lenta de Política de Grupo” para configurar o comportamento assíncrono em primeiro plano.)
+        
+        O valor de ligação lenta configurado nesta definição de política determina quanto tempo a Política de Grupo aguardará uma resposta do controlador de domínio antes de reportar a velocidade da ligação como lenta. A predefinição é 500 milissegundos.
+        
+        O valor do tempo limite configurado nesta definição de política determina quanto tempo a Política de Grupo aguardará uma resposta do controlador de domínio antes de determinar que não existe conectividade de rede. Interrompe o processamento da Política de Grupo atual. A Política de Grupo será executada em segundo plano da próxima vez que for estabelecida ligação a um controlador de domínio. A definição de um valor demasiado alto poderá resultar em esperas mais longas para o utilizador no arranque ou início de sessão. A predefinição é 5000 milissegundos.
+        
+        Se desativar esta definição de política, o cliente da Política de Grupo não colocará em cache os GPOs aplicáveis nem as definições que estejam contidas nos GPOs. Quando a Política de Grupo é executada de modo síncrono, transfere a versão mais recente da política a partir da rede e utiliza estimativas da largura de banda para determinar os limiares de ligações lentas. (Consulte a definição de política “Configurar Deteção de Ligação Lenta de Política de Grupo” para configurar o comportamento assíncrono em primeiro plano.)
+      
+      </string>
+      
+      <string id="EnableLogonOptimizationOnServerSKU">Ativar a Colocação da Política de Grupo em Cache para Servidores</string>
+      <string id="EnableLogonOptimizationOnServerSKU_Help">
+        
+        Esta definição de política permite configurar a o comportamento de colocação da Política de Grupo em cache em computadores com o Windows Server.
+        Se ativar esta definição de política, a Política de Grupo colocará as informações de política em cache após cada sessão de processamento em segundo plano. Esta cache guarda os GPOs aplicáveis e as definições neles contidas. Quando a Política de Grupo é executada em modo síncrono em primeiro plano, refere-se a esta cache, o que lhe permite uma execução mais rápida. Quando a cache é lida, a Política de Grupo tenta contactar um controlador de domínio de início de sessão para determinar a velocidade da ligação. Quando a Política de Grupo é executada em modo de segundo plano ou em modo assíncrono em primeiro plano, continua a transferir a versão mais recente das informações de política, utilizando uma estimativa de largura de banda para determinar os limiares de ligações lentas. (Consulte a definição de política “Configurar Deteção de Ligação Lenta de Política de Grupo” para configurar o comportamento assíncrono em primeiro plano.)
+        O valor de ligação lenta configurado nesta definição de política determina quanto tempo a Política de Grupo aguardará uma resposta do controlador de domínio antes de reportar a velocidade da ligação como lenta. A predefinição é 500 milissegundos.
+        O valor do tempo limite configurado nesta definição de política determina quanto tempo a Política de Grupo aguardará uma resposta do controlador de domínio antes de determinar que não existe conectividade de rede. Interrompe o processamento da Política de Grupo atual. A Política de Grupo será executada em segundo plano da próxima vez que for estabelecida ligação a um controlador de domínio. A definição de um valor demasiado alto poderá resultar em esperas mais longas para o utilizador no arranque ou início de sessão. A predefinição é 5000 milissegundos.
+        Se desativar ou não configurar esta definição de política, o cliente da Política de Grupo não colocará em cache os GPOs aplicáveis nem as definições que estejam contidas nos GPOs. Quando a Política de Grupo é executada de modo síncrono, transfere a versão mais recente da política a partir da rede e utiliza estimativas da largura de banda para determinar os limiares de ligações lentas. (Consulte a definição de política “Configurar Deteção de Ligação Lenta de Política de Grupo” para configurar o comportamento assíncrono em primeiro plano.)
+      
+      </string>
+      
+      <string id="LogonScriptDelay">Configurar Atraso do Script de Início de Sessão</string>
+      <string id="LogonScriptDelay_Help">
+        
+        Introduza “0” para desativar o Atraso do Script de Início de Sessão.
+        
+        Esta definição de política permite configurar quanto tempo o cliente da Política de Grupo aguarda após o início de sessão antes de executar scripts.
+        
+        Por predefinição, o cliente da Política de Grupo aguarda cinco minutos antes de executar scripts de início de sessão. Isto ajuda a assegurar a capacidade de resposta do ambiente de trabalho, impedindo a contenção de disco.
+        
+        Se ativar esta definição de política, a Política de Grupo aguardará durante o período de tempo especificado antes de executar scripts de início de sessão.
+        
+        Se desativar esta definição de política, a Política de Grupo executará os scripts imediatamente após o início de sessão.
+        
+        Se não configurar esta definição de política, a Política de Grupo aguardará cinco minutos antes de executar scripts de início de sessão.
+      
+      </string>
+      
+     <string id="SlowLinkDefaultForDirectAccess">Configurar ligações Direct Access como uma ligação de rede rápida</string>
+      <string id="SlowLinkDefaultForDirectAccess_Help">Esta definição de política permite que um administrador defina a ligação Direct Access para ser considerada como ligação de rede rápida para aplicação e atualização da Política de Grupo. 
+ 
+Quando a Política de Grupo deteta a velocidade de largura de banda de uma ligação Direct Access, por vezes a ligação pode não conseguir fornecer informações de velocidade de largura de banda. Se a Política de Grupo detetar uma velocidade de largura de banda, a Política de Grupo seguirá as regras normais para avaliar se a ligação Direct Access é uma ligação de rede rápida ou lenta. Se não for detetada velocidade de largura de banda, a Política de Grupo utilizará como predefinição uma ligação de rede lenta. Esta definição de política permite que o administrador opte por contornar a predefinição de ligação de rede lenta e, em vez disso, utilize como predefinição uma ligação de rede rápida, caso não seja determinada uma velocidade de largura de banda de rede.
+ 
+Nota: quando a Política de Grupo deteta uma ligação de rede lenta, só serão processadas as extensões do lado do cliente configuradas para processamento através de uma ligação lenta (ligação de rede lenta).  
+ 
+Se ativar esta política, quando a Política de Grupo não conseguir determinar a velocidade de largura de banda no Direct Access, avaliará a ligação de rede como uma ligação rápida e processará todas as extensões do lado do cliente.
+ 
+Se desativar ou não configurar esta definição de política, a Política de Grupo avaliará a ligação de rede como uma ligação lenta e processará apenas as extensões do lado do cliente configuradas para processamento através de uma ligação lenta.
+          
+      
+          
+      </string>
+     <string id="SlowlinkDefaultToAsync">Alterar o processamento da Política de Grupo para execução assíncrona quando for detetada uma ligação de rede lenta.</string>
+      <string id="SlowlinkDefaultToAsync_Help">Esta política direciona o processamento da Política de Grupo para ignorar o processamento de qualquer extensão do lado do cliente que necessite de processamento assíncrono (isto é, se os computadores aguardam que a rede seja totalmente inicializada durante o arranque do computador e o início de sessão do utilizador) quando é detetada uma ligação de rede lenta.  
+ 
+Se ativar esta definição de política, quando for detetada uma ligação de rede lenta o processamento da Política de Grupo será sempre executado de modo assíncrono.
+Os computadores cliente não vão aguardar que a rede seja totalmente inicializada no arranque e início de sessão. Os utilizadores existentes iniciam sessão utilizando credenciais em cache, 
+o que resulta em tempos de início de sessão mais reduzidos. A Política de Grupo será aplicada em segundo plano depois de a rede ficar disponível.   
+Note que, por se tratar de uma atualização em segundo plano, as extensões que necessitam de processamento síncrono, tal como Instalação de Software, Redirecionamento de Pastas
+e Mapeamentos de Unidades, não serão aplicadas.
+ 
+Nota: existem duas condições que vão fazer com que a Política de Grupo seja processada de modo síncrono, mesmo que esta definição de política esteja ativada:
+1 - No primeiro arranque do computador depois de o computador cliente ter sido associado ao domínio.
+2 - Se a definição de política "Aguardar sempre deteção de rede no arranque e início de sessão do computador" estiver ativada.
+ 
+Se desativar ou não configurar esta definição de política, a deteção de uma ligação de rede lenta não afetará se o processamento da Política de Grupo será síncrono ou assíncrono.
+
+      
+
+      </string>
+      <string id="DisableLGPOProcessing">Desativar processamento de Objetos de Política de Grupo Locais</string>
+      <string id="DisableLGPOProcessing_Help">Esta definição de política impede a aplicação de Objetos de Política de Grupo Locais (GPOs Locais).
+
+Por predefinição, as definições de política dos GPOs Locais são aplicadas antes de quaisquer definições de política de GPOs baseados em domínio. Estas definições podem aplicar-se tanto a utilizadores como ao computador local. Pode desativar o processamento e a aplicação de todos os GPOs Locais para assegurar que são apenas aplicados GPOs baseados em domínio.
+
+Se ativar esta definição de política, o sistema não processa nem aplica quaisquer GPOs Locais.
+
+Se desativar ou não configurar esta definição de política, os GPOs Locais continuam a ser aplicados.
+
+Nota:  para computadores que aderiram a um domínio, recomenda-se vivamente que esta definição de política seja configurada apenas em GPOs baseados em domínio. Esta definição de política será ignorada em computadores que aderiram a um grupo de trabalho.
+
+</string>
+      <string id="SyncWaitTime">Especificar tempo de espera de processamento de política de arranque</string>
+      <string id="SyncWaitTime_Help">Esta definição de política especifica o período de tempo que a Política de Grupo deve esperar por notificações de disponibilidade da rede durante o processamento de política de arranque. Se o processamento da política de arranque for síncrono, o computador é bloqueado até a rede ficar disponível ou até o tempo de espera predefinido ser atingido. Se o processamento da política de arranque for assíncrono, o computador não é bloqueado e o processamento da política é efetuado em segundo plano. Em qualquer dos casos, a configuração desta definição de política substitui quaisquer tempos de espera calculados pelo sistema.
+
+Se ativar esta definição de política, a Política de Grupo irá utilizar este tempo de espera máximo configurado administrativamente e substituirá qualquer tempo de espera predefinido ou calculado pelo sistema.
+
+Se desativar ou não configurar esta definição de política, a Política de Grupo utilizará o tempo de espera predefinido de 30 segundos em computadores com o sistema operativo Windows Vista. 
+ 
 </string>
 
-      <string id="AllowX-ForestPolicy-and-RUP">Permitir Política de Utilizador entre Florestas e Perfis de Utilizador Itinerantes</string>
-      <string id="AllowX-ForestPolicy-and-RUP_Help">Permite o processamento de políticas baseadas em utilizador, perfis de utilizador itinerantes e scripts de início de sessão de objecto de utilizador para inícios de sessão interactivos entre florestas.
+      <string id="AllowX-ForestPolicy-and-RUP">Permitir perfis de utilizador itinerantes e política de utilizador entre florestas</string>
+      <string id="AllowX-ForestPolicy-and-RUP_Help">Esta definição de política permite o processamento de políticas baseadas em utilizador, perfis de utilizador itinerantes e scripts de início de sessão de objeto de utilizador para inícios de sessão interativos entre florestas.
 
-Esta definição afecta todas as contas de utilizador que iniciam sessão interactivamente num computador situado numa floresta diferente quando existe fidedignidade entre florestas ou fidedignidade de floresta bidireccional.
+Esta definição de política afeta todas as contas de utilizador que iniciam sessão interativamente num computador situado numa floresta diferente quando existe confiança entre florestas ou fidedignidade de floresta bidirecional.
 
-Quando esta definição está não configurada: -  Não são aplicadas definições de política baseadas em utilizador a partir da floresta do utilizador -  Os utilizadores não receberão os respectivos perfis itinerantes, receberão antes um perfil local no computador da floresta local. Será apresentada uma mensagem de aviso ao utilizador e será enviada uma mensagem do registo de eventos (1529). -  Será aplicado o processamento da Política de Grupo Loopback, utilizando os objectos da política de grupo (GPOs) no âmbito do computador. - Será enviada uma mensagem para o registo de eventos (1109), a indicar que o loopback foi invocado no modo de substituição.
+Se não configurar esta definição de política:
+-  não são aplicadas definições de política baseadas no utilizador da floresta do utilizador.
+-  os utilizadores não recebem os seus perfis itinerantes; recebem um perfil local no computador da parte da floresta local. Será apresentada uma mensagem de aviso ao utilizador e será enviada uma mensagem do registo de eventos (1529).
+-  Será aplicado o processamento da Política de Grupo Loopback, utilizando os Objetos da Política de Grupo (GPOs) no âmbito do computador.
+- Será enviada uma mensagem para o registo de eventos (1109), a indicar que o loopback foi invocado no modo de substituição.
 
-Quando esta definição está activada, o comportamento é exactamente o mesmo que ocorre no Windows 2000: a política de utilizador é aplicada e é permitido um perfil de utilizador itinerante da floresta fidedigna.
+Se ativar esta definição de política, o comportamento é exatamente o mesmo que ocorre no Windows 2000: a política de utilizador é aplicada e é permitido um perfil de utilizador itinerante da floresta fidedigna.
 
-Quando esta definição está desactivada, o comportamento é o mesmo que se não estivesse configurada.</string>
-      <string id="CSE_AppMgmt">Processamento de políticas de instalação de software</string>
-      <string id="CSE_AppMgmt_Help">Determina quando serão actualizadas as políticas de instalação de software.
+Se desativar esta definição de política, o comportamento é o mesmo como se não estivesse configurada.</string>
+      <string id="CSE_AppMgmt">Configurar processamento de políticas de instalação de software</string>
+      <string id="CSE_AppMgmt_Help">Esta definição de política determina quando são atualizadas as políticas de instalação de software.
 
-Esta definição afecta todas as políticas que utilizam o componente de instalação de software da política de grupo, como as políticas existentes em Definições de Software\Instalação de Software. Só pode definir políticas de instalação de software para objectos da política de grupo armazenados no Active Directory e não para objectos da política de grupo existentes no computador local.
+Esta definição de política afeta todas as definições de política que utilizam o componente de instalação de software da Política de Grupo, tal como definições de política em Definições de Software\Instalação de Software. Só pode definir políticas de instalação de software para Objetos da Política de Grupo armazenados no Active Directory e não para Objetos da Política de Grupo no computador local.
 
-Esta política substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de instalação de software quando foi instalado.
+Esta definição de política substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de instalação de software quando foi instalado.
 
-Se activar esta definição, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+Se ativar esta definição de política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desativar ou não configurar esta definição de política, não produz efeitos no sistema.
 
-A opção "Permitir processamento numa ligação de rede lenta" actualiza as políticas, mesmo durante a transmissão da actualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As actualizações efectuadas através de ligações lentas podem provocar atrasos significativos.
+A opção "Permitir processamento numa ligação de rede lenta" atualiza as políticas, mesmo durante a transmissão da atualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As atualizações efetuadas através de ligações lentas podem provocar atrasos significativos.
 
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão actualizadas quando forem alteradas. No entanto, pode pretender actualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
-      <string id="CSE_DiskQuota">Processamento de políticas de quota de disco</string>
-      <string id="CSE_DiskQuota_Help">Determina quando serão actualizadas as políticas de quota de disco.
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de definições de política especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar definições de política inalteradas, como, por exemplo, reaplicar as políticas pretendidas no caso um utilizador a ter alterado.</string>
+      <string id="CSE_DiskQuota">Configurar processamento de políticas de quota de disco</string>
+      <string id="CSE_DiskQuota_Help">Esta definição de política determina quando são atualizadas as políticas de quota de disco.
 
-Esta definição afecta todas as políticas que utilizam o componente de quota de disco da política de grupo, como as existentes em Configuração do Computador\Modelos Administrativos\Sistema\Sistema de Ficheiros\Quotas de Disco.
+Esta definição de política afeta todas as políticas que utilizam o componente de quota de disco da política de grupo, como as existentes em Configuração do Computador\Modelos Administrativos\Sistema\Sistema de Ficheiros\Quotas de Disco.
 
-Substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de quota de disco quando foi instalado.
+Esta definição de política substitui as definições personalizadas definidas pelo programa que implementa o conjunto de políticas de quota de disco quando foi instalado.
 
-Se activar esta definição, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+Se ativar esta definição de política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desativar ou não configurar esta definição de política, não produz efeitos no sistema.
 
-A opção "Permitir processamento numa ligação de rede lenta" actualiza as políticas, mesmo durante a transmissão da actualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As actualizações efectuadas através de ligações lentas podem provocar atrasos significativos.
+A opção "Permitir processamento numa ligação de rede lenta" atualiza as políticas, mesmo durante a transmissão da atualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As atualizações efetuadas através de ligações lentas podem provocar atrasos significativos.
 
-A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de actualizar as políticas afectadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as actualizações em segundo plano são desactivadas, as alterações de política só entram em vigor no próximo início de sessão ou reinício de sistema do utilizador.
+A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de atualizar as políticas afetadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as atualizações em segundo plano são desativadas, as alterações de política só produzem efeitos no início de sessão seguinte ou reinício de sistema do utilizador.
 
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão actualizadas quando forem alteradas. No entanto, pode pretender actualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
-      <string id="CSE_EFSRecovery">Processamento de políticas de recuperação EFS</string>
-      <string id="CSE_EFSRecovery_Help">Determina quando serão actualizadas as políticas de encriptação.
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
+      <string id="CSE_EFSRecovery">Configurar processamento de políticas de recuperação EFS</string>
+      <string id="CSE_EFSRecovery_Help">Esta definição de política determina quando são atualizadas as políticas de encriptação.
 
-Esta definição afecta todas as políticas que utilizam o componente de encriptação da política de grupo, como as políticas relacionadas com encriptação existentes em Definições do Windows\Definições de Segurança.
+Esta definição de política afeta todas as políticas que utilizam o componente de encriptação da Política de Grupo, tal como as políticas relacionadas com encriptação em Definições do Windows\Definições de Segurança.
 
 Substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de encriptação quando foi instalado.
 
-Se activar esta definição, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+Se ativar esta definição de política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desativar ou não configurar esta definição de política, não produz efeitos no sistema.
 
-A opção "Permitir processamento numa ligação de rede lenta" actualiza as políticas, mesmo durante a transmissão da actualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As actualizações efectuadas através de ligações lentas podem provocar atrasos significativos.
+A opção "Permitir processamento numa ligação de rede lenta" atualiza as políticas, mesmo durante a transmissão da atualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As atualizações efetuadas através de ligações lentas podem provocar atrasos significativos.
 
-A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de actualizar as políticas afectadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as actualizações em segundo plano são desactivadas, as alterações de política só entram em vigor no próximo início de sessão ou reinício de sistema do utilizador.
+A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de atualizar as políticas afetadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as atualizações em segundo plano são desativadas, as alterações de política só produzem efeitos no início de sessão seguinte ou reinício de sistema do utilizador.
 
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão actualizadas quando forem alteradas. No entanto, pode pretender actualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
-      <string id="CSE_FolderRedirection">Processamento da política redireccionamento de pastas</string>
-      <string id="CSE_FolderRedirection_Help">Determina quando serão actualizadas as políticas de redireccionamento de pastas.
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
+      <string id="CSE_FolderRedirection">Configurar processamento da política redirecionamento de pastas</string>
+      <string id="CSE_FolderRedirection_Help">Esta definição de política determina quando são atualizadas as políticas de redirecionamento de pastas.
 
-Esta definição afecta todas as políticas que utilizam o componente de redireccionamento de pastas da política de grupo, como as existentes em Windows\Redireccionamento de Pastas. Só pode definir a política de redireccionamento de pastas para objectos de política de grupo armazenados no Active Directory, não para objectos de política de grupo no computador local.
+Esta definição de política afeta todas as políticas que utilizam o componente de redirecionamento de pastas da Política de Grupo, tal como as existentes em Windows\Redirecionamento de Pastas. Só pode definir a política de redirecionamento de pastas para objetos de política de grupo armazenados no Active Directory, não para objetos de política de grupo no computador local.
 
-Esta definição substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de redireccionamento de pastas quando foi instalado.
+Esta definição de política substitui as definições personalizadas definidas pelo programa na implementação do conjunto de definições de política de redirecionamento de pastas quando foi instalado.
 
-Se activar esta definição, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+Se ativar esta definição de política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desativar ou não configurar esta definição de política, não produz efeitos no sistema.
 
-A opção "Permitir processamento numa ligação de rede lenta" actualiza as políticas, mesmo durante a transmissão da actualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As actualizações efectuadas através de ligações lentas podem provocar atrasos significativos.
+A opção "Permitir processamento numa ligação de rede lenta" atualiza as políticas, mesmo durante a transmissão da atualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As atualizações efetuadas através de ligações lentas podem provocar atrasos significativos.
 
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão actualizadas quando forem alteradas. No entanto, pode pretender actualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
-      <string id="CSE_IEM">Processamento da política de manutenção do Internet Explorer</string>
-      <string id="CSE_IEM_Help">Determina quando serão actualizadas as políticas de manutenção do Internet Explorer.
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
+      <string id="CSE_IEM">Configurar processamento da política de manutenção do Internet Explorer</string>
+      <string id="CSE_IEM_Help">Esta definição de política determina quando são atualizadas as políticas de Manutenção do Internet Explorer.
 
-Esta definição afecta todas as políticas que utilizam o componente de manutenção do Internet Explorer da política de grupo, como as existentes em Definições do Windows\Manutenção do Internet Explorer.
+Esta definição de política afeta todas as políticas que utilizam o componente de manutenção do Internet Explorer da Política de Grupo, tal como as existentes em Definições do Windows\Manutenção do Internet Explorer.
 
-Substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de manutenção do Internet Explorer quando foi instalado.
+Esta definição de política substitui as definições personalizadas definidas pelo programa que implementa o conjunto de políticas de Manutenção do Internet Explorer quando foi instalado.
 
-Se activar esta definição, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+Se ativar esta definição de política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desativar ou não configurar esta definição de política, não produz efeitos no sistema.
 
-A opção "Permitir processamento numa ligação de rede lenta" actualiza as políticas, mesmo durante a transmissão da actualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As actualizações efectuadas através de ligações lentas podem provocar atrasos significativos.
+A opção "Permitir processamento numa ligação de rede lenta" atualiza as políticas, mesmo durante a transmissão da atualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As atualizações efetuadas através de ligações lentas podem provocar atrasos significativos.
 
-A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de actualizar as políticas afectadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as actualizações em segundo plano são desactivadas, as alterações de política só entram em vigor no próximo início de sessão ou reinício de sistema do utilizador.
+A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de atualizar as políticas afetadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as atualizações em segundo plano são desativadas, as alterações de política só produzem efeitos no início de sessão seguinte ou reinício de sistema do utilizador.
 
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão actualizadas quando forem alteradas. No entanto, pode pretender actualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
-      <string id="CSE_IPSecurity">Processamento de políticas de segurança IP</string>
-      <string id="CSE_IPSecurity_Help">Determina quando serão actualizadas as políticas de segurança IP.
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição de política pretendida caso um utilizador a tenha alterado.</string>
+      <string id="CSE_IPSecurity">Configurar processamento de políticas de segurança IP</string>
+      <string id="CSE_IPSecurity_Help">Esta definição de política determina quando são atualizadas as políticas de segurança IP.
 
-Esta definição afecta todas as políticas que utilizam o componente de segurança IP da política de grupo, como políticas existentes em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas de Segurança IP na Máquina Local.
+Esta definição de política afeta todas as políticas que utilizam o componente de segurança IP da política de grupo, como políticas existentes em Configuração do Computador\Definições do Windows\Definições de Segurança\Políticas de Segurança IP na Máquina Local.
 
-Substitui definições personalizadas utilizadas pelo programa para implementar o conjunto de políticas de segurança IP quando foi instalado.
+Esta definição de política substitui as definições personalizadas definidas pelo programa que implementa o conjunto de políticas de segurança IP quando foi instalado.
 
-Se activar esta definição, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+Se ativar esta definição de política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desativar ou não configurar esta definição de política, não produz efeitos no sistema.
 
-A opção "Permitir processamento numa ligação de rede lenta" actualiza as políticas, mesmo durante a transmissão da actualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As actualizações efectuadas através de ligações lentas podem provocar atrasos significativos.
+A opção "Permitir processamento numa ligação de rede lenta" atualiza as políticas, mesmo durante a transmissão da atualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As atualizações efetuadas através de ligações lentas podem provocar atrasos significativos.
 
-A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de actualizar as políticas afectadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as actualizações em segundo plano são desactivadas, as alterações de política só entram em vigor no próximo início de sessão ou reinício de sistema do utilizador.
+A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de atualizar as políticas afetadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as atualizações em segundo plano são desativadas, as alterações de política só produzem efeitos no início de sessão seguinte ou reinício de sistema do utilizador.
 
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão actualizadas quando forem alteradas. No entanto, pode pretender actualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
-      <string id="CSE_Registry">Processamento de políticas do registo</string>
-      <string id="CSE_Registry_Help">Determina quando serão actualizadas as políticas de registo.
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição de política pretendida caso um utilizador a tenha alterado.</string>
+      <string id="CSE_Registry">Configurar processamento de políticas do registo</string>
+      <string id="CSE_Registry_Help">Esta definição de política determina quando são atualizadas as políticas de registo.
 
-Esta definição afecta todas as políticas da pasta Modelos Administrativos e quaisquer outras políticas que armazenem valores no registo.
+Esta definição de política afeta todas as políticas da pasta Modelos Administrativos e quaisquer outras políticas que armazenem valores no registo. Substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de registo quando foi instalado.
 
-Substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de registo quando foi instalado.
+Se ativar esta definição de política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desativar ou não configurar esta definição de política, não produz efeitos no sistema.
 
-Se activar esta definição, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de atualizar as políticas afetadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as atualizações em segundo plano são desativadas, as alterações de política só produzem efeitos no início de sessão seguinte ou reinício de sistema do utilizador.
 
-A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de actualizar as políticas afectadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as actualizações em segundo plano são desactivadas, as alterações de política só entram em vigor no próximo início de sessão ou reinício de sistema do utilizador.
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição de política pretendida caso um utilizador a tenha alterado.</string>
+      <string id="CSE_Scripts">Configurar processamento de políticas de scripts</string>
+      <string id="CSE_Scripts_Help">Esta definição de política determina quando são atualizadas as políticas que atribuem scripts partilhados.
 
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão actualizadas quando forem alteradas. No entanto, pode pretender actualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
-      <string id="CSE_Scripts">Processamento de políticas de scripts</string>
-      <string id="CSE_Scripts_Help">Determina quando serão actualizadas as políticas de atribuição de scripts partilhados.
+Esta definição de política afeta todas as políticas que utilizam o componente de scripts da política de grupo, como as existentes em Definições do Windows\Scripts. Substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de scripts quando foi instalado.
 
-Esta definição afecta todas as políticas que utilizam o componente de scripts da política de grupo, como as existentes em Definições do Windows\Scripts.
+Se ativar esta definição de política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desativar ou não configurar esta definição, não produz efeitos no sistema.
 
-Substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de scripts quando foi instalado.
+A opção "Permitir processamento numa ligação de rede lenta" atualiza as políticas, mesmo durante a transmissão da atualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As atualizações efetuadas através de ligações lentas podem provocar atrasos significativos.
 
-Se activar esta política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de atualizar as políticas afetadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as atualizações em segundo plano são desativadas, as alterações de política só produzem efeitos no início de sessão seguinte ou reinício de sistema do utilizador.
 
-A opção "Permitir processamento numa ligação de rede lenta" actualiza as políticas, mesmo durante a transmissão da actualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As actualizações efectuadas através de ligações lentas podem provocar atrasos significativos.
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição de política pretendida caso um utilizador a tenha alterado.</string>
+      <string id="CSE_Security">Configurar processamento de políticas de segurança</string>
+      <string id="CSE_Security_Help">Esta definição de política determina quando são atualizadas as políticas de segurança.
 
-A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de actualizar as políticas afectadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as actualizações em segundo plano são desactivadas, as alterações de política só entram em vigor no próximo início de sessão ou reinício de sistema do utilizador.
+Esta definição de política afeta todas as políticas que utilizam o componente de segurança da Política de Grupo, tal como as existentes em Definições do Windows\Definições de Segurança.
 
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que estão actualizadas apenas quando são alteradas. No entanto, pode desejar actualizar políticas não alteradas, como, por exemplo, voltar a aplicar uma definição pretendida no caso de ter sido alterada por um utilizador.</string>
-      <string id="CSE_Security">Processamento de políticas de segurança</string>
-      <string id="CSE_Security_Help">Determina quando serão actualizadas as políticas de segurança.
+Esta definição de política substitui as definições personalizadas definidas pelo programa que implementa o conjunto de políticas de segurança quando foi instalado.
 
-Esta definição afecta todas as políticas que utilizam o componente de segurança da política de grupo, como as existentes em Definições do Windows\Definições de Segurança.
+Se ativar esta definição de política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desativar ou não configurar esta definição de política, não produz efeitos no sistema.
 
-Substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de segurança quando foi instalado.
+A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de atualizar as políticas afetadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as atualizações em segundo plano são desativadas, as alterações de política só produzem efeitos no início de sessão seguinte ou reinício de sistema do utilizador.
 
-Se activar esta definição, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição de política pretendida caso um utilizador a tenha alterado.</string>
+      <string id="CSE_Wireless">Configurar processamento de política sem fios</string>
+      <string id="CSE_Wireless_Help">Esta definição de política determina quando são atualizadas as políticas que atribuem definições de rede sem fios.
 
-A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de actualizar as políticas afectadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as actualizações em segundo plano são desactivadas, as alterações de política só entram em vigor no próximo início de sessão ou reinício de sistema do utilizador.
-
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão actualizadas quando forem alteradas. No entanto, pode desejar actualizar políticas não alteradas, como, por exemplo, voltar a aplicar uma definição pretendida no caso de ter sido alterada por um utilizador.</string>
-      <string id="CSE_Wireless">Processamento de política sem fios</string>
-      <string id="CSE_Wireless_Help">Determina quando serão actualizadas as políticas de atribuição de definições de rede sem fios.
-
-Esta definição afecta todas as políticas que utilizam o componente de rede sem fios da política de grupo, como as existentes em Definições do Windows\Políticas de Redes sem Fios.
+Esta definição de política afeta todas as políticas que utilizam o componente de rede sem fios da política de grupo, como as existentes em Definições do Windows\Políticas de Redes sem Fios.
 
 Substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de rede sem fios quando foi instalado.
 
-Se activar esta política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+Se ativar esta política, poderá utilizar as caixas de verificação fornecidas para alterar as opções.
 
-A opção "Permitir processamento numa ligação de rede lenta" actualiza as políticas, mesmo durante a transmissão da actualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As actualizações efectuadas através de ligações lentas podem provocar atrasos significativos.
+Se desativar esta definição ou não a configurar, não produzirá efeitos no sistema.
 
-A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de actualizar as políticas afectadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as actualizações em segundo plano são desactivadas, as alterações de política só entram em vigor no próximo início de sessão ou reinício de sistema do utilizador.
+A opção "Permitir processamento numa ligação de rede lenta" atualiza as políticas, mesmo durante a transmissão da atualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As atualizações efetuadas através de ligações lentas podem provocar atrasos significativos.
 
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão actualizadas quando forem alteradas. No entanto, pode pretender actualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
-      <string id="CSE_Wired">Processamento da política com fios</string>
-      <string id="CSE_Wired_Help">Determina quando serão actualizadas as políticas de atribuição de definições de rede com fios.
+A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de atualizar as políticas afetadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as atualizações em segundo plano são desativadas, as alterações de política só produzem efeitos no início de sessão seguinte ou reinício de sistema do utilizador.
 
-Esta definição afecta todas as políticas que utilizam o componente de rede com fios da Política de Grupo, como as existentes em Definições do Windows\Políticas de Rede com Fios.
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
+      <string id="CSE_Wired">Configurar processamento da política com fios</string>
+      <string id="CSE_Wired_Help">Esta definição de política determina quando são atualizadas as políticas que atribuem definições de rede com fios.
+
+Esta definição de política afeta todas as políticas que utilizam o componente de rede com fios da Política de Grupo, como as existentes em Definições do Windows\Políticas de Rede com Fios.
 
 Substitui as definições personalizadas utilizadas pelo programa na implementação do conjunto de políticas de rede com fios quando foi instalado.
 
-Se activar esta política, poderá utilizar as caixas de verificação fornecidas para alterar as opções. Se desactivar esta definição ou não a configurar, não terá qualquer efeito no sistema.
+Se ativar esta política, poderá utilizar as caixas de verificação fornecidas para alterar as opções.
 
-A opção "Permitir processamento numa ligação de rede lenta" actualiza as políticas, mesmo durante a transmissão da actualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As actualizações efectuadas através de ligações lentas podem provocar atrasos significativos.
+Se desativar esta definição ou não a configurar, não produzirá efeitos no sistema.
 
-A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de actualizar as políticas afectadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as actualizações em segundo plano são desactivadas, as alterações de política só entram em vigor no próximo início de sessão ou reinício de sistema do utilizador.
+A opção "Permitir processamento numa ligação de rede lenta" atualiza as políticas, mesmo durante a transmissão da atualização através de uma ligação de rede lenta, como, por exemplo, uma linha telefónica. As atualizações efetuadas através de ligações lentas podem provocar atrasos significativos.
 
-A opção "Processar mesmo que os objectos da política de grupo não tenham sido alterados" actualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão actualizadas quando forem alteradas. No entanto, pode pretender actualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
+A opção "Não aplicar durante o processamento periódico em segundo plano" impede o sistema de atualizar as políticas afetadas em segundo plano, enquanto o computador estiver a ser utilizado. Quando as atualizações em segundo plano são desativadas, as alterações de política só produzem efeitos no início de sessão seguinte ou reinício de sistema do utilizador.
 
-      <string id="DenyRsopToInteractiveUser">Impedir os utilizadores interactivos de gerarem dados do conjunto de políticas resultante</string>
-      <string id="DenyRsopToInteractiveUser_Help">Esta definição controla a capacidade dos utilizadores visualizarem os respectivos dados de Conjunto de Políticas Resultante (RSoP, Resultant Set of Policy).
+A opção "Processar mesmo que os objetos da política de grupo não tenham sido alterados" atualiza e aplica de novo as políticas mesmo que as mesmas não tenham sido alteradas. Muitas implementações de políticas especificam que só serão atualizadas quando forem alteradas. No entanto, pode pretender atualizar políticas que não tenham sido alteradas como, por exemplo, aplicar de novo uma definição pretendida caso um utilizador a tenha alterado.</string>
 
-Por predefinição, os utilizadores com início de sessão interactivo podem ver os respectivos dados do Conjunto de Políticas Resultante (RSoP).
+      <string id="DenyRsopToInteractiveUser">Determinar se os utilizadores interativos podem gerar dados do Conjunto de Políticas Resultante</string>
+      <string id="DenyRsopToInteractiveUser_Help">Esta definição de política controla a capacidade dos utilizadores de verem os seus dados do Conjunto de Políticas Resultante (RSoP).
 
-Se esta definição estiver activada, os utilizadores interactivos não podem gerar dados do RSoP.
+Por predefinição, os utilizadores com início de sessão interativo podem ver os respetivos dados do Conjunto de Políticas Resultante (RSoP).
 
-Se esta definição estiver desactivada ou não configurada, os utilizadores interactivos podem gerar o RSoP.
+Se ativar esta definição de política, os utilizadores interativos não conseguem gerar dados do RSoP.
 
-Nota: Esta definição não afecta administradores. Quer esta definição esteja activada ou desactivada, por predefinição, os administradores podem visualizar dados do RSoP.
+Se desativar ou não configurar esta definição de política, os utilizadores interativos poderão gerar o RSoP.
 
-Nota: Para visualizar dados RSoP num computador cliente, utilize o snap-in RSoP da Consola de Gestão da Microsoft. Pode iniciar o snap-in RSoP a partir da linha de comandos escrevendo RSOP.msc.
+Nota: esta definição de política não afeta os administradores. Se ativar ou desativar esta definição de política, por predefinição, os administradores podem ver os dados do RSoP.
 
-Nota: Esta definição existe em Configuração do Computador e em Configuração do Utilizador.
+Nota: para ver dados do RSoP num computador cliente, utilize o snap-in RSoP da Consola de Gestão da Microsoft. Pode iniciar o snap-in RSoP a partir da linha de comandos escrevendo RSOP.msc
 
-Consulte também a definição "Desactivar Registo do Conjunto de Políticas Resultante" em Configuração do Computador\Modelos Administrativos\Sistema\Política de Grupo.</string>
-      <string id="DisableAutoADMUpdate">Desactivar a actualização automática de ficheiros ADM</string>
-      <string id="DisableAutoADMUpdate_Help">Impede o sistema de actualizar automaticamente os ficheiros de origem de Modelos Administrativos quando abre o Editor de Objecto de Política de Grupo. Os administradores podem pretender utilizar esta opção se tiverem preocupações acerca da quantidade de espaço utilizada no volume do sistema de um controlador de domínio.
+Nota: esta definição de política existe como uma definição Configuração do Utilizador e Configuração do Computador.
 
-Por predefinição, quando inicia o Editor de Objecto de Política de Grupo é executada uma comparação de carimbos de data/hora nos ficheiros de origem no directório %SYSTEMROOT%\inf local e nos ficheiros de origem armazenados no GPO. Se os ficheiros locais forem mais recentes serão copiados para o GPO.
+Consulte também a definição de política "Desativar registo do Conjunto de Políticas Resultante" em Configuração do Computador\Modelos Administrativos\Sistema\Política de Grupo.</string>
+      <string id="DisableAutoADMUpdate">Desativar a atualização automática de ficheiros ADM</string>
+      <string id="DisableAutoADMUpdate_Help">Impede o sistema de atualizar automaticamente os ficheiros de origem de Modelos Administrativos quando abre o Editor de Objetos de Política de Grupo.  Os administradores podem pretender utilizar esta opção se tiverem preocupações acerca da quantidade de espaço utilizada no volume de sistema de um DC.
 
-A alteração do estado desta definição para Activado impedirá a cópia de todos os ficheiros de origem para o GPO.
+Por predefinição, quando inicia o Editor de Objetos de Política de Grupo é executada uma comparação de carimbos de data/hora nos ficheiros de origem no diretório %SYSTEMROOT%\inf local e nos ficheiros de origem armazenados no GPO.  Se os ficheiros locais forem mais recentes serão copiados para o GPO.
 
-A alteração do estado desta definição para Desactivado reforça o comportamento predefinido. Os ficheiros serão sempre copiados para o GPO se tiverem um carimbo de data/hora posterior.
+A alteração do estado desta definição para Ativado impedirá a cópia de todos os ficheiros de origem para o GPO.
 
-NOTA: Se a definição da política Configuração do Computador "Utilizar sempre ficheiros ADM locais para o Editor de Objecto de Política de Grupo" estiver activada, o estado desta definição será ignorado e será sempre tratado como Activado.</string>
-      <string id="DisableBackgroundPolicy">Desactivar a actualização em segundo plano da política de grupo</string>
-      <string id="DisableBackgroundPolicy_Help">Impede que a política de grupo seja actualizada enquanto o computador estiver a ser utilizado. Esta definição aplica-se às políticas de grupo para computadores, utilizadores e controladores de domínio.
+A alteração do estado desta definição para Desativado reforça o comportamento predefinido.  Os ficheiros serão sempre copiados para o GPO se tiverem um carimbo de data/hora posterior.
 
-Se activar esta definição, o sistema aguardará que o utilizador actual termine sessão no sistema antes de actualizar as definições do computador e do utilizador.
+NOTA: Se a definição da política Configuração do Computador "Utilizar sempre ficheiros ADM locais para o Editor de Objetos de Política de Grupo" estiver ativada, o estado desta definição será ignorado e será sempre tratado como Ativado.</string>
+      <string id="DisableBackgroundPolicy">Desativar a atualização em segundo plano da política de grupo</string>
+      <string id="DisableBackgroundPolicy_Help">Esta definição de política impede que a Política de Grupo seja atualizada enquanto o computador está a ser utilizado. Esta definição de política aplica-se à Política de Grupo para computadores, utilizadores e controladores de domínio.
 
-Se desactivar esta definição, as actualizações poderão ser aplicadas enquanto os utilizadores estiverem a trabalhar. A frequência de actualizações é determinada pelas definições "Intervalo de actualização da política de grupo para computadores" e "Intervalo de actualização da política de grupo para utilizadores".
+Se ativar esta definição de política, o sistema aguardará que o utilizador atual termine sessão no sistema antes de atualizar as definições do computador e do utilizador.
 
-Nota: Se alterar esta definição, tem de reiniciar o computador para que entre em vigor.</string>
-      <string id="DisableUsersFromMachGP">Remover a possibilidade dos utilizadores invocarem actualização de política da máquina</string>
-      <string id="DisableUsersFromMachGP_Help">Esta definição permite-lhe controlar a possibilidade de um utilizador invocar uma actualização de política do computador.
+Se desativar ou não configurar esta definição de política, as atualizações poderão ser aplicadas enquanto os utilizadores estiverem a trabalhar. A frequência das atualizações é determinada pelas definições "Definir intervalo de atualização da Política de Grupo para computadores" e "Definir intervalo de atualização da Política de Grupo para utilizadores".
 
-Se activar esta definição, os utilizadores não poderão invocar uma actualização de política do computador. A política do computador continuará a ser aplicada no arranque ou quando ocorrer uma actualização de política oficial.
+Nota: se alterar esta definição de política, tem de reiniciar o computador para produzir efeitos.</string>
+      <string id="DisableUsersFromMachGP">Remover a possibilidade dos utilizadores invocarem atualização de política da máquina</string>
+      <string id="DisableUsersFromMachGP_Help">Esta definição de política permite controlar a capacidade de um utilizador invocar uma atualização de política do computador.
 
-Se desactivar ou não configurar esta definição, aplica-se o comportamento predefinido. Por predefinição, aplica-se a política de computador quando o computador é iniciado. Aplica-se igualmente num intervalo de actualização especificado ou quando for manualmente invocada pelo utilizador.
+Se ativar esta definição de política, os utilizadores não poderão invocar uma atualização de política do computador. A política do computador continuará a ser aplicada no arranque ou quando ocorrer uma atualização de política oficial.
 
-Nota: Esta definição só se aplica a utilizadores que não sejam administradores. Os administradores ainda podem invocar uma actualização de política de computador, independentemente do tipo de configuração desta política.
+Se desativar ou não configurar esta definição de política, aplica-se o comportamento predefinido. Por predefinição, aplica-se a política de computador quando o computador é iniciado. Aplica-se igualmente num intervalo de atualização especificado ou quando for manualmente invocada pelo utilizador.
 
-Consulte também a definição "Intervalo de actualização de política de grupo para computadores" para alterar o respectivo intervalo de actualização..
+Nota: esta definição de política só se aplica aos utilizadores que não são administradores. Os administradores ainda podem invocar uma atualização de política de computador, independentemente do tipo de configuração desta definição de política.
 
-Nota: Se alterar esta definição, tem de reiniciar o computador para que entre em vigor.</string>
+Consulte também a definição "Definir intervalo de atualização de Política de Grupo para computadores" para alterar o respetivo intervalo de atualização..
+
+Nota: se alterar esta definição de política, tem de reiniciar o computador para produzir efeitos.</string>
       <string id="EnforcePoliciesOnly">Impor Mostrar Apenas Políticas</string>
-      <string id="EnforcePoliciesOnly_Help">Impede que os administradores vejam ou utilizem preferências de política de grupo.
+      <string id="EnforcePoliciesOnly_Help">Esta definição de política impede que os administradores vejam ou utilizem as preferências da Política de Grupo.
 
-Um ficheiro de administração de política de grupo (.adm) pode conter definições verdadeiras e preferências. As definições verdadeiras, totalmente suportadas pela política de grupo, têm de utilizar entradas de registo nas subchaves de registo Software\Policies ou Software\Microsoft\Windows\CurrentVersion\Policies. As preferências, não totalmente suportadas, utilizam entradas de registo de outras subchaves.
+Um ficheiro de administração de Política de Grupo (.adm) pode conter definições verdadeiras e preferências. As definições verdadeiras, totalmente suportadas pela Política de Grupo, têm de utilizar entradas do Registo nas subchaves do Registo Software\Policies ou Software\Microsoft\Windows\Current\Version\Policies. As preferências, não totalmente suportadas, utilizam entradas do Registo de outras subchaves.
 
-Se activar esta definição, o comando "Mostrar Apenas Políticas" será activado e os administradores não o poderão desactivar. Consequentemente, o Editor de Objecto de Política de Grupo só apresentará definições verdadeiras e as preferências não serão apresentadas.
+Se ativar esta definição de política, o comando "Mostrar Apenas Políticas" será ativado e os administradores não o poderão desativar. Consequentemente, o Editor de Objetos de Política de Grupo só apresentará definições verdadeiras e as preferências não serão apresentadas.
 
-Se desactivar esta definição ou não a configurar, o comando "Mostrar Apenas Políticas" será activado por predefinição, mas os administradores poderão ver as preferências desactivando o comando "Mostrar Apenas Políticas".
+Se desativar ou não configurar esta definição de política, o comando "Mostrar Apenas Políticas" será ativado por predefinição, mas os administradores poderão ver as preferências desativando o comando "Mostrar Apenas Políticas".
 
-Nota: Para localizar o comando "Mostrar Apenas Políticas", no Editor de Objecto de Política de Grupo, clique na pasta Modelos Administrativos (qualquer um deles), clique com o botão direito do rato na mesma pasta e, em seguida, aponte para "Ver".
+Nota: para localizar o comando "Mostrar Apenas Políticas", no Editor de Objetos de Política de Grupo, clique na pasta Modelos Administrativos (qualquer uma), clique com o botão direito do rato na mesma pasta e, em seguida, aponte para "Ver".
 
-No Editor de Objecto de Política de Grupo, as preferências têm um ícone vermelho para as distinguir das definições verdadeiras, que têm um ícone azul..</string>
+Em Editor de Objetos de Política de Grupo, as preferências têm um ícone vermelho para as distinguir das verdadeiras definições, que têm um ícone azul.</string>
       <string id="GPDCOptionAny">Utilizar qualquer controlador de domínio disponível</string>
       <string id="GPDCOptionInherit">Herdar de Snap-ins do Active Directory</string>
       <string id="GPDCOptionPDC">Utilizar o Controlador de Domínio Principal</string>
-      <string id="GPDCOptions">Selecção do controlador de domínio da política de grupos</string>
-      <string id="GPDCOptions_Help">Determina o controlador de domínio utilizado pelo snap-in do Editor de Objecto de Política de Grupo.
+      <string id="GPDCOptions">Configurar Seleção do controlador de domínio da política de grupos</string>
+      <string id="GPDCOptions_Help">Esta definição de política determina o controlador de domínio utilizado pelo snap-in Editor de Objetos de Política de Grupo.
 
---  "Utilizar o Controlador de Domínio Principal" indica que o snap-in do Editor de Objecto de Política de Grupo lê e escreve as alterações do controlador de domínio designadas como Mestre de Operações PDC para o domínio.
+Se ativar esta definição, poderá selecionar o controlador de domínio que é utilizado de acordo com as seguintes opções:
 
---  "Herdar de Snap-ins do Active Directory" indica que o snap-in do Editor de Objecto de Política de Grupo lê e escreve as alterações do controlador de domínio utilizadas pelos utilizadores e computadores do Active Directory ou pelos snap-ins de locais e serviços do Active Directory.
+"Utilizar o Controlador de Domínio Principal" indica que o snap-in Editor de Objetos de Política de Grupo lê e escreve as alterações do controlador de domínio designadas como Mestre de Operações PDC para o domínio.
 
---  "Utilizar qualquer controlador de domínio disponível" indica que o snap-in do Editor de Objecto de Política de Grupo pode ler e escrever as alterações de qualquer controlador de domínio disponível.
+"Herdar de Snap-ins do Active Directory" indica que o snap-in Editor de Objetos de Política de Grupo lê e escreve as alterações do controlador de domínio utilizadas pelos utilizadores e computadores do Active Directory ou pelos snap-ins de locais e serviços do Active Directory.
 
-Se desactivar esta definição ou não a configurar, o snap-in do Editor de Objecto de Política de Grupo utiliza o controlador de domínio designado como Mestre de Operações PDC para o domínio.
+"Utilizar qualquer controlador de domínio disponível" indica que o snap-in Editor de Objetos de Política de Grupo pode ler e escrever as alterações de qualquer controlador de domínio disponível.
 
-Nota: Para alterar o Mestre de Operações PDC para um domínio, em Utilizadores e Computadores do Active Directory, clique com o botão direito do rato num domínio e, em seguida, clique em Mestre de Operações.</string>
-      <string id="GPTransferRate">Detecção de ligação lenta de política de grupo</string>
-      <string id="GPTransferRate_Help">Define uma ligação lenta para fins de aplicação e actualização da política de grupo.
+Se desativar esta definição ou não a configurar, o snap-in Editor de Objetos de Política de Grupo utiliza o controlador de domínio designado como Mestre de Operações PDC para o domínio.
 
-Se a velocidade de transferência de dados do controlador de domínio que fornece uma actualização da política aos computadores deste grupo for mais lenta do que a velocidade especificada por esta definição, o sistema irá considerar a ligação lenta.
+Nota: para alterar o Mestre de Operações PDC para um domínio, em Utilizadores e Computadores do Active Directory, clique com o botão direito do rato num domínio e, em seguida, clique em Mestre de Operações.</string>
+      <string id="GPTransferRate">Configurar Deteção de ligação lenta de política de grupo</string>
+      <string id="GPTransferRate_Help">Esta definição de política define uma ligação lenta para efeito de aplicação e atualização da Política de Grupo.
+
+Se a velocidade de transferência de dados do controlador de domínio que fornece uma atualização da política aos computadores deste grupo for mais lenta do que a velocidade especificada por esta definição, o sistema irá considerar a ligação lenta.
 
 A resposta do sistema a uma ligação de política lenta depende das políticas. O programa que implementa a política pode especificar a resposta a uma ligação lenta. Além disso, a política que processa as definições nesta pasta permite-lhe substituir as respostas especificadas pelos programas a ligações lentas.
 
-Para utilizar esta definição, na caixa "Velocidade da ligação", escreva um número decimal entre 0 e 4.294.967.200 (0xFFFFFFA0), indicando uma velocidade de transferência em quilobits por segundo. Qualquer ligação mais lenta do que esta velocidade é considerada lenta. Se escrever 0, todas as ligações serão consideradas rápidas.
+Se ativar esta definição, poderá, na caixa "Velocidade da ligação", escrever um número decimal entre 0 e 4.294.967.200, indicando uma velocidade de transferência em quilobits por segundo. Qualquer ligação mais lenta do que esta velocidade é considerada lenta. Se escrever 0, todas as ligações serão consideradas rápidas.
 
-Se desactivar esta definição ou não a configurar, o sistema utilizará o valor predefinido de 500 quilobits por segundo.
+Se desativar esta definição ou não a configurar, o sistema utilizará o valor predefinido de 500 quilobits por segundo.
 
-Esta definição aparece nas pastas Configuração do Computador e Configuração do Utilizador. A definição em Configuração do Computador define uma ligação lenta para políticas na pasta Configuração do Computador. A definição em Configuração do Computador define uma ligação lenta para políticas na pasta Configuração do Computador.
+Esta definição aparece nas pastas Configuração do Computador e Configuração do Utilizador. A definição em Configuração do Computador define uma ligação lenta para políticas na pasta Configuração do Computador. A definição em Configuração do Utilizador define uma ligação lenta para políticas na pasta Configuração do Computador.
 
-Além disso, consulte "Não detectar ligações de rede lentas" e políticas associadas em Configuração do Computador\Modelos Administrativos\Sistema\Perfil do Utilizador. Nota: Se o servidor de perfis tiver conectividade IP, será utilizada a definição da velocidade de ligação. Se o servidor de perfis não tiver conectividade IP, será utilizada a temporização SMB.</string>
-      <string id="GroupPolicyRefreshRate">Intervalo de actualização da política de grupo para computadores</string>
-      <string id="GroupPolicyRefreshRate_Help">Especifica a frequência de actualização da política de grupo para computadores enquanto o computador estiver a ser utilizado (em segundo plano). Esta definição especifica uma velocidade de actualização em segundo plano apenas para as políticas de grupo na pasta Configuração do Computador.
+Além disso, consulte "Não detetar ligações de rede lentas" e políticas associadas em Configuração do Computador\Modelos Administrativos\Sistema\Perfil do Utilizador. Nota: Se o servidor de perfis tiver conectividade IP, será utilizada a definição da velocidade de ligação. Se o servidor de perfis não tiver conectividade IP, será utilizada a temporização SMB.</string>
+      <string id="GroupPolicyRefreshRate">Definir Intervalo de atualização da política de grupo para computadores</string>
+      <string id="GroupPolicyRefreshRate_Help">Esta definição de política especifica a frequência com que a Política de Grupo é atualizada para computadores enquanto o computador estiver a ser utilizado (em segundo plano). Esta definição especifica uma velocidade de atualização em segundo plano apenas para as políticas de grupo na pasta Configuração do Computador.
 
-Além das actualizações em segundo plano, a política de grupo para o computador é sempre actualizada quando o sistema é iniciado.
+Além das atualizações em segundo plano, a política de grupo para o computador é sempre atualizada quando o sistema é iniciado.
 
-Por predefinição a política de grupo de computador é actualizada em segundo plano uma vez em cada 90 minutos, com um desvio aleatório de 0 a 30 minutos.
+Por predefinição a política de grupo de computador é atualizada em segundo plano uma vez em cada 90 minutos, com um desfasamento aleatório de 0 a 30 minutos.
 
-Pode especificar uma velocidade de actualização de 0 a 64.800 minutos (45 dias). Se seleccionar 0 minutos, o computador tentará actualizar a política de grupo uma vez em cada 7 segundos. No entanto, dado que as actualizações poderão interferir com o trabalho do utilizador e aumentar o tráfego na rede, os intervalos de actualização demasiado curtos não serão apropriados à maioria das instalações.
+Se ativar esta definição de política, pode especificar uma velocidade de atualização entre 0 e 64.800 minutos (45 dias). Se selecionar 0 minutos, o computador tentará atualizar a política de grupo uma vez em cada 7 segundos. No entanto, dado que as atualizações poderão interferir com o trabalho do utilizador e aumentar o tráfego na rede, os intervalos de atualização demasiado curtos não serão apropriados à maioria das instalações.
 
-Se esta definição for desactivada, a política de grupo será actualizada uma vez em cada 90 minutos (a predefinição). Para especificar que a política de grupo nunca deverá ser actualizada enquanto o computador estiver a ser utilizado, seleccione a política "Desactivar a actualização em segundo plano da política de grupo".
+Se esta definição for desativada, a política de grupo será atualizada uma vez em cada 90 minutos (a predefinição). Para especificar que a política de grupo nunca deverá ser atualizada enquanto o computador estiver a ser utilizado, selecione a política "Desativar a atualização em segundo plano da política de grupo".
 
-A política do intervalo de actualização da política de grupo para computadores também lhe permite especificar a variação do intervalo de actualização. Para impedir que os clientes com o mesmo intervalo de actualização solicitem actualizações em simultâneo, o intervalo de actualização do sistema para cada cliente varia num número aleatório de minutos. O número que escrever na caixa de tempo aleatório define o limite superior do intervalo da variação. Por exemplo, se escrever 30 minutos, o sistema selecciona uma variação de 0 a 30 minutos. Se escrever um número grande, estabelecerá um intervalo maior diminuindo a probabilidade de sobreposição de pedidos de cliente. No entanto, as actualizações poderão sofrer atrasos significativos.
+A política Definir Intervalo de atualização da política de grupo para computadores também permite especificar a variação do intervalo de atualização. Para impedir que os clientes com o mesmo intervalo de atualização solicitem atualizações em simultâneo, o intervalo de atualização do sistema para cada cliente varia num número aleatório de minutos. O número que escrever na caixa de tempo aleatório define o limite superior do intervalo da variação. Por exemplo, se escrever 30 minutos, o sistema seleciona uma variação de 0 a 30 minutos. Se escrever um número grande, estabelecerá um intervalo maior diminuindo a probabilidade de sobreposição de pedidos de cliente. No entanto, as atualizações poderão sofrer atrasos significativos.
 
-Esta definição estabelece a velocidade de actualização para a política de grupo do computador. Para definir uma velocidade de actualização para as políticas de utilizador, utilize a definição "Intervalo de actualização da política de grupo" para utilizadores" (localizada em Configuração do Utilizador\Modelos Administrativos\Sistema\Política de Grupo).
+Esta definição estabelece a velocidade de atualização para a política de grupo do computador. Para definir uma velocidade de atualização para as políticas de utilizador, utilize a definição "Definir Intervalo de atualização da política de grupo para utilizadores" (localizada em Configuração do Utilizador\Modelos Administrativos\Sistema\Política de Grupo).
 
-Esta definição é utilizada apenas quando a política "Desactivar a actualização em segundo plano da política de grupo" não estiver activada
+Esta definição é utilizada apenas quando a política "Desativar a atualização em segundo plano da política de grupo" não estiver ativada
 
-Nota: Deverá informar os utilizadores de que a respectiva política é actualizada periodicamente para que reconheçam os sinais de actualização de uma política. Quando a política de grupo for actualizada, o ambiente de trabalho do Windows é actualizado; poderá apresentar imagens intermitentes por pouco tempo e fechará menus abertos. Além disso, as restrições impostas pelas políticas de grupo, por exemplo, as que limitam os programas que podem ser executados pelos utilizadores, poderão interferir com as tarefas em curso.</string>
-      <string id="GroupPolicyRefreshRateDC">Intervalo de actualização de política de grupo relativamente a controladores de domínio</string>
-      <string id="GroupPolicyRefreshRateDC_Help">Especifica a frequência com que a política de grupo é actualizada em controladores de domínio enquanto estiverem em execução (em segundo plano). As actualizações especificadas por esta definição ocorrem além das actualizações desempenhadas quando o sistema é iniciado.
+Nota: deverá informar os utilizadores de que a respetiva política é atualizada periodicamente para que reconheçam os sinais de atualização de uma política. Quando a política de grupo for atualizada, o ambiente de trabalho do Windows é atualizado; poderá apresentar imagens intermitentes por pouco tempo e fechará menus abertos. Além disso, as restrições impostas pelas políticas de grupo, por exemplo, as que limitam os programas que podem ser executados pelos utilizadores, poderão interferir com as tarefas em curso.</string>
+      <string id="GroupPolicyRefreshRateDC">Definir Intervalo de atualização de política de grupo relativamente a controladores de domínio</string>
+      <string id="GroupPolicyRefreshRateDC_Help">Esta definição de política especifica a frequência com que a Política de Grupo é atualizada em controladores de domínio enquanto estiverem em execução (em segundo plano). As atualizações especificadas por esta definição ocorrem além das atualizações desempenhadas quando o sistema é iniciado.
 
-Por predefinição, a política de grupo nos controladores de domínio é actualizada uma vez em cada cinco minutos.
+Por predefinição, a política de grupo nos controladores de domínio é atualizada uma vez em cada cinco minutos.
 
-Pode especificar uma velocidade de actualização de 0 a 64.800 minutos (45 dias). Se seleccionar 0 minutos, o controlador de domínio tenta actualizar a política de grupo uma vez em cada 7 segundos. No entanto, dado que as actualizações poderão interferir com o trabalho do utilizador e aumentar o tráfego na rede, os intervalos de actualização demasiado curtos não serão apropriados à maioria das instalações.
+Se ativar esta definição de política, pode especificar uma velocidade de atualização entre 0 e 64.800 minutos (45 dias). Se selecionar 0 minutos, o controlador de domínio tenta atualizar a política de grupo uma vez em cada 7 segundos. No entanto, dado que as atualizações poderão interferir com o trabalho do utilizador e aumentar o tráfego na rede, os intervalos de atualização demasiado curtos não serão apropriados à maioria das instalações.
 
-Se desactivar esta definição, o controlador de domínio actualizará a política de grupo uma vez em cada 5 minutos (predefinição). Para especificar que as políticas de grupo para utilizadores nunca deverão ser actualizadas enquanto o computador estiver a ser utilizado, seleccione a política "Desactivar a actualização em segundo plano da política de grupo".
+Se desativar ou não configurar esta definição, o controlador de domínio atualizará a política de grupo uma vez em cada 5 minutos (predefinição). Para especificar que as políticas de grupo para utilizadores nunca deverão ser atualizadas enquanto o computador estiver a ser utilizado, selecione a política "Desativar a atualização em segundo plano da política de grupo".
 
-Esta definição também lhe permite especificar a variação do intervalo real entre actualizações. Para impedir que os controladores de domínio com o mesmo intervalo de actualização peçam actualizações em simultâneo, o intervalo de actualização do sistema para cada controlador varia num número aleatório de minutos. O número que escrever na caixa de tempo aleatório define o limite superior do intervalo da variação. Por exemplo, se escrever 30 minutos, o sistema selecciona uma variação de 0 a 30 minutos. Se escrever um número grande, estabelecerá um intervalo grande diminuindo a possibilidade de sobreposição de pedidos de actualização. No entanto, as actualizações poderão sofrer atrasos significativos.
+Esta definição também lhe permite especificar a variação do intervalo real entre atualizações. Para impedir que os controladores de domínio com o mesmo intervalo de atualização peçam atualizações em simultâneo, o intervalo de atualização do sistema para cada controlador varia num número aleatório de minutos. O número que escrever na caixa de tempo aleatório define o limite superior do intervalo da variação. Por exemplo, se escrever 30 minutos, o sistema seleciona uma variação de 0 a 30 minutos. Se escrever um número grande, estabelecerá um intervalo grande diminuindo a possibilidade de sobreposição de pedidos de atualização. No entanto, as atualizações poderão sofrer atrasos significativos.
 
-Nota: Esta definição é utilizada apenas quando estabelecer uma política para um domínio, site, unidade organizacional (UO) ou um grupo personalizado. Se estiver a estabelecer uma política apenas para um computador local, o sistema ignora esta definição.</string>
-      <string id="GroupPolicyRefreshRateUser">Intervalo de actualização da política de grupo para utilizadores</string>
-      <string id="GroupPolicyRefreshRateUser_Help">Especifica a frequência de actualização da política de grupo para utilizadores enquanto o computador estiver a ser utilizado (em segundo plano). Esta definição especifica uma velocidade de actualização em segundo plano apenas para as políticas de grupo na pasta Configuração do Utilizador.
+Nota: esta definição é utilizada apenas quando estabelecer uma política para um domínio, site, unidade organizacional (UO) ou um grupo personalizado. Se estiver a estabelecer uma política apenas para um computador local, o sistema ignora esta definição.</string>
+      <string id="GroupPolicyRefreshRateUser">Definir Intervalo de atualização da política de grupo para utilizadores</string>
+      <string id="GroupPolicyRefreshRateUser_Help">Esta definição de política especifica a frequência com que a Política de Grupo é atualizada para utilizadores enquanto o computador estiver a ser utilizado (em segundo plano). Esta definição especifica uma velocidade de atualização em segundo plano apenas para as políticas de grupo na pasta Configuração do Utilizador.
 
-Para além das actualizações em segundo plano, a política de grupo para utilizadores é sempre actualizada quando iniciam sessão.
+Para além das atualizações em segundo plano, a política de grupo para utilizadores é sempre atualizada quando iniciam sessão.
 
-Por predefinição a política de grupo de utilizador é actualizada em segundo plano uma vez em cada 90 minutos, com um desvio aleatório de 0 a 30 minutos.
+Por predefinição a política de grupo de utilizador é atualizada em segundo plano uma vez em cada 90 minutos, com um desfasamento aleatório de 0 a 30 minutos.
 
-Pode especificar uma velocidade de actualização de 0 a 64.800 minutos (45 dias). Se seleccionar 0 minutos, o computador tenta actualizar a política de grupo de utilizador uma vez em cada 7 segundos. No entanto, dado que as actualizações poderão interferir com o trabalho do utilizador e aumentar o tráfego na rede, os intervalos de actualização demasiado curtos não serão apropriados à maioria das instalações.
+Se ativar esta definição de política, pode especificar uma velocidade de atualização entre 0 e 64.800 minutos (45 dias). Se selecionar 0 minutos, o computador tenta atualizar a política de grupo de utilizador uma vez em cada 7 segundos. No entanto, dado que as atualizações poderão interferir com o trabalho do utilizador e aumentar o tráfego na rede, os intervalos de atualização demasiado curtos não serão apropriados à maioria das instalações.
 
-Se esta definição for desactivada, a política de grupo de utilizador será actualizada uma vez em cada 90 minutos (a predefinição). Para especificar que a política de grupo para utilizadores nunca deverá ser actualizada enquanto o computador estiver a ser utilizado, seleccione a política "Desactivar a actualização em segundo plano da política de grupo".
+Se esta definição for desativada, a política de grupo de utilizador será atualizada uma vez em cada 90 minutos (a predefinição). Para especificar que a política de grupo para utilizadores nunca deverá ser atualizada enquanto o computador estiver a ser utilizado, selecione a política "Desativar a atualização em segundo plano da política de grupo".
 
-Esta definição também lhe permite especificar a variação do intervalo real entre actualizações. Para impedir que os clientes com o mesmo intervalo de actualização solicitem actualizações em simultâneo, o intervalo de actualização do sistema para cada cliente varia num número aleatório de minutos. O número que escrever na caixa de tempo aleatório define o limite superior do intervalo da variação. Por exemplo, se escrever 30 minutos, o sistema selecciona uma variação de 0 a 30 minutos. Se escrever um número grande, estabelecerá um intervalo maior diminuindo a probabilidade de sobreposição de pedidos de cliente. No entanto, as actualizações poderão sofrer atrasos significativos.
+Esta definição também lhe permite especificar a variação do intervalo real entre atualizações. Para impedir que os clientes com o mesmo intervalo de atualização solicitem atualizações em simultâneo, o intervalo de atualização do sistema para cada cliente varia num número aleatório de minutos. O número que escrever na caixa de tempo aleatório define o limite superior do intervalo da variação. Por exemplo, se escrever 30 minutos, o sistema seleciona uma variação de 0 a 30 minutos. Se escrever um número grande, estabelecerá um intervalo maior diminuindo a probabilidade de sobreposição de pedidos de cliente. No entanto, as atualizações poderão sofrer atrasos significativos.
 
-Importante: Se a política "Desactivar a actualização em segundo plano da política de grupo" for activada, esta definição é ignorada.
+Importante: se a política "Desativar a atualização em segundo plano da política de grupo" for ativada, esta definição é ignorada.
 
-Nota: Esta definição estabelece a velocidade de actualização para as políticas de grupo de utilizador. Para definir uma velocidade de actualização para as políticas de grupo de computador, utilize a política "Intervalo de actualização da política de grupo para computadores" (localizada em Configuração do Computador\Modelos Administrativos\Sistema\Política de Grupo).
+Nota: esta definição estabelece a velocidade de atualização para as políticas de grupo de utilizador. Para definir uma velocidade de atualização para as políticas de grupo de computador, utilize a política "Intervalo de atualização da política de grupo para computadores" (localizada em Configuração do Computador\Modelos Administrativos\Sistema\Política de Grupo).
 
-Sugestão: Deverá informar os utilizadores de que a respectiva política é actualizada periodicamente para que reconheçam os sinais de actualização de uma política. Quando a política de grupo for actualizada, o ambiente de trabalho do Windows é actualizado; poderá apresentar imagens intermitentes por pouco tempo e fechará menus abertos. Além disso, as restrições impostas pelas políticas de grupo, por exemplo, as que limitam os programas que podem ser executados pelo utilizador, poderão interferir com as tarefas em curso.</string>
-      <string id="NewGPODisplayName">Nome predefinido para novos objectos de política de grupo</string>
-      <string id="NewGPODisplayName_Help">Nome predefinido para novos objectos de política de grupo
+Sugestão: deverá informar os utilizadores de que a respetiva política é atualizada periodicamente para que reconheçam os sinais de atualização de uma política. Quando a política de grupo for atualizada, o ambiente de trabalho do Windows é atualizado; poderá apresentar imagens intermitentes por pouco tempo e fechará menus abertos. Além disso, as restrições impostas pelas políticas de grupo, por exemplo, as que limitam os programas que podem ser executados pelo utilizador, poderão interferir com as tarefas em curso.</string>
+      <string id="NewGPODisplayName">Definir Nome predefinido para novos objetos de política de grupo</string>
+      <string id="NewGPODisplayName_Help">Esta definição de política permite definir o nome a apresentar predefinido para os novos objetos de Política de Grupo.
 
-Esta definição permite predefinir o nome de novos objectos de política de grupo criados a partir de ferramentas de Gestão de Políticas de Grupo compatíveis com políticas, incluindo o separador Política de Grupo das ferramentas do Active Directory ou no browser GPO.
+Esta definição permite predefinir o nome de novos objetos de política de grupo criados a partir de ferramentas de Gestão de Políticas de Grupo compatíveis com políticas, incluindo o separador Política de Grupo das ferramentas do Active Directory ou no browser GPO.
 
-O nome pode conter variáveis de ambiente e um máximo de 255 caracteres de comprimento.
+O nome a apresentar pode conter variáveis de ambiente e um máximo de 255 carateres de comprimento.
 
-Se esta definição estiver desactivada ou não configurada, é utilizado o nome a apresentar predefinido do novo objecto de política de grupo.</string>
-      <string id="NewGPOLinksDisabled">Criar novas ligações de objectos de política de grupo desactivados por predefinição</string>
-      <string id="NewGPOLinksDisabled_Help">Cria novas ligações de objecto de política de grupo desactivadas.
+Se esta definição estiver desativada ou não configurada, é utilizado o nome a apresentar predefinido do novo objeto de Política de Grupo.</string>
+      <string id="NewGPOLinksDisabled">Criar novas ligações de objetos de Política de Grupo desativados por predefinição</string>
+      <string id="NewGPOLinksDisabled_Help">Esta definição de política permite criar novas ligações de objetos de Política de Grupo no estado desativado.
 
-Esta definição cria, por predefinição, todas as novas ligações de objecto de política de grupo no estado desactivado. Depois de configurar e testar as novas ligações de objecto utilizando uma ferramenta de gestão da política de grupo compatível com políticas, como, por exemplo, Utilizadores e Computadores do Active Directory ou Serviços e Locais do Active Directory, pode activar as ligações de objectos para utilização no sistema.
+Se ativar esta definição, pode criar todas as novas ligações de objeto de Política de Grupo no estado desativado por predefinição. Depois de configurar e testar as novas ligações de objeto utilizando uma ferramenta de gestão da política de grupo compatível com políticas, como, por exemplo, Utilizadores e Computadores do Active Directory ou Serviços e Locais do Active Directory, pode ativar as ligações de objetos para utilização no sistema.
 
-Se desactivar ou não configurar esta definição, serão criadas novas ligações de objecto de política de grupo no estado activado. Se não pretender que entrem em vigor antes de serem configuradas e testadas, tem de desactivar a ligação de objecto.</string>
-      <string id="OnlyUseLocalAdminFiles">Utilizar sempre ficheiros ADM locais para o Editor de Objecto de Política de Grupo</string>
-      <string id="OnlyUseLocalAdminFiles_Help">Utilize sempre ficheiros ADM locais para o snap-in de política de grupo.
+Se desativar ou não configurar esta definição, serão criadas novas ligações de objeto de política de grupo no estado ativado. Se não pretender que produzam efeitos antes de serem configuradas e testadas, tem de desativar a ligação de objeto.</string>
+      <string id="OnlyUseLocalAdminFiles">Utilizar sempre ficheiros ADM locais para o Editor de Objetos de Política de Grupo</string>
+      <string id="OnlyUseLocalAdminFiles_Help">Esta definição de política permite utilizar sempre ficheiros ADM locais para o snap-in Política de Grupo.
 
-Por predefinição, quando edita um objecto de política de grupo (GPO) utilizando o snap-in Editor de Objecto de Política de grupo, os ficheiros ADM são carregados a partir desse GPO para o snap-in Editor de Objecto de Política de Grupo. Desta forma, é possível utilizar a mesma versão dos ficheiros ADM utilizada para criar o GPO durante a edição deste GPO.
+Por predefinição, quando edita um objeto de Política de Grupo (GPO) utilizando o snap-in Editor de Objetos de Política de grupo, os ficheiros ADM são carregados a partir desse GPO para o snap-in Editor de Objetos de Política de Grupo. Isto permite utilizar a mesma versão dos ficheiros ADM utilizada para criar o GPO durante a edição deste GPO.
 
 Isto leva ao seguinte comportamento
 
@@ -343,139 +438,151 @@ Isto leva ao seguinte comportamento
 
 Pode alterar este comportamento utilizando esta definição.
 
-Se activar esta definição, o snap-in Editor de Objecto de Política de Grupo utilizará sempre os ficheiros ADM locais no directório %windir%\inf durante a edição de GPOs.
+Se ativar esta definição, o snap-in Editor de Objeto de Política de Grupo utilizará sempre os ficheiros ADM locais no diretório %windir%\inf durante a edição de GPOs.
 
 Isto leva ao seguinte comportamento
 
--  Se, originalmente, criou o GPO com um sistema inglês e, em seguida, o editar com um sistema japonês, o snap-in Editor de Objecto de Política de Grupo utilizará os ficheiros ADM locais em japonês e o texto em Modelos Administrativos será apresentado em japonês.
+-  Se, originalmente, criou o GPO com um sistema inglês e, em seguida, o editar com um sistema japonês, o snap-in Editor de Objetos de Política de Grupo utilizará os ficheiros ADM locais em japonês e o texto em Modelos Administrativos será apresentado em japonês.
 
-Se desactivar esta definição ou não a configurar, o snap-in Editor de Objecto de Política de Grupo carregará sempre todos os ficheiros ADM a partir do próprio GPO.
+Se desativar esta definição ou não a configurar, o snap-in Editor de Objeto de Política de Grupo carregará sempre todos os ficheiros ADM a partir do próprio GPO.
 
-Nota: Se os ADM necessários não estiverem todos disponíveis localmente no directório %windir%\inf, poderá não conseguir ver todas as definições configuradas no GPO que está a editar.</string>
-      <string id="PolicyPolicies">Política de grupo</string>
-      <string id="RSoPLogging">Desactivar registo do conjunto de políticas resultante</string>
-      <string id="RSoPLogging_Help">Esta definição permite-lhe activar ou desactivar o registo de Conjunto de Políticas Resultante (RSoP, Resultant Set of Policy) num computador cliente.
+Nota: se os ADM necessários não estiverem todos disponíveis localmente no diretório %windir%\inf, poderá não conseguir ver todas as definições configuradas no GPO que está a editar.</string>
+      <string id="PolicyPolicies">Política de Grupo</string>
+      <string id="RSoPLogging">Desativar registo do conjunto de políticas resultante</string>
+      <string id="RSoPLogging_Help">Esta definição permite-lhe ativar ou desativar o registo de Conjunto de Políticas Resultante (RSoP) num computador cliente.
 
-O RSoP regista as informações das definições de política de grupo que foram aplicadas ao cliente. Estas informações incluem detalhes como que objectos de política de grupo (GPO) foram aplicados, a sua proveniência e as definições de extensão do lado do cliente que foram incluídas.
+O RSoP regista as informações das definições de política de grupo que foram aplicadas ao cliente. Estas informações incluem detalhes, tais como que Objetos de Política de Grupo (GPO) foram aplicados, a sua proveniência e as definições de extensão do lado do cliente que foram incluídas.
 
-Se activar esta definição, o registo do RSoP é desactivado.
+Se ativar esta definição, o registo do RSoP é desativado.
 
-Se desactivar ou não configurar esta definição, o registo do RSoP é activado. Por predefinição, o registo do RSoP está sempre activo.
+Se desativar ou não configurar esta definição, o registo do RSoP é ativado. Por predefinição, o registo do RSoP está sempre ativo.
 
-Nota: Para visualizar as informações do RSoP registadas num computador cliente, pode utilizar o snap-in de RSoP na Consola de Gestão da Microsoft (MMC, Microsoft Mamagement Console).</string>
-      <string id="UserPolicyMode">Modo de processamento de loopbacks da política de grupos de utilizadores</string>
-      <string id="UserPolicyMode_Help">Aplica definições de utilizador alternativas quando um utilizador inicia a sessão num computador afectado por esta definição.
+Nota: para visualizar as informações do RSoP registadas num computador cliente, pode utilizar o snap-in de RSoP na Consola de Gestão da Microsoft (MMC).</string>
+      <string id="UserPolicyMode">Configurar Modo de processamento de loopbacks da política de grupos de utilizadores</string>
+      <string id="UserPolicyMode_Help">Esta definição de política indica ao sistema para aplicar o conjunto de objetos de política de grupo do computador a qualquer utilizador que inicie sessão num computador afetado pela definição. Destina-se a computadores para utilização especial, tal como os que estão em locais públicos, laboratórios e salas de aulas, onde a definição do utilizador tem de ser modificada com base no computador que está a ser utilizado.
 
-Esta definição indica ao sistema para aplicar o conjunto de objectos de política de grupo do computador a qualquer utilizador que inicie sessão num computador afectado pela definição. Destina-se a computadores para utilização especial, tal como os que estão em locais públicos, laboratórios e salas de aulas, onde a definição do utilizador tem de ser modificada com base no computador que está a ser utilizado.
+Por predefinição, os Objetos de Política de Grupo do utilizador determinam quais as definições de utilizador aplicáveis. Se esta definição estiver ativada, quando um utilizador iniciar sessão neste computador, os Objetos de Política de Grupo do computador determinam qual o conjunto de Objetos de Política de Grupo aplicável.
 
-Por predefinição, os objectos de política de grupo do utilizador determinam quais as definições de utilizador aplicáveis. Se esta definição estiver activada, então, quando um utilizador iniciar sessão neste computador, os objectos de política de grupo do computador determinam qual o conjunto de objectos de política de grupo aplicável.
+Se ativar esta definição, poderá selecionar um dos seguintes modos a partir da caixa Modo:
 
-Para utilizar esta definição, seleccione um dos seguintes modos na caixa Modo:
+"Substituir" indica que as definições de utilizador definidas nos Objetos de Política de Grupo do computador substituem as definições de utilizador que são, normalmente, aplicadas ao utilizador.
 
---   "Substituir" indica que as definições de utilizador definidas nos objectos de política de grupo do computador substituem as definições de utilizador que são, normalmente, aplicadas ao utilizador.
+"Intercalar" indica que as definições de utilizador criadas nos Objetos de Política de Grupo do computador e as definições de utilizador normalmente aplicadas ao utilizador são combinadas. Se as definições entrarem em conflito, as definições do utilizador nos Objetos de Política de Grupo do computador têm prioridade sobre as definições normais do utilizador.
 
---  "Intercalar" indica que as definições de utilizador criadas nos objectos de política de grupo do computador e as definições de utilizador normalmente aplicadas ao utilizador são combinadas. Se as definições entrarem em conflito, as definições do utilizador nos objectos de política de grupo do computador têm prioridade sobre as definições normais do utilizador.
+Se desativar esta definição ou não a configurar, os Objetos de Política de Grupo do utilizador determinam quais as definições de utilizador a aplicar.
 
-Se desactivar esta definição ou não a configurar, os objectos de política de grupo do utilizador determinam quais as definições de utilizador a aplicar.
-
-Nota: Esta definição só entra em vigor quando tanto a conta do computador como a conta do utilizador estiverem em domínios do Windows 2000.</string>
+Nota: esta definição só produz efeitos quando tanto a conta de computador como a conta de utilizador estiverem, pelo menos, em domínios do Windows 2000.</string>
       <string id="UserPolicyMode_Merge">Intercalar</string>
       <string id="UserPolicyMode_Replace">Substituir</string>
+      <string id="CorpConnSyncWaitTime">Especificar o tempo de espera da conectividade da área de trabalho para processamento de políticas</string>
+      <string id="CorpConnSyncWaitTime_Help">Esta definição de política especifica o período de tempo que a Política de Grupo deve esperar por notificações da conectividade da área de trabalho durante o processamento de política de arranque. Se o processamento da política de arranque for síncrono, o computador é bloqueado até a conectividade da área de trabalho estar disponível ou até o tempo de espera predefinido ser atingido. Se o processamento da política de arranque for assíncrono, o computador não é bloqueado e o processamento da política é efetuado em segundo plano. Em qualquer dos casos, a configuração desta definição de política substitui quaisquer tempos de espera calculados pelo sistema.
+
+Se ativar esta definição de política, a Política de Grupo utiliza este tempo de espera máximo configurado para a conectividade da área de trabalho e substitui qualquer tempo de espera predefinido ou calculado pelo sistema.
+
+Se desativar ou não configurar esta definição de política, a Política de Grupo utilizará o tempo de espera predefinido de 60 segundos nos computadores com sistemas operativos Windows posteriores ao Windows 7 configurados para conectividade da área de trabalho.</string>
     </stringTable>
     <presentationTable>
+      <presentation id="SyncModeThreshold">
+        <decimalTextBox refId="SyncModeSlowLinkThreshold1" defaultValue="500">Valor da ligação lenta: [campo numérico] milissegundos</decimalTextBox>
+        <decimalTextBox refId="SyncModeNoDCThreshold1" defaultValue="5000">Valor do tempo limite: [campo numérico] milissegundos</decimalTextBox>
+      </presentation>
+      <presentation id="LogonScriptDelay">
+        <decimalTextBox refId="AsyncScriptDelay1" defaultValue="5">minutos:</decimalTextBox>
+      </presentation>
       <presentation id="SyncWaitTime">
         <decimalTextBox refId="SyncWaitTime_Minutes" defaultValue="120">Tempo a aguardar (em segundos):</decimalTextBox>
       </presentation>
       <presentation id="CSE_AppMgmt">
         <checkBox refId="CSE_SLOWLINK1">Permitir processamento numa ligação de rede lenta</checkBox>
-        <checkBox refId="CSE_NOCHANGES1">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES1">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="CSE_DiskQuota">
         <checkBox refId="CSE_SLOWLINK2">Permitir processamento numa ligação de rede lenta</checkBox>
         <checkBox refId="CSE_NOBACKGROUND2">Não aplicar durante o processamento periódico em segundo plano</checkBox>
-        <checkBox refId="CSE_NOCHANGES2">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES2">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="CSE_EFSRecovery">
         <checkBox refId="CSE_SLOWLINK3">Permitir processamento numa ligação de rede lenta</checkBox>
         <checkBox refId="CSE_NOBACKGROUND3">Não aplicar durante o processamento periódico em segundo plano</checkBox>
-        <checkBox refId="CSE_NOCHANGES3">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES3">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="CSE_FolderRedirection">
         <checkBox refId="CSE_SLOWLINK4">Permitir processamento numa ligação de rede lenta</checkBox>
-        <checkBox refId="CSE_NOCHANGES4">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES4">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="CSE_IEM">
         <checkBox refId="CSE_SLOWLINK5">Permitir processamento numa ligação de rede lenta</checkBox>
         <checkBox refId="CSE_NOBACKGROUND5">Não aplicar durante o processamento periódico em segundo plano</checkBox>
-        <checkBox refId="CSE_NOCHANGES5">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES5">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="CSE_IPSecurity">
         <checkBox refId="CSE_SLOWLINK6">Permitir processamento numa ligação de rede lenta</checkBox>
         <checkBox refId="CSE_NOBACKGROUND6">Não aplicar durante o processamento periódico em segundo plano</checkBox>
-        <checkBox refId="CSE_NOCHANGES6">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES6">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="CSE_Registry">
         <checkBox refId="CSE_NOBACKGROUND10">Não aplicar durante o processamento periódico em segundo plano</checkBox>
-        <checkBox refId="CSE_NOCHANGES10">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES10">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="CSE_Scripts">
         <checkBox refId="CSE_SLOWLINK7">Permitir processamento numa ligação de rede lenta</checkBox>
         <checkBox refId="CSE_NOBACKGROUND7">Não aplicar durante o processamento periódico em segundo plano</checkBox>
-        <checkBox refId="CSE_NOCHANGES7">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES7">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="CSE_Security">
         <checkBox refId="CSE_NOBACKGROUND11">Não aplicar durante o processamento periódico em segundo plano</checkBox>
-        <checkBox refId="CSE_NOCHANGES11">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES11">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="CSE_Wired">
         <checkBox refId="CSE_SLOWLINK8">Permitir processamento numa ligação de rede lenta</checkBox>
         <checkBox refId="CSE_NOBACKGROUND8">Não aplicar durante o processamento periódico em segundo plano</checkBox>
-        <checkBox refId="CSE_NOCHANGES8">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES8">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="CSE_Wireless">
         <checkBox refId="CSE_SLOWLINK9">Permitir processamento numa ligação de rede lenta</checkBox>
         <checkBox refId="CSE_NOBACKGROUND9">Não aplicar durante o processamento periódico em segundo plano</checkBox>
-        <checkBox refId="CSE_NOCHANGES9">Processar mesmo que os objectos da Política de Grupo não tenham sido alterados</checkBox>
+        <checkBox refId="CSE_NOCHANGES9">Processar mesmo que os objetos da Política de Grupo não tenham sido alterados</checkBox>
       </presentation>
       <presentation id="GPDCOptions">
-        <dropdownList refId="GPDCOptionsDesc" noSort="true" defaultItem="0">Quando o Editor de Objecto de Política de Grupo seleccionar um controlador de domínio para ser utilizado, deverá:</dropdownList>
+        <dropdownList refId="GPDCOptionsDesc" noSort="true" defaultItem="0">Quando o Editor de Objeto de Política de Grupo selecionar um controlador de domínio para ser utilizado, deverá:</dropdownList>
       </presentation>
       <presentation id="GPTransferRate_1">
         <decimalTextBox refId="TransferRateOp1" defaultValue="500" spinStep="100">Velocidade da ligação (Kbps):</decimalTextBox>
         <text> </text>
-        <text>Introduza 0 para desactivar a detecção de ligações lentas.</text>
+        <text>Introduza 0 para desativar a deteção de ligações lentas.</text>
       </presentation>
       <presentation id="GPTransferRate_2">
         <decimalTextBox refId="TransferRateOp2" defaultValue="500" spinStep="100">Velocidade da ligação (Kbps):</decimalTextBox>
         <text> </text>
-        <text>Introduza 0 para desactivar a detecção de ligações lentas.</text>
+        <text>Introduza 0 para desativar a deteção de ligações lentas.</text>
+        <checkBox refId="CSE_3G_DEFAULT_TO_SLOWLINK_COMPUTER">Tratar sempre as ligações WWAN como uma ligação lenta</checkBox>
       </presentation>
       <presentation id="GroupPolicyRefreshRate">
         <text>Esta definição permite personalizar o número de vezes que a Política de Grupo é aplicada</text>
-        <text>aos computadores. O intervalo é de 0 a 64800 minutos (45 dias).</text>
+        <text>aos computadores. O intervalo é de 0 a 44640 minutos (31 dias).</text>
         <decimalTextBox refId="GPRefreshRate1" defaultValue="90">Minutos:</decimalTextBox>
         <text> </text>
-        <text>É o tempo aleatório adicionado ao intervalo de actualização para impedir</text>
+        <text>É o tempo aleatório adicionado ao intervalo de atualização para impedir</text>
         <text>todos os clientes de pedirem a Política de Grupo em simultâneo.</text>
         <text>O intervalo é de 0 a 1440 minutos (24 horas)</text>
         <decimalTextBox refId="GPRefreshRateOffset1" defaultValue="30">Minutos:</decimalTextBox>
       </presentation>
       <presentation id="GroupPolicyRefreshRateDC">
         <text>Esta definição permite personalizar o número de vezes que a Política de Grupo é aplicada</text>
-        <text>aos controladores de domínio. O intervalo é de 0 a 64800 minutos (45 dias).</text>
+        <text>aos controladores de domínio. O intervalo é de 0 a 44640 minutos (31 dias).</text>
         <decimalTextBox refId="GPRefreshRate2" defaultValue="5">Minutos:</decimalTextBox>
         <text> </text>
-        <text>É o tempo aleatório adicionado ao intervalo de actualização para impedir</text>
+        <text>É o tempo aleatório adicionado ao intervalo de atualização para impedir</text>
         <text>todos os clientes de pedirem a Política de Grupo em simultâneo.</text>
         <text>O intervalo é de 0 a 1440 minutos (24 horas)</text>
         <decimalTextBox refId="GPRefreshRateOffset2" defaultValue="0">Minutos:</decimalTextBox>
       </presentation>
       <presentation id="GroupPolicyRefreshRateUser">
         <text>Esta definição permite personalizar o número de vezes que a Política de Grupo é aplicada</text>
-        <text>aos utilizadores. O intervalo é de 0 a 64800 minutos (45 dias).</text>
+        <text>aos utilizadores. O intervalo é de 0 a 44640 minutos (31 dias).</text>
         <decimalTextBox refId="GPRefreshRate3" defaultValue="90">Minutos:</decimalTextBox>
         <text> </text>
-        <text>É o tempo aleatório adicionado ao intervalo de actualização para impedir</text>
+        <text>É o tempo aleatório adicionado ao intervalo de atualização para impedir</text>
         <text>todos os clientes de pedirem a Política de Grupo em simultâneo.</text>
         <text>O intervalo é de 0 a 1440 minutos (24 horas)</text>
         <decimalTextBox refId="GPRefreshRateOffset3" defaultValue="30">Minutos:</decimalTextBox>
@@ -487,6 +594,9 @@ Nota: Esta definição só entra em vigor quando tanto a conta do computador com
       </presentation>
       <presentation id="UserPolicyMode">
         <dropdownList refId="UserPolicyModeOp" noSort="true" defaultItem="1">Modo:</dropdownList>
+      </presentation>
+      <presentation id="CorpConnSyncWaitTime">
+        <decimalTextBox refId="CorpConnSyncWaitTime_Seconds" defaultValue="60">Tempo a aguardar (em segundos):</decimalTextBox>
       </presentation>
     </presentationTable>
   </resources>

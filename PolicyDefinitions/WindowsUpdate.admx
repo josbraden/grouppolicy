@@ -7,6 +7,54 @@
   </policyNamespaces>
   <supersededAdm fileName="wuau.adm" />
   <resources minRequiredRevision="1.0" />
+
+  <supportedOn>
+    <!--
+        For product definitions (products:MicrosoftABC) please consult:
+        //depot/winmain/ds/grouppolicy/PolicyDefinitions/WindowsProducts.admx
+        
+        For windows policy definitions (windows:XYZ):
+        //depot/winmain/ds/grouppolicy/PolicyDefinitions/windows.admx 
+        //depot/winmain/ds/grouppolicy/PolicyDefinitions/WindowsServer.admx
+    -->
+    <definitions>
+      <!--Windows 7, Windows Server 2008, Windows Vista, Windows XP SP2-->
+      <definition name="WU_SUPPORTED_Windows7ToXPSP2" displayName="$(string.WU_SUPPORTED_Windows7ToXPSP2)">
+        <or>
+          <range ref="products:MicrosoftWindowsXP" minVersionIndex="2"/>
+          <range ref="products:MicrosoftWindows" minVersionIndex="4" maxVersionIndex="6"/>
+        </or>
+      </definition>
+
+      <!--Windows 7, Windows Server 2003, Windows Vista, Microsoft Windows XP Professional Service Pack 2, Microsoft Windows XP Professional Service Pack 1 , Microsoft Windows 2000 Service Pack 4, Microsoft Windows 2000 Service Pack 3-->
+      <!--This is based on SUPPORTED_Win2kSP3_Or_XPSP1 from the windows policy definitions-->
+      <definition name="WU_SUPPORTED_Windows7_To_Win2kSP3_Or_XPSP1" displayName="$(string.WU_SUPPORTED_Windows7_To_Win2kSP3_Or_XPSP1)">
+        <or>
+          <range ref="products:MicrosoftWindows2000" minVersionIndex="3"/>
+          <range ref="products:MicrosoftWindowsXP" minVersionIndex="1"/>
+          <range ref="products:MicrosoftWindows" minVersionIndex="3" maxVersionIndex="6"/>
+        </or>
+      </definition>
+
+      <!--At least Microsoft Windows 2000 Service Pack 3 or Microsoft Windows XP Professional Service Pack 1, excluding Windows RT-->  
+      <definition name="WU_SUPPORTED_Win2kSP3_Or_XPSP1_NoWinRT" displayName="$(string.WU_SUPPORTED_Win2kSP3_Or_XPSP1_NoWinRT)">  
+        <or>  
+          <range ref="products:MicrosoftWindows2000" minVersionIndex="3"/>  
+          <range ref="products:MicrosoftWindowsXP" minVersionIndex="1"/>
+          <range ref="products:MicrosoftWindows" minVersionIndex="3" maxVersionIndex="8"/>
+        </or>  
+      </definition>
+
+      <!--At least Microsoft Windows XP Professional with SP1 or Windows Server 2003 family, excluding Windows RT-->  
+      <definition name="WU_SUPPORTED_WindowsXPSP1_NoWinRT" displayName="$(string.WU_SUPPORTED_WindowsXPSP1_NoWinRT)">  
+        <or>  
+          <range ref="products:MicrosoftWindowsXP" minVersionIndex="1"/>  
+          <range ref="products:MicrosoftWindows" minVersionIndex="3" maxVersionIndex="8"/>  
+        </or>  
+      </definition> 
+    </definitions>
+  </supportedOn>
+
   <categories>
     <category name="WindowsUpdateCat" displayName="$(string.WindowsUpdateCat)">
       <parentCategory ref="windows:WindowsComponents" />
@@ -25,7 +73,7 @@
     </policy>
     <policy name="AUDontShowUasPolicy" class="Both" displayName="$(string.AUDontShowUasPolicy)" explainText="$(string.AUDontShowUasHelp)" key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" valueName="NoAUShutdownOption">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_WindowsXPSP2" />
+      <supportedOn ref="WU_SUPPORTED_Windows7ToXPSP2" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -35,7 +83,7 @@
     </policy>
     <policy name="AUNoUasDefaultPolicy_User" class="User" displayName="$(string.AUNoUasDefaultPolicy)" explainText="$(string.AUNoUasDefaultHelp_User)" key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" valueName="NoAUAsDefaultShutdownOption">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_WindowsXPSP2" />
+      <supportedOn ref="WU_SUPPORTED_Windows7ToXPSP2" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -45,14 +93,14 @@
     </policy>
     <policy name="AUNoUasDefaultPolicy_Mach" class="Machine" displayName="$(string.AUNoUasDefaultPolicy)" explainText="$(string.AUNoUasDefaultHelp_Mach)" key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" valueName="NoAUAsDefaultShutdownOption">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_WindowsXPSP2" />
+      <supportedOn ref="WU_SUPPORTED_Windows7ToXPSP2" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
       <disabledValue>
         <decimal value="0" />
       </disabledValue>
-    </policy>	
+    </policy>
     <policy name="RemoveWindowsUpdate" class="User" displayName="$(string.RemoveWindowsUpdate)" explainText="$(string.RemoveWindowsUpdate_Help)" presentation="$(presentation.RemoveWindowsUpdate)" key="Software\Microsoft\Windows\CurrentVersion\Policies\WindowsUpdate" valueName="DisableWindowsUpdateAccess">
       <parentCategory ref="WindowsUpdateCat" />
       <supportedOn ref="windows:SUPPORTED_Win2kSP3_Or_XPSP1" />
@@ -109,6 +157,7 @@
             </value>
           </item>
         </enum>
+        <boolean id="AutoUpdateAutomaticMaintenanceEnabled" valueName="AutomaticMaintenanceEnabled" />
         <enum id="AutoUpdateSchDay" valueName="ScheduledInstallDay" required="true">
           <item displayName="$(string.AutoUpdateSchDay_Everyday)">
             <value>
@@ -277,7 +326,7 @@
     </policy>
     <policy name="CorpWuURL" class="Machine" displayName="$(string.CorpWuURL)" explainText="$(string.CorpWuURL_Help)" presentation="$(presentation.CorpWuURL)" key="Software\Policies\Microsoft\Windows\WindowsUpdate">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_Win2kSP3_Or_XPSP1" />
+      <supportedOn ref="WU_SUPPORTED_Win2kSP3_Or_XPSP1_NoWinRT" />
       <enabledList>
         <item key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" valueName="UseWUServer">
           <value>
@@ -299,7 +348,7 @@
     </policy>
     <policy name="DetectionFrequency_Title" class="Machine" displayName="$(string.DetectionFrequency_Title)" explainText="$(string.DetectionFrequency_Help)" presentation="$(presentation.DetectionFrequency_Title)" key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" valueName="DetectionFrequencyEnabled">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_Win2kSP3_Or_XPSP1" />
+      <supportedOn ref="WU_SUPPORTED_Win2kSP3_Or_XPSP1_NoWinRT" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -342,7 +391,7 @@
     </policy>
     <policy name="FeaturedSoftwareNotification_Title" class="Machine" displayName="$(string.FeaturedSoftwareNotification_Title)" explainText="$(string.FeaturedSoftwareNotification_Help)" key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" valueName="EnableFeaturedSoftware">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <supportedOn ref="windows:SUPPORTED_Windows7ToVista" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -352,7 +401,7 @@
     </policy>
     <policy name="AUPowerManagement_Title" class="Machine" displayName="$(string.AUPowerManagement_Title)" explainText="$(string.AUPowerManagement_Help)" key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" valueName="AUPowerManagement">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <supportedOn ref="windows:SUPPORTED_Windows7ToVista" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -370,9 +419,28 @@
         <decimal value="0" />
       </disabledValue>
     </policy>
+    <policy name="AlwaysAutoRebootAtScheduledTime" 
+            class="Machine" 
+            displayName="$(string.AlwaysAutoRebootAtScheduledTime_Title)" 
+            explainText="$(string.AlwaysAutoRebootAtScheduledTime_Help)" 
+            presentation="$(presentation.AlwaysAutoRebootAtScheduledTime_Presentation)"
+            key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" 
+            valueName="AlwaysAutoRebootAtScheduledTime">
+      <parentCategory ref="WindowsUpdateCat" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+       <decimal id="AlwaysAutoRebootAtScheduledTime_Minutes" valueName="AlwaysAutoRebootAtScheduledTimeMinutes" required="true" minValue="15" maxValue="180" />
+      </elements>
+    </policy>
     <policy name="RebootRelaunchTimeout_Title" class="Machine" displayName="$(string.RebootRelaunchTimeout_Title)" explainText="$(string.RebootRelaunchTimeout_Help)" presentation="$(presentation.RebootRelaunchTimeout_Title)" key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" valueName="RebootRelaunchTimeoutEnabled">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_Win2kSP3_Or_XPSP1" />
+      <supportedOn ref="WU_SUPPORTED_Windows7_To_Win2kSP3_Or_XPSP1" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -385,7 +453,7 @@
     </policy>
     <policy name="RebootWarningTimeout_Title" class="Machine" displayName="$(string.RebootWarningTimeout_Title)" explainText="$(string.RebootWarningTimeout_Help)" presentation="$(presentation.RebootWarningTimeout_Title)" key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" valueName="RebootWarningTimeoutEnabled">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_Win2kSP3_Or_XPSP1" />
+      <supportedOn ref="WU_SUPPORTED_Windows7_To_Win2kSP3_Or_XPSP1" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -398,7 +466,7 @@
     </policy>
     <policy name="RescheduleWaitTime_Title" class="Machine" displayName="$(string.RescheduleWaitTime_Title)" explainText="$(string.RescheduleWaitTime_Help)" presentation="$(presentation.RescheduleWaitTime_Title)" key="Software\Policies\Microsoft\Windows\WindowsUpdate\AU" valueName="RescheduleWaitTimeEnabled">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_Win2kSP3_Or_XPSP1" />
+      <supportedOn ref="WU_SUPPORTED_Windows7_To_Win2kSP3_Or_XPSP1" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -411,7 +479,7 @@
     </policy>
     <policy name="TargetGroup_Title" class="Machine" displayName="$(string.TargetGroup_Title)" explainText="$(string.TargetGroup_Help)" presentation="$(presentation.TargetGroup_Title)" key="Software\Policies\Microsoft\Windows\WindowsUpdate" valueName="TargetGroupEnabled">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_Win2kSP3_Or_XPSP1" />
+      <supportedOn ref="WU_SUPPORTED_Win2kSP3_Or_XPSP1_NoWinRT" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -424,7 +492,22 @@
     </policy>
     <policy name="TrustedPublisher_Title" class="Machine" displayName="$(string.TrustedPublisher_Title)" explainText="$(string.TrustedPublisher_Help)" key="Software\Policies\Microsoft\Windows\WindowsUpdate" valueName="AcceptTrustedPublisherCerts">
       <parentCategory ref="WindowsUpdateCat" />
-      <supportedOn ref="windows:SUPPORTED_WindowsXPSP1" />
+      <supportedOn ref="WU_SUPPORTED_WindowsXPSP1_NoWinRT" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="DoNotConnectToWindowsUpdateInternetLocations" 
+            class="Machine" 
+            displayName="$(string.DoNotConnectToWindowsUpdateInternetLocations_Title)" 
+            explainText="$(string.DoNotConnectToWindowsUpdateInternetLocations_Help)" 
+            key="Software\Policies\Microsoft\Windows\WindowsUpdate" 
+            valueName="DoNotConnectToWindowsUpdateInternetLocations">
+      <parentCategory ref="WindowsUpdateCat" />
+      <supportedOn ref="windows:SUPPORTED_Windows_6_3" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>

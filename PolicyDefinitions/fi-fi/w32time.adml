@@ -5,73 +5,130 @@
   <description>kirjoita kuvaus tähän</description>
   <resources>
     <stringTable>
-      <string id="W32TIME_CONFIG_EXPLAIN">Nämä asetukset ohjaavat toimialueen ohjauskoneiden Windows-aikapalvelua (W32time). Monet näistä arvoista ovat skalaarisia, mikä tarkoittaa sitä, että niillä on merkitystä vain suhteessa toisiinsa eikä niitä määritetä mittayksiköiden avulla. Toimialueen jäsenkoneiden ajan synkronointiin liittyvistä asetuksista on tietoja artikkelissa, joka koskee asiakastietokoneen määrittämistä synkronoimaan toimialueen aika automaattisesti (http://go.microsoft.com/fwlink/?LinkId=139706).
- 
-Kellon tarkkuusparametrit
- 
-FrequencyCorrectRate: Ohjaa sitä, miten lyhyin aikavälein W32time korjaa paikallisen kellon taajuuden. Pienet arvot tarkoittavat korjausten tekemistä hitaasti ja suuret nopeasti. Liian pieni arvo saattaa aiheuttaa ylikorjauksia ja epävakautta. Liian suuret arvot voivat johtaa hitaaseen synkronointiin. Oletusarvo: 4 (skalaarinen).
- 
-HoldPeriod: Ilmaisee, montako mahdollisesti tarkkaa aikanäytettä asiakkaan on vastaanotettava peräkkäin, ennen kuin seuraavat aikanäytteet arvioidaan mahdollisina piikkiarvoina. Kun käyttökelpoisia aikanäytteitä ei ole saatu tietyn ajanjakson aikana, aika-asiakas lopettaa aikanäytteiden arvioinnin piikkiarvojen suhteen, kun ensimmäinen mahdollinen tarkka aikanäyte vastaanotetaan. Kun vastaanotetaan sarja aikanäytteitä (HoldPeriod-määrityksen ilmaisemalla tavalla), aika-asiakas analysoi seuraavat aikanäytteet piikkiarvojen suhteen. Aikanäytettä pidetään piikkiarvona, kun aikaero aikanäytteen ja asiakkaan paikallisen kellon välillä on suurempi kuin LargePhaseOffset-arvo. Oletusarvo: 5 aikanäytettä.
- 
-LargePhaseOffset: Määrittää aikaeron asiakkaan paikalliseen kelloon (vaihesiirtymä), joka aikanäytteellä on oltava, jotta sitä pidetään piikkiarvona. Aikanäytteitä, joiden aikaero on suurempi kuin LargePhaseOffset-arvo, pidetään piikkiarvoina. Oletusarvo: 50 000 000 sadan nanosekunnin (ns) yksikköä eli viisi sekuntia.
- 
-MaxAllowedPhaseOffset: Määrittää, miten W32time korjaa kellon aikanäytteen ja asiakkaan paikallisen kellon välisen lasketun aikaeron perusteella. Jos vastaanotetaan vastaus, jonka aikaero on tätä arvoa suurempi, W32time määrittää asiakkaan paikallisen kellon ajaksi heti ajan, joka hyväksytään tarkaksi NTP (Network Time Protocol) -palvelimesta. Jos aikaero on tätä arvoa pienempi, asiakkaan paikallisen kellon aika korjataan vähitellen. Oletusarvo: 300 sekuntia.
- 
-MaxNegPhaseCorrection: Määrittää suurimman sallitun kellon korjauksen, joka voidaan tehdä vastapäivään. Jos vastaanotetaan aikanäyte, joka ilmaisee jo kulunutta aikaa (verrattuna asiakkaan paikalliseen kelloon), jonka aikaero on suurempi kuin MaxNegPhaseCorrection-arvo, aikanäyte hylätään. Jos näin tapahtuu, Windows-aikalähde kirjaa tapahtuman Tapahtumienvalvonnan järjestelmälokiin. Oletusarvo: 172 800 sekuntia.
- 
-MaxPosPhaseCorrection: Määrittää suurimman sallitun kellon korjauksen, joka voidaan tehdä myötäpäivään. Jos vastaanotetaan aikanäyte, joka ilmaisee tulevaisuudessa olevaa aikaa (verrattuna asiakkaan paikalliseen kelloon), jonka aikaero on suurempi kuin MaxPosPhaseCorrection-arvo, aikanäyte hylätään. Oletusarvo: 172 800 sekuntia. 
- 
-PhaseCorrectRate: Määrittää, miten nopeasti W32time korjaa asiakkaan paikallisen kellon eron vastaamaan aikanäytteitä, jotka hyväksytään tarkoiksi NTP-palvelimesta. Pienet arvot tarkoittavat korjausten tekemistä hitaasti ja suuret nopeasti. Oletusarvo: 7 (skalaarinen).
- 
-PollAdjustFactor: Määrittää, miten nopeasti W32time muuttaa kyselyaikavälejä. Kun vastauksia pidetään tarkkoina, kyselyaikaväliä pidennetään automaattisesti. Kun vastauksia pidetään epätarkkoina, kyselyaikaväliä lyhennetään automaattisesti. Oletusarvo: 5 (skalaarinen).
- 
-SpikeWatchPeriod: Määrittää ajan, jona epäilyttäviä aikanäytteitä vastaanotetaan aikalähteestä, ennen kuin nämä aikanäytteet hyväksytään tarkoiksi. Aikanäytteitä pidetään epäilyttävinä, kun aikaero aikanäytteen ja asiakkaan paikallisen kellon välillä on suurempi kuin LargePhaseOffset-arvo. SpikeWatchPeriod-määritystä käytetään yhdessä HoldPeriod-määrityksen kanssa, jotta satunnaiset, epätarkat vertaiskoneesta palautetut aikanäytteet voidaan eliminoida. Oletusarvo: 900 sekuntia.
- 
-UpdateInterval: Määrittää ajan, jonka W32time odottaa korjausten välillä, kun kellon aikaa korjataan vähitellen. Kun se tekee asteittaisen korjauksen, palvelu säätää kellon aikaa hieman, odottaa tämän ajan ja tarkistaa sitten, tarvitaanko uutta säätöä, kunnes korjaaminen on valmis. Oletusarvo: 100 sadasosasekunnin yksikköä eli yksi sekunti.
- 
+      <string id="W32TIME_CONFIG_EXPLAIN">Tällä käytäntöasetuksella voit määrittää Windows-aikapalvelun (W32time) kellon tarkkuuden ja yleiset arvot toimialueiden ohjauskoneille, mukaan lukien RODC-koneet.
+
+Jos otat käyttöön tämän käytäntöasetuksen, voit määrittää tälle palvelulle seuraavat kellon tarkkuusparametrit, yleiset parametrit ja RODC-parametrit.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Windows-aikapalvelu käyttää seuraavien parametrien oletusasetuksia.
+
+Monet seuraavista arvoista ovat skalaarisia, eli ne ovat merkityksellisiä vain suhteessa toisiinsa, eivätkä ne ole määritetty mittayksiköin.
+
+FrequencyCorrectRate
+Tämä parametri säätelee, kuinka usein W32time-palvelu korjaa paikallisen kellon taajuutta. Pienillä arvoilla korjauksia tapahtuu harvoin ja suurilla usein. Liian pieni arvo saattaa aiheuttaa ylikorjauksia ja epävakautta. Liian suuret arvot voivat johtaa hitaaseen synkronointiin. Oletusarvo: 4 (skalaarinen).
+
+HoldPeriod
+Tämä parametri ilmaisee, montako mahdollisesti tarkkaa aikanäytettä asiakastietokoneen on vastaanotettava sarjana, ennen kuin seuraavat aikanäytteet arvioidaan mahdollisiksi piikkiarvoiksi Kun käyttökelpoisia aikanäytteitä ei ole saatu tietyn ajanjakson aikana, aika-asiakas lopettaa aikanäytteiden arvioinnin piikkiarvojen suhteen, kun ensimmäinen mahdollinen tarkka aikanäyte vastaanotetaan. Kun vastaanotetaan sarja aikanäytteitä (HoldPeriod-määrityksen ilmaisemalla tavalla), aika-asiakas analysoi seuraavat aikanäytteet piikkiarvojen suhteen. Aikanäyte tulkitaan piikkiarvoksi, kun aikaero aikanäytteen ja asiakastietokoneen paikallisen kellon välillä on suurempi kuin LargePhaseOffset-arvo. Oletus: Viisi aikanäytettä.
+
+LargePhaseOffset
+Tämä parametri määrittää asiakastietokoneen kellonajan eroavuuden (vaihesiirtymä), joka aikanäytteessä on oltava, jotta sitä pidetään piikkiarvona. Aikanäytteitä, joiden aikaero on suurempi kuin LargePhaseOffset-arvo, pidetään piikkiarvoina. Oletusarvo: 50 000 000 sadan nanosekunnin (ns) yksikköä eli viisi sekuntia.
+
+MaxAllowedPhaseOffset
+Tämä parametri määrittää, miten W32time korjaa kelloa aikanäytteen ja asiakastietokoneen paikallisen kellon välisen lasketun aikaeron perusteella. Jos saadun vastauksen mukaan aikaero on tätä arvoa suurempi, W32time asettaa asiakastietokoneen paikallisen kellon NTP (Network Time Protocol) -palvelimesta tarkaksi hyväksyttyyn aikaan. Jos aikaero on tätä arvoa pienempi, asiakastietokoneen paikallinen kello korjataan asteittain. Oletusarvo: 300 sekuntia.
+
+MaxNegPhaseCorrection
+Tämä parametri määrittää suurimman sallitun kellonajan korjauksen, joka voidaan tehdä taaksepäin. Jos vastaanotettu aikanäyte ilmaisee menneisyydessä olevaa kellonaikaa (asiakastietokoneen paikalliseen kelloon verrattuna) ja aikaero on suurempi kuin MaxNegPhaseCorrection-arvo, aikanäyte hylätään. Jos näin tapahtuu, Windows-aikalähde kirjaa tapahtuman Tapahtumienvalvonnan järjestelmälokiin. Oletusarvo: 172 800 sekuntia.
+
+MaxPosPhaseCorrection
+Tämä parametri määrittää suurimman sallitun kellonajan korjauksen, joka voidaan tehdä eteenpäin. Jos vastaanotettu aikanäyte ilmaisee tulevaisuudessa olevaa kellonaikaa (asiakastietokoneen paikalliseen kelloon verrattuna) ja aikaero on suurempi kuin MaxPosPhaseCorrection-arvo, aikanäyte hylätään. Oletusarvo: 172 800 sekuntia.
+
+PhaseCorrectRate
+Tämä parametri määrittää, miten nopeasti W32time korjaa asiakastietokoneen kellonajan eron vastaamaan tarkoiksi hyväksyttyjä aikanäytteitä NTP-palvelimesta. Pienet arvot tarkoittavat korjausten tekemistä hitaasti ja suuret nopeasti. Oletusarvo: 7 (skalaarinen).
+
+PollAdjustFactor
+Tämä parametri määrittää, miten nopeasti W32time muuttaa kyselyiden aikavälejä. Kun vastauksia pidetään tarkkoina, kyselyaikaväliä pidennetään automaattisesti. Kun vastauksia pidetään epätarkkoina, kyselyaikaväliä lyhennetään automaattisesti. Oletusarvo: 5 (skalaarinen).
+
+SpikeWatchPeriod
+Tämä parametri määrittää ajan, jonka verran epäilyttäviä aikanäytteitä vastaanotetaan aikalähteestä, ennen kuin aikanäytteet hyväksytään tarkoiksi. Aikanäytettä pidetään epäilyttävänä, kun aikaero aikanäytteen ja asiakastietokoneen paikallisen kellon välillä on suurempi kuin LargePhaseOffset-arvo. SpikeWatchPeriod-määritystä käytetään yhdessä HoldPeriod-määrityksen kanssa, jotta satunnaiset, epätarkat vertaiskoneesta palautetut aikanäytteet voidaan eliminoida. Oletusarvo: 900 sekuntia.
+
+UpdateInterval
+Tämä parametri määrittää, kuinka kauan W32time odottaa korjausten välillä, kun kelloa korjataan asteittain. Kun se tekee asteittaisen korjauksen, palvelu säätää kellon aikaa hieman, odottaa tämän ajan ja tarkistaa sitten, tarvitaanko uutta säätöä, kunnes korjaaminen on valmis. Oletusarvo: 100 sadasosasekunnin yksikköä eli yksi sekunti.
+
 Yleiset parametrit:
- 
-AnnounceFlags: Bittipeitearvo, joka määrittää, miten aikapalvelun saatavuus ilmoitetaan NetLogonin kautta. Oletusarvo: 0x0a (heksadesimaali). Voit tarkastella mahdollisia arvoja Config\AnnounceFlags-merkinnän tiedoissa (http://go.microsoft.com/fwlink/?LinkId=139718).
- 
-EventLogFlags: Määrittää erityiset tapahtumat, jotka saatetaan kirjata Tapahtumienvalvonnan järjestelmälokiin. Oletusarvo: 0x02 (heksadesimaalinen bittipeite). Voit tarkastella mahdollisia arvoja NtpClient\EventLogFlags-aliavaimen tiedoissa (http://go.microsoft.com/fwlink/?LinkId=139720).
- 
-LocalClockDispersion: Ilmaisee sekunteina suurimman mahdollisen virheen, jonka NTP-palvelin ilmoittaa asiakkaille, jotka pyytävät aikanäytettä. (Tämä koskee ainoastaan tilannetta, jossa NTP-palvelin käyttää paikallisen CMOS-kellon aikaa.) Oletusarvo: 10 sekuntia.
- 
-MaxPollInterval: Määrittää suurimman mahdollisen kyselyaikavälin, joka määrittää suurimman mahdollisen vertaiskonekyselyiden välisen ajan. Oletusarvo: 10, jonka kaksikantainen logaritmi antaa arvon 1 024 sekuntia. (Tämän asetuksen ei tule olla suurempi kuin 15.)
- 
-MinPollInterval: Määrittää pienimmän mahdollisen kyselyaikavälin, joka määrittää pienimmän mahdollisen vertaiskonekyselyiden välisen ajan. Oletusarvo: 6, jonka kaksikantainen logaritmi antaa arvon 64 sekuntia.
- 
+
+AnnounceFlags
+Tämä parametri on bittipeite, joka määrittää, miten aikapalveluiden käytettävyydestä ilmoitetaan verkkokirjauksen kautta. Oletusarvo: 0x0a (heksadesimaali). Katso mahdolliset arvot Microsoftin TechNet Library -kirjaston aiheista, jotka käsittelevät NtpClient\EventLogFlags-aliavainta.
+
+EventLogFlags
+Tämä parametri määrittää erityistapahtumat, jotka voidaan kirjata Tapahtumienvalvonnan järjestelmälokiin. Oletusarvo: 0x02 (heksadesimaalinen bittipeite). Katso mahdolliset arvot Microsoftin TechNet Library -kirjaston aiheista, jotka käsittelevät NtpClient\EventLogFlags-aliavainta.
+
+LocalClockDispersion
+Tämä parametri ilmaisee sekunteina enimmäisvirheen, jonka NTP-palvelin raportoi aikanäytettä pyytäville asiakaskoneille. (Tämä koskee ainoastaan tilannetta, jossa NTP-palvelin käyttää paikallisen CMOS-kellon aikaa.) Oletusarvo: 10 sekuntia.
+
+MaxPollInterval
+Tämä parametri ohjaa kyselyiden enimmäisaikaväliä, joka määrittää pisimmän ajan vertaiskoneen kyselyiden välillä. Oletusarvo: 10, jonka kaksikantainen logaritmi antaa arvon 1 024 sekuntia. (Tämän asetuksen ei tule olla suurempi kuin 15.)
+
+MinPollInterval
+Tämä parametri ohjaa kyselyiden vähimmäisaikaväliä, joka määrittää lyhyimmän ajan vertaiskoneen kyselyiden välillä. Oletusarvo: 6, jonka kaksikantainen logaritmi antaa arvon 64 sekuntia.
+
+RequireSecureTimeSyncRequests
+Tämä parametri määrittää, vastaako toimialueen ohjauskone ajansynkronointipyyntöihin, jotka käyttävät vanhempia todennusprotokollia. Jos käytössä (eli arvona on 1), toimialueen ohjauskone ei vastaa tällaisia protokollia käyttäviin pyyntöihin. Oletusarvo: 0 (totuusarvo).
+
 RODC-parametrit:
 
-Lisätietoja näistä asetuksista on liitteen A teknisissä tiedoissa (http://go.microsoft.com/fwlink/?LinkID=128273).
- 
-ChainEntryTimeout: Määrittää pisimmän ajan, jonka merkintä voi olla ketjutustaulukossa, ennen kuin merkintää pidetään vanhentuneena. Vanhentuneet merkinnät voidaan poistaa, kun seuraava pyyntö tai vastaus käsitellään. Oletusarvo: 16 sekuntia.
- 
-ChainMaxEntries: Määrittää suurimman merkintämäärän, joka ketjutustaulukossa sallitaan olevan. Jos ketjutustaulukko on täysi, eikä vanhentuneita merkintöjä voi poistaa, saapuvat pyynnöt hylätään. Oletusarvo: 128 merkintää.
- 
-ChainMaxHostEntries: Määrittää suurimman määrän merkintöjä, jotka tietylle isännälle sallitaan ketjutustaulukossa. Oletusarvo: 4 merkintää. 
- 
-ChainDisable: Määrittää, onko ketjutusmekanismi poistettu käytöstä. Jos ketjutus on poistettu käytöstä (asetus on 0), RODC voi synkronoida minkä tahansa toimialueen ohjauskoneen kanssa, mutta isännät, joiden salasanat eivät ole RODC:n välimuistissa, eivät pysty synkronoimaan RODC:n kanssa. Oletusarvo: 0 (totuusarvo).
- 
-ChainLoggingRate: Määrittää taajuuden, jolla onnistuneita ja epäonnistuneita ketjutusyrityksiä ilmaiseva tapahtuma kirjataan Tapahtumienvalvonnan järjestelmälokiin. Oletusarvo: 30 minuuttia.</string>
-      <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">Määrittää joukon parametreja Windows NTP -asiakkaan hallintaa varten.
+ChainEntryTimeout
+Tämä parametri määrittää enimmäisajan, jonka verran merkintä voi olla ketjutustaulukossa, ennen kuin merkintää tulkitaan vanhentuneeksi. Vanhentuneet merkinnät voidaan poistaa, kun seuraava pyyntö tai vastaus käsitellään. Oletusarvo: 16 sekuntia.
 
-NtpServer: NTP-aikalähteen DNS (Domain Name System) -nimi tai IP-osoite. Tämä arvo on muotoa DNS-nimi,merkinnät, jossa merkinnät on kyseisen isännän merkintöjen heksadesimaalinen bittipeite. Lisätietoja on Windows-aikapalvelun ryhmäkäytäntöasetusten Windowsin aikaan liittyvien NTP-asiakkaan ryhmäkäytäntöasetusten osassa (http://go.microsoft.com/fwlink/?LinkId=139727). Oletusarvo on time.windows.com,0x09.
+ChainMaxEntries
+Tämä parametri määrittää ketjutustaulukossa sallittujen merkintöjen enimmäismäärän. Jos ketjutustaulukko on täysi, eikä vanhentuneita merkintöjä voi poistaa, saapuvat pyynnöt hylätään. Oletusarvo: 128 merkintää.
 
-Tyyppi: Tämä arvo ohjaa W32timen käyttämää todennusta. Oletusarvo on NT5DS.
+ChainMaxHostEntries
+Tämä parametri määrittää ketjutustaulukossa tietylle isäntäkoneelle sallittujen merkintöjen enimmäismäärän. Oletusarvo: 4 merkintää.
 
-CrossSiteSyncFlags: Tämä bittipeitteenä ilmaistu arvo ohjaa, miten W32time valitsee oman sivustonsa ulkopuolella olevat aikalähteet. Mahdolliset arvot ovat 0, 1 ja 2. Jos täksi arvoksi asetetaan 0 (Ei mitään), aika-asiakkaan ei tule yrittää synkronoida aikaa sen sivuston ulkopuolelta. Jos täksi arvoksi asetetaan 1 (PdcOnly), vain muissa toimialueissa toimialueen pääohjauskoneen emulaattoritoimintojen pääkoneina toimivia tietokoneita voi käyttää synkronointikumppaneina, kun asiakkaan on synkronoitava aika oman sivustonsa ulkopuolella olevan kumppanin kanssa. Jos arvoksi asetetaan 2 (Kaikki), voidaan käyttää mitä tahansa synkronointikumppania. Tämä arvo ohitetaan, jos NT5DS-arvoa ei ole asetettu. Oletusarvo on kymmenjärjestelmässä 2 (heksadesimaalijärjestelmässä 0x02).
+ChainDisable
+Tämä parametri määrittää, onko ketjutusmekanismi poistettu käytöstä. Jos ketjutus on poistettu käytöstä (asetus on 0), RODC voi synkronoida minkä tahansa toimialueen ohjauskoneen kanssa, mutta isännät, joiden salasanat eivät ole RODC:n välimuistissa, eivät pysty synkronoimaan RODC:n kanssa. Oletusarvo: 0 (totuusarvo).
 
-ResolvePeerBackoffMinutes: Tämä minuutteina ilmaistava arvo määrittää, miten pitkään W32time odottaa, ennen kuin se yrittää selvittää DNS-nimen, kun aiempi yritys epäonnistui. Oletusarvo on 15 minuuttia.
+ChainLoggingRate
+Tämä parametri määrittää, kuinka usein onnistuneiden ja epäonnistuneiden ketjutusyritysten määrän ilmoittava tapahtuma kirjataan Tapahtumienvalvonnan järjestelmälokiin. Oletusarvo: 30 minuuttia.
 
-ResolvePeerBackoffMaxTimes: Tämä arvo määrittää, miten monta kertaa W32time yrittää selvittää DNS-nimen, ennen kuin etsimisprosessi käynnistetään uudelleen. Aina, kun DNS-nimenselvitys epäonnistuu, ennen seuraavaa yritystä odotettava aika on kaksi kertaa edellisen ajan pituinen. Oletusarvo on 7 yritystä.
+</string>
 
-SpecialPollInterval: Tämä sekunteina ilmaistava NTP-asiakasarvo määrittää, miten usein manuaalisesti määritetylle aikalähteelle tehdään kysely, kun aikalähde on määritetty käyttämään jotakin tiettyä kyselyaikaväliä. Jos SpecialInterval-merkintä on käytössä NTPServer-asetuksessa, asiakas yrittää käyttää kohteessa SpecialPollInterval määritettyä arvoa MinPollInterval- ja MaxPollInterval-arvojen sijaan selvittäessään, miten usein aikalähteelle tehdään kysely. Oletusarvo on 3 600 sekuntia (1 tunti).
+<string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">Tämä käytäntöasetus määrittää joukon parametreja, joilla voi ohjata Windows NTP -asiakasta.
 
-EventLogFlags: Tämä arvo on bittipeite, joka ohjaa Tapahtumienvalvonnan järjestelmälokiin mahdollisesti kirjattavia tapahtumia. Jos täksi arvoksi asetetaan 0x1, W32time luo tapahtuman aina, kun ajassa havaitaan siirtymä. Jos täksi arvoksi asetetaan 0x2, W32time luo tapahtuman aina, kun aikalähdemuutos tehdään. Koska se on bittipeitearvo, asetus 0x3 (asetusten 0x1 ja 0x2 lisäksi) ilmaisee, että sekä ajan siirtymät että aikalähdemuutokset kirjataan.
+Jos otat käyttöön tämän käytäntöasetuksen, voit määrittää Windows NTP -asiakkaan seuraavat parametrit.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Windows NTP -asiakas käyttää seuraavien parametrien oletusasetuksia.
+
+NtpServer
+NTP-aikalähteen DNS-nimi tai IP-osoite. Tämä arvo on muotoa ""dnsName,liput"", jossa ""liput"" on kyseisen isäntäkoneen lippujen heksadesimaalimuotoinen bittipeite. Lisätietoja on Windows-aikapalvelun ryhmäkäytäntöjen asetukset -ohjeaiheen kohdassa Windows-aikaan liittyvien NTP-asiakastietokoneen ryhmäkäytäntöjen asetukset.  Oletusarvo on ""time.windows.com,0x09"". 
+
+Type
+Tämä arvo määrittää todennuksen, jota W32time käyttää. Oletusarvo on NT5DS.
+
+CrossSiteSyncFlags
+Tämä bittipeitteenä ilmaistu arvo ilmaisee, miten W32time valitsee sijaintinsa ulkopuoliset aikalähteet. Mahdolliset arvot ovat 0, 1 ja 2. Jos täksi arvoksi asetetaan 0 (Ei mitään), aika-asiakkaan ei tule yrittää synkronoida aikaa sen sivuston ulkopuolelta. Jos täksi arvoksi asetetaan 1 (PdcOnly), vain muissa toimialueissa toimialueen pääohjauskoneen emulaattoritoimintojen pääkoneina toimivia tietokoneita voi käyttää synkronointikumppaneina, kun asiakkaan on synkronoitava aika oman sivustonsa ulkopuolella olevan kumppanin kanssa. Jos arvoksi asetetaan 2 (Kaikki), voidaan käyttää mitä tahansa synkronointikumppania. Tämä arvo ohitetaan, jos NT5DS-arvoa ei ole asetettu. Oletusarvo on kymmenjärjestelmässä 2 (heksadesimaalijärjestelmässä 0x02).
+
+ResolvePeerBackoffMinutes
+Tämä minuutteina ilmaistava arvo määrittää, miten pitkään W32time odottaa, ennen kuin se yrittää selvittää DNS-nimen, kun aiempi yritys epäonnistui. Oletusarvo on 15 minuuttia.
+
+ResolvePeerBackoffMaxTimes
+Tämä arvo määrittää, miten monta kertaa W32time yrittää selvittää DNS-nimen, ennen kuin etsimisprosessi aloitetaan uudelleen. Aina, kun DNS-nimenselvitys epäonnistuu, ennen seuraavaa yritystä odotettava aika on kaksi kertaa edellisen ajan pituinen. Oletusarvo on seitsemän yritystä.
+
+SpecialPollInterval
+Tämä sekunteina ilmaistava NTP-asiakastietokoneen arvo määrittää, miten usein manuaalisesti määritettyä aikalähdettä kysellään, kun aikalähde on määritetty käyttämään erityistä kyselyväliä. Jos SpecialInterval-merkintä on käytössä NTPServer-asetuksessa, asiakas yrittää käyttää kohteessa SpecialPollInterval määritettyä arvoa MinPollInterval- ja MaxPollInterval-arvojen sijaan selvittäessään, miten usein aikalähteelle tehdään kysely. Oletusarvo on 3 600 sekuntia (1 tunti).
+
+EventLogFlags
+Tämä parametri on bittipeite, joka määrittää tapahtumia, jotka voidaan kirjata Tapahtumienvalvonnan järjestelmälokiin. Jos täksi arvoksi asetetaan 0x1, W32time luo tapahtuman aina, kun ajassa havaitaan siirtymä. Jos täksi arvoksi asetetaan 0x2, W32time luo tapahtuman aina, kun aikalähdemuutos tehdään. Koska se on bittipeitearvo, asetus 0x3 (asetusten 0x1 ja 0x2 lisäksi) ilmaisee, että sekä ajan siirtymät että aikalähdemuutokset kirjataan.
+      
       </string>
-      <string id="W32TIME_ENABLE_NTPCLIENT_EXPLAIN">Määrittää, onko Windows NTP -asiakas käytössä. Windows NTP -asiakkaan avulla tietokone voi tahdistaa kellonsa toisten NTP-palvelimien avulla. Jos käytät kolmannen osapuolen aikatoimittajaa, tämä palvelu kannattaa ehkä poistaa käytöstä.</string>
-      <string id="W32TIME_ENABLE_NTPSERVER_EXPLAIN">Määrittää, onko Windows NTP -palvelin käytössä. Windows NTP -palvelimen avulla tietokoneesi voi vastata toisten koneiden NTP-pyyntöihin.</string>
+      <string id="W32TIME_ENABLE_NTPCLIENT_EXPLAIN">Tämä käytäntöasetus määrittää, onko Windows NTP -asiakas käytössä.
+
+Windows NTP -asiakkaan avulla tietokone voi tahdistaa kellonsa toisten NTP-palvelimien avulla. Tämä palvelu kannattaa poistaa käytöstä, jos haluat käyttää kolmannen osapuolen aikatoimittajaa.
+
+Jos otat tämän käytäntöasetuksen käyttöön, voit määrittää paikallisen tietokoneen kellon synkronoimaan ajan NTP-palvelimien kanssa.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, paikallisen tietokoneen kello ei synkronoi aikaa NTP-palvelimien kanssa.
+      
+      </string>
+      <string id="W32TIME_ENABLE_NTPSERVER_EXPLAIN">Tämän käytäntöasetuksen avulla voit määrittää, onko Windows NTP Server käytössä.
+
+Jos otat tämän Windows NTP Server -käytäntöasetuksen käyttöön, tietokoneesi voi palvella muista tietokoneista saapuvia NTP-pyyntöjä.
+
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, tietokoneesi ei voi palvella muista tietokoneista saapuvia NTP-pyyntöjä.
+
+
+
+</string>
       <string id="W32TIME_POLICY_CONFIG">Yleiset kokoonpanoasetukset</string>
       <string id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">Määritä Windows NTP -asiakas</string>
       <string id="W32TIME_POLICY_ENABLE_NTPCLIENT">Ota Windows NTP -asiakas käyttöön</string>
@@ -102,6 +159,7 @@ EventLogFlags: Tämä arvo on bittipeite, joka ohjaa Tapahtumienvalvonnan järje
         <decimalTextBox refId="W32TIME_LocalClockDispersion" defaultValue="10">LocalClockDispersion</decimalTextBox>
         <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>

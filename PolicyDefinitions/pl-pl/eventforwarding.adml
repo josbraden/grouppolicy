@@ -1,28 +1,36 @@
 <?xml version="1.0"?>
 <policyDefinitionResources revision="1.0" schemaVersion="1.0">
-	<displayName>Przesyłanie dalej zdarzeń</displayName>
+	<displayName>Event Forwarding</displayName>
 
-	<description>Definicje zasad dla przesyłania dalej zdarzeń</description>
+	<description>Policy Definitions For Event Forwarding</description>
 
 	<resources>
 
 		<stringTable>
 
-			<string id="EventForwarding">Przesyłanie dalej zdarzeń</string>
+			<string id="EventForwarding">Event Forwarding</string>
 
-                        <string id="ForwarderResourceUsage">ForwarderResourceUsage</string>
-                        <string id="ForwarderResourceUsage_Help">Steruje użyciem zasobów usługi przesyłania dalej. Każde ustawienie jest stosowane do wszystkich subskrypcji usługi przesyłania dalej.</string>
+                        <string id="ForwarderResourceUsage">Configure forwarder resource usage</string>
+                        <string id="ForwarderResourceUsage_Help">This policy setting controls resource usage for the forwarder (source computer) by controlling the events/per second sent to the Event Collector.
+
+If you enable this policy setting, you can control the volume of events sent to the Event Collector by the source computer. This may be required in high volume environments.
+
+If you disable or do not configure this policy setting, forwarder resource usage is not specified.
+
+This setting applies across all subscriptions for the forwarder (source computer).</string>
  
-			<string id="SubscriptionManager">Skonfiguruj adres serwera, interwał odświeżania i urząd certyfikacji wystawcy dla docelowego menedżera subskrypcji</string>
+			<string id="SubscriptionManager">Configure target Subscription Manager</string>
 
-			<string id="Subscription_Help">To ustawienie zasad umożliwia skonfigurowanie adresu serwera, interwału odświeżania oraz urzędu certyfikacji wystawcy docelowego menedżera subskrypcji. Menedżer subskrypcji to komputer, do którego są przesyłane dalej zdarzenia.
+			<string id="Subscription_Help">This policy setting allows you to configure the server address, refresh interval, and issuer certificate authority (CA) of a target Subscription Manager.
 
-Składnia: opcja=wartość[,opcja=wartość]*
-Opcje:
-Server (obowiązkowa) — adres komputera, do którego mają być przesyłane dalej zdarzenia. Jeśli serwer używa domyślnego protokołu transportu (HTTP) i portu (5985), należy użyć składni „Server=&lt;FQDN&gt;”, gdzie &lt;FQDN&gt; to w pełni kwalifikowana nazwa domeny serwera. W przeciwnym wypadku należy podać pełny adres URL. Na przykład w przypadku korzystania z protokołu HTTPS: Server=https://&lt;FQDN&gt;:5986/wsman/SubscriptionManager/WEC
-</string>
+If you enable this policy setting, you can configure the Source Computer to contact a specific FQDN (Fully Qualified Domain Name) or IP Address and request subscription specifics.
 
-			<string id="SubscriptionManager_Listbox">Menedżerowie subskrypcji</string>
+Use the following syntax when using the HTTPS protocol:
+Server=https://&lt;FQDN of the collector&gt;:5986/wsman/SubscriptionManager/WEC,Refresh=&lt;Refresh interval in seconds&gt;,IssuerCA=&lt;Thumb print of the client authentication certificate&gt;. When using the HTTP protocol, use port 5985.
+
+If you disable or do not configure this policy setting, the Event Collector computer will not be specified.</string>
+
+			<string id="SubscriptionManager_Listbox">SubscriptionManagers</string>
 		</stringTable>
 
 	
@@ -30,13 +38,13 @@ Server (obowiązkowa) — adres komputera, do którego mają być przesyłane da
 
 			<presentation id="SubscriptionManager">
                                 
-				<listBox refId="SubscriptionManager_Listbox">Menedżerowie subskrypcji</listBox>
+				<listBox refId="SubscriptionManager_Listbox">SubscriptionManagers</listBox>
 
 			</presentation>
 
                         <presentation id="ForwarderResourceUsage">
 
-                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">Maksymalna dozwolona szybkość przesyłania dalej (zdarzenia/s) usługi przesyłania dalej: </decimalTextBox>
+                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">The maximum forwarding rate ( events/sec ) allowed for the forwarder: </decimalTextBox>
 
                         </presentation>
 

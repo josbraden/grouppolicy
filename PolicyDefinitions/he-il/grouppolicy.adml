@@ -1,492 +1,586 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>הזן שם תצוגה כאן</displayName>
-  <description>הזן תיאור כאן</description>
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
   <resources>
     <stringTable>
-      <string id="DisableLGPOProcessing">בטל עיבוד אובייקטים של מדיניות קבוצתית מקומית</string>
-      <string id="DisableLGPOProcessing_Help">הגדרת מדיניות זו מונעת החלת אובייקטים של מדיניות קבוצתית מקומית.
+      <string id="ResetDfsClientInfoDuringRefreshPolicy">Enable AD/DFS domain controller synchronization during policy refresh</string>
+      <string id="ResetDfsClientInfoDuringRefreshPolicy_Help">Enabling this setting will cause the Group Policy Client to connect to the same domain controller for DFS shares as is being used for Active Directory.
 
-כברירת מחדל, ההגדרות באובייקטי המדיניות הקבוצתית המקומית חלות לפני כל הגדרת אובייקטי מדיניות קבוצתית של תחום. הגדרות מדיניות אלה יכולות לחול על משתמשים ועל מחשבים מקומיים. באפשרותך להפוך ללא זמינים את העיבוד וההחלה של כל אובייקטי המדיניות הקבוצתית המקומית כדי להבטיח שיוחלו אובייקטי מדיניות קבוצתית של תחום בלבד.
-
-אם תהפוך הגדרת מדיניות זו לזמינה, המערכת לא תעבד ולא תחיל אובייקטי מדיניות קבוצתית מקומית.
-
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, תמשיך החלה של אובייקטי מדיניות קבוצתית מקומית.
-
-‏‏הערה:  מומלץ מאוד לקבוע את תצורת הגדרה זו, עבור מחשבים המחוברים בתחומים, רק באובייקטי מדיניות קבוצתית המבוססים על תחום.  במחשבים המצורפים לקבוצת עבודה, המערכת תתעלם מהגדרה זו.
 </string>
-      <string id="SyncWaitTime">זמן המתנה לעיבוד של מדיניות אתחול</string>
-      <string id="SyncWaitTime_Help">הגדרת מדיניות זו מציינת כמה זמן מדיניות קבוצתית צריכה להמתין להודעות זמינות רשת במהלך עיבוד מדיניות אתחול. אם עיבוד מדיניות האתחול הוא סינכרוני, המחשב נחסם עד שהרשת זמינה או שעובר זמן ההמתנה המוגדר כברירת מחדל. אם עיבוד מדיניות האתחול הוא אסינכרוני, המחשב לא נחסם ועיבוד מדיניות מתבצע ברקע. בשני המקרים, קביעת תצורה של הגדרת מדיניות זו עוקפת זמני המתנה שהמערכת מחשבת.
+      <string id="DisableAOACProcessing">Turn off Group Policy Client Service AOAC optimization</string>
+      <string id="DisableAOACProcessing_Help">This policy setting prevents the Group Policy Client Service from stopping when idle.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, המדיניות הקבוצתית תשתמש בזמן המתנה זה שנקבע על-ידי הניהול ותעקוף זמני המתנה שהוגדרו כברירת מחדל או שהמערכת מחשבת.
+</string>
+      <string id="EnableLogonOptimization">Configure Group Policy Caching</string>
+      <string id="EnableLogonOptimization_Help">
+        This policy setting allows you to configure Group Policy caching behavior.
+        
+        If you enable or do not configure this policy setting, Group Policy caches policy information after every background processing session. This cache saves applicable GPOs and the settings contained within them. When Group Policy runs in synchronous foreground mode, it refers to this cache, which enables it to run faster. When the cache is read, Group Policy attempts to contact a logon domain controller to determine the link speed. When Group Policy runs in background mode or asynchronous foreground mode, it continues to download the latest version of the policy information, and it uses a bandwidth estimate to determine slow link thresholds. (See the “Configure Group Policy Slow Link Detection” policy setting to configure asynchronous foreground behavior.)
+        
+        The slow link value that is defined in this policy setting determines how long Group Policy will wait for a response from the domain controller before reporting the link speed as slow. The default is 500 milliseconds.
+        
+        The timeout value that is defined in this policy setting determines how long Group Policy will wait for a response from the domain controller before determining that there is no network connectivity. This stops the current Group Policy processing. Group Policy will run in the background the next time a connection to a domain controller is established. Setting this value too high might result in longer waits for the user at boot or logon. The default is 5000 milliseconds.
+        
+        If you disable this policy setting, the Group Policy client will not cache applicable GPOs or settings that are contained within the GPOs. When Group Policy runs synchronously, it downloads the latest version of the policy from the network and uses bandwidth estimates to determine slow link thresholds. (See the “Configure Group Policy Slow Link Detection” policy setting to configure asynchronous foreground behavior.)
+      </string>
+      
+      <string id="EnableLogonOptimizationOnServerSKU">Enable Group Policy Caching for Servers</string>
+      <string id="EnableLogonOptimizationOnServerSKU_Help">
+        This policy setting allows you to configure Group Policy caching behavior on Windows Server machines.
+        If you enable this policy setting, Group Policy caches policy information after every background processing session. This cache saves applicable GPOs and the settings contained within them. When Group Policy runs in synchronous foreground mode, it refers to this cache, which enables it to run faster. When the cache is read, Group Policy attempts to contact a logon domain controller to determine the link speed. When Group Policy runs in background mode or asynchronous foreground mode, it continues to download the latest version of the policy information, and it uses a bandwidth estimate to determine slow link thresholds. (See the “Configure Group Policy Slow Link Detection” policy setting to configure asynchronous foreground behavior.)
+        The slow link value that is defined in this policy setting determines how long Group Policy will wait for a response from the domain controller before reporting the link speed as slow. The default is 500 milliseconds.
+        The timeout value that is defined in this policy setting determines how long Group Policy will wait for a response from the domain controller before determining that there is no network connectivity. This stops the current Group Policy processing. Group Policy will run in the background the next time a connection to a domain controller is established. Setting this value too high might result in longer waits for the user at boot or logon. The default is 5000 milliseconds.
+        If you disable or do not configure this policy setting, the Group Policy client will not cache applicable GPOs or settings that are contained within the GPOs. When Group Policy runs synchronously, it downloads the latest version of the policy from the network and uses bandwidth estimates to determine slow link thresholds. (See the “Configure Group Policy Slow Link Detection” policy setting to configure asynchronous foreground behavior.)
+      </string>
+      
+      <string id="LogonScriptDelay">Configure Logon Script Delay</string>
+      <string id="LogonScriptDelay_Help">
+        Enter “0” to disable Logon Script Delay.
+        
+        This policy setting allows you to configure how long the Group Policy client waits after logon before running scripts.
+        
+        By default, the Group Policy client waits five minutes before running logon scripts. This helps create a responsive desktop environment by preventing disk contention.
+        
+        If you enable this policy setting, Group Policy will wait for the specified amount of time before running logon scripts.
+        
+        If you disable this policy setting, Group Policy will run scripts immediately after logon.
+        
+        If you do not configure this policy setting, Group Policy will wait five minutes before running logon scripts.
+      </string>
+      
+     <string id="SlowLinkDefaultForDirectAccess">Configure Direct Access connections as a fast network connection</string>
+      <string id="SlowLinkDefaultForDirectAccess_Help">This policy setting allows an administrator to define the Direct Access connection to be considered a fast network connection for the purposes of applying and updating Group Policy. 
+ 
+When Group Policy detects the bandwidth speed of a Direct Access connection, the detection can sometimes fail to provide any bandwidth speed information. If Group Policy detects a bandwidth speed, Group Policy will follow the normal rules for evaluating if the Direct Access connection is a fast or slow network connection. If no bandwidth speed is detected, Group Policy will default to a slow network connection. This policy setting allows the administrator the option to override the default to slow network connection and instead default to using a fast network connection in the case that no network bandwidth speed is determined.
+ 
+Note: When Group Policy detects a slow network connection, Group Policy will only process those client side extensions configured for processing across a slow link (slow network connection).  
+ 
+If you enable this policy, when Group Policy cannot determine the bandwidth speed across Direct Access, Group Policy will evaluate the network connection as a fast link and process all client side extensions.
+ 
+If you disable this setting or do not configure it, Group Policy will evaluate the network connection as a slow link and process only those client side extensions configured to process over a slow link.
+          
+      </string>
+     <string id="SlowlinkDefaultToAsync">Change Group Policy processing to run asynchronously when a slow network connection is detected.</string>
+      <string id="SlowlinkDefaultToAsync_Help">This policy directs Group Policy processing to skip processing any client side extension that requires synchronous processing (that is, whether computers wait for the network to be fully initialized during computer startup and user logon) when a slow network connection is detected.  
+ 
+If you enable this policy setting, when a slow network connection is detected, Group Policy processing will always run in an asynchronous manner.
+Client computers will not wait for the network to be fully initialized at startup and logon. Existing users will be logged on using cached credentials, 
+which will result in shorter logon times. Group Policy will be applied in the background after the network becomes available.   
+Note that because this is a background refresh, extensions requiring synchronous processing such as Software Installation, Folder Redirection
+and Drive Maps preference extension will not be applied.
+ 
+Note: There are two conditions that will cause Group Policy to be processed synchronously even if this policy setting is enabled:
+1 - At the first computer startup after the client computer has joined the domain.
+2 - If the policy setting "Always wait for the network at computer startup and logon" is enabled.
+ 
+If you disable or do not configure this policy setting, detecting a slow network connection will not affect whether Group Policy processing will be synchronous or asynchronous.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורה, מדיניות קבוצתית תשתמש בזמן ההמתנה המהווה ברירת מחדל של 30 שניות במחשבים בהם פועלת מערכת ההפעלה Windows Vista. 
+      </string>
+      <string id="DisableLGPOProcessing">Turn off Local Group Policy Objects processing</string>
+      <string id="DisableLGPOProcessing_Help">This policy setting prevents Local Group Policy Objects (Local GPOs) from being applied.
+
+By default, the policy settings in Local GPOs are applied before any domain-based GPO policy settings. These policy settings can apply to both users and the local computer. You can disable the processing and application of all Local GPOs to ensure that only domain-based GPOs are applied.
+
+If you enable this policy setting, the system does not process and apply any Local GPOs.
+
+If you disable or do not configure this policy setting, Local GPOs continue to be applied.
+
+Note: For computers joined to a domain, it is strongly recommended that you only configure this policy setting  in domain-based GPOs. This policy setting will be ignored on computers that are joined to a workgroup.
+</string>
+      <string id="SyncWaitTime">Specify startup policy processing wait time</string>
+      <string id="SyncWaitTime_Help">This policy setting specifies how long Group Policy should wait for network availability notifications during startup policy processing. If the startup policy processing is synchronous, the computer is blocked until the network is available or the default wait time is reached. If the startup policy processing is asynchronous, the computer is not blocked and policy processing will occur in the background. In either case, configuring this policy setting overrides any system-computed wait times.
+
+If you enable this policy setting, Group Policy will use this administratively configured maximum wait time and override any default or system-computed wait time.
+
+If you disable or do not configure this policy setting, Group Policy will use the default wait time of 30 seconds on computers running Windows Vista operating system. 
 </string>
 
-      <string id="AllowX-ForestPolicy-and-RUP">אפשר מדיניות משתמש על-פני יערות ופרופילי משתמשים נודדים</string>
-      <string id="AllowX-ForestPolicy-and-RUP_Help">הגדרה זו מאפשרת עיבוד מדיניות מבוסס-משתמש, פרופילי משתמשים נודדים ו- script כניסה של אובייקט משתמש עבור כניסה אינטראקטיבית על-פני יערות שונים.
+      <string id="AllowX-ForestPolicy-and-RUP">Allow cross-forest user policy and roaming user profiles</string>
+      <string id="AllowX-ForestPolicy-and-RUP_Help">This policy setting allows user-based policy processing, roaming user profiles, and user object logon scripts for interactive logons across forests.
 
-הגדרה זו משפיעה על כל חשבונות המשתמשים הנכנסים באופן אינטראקטיבי למחשב ביער אחר כאשר קיימים יחסי אמון בין יערות או אמון דו-כיווני בין יערות.
+This policy setting affects all user accounts that interactively log on to a computer in a different forest when a trust across forests or a two-way forest trust exists.
 
-כאשר הגדרה זו לא נקבעה: - לא יחולו הגדרות מדיניות מבוססות-משתמש מהיער של המשתמש - משתמשים לא יקבלו את הפרופילים הנודדים שלהם; הם יקבלו פרופיל מקומי במחשב מהיער המקומי. הודעת אזהרה תוצג למשתמש ותוצב הודעה ביומן האירועים (1529). - יחול עיבוד בלולאה חוזרת של המדיניות הקבוצתית, באמצעות אובייקטי המדיניות הקבוצתית המשויכים לטווח של המחשב. - תוצב הודעה ביומן האירועים (1109) שתצהיר כי לולאה חוזרת הופעלה במצב החלפה.
+If you do not configure this policy setting:
+-  No user-based policy settings are applied from the user's forest.
+-  Users do not receive their roaming profiles; they receive a local profile on the computer from the local forest. A warning message appears to the user, and an event log message (1529) is posted.
+-  Loopback Group Policy processing is applied, using the Group Policy Objects (GPOs) that are scoped to the computer.
+- An event log message (1109) is posted, stating that loopback was invoked in Replace mode.
 
-כאשר הגדרה זו זמינה, אופן הפעולה זהה לזה של Windows 2000: מדיניות המשתמש חלה ופרופיל משתמש נודד מותר לשימוש מתוך היער המהימן.
+If you enable this policy setting, the behavior is exactly the same as in Windows 2000: user policy is applied, and a roaming user profile is allowed from the trusted forest.
 
-כאשר הגדרה זו אינה זמינה, אופן הפעולה זהה לאופן הפעולה במצב ללא הגדרת תצורה.</string>
-      <string id="CSE_AppMgmt">עיבוד מדיניות התקנת תוכנה</string>
-      <string id="CSE_AppMgmt_Help">קביעת מועד העדכון של פריטי מדיניות התקנת התוכנה.
+If you disable this policy setting, the behavior is the same as if it is not configured.</string>
+      <string id="CSE_AppMgmt">Configure software Installation policy processing</string>
+      <string id="CSE_AppMgmt_Help">This policy setting determines when software installation policies are updated.
 
-הגדרה זו משפיעה על כל פריטי המדיניות המשתמשים ברכיב התקנת תוכנה של מדיניות קבוצתית, כגון פריטי מדיניות בהגדרות תוכנה/התקנת תוכנה. באפשרותך לקבוע מדיניות רק עבור אובייקטים של התקנת תוכנה של מדיניות קבוצתית המאוחסנים ב- Active Directory ולא עבור אובייקטים של מדיניות קבוצתית במחשב המקומי.
+This policy setting affects all policy settings that use the software installation component of Group Policy, such as policy settings in Software Settings\Software Installation. You can set software installation policy only for Group Policy Objects stored in Active Directory, not for Group Policy Objects on the local computer.
 
-מדיניות זו עוקפת הגדרות מותאמות אישית שנקבעו באמצעות התוכנית שמיישמת את מדיניות התקנת התוכנה בעת התקנתה.
+This policy setting overrides customized settings that the program implementing the software installation policy set when it was installed.
 
-אם תהפוך הגדרה זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+If you enable this policy setting, you can use the check boxes provided to change the options. If you disable or do not configure this policy setting, it has no effect on the system.
 
-האפשרות אפשר עיבוד באמצעות חיבור רשת איטי מעדכנת את המדיניות גם כאשר העדכון משודר באמצעות חיבור רשת איטי, כגון קו טלפון. עדכונים באמצעות חיבורים איטיים עלולים לגרום לעיכובים משמעותיים.
+The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם מתעדכנים רק בעת ביצוע שינוי. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון להחיל מחדש הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
-      <string id="CSE_DiskQuota">עיבוד מדיניות מיכסת דיסק</string>
-      <string id="CSE_DiskQuota_Help">קביעת מועד העדכון של פריטי מדיניות של מיכסת דיסק.
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy setting implementations specify that they are updated only when changed. However, you might want to update unchanged policy settings, such as reapplying a desired policies in case a user has changed it.</string>
+      <string id="CSE_DiskQuota">Configure disk quota policy processing</string>
+      <string id="CSE_DiskQuota_Help">This policy setting determines when disk quota policies are updated.
 
-הגדרה זו משפיעה על כל פריטי המדיניות שמשתמשים ברכיב מיכסת הדיסק של המדיניות הקבוצתית, כגון אלה שנמצאים בתצורת מחשב/תבניות מנהליות/מערכת/מיכסות דיסק.
+This policy setting affects all policies that use the disk quota component of Group Policy, such as those in Computer Configuration\Administrative Templates\System\Disk Quotas.
 
-מדיניות זו עוקפת הגדרות מותאמות אישית שנקבעו באמצעות התוכנית שמיישמת את מדיניות מיכסת הדיסק בעת התקנתה.
+This policy setting overrides customized settings that the program implementing the disk quota policy set when it was installed.
 
-אם תהפוך הגדרה זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+If you enable this policy setting, you can use the check boxes provided to change the options. If you disable or do not configure this policy setting, it has no effect on the system.
 
-האפשרות אפשר עיבוד באמצעות חיבור רשת איטי מעדכנת את המדיניות גם כאשר העדכון משודר באמצעות חיבור רשת איטי, כגון קו טלפון. עדכונים באמצעות חיבורים איטיים עלולים לגרום לעיכובים משמעותיים.
+The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
 
-האפשרות אל תחיל במהלך ביצוע עיבוד תקופתי ברקע מונעת מהמערכת לבצע עדכון ברקע של פריטי מדיניות מושפעים כאשר המחשב נמצא בשימוש. כשעדכונים ברקע לא זמינים, שינויים במדיניות לא ייכנסו לתוקף עד כניסת המשתמש הבאה או הפעלה מחדש של המערכת.
+The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם מתעדכנים רק בעת ביצוע שינוי. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון להחיל מחדש הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
-      <string id="CSE_EFSRecovery">עיבוד מדיניות השחזור של מערכת להצפנת קבצים (EFS)</string>
-      <string id="CSE_EFSRecovery_Help">קביעת מועד העדכון של פריטי מדיניות הצפנה.
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
+      <string id="CSE_EFSRecovery">Configure EFS recovery policy processing</string>
+      <string id="CSE_EFSRecovery_Help">This policy setting determines when encryption policies are updated.
 
-הגדרה זו משפיעה על כל פריטי המדיניות שמשתמשים ברכיב ההצפנה של מדיניות הקבוצתית, כגון פריטי מדיניות שקשורים להצפנה בהגדרות Windows/הגדרות אבטחה.
+This policy setting affects all policies that use the encryption component of Group Policy, such as policies related to encryption in Windows Settings\Security Settings.
 
-המדיניות עוקפת הגדרות מותאמות אישית, שנקבעו על-ידי התוכנית שמיישמת את מדיניות ההצפנה בעת התקנתה.
+It overrides customized settings that the program implementing the encryption policy set when it was installed.
 
-אם תהפוך הגדרה זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+If you enable this policy setting, you can use the check boxes provided to change the options. If you disable or do not configure this policy setting, it has no effect on the system.
 
-האפשרות אפשר עיבוד באמצעות חיבור רשת איטי מעדכנת את המדיניות גם כאשר העדכון משודר באמצעות חיבור רשת איטי, כגון קו טלפון. עדכונים באמצעות חיבורים איטיים עלולים לגרום לעיכובים משמעותיים.
+The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
 
-האפשרות אל תחיל במהלך ביצוע עיבוד תקופתי ברקע מונעת מהמערכת לבצע עדכון ברקע של פריטי מדיניות מושפעים כאשר המחשב נמצא בשימוש. כשעדכונים ברקע לא זמינים, שינויים במדיניות לא ייכנסו לתוקף עד כניסת המשתמש הבאה או הפעלה מחדש של המערכת.
+The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם מתעדכנים רק בעת ביצוע שינוי. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון להחיל מחדש הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
-      <string id="CSE_FolderRedirection">עיבוד מדיניות ניתוב מחדש של תיקיות</string>
-      <string id="CSE_FolderRedirection_Help">קביעת מועד העדכון של פריטי מדיניות הניתוב מחדש של תיקיות.
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
+      <string id="CSE_FolderRedirection">Configure folder redirection policy processing</string>
+      <string id="CSE_FolderRedirection_Help">This policy setting determines when folder redirection policies are updated.
 
-הגדרה זו משפיעה על כל פריטי המדיניות שמשתמשים ברכיב ניתוב מחדש של תיקיות במדיניות קבוצתית, כגון אלה שנמצאים ב- הגדרות Windows\ניתוב מחדש של תיקיות. באפשרותך לקבוע ניתוב מחדש של תיקיות רק עבור אובייקטים של מדיניות קבוצתית המאוחסנים ב- Active Directory ולא עבור אובייקטים של מדיניות קבוצתית במחשב המקומי.
+This policy setting affects all policies that use the folder redirection component of Group Policy, such as those in WindowsSettings\Folder Redirection. You can only set folder redirection policy for Group Policy objects, stored in Active Directory, not for Group Policy objects on the local computer.
 
-הגדרה זו עוקפת הגדרות מותאמות אישית שהתוכנית המיישמת את מדיניות הניתוב מחדש של תיקיות קבעה בעת התקנתה.
+This policy setting overrides customized settings that the program implementing the folder redirection policy setting set when it was installed.
 
-אם תהפוך הגדרה זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+If you enable this policy setting, you can use the check boxes provided to change the options. If you disable or do not configure this policy setting, it has no effect on the system.
 
-האפשרות אפשר עיבוד באמצעות חיבור רשת איטי מעדכנת את המדיניות גם כאשר העדכון משודר באמצעות חיבור רשת איטי, כגון קו טלפון. עדכונים באמצעות חיבורים איטיים עלולים לגרום לעיכובים משמעותיים.
+The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם מתעדכנים רק בעת ביצוע שינוי. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון להחיל מחדש הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
-      <string id="CSE_IEM">עיבוד מדיניות של מצב תחזוקה של Internet Explorer</string>
-      <string id="CSE_IEM_Help">קביעת מועד העדכון של פריטי המדיניות של מצב תחזוקה של Internet Explorer.
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
+      <string id="CSE_IEM">Configure Internet Explorer Maintenance policy processing</string>
+      <string id="CSE_IEM_Help">This policy setting determines when Internet Explorer Maintenance policies are updated.
 
-הגדרה זו משפיעה על כל פריטי המדיניות שמשתמשים ברכיב המדיניות הקבוצתית מצב התחזוקה של Internet Explorer, כגון אלה שנמצאים בהגדרות Windows/תחזוקת Internet Explorer.
+This policy setting affects all policies that use the Internet Explorer Maintenance component of Group Policy, such as those in Windows Settings\Internet Explorer Maintenance.
 
-ההגדרה עוקפת הגדרות מותאמות אישית שנקבעו באמצעות התוכנית שמיישמת את מדיניות מצב תחזוקה של Internet Explorer בעת התקנתה.
+This policy setting overrides customized settings that the program implementing the Internet Explorer Maintenance policy set when it was installed.
 
-אם תהפוך הגדרה זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+If you enable this policy setting, you can use the check boxes provided to change the options. If you disable or do not configure this policy setting, it has no effect on the system.
 
-האפשרות אפשר עיבוד באמצעות חיבור רשת איטי מעדכנת את המדיניות גם כאשר העדכון משודר באמצעות חיבור רשת איטי, כגון קו טלפון. עדכונים באמצעות חיבורים איטיים עלולים לגרום לעיכובים משמעותיים.
+The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
 
-האפשרות אל תחיל במהלך ביצוע עיבוד תקופתי ברקע מונעת מהמערכת לבצע עדכון ברקע של פריטי מדיניות מושפעים כאשר המחשב נמצא בשימוש. כשעדכונים ברקע לא זמינים, שינויים במדיניות לא ייכנסו לתוקף עד כניסת המשתמש הבאה או הפעלה מחדש של המערכת.
+The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם מתעדכנים רק בעת ביצוע שינוי. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון להחיל מחדש הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
-      <string id="CSE_IPSecurity">עיבוד מדיניות אבטחת IP</string>
-      <string id="CSE_IPSecurity_Help">קביעת מועד העדכון של פריטי מדיניות אבטחת IP.
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired policy setting in case a user has changed it.</string>
+      <string id="CSE_IPSecurity">Configure IP security policy processing</string>
+      <string id="CSE_IPSecurity_Help">This policy setting determines when IP security policies are updated.
 
-הגדרה זו משפיעה על כל פריטי המדיניות שמשתמשים ברכיב אבטחת IP של מדיניות קבוצתית, כגון מדיניות בתצורת מחשב/הגדרות Windows/הגדרות אבטחה/מדיניות אבטחת IP במחשב המקומי.
+This policy setting affects all policies that use the IP security component of Group Policy, such as policies in Computer Configuration\Windows Settings\Security Settings\IP Security Policies on Local Machine.
 
-היא עוקפת הגדרות מותאמות אישית שנקבעו באמצעות התוכנית שמיישמת את מדיניות אבטחת IP בעת התקנתה.
+This policy setting overrides customized settings that the program implementing the IP security policy set when it was installed.
 
-אם תהפוך הגדרה זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+If you enable this policy setting, you can use the check boxes provided to change the options. If you disable or do not configure this policy setting, it has no effect on the system.
 
-האפשרות אפשר עיבוד באמצעות חיבור רשת איטי מעדכנת את המדיניות גם כאשר העדכון משודר באמצעות חיבור רשת איטי, כגון קו טלפון. עדכונים באמצעות חיבורים איטיים עלולים לגרום לעיכובים משמעותיים.
+The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
 
-האפשרות אל תחיל במהלך ביצוע עיבוד תקופתי ברקע מונעת מהמערכת לבצע עדכון ברקע של פריטי מדיניות מושפעים כאשר המחשב נמצא בשימוש. כשעדכונים ברקע לא זמינים, שינויים במדיניות לא ייכנסו לתוקף עד כניסת המשתמש הבאה או הפעלה מחדש של המערכת.
+The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם מתעדכנים רק בעת ביצוע שינוי. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון להחיל מחדש הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
-      <string id="CSE_Registry">עיבוד מדיניות הרישום</string>
-      <string id="CSE_Registry_Help">קביעת מועד העדכון של פריטי מדיניות הרישום.
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired policy setting in case a user has changed it.</string>
+      <string id="CSE_Registry">Configure registry policy processing</string>
+      <string id="CSE_Registry_Help">This policy setting determines when registry policies are updated.
 
-הגדרה זו משפיעה על כל רכיבי המדיניות שבתיקיה תבניות מנהליות וכל רכיבי המדיניות האחרים שמאחסנים ערכים ברישום.
+This policy setting affects all policies in the Administrative Templates folder and any other policies that store values in the registry. It overrides customized settings that the program implementing a registry policy set when it was installed.
 
-המדיניות עוקפת הגדרות מותאמות אישית, שנקבעו על-ידי התוכנית שמיישמת את מדיניות הרישום בעת התקנתה.
+If you enable this policy setting, you can use the check boxes provided to change the options. If you disable or do not configure this policy setting, it has no effect on the system.
 
-אם תהפוך הגדרה זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
 
-האפשרות אל תחיל במהלך ביצוע עיבוד תקופתי ברקע מונעת מהמערכת לבצע עדכון ברקע של פריטי מדיניות מושפעים כאשר המחשב נמצא בשימוש. כשעדכונים ברקע לא זמינים, שינויים במדיניות לא ייכנסו לתוקף עד כניסת המשתמש הבאה או הפעלה מחדש של המערכת.
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired policy setting in case a user has changed it.</string>
+      <string id="CSE_Scripts">Configure scripts policy processing</string>
+      <string id="CSE_Scripts_Help">This policy setting determines when policies that assign shared scripts are updated.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם מתעדכנים רק בעת ביצוע שינוי. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון להחיל מחדש הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
-      <string id="CSE_Scripts">עיבוד מדיניות קבצי Script</string>
-      <string id="CSE_Scripts_Help">קביעת מועד העדכון של פריטי מדיניות המקצים קבצי Script משותפים.
+This policy setting affects all policies that use the scripts component of Group Policy, such as those in WindowsSettings\Scripts. It overrides customized settings that the program implementing the scripts policy set when it was installed.
 
-הגדרה זו משפיעה על כל פריטי המדיניות שמשתמשים ברכיב קבצי Script במדיניות קבוצתית, כגון אלה שנמצאים ב- הגדרות Windows/קבצי Script.
+If you enable this policy setting, you can use the check boxes provided to change the options. If you disable or do not configure this setting, it has no effect on the system.
 
-ההגדרה עוקפת הגדרות מותאמות אישית שנקבעו באמצעות התוכנית שמיישמת את מדיניות השימוש בקבצי Script בעת התקנתה.
+The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
 
-אם תהפוך מדיניות זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
 
-האפשרות אפשר עיבוד באמצעות חיבור רשת איטי מעדכנת את המדיניות גם כאשר העדכון משודר באמצעות חיבור רשת איטי, כגון קו טלפון. עדכונים באמצעות חיבורים איטיים עלולים לגרום לעיכובים משמעותיים.
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired policy setting in case a user has changed it.</string>
+      <string id="CSE_Security">Configure security policy processing</string>
+      <string id="CSE_Security_Help">This policy setting determines when security policies are updated.
 
-האפשרות אל תחיל במהלך ביצוע עיבוד תקופתי ברקע מונעת מהמערכת לבצע עדכון ברקע של פריטי מדיניות מושפעים כאשר המחשב נמצא בשימוש. כשעדכונים ברקע לא זמינים, שינויים במדיניות לא ייכנסו לתוקף עד כניסת המשתמש הבאה או הפעלה מחדש של המערכת.
+This policy setting affects all policies that use the security component of Group Policy, such as those in Windows Settings\Security Settings.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם מתעדכנים רק בעת ביצוע שינוי. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון להחיל מחדש הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
-      <string id="CSE_Security">עיבוד מדיניות האבטחה</string>
-      <string id="CSE_Security_Help">קביעת מועד העדכון של פריטי מדיניות האבטחה.
+This policy setting overrides customized settings that the program implementing the security policy set when it was installed.
 
-הגדרה זו משפיעה על כל פריטי המדיניות שמשתמשים ברכיב האבטחה של מדיניות קבוצתית, כגון אלה בהגדרות Windows\הגדרות אבטחה.
+If you enable this policy setting, you can use the check boxes provided to change the options. If you disable or do not configure this policy setting, it has no effect on the system.
 
-ההגדרה עוקפת הגדרות מותאמות אישית שנקבעו על-ידי התוכנית שמיישמת את מדיניות האבטחה בעת התקנתה.
+The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
 
-אם תהפוך הגדרה זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they be updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired policy setting in case a user has changed it.</string>
+      <string id="CSE_Wireless">Configure wireless policy processing</string>
+      <string id="CSE_Wireless_Help">This policy setting determines when policies that assign wireless network settings are updated.
 
-האפשרות אל תחיל במהלך ביצוע עיבוד תקופתי ברקע מונעת מהמערכת לבצע עדכון ברקע של פריטי מדיניות מושפעים כאשר המחשב נמצא בשימוש. כשעדכונים ברקע לא זמינים, שינויים במדיניות לא ייכנסו לתוקף עד כניסת המשתמש הבאה או הפעלה מחדש של המערכת.
+This policy setting affects all policies that use the wireless network component of Group Policy, such as those in WindowsSettings\Wireless Network Policies.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם עודכנו רק אם הם השתנו. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון להחיל מחדש הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
-      <string id="CSE_Wireless">עיבוד מדיניות אלחוטית</string>
-      <string id="CSE_Wireless_Help">קביעת מועד העדכון של פריטי מדיניות המקצים הגדרות עבור רשת אלחוטית.
+It overrides customized settings that the program implementing the wireless network set when it was installed.
 
-הגדרה זו משפיעה על כל פריטי המדיניות העושים שימוש ברכיב הרשת האלחוטית של המדיניות הקבוצתית, כגון אלה תחת הגדרות Windows\פריטי מדיניות של רשת אלחוטית.
+If you enable this policy, you can use the check boxes provided to change the options.
 
-היא עוקפת הגדרות מותאמות אישית שנקבעו על-ידי התוכנית המיישמת את הרשת האלחוטית בעת התקנתה.
+If you disable this setting or do not configure it, it has no effect on the system.
 
-אם תהפוך מדיניות זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
 
-האפשרות אפשר עיבוד באמצעות חיבור רשת איטי מעדכנת את המדיניות גם כאשר העדכון משודר באמצעות חיבור רשת איטי, כגון קו טלפון. עדכונים באמצעות חיבורים איטיים עלולים לגרום לעיכובים משמעותיים.
+The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
 
-האפשרות אל תחיל במהלך ביצוע עיבוד תקופתי ברקע מונעת מהמערכת לבצע עדכון ברקע של פריטי מדיניות מושפעים כאשר המחשב נמצא בשימוש. כשעדכונים ברקע לא זמינים, שינויים במדיניות לא ייכנסו לתוקף עד כניסת המשתמש הבאה או הפעלה מחדש של המערכת.
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
+      <string id="CSE_Wired">Configure wired policy processing</string>
+      <string id="CSE_Wired_Help">This policy setting determines when policies that assign wired network settings are updated.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם מתעדכנים רק בעת ביצוע שינוי. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון להחיל מחדש הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
-      <string id="CSE_Wired">עיבוד מדיניות קווית</string>
-      <string id="CSE_Wired_Help">קביעת מועד העדכון של פריטי מדיניות המקצים הגדרות עבור רשת קווית.
+This policy setting affects all policies that use the wired network component of Group Policy, such as those in Windows Settings\Wired Network Policies.
 
-הגדרה זו משפיעה על כל פריטי המדיניות העושים שימוש ברכיב הרשת הקווית של המדיניות הקבוצתית, כגון אלה תחת הגדרות Windows/פריטי מדיניות של רשת קווית.
+It overrides customized settings that the program implementing the wired network set when it was installed.
 
-היא עוקפת הגדרות מותאמות אישית שנקבעו על-ידי התוכנית המיישמת את הרשת הקווית בעת התקנתה.
+If you enable this policy, you can use the check boxes provided to change the options.
 
-אם תהפוך מדיניות זו לזמינה, תהיה לך אפשרות להשתמש בתיבות הסימון לשינוי האפשרויות. אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, היא לא תשפיע על המערכת.
+If you disable this setting or do not configure it, it has no effect on the system.
 
-האפשרות אפשר עיבוד באמצעות חיבור רשת איטי מעדכנת את המדיניות גם כאשר העדכון משודר באמצעות חיבור רשת איטי, כגון קו טלפון. עדכונים באמצעות חיבורים איטיים עלולים לגרום לעיכובים משמעותיים.
+The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
 
-האפשרות אל תחיל במהלך ביצוע עיבוד תקופתי ברקע מונעת מהמערכת לבצע עדכון ברקע של פריטי מדיניות מושפעים כאשר המחשב נמצא בשימוש. כשעדכונים ברקע לא זמינים, שינויים במדיניות לא ייכנסו לתוקף עד כניסת המשתמש הבאה או הפעלה מחדש של המערכת.
+The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
 
-האפשרות בצע עיבוד גם אם אובייקטים של המדיניות הקבוצתית לא השתנו מעדכנת ומחילה מחדש את פריטי המדיניות גם אם לא השתנו. יישומי מדיניות רבים מציינים שהם מתעדכנים רק בעת ביצוע שינוי. עם זאת, ייתכן שיהיה ברצונך לעדכן פריטי מדיניות שלא השתנו, כגון החלה מחדש של הגדרה רצויה במקרה שמשתמש שינה אותה.</string>
+The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
 
-      <string id="DenyRsopToInteractiveUser">מנע ממשתמשים אינטראקטיביים ליצור נתוני מערכת תוצאות של מדיניות</string>
-      <string id="DenyRsopToInteractiveUser_Help">הגדרה זו מנהלת את היכולת של המשתמש להציג את נתוני קבוצת התוצאות של המדיניות (RSoP) שלו.
+      <string id="DenyRsopToInteractiveUser">Determine if interactive users can generate Resultant Set of Policy data</string>
+      <string id="DenyRsopToInteractiveUser_Help">This policy setting controls the ability of users to view their Resultant Set of Policy (RSoP) data.
 
-כברירת מחדל, משתמשים המתחברים באופן אינטראקטיבי יכולים להציג את נתוני קבוצת התוצאות של המדיניות (RSoP).
+By default, interactively logged on users can view their own Resultant Set of Policy (RSoP) data.
 
-אם הגדרה זו זמינה, משתמשים אינטראקטיביים לא יוכלו ליצור נתוני RSoP.
+If you enable this policy setting, interactive users cannot generate RSoP data.
 
-אם תצורת הגדרה זו לא נקבעה או אם ההגדרה לא זמינה, משתמשים אינטראקטיביים יוכלו לייצא נתוני RSoP.
+If you disable or do not configure this policy setting, interactive users can generate RSoP.
 
-הערה: הגדרה זו אינה משפיעה על מנהלים. בין אם ההגדרה זמינה ובין אם היא לא זמינה, מנהלים יכולים, כברירת מחדל, להציג נתוני RSoP.
+Note: This policy setting does not affect administrators. If you enable or disable this policy setting, by default administrators can view RSoP data.
 
-הערה: כדי להציג נתוני RSoP במחשב לקוח, השתמש ביישום ה- Snap-in של קבוצת התוצאות של המדיניות (RSoP) עבור Microsoft Management Console. תוכל להפעיל את יישומי ה- Snap-in של קבוצת התוצאות של המדיניות (RSoP) מתוך שורת הפקודה, על-ידי הקלדת RSOP.msc
+Note: To view RSoP data on a client computer, use the RSoP snap-in for the Microsoft Management Console. You can launch the RSoP snap-in from the command line by typing RSOP.msc
 
-הערה: הגדרה זו קיימת הן כהגדרת תצורת משתמש והן כהגדרת תצורת מחשב.
+Note: This policy setting exists as both a User Configuration and Computer Configuration setting.
 
-בנוסף, עיין בהגדרה כבה רישום של תוצאת הגדרות של מדיניות תחת תצורת מחשב/תבניות מנהליות/מערכת/מדיניות קבוצתית.</string>
-      <string id="DisableAutoADMUpdate">בטל עדכון אוטומטי של קבצי ADM</string>
-      <string id="DisableAutoADMUpdate_Help">מניעת המערכת מלעדכן אוטומטית את קבצי המקור של תבניות הניהול בעת פתיחת עורך אובייקט המדיניות הקבוצתית.  מנהלי מערכת עשויים לרצות להשתמש באפשרות זו אם הם מוטרדים מכמות השטח המנוצל באמצעי האחסון של המערכת בבקר תחום.
+Also, see the "Turn off Resultant set of Policy logging" policy setting in Computer Configuration\Administrative Templates\System\GroupPolicy.</string>
+      <string id="DisableAutoADMUpdate">Turn off automatic update of ADM files</string>
+      <string id="DisableAutoADMUpdate_Help">Prevents the system from updating the Administrative Templates source files automatically when you open the Group Policy Object Editor.  Administrators might want to use this if they are concerned about the amount of space used on the system volume of a DC.
 
-כברירת מחדל, בעת הפעלת עורך אובייקט המדיניות הקבוצתית, השוואת חותמת זמן מבוצעת בקבצי המקור בספריה ‎%SYSTEMROOT%\inf ובקבצי המקור המאוחסנים באובייקט המדיניות הקבוצתית.  אם הקבצים המקומיים חדשים יותר, הם מועתקים לאובייקט המדיניות הקבוצתית.
+By default, when you start the Group Policy Object Editor, a timestamp comparison is performed on the source files in the local %SYSTEMROOT%\inf directory and the source files stored in the GPO.  If the local files are newer, they are copied into the GPO.
 
-שינוי מצבה של הגדרה זו לזמין ימנע העתקה של קבצי מקור לאובייקט המדיניות הקבוצתית.
+Changing the status of this setting to Enabled will keep any source files from copying to the GPO.
 
-שינוי מצבה של הגדרה זו ללא זמין יאכוף את אופן הפעולה המוגדר כברירת המחדל.  קבצים יועתקו תמיד לאובייקט המדיניות הקבוצתית אם חותמת הזמן שלהם מאוחרת יותר.
+Changing the status of this setting to Disabled will enforce the default behavior.  Files will always be copied to the GPO if they have a later timestamp.
 
-שים לב: אם הגדרת המדיניות של תצורת המחשב, השתמש תמיד בקבצי ADM מקומיים עבור עורך אובייקט המדיניות הקבוצתית, זמינה, המערכת תתעלם ממצבה של הגדרה זו ותתייחס אליה תמיד כזמינה.</string>
-      <string id="DisableBackgroundPolicy">בטל רענון ברקע של המדיניות הקבוצתית</string>
-      <string id="DisableBackgroundPolicy_Help">מניעת עדכון של המדיניות הקבוצתית כל עוד המחשב נמצא בשימוש. הגדרה זו חלה על המדיניות הקבוצתית עבור מחשבים, משתמשים ובקרי תחום.
+NOTE: If the Computer Configuration policy setting, "Always use local ADM files for the Group Policy Object Editor" is enabled, the state of this setting is ignored and always treated as Enabled.</string>
+      <string id="DisableBackgroundPolicy">Turn off background refresh of Group Policy</string>
+      <string id="DisableBackgroundPolicy_Help">This policy setting prevents Group Policy from being updated while the computer is in use. This policy setting applies to Group Policy for computers, users, and domain controllers.
 
-אם תהפוך הגדרה זו לזמינה, המערכת תמתין עד שהמשתמש הפעיל יתנתק מהמערכת לפני עדכון הגדרות המחשב והמשתמש.
+If you enable this policy setting, the system waits until the current user logs off the system before updating the computer and user settings.
 
-אם תהפוך הגדרה זו ללא זמינה, ניתן יהיה להחיל עדכונים במהלך עבודת המשתמשים. תדירות העדכונים נקבעת באמצעות ההגדרה מרווח הזמן לרענון המדיניות הקבוצתית עבור מחשבים וההגדרה מרווח הזמן לרענון המדיניות הקבוצתית עבור משתמשים.
+If you disable or do not configure this policy setting, updates can be applied while users are working. The frequency of updates is determined by the "Set Group Policy refresh interval for computers" and "Set Group Policy refresh interval for users" policy settings.
 
-הערה: אם תבצע שינויים בהגדרה זו, יהיה עליך להפעיל מחדש את המחשב כדי שהשינויים ייכנסו לתוקף.</string>
-      <string id="DisableUsersFromMachGP">ביטול יכולתם של המשתמשים להפעיל את רענון מדיניות המחשב</string>
-      <string id="DisableUsersFromMachGP_Help">הגדרה זו מאפשרת לשלוט ביכולתו של המשתמש להפעיל את רענון מדיניות המחשב.
+Note: If you make changes to this policy setting, you must restart your computer for it to take effect.</string>
+      <string id="DisableUsersFromMachGP">Remove users' ability to invoke machine policy refresh</string>
+      <string id="DisableUsersFromMachGP_Help">This policy setting allows you to control a user's ability to invoke a computer policy refresh.
 
-אם תהפוך הגדרה זו לזמינה, המשתמשים לא יוכלו להפעיל את רענון מדיניות המחשב. מדיניות המחשב עדיין תוחל בהפעלה או בעת ביצוע רענון רשמי של מדיניות.
+If you enable this policy setting, users are not able to invoke a refresh of computer policy. Computer policy will still be applied at startup or when an official policy refresh occurs.
 
-אם תהפוך הגדרה זו ללא זמינה או שלא תקבע את תצורתה, תופעל קביעת ברירת המחדל. כברירת מחדל, מדיניות מחשב מוחלת עם הפעלת המחשב. היא גם מוחלת במרווחי זמן רענון מוגדרים או בהפעלה ידנית על-ידי המשתמש.
+If you disable or do not configure this policy setting, the default behavior applies. By default, computer policy is applied when the computer starts up. It also applies at a specified refresh interval or when manually invoked by the user.
 
-הערה: הגדרה זו חלה רק על משתמשים שאינם מנהלים. מנהלים יכולים להפעיל רענון של מדיניות מחשב בכל זמן, ללא תלות בהגדרת המדיניות.
+Note: This policy setting applies only to non-administrators. Administrators can still invoke a refresh of computer policy at any time, no matter how this policy setting is configured.
 
-בנוסף, לשינוי מרווח זמן רענון המדיניות, עיין גם בהגדרה מרווח זמן לעדכון מדיניות קבוצתית עבור מחשבים.
+Also, see the "Set Group Policy refresh interval for computers" policy setting to change the policy refresh interval.
 
-הערה: אם תבצע שינויים בהגדרה זו, יהיה עליך להפעיל מחדש את המחשב כדי שהשינויים ייכנסו לתוקף.</string>
-      <string id="EnforcePoliciesOnly">אכוף את הצגת פריטי המדיניות בלבד</string>
-      <string id="EnforcePoliciesOnly_Help">מניעה ממנהלים להציג העדפות מדיניות קבוצתית או להשתמש בהן.
+Note: If you make changes to this policy setting, you must restart your computer for it to take effect.</string>
+      <string id="EnforcePoliciesOnly">Enforce Show Policies Only</string>
+      <string id="EnforcePoliciesOnly_Help">This policy setting prevents administrators from viewing or using Group Policy preferences.
 
-קובץ ניהול מדיניות קבוצתית (‎.adm) יכול להכיל הן הגדרות אמיתיות והן העדפות. על הגדרות אמיתיות, שנתמכות באופן מלא על-ידי מדיניות קבוצתית, להשתמש בערכי הרישום במפתחות המשנה של רישום ב- תוכנה/מדיניות או ב- תוכנה/Microsoft/‏Windows/גירסה נוכחית/מדיניות. העדפות, שאינן נתמכות באופן מלא, משתמשות בערכי רישום במפתחות משנה אחרים.
+A Group Policy administration (.adm) file can contain both true settings and preferences. True settings, which are fully supported by Group Policy, must use registry entries in the Software\Policies or Software\Microsoft\Windows\CurrentVersion\Policies registry subkeys. Preferences, which are not fully supported, use registry entries in other subkeys.
 
-אם תהפוך הגדרה זו לזמינה, הפקודה הצג מדיניות בלבד מופעלת ומנהלים אינם יכולים לבטלה. כתוצאה מכך, עורך אובייקט המדיניות הקבוצתית מציג הגדרות אמיתיות בלבד; העדפות אינן מוצגות.
+If you enable this policy setting, the "Show Policies Only" command is turned on, and administrators cannot turn it off. As a result, Group Policy Object Editor displays only true settings; preferences do not appear.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, הפקודה הצג מדיניות בלבד תופעל כברירת מחדל, אך מנהלים יוכלו להציג העדפות על-ידי ביטול הפקודה הצג מדיניות בלבד.
+If you disable or do not configure this policy setting, the "Show Policies Only" command is turned on by default, but administrators can view preferences by turning off the "Show Policies Only" command.
 
-הערה: כדי למצוא את הפקודה הצג מדיניות בלבד, בעורך אובייקט המדיניות הקבוצתית, לחץ על התיקיה תבניות ניהול (אחת מהשתיים), לחץ באמצעות לחצן העכבר הימני על אותה תיקיה ולאחר מכן הצבע על 'תצוגה'.
+Note: To find the "Show Policies Only" command, in Group Policy Object Editor, click the Administrative Templates folder (either one), right-click the same folder, and then point to "View."
 
-בעורך אובייקט המדיניות הקבוצתית, עבור העדפות מוצג סמל אדום, כדי להבדיל בינן לבין הגדרות אמיתיות, שעבורן מוצג סמל כחול.</string>
-      <string id="GPDCOptionAny">השתמש בבקר תחום זמין כלשהו</string>
-      <string id="GPDCOptionInherit">קבל בירושה מיישומי Snap-in של Active Directory</string>
-      <string id="GPDCOptionPDC">השתמש בבקר התחום הראשי</string>
-      <string id="GPDCOptions">בחירת בקר התחום של המדיניות הקבוצתית</string>
-      <string id="GPDCOptions_Help">קביעה באיזה בקר תחום ישתמש יישום ה- Snap-in של עורך אובייקט המדיניות הקבוצתית.
+In Group Policy Object Editor, preferences have a red icon to distinguish them from true settings, which have a blue icon.</string>
+      <string id="GPDCOptionAny">Use any available domain controller</string>
+      <string id="GPDCOptionInherit">Inherit from Active Directory Snap-ins</string>
+      <string id="GPDCOptionPDC">Use the Primary Domain Controller</string>
+      <string id="GPDCOptions">Configure Group Policy domain controller selection</string>
+      <string id="GPDCOptions_Help">This policy setting determines which domain controller the Group Policy Object Editor snap-in uses.
 
---  'השתמש בבקר התחום הראשי' מציין שיישום ה- Snap-in של עורך אובייקט המדיניות הקבוצתית יקרא ויכתוב שינויים לבקר התחום שמתפקד כמנהל הפעולות של בקר התחום הראשי עבור התחום.
+If you enable this setting, you can which domain controller is used according to these options:
 
---  'קבל בירושה מיישומי Snap-in של Active Directory' מציין שיישומי ה- Snap-in של עורך אובייקט המדיניות הקבוצתית יקרא ויכתוב שינויים לבקר התחום שמשמש יישום Snap-in של 'משתמשים ומחשבים של Active Directory' או של 'אתרים ושירותים של Active Directory'.
+"Use the Primary Domain Controller" indicates that the Group Policy Object Editor snap-in reads and writes changes to the domain controller designated as the PDC Operations Master for the domain.
 
--  'השתמש בבקר תחום זמין' מציין שליישום ה- Snap-in של המדיניות הקבוצתית יש אפשרות לקרוא ולכתוב שינויים לבקר תחום זמין.
+"Inherit from Active Directory Snap-ins" indicates that the Group Policy Object Editor snap-in reads and writes changes to the domain controller that Active Directory Users and Computers or Active Directory Sites and Services snap-ins use.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, יישום ה- Snap-in של עורך אובייקט המדיניות הקבוצתית ישתמש בבקר התחום שמתפקד כמנהל הפעולות של בקר התחום הראשי עבור התחום.
+"Use any available domain controller" indicates that the Group Policy Object Editor snap-in can read and write changes to any available domain controller.
 
-הערה: כדי לשנות את מנהל הפעולות של בקר התחום עבור התחום, ב'משתמשים ומחשבים של Active Directory', לחץ באמצעות לחצן העכבר הימני על תחום ולאחר מכן לחץ על 'מנהל הפעולות'.</string>
-      <string id="GPTransferRate">איתור קישור איטי של מדיניות קבוצתית</string>
-      <string id="GPTransferRate_Help">הגדרת חיבור איטי למטרות החלה ועדכון של מדיניות קבוצתית.
+If you disable this setting or do not configure it, the Group Policy Object Editor snap-in uses the domain controller designated as the PDC Operations Master for the domain.
 
-אם קצב העברת הנתונים מבקר התחום שמספק את עדכון המדיניות למחשבים בקבוצה זו איטי מהקצב שצוין בהגדרה זו, המערכת תתייחס לחיבור כאיטי.
+Note: To change the PDC Operations Master for a domain, in Active Directory Users and Computers, right-click a domain, and then click "Operations Masters."</string>
+      <string id="GPTransferRate">Configure Group Policy slow link detection</string>
+      <string id="GPTransferRate_Help">This policy setting defines a slow connection for purposes of applying and updating Group Policy.
 
-תגובת המערכת לחיבור מדיניות איטי משתנה ממדיניות למדיניות. באפשרות התוכנית שמיישמת את המדיניות לציין את התגובה לקישור איטי. בנוסף, הגדרות עיבוד המדיניות בתיקיה זו מאפשרת לעקוף את תגובות התוכנית שצוינו עבור קישור איטי.
+If the rate at which data is transferred from the domain controller providing a policy update to the computers in this group is slower than the rate specified by this setting, the system considers the connection to be slow.
 
-כדי להשתמש בהגדרה זו, בתיבה מהירות חיבור, הקלד מספר עשרוני בין 0 לבין 4,294,967,200, שמציין קצב העברה בקילו-סיביות לשנייה. כל חיבור שאיטי מקצב זה נחשב כאיטי. אם תקליד 0, כל החיבורים ייחשבו כמהירים.
+The system's response to a slow policy connection varies among policies. The program implementing the policy can specify the response to a slow link. Also, the policy processing settings in this folder lets you override the programs' specified responses to slow links.
 
-אם תהפוך הגדרה זו ללא זמינה או שלא תגדיר את תצורתה, המערכת תשתמש בערך ברירת המחדל של 500 קילו-סיביות לשנייה.
+If you enable this setting, you can, in the "Connection speed" box, type a decimal number between 0 and 4,294,967,200, indicating a transfer rate in kilobits per second. Any connection slower than this rate is considered to be slow. If you type 0, all connections are considered to be fast.
 
-הגדרה זו מופיעה בתיקיות תצורת מחשב ותצורת משתמש. ההגדרה בתצורת מחשב מגדירה קישור איטי עבור פריטי מדיניות בתיקיה תצורת מחשב. ההגדרה בתצורת משתמש מגדירה קישור איטי עבור הגדרות בתיקיה תצורת משתמש.
+If you disable this setting or do not configure it, the system uses the default value of 500 kilobits per second.
 
-בנוסף, עיין ב'אל תאתר חיבורי רשת איטיים' ובפריטי מדיניות קשורים בתצורת מחשב/תבניות מנהליות/מערכת/פרופיל משתמש. הערה: אם לשרת הפרופיל יש קישוריות IP, המערכת תשתמש בהגדרת מהירות החיבור. אם לשרת הפרופיל אין קישוריות IP, המערכת תשתמש בתזמון ה-SMB.</string>
-      <string id="GroupPolicyRefreshRate">מרווח זמן לעדכון מדיניות קבוצתית עבור מחשבים</string>
-      <string id="GroupPolicyRefreshRate_Help">קביעת תדירות העדכון של מדיניות קבוצתית עבור מחשבים, כאשר המחשב נמצא בשימוש (ברקע). הגדרה זו מציינת קצב עדכון ברקע עבור פריטי מדיניות קבוצתית בתיקיה תצורת מחשב בלבד.
+This setting appears in the Computer Configuration and User Configuration folders. The setting in Computer Configuration defines a slow link for policies in the Computer Configuration folder. The setting in User Configuration defines a slow link for settings in the User Configuration folder.
 
-בנוסף לעדכונים ברקע, מדיניות קבוצתית עבור המחשב מתעדכנת תמיד בעת הפעלת המערכת.
+Also, see the "Do not detect slow network connections" and related policies in Computer Configuration\Administrative Templates\System\User Profile. Note: If the profile server has IP connectivity, the connection speed setting is used. If the profile server does not have IP connectivity, the SMB timing is used.</string>
+      <string id="GroupPolicyRefreshRate">Set Group Policy refresh interval for computers</string>
+      <string id="GroupPolicyRefreshRate_Help">This policy setting specifies how often Group Policy for computers is updated while the computer is in use (in the background). This setting specifies a background update rate only for Group Policies in the Computer Configuration folder.
 
-כברירת מחדל, המדיניות הקבוצתית של מחשב מתעדכנת ברקע מדי 90 דקות, עם היסט אקראי של 0 עד 30 דקות.
+In addition to background updates, Group Policy for the computer is always updated when the system starts.
 
-באפשרותך לציין קצב עדכון בין 0 ל- 64,800 דקות (45 ימים). אם תבחר באפשרות 0 דקות, המחשב ינסה לעדכן את המדיניות הקבוצתית מדי 7 שניות. עם זאת, כיוון שעדכונים עלולים להפריע לעבודת המשתמשים ולהגדיל את התעבורה ברשת, מרווחי עדכון קצרים במיוחד אינם מתאימים עבור רוב ההתקנות.
+By default, computer Group Policy is updated in the background every 90 minutes, with a random offset of 0 to 30 minutes.
 
-אם תהפוך הגדרה זו ללא זמינה, המדיניות הקבוצתית תעודכן מדי 90 דקות (ברירת המחדל). כדי לציין שלעולם אין לעדכן מדיניות קבוצתית כאשר המחשב נמצא בשימוש, בחר במדיניות בטל רענון ברקע של מדיניות קבוצתית.
+If you enable this setting, you can specify an update rate from 0 to 64,800 minutes (45 days). If you select 0 minutes, the computer tries to update Group Policy every 7 seconds. However, because updates might interfere with users' work and increase network traffic, very short update intervals are not appropriate for most installations.
 
-המדיניות מרווח זמן לרענון מדיניות קבוצתית עבור מחשבים מאפשרת לך גם לקבוע באיזו מידה משתנה מרווח הזמן הממשי לעדכון. כדי למנוע מלקוחות בעלי אותו מרווח זמן לעדכון לבקש עדכונים בו-זמנית, המערכת משנה את מרווח הזמן לעדכון עבור כל לקוח באמצעות מספר אקראי של דקות. המספר שתקליד בתיבה משך זמן אקראי יקבע את הגבול העליון עבור טווח השונות. לדוגמה, אם תקליד 30 דקות, המערכת תבחר בשונות בין 0 ל- 30 דקות. הקלדת מספר גבוה תיצור טווח רחב ותקטין את הסבירות לחפיפה בין בקשות לקוחות. עם זאת, ייתכנו השהיות משמעותיות בעדכונים.
+If you disable this setting, Group Policy is updated every 90 minutes (the default). To specify that Group Policy should never be updated while the computer is in use, select the "Turn off background refresh of Group Policy" policy.
 
-הגדרה זו קובעת את קצב העדכון עבור מדיניות קבוצתית של מחשב. לקביעת קצב עדכון עבור פריטי מדיניות של משתמש, השתמש בהגדרה מרווח זמן לעדכון מדיניות קבוצתית עבור משתמשים (הממוקמת ב- תצורת משתמש/תבניות מנהליות/מערכת/מדיניות קבוצתית).
+The Set Group Policy refresh interval for computers policy also lets you specify how much the actual update interval varies. To prevent clients with the same update interval from requesting updates simultaneously, the system varies the update interval for each client by a random number of minutes. The number you type in the random time box sets the upper limit for the range of variance. For example, if you type 30 minutes, the system selects a variance of 0 to 30 minutes. Typing a large number establishes a broad range and makes it less likely that client requests overlap. However, updates might be delayed significantly.
 
-נעשה שימוש בהגדרה זו רק אם ההגדרה בטל רענון ברקע של מדיניות קבוצתית אינה זמינה.
+This setting establishes the update rate for computer Group Policy. To set an update rate for user policies, use the "Set Group Policy refresh interval for users" setting (located in User Configuration\Administrative Templates\System\Group Policy).
 
-הערה: שקול להודיע למשתמשים כי המדיניות מעודכנת באופן תקופתי כדי שתהיה להם אפשרות לזהות את הסימנים של עדכון מדיניות. בעת עדכון מדיניות קבוצתית, שולחן העבודה של Windows עובר רענון; הוא מהבהב למשך זמן קצר ותפריטים פתוחים נסגרים. כמו כן, הגבלות הנכפות על-ידי פריטי מדיניות קבוצתית, כגון פריטי מדיניות שמגבילים את מספר התוכניות שיש למשתמשים אפשרות להפעיל, עלולות להפריע למשימות מבוצעות.</string>
-      <string id="GroupPolicyRefreshRateDC">מרווח זמן לעדכון מדיניות קבוצתית עבור בקרי תחום</string>
-      <string id="GroupPolicyRefreshRateDC_Help">קביעת תדירות העדכון של מדיניות קבוצתית בבקרי תחום בעת פעולתם (ברקע). העדכונים שצוינו באמצעות ההגדרה זו מתרחשים בנוסף לעדכונים המבוצעים בעת הפעלת המערכת.
+This setting is only used when the "Turn off background refresh of Group Policy" setting is not enabled.
 
-כברירת מחדל, המדיניות הקבוצתית בבקרי התחום מעודכנת מדי 5 דקות.
+Note: Consider notifying users that their policy is updated periodically so that they recognize the signs of a policy update. When Group Policy is updated, the Windows desktop is refreshed; it flickers briefly and closes open menus. Also, restrictions imposed by Group Policies, such as those that limit the programs users can run, might interfere with tasks in progress.</string>
+      <string id="GroupPolicyRefreshRateDC">Set Group Policy refresh interval for domain controllers</string>
+      <string id="GroupPolicyRefreshRateDC_Help">This policy setting specifies how often Group Policy is updated on domain controllers while they are running (in the background). The updates specified by this setting occur in addition to updates performed when the system starts.
 
-באפשרותך לציין קצב עדכון בין 0 ל- 64,800 דקות (45 ימים). אם תבחר באפשרות 0 דקות, בקר התחום ינסה לעדכן את המדיניות הקבוצתית מדי 7 שניות. עם זאת, כיוון שעדכונים עלולים להפריע לעבודת המשתמשים ולהגדיל את התעבורה ברשת, מרווחי עדכון קצרים במיוחד אינם מתאימים עבור רוב ההתקנות.
+By default, Group Policy on the domain controllers is updated every five minutes.
 
-אם תהפוך הגדרה זו ללא זמינה, בקר התחום יעדכן את המדיניות הקבוצתית מדי 5 דקות (ברירת המחדל). כדי לציין שלעולם אין לעדכן פריטי מדיניות קבוצתית עבור משתמשים כאשר המחשב נמצא בשימוש, בחר בהגדרה בטל רענון ברקע של מדיניות קבוצתית.
+If you enable this setting, you can specify an update rate from 0 to 64,800 minutes (45 days). If you select 0 minutes, the domain controller tries to update Group Policy every 7 seconds. However, because updates might interfere with users' work and increase network traffic, very short update intervals are not appropriate for most installations.
 
-הגדרה זו מאפשרת לך גם לקבוע באיזו מידה ישתנה מרווח הזמן הממשי לעדכון. כדי למנוע מבקרי תחום בעלי אותו מרווח זמן לעדכון לבקש עדכונים בו-זמנית, המערכת משנה את מרווח הזמן לעדכון עבור כל בקר באמצעות מספר אקראי של דקות. המספר שתקליד בתיבה משך זמן אקראי יקבע את הגבול העליון עבור טווח השונות. לדוגמה, אם תקליד 30 דקות, המערכת תבחר בשונות בין 0 ל- 30 דקות. הקלדת מספר גבוה תיצור טווח רחב ותקטין את הסבירות לחפיפה בין בקשות עדכון. עם זאת, ייתכנו השהיות משמעותיות בעדכונים.
+If you disable or do not configure this setting, the domain controller updates Group Policy every 5 minutes (the default). To specify that Group Policies for users should never be updated while the computer is in use, select the "Turn off background refresh of Group Policy" setting.
 
-הערה: נעשה שימוש בהגדרה זו רק בעת יצירת מדיניות עבור תחום, אתר, יחידה ארגונית או קבוצה מותאמת אישית. אם נקבעת מדיניות עבור מחשב מקומי בלבד, המערכת מתעלמת מהגדרה זו.</string>
-      <string id="GroupPolicyRefreshRateUser">מרווח זמן לרענון המדיניות הקבוצתית עבור משתמשים</string>
-      <string id="GroupPolicyRefreshRateUser_Help">קביעת תדירות העדכון של מדיניות קבוצתית עבור משתמשים כאשר המחשב נמצא בשימוש (ברקע). הגדרה זו מציינת קצב עדכון ברקע עבור פריטי מדיניות קבוצתית בתיקיה תצורת משתמש בלבד.
+This setting also lets you specify how much the actual update interval varies. To prevent domain controllers with the same update interval from requesting updates simultaneously, the system varies the update interval for each controller by a random number of minutes. The number you type in the random time box sets the upper limit for the range of variance. For example, if you type 30 minutes, the system selects a variance of 0 to 30 minutes. Typing a large number establishes a broad range and makes it less likely that update requests overlap. However, updates might be delayed significantly.
 
-בנוסף לעדכונים ברקע, עדכון מדיניות עבור משתמשים מבוצע בכל פעם שהמשתמשים מבצעים כניסה.
+Note: This setting is used only when you are establishing policy for a domain, site, organizational unit (OU), or customized group. If you are establishing policy for a local computer only, the system ignores this setting.</string>
+      <string id="GroupPolicyRefreshRateUser">Set Group Policy refresh interval for users</string>
+      <string id="GroupPolicyRefreshRateUser_Help">This policy setting specifies how often Group Policy for users is updated while the computer is in use (in the background). This setting specifies a background update rate only for the Group Policies in the User Configuration folder.
 
-כברירת מחדל, המדיניות הקבוצתית של משתמש מתעדכנת ברקע מדי 90 דקות, עם היסט אקראי של 0 עד 30 דקות.
+In addition to background updates, Group Policy for users is always updated when users log on.
 
-באפשרותך לציין קצב עדכון בין 0 ל- 64,800 דקות (45 ימים). אם תבחר באפשרות 0 דקות, המחשב ינסה לעדכן את המדיניות הקבוצתית מדי 7 שניות. עם זאת, כיוון שעדכונים עלולים להפריע לעבודת המשתמשים ולהגדיל את התעבורה ברשת, מרווחי עדכון קצרים במיוחד אינם מתאימים עבור רוב ההתקנות.
+By default, user Group Policy is updated in the background every 90 minutes, with a random offset of 0 to 30 minutes.
 
-אם תהפוך הגדרה זו ללא זמינה, מדיניות קבוצתית של משתמש תעודכן מדי 90 דקות (ברירת המחדל). כדי לציין שלעולם אין לעדכן מדיניות קבוצתית עבור משתמשים כאשר המחשב נמצא בשימוש, בחר בהגדרה בטל רענון ברקע של מדיניות קבוצתית.
+If you enable this setting, you can specify an update rate from 0 to 64,800 minutes (45 days). If you select 0 minutes, the computer tries to update user Group Policy every 7 seconds. However, because updates might interfere with users' work and increase network traffic, very short update intervals are not appropriate for most installations.
 
-הגדרה זו מאפשרת לך גם לקבוע באיזו מידה ישתנה מרווח הזמן הממשי לעדכון. כדי למנוע מלקוחות בעלי אותו מרווח זמן לעדכון לבקש עדכונים בו-זמנית, המערכת משנה את מרווח הזמן לעדכון עבור כל לקוח באמצעות מספר אקראי של דקות. המספר שתקליד בתיבה משך זמן אקראי יקבע את הגבול העליון עבור טווח השונות. לדוגמה, אם תקליד 30 דקות, המערכת תבחר בשונות בין 0 ל- 30 דקות. הקלדת מספר גבוה תיצור טווח רחב ותקטין את הסבירות לחפיפה בין בקשות לקוחות. עם זאת, ייתכנו השהיות משמעותיות בעדכונים.
+If you disable this setting, user Group Policy is updated every 90 minutes (the default). To specify that Group Policy for users should never be updated while the computer is in use, select the "Turn off background refresh of Group Policy" setting.
 
-חשוב: אם ההגדרה בטל רענון ברקע של מדיניות קבוצתית פועלת, המערכת תתעלם מהגדרה זו.
+This setting also lets you specify how much the actual update interval varies. To prevent clients with the same update interval from requesting updates simultaneously, the system varies the update interval for each client by a random number of minutes. The number you type in the random time box sets the upper limit for the range of variance. For example, if you type 30 minutes, the system selects a variance of 0 to 30 minutes. Typing a large number establishes a broad range and makes it less likely that client requests overlap. However, updates might be delayed significantly.
 
-הערה: הגדרה זו קובעת את קצב העדכון עבור פריטי מדיניות קבוצתית של משתמש. כדי להגדיר תדירות עדכונים עבור מדיניות קבוצתיות של מחשבים, השתמש בהגדרה "מרווח זמן לעדכון מדיניות קבוצתית עבור מחשבים" (ממוקמת ב- תצורת מחשב/תבניות מנהליות/מערכת/מדיניות קבוצתית).
+Important: If the "Turn off background refresh of Group Policy" setting is enabled, this setting is ignored.
 
-עצה: שקול להודיע למשתמשים כי המדיניות מעודכנת באופן תקופתי כדי שתהיה להם אפשרות לזהות את הסימנים של עדכון מדיניות. בעת עדכון מדיניות קבוצתית, שולחן העבודה של Windows עובר רענון; הוא מהבהב למשך זמן קצר ותפריטים פתוחים נסגרים. כמו כן, הגבלות הנכפות על-ידי פריטי מדיניות קבוצתית, כגון פריטי מדיניות המגבילים את מספר התוכניות שיש למשתמשים אפשרות להפעיל, עלולות להפריע למשימות הנמצאות בביצוע.</string>
-      <string id="NewGPODisplayName">שם ברירת מחדל עבור אובייקטים חדשים של מדיניות קבוצתית</string>
-      <string id="NewGPODisplayName_Help">קביעת שם תצוגת ברירת המחדל עבור אובייקטים חדשים של מדיניות קבוצתית.
+Note: This setting establishes the update rate for user Group Policies. To set an update rate for computer Group Policies, use the "Group Policy refresh interval for computers" setting (located in Computer Configuration\Administrative Templates\System\Group Policy).
 
-הגדרה זו מאפשרת לציין את שם ברירת המחדל עבור אובייקטים חדשים של מדיניות קבוצתית שנוצרו באמצעות כלי ניהול מדיניות קבוצתית התואמים למדיניות, כולל הכרטיסיה מדיניות קבוצתית בכלי Active Directory ודפדפן אובייקטים של מדיניות קבוצתית.
+Tip: Consider notifying users that their policy is updated periodically so that they recognize the signs of a policy update. When Group Policy is updated, the Windows desktop is refreshed; it flickers briefly and closes open menus. Also, restrictions imposed by Group Policies, such as those that limit the programs a user can run, might interfere with tasks in progress.</string>
+      <string id="NewGPODisplayName">Set default name for new Group Policy objects</string>
+      <string id="NewGPODisplayName_Help">This policy setting allows you to set the default display name for new Group Policy objects.
 
-שם התצוגה יכול להכיל משתני סביבה ואורכו המרבי יכול להיות 255 תווים.
+This setting allows you to specify the default name for new Group Policy objects created from policy compliant Group Policy Management tools including the Group Policy tab in Active Directory tools and the GPO browser.
 
-אם הגדרה זו אינה זמינה או שתצורתה לא נקבעה, ייעשה שימוש בשם תצוגת ברירת המחדל של אובייקט מדיניות קבוצתית חדשה.</string>
-      <string id="NewGPOLinksDisabled">צור קישורים של אובייקט חדש של מדיניות קבוצתית שאינם זמינים כברירת מחדל</string>
-      <string id="NewGPOLinksDisabled_Help">יצירת קישורים של אובייקט מדיניות קבוצתית חדשה במצב הלא זמין.
+The display name can contain environment variables and can be a maximum of 255 characters long.
 
-הגדרה זו יוצרת את כל הקישורים של אובייקט מדיניות קבוצתית חדשה במצב לא זמין כברירת מחדל. לאחר שקבעת את התצורה של קישורי האובייקט החדשים ובדקת אותם באמצעות כלי ניהול מדיניות קבוצתית התואם למדיניות, כגון משתמשים ומחשבים של Active Directory או אתרים ושירותים של Active Directory, באפשרותך להפוך את קישורי האובייקט לזמינים לשימוש במערכת.
+If this setting is Disabled or Not Configured, the default display name of New Group Policy object is used.</string>
+      <string id="NewGPOLinksDisabled">Create new Group Policy Object links disabled by default</string>
+      <string id="NewGPOLinksDisabled_Help">This policy setting allows you to create new Group Policy object links in the disabled state.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, קישורים חדשים של אובייקט מדיניות קבוצתית ייווצרו במצב זמין. אם ברצונך שייכנסו לתוקף רק לאחר שתצורתם נקבעה והם נבדקו, עליך להפוך את קישור האובייקט ללא זמין.</string>
-      <string id="OnlyUseLocalAdminFiles">השתמש תמיד בקבצי ADM מקומיים עבור עורך אובייקט המדיניות הקבוצתית</string>
-      <string id="OnlyUseLocalAdminFiles_Help">השתמש תמיד בקבצי ADM מקומיים עבור יישום ה- Snap-in של המדיניות הקבוצתית.
+If you enable this setting, you can create all new Group Policy object links in the disabled state by default. After you configure and test the new object links by using a policy compliant Group Policy management tool such as  Active Directory Users and Computers or Active Directory Sites and Services, you can enable the object links for use on the system.
 
-כברירת מחדל, בעת עריכת אובייקט מדיניות קבוצתית באמצעות יישום ה- Snap-in של עורך המדיניות הקבוצתית, קבצי ה- ADM נטענים מאותו אובייקט מדיניות קבוצתית אל יישום ה- Snap-in של עורך אובייקט המדיניות הקבוצתית. הדבר מאפשר לך להשתמש באותה גירסה של קבצי ADM ששימשו ליצירת אובייקט המדיניות הקבוצתית בעת עריכת אובייקט המדיניות הקבוצתית.
+If you disable this setting or do not configure it, new Group Policy object links are created in the enabled state. If you do not want them to be effective until they are configured and tested, you must disable the object link.</string>
+      <string id="OnlyUseLocalAdminFiles">Always use local ADM files for Group Policy Object Editor</string>
+      <string id="OnlyUseLocalAdminFiles_Help">This policy setting lets you always use local ADM files for the Group Policy snap-in.
 
-מצב זה מוביל לאופן הפעולה הבא:
+By default, when you edit a Group Policy Object (GPO) using the Group Policy Object Editor snap-in, the ADM files are loaded from that GPO into the Group Policy Object Editor snap-in. This allows you to use the same version of the ADM files that were used to create the GPO while editing this GPO.
 
--  אם במקור יצרת את אובייקט המדיניות הקבוצתית במערכת אנגלית, למשל, אובייקט המדיניות הקבוצתית מכיל קבצי ADM אנגליים.
+This leads to the following behavior:
 
--  אם לאחר מכן תערוך את אובייקט המדיניות הקבוצתית במערכת בשפה אחרת, תקבל את קבצי ה- ADM האנגליים כפי שהיו באובייקט המדיניות הקבוצתית.
+-  If you originally created the GPO with, for example, an English system, the GPO contains English ADM files.
 
-באפשרותך לשנות אופן פעולה זה באמצעות הגדרה זו.
+-  If you later edit the GPO from a different-language system, you get the English ADM files as they were in the GPO.
 
-אם תפעיל הגדרה זו, יישום ה- Snap-in של עורך אובייקט המדיניות הקבוצתית ישתמש תמיד בקבצי ADM מקומיים בספריית ‎%windir%\inf שלך בעת עריכת אובייקטי מדיניות קבוצתית.
+You can change this behavior by using this setting.
 
-מצב זה מוביל לאופן הפעולה הבא:
+If you enable this setting, the Group Policy Object Editor snap-in always uses local ADM files in your %windir%\inf directory when editing GPOs.
 
-- אם במקור יצרת את אובייקט המדיניות הקבוצתית במערכת אנגלית, ולאחר מכן אתה עורך אותו במערכת יפנית, יישום ה- Snap-in של עורך אובייקט המדיניות הקבוצתית משתמש בקבצי ה- ADM היפניים המקומיים ואתה רואה טקסט ביפנית תחת תבניות מנהליות.
+This leads to the following behavior:
 
-אם תבטל הגדרה זו או לא תקבע את תצורתה, יישום ה- Snap-in של עורך אובייקט המדיניות הקבוצתית יטען תמיד את כל קבצי ה- ADM מאובייקט המדיניות הקבוצתית עצמו.
+-  If you had originally created the GPO with an English system, and then you edit the GPO with a Japanese system, the Group Policy Object Editor snap-in uses the local Japanese ADM files, and you see the text in Japanese under Administrative Templates.
 
-הערה: אם לא כל קבצי ה- ADM הדרושים לך זמינים באופן מקומי בספריית ‎%windir%\inf שלך, ייתכן שלא תוכל לראות את כל ההגדרות שנקבעו באובייקט המדיניות הקבוצתית שאתה עורך.</string>
-      <string id="PolicyPolicies">מדיניות קבוצתית</string>
-      <string id="RSoPLogging">בטל רישום של מערכת תוצאות של מדיניות</string>
-      <string id="RSoPLogging_Help">הגדרה זו מאפשרת להפוך לזמין או ללא זמין רישום של מערכת תוצאות של מדיניות (RSoP) במחשב לקוח.
+If you disable or do not configure this setting, the Group Policy Object Editor snap-in always loads all ADM files from the actual GPO.
 
-מערכת תוצאות של מדיניות רושמת מידע על הגדרות מדיניות קבוצתית שהוחלו על הלקוח. מידע זה כולל פרטים כגון: אילו אובייקטים של מדיניות קבוצתית הוחלו, מאין באו והגדרות סיומת צד הלקוח שנכללו.
+Note: If the ADMs that you require are not all available locally in your %windir%\inf directory, you might not be able to see all the settings that have been configured in the GPO that you are editing.</string>
+      <string id="PolicyPolicies">Group Policy</string>
+      <string id="RSoPLogging">Turn off Resultant Set of Policy logging</string>
+      <string id="RSoPLogging_Help">This setting allows you to enable or disable Resultant Set of Policy (RSoP) logging on a client computer.
 
-אם תהפוך הגדרה זו לזמינה, רישום מערכת תוצאות של מדיניות יבוטל.
+RSoP logs information on Group Policy settings that have been applied to the client. This information includes details such as which Group Policy Objects (GPO) were applied, where they came from, and the client-side extension settings that were included.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תגדיר את תצורתה, רישום מערכת תוצאות של מדיניות יופעל. כברירת מחדל, רישום מערכת תוצאות של מדיניות תמיד מופעל.
+If you enable this setting, RSoP logging is turned off.
 
-הערה: כדי להציג את מידע המערכת תוצאות של מדיניות שנרשם במחשב לקוח, באפשרותך להשתמש ביישום ה- Snap-in של קבוצת תוצאות של המדיניות (RSoP) ב- Microsoft Management Console (MMC)‎.</string>
-      <string id="UserPolicyMode">מצב עיבוד לולאה חוזרת (loopback) של מדיניות קבוצתית של משתמש</string>
-      <string id="UserPolicyMode_Help">החלת הגדרות משתמש חלופיות כאשר משתמש נכנס למחשב שמושפע מהגדרה זו.
+If you disable or do not configure this setting, RSoP logging is turned on. By default, RSoP logging is always on.
 
-הגדרה זו מורה למערכת להחיל את קבוצת אובייקטי המדיניות הקבוצתית של המחשב על כל משתמש שנכנס למחשב שמושפע מהגדרה זו. היא נועדה למחשבים בעלי שימוש מיוחד, כגון אלה שנמצאים במקומות ציבוריים, מעבדות וכיתות לימוד, שבהם עליך לשנות את הגדרות המשתמש בהתבסס על המחשב שבו נעשה שימוש.
+Note: To view the RSoP information logged on a client computer, you can use the RSoP snap-in in the Microsoft Management Console (MMC).</string>
+      <string id="UserPolicyMode">Configure user Group Policy loopback processing mode</string>
+      <string id="UserPolicyMode_Help">This policy setting directs the system to apply the set of Group Policy objects for the computer to any user who logs on to a computer affected by this setting. It is intended for special-use computers, such as those in public places, laboratories, and classrooms, where you must modify the user setting based on the computer that is being used.
 
-כברירת מחדל, אובייקטי המדיניות הקבוצתית של המשתמש קובעים אילו הגדרות משתמש יוחלו. אם הגדרה זו זמינה, כאשר משתמש יכנס למחשב זה, אובייקטי המדיניות הקבוצתית של המחשב יקבעו איזו קבוצה של אובייקטי מדיניות קבוצתית תוחל.
+By default, the user's Group Policy Objects determine which user settings apply. If this setting is enabled, then, when a user logs on to this computer, the computer's Group Policy Objects determine which set of Group Policy Objects applies.
 
-כדי להשתמש בהגדרה זו, בחר אחד מהמצבים הבאים בתיבה מצב:
+If you enable this setting, you can select one of the following modes from the Mode box:
 
---   'החלף' מציין שהגדרות המשתמש שהוגדרו באובייקטי המדיניות הקבוצתית של המחשב יחליפו את הגדרות המשתמש שחלות בדרך כלל על המשתמש.
+"Replace" indicates that the user settings defined in the computer's Group Policy Objects replace the user settings normally applied to the user.
 
---   'מזג' מציין שהגדרות המשתמש שהוגדרו באובייקטי המדיניות הקבוצתית של המחשב והגדרות המשתמש שחלות בדרך כלל על המשתמש משולבות. אם ההגדרות מתנגשות, הגדרות המשתמש באובייקטי המדיניות הקבוצתית של המחשב יקבלו קדימות על-פני הגדרות רגילות של המשתמש.
+"Merge" indicates that the user settings defined in the computer's Group Policy Objects and the user settings normally applied to the user are combined. If the settings conflict, the user settings in the computer's Group Policy Objects take precedence over the user's normal settings.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, אובייקטי המדיניות הקבוצתית של המשתמש יקבעו אילו הגדרות משתמש יוחלו.
+If you disable this setting or do not configure it, the user's Group Policy Objects determines which user settings apply.
 
-הערה: הגדרה זו תקפה רק כאשר חשבון המחשב וגם חשבון המשתמש נמצאים בתחום של Windows 2000.</string>
-      <string id="UserPolicyMode_Merge">מזג</string>
-      <string id="UserPolicyMode_Replace">החלף</string>
+Note: This setting is effective only when both the computer account and the user account are in at least Windows 2000 domains.</string>
+      <string id="UserPolicyMode_Merge">Merge</string>
+      <string id="UserPolicyMode_Replace">Replace</string>
+      <string id="CorpConnSyncWaitTime">Specify workplace connectivity wait time for policy processing</string>
+      <string id="CorpConnSyncWaitTime_Help">This policy setting specifies how long Group Policy should wait for workplace connectivity notifications during startup policy processing. If the startup policy processing is synchronous, the computer is blocked until workplace connectivity is available or the wait time is reached. If the startup policy processing is asynchronous, the computer is not blocked and policy processing will occur in the background. In either case, configuring this policy setting overrides any system-computed wait times.
+
+If you enable this policy setting, Group Policy uses this administratively configured maximum wait time for workplace connectivity, and overrides any default or system-computed wait time.
+
+If you disable or do not configure this policy setting, Group Policy will use the default wait time of 60 seconds on computers running Windows operating systems greater than Windows 7 configured for workplace connectivity.</string>
     </stringTable>
     <presentationTable>
+      <presentation id="SyncModeThreshold">
+        <decimalTextBox refId="SyncModeSlowLinkThreshold1" defaultValue="500">Slow link value:[number field] milliseconds</decimalTextBox>
+        <decimalTextBox refId="SyncModeNoDCThreshold1" defaultValue="5000">Timeout value: [number field] milliseconds</decimalTextBox>
+      </presentation>
+      <presentation id="LogonScriptDelay">
+        <decimalTextBox refId="AsyncScriptDelay1" defaultValue="5">minute:</decimalTextBox>
+      </presentation>
       <presentation id="SyncWaitTime">
-        <decimalTextBox refId="SyncWaitTime_Minutes" defaultValue="120">משך זמן ההמתנה (בשניות):</decimalTextBox>
+        <decimalTextBox refId="SyncWaitTime_Minutes" defaultValue="120">Amount of time to wait (in seconds):</decimalTextBox>
       </presentation>
       <presentation id="CSE_AppMgmt">
-        <checkBox refId="CSE_SLOWLINK1">אפשר עיבוד באמצעות חיבור רשת איטי</checkBox>
-        <checkBox refId="CSE_NOCHANGES1">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_SLOWLINK1">Allow processing across a slow network connection</checkBox>
+        <checkBox refId="CSE_NOCHANGES1">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="CSE_DiskQuota">
-        <checkBox refId="CSE_SLOWLINK2">אפשר עיבוד באמצעות חיבור רשת איטי</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND2">אל תחיל במהלך ביצוע עיבוד תקופתי ברקע</checkBox>
-        <checkBox refId="CSE_NOCHANGES2">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_SLOWLINK2">Allow processing across a slow network connection</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND2">Do not apply during periodic background processing</checkBox>
+        <checkBox refId="CSE_NOCHANGES2">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="CSE_EFSRecovery">
-        <checkBox refId="CSE_SLOWLINK3">אפשר עיבוד באמצעות חיבור רשת איטי</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND3">אל תחיל במהלך ביצוע עיבוד תקופתי ברקע</checkBox>
-        <checkBox refId="CSE_NOCHANGES3">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_SLOWLINK3">Allow processing across a slow network connection</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND3">Do not apply during periodic background processing</checkBox>
+        <checkBox refId="CSE_NOCHANGES3">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="CSE_FolderRedirection">
-        <checkBox refId="CSE_SLOWLINK4">אפשר עיבוד באמצעות חיבור רשת איטי</checkBox>
-        <checkBox refId="CSE_NOCHANGES4">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_SLOWLINK4">Allow processing across a slow network connection</checkBox>
+        <checkBox refId="CSE_NOCHANGES4">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="CSE_IEM">
-        <checkBox refId="CSE_SLOWLINK5">אפשר עיבוד באמצעות חיבור רשת איטי</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND5">אל תחיל במהלך ביצוע עיבוד תקופתי ברקע</checkBox>
-        <checkBox refId="CSE_NOCHANGES5">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_SLOWLINK5">Allow processing across a slow network connection</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND5">Do not apply during periodic background processing</checkBox>
+        <checkBox refId="CSE_NOCHANGES5">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="CSE_IPSecurity">
-        <checkBox refId="CSE_SLOWLINK6">אפשר עיבוד באמצעות חיבור רשת איטי</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND6">אל תחיל במהלך ביצוע עיבוד תקופתי ברקע</checkBox>
-        <checkBox refId="CSE_NOCHANGES6">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_SLOWLINK6">Allow processing across a slow network connection</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND6">Do not apply during periodic background processing</checkBox>
+        <checkBox refId="CSE_NOCHANGES6">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="CSE_Registry">
-        <checkBox refId="CSE_NOBACKGROUND10">אל תחיל במהלך ביצוע עיבוד תקופתי ברקע</checkBox>
-        <checkBox refId="CSE_NOCHANGES10">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND10">Do not apply during periodic background processing</checkBox>
+        <checkBox refId="CSE_NOCHANGES10">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="CSE_Scripts">
-        <checkBox refId="CSE_SLOWLINK7">אפשר עיבוד באמצעות חיבור רשת איטי</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND7">אל תחיל במהלך ביצוע עיבוד תקופתי ברקע</checkBox>
-        <checkBox refId="CSE_NOCHANGES7">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_SLOWLINK7">Allow processing across a slow network connection</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND7">Do not apply during periodic background processing</checkBox>
+        <checkBox refId="CSE_NOCHANGES7">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="CSE_Security">
-        <checkBox refId="CSE_NOBACKGROUND11">אל תחיל במהלך ביצוע עיבוד תקופתי ברקע</checkBox>
-        <checkBox refId="CSE_NOCHANGES11">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND11">Do not apply during periodic background processing</checkBox>
+        <checkBox refId="CSE_NOCHANGES11">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="CSE_Wired">
-        <checkBox refId="CSE_SLOWLINK8">אפשר עיבוד באמצעות חיבור רשת איטי</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND8">אל תחיל במהלך ביצוע עיבוד תקופתי ברקע</checkBox>
-        <checkBox refId="CSE_NOCHANGES8">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_SLOWLINK8">Allow processing across a slow network connection</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND8">Do not apply during periodic background processing</checkBox>
+        <checkBox refId="CSE_NOCHANGES8">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="CSE_Wireless">
-        <checkBox refId="CSE_SLOWLINK9">אפשר עיבוד באמצעות חיבור רשת איטי</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND9">אל תחיל במהלך ביצוע עיבוד תקופתי ברקע</checkBox>
-        <checkBox refId="CSE_NOCHANGES9">בצע עיבוד גם אם האובייקטים של המדיניות הקבוצתית לא השתנו</checkBox>
+        <checkBox refId="CSE_SLOWLINK9">Allow processing across a slow network connection</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND9">Do not apply during periodic background processing</checkBox>
+        <checkBox refId="CSE_NOCHANGES9">Process even if the Group Policy objects have not changed</checkBox>
       </presentation>
       <presentation id="GPDCOptions">
-        <dropdownList refId="GPDCOptionsDesc" noSort="true" defaultItem="0">כאשר עורך אובייקט המדיניות הקבוצתית בוחר בבקר תחום שבו ישתמש, עליו:</dropdownList>
+        <dropdownList refId="GPDCOptionsDesc" noSort="true" defaultItem="0">When Group Policy Object Editor is selecting a domain controller to use, it should:</dropdownList>
       </presentation>
       <presentation id="GPTransferRate_1">
-        <decimalTextBox refId="TransferRateOp1" defaultValue="500" spinStep="100">מהירות חיבור (Kbps):</decimalTextBox>
+        <decimalTextBox refId="TransferRateOp1" defaultValue="500" spinStep="100">Connection speed (Kbps):</decimalTextBox>
         <text> </text>
-        <text>הזן 0 כדי לבטל איתור קישור איטי.</text>
+        <text>Enter 0 to disable slow link detection.</text>
       </presentation>
       <presentation id="GPTransferRate_2">
-        <decimalTextBox refId="TransferRateOp2" defaultValue="500" spinStep="100">מהירות חיבור (Kbps):</decimalTextBox>
+        <decimalTextBox refId="TransferRateOp2" defaultValue="500" spinStep="100">Connection speed (Kbps):</decimalTextBox>
         <text> </text>
-        <text>הזן 0 כדי לבטל איתור קישור איטי.</text>
+        <text>Enter 0 to disable slow link detection.</text>
+        <checkBox refId="CSE_3G_DEFAULT_TO_SLOWLINK_COMPUTER">Always treat WWAN connections as a slow link</checkBox>
       </presentation>
       <presentation id="GroupPolicyRefreshRate">
-        <text>הגדרה זו מאפשרת להתאים אישית את תדירות החלת המדיניות הקבוצתית</text>
-        <text>על מחשבים. הטווח הוא בין 0 לבין 64800 דקות (45 ימים).</text>
-        <decimalTextBox refId="GPRefreshRate1" defaultValue="90">דקות:</decimalTextBox>
+        <text>This setting allows you to customize how often Group Policy is applied</text>
+        <text>to computers. The range is 0 to 44640 minutes (31 days).</text>
+        <decimalTextBox refId="GPRefreshRate1" defaultValue="90">Minutes:</decimalTextBox>
         <text> </text>
-        <text>זהו פרק זמן אקראי המתווסף למרווח הזמן לרענון כדי למנוע</text>
-        <text>מכל הלקוחות לבקש מדיניות קבוצתית באותו זמן.</text>
-        <text>הטווח הוא בין 0 לבין 1440 דקות (24 שעות)</text>
-        <decimalTextBox refId="GPRefreshRateOffset1" defaultValue="30">דקות:</decimalTextBox>
+        <text>This is a random time added to the refresh interval to prevent</text>
+        <text>all clients from requesting Group Policy at the same time.</text>
+        <text>The range is 0 to 1440 minutes (24 hours)</text>
+        <decimalTextBox refId="GPRefreshRateOffset1" defaultValue="30">Minutes:</decimalTextBox>
       </presentation>
       <presentation id="GroupPolicyRefreshRateDC">
-        <text>הגדרה זו מאפשרת להתאים אישית את תדירות החלת המדיניות הקבוצתית</text>
-        <text>על בקרי תחום. הטווח הוא בין 0 לבין 64800 דקות (45 ימים).</text>
-        <decimalTextBox refId="GPRefreshRate2" defaultValue="5">דקות:</decimalTextBox>
+        <text>This setting allows you to customize how often Group Policy is applied</text>
+        <text>to domain controllers. The range is 0 to 44640 minutes (31 days).</text>
+        <decimalTextBox refId="GPRefreshRate2" defaultValue="5">Minutes:</decimalTextBox>
         <text> </text>
-        <text>זהו פרק זמן אקראי המתווסף למרווח הזמן לרענון כדי למנוע</text>
-        <text>מכל הלקוחות לבקש מדיניות קבוצתית באותו זמן.</text>
-        <text>הטווח הוא בין 0 לבין 1440 דקות (24 שעות)</text>
-        <decimalTextBox refId="GPRefreshRateOffset2" defaultValue="0">דקות:</decimalTextBox>
+        <text>This is a random time added to the refresh interval to prevent</text>
+        <text>all clients from requesting Group Policy at the same time.</text>
+        <text>The range is 0 to 1440 minutes (24 hours)</text>
+        <decimalTextBox refId="GPRefreshRateOffset2" defaultValue="0">Minutes:</decimalTextBox>
       </presentation>
       <presentation id="GroupPolicyRefreshRateUser">
-        <text>הגדרה זו מאפשרת להתאים אישית את תדירות החלת המדיניות הקבוצתית</text>
-        <text>על משתמשים. הטווח הוא בין 0 לבין 64800 דקות (45 ימים).</text>
-        <decimalTextBox refId="GPRefreshRate3" defaultValue="90">דקות:</decimalTextBox>
+        <text>This setting allows you to customize how often Group Policy is applied</text>
+        <text>to users. The range is 0 to 44640 minutes (31 days).</text>
+        <decimalTextBox refId="GPRefreshRate3" defaultValue="90">Minutes:</decimalTextBox>
         <text> </text>
-        <text>זהו פרק זמן אקראי המתווסף למרווח הזמן לרענון כדי למנוע</text>
-        <text>מכל הלקוחות לבקש מדיניות קבוצתית באותו זמן.</text>
-        <text>הטווח הוא בין 0 לבין 1440 דקות (24 שעות)</text>
-        <decimalTextBox refId="GPRefreshRateOffset3" defaultValue="30">דקות:</decimalTextBox>
+        <text>This is a random time added to the refresh interval to prevent</text>
+        <text>all clients from requesting Group Policy at the same time.</text>
+        <text>The range is 0 to 1440 minutes (24 hours)</text>
+        <decimalTextBox refId="GPRefreshRateOffset3" defaultValue="30">Minutes:</decimalTextBox>
       </presentation>
       <presentation id="NewGPODisplayName">
         <textBox refId="NewGPODisplayNameHeading">
-          <label>שם האובייקט של המדיניות הקבוצתית ‏:</label>
+          <label>GPO Name:</label>
         </textBox>
       </presentation>
       <presentation id="UserPolicyMode">
-        <dropdownList refId="UserPolicyModeOp" noSort="true" defaultItem="1">מצב:</dropdownList>
+        <dropdownList refId="UserPolicyModeOp" noSort="true" defaultItem="1">Mode:</dropdownList>
+      </presentation>
+      <presentation id="CorpConnSyncWaitTime">
+        <decimalTextBox refId="CorpConnSyncWaitTime_Seconds" defaultValue="60">Amount of time to wait (in seconds):</decimalTextBox>
       </presentation>
     </presentationTable>
   </resources>

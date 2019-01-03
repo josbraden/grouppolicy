@@ -5,53 +5,71 @@
   <description>ange beskrivning här</description>
   <resources>
     <stringTable>
-      <string id="ActiveDirectoryBackup_Help">Du kan använda den här principinställningen för att hantera säkerhetskopiering i Active Directory Domain Services (AD DS) av återställningsinformation för BitLocker-diskkryptering. Detta gör det möjligt att återställa data krypterade med BitLocker med en administrativ metod, för att förhindra dataförlust på grund av saknad nyckelinformation. Den här principen gäller bara datorer som kör Windows Server 2008 eller Windows Vista.
+      <string id="ActiveDirectoryBackup_Help">Med den här principinställningen kan du hantera säkerhetskopian i Active Directory Domain Services (AD DS) av återställningsinformationen för BitLocker-diskkryptering. Detta gör det möjligt för administratörer att återställa data krypterade med BitLocker för att förhindra dataförlust på grund av saknad nyckelinformation. Den här principinställningen gäller bara datorer som kör Windows Server 2008 eller Windows Vista.
 
-Om du aktiverar den här principinställningen säkerhetskopieras BitLocker-återställningsinformation automatiskt och utan meddelande när BitLocker aktiveras för en dator. Principinställningen tillämpas när du aktiverar BitLocker.
+Om du aktiverar den här principinställningen säkerhetskopieras återställningsinformation för BitLocker automatiskt och utan meddelande till AD DS när BitLocker aktiveras för en dator. Principinställningen tillämpas när du aktiverar BitLocker.
 
-Obs! Du måste konfigurera en lämplig uppsättning schematillägg och inställningar för åtkomstkontroll på domänen för att AD DS-säkerhetskopieringen ska fungera. Mer information om konfiguration av AD DS för BitLocker finns i distribueringsanvisningarna för BitLocker-diskkryptering på Microsoft TechNet.
+Obs! Du kan behöva ställa in lämpliga schematillägg och åtkomstkontrollinställningar i domänen innan det går att säkerhetskopiera till AD DS. Mer information om hur du konfigurerar säkerhetskopiering av BitLocker till AD DS finns på Microsoft TechNet.
 
-BitLocker-återställningsinformationen består av lösenordet för återställning och vissa unika identifierardata. Du kan även inkludera ett paket som innehåller krypteringsnyckeln för en BitLocker-skyddad enhet. Nyckelpaketet skyddas an ett eller flera återställningslösenord och kan användas för särskild återställning om en hårddisk skadas. 
+Återställningsinformationen om BitLocker omfattar återställningslösenordet och vissa unika identifierande data. Du kan även inkludera ett paket som innehåller krypteringsnyckeln för den enhet som skyddas av BitLocker. Nyckelpaketet skyddas av ett eller flera återställningslösenord och kan användas för särskild återställning när disken är skadad eller felaktig.
 
-Om du väljer alternativet Kräv BitLocker-säkerhetskopiering till AD DS kan inte BitLocker aktiveras om inte datorn är ansluten till domänen och säkerhetskopieringen till BitLocker-återställningsinformationen till AD DS lyckas. Det här alternativet är förvalt för att säkerställa att det går att använda BitLocker-återställning. Om du inte väljer det här alternativet görs ett försök till AD DS-säkerhetskopiering men eventuella nätverks- eller säkerhetskopieringsfel hindrar inte BitLocker-konfigurationen. Det utförs inget automatiskt försök till ny säkerhetskopiering och det är inte säkert att lösenordet har lagrats i AD DS under BitLocker-konfigurationen.
+Om du väljer alternativet Kräv BitLocker-säkerhetskopiering till AD DS kan BitLocker inte aktiveras om inte datorn är ansluten till domänen och säkerhetskopieringen av BitLocker-återställningsinformationen till AD DS lyckas. Det här alternativet är förvalt för att säkerställa att det går att använda BitLocker-återställning. Om du inte väljer det här alternativet görs ett försök till AD DS-säkerhetskopiering men eventuella nätverks- eller säkerhetskopieringsfel hindrar inte BitLocker-konfigurationen. Det görs inget automatiskt nytt försök till säkerhetskopiering och det är inte säkert att lösenordet har lagrats i AD DS under BitLocker-konfigurationen.
 
-Om du inaktiverar eller inte konfigurerar principinställningen, säkerhetskopieras ingen BitLocker-återställningsinformation till AD DS. 
+Om du inaktiverar eller låter bli att konfigurera principinställningen, säkerhetskopieras ingen BitLocker-återställningsinformation till AD DS.
 
 Obs! TPM-initiering kan krävas under BitLocker-konfigurationen. Aktivera principinställningen Aktivera TPM-säkerhetskopiering till Active Directory Domain Services i System\TPM-tjänster (Trusted Platform Module) för att säkerställa att även TPM-information säkerhetskopieras.
-</string>
+      
+      </string>
       <string id="ActiveDirectoryBackup_Name">Spara BitLocker-återställningsinformation i Active Directory Domain Services (Windows Server 2008 och Windows Vista)</string>
       <string id="ActiveDirectoryBackupDropDown_1">Återställningslösenord och nyckelpaket</string>
       <string id="ActiveDirectoryBackupDropDown_2">Endast återställningslösenord</string>
-      
+
       <string id="ConfigureStartupUsage_Help">Den här principinställningen gör att du kan kontrollera om installationsguiden för BitLocker-diskkryptering kan konfigurera ytterligare en autentiseringsmetod som är obligatorisk varje gång datorn startas. Principinställningen tillämpas när du aktiverar BitLocker.
-        
+
 Obs! Den här principen gäller bara datorer som kör Windows Server 2008 eller Windows Vista.
 
-På datorer med en kompatibel TPM (Trusted Platform Module) kan två metoder användas under starten för ytterligare skydd av krypterade data. När datorn startas kan användaren uppmanas sätta i en USB-flash-enhet med en startnyckel. Användaren måste även ange en PIN-kod på mellan 4 och 20 siffror. 
+På datorer med en kompatibel TPM (Trusted Platform Module) kan två metoder användas under starten för ytterligare skydd av krypterade data. När datorn startas kan användaren uppmanas sätta i ett USB-flashminne med en startnyckel. Användaren måste även ange en PIN-kod på mellan 4 och 20 siffror.
 
-USB-flash-enheter med startnycklar måste användas på datorer som saknar kompatibel TPM (Trusted Platform Module). Utan TPM skyddas BitLocker-krypterade data endast av nyckeln på USB-flash-enhet.
+USB-flashminnen med startnycklar måste användas på datorer som saknar kompatibel TPM (Trusted Platform Module). Utan TPM skyddas BitLocker-krypterade data endast av nyckeln på USB-flashminnet.
 
-Om du aktiverar den här principinställningen visas en sida i guiden där användaren kan konfigurera avancerade startalternativ för BitLocker. Du kan konfigurera fler alternativ för datorer med och utan TPM. 
+Om du aktiverar den här principinställningen visas en sida i guiden där användaren kan konfigurera avancerade startalternativ för BitLocker. Du kan konfigurera fler alternativ för datorer med och utan TPM.
 
-Om du inaktiverar eller inte konfigurerar den här principinställningen, visas grundläggande steg i BitLocker-installationsguiden där användaren kan aktivera BitLocker på datorer med TPM. I den grundläggande guiden går det inte att konfigurera någon ytterligare startnyckel eller start-PIN-kod.
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen visas grundläggande steg i BitLocker-installationsguiden där användaren kan aktivera BitLocker på datorer med TPM. I den grundläggande guiden går det inte att konfigurera någon ytterligare startnyckel eller start-PIN-kod.
+
 </string>
-      
+
       <string id="ConfigureStartupUsage_Name">Kräv ytterligare autentisering vid start (Windows Server 2008 och Windows Vista)</string>
       <string id="ConfigureAdvancedStartup_Name">Ytterligare autentisering krävs vid start</string>
-      
-      <string id="ConfigureAdvancedStartup_Help">Den här principinställningen gör att du kan konfigurera om BitLocker kräver ytterligare autentisering varje gång datorn startas och om du använder BitLocker med eller utan en betrodd plattformsmodul (TPM). Den här principinställningen aktiveras när du aktiverar BitLocker.
+
+      <string id="ConfigureAdvancedStartup_Help">Den här principinställningen gör att du kan konfigurera om BitLocker kräver ytterligare autentisering varje gång datorn startas och om du använder BitLocker med eller utan en betrodd plattformsmodul (TPM). Principinställningen tillämpas när du aktiverar BitLocker.
 
 Obs! Enbart ett av de ytterligare alternativen för autentisering kan krävas vid start, annars inträffar ett principfel.
 
-Om du vill använda BitLocker på en dator utan en TPM väljer du kryssrutan Tillåt BitLocker om kompatibel TPM saknas. I den här modulen krävs en USB-enhet för start och nyckelinformationen som används för att kryptera enheten är lagrad på USB-enheten, vilket skapar en USB-nyckel. När USB-nyckeln sätts in autentiseras åtkomsten till enheten och enheten är sedan tillgänglig. Om du har förlorat USB-nyckeln eller den inte är tillgänglig måste du använda ett av återställningsalternativen för BitLocker för att få åtkomst till enheten.
+Om du vill använda BitLocker på en dator utan en TPM väljer du kryssrutan Tillåt BitLocker om kompatibel TPM saknas. I det här läget krävs antingen ett lösenord eller en USB-enhet för att datorn ska starta. Med en startnyckel används nyckelinformationen för att kryptera enheten som lagras på USB-enheten, vilket skapar en USB-nyckel. När USB-nyckeln sätts in autentiseras åtkomsten till enheten och enheten är sedan tillgänglig. Om USB-nyckeln försvinner eller inte är tillgänglig eller om du har glömt lösenordet måste du använda något av återställningsalternativen för BitLocker för att komma åt enheten.
 
-På en dator med kompatibel TPM finns det fyra typer av autentiseringsmetoder som kan användas vid start som ytterligare skydd av krypterade data. När datorn startas kan den bara använda TPM för autentisering eller också krävs att användaren sätter in en USB-flash-enhet med en startnyckel, att användaren anger en PIN-kod på mellan 4 och 20 siffror eller båda delarna.
+På en dator med kompatibel TPM finns det fyra typer av autentiseringsmetoder som kan användas vid start som ytterligare skydd av krypterade data. När datorn startas kan den bara använda TPM för autentisering eller också krävs att användaren sätter in ett USB-flashminne med en startnyckel, att användaren anger en PIN-kod på mellan 4 och 20 siffror eller båda delarna.
 
 Om du aktiverar den här principinställningen kan användaren konfigurera avancerade startalternativ i installationsguiden för BitLocker.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan användare enbart konfigurera grundläggande alternativ på datorer med TPM.
 
-Obs! Om du vill kräva att både en start-PIN och en USB-flash-enhet används måste du konfigurera BitLocker-inställningar med hjälp av kommandoradsverktyget manage-bde istället för med installationsguiden för BitLocker-diskkryptering.
+Obs! Om du vill kräva att både en start-PIN och ett USB-flashminne används måste du konfigurera BitLocker-inställningar med hjälp av kommandoradsverktyget manage-bde istället för med installationsguiden för BitLocker-diskkryptering.
+
+
+
+</string>
+      <string id="AllowNetworkUnlockAtStartup_Name">Tillåt nätverksupplåsning vid start</string>
+      <string id="AllowNetworkUnlockAtStartup_Help">Den här principinställningen bestämmer huruvida en dator som skyddas av BitLocker och som är ansluten till ett betrott lokalt kabelnätverk och ansluten till en domän kan skapa och använda nätverksnyckelskydd på TPM-aktiverade datorer för att låsa upp operativsystemenheten automatiskt när datorn startas.
+
+Om du aktiverar den här principen kan klienter som är konfigurerade med ett certifikat för nätverksupplåsning av BitLocker skapa och använda nätverksnyckelskydd.
+
+Om du vill använda ett nätverksnyckelskydd för att låsa upp datorn måste både datorn och nätverksupplåsningsservern för BitLocker-diskkryptering utrustas med ett certifikat för nätverksupplåsning. Certifikatet för nätverksupplåsning används för att skapa nätverksnyckelskydden och skyddar den information som utbyts med servern för att låsa upp datorn. Du kan använda grupprincipinställningen Datorkonfiguration\Windows-inställningar\Säkerhetsinställningar\Principer för offentliga nycklar\Upplåsningscertifikat för nätverk för BitLocker-diskkryptering på domänkontrollanten för att distribuera detta certifikat till datorerna på företaget. Med den här upplåsningsmetoden används TPM på datorn, så datorer som inte är utrustade med TPM kan inte skapa nätverksnyckelskydd för att låsas upp automatiskt med nätverksupplåsning.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan BitLocker-klienter inte skapa eller använda nätverksnyckelskydd.
+
+Obs! För tillförlitlighets och säkerhets skull bör datorerna även utrustas med en PIN-startkod för TPM som kan användas när datorn inte är uppkopplad till kabelnätverket eller servern när den startas.
+
+
 
 </string>
 
@@ -74,9 +92,9 @@ Obs! Om du vill kräva att både en start-PIN och en USB-flash-enhet används m�
 
       <string id="ConfigureRecoveryUsage_Help">Den här principinställningen gör att du kan kontrollera om installationsguiden för BitLocker-diskkryptering kan visa och ange återställningsalternativ för BitLocker. Den här principen gäller bara datorer som kör Windows Server 2008 eller Windows Vista. Principinställningen tillämpas när du aktiverar BitLocker.
 
-Två återställningsalternativ kan användas för att låsa upp BitLocker-krypterade data när den nödvändiga nyckelinformation för start saknas. Användaren kan antigen ange ett 48-siffrigt numeriskt återställningslösenord eller sätta in en USB-flash-enhet med en 256-bitars återställningsnyckel.
+Två återställningsalternativ kan användas för att låsa upp BitLocker-krypterade data när den nödvändiga nyckelinformation för start saknas. Användaren kan antigen ange ett 48-siffrigt numeriskt återställningslösenord eller sätta in ett USB-flashminne med en 256-bitars återställningsnyckel.
 
-Om du aktiverar den här principinställningen kan du konfigurera alternativen för återställning av BitLocker-krypterade data som visas för användarna i installationsguiden. Om användaren sparar på en USB-flash-enhet lagras det 48-siffriga återställningslösenordet som en textfil och 256-bitarsnyckeln för återställning som en dold fil. Om användaren sparar i en mapp lagras det 48-siffriga lösenordet som en textfil. Vid utskrift skickas det 48-siffriga återställningslösenordet till standardskrivaren. Om exempelvis det 48-siffriga återställningslösenordet inte tillåts hindras användarna från att skriva ut eller spara återställningsinformation i en mapp.
+Om du aktiverar den här principinställningen kan du konfigurera alternativen för återställning av BitLocker-krypterade data som visas för användarna i installationsguiden. Om användaren sparar på ett USB-flashminne lagras det 48-siffriga återställningslösenordet som en textfil och 256-bitarsnyckeln för återställning som en dold fil. Om användaren sparar i en mapp lagras det 48-siffriga lösenordet som en textfil. Vid utskrift skickas det 48-siffriga återställningslösenordet till standardskrivaren. Om exempelvis det 48-siffriga återställningslösenordet inte tillåts hindras användarna från att skriva ut eller spara återställningsinformation i en mapp.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen visas möjliga återställningsalternativ för användarna i installationsguiden för BitLocker.
 
@@ -86,8 +104,10 @@ Obs! Det 48-siffriga återställningslösenordet är inte tillgängligt i FIPS-k
 
 Viktigt: Den här principinställningen gör det möjligt att återställa data krypterade med BitLocker med en administrativ metod, för att förhindra dataförlust på grund av saknad nyckelinformation. Om du inte tillåter båda återställningsalternativen måste du aktivera principinställningen Spara BitLocker-återställningsinformation i Active Directory Domain Services (Windows Server 2008 och Windows Vista) för att undvika ett principfel.
 
-      </string>
       
+
+      </string>
+
       <string id="ConfigureRecoveryUsage_Name">Välj hur användarna kan återställa BitLocker-skyddade enheter (Windows Server 2008 och Windows Vista)</string>
       <string id="ConfigureRecoveryPasswordUsageDropDown_Require">Kräv återställningslösenord (standard)</string>
       <string id="ConfigureRecoveryPasswordUsageDropDown_Disallow">Tillåt inte återställningslösenord</string>
@@ -97,27 +117,29 @@ Viktigt: Den här principinställningen gör det möjligt att återställa data 
 
 
       <string id="OSRecoveryUsage_Name">Välj hur BitLocker-skyddade operativsystemsenheter kan återställas</string>
-      
-      <string id="OSRecoveryUsage_Help">Den här principinställningen gör att du kan kontrollera hur BitLocker-skyddade operativsystemsenheter återställs när nödvändiga autentiseringsuppgifter saknas. Den här principinställningen aktiveras när du aktiverar BitLocker.
+
+      <string id="OSRecoveryUsage_Help">Med den här principinställningen kan du bestämma hur operativsystemenheter som skyddas med BitLocker återställs om den startnyckelinformation som krävs saknas. Principinställningen tillämpas när du aktiverar BitLocker.
 
 Kryssrutan Tillåt certifikatbaserade dataåterställningsagenter används för att ange om en dataåterställningsagent kan användas med BitLocker-skyddade operativsystemsenheter. Innan en dataåterställningsagent kan användas måste den läggas till från Principer för offentliga nycklar i antingen konsolen Grupprinciphantering eller redigeraren för lokala grupprinciper. Mer information om hur du lägger till dataåterställningsagenter finns i distributionsanvisningarna för BitLocker-diskkryptering på Microsoft TechNet.
 
 I Konfigurera användarlager för BitLocker-återställningsinformation anger du om användarna tillåts, måste eller inte får generera ett 48-siffrigt återställningslösenord eller en 256-bitars återställningsnyckel.
 
-Välj Utelämna återställningsalternativ i installationsguiden för BitLocker om du vill hindra användare från att ange återställningsalternativ när de aktiverar BitLocker på en enhet. Det innebär att du inte kommer att kunna ange vilka återställningsalternativ som ska användas när du aktiverar BitLocker. Återställningsalternativen för den BitLocker-enheten styrs av principinställningen.
+Välj Utelämna återställningsalternativ i installationsguiden för BitLocker om du vill hindra användarna från att ange återställningsalternativ när de aktiverar BitLocker på en enhet. Det innebär att du inte kommer att kunna ange vilka återställningsalternativ som ska användas när du aktiverar BitLocker. Återställningsalternativen för den BitLocker-enheten styrs av principinställningen.
 
 I Spara BitLocker-återställningsinformation till AD DS väljer du vilken BitLocker-återställningsinformation som ska sparas i AD DS för operativsystemsenheter. Om du markerar Säkerhetskopiera återställningslösenord och nyckelpaket sparas både lösenordet för BitLocker-återställning och nyckelpaketet i AD DS. Om du sparar nyckelpaketet kan du återställa data från en fysiskt skadad enhet. Om du markerar Säkerhetskopiera endast återställningslösenord sparas bara återställningslösenordet i AD DS.
 
 Markera kryssrutan Aktivera inte BitLocker förrän återställningsinformation har sparats till AD DS för operativsystemsenheter om du vill hindra användare från att aktivera BitLocker, såvida inte datorn är ansluten till domänen och säkerhetskopian av BitLocker-återställningsinformation till AD DS lyckas.
 
-Obs! Om kryssrutan Aktivera inte BitLocker förrän återställningsinformation har sparats till AD DS för operativsystemsenheter är markerad genereras automatiskt ett återställningslösenord.
+Obs! Om kryssrutan Aktivera inte BitLocker förrän återställningsinformation har sparats till AD DS för operativsystemsenheter är markerad genereras ett återställningslösenord automatiskt.
 
 Om du aktiverar den här principinställningen kan du kontrollera vilken metod för återställning av data från BitLocker-skyddade operativsystemsenheter som är tillgänglig för användarna.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen stöds standardåterställningsalternativen för BitLocker-återställning. Som standard tillåts en dataåterställningsagent, återställningsalternativen kan anges av användaren (inklusive återställningslösenordet och återställningsnyckeln) och återställningsinformationen säkerhetskopieras inte till AD DS.
 
+
+
 </string>
-      
+
       <string id="OSRecoveryPasswordUsageDropDown_Require">Kräv 48-siffrigt återställningslösenord</string>
       <string id="OSRecoveryPasswordUsageDropDown_Allow">Tillåt 48-siffrigt återställningslösenord</string>
       <string id="OSRecoveryPasswordUsageDropDown_Disallow">Tillåt inte 48-siffrigt återställningslösenord</string>
@@ -127,26 +149,28 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
       <string id="OSRecoveryKeyUsageDropDown_Allow">Tillåt 256-bitars återställningsnyckel</string>
 
       <string id="FDVRecoveryUsage_Name">Välj hur BitLocker-skyddade fasta enheter kan återställas</string>
-      <string id="FDVRecoveryUsage_Help">Du kan använda den här principinställningen för att kontrollera hur BitLocker-skyddade fasta dataenheter återställs när nödvändiga autentiseringsuppgifter saknas. Principinställningen tillämpas när du aktiverar BitLocker.
+      <string id="FDVRecoveryUsage_Help">Med den här principinställningen kan du bestämma hur fasta dataenheter som skyddas med BitLocker återställs om de nödvändiga användaruppgifterna som krävs saknas. Principinställningen tillämpas när du aktiverar BitLocker.
 
 Kryssrutan Tillåt dataåterställningsagent används för att ange om en dataåterställningsagent kan användas med BitLocker-skyddade fasta dataenheter. Innan en dataåterställningsagent kan användas måste den läggas till från Principer för offentliga nycklar i antingen konsolen Grupprinciphantering eller redigeraren för lokala grupprinciper. Mer information om hur du lägger till dataåterställningsagenter finns i distributionsanvisningarna för BitLocker-diskkryptering på Microsoft TechNet.
 
 I Konfigurera användarlager för BitLocker-återställningsinformation anger du om användarna tillåts, måste eller inte får generera ett 48-siffrigt återställningslösenord eller en 256-bitars återställningsnyckel.
 
-Välj Utelämna återställningsalternativ i installationsguiden för BitLocker om du vill hindra användare från att ange återställningsalternativ när de aktiverar BitLocker på en enhet. Det innebär att du inte kommer att kunna ange vilka återställningsalternativ som ska användas när du aktiverar BitLocker. Återställningsalternativen för den BitLocker-enheten styrs av principinställningen.
+Välj Utelämna återställningsalternativ i installationsguiden för BitLocker om du vill hindra användarna från att ange återställningsalternativ när de aktiverar BitLocker på en enhet. Det innebär att du inte kommer att kunna ange vilka återställningsalternativ som ska användas när du aktiverar BitLocker. Återställningsalternativen för den BitLocker-enheten styrs av principinställningen.
 
 I Spara BitLocker-återställningsinformation till AD DS väljer du vilken BitLocker-återställningsinformation som ska sparas i AD DS för fasta dataenheter. Om du markerar Säkerhetskopiera återställningslösenord och nyckelpaket sparas både lösenordet för BitLocker-återställning och nyckelpaketet i AD DS. Om du sparar nyckelpaketet kan du återställa data från en fysiskt skadad enhet. Om du markerar Säkerhetskopiera endast återställningslösenord sparas bara återställningslösenordet i AD DS.
 
 Markera kryssrutan Aktivera inte BitLocker förrän återställningsinformation har sparats till AD DS för fasta dataenheter om du vill hindra användare från att aktivera BitLocker, såvida inte datorn är ansluten till domänen och säkerhetskopian av BitLocker-återställningsinformation till AD DS lyckas.
 
-Obs! Om kryssrutan Aktivera inte BitLocker förrän återställningsinformation har sparats till AD DS för fasta dataenheter är markerad genereras automatiskt ett återställningslösenord.
+Obs! Om kryssrutan Aktivera inte BitLocker förrän återställningsinformation har sparats till AD DS för fasta dataenheter är markerad genereras ett återställningslösenord automatiskt.
 
 Om du aktiverar den här principinställningen kan du kontrollera vilken metod för återställning av data från BitLocker-skyddade fasta dataenheter som är tillgänglig för användarna.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen stöds standardåterställningsalternativen för BitLocker-återställning. Som standard tillåts en dataåterställningsagent, återställningsalternativen kan anges av användaren (inklusive återställningslösenordet och återställningsnyckeln) och återställningsinformationen säkerhetskopieras inte till AD DS
 
+
+
 </string>
-      
+
       <string id="FDVRecoveryPasswordUsageDropDown_Require">Kräv 48-siffrigt återställningslösenord</string>
       <string id="FDVRecoveryPasswordUsageDropDown_Allow">Tillåt 48-siffrigt återställningslösenord</string>
       <string id="FDVRecoveryPasswordUsageDropDown_Disallow">Tillåt inte 48-siffrigt återställningslösenord</string>
@@ -156,24 +180,25 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
       <string id="FDVRecoveryKeyUsageDropDown_Allow">Tillåt 256-bitars återställningsnyckel</string>
 
       <string id="RDVRecoveryUsage_Name">Välj hur BitLocker-skyddade flyttbara enheter kan återställas</string>
-      
-      <string id="RDVRecoveryUsage_Help">Du kan använda den här principinställningen för att kontrollera hur BitLocker-skyddade flyttbara dataenheter återställs när nödvändiga autentiseringsuppgifter saknas. Principinställningen tillämpas när du aktiverar BitLocker.
+
+      <string id="RDVRecoveryUsage_Help">Med den här principinställningen kan du bestämma hur flyttbara dataenheter som skyddas med BitLocker återställs om de nödvändiga användaruppgifterna som krävs saknas. Principinställningen tillämpas när du aktiverar BitLocker.
 
 Kryssrutan Tillåt dataåterställningsagent används för att ange om en dataåterställningsagent kan användas med BitLocker-skyddade flyttbara dataenheter. Innan en dataåterställningsagent kan användas måste den läggas till från Principer för offentliga nycklar i antingen konsolen Grupprinciphantering eller redigeraren för lokala grupprinciper. Mer information om hur du lägger till dataåterställningsagenter finns i distributionsanvisningarna för BitLocker-diskkryptering på Microsoft TechNet.
 
 I Konfigurera användarlager för BitLocker-återställningsinformation anger du om användarna tillåts, måste eller inte får generera ett 48-siffrigt återställningslösenord eller en 256-bitars återställningsnyckel.
 
-Välj Utelämna återställningsalternativ i installationsguiden för BitLocker om du vill hindra användare från att ange återställningsalternativ när de aktiverar BitLocker på en enhet. Det innebär att du inte kommer att kunna ange vilka återställningsalternativ som ska användas när du aktiverar BitLocker. Återställningsalternativen för den BitLocker-enheten styrs av principinställningen.
+Välj Utelämna återställningsalternativ i installationsguiden för BitLocker om du vill hindra användarna från att ange återställningsalternativ när de aktiverar BitLocker på en enhet. Det innebär att du inte kommer att kunna ange vilka återställningsalternativ som ska användas när du aktiverar BitLocker. Återställningsalternativen för den BitLocker-enheten styrs av principinställningen.
 
 I Spara BitLocker-återställningsinformation till AD DS väljer du vilken BitLocker-återställningsinformation som ska sparas i AD DS för flyttbara dataenheter. Om du markerar Säkerhetskopiera återställningslösenord och nyckelpaket sparas både lösenordet för BitLocker-återställning och nyckelpaketet i AD DS. Om du markerar Säkerhetskopiera endast återställningslösenord sparas bara återställningslösenordet i AD DS.
 
 Markera kryssrutan Aktivera inte BitLocker förrän återställningsinformation har sparats till AD DS för flyttbara dataenheter om du vill hindra användare från att aktivera BitLocker, såvida inte datorn är ansluten till domänen och säkerhetskopian av BitLocker-återställningsinformation till AD DS lyckas.
 
-Obs! Om kryssrutan Aktivera inte BitLocker förrän återställningsinformation har sparats till AD DS för fasta dataenheter är markerad genereras automatiskt ett återställningslösenord.
+Obs! Om kryssrutan Aktivera inte BitLocker förrän återställningsinformation har sparats till AD DS för fasta dataenheter är markerad genereras ett återställningslösenord automatiskt.
 
 Om du aktiverar den här principinställningen kan du kontrollera vilken metod för återställning av data från BitLocker-skyddade flyttbara dataenheter som är tillgänglig för användarna.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen stöds standardåterställningsalternativen för BitLocker-återställning. Som standard tillåts en dataåterställningsagent, återställningsalternativen kan anges av användaren (inklusive återställningslösenordet och återställningsnyckeln) och återställningsinformationen säkerhetskopieras inte till AD DS
+      
       </string>
       <string id="RDVRecoveryPasswordUsageDropDown_Require">Kräv 48-siffrigt återställningslösenord</string>
       <string id="RDVRecoveryPasswordUsageDropDown_Allow">Tillåt 48-siffrigt återställningslösenord</string>
@@ -182,50 +207,97 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
       <string id="RDVRecoveryKeyUsageDropDown_Require">Kräv 256-bitars återställningsnyckel</string>
       <string id="RDVRecoveryKeyUsageDropDown_Disallow">Tillåt inte 256-bitars återställningsnyckel</string>
       <string id="RDVRecoveryKeyUsageDropDown_Allow">Tillåt 256-bitars återställningsnyckel</string>
-      
-      
+
+
       <string id="ConfigureRecoveryFolder_Help">Du kan använda den här principinställningen för att ange standardsökvägen som visas när användaren uppmanas ange plats för mappen där lösenord för återställning ska sparas i installationsguiden för BitLocker-diskkryptering. Principinställningen tillämpas när du aktiverar BitLocker.
 
 Om du aktiverar inställningen kan du ange en sökväg som används som standardplats för mappen om användaren väljer alternativet att spara lösenordet i en mapp. Du kan ange antingen en fullständig sökväg eller måldatorns miljövariabler i sökvägen. Om sökvägen är ogiltig visas datorns översta mappnivå i installationsguiden.
 
-Om du inaktiverar eller inte konfigurerar inställningen visas datorns översta mappnivå i installationsguiden om användaren väljer alternativet för att spara lösenordet i en mapp.
+Om du inaktiverar eller låter bli att konfigurera inställningen visas datorns översta mappnivå i installationsguiden om användaren väljer alternativet för att spara lösenordet i en mapp.
 
 Obs! Den här principinställningen hindrar inte användarna från att spara återställningslösenordet i en annan mapp.
 
+
+
 </string>
-      
+
       <string id="ConfigureRecoveryFolder_Name">Välj standardmapp för återställningslösenord</string>
 
-      <string id="EncryptionMethod_Help">Du kan använda den här principinställningen för att konfigurera algoritm och chifferstyrka för BitLocker-diskkryptering. Principinställningen tillämpas när du aktiverar BitLocker. Det händer inget om du ändrar krypteringsmetod, om enheten redan är krypterad eller om kryptering pågår. Mer information om tillgängliga krypteringsmetoder finns i distribueringsanvisningarna för BitLocker-diskkryptering på Microsoft TechNet.
-        
+      <string id="EncryptionMethod_Help">Du kan använda den här principinställningen för att konfigurera algoritm och chifferstyrka för BitLocker-diskkryptering. Principinställningen tillämpas när du aktiverar BitLocker. Det händer inget om du ändrar krypteringsmetod, om enheten redan är krypterad eller om kryptering pågår. Mer information om tillgängliga krypteringsmetoder finns i distribueringsanvisningarna för BitLocker-diskkryptering på Microsoft TechNet. Den här principinställningen gäller bara datorer som kör Windows Server 2008, Windows Vista, Windows Server 2008 R2 eller Windows 7.
+
 Om du aktiverar den här principinställningen kan du välja krypteringsalgoritm och önskad chifferstyrka som används av BitLocker vid kryptering av enheter.
 
-Om du inaktiverar eller inte konfigurerar inställningen, används standardkrypteringsmetoden 128-bitars AES med Diffuser eller den metod som anges i ett startskript.
+Om du inaktiverar eller låter bli att konfigurera inställningen, används standardkrypteringsmetoden 128-bitars AES med Diffuser eller den metod som anges i ett startskript.
+
+      
 
       </string>
-      <string id="EncryptionMethod_Name">Välj metod och styrka för kryptering av enhet</string>
-      <string id="EncryptionMethodDropDown_AES128Diffuser_Name">128-bitars AES med Diffuser (standard)</string>
-      <string id="EncryptionMethodDropDown_AES256Diffuser_Name">256-bitars AES med Diffuser</string>
-      <string id="EncryptionMethodDropDown_AES128_Name">128-bitars AES</string>
-      <string id="EncryptionMethodDropDown_AES256_Name">256-bitars AES</string>
+      <string id="EncryptionMethodNoDiffuser_Help">
+          
+          Du kan använda den här principinställningen för att konfigurera algoritm och chifferstyrka för BitLocker-diskkryptering. Principinställningen tillämpas när du aktiverar BitLocker. Det händer inget om du ändrar krypteringsmetod, om enheten redan är krypterad eller om kryptering pågår. Mer information om tillgängliga krypteringsmetoder finns i distribueringsanvisningarna för BitLocker-diskkryptering på Microsoft TechNet. Den här principen gäller bara datorer som kör Windows Server 8 eller senare.
+
+          Om du aktiverar den här principinställningen kan du välja krypteringsalgoritm och önskad chifferstyrka som används av BitLocker vid kryptering av enheter.
+
+          Om du inaktiverar eller låter bli att konfigurera den här principinställningen använder BitLocker AES med samma bitstyrka (128 eller 256 bitar) som principinställningen Välj metod och styrka för kryptering av enhet (Windows Vista, Windows Server 2008, Windows 7), om den har angetts. Om ingen av dessa principer har angetts används standardkrypteringsmetoden 128-bitars AES eller den krypteringsmetod som anges i startskriptet.
+
       
+
+      </string>
+      <string id="EncryptionMethod_Name">Välj metod och styrka för kryptering av enhet (Windows Vista, Windows Server 2008, Windows 7, Windows Server 2008 R2)</string>
+      <string id="EncryptionMethodNoDiffuser_Name">Välj metod och styrka för kryptering av enhet</string>
+      <string id="EncryptionMethodDropDown_AES128Diffuser_Name">128-bitars AES med Diffuser</string>
+      <string id="EncryptionMethodDropDown_AES256Diffuser_Name">256-bitars AES med Diffuser</string>
+      <string id="EncryptionMethodDropDown_AES128_Name">128-bitars AES (standard)</string>
+      <string id="EncryptionMethodDropDown_AES256_Name">256-bitars AES</string>
+
       <string id="FVECategory">BitLocker-diskkryptering</string>
-      <string id="PlatformValidation_Help">Du kan använda den här principinställningen för att konfigurera skyddet av BitLocker-krypteringsnyckeln i datorns TPM-säkerhetsmaskinvara (Trusted Platform Module). Den här principinställningen gäller inte om datorns saknar kompatibel TPM-säkerhetsmaskinvara eller om BitLocker redan har aktiverats med TPM-skydd.
+      <string id="PlatformValidation_Deprecated_Help">Med den här principinställningen kan du ange hur TPM-säkerhetsmaskinvaran (Trusted Platform Module) skyddar krypteringsnyckeln för BitLocker. Den här principinställningen gäller inte om datorn saknar kompatibel TPM-säkerhetsmaskinvara eller om BitLocker redan har aktiverats med TPM-skydd.
 
 Om du aktiverar den här principinställningen innan du aktiverar BitLocker, kan du konfigurera startkomponenterna som ska valideras i TPM innan åtkomsten till den BitLocker-krypterade operativsystemenheten låses upp. Om någon av dessa komponenter ändras när BitLocker-skyddet är aktiverat frigörs inte krypteringsnyckeln i TPM för upplåsning av enheten och datorn visar i stället konsolen för BitLocker-återställning och kräver att antingen återställningslösenordet eller återställningsnyckeln anges för upplåsning av enheten.
 
-Om du inaktiverar eller inte konfigurerar inställningen, används standardprofilen för plattformsverifiering i TPM eller den profil som anges i ett startskript. En plattformsverifieringsprofil består av PCR-index (konfigurationsregister för plattformen) och sträcker sig från 0 till 23. Standardprofilen för plattformsverifiering används för att skydda krypteringsnyckeln mot ändringar i CRTM (Core Root of Trust of Measurement), BIOS, plattformstilläggen (PCR 0), Option ROM-koden (PCR 2), NTFS-startsektorn (PCR 8), NTFS-startblocket (PCR 9), starthanteraren (PCR 10) och BitLocker-åtkomstkontrollen (PCR 11). Beskrivningarna av PCR-inställningar för datorer som använder ett EFI (Extensible Firmware Interface) skiljer sig från de PCR-inställningar som beskrivs för datorer som använder ett standard-BIOS. I distribueringsanvisningarna för BitLocker-diskkryptering på Microsoft TechNet hittar du en komplett lista över PCR-inställningar för både EFI och standard-BIOS. 
+Om du inaktiverar eller låter bli att konfigurera inställningen, används standardprofilen för plattformsverifiering i TPM eller den profil som anges i ett startskript. En plattformsverifieringsprofil består av PCR-index (konfigurationsregister för plattformen) och sträcker sig från 0 till 23. Standardprofilen för plattformsverifiering används för att skydda krypteringsnyckeln mot ändringar i CRTM (Core Root of Trust of Measurement), BIOS, plattformstilläggen (PCR 0), Option ROM-koden (PCR 2), MBR-koden (PCR 4), NTFS-startsektorn (PCR 8), NTFS-startblocket (PCR 9), starthanteraren (PCR 10) och BitLocker-åtkomstkontrollen (PCR 11). Beskrivningarna av PCR-inställningar för datorer som använder ett EFI (Extensible Firmware Interface) skiljer sig från de PCR-inställningar som beskrivs för datorer som använder ett standard-BIOS.
 
-Varning: Om du använder något annat än standardprofilen för plattformsverifiering påverkas säkerheten hos och hanteringen av datorn. Identifieringsförmågan i BitLocker för plattformsändringar (skadliga eller auktoriserade) ökas eller minskas beroende på om PCR:erna inkluderas eller utelämnas.
-      </string>
+Varning! Datorns säkerhet och hanterbarhet påverkas om du ändrar standardvalideringsprofilen för plattformen. BitLockers känslighet för plattformsändringar (genom skadlig kod eller auktoriserade ändringar) ökas eller minskas beroende på om PCR:erna inkluderas respektive exkluderas.
       
-      <string id="PlatformValidation_Name">Konfigurera verifieringsprofil för TPM-plattform</string>
+      </string>
 
-      <string id="MorBehavior_Help">Den här principinställningen styr funktionerna för omstart av datorn och kan avslöja BitLocker-hemligheter. Principinställningen tillämpas när du aktiverar BitLocker. BitLocker-hemligheter innehåller nyckelmaterial som används för att kryptera data. Den här principinställningen gäller bara när BitLocker-skyddet är aktiverat. 
+      <string id="PlatformValidation_Deprecated_Name">Konfigurera verifieringsprofil för TPM-plattform (Windows Vista, Windows Server 2008, Windows 7, Windows Server 2008 R2)</string>
+
+      <string id="PlatformValidation_BIOS_Help">Med den här principinställningen kan du ange hur TPM-säkerhetsmaskinvaran (Trusted Platform Module) skyddar krypteringsnyckeln för BitLocker. Den här principinställningen gäller inte om datorn saknar kompatibel TPM-säkerhetsmaskinvara eller om BitLocker redan har aktiverats med TPM-skydd.
+
+Viktigt! Den här grupprincipen gäller bara datorer med en BIOS-konfiguration eller datorer med inbyggd UEFI-maskinvara med en CS-modul (Compatibility Service) aktiverad.  Datorer som har en egen konfiguration för inbyggd UEFI-maskinvara lagrar andra värden i konfigurationsregister för plattformen (PCR).  Använd grupprincipinställningen "Konfigurera TPM-plattformens valideringsprofil för interna konfigurationer för inbyggd UEFI-programvara" för att konfigurera TPM PCR-profilen för datorer med egen inbyggd UEFI-programvara.
+
+Om du aktiverar den här principinställningen innan du aktiverar BitLocker, kan du konfigurera startkomponenterna som ska valideras i TPM innan åtkomsten till den BitLocker-krypterade operativsystemenheten låses upp. Om någon av dessa komponenter ändras när BitLocker-skyddet är aktiverat frigörs inte krypteringsnyckeln i TPM för upplåsning av enheten och datorn visar i stället konsolen för BitLocker-återställning och kräver att antingen återställningslösenordet eller återställningsnyckeln anges för upplåsning av enheten.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen används standardprofilen för plattformsverifiering eller den profil som anges i ett startskript av BitLocker. En plattformsverifieringsprofil består av en uppsättning PCR-index (konfigurationsregister för plattformen) från 0 till 23. Standardprofilen för plattformsverifiering används för att skydda krypteringsnyckeln mot ändringar i CRTM (Core Root of Trust of Measurement), BIOS, plattformstilläggen (PCR 0), Option ROM-koden (PCR 2), MBR-koden (PCR 4), NTFS-startsektorn (PCR 8), NTFS-startblocket (PCR 9), starthanteraren (PCR 10) och BitLocker-åtkomstkontrollen (PCR 11).
+
+Varning! Datorns säkerhet och hanterbarhet påverkas om du ändrar standardvalideringsprofilen för plattformen. BitLockers känslighet för plattformsändringar (genom skadlig kod eller auktoriserade ändringar) ökas eller minskas beroende på om PCR:erna inkluderas respektive exkluderas.
+      
+      </string>
+
+      <string id="PlatformValidation_BIOS_Name">Konfigurera TPM-plattformens valideringsprofil för BIOS-baserade konfigurationer för inbyggd programvara</string>
+
+      <string id="PlatformValidation_UEFI_Help">Med den här principinställningen kan du ange hur TPM-säkerhetsmaskinvaran (Trusted Platform Module) skyddar krypteringsnyckeln för BitLocker. Den här principinställningen gäller inte om datorn saknar kompatibel TPM-säkerhetsmaskinvara eller om BitLocker redan har aktiverats med TPM-skydd.
+
+Viktigt! Den här grupprincipen gäller bara datorer med en egen konfiguration av den inbyggda UEFI-programvaran. Datorer med BIOS eller inbyggd UEFI-maskinvara och en CS-modul (Compatibility Service) aktiverad lagrar olika värden i konfigurationsregistren för plattformen (PCR). Använd grupprincipinställningen "Konfigurera TPM-plattformens valideringsprofil för BIOS-baserade konfigurationer för inbyggd programvara" för att konfigurera TPM PCR-profilen för datorer med BIOS-konfigurationer eller datorer med inbyggd UEFI-programvara med en aktiverad CSM.
+
+Om du aktiverar den här principinställningen innan du aktiverar BitLocker, kan du konfigurera startkomponenterna som ska valideras i TPM innan åtkomsten till den BitLocker-krypterade operativsystemenheten låses upp. Om någon av dessa komponenter ändras när BitLocker-skyddet är aktiverat frigörs inte krypteringsnyckeln i TPM för upplåsning av enheten och datorn visar i stället konsolen för BitLocker-återställning och kräver att antingen återställningslösenordet eller återställningsnyckeln anges för upplåsning av enheten.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen används standardprofilen för plattformsverifiering eller den profil som anges i ett startskript av BitLocker. En plattformsverifieringsprofil består av en uppsättning PCR-index (konfigurationsregister för plattformen) från 0 till 23. Standardprofilen för plattformsverifiering skyddar krypteringsnyckeln mot ändringar i den körbara kärnkoden för den inbyggda maskinvaran (PCR 0), utökad eller modulär kod (PCR 2), starthanteraren (PCR 4) och BitLocker-åtkomstkontrollen (PCR 11).
+
+Varning! Datorns säkerhet och hanterbarhet påverkas om du ändrar standardvalideringsprofilen för plattformen. BitLockers känslighet för plattformsändringar (genom skadlig kod eller auktoriserade ändringar) ökas eller minskas beroende på om PCR:erna inkluderas respektive exkluderas. Om den här principen anges men PCR 7 utelämnas åsidosätts grupprincipen Tillåt säker start för integritetsverifiering, vilket hindrar BitLocker från att använda säker start för plattformsintegritet eller Boot Configuration Data-integritetsverifiering (BCD). Om den här principen anges kan det leda till BitLocker-återställning när inbyggd programvara uppdateras. Om du anger att den här principen ska inkludera PCR 0, pausar du BitLocker innan du uppdaterar den inbyggda programvaran.
+      
+      </string>
+
+      <string id="PlatformValidation_UEFI_Name">Konfigurera TPM-plattformens valideringsprofil för interna konfigurationer för inbyggd UEFI-programvara</string>
+
+      <string id="MorBehavior_Help">Den här principinställningen styr funktionerna för omstart av datorn och kan avslöja BitLocker-hemligheter. Principinställningen tillämpas när du aktiverar BitLocker. BitLocker-hemligheter innehåller nyckelmaterial som används för att kryptera data. Den här principinställningen gäller bara när BitLocker-skyddet är aktiverat.
 
 Om du aktiverar den här principinställningen skrivs inte minnet över när datorn startas om. Genom att förhindra att minne skrivs över kan omstarterna bli snabbare, men du löper risk att BitLocker-hemligheter avslöjas.
 
-Om du inaktiverar eller inte konfigurerar den här principinställningen tas BitLocker-hemligheter bort från minnet när datorn startas om.
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen tas BitLocker-hemligheter bort från minnet när datorn startas om.
+
+      
 
       </string>
       <string id="MorBehavior_Name">Förhindra att minne skrivs över vid omstart</string>
@@ -235,27 +307,29 @@ Om du inaktiverar eller inte konfigurerar den här principinställningen tas Bit
       <string id="FVERDVCategory">Flyttbara dataenheter</string>
 
       <string id="IdentificationField_Name">Ange de unika identifierarna för din organisation</string>
-      <string id="IdentificationField_Help">Du kan använda den här principinställningen för att associera unika organisationsidentifierare till en ny enhet där BitLocker har aktiverats. Dessa identifierare lagras som ID-fält och tillåtet ID-fält. Med ID-fältet kan du associera en unik organisationsidentifierare med BitLocker-skyddade enheter. Den här identifieraren läggs till automatiskt på nya BitLocker-skyddade enheter och kan uppdateras på befintliga BitLocker-skyddade enheter med kommandoradsverktyget Manage-BDE. Ett ID-fält krävs för hantering av certifikatbaserade dataåterställningsagenter på BitLocker-skyddade enheter och för potentiella uppdateringar av BitLocker To Go-läsaren. BitLocker hanterar och uppdaterar bara dataåterställningsagenter när ID-fältet på enheten matchar det konfigurerade värdet i ID-fältet. På samma sätt uppdaterar BitLocker bara BitLocker To Go-läsaren när ID-fältet på enheten matchar det konfigurerade värdet för ID-fältet.
+      <string id="IdentificationField_Help">Du kan använda den här principinställningen för att associera unika organisationsidentifierare till en ny enhet där BitLocker har aktiverats. Dessa identifierare lagras som ID-fält och tillåtet ID-fält. Med ID-fältet kan du associera en unik organisationsidentifierare med BitLocker-skyddade enheter. Den här identifieraren läggs till automatiskt på nya BitLocker-skyddade enheter och kan uppdateras på befintliga BitLocker-skyddade enheter med kommandoradsverktyget manage-bde. Ett ID-fält krävs för hantering av certifikatbaserade dataåterställningsagenter på BitLocker-skyddade enheter och för potentiella uppdateringar av BitLocker To Go-läsaren. BitLocker hanterar och uppdaterar bara dataåterställningsagenter när ID-fältet på enheten matchar det konfigurerade värdet i ID-fältet. På samma sätt uppdaterar BitLocker bara BitLocker To Go-läsaren när ID-fältet på enheten matchar det konfigurerade värdet för ID-fältet.
 
 Det tillåtna ID-fältet används i kombination med principinställningen Neka skrivbehörighet till flyttbara enheter som inte skyddas med BitLocker och hjälper till att kontrollera användandet av flyttbara enheter i organisationen. Det är en kommaseparerad lista med ID-fält från din organisation och andra externa organisationer.
 
-Du kan konfigurera ID-fältet på befintliga enheter med hjälp av manage-BDE.exe.
+Du kan konfigurera ID-fältet på befintliga enheter med hjälp av manage-bde.exe.
 
 Om du aktiverar den här principinställningen kan du konfigurera ID-fältet på den BitLocker-skyddade enheten och de tillåtna ID-fält som används av din organisation.
 
 När en BitLocker-skyddad enhet monteras på en annan BitLocker-aktiverad dator används ID-fältet och det tillåtna ID-fältet för att avgöra om det är en extern enhet utanför organisationen.
 
-Om du inaktiverar eller inte konfigurerar den här principinställningen krävs inte ID-fältet.
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen krävs inte ID-fältet.
 
 Obs! ID-fält krävs för hantering av certifikatbaserade dataåterställningsagenter på BitLocker-skyddade enheter. BitLocker hanterar och uppdaterar bara certifikatbaserade dataåterställningsagenter när ID-fältet finns på enheten och det matchar det konfigurerade värdet på datorn. ID-fältet kan vara ett valfritt värde med upp till 260 tecken.
 
+      
+
       </string>
 
-      
+
       <string id="UserCertificateOID_Name">Verifiera regelefterlevnad för användning av smartkortscertifikat</string>
      <string id="UserCertificateOID_Help">Du kan använda den här principinställningen för att associera en objektidentifierare från ett smartkortscertifikat till en BitLocker-skyddad enhet. Principinställningen tillämpas när du aktiverar BitLocker.
 
-Objektidentifieraren anges i certifikatets attribut för förbättrad nyckelanvändning. BitLocker kan identifiera vilka certifikat som kan användas för autentisering av ett användarcertfikat till en BitLocker-skyddad enhet, genom att matcha objektidentifieraren i certifikatet med objektidentifieraren som definieras av den aktuella principinställningen.
+Objektidentifieraren anges i certifikatets attribut för förbättrad nyckelanvändning.  BitLocker kan identifiera vilka certifikat som kan användas för autentisering av ett användarcertfikat till en BitLocker-skyddad enhet, genom att matcha objektidentifieraren i certifikatet med objektidentifieraren som definieras av den aktuella principinställningen.
 
 Standardobjektidentifieraren är 1.3.6.1.4.1.311.67.1.1
 
@@ -265,12 +339,29 @@ Om du aktiverar den här principinställningen måste objektidentifieraren som h
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen används en standardobjektidentifierare.
 
+     
+
      </string>
 
-       <string id="OSActiveDirectoryBackupDropDown_1">Lagra återställningslösenord och nyckelpaket</string>
+      <string id="UseEnhancedBcdProfile_Name">Använd utökad verifieringsprofil för Boot Configuration Data</string>
+      <string id="UseEnhancedBcdProfile_Help">Med den här principinställningen kan du välja de BCD-inställningar (Boot Configuration Data) som ska verifieras under plattformsvalideringen.
+
+Om du aktiverar den här principinställningen kommer du att kunna lägga till ytterligare inställningar och/eller ta bort standardinställningarna.
+
+Om du inaktiverar den här principinställningen kommer datorn återgå till den BCD-profil som liknar BDC-standardprofilen i Windows 7.
+
+Om du inte konfigurerar den här principinställningen verifierar datorn Windows BCD-standardinställningar. 
+
+Obs! När Säker start används för att kontrollera plattformens och BCD:s (Boot Configuration Data) integritet enligt definitionen i grupprincipen Tillåt säker start för integritetsverifiering ignoreras grupprincipen Använd utökad verifieringsprofil för Boot Configuration Data.
+
+Inställningen som styr avlusningen vid start (0x16000010) verifieras alltid och har ingen inverkan om den inkluderas i de fält som finns.
+      
+      </string>
+
+      <string id="OSActiveDirectoryBackupDropDown_1">Lagra återställningslösenord och nyckelpaket</string>
       <string id="OSActiveDirectoryBackupDropDown_2">Lagra endast återställningslösenord</string>
 
-      
+
       <string id="MinimumPINLength_Name">Konfigurera minsta PIN-kodslängd för start</string>
       <string id="MinimumPINLength_Help">Du kan använda den här principinställningen för att konfigurera en minimilängd för start-PIN-koden för en betrodd plattformsmodul (TPM). Principinställningen tillämpas när du aktiverar BitLocker. Start-PIN-koden måste innehålla minst 4 men inte fler än 20 siffror.
 
@@ -278,10 +369,12 @@ Om du aktiverar den här principinställningen kan du kräva att ett minsta anta
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan användarna konfigurera en start-PIN-kod av valfri längd, bestående av mellan 4 och 20 siffror.
 
+      
+
       </string>
 
       <string id="OSAllowDRA_Name">Tillåt certifikatbaserade dataåterställningsagenter</string>
-          
+
       <string id="FDVDenyWriteAccess_Name">Neka skrivbehörighet till fasta enheter som inte skyddas med BitLocker</string>
       <string id="FDVDenyWriteAccess_Help">Den här principinställningen avgör om BitLocker-skydd krävs för att fasta dataenheter ska vara skrivbara på en dator. Principinställningen tillämpas när du aktiverar BitLocker.
 
@@ -289,11 +382,13 @@ Om du aktiverar den här principinställningen monteras alla fasta dataenheter s
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen monteras alla fasta dataenheter på datorn med läs- och skrivåtkomst.
 
+      
+
       </string>
 
       <string id="FDVPassphrase_Name">Konfigurera användning av lösenord för fasta dataenheter</string>
       <string id="FDVPassphrase_Help">Du kan använda den här principinställningen för att bestämma om ett lösenord krävs för att låsa upp BitLocker-skyddade fasta dataenheter. Om du väljer att tillåta användandet av ett lösenord kan du kräva att ett lösenord används, kräva komplexitet för lösenordet och konfigurera en minimilängd för lösenordet. Grupprincipinställningen Lösenord måste uppfylla krav på komplexitet som finns i Datorkonfiguration\Windows-inställningar\Säkerhetsinställningar\Kontoprinciper\Lösenordsprincip\ måste aktiveras för att kraven på komplexitet ska ha effekt.
-        
+
 Obs! Dessa inställningar används när BitLocker aktiveras, inte när du låser upp en volym. BitLocker tillåter upplåsning av en enhet med valfritt tillgängligt skydd på enheten.
 
 Om du aktiverar den här principinställningen kan användarna konfigurera ett lösenord som uppfyller de krav du definierar. Om du vill kräva att ett lösenord används markerar du Kräv lösenord för fast dataenhet. Om du vill ställa krav på komplexitet för lösenordet markerar du Kräv komplexitet.
@@ -308,32 +403,56 @@ Om du låter bli att konfigurera den här principinställningen stöds lösenord
 
 Obs! Det går inte att använda lösenord om FIPS-kompatibilitet har aktiverats. Principinställningen Datorkryptografi: Använd FIPS-kompatibla algoritmer för kryptering, att skapa hash-värden och signering som finns i Datorkonfiguration\Windows-inställningar\Säkerhetsinställningar\Lokala principer\Säkerhetsalternativ anger om FIPS-kompatibilitet har aktiverats.
 
+
+
 </string>
+
+      <string id="OSPassphrase_Name">Konfigurera användning av lösenord för operativsystemenheter</string>
+      <string id="OSPassphrase_Help">Den här principinställningen bestämmer villkoren för lösenord som används för att låsa upp operativsystemsenheter som skyddas med BitLocker. Om andra skydd än TPM-skydd tillåts på operativsystemsenheter kan du tillhandahålla ett lösenord, kräva att det är tillräckligt komplext och ange dess minimilängd. Grupprincipinställningen Lösenord måste uppfylla krav på komplexitet som finns i Datorkonfiguration\Windows-inställningar\Säkerhetsinställningar\Kontoprinciper\Lösenordsprincip\ måste aktiveras för att kraven på komplexitet ska ha effekt.
+
+Obs! Dessa inställningar används när BitLocker aktiveras, inte när du låser upp en volym. BitLocker tillåter upplåsning av en enhet med valfritt tillgängligt skydd på enheten.
+
+Om du aktiverar den här principinställningen kan användarna konfigurera ett lösenord som uppfyller de krav du definierar. Om du vill ställa krav på komplexitet för lösenordet markerar du Kräv komplexitet.
+
+Om du väljer Kräv komplexitet krävs en anslutning till en domänkontrollant för validering av lösenordets komplexitet, när BitLocker är aktiverad. Om du väljer Tillåt komplexitet görs ett försök att ansluta till en domänkontrollant för validering av att komplexiteten följer reglerna i principen, men om inga domänkontrollanter hittas accepteras lösenordet oavsett lösenordets faktiska komplexitet och enheten krypteras med lösenordet som skydd. Om du väljer Tillåt inte komplexitet utförs ingen kontroll av lösenordets komplexitet.
+
+Lösenord måste innehålla minst åtta tecken. Om du vill konfigurera en högre minimilängd för lösenord anger du önskat antal tecken i rutan Minsta längd på lösenord.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen gäller standardlängden åtta tecken för lösenorden till operativsystemenheten och inga komplexitetskontroller görs.
+
+Obs! Det går inte att använda lösenord om FIPS-kompatibilitet har aktiverats. Principinställningen Datorkryptografi: Använd FIPS-kompatibla algoritmer för kryptering, att skapa hash-värden och signering som finns i Datorkonfiguration\Windows-inställningar\Säkerhetsinställningar\Lokala principer\Säkerhetsalternativ anger om FIPS-kompatibilitet har aktiverats.
+
+
+
+</string>
+
 
       <string id="PassphraseComplexityDropDown_2">Tillåt lösenordskomplexitet</string>
       <string id="PassphraseComplexityDropDown_0">Tillåt inte lösenordskomplexitet</string>
       <string id="PassphraseComplexityDropDown_1">Kräv lösenordskomplexitet</string>
-      
+
       <string id="FDVActiveDirectoryBackupDropDown_1">Säkerhetskopiera återställningslösenord och nyckelpaket</string>
       <string id="FDVActiveDirectoryBackupDropDown_2">Säkerhetskopiera endast återställningslösenord</string>
 
-      
-      <string id="FDVHybrid_Name">Tillåt åtkomst till BitLocker-skyddade fasta dataenheter från tidigare versioner av Windows</string>
-      <string id="FDVHybrid_Help">Den här principinställningen anger om fasta dataenheter formaterade med filsystemet FAT32 kan låsas upp och visas på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med Service Pack 3 (SP3) eller Windows XP med Service Pack 2 (SP2).
 
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan fasta dataenheter formaterade med filsystemet FAT32 låsas upp och visas (inklusive innehållet) på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Dessa operativsystem har läsbehörighet till BitLocker-skyddade enheter.
+      <string id="FDVHybrid_Name">Tillåt åtkomst till BitLocker-skyddade fasta dataenheter från tidigare versioner av Windows</string>
+      <string id="FDVHybrid_Help">Den här principinställningen anger om fasta dataenheter formaterade med filsystemet FAT kan låsas upp och visas på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med Service Pack 3 (SP3) eller Windows XP med Service Pack 2 (SP2).
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan fasta dataenheter formaterade med filsystemet FAT låsas upp och visas (inklusive innehållet) på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Dessa operativsystem har läsbehörighet till BitLocker-skyddade enheter.
 
 Om du aktiverar den här principinställningen bör du markera kryssrutan Installera inte BitLocker To Go-läsaren på fasta enheter med FAT-format för att hindra användarna från att köra BitLocker To Go-läsaren från sina fasta enheter. Om BitLocker To Go-läsaren (bitlockertogo.exe) finns på en enhet som saknar angivet ID-fält eller om enheten har det ID-fält som har angetts i principinställningen Ange de unika identifierarna för din organisation, blir användaren ombedd att uppdatera BitLocker och BitLocker To Go-läsaren tas bort från enheten. I detta fall måste BitLocker To Go-läsaren installeras på datorn för att den fasta enheten ska låsas upp på datorer som kör Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Om du inte markerar den här kryssrutan installeras BitLocker To Go-läsaren på den fasta enheten så att användarna kan låsa upp enheten på datorer som kör Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, där BitLocker To Go-läsaren är installerad.
 
-Om du inaktiverar den här principinställningen kan inte fasta dataenheter formaterade med filsystemet FAT32 och som skyddas av BitLocker låsas upp och visas på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Bitlockertogo.exe installeras inte.
+Om du inaktiverar den här principinställningen kan inte fasta dataenheter formaterade med filsystemet FAT och som skyddas av BitLocker låsas upp och visas på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Bitlockertogo.exe installeras inte.
 
 Obs! Den här principinställningen gäller inte för enheter formaterade med filsystemet NTFS.
 
+      
+
       </string>
 
-      
+
       <string id="FDVAllowDRA_Name">Tillåt certifikatbaserade dataåterställningsagenter</string>
-      
+
       <string id="FDVConfigureSmartCard_Name">Konfigurera användning av smartkort för fasta dataenheter</string>
       <string id="FDVConfigureSmartCard_Help">Du kan använda den här principinställningen för att ange om smartkort kan användas för autentisering av användaråtkomst till BitLocker-skyddade fasta dataenheter på en dator.
 
@@ -345,8 +464,10 @@ Om du inaktiverar den här principinställningen kan användarna inte använda s
 
 Om du låter bli att konfigurera den här principinställningen kan smartkort användas för autentisering av användaråtkomst till en BitLocker-skyddad enhet.
 
-      </string>
       
+
+      </string>
+
       <string id="RDVPassphrase_Name">Konfigurera användning av lösenord för flyttbara dataenheter</string>
       <string id="RDVPassphrase_Help">Du kan använda den här principinställningen för att bestämma om ett lösenord krävs för att låsa upp BitLocker-skyddade flyttbara dataenheter. Om du väljer att tillåta användandet av ett lösenord kan du kräva att ett lösenord används, kräva komplexitet för lösenordet och konfigurera en minimilängd för lösenordet. Grupprincipinställningen Lösenord måste uppfylla krav på komplexitet som finns i Datorkonfiguration\Windows-inställningar\Säkerhetsinställningar\Kontoprinciper\Lösenordsprincip\ måste aktiveras för att kraven på komplexitet ska ha effekt.
 
@@ -364,6 +485,8 @@ Om du låter bli att konfigurera den här principinställningen stöds lösenord
 
 Obs! Det går inte att använda lösenord om FIPS-kompatibilitet har aktiverats. Principinställningen Datorkryptografi: Använd FIPS-kompatibla algoritmer för kryptering, att skapa hash-värden och signering som finns i Datorkonfiguration\Windows-inställningar\Säkerhetsinställningar\Lokala principer\Säkerhetsalternativ anger om FIPS-kompatibilitet har aktiverats.
 
+      
+
       </string>
 
       <string id="RDVDenyWriteAccess_Name">Neka skrivbehörighet till flyttbara enheter som inte skyddas med BitLocker</string>
@@ -377,6 +500,8 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
 
 Obs! Den här principinställningen kan åsidosättas av principinställningarna under i \Användarkonfiguration\Administrativa mallar\System\Åtkomst till flyttbara lagringsmedia. Om principinställningen Flyttbara diskar: Neka skrivåtkomst är aktiverad ignoreras den här principinställningen.
 
+      
+
       </string>
 
       <string id="RDVConfigureBDE_Name">Kontrollera användandet av BitLocker på flyttbara enheter</string>
@@ -388,6 +513,8 @@ Om du låter bli att konfigurera den här principinställningen kan användarna 
 
 Om du inaktiverar den här principinställningen kan inte användarna använda BitLocker på flyttbara diskenheter.
 
+      
+
       </string>
 
 
@@ -395,20 +522,22 @@ Om du inaktiverar den här principinställningen kan inte användarna använda B
       <string id="RDVActiveDirectoryBackupDropDown_2">Säkerhetskopiera endast återställningslösenord</string>
 
       <string id="RDVHybrid_Name">Tillåt åtkomst till BitLocker-skyddade flyttbara dataenheter från tidigare versioner av Windows</string>
-      <string id="RDVHybrid_Help">Den här principinställningen anger om flyttbara dataenheter formaterade med filsystemet FAT32 kan låsas upp och visas på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med Service Pack 3 (SP3) eller Windows XP med Service Pack 2 (SP2).
+      <string id="RDVHybrid_Help">Den här principinställningen anger om flyttbara dataenheter formaterade med filsystemet FAT kan låsas upp och visas på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med Service Pack 3 (SP3) eller Windows XP med Service Pack 2 (SP2).
 
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan flyttbara dataenheter formaterade med filsystemet FAT32 låsas upp och visas (inklusive innehållet) på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Dessa operativsystem har läsbehörighet till BitLocker-skyddade enheter.
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan flyttbara dataenheter formaterade med filsystemet FAT låsas upp och visas (inklusive innehållet) på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Dessa operativsystem har läsbehörighet till BitLocker-skyddade enheter.
 
 Om du aktiverar den här principinställningen bör du markera kryssrutan Installera inte BitLocker To Go-läsaren på flyttbara enheter med FAT-format för att hindra användarna från att köra BitLocker To Go-läsaren från sina fasta enheter. Om BitLocker To Go-läsaren (bitlockertogo.exe) finns på en enhet som saknar angivet ID-fält eller om enheten har det ID-fält som har angetts i principinställningen Ange de unika identifierarna för din organisation, blir användaren ombedd att uppdatera BitLocker och BitLocker To Go-läsaren tas bort från enheten. I detta fall måste BitLocker To Go-läsaren installeras på datorn för att den flyttbara enheten ska låsas upp på datorer som kör Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Om du inte markerar den här kryssrutan installeras BitLocker To Go-läsaren på den flyttbara enheten så att användarna kan låsa upp enheten på datorer som kör Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2, där BitLocker To Go-läsaren är installerad.
 
-Om du inaktiverar den här principinställningen kan inte flyttbara dataenheter formaterade med filsystemet FAT32 och som skyddas av BitLocker låsas upp och visas på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Bitlockertogo.exe installeras inte.
+Om du inaktiverar den här principinställningen kan inte flyttbara dataenheter formaterade med filsystemet FAT och som skyddas av BitLocker låsas upp och visas på datorer som kör operativsystemen Windows Server 2008, Windows Vista, Windows XP med SP3 eller Windows XP med SP2. Bitlockertogo.exe installeras inte.
 
 Obs! Den här principinställningen gäller inte för enheter formaterade med filsystemet NTFS.
+
+      
 
       </string>
 
       <string id="RDVAllowDRA_Name">Tillåt certifikatbaserade dataåterställningsagenter</string>
- 
+
       <string id="RDVConfigureSmartCard_Name">Konfigurera användning av smartkort för flyttbara dataenheter</string>
       <string id="RDVConfigureSmartCard_Help">Du kan använda den här principinställningen för att ange om smartkort kan användas för autentisering av användaråtkomst till BitLocker-skyddade flyttbara dataenheter på en dator.
 
@@ -419,6 +548,8 @@ Obs! Dessa inställningar används när BitLocker aktiveras, inte när du låser
 Om du inaktiverar den här principinställningen kan användarna inte använda smartkort för att autentisera sin åtkomst till BitLocker-skyddade flyttbara dataenheter.
 
 Om du låter bli att konfigurera den här principinställningen kan smartkort användas för autentisering av användaråtkomst till en BitLocker-skyddad flyttbar enhet.
+
+      
 
       </string>
 
@@ -433,35 +564,165 @@ Obs! Det är inte säkert att alla datorer stöder förstärkta PIN-koder i PXE 
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen används inte förstärkta PIN-koder.
 
+      
+
       </string>
 
+      <string id="TPMAutoReseal_Name">Återställ plattformsverifieringsdata efter BitLocker-återställning</string>
+      <string id="TPMAutoReseal_Help">Med den här principinställningen kan du kontrollera huruvida några plattformsverifieringsdata uppdateras när Windows startas efter återställningen av BitLocker.
+
+Om du aktiverar den här principinställningen uppdateras plattformsverifieringsdata när Windows startas efter återställningen av BitLocker.
+
+Om du inaktiverar den här principinställningen uppdateras plattformsverifieringsdata inte när Windows startas efter återställningen av BitLocker.
+
+Om du inte konfigurerar den här principinställningen uppdateras plattformsverifieringsdata när Windows startas efter återställningen av BitLocker.
+
+      
+
+      </string>
+
+      <string id="OSEncryptionType_Name">Tvinga typ av enhetskryptering på operativsystemenheter</string>
+
+      <string id="FDVEncryptionType_Name">Tvinga typ av enhetskryptering på fasta dataenheter</string>
+
+      <string id="RDVEncryptionType_Name">Tvinga typ av enhetskryptering på flyttbara dataenheter</string>
+
+      <string id="EncryptionType_Help">Med den här principinställningen kan du ange krypteringstypen som används av BitLocker-diskkryptering. Principinställningen tillämpas när du aktiverar BitLocker. Det händer inget om du ändrar krypteringstyp om enheten redan är krypterad eller om kryptering pågår. Välj fullständig kryptering om du vill att hela enheten ska krypteras när BitLocker har aktiverats. Välj att bara kryptera det upptagna utrymmet om du vill att bara den delen av enheten där data lagras ska krypteras när BitLocker har aktiverats.
+
+Om du aktiverar den här principinställningen definieras den krypteringsmetod som BitLocker använder för att kryptera enheterna av den här principen och krypteringstypen visas inte i installationsguiden för BitLocker.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen får användaren välja krypteringstypen innan BitLocker aktiveras.
+
+      
+
+      </string>
+
+      <string id="EncryptionTypeDropDown_UserChooses_Name">Låt användaren välja (standard)</string>
+      <string id="EncryptionTypeDropDown_FullEncryption_Name">Fullständig kryptering</string>
+      <string id="EncryptionTypeDropDown_DataOnlyEncryption_Name">Kryptera endast utnyttjat utrymme</string>
+
+      <string id="DisallowStandardUsersCanChangePIN_Name">Tillåt inte att standardanvändare ändrar PIN-koden eller lösenordet</string>
+      <string id="DisallowStandardUsersCanChangePIN_Help">Med den här principinställningen kan du ange huruvida standardanvändare tillåts att ändra PIN-koden för BitLocker-volymer, under förutsättning att de först kan ange den befintliga PIN-koden.
+
+Principinställningen tillämpas när du aktiverar BitLocker.
+
+Om du aktiverar den här principinställningen tillåts standardanvändare inte att ändra BitLockers PIN-koder eller lösenord.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen tillåts standardanvändare att ändra BitLockers PIN-koder och lösenord.
+
+      
+
+      </string>
+
+      <string id="OSEDrive_Name">Konfigurera användning av maskinvarubaserad kryptering för operativsystemsenheter</string>
+
+      <string id="FDVEDrive_Name">Konfigurera användning av maskinvarubaserad kryptering för fasta dataenheter</string>
+
+      <string id="RDVEDrive_Name">Konfigurera användning av maskinvarubaserad kryptering för flyttbara dataenheter</string>
+
+      <string id="OSEDrive_Help">Med den här principinställningen kan du hantera hur BitLocker använder maskinvarubaserad kryptering på operativsystemenheten och ange vilka krypteringsalgoritmer som det kan använda med maskinvarubaserad kryptering. Maskinvarubaserad kryptering kan öka enhetens prestanda vid frekventa läsningar från och skrivningar till enheten.
+
+Om du aktiverar den här principinställningen kan du ange ytterligare alternativ som bestämmer huruvida BitLockers programvarubaserade kryptering används i stället för maskinvarubaserad kryptering på datorer som inte stöder maskinvarubaserad kryptering och om du vill begränsa krypteringsalgoritmerna och de krypteringssviter som används med maskinvarubaserad kryptering.
+
+Om du inaktiverar den här principinställningen kan BitLocker inte använda maskinvarubaserad kryptering på operativsystemenheten och BitLockers programvarubaserade kryptering används som standard när enheten krypteras.
+
+Om du inte konfigurerar den här principinställningen används maskinvarubaserad kryptering med den krypteringsalgoritm som har angetts för enheten. Om maskinvarubaserad kryptering inte är tillgänglig används BitLockers programvarubaserade kryptering i stället.
+
+Obs! Principinställningen Välj metod och styrka för kryptering av enhet gäller inte maskinvarubaserad kryptering. Krypteringsalgoritmen som används vid maskinvarubaserad kryptering anges när enheten partitioneras. Som standard används den algoritm som har konfigurerats för enheten för att kryptera enheten. Med alternativet Begränsa vilka krypteringsalgoritmer och chiffersviter som tillåts vid maskinvarubaserad kryptering kan du begränsa de krypteringsalgoritmer som BitLocker kan använda vid maskinvarubaserad kryptering. Om algoritmen som har angetts för enheten inte är tillgänglig används inte maskinvarubaserad kryptering.
+Krypteringsalgoritmen specificeras med objektidentifierare (OID). Exempel:
+- AES 128 i CBC-läge har OID: 2.16.840.1.101.3.4.1.2
+- AES 256 i CBC-läge har OID: 2.16.840.1.101.3.4.1.42
+      
+      </string>
+
+      <string id="FDVEDrive_Help">Med den här principinställningen kan du hantera hur BitLocker använder maskinvarubaserad kryptering på fasta dataenheter och ange vilka krypteringsalgoritmer som det kan använda med maskinvarubaserad kryptering. Maskinvarubaserad kryptering kan öka enhetens prestanda vid frekventa läsningar från och skrivningar till enheten.
+
+Om du aktiverar den här principinställningen kan du ange ytterligare alternativ som bestämmer huruvida BitLockers programvarubaserade kryptering används i stället för maskinvarubaserad kryptering på datorer som inte stöder maskinvarubaserad kryptering och om du vill begränsa krypteringsalgoritmerna och de krypteringssviter som används med maskinvarubaserad kryptering.
+
+Om du inaktiverar den här principinställningen kan BitLocker inte använda maskinvarubaserad kryptering på operativsystemenheten och BitLockers programvarubaserade kryptering används som standard när enheten krypteras.
+
+Om du inte konfigurerar den här principinställningen används maskinvarubaserad kryptering med den krypteringsalgoritm som har angetts för enheten. Om maskinvarubaserad kryptering inte är tillgänglig används BitLockers programvarubaserade kryptering i stället.
+
+Obs! Principinställningen Välj metod och styrka för kryptering av enhet gäller inte maskinvarubaserad kryptering. Krypteringsalgoritmen som används vid maskinvarubaserad kryptering anges när enheten partitioneras. Som standard används den algoritm som har konfigurerats för enheten för att kryptera enheten. Med alternativet Begränsa vilka krypteringsalgoritmer och chiffersviter som tillåts vid maskinvarubaserad kryptering kan du begränsa de krypteringsalgoritmer som BitLocker kan använda vid maskinvarubaserad kryptering. Om algoritmen som har angetts för enheten inte är tillgänglig används inte maskinvarubaserad kryptering.
+Krypteringsalgoritmen specificeras med objektidentifierare (OID). Exempel:
+- AES 128 i CBC-läge har OID: 2.16.840.1.101.3.4.1.2
+- AES 256 i CBC-läge har OID: 2.16.840.1.101.3.4.1.42
+      
+      </string>
+
+      <string id="RDVEDrive_Help">Med den här principinställningen kan du hantera hur BitLocker använder maskinvarubaserad kryptering på flyttbara dataenheter och ange vilka krypteringsalgoritmer som det kan använda med maskinvarubaserad kryptering. Maskinvarubaserad kryptering kan öka enhetens prestanda vid frekventa läsningar från och skrivningar till enheten.
+
+Om du aktiverar den här principinställningen kan du ange ytterligare alternativ som bestämmer huruvida BitLockers programvarubaserade kryptering används i stället för maskinvarubaserad kryptering på datorer som inte stöder maskinvarubaserad kryptering och om du vill begränsa krypteringsalgoritmerna och de krypteringssviter som används med maskinvarubaserad kryptering.
+
+Om du inaktiverar den här principinställningen kan BitLocker inte använda maskinvarubaserad kryptering på operativsystemenheten och BitLockers programvarubaserade kryptering används som standard när enheten krypteras.
+
+Om du inte konfigurerar den här principinställningen används maskinvarubaserad kryptering med den krypteringsalgoritm som har angetts för enheten. Om maskinvarubaserad kryptering inte är tillgänglig används BitLockers programvarubaserade kryptering i stället.
+
+Obs! Principinställningen Välj metod och styrka för kryptering av enhet gäller inte maskinvarubaserad kryptering. Krypteringsalgoritmen som används vid maskinvarubaserad kryptering anges när enheten partitioneras. Som standard används den algoritm som har konfigurerats för enheten för att kryptera enheten. Med alternativet Begränsa vilka krypteringsalgoritmer och chiffersviter som tillåts vid maskinvarubaserad kryptering kan du begränsa de krypteringsalgoritmer som BitLocker kan använda vid maskinvarubaserad kryptering. Om algoritmen som har angetts för enheten inte är tillgänglig används inte maskinvarubaserad kryptering.
+Krypteringsalgoritmen specificeras med objektidentifierare (OID). Exempel:
+- AES 128 i CBC-läge har OID: 2.16.840.1.101.3.4.1.2
+- AES 256 i CBC-läge har OID: 2.16.840.1.101.3.4.1.42
+      
+      </string>
+
+      <string id="EnablePrebootInputProtectorsOnSlates_Name">Aktivera användning av BitLocker-autentisering som kräver inmatning med tangentbord innan start på pekdatorer</string>
+      <string id="EnablePrebootInputProtectorsOnSlates_Help">Med den här principinställningen kan användarna aktivera autentiseringsalternativ som kräver att användarna anger information i förstartsmiljön även om plattformen saknar funktioner för inmatning av data före start.
+
+Windows pektangentbord (t.ex. i surfplattor) är inte tillgängligt i förstartsmiljön där BitLocker behöver ytterligare information, t.ex. en PIN-kod eller ett lösenord.
+
+Om du aktiverar den här principinställningen måste enheterna ha tillgång till alternativa metoder för att mata in data före start (t.ex. genom ett anslutet USB-tangentbord).
+
+Om principen inte har aktiverats måste Windows Återställningsmiljö aktiveras på surfplattor för att stöda inmatningen av BitLocker-återställningslösenordet. När Windows Återställningsmiljö inte har aktiverats och den här principen inte är aktiverad kan du inte starta BitLocker på en enhet som använder Windows pektangentbord.
+
+Observera att om du inte aktiverar den här principinställningen kanske inte alternativ i principen Ytterligare autentisering krävs vid start är tillgängliga på sådana enheter. Dessa alternativ är bland andra:
+– Konfigurera start-PIN-kod för TPM: Obligatoriskt/Tillåtet
+– Konfigurera TPM-startnyckel och PIN-kod: Obligatoriskt/Tillåtet
+– Konfigurera användning av lösenord för operativsystemenheter.
+      
+      </string>
+
+    <string id="AllowSecureBootForIntegrity_Name">Tillåt säker start för integritetsverifiering</string>
+    <string id="AllowSecureBootForIntegrity_Help">Med den här principinställningen kan du ange huruvida Säker start tillåts vara provider för plattformsintegriteten för operativsystemenheter som skyddas med BitLocker.
+
+Säker start ser till att datorns förstartsmiljö bara läser in inbyggd programvara som har signerats digitalt av auktoriserade programutgivare. Säker start ger även mer flexibilitet i fråga om att hantera konfigurationen före start än BitLockers gamla integritetskontroller.
+
+Om du aktiverar eller låter bli att konfigurera den här principinställningen används Säker start för plattformsintegritet om plattformen kan använda Säker start-baserad kontroll av integriteten.
+
+Om du inaktiverar den här principinställningen används den gamla verifieringen av plattformens integritet även på datorer som kan använda Säker start-baserad kontroll av integriteten.
+
+När den här principen är aktiverad och maskinvaran kan använda Säker start för BitLocker ignoreras principinställningen Använd utökad verifieringsprofil för Boot Configuration Data och Säker start verifierar BCD-inställningarna i enlighet med principinställningen Säker start, som konfigureras separat från BitLocker.
+
+Obs! Om grupprincipinställningen Konfigurera TPM-plattformens valideringsprofil för interna konfigurationer för inbyggd UEFI-programvara har aktiverats och PCR 7 har utelämnats, kan BitLocker inte använda Säker start för kontroll av plattformens eller BCD:s (Boot Configuration Data) integritet.
+
+Varning! Om den här principen inaktiveras kan det leda till BitLocker-återställning när inbyggd programvara uppdateras. Om du inaktiverar den här principen pausar du BitLocker innan du uppdaterar den inbyggda programvaran.
+    
+    </string>
+    <string id="SUPPORTED_Windows8NoARM">Minst Windows Server 2012 eller Windows 8</string>  
 </stringTable>
     <presentationTable>
       <presentation id="ActiveDirectoryBackup_Name">
         <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Kräv BitLocker-säkerhetskopiering till AD DS</checkBox>
-        <text>Om du väljer den här inställningen går det inte att aktivera BitLocker om en säkerhetskopiering misslyckas (rekommenderat standardvärde). </text>
+        <text>Om du väljer den här inställningen går det inte att aktivera BitLocker om en säkerhetskopiering misslyckas (rekommenderat standardvärde).  </text>
         <text>Om du inte väljer den här inställningen går det inte att aktivera BitLocker om en säkerhetskopiering misslyckas. Det görs inget nytt automatiskt försök till säkerhetskopiering.</text>
         <dropdownList refId="ActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Välj vilken BitLocker-återställningsinformation som ska lagras:</dropdownList>
         <text/>
         <text>Ett återställningslösenord är ett 48-siffrigt nummer som möjliggör åtkomst till en BitLocker-skyddad enhet.</text>
         <text>Ett nyckelpaket innehåller en enhets BitLocker-krypteringsnyckel som skyddas av ett eller flera återställningslösenord</text>
-	    	<text>Nyckelpaket kan användas för särskild återställning när disken är skadad eller felaktig. </text>
+            <text>Nyckelpaket kan användas för särskild återställning när disken är skadad eller felaktig.  </text>
       </presentation>
-      
+
       <presentation id="ConfigureStartupUsage_Name">
-        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Tillåt BitLocker om kompatibel TPM saknas</checkBox>
-        <text>(kräver startnyckel på USB-flash-enhet) </text>
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Tillåt BitLocker utan kompatibel TPM (kräver ett lösenord eller en startnyckel på ett USB-flashminne)</checkBox>
         <text>Inställningar för datorer med TPM:</text>
         <dropdownList refId="ConfigureTPMStartupKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurera TPM-startnyckel:</dropdownList>
         <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurera start-PIN-kod för TPM:</dropdownList>
-        <text>Viktigt! Om startnyckeln krävs får du inte tillåta start-PIN-koden. </text>
-        <text>Om start-PIN-koden krävs får du inte tillåta startnyckeln. Om du gör det uppstår ett principfel.</text>
+        <text>Viktigt! Om startnyckeln krävs får du inte tillåta start-PIN-koden.  </text>
+        <text>Om start-PIN-koden krävs får du inte tillåta startnyckeln. Om du inte gör det uppstår ett principfel.</text>
         <text>Obs! Tillåt inte att alternativen för både start-PIN-kod och startnyckel döljer sidan Avancerat på en dator med TPM.</text>
       </presentation>
 
       <presentation id="ConfigureAdvancedStartup_Name">
-        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Tillåt BitLocker om kompatibel TPM saknas</checkBox>
-        <text>(kräver startnyckel på USB-flash-enhet)</text>
+        <checkBox refId="ConfigureNonTPMStartupKeyUsage_Name" defaultChecked="true">Tillåt BitLocker utan kompatibel TPM (kräver ett lösenord eller en startnyckel på ett USB-flashminne)</checkBox>
         <text>Inställningar för datorer med TPM:</text>
         <dropdownList refId="ConfigureTPMUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurera TPM-start:</dropdownList>
         <dropdownList refId="ConfigurePINUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurera start-PIN-kod för TPM:</dropdownList>
@@ -469,12 +730,12 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
         <dropdownList refId="ConfigureTPMPINKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurera TPM-startnyckel och PIN-kod:</dropdownList>
         <text/>
       </presentation>
-      
+
       <presentation id="ConfigureRecoveryUsage_Name">
-        <text>Viktigt! Det måste finnas ett sätt att återställa BitLocker-krypteringsnycklarna, för att förhindra dataförlust. Om du inte tillåter båda återställningsalternativen nedan måste du aktivera säkerhetskopiering av BitLocker-återställningsinformationen till AD DS. Om du inte gör det uppstår ett principfel.</text>
+        <text>Viktigt! Det måste finnas ett sätt att återställa BitLockers krypteringsnycklar för att förhindra dataförluster. Om du inte tillåter bägge återställningsalternativen nedan måste du aktivera säkerhetskopiering av återställningsinformation för BitLocker till AD DS. Om du inte gör det uppstår ett principfel.</text>
         <dropdownList refId="ConfigureRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurera 48-siffrigt återställningslösenord:</dropdownList>
         <dropdownList refId="ConfigureRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0">Konfigurera 256-bitars återställningsnyckel:</dropdownList>
-        <text>Obs! Om du inte tillåter återställningslösenordet men kräver återställningsnyckeln, kan inte användarna aktivera BitLocker utan att spara till USB.</text>
+        <text>Obs! Om du inte tillåter återställningslösenordet men kräver återställningsnyckeln, kan användarna inte aktivera BitLocker utan att spara till USB.</text>
         <text/>
       </presentation>
 
@@ -506,64 +767,149 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
         <dropdownList refId="RDVRecoveryPasswordUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
         <dropdownList refId="RDVRecoveryKeyUsageDropDown_Name" noSort="true" defaultItem="0"></dropdownList>
        <checkBox refId="RDVHideRecoveryPage_Name" defaultChecked="false">Utelämna återställningsalternativ i installationsguiden för BitLocker</checkBox>
-        <checkBox refId="RDVActiveDirectoryBackup_Name" defaultChecked="true">Spara BitLocker-återställningsinformation till AD DS för flyttbara dataenheter</checkBox> 
+        <checkBox refId="RDVActiveDirectoryBackup_Name" defaultChecked="true">Spara BitLocker-återställningsinformation till AD DS för flyttbara dataenheter</checkBox>
         <dropdownList refId="RDVActiveDirectoryBackupDropDown_Name" noSort="true" defaultItem="0">Konfigurera lagring av BitLocker-återställningsinformation till AD DS:</dropdownList>
         <checkBox refId="RDVRequireActiveDirectoryBackup_Name">Aktivera inte BitLocker förrän återställningsinformation har sparats till AD DS för flyttbara dataenheter</checkBox>
       </presentation>
-      
+
       <presentation id="ConfigureRecoveryFolder_Name">
         <textBox refId="ConfigureRecoveryFolderPath_Input">
           <label>Konfigurera standardmappsökväg:</label>
           <defaultValue/>
         </textBox>
-        <text>Ange en fullständig sökväg eller inkludera datorns miljövariabler i sökvägen. </text>
+        <text>Ange en fullständig sökväg eller inkludera datorns miljövariabler i sökvägen.  </text>
         <text>Ange t.ex. \\server\mappnamn eller %SecureDriveEnvironmentVariable%\mappnamn</text>
         <text>Obs! Användaren kommer i samtliga fall att kunna välja andra mappar där återställningslösenord ska sparas.</text>
         <text/>
       </presentation>
-      
-      
+
       <presentation id="EncryptionMethod_Name">
-        <dropdownList refId="EncryptionMethodDropDown_Name" noSort="true" defaultItem="0">Välj krypteringsmetod:</dropdownList>
+        <dropdownList refId="EncryptionMethodDropDown_Name" noSort="true" defaultItem="2">Välj krypteringsmetod:</dropdownList>
       </presentation>
-      
-      <presentation id="PlatformValidation_Name">
+
+      <presentation id="EncryptionMethodNoDiffuser_Name">
+        <dropdownList refId="EncryptionMethodNoDiffDropDown_Name" noSort="true" defaultItem="0">Välj krypteringsmetod:</dropdownList>
+      </presentation>
+
+      <presentation id="OSEncryptionType">
+        <dropdownList refId="OSEncryptionTypeDropDown_Name" noSort="true" defaultItem="0">Välj krypteringstypen:</dropdownList>
+      </presentation>
+
+      <presentation id="FDVEncryptionType">
+        <dropdownList refId="FDVEncryptionTypeDropDown_Name" noSort="true" defaultItem="0">Välj krypteringstypen:</dropdownList>
+      </presentation>
+
+      <presentation id="RDVEncryptionType">
+        <dropdownList refId="RDVEncryptionTypeDropDown_Name" noSort="true" defaultItem="0">Välj krypteringstypen:</dropdownList>
+      </presentation>
+
+      <presentation id="PlatformValidation_Deprecated_Name">
         <text>En plattformsverifieringsprofil består av en uppsättning PCR-index (konfigurationsregister för plattformen). Varje PCR-index är associerat med komponenter som körs när Windows startar.</text>
-        <text>Använd kryssrutorna nedan för att välja vilka PCR-index som ska ingå i profilen. </text>
+        <text>Använd kryssrutorna nedan för att välja vilka PCR-index som ska ingå i profilen.</text>
         <text>Var försiktig om du ändrar denna inställning.</text>
-        <text>Vi rekommenderar standardprofilen med PCR 0, 2, 4, 5, 8, 9, 10 och 11.</text>
+        <text>Vi rekommenderar standarden med PCR 0, 2, 4, 8, 9, 10 och 11.</text>
         <text>För att BitLocker-skyddet ska fungera måste du inkludera PCR 11.</text>
 
         <text>Mer information om fördelar och risker med att ändra standardverifieringsprofilen för TPM-plattformen finns i onlinedokumentationen.</text>
-        
-        <checkBox refId="PlatformValidation_Setting0" defaultChecked="true">PCR 0: CRTM (Core Root of Trust of Measurement), BIOS och plattformstillägg</checkBox>
-        <checkBox refId="PlatformValidation_Setting1">PCR 1: Konfiguration och data för plattform och moderkort</checkBox>
-        <checkBox refId="PlatformValidation_Setting2" defaultChecked="true">PCR 2: Kod för tillvals-ROM</checkBox>
-        <checkBox refId="PlatformValidation_Setting3">PCR 3: Konfiguration och data för tillvals-ROM</checkBox>
-        <checkBox refId="PlatformValidation_Setting4" defaultChecked="true">PCR 4: MBR-kod (Master Boot Record)</checkBox>
-        <checkBox refId="PlatformValidation_Setting5" defaultChecked="true">PCR 5: MBR-partitionstabell (Master Boot Record)</checkBox>
-        <checkBox refId="PlatformValidation_Setting6">PCR 6: Tillståndsövergångs- och väckningshändelser</checkBox>
-        <checkBox refId="PlatformValidation_Setting7">PCR 7: Specifikt register för datortillverkare</checkBox>
-        <checkBox refId="PlatformValidation_Setting8" defaultChecked="true">PCR 8: NTFS-startsektor</checkBox>
-        <checkBox refId="PlatformValidation_Setting9" defaultChecked="true">PCR 9: NTFS-startblock</checkBox>
-        <checkBox refId="PlatformValidation_Setting10" defaultChecked="true">PCR 10: Boot Manager</checkBox>
-        <checkBox refId="PlatformValidation_Setting11" defaultChecked="true">PCR 11: Åtkomstkontroll för BitLocker</checkBox>
-        <checkBox refId="PlatformValidation_Setting12">PCR 12: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting13">PCR 13: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting14">PCR 14: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting15">PCR 15: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting16">PCR 16: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting17">PCR 17: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting18">PCR 18: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting19">PCR 19: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting20">PCR 20: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting21">PCR 21: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting22">PCR 22: Reserverad för framtida användning</checkBox>
-        <checkBox refId="PlatformValidation_Setting23">PCR 23: Reserverad för framtida användning</checkBox>
+
+        <checkBox refId="PlatformValidation_Deprecated_Setting0" defaultChecked="true">PCR 0: CRTM (Core Root of Trust of Measurement), BIOS och plattformstillägg</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting1">PCR 1: Konfiguration och data för plattform och moderkort</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting2" defaultChecked="true">PCR 2: Kod för tillvals-ROM</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting3">PCR 3: Konfiguration och data för tillvals-ROM</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting4" defaultChecked="true">PCR 4: MBR-kod (Master Boot Record)</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting5">PCR 5: MBR-partitionstabell (Master Boot Record)</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting6">PCR 6: Tillståndsövergångs- och väckningshändelser</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting7">PCR 7: Specifikt register för datortillverkare</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting8" defaultChecked="true">PCR 8: NTFS-startsektor</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting9" defaultChecked="true">PCR 9: NTFS-startblock</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting10" defaultChecked="true">PCR 10: Starthanterare</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting11" defaultChecked="true">PCR 11: Åtkomstkontroll för BitLocker</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting12">PCR 12: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting13">PCR 13: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting14">PCR 14: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting15">PCR 15: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting16">PCR 16: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting17">PCR 17: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting18">PCR 18: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting19">PCR 19: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting20">PCR 20: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting21">PCR 21: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting22">PCR 22: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_Deprecated_Setting23">PCR 23: Reserverad för framtida användning</checkBox>
       </presentation>
-      
+
+      <presentation id="PlatformValidation_BIOS_Name">
+        <text>En plattformsverifieringsprofil består av en uppsättning PCR-index (konfigurationsregister för plattformen). Varje PCR-index är associerat med komponenter som körs när Windows startar.</text>
+        <text>Använd kryssrutorna nedan för att välja vilka PCR-index som ska ingå i profilen.</text>
+        <text>Var försiktig om du ändrar denna inställning.</text>
+        <text>Vi rekommenderar standarden med PCR 0, 2, 4, 8, 9, 10 och 11.</text>
+        <text>För att BitLocker-skyddet ska fungera måste du inkludera PCR 11.</text>
+
+        <text>Mer information om fördelar och risker med att ändra standardverifieringsprofilen för TPM-plattformen finns i onlinedokumentationen.</text>
+
+        <checkBox refId="PlatformValidation_BIOS_Setting0" defaultChecked="true">PCR 0: CRTM (Core Root of Trust of Measurement), BIOS och plattformstillägg</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting1">PCR 1: Konfiguration och data för plattform och moderkort</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting2" defaultChecked="true">PCR 2: Kod för tillvals-ROM</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting3">PCR 3: Konfiguration och data för tillvals-ROM</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting4" defaultChecked="true">PCR 4: MBR-kod (Master Boot Record)</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting5">PCR 5: MBR-partitionstabell (Master Boot Record)</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting6">PCR 6: Tillståndsövergångs- och väckningshändelser</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting7">PCR 7: Specifikt register för datortillverkare</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting8" defaultChecked="true">PCR 8: NTFS-startsektor</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting9" defaultChecked="true">PCR 9: NTFS-startblock</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting10" defaultChecked="true">PCR 10: Starthanterare</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting11" defaultChecked="true">PCR 11: Åtkomstkontroll för BitLocker</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting12">PCR 12: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting13">PCR 13: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting14">PCR 14: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting15">PCR 15: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting16">PCR 16: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting17">PCR 17: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting18">PCR 18: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting19">PCR 19: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting20">PCR 20: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting21">PCR 21: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting22">PCR 22: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_BIOS_Setting23">PCR 23: Reserverad för framtida användning</checkBox>
+      </presentation>
+
+      <presentation id="PlatformValidation_UEFI_Name">
+        <text>En plattformsverifieringsprofil består av en uppsättning PCR-index (konfigurationsregister för plattformen). Varje PCR-index är associerat med komponenter som körs när Windows startar.</text>
+        <text>Använd kryssrutorna nedan för att välja vilka PCR-index som ska ingå i profilen.</text>
+        <text>Var försiktig om du ändrar denna inställning.</text>
+        <text>Vi rekommenderar standarden med PCR 0, 2, 4 och 11.</text>
+        <text>För att BitLocker-skyddet ska fungera måste du inkludera PCR 11.</text>
+
+        <text>Mer information om fördelar och risker med att ändra standardverifieringsprofilen för TPM-plattformen finns i onlinedokumentationen.</text>
+
+        <checkBox refId="PlatformValidation_UEFI_Setting0" defaultChecked="true">PCR 0: Körbar kod för systemets inbyggda programvara</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting1">PCR 1: Data till systemets inbyggda programvara</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting2" defaultChecked="true">PCR 2: Utökad eller modulär körbar kod</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting3">PCR 3: Data till den utökade eller modulära inbyggda programvaran</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting4" defaultChecked="true">PCR 4: Starthanterare</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting5">PCR 5: GPT/partitionstabell</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting6">PCR 6: Återgå från S4- och S5-energitillståndshändelser</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting7">PCR 7: Säkert starttillstånd</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting8">PCR 8: Initierat till 0 utan tillägg (reserverad för framtida användning)</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting9">PCR 9: Initierat till 0 utan tillägg (reserverad för framtida användning)</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting10">PCR 10: Initierat till 0 utan tillägg (reserverad för framtida användning)</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting11" defaultChecked="true">PCR 11: Åtkomstkontroll för BitLocker</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting12">PCR 12: Datahändelser och mycket obeständiga händelser</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting13">PCR 13: Startmoduldetaljer</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting14">PCR 14: Startauktoriteter</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting15">PCR 15: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting16">PCR 16: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting17">PCR 17: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting18">PCR 18: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting19">PCR 19: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting20">PCR 20: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting21">PCR 21: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting22">PCR 22: Reserverad för framtida användning</checkBox>
+        <checkBox refId="PlatformValidation_UEFI_Setting23">PCR 23: Reserverad för framtida användning</checkBox>
+      </presentation>
+
       <presentation id="MorBehavior_Name">
-     
+
       </presentation>
 
       <presentation id="IdentificationField">
@@ -582,10 +928,17 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
         </textBox>
         </presentation>
 
+      <presentation id="UseEnhancedBcdProfile">
+        <text>Verifiera de följande ytterligare BCD-inställningarna:</text>
+        <multiTextBox refId="EnhancedBcdProfile_AdditionalSecurityCriticalSettings"/>
+        <text>Exkludera de följande ytterligare BCD-inställningarna:</text>
+        <multiTextBox refId="EnhancedBcdProfile_AdditionalExcludedSettings"/>
+      </presentation>
+
      <presentation id="MinimumPINLength">
         <decimalTextBox refId="MinPINLength" defaultValue="4">Minsta antal tecken:</decimalTextBox>
       </presentation>
-      
+
      <presentation id="FDVPassphrase_Name">
         <checkBox refId="FDVRequirePassphrase">Kräv lösenord för fast dataenhet</checkBox>
         <dropdownList refId="FDVPassphraseComplexity" noSort="true" defaultItem="0">Konfigurera lösenordskomplexitet för fasta dataenheter:</dropdownList>
@@ -593,9 +946,16 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
        <text>Obs! Du måste aktivera principinställningen Lösenord måste uppfylla krav på komplexitet för att inställningen för lösenordskomplexitet ska börja gälla.</text>
       </presentation>
 
-       <presentation id="FDVConfigureSmartCard">
-        <checkBox refId="FDVRequireSmartCard_Name">Kräv att smartkort används för fasta dataenheter</checkBox>
-      </presentation>
+     <presentation id="OSPassphrase_Name">
+       <dropdownList refId="OSPassphraseComplexity_Name" noSort="true" defaultItem="0">Konfigurera lösenordskomplexitet för operativsystemsenheter:</dropdownList>
+       <decimalTextBox refId="OSPassphraseLength_Name" defaultValue="8">Minsta längd på lösenord för operativsystemenhet:</decimalTextBox>
+       <text>Obs! Du måste aktivera principinställningen Lösenord måste uppfylla krav på komplexitet för att inställningen för lösenordskomplexitet ska börja gälla.</text>
+       <checkBox refId="OSPassphraseASCIIOnly_Name">Kräv lösenord som endast innehåller ASCII-tecken på flyttbara operativsystemenheter</checkBox>
+     </presentation>
+
+     <presentation id="FDVConfigureSmartCard">
+       <checkBox refId="FDVRequireSmartCard_Name">Kräv att smartkort används för fasta dataenheter</checkBox>
+     </presentation>
 
      <presentation id="RDVPassphrase_Name">
         <checkBox refId="RDVRequirePassphrase">Kräv lösenord för flyttbar dataenhet</checkBox>
@@ -617,8 +977,16 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
       <presentation id="RDVConfigureSmartCard">
         <checkBox refId="RDVRequireSmartCard_Name" noSort="true" defaultItem="0">Kräv att smartkort används för flyttbara dataenheter</checkBox>
         </presentation>
-          
+
       <presentation id="EnhancedPIN">
+
+      </presentation>
+
+      <presentation id="TPMAutoReseal">
+
+      </presentation>
+
+      <presentation id="DisallowStandardUsersCanChangePIN">
 
       </presentation>
 
@@ -628,6 +996,33 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
 
       <presentation id="RDVDiscoveryVolumeType">
         <checkBox refId="RDVNoBitLockerToGoReader_Name" noSort="true" defaultChecked="false">Installera inte BitLocker To Go-läsaren på flyttbara enheter med FAT-format</checkBox>
+      </presentation>
+
+      <presentation id="OSEDrive_Name">
+        <checkBox refId="OSUseSW" noSort="true" defaultChecked="true">Använd BitLocker-programvarubaserad kryptering när maskinvarukryptering inte är tillgänglig</checkBox>
+        <checkBox refId="OSRestrictAlgos" noSort="true" defaultChecked="false">Begränsa vilka krypteringsalgoritmer och chiffersviter som tillåts vid maskinvarubaserad kryptering</checkBox>
+        <textBox refId="OSAllowedAlgos">
+          <label>Begränsa till följande krypteringsalgoritmer eller chiffersviter</label>
+          <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
+      </presentation>
+
+      <presentation id="FDVEDrive_Name">
+        <checkBox refId="FDVUseSW" noSort="true" defaultChecked="true">Använd BitLocker-programvarubaserad kryptering när maskinvarukryptering inte är tillgänglig</checkBox>
+        <checkBox refId="FDVRestrictAlgos" noSort="true" defaultChecked="false">Begränsa vilka krypteringsalgoritmer och chiffersviter som tillåts vid maskinvarubaserad kryptering</checkBox>
+        <textBox refId="FDVAllowedAlgos">
+          <label>Begränsa till följande krypteringsalgoritmer eller chiffersviter</label>
+          <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
+      </presentation>
+
+      <presentation id="RDVEDrive_Name">
+        <checkBox refId="RDVUseSW" noSort="true" defaultChecked="true">Använd BitLocker-programvarubaserad kryptering när maskinvarukryptering inte är tillgänglig</checkBox>
+        <checkBox refId="RDVRestrictAlgos" noSort="true" defaultChecked="false">Begränsa vilka krypteringsalgoritmer och chiffersviter som tillåts vid maskinvarubaserad kryptering</checkBox>
+        <textBox refId="RDVAllowedAlgos">
+          <label>Begränsa till följande krypteringsalgoritmer eller chiffersviter</label>
+          <defaultValue>2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42</defaultValue>
+        </textBox>
       </presentation>
 
     </presentationTable>

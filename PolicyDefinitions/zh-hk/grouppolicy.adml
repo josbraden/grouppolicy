@@ -1,496 +1,602 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>enter display name here</displayName>
-  <description>enter description here</description>
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
   <resources>
     <stringTable>
-      <string id="DisableLGPOProcessing">Turn off Local Group Policy objects processing</string>
-      <string id="DisableLGPOProcessing_Help">This policy setting prevents Local Group Policy objects (Local GPOs) from being applied.
+      <string id="ResetDfsClientInfoDuringRefreshPolicy">啟用原則重新整理期間的 AD/DFS 網域控制站同步</string>
+      <string id="ResetDfsClientInfoDuringRefreshPolicy_Help">啟用這個設定會讓群組原則用戶端連線到 DFS 共用的網域控制站，這個網域控制站與 Active Directory 使用的網域控制站相同。
 
-By default, the policy settings in Local GPOs are applied before any domain-based GPO policy settings. These policy settings can apply to both users and the local computer. You can disable the processing and application of all Local GPOs to ensure that only domain-based GPOs are applied.
 
-If you enable this policy setting, the system will not process and apply any Local GPOs.
 
-If you disable or do not configure this policy setting, Local GPOs will continue to be applied.
-
-Note:  For computers joined to a domain, it is strongly recommended that you only configure this policy setting  in domain-based GPOs.  This setting will be ignored on computers that are joined to a workgroup.
 </string>
-      <string id="SyncWaitTime">Startup policy processing wait time</string>
-      <string id="SyncWaitTime_Help">This policy setting specifies how long Group Policy should wait for network availability notifications during startup policy processing. If the startup policy processing is synchronous, the computer is blocked until the network is available or the default wait time is reached. If the startup policy processing is asynchronous, the computer is not blocked and policy processing will occur in the background. In either case, configuring this policy setting overrides any system-computed wait times.
+      <string id="DisableAOACProcessing">關閉群組原則用戶端服務 AOAC 最佳化</string>
+      <string id="DisableAOACProcessing_Help">這個原則設定可以防止閒置時停止群組原則用戶端服務。
 
-If you enable this policy setting, Group Policy will use this administratively configured maximum wait time and override any default or system-computed wait time.
 
-If you disable or do not configure this policy setting, Group Policy will use the default wait time of 30 seconds on computers running Windows Vista operating system. 
+
+</string>
+      <string id="EnableLogonOptimization">設定群組原則快取</string>
+      <string id="EnableLogonOptimization_Help">
+        
+        這個原則設定可讓您設定群組原則快取行為。
+        
+        如果您啟用或未設定這個原則設定，則每個背景處理工作階段之後，群組原則將會快取原則資訊。這個快取會儲存適用的 GPO 及其中包含的設定。當群組原則在同步前景模式下執行時，它會參照這個快取以便執行地更快。讀取快取時，群組原則會嘗試連線登入網域控制站來決定連結速度。當群組原則在背景模式或非同步前景模式下執行時，它會持續下載最新版的原則資訊，並使用頻寬預估來決定低速連結閾值。(請參閱 [設定群組原則低速連結偵測] 原則設定，設定非同步前景行為)。
+        
+        這個原則設定中定義的低速連結值可決定群組原則將等候網域控制站回應多長時間，才將連結速度報告為低速。預設值為 500 毫秒。
+        
+        這個原則設定中定義的逾時值可決定群組原則將等候網域控制站回應多長時間，才決定沒有網路連線能力。這會停止目前的群組原則處理。下次建立與網域控制站的連線時，群組原則將會在背景執行。將這個值設得太高，會讓使用者在開機或登入時等候太久時間。預設值為 5000 毫秒。
+        
+        如果您停用這個原則設定，群組原則用戶端將不會快取適用的 GPO 或 GPO 內包含的設定。當群組原則同步執行時，它會從網路下載最新版的原則，並使用頻寬預估來決定低速連結閾值。(請參閱 [設定群組原則低速連結偵測] 原則設定，設定非同步前景行為)。
+      
+      </string>
+      
+      <string id="EnableLogonOptimizationOnServerSKU">啟用伺服器的群組原則快取</string>
+      <string id="EnableLogonOptimizationOnServerSKU_Help">
+        
+        這個原則設定可讓您設定 Windows Server 電腦上的群組原則快取行為。
+        如果您啟用這個原則設定，則每個背景處理工作階段之後，群組原則將會快取原則資訊。這個快取會儲存適用的 GPO 及其中包含的設定。當群組原則在同步前景模式下執行時，它會參照這個快取以便執行地更快。讀取快取時，群組原則會嘗試連線登入網域控制站來決定連結速度。當群組原則在背景模式或非同步前景模式下執行時，它會持續下載最新版的原則資訊，並使用頻寬預估來決定低速連結閾值。(請參閱 [設定群組原則低速連結偵測] 原則設定，設定非同步前景行為)。
+        這個原則設定中定義的低速連結值可決定群組原則將等候網域控制站回應多長時間，才將連結速度報告為低速。預設值為 500 毫秒。
+        這個原則設定中定義的逾時值可決定群組原則將等候網域控制站回應多長時間，才決定沒有網路連線能力。這會停止目前的群組原則處理。下次建立與網域控制站的連線時，群組原則將會在背景執行。將這個值設得太高，會讓使用者在開機或登入時等候太久時間。預設值為 5000 毫秒。
+        如果您停用或未設定這個原則設定，群組原則用戶端將不會快取適用的 GPO 或 GPO 內包含的設定。當群組原則同步執行時，它會從網路下載最新版的原則，並使用頻寬預估來決定低速連結閾值。(請參閱 [設定群組原則低速連結偵測] 原則設定，設定非同步前景行為)。
+      
+      </string>
+      
+      <string id="LogonScriptDelay">設定登入指令碼延遲</string>
+      <string id="LogonScriptDelay_Help">
+        
+        輸入 “0” 來停用登入指令碼延遲。
+        
+        這個原則設定可讓您設定登入後群組原則用戶端要等候多長時間才執行指令碼。
+        
+        根據預設，群組原則用戶端會等候五分鐘才執行登入指令碼。這種方式有助於防止磁碟爭用以建立有回應的桌面環境。
+        
+        如果您啟用這個原則設定，群組原則將等候一段指定的時間，然後才執行登入指令碼。
+        
+        如果您停用這個原則設定，群組原則將在登入後立即執行指令碼。
+        
+        如果您未設定這個原則設定，群組原則將等候五分鐘，然後才執行登入指令碼。
+      
+      </string>
+      
+     <string id="SlowLinkDefaultForDirectAccess">將直接存取連線設定成快速網路連線</string>
+      <string id="SlowLinkDefaultForDirectAccess_Help">這個原則設定可讓系統管理員定義直接存取連線，將其視為快速網路連線，以便套用和更新群組原則。
+ 
+群組原則偵測直接存取連線的頻寬速度時，這個偵測有時候無法提供有關頻寬速度的任何資訊。如果群組原則偵測到頻寬速度，群組原則將會遵循一般規則，評估直接存取連線是否為快速或低速的網路連線。如果沒有偵測到頻寬速度，群組原則將預設它是低速網路連線。這個原則設定可讓系統管理員選擇是否覆寫低速網路連線的預設值，而不是在無法判定網路頻寬速度的情況下預設使用快速網路連線。
+ 
+注意: 當群組原則偵測到低速網路連線時，群組原則將只會處理設定在低速連結 (低速網路連線) 上處理的用戶端延伸。 
+ 
+如果您啟用這個原則，當群組原則無法判定直接存取上的頻寬速度時，群組原則會將網路連線評估為快速連結，並處理所有用戶端延伸。
+ 
+如果您停用或未設定這個設定，群組原則會將網路連線評估為低速連結，而只處理設定在低速連結上處理的用戶端延伸。
+          
+      
+          
+      </string>
+     <string id="SlowlinkDefaultToAsync">變更群組原則處理，在偵測到低速網路連線時非同步執行。</string>
+      <string id="SlowlinkDefaultToAsync_Help">在偵測到低速網路連線時，這個原則會指示群組原則處理，跳過需要同步處理的任何用戶端延伸處理 (也就是說，電腦啟動和使用者登入期間，電腦是否等候網路完全初始化)。 
+ 
+如果您啟用這個原則設定，則偵測到低速網路連線時，群組原則處理永遠會以非同步方式執行。
+用戶端電腦在啟動和登入時不會等候網路完全初始化。現有使用者會使用快取的認證來登入，
+這樣可以縮短登入時間。在網路可用之後，群組原則會於背景套用。  
+請注意，因為這是背景更新，所以不會套用像是軟體安裝、資料夾重新導向
+及磁碟機對應喜好設定延伸等需要同步處理的延伸。
+ 
+注意: 即使啟用這個原則設定，仍有兩個情況會導致群組原則進行同步處理:
+1 - 用戶端電腦加入網域之後首次啟動電腦。
+2 - 如果已啟用 [永遠在電腦啟動及登入時等待網路啟動] 原則設定。
+ 
+如果您停用或未設定這個原則設定，偵測到低速網路連線對群組原則是否同步或非同步處理並沒有影響。
+
+      
+
+      </string>
+      <string id="DisableLGPOProcessing">關閉本機群組原則物件處理</string>
+      <string id="DisableLGPOProcessing_Help">這個原則設定可以防止套用本機群組原則物件 (本機 GPO)。
+
+根據預設，會先套用本機 GPO 中的原則設定，之後才套用網域 GPO 的原則設定。這些原則設定可同時套用至使用者與本機電腦。您可以停用所有本機 GPO 的處理及套用，以確保只套用網域 GPO。
+
+如果您啟用這個原則設定，系統不會處理及套用任何本機 GPO。
+
+如果您停用或未設定這個原則設定，則會繼續套用本機 GPO。
+
+注意: 若是使用已加入網域的電腦，強烈建議您只在網域 GPO 設定這個原則設定。若電腦已加入工作群組，則會忽略這個原則設定。
+
+</string>
+      <string id="SyncWaitTime">指定啟動原則處理等待時間</string>
+      <string id="SyncWaitTime_Help">這個原則設定會指定在啟動原則處理期間，群組原則應該等待網路可用性通知的時間。如果啟動原則處理採用同步方式，系統會封鎖電腦，直到可以使用網路或達到預設的等待時間為止。如果啟動原則處理採非同步方式，則不會封鎖電腦，而是在背景進行原則處理。無論是哪種情形，設定這個原則設定都會覆寫任何系統計算的等待時間。
+
+如果您啟用這個原則設定，群組原則會使用這個由系統管理員設定的最長等待時間，並覆寫任何預設或系統計算的等待時間。
+
+如果您停用或未設定這個原則設定，群組原則會在執行 Windows Vista 作業系統的電腦上使用預設的等候時間 (30 秒)。
+ 
 </string>
 
-      <string id="AllowX-ForestPolicy-and-RUP">Allow Cross-Forest User Policy and Roaming User Profiles</string>
-      <string id="AllowX-ForestPolicy-and-RUP_Help">Allows user-based policy processing, roaming user profiles, and user object logon scripts for interactive logons across forests.
+      <string id="AllowX-ForestPolicy-and-RUP">允許交互樹系使用者原則和漫遊使用者設定檔</string>
+      <string id="AllowX-ForestPolicy-and-RUP_Help">這個原則設定允許交互樹系互動式登入的使用者型原則處理、漫遊使用者設定檔以及使用者物件登入指令檔。
 
-This setting affects all user accounts that interactively log on to a computer in a different forest when a trust across forests or a two-way forest trust exists.
+跨樹系信任或雙向樹系信任存在時，這個原則設定會影響以互動方式登入其他樹系之電腦的所有使用者帳戶。
 
-When this setting is not configured:
--  No user-based policy settings are applied from the user's forest
--  Users do not receive their roaming profiles; they receive a local profile on the computer from the local forest. A warning message appears to the user, and an event log message (1529) is posted.
--  Loopback Group Policy processing is applied, using the Group Policy objects (GPOs) that are scoped to the computer.
-- An event log message (1109) is posted, stating that loopback was invoked in Replace mode.
+如果您未設定這個原則設定:
+-  不會從使用者樹系套用任何使用者原則設定。
+-  使用者不會接收到自己的漫遊設定檔，而是接收到來自本機樹系電腦上的本機設定檔。會對使用者顯示警告訊息，並會發佈事件日誌訊息 (1529)。
+-  將會使用符合電腦範圍的群組原則物件 (GPO)，套用回送群組原則處理。
+- 將會發佈事件日誌訊息 (1109)，指出已在取代模式中呼叫回送。
 
-When this setting is enabled, the behavior is exactly the same as in Windows 2000: user policy is applied, and a roaming user profile is allowed from the trusted forest.
+如果您啟用這個原則設定，會產生與 Windows 2000 上完全相同的行為: 套用使用者原則，並允許來自受信任樹系的漫遊使用者設定檔。
 
-When this setting is disabled, the behavior is the same as if it is not configured.</string>
-      <string id="CSE_AppMgmt">Software Installation policy processing</string>
-      <string id="CSE_AppMgmt_Help">Determines when software installation policies are updated.
+如果您停用這個原則設定，則會產生與 [尚未設定] 相同的行為。</string>
+      <string id="CSE_AppMgmt">設定軟體安裝原則處理</string>
+      <string id="CSE_AppMgmt_Help">這個原則設定決定更新軟體安裝原則的時間。
 
-This setting affects all policies that use the software installation component of Group Policy, such as policies in Software Settings\Software Installation. You can set software installation policy only for Group Policy objects stored in Active Directory, not for Group Policy objects on the local computer.
+這個原則設定會影響所有使用群組原則之軟體安裝元件的原則設定，例如在 [軟體設定\軟體安裝] 中的原則設定。您可以設定軟體安裝原則只給存放在 Active Directory 的群組原則物件使用，而不給本機電腦中的群組原則物件使用。
 
-This policy overrides customized settings that the program implementing the software installation policy set when it was installed.
+這個原則設定會覆蓋當初安裝程式時，該程式所執行的軟體安裝原則組的自訂設定。
 
-If you enable this setting, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+如果您啟用這個原則設定，您可以使用所提供的核取方塊來變更選項。如果您停用或未設定這個原則設定，則不會影響系統。
 
-The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
+不論是否透過低速網路連線 (例如電話線)，[允許在低速網路連線之間處理] 選項會更新原則。透過低速網路連線更新可能會導致明顯延遲。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
-      <string id="CSE_DiskQuota">Disk Quota policy processing</string>
-      <string id="CSE_DiskQuota_Help">Determines when disk quota policies are updated.
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則設定執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則設定，例如重新套用您想要的原則，以免使用者變更了此設定。</string>
+      <string id="CSE_DiskQuota">設定磁碟配額原則處理</string>
+      <string id="CSE_DiskQuota_Help">這個原則設定決定更新磁碟配額原則的時間。
 
-This setting affects all policies that use the disk quota component of Group Policy, such as those in Computer Configuration\Administrative Templates\System\Disk Quotas.
+這個原則設定會影響所有使用群組原則之磁碟配額元件的原則，例如在 [電腦設定\系統管理範本\系統\磁碟配額] 中的原則。
 
-It overrides customized settings that the program implementing the disk quota policy set when it was installed.
+這個原則設定會覆蓋當初安裝程式時，該程式所執行的磁碟配額原則組的自訂設定。
 
-If you enable this setting, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+如果您啟用這個原則設定，您可以使用所提供的核取方塊來變更選項。如果您停用或未設定這個原則設定，則不會影響系統。
 
-The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
+不論是否透過低速網路連線 (例如電話線)，[允許在低速網路連線之間處理] 選項會更新原則。透過低速網路連線更新可能會導致明顯延遲。
 
-The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
+[在定期的背景處理期間不要套用] 選項會禁止系統在電腦使用中，對受到影響的原則進行背景更新。停用背景更新後，要等到下一個使用者登入或重新啟動系統時，原則變更才會生效。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
-      <string id="CSE_EFSRecovery">EFS recovery policy processing</string>
-      <string id="CSE_EFSRecovery_Help">Determines when encryption policies are updated.
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則，例如重新套用您想要的設定，以免使用者變更了此設定。</string>
+      <string id="CSE_EFSRecovery">設定 EFS 修復原則處理</string>
+      <string id="CSE_EFSRecovery_Help">這個原則設定決定更新加密原則的時間。
 
-This setting affects all policies that use the encryption component of Group Policy, such as policies related to encryption in Windows Settings\Security Settings.
+這個原則設定會影響所有使用群組原則之加密元件的原則，例如在 [Windows 設定\安全性設定] 中加密的相關原則。
 
-It overrides customized settings that the program implementing the encryption policy set when it was installed.
+它會覆蓋當初安裝程式時，該程式所執行的加密原則組的自訂設定。
 
-If you enable this setting, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+如果您啟用這個原則設定，您可以使用所提供的核取方塊來變更選項。如果您停用或未設定這個原則設定，則不會影響系統。
 
-The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
+不論是否透過低速網路連線 (例如電話線)，[允許在低速網路連線之間處理] 選項會更新原則。透過低速網路連線更新可能會導致明顯延遲。
 
-The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
+[在定期的背景處理期間不要套用] 選項會禁止系統在電腦使用中，對受到影響的原則進行背景更新。停用背景更新後，要等到下一個使用者登入或重新啟動系統時，原則變更才會生效。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
-      <string id="CSE_FolderRedirection">Folder Redirection policy processing</string>
-      <string id="CSE_FolderRedirection_Help">Determines when folder redirection policies are updated.
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則，例如重新套用您想要的設定，以免使用者變更了此設定。</string>
+      <string id="CSE_FolderRedirection">設定資料夾重新導向原則處理</string>
+      <string id="CSE_FolderRedirection_Help">這個原則設定決定更新資料夾重新導向原則的時間。
 
-This setting affects all policies that use the folder redirection component of Group Policy, such as those in WindowsSettings\Folder Redirection. You can only set folder redirection policy for Group Policy objects, stored in Active Directory, not for Group Policy objects on the local computer.
+這個原則設定會影響所有使用群組原則之資料夾重新導向元件的原則，例如在 [Windows 設定\資料夾重新導向] 中的原則。您可以把資料夾重新導向原則只設定給存放在 Active Directory 的群組原則物件使用，而不設定給本機電腦中的群組原則物件。
 
-This setting overrides customized settings that the program implementing the folder redirection policy set when it was installed.
+這個原則設定會覆蓋當初安裝程式時，該程式所執行的軟體安裝原則設定組的自訂設定。
 
-If you enable this setting, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+如果您啟用這個原則設定，您可以使用所提供的核取方塊來變更選項。如果您停用或未設定這個原則設定，則不會影響系統。
 
-The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
+不論是否透過低速網路連線 (例如電話線)，[允許在低速網路連線之間處理] 選項會更新原則。透過低速網路連線更新可能會導致明顯延遲。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
-      <string id="CSE_IEM">Internet Explorer Maintenance policy processing</string>
-      <string id="CSE_IEM_Help">Determines when Internet Explorer Maintenance policies are updated.
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則，例如重新套用您想要的設定，以免使用者變更了此設定。</string>
+      <string id="CSE_IEM">設定 Internet Explorer 維護原則處理</string>
+      <string id="CSE_IEM_Help">這個原則設定決定更新 Internet Explorer 維護原則的時間。
 
-This setting affects all policies that use the Internet Explorer Maintenance component of Group Policy, such as those in Windows Settings\Internet Explorer Maintenance.
+這個原則設定會影響所有使用群組原則之 Internet Explorer 維護元件的原則，例如在 [Windows 設定\Internet Explorer 維護] 中的原則。
 
-It overrides customized settings that the program implementing the Internet Explorer Maintenance policy set when it was installed.
+這個原則設定會覆蓋當初安裝程式時，該程式所執行的 Internet Explorer 維護原則組的自訂設定。
 
-If you enable this setting, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+如果您啟用這個原則設定，您可以使用所提供的核取方塊來變更選項。如果您停用或未設定這個原則設定，則不會影響系統。
 
-The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
+不論是否透過低速網路連線 (例如電話線)，[允許在低速網路連線之間處理] 選項會更新原則。透過低速網路連線更新可能會導致明顯延遲。
 
-The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
+[在定期的背景處理期間不要套用] 選項會禁止系統在電腦使用中，對受到影響的原則進行背景更新。停用背景更新後，要等到下一個使用者登入或重新啟動系統時，原則變更才會生效。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
-      <string id="CSE_IPSecurity">IP Security policy processing</string>
-      <string id="CSE_IPSecurity_Help">Determines when IP security policies are updated.
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則，例如重新套用您想要的原則設定，以免使用者變更了此設定。</string>
+      <string id="CSE_IPSecurity">設定 IP 安全性原則處理</string>
+      <string id="CSE_IPSecurity_Help">這個原則設定決定更新 IP 安全性原則的時間。
 
-This setting affects all policies that use the IP security component of Group Policy, such as policies in Computer Configuration\Windows Settings\Security Settings\IP Security Policies on Local Machine.
+這個原則設定會影響所有使用群組原則之 IP 安全性元件的原則，例如在 [電腦設定\Windows 設定\安全性設定\在本機電腦上的 IP 安全性原則] 中的原則。
 
-It overrides customized settings that the program implementing the IP security policy set when it was installed.
+這個原則設定會覆蓋當初安裝程式時，該程式所執行的 IP 安全性原則組的自訂設定。
 
-If you enable this setting, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+如果您啟用這個原則設定，您可以使用所提供的核取方塊來變更選項。如果您停用或未設定這個原則設定，則不會影響系統。
 
-The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
+不論是否透過低速網路連線 (例如電話線)，[允許在低速網路連線之間處理] 選項會更新原則。透過低速網路連線更新可能會導致明顯延遲。
 
-The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
+[在定期的背景處理期間不要套用] 選項會禁止系統在電腦使用中，對受到影響的原則進行背景更新。停用背景更新後，要等到下一個使用者登入或重新啟動系統時，原則變更才會生效。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
-      <string id="CSE_Registry">Registry policy processing</string>
-      <string id="CSE_Registry_Help">Determines when registry policies are updated.
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則，例如重新套用您想要的原則設定，以免使用者變更了此設定。</string>
+      <string id="CSE_Registry">設定登錄原則處理</string>
+      <string id="CSE_Registry_Help">這個原則設定決定更新登錄原則的時間。
 
-This setting affects all policies in the Administrative Templates folder and any other policies that store values in the registry.
+這個原則設定會影響 [系統管理範本] 資料夾中的所有原則，以及在登錄中儲存值的任何其他原則。它會覆蓋當初安裝程式時，該程式所執行的登錄原則組的自訂設定。
 
-It overrides customized settings that the program implementing a registry policy set when it was installed.
+如果您啟用這個原則設定，您可以使用所提供的核取方塊來變更選項。如果您停用或未設定這個原則設定，則不會影響系統。
 
-If you enable this setting, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+[在定期的背景處理期間不要套用] 選項會禁止系統在電腦使用中，對受到影響的原則進行背景更新。停用背景更新後，要等到下一個使用者登入或重新啟動系統時，原則變更才會生效。
 
-The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則，例如重新套用您想要的原則設定，以免使用者變更了此設定。</string>
+      <string id="CSE_Scripts">設定指令碼原則處理</string>
+      <string id="CSE_Scripts_Help">這個原則設定決定更新指派共用指令碼原則的時間。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
-      <string id="CSE_Scripts">Scripts policy processing</string>
-      <string id="CSE_Scripts_Help">Determines when policies that assign shared scripts are updated.
+這個原則設定會影響所有使用群組原則之指令碼元件的原則，例如在 [Windows 設定\指令碼] 中的原則。它會覆蓋當初安裝程式時，該程式所執行的指令碼原則組的自訂設定。
 
-This setting affects all policies that use the scripts component of Group Policy, such as those in WindowsSettings\Scripts.
+如果您啟用這個原則設定，您可以使用所提供的核取方塊來變更選項。如果停用或未設定這個設定，則不會影響系統。
 
-It overrides customized settings that the program implementing the scripts policy set when it was installed.
+不論是否透過低速網路連線 (例如電話線)，[允許在低速網路連線之間處理] 選項會更新原則。透過低速網路連線更新可能會導致明顯延遲。
 
-If you enable this policy, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+[在定期的背景處理期間不要套用] 選項會禁止系統在電腦使用中，對受到影響的原則進行背景更新。停用背景更新後，要等到下一個使用者登入或重新啟動系統時，原則變更才會生效。
 
-The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則，例如重新套用您想要的原則設定，以免使用者變更了此設定。</string>
+      <string id="CSE_Security">設定安全性原則處理</string>
+      <string id="CSE_Security_Help">這個原則設定決定更新安全性原則的時間。
 
-The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
+這個原則設定會影響所有使用群組原則之安全性元件的原則，例如在 [Windows 設定\安全性設定] 中的原則。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
-      <string id="CSE_Security">Security policy processing</string>
-      <string id="CSE_Security_Help">Determines when security policies are updated.
+這個原則設定會覆蓋當初安裝程式時，該程式所執行的安全性原則組的自訂設定。
 
-This setting affects all policies that use the security component of Group Policy, such as those in Windows Settings\Security Settings.
+如果您啟用這個原則設定，您可以使用所提供的核取方塊來變更選項。如果您停用或未設定這個原則設定，則不會影響系統。
 
-It overrides customized settings that the program implementing the security policy set when it was installed.
+[在定期的背景處理期間不要套用] 選項會禁止系統在電腦使用中，對受到影響的原則進行背景更新。停用背景更新後，要等到下一個使用者登入或重新啟動系統時，原則變更才會生效。
 
-If you enable this setting, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則，例如重新套用您想要的原則設定，以免使用者變更了此設定。</string>
+      <string id="CSE_Wireless">設定無線原則處理</string>
+      <string id="CSE_Wireless_Help">這個原則設定決定更新指派無線網路設定原則的時間。
 
-The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
+這個原則設定會影響所有使用群組原則之無線網路元件的原則，例如在 [Windows 設定\無線網路原則] 中的原則。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they be updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
-      <string id="CSE_Wireless">Wireless policy processing</string>
-      <string id="CSE_Wireless_Help">Determines when policies that assign wireless network settings are updated.
+它會覆蓋當初安裝程式時，該程式所執行的無線網路自訂設定。
 
-This setting affects all policies that use the wireless network component of Group Policy, such as those in WindowsSettings\Wireless Network Policies.
+如果您啟用這項原則，可以使用所提供的核取方塊來變更選項。
 
-It overrides customized settings that the program implementing the wireless network set when it was installed.
+如果您停用或未設定這個設定，它在系統上就不會產生作用。
 
-If you enable this policy, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+不論是否透過低速網路連線 (例如電話線)，[允許在低速網路連線之間處理] 選項會更新原則。透過低速網路連線更新可能會導致明顯延遲。
 
-The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
+[在定期的背景處理期間不要套用] 選項會禁止系統在電腦使用中，對受到影響的原則進行背景更新。停用背景更新後，要等到下一個使用者登入或重新啟動系統時，原則變更才會生效。
 
-The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則，例如重新套用您想要的設定，以免使用者變更了此設定。</string>
+      <string id="CSE_Wired">設定有線原則處理</string>
+      <string id="CSE_Wired_Help">這個原則設定決定更新指派有線網路設定原則的時間。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
-      <string id="CSE_Wired">Wired policy processing</string>
-      <string id="CSE_Wired_Help">Determines when policies that assign wired network settings are updated.
+這個原則設定將會影響所有使用群組原則之有線網路元件的原則，例如在 [Windows 設定\有線網路原則] 中的原則。
 
-This setting affects all policies that use the wired network component of Group Policy, such as those in Windows Settings\Wired Network Policies.
+它會覆蓋當初安裝程式時，該程式所執行的有線網路自訂設定。
 
-It overrides customized settings that the program implementing the wired network set when it was installed.
+如果您啟用這項原則，可以使用所提供的核取方塊來變更選項。
 
-If you enable this policy, you can use the check boxes provided to change the options. If you disable this setting or do not configure it, it has no effect on the system.
+如果您停用或未設定這個設定，它在系統上就不會產生作用。
 
-The "Allow processing across a slow network connection" option updates the policies even when the update is being transmitted across a slow network connection, such as a telephone line. Updates across slow connections can cause significant delays.
+不論是否透過低速網路連線 (例如電話線)，[允許在低速網路連線之間處理] 選項會更新原則。透過低速網路連線更新可能會導致明顯延遲。
 
-The "Do not apply during periodic background processing" option prevents the system from updating affected policies in the background while the computer is in use. When background updates are disabled, policy changes will not take effect until the next user logon or system restart.
+[在定期的背景處理期間不要套用] 選項會禁止系統在電腦使用中，對受到影響的原則進行背景更新。停用背景更新後，要等到下一個使用者登入或重新啟動系統時，原則變更才會生效。
 
-The "Process even if the Group Policy objects have not changed" option updates and reapplies the policies even if the policies have not changed. Many policy implementations specify that they are updated only when changed. However, you might want to update unchanged policies, such as reapplying a desired setting in case a user has changed it.</string>
+不論原則是否已變更，[即使群組原則物件尚未變更也進行處理] 選項會更新並重新套用原則。許多原則執行方式會指定只有在變更後，才進行更新。不過，您可能會想要更新未變更的原則，例如重新套用您想要的設定，以免使用者變更了此設定。</string>
 
-      <string id="DenyRsopToInteractiveUser">Disallow Interactive Users from generating Resultant Set of Policy data</string>
-      <string id="DenyRsopToInteractiveUser_Help">This setting controls the ability of users to view their Resultant Set of Policy (RSoP) data.
+      <string id="DenyRsopToInteractiveUser">決定互動式使用者是否可以產生原則結果組資料</string>
+      <string id="DenyRsopToInteractiveUser_Help">這個原則設定控制使用者檢視其原則結果組 (RSoP) 資料的能力。
 
-By default, interactively logged on users can view their own Resultant Set of Policy (RSoP) data.
+根據預設，以互動方式登入的使用者可以檢視自己的原則結果組 (RSoP) 資料。
 
-If this setting is enabled, interactive users cannot generate RSoP data.
+如果您啟用這個原則設定，互動式使用者無法產生 RSoP 資料。
 
-If this setting is not configured or disabled, interactive Users can generate RSoP.
+如果您停用或未設定這個原則設定，互動式使用者可以產生 RSoP。
 
-Note: This setting does not affect administrators. If this setting is enabled or disabled, by default, administrators can view RSoP data.
+注意: 這個原則設定對系統管理員沒有影響。如果您啟用或停用這個原則設定，系統管理員預設可以檢視 RSoP 資料。
 
-Note: To view RSoP data on a client computer, use the RSoP snap-in for the Microsoft Management Console. You can launch the RSoP snap-in from the command line by typing RSOP.msc
+注意: 若要檢視用戶端電腦上的 RSoP 資料，請使用 Microsoft Management Console 的 [RSoP] 嵌入式管理單元。在命令列輸入 RSOP.msc，即可啟動 RSoP 嵌入式管理單元
 
-Note: This setting exists as both a User Configuration and Computer Configuration setting.
+注意: 這個原則設定同時存在於 [使用者設定] 與 [電腦設定] 設定中。
 
-Also, see the "Turn off Resultant set of Policy Logging" setting in Computer Configuration\Administrative Templates\System\GroupPolicy.</string>
-      <string id="DisableAutoADMUpdate">Turn off automatic update of ADM files</string>
-      <string id="DisableAutoADMUpdate_Help">Prevents the system from updating the Administrative Templates source files automatically when you open the Group Policy Object Editor.  Administrators may want to use this if they are concerned about the amount of space used on the system volume of a DC.
+另請參閱 [電腦設定\系統管理範本\系統\群組原則] 中的 [關閉原則結果組記錄]。</string>
+      <string id="DisableAutoADMUpdate">關閉 ADM 檔案的自動更新</string>
+      <string id="DisableAutoADMUpdate_Help">防止系統在群組原則物件編輯器開啟時，自動更新系統管理範本的來源檔案。 如果系統管理員擔心 DC 之系統磁碟區的使用空間容量，可以使用此功能。
 
-By default, when you start the Group Policy Object Editor, a timestamp comparison is performed on the source files in the local %SYSTEMROOT%\inf directory and the source files stored in the GPO.  If the local files are newer, they are copied into the GPO.
+根據預設，群組原則物件編輯器啟動時，會在本機的 %SYSTEMROOT%\inf 目錄的來源檔案及 GPO 中儲存的來源檔案中，進行時間戳記的比較。 如果本機檔案較新，則會將檔案複製到 GPO 中。
 
-Changing the status of this setting to Enabled will keep any source files from copying to the GPO.
+若將此設定的狀態變更為 [已啟用]，將會阻止複製任何來源檔案到 GPO。
 
-Changing the status of this setting to Disabled will enforce the default behavior.  Files will always be copied to the GPO if they have a later timestamp.
+若將此設定的狀態變更為 [已停用]，將會強制執行預設操作。 若檔案的時間戳記較晚，永遠將檔案會複製到 GPO。
 
-NOTE: If the Computer Configuration policy setting, "Always use local ADM files for the Group Policy Object Editor" is enabled, the state of this setting is ignored and always treated as Enabled.</string>
-      <string id="DisableBackgroundPolicy">Turn off background refresh of Group Policy</string>
-      <string id="DisableBackgroundPolicy_Help">Prevents Group Policy from being updated while the computer is in use. This setting applies to Group Policy for computers, users, and domain controllers.
+注意: 如果 [電腦設定] 原則設定已啟用 [永遠使用本機 ADM 檔案於群組原則物件編輯器] 選項，將會忽略此設定的狀態，並將其永遠視為 [已啟用]。</string>
+      <string id="DisableBackgroundPolicy">關閉群組原則背景更新</string>
+      <string id="DisableBackgroundPolicy_Help">當電腦在使用中時，這個原則設定禁止群組原則進行更新。這個原則設定會套用到電腦、使用者和網域控制站的群組原則。
 
-If you enable this setting, the system waits until the current user logs off the system before updating the computer and user settings.
+如果您啟用這個原則設定，系統會等到目前的使用者登出系統後，才更新電腦及使用者設定。
 
-If you disable this setting, updates can be applied while users are working. The frequency of updates is determined by the "Group Policy refresh interval for computers" and "Group Policy refresh interval for users" settings.
+如果您停用或未設定這個原則設定，使用者在工作時即可套用更新。更新頻率是由 [設定電腦的群組原則更新間隔] 及 [設定使用者的群組原則更新間隔] 原則設定來決定。
 
-Note: If you make changes to this setting, you must restart your computer for it to take effect.</string>
-      <string id="DisableUsersFromMachGP">Remove users ability to invoke machine policy refresh</string>
-      <string id="DisableUsersFromMachGP_Help">This setting allows you to control a user's ability to invoke a computer policy refresh.
+注意: 若變更這個原則設定，您必須重新啟動電腦，設定才能生效。</string>
+      <string id="DisableUsersFromMachGP">不讓使用者啟動電腦原則更新</string>
+      <string id="DisableUsersFromMachGP_Help">這個原則設定可以讓您控制使用者呼叫電腦原則更新的能力。
 
-If you enable this setting, users may not invoke a refresh of computer policy. Computer policy will still be applied at startup or when an official policy refresh occurs.
+如果您啟用這個原則設定，使用者就無法呼叫電腦原則更新。在電腦啟動或進行正式原則更新時，仍將套用電腦原則。
 
-If you disable or do not configure this setting, the default behavior applies. By default, computer policy is applied when the computer starts up. It also applies at a specified refresh interval or when manually invoked by the user.
+如果您停用或未設定這個原則設定，則會套用預設行為。根據預設，電腦啟動時會套用電腦原則。指定的更新間隔屆滿或使用者手動呼叫時也會套用。
 
-Note: This setting only applies to non-administrators. Administrators can still invoke a refresh of computer policy at any time, no matter how this policy is configured.
+注意: 這個原則設定只適用於非系統管理員。無論這個原則設定的設定為何，系統管理員仍可隨時呼叫電腦原則更新。
 
-Also, see the "Group Policy refresh interval for computers" setting to change the policy refresh interval.
+另請參閱 [設定電腦的群組原則更新間隔] 原則設定來變更原則更新間隔。
 
-Note: If you make changes to this setting, you must restart your computer for it to take effect.</string>
-      <string id="EnforcePoliciesOnly">Enforce Show Policies Only</string>
-      <string id="EnforcePoliciesOnly_Help">Prevents administrators from viewing or using Group Policy preferences.
+注意: 若變更這個原則設定，您必須重新啟動電腦，設定才能生效。</string>
+      <string id="EnforcePoliciesOnly">只強制顯示原則</string>
+      <string id="EnforcePoliciesOnly_Help">這個原則設定防止系統管理員檢視或使用群組原則喜好設定。
 
-A Group Policy administration (.adm) file can contain both true settings and preferences. True settings, which are fully supported by Group Policy, must use registry entries in the Software\Policies or Software\Microsoft\Windows\CurrentVersion\Policies registry subkeys. Preferences, which are not fully supported, use registry entries in other subkeys.
+群組原則系統管理檔案 (.adm) 可同時包含 "true" (真) 設定及喜好設定。群組原則完全支援的 "true" (真) 設定必須使用 Software\Policies 或 Software\Microsoft\Windows\CurrentVersion\Policies 登錄子機碼中的登錄項目。至於群組原則未完全支援的喜好設定，則使用其他子機碼中的登錄項目。
 
-If you enable this setting, the "Show Policies Only" command is turned on, and administrators cannot turn it off. As a result, Group Policy Object Editor displays only true settings; preferences do not appear.
+如果您啟用這個原則設定，將會開啟「只顯示原則」命令，且系統管理員無法關閉該命令。因此，群組原則物件編輯器只會顯示 "true" (真) 設定，而不會顯示喜好設定。
 
-If you disable this setting or do not configure it, the "Show Policies Only" command is turned on by default, but administrators can view preferences by turning off the "Show Policies Only" command.
+如果您停用或未設定這個原則設定，預設狀況下會開啟「只顯示原則」命令，但是系統管理員可以關閉「只顯示原則」命令來檢視喜好設定。
 
-Note: To find the "Show Policies Only" command, in Group Policy Object Editor, click the Administrative Templates folder (either one), right-click the same folder, and then point to "View."
+注意: 若要尋找「只顯示原則」命令，請在群組原則物件編輯器中，按一下 [系統管理範本] 資料夾 (任一個)，再以滑鼠右鍵按一下同一個資料夾，接著指向 [檢視]。
 
-In Group Policy Object Editor, preferences have a red icon to distinguish them from true settings, which have a blue icon.</string>
-      <string id="GPDCOptionAny">Use any available domain controller</string>
-      <string id="GPDCOptionInherit">Inherit from Active Directory Snap-ins</string>
-      <string id="GPDCOptionPDC">Use the Primary Domain Controller</string>
-      <string id="GPDCOptions">Group Policy domain controller selection</string>
-      <string id="GPDCOptions_Help">Determines which domain controller the Group Policy Object Editor snap-in uses.
+在群組原則物件編輯器中，喜好設定的圖示為紅色，以便與藍色圖示的 "true" (真) 設定區別。</string>
+      <string id="GPDCOptionAny">使用任何可用的網域控制站</string>
+      <string id="GPDCOptionInherit">從 Active Directory 嵌入式管理單元繼承</string>
+      <string id="GPDCOptionPDC">使用網域主控站</string>
+      <string id="GPDCOptions">設定選取群組原則網域控制站</string>
+      <string id="GPDCOptions_Help">這個原則設定決定群組原則物件編輯器嵌入式管理單元使用的網域控制站。
 
---  "Use the Primary Domain Controller" indicates that the Group Policy Object Editor snap-in reads and writes changes to the domain controller designated as the PDC Operations Master for the domain.
+如果您啟用這個設定，可以根據下列這些選項使用的網域控制站:
 
---  "Inherit from Active Directory Snap-ins" indicates that the Group Policy Object Editor snap-in reads and writes changes to the domain controller that Active Directory Users and Computers or Active Directory Sites and Services snap-ins use.
+[使用網域主控站] 表示群組原則物件編輯器嵌入式管理單元會讀取變更，並將其寫入到指定為網域之 PDC 操作主機的網域控制站。
 
---  "Use any available domain controller" indicates that the Group Policy Object Editor snap-in can read and write changes to any available domain controller.
+[從 Active Directory 嵌入式管理單元繼承] 表示群組原則物件編輯器嵌入式管理單元會讀取變更，並將其寫入到 [Active Directory 使用者和電腦] 或 [Active Directory 站台及服務] 嵌入式管理單元使用的網域控制站。
 
-If you disable this setting or do not configure it, the Group Policy Object Editor snap-in uses the domain controller designated as the PDC Operations Master for the domain.
+[使用任何可用的網域控制站] 表示群組原則物件編輯器嵌入式管理單元會讀取變更，並將其寫入到任何可用的網域控制站。
 
-Note: To change the PDC Operations Master for a domain, in Active Directory Users and Computers, right-click a domain, and then click "Operations Masters."</string>
-      <string id="GPTransferRate">Group Policy slow link detection</string>
-      <string id="GPTransferRate_Help">Defines a slow connection for purposes of applying and updating Group Policy.
+如果您停用或未設定這個設定，群組原則物件編輯器嵌入式管理單元會使用指定為網域之 PDC 操作主機的網域控制站。
 
-If the rate at which data is transferred from the domain controller providing a policy update to the computers in this group is slower than the rate specified by this setting, the system considers the connection to be slow.
+注意: 如果要變更網域的 PDC 操作主機，請在 [Active Directory 使用者和電腦] 中，以滑鼠右鍵按一下網域，然後按一下 [操作主機]。</string>
+      <string id="GPTransferRate">設定群組原則低速連結偵測</string>
+      <string id="GPTransferRate_Help">這個原則設定定義用來套用及更新群組原則的低速連線。
 
-The system's response to a slow policy connection varies among policies. The program implementing the policy can specify the response to a slow link. Also, the policy processing settings in this folder lets you override the programs' specified responses to slow links.
+如果從提供原則更新之網域控制站傳送資料到此群組電腦的速率，低於設定中指定的速率，系統就認定連線是低速。
 
-To use this setting, in the "Connection speed" box, type a decimal number between 0 and 4,294,967,200, indicating a transfer rate in kilobits per second. Any connection slower than this rate is considered to be slow. If you type 0, all connections are considered to be fast.
+系統對低速原則連線的回應視原則而有不同。執行原則的程式可以指定對低速連結的回應。另外，此資料夾中的原則處理設定可讓您覆寫程式對低速連結的指定回應。
 
-If you disable this setting or do not configure it, the system uses the default value of 500 kilobits per second.
+如果您啟用這個設定，可以在 [連線速度] 方塊中，輸入介於 0 與 4,294,967,200 之間的十進位數字，以每秒的 KB 表示傳送速率。凡是低於此速度的連線都會認定是低速。如果輸入 0，則所有連線均會認定是高速。
 
-This setting appears in the Computer Configuration and User Configuration folders. The setting in Computer Configuration defines a slow link for policies in the Computer Configuration folder. The setting in User Configuration defines a slow link for settings in the User Configuration folder.
+如果您停用或未設定這個設定，系統會使用每秒 500 KB 的預設值。
 
-Also, see the "Do not detect slow network connections" and related policies in Computer Configuration\Administrative Templates\System\User Profile. Note: If the profile server has IP connectivity, the connection speed setting is used. If the profile server does not have IP connectivity, the SMB timing is used.</string>
-      <string id="GroupPolicyRefreshRate">Group Policy refresh interval for computers</string>
-      <string id="GroupPolicyRefreshRate_Help">Specifies how often Group Policy for computers is updated while the computer is in use (in the background). This setting specifies a background update rate only for Group Policies in the Computer Configuration folder.
+這個設定會出現在 [電腦設定] 及 [使用者設定] 資料夾中。電腦設定中的設定會定義 [電腦設定] 資料夾中原則的低速連結。電腦設定中的設定會定義 [使用者設定] 資料夾中原則的低速連結。
 
-In addition to background updates, Group Policy for the computer is always updated when the system starts.
+另請參閱 [不要偵測低速網路連線] 和 [電腦設定\系統管理範本\系統\使用者設定檔] 中的相關原則。注意: 如果設定檔伺服器具有 IP 連線，將會使用連線速度設定。如果設定檔伺服器沒有 IP 連線，則會使用 SMB 計時。</string>
+      <string id="GroupPolicyRefreshRate">設定電腦的群組原則更新間隔</string>
+      <string id="GroupPolicyRefreshRate_Help">這個原則設定指定電腦在使用中時，電腦的群組原則在背景更新的頻率。此設定只指定 [電腦設定] 資料夾中群組原則的背景更新速率。
 
-By default, computer Group Policy is updated in the background every 90 minutes, with a random offset of 0 to 30 minutes.
+除了背景更新外，當系統啟動時永遠會更新電腦的群組原則。
 
-You can specify an update rate from 0 to 64,800 minutes (45 days). If you select 0 minutes, the computer tries to update Group Policy every 7 seconds. However, because updates might interfere with users' work and increase network traffic, very short update intervals are not appropriate for most installations.
+根據預設，每 90 分鐘會在背景更新電腦的群組原則，隨機位移為 0 到 30 分鐘。
 
-If you disable this setting, Group Policy is updated every 90 minutes (the default). To specify that Group Policy should never be updated while the computer is in use, select the "Turn off background refresh of Group Policy" policy.
+如果您啟用這個設定，可以指定從 0 到 64,800 分鐘 (45 天) 的更新速率。若您選取 0 分鐘，電腦會試著每 7 秒更新一次群組原則。不過，由於更新可能干擾使用者的工作並增加網路流量，因此對大部分安裝的更新間隔不宜過短。
 
-The Group Policy refresh interval for computers policy also lets you specify how much the actual update interval varies. To prevent clients with the same update interval from requesting updates simultaneously, the system varies the update interval for each client by a random number of minutes. The number you type in the random time box sets the upper limit for the range of variance. For example, if you type 30 minutes, the system selects a variance of 0 to 30 minutes. Typing a large number establishes a broad range and makes it less likely that client requests overlap. However, updates might be delayed significantly.
+若停用此設定，將會每 90 分鐘 (預設值) 更新一次群組原則。如果要指定電腦在使用中時永不更新群組原則，請選取 [關閉群組原則背景更新] 原則。
 
-This setting establishes the update rate for computer Group Policy. To set an update rate for user policies, use the "Group Policy refresh interval for users" setting (located in User Configuration\Administrative Templates\System\Group Policy).
+電腦原則的設定群組原則更新間隔也可讓您指定實際更新間隔變化的幅度。如果要避免具有相同更新間隔的用戶端同時要求更新，系統會以隨機分鐘數錯開每個用戶端設定的更新間隔。您在隨機時間方塊中輸入的數字會設定變化幅度的上限。例如，若輸入 30 分鐘，系統會選取的變化幅度為 0 到 30 分鐘。輸入較大的數字可擴大變化幅度，使用戶端的要求較不可能重疊。不過，這樣可能會大幅延遲更新。
 
-This setting is only used when the "Turn off background refresh of Group Policy" setting is not enabled.
+此設定會建立電腦的群組原則更新速率。如果要設定使用者原則的更新速率，請使用 [設定使用者的群組原則更新間隔] (位於 [使用者設定\系統管理範本\系統\群組原則] 中)。
 
-Note: Consider notifying users that their policy is updated periodically so that they recognize the signs of a policy update. When Group Policy is updated, the Windows desktop is refreshed; it flickers briefly and closes open menus. Also, restrictions imposed by Group Policies, such as those that limit the programs users can run, might interfere with tasks in progress.</string>
-      <string id="GroupPolicyRefreshRateDC">Group Policy refresh interval for domain controllers</string>
-      <string id="GroupPolicyRefreshRateDC_Help">Specifies how often Group Policy is updated on domain controllers while they are running (in the background). The updates specified by this setting occur in addition to updates performed when the system starts.
+只有在未啟用 [關閉群組原則背景更新] 設定時才會使用此設定。
 
-By default, Group Policy on the domain controllers is updated every five minutes.
+注意: 建議您通知使用者他們的原則會定期更新，如此他們才能辨識原則更新的信號。更新群組原則時，會重新整理 Windows 桌面，它會短暫閃爍並關閉開啟的功能表。另外，群組原則加入的限制 (如限制使用者可以執行的程式) 可能會干擾到正在進行的工作。</string>
+      <string id="GroupPolicyRefreshRateDC">設定網域控制站群組原則更新的間隔</string>
+      <string id="GroupPolicyRefreshRateDC_Help">這個原則設定指定網域控制站正在執行時，其中群組原則在背景更新的頻率。系統啟動時除了會執行更新外，也會進行此設定指定的更新。
 
-You can specify an update rate from 0 to 64,800 minutes (45 days). If you select 0 minutes, the domain controller tries to update Group Policy every 7 seconds. However, because updates might interfere with users' work and increase network traffic, very short update intervals are not appropriate for most installations.
+根據預設，網域控制站上的群組原則每 5 分鐘會更新一次。
 
-If you disable this setting, the domain controller updates Group Policy every 5 minutes (the default). To specify that Group Policies for users should never be updated while the computer is in use, select the "Turn off background refresh of Group Policy" setting.
+如果您啟用這個設定，可以指定從 0 到 64,800 分鐘 (45 天) 的更新速率。若您選取 0 分鐘，網域控制站會試著每 7 秒更新一次群組原則。不過，由於更新可能干擾使用者的工作並增加網路流量，因此對大部分安裝的更新間隔不宜過短。
 
-This setting also lets you specify how much the actual update interval varies. To prevent domain controllers with the same update interval from requesting updates simultaneously, the system varies the update interval for each controller by a random number of minutes. The number you type in the random time box sets the upper limit for the range of variance. For example, if you type 30 minutes, the system selects a variance of 0 to 30 minutes. Typing a large number establishes a broad range and makes it less likely that update requests overlap. However, updates might be delayed significantly.
+如果您停用或未設定這個設定，網域控制站將會每 5 分鐘 (預設值) 更新一次群組原則。如果要指定電腦在使用中時永不更新使用者的群組原則，請選取 [關閉群組原則背景更新] 設定。
 
-Note: This setting is used only when you are establishing policy for a domain, site, organizational unit (OU), or customized group. If you are establishing policy for a local computer only, the system ignores this setting.</string>
-      <string id="GroupPolicyRefreshRateUser">Group Policy refresh interval for users</string>
-      <string id="GroupPolicyRefreshRateUser_Help">Specifies how often Group Policy for users is updated while the computer is in use (in the background). This setting specifies a background update rate only for the Group Policies in the User Configuration folder.
+此設定還可讓您指定實際更新間隔變化的幅度。如果要避免具有相同更新間隔的網域控制站同時要求更新，系統會以隨機分鐘數錯開每個控制站設定的更新間隔。您在隨機時間方塊中輸入的數字會設定變化幅度的上限。例如，若輸入 30 分鐘，系統會選取的變化幅度為 0 到 30 分鐘。輸入較大的數字可擴大變化幅度，使更新的要求較不可能重疊。不過，這樣可能會大幅延遲更新。
 
-In addition to background updates, Group Policy for users is always updated when users log on.
+注意: 只有當您要建立網域、網站、組織單位 (OU) 或自訂群組的原則時，才會使用此設定。若您只是要建立本機電腦的原則，系統會忽略此設定。</string>
+      <string id="GroupPolicyRefreshRateUser">設定使用者的群組原則更新間隔</string>
+      <string id="GroupPolicyRefreshRateUser_Help">這個原則設定指定電腦在使用中時，使用者的群組原則在背景更新的頻率。此設定只指定 [使用者設定] 資料夾中群組原則的背景更新速率。
 
-By default, user Group Policy is updated in the background every 90 minutes, with a random offset of 0 to 30 minutes.
+除了背景更新外，在使用者登入時永遠會更新使用者的群組原則。
 
-You can specify an update rate from 0 to 64,800 minutes (45 days). If you select 0 minutes, the computer tries to update user Group Policy every 7 seconds. However, because updates might interfere with users' work and increase network traffic, very short update intervals are not appropriate for most installations.
+根據預設，每 90 分鐘會在背景更新使用者的群組原則，隨機位移為 0 到 30 分鐘。
 
-If you disable this setting, user Group Policy is updated every 90 minutes (the default). To specify that Group Policy for users should never be updated while the computer is in use, select the "Turn off background refresh of Group Policy" setting.
+如果您啟用這個設定，可以指定從 0 到 64,800 分鐘 (45 天) 的更新速率。若您選取 0 分鐘，電腦會試著每 7 秒更新一次使用者群組原則。不過，由於更新可能干擾使用者的工作並增加網路流量，因此對大部分安裝的更新間隔不宜過短。
 
-This setting also lets you specify how much the actual update interval varies. To prevent clients with the same update interval from requesting updates simultaneously, the system varies the update interval for each client by a random number of minutes. The number you type in the random time box sets the upper limit for the range of variance. For example, if you type 30 minutes, the system selects a variance of 0 to 30 minutes. Typing a large number establishes a broad range and makes it less likely that client requests overlap. However, updates might be delayed significantly.
+若停用此設定，將會每 90 分鐘 (預設值) 更新一次使用者群組原則。如果要指定電腦在使用中時永不更新使用者的群組原則，請選取 [關閉群組原則背景更新] 設定。
 
-Important: If the "Turn off background refresh of Group Policy" setting is enabled, this setting is ignored.
+此設定還可讓您指定實際更新間隔變化的幅度。如果要避免具有相同更新間隔的用戶端同時要求更新，系統會以隨機分鐘數錯開每個用戶端設定的更新間隔。您在隨機時間方塊中輸入的數字會設定變化幅度的上限。例如，若輸入 30 分鐘，系統會選取的變化幅度為 0 到 30 分鐘。輸入較大的數字可擴大變化幅度，使用戶端的要求較不可能重疊。不過，這樣可能會大幅延遲更新。
 
-Note: This setting establishes the update rate for user Group Policies. To set an update rate for computer Group Policies, use the "Group Policy refresh interval for computers" setting (located in Computer Configuration\Administrative Templates\System\Group Policy).
+重要事項: 如果已啟用 [關閉群組原則背景更新] 設定，將會略過此設定。
 
-Tip: Consider notifying users that their policy is updated periodically so that they recognize the signs of a policy update. When Group Policy is updated, the Windows desktop is refreshed; it flickers briefly and closes open menus. Also, restrictions imposed by Group Policies, such as those that limit the programs a user can run, might interfere with tasks in progress.</string>
-      <string id="NewGPODisplayName">Default name for new Group Policy objects</string>
-      <string id="NewGPODisplayName_Help">Sets the default display name for new Group Policy objects.
+注意: 此設定會建立使用者群組原則的更新速率。如果要設定電腦群組原則的更新速率，請使用 [電腦的群組原則更新間隔] (位於 [電腦設定\系統管理範本\系統\群組原則] 中)。
 
-This setting allows you to specify the default name for new Group Policy objects created from policy compliant Group Policy Management tools including the Group Policy tab in Active Directory tools and the GPO browser.
+提示: 建議您通知使用者他們的原則會定期更新，如此他們才能辨識原則更新的信號。更新群組原則時，會重新整理 Windows 桌面，它會短暫閃爍並關閉開啟的功能表。另外，群組原則加入的限制 (如限制使用者可以執行的程式) 可能會干擾到正在進行的工作。</string>
+      <string id="NewGPODisplayName">設定新群組原則物件的預設名稱</string>
+      <string id="NewGPODisplayName_Help">這個原則設定可以讓您設定新群組原則物件的預設顯示名稱。
 
-The display name may contain environment variables and can be a maximum of 255 characters long.
+此設定可讓您指定新群組原則物件的預設名稱，這些物件是從原則相容的群組原則管理工具 (包括 Active Directory 工具和 GPO 瀏覽器中的 [群組原則] 索引標籤) 建立的。
 
-If this setting is Disabled or Not Configured, the default display name of New Group Policy object is used.</string>
-      <string id="NewGPOLinksDisabled">Create new Group Policy object links disabled by default</string>
-      <string id="NewGPOLinksDisabled_Help">Creates new Group Policy object links in the disabled state.
+顯示名稱可以包含環境變數，最長可以有 255 個字元。
 
-This setting creates all new Group Policy object links in the disabled state by default. After you configure and test the new object links by using a policy compliant Group Policy management tool such as  Active Directory Users and Computers or Active Directory Sites and Services, you can enable the object links for use on the system.
+如果此設定為 [已停用] 或 [尚未設定]，則會使用新群組原則物件的預設顯示名稱。</string>
+      <string id="NewGPOLinksDisabled">將新群組原則物件連結的預設建立為已停用</string>
+      <string id="NewGPOLinksDisabled_Help">這個原則設定可以讓您將新群組原則物件連結建立為已停用狀態。
 
-If you disable this setting or do not configure it, new Group Policy object links are created in the enabled state. If you do not want them to be effective until they are configured and tested, you must disable the object link.</string>
-      <string id="OnlyUseLocalAdminFiles">Always use local ADM files for Group Policy Object Editor</string>
-      <string id="OnlyUseLocalAdminFiles_Help">Always use local ADM files for the Group Policy snap-in.
+如果您啟用這個設定，可以將所有新群組原則物件連結的預設建立為已停用狀態。使用原則相容的群組原則管理工具 (如 [Active Directory 使用者和電腦] 和 [Active Directory 站台及服務]) 來設定和測試新的物件連結後，即可啟用物件連結在系統上使用。
 
-By default, when you edit a Group Policy object (GPO) using the Group Policy Object Editor snap-in, the ADM files are loaded from that GPO into the Group Policy Object Editor snap-in. This enables you to use the same version of the ADM files that were used to create the GPO while editing this GPO.
+如果您停用或未設定這個設定，新建立的群組原則物件連結會是已啟用狀態。如果希望物件連結經設定並測試後才生效，您必須先停用此物件連結。</string>
+      <string id="OnlyUseLocalAdminFiles">永遠使用本機 ADM 檔案於群組原則物件編輯器</string>
+      <string id="OnlyUseLocalAdminFiles_Help">這個原則設定可以讓您永遠使用本機 ADM 檔案於群組原則嵌入式管理單元。
 
-This leads to the following behavior:
+根據預設，當您使用群組原則物件編輯器嵌入式管理單元來編輯群組原則物件 (GPO) 時，會將該 GPO 中的 ADM 檔案載入至群組原則物件編輯器嵌入式管理單元中。這樣會讓您在編輯此 GPO 時，就使用當初建立 GPO 所用的 ADM 檔案版本。
 
--  If you originally created the GPO with, for example, an English system, the GPO contains English ADM files.
+這種做法會造成下列行為:
 
--  If you later edit the GPO from a different-language system, you get the English ADM files as they were in the GPO.
+-  若最初是使用英文系統建立 GPO，則 GPO 會包含英文版的 ADM 檔案。
 
-You can change this behavior by using this setting.
+-  若稍後從不同的語言系統編輯 GPO，則會得到與 GPO 中相同的英文版 ADM 檔案。
 
-If you enable this setting, the Group Policy Object Editor snap-in always uses local ADM files in your %windir%\inf directory when editing GPOs.
+您可以透過此設定變更這個行為。
 
-This leads to the following behavior:
+如果您啟用這個設定，編輯 GPO 時，群組原則物件編輯器嵌入式管理單元永遠會使用 %windir%\inf 目錄中的本機 ADM 檔案。
 
--  If you had originally created the GPO with an English system, and then you edit the GPO with a Japanese system, the Group Policy Object Editor snap-in uses the local Japanese ADM files, and you see the text in Japanese under Administrative Templates.
+這種做法會造成下列行為:
 
-If you disable or do not configure this setting, the Group Policy Object Editor snap-in always loads all ADM files from the actual GPO.
+-  若最初是使用英文系統建立 GPO，接著使用日文系統編輯 GPO，則群組原則物件編輯器嵌入式管理單元會使用本機的日文版 ADM 檔案，而您在 [系統管理範本] 下看到的文字會是日文。
 
-Note: If the ADMs that you require are not all available locally in your %windir%\inf directory, you might not be able to see all the settings that have been configured in the GPO that you are editing.</string>
-      <string id="PolicyPolicies">Group Policy</string>
-      <string id="RSoPLogging">Turn off Resultant Set of Policy logging</string>
-      <string id="RSoPLogging_Help">This setting allows you to enable or disable Resultant Set of Policy (RSoP) logging on a client computer.
+若您停用或未設定此設定，群組原則物件編輯器嵌入式管理單元永遠從真正的 GPO 載入所有的 ADM 檔案。
 
-RSoP logs information on Group Policy settings that have been applied to the client. This information includes details such as which Group Policy objects (GPO) were applied, where they came from, and the client-side extension settings that were included.
+注意: 如果所需的 ADM 檔案無法全部從本機的 %windir%\inf 目錄取得，您可能會無法看到自己正在編輯的 GPO 中已做的所有設定。</string>
+      <string id="PolicyPolicies">群組原則</string>
+      <string id="RSoPLogging">關閉原則結果組記錄</string>
+      <string id="RSoPLogging_Help">此設定可讓您啟用或停用用戶端電腦上的原則結果組 (RSoP) 記錄。
 
-If you enable this setting, RSoP logging is turned off.
+RSoP 記錄已套用到用戶端電腦的原則群組設定資訊。這些資訊中的詳細資料包含已經套用的群組原則物件 (GPO)、物件的來源以及其中包含的用戶端延伸設定。
 
-If you disable or do not configure this setting, RSoP logging is turned on. By default, RSoP logging is always on.
+如果您啟用這個設定，將關閉 RSoP 記錄。
 
-Note: To view the RSoP information logged on a client computer, you can use the RSoP snap-in in the Microsoft Management Console (MMC).</string>
-      <string id="UserPolicyMode">User Group Policy loopback processing mode</string>
-      <string id="UserPolicyMode_Help">Applies alternate user settings when a user logs on to a computer affected by this setting.
+如果您停用或未設定這個設定，則會開啟 RSoP 記錄。根據預設，RSoP 記錄永遠是開啟狀態。
 
-This setting directs the system to apply the set of Group Policy objects for the computer to any user who logs on to a computer affected by this setting. It is intended for special-use computers, such as those in public places, laboratories, and classrooms, where you must modify the user setting based on the computer that is being used.
+注意: 若要檢視用戶端電腦上記錄的 RSoP 資訊，請使用 Microsoft Management Console (MMC) 中的 RSoP 嵌入式管理單元。</string>
+      <string id="UserPolicyMode">設定使用者群組原則回送處理模式</string>
+      <string id="UserPolicyMode_Help">這個原則設定指示系統將電腦的群組原則物件組套用到任何登入受這個設定影響的電腦使用者。這是專門針對有特殊用途的電腦，例如公共場合、實驗室和教室的電腦，在這些地方，您必須根據正在使用的電腦來修改使用者設定。
 
-By default, the user's Group Policy objects determine which user settings apply. If this setting is enabled, then, when a user logs on to this computer, the computer's Group Policy objects determine which set of Group Policy objects applies.
+根據預設，使用者的群組原則物件會決定要套用哪些使用者設定。如果您啟用這個設定，那麼使用者登入這部電腦時，則是電腦的群組原則物件決定要套用哪一組群組原則物件。
 
-To use this setting, select one of the following modes from the Mode box:
+如果您啟用這個設定，可以從 [模式] 方塊選取下列其中一種模式:
 
---   "Replace" indicates that the user settings defined in the computer's Group Policy objects replace the user settings normally applied to the user.
+[取代] 表示電腦群組原則物件中定義的使用者設定會取代一般套用到使用者的使用者設定。
 
---   "Merge" indicates that the user settings defined in the computer's Group Policy objects and the user settings normally applied to the user are combined. If the settings conflict, the user settings in the computer's Group Policy objects take precedence over the user's normal settings.
+[合併] 表示會結合使用電腦群組原則物件中定義的使用者設定與一般套用到使用者的使用者設定。如果這些設定產生衝突，則電腦群組原則物件中的使用者設定優先於一般的使用者設定。
 
-If you disable this setting or do not configure it, the user's Group Policy objects determines which user settings apply.
+如果您停用或未設定這個設定，則使用者的群組原則物件會決定要套用哪些使用者設定。
 
-Note: This setting is effective only when both the computer account and the user account are in Windows 2000 domains.</string>
-      <string id="UserPolicyMode_Merge">Merge</string>
-      <string id="UserPolicyMode_Replace">Replace</string>
+注意: 只在電腦帳戶及使用者帳戶都位於至少 Windows 2000 網域時，此設定才有效。</string>
+      <string id="UserPolicyMode_Merge">合併</string>
+      <string id="UserPolicyMode_Replace">取代</string>
+      <string id="CorpConnSyncWaitTime">指定原則處理等待工作地點連線的時間</string>
+      <string id="CorpConnSyncWaitTime_Help">這個原則設定會指定在啟動原則處理期間，群組原則應該等待工作地點連線通知的時間。如果啟動原則處理採用同步方式，系統會封鎖電腦，直到可以使用工作地點連線或達到預設的等待時間為止。如果啟動原則處理採非同步方式，則不會封鎖電腦，而是在背景進行原則處理。無論是哪種情形，設定這個原則設定都會覆寫任何系統計算的等待時間。
+
+如果您啟用這個原則設定，群組原則會使用這個由系統管理員設定的工作地點連線最長等待時間，並覆寫任何預設或系統計算的等待時間。
+
+如果您停用或未設定這個原則設定，群組原則會在執行 Windows 7 以上版本的 Windows 作業系統電腦上，設定工作地點連線使用預設的等候時間 (60 秒)。</string>
     </stringTable>
     <presentationTable>
+      <presentation id="SyncModeThreshold">
+        <decimalTextBox refId="SyncModeSlowLinkThreshold1" defaultValue="500">低速連結值:[數字欄位] 毫秒</decimalTextBox>
+        <decimalTextBox refId="SyncModeNoDCThreshold1" defaultValue="5000">逾時值: [數字欄位] 毫秒</decimalTextBox>
+      </presentation>
+      <presentation id="LogonScriptDelay">
+        <decimalTextBox refId="AsyncScriptDelay1" defaultValue="5">分鐘:</decimalTextBox>
+      </presentation>
       <presentation id="SyncWaitTime">
-        <decimalTextBox refId="SyncWaitTime_Minutes" defaultValue="120">Amount of time to wait (in seconds):</decimalTextBox>
+        <decimalTextBox refId="SyncWaitTime_Minutes" defaultValue="120">等待時間 (秒):</decimalTextBox>
       </presentation>
       <presentation id="CSE_AppMgmt">
-        <checkBox refId="CSE_SLOWLINK1">Allow processing across a slow network connection</checkBox>
-        <checkBox refId="CSE_NOCHANGES1">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_SLOWLINK1">允許在低速網路連線之間處理</checkBox>
+        <checkBox refId="CSE_NOCHANGES1">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="CSE_DiskQuota">
-        <checkBox refId="CSE_SLOWLINK2">Allow processing across a slow network connection</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND2">Do not apply during periodic background processing</checkBox>
-        <checkBox refId="CSE_NOCHANGES2">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_SLOWLINK2">允許在低速網路連線之間處理</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND2">在定期的背景處理期間不要套用</checkBox>
+        <checkBox refId="CSE_NOCHANGES2">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="CSE_EFSRecovery">
-        <checkBox refId="CSE_SLOWLINK3">Allow processing across a slow network connection</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND3">Do not apply during periodic background processing</checkBox>
-        <checkBox refId="CSE_NOCHANGES3">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_SLOWLINK3">允許在低速網路連線之間處理</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND3">在定期的背景處理期間不要套用</checkBox>
+        <checkBox refId="CSE_NOCHANGES3">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="CSE_FolderRedirection">
-        <checkBox refId="CSE_SLOWLINK4">Allow processing across a slow network connection</checkBox>
-        <checkBox refId="CSE_NOCHANGES4">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_SLOWLINK4">允許在低速網路連線之間處理</checkBox>
+        <checkBox refId="CSE_NOCHANGES4">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="CSE_IEM">
-        <checkBox refId="CSE_SLOWLINK5">Allow processing across a slow network connection</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND5">Do not apply during periodic background processing</checkBox>
-        <checkBox refId="CSE_NOCHANGES5">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_SLOWLINK5">允許在低速網路連線之間處理</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND5">在定期的背景處理期間不要套用</checkBox>
+        <checkBox refId="CSE_NOCHANGES5">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="CSE_IPSecurity">
-        <checkBox refId="CSE_SLOWLINK6">Allow processing across a slow network connection</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND6">Do not apply during periodic background processing</checkBox>
-        <checkBox refId="CSE_NOCHANGES6">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_SLOWLINK6">允許在低速網路連線之間處理</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND6">在定期的背景處理期間不要套用</checkBox>
+        <checkBox refId="CSE_NOCHANGES6">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="CSE_Registry">
-        <checkBox refId="CSE_NOBACKGROUND10">Do not apply during periodic background processing</checkBox>
-        <checkBox refId="CSE_NOCHANGES10">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND10">在定期的背景處理期間不要套用</checkBox>
+        <checkBox refId="CSE_NOCHANGES10">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="CSE_Scripts">
-        <checkBox refId="CSE_SLOWLINK7">Allow processing across a slow network connection</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND7">Do not apply during periodic background processing</checkBox>
-        <checkBox refId="CSE_NOCHANGES7">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_SLOWLINK7">允許在低速網路連線之間處理</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND7">在定期的背景處理期間不要套用</checkBox>
+        <checkBox refId="CSE_NOCHANGES7">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="CSE_Security">
-        <checkBox refId="CSE_NOBACKGROUND11">Do not apply during periodic background processing</checkBox>
-        <checkBox refId="CSE_NOCHANGES11">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND11">在定期的背景處理期間不要套用</checkBox>
+        <checkBox refId="CSE_NOCHANGES11">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="CSE_Wired">
-        <checkBox refId="CSE_SLOWLINK8">Allow processing across a slow network connection</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND8">Do not apply during periodic background processing</checkBox>
-        <checkBox refId="CSE_NOCHANGES8">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_SLOWLINK8">允許在低速網路連線之間處理</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND8">在定期的背景處理期間不要套用</checkBox>
+        <checkBox refId="CSE_NOCHANGES8">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="CSE_Wireless">
-        <checkBox refId="CSE_SLOWLINK9">Allow processing across a slow network connection</checkBox>
-        <checkBox refId="CSE_NOBACKGROUND9">Do not apply during periodic background processing</checkBox>
-        <checkBox refId="CSE_NOCHANGES9">Process even if the Group Policy objects have not changed</checkBox>
+        <checkBox refId="CSE_SLOWLINK9">允許在低速網路連線之間處理</checkBox>
+        <checkBox refId="CSE_NOBACKGROUND9">在定期的背景處理期間不要套用</checkBox>
+        <checkBox refId="CSE_NOCHANGES9">即使群組原則物件尚未變更也進行處理</checkBox>
       </presentation>
       <presentation id="GPDCOptions">
-        <dropdownList refId="GPDCOptionsDesc" noSort="true" defaultItem="0">When Group Policy Object Editor is selecting a domain controller to use, it should:</dropdownList>
+        <dropdownList refId="GPDCOptionsDesc" noSort="true" defaultItem="0">當群組原則物件編輯器要選取使用的網域控制站時，應該要:</dropdownList>
       </presentation>
       <presentation id="GPTransferRate_1">
-        <decimalTextBox refId="TransferRateOp1" defaultValue="500" spinStep="100">Connection speed (Kbps):</decimalTextBox>
+        <decimalTextBox refId="TransferRateOp1" defaultValue="500" spinStep="100">連線速度 (Kbps):</decimalTextBox>
         <text> </text>
-        <text>Enter 0 to disable slow link detection.</text>
+        <text>輸入 0 來停用低速連結偵測。</text>
       </presentation>
       <presentation id="GPTransferRate_2">
-        <decimalTextBox refId="TransferRateOp2" defaultValue="500" spinStep="100">Connection speed (Kbps):</decimalTextBox>
+        <decimalTextBox refId="TransferRateOp2" defaultValue="500" spinStep="100">連線速度 (Kbps):</decimalTextBox>
         <text> </text>
-        <text>Enter 0 to disable slow link detection.</text>
+        <text>輸入 0 來停用低速連結偵測。</text>
+        <checkBox refId="CSE_3G_DEFAULT_TO_SLOWLINK_COMPUTER">永遠將 WWAN 連線視為低速連結</checkBox>
       </presentation>
       <presentation id="GroupPolicyRefreshRate">
-        <text>This setting allows you to customize how often Group Policy is applied</text>
-        <text>to computers. The range is 0 to 64800 minutes (45 days).</text>
-        <decimalTextBox refId="GPRefreshRate1" defaultValue="90">Minutes:</decimalTextBox>
+        <text>這個設定可讓您自訂將群組原則套用</text>
+        <text>至電腦的頻率。範圍從 0 到 44640 分鐘 (31 天)。</text>
+        <decimalTextBox refId="GPRefreshRate1" defaultValue="90">分鐘:</decimalTextBox>
         <text> </text>
-        <text>This is a random time added to the refresh interval to prevent</text>
-        <text>all clients from requesting Group Policy at the same time.</text>
-        <text>The range is 0 to 1440 minutes (24 hours)</text>
-        <decimalTextBox refId="GPRefreshRateOffset1" defaultValue="30">Minutes:</decimalTextBox>
+        <text>這個隨機時間會新增至更新間隔，以避免</text>
+        <text>全部的用戶端在同一時間要求群組原則。</text>
+        <text>範圍從 0 到 1440 分鐘 (24 小時)</text>
+        <decimalTextBox refId="GPRefreshRateOffset1" defaultValue="30">分鐘:</decimalTextBox>
       </presentation>
       <presentation id="GroupPolicyRefreshRateDC">
-        <text>This setting allows you to customize how often Group Policy is applied</text>
-        <text>to domain controllers. The range is 0 to 64800 minutes (45 days).</text>
-        <decimalTextBox refId="GPRefreshRate2" defaultValue="5">Minutes:</decimalTextBox>
+        <text>這個設定可讓您自訂將群組原則套用</text>
+        <text>至網域控制站的頻率。範圍從 0 到 44640 分鐘 (31 天)。</text>
+        <decimalTextBox refId="GPRefreshRate2" defaultValue="5">分鐘:</decimalTextBox>
         <text> </text>
-        <text>This is a random time added to the refresh interval to prevent</text>
-        <text>all clients from requesting Group Policy at the same time.</text>
-        <text>The range is 0 to 1440 minutes (24 hours)</text>
-        <decimalTextBox refId="GPRefreshRateOffset2" defaultValue="0">Minutes:</decimalTextBox>
+        <text>這個隨機時間會新增至更新間隔，以避免</text>
+        <text>全部的用戶端在同一時間要求群組原則。</text>
+        <text>範圍從 0 到 1440 分鐘 (24 小時)</text>
+        <decimalTextBox refId="GPRefreshRateOffset2" defaultValue="0">分鐘:</decimalTextBox>
       </presentation>
       <presentation id="GroupPolicyRefreshRateUser">
-        <text>This setting allows you to customize how often Group Policy is applied</text>
-        <text>to users. The range is 0 to 64800 minutes (45 days).</text>
-        <decimalTextBox refId="GPRefreshRate3" defaultValue="90">Minutes:</decimalTextBox>
+        <text>這個設定可讓您自訂將群組原則套用</text>
+        <text>至使用者的頻率。範圍從 0 到 44640 分鐘 (31 天)。</text>
+        <decimalTextBox refId="GPRefreshRate3" defaultValue="90">分鐘:</decimalTextBox>
         <text> </text>
-        <text>This is a random time added to the refresh interval to prevent</text>
-        <text>all clients from requesting Group Policy at the same time.</text>
-        <text>The range is 0 to 1440 minutes (24 hours)</text>
-        <decimalTextBox refId="GPRefreshRateOffset3" defaultValue="30">Minutes:</decimalTextBox>
+        <text>這個隨機時間會新增至更新間隔，以避免</text>
+        <text>全部的用戶端在同一時間要求群組原則。</text>
+        <text>範圍從 0 到 1440 分鐘 (24 小時)</text>
+        <decimalTextBox refId="GPRefreshRateOffset3" defaultValue="30">分鐘:</decimalTextBox>
       </presentation>
       <presentation id="NewGPODisplayName">
         <textBox refId="NewGPODisplayNameHeading">
-          <label>GPO Name:</label>
+          <label>GPO 名稱:</label>
         </textBox>
       </presentation>
       <presentation id="UserPolicyMode">
-        <dropdownList refId="UserPolicyModeOp" noSort="true" defaultItem="1">Mode:</dropdownList>
+        <dropdownList refId="UserPolicyModeOp" noSort="true" defaultItem="1">模式:</dropdownList>
+      </presentation>
+      <presentation id="CorpConnSyncWaitTime">
+        <decimalTextBox refId="CorpConnSyncWaitTime_Seconds" defaultValue="60">等待時間 (秒):</decimalTextBox>
       </presentation>
     </presentationTable>
   </resources>

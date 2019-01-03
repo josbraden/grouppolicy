@@ -6,28 +6,37 @@
   <resources>
     <stringTable>
       <string id="AxInstSv">Service d’installation ActiveX</string>
-      <string id="AxISURLZonePolicies">Stratégie d'installation ActiveX pour les sites faisant partie des zones de confiance</string>        
-      <string id="AxISURLZonePolicies_explain">Ce paramètre de stratégie permet de gérer l'installation des contrôles ActiveX pour les sites qui figurent dans une zone de confiance. Lorsqu'il est activé, les contrôles ActiveX sont installés selon le paramétrage défini par cette stratégie. 
-      
-Lorsqu'il est désactivé ou qu'il n'est pas configuré, les contrôles ActiveX demandent toujours conformation à l'utilisateur avant l'installation. 
+      <string id="AxISURLZonePolicies">Définir la stratégie d’installation ActiveX pour les sites faisant partie des zones de confiance</string>        
+      <string id="AxISURLZonePolicies_explain">Ce paramètre de stratégie permet de gérer l’installation des contrôles ActiveX pour les sites qui figurent dans une zone de confiance. 
 
-Si le site de confiance utilise le protocole HTTPS, ce paramètre de stratégie permet également de contrôler la façon dont le service de l'installateur ActiveX répond aux erreurs de certificat. Par défaut, toutes les connexions HTTPS doivent fournir un certificat de serveur répondant à tous les critères de validation. Si vous savez qu'un site de confiance comporte une erreur de certificat mais que vous voulez tout de même l'approuver, vous pouvez sélectionner les erreurs de certificat que vous souhaitez ignorer.
+Si vous activez ce paramètre de stratégie, les contrôles ActiveX sont installés selon le paramétrage défini par ce paramètre de stratégie. 
+      
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, les contrôles ActiveX demandent confirmation à l’utilisateur avant l’installation. 
+
+Si le site de confiance utilise le protocole HTTPS, ce paramètre de stratégie permet également de contrôler la façon dont le service d’installation ActiveX répond aux erreurs de certificat. Par défaut, toutes les connexions HTTPS doivent fournir un certificat de serveur répondant à tous les critères de validation. Si vous savez qu’un site de confiance présente une erreur de certificat mais que vous voulez tout de même l’approuver, vous pouvez sélectionner les erreurs de certificat que vous souhaitez ignorer. 
     
-Remarque : ce paramètre s'applique à tous les sites figurant dans des zones de confiance.
+Remarque : ce paramètre de stratégie s’applique à tous les sites figurant dans des zones de confiance.
+
 </string>
       <string id="TrustedZoneDisabled">Ne pas installer</string>
-      <string id="TrustedZonePrompt">Demander à l'utilisateur</string>
+      <string id="TrustedZonePrompt">Demander à l’utilisateur</string>
       <string id="TrustedZoneSilentInstall">Installer de manière silencieuse</string>
       <string id="ApprovedActiveXInstallSites">Sites d’installation approuvés pour les contrôles ActiveX</string>
-      <string id="ApprovedActiveXInstallSites_explain">Le service d’installation ActiveX permet de déléguer l’installation de contrôles ActiveX par ordinateur à un utilisateur standard de l’entreprise.
+      <string id="ApprovedActiveXInstallSites_explain">Ce paramètre de stratégie détermine quels sites d’installation ActiveX les utilisateurs standard de votre organisation peuvent utiliser pour installer des contrôles ActiveX sur leur ordinateur. Lorsque ce paramètre est activé, l’administrateur peut créer une liste des sites d’installation ActiveX approuvés spécifiés par l’URL hôte. 
 
-La liste des sites d’installation ActiveX approuvés contient l’URL hôte et les paramètres de stratégie de chaque URL hôte. Les caractères génériques ne sont pas pris en charge.</string>
+Si vous activez ce paramètre, l’administrateur peut créer une liste des sites d’installation ActiveX approuvés spécifiés par l’URL hôte. 
+      
+Si vous désactivez ou ne configurez pas ce paramètre de stratégie, les contrôles ActiveX invitent l’utilisateur à spécifier des informations d’identification d’administration avant l’installation. 
+
+Remarque : vous ne pouvez pas utiliser de caractères génériques pour indiquer des URL hôtes.
+
+</string>
     </stringTable>
     <presentationTable>
       <presentation id="AxISURLZonePolicies">
-        <dropdownList refId="InstallTrustedOCX" noSort="true" defaultItem="2">Stratégie d'installation des contrôles ActiveX signés par un éditeur approuvé</dropdownList>
-        <dropdownList refId="InstallSignedOCX" noSort="true" defaultItem="1">Stratégie d'installation des contrôles ActiveX signés</dropdownList>
-        <dropdownList refId="InstallUnSignedOCX" noSort="true" defaultItem="0">Stratégie d'installation des contrôles ActiveX non signés</dropdownList>
+        <dropdownList refId="InstallTrustedOCX" noSort="true" defaultItem="2">Stratégie d’installation des contrôles ActiveX signés par un éditeur approuvé</dropdownList>
+        <dropdownList refId="InstallSignedOCX" noSort="true" defaultItem="1">Stratégie d’installation des contrôles ActiveX signés</dropdownList>
+        <dropdownList refId="InstallUnSignedOCX" noSort="true" defaultItem="0">Stratégie d’installation des contrôles ActiveX non signés</dropdownList>
         <text>Autoriser la connexion aux sites de confiance comportant les erreurs de certificat suivantes.</text>
         <checkBox refId="IgnoreUnknownCA" defaultChecked="false">Autorité de certification inconnue</checkBox>
         <checkBox refId="IgnoreInvalidCN" defaultChecked="false">Nom de certificat non valide</checkBox>
@@ -38,7 +47,7 @@ La liste des sites d’installation ActiveX approuvés contient l’URL hôte et
       <presentation id="ApprovedActiveXInstallSites">
         <listBox refId="ApprovedActiveXInstallSiteslist">URL hôtes</listBox>
         <text>Contient la stratégie de l’URL hôte.</text>
-        <text>Par exemple, </text>
+        <text>Par exemple,  </text>
         <text>NomHôte : http://activex.microsoft.com</text>
         <text>Valeur : 2,1,0,0</text>
         <text>La valeur de chaque URL hôte comporte quatre paramètres au format CSV.</text>
@@ -48,7 +57,7 @@ La liste des sites d’installation ActiveX approuvés contient l’URL hôte et
         <text>0 : le contrôle ActiveX ne sera pas installé</text>
         <text>1 : invite l’utilisateur à installer le contrôle ActiveX</text>
         <text>2 : le contrôle ActiveX sera installé de manière silencieuse</text>
-        <text>Les contrôles signés par les certificats de la banque d'éditeurs approuvés seront installés de manière silencieuse </text>
+        <text>Les contrôles signés par les certificats de la banque d’éditeurs approuvés seront installés de manière silencieuse  </text>
         <text>L’installation silencieuse des contrôles non signés n’est pas prise en charge</text>
         <text></text>
         <text>La valeur la plus à droite de la stratégie est un indicateur à masque de bits</text>

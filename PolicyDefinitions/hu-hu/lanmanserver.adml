@@ -8,34 +8,72 @@
       <string id="Cat_LanmanServer">Lanman kiszolgáló</string>
       <string id="Lbl_FollowShare">A kivonat-közzététel engedélyezése csak olyan megosztott mappákra, amelyeken a BranchCache engedélyezve van</string>
       <string id="Lbl_DisableOnAllShares">A kivonat-közzététel tiltása az összes megosztott mappán</string>
-      <string id="Lbl_EnableOnAllShares">Kivonat-közzététel engedélyezése minden megosztott mappára</string>
+      <string id="Lbl_EnableOnAllShares">A kivonat-közzététel engedélyezése az összes megosztott mappán</string>
       <string id="Pol_HashPublication">Kivonat-közzététel - BranchCache</string>
-      <string id="Pol_HashPublication_Help">Ez a házirend lehetővé teszi, hogy egy kivonat-létrehozó szolgáltatás kivonatokat készítsen a megosztott mappákban tárolt adatokhoz, és ezeket a kivonatokat elérhetővé tegye olyan ügyfélszámítógépek számára, amelyeken a BranchCache engedélyezve van. A kivonatok a fájlok matematikailag származtatott digitális ujjlenyomatai, melyek egyértelműen azonosítják a fájlok tartalmát. Ezek a digitális ujjlenyomatok rendkívül kicsik, így a Windows úgy tudja összehasonlítani a fájlokat, hogy nem foglal le jelentős mennyiséget a nagytávolságú hálózat (WAN) sávszélességéből.
+      <string id="Pol_HashPublication_Help">Ez a házirend-beállítás határozza meg, hogy a kivonat-létrehozó szolgáltatások készítsenek-e kivonatokat (más néven tartalominformációkat) a megosztott mappákban tárolt adatokról. Ezt a házirend-beállítást olyan kiszolgáló számítógépeken kell alkalmazni, amelyek Fájlszolgáltatások szerepkörrel rendelkeznek, és amelyeken a Fájlkiszolgáló, valamint a BranchCache hálózati fájlokhoz szerepkör-szolgáltatás is telepítve van.
 
-Egy fiókirodában lévő ügyfélszámítógép egy fájl kivonatát a WAN-kapcsolaton keresztül akkor kaphatja meg, ha az összes következő feltétel teljesül:      
-1) A felhasználó rendelkezik a fájl hozzáféréséhez szükséges engedélyekkel.
-2) A BranchCache engedélyezve van az ügyfélszámítógépen.
-3) A kivonat-közzététel engedélyezve van azon a megosztott mappán, amelyhez az ügyfélszámítógép hozzáfér. 
+Házirend konfigurálása
 
-Ha az ügyfélszámítógép megkapja a kivonatot, a számítógép ezután meg tudja keresni a fájl azonos verzióját a fiókiroda többi számítógépének gyorsítótárában. Ha a Windows megtalálja a fájl azonos verzióját a fiókirodában, akkor az ügyfélszámítógép a helyi gyorsítótárban lévő másolatot tölti le, nem pedig a WAN-kapcsolaton keresztül magát a fájlt. 
+A következő lehetőségek közül választhat:
 
-Ha ezt a házirendet úgy állítja be, hogy „A kivonat-közzététel engedélyezése csak olyan megosztott mappákra, amelyeken a BranchCache engedélyezve van” (érték=0), akkor a rendszer csak olyan megosztott mappákra hozza létre a kivonatokat, amelyeken a BranchCache engedélyezve van. A rendszer ezekhez a megosztott mappákhoz akkor hoz létre kivonatokat, ha a következő események valamelyike fordul elő:
-1) Egy olyan megosztási mappában lévő fájlhoz férnek hozzá, amelyen a BranchCache szolgáltatást engedélyezte egy bekapcsolt BranchCache-támogatással rendelkező ügyfél.
-2) Egy rendszergazda manuálisan hoz létre kivonatokat a Hashgen parancssori eszközzel.
- 
-Ha a házirendben „A kivonat-közzététel tiltása az összes megosztott mappán” (érték=1) beállítást konfigurálja, akkor a kivonatokat az olyan számítógépek soha nem hozzák létre illetve nem biztosítják, amelyeken ez a házirend van alkalmazva.
- 
-Ha a házirendben a „Kivonat-közzététel engedélyezése az összes megosztott mappára” (érték=2) beállítást konfigurálja, akkor a rendszer a kivonatokat a kiszolgáló összes megosztási mappájához létrehozza, ha a következő események egyike lép fel: 
-1) A kiszolgáló egyik megosztási mappájában az egyik fájlhoz egy olyan ügyfél fér hozzá, amelyen engedélyezve van a BranchCache-támogatás.
-2) Egy rendszergazda manuálisan létrehozza a kivonatokat a Hashgen parancssori eszközzel.</string>
-    </stringTable>
+ – Nem konfigurált. Ha ezt a lehetőséget választja, a kivonat-közzétételi beállítások nem érvényesek a fájlkiszolgálókra. Ha a fájlkiszolgálók tartománytagok, de nem kívánja engedélyezni a BranchCache szerepkört az összes fájlkiszolgálón, megadhatja a Nem konfigurált beállítást ehhez a tartományi csoportházirend-beállításhoz, majd a helyi számítógép házirendjében beállíthatja a BranchCache szerepkör engedélyezését az egyes fájlkiszolgálókon. Mivel a tartományi csoportházirend-beállítás nincs konfigurálva, nem írja felül az engedélyezett beállítást azokon a kiszolgálókon, amelyeken engedélyezni kívánja a BranchCache szerepkört.
+
+– Engedélyezve. Ha ezt a lehetőséget választja, a kivonat-közzététel minden olyan fájlkiszolgálón be van kapcsolva, amelyen a csoportházirend érvényben van. Ha például a BranchCache kivonat-közzététele engedélyezve van a tartományi csoportházirendben, a kivonat-közzététel a tartomány összes olyan fájlkiszolgálóján be van kapcsolva, amelyen érvényes a házirend. A fájlkiszolgálók ezután tartalominformációt hozhatnak létre az összes olyan tartalom esetében, amelyek a BranchCache szolgáltatást használó fájlmegosztásokban találhatók.
+
+– Letiltva. Ha ezt a lehetőséget választja, a kivonat-közzététel minden olyan fájlkiszolgálón ki van kapcsolva, amelyen a csoportházirend érvényben van.
+
+Amennyiben ez a házirend-beállítás engedélyezve van, a következő konfigurációs lehetőségeket is választhatja:
+
+– A kivonat-közzététel engedélyezése az összes megosztott mappán. Ezen beállítás használatakor a BranchCache a fájlkiszolgálón lévő összes fájlmegosztás minden tartalma esetében tartalominformációkat hoz létre. 
+
+– A kivonat-közzététel engedélyezése csak olyan megosztott mappák esetében, amelyeken a BranchCache engedélyezve van. Ezen beállítás használatakor csak olyan megosztott mappák esetében jönnek létre tartalominformációk, amelyeken a BranchCache engedélyezve van. Ha ezt a beállítást használja, engedélyeznie kell a BranchCache szolgáltatást a fájlkiszolgáló Megosztások és tárolók kezelése területének egyes megosztásain.
+
+– A kivonat-közzététel letiltása az összes megosztott mappán. Ezen beállítás használatakor a BranchCache nem hoz létre tartalominformációkat a számítógép megosztásairól, és nem küld tartalominformációkat a tartalmat kérő ügyfélszámítógépekre.
+      
+      </string>
+      <string id="Lbl_SupportV1">Csak a V1 kivonatverziót támogatja</string>
+      <string id="Lbl_SupportV2">Csak a V2 kivonatverziót támogatja</string>
+      <string id="Lbl_SupportV1andV2">A V1 és a V2 verziót is támogatja</string>
+      <string id="Pol_HashSupportVersion">A BranchCache támogatott kivonatverziói</string>
+      <string id="Pol_HashSupportVersion_Help">Ez a házirend-beállítás meghatározza, hogy a BranchCache kivonat-létrehozó szolgáltatása csak az 1-es verziójú (V1), csak a 2-es verziójú (V2) vagy a V1 és V2 verziójú kivonatokat egyaránt támogatja. A kivonatok, más néven a tartalominformációk az olyan megosztott mappákban található adatok alapján jönnek létre, amelyekben a BranchCache engedélyezve van. 
+
+Ha csak egy támogatott verziót határoz meg, akkor a BranchCache csak a verziónak megfelelő típusú tartalominformációt hoz létre, és az ügyfélszámítógépek csak ilyen típusú tartalominformációt kérhetnek le. Ha például a V1 kivonatok támogatását engedélyezi, a BranchCache csak V1 verziójú kivonatokat készít, és az ügyfélszámítógépek csak V1 verziójú kivonatokat tudnak lekérni.
+
+Házirend konfigurálása
+
+A következő lehetőségek közül választhat:
+
+ – Nem konfigurált. Ha ezt a lehetőséget választja, a rendszer nem alkalmazza a BranchCache beállításokat az ügyfélszámítógépekre ezzel a házirend-beállítással. Ebben az alapértelmezett esetben a V1 és a V2 verziójú kivonatok készítése és lekérése is támogatott.
+
+– Engedélyezve. Ha ezt a lehetőséget választja, a házirend-beállítás érvénybe lép, és a „Támogatott kivonatverzió” területen megadott kivonatverzió(k) jönnek létre és lesznek lekérhetők.
+
+– Letiltva. Ha ezt a lehetőséget választja, a V1 és a V2 verziójú kivonatok készítése és lekérése is támogatott.
+
+Amennyiben ez a beállítás engedélyezve van, a következő lehetőséget is kiválaszthatja és konfigurálhatja:
+
+Támogatott kivonatverzió:
+
+– Ha csak a V1 verziójú tartalominformációkat kívánja támogatni, a „Támogatott kivonatverzió” területen a 1 értéket adja meg.
+
+– Ha csak a V2 verziójú tartalominformációkat kívánja támogatni, a „Támogatott kivonatverzió” területen a 2 értéket adja meg.
+
+– Ha a V1 és V2 verziójú tartalominformációkat is támogatni kívánja, a „Támogatott kivonatverzió” területen a 3 értéket adja meg.</string>
+      </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
         <text>Értékek:</text>
         <text>0 = A kivonat-közzététel csak olyan megosztási mappákra engedélyezett, amelyeken a BranchCache engedélyezve van</text>
         <text>1 = A kivonat-közzététel tiltása az összes megosztott mappán</text>
-        <text>2 = Kivonat-közzététel engedélyezése minden megosztott mappára</text>
-        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Kivonat-közzétételi műveletek: </dropdownList>
+        <text>2 = A kivonat-közzététel engedélyezése minden megosztott mappán</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Kivonat-közzétételi műveletek:  </dropdownList>
+        <text> </text>
+      </presentation>
+      <presentation id="Pol_HashSupportVersion">
+        <text>Értékek:</text>
+        <text>1 = V1 kivonatok támogatása</text>
+        <text>2 = V2 kivonatok támogatása</text>
+        <text>3 = V1 és V2 kivonatok támogatása</text>
+        <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Támogatott kivonatverzió:  </dropdownList>
         <text> </text>
       </presentation>
     </presentationTable>

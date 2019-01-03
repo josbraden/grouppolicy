@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" revision="1.0" schemaVersion="1.0" xmlns="http://www.microsoft.com/GroupPolicy/PolicyDefinitions">
+  <displayName>Windows PowerShell</displayName>
+  <description>Diese Datei enthält Konfigurationsoptionen für Windows PowerShell</description>
+  <resources>
+    <stringTable>
+      <string id="AllScripts">Alle Skripts zulassen</string>
+      <string id="AllScriptsSigned">Nur signierte Skripts zulassen</string>
+      <string id="EnableScripts">Skriptausführung aktivieren</string>
+      <string id="EnableScripts_Explain">Mit dieser Richtlinieneinstellung können Sie die Richtlinie für die Skriptausführung konfigurieren, mit der kontrolliert wird, welche Skripts ausgeführt werden dürfen.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, sind die Skripts, die in der Dropdownliste ausgewählt sind, zur Ausführung zugelassen.
+
+Mit der Richtlinieneinstellung "Nur signierte Skripts zulassen" werden nur Skripts zur Ausführung zugelassen, die von einem vertrauenswürdigen Herausgeber signiert sind.
+
+Mit der Richtlinieneinstellung "Lokale Skripts und remote signierte Skripts zulassen" werden alle lokalen Skripts zur Ausführung zugelassen. Skripts aus dem Internet müssen von einem vertrauenswürdigen Herausgeber signiert sein.
+
+Mit der Richtlinieneinstellung "Alle Skripts zulassen" werden alle Skripts zur Ausführung zugelassen.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren, werden keine Skripts zur Ausführung zugelassen.
+
+Hinweis: Diese Richtlinieneinstellung wird in den Ordnern "Computerkonfiguration" und "Benutzerkonfiguration" im Editor für lokale Gruppenrichtlinien angezeigt. Dabei hat der Ordner "Computerkonfiguration" Vorrang vor dem Ordner "Benutzerkonfiguration".
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, wird die Einstellung des jeweiligen Computers wiederhergestellt. Ist diese nicht konfiguriert, lautet die Standardeinstellung "Keine Skripts zulässig".</string>
+      <string id="PowerShell">Windows PowerShell</string>
+      <string id="RemoteSignedScripts">Lokale Skripts und remote signierte Skripts zulassen</string>
+      <string id="SUPPORTED_WIN7">Mindestens Windows 7 oder Windows Server 2008</string>
+       
+      <string id="EnableModuleLogging">Modulprotokollierung aktivieren</string>
+      <string id="EnableModuleLogging_Explain">
+        
+        Mit dieser Richtlinieneinstellung können Sie die Protokollierung für die Windows PowerShell-Module aktivieren.
+
+        Wenn Sie diese Richtlinieneinstellung aktivieren, werden Pipelineausführungsereignisse für  Mitglieder der angegebenen Module im Windows PowerShell-Protokoll in der Ereignisanzeige aufgezeichnet. Wenn Sie diese Richtlinieneinstellung für ein Modul aktivieren, hat dies dieselbe Auswirkung, wie wenn Sie die Moduleigenschaft "LogPipelineExecutionDetails" auf "Wahr" setzen.
+
+        Wenn Sie diese Richtlinieneinstellung deaktivieren, wird die Protokollierung der Ereignisausführung für alle Windows PowerShell-Module deaktiviert. Wenn Sie diese Richtlinieneinstellung für ein Modul deaktivieren, hat dies dieselbe Auswirkung, wie wenn Sie die Moduleigenschaft "LogPipelineExecutionDetails" auf "Falsch" setzen.
+
+        Wenn diese Richtlinieneinstellung nicht konfiguriert ist, wird durch die Modul- oder Snap-In-Eigenschaft "LogPipelineExecutionDetails" festgelegt, ob die Ausführungsereignisse eines Moduls oder Snap-Ins protokolliert werden. Standardmäßig ist die Eigenschaft "LogPipelineExecutionDetails" aller Module und Snap-Ins auf "Falsch" gesetzt.
+
+        Zum Hinzufügen von Modulen oder Snap-Ins zur Richtlinieneinstellungsliste klicken Sie auf "Anzeigen", und geben Sie die Namen der Module in die Liste ein. Die Module und Snap-Ins in der Liste müssen auf dem Computer installiert sein.
+
+        Hinweis: Diese Richtlinieneinstellung wird in den Ordnern "Computerkonfiguration" und "Benutzerkonfiguration" im Editor für Gruppenrichtlinien angezeigt. Die Richtlinieneinstellung unter "Computerkonfiguration" hat Vorrang vor der Richtlinieneinstellung unter "Benutzerkonfiguration".
+      
+      </string>
+      <string id="EnableUpdateHelpDefaultSourcePath">Standardquellpfad für "Update-Help" festlegen</string>
+      <string id="EnableUpdateHelpDefaultSourcePath_Explain">Mit dieser Richtlinieneinstellung können Sie den Standardwert des SourcePath-Parameters für das Cmdlet "Update-Help" festlegen.
+
+Wenn Sie diese Richtlinieneinstellung aktivieren, wird der angegebene Wert vom Cmdlet "Update-Help" als Standardwert für den SourcePath-Parameter verwendet. Zum Überschreiben dieses Standardwerts kann der SourcePath-Parameter im Cmdlet "Update-Help" mit einem anderen Wert angegeben werden.
+
+Wenn Sie diese Richtlinieneinstellung deaktivieren oder nicht konfigurieren, legt diese Richtlinieneinstellung keinen Standardwert für den SourcePath-Parameter des Cmdlets "Update-Help" fest.
+
+Hinweis: Diese Richtlinieneinstellung wird im Gruppenrichtlinien-Editor in den Ordnern "Computerkonfiguration" und "Benutzerkonfiguration" angezeigt. Die Richtlinieneinstellung unter "Computerkonfiguration" hat Vorrang vor der Richtlinieneinstellung unter "Benutzerkonfiguration".
+      
+      </string>
+      <!--<string id="PowerShell">Windows PowerShell</string>-->
+    </stringTable>
+    <presentationTable>
+      <presentation id="EnableScripts">
+        <dropdownList refId="ExecutionPolicy" noSort="true">Ausführungsrichtlinie</dropdownList>
+      </presentation>
+      <presentation id="EnableModuleLogging">
+        <text>Zum Aktivieren der Protokollierung für ein oder mehrere Module klicken Sie auf "Anzeigen", und geben Sie die Namen der Module in die Liste ein. Platzhalter werden nicht unterstützt.</text>
+        <listBox refId="Listbox_ModuleNames" required="false">Modulnamen:   </listBox>
+        <text>Zum Aktivieren der Protokollierung für die Kernmodule von Windows PowerShell geben Sie die folgenden Modulnamen in die Liste ein:</text>
+        <text>Microsoft.PowerShell.*</text>
+        <text>Microsoft.WSMan.Management</text>
+      </presentation>
+      <presentation id="EnableUpdateHelpDefaultSourcePath">
+        <textBox refId="SourcePathForUpdateHelp">
+          <label>Standardquellpfad:  </label>
+        </textBox>
+      </presentation>
+    </presentationTable>    
+  </resources>
+
+</policyDefinitionResources>

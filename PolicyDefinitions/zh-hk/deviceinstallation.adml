@@ -1,241 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>enter display name here</displayName>
-  <description>enter description here</description>
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
   <resources>
     <stringTable>
-      <string id="DeviceInstall_AllowAdminInstall">Allow administrators to override Device Installation Restriction policies</string>
-      <string id="DeviceInstall_AllowAdminInstall_Help">This policy setting allows you to determine whether members of the Administrators group can install and update the drivers for any device, regardless of other policy settings.
+      <string id="DeviceInstall_AllowAdminInstall">允許系統管理員覆寫裝置安裝限制原則</string>
+      <string id="DeviceInstall_AllowAdminInstall_Help">這個原則設定可以讓您決定 Administrators 群組的成員能否安裝和更新任何裝置的驅動程式，無論其他原則設定為何。
 
-If you enable this policy setting, members of the Administrators group can use the Add Hardware wizard or the Update Driver wizard to install and update the drivers for any device. If you enable this policy setting on a remote desktop server, the policy setting affects redirection of the specified devices from a remote desktop client to the remote desktop server.
+如果您啟用這個原則設定，Administrators 群組的成員可以使用新增硬體精靈或更新驅動程式精靈來安裝和更新任何裝置的驅動程式。如果在遠端桌面伺服器上啟用這個原則設定，這個原則設定會影響指定的裝置從遠端桌面用戶端到遠端桌面伺服器的重新導向。
 
-If you disable or do not configure this policy setting, members of the Administrators group are subject to all policy settings that restrict device installation.</string>
-      <string id="DeviceInstall_AllSigningEqual">Prioritize all digitally signed drivers equally during the driver ranking and selection process</string>
-      <string id="DeviceInstall_AllSigningEqual_Help">This policy setting allows you to determine how drivers signed by a Microsoft Windows Publisher certificate are ranked with drivers signed by other valid Authenticode signatures during the driver selection and installation process. Regardless of this policy setting, a signed driver is still preferred over a driver that is not signed at all.
+如果您停用或未設定這個原則設定，則 Administrators 群組的成員將受限於所有限制裝置安裝的原則設定。</string>
+      <string id="DeviceInstall_AllSigningEqual">在驅動程式排名與選取程序中，將所有經過數位簽署的驅動程式設為相等的優先權</string>
+      <string id="DeviceInstall_AllSigningEqual_Help">這個原則設定可以讓您決定在驅動程式選取與安裝過程中，如何為 Microsoft Windows Publisher 憑證所簽署的驅動程式與其他有效 Authenticode 簽章所簽署的驅動程式排定順位。不論這個原則設定為何，經過數位簽署的驅動程式仍然比完全未簽署的驅動程式優先。
 
-If you enable or do not configure this policy setting, drivers that are signed by a Microsoft Windows Publisher certificate and drivers that are signed by other Authenticode certificates are prioritized equally during the driver selection process. Selection is based on other criteria, such as version number or when the driver was created. 
+如果您啟用或未設定這個原則設定，選取驅動程式時，會將 Microsoft Windows Publisher 憑證所簽署的驅動程式和其他有效 Authenticode 簽章所簽署的驅動程式設為相等的優先權。選取標準是基於其他準則，例如版本號碼或驅動程式的建立時間。
 
-If you disable this policy setting, drivers that are signed by a Microsoft Windows Publisher certificate are selected for installation over drivers that are signed by other Authenticode certificates.</string>
-      <string id="DeviceInstall_BalloonTips">Turn off "Found New Hardware" balloons during device installation</string>
-      <string id="DeviceInstall_BalloonTips_Help">This policy setting allows you to turn off "Found New Hardware" balloons during device installation.
+如果您停用這個原則設定，選取要安裝的驅動程式時，Microsoft Windows Publisher 憑證所簽署的驅動程式會比其他 Authenticode 憑證所簽署的驅動程式優先。</string>
+      <string id="DeviceInstall_Category">裝置安裝</string>
+      <string id="DeviceInstall_Classes_Allow">允許使用符合這些裝置安裝類別的驅動程式安裝裝置</string>
+      <string id="DeviceInstall_Classes_Allow_Help">這個原則設定可以讓您為 Windows 可安裝的裝置驅動程式指定裝置安裝類別全域唯一識別碼 (GUID) 清單。這個原則設定只用在已啟用「防止安裝未由其他原則設定描述的裝置」原則設定時。其他防止裝置安裝的原則設定都比這個原則設定優先。
 
-If you enable this policy setting, "Found New Hardware" balloons do not appear while a device is being installed.
+如果您啟用這個原則設定，Windows 可安裝或更新其裝置安裝類別 GUID 列在您建立之清單中的裝置驅動程式，除非有其他原則設定明確禁止安裝 (例如「防止安裝符合任何裝置識別碼的裝置」原則設定、「防止安裝這些裝置類別的裝置」原則設定或「防止安裝卸除式裝置」原則設定)。如果在遠端桌面伺服器上啟用這個原則設定，這個原則設定會影響指定的裝置從遠端桌面用戶端到遠端桌面伺服器的重新導向。
 
-If you disable or do not configure this policy setting, "Found New Hardware" balloons appear while a device is being installed, unless the driver for the device suppresses the balloons.</string>
-      <string id="DeviceInstall_Category">Device Installation</string>
-      <string id="DeviceInstall_Classes_Allow">Allow installation of devices using drivers that match these device setup classes</string>
-      <string id="DeviceInstall_Classes_Allow_Help">This policy setting allows you to specify a list of device setup class globally unique identifiers (GUIDs) for device drivers that Windows is allowed to install. Use this policy setting only when the "Prevent installation of devices not described by other policy settings" policy setting is enabled. Other policy settings that prevent device installation take precedence over this one.
-
-If you enable this policy setting, Windows is allowed to install or update device drivers whose device setup class GUIDs appear in the list you create, unless another policy setting specifically prevents installation (for example, the "Prevent installation of devices that match these device IDs" policy setting, the "Prevent installation of devices for these device classes" policy setting, or the "Prevent installation of removable devices" policy setting). If you enable this policy setting on a remote desktop server, the policy setting affects redirection of the specified devices from a remote desktop client to the remote desktop server.
-
-If you disable or do not configure this policy setting, and no other policy setting describes the device, the "Prevent installation of devices not described by other policy settings" policy setting determines whether the device can be installed.</string>
-      <string id="DeviceInstall_Classes_Deny">Prevent installation of devices using drivers that match these device setup classes</string>
-      <string id="DeviceInstall_Classes_Deny_Help">This policy setting allows you to specify a list of device setup class globally unique identifiers (GUIDs) for device drivers that Windows is prevented from installing. This policy setting takes precedence over any other policy setting that allows Windows to install a device.
+如果您停用或未設定這個原則設定，而且沒有其他原則設定描述該裝置，則由「防止安裝未由其他原則設定描述的裝置」原則設定決定能否安裝該裝置。</string>
+      <string id="DeviceInstall_Classes_Deny">防止使用符合這些裝置安裝類別的驅動程式安裝裝置</string>
+      <string id="DeviceInstall_Classes_Deny_Help">這個原則設定可以讓您為 Windows 不可安裝的裝置驅動程式指定裝置安裝類別全域唯一識別碼 (GUID) 清單。這個原則設定的優先順序高於其他允許 Windows 安裝裝置的任何原則設定。
  
-If you enable this policy setting, Windows is prevented from installing or updating device drivers whose device setup class GUIDs appear in the list you create. If you enable this policy setting on a remote desktop server, the policy setting affects redirection of the specified devices from a remote desktop client to the remote desktop server.
+如果您啟用這個原則設定，Windows 不可安裝或更新其裝置安裝類別 GUID 列在您建立之清單中的裝置驅動程式。如果在遠端桌面伺服器上啟用這個原則設定，這個原則設定會影響指定的裝置從遠端桌面用戶端到遠端桌面伺服器的重新導向。
 
-If you disable or do not configure this policy setting, Windows can install and update devices as allowed or prevented by other policy settings.</string>
-      <string id="DeviceInstall_Help">Policy settings that control the installation of devices.</string>
-      <string id="DeviceInstall_IDs_Allow">Allow installation of devices that match any of these device IDs</string>
-      <string id="DeviceInstall_IDs_Allow_Help">This policy setting allows you to specify a list of Plug and Play hardware IDs and compatible IDs for devices that Windows is allowed to install. Use this policy setting only when the "Prevent installation of devices not described by other policy settings" policy setting is enabled. Other policy settings that prevent device installation take precedence over this one.
+如果您停用或未設定這個原則設定，則 Windows 可依照其他原則設定所允許或防止的方式安裝和更新裝置。</string>
+      <string id="DeviceInstall_Help">控制安裝裝置的原則設定。</string>
+      <string id="DeviceInstall_IDs_Allow">允許安裝符合這些裝置識別碼的裝置</string>
+      <string id="DeviceInstall_IDs_Allow_Help">這個原則設定可以讓您為 Windows 可安裝的裝置指定隨插即用硬體識別碼和相容識別碼清單。這個原則設定只用在已啟用「防止安裝未由其他原則設定描述的裝置」原則設定時。其他防止裝置安裝的原則設定都比這個原則設定優先。
 
-If you enable this policy setting, Windows is allowed to install or update any device whose Plug and Play hardware ID or compatible ID appears in the list you create, unless another policy setting specifically prevents that installation (for example, the "Prevent installation of devices that match any of these device IDs" policy setting, the "Prevent installation of devices for these device classes" policy setting, or the "Prevent installation of removable devices" policy setting). If you enable this policy setting on a remote desktop server, the policy setting affects redirection of the specified devices from a remote desktop client to the remote desktop server.
+如果您啟用這個原則設定，Windows 可安裝或更新其隨插即用硬體識別碼或相容識別碼列在您建立之清單中的裝置，除非有其他原則設定明確禁止安裝 (例如「防止安裝符合這些裝置識別碼的裝置」原則設定、「防止安裝這些裝置類別的裝置」原則設定或「防止安裝卸除式裝置」原則設定)。如果在遠端桌面伺服器上啟用這個原則設定，這個原則設定會影響指定的裝置從遠端桌面用戶端到遠端桌面伺服器的重新導向。
 
-If you disable or do not configure this policy setting, and no other policy setting describes the device, the "Prevent installation of devices not described by other policy settings" policy setting determines whether the device can be installed.</string>
-      <string id="DeviceInstall_IDs_Deny">Prevent installation of devices that match any of these device IDs</string>
-      <string id="DeviceInstall_IDs_Deny_Help">This policy setting allows you to specify a list of Plug and Play hardware IDs and compatible IDs for devices that Windows is prevented from installing. This policy setting takes precedence over any other policy setting that allows Windows to install a device.
+如果您停用或未設定這個原則設定，而且沒有其他原則設定描述該裝置，則由「防止安裝未由其他原則設定描述的裝置」原則設定決定能否安裝該裝置。</string>
+      <string id="DeviceInstall_IDs_Deny">防止安裝符合下列任何裝置識別碼的裝置</string>
+      <string id="DeviceInstall_IDs_Deny_Help">這個原則設定可以讓您為 Windows 不可安裝的裝置指定隨插即用硬體識別碼和相容識別碼清單。這個原則設定的優先順序高於其他允許 Windows 安裝裝置的任何原則設定。
 
-If you enable this policy setting, Windows is prevented from installing a device whose hardware ID or compatible ID appears in the list you create. If you enable this policy setting on a remote desktop server, the policy setting affects redirection of the specified devices from a remote desktop client to the remote desktop server.
+如果您啟用這個原則設定，Windows 不可安裝其硬體識別碼或相容識別碼列在您建立之清單中的裝置。如果在遠端桌面伺服器上啟用這個原則設定，這個原則設定會影響指定的裝置從遠端桌面用戶端到遠端桌面伺服器的重新導向。
 
-If you disable or do not configure this policy setting, devices can be installed and updated as allowed or prevented by other policy settings.</string>
-      <string id="DeviceInstall_InstallTimeout">Configure device installation time-out</string>
-      <string id="DeviceInstall_InstallTimeout_Help">This policy setting allows you to configure the number of seconds Windows waits for a device installation task to complete. 
+如果您停用或未設定這個原則設定，則可以依照其他原則設定所允許或防止的方式安裝和更新裝置。</string>
+      <string id="DeviceInstall_InstallTimeout">設定裝置安裝逾時</string>
+      <string id="DeviceInstall_InstallTimeout_Help">這個原則設定可以讓您設定 Windows 等待裝置安裝工作完成的秒數。
 
-If you enable this policy setting, Windows waits for the number of seconds you specify before terminating the installation.
+如果您啟用這個原則設定，Windows 會在終止安裝之前等待您指定的秒數。
 
-If you disable or do not configure this policy setting, Windows waits 300 seconds for a device installation task to complete before terminating the installation.</string>
-      <string id="DeviceInstall_Removable_Deny">Prevent installation of removable devices</string>
-      <string id="DeviceInstall_Removable_Deny_Help">This policy setting allows you to prevent Windows from installing removable devices. A device is considered removable when the driver for the device to which it is connected indicates that the device is removable. For example, a Universal Serial Bus (USB) device is reported to be removable by the drivers for the USB hub to which the device is connected. This policy setting takes precedence over any other policy setting that allows Windows to install a device.
+如果您停用或未設定這個原則設定，則 Windows 會在終止安裝前等待 300 秒，讓裝置安裝工作完成。</string>
+      <string id="DeviceInstall_Removable_Deny">防止安裝卸除式裝置</string>
+      <string id="DeviceInstall_Removable_Deny_Help">這個原則設定可以讓您防止 Windows 安裝卸除式裝置。如果連接裝置的驅動程式表示該裝置為卸除式時，系統就視該裝置為卸除式。例如，通用序列匯流排 (USB) 裝置就由連接該裝置的 USB 集線器之驅動程式報告為卸除式。這個原則設定的優先順序高於其他允許 Windows 安裝裝置的任何原則設定。
 
-If you enable this policy setting, Windows is prevented from installing removable devices and existing removable devices cannot have their drivers updated. If you enable this policy setting on a remote desktop server, the policy setting affects redirection of removable devices from a remote desktop client to the remote desktop server.
+如果您啟用這個原則設定，Windows 便無法安裝卸除式裝置，現有的卸除式裝置也無法更新驅動程式。如果在遠端桌面伺服器上啟用這個原則設定，這個原則設定會影響卸除式裝置從遠端桌面用戶端到遠端桌面伺服器的重新導向。
 
-If you disable or do not configure this policy setting, Windows can install and update device drivers for removable devices as allowed or prevented by other policy settings.</string>
-      <string id="DeviceInstall_Restrictions_Category">Device Installation Restrictions</string>
-      <string id="DeviceInstall_Restrictions_Help">Policy settings that describe which devices can or cannot be installed.</string>
-      <string id="DeviceInstall_SystemRestore">Prevent creation of a system restore point during device activity that would normally prompt creation of a restore point</string>
-      <string id="DeviceInstall_SystemRestore_Help">This policy setting allows you to prevent Windows from creating a system restore point during device activity that would normally prompt Windows to create a system restore point. Windows normally creates restore points for certain driver activity, such as the installation of an unsigned driver. A system restore point enables you to more easily restore your system to its state before the activity. 
+如果您停用或未設定這個原則設定，則 Windows 可依照其他原則設定所允許或防止的方式安裝和更新卸除式裝置的裝置驅動程式。</string>
+      <string id="DeviceInstall_Restrictions_Category">裝置安裝限制</string>
+      <string id="DeviceInstall_Restrictions_Help">描述裝置是否可安裝的原則設定。</string>
+      <string id="DeviceInstall_SystemRestore">在通常會提示建立系統還原點的裝置活動期間，防止建立系統還原點</string>
+      <string id="DeviceInstall_SystemRestore_Help">這個原則設定可以讓您在通常會提示 Windows 建立系統還原點的裝置活動期間，防止 Windows 建立系統還原點。在正常狀況下，Windows 會為某些驅動程式活動 (例如安裝未經簽署的驅動程式) 建立還原點。系統還原點讓您能夠比較容易將系統還原到該活動之前的狀態。
 
-If you enable this policy setting, Windows does not create a system restore point when one would normally be created.
+如果您啟用這個原則設定，Windows 不會在通常會建立系統還原點的時候建立系統還原點。
 
-If you disable or do not configure this policy setting, Windows creates a system restore point as it normally would.</string>
-	  <string id="DeviceManagement_RPCInterface_Allow">Allow remote access to the Plug and Play interface</string>
-      <string id="DeviceManagement_RPCInterface_Allow_Help">This policy setting allows you to allow or deny remote access to the Plug and Play interface. 
+如果您停用或未設定這個原則設定，則 Windows 會依照正常方式建立系統還原點。</string>
+	  <string id="DeviceManagement_RPCInterface_Allow">允許遠端存取隨插即用介面</string>
+      <string id="DeviceManagement_RPCInterface_Allow_Help">這個原則設定可以讓您允許或拒絕遠端存取隨插即用介面。
 	  
-If you enable this policy setting, remote connections to the Plug and Play interface are allowed.
+如果您啟用這個原則設定，便會允許從遠端連線到隨插即用介面。
 	  
-If you disable or do not configure this policy setting, remote connections to the Plug and Play interface are not allowed.</string>
-      <string id="DeviceInstall_GenericDriverSendToWER">Do not send a Windows error report when a generic driver is installed on a device</string>
-      <string id="DeviceInstall_GenericDriverSendToWER_Help">This policy setting allows you to specify whether to send a Windows error report when a generic driver is installed on a device.
+如果您停用或未設定這個原則設定，則不允許從遠端連線到隨插即用介面。</string>
+      <string id="DeviceInstall_Unspecified_Deny">防止安裝未由其他原則設定描述的裝置</string>
+      <string id="DeviceInstall_Unspecified_Deny_Help">這個原則設定可以讓您防止安裝其他原則設定皆未明確描述的裝置。
 
-If you enable this policy setting, a Windows error report is not sent when a generic driver is installed.
+如果您啟用這個原則設定，凡是未在 [允許安裝符合這些裝置識別碼的裝置] 或 [允許安裝這些裝置類別的裝置] 原則設定中描述的裝置，Windows 都無法安裝或更新其裝置驅動程式。
 
-If you disable or do not configure this policy setting, a Windows Error Report is sent when a generic driver is installed.</string>
-      <string id="DeviceInstall_RequestAdditionalSoftwareSendToWER">Prevent Windows from sending an error report when a device driver requests additional software during installation</string>
-      <string id="DeviceInstall_RequestAdditionalSoftwareSendToWER_Help">This policy allows you to prevent Windows from sending an error report when a device driver requests additional software during installation.
+如果您停用或未設定這個原則設定，則凡是未在 [防止安裝符合這些裝置識別碼的裝置]、[防止安裝這些裝置類別的裝置] 或 [防止安裝卸除式裝置] 原則設定中描述的裝置，Windows 都可以安裝或更新其裝置驅動程式。</string>
+      <string id="DeviceInstall_DeniedPolicy_SimpleText">在原則設定防止裝置安裝時顯示自訂訊息標題</string>
+      <string id="DeviceInstall_DeniedPolicy_SimpleText_Help">這個原則設定可以讓您在嘗試安裝裝置卻因原則設定而無法安裝時，在通知中顯示自訂的訊息標題。
 
-If you enable this policy setting, Windows does not send an error report when a device driver that requests additional software is installed.
+如果您啟用這個原則設定，每當原則設定防止裝置安裝時，Windows 會將您在 [主要內文] 方塊中輸入的文字顯示為通知的標題文字。
 
-If you disable or do not configure this policy setting, Windows sends an error report when a device driver that requests additional software is installed.</string>
-      <string id="DeviceInstall_Unspecified_Deny">Prevent installation of devices not described by other policy settings</string>
-      <string id="DeviceInstall_Unspecified_Deny_Help">This policy setting allows you to prevent the installation of devices that are not specifically described by any other policy setting.
+如果您停用或未設定這個原則設定，則每當原則設定防止裝置安裝時，Windows 會在通知中顯示預設標題。</string>
+      <string id="DeviceInstall_DeniedPolicy_DetailText">在原則設定防止安裝時顯示自訂訊息</string>
+      <string id="DeviceInstall_DeniedPolicy_DetailText_Help">這個原則設定可以讓您在嘗試安裝裝置卻因原則設定而無法安裝時，在通知中向使用者顯示自訂的訊息。
 
-If you enable this policy setting, Windows is prevented from installing, or updating the device driver for, any device that is not described by either the "Allow installation of devices that match any of these device IDs" or the "Allow installation of devices for these device classes" policy settings.
+如果您啟用這個原則設定，每當原則設定防止裝置安裝時，Windows 會顯示您在 [詳細內文] 方塊中輸入的文字。
 
-If you disable or do not configure this policy setting, Windows is allowed to install, or update the device driver for, any device that is not described by the "Prevent installation of devices that match any of these device IDs," "Prevent installation of devices for these device classes," or "Prevent installation of removable devices" policy settings.</string>
-      <string id="DeviceInstall_DeniedPolicy_SimpleText">Display a custom message title when device installation is prevented by a policy setting</string>
-      <string id="DeviceInstall_DeniedPolicy_SimpleText_Help">This policy setting allows you to display a custom message title in the notification balloon when a device installation is attempted and a policy setting prevents the installation.
-      
-If you enable this policy setting, Windows displays the text you type in the Main Text box as the title text of the notification balloon when a policy setting prevents device installation.
+如果您停用或未設定這個原則設定，則每當原則設定防止裝置安裝時，Windows 會顯示預設訊息。</string>
+      <string id="DriverInstall_Category">驅動程式安裝</string>
+      <string id="DriverInstall_Classes_AllowUser">允許非系統管理員安裝這些裝置安裝類別的驅動程式</string>
+      <string id="DriverInstall_Classes_AllowUser_Help">這個原則設定會指定一份描述裝置驅動程式的裝置安裝類別 GUID 清單，這些裝置驅動程式是內建 Users 群組的非系統管理員成員可在系統上安裝的裝置驅動程式。
 
-If you disable or do not configure this policy setting, Windows displays a default title in the notification balloon when a policy setting prevents device installation.</string>
-      <string id="DeviceInstall_DeniedPolicy_DetailText">Display a custom message when installation is prevented by a policy setting</string>
-      <string id="DeviceInstall_DeniedPolicy_DetailText_Help">This policy setting allows you to display a custom message to users in the notification balloon when a device installation is attempted and a policy setting prevents the installation.
-      
-If you enable this policy setting, Windows displays the text you type in the Detail Text box when a policy setting prevents device installation.
-      
-If you disable or do not configure this policy setting, Windows displays a default message when a policy setting prevents device installation.</string>
-      <string id="DriverInstall_Category">Driver Installation</string>
-      <string id="DriverInstall_Classes_AllowUser">Allow non-administrators to install drivers for these device setup classes</string>
-      <string id="DriverInstall_Classes_AllowUser_Help">Specifies a list of device setup class GUIDs describing device drivers that non-administrator members of the built-in Users group may install on the system.
+如果您啟用這個原則設定，Users 群組的成員即可安裝指定之裝置安裝類別的新驅動程式。驅動程式必須根據 [Windows 驅動程式簽署原則] 簽署，或者由已經在 TrustedPublisher 存放區中的發行者簽署。
 
-If you enable this setting, members of the Users group may install new drivers for the specified device setup classes. The drivers must be signed according to Windows Driver Signing Policy, or be signed by publishers already in the TrustedPublisher store.
+如果您停用或未設定這個原則設定，只有 Administrators 群組的成員可在系統上安裝新的裝置驅動程式。</string>
+      <string id="DriverInstall_Help">控制系統上裝置驅動程式安裝的原則設定。</string>
+      <string id="DriverSign_Block">封鎖</string>
+      <string id="DriverSign_None">略過</string>
+      <string id="DriverSign_Warn">警告</string>
+      <string id="DriverSigning">裝置驅動程式的程式碼簽署</string>
+      <string id="DriverSigning_Help">決定系統在使用者嘗試安裝未經數位簽署的裝置驅動程式檔案時的回應方式。
 
-If you disable or do not configure this setting, only members of the Administrators group are allowed to install new device drivers on the system.</string>
-      <string id="DriverInstall_Help">Policy settings controlling the installation of device drivers on the system.</string>
-      <string id="DriverSearchPlaces">Configure driver search locations</string>
-      <string id="DriverSearchPlaces_Help">This setting configures the location that Windows searches for drivers when a new piece of hardware is found.
+這個設定會建立系統允許的群組使用者最低安全回應。使用者可以使用 [控制台] 中的 [系統] 來選擇更安全的設定，但是一旦啟用這個設定，系統將不會實作安全性低於已建立設定之安全性的設定。
 
-By default, Windows searches the following places for drivers: local installation, floppy drives, CD-ROM drives, Windows Update.
+當您啟用這個設定時，請使用下拉式方塊來指定所需的回應。
 
-Using this setting, you may remove the floppy and CD-ROM drives from the search algorithm.
+--   [略過] 會指示系統即使此安裝包含未簽署的檔案，仍然繼續安裝。
 
-If you enable this setting, you can remove the locations by selecting the associated check box beside the location name.
+--   [警告] 會通知使用者檔案未經數位簽署，並讓使用者決定要停止或是繼續安裝，以及是否允許安裝未簽署的檔案。[警告] 是預設值。
 
-If you disable or do not configure this setting, Windows searches the installation location, floppy drives, and CD-ROM drives.
+--   [封鎖] 會指示系統拒絕安裝未簽署的檔案。結果會停止安裝，不安裝驅動程式套件中的任何檔案。
 
-Note: To prevent searching Windows Update for drivers also see "Turn off Windows Update device driver searching" in Administrative Templates/System/Internet Communication Management/Internet Communication settings.</string>
-      <string id="DriverSearchPlaces_DontPromptForWindowsUpdate">Turn off Windows Update device driver search prompt</string>
-      <string id="DriverSearchPlaces_DontPromptForWindowsUpdate_Help">Specifies whether the administrator will be prompted about going to Windows Update to search for device drivers using the Internet.
+如果要變更驅動程式檔案安全性，但不想指定設定，請使用 [控制台] 中的 [系統]。請在 [我的電腦] 按滑鼠右鍵，按 [內容]，再按 [硬體] 索引標籤，然後按 [驅動程式簽署] 按鈕。</string>
+      <string id="DeviceInstall_Policy_RebootTime">為使原則變更生效而必須強制重新開機的時間 (秒)</string>
+      <string id="DeviceInstall_Policy_RebootTime_Help">這個原則設定會設定系統在重新開機以強制變更裝置安裝限制原則之前應等待的時間 (秒)。
 
-Note: This setting only has effect if "Turn off Windows Update device driver searching" in "Administrative Templates/System/Internet Communication Management/Internet Communication settings" is disabled or not configured.
+如果您啟用這個原則設定，請設定系統在重新開機前應等待的秒數。
 
-If you enable this setting, administrators will not be prompted to search Windows Update.
+如果您停用或未設定這個原則設定，系統就不會強制重新開機。
 
-If you disable or do not configure this setting, and "Turn off Windows Update device driver searching" is disabled or not configured, the administrator will be prompted for consent before going to Windows Update to search for device drivers.</string>
-      <string id="DriverSearchPlaces_SearchOrderConfiguration">Specify search order for device driver source locations</string>
-      <string id="DriverSearchPlaces_SearchOrderConfiguration_Help">This policy setting allows you to specify the order in which Windows searches source locations for device drivers. 
-
-If you enable this policy setting, you can select whether Windows searches Windows Update first,  searches Windows Update last, or does not search Windows Update.
-
-If you disable or do not configure this policy setting, members of the Administrators group can determine the order in which Windows searches source locations for device drivers.</string>
-      <string id="DriverSearchPlaces_SearchOrderConfiguration_First">Search Windows Update First</string>
-      <string id="DriverSearchPlaces_SearchOrderConfiguration_Last">Search Windows Update Last</string>
-      <string id="DriverSearchPlaces_SearchOrderConfiguration_Never">Do not search Windows Update</string>
-      
-      <string id="DriverSign_Block">Block</string>
-      <string id="DriverSign_None">Ignore</string>
-      <string id="DriverSign_Warn">Warn</string>
-      <string id="DriverSigning">Code signing for device drivers</string>
-      <string id="DriverSigning_Help">Determines how the system responds when a user tries to install device driver files that are not digitally signed.
-
-This setting establishes the least secure response permitted on the systems of users in the group. Users can use System in Control Panel to select a more secure setting, but when this setting is enabled, the system does not implement any setting less secure than the one the setting established.
-
-When you enable this setting, use the drop-down box to specify the desired response.
-
---   "Ignore" directs the system to proceed with the installation even if it includes unsigned files.
-
---   "Warn" notifies the user that files are not digitally signed and lets the user decide whether to stop or to proceed with the installation and whether to permit unsigned files to be installed. "Warn" is the default.
-
---   "Block" directs the system to refuse to install unsigned files. As a result, the installation stops, and none of the files in the driver package are installed.
-
-To change driver file security without specifying a setting, use System in Control Panel. Right-click My Computer, click Properties, click the Hardware tab, and then click the Driver Signing button.</string>
-      <string id="DeviceMetadata_PreventDeviceMetadataFromNetwork">Prevent device metadata retrieval from the Internet</string>
-      <string id="DeviceMetadata_PreventDeviceMetadataFromNetwork_Help">This policy setting allows you to prevent Windows from retrieving device metadata from the Internet.
-          
-If you enable this policy setting, Windows does not retrieve device metadata for installed devices from the Internet. This policy setting overrides the setting in the Device Installation Settings dialog box (Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings &gt; Hardware tab).
-
-If you disable or do not configure this policy setting, the setting in the Device Installation Settings dialog box controls whether Windows retrieves device metadata from the Internet.</string>
-      <string id="DeviceInstall_Policy_RebootTime">Time (in seconds) to force reboot when required for policy changes to take effect</string>
-      <string id="DeviceInstall_Policy_RebootTime_Help">Set the amount of time (in seconds) that the system will wait to reboot in order to enforce a change in device installation restriction policies.
-
-If you enable this setting, set the amount of seconds you want the system to wait until a reboot.
-
-If you disable or do not configure this setting, the system will not force a reboot.
-
-NOTE: If no reboot is forced, the device installation restriction right will not take effect until the system is restarted.</string>
+注意: 如果沒有強制重新開機，裝置安裝限制權利要等到系統重新啟動後才會生效。</string>
     </stringTable>
     <presentationTable>
       <presentation id="DeviceInstall_Classes_Allow">
-        <listBox refId="DeviceInstall_Classes_Allow_List">Allow installation of devices using drivers for these device classes:</listBox>
-        <text>To create a list of device classes, click Show. In the Show Contents dialog box, in the Value column,</text>
-        <text>type a GUID that represents a device setup class</text>
-        <text>(for example, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
+        <listBox refId="DeviceInstall_Classes_Allow_List">允許使用這些裝置類別的驅動程式來安裝裝置:</listBox>
+        <text>若要建立裝置類別清單，請按一下 [顯示]。在 [顯示內容] 對話方塊的 [值] 欄中，</text>
+        <text>輸入代表裝置安裝類別的 GUID</text>
+        <text>(例如，{25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835})。</text>
       </presentation>
       <presentation id="DeviceInstall_Classes_Deny">
-        <listBox refId="DeviceInstall_Classes_Deny_List">Prevent installation of devices using drivers for these device setup classes:</listBox>
-        <text>To create a list of device classes, click Show. In the Show Contents dialog box, in the Value column,</text>
-        <text>type a GUID that represents a device setup class</text>
-        <text>(for example, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
-        <checkBox refId="DeviceInstall_Classes_Deny_Retroactive">Also apply to matching devices that are already installed.</checkBox>
+        <listBox refId="DeviceInstall_Classes_Deny_List">防止使用這些裝置安裝類別的驅動程式來安裝裝置:</listBox>
+        <text>若要建立裝置類別清單，請按一下 [顯示]。在 [顯示內容] 對話方塊的 [值] 欄中，</text>
+        <text>輸入代表裝置安裝類別的 GUID</text>
+        <text>(例如，{25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835})。</text>
+        <checkBox refId="DeviceInstall_Classes_Deny_Retroactive">也適用於已安裝的對應裝置。</checkBox>
       </presentation>
       <presentation id="DeviceInstall_IDs_Allow">
-        <listBox refId="DeviceInstall_IDs_Allow_List">Allow installation of devices that match any of these Device IDs:</listBox>
-        <text>To create a list of devices, click Show. In the Show Contents dialog box, in the Value column,</text>
-        <text>type a Plug and Play hardware ID or compatible ID</text>
-        <text>(for example, gendisk, USB\COMPOSITE, USB\Class_ff).</text>
+        <listBox refId="DeviceInstall_IDs_Allow_List">允許安裝符合這些裝置識別碼的裝置:</listBox>
+        <text>若要建立裝置清單，請按一下 [顯示]。在 [顯示內容] 對話方塊的 [值] 欄中，</text>
+        <text>輸入隨插即用硬體識別碼或相容識別碼</text>
+        <text>(例如，gendisk、USB\COMPOSITE、USB\Class_ff)。</text>
       </presentation>
       <presentation id="DeviceInstall_IDs_Deny">
-        <listBox refId="DeviceInstall_IDs_Deny_List">Prevent installation of devices that match any of these Device IDs:</listBox>
-        <text>To create a list of devices, click Show. In the Show Contents dialog box, in the Value column,</text>
-        <text>type a Plug and Play hardware ID or compatible ID</text>
-        <text>(for example, gendisk, USB\COMPOSITE, USB\Class_ff).</text>
-        <checkBox refId="DeviceInstall_IDs_Deny_Retroactive">Also apply to matching devices that are already installed.</checkBox>
+        <listBox refId="DeviceInstall_IDs_Deny_List">防止安裝符合這些裝置識別碼的裝置:</listBox>
+        <text>若要建立裝置清單，請按一下 [顯示]。在 [顯示內容] 對話方塊的 [值] 欄中，</text>
+        <text>輸入隨插即用硬體識別碼或相容識別碼</text>
+        <text>(例如，gendisk、USB\COMPOSITE、USB\Class_ff)。</text>
+        <checkBox refId="DeviceInstall_IDs_Deny_Retroactive">也適用於已安裝的對應裝置。</checkBox>
       </presentation>
       <presentation id="DeviceInstall_InstallTimeout">
-        <decimalTextBox refId="DeviceInstall_InstallTimeout_Time" defaultValue="300" spinStep="15">Device Installation Timeout (in seconds)</decimalTextBox>
+        <decimalTextBox refId="DeviceInstall_InstallTimeout_Time" defaultValue="300" spinStep="15">裝置安裝逾時 (秒)</decimalTextBox>
       </presentation>
       <presentation id="DeviceInstall_Policy_RebootTime">
-        <decimalTextBox refId="DeviceInstall_Policy_RebootTime_Time" defaultValue="120" spinStep="10">Reboot Timeout (in seconds)</decimalTextBox>
+        <decimalTextBox refId="DeviceInstall_Policy_RebootTime_Time" defaultValue="120" spinStep="10">重新開機逾時 (秒)</decimalTextBox>
       </presentation>
       <presentation id="DeviceInstall_DeniedPolicy_SimpleText">
-        <text>Enter the text you wish users to see (Max 63 chars)</text>
+        <text>輸入您要對使用者顯示的文字 (最多 63 個字元)</text>
         <textBox refId="DeviceInstall_DeniedPolicy_SimpleText_Text">
-          <label>Main Text</label>
+          <label>主要內文</label>
         </textBox>
       </presentation>
       <presentation id="DeviceInstall_DeniedPolicy_DetailText">
-        <text>Enter the text you wish users to see (Max 128 chars)</text>
+        <text>輸入您要對使用者顯示的文字 (最多 128 個字元)</text>
         <textBox refId="DeviceInstall_DeniedPolicy_DetailText_Text">
-          <label>Detail Text</label>
+          <label>詳細內文</label>
         </textBox>
       </presentation>
       <presentation id="DriverInstall_Classes_AllowUser">
-        <listBox refId="DriverInstall_Classes_AllowUser_List">Allow Users to install device drivers for these classes:</listBox>
-        <text>To create a list of device classes, click Show. In the Show Contents dialog box, in the Value column,</text>
-        <text>type a GUID that represents a device setup class</text>
-        <text>(for example, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
-      </presentation>
-      <presentation id="DriverSearchPlaces">
-        <checkBox refId="DriverSearchPlaces_Floppies">Do not search floppy disk drives</checkBox>
-        <checkBox refId="DriverSearchPlaces_CD">Do not search CD-ROM drives</checkBox>
-        <checkBox refId="DriverSearchPlaces_WindowsUpdate">Do not search Windows Update</checkBox>
+        <listBox refId="DriverInstall_Classes_AllowUser_List">允許使用者安裝這些類別的裝置驅動程式:</listBox>
+        <text>若要建立裝置類別清單，請按一下 [顯示]。在 [顯示內容] 對話方塊的 [值] 欄中，</text>
+        <text>輸入代表裝置安裝類別的 GUID</text>
+        <text>(例如，{25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835})。</text>
       </presentation>
       <presentation id="DriverSigning">
-        <dropdownList refId="DriverSigningOp" noSort="true" defaultItem="1">When Windows detects a driver file without a digital signature:</dropdownList>
-      </presentation>
-      <presentation id="DriverSearchPlaces_SearchOrderConfiguration">
-        <dropdownList refId="DriverSearchPlaces_SearchOrderConfiguration_dropdown" noSort="true" defaultItem="1">Select search order:</dropdownList>        
+        <dropdownList refId="DriverSigningOp" noSort="true" defaultItem="1">當 Windows 偵測到驅動程式檔案沒有數位簽章:</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

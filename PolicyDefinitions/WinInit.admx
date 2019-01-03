@@ -7,8 +7,11 @@
   </policyNamespaces>
   <resources minRequiredRevision="1.0" />
   <categories>
-    <category name="Shutdown" displayName="$(string.Shutdown)">
+    <category name="Shutdown" displayName="$(string.ShutdownOptions)">
       <parentCategory ref="windows:WindowsComponents" />
+    </category>
+    <category name="ShutdownOptions" displayName="$(string.Shutdown)">
+        <parentCategory ref="windows:System" />
     </category>
   </categories>
   <policies>
@@ -28,6 +31,16 @@
       <elements>
         <decimal id="ShutdownSessionTimeout_Time" valueName="ShutdownSessionTimeout" />
       </elements>
+    </policy>
+    <policy name="Hiberboot" class="Machine" displayName="$(string.Hiberboot)" explainText="$(string.Hiberboot_Help)" key="Software\Policies\Microsoft\Windows\System" valueName="HiberbootEnabled">
+        <parentCategory ref="ShutdownOptions" />
+        <supportedOn ref="windows:SUPPORTED_Windows8" />
+        <enabledValue>
+            <decimal value="1" />
+        </enabledValue>
+        <disabledValue>
+            <decimal value="0" />
+        </disabledValue>
     </policy>
   </policies>
 </policyDefinitions>

@@ -1,83 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>הזן שם תצוגה כאן</displayName>
-  <description>הזן תיאור כאן</description>
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
   <resources>
     <stringTable>
-      <string id="W32TIME_CONFIG_EXPLAIN">הגדרות אלו שולטות בשירות Windows Time ‏(W32time) עבור בקרי תחום. חלק מהערכים הללו הם סקלריים, כלומר, יש להם רק משמעות אחת זה כנגד זה, והם אינם מוגדרים על-ידי יחידת מידה ספציפית. להגדרות הנוגעות לסינכרון שעה עבור מחשבים החברים בתחום, ראה Configure a client computer for automatic domain time synchronization (הגדר תצורה של מחשב לקוח לסיכרון שעה אוטומטי בתחום) (http://go.microsoft.com/fwlink/?LinkId=139706).
- 
-פרמטרים של שיטת שעון
- 
-FrequencyCorrectRate: שולט בקצב שבו W32time מתקן את תדירות השעון המקומי. ערכים נמוכים יותר גורמים לפחות תיקונים; ערכים גבוהים יותר גורמים לתיקונים מהירים יותר. ערכים איטיים מדי עשויים להוביל לתיקון יתר ולחוסר יציבות. ערכים גבוהים מדי עשויים להוביל לסינכרון איטי. ברירת המחדל: 4 (סקלרי).
- 
-HoldPeriod: מציין כמה דוגמות שעה מדויקות אפשריות חייב הלקוח לקבל בזו אחר זו לפני שדוגמות שעה עוקבות יוערכו כערכים חריגים אפשריים. אחרי פרק זמן מסוים ללא קבלה של דוגמות שעה שימושיות, לקוח שעה מפסיק להעריך את דוגמות השעה לזיהוי ערכים חריגים כאשר מתקבלת דוגמת השעה המדויקת האפשרית הראשונה. כאשר רצף של דוגמות שעה (כפי שמוגדר על-ידי HoldPeriod) מתקבל, לקוח השעה מעריך את דוגמות השעה העוקבות לזיהוי חריגים. דוגמת שעה נחשבת כערך חריג כאשר הפרש השעות בין דוגמת שעה והשעון המקומי של הלקוח גדול מזה של הערך LargePhaseOffset. ברירת מחדל: 5 דוגמות שעה.
- 
-LargePhaseOffset: מציין את וריאציית השעה מהשעון המקומי של הלקוח (היסט פאזה) שחייב להתקיים כדי שדוגמת שעה תיחשב כחריגה. דוגמות שעה הכוללות וריאציות שעה גדולות יותר מהערך שהוגדר ב- LargePhaseOffset נחשבות כחריגות. ברירת מחדל: 50,000,000 100-יחידות ננו-שניה (ns), שהן 5 שניות.
- 
-MaxAllowedPhaseOffset: שולט באופן שבו W32time מתקן את השעון על-פי גודל וריאציית השעה המחושב בין דוגמת השעה והשעון המקומי של הלקוח. אם מתקבלת תגובה שווריאציית שעה גדולה יותר מערך זה, W32time מגדיר מיידית את השעון המקומי של הלקוח לשעה שהתקבלה כמדויקת מהשרת Network Time Protocol ‏(NTP). אם וריאציית השעה נמוכה מערך זה, השעון המקומי של הלקוח מתוקן בהדרגה. ברירת מחדל: 300 שניות.
- 
-MaxNegPhaseCorrection: שולט בתיקון השעון המרבי המותר שניתן לבצע בכיוון הפוך. אם מתקבלת דוגמת שעה אשר מרמזת על שעה בעבר (בהשוואה לשעון המקומי של הלקוח), אשר לה הפרש שעות גדול יותר מהערך של MaxNegPhaseCorrection, דוגמת השעה מבוטלת. אם דבר זה קורה, המקור של Windows Time רושם אירוע ביומן המערכת של מציג האירועים. ברירת מחדל: 172,800 שניות.
- 
-MaxPosPhaseCorrection: שולט בתיקון השעון המרבי המותר שניתן לבצע קדימה. אם מתקבלת דוגמת שעה שמרמזת על שעה בעתיד (בהשוואה לשעון המקומי של הלקוח) אשר לה אפשר שעות גדול יותר מהערך של MaxPosPhaseCorrection, דוגמת השעה מבוטלת. ברירת מחדל: 172,800 שניות. 
- 
-PhaseCorrectRate: שולט במהירות שבה W32time מתקן את הפרש השעון המקומי של הלקוח כדי להתאים לדוגמות שעה אשר מתקבלות כמדויקות משרת NTP. ערכים נמוכים יותר גורמים לשעון לבצע תיקונים לאט יותר; ערכים גדולים יותר גורמים לשעון לבצע תיקון מהר יותר. ברירת מחדל: 7 (סקלרי).
- 
-PollAdjustFactor: שולט במהירות שבה W32time משנה מרווחי זמן תשאול. כאשר תגובות נחשבות כמדויקות, מרווח זמן התשאול מתארך אוטומטית. כאשר תגובות נחשבות כלא מדויקות, מרווח זמן התשאול מתקצר אוטומטית. ברירת מחדל: 5 (סקלרי).
- 
-SpikeWatchPeriod: מציין את כמות הזמן שדוגמות שעה חשובות יקבלו ממקור השעה לפני שדוגמות שעה אלו יתקבלו כמדויקות. דוגמות שעה נחשבות כחשודות כאשר הפרש השעות בין דוגמת השעה והשעון המקומי של הלקוח גדול יותר מהערך של LargePhaseOffset. SpikeWatchPeriod משמש בשילוב עם HoldPeriod כדי לסייע בהפחתת דוגמות שעה לא סדירות ולא מדויקות אשר מוחזרות ממחשב עמית. ברירת מחדל: 900 שניות.
- 
-UpdateInterval: מציין את משך הזמן ש- W32time יחכה בין תיקונים כאשר השעון מתוקן באופן הדרגתי. כשהוא מבצע תיקון הדרגתי, השירות מכוון את השעון במידה מועטה, ממתין את משך הזמן שהוגדר ולאחר מכן בודק אם דרוש כיוון נוסף, עד שהתיקון מסתיים. ברירת מחדל: 100 1/100 יחידות שניה, שהן 1 שניה.
- 
-פרמטרים כלליים:
- 
-AnnounceFlags: ערך מסיכת סיביות אשר שולט באופן שבו זמינות שירות השעה מפורסם באמצעות NetLogon. ברירת מחדל: 0x0a הקסדצימלי. לקבלת ערכים אפשריים, ראה Config\AnnounceFlags Entry (http://go.microsoft.com/fwlink/?LinkId=139718).
- 
-EventLogFlags: שולט באירועים מיוחדים אשר עשויים להיות רשומים ביומן מערכת מציג האירועים. ברירת מחדל: מסיכת סיביות 0x02 הקסדצימלי. לקבלת ערכים אפשריים, ראה מפתח משנה NtpClient\EventLogFlags ‏(http://go.microsoft.com/fwlink/?LinkId=139720).
- 
-LocalClockDispersion: מציין את השגיאה, בשניות, ששרת ה- NTP מדווח ללקוחות אשר מבקשים דוגמת שעה. (רלוונטי רק כאשר שרת ה- NTP משתמש בשעה של שעון ה- CMOS המקומי.) ברירת מחדל: 10 שניות.
- 
-MaxPollInterval: שולט במרווח זמן התשאול המרבי, אשר מגדיר את כמות הזמן המרבית בין תשאולים של מחשב עמית. ברירת מחדל: 10 בבסיס לוג 2, אשר שווה ל- 1,024 שניות. (אין להגדיר לערך הגבוה מ- 15.)
- 
-MinPollInterval: שולט במרווח זמן התשאול המזערי שמגדיר את כמות הזמן המזערית בין תשאולים למחשב עמית. ברירת מחדל: 6 בבסיס לוג 2, אשר שווה ל- 64 שניות.
- 
-פרמטרי RODC:
+      <string id="W32TIME_CONFIG_EXPLAIN">This policy setting allows you to specify Clock discipline and General values for the Windows Time service (W32time) for domain controllers including RODCs.
 
-לקבלת מידע נוסף על הגדרות אלו, ראה Appendix A: Technical Reference Topics (נספח A: נושאים טכניים לעיון) (http://go.microsoft.com/fwlink/?LinkID=128273).
- 
-ChainEntryTimeout: מציין את כמות הזמן המרבית שערך יוכל להישאר בטבלת השרשור לפני שייחשב כערך שתוקפו פג. ערכים שתוקפם פג עשויים להיות מוסרים בעת עיבוד הבקשה או התגובה הבאות. ברירת מחדל: 16 שניות.
- 
-ChainMaxEntries: שולט במספר הערכים המרבי המותר בטבלת השרשור. אם טבלת השרשור מלאה ואין ערכים שתוקפם פג ושניתן להסירם, כל הבקשות הנכנסות מבוטלות. ברירת מחדל: 128 ערכים.
- 
-ChainMaxHostEntries: שולט במספר הערכים המרבי המותר בטבלת השרשור של מארח מסוים. ברירת מחדל: 4 ערכים. 
- 
-ChainDisable: שולט אם מנגנון השרשור יהפוך ללא זמין או לא. אם השרשור אינו זמין (מוגדר כ- 0), ה- RODC יכול להסתנכרן עם כל בקר תחום, אולם למארחים שהסיסמאות שלהם אינן מאוחסנות במטמון ב- RODC לא תהיה אפשרות להסתנכרן עם ה- RODC. ברירת מחדל: 0 בוליאני.
- 
-ChainLoggingRate: שולט בתדירות שבה אירוע המרמז על מספר נסיונות השרשור המוצלחים והלא מוצלחים נרשם ביומן המערכת במציג האירועים. ברירת מחדל: 30 דקות.</string>
-      <string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">ציון ערכת פרמטרים לשליטה בלקוח NTP של Windows.
+If you enable this policy setting, you can specify the following Clock discipline, General and RODC  parameters for this service.
 
-NtpServer: שם מערכת שם התחום (DNS) או כתובת IP של מקור NTP לשעה. לערך זה מבנה של "dnsName,flags", כאשר flags הוא מסיכת סיביות הקסדצימלית של הדגלים עבור המארח. לקבלת מידע נוסף, עיין בסעיף NTP Client Group Policy Settings Associated with Windows Time (הגדרות מדיניות קבוצתית של לקוח NTP המשויכות ל- Windows Time) בהגדרות המדיניות הקבוצתית של שירות Windows Time Service ‏(http://go.microsoft.com/fwlink/?LinkId=139727). ערך ברירת המחדל הוא "time.windows.com,0x09".
+If you disable or do not configure this policy setting, Windows Time service uses the defaults of each of the following parameters.
 
-סוג: ערך זה שולט באימות שבו משתמש W32time. ערך ברירת המחדל הוא NT5DS.
+Several of the following values are scalar, which means that they only have meaning in relation to one another and are not defined by specific unit measurements.
 
-CrossSiteSyncFlags: ערך זה, המבוטא כמסיכת סיביות, שולט באופן שבו W32time בוחר מקורות שעה מחוץ לאתר שלו עצמו. הערכים האפשריים הם 0‏, 1 ו- 2. הגדרת ערך זה כ- 0 (ללא) מציינת שלקוח השעה לא צריך לנסות לסנכרן שעה מחוץ לאתר שלו. הגדרת ערך זה כ- 1 ‏(PdcOnly) מציינת שתהיה אפשרות להשתמש רק במחשבים אשר משמשים כמנהלי פעולות אמולטור של בקר תחום ראשי (PDC) בתחומים אחרים כשותפי סינכרון, כאשר על הלקוח לסנכרן שעה עם שותף מחוץ לאתר שלו. הגדרת ערך של 2 (הכל) מציינת שניתן להשתמש בכל שותף סינכרון. המערכת מתעלמת מערך זה כאשר הערך NT5DS אינו מוגדר. ערך ברירת המחדל הוא 2 עשרוני (0x02 הקסדצימלי).
+FrequencyCorrectRate
+This parameter controls the rate at which the W32time corrects the local clock's frequency. Lower values cause slower corrections; larger values cause more frequent corrections. Values that are too low can lead to overcorrection and instability. Values that are too high can lead to slow synchronization. Default: 4 (scalar).
 
-ResolvePeerBackoffMinutes: ערך זה, המבוטא בדקות, שולט במשך הזמן שבו W32time ימתין לפני שינסה לזהות שם DNS כאשר ניסיון קודם נכשל. ערך ברירת המחדל הוא 15 דקות.
+HoldPeriod
+This parameter indicates how many potentially accurate time samples the client computer must receive in a series before subsequent time samples are evaluated as potential spikes. After a period of not receiving any usable time samples, a time client ceases to evaluate time samples for spikes as soon as the first potentially accurate time sample is received. When a series of time samples (as indicated by HoldPeriod) is received, the time client evaluates subsequent time samples for spikes. A time sample is considered to be a spike when the time difference between a time sample and the client computer's local clock is greater than that of the LargePhaseOffset value. Default: Five time samples.
 
-ResolvePeerBackoffMaxTimes: ערך זה שולט במספר הפעמים שבהן W32time מנסה לזהות שם DNS לפני שתהליך הגילוי מופעל מחדש. בכל פעם שזיהוי של שם DNS נכשל, כמות הזמן שיש להמתין לפני הניסיון הבא תוכפל בהשוואה לכמות הזמן הקודמת. ערך ברירת המחדל הוא 7 ניסיונות.
+LargePhaseOffset
+This parameter specifies the time variation from the client computer's local clock (phase offset) that a time sample must have to be considered a spike. Time samples that have time variations larger than the LargePhaseOffset value are considered spikes. Default: 50,000,000 100-nanosecond units (ns), which is five seconds.
 
-SpecialPollInterval: ערך זה של לקוח NTP, אשר מבוטא בשניות, שולט בתדירות שבה מקור שעה שתצורתו נקבעה ידנית מתושאל, כאשר תצורת מקור השעה נקבעה לשימוש במרווח זמן תשאול מיוחד. אם הדגל SpecialInterval זמין בהגדרה של NTPServer setting, הלקוח משתמש בערך שהוגדר כ- SpecialPollInterval, במקום בערכי MinPollInterval ו- MaxPollInterval, כדי לקבוע באיזו תדירות לתשאל את מקור השעה. ערך ברירת המחדל הוא 3600 שניות (1 שעה).
+MaxAllowedPhaseOffset
+This parameter controls how W32time corrects the clock based on the size of the calculated time variation between the time sample and the client computer's local clock. If a response is received that has a time variation that is larger than this value, W32time sets the client computer's local clock immediately to the time that is accepted as accurate from the Network Time Protocol (NTP) server. If the time variation is less than this value, the client computer's local clock is corrected gradually. Default: 300 seconds.
 
-EventLogFlags: ערך זה הוא מסיכת סיביות אשר שולטת באירועים שעשויים להירשם ביומן המערכת במציג האירועים. הגדרת ערך זה כ- 0x1 מציינת ש- W32time ייצור אירוע בכל פעם שמזוהה קפיצה בשעה. הגדרת ערך זה כ- 0x2 מציינת ש- W32time ייצור אירוע בכל פעם שמבוצע שינוי של מקור שעה. מאחר שזהו ערך מסיכת סיביות, הגדרת 0x3 (ההוספה של 0x1 ו- 0x2) מציינת שהן קפיצות השעה והן שינויי מקור השעה יירשמו.
+MaxNegPhaseCorrection
+This parameter controls the maximum allowable clock correction that can be made in a reverse direction. If a time sample is received that indicates a time in the past (as compared to the client computer's local clock) that has a time difference that is greater than the MaxNegPhaseCorrection value, the time sample is discarded. If this happens, the Windows Time source logs an event in the System log of Event Viewer. Default: 172,800 seconds.
+
+MaxPosPhaseCorrection
+This parameter controls the maximum allowable clock correction that can be made in a forward direction. If a time sample is received that indicates a time in the future (as compared to the client computer's local clock) that has a time difference greater than the MaxPosPhaseCorrection value, the time sample is discarded. Default: 172,800 seconds.
+
+PhaseCorrectRate
+This parameter controls how quickly W32time corrects the client computer's local clock difference to match time samples that are accepted as accurate from the NTP server. Lower values cause the clock to correct more slowly; larger values cause the clock to correct more quickly. Default: 7 (scalar).
+
+PollAdjustFactor
+This parameter controls how quickly W32time changes polling intervals. When responses are considered to be accurate, the polling interval lengthens automatically. When responses are considered to be inaccurate, the polling interval shortens automatically. Default: 5 (scalar).
+
+SpikeWatchPeriod
+This parameter specifies the amount of time that suspicious time samples are received from a time source before these time samples are accepted as accurate. Time samples are considered suspicious when the time difference between the time sample and the client computer's local clock is larger than the value of LargePhaseOffset. SpikeWatchPeriod is used in conjunction with HoldPeriod to help eliminate sporadic, inaccurate time samples that are returned from a peer. Default: 900 seconds.
+
+UpdateInterval
+This parameter specifies the amount of time that W32time waits between corrections when the clock is being corrected gradually. When it makes a gradual correction, the service adjusts the clock slightly, waits this amount of time, and then checks to see if another adjustment is needed, until the correction is finished. Default: 100 1/100th second units, which is 1 second.
+
+General parameters:
+
+AnnounceFlags
+This parameter is a bitmask value that controls how time service availability is advertised through NetLogon. Default: 0x0a hexadecimal. See the NtpClient\EventLogFlags Subkey documentation on Microsoft's TechNet Library for possible values.
+
+EventLogFlags
+This parameter controls special events that may be logged to the Event Viewer System log. Default: 0x02 hexadecimal bitmask. See the NtpClient\EventLogFlags Subkey documentation on Microsoft's TechNet Library for possible values.
+
+LocalClockDispersion
+This parameter indicates the maximum error in seconds that is reported by the NTP server to clients that are requesting a time sample. (Applies only when the NTP server is using the time of the local CMOS clock.) Default: 10 seconds.
+
+MaxPollInterval
+This parameter controls the maximum polling interval, which defines the maximum amount of time between polls of a peer. Default: 10 in log base-2, which is 1,024 seconds. (Should not be set higher than 15.)
+
+MinPollInterval
+This parameter controls the minimum polling interval that defines the minimum amount of time between polls of a peer. Default: 6 in log base-2, which is 64 seconds.
+
+RequireSecureTimeSyncRequests
+This parameter controls whether or not the the DC will respond to time sync requests that use older authentication protocols. If enabled (set to 1), the DC will not respond to requests using such protocols. Default: 0 Boolean.
+
+RODC parameters:
+
+ChainEntryTimeout
+This parameter specifies the maximum amount of time that an entry can remain in the chaining table before the entry is considered to be expired. Expired entries may be removed when the next request or response is processed. Default: 16 seconds.
+
+ChainMaxEntries
+This parameter controls the maximum number of entries that are allowed in the chaining table. If the chaining table is full and no expired entries can be removed, any incoming requests are discarded. Default: 128 entries.
+
+ChainMaxHostEntries
+This parameter controls the maximum number of entries that are allowed in the chaining table for a particular host. Default: 4 entries.
+
+ChainDisable
+This parameter controls whether or not the chaining mechanism is disabled. If chaining is disabled (set to 0), the RODC can synchronize with any domain controller, but hosts that do not have their passwords cached on the RODC will not be able to synchronize with the RODC. Default: 0 Boolean.
+
+ChainLoggingRate
+This parameter controls the frequency at which an event that indicates the number of successful and unsuccessful chaining attempts is logged to the System log in Event Viewer. Default: 30 minutes.
+</string>
+
+<string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">This policy setting specifies a set of parameters for controlling the Windows NTP Client.
+
+If you enable this policy setting, you can specify the following parameters for the Windows NTP Client.
+
+If you disable or do not configure this policy setting, the WIndows NTP Client uses the defaults of each of the following parameters.
+
+NtpServer
+The Domain Name System (DNS) name or IP address of an NTP time source. This value is in the form of ""dnsName,flags"" where ""flags"" is a hexadecimal bitmask of the flags for that host. For more information, see the NTP Client Group Policy Settings Associated with Windows Time section of the Windows Time Service Group Policy Settings.  The default value is ""time.windows.com,0x09"". 
+
+Type
+This value controls the authentication that W32time uses. The default value is NT5DS.
+
+CrossSiteSyncFlags
+This value, expressed as a bitmask, controls how W32time chooses time sources outside its own site. The possible values are 0, 1, and 2. Setting this value to 0 (None) indicates that the time client should not attempt to synchronize time outside its site. Setting this value to 1 (PdcOnly) indicates that only the computers that function as primary domain controller (PDC) emulator operations masters in other domains can be used as synchronization partners when the client has to synchronize time with a partner outside its own site. Setting a value of 2 (All) indicates that any synchronization partner can be used. This value is ignored if the NT5DS value is not set. The default value is 2 decimal (0x02 hexadecimal).
+
+ResolvePeerBackoffMinutes
+This value, expressed in minutes, controls how long W32time waits before it attempts to resolve a DNS name when a previous attempt failed. The default value is 15 minutes.
+
+ResolvePeerBackoffMaxTimes
+This value controls how many times W32time attempts to resolve a DNS name before the discovery process is restarted. Each time DNS name resolution fails, the amount of time to wait before the next attempt will be twice the previous amount. The default value is seven attempts.
+
+SpecialPollInterval
+This NTP client value, expressed in seconds, controls how often a manually configured time source is polled when the time source is configured to use a special polling interval. If the SpecialInterval flag is enabled on the NTPServer setting, the client uses the value that is set as the SpecialPollInterval, instead of the MinPollInterval and MaxPollInterval values, to determine how frequently to poll the time source. The default value is 3600 seconds (1 hour).
+
+EventLogFlags
+This value is a bitmask that controls events that may be logged to the System log in Event Viewer. Setting this value to 0x1 indicates that W32time will create an event whenever a time jump is detected. Setting this value to 0x2 indicates that W32time will create an event whenever a time source change is made. Because it is a bitmask value, setting 0x3 (the addition of 0x1 and 0x2) indicates that both time jumps and time source changes will be logged.
       </string>
-      <string id="W32TIME_ENABLE_NTPCLIENT_EXPLAIN">ציון אם לקוח NTP של Windows זמין. אם תהפוך את לקוח NTP של Windows לזמין במחשב שלך, תוכל לסנכרן את שעון המחשב עם שרתי NTP אחרים. אם תחליט להשתמש בספק זמן מצד שלישי, יתכן שתרצה להפוך את השירות ללא זמין.</string>
-      <string id="W32TIME_ENABLE_NTPSERVER_EXPLAIN">ציון אם שרת NTP של Windows פעיל. הפעלת שרת ה-NTP של Windows מאפשרת למחשב שלך לטפל בבקשות NTP ממחשבים אחרים.</string>
-      <string id="W32TIME_POLICY_CONFIG">הגדרות תצורה כלליות</string>
-      <string id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">קבע תצורה של לקוח NTP של Windows</string>
-      <string id="W32TIME_POLICY_ENABLE_NTPCLIENT">הפוך לקוח NTP של Windows לזמין</string>
-      <string id="W32TIME_POLICY_ENABLE_NTPSERVER">קבע תצורה של שרת NTP של Windows</string>
-      <string id="W32TIME_ROOT">שירות הזמן של Windows</string>
-      <string id="W32TIME_TIMEPROVIDERS">ספקי זמן</string>
+      <string id="W32TIME_ENABLE_NTPCLIENT_EXPLAIN">This policy setting specifies whether the Windows NTP Client is enabled.
+
+Enabling the Windows NTP Client allows your computer to synchronize its computer clock with other NTP servers. You might want to disable this service if you decide to use a third-party time provider.
+
+If you enable this policy setting, you can set the local computer clock to synchronize time with NTP servers.
+
+If you disable or do not configure this policy setting, the local computer clock does not synchronize time with NTP servers.
+      </string>
+      <string id="W32TIME_ENABLE_NTPSERVER_EXPLAIN">This policy setting allows you to specify whether the Windows NTP Server is enabled.
+
+If you enable this policy setting for the Windows NTP Server, your computer can service NTP requests from other computers.
+
+
+If you disable or do not configure this policy setting, your computer cannot service NTP requests from other computers.
+
+</string>
+      <string id="W32TIME_POLICY_CONFIG">Global Configuration Settings</string>
+      <string id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">Configure Windows NTP Client</string>
+      <string id="W32TIME_POLICY_ENABLE_NTPCLIENT">Enable Windows NTP Client</string>
+      <string id="W32TIME_POLICY_ENABLE_NTPSERVER">Enable Windows NTP Server</string>
+      <string id="W32TIME_ROOT">Windows Time Service</string>
+      <string id="W32TIME_TIMEPROVIDERS">Time Providers</string>
       <string id="W32TIME_Type_AllSync">AllSync</string>
       <string id="W32TIME_Type_NoSync">NoSync</string>
       <string id="W32TIME_Type_NT5DS">NT5DS</string>
@@ -85,7 +137,7 @@ EventLogFlags: ערך זה הוא מסיכת סיביות אשר שולטת בא
     </stringTable>
     <presentationTable>
       <presentation id="W32TIME_POLICY_CONFIG">
-        <text>פרמטרים של שיטת שעון</text>
+        <text>Clock Discipline Parameters</text>
         <decimalTextBox refId="W32TIME_FrequencyCorrectRate" defaultValue="4">FrequencyCorrectRate</decimalTextBox>
         <decimalTextBox refId="W32TIME_HoldPeriod" defaultValue="5">HoldPeriod</decimalTextBox>
         <decimalTextBox refId="W32TIME_LargePhaseOffset" defaultValue="50000000">LargePhaseOffset</decimalTextBox>
@@ -96,12 +148,13 @@ EventLogFlags: ערך זה הוא מסיכת סיביות אשר שולטת בא
         <decimalTextBox refId="W32TIME_PollAdjustFactor" defaultValue="5">PollAdjustFactor</decimalTextBox>
         <decimalTextBox refId="W32TIME_SpikeWatchPeriod" defaultValue="900">SpikeWatchPeriod</decimalTextBox>
         <decimalTextBox refId="W32TIME_UpdateInterval" defaultValue="100">UpdateInterval</decimalTextBox>
-        <text>פרמטרים כלליים</text>
+        <text>General Parameters</text>
         <decimalTextBox refId="W32TIME_AnnounceFlags" defaultValue="10">AnnounceFlags</decimalTextBox>
         <decimalTextBox refId="W32TIME_EventLogFlags" defaultValue="2">EventLogFlags</decimalTextBox>
         <decimalTextBox refId="W32TIME_LocalClockDispersion" defaultValue="10">LocalClockDispersion</decimalTextBox>
         <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
         <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
         <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>
@@ -113,7 +166,7 @@ EventLogFlags: ערך זה הוא מסיכת סיביות אשר שולטת בא
           <label>NtpServer</label>
           <defaultValue>time.windows.com,0x9</defaultValue>
         </textBox>
-        <dropdownList refId="W32TIME_Type" noSort="true" defaultItem="2">סוג</dropdownList>
+        <dropdownList refId="W32TIME_Type" noSort="true" defaultItem="2">Type</dropdownList>
         <decimalTextBox refId="W32TIME_CrossSiteSyncFlags" defaultValue="2">CrossSiteSyncFlags</decimalTextBox>
         <decimalTextBox refId="W32TIME_ResolvePeerBackoffMinutes" defaultValue="15">ResolvePeerBackoffMinutes</decimalTextBox>
         <decimalTextBox refId="W32TIME_ResolvePeerBackoffMaxTimes" defaultValue="7">ResolvePeerBackoffMaxTimes</decimalTextBox>

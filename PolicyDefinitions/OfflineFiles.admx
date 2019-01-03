@@ -51,7 +51,7 @@
         <decimal id="Lbl_DefCacheSizeSpin" valueName="DefCacheSize" maxValue="10000" />
       </elements>
     </policy>
-    <policy name="Pol_Enabled" clientExtension="{C631DF4C-088F-4156-B058-4375F0853CD8}" class="Machine" displayName="$(string.Pol_Enabled)" explainText="$(string.Pol_Enabled_Help)" presentation="$(presentation.Pol_Enabled)" key="Software\Policies\Microsoft\Windows\NetCache" valueName="Enabled">
+    <policy name="Pol_Enabled" clientExtension="{C631DF4C-088F-4156-B058-4375F0853CD8}" class="Machine" displayName="$(string.Pol_Enabled)" explainText="$(string.Pol_Enabled_Help)" key="Software\Policies\Microsoft\Windows\NetCache" valueName="Enabled">
       <parentCategory ref="Cat_OfflineFiles" />
       <supportedOn ref="windows:SUPPORTED_Win2k" />
       <enabledValue>
@@ -154,14 +154,14 @@
     </policy>
     <policy name="Pol_NoPinFiles_1" class="User" displayName="$(string.Pol_NoPinFiles)" explainText="$(string.Pol_NoPinFiles_Help)" presentation="$(presentation.Pol_NoPinFiles_1)" key="Software\Policies\Microsoft\Windows\NetCache">
       <parentCategory ref="Cat_OfflineFiles" />
-      <supportedOn ref="windows:SUPPORTED_WindowsXPOnly" />
+      <supportedOn ref="windows:SUPPORTED_WindowsXP" />
       <elements>
         <list id="Lbl_NoPinFilesList" key="Software\Policies\Microsoft\Windows\NetCache\NoMakeAvailableOfflineList" additive="true" explicitValue="true" />
       </elements>
     </policy>
     <policy name="Pol_NoPinFiles_2" class="Machine" displayName="$(string.Pol_NoPinFiles)" explainText="$(string.Pol_NoPinFiles_Help)" presentation="$(presentation.Pol_NoPinFiles_2)" key="Software\Policies\Microsoft\Windows\NetCache">
       <parentCategory ref="Cat_OfflineFiles" />
-      <supportedOn ref="windows:SUPPORTED_WindowsXPOnly" />
+      <supportedOn ref="windows:SUPPORTED_WindowsXP" />
       <elements>
         <list id="Lbl_NoPinFilesList" key="Software\Policies\Microsoft\Windows\NetCache\NoMakeAvailableOfflineList" additive="true" explicitValue="true" />
       </elements>
@@ -371,7 +371,7 @@
         <decimal id="Lbl_BackgroundSyncIgnoreBlockOutTime" valueName="BackgroundSyncIgnoreBlockOutAfterMin" minValue="0" maxValue="4294967295" />
         <decimal id="Lbl_BackgroundSyncBlockOutPeriodStartTime" valueName="BackgroundSyncBlockOutStartTime" minValue="0" maxValue="2400" />
         <decimal id="Lbl_BackgroundSyncBlockOutPeriodDuration" valueName="BackgroundSyncBlockOutDurationMin" minValue="0" maxValue="1440" />
-	<boolean id="Lbl_BackgroundSyncInForcedOffline" valueName="BackgroundSyncEnabledForForcedOffline">
+        <boolean id="Lbl_BackgroundSyncInForcedOffline" valueName="BackgroundSyncEnabledForForcedOffline">
           <trueValue>
             <decimal value="1" />
           </trueValue>
@@ -394,6 +394,36 @@
       <elements>
         <text id="Lbl_ExclusionListSettingsList" valueName="ExcludedFileTypes" maxLength="4096" />
       </elements>
+    </policy>
+    <policy name="Pol_WorkOfflineDisabled_1" class="User" displayName="$(string.Pol_WorkOfflineDisabled)" explainText="$(string.Pol_WorkOfflineDisabled_Help)" key="Software\Policies\Microsoft\Windows\NetCache" valueName="WorkOfflineDisabled">
+      <parentCategory ref="Cat_OfflineFiles" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+     <policy name="Pol_WorkOfflineDisabled_2" class="Machine" displayName="$(string.Pol_WorkOfflineDisabled)" explainText="$(string.Pol_WorkOfflineDisabled_Help)" key="Software\Policies\Microsoft\Windows\NetCache" valueName="WorkOfflineDisabled">
+      <parentCategory ref="Cat_OfflineFiles" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+     <policy name="Pol_SyncOnCostedNetwork" class="Machine" displayName="$(string.Pol_SyncOnCostedNetwork)" explainText="$(string.Pol_SyncOnCostedNetwork_Help)" key="Software\Policies\Microsoft\Windows\NetCache" valueName="SyncEnabledForCostedNetwork">
+      <parentCategory ref="Cat_OfflineFiles" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
     </policy>
   </policies>
 </policyDefinitions>

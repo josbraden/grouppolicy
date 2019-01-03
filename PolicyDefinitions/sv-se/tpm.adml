@@ -5,35 +5,35 @@
   <description>ange beskrivning här</description>
   <resources>
     <stringTable>
-      <string id="ActiveDirectoryBackup_Help">Du kan använda den här principinställningen för att hantera säkerhetskopiering i Active Directory Domain Services (AD DS) av ägarinformation för den betrodda plattformsmodulen (TPM). 
+      <string id="ActiveDirectoryBackup_Help">Med den här principinställningen kan du hantera säkerhetskopian i Active Directory Domain Services (AD DS) av TPM-ägarinformationen (Trusted Platform Module). 
 
-TPM-ägarinformation innehåller en kryptografisk hash av TPM-ägarlösenordet. Vissa TPM-kommandon kan endast köras av TPM-ägaren. Med denna hash ges TPM behörighet att köra sådana kommandon. 
+TPM-ägarinformationen inbegriper ett kryptografiskt hashvärde av TPM-ägarens lösenord. Vissa TPM-kommandon kan bara köras av TPM-ägaren. Detta hashvärde ger TPM tillstånd att köra dessa kommandon. 
 
-Om du aktiverar den här principinställningen säkerhetskopieras TPM-ägarinformation automatiskt och tyst till AD DS om du använder Windows för att ange eller ändra ett TPM-ägarlösenord. 
+Om du aktiverar den här principinställningen säkerhetskopieras TPM-ägarinformationen automatiskt och utan meddelande till AD DS när du använder Windows för att ställa in eller ändra en TPM-ägares lösenord. 
 
-Om du väljer alternativet "Kräv TPM-säkerhetskopiering till AD DS" kan inte ett TPM-ägarlösenord anges eller ändras om inte datorn är ansluten till domänen och AD DS-säkerhetskopieringen lyckas. Det här alternativet är förvalt för att säkerställa tillgängligheten av TPM-ägarinformation. I annat fall görs ett försök till AD DS-säkerhetskopiering men eventuella nätverks- eller säkerhetskopieringsfel påverkar inte TPM-hanteringen. Det utförs inget automatiskt försök till ny säkerhetskopiering och det är inte säkert att TPM-ägarinformationen har lagrats i AD DS under BitLocker-konfigureringen.
+Om den här principinställningen aktiveras kan TPM-ägarens lösenord inte anges eller ändras om inte datorn är ansluten till domänen och säkerhetskopieringen till AD DS lyckas.
 
-Om du inaktiverar eller inte konfigurerar principinställningen, säkerhetskopieras ingen TPM-ägarinformation till AD DS. 
+Om du inaktiverar eller inte konfigurerar den här principinställningen säkerhetskopieras inte TPM-ägarinformationen till AD DS. 
 
-Obs! Du måste konfigurera en lämplig uppsättning schematillägg och inställningar för åtkomstkontroll på domänen för att AD DS-säkerhetskopieringen ska fungera. Det finns mer information om konfiguration av Active Directory Domain Services för TPM i onlinedokumentationen.
+Obs! Du måste först ställa in lämpliga schematillägg och åtkomstkontrollinställningar i domänen innan det går att säkerhetskopiera till AD DS. Onlinedokumentationen innehåller mer information om hur du ställer in Active Directory Domain Services för TPM.
 
-Obs! Du måste först ange en ägare för att TPM ska kunna användas för att tillhandahålla förbättrade säkerhetsfunktioner för BitLocker-kryptering och andra program. Om du vill bli ägare till TPM med ett ägarlösenord ska du köra "tpm.msc" och välja åtgärden "Initiera TPM".
+Obs! TPM kan inte användas för att förbättra säkerhetsfunktionerna för BitLocker-diskkryptering och andra program utan att först ange en ägare. Om du vill bli ägare till en TPM med ett ägarlösenord ska du köra tpm.msc och välja åtgärden Initiera TPM.
 
-Obs! Om TPM-ägarinformationen går förlorad eller inte är tillgänglig, går det att använda begränsad TPM-hantering genom att köra "tpm.msc" på den lokala datorn.</string>
+Obs! Om TPM-ägarinformationen går förlorad eller inte är tillgänglig går det att administrera TPM till viss del genom att köra tpm.msc på den lokala datorn.</string>
       <string id="ActiveDirectoryBackup_Name">Aktivera TPM-säkerhetskopiering till Active Directory Domain Services</string>
-      <string id="BlockedCommandsList_Help">Du kan använda den här principinställningen för att hantera grupprinciplistan med TPM-kommandon som blockeras i Windows.
+      <string id="BlockedCommandsList_Help">Med den här principinställningen kan du hantera listan i Grupprincip över TPM-kommandon (Trusted Platform Module) som blockeras av Windows.
 
-Om du aktiverar inställningen blockeras angivna kommandon i Windows så att de inte skickas till datorns TPM. TPM-kommandon motsvaras av ett kommandonummer, t ex är kommandonummer 129 TPM_OwnerReadInternalPub och 170 är TPM_FieldUpgrade. Du kan ta reda på vilket nummer som hör till vilket TPM-kommando genom att köra "tpm.msc" och navigera till avsnittet "Kommandohantering".
+Om du aktiverar den här principinställningen hindras vissa kommandon från att skickas till TPM:en på datorn. TPM-kommandon refereras med att kommandonummer. Exempel: Kommando 129 är TPM_OwnerReadInternalPub och kommando 170 är TPM_FieldUpgrade. Om du vill ta reda på vilket kommandonummer som hör till olika TPM-kommandon kan du köra tpm.msc och gå till avsnittet Kommandohantering.
 
-Om du inaktiverar eller inte konfigurerar inställningen, blockeras endast de TPM-kommandon som anges i standard-listan eller i lokala listor. Standardlistan över blockerade TPM-kommandon är förkonfigurerad i Windows. Du kan visa standardlistan genom att köra "tpm.msc", navigera till "Kommandohantering" och visa kolumnen "På standardlistan över blockerade". Det går att konfigurera den lokala listan över blockerade TPM-kommandon utanför Grupprincip genom att köra "tpm.msc" eller genom att använda skript mot Win32_Tpm-gränssnittet. Se relaterade principinställningar för att använda eller ignorera standardlistan och lokala listor av blockerade TPM-kommandon.</string>
+Om du inaktiverar eller inte konfigurerar den här principinställningen kan bara de TPM-kommandon som anges i standardlistor eller lokala listor blockeras av Windows. Standardlistan över blockerade TPM-kommandon är förkonfigurerad i Windows. Du kan visa standardlistan genom att köra tpm.msc, navigera till Kommandohantering och visa kolumnen På standardlistan över blockerade. Det går att konfigurera den lokala listan över blockerade TPM-kommandon utanför Grupprincip genom att köra "tpm.msc" eller genom att använda skript mot Win32_Tpm-gränssnittet. Se de relaterade principinställningarna om du vill använda eller ignorera standardlistorna eller de lokala listorna med blockerade TPM-kommandon.</string>
       <string id="BlockedCommandsList_Name">Konfigurera listan med blockerade TPM-kommandon</string>
       <string id="IgnoreDefaultList_Help">Du kan använda den här principinställningen för att använda eller ignorera datorns standardlista med blockerade TPM-kommandon.
 
 Om inställningen aktiveras ignoreras datorns standardlista med blockerade TPM-kommandon i Windows och blockering sker endast av kommandon som anges via grupprincipen eller den lokala listan. 
 
-Standardlistan över blockerade TPM-kommandon är förkonfigurerad i Windows. Du kan visa standardlistan genom att köra tpm.msc, navigera till Kommandohantering och visa kolumnen På standardlistan över blockerade. Det går att konfigurera den lokala listan över blockerade TPM-kommandon utanför Grupprincip genom att köra tpm.msc eller genom att använda skript mot Win32_Tpm-gränssnittet. Se den relaterade principinställningen för konfigurering av grupprinciplistan med blockerade TPM-kommandon.
+Standardlistan över blockerade TPM-kommandon är förkonfigurerad i Windows. Du kan visa standardlistan genom att köra tpm.msc, navigera till Kommandohantering och visa kolumnen På standardlistan över blockerade. Det går att konfigurera den lokala listan över blockerade TPM-kommandon utanför Grupprincip genom att köra "tpm.msc" eller genom att använda skript mot Win32_Tpm-gränssnittet. Se den relaterade principinställningen för konfigurering av grupprinciplistan med blockerade TPM-kommandon.
 
-Om du inaktiverar eller inte konfigurerar inställningen blockeras TPM-kommandon i standardlistan, utöver kommandon i grupprincipen och lokala listor. </string>
+Om du inaktiverar eller inte konfigurerar inställningen blockeras TPM-kommandon i standardlistan, utöver kommandon i grupprincipen och lokala listor.  </string>
       <string id="IgnoreDefaultList_Name">Ignorera standardlistan med blockerade TPM-kommandon</string>
       <string id="IgnoreLocalList_Help">Du kan använda den här principinställningen för att använda eller ignorera datorns lokala lista med blockerade TPM-kommandon.
 
@@ -44,23 +44,114 @@ Det går att konfigurera den lokala listan över blockerade TPM-kommandon utanf�
 Om du inaktiverar eller inte konfigurerar inställningen blockeras TPM-kommandon i den lokala listan, utöver kommandon i grupprincipen och standardlistorna.</string>
       <string id="IgnoreLocalList_Name">Ignorera den lokala listan med blockerade TPM-kommandon</string>
       <string id="TPMCategory">TPM-tjänster (Trusted Platform Module)</string>
+      <string id="OSManagedAuth_Name">Konfigurera hur mycket auktoriseringsinformation för TPM-ägare som är tillgänglig för operativsystemet (Configure the level of TPM owner authorization information available to the operating system)</string>
+      <string id="OSManagedAuth_Help">Den här principinställningen bestämmer hur mycket av TPM-ägarens auktoriseringsinformation som lagras i registret på den lokala datorn. Beroende på hur mycket av TPM-ägarens auktoriseringsinformation som lagras lokalt kan operativsystemet och TPM-baserade program utföra vissa TPM-åtgärder som kräver auktorisering av TPM-ägaren utan att användaren behöver ange TPM-ägarens lösenord.
+
+Du kan välja att låta operativsystemet lagra antingen hela TPM-ägarens auktoriseringsvärde, TPM-bloben för administrativ delegering plus TPM-bloben för användardelegering eller ingenting. 
+
+Om du aktiverar den här principinställningen lagras TPM-ägarens auktorisering i registret på den lokala datorn i enlighet med den hanterade TPM-autentiseringsinställning för operativsystemet som du väljer.
+
+Välj inställningen Fullständig för den av operativsystemet hanterade TPM-autentiseringsinställningen om du vill lagra all auktoriseringsinformation om TPM-ägaren, TPM-bloben för administrativ delegering och TPM-bloben för användardelegering i det lokala registret. Med den här inställningen går det att använda TPM utan fjärrlagring eller extern lagring av TPM-ägarens auktoriseringsvärde. Den här inställningen lämpar sig i scenarier som inte kräver att det går att förhindra återställning av TPM-antihamringslogiken eller att ändra TPM-ägarens auktoriseringsvärde. Vissa TPM-baserade program kan kräva att den här inställningen ändras innan några funktioner som beror av TPM-antihamringslogiken kan användas.
+
+Välj Delegerad för den av operativsystemet hanterade TPM-autentiseringsinställningen om du vill bara vill lagra TPM-bloben för administrativ delegering och TPM-bloben för användardelegering i det lokala registret. Den här inställningen lämpar sig för TPM-baserade program som behöver utnyttja TPM-antihamringslogiken. Extern lagring eller fjärrlagring av det fullständiga auktoriseringsvärdet för TPM-ägaren, t.ex. genom att säkerhetskopiera värdet till Active Directory Domain Services (AD DS), rekommenderas om den här inställningen används. 
+
+Välj inställningen Ingen för den av operativsystemet hanterade TPM-autentiseringsinställningen om du vill uppnå kompatibilitet med tidigare operativsystem och program eller för scenarier som kräver att auktoriseringsinformation om TPM-ägaren inte lagras lokalt.  Den här inställningen kan orsaka problem med vissa TPM-baserade program.
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen och principinställningen Aktivera TPM-säkerhetskopiering till Active Directory Domain Services också är inaktiverad eller inte konfigurerad, är standardinställningen att lagra det fullständiga TPM-auktoriseringsvärdet i det lokala registret. Om du inaktiverar eller inte konfigurerar den här principinställningen och grupprincipinställningen Aktivera TPM-säkerhetskopiering till Active Directory Domain Services är aktiverad lagras bara bloben för administrativ delegering och användardelegering i det lokala registret.
+
+Obs! Om inställningen för den av operativsystemet hanterade TPM-autentiseringen ändras från Fullständig till Delegerad återskapas det fullständiga auktoriseringsvärdet för TPM-ägaren och alla kopior av det ursprungliga auktoriseringsvärdet för TPM-ägaren är ogiltiga. Om du säkerhetskopierar auktoriseringsvärdet för TPM-ägaren till AD DS säkerhetskopieras det nya auktoriseringsvärdet för ägaren till AD DS när det ändras.
+
+</string>
+      <string id="OSManagedAuth-TpmAuthFull">Fullständig</string>
+      <string id="OSManagedAuth-TpmAuthAdminPlusUser">Delegerad</string>
+      <string id="OSManagedAuth-TpmAuthNone">Ingen</string>
+      <string id="StandardUserAuthorizationFailureDuration_Name">Standardvaraktighet för användarutelåsning (Standard User Lockout Duration)</string>
+      <string id="StandardUserAuthorizationFailureDuration_Name_Help">Med den här principinställningen kan du ange i hur många minuter standardanvändare som inte lyckas auktorisera sig för att använda TPM-kommandon (Trusted Platform Module) inte får använda kommandon som kräver auktorisering.  Om antalet TPM-kommandon som inte har gått att auktorisera inom perioden överstiger ett tröskelvärde hindras standardanvändare från att skicka kommandon som kräver auktorisering till TPM.  
+
+Med den här inställningen kan administratörer hindra TPM-maskinvara från att hamna i utelåst läge, eftersom den sänker frekvensen för hur ofta standardanvändaren kan skicka kommandon som kräver auktorisering till TPM.  
+
+Ett auktoriseringsfel inträffar varje gång en standardanvändare skickar ett kommando till TPM och får ett felmeddelande som visar att ett auktoriseringsfel har inträffat.  Auktoriseringsfel som inträffade före perioden ignoreras.
+
+Två tröskelvärden gäller för varje standardanvändare.  Om något av dessa värden överskrids kan standardanvändaren inte skicka ett kommando till TPM som kräver auktorisering.  
+
+Värdet för Standardtröskelvärde för utelåsning av enskild användare (Standard User Lockout Threshold Individual) är det maximala antalet auktoriseringsfel som varje standardanvändare kan få innan användaren inte tillåts skicka kommandon som kräver auktorisering till TPM.  
+
+Värdet för Standardtröskelvärde för utelåsning av alla användare (Standard User Lockout Total Threshold) är det maximala totala antalet auktoriseringsfel som alla standardanvändare kan få innan alla standardanvändare inte tillåts skickas kommandon som kräver auktorisering till TPM. 
+      
+TPM är utformat att skydda sig mot personer som gissar lösenord genom att låsa maskinvaran när för många kommandon tas emot med ett felaktigt auktoriseringsvärde.   När en TPM försätts i utelåsningsläge gäller detta alla användare, även administratörer och Windows-funktioner som BitLocker-diskkryptering.  Antalet auktoriseringsfel en TPM tillåter och hur lång tid den är utelåst varierar för olika TPM-tillverkare.  Vissa TPM:er kan försättas i utelåsningsläge i allt längre perioder med allt färre misslyckade auktoriseringsförsök beroende på tidigare misslyckade försök.  Vissa TPM kan kräva att datorn startas om för att utelåsningsläget ska avslutas.    Andra TPM kan kräva att datorn är på och att tillräckligt många klockcykler går innan utelåsningsläget avslutas.
+
+En administratör som känner till TPM-ägarens lösenord kan återställa TPM-maskinvarans utelåsningslogik från TPM-hanteringskonsolen (tpm.msc).  Varje gång en administratör återställer TPM-maskinvarans utelåsningslogik ignoreras alla tidigare TPM-auktoriseringsfel som rör standardanvändare. Standardanvändarna kan alltså använda TPM normalt igen omedelbart.
+
+Om det här värdet inte är konfigurerat används standardvärdet 480 minuter (8 timmar).  
+        
+      </string>
+      <string id="StandardUserAuthorizationFailureIndividualThreshold_Name">Standardtröskelvärde för utelåsning av enskild användare (Standard User Individual Lockout Threshold)</string>
+      <string id="StandardUserAuthorizationFailureIndividualThreshold_Name_Help">Med den här principinställningen kan du ange det maximala antalet auktoriseringsfel för varje standardanvändare för TPM (Trusted Platform Module).  Om antalet auktoriseringsfel för användaren inom intervallet för Standardvaraktighet för användarutelåsning (Standard User Lockout Duration) är lika med det här värdet, hindras standardanvändaren från att skicka kommandon till TPM (Trusted Platform Module) som kräver auktorisering.
+
+Med den här inställningen kan administratörer hindra TPM-maskinvara från att hamna i utelåst läge, eftersom den sänker frekvensen för hur ofta standardanvändaren kan skicka kommandon som kräver auktorisering till TPM.  
+
+Ett auktoriseringsfel inträffar varje gång en standardanvändare skickar ett kommando till TPM och får ett felmeddelande som visar att ett auktoriseringsfel har inträffat.  Auktoriseringsfel som inträffade före intervallet ignoreras.
+
+Två tröskelvärden gäller för varje standardanvändare.  Om något av dessa värden överskrids kan standardanvändaren inte skicka ett kommando till TPM som kräver auktorisering.  
+
+Det här värdet är det maximala antalet auktoriseringsfel som varje standardanvändare kan få innan användaren inte tillåts skickas kommandon som kräver auktorisering till TPM.  
+
+Värdet för Standardtröskelvärde för utelåsning av alla användare (Standard User Lockout Total Threshold) är det maximala totala antalet auktoriseringsfel som alla standardanvändare kan få innan alla standardanvändare inte tillåts skickas kommandon som kräver auktorisering till TPM. 
+      
+TPM är utformat att skydda sig mot personer som gissar lösenord genom att låsa maskinvaran när för många kommandon tas emot med ett felaktigt auktoriseringsvärde.   När en TPM försätts i utelåsningsläge gäller detta alla användare, även administratörer och Windows-funktioner som BitLocker-diskkryptering.  Antalet auktoriseringsfel en TPM tillåter och hur lång tid den är utelåst varierar för olika TPM-tillverkare.  Vissa TPM:er kan försättas i utelåsningsläge i allt längre perioder med allt färre misslyckade auktoriseringsförsök beroende på tidigare misslyckade försök.  Vissa TPM kan kräva att datorn startas om för att utelåsningsläget ska avslutas.    Andra TPM kan kräva att datorn är på och att tillräckligt många klockcykler går innan utelåsningsläget avslutas.
+
+En administratör som känner till TPM-ägarens lösenord kan återställa TPM-maskinvarans utelåsningslogik från TPM-hanteringskonsolen (tpm.msc).  Varje gång en administratör återställer TPM-maskinvarans utelåsningslogik ignoreras alla tidigare TPM-auktoriseringsfel som rör standardanvändare. Standardanvändarna kan alltså använda TPM normalt igen omedelbart.
+
+Om det här värdet inte är konfigurerat används standardvärdet 4.
+
+Värdet noll innebär att operativsystemet inte tillåter standardanvändare att skicka kommandon som kan orsaka ett auktoriseringsfel till en TPM.
+      
+      </string>
+
+      <string id="StandardUserAuthorizationFailureTotalThreshold_Name">Standardtröskelvärde för utelåsning av alla användare (Standard User Total Lockout Threshold)</string>
+      <string id="StandardUserAuthorizationFailureTotalThreshold_Name_Help">Med den här principinställningen kan du ange det maximala antalet auktoriseringsfel för alla standardanvändare för TPM (Trusted Platform Module).  Om det totala antalet auktoriseringsfel för alla standardanvändare inom intervallet för Standardvaraktighet för användarutelåsning (Standard User Lockout Duration) är lika med det här värdet, hindras alla standardanvändare från att skicka kommandon till TPM (Trusted Platform Module) som kräver auktorisering.
+
+Med den här inställningen kan administratörer hindra TPM-maskinvara från att hamna i utelåst läge, eftersom den sänker frekvensen för hur ofta standardanvändaren kan skicka kommandon som kräver auktorisering till TPM.  
+
+Ett auktoriseringsfel inträffar varje gång en standardanvändare skickar ett kommando till TPM och får ett felmeddelande som visar att ett auktoriseringsfel har inträffat.  Auktoriseringsfel som inträffade före intervallet ignoreras.
+
+Två tröskelvärden gäller för varje standardanvändare.  Om något av dessa värden överskrids kan standardanvändaren inte skicka ett kommando till TPM som kräver auktorisering.  
+
+Värdet för Standardtröskelvärde för utelåsning av enskild användare (Standard User Individual Lockout) är det maximala antalet auktoriseringsfel som varje standardanvändare kan få innan användaren inte tillåts skickas kommandon som kräver auktorisering till TPM.  
+
+Det här värdet är det maximala totala antalet auktoriseringsfel som alla standardanvändare kan få innan alla standardanvändare inte tillåts skickas kommandon som kräver auktorisering till TPM. 
+      
+TPM är utformat att skydda sig mot personer som gissar lösenord genom att låsa maskinvaran när för många kommandon tas emot med ett felaktigt auktoriseringsvärde.   När en TPM försätts i utelåsningsläge gäller detta alla användare, även administratörer och Windows-funktioner som BitLocker-diskkryptering.  Antalet auktoriseringsfel en TPM tillåter och hur lång tid den är utelåst varierar för olika TPM-tillverkare.  Vissa TPM:er kan försättas i utelåsningsläge i allt längre perioder med allt färre misslyckade auktoriseringsförsök beroende på tidigare misslyckade försök.  Vissa TPM kan kräva att datorn startas om för att utelåsningsläget ska avslutas.    Andra TPM kan kräva att datorn är på och att tillräckligt många klockcykler går innan utelåsningsläget avslutas.
+
+En administratör som känner till TPM-ägarens lösenord kan återställa TPM-maskinvarans utelåsningslogik från TPM-hanteringskonsolen (tpm.msc).  Varje gång en administratör återställer TPM-maskinvarans utelåsningslogik ignoreras alla tidigare TPM-auktoriseringsfel som rör standardanvändare. Standardanvändarna kan alltså använda TPM normalt igen omedelbart.
+
+Om det här värdet inte är konfigurerat används standardvärdet 9.  
+
+Värdet noll innebär att operativsystemet inte tillåter standardanvändare att skicka kommandon som kan orsaka ett auktoriseringsfel till en TPM.
+
+      
+
+      </string>
+
     </stringTable>
     <presentationTable>
-      <presentation id="ActiveDirectoryBackup_Name">
-        <checkBox refId="RequireActiveDirectoryBackup_Name" defaultChecked="true">Kräv TPM-säkerhetskopiering till AD DS</checkBox>
-        <text/>
-        <text>Om du väljer den här inställningen går det inte att ange eller ändra TPM-ägarlösenordet </text>
-        <text>om säkerhetskopieringen misslyckas (rekommenderat standardvärde).</text>
-        <text/>
-        <text>Om du inte väljer den här inställningen går det att ange eller ändra TPM-ägarlösenordet,</text>
-        <text>även om säkerhetskopieringen misslyckas. Det görs inget nytt automatiskt försök till säkerhetskopiering.</text>
-      </presentation>
       <presentation id="BlockedCommandsList_Name">
         <text>Ange kommandon som ska blockeras genom att lägga till kommandonumren i listan.</text>
-
         <listBox refId="BlockedCommandsList_Ordinals2">Listan med blockerade TPM-kommandon:</listBox>
-        <text>Om du t ex vill blockera kommandona TPM_OwnerReadInternalPub</text>
+        <text>Om du t ex vill blockera kommandona TPM_OwnerReadInternalPub</text>
         <text>och TPM_FieldUpgrade ska du lägga till posterna 129 och 170 i listan.</text>
+      </presentation>
+      <presentation id="OSManagedAuth_Name">
+        <dropdownList refId="SelectOSManagedAuthLevel" noSort="true" defaultItem="1">Av operativsystemet hanterad TPM-autentiseringsnivå:</dropdownList>
+      </presentation>
+      <presentation id="StandardUserAuthorizationFailureDuration_Name">
+        <decimalTextBox refId="DXT_StandardUserAuthorizationFailureDuration_Name" defaultValue="480">Längd för beräkning av misslyckade TPM-auktoriseringar (minuter):</decimalTextBox>        
+      </presentation>
+      <presentation id="StandardUserAuthorizationFailureIndividualThreshold_Name">
+        <decimalTextBox refId="DXT_StandardUserAuthorizationFailureIndividualThreshold_Name" defaultValue="4">Maximalt antal misslyckade auktorisering per intervall:</decimalTextBox>
+      </presentation>
+      <presentation id="StandardUserAuthorizationFailureTotalThreshold_Name">
+        <decimalTextBox refId="DXT_StandardUserAuthorizationFailureTotalThreshold_Name" defaultValue="9">Maximalt antal misslyckade auktorisering per intervall:</decimalTextBox>
       </presentation>
     </presentationTable>
   </resources>

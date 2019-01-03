@@ -2,7 +2,7 @@
 <policyDefinitionResources revision="1.0" schemaVersion="1.0">
 	<displayName>Encaminhamento de Eventos</displayName>
 
-	<description>Definições de Diretiva para Encaminhamento de Eventos</description>
+	<description>Definições de Política para Encaminhamento de Eventos</description>
 
 	<resources>
 
@@ -10,17 +10,25 @@
 
 			<string id="EventForwarding">Encaminhamento de Eventos</string>
 
-                        <string id="ForwarderResourceUsage">ForwarderResourceUsage</string>
-                        <string id="ForwarderResourceUsage_Help">Controla o uso de recursos para o encaminhador. Cada configuração se aplica a todas as assinaturas para o encaminhador.</string>
+                        <string id="ForwarderResourceUsage">Configurar uso de recursos do encaminhador</string>
+                        <string id="ForwarderResourceUsage_Help">Esta configuração de política controla o uso de recursos para o encaminhador (computador de origem), controlando os eventos por segundo enviados para o Coletor de Eventos.
+
+Se você habilitar esta configuração de política, poderá controlar o volume de eventos enviados para o Coletor de Eventos pelo computador de origem. Isso pode ser necessário em ambientes de alto volume.
+
+Se você desabilitar ou não definir esta configuração de política, o uso de recursos do encaminhador não será especificado.
+
+Esta configuração se aplica a todas as assinaturas para o encaminhador (computador de origem).</string>
  
-			<string id="SubscriptionManager">Configure o endereço do servidor, o intervalo de atualização e a autoridade de emissão de certificado de um Gerenciador de Assinatura de destino</string>
+			<string id="SubscriptionManager">Configurar Gerenciador de Assinatura de destino</string>
 
-			<string id="Subscription_Help">Esta configuração de diretiva permite que você configure o endereço do servidor, o intervalo de atualização e a CA (autoridade de certificação) de emissão de um Gerenciador de Assinatura de destino. O Gerenciador de Assinatura é o computador para o qual os eventos são encaminhados.
+			<string id="Subscription_Help">Esta configuração de política permite que você configure o endereço do servidor, o intervalo de atualização e a CA (autoridade de certificação) de emissão de um Gerenciador de Assinatura de destino.
 
-Sintaxe: Option=Value[,Option=Value]*
-Opções:
-Servidor (obrigatório) - endereço do computador para o qual os eventos deverão ser encaminhados. Quando o servidor usar o protocolo de transporte padrão (HTTP) e a porta (5985), use "Server=&lt;FQDN&gt;" onde &lt;FQDN&gt; é o nome de domínio totalmente qualificado do servidor. Caso contrário, especifique a URL completa. Por exemplo, ao usar o protocolo HTTPS, "Server=https://&lt;FQDN&gt;:5986/wsman/SubscriptionManager/WEC"
-</string>
+Se você habilitar esta configuração de política, poderá definir o Computador de Origem para contatar um FQDN (nome de domínio totalmente qualificado) ou Endereço IP específico e solicitar assinatura específica.
+
+Use a sintaxe a seguir ao utilizar o protocolo HTTPS:
+Server=https://&lt;FQDN do coletor&gt;:5986/wsman/SubscriptionManager/WEC,Refresh=&lt;Intervalo de atualização em segundos&gt;,IssuerCA=&lt;Impressão digital do certificado de autenticação do cliente&gt;. Ao usar o protocolo HTTP, use a porta 5985.
+
+Se você desabilitar ou não definir essa configuração de política, o computador do Coletor de Inventário não será especificado.</string>
 
 			<string id="SubscriptionManager_Listbox">SubscriptionManagers</string>
 		</stringTable>
@@ -36,7 +44,7 @@ Servidor (obrigatório) - endereço do computador para o qual os eventos deverã
 
                         <presentation id="ForwarderResourceUsage">
 
-                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">A taxa de encaminhamento máxima (eventos/segundo) permitida para o encaminhador: </decimalTextBox>
+                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">A taxa de encaminhamento máxima (eventos/segundo) permitida para o encaminhador:  </decimalTextBox>
 
                         </presentation>
 

@@ -6,16 +6,18 @@
   <resources>
     <stringTable>
       <string id="NCSI_Category">Statusindikator för nätverksanslutning</string>
-      <string id="NCSI_CorpWebProbeUrl">URL för avsökning av företagswebbplats</string>
-      <string id="NCSI_CorpWebProbeUrl_Help">URL:en till företagswebbplatsen som är mål för en aktiv avsökning.</string>
-      <string id="NCSI_CorpDnsProbeHost">Företagets DNS-värdnamn för avsökning</string>
-      <string id="NCSI_CorpDnsProbeHost_Help">Det här är värdnamnet för en känd dator som tillhör företagsnätverket. En lyckad matchning av det här värdnamnet till den förväntade adressen är ett tecken på företagsanslutningsmöjlighet.</string>
-      <string id="NCSI_CorpDnsProbeContent">Företagets DNS-värdadress för avsökning</string>
-      <string id="NCSI_CorpDnsProbeContent_Help">Den förväntade adressen till värdnamnet som används för DNS-avsökning. En lyckad matchning av värdnamnet till den här adressen är ett tecken på företagsanslutningsmöjlighet.</string>
-      <string id="NCSI_CorpSitePrefixes">Lista med företagets platsprefix</string>
-      <string id="NCSI_CorpSitePrefixes_Help">Det här är listan med företagets IPv6-platsprefix som ska övervakas för företagsanslutningsmöjlighet. Om adresser kan nås med något av dessa prefix är det ett tecken på företagsanslutningsmöjlighet.</string>
-      <string id="NCSI_DomainLocationDeterminationUrl">URL för bestämning av domänplats</string>
-      <string id="NCSI_DomainLocationDeterminationUrl_Help">Det här är HTTPS-URL:en till företagswebbplatsen som används för att bestämma den aktuella domänplatsen, d.v.s. om den är inom företaget eller inte. Om URL:en går att nå är det ett tecken på att platsen är inom företaget, annars är den utanför företaget.</string>
+      <string id="NCSI_CorpWebProbeUrl">Ange avsökningsadress för företagswebbplats</string>
+      <string id="NCSI_CorpWebProbeUrl_Help">Den här principinställningen gör att du kan ange webbadressen till företagswebbplatsen som är mål för en aktiv avsökning.</string>
+      <string id="NCSI_CorpDnsProbeHost">Ange företagets DNS-värdnamn för avsökning</string>
+      <string id="NCSI_CorpDnsProbeHost_Help">Den här principinställningen gör att du kan ange värdnamnet för en dator som du vet finns i företagsnätverket. En lyckad matchning av det här värdnamnet till den förväntade adressen är ett tecken på företagsanslutningsmöjlighet.</string>
+      <string id="NCSI_CorpDnsProbeContent">Ange företagets DNS-värdadress för avsökning</string>
+      <string id="NCSI_CorpDnsProbeContent_Help">Den här principinställningen gör att du kan ange den förväntade adressen till värdnamnet som används för DNS-avsökning. En lyckad matchning av värdnamnet till den här adressen är ett tecken på företagsanslutningsmöjlighet.</string>
+      <string id="NCSI_CorpSitePrefixes">Ange listan med företagets platsprefix</string>
+      <string id="NCSI_CorpSitePrefixes_Help">Den här principinställningen gör att du kan ange listan med företagets IPv6-platsprefix som ska övervakas för företagsanslutningsmöjlighet. Om adresser kan nås med något av dessa prefix är det ett tecken på företagsanslutningsmöjlighet.</string>
+      <string id="NCSI_DomainLocationDeterminationUrl">Ange webbadress för bestämning av företagets domänplats</string>
+      <string id="NCSI_DomainLocationDeterminationUrl_Help">Den här principinställningen gör att du kan ange HTTPS-adressen till företagswebbplatsen som klienterna använder för att avgöra den nuvarande domänplatsen (det vill säga om datorn är innanför eller utanför företagets nätverk). Om det går att nå måladressen innebär det att klienten befinner sig innanför företagets nätverk. Om det inte går är den utanför nätverket.</string>
+      <string id="NCSI_PassivePolling">Ange passiv avsökning</string>
+      <string id="NCSI_PassivePolling_Help">Den här principinställningen gör att du kan ange förfarande för passiv avsökning. NCSI söker av olika mätvärden via nätverksstacken ofta för att avgöra om nätverksanslutningen har avbrutits.  Använd alternativen om du vill styra förfarandet för passiv avsökning.</string>
     </stringTable>
     <presentationTable>
       <presentation id="NCSI_CorpWebProbeUrl">
@@ -53,8 +55,8 @@
         <text>som ska kontrolleras för nåbarhet och</text>
         <text>anslutningsmöjlighet.</text>
         <text>Syntax:</text>
-        <text>  Listan ska vara kommateckenavgränsad utan</text>
-        <text>  några extra blanksteg.</text>
+        <text>    Listan ska vara kommateckenavgränsad utan</text>
+        <text>    några extra blanksteg.</text>
         <text>Exempel:</text>
         <text>  fe80::/9,fe81::/9</text>
       </presentation>
@@ -66,6 +68,10 @@
         <text>ska kontrolleras om den är innanför eller utanför domänplatsen.</text>
         <text>Exempel:</text>
         <text>  https://nid.corp.microsoft.com/</text>
+      </presentation>
+      <presentation id="NCSI_PassivePolling">
+        <text>Följande kryssruta inaktiverar passiv avsökning i NCSI.   Det kan minska processorbelastningen för servrar eller andra datorer med statisk nätverksanslutning.</text>
+        <checkBox refId="NCSI_DisablePassivePolling_Checkbox">Inaktivera passiv avsökning</checkBox>  
       </presentation>
     </presentationTable>
   </resources>

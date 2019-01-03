@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>tutaj wprowadź wyświetlaną nazwę</displayName>
+  <displayName>tutaj wprowadź nazwę wyświetlaną</displayName>
   <description>tutaj wprowadź opis</description>
   <resources>
     <stringTable>
       <string id="Netlogon">Logowanie do sieci</string>
-      <string id="Netlogon_AllowSingleLabelDnsDomain">Lokalizacja kontrolerów domen zarządzających domeną z nazwą DNS o pojedynczej etykiecie</string>
-      <string id="Netlogon_AllowSingleLabelDnsDomain_Help">Określa, czy komputery, do których to ustawienie jest stosowane, próbują rozpoznać nazwę DNS w nazwach domen o pojedynczej etykiecie.
+      <string id="Netlogon_AllowSingleLabelDnsDomain">Użyj rozpoznawania nazw DNS przy użyciu nazwy domeny o pojedynczej etykiecie zamiast rozpoznawania nazw NetBIOS do zlokalizowania kontrolera domeny</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain_Help">To ustawienie zasad określa, czy komputery, do których jest stosowane, próbują rozpoznać nazwę DNS w przypadku nazw domen o pojedynczej etykiecie.
 
-Domyślnie, gdy komputer (a dokładniej lokalizator kontrolerów domen uruchomiony na komputerze) ma zlokalizować kontroler domeny zarządzający domeną usługi Active Directory, która jest określona nazwą o pojedynczej etykiecie, używa wyłącznie rozpoznawania nazw NetBIOS, a nie rozpoznawania nazw DNS, jeśli nie został dołączony do lasu usługi Active Directory, w której co najmniej jedna domena ma nazwę DNS o pojedynczej etykiecie. 
+Domyślnie jest używane zachowanie określone w zasadzie dotyczącej zezwalania na wyszukiwanie sufiksów DNS. Jeśli zasada dotycząca zezwalania na wyszukiwanie sufiksów DNS jest wyłączona, to rozpoznawanie nazw NetBIOS jest używane wyłącznie do zlokalizowania kontrolera domeny obsługującego domenę usługi Active Directory z nazwą o pojedynczej etykiecie.
 
-Jeśli to ustawienie zostanie włączone, komputery, do których ta zasada jest stosowana, będą próbowały zlokalizować za pomocą rozpoznawania nazw DNS kontroler domeny zarządzający domeną usługi Active Directory o nazwie z pojedynczą etykietą.
+Jeśli to ustawienie zasad zostanie włączone, komputery, do których to ustawienie jest stosowane, będą próbowały zlokalizować kontroler domeny obsługujący domenę usługi Active Directory z nazwą o pojedynczej etykiecie za pomocą rozpoznawania nazw DNS .
 
-Jeśli to ustawienie zostanie wyłączone, komputery, na których to ustawienie zostanie zastosowane, będą próbowały zlokalizować kontroler domeny zarządzający domeną usługi Active Directory, określony nazwą o pojedynczej etykiecie, wyłącznie za pomocą rozpoznawania nazw NetBIOS, a nie rozpoznawania nazw DNS, o ile komputer nie szuka domeny z nazwą DNS o pojedynczej etykiecie istniejącej w lesie usługi Active Directory, do którego jest dołączony.
+Jeśli to ustawienie zasad zostanie wyłączone, komputery, do których to ustawienie jest stosowane, będą próbowały zlokalizować kontroler domeny obsługujący domenę usługi Active Directory z nazwą o pojedynczej etykiecie za pomocą zasady dotyczącej zezwalania na wyszukiwanie sufiksów DNS, jeśli nie została ona wyłączona, a w przeciwnym razie za pomocą rozpoznawania nazw NetBIOS. W tym przypadku komputer nie będzie używać rozpoznawania nazw DNS, o ile nie szuka domeny z nazwą DNS o pojedynczej etykiecie istniejącej w lasie usługi Active Directory, do której jest dołączony.
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych komputerach, a komputery będą używać swojej lokalnej konfiguracji.</string>
-      <string id="Netlogon_AutoSiteCoverage">Automatyczne pokrycie lokacji przez rekordy DNS SRV lokalizatora kontrolerów domen</string>
-      <string id="Netlogon_AutoSiteCoverage_Help">Określa, czy kontrolery domen będą dynamicznie rejestrowały specyficzne dla lokacji rekordy SRV lokalizatora kontrolerów domen dla najbliższych lokacji, w których nie ma kontrolerów domen dla tej domeny (lub nie ma wykazu globalnego dla tego samego lasu). Te rekordy DNS są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane na żadnych komputerach, a komputery będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_AllowDnsSuffixSearch">Użyj rozpoznawania nazw DNS, gdy jest używana nazwa domeny o pojedynczej etykiecie, dołączając różne zarejestrowane sufiksy DNS, jeśli ustawienie Zezwalaj na domenę DNS o pojedynczej etykiecie nie zostało włączone.</string>
+      <string id="Netlogon_AllowDnsSuffixSearch_Help">To ustawienie zasad określa, czy komputery, do których jest stosowane, próbują rozpoznać nazwę DNS w przypadku nazw domen o pojedynczej etykiecie za pomocą dołączania różnych zarejestrowanych sufiksów DNS i używają rozpoznawania nazw NetBIOS tylko wtedy, gdy rozpoznawanie nazw DNS nie powiedzie się. Ta zasada, wraz z określonym zachowaniem domyślnym, nie jest używana, jeśli zostało włączone ustawienie zasady Zezwalaj na domenę DNS o pojedynczej etykiecie.
 
-Jeśli to ustawienie zostanie włączone, kontrolery domen, do których to ustawienie się stosuje, będą dynamicznie rejestrować specyficzne dla lokacji rekordy SRV lokalizatora kontrolerów domen dla najbliższych lokacji, w których nie ma kontrolerów domen dla tej domeny (lub nie ma wykazu globalnego dla tego samego lasu).
+Domyślnie, gdy dla tej zasady nie zostanie określone żadne ustawienie, zachowanie jest takie, jak w przypadku jawnego włączenia tej zasady, chyba że zostało włączone ustawienie zasady Zezwalaj na domenę DNS o pojedynczej etykiecie.
 
-Jeśli to ustawienie zostanie wyłączone, kontrolery domen nie będą rejestrowały specyficznych dla lokacji rekordów SRV lokalizatora kontrolerów domen dla innych lokacji niż własne.
+Jeśli to ustawienie zasad zostanie włączone przy wyłączonym ustawieniu zasad Zezwalaj na domenę DNS o pojedynczej etykiecie, komputery, do których to ustawienie jest stosowane, zlokalizują kontroler domeny obsługujący domenę usługi Active Directory z nazwą o pojedynczej etykiecie, dołączając różne zarejestrowane sufiksy DNS w celu rozpoznawania nazw DNS. Nazwa o pojedynczej etykiecie nie jest używana bez dołączania sufiksów DNS, chyba że komputer został przyłączony do domeny, która ma nazwę DNS o pojedynczej etykiecie w lesie usługi Active Directory. Rozpoznawanie nazw NetBIOS na nazwach o pojedynczej etykiecie jest wykonywane tylko wtedy, gdy rozpoznawanie nazw DNS nie powiedzie się.
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych kontrolerach domen, a kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
+Jeśli to ustawienie zasad zostanie wyłączone przy wyłączonym ustawieniu zasad Zezwalaj na domenę DNS o pojedynczej etykiecie, komputery, do których to ustawienie jest stosowane, będą próbowały zlokalizować kontroler domeny obsługujący domenę usługi Active Directory z nazwą o pojedynczej etykiecie tylko za pomocą rozpoznawania nazw NetBIOS. W tym przypadku komputer nie będzie podejmować próby rozpoznawania nazw DNS, o ile nie szuka domeny z nazwą DNS o pojedynczej etykiecie istniejącej w lesie usługi Active Directory, do której został dołączony.
+
+</string>
+      <string id="Netlogon_AutoSiteCoverage">Użyj automatycznego pokrycia lokacji przez rekordy DNS SRV lokalizatora kontrolerów domen</string>
+      <string id="Netlogon_AutoSiteCoverage_Help">To ustawienie zasad określa, czy kontrolery domen będą dynamicznie rejestrowały specyficzne dla lokacji rekordy SRV lokalizatora kontrolerów domen dla najbliższych lokacji, w których nie ma kontrolerów domen dla tej domeny (lub nie ma wykazu globalnego dla tego samego lasu). Te rekordy DNS są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny.
+
+Jeśli to ustawienie zasad zostanie włączone, kontrolery domen, do których to ustawienie się stosuje, będą dynamicznie rejestrować specyficzne dla lokacji rekordy SRV lokalizatora kontrolerów domen dla najbliższych lokacji, w których nie ma kontrolerów domen dla tej domeny (lub nie ma wykazu globalnego dla tego samego lasu).
+
+Jeśli to ustawienie zasad zostanie wyłączone, kontrolery domen nie będą rejestrowały specyficznych dla lokacji rekordów SRV lokalizatora kontrolerów domen dla innych lokacji niż własne.
+
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane do żadnych kontrolerów domen i kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
       <string id="Netlogon_AvoidPdcOnWan">Kontakt z podstawowym kontrolerem domeny w przypadku niepowodzenia logowania</string>
-      <string id="Netlogon_AvoidPdcOnWan_Help">Określa, czy kontroler domeny powinien wykonywać próby zweryfikowania z podstawowym kontrolerem domeny hasła podanego przez klienta, jeśli kontroler domeny nie może sprawdzić poprawności hasła.
+      <string id="Netlogon_AvoidPdcOnWan_Help">To ustawienie zasad definiuje, czy kontroler domeny powinien podjąć próbę zweryfikowania hasła podanego przez klienta przy użyciu emulatora podstawowego kontrolera domeny, jeśli weryfikacja hasła przez kontroler domeny nie powiedzie się.
 
-Kontaktowanie się z podstawowym kontrolerem domeny jest użyteczne w przypadku, gdy hasło klienta zostało niedawno zmienione i nie było jeszcze propagowane do kontrolera domeny. Użytkownicy mogą wyłączyć tę funkcję, jeśli podstawowy kontroler domeny znajduje się w lokalizacji dostępnej przez powolne połączenie WAN.
+Kontaktowanie się z emulatorem podstawowego kontrolera domeny jest użyteczne w przypadku, gdy hasło klienta zostało niedawno zmienione, ale nie zostało jeszcze propagowane do kontrolera domeny. Użytkownicy mogą wyłączyć tę funkcję, jeśli emulator podstawowego kontrolera domeny znajduje się w lokalizacji dostępnej przez powolne połączenie WAN.
 
-Aby włączyć tę funkcję, kliknij opcję Włączone.
+Jeśli to ustawienie zasad zostanie włączone, kontrolery domeny, których dotyczy to ustawienie zasad, będą podejmować próby zweryfikowania hasła przy użyciu emulatora podstawowego kontrolera domeny, jeśli weryfikacja hasła przez kontroler domeny nie powiedzie się.
 
-Aby wyłączyć tę funkcję, kliknij opcję Wyłączone.</string>
-      <string id="Netlogon_BackgroundRetryInitialPeriod">Ustawienie Początek ponownego odnajdowania kontrolera domeny dla wywoływania w tle</string>
-      <string id="Netlogon_BackgroundRetryInitialPeriod_Help">Gdy aplikacje cyklicznie wyszukujące kontrolery domen nie mogą odnaleźć kontrolera domeny, wartość tego ustawienia określa ilość czasu (w sekundach) przed pierwszym ponowieniem.
+Jeśli to ustawienie zasad zostanie wyłączone, kontroler domeny nie będzie podejmował prób zweryfikowania żadnych haseł przy użyciu emulatora podstawowego kontrolera domeny. 
+
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane dla żadnego kontrolera domeny.</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod">Użyj ustawienia początkowego ponownego odnajdowania kontrolera domeny dla wywoływania w tle</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod_Help">To ustawienie zasad określa czas (w sekundach) oczekiwania przed pierwszym ponowieniem na potrzeby aplikacji wykonujących okresowe wyszukiwania kontrolerów domen, które nie mogą znaleźć kontrolera domeny.
 
 Domyślna wartość tego ustawienia to 10 minut (10*60). Maksymalna wartość tego ustawienia to 49 dni (0x49*24*60*60=4 233 600). Minimalna wartość tego ustawienia to 0.
 
@@ -41,243 +53,291 @@ To ustawienie dotyczy tylko tych wywołań funkcji DsGetDcName, w których okre�
 
 Jeśli wartość tego ustawienia będzie mniejsza niż wartość określona w podkluczu NegativeCachePeriod, zostanie użyta wartość z podklucza NegativeCachePeriod.
 
-Ostrzeżenie: Jeśli wartość tego ustawienia będzie za duża, klient nie będzie próbował znaleźć żadnych kontrolerów domen, które były wcześniej niedostępne. Jeśli wartość podana w tym ustawieniu będzie bardzo mała i kontroler domeny będzie niedostępny, ruch spowodowany przez cykliczne odnajdowanie kontrolera domeny może być nadmierny.</string>
-      <string id="Netlogon_BackgroundRetryMaximumPeriod">Ustawienie Maksymalny interwał ponownego odnajdowania kontrolera domeny dla wywoływania w tle</string>
-      <string id="Netlogon_BackgroundRetryMaximumPeriod_Help">Gdy aplikacje cyklicznie wyszukujące kontrolery domen nie mogą odnaleźć kontrolera domeny, wartość tego ustawienia określa maksymalny dozwolony interwał ponawiania.
+Ostrzeżenie: jeśli wartość tego ustawienia będzie za duża, klient nie będzie próbował znaleźć żadnych kontrolerów domen, które były wcześniej niedostępne. Jeśli wartość podana w tym ustawieniu będzie bardzo mała i kontroler domeny będzie niedostępny, ruch spowodowany przez cykliczne odnajdowanie kontrolera domeny może być nadmierny.</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod">Użyj ustawienia maksymalnego interwału ponawiania prób odnajdowania kontrolera domeny dla wywoływania w tle</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod_Help">To ustawienie zasad określa maksymalny interwał ponawiania prób dozwolony w przypadku, gdy aplikacje okresowo wyszukujące kontrolery domen nie mogą znaleźć kontrolera domeny.
 
 Na przykład interwał ponawiania może zostać ustawiony na 10 minut, następnie na 20 minut i 40 minut, ale gdy interwał osiągnie wartość podaną w tym ustawieniu, ta wartość będzie interwałem ponawiania dla wszystkich kolejnych ponowień do chwili osiągnięcia wartości podanej w ustawieniu Koniec ponownego odnajdowania kontrolera domeny.
 
-Domyślna wartość tego ustawienia to 60 minut (10*60). Maksymalna wartość tego ustawienia to 49 dni (0x49*24*60*60=4 233 600). Minimalna wartość tego ustawienia to 0.
+Domyślna wartość tego ustawienia to 60 minut (60*60). Maksymalna wartość tego ustawienia to 49 dni (0x49*24*60*60=4 233 600). Minimalna wartość tego ustawienia to 0.
 
 Jeśli wartość tego ustawienia będzie mniejsza od wartości podanej dla ustawienia Początek ponownego odnajdowania kontrolera domeny, zostanie użyta wartość ustawienia Początek ponownego odnajdowania kontrolera domeny.
 
 Ostrzeżenie: jeśli wartość tego ustawienia będzie za duża, klient może przez bardzo długi okres próbować odnaleźć kontroler domeny.
 
 Jeśli wartość podana w tym ustawieniu będzie bardzo mała i kontroler domeny będzie niedostępny, ruch spowodowany przez częste ponowienia może być nadmierny.</string>
-      <string id="Netlogon_BackgroundRetryQuitTime">Ustawienie Koniec ponownego odnajdowania kontrolera domeny dla wywoływania w tle</string>
-      <string id="Netlogon_BackgroundRetryQuitTime_Help">Gdy aplikacje cyklicznie wyszukujące kontrolery domen nie mogą odnaleźć kontrolera domeny, wartość tego ustawienia określa chwilę, w której ponowienia nie będą już dozwolone. Na przykład ponowienia mogą być oznaczone do wykonywania według ustawienia Maksymalny interwał ponownego odnajdowania kontrolera domeny, ale gdy wartość podana w tym ustawieniu zostanie osiągnięta, ponowienia nie będą już wykonywane. Jeśli wartość tego ustawienia będzie mniejsza niż wartość ustawienia Maksymalny interwał ponownego odnajdowania kontrolera domeny, zostanie użyta wartość ustawienia Maksymalny interwał ponownego odnajdowania kontrolera domeny.
+      <string id="Netlogon_BackgroundRetryQuitTime">Użyj ustawienia końcowego ponownego odnajdowania kontrolera domeny dla wywoływania w tle</string>
+      <string id="Netlogon_BackgroundRetryQuitTime_Help">To ustawienie zasad określa, kiedy ponowienia nie są już dozwolone, w przypadkach, gdy aplikacje okresowo wyszukujące kontrolery domen nie mogą znaleźć kontrolera domeny. Na przykład ponowienia mogą być ustawione do wykonywania zgodnie z ustawieniem zasad Użyj maksymalnego interwału ponawiania prób odnajdowania kontrolera domeny, ale gdy wartość podana w tym ustawieniu zasad zostanie osiągnięta, ponowienia nie będą już wykonywane. Jeśli wartość tego ustawienia zasad będzie mniejsza niż wartość ustawienia zasad Użyj maksymalnego interwału ponawiania prób odnajdowania kontrolera domeny, używana jest wartość ustawienia zasad Użyj maksymalnego interwału ponawiania prób odnajdowania kontrolera domeny.
 
 Domyślna wartość tego ustawienia to niekończenie ponawiania (0). Maksymalna wartość tego ustawienia to 49 dni (0x49*24*60*60=4 233 600). Minimalna wartość tego ustawienia to 0.
 
-Ostrzeżenie: jeśli wartość tego ustawienia będzie za mała, klient nie będzie próbował znaleźć zbyt wcześnie kontrolera domeny.</string>
-      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod">Pomyślne cykliczne odświeżanie pamięci podręcznej kontrolera domeny dla wywoływania w tle</string>
-      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod_Help">Określa, kiedy pomyślny wpis pamięci podręcznej kontrolera domeny jest odświeżany. To ustawienie jest stosowane do programów wywołujących, które cyklicznie próbują lokalizować kontroler domeny, i jest stosowane przed zwróceniem informacji kontrolera domeny do programu wywołującego. Domyślna wartość tego ustawienia to nieskończoność (4294967200). Maksymalna wartość tego ustawienia to (4294967200), ale wartość maksymalna nieinterpretowana jako nieskończoność to 49 dni (49*24*60*60=4 233 600). Każda większa wartość jest interpretowana jako nieskończoność. Minimalna wartość tego ustawienia to zawsze odświeżaj (0).</string>
+Ostrzeżenie: jeśli wartość tego ustawienia będzie za mała, klient zbyt wcześnie przerwie próby znalezienia kontrolera domeny.</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod">Użyj pomyślnego cyklicznego odświeżania pamięci podręcznej kontrolera domeny dla wywoływania w tle</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod_Help">To ustawienie zasad określa, kiedy pomyślny wpis pamięci podręcznej kontrolera domeny jest odświeżany. To ustawienie zasad jest stosowane do programów wywołujących, które okresowo próbują lokalizować kontroler domeny, i jest stosowane przed zwróceniem informacji kontrolera domeny do programu wywołującego. Domyślna wartość tego ustawienia to nieskończoność (4294967200). Maksymalna wartość tego ustawienia to (4294967200), ale wartość maksymalna nieinterpretowana jako nieskończoność to 49 dni (49*24*60*60=4 233 600). Każda większa wartość jest interpretowana jako nieskończoność. Minimalna wartość tego ustawienia to zawsze odświeżaj (0).</string>
       <string id="Netlogon_DC_Locator_DNS_Records">Rekordy DNS lokalizatora kontrolerów domen</string>
-      <string id="Netlogon_DebugFlag">Poziom wyjścia debugowania pliku dziennika</string>
-      <string id="Netlogon_DebugFlag_Help">Określa poziom wyjścia debugowania usługi Net Logon.
+      <string id="Netlogon_DebugFlag">Określ poziom wyjścia debugowania pliku dziennika</string>
+      <string id="Netlogon_DebugFlag_Help">To ustawienie zasad określa poziom wyjścia debugowania usługi Net Logon.
 
 Usługa Net Logon kieruje informacje debugowania do pliku dziennika netlogon.log w katalogu %windir%\debug. Domyślnie nie są rejestrowane żadne informacje o debugowaniu.
 
-Jeśli to ustawienie jest włączone i określono wartość niezerową, informacje o debugowaniu są rejestrowane w pliku.  Większe wartości powodują pełniejsze rejestrowanie; zazwyczaj używa się wartości 536936447 jako ustawienia optymalnego.
+Jeśli to ustawienie zasad jest włączone i określono wartość niezerową, informacje o debugowaniu są rejestrowane w pliku.  Większe wartości powodują pełniejsze rejestrowanie. Zazwyczaj używa się wartości 536936447 jako ustawienia optymalnego.
 
-Jeśli dla tego ustawienia zostanie określona wartość zero, wystąpi opisane powyżej zachowanie domyślne.
+Jeśli dla tego ustawienia zasad zostanie określona wartość zerowa, wystąpi opisane powyżej zachowanie domyślne.
 
-Jeśli to ustawienie zostanie wyłączone lub nie zostanie skonfigurowane, wystąpi zachowanie domyślne opisane powyżej.</string>
-      <string id="Netlogon_DnsAvoidRegisterRecords">Rekordy DNS lokalizatora kontrolerów domen nie rejestrowane przez kontrolery domen</string>
-      <string id="Netlogon_DnsAvoidRegisterRecords_Help">Określa, które rekordy DNS lokalizatora kontrolerów domen nie są rejestrowane przez usługę Netlogon.
+Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, wystąpi zachowanie domyślne opisane powyżej.</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords">Określ rekordy DNS lokalizatora kontrolerów domen nierejestrowane przez kontrolery domen</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords_Help">To ustawienie zasad określa, które rekordy DNS lokalizatora kontrolerów domen nie są rejestrowane przez usługę Net Logon.
 
-Aby włączyć to ustawienie, zaznacz opcję Włącz i podaj rozdzielaną spacjami listę instrukcji dla rekordów DNS lokalizatora kontrolerów domen, które nie będą rejestrowane przez kontrolery domen z zastosowanym tym ustawieniem.
+Jeśli to ustawienie zasad ma zostać włączone, należy wybrać opcję Włączone i podać rozdzielaną spacjami listę instrukcji dla rekordów DNS lokalizatora kontrolerów domen, które nie będą rejestrowane przez kontrolery domen z zastosowanym tym ustawieniem.
 
-Wybierz instrukcje z następującej listy:
+Dostępne są następujące instrukcje:
 
-Instrukcja          Typ   Rekord DNS
+Instrukcja       Typ   Rekord DNS
 
-LdapIpAddress    A     &lt;DnsDomainName&gt;
-Ldap             SRV   _ldap._tcp.&lt;DnsDomainName&gt;
-LdapAtSite       SRV   _ldap._tcp.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt;
-Pdc              SRV   _ldap._tcp.pdc._msdcs.&lt;DnsDomainName&gt;
-Gc               SRV   _ldap._tcp.gc._msdcs.&lt;DnsForestName&gt;
-GcAtSite         SRV   _ldap._tcp.&lt;SiteName&gt;._sites.gc._msdcs.&lt;DnsForestName&gt;
-DcByGuid         SRV   _ldap._tcp.&lt;DomainGuid&gt;.domains._msdcs.&lt;DnsForestName&gt;
-GcIpAddress      A     _gc._msdcs.&lt;DnsForestName&gt;
-DsaCname         CNAME &lt;DsaGuid&gt;._msdcs.&lt;DnsForestName&gt;
-Kdc              SRV   _kerberos._tcp.dc._msdcs.&lt;DnsDomainName&gt;
-KdcAtSite        SRV    _kerberos._tcp.dc._msdcs.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt;
-Dc               SRV   _ldap._tcp.dc._msdcs.&lt;DnsDomainName&gt;
-DcAtSite         SRV   _ldap._tcp.&lt;SiteName&gt;._sites.dc._msdcs.&lt;DnsDomainName&gt;
-Rfc1510Kdc       SRV   _kerberos._tcp.&lt;DnsDomainName&gt;
-Rfc1510KdcAtSite SRV   _kerberos._tcp.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt;
-GenericGc        SRV   _gc._tcp.&lt;DnsForestName&gt;
-GenericGcAtSite  SRV   _gc._tcp.&lt;SiteName&gt;._sites.&lt;DnsForestName&gt;
-Rfc1510UdpKdc    SRV   _kerberos._udp.&lt;DnsDomainName&gt;
-Rfc1510Kpwd      SRV   _kpasswd._tcp.&lt;DnsDomainName&gt;
-Rfc1510UdpKpwd   SRV   _kpasswd._udp.&lt;DnsDomainName&gt;
+LdapIpAddress    A     &lt;NazwaDomenyDns&gt;
+Ldap             SRV   _ldap._tcp.&lt;NazwaDomenyDns&gt;
+LdapAtSite       SRV   _ldap._tcp.&lt;NazwaLokacji&gt;._sites.&lt;NazwaDomenyDns&gt;
+Pdc              SRV   _ldap._tcp.pdc._msdcs.&lt;NazwaDomenyDns&gt;
+Gc               SRV   _ldap._tcp.gc._msdcs.&lt;NazwaDrzewaDns&gt;
+GcAtSite         SRV   _ldap._tcp.&lt;NazwaLokacji&gt;._sites.gc._msdcs.&lt;NazwaDrzewaDns&gt;
+DcByGuid         SRV   _ldap._tcp.&lt;IdentyfikatorGuidDomeny&gt;.domains._msdcs.&lt;NazwaDrzewaDns&gt;
+GcIpAddress      A     gc._msdcs.&lt;NazwaDrzewaDns&gt;
+DsaCname         CNAME &lt;DsaGuid&gt;._msdcs.&lt;NazwaDrzewaDns&gt;
+Kdc              SRV   _kerberos._tcp.dc._msdcs.&lt;NazwaDomenyDns&gt;
+KdcAtSite        SRV   _kerberos._tcp.&lt;NazwaLokacji&gt;._sites.dc._msdcs.&lt;NazwaDomenyDns&gt;
+Dc               SRV   _ldap._tcp.dc._msdcs.&lt;NazwaDomenyDns&gt;
+DcAtSite         SRV   _ldap._tcp.&lt;NazwaLokacji&gt;._sites.dc._msdcs.&lt;NazwaDomenyDns&gt;
+Rfc1510Kdc       SRV   _kerberos._tcp.&lt;NazwaDomenyDns&gt;
+Rfc1510KdcAtSite SRV   _kerberos._tcp.&lt;NazwaLokacji&gt;._sites.&lt;NazwaDomenyDns&gt;
+GenericGc        SRV   _gc._tcp.&lt;NazwaDrzewaDns&gt;
+GenericGcAtSite  SRV   _gc._tcp.&lt;NazwaLokacji&gt;._sites.&lt;NazwaDrzewaDns&gt;
+Rfc1510UdpKdc    SRV   _kerberos._udp.&lt;NazwaDomenyDns&gt;
+Rfc1510Kpwd      SRV   _kpasswd._tcp.&lt;NazwaDomenyDns&gt;
+Rfc1510UdpKpwd   SRV   _kpasswd._udp.&lt;NazwaDomenyDns&gt;
 
-Jeśli to ustawienie zostanie wyłączone, kontrolery domen skonfigurowane do wykonywania dynamicznych rejestracji rekordów DNS lokalizatora kontrolerów domen rejestrują wszystkie rekordy zasobów DNS lokalizatora kontrolerów domen.
+Jeśli to ustawienie zasad zostanie wyłączone, kontrolery domen skonfigurowane na potrzeby wykonywania dynamicznej rejestracji rekordów DNS lokalizatora kontrolerów domen będą rejestrować wszystkie rekordy zasobów DNS lokalizatora kontrolerów domen.
 
-Jeśli to ustawienie nie zostanie zastosowane do kontrolerów domen, kontrolery domen będą używać swojej konfiguracji lokalnej.</string>
-      <string id="Netlogon_DnsRefreshInterval">Interwał odświeżania rekordów DNS lokalizatora kontrolerów domen</string>
-      <string id="Netlogon_DnsRefreshInterval_Help">Określa Interwał odświeżania rekordów zasobów DNS lokalizatora kontrolerów domen dla kontrolerów domen, w których to ustawienie będzie stosowane. Rekordy DNS są dynamicznie rejestrowane przez usługę Net Logon i używane przez algorytm lokalizatora do lokalizowania kontrolerów domen. To ustawienie można zastosować tylko do kontrolerów domen używających aktualizacji dynamicznych.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_DnsRefreshInterval">Określ interwał odświeżania rekordów DNS lokalizatora kontrolerów domen</string>
+      <string id="Netlogon_DnsRefreshInterval_Help">To ustawienie zasad określa interwał odświeżania rekordów zasobów DNS lokalizatora kontrolerów domen dla kontrolerów domen, do których to ustawienie jest stosowane. Rekordy DNS są dynamicznie rejestrowane przez usługę Net Logon i używane przez algorytm lokalizatora kontrolerów domen do lokalizowania kontrolerów domen. To ustawienie można zastosować tylko do kontrolerów domen używających aktualizacji dynamicznych.
 
-Kontrolery domen skonfigurowane do wykonywania dynamicznych rejestracji rekordów zasobów DNS lokalizatora kontrolerów domen w sposób cykliczny ponownie rejestrują swoje rekordy w serwerach DNS, nawet jeśli dane rekordów nie uległy zmianie. Jeżeli autorytatywne serwery DNS są skonfigurowane do wykonywania oczyszczania starych rekordów, wówczas ta ponowna rejestracja służy do wskazania serwerom usługi DNS skonfigurowanym do automatycznego usuwania (oczyszczania) starych rekordów, że te rekordy są bieżące i powinny zostać zachowane w bazie danych.
+Kontrolery domen skonfigurowane do wykonywania dynamicznych rejestracji rekordów zasobów DNS lokalizatora kontrolerów domen w sposób cykliczny ponownie rejestrują swoje rekordy w serwerach DNS, nawet jeśli dane rekordów nie uległy zmianie. Jeśli autorytatywne serwery DNS są skonfigurowane do wykonywania oczyszczania starych rekordów, to ta ponowna rejestracja służy do wskazania serwerom usługi DNS skonfigurowanym do automatycznego usuwania (oczyszczania) starych rekordów, że te rekordy są aktualne i powinny zostać zachowane w bazie danych.
 
-Ostrzeżenie: Jeśli rekordy zasobów usługi DNS są zarejestrowane w strefach o włączonym oczyszczaniu, wartość tego ustawienia nie powinna być nigdy większa niż interwał odświeżania skonfigurowany dla tych stref. Ustawienie Interwału odświeżania rekordów DNS lokalizatora kontrolerów domen na wartość większą od Interwału odświeżania stref DNS może spowodować niepożądane usunięcie rekordów zasobów DNS.
+Ostrzeżenie: jeśli rekordy zasobów usługi DNS są zarejestrowane w strefach z włączonym oczyszczaniem, wartość tego ustawienia nie powinna być nigdy większa niż interwał odświeżania skonfigurowany dla tych stref. Ustawienie interwału odświeżania rekordów DNS lokalizatora kontrolerów domen na wartość większą od interwału odświeżania stref DNS może spowodować niepożądane usunięcie rekordów zasobów DNS.
 
-Aby określić Interwał odświeżania rekordów kontrolerów domen, kliknij opcję Włączone i wprowadź wartość większą od 1800. Wartość ta określa Interwał odświeżania rekordów kontrolerów domen w sekundach (na przykład 3600 sekund oznacza 60 minut).
+Aby określić interwał odświeżania rekordów kontrolerów domen, należy kliknąć opcję Włączone i wprowadzić wartość większą niż 1800. Wartość ta określa interwał odświeżania rekordów kontrolerów domen w sekundach (na przykład 3600 sekund oznacza 60 minut).
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych kontrolerach domen, a kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
-      <string id="Netlogon_DnsTtl">Ustawiony czas wygaśnięcia (TTL, Time to live) w rekordach DNS lokalizatora kontrolerów domen</string>
-      <string id="Netlogon_DnsTtl_Help">Określa wartość pola Czas wygaśnięcia w rekordach zasobu SRV, zarejestrowanych w usłudze Net Logon. Te rekordy DNS są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane do żadnych kontrolerów domen i kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_DnsTtl">Ustaw czas wygaśnięcia w rekordach DNS lokalizatora kontrolerów domen</string>
+      <string id="Netlogon_DnsTtl_Help">To ustawienie zasad określa wartość pola czasu wygaśnięcia (TTL, Time-To-Live) w rekordach zasobów SRV zarejestrowanych w usłudze Net Logon. Te rekordy DNS są rejestrowane dynamicznie i używane do lokalizowania kontrolera domeny.
 
-Aby określić wartość TTL dla rekordów DNS lokalizatora kontrolerów domen, kliknij opcję Włączone, a następnie wprowadź wartość w sekundach (na przykład wartość 900 oznacza 15 minut).
+Aby określić wartość TTL dla rekordów DNS lokalizatora kontrolerów domen, należy kliknąć opcję Włączone, a następnie wprowadzić wartość w sekundach (na przykład wartość „900” oznacza 15 minut).
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych kontrolerach domen, a kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
-      <string id="Netlogon_ExpectedDialupDelay">Oczekiwane opóźnienie połączenia telefonicznego podczas logowania</string>
-      <string id="Netlogon_ExpectedDialupDelay_Help">Określa dodatkowy czas oczekiwania komputera na odpowiedź kontrolera domeny podczas logowania do sieci.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane do żadnych kontrolerów domen i kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_ExpectedDialupDelay">Określ oczekiwane opóźnienie połączenia telefonicznego podczas logowania</string>
+      <string id="Netlogon_ExpectedDialupDelay_Help">To ustawienie zasad określa dodatkowy czas oczekiwania komputera na odpowiedź kontrolera domeny podczas logowania do sieci.
 
-Aby określić Oczekiwane opóźnienie połączenia telefonicznego podczas logowania, kliknij opcję Włącz i wprowadź żądaną wartość w sekundach (na przykład wartość „60” oznacza jedną minutę).
+Aby określić oczekiwane opóźnienie połączenia telefonicznego podczas logowania, należy kliknąć opcję Włączone i wprowadzić odpowiednią wartość w sekundach (na przykład wartość „60” oznacza jedną minutę).
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych komputerach, a komputery będą używać swojej lokalnej konfiguracji.</string>
-      <string id="Netlogon_GcSiteCoverage">Lokacje uwzględniane przez rekordy DNS SRV lokalizatora wykazów globalnych</string>
-      <string id="Netlogon_GcSiteCoverage_Help">Określa lokacje, dla których wykazy globalne powinny rejestrować specyficzne dla lokacji rekordy zasobów DNS SRV lokalizatora wykazów globalnych. Te rekordy są rejestrowane dodatkowo do specyficznych dla lokacji rekordów SRV, rejestrowanych w lokacji, w której znajduje się wykaz globalny, oraz rekordów zarejestrowanych przez wykaz globalny, skonfigurowany do rejestrowania rekordów DNS SRV lokalizatora wykazów globalnych dla najbliższych lokacji bez wykazu globalnego. 
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane na żadnych komputerach i komputery będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_GcSiteCoverage">Określ lokacje uwzględniane przez rekordy DNS SRV lokalizatora wykazów globalnych</string>
+      <string id="Netlogon_GcSiteCoverage_Help">To ustawienie zasad określa lokacje, dla których wykazy globalne powinny rejestrować specyficzne dla lokacji rekordy zasobów DNS SRV lokalizatora wykazów globalnych. Te rekordy są rejestrowane dodatkowo do specyficznych dla lokacji rekordów SRV rejestrowanych w lokacji, w której znajduje się wykaz globalny, oraz rekordów zarejestrowanych przez wykaz globalny skonfigurowany do rejestrowania rekordów DNS SRV lokalizatora wykazów globalnych dla najbliższych lokacji bez wykazu globalnego. 
 
-Rekordy DNS lokalizatora wykazów globalnych oraz specyficzne dla lokacji rekordy SRV są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania wykazu globalnego. Lokacja Active Directory to jedna lub więcej dobrze połączonych podsieci TCP/IP, które zezwalają administratorom na konfigurowanie dostępu i replikacji usługi Active Directory. Wykaz globalny jest kontrolerem domeny zawierającym częściową replikę każdej domeny usługi Active Directory.
+Rekordy DNS lokalizatora wykazów globalnych oraz specyficzne dla lokacji rekordy SRV są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania wykazu globalnego. Lokacja usługi Active Directory to jedna lub więcej dobrze połączonych podsieci TCP/IP, które zezwalają administratorom na konfigurowanie dostępu i replikacji usługi Active Directory. Wykaz globalny jest kontrolerem domeny zawierającym częściową replikę każdej domeny usługi Active Directory.
 
-Aby określić lokacje obsługiwane przez rekordy DNS SRV lokalizatora wykazów globalnych, kliknij opcję Włączone i wprowadź nazwy lokacji w formacie listy rozdzielanej spacjami.
+Aby określić lokacje obsługiwane przez rekordy DNS SRV lokalizatora wykazów globalnych, należy kliknąć opcję Włączone i wprowadzić nazwy lokacji w formacie listy rozdzielanej spacjami.
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane do żadnych wykazów globalnych, a wykazy globalne będą używać swojej lokalnej konfiguracji.</string>
-      <string id="Netlogon_LdapSrvPriority">Priorytet ustawiony w rekordach DNS SRV lokalizatora kontrolerów domen</string>
-      <string id="Netlogon_LdapSrvPriority_Help">Określa pole Priorytet w rekordach zasobów SRV zarejestrowanych przez kontrolery domeny, w których to ustawienie jest stosowane. Te rekordy DNS lokalizatora kontrolerów domen są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane dla żadnych wykazów globalnych i wykazy globalne będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_LdapSrvPriority">Ustaw priorytet w rekordach DNS SRV lokalizatora kontrolerów domen</string>
+      <string id="Netlogon_LdapSrvPriority_Help">To ustawienie zasad określa pole priorytetu w rekordach zasobów SRV zarejestrowanych przez kontrolery domeny, do których to ustawienie jest stosowane. Te rekordy DNS lokalizatora kontrolerów domen są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny.
 
 Pole Właściwość w rekordzie SRV ustawia preferencje hostów docelowych (określonych w rekordzie SRV, w polu Cel). Klienci DNS, którzy badają rekordy zasobów SRV, próbują skontaktować się z pierwszym osiągalnym hostem o numerze z najniższym priorytetem na liście.
 
-Aby określić wartość pola Priorytet w rekordach zasobów SRV DNS lokalizatora kontrolerów domen, kliknij opcję Włączone i wprowadź wartość. Zakres wynosi od 0 do 65535.
+Aby określić wartość pola Priorytet w rekordach zasobów DNS SRV lokalizatora kontrolerów domen, należy kliknąć pozycję Włączone i wprowadzić wartość. Zakres wartości wynosi od 0 do 65535.
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych kontrolerach domen, a kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
-      <string id="Netlogon_LdapSrvWeight">Waga ustawiona w rekordach DNS SRV lokalizatora kontrolerów domen</string>
-      <string id="Netlogon_LdapSrvWeight_Help">Określa pole Waga w rekordach zasobów SRV zarejestrowanych przez kontrolery domeny, w których to ustawienie jest stosowane. Te rekordy DNS są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane do żadnych kontrolerów domen i kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_LdapSrvWeight">Ustaw wagę w rekordach DNS SRV lokalizatora kontrolerów domen</string>
+      <string id="Netlogon_LdapSrvWeight_Help">To ustawienie zasad określa pole wagi w rekordach zasobów SRV zarejestrowanych przez kontrolery domeny, do których to ustawienie jest stosowane. Te rekordy DNS są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny.
 
 Pole Waga w rekordach SRV może zostać użyte jako dodatek do wartości Priorytet w celu dostarczenia mechanizmu równoważenia obciążenia, gdy w polu Cel w rekordach SRV jest określonych wiele serwerów i wszystkie mają ustawiony ten sam priorytet. Prawdopodobieństwo losowego wyboru przez klienta DNS hosta docelowego do skontaktowania jest proporcjonalne do wartości pola Waga w rekordzie SRV.
 
-Aby określić wartość pola Waga w rekordach SRV DNS lokalizatora kontrolerów domen, kliknij opcję Włączone i wprowadź wartość. Zakres wynosi od 0 do 65535.
+Aby określić wartość pola Waga w rekordach DNS SRV lokalizatora kontrolerów domen, należy kliknąć pozycję Włączone i wprowadzić wartość. Zakres wartości wynosi od 0 do 65535.
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych kontrolerach domen, a kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
-      <string id="Netlogon_MaximumLogFileSize">Maksymalny rozmiar pliku dziennika</string>
-      <string id="Netlogon_MaximumLogFileSize_Help">Gdy rejestrowanie jest włączone, określa maksymalny rozmiar (w bajtach) pliku dziennika netlogon.log w katalogu %windir%\debug.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane do żadnych kontrolerów domen i kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_MaximumLogFileSize">Określ maksymalny rozmiar pliku dziennika</string>
+      <string id="Netlogon_MaximumLogFileSize_Help">To ustawienie zasad określa maksymalny rozmiar (w bajtach) pliku dziennika netlogon.log w katalogu %windir%\debug, jeśli rejestrowanie jest włączone.
 
-Domyślnie maksymalnym rozmiarem pliku dziennika jest 20 MB. Jeśli ta zasada jest włączona, maksymalny rozmiar pliku dziennika jest ustawiany tak, jak określono.  Po osiągnięciu tego rozmiaru plik dziennika jest zapisywany pod nazwą netlogon.bak, a zawartość pliku netlogon.log jest obcinana. Należy tu określić uzasadnioną wartość, zależną od dostępnego miejsca na dysku.
+Domyślnie maksymalnym rozmiarem pliku dziennika jest 20 MB. Jeśli to ustawienie zasad zostanie włączone, maksymalny rozmiar pliku dziennika zostanie ustawiony na określoną wartość.  Po osiągnięciu tego rozmiaru plik dziennika jest zapisywany pod nazwą netlogon.bak, a zawartość pliku netlogon.log jest obcinana. Należy tu określić uzasadnioną wartość, zależną od dostępnego miejsca na dysku.
 
-Jeśli ta zasada zostanie wyłączona lub nie zostanie skonfigurowana, wystąpi zachowanie domyślne opisane powyżej.</string>
-      <string id="Netlogon_NdncSiteCoverage">Lokacje obsługiwane przez rekordy DNS SRV lokalizatora partycji katalogu aplikacji</string>
-      <string id="Netlogon_NdncSiteCoverage_Help">Określa lokacje, dla których kontrolery domen zarządzające partycjami katalogu aplikacji powinny rejestrować specyficzne dla lokacji, specyficzne dla partycji katalogu aplikacji rekordy DNS SRV lokalizatora kontrolerów domen. Te rekordy są rejestrowane dodatkowo do specyficznych dla lokacji rekordów SRV rejestrowanych w lokacji, w której znajduje się kontroler domeny oraz rekordów zarejestrowanych przez kontroler domeny skonfigurowany do rejestrowania rekordów DNS SRV lokalizatora kontrolerów domen dla najbliższych lokacji bez kontrolera domeny. 
+Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, będzie stosowane domyślne działanie opisane powyżej.</string>
+      <string id="Netlogon_NdncSiteCoverage">Określ lokacje obsługiwane przez rekordy DNS SRV lokalizatora kontrolerów domen partycji katalogu aplikacji</string>
+      <string id="Netlogon_NdncSiteCoverage_Help">To ustawienie zasad określa lokacje, dla których kontrolery domen udostępniające partycje katalogu aplikacji powinny rejestrować specyficzne dla lokacji i partycji katalogu aplikacji rekordy zasobów DNS SRV lokalizatora kontrolerów domen. Te rekordy są rejestrowane dodatkowo do specyficznych dla lokacji rekordów SRV rejestrowanych w lokacji, w której znajduje się kontroler domeny, oraz rekordów zarejestrowanych przez kontroler domeny skonfigurowany do rejestrowania rekordów DNS SRV lokalizatora kontrolerów domen dla najbliższych lokacji bez kontrolera domeny. 
 
-Rekordy DNS lokalizatora partycji katalogu aplikacji oraz specyficzne dla lokacji rekordy SRV są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny specyficznego dla partycji katalogu aplikacji. Lokacja Active Directory to jedna lub więcej dobrze połączonych podsieci TCP/IP, które zezwalają administratorom na konfigurowanie dostępu i replikacji usługi Active Directory.
+Rekordy DNS lokalizatora kontrolerów domen partycji katalogu aplikacji oraz specyficzne dla lokacji rekordy SRV są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny specyficznego dla partycji katalogu aplikacji. Lokacja usługi Active Directory to jedna lub więcej dobrze połączonych podsieci TCP/IP, które zezwalają administratorom na konfigurowanie dostępu i replikacji usługi Active Directory.
 
-Aby określić lokacje obsługiwane przez specyficznego dla partycji katalogu aplikacji rekordów DNS SRV lokalizatora kontrolerów domen, kliknij opcję Włączone i wprowadź nazwy lokacji w formacie listy rozdzielanej spacjami.
+Aby określić lokacje obsługiwane przez specyficznego dla partycji katalogu aplikacji rekordów DNS SRV lokalizatora kontrolerów domen, należy kliknąć opcję Włączone i wprowadzić nazwy lokacji w formacie listy rozdzielanej spacjami.
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych kontrolerach domen, a kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
-      <string id="Netlogon_NegativeCachePeriod">Ustawienie pamięci podręcznej negatywnego odnajdowania kontrolera domeny</string>
-      <string id="Netlogon_NegativeCachePeriod_Help">Określa ilość czasu (w sekundach), przez jaką lokalizator kontrolerów domen pamięta, że w domenie nie można odnaleźć kontrolera domeny. Gdy kolejna próba zlokalizowania kontrolera domeny wystąpi w czasie określonym przez to ustawienie, odnajdowanie kontrolera domeny natychmiast się nie powiedzie i próby odnalezienia kontrolera domeny nie będą wykonywane.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane do żadnych kontrolerów domen i kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_NegativeCachePeriod">Określ ustawienie pamięci podręcznej negatywnego odnajdowania kontrolera domeny</string>
+      <string id="Netlogon_NegativeCachePeriod_Help">To ustawienie zasad określa ilość czasu (w sekundach), przez jaką lokalizator kontrolerów domen pamięta, że w domenie nie można odnaleźć kontrolera domeny. Gdy kolejna próba zlokalizowania kontrolera domeny wystąpi w czasie określonym przez to ustawienie, odnajdowanie kontrolera domeny natychmiast się nie powiedzie i próba odnalezienia kontrolera domeny nie zostanie wykonana.
 
 Domyślna wartość tego ustawienia to 45 sekund. Maksymalna wartość tego ustawienia to 7 dni (7*24*60*60). Minimalna wartość tego ustawienia to 0.
 
-Ostrzeżenie: Jeśli wartość tego ustawienia będzie za duża, klient nie będzie próbował znaleźć żadnych kontrolerów domen, które były wcześniej niedostępne. Jeśli wartość tego ustawienia będzie za mała, klient będzie próbował znaleźć kontrolery domen, nawet jeśli żadne nie będą dostępne.</string>
-      <string id="Netlogon_NetlogonShareCompatibilityMode">Zgodność udziału Netlogon</string>
-      <string id="Netlogon_NetlogonShareCompatibilityMode_Help">To ustawienie kontroluje, czy udział Netlogon, utworzony przez usługę Net Logon na kontrolerze domeny (DC), powinien obsługiwać zgodność ze starszymi aplikacjami w semantyce udostępniania plików.
+Ostrzeżenie: jeśli wartość tego ustawienia będzie za duża, klient nie będzie próbował znaleźć żadnych kontrolerów domen, które były wcześniej niedostępne. Jeśli wartość tego ustawienia będzie za mała, klient będzie próbował znaleźć kontrolery domen, nawet jeśli żadne nie będą dostępne.</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode">Ustaw zgodność udziału Netlogon</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode_Help">To ustawienie zasad kontroluje, czy udział Netlogon utworzony przez usługę Net Logon na kontrolerze domeny powinien obsługiwać zgodność ze starszymi aplikacjami w semantyce udostępniania plików.
 
-Gdy to ustawienie jest włączone, udział Netlogon uznaje semantykę udostępniania plików, zgodnie z którą są realizowane żądania udzielenia wyłącznego dostępu do odczytu plików w udziale, nawet jeżeli wywołujący ma tylko uprawnienia do odczytu.
+Jeśli to ustawienie zasad zostanie włączone, udział Netlogon będzie uznawał semantykę udostępniania plików, zgodnie z którą są realizowane żądania udzielenia wyłącznego dostępu do odczytu plików w udziale, nawet jeśli wywołujący ma tylko uprawnienia do odczytu.
 
-Gdy to ustawienie jest wyłączone albo nieskonfigurowane, udział Netlogon zezwala na współdzielony dostęp do odczytu plików, nawet jeżeli wywołujący żąda dostępu wyłącznego, ale ma tylko uprawnienia do odczytu.
+Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, udział Netlogon będzie zezwalał na współdzielony dostęp do odczytu plików, nawet jeśli wywołujący żąda dostępu wyłącznego, ale ma tylko uprawnienia do odczytu.
 
 Domyślnie udział Netlogon zezwala na współdzielony dostęp do plików, gdy żąda się dostępu wyłącznego.
 
-Uwaga: Udział Netlogon jest udziałem tworzonym przez usługę Net Logon do użycia przez komputery klienckie w domenie. Domyślne zachowanie udziału Netlogon zapewnia, że żadna aplikacja, mająca tylko dostęp do odczytu plików w udziale Netlogon, nie może zablokować plików przez żądanie wyłącznego dostępu do odczytu, co mogłoby uniemożliwić aktualizowanie ustawień zasad grupy na komputerach klienckich w domenie. Gdy to ustawienie jest włączone, aplikacja, której wykonanie zależy od możliwości zablokowania plików w udziale Netlogon, mająca tylko uprawnienia do odczytu, będzie mogła uniemożliwić klientom zasad grupy odczyt plików, a ogólna dostępność udziału Netlogon w domenie zostanie zmniejszona.
+Uwaga: udział Netlogon jest udziałem tworzonym przez usługę Net Logon do użycia przez komputery klienckie w domenie. Domyślne działanie udziału Netlogon zapewnia, że żadna aplikacja mająca dostęp tylko do odczytu plików w udziale Netlogon nie może zablokować plików przez żądanie wyłącznego dostępu do odczytu, co mogłoby uniemożliwić aktualizowanie ustawień zasad grupy na komputerach klienckich w domenie. Gdy to ustawienie jest włączone, aplikacja, której wykonanie zależy od możliwości zablokowania plików w udziale Netlogon, mająca tylko uprawnienia do odczytu, będzie mogła uniemożliwić klientom zasad grupy odczyt plików, a ogólna dostępność udziału Netlogon w domenie zostanie zmniejszona.
 
-Jeśli to ustawienie jest włączone, administratorzy domeny powinni upewnić się, że jedynymi aplikacjami w domenie, które korzystają z możliwości wyłącznego odczytu, są aplikacje przez nich zatwierdzone</string>
-      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">Pomyślne cykliczne odświeżanie pamięci podręcznej kontrolera domeny dla wywoływania nie w tle</string>
-      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod_Help">Określa, kiedy pomyślny wpis pamięci podręcznej kontrolera domeny jest odświeżany. To ustawienie jest stosowane do programów wywołujących, które nie próbują cyklicznie lokalizować kontrolera domeny, i jest stosowane przed zwróceniem informacji kontrolera domeny do programu wywołującego. To ustawienie dotyczy tylko tych wywołań funkcji DsGetDcName, w których nie określono flagi DS_BACKGROUND_ONLY.
+Jeśli to ustawienie zasad zostanie włączone, administratorzy domeny powinni upewnić się, że jedynymi aplikacjami w domenie, które korzystają z możliwości wyłącznego odczytu, są aplikacje przez nich zatwierdzone.</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">Określ pomyślne cykliczne odświeżanie pamięci podręcznej kontrolera domeny dla wywoływania nie w tle</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod_Help">To ustawienie zasad określa, kiedy pomyślny wpis pamięci podręcznej kontrolera domeny jest odświeżany. To ustawienie zasad jest stosowane do programów wywołujących, które nie próbują okresowo lokalizować kontrolera domeny, i jest stosowane przed zwróceniem informacji kontrolera domeny do programu wywołującego. To ustawienie zasad dotyczy tylko tych wywołań funkcji DsGetDcName, w których nie określono flagi DS_BACKGROUND_ONLY.
 
 Domyślna wartość tego ustawienia to 30 minut (1800). Maksymalna wartość tego ustawienia to (4294967200), ale wartość maksymalna nieinterpretowana jako nieskończoność to 49 dni (49*24*60*60=4 233 600). Każda większa wartość będzie interpretowana jako nieskończoność. Minimalna wartość tego ustawienia to zawsze odświeżaj (0).</string>
-      <string id="Netlogon_ScavengeInterval">Interwał oczyszczania</string>
-      <string id="Netlogon_ScavengeInterval_Help">Określa interwał, po którym usługa Netlogon wykonuje następujące operacje oczyszczania:
+      <string id="Netlogon_ScavengeInterval">Ustaw interwał oczyszczania</string>
+      <string id="Netlogon_ScavengeInterval_Help">To ustawienie zasad określa interwał wykonywania operacji oczyszczania przez usługę Netlogon:
 
-— Sprawdza, czy należy modyfikować hasło w bezpiecznym kanale i modyfikuje je, gdy zajdzie taka potrzeba.
+- Sprawdza, czy hasło kanału bezpiecznego wymaga modyfikacji, i modyfikuje je w razie potrzeby.
 
-— Na kontrolerach domen odnajduje kontroler domeny, który nie został jeszcze wykryty.
+- Na kontrolerach domen odnajduje kontroler domeny, który nie został jeszcze wykryty.
 
-— Na podstawowym kontrolerze domeny próbuje dodać nazwę NetBIOS &lt;NazwaDomeny&gt;[1B], jeśli jeszcze nie została pomyślnie dodana.
+- Na podstawowym kontrolerze domeny próbuje dodać nazwę NetBIOS &lt;NazwaDomeny&gt;[1B], jeśli jeszcze nie została pomyślnie dodana.
 
 Żadna z tych operacji nie jest krytyczna. 15 minut to ustawienie optymalne dla wszystkich przypadków (z wyjątkiem przypadków ekstremalnych). Jeśli kontroler domeny jest przykładowo oddzielony od zaufanej domeny stosunkowo drogim połączeniem (na przykład linią ISDN), można zwiększyć ten parametr, aby uniknąć częstszego automatycznego odnajdowania kontrolerów domen w zaufanej domenie.
 
-Aby włączyć to ustawienie, kliknij opcję Włączone i określ interwał w sekundach.</string>
-      <string id="Netlogon_SiteCoverage">Lokacje uwzględniane przez rekordy DNS SRV lokalizatora kontrolerów domen</string>
-      <string id="Netlogon_SiteCoverage_Help">Określa lokacje, dla których kontrolery domen rejestrują specyficzne dla lokacji rekordy zasobów DNS SRV lokalizatora kontrolerów domen. Te rekordy są rejestrowane dodatkowo do specyficznych dla lokacji rekordów SRV rejestrowanych w lokacji, w której znajduje się kontroler domeny oraz rekordów zarejestrowanych przez kontroler domeny skonfigurowany do rejestrowania rekordów DNS SRV lokalizatora kontrolerów domen dla najbliższych lokacji bez kontrolera domeny. 
+Aby włączyć to ustawienie, należy kliknąć opcję Włączone i określić interwał w sekundach.</string>
+      <string id="Netlogon_SiteCoverage">Określ lokacje uwzględniane przez rekordy DNS SRV lokalizatora kontrolerów domen</string>
+      <string id="Netlogon_SiteCoverage_Help">To ustawienie zasad określa lokacje, dla których kontrolery domen rejestrują specyficzne dla lokacji rekordy zasobów DNS SRV lokalizatora kontrolerów domen. Te rekordy są rejestrowane dodatkowo do specyficznych dla lokacji rekordów SRV rejestrowanych w lokacji, w której znajduje się kontroler domeny, oraz rekordów zarejestrowanych przez kontroler domeny skonfigurowany do rejestrowania rekordów DNS SRV lokalizatora kontrolerów domen dla najbliższych lokacji bez kontrolera domeny. 
 
-Rekordy DNS lokalizatora kontrolerów domen są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny. Lokacja Active Directory to jedna lub więcej dobrze połączonych podsieci TCP/IP, które zezwalają administratorom na konfigurowanie dostępu i replikacji usługi Active Directory.
+Rekordy DNS lokalizatora kontrolerów domen są dynamicznie rejestrowane przez usługę Net Logon i używane do lokalizowania kontrolera domeny. Lokacja usługi Active Directory to jedna lub więcej dobrze połączonych podsieci TCP/IP, które zezwalają administratorom na konfigurowanie dostępu i replikacji usługi Active Directory.
 
-Aby określić lokacje obsługiwane przez rekordy DNS SRV lokalizatora kontrolerów domen, kliknij opcję Włączone i wprowadź nazwy lokacji w formacie listy rozdzielanej spacjami.
+Aby określić lokacje obsługiwane przez rekordy DNS SRV lokalizatora kontrolerów domen, należy kliknąć opcję Włączone i wprowadzić nazwy lokacji w formacie listy rozdzielanej spacjami.
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych kontrolerach domen, a kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
-      <string id="Netlogon_SiteName">Nazwa lokacji</string>
-      <string id="Netlogon_SiteName_Help">Określa lokację usługi Active Directory, do której należy komputer.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane do żadnych kontrolerów domen i kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_SiteName">Określ nazwę lokacji</string>
+      <string id="Netlogon_SiteName_Help">To ustawienie zasad określa lokację usługi Active Directory, do której komputer należy.
 
-Lokacja Active Directory to jedna lub więcej dobrze połączonych podsieci TCP/IP, które zezwalają administratorom na konfigurowanie dostępu i replikacji usługi Active Directory.
+Lokacja usługi Active Directory to jedna lub więcej dobrze połączonych podsieci TCP/IP, które zezwalają administratorom na konfigurowanie dostępu i replikacji usługi Active Directory.
 
-Aby określić nazwę lokacji w tym ustawieniu, kliknij opcję Włączone, a następnie wprowadź nazwę lokacji. Gdy lokacja, do której należy komputer, nie zostanie określona, komputer automatycznie odnajduje swoją lokację w usłudze Active Directory.
+Aby określić nazwę lokacji w tym ustawieniu, należy kliknąć opcję Włączone, a następnie wprowadzić nazwę lokacji. Gdy lokacja, do której komputer należy, nie zostanie określona, komputer automatycznie odnajduje swoją lokację w usłudze Active Directory.
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych komputerach, a komputery będą używać swojej lokalnej konfiguracji.</string>
-      <string id="Netlogon_SysvolShareCompatibilityMode">Zgodność udziału Sysvol</string>
-      <string id="Netlogon_SysvolShareCompatibilityMode_Help">To ustawienie kontroluje, czy udział Sysvol, utworzony przez usługę Net Logon na kontrolerze domeny (DC), powinien obsługiwać zgodność ze starszymi aplikacjami w semantyce udostępniania plików.
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane na żadnych komputerach, a komputery będą używać swojej lokalnej konfiguracji.</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode">Ustaw zgodność udziału SYSVOL</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode_Help">To ustawienie zasad kontroluje, czy udział SYSVOL utworzony przez usługę Net Logon na kontrolerze domeny powinien obsługiwać zgodność ze starszymi aplikacjami w semantyce udostępniania plików.
 
-Gdy to ustawienie jest włączone, udział Sysvol uznaje semantykę udostępniania plików, zgodnie z którą są realizowane żądania udzielenia wyłącznego dostępu do odczytu plików w udziale, nawet jeżeli wywołujący ma tylko uprawnienia do odczytu.
+Gdy to ustawienie jest włączone, udział SYSVOL uznaje semantykę udostępniania plików, zgodnie z którą są realizowane żądania udzielenia wyłącznego dostępu do odczytu plików w udziale, nawet jeśli wywołujący ma tylko uprawnienia do odczytu.
 
-Gdy to ustawienie jest wyłączone albo nieskonfigurowane, udział Sysvol zezwala na współdzielony dostęp do odczytu plików, nawet jeżeli wywołujący żąda dostępu wyłącznego, ale ma tylko uprawnienia do odczytu.
+Gdy to ustawienie zostanie wyłączone albo nie zostanie skonfigurowane, udział SYSVOL zezwala na współdzielony dostęp do odczytu plików, nawet jeśli wywołujący żąda dostępu wyłącznego, ale ma tylko uprawnienia do odczytu.
 
-Domyślnie udział Sysvol zezwala na współdzielony dostęp do plików, gdy żąda się dostępu wyłącznego.
+Domyślnie udział SYSVOL zezwala na współdzielony dostęp do plików, gdy żąda się dostępu wyłącznego.
 
-Uwaga: Udział Sysvol jest udziałem tworzonym przez usługę Net Logon do użycia przez klientów zasad grupy w domenie. Domyślne zachowanie udziału Sysvol zapewnia, że żadna aplikacja, mająca tylko dostęp do odczytu plików w udziale Sysvol, nie może zablokować plików przez żądanie wyłącznego dostępu do odczytu, co mogłoby uniemożliwić aktualizowanie ustawień zasad grupy na komputerach klienckich w domenie. Gdy to ustawienie jest włączone, aplikacja, której wykonanie zależy od możliwości zablokowania plików w udziale Sysvol, mająca tylko uprawnienia do odczytu, będzie mogła uniemożliwić klientom zasad grupy odczyt plików, a ogólna dostępność udziału Sysvol w domenie zostanie zmniejszona.
+Uwaga: udział SYSVOL jest udziałem tworzonym przez usługę Net Logon do użycia przez klientów zasad grupy w domenie. Domyślne działanie udziału SYSVOL zapewnia, że żadna aplikacja mająca tylko dostęp do odczytu plików w udziale sysvol nie może zablokować plików przez żądanie wyłącznego dostępu do odczytu, co mogłoby uniemożliwić aktualizowanie ustawień zasad grupy na komputerach klienckich w domenie. Gdy to ustawienie jest włączone, aplikacja, której uruchomienie zależy od możliwości zablokowania plików w udziale SYSVOL, mająca tylko uprawnienia do odczytu, będzie mogła zezwolić klientom zasad grupy na odczyt plików, a ogólna dostępność udziału SYSVOL w domenie zostanie zmniejszona.
 
-Jeśli to ustawienie jest włączone, administratorzy domeny powinni upewnić się, że jedynymi aplikacjami w domenie, które korzystają z możliwości wyłącznego odczytu, są aplikacje przez nich zatwierdzone</string>
-      <string id="Netlogon_UseDynamicDns">Dynamiczna rejestracja rekordów DNS lokalizatora kontrolerów domen</string>
-      <string id="Netlogon_UseDynamicDns_Help">Określa, czy jest włączona dynamiczna rejestracja rekordów zasobów DNS lokalizatora kontrolerów domen. Rekordy DNS są dynamicznie rejestrowane przez usługę Net Logon i używane przez algorytm lokalizatora do lokalizowania kontrolerów domen.
+Jeśli to ustawienie zasad zostanie włączone, administratorzy domeny powinni upewnić się, że jedynymi aplikacjami w domenie, które korzystają z możliwości wyłącznego odczytu, są aplikacje przez nich zatwierdzone.</string>
+      <string id="Netlogon_UseDynamicDns">Określ dynamiczną rejestrację rekordów DNS lokalizatora kontrolerów domen</string>
+      <string id="Netlogon_UseDynamicDns_Help">To ustawienie zasad określa, czy jest włączona dynamiczna rejestracja rekordów zasobów DNS lokalizatora kontrolerów domen. Rekordy DNS są dynamicznie rejestrowane przez usługę Net Logon i używane przez algorytm lokalizatora do lokalizowania kontrolerów domen.
 
-Jeśli to ustawienie zostanie włączone, kontrolery domen, do których to ustawienie jest stosowane, będą dynamicznie rejestrować rekordy zasobów DNS lokalizatora kontrolerów domen przez dynamiczne połączenia sieciowe z włączoną aktualizacją DNS.
+Jeśli to ustawienie zasad zostanie włączone, kontrolery domen, do których to ustawienie zostanie zastosowane, będą dynamicznie rejestrować rekordy zasobów DNS lokalizatora kontrolerów domen przez dynamiczne połączenia sieciowe z włączoną aktualizacją DNS.
 
-Jeśli to ustawienie zostanie wyłączone, kontrolery domen nie będą rejestrować rekordów zasobów DNS lokalizatora kontrolerów domen.
+Jeśli to ustawienie zasad zostanie wyłączone, kontrolery domen nie będą rejestrować rekordów zasobów DNS lokalizatora kontrolerów domen.
 
-Jeśli to ustawienie nie zostanie skonfigurowane, nie będzie stosowane na żadnych kontrolerach domen, a kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane do żadnych kontrolerów domen i kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
       <string id="Netlogon_TryNextClosestSite">Szukaj w najbliższej lokalizacji</string>
-      <string id="Netlogon_TryNextClosestSite_Help">Klienci używają usługi DC Locator (lokalizator kontrolera domeny), aby odnajdywać kontrolery ich domeny Active Directory. Domyślne zachowanie lokalizatora polega na szukaniu kontrolera domeny w tej samej lokalizacji. Jeżeli w tej samej lokalizacji nie znaleziono żadnego kontrolera domeny, to lokalizator może zwrócić kontroler domeny w innej lokalizacji, która może znajdować się o kilka przeskoków dalej. Odległość między dwiema lokalizacjami określa się na podstawie łącznego kosztu połączenia między nimi. Lokalizacja jest uznawana za bliższą, jeżeli ma niższy koszt połączenia niż inna, w przypadku której połączenie jest bardziej kosztowne. Funkcja Szukaj w najbliższej lokalizacji umożliwia lokalizatorowi kontrolera domeny podjęcie próby wyszukania kontrolera w najbliższej lokalizacji (w oparciu o koszt połączenia), jeżeli nie znaleziono kontrolera domeny w tej samej lokalizacji. W środowisku, w którym istnieje wiele lokalizacji, przełączenie prób wyszukania kontrolera domeny na kolejną bliską lokalizację skutecznie optymalizuje ruch w sieci.
+      <string id="Netlogon_TryNextClosestSite_Help">To ustawienie zasad umożliwia lokalizatorowi kontrolerów domen podjęcie próby wyszukania kontrolera domeny w najbliższej lokalizacji (w oparciu o koszt połączenia), jeśli nie znaleziono kontrolera domeny w tej samej lokalizacji. W środowisku, w którym istnieje wiele lokalizacji, przełączenie prób wyszukania kontrolera domeny na kolejną bliską lokalizację skutecznie optymalizuje ruch w sieci.
 
-Włączenie tego ustawienia zasad spowoduje, że funkcja „Szukaj w najbliższej lokalizacji” dla lokalizatora kontrolerów domen zostanie włączona na wszystkich dostępnych, ale nieskonfigurowanych kartach sieciowych w komputerze.
+Klienci używają usługi lokalizatora kontrolerów domeny, aby odnajdywać kontrolery swojej domeny usługi Active Directory. Domyślne działanie lokalizatora polega na szukaniu kontrolera domeny w tej samej lokalizacji. Jeśli w tej samej lokalizacji nie znaleziono żadnego kontrolera domeny, to lokalizator może zwrócić kontroler domeny w innej lokalizacji, która może znajdować się o kilka przeskoków dalej. Odległość między dwiema lokalizacjami określa się na podstawie łącznego kosztu połączenia między nimi. Lokalizacja jest uznawana za bliższą, jeśli ma niższy koszt połączenia niż inna, w przypadku której połączenie jest bardziej kosztowne. 
 
-Wyłączenie tego ustawienia zasad spowoduje, że funkcja „Szukaj w najbliższej lokalizacji” dla lokalizatora kontrolerów domen nie będzie domyślnie używana na wszystkich dostępnych, ale nieskonfigurowanych kartach sieciowych w komputerze. Jeżeli jednak wywołanie lokalizatora kontrolera domeny zostanie wykonane z jawnym użyciem flagi DS_TRY_NEXTCLOSEST_SITE, to zachowanie szukania w najbliższej lokalizacji będzie honorowane.
+Jeśli to ustawienie zasad zostanie włączone, funkcja Szukaj w najbliższej lokalizacji dla lokalizatora kontrolerów domen zostanie włączona dla danego komputera.
 
-Jeżeli nie skonfiguruje się tego ustawienia zasad, to funkcja „Szukaj w najbliższej lokalizacji” dla lokalizatora kontrolerów domen nie będzie domyślnie używana na wszystkich dostępnych, ale nieskonfigurowanych kartach sieciowych w komputerze. Jeżeli jednak zostanie jawnie użyta flaga DS_TRY_NEXTCLOSEST_SITE, to zachowanie szukania w najbliższej lokalizacji będzie stosowane.</string>
+Jeśli to ustawienie zasad zostanie wyłączone, funkcja Szukaj w najbliższej lokalizacji dla lokalizatora kontrolerów domen nie będzie domyślnie używana dla danego komputera. Jeśli jednak wywołanie lokalizatora kontrolera domeny zostanie wykonane z jawnym użyciem flagi DS_TRY_NEXTCLOSEST_SITE, to zachowanie szukania w najbliższej lokalizacji będzie honorowane.
+
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, funkcja Szukaj w najbliższej lokalizacji dla lokalizatora kontrolerów domen nie będzie domyślnie używana dla danego komputera. Jeśli jednak zostanie jawnie użyta flaga DS_TRY_NEXTCLOSEST_SITE, to zachowanie szukania w najbliższej lokalizacji będzie stosowane.</string>
       <string id="Netlogon_ForceRediscoveryInterval">Wymuszaj interwał ponownego odnajdywania</string>
-      <string id="Netlogon_ForceRediscoveryInterval_Help">Klienci używają usługi DC Locator (lokalizator kontrolera domeny), aby odnajdywać kontrolery ich domeny Active Directory. Gdy lokalizator odnajdzie kontroler domeny, buforuje kontrolery, aby zwiększyć wydajność algorytmu lokalizowania. Lokalizator kontrolerów domeny będzie zwracał zbuforowany kontroler tak długo, dopóki kontroler ten będzie spełniał wymagania lokalizatora i będzie uruchomiony. Jeżeli wprowadzony zostanie nowy kontroler domeny, to istniejący klienci wykryją go tylko wtedy, gdy lokalizator kontrolerów domeny wymusi ponowne odnajdywanie. Aby zaadaptować się do zmian w środowisku sieciowym, lokalizator kontrolerów domen domyślnie wymusza w określonych odstępach czasu funkcję ponownego odnajdywania i zapewnia wydajne równoważenie obciążenia klientów na wszystkich dostępnych kontrolerach domen, we wszystkich domenach lub zbiorach drzew (lasach). Domyślny interwał ponownego odnajdywania przez lokalizator kontrolerów domen wynosi 12 godzin. Ponowne odnajdywanie kontrolerów można również wymusić, wywołując lokalizator kontrolerów domen z flagą DS_FORCE_REDISCOVERY. Procedura ponownego odnajdywania resetuje licznik czasu w zbuforowanych wpisach kontrolerów domen.
+      <string id="Netlogon_ForceRediscoveryInterval_Help">To ustawienie zasad określa interwał, z jakim lokalizator kontrolerów domen wykonuje wymuszenie ponownego odnajdywania.
 
-Po włączeniu tego ustawienia zasad, lokalizator kontrolerów domen na danym komputerze będzie okresowo przeprowadzał ponowne odnajdywanie, zgodnie ze skonfigurowanym interwałem. Minimalny odstęp czasu to 3600 sekund (1 godzina), co pozwala uniknąć nadmiernego ruchu w sieci, powodowanego ponownym odnajdywaniem. Maksymalna dozwolona wartość odstępu czasu to 4294967200 sekund. Każda wartość przekraczająca 42949672 sekund (ok. 49 dni) będzie traktowana jako nieskończoność.
+Klienci używają usługi lokalizatora kontrolerów domeny (DC Locator), aby odnajdywać kontrolery swojej domeny usługi Active Directory. Gdy lokalizator odnajdzie kontroler domeny, buforuje kontrolery, aby zwiększyć wydajność algorytmu lokalizowania. Lokalizator kontrolerów domeny będzie zwracał zbuforowany kontroler, dopóki ten kontroler będzie spełniał wymagania lokalizatora i będzie uruchomiony. Jeśli zostanie wprowadzony nowy kontroler domeny, to istniejący klienci wykryją go tylko wtedy, gdy lokalizator kontrolerów domeny wymusi ponowne odnajdywanie. Aby zastosować zmiany w środowisku sieciowym, lokalizator kontrolerów domen domyślnie wymusza w określonych odstępach czasu funkcję ponownego odnajdywania i zapewnia wydajne równoważenie obciążenia klientów na wszystkich dostępnych kontrolerach domen, we wszystkich domenach lub w lasach. Domyślny interwał ponownego odnajdywania przez lokalizator kontrolerów domen wynosi 12 godzin. Ponowne odnajdywanie kontrolerów można również wymusić, wywołując lokalizator kontrolerów domen z flagą DS_FORCE_REDISCOVERY. Procedura ponownego odnajdywania resetuje licznik czasu w zbuforowanych wpisach kontrolerów domen.
 
-Jeżeli to ustawienie zasad zostanie wyłączone, to wymuszone odnajdywanie będzie domyślnie przeprowadzane w odstępach 12-godzinnych.
+Po włączeniu tego ustawienia zasad, lokalizator kontrolerów domen na danym komputerze będzie okresowo przeprowadzał ponowne odnajdywanie, zgodnie ze skonfigurowanym interwałem. Minimalny odstęp czasu to 3600 sekund (1 godzina), co pozwala uniknąć nadmiernego ruchu w sieci, powodowanego ponownym odnajdywaniem. Maksymalna dozwolona wartość odstępu czasu to 4294967200 sekund. Każda wartość przekraczająca 4294967200 sekund (ok. 49 dni) jest traktowana jako nieskończoność.
 
-Jeżeli to ustawienie zasad nie zostanie skonfigurowane, to wymuszone odnajdywanie będzie domyślnie przeprowadzane w odstępach 12-godzinnych, chyba że w rejestrze lokalnego komputera zdefiniowano inną wartość.</string>
+Jeśli to ustawienie zasad zostanie wyłączone, to wymuszone odnajdywanie będzie domyślnie przeprowadzane w 12-godzinnych odstępach.
+
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, to wymuszone odnajdywanie będzie domyślnie przeprowadzane w 12-godzinnych odstępach, chyba że w rejestrze lokalnego komputera zdefiniowano inną wartość.</string>
       <string id="Netlogon_AddressTypeReturned">Typ zwracanego adresu kontrolera domeny</string>
-      <string id="Netlogon_AddressTypeReturned_Help">Interfejsy API lokalizatora kontrolerów domen zwracają adres IP kontrolera wraz z pozostałymi informacjami. Zanim wprowadzono obsługę wersji IPv6, zwracany adres IP kontrolera domeny był podawany w formacie IPv4. Po wprowadzeniu obsługi formatu IPv6, interfejsy API lokalizatora kontrolerów domen mogą zwracać adresy IPv6. Adres kontrolera domeny zwracany w formacie IPv6 może być nieprawidłowo przetwarzany przez niektóre istniejące aplikacje. Te zasady stworzono z myślą o takich sytuacjach.
+      <string id="Netlogon_AddressTypeReturned_Help">To ustawienie zasad określa typ adresu IP zwracanego dla kontrolera domeny. Interfejsy API lokalizatora kontrolerów domen zwracają adres IP kontrolera wraz z pozostałymi informacjami. Zanim wprowadzono obsługę wersji IPv6, zwracany adres IP kontrolera domeny był podawany w formacie IPv4. Po wprowadzeniu obsługi formatu IPv6, interfejsy API lokalizatora kontrolerów domen mogą zwracać adresy IPv6. Adres kontrolera domeny zwracany w formacie IPv6 może być nieprawidłowo przetwarzany przez niektóre istniejące aplikacje. Te zasady stworzono z myślą o takich sytuacjach.
 
-Interfejsy API lokalizatora kontrolerów domen mogą domyślnie zwracać adresy w formacie IPv4/IPv6. Jeżeli jednak niektóre aplikacje nie działają prawidłowo ze względu na format IPv6 zwracanego adresu, to można użyć tych zasad, aby wyłączyć domyślne zachowanie i wymusić zwracanie adresów kontrolerów domen wyłącznie w formacie IPv4. Po naprawieniu aplikacji można ponownie wykorzystać te zasady, aby przywrócić domyślne zachowanie.
+Interfejsy API lokalizatora kontrolerów domen mogą domyślnie zwracać adresy w formacie IPv4/IPv6. Jeśli jednak niektóre aplikacje nie działają prawidłowo ze względu na format IPv6 zwracanego adresu, to można użyć tych zasad, aby wyłączyć domyślne działanie i wymusić zwracanie adresów kontrolerów domen wyłącznie w formacie IPv4. Po naprawieniu aplikacji można ponownie użyć tych zasad, aby przywrócić domyślne działanie.
 
-Po włączeniu tego ustawienia zasad, interfejsy API lokalizatora kontrolerów domen mogą zwracać adresy w formacie IPv4/IPv6. Jest to domyślne zachowanie lokalizatora kontrolerów domen.
+Po włączeniu tego ustawienia zasad, interfejsy API lokalizatora kontrolerów domen mogą zwracać adresy w formacie IPv4/IPv6. Jest to domyślne działanie lokalizatora kontrolerów domen.
 
-Po wyłączeniu tego ustawienia zasad, interfejsy API lokalizatora kontrolerów domen mogą zwracać wyłącznie adresy w formacie IPv4. Zatem jeśli kontroler domeny obsługuje zarówno adresy IPv4, jak i IPv6, interfejsy API lokalizatora kontrolerów domen zwrócą tylko adres IPv4. Jeżeli jednak kontroler domeny obsługują tylko adres w formacie IPv6, wywołanie interfejsów API lokalizatora skończy się niepowodzeniem.
+Po wyłączeniu tego ustawienia zasad, interfejsy API lokalizatora kontrolerów domen mogą zwracać wyłącznie adresy w formacie IPv4. Jeśli więc kontroler domeny obsługuje zarówno adresy IPv4, jak i IPv6, interfejsy API lokalizatora kontrolerów domen zwrócą tylko adres IPv4. Jeśli jednak kontroler domeny obsługuje tylko adres w formacie IPv6, wywołanie interfejsów API lokalizatora zakończy się niepowodzeniem.
 
-Jeżeli to ustawienie zasad nie zostanie skonfigurowane, interfejsy API lokalizatora kontrolerów domen mogą zwracać adresy w formacie IPv4/IPv6. Jest to domyślne zachowanie lokalizatora kontrolerów domen.</string>
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, interfejsy API lokalizatora kontrolerów domen mogą zwracać adresy w formacie IPv4/IPv6. Jest to domyślne działanie lokalizatora kontrolerów domen.</string>
       <string id="Netlogon_AllowNT4Crypto">Zezwalaj na algorytmy kryptograficzne zgodne z systemem Windows NT 4.0</string>
-      <string id="Netlogon_AllowNT4Crypto_Help">To ustawienie steruje tym, czy usługa Net Logon będzie zezwalać na używanie starszych algorytmów kryptograficznych stosowanych w systemie Windows NT 4.0. Algorytmy kryptograficzne stosowane w systemie Windows NT 4.0 oraz starsze nie są tak bezpieczne jak nowsze algorytmy stosowane w systemach Windows 2000, Windows XP, Windows Server 2003, Windows Vista oraz w tej wersji systemu Windows.
+      <string id="Netlogon_AllowNT4Crypto_Help">To ustawienie zasad określa, czy usługa Net Logon będzie zezwalać na używanie starszych algorytmów kryptograficznych stosowanych w systemie Windows NT 4.0. Algorytmy kryptograficzne stosowane w systemach Windows NT 4.0 oraz wcześniejszych nie są tak bezpieczne, jak nowsze algorytmy stosowane w systemach Windows 2000 i nowszych, włącznie z tą wersją systemu Windows.
 
 Domyślnie usługa Net Logon nie zezwala na stosowanie starszych algorytmów kryptograficznych i nie uwzględnia ich podczas negocjowania algorytmów kryptograficznych. Dlatego komputery z systemem Windows NT 4.0 nie będą mogły ustanawiać połączenia z tym kontrolerem domeny.
  
-Jeśli to ustawienie zostanie włączone, usługa Net Logon będzie zezwalać na używanie starszych algorytmów kryptograficznych zgodnych z systemem Windows NT 4.0 i na uwzględnianie ich w negocjacjach. Jednak stosowanie starszych algorytmów kryptograficznych może stanowić ryzyko dla bezpieczeństwa.</string>
+Jeśli to ustawienie zasad zostanie włączone, usługa Net Logon będzie zezwalać na używanie starszych algorytmów kryptograficznych zgodnych z systemem Windows NT 4.0 i uwzględnianie ich w negocjacjach. Jednak stosowanie starszych algorytmów kryptograficznych może stanowić ryzyko dla bezpieczeństwa.
+
+Jeśli to ustawienie zasad zostanie wyłączone, usługa Net Logon nie będzie zezwalać na używanie starszych algorytmów kryptograficznych ani na uwzględnianie ich w negocjacjach. 
+
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, usługa Net Logon nie będzie zezwalać na używanie starszych algorytmów kryptograficznych ani na uwzględnianie ich w negocjacjach.</string>
       <string id="Netlogon_IgnoreIncomingMailslotMessages">Nie przetwarzaj wiadomości przychodzących skrzynki mailslot stosowanych do lokalizowania kontrolerów domen na podstawie nazw domen NetBIOS</string>
       <string id="Netlogon_IgnoreIncomingMailslotMessages_Help">To ustawienie zasad umożliwia sterowanie przetwarzaniem komunikatów przychodzących skrzynki mailslot przez lokalny kontroler domeny.
 
-Uwaga: Aby zlokalizować zdalny kontroler domeny na podstawie jego nazwy domeny NetBIOS (o jednej etykiecie), lokalizator kontrolerów domen pobiera najpierw listę kontrolerów domen z serwera WINS, który jest skonfigurowany w lokalnych ustawieniach klienta. Następnie lokalizator kontrolerów domen wysyła komunikat skrzynki mailslot do poszczególnych zdalnych kontrolerów domeny w celu uzyskania dodatkowych informacji. Próba zlokalizowania kontrolera domeny może zakończyć się powodzeniem tylko wtedy, gdy zdalny kontroler domeny odpowie na komunikat skrzynki mailslot.
+Uwaga: aby zlokalizować zdalny kontroler domeny na podstawie jego nazwy domeny NetBIOS (o jednej etykiecie), lokalizator kontrolerów domen pobiera najpierw listę kontrolerów domen z serwera WINS, który jest skonfigurowany w lokalnych ustawieniach klienta. Następnie lokalizator kontrolerów domen wysyła komunikat skrzynki mailslot do poszczególnych zdalnych kontrolerów domeny w celu uzyskania dodatkowych informacji. Próba zlokalizowania kontrolera domeny może zakończyć się powodzeniem tylko wtedy, gdy zdalny kontroler domeny odpowie na komunikat skrzynki mailslot.
 
 Zastosowanie tego ustawienia zasad jest zalecane w celu zmniejszenia pola ataku na kontroler domeny i można go używać w środowisku bez serwera WINS, w środowisku, w którym jest stosowany tylko protokół IPv6, a także w innych środowiskach, w których nie jest wymagane lokalizowanie kontrolera domeny na podstawie nazwy domeny NetBIOS. To ustawienie zasad nie ma wpływu na lokalizowanie kontrolerów domeny na podstawie nazw DNS.
 
-Jeżeli to ustawienie zasad zostanie włączone, ten kontroler domeny nie będzie przetwarzał przychodzących komunikatów skrzynki mailslot, które są używane do lokalizowania kontrolerów domeny na podstawie nazwy domeny NetBIOS.
+Jeśli to ustawienie zasad zostanie włączone, ten kontroler domeny nie będzie przetwarzał przychodzących komunikatów skrzynki mailslot, które są używane do lokalizowania kontrolerów domeny na podstawie nazwy domeny NetBIOS.
 
-Jeżeli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, ten kontroler domeny będzie przetwarzał przychodzące komunikaty skrzynki mailslot. Jest to domyślne zachowanie lokalizatora kontrolerów domen.</string>
+Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, ten kontroler domeny będzie przetwarzał przychodzące komunikaty skrzynki mailslot. Jest to domyślne działanie lokalizatora kontrolerów domen.</string>
+      <string id="Netlogon_AvoidFallbackNetbiosDiscovery">Nie używaj odnajdowania NetBIOS dla lokalizacji kontrolera domeny, jeśli odnajdowanie DNS nie powiedzie się</string>
+      <string id="Netlogon_AvoidFallbackNetbiosDiscovery_Help">To ustawienie zasad umożliwia kontrolowanie algorytmu lokalizacji kontrolera domeny. Domyślnie algorytm lokalizacji kontrolera domeny preferuje odnajdowanie DNS, jeśli nazwa domeny DNS jest znana. Jeśli odnajdowanie DNS nie powiedzie się i jest znana nazwa domeny NetBIOS, algorytm użyje odnajdowania NetBIOS jako mechanizmu rezerwowego.
+
+Odnajdowanie NetBIOS używa serwera WINS i komunikatów skrzynki mailslot, ale nie używa informacji o lokalizacji. Dlatego nie zapewnia, że klienci odnajdą najbliższy kontroler domeny. Umożliwia ono także klientowi lokacji serwera centralnego odnajdowanie kontrolera domeny w lokalizacji gałęzi, nawet jeśli kontroler ten rejestruje tylko rekordy DNS dotyczące konkretnej lokalizacji (zgodnie z zaleceniami). Z tej przyczyny nie zaleca się stosowania odnajdowania NetBIOS.
+
+Należy zauważyć, że to ustawienie zasad nie wpływa na funkcję odnajdowania NetBIOS w lokalizacji kontrolera domeny, tylko jeśli nazwa domeny NetBIOS jest znana.
+
+Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, algorytm lokalizacji kontrolera domeny nie używa odnajdowania NetBIOS jako mechanizmu rezerwowego, jeśli odnajdowanie DNS nie powiedzie się. To jest domyślne działanie.
+
+Jeśli to ustawienie zasad zostanie wyłączone, algorytm lokalizacji kontrolera domeny będzie mógł używać odnajdowania NetBIOS jako mechanizmu rezerwowego, jeśli odnajdowanie DNS nie powiedzie się.</string>
+
+      <string id="Netlogon_AddressLookupOnPingBehavior">Określ zachowanie podczas wyszukiwania adresu na potrzeby polecenia ping lokalizatora kontrolerów domen</string>
+      <string id="Netlogon_AddressLookupOnPingBehavior_Help">To ustawienie zasad umożliwia skonfigurowanie, jakie jest zachowanie kontrolera domeny podczas odpowiadania klientowi, którego adresu IP nie można zamapować na żadną skonfigurowaną lokację.
+
+Kontrolery domeny używają adresu IP klienta w żądaniach badania poleceniem ping pochodzących z lokalizatora kontrolerów domen do obliczania, do której lokacji usługi Active Directory należy klient.   Jeśli nie uda się obliczyć żadnego mapowania domeny, kontroler domeny może wyszukać adres na podstawie nazwy sieci klienta w celu wykrycia innych adresów IP, których można następnie użyć do obliczenia pasującej lokacji dla klienta. 
+
+Dopuszczalne wartości tego ustawienia dają w efekcie następujące zachowanie:
+
+0 — kontrolery domeny nigdy nie będą przeprowadzać wyszukiwania domeny.
+1 — kontrolery domeny będą przeprowadzać wyczerpujące wyszukiwanie adresu w celu wykrycia dodatkowych adresów IP klienta.
+2 — kontrolery domeny będą przeprowadzać szybkie wyszukiwanie adresów (tylko na poziomie systemu DNS) w celu wykrycia dodatkowych adresów IP klienta.
+
+Aby określić to zachowanie w rekordach DNS SRV lokalizatora kontrolerów domen, należy kliknąć pozycję Włączone i wprowadzić wartość. Zakres wartości wynosi od 0 do 2.
+
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane do żadnych kontrolerów domen i kontrolery domen będą używać swojej lokalnej konfiguracji.</string>
+
+      <string id="Netlogon_PingUrgencyMode">Użyj trybu pilnego podczas wysyłania polecenia ping do kontrolerów domen</string>
+      <string id="Netlogon_PingUrgencyMode_Help">To ustawienie zasad umożliwia zdecydowanie, czy komputery, do których zostanie ono zastosowane, mają działać bardziej zdecydowanie podczas próby zlokalizowania kontrolera domeny.
+
+Jeśli w danym środowisku jest dużo kontrolerów domen ze starymi i nowymi systemami operacyjnymi, domyślne działanie lokalizatora kontrolerów domen w zakresie wykrywania może nie umożliwić znalezienia kontrolerów domen z nowszym systemem operacyjnym.  Włączenie tego ustawienia zasad umożliwia skonfigurowanie bardziej zdecydowanego działania lokalizatora kontrolerów domen, które umożliwia znalezienie kontrolera domeny w takim środowisku przez częstsze wysyłanie polecenia ping do kontrolerów domen.  Włączenie tego ustawienia może spowodować dodatkowy ruch w sieci i zwiększenie obciążenia kontrolerów domen.  Kiedy wszystkie kontrolery domen będą korzystały z tej samej wersji systemu operacyjnego, należy wyłączyć to ustawienie
+
+Dopuszczalne wartości tego ustawienia powodują następujące działania:
+
+1. Komputery wysyłają polecenie ping do kontrolerów domen z normalną częstotliwością.
+2. Komputery wysyłają polecenie ping do kontrolerów domen z większą częstotliwością.
+
+Aby określić odpowiednie działanie, należy kliknąć pozycję „Włączone”, a następnie wprowadzić wartość. Zakres wartości wynosi od 1 do 2.
+
+Jeśli to ustawienie zasad nie zostanie skonfigurowane, nie będzie stosowane na żadnych komputerach, a komputery będą używać swojej lokalnej konfiguracji.</string>
+
     </stringTable>
     <presentationTable>
       <presentation id="Netlogon_BackgroundRetryInitialPeriod">
@@ -349,6 +409,12 @@ Jeżeli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane
       </presentation>
       <presentation id="Netlogon_ForceRediscoveryInterval">
         <decimalTextBox refId="Netlogon_ForceRediscoveryIntervalLabel" defaultValue="43200" spinStep="100">Sekundy:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_AddressLookupOnPingBehavior">
+        <decimalTextBox refId="Netlogon_AddressLookupOnPingBehaviorLabel" defaultValue="2" spinStep="1">Zachowanie podczas wyszukiwania adresu:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_PingUrgencyMode">
+        <decimalTextBox refId="Netlogon_PingUrgencyModeLabel" defaultValue="2" spinStep="1">Tryb częstotliwości wysyłania polecenia ping:</decimalTextBox>
       </presentation>
     </presentationTable>
   </resources>

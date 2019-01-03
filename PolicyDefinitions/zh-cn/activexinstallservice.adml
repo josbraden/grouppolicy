@@ -6,22 +6,31 @@
   <resources>
     <stringTable>
       <string id="AxInstSv">ActiveX 安装程序服务</string>
-      <string id="AxISURLZonePolicies">受信任区域中站点的 ActiveX 安装策略</string>        
-      <string id="AxISURLZonePolicies_explain">此策略设置控制受信任区域中站点的 ActiveX 控件的安装。如果启用此设置，则 ActiveX 控件会根据此策略设置定义的设置进行安装。
-      
-如果禁用或未配置此设置，则在安装 ActiveX 控件之前总是提示用户。
+      <string id="AxISURLZonePolicies">为受信任区域中的站点构建 ActiveX 安装策略</string>        
+      <string id="AxISURLZonePolicies_explain">此策略设置控制受信任区域中站点的 ActiveX 控件的安装。
 
-如果受信任站点使用 HTTPS 协议，则此策略设置还可以控制 ActiveX 安装程序服务对证书错误的响应方式。默认情况下，所有 HTTPS 连接都必须提供通过所有验证条件的服务器证书。如果您知道某个受信任站点具有证书错误，但是仍然希望信任该站点，则可以选择希望忽略的证书错误。
+如果启用此策略设置，则 ActiveX 控件会根据此策略设置定义的设置进行安装。
+      
+如果禁用或未配置此策略设置，则系统不会在安装 ActiveX 控件前提示用户。
+
+如果受信任站点使用 HTTPS 协议，则此策略设置还可以控制 ActiveX 安装程序服务对证书错误的响应方式。默认情况下，所有 HTTPS 连接都必须提供通过所有验证条件的服务器证书。如果知道某个受信任站点有证书错误，但仍希望信任该站点，则可以选择要忽略的证书错误。
     
-注意: 此设置适用于受信任区域中的所有站点。
+注意: 此策略设置适用于受信任区域中的所有站点。
+
 </string>
       <string id="TrustedZoneDisabled">不安装</string>
       <string id="TrustedZonePrompt">提示用户</string>
       <string id="TrustedZoneSilentInstall">无提示安装</string>
       <string id="ApprovedActiveXInstallSites">ActiveX 控件的批准安装站点</string>
-      <string id="ApprovedActiveXInstallSites_explain">ActiveX 安装程序服务是将每台计算机的 ActiveX 控件安装委派给企业中的标准用户的解决方案。
+      <string id="ApprovedActiveXInstallSites_explain">此策略设置确定组织中的标准用户可在其计算机上使用哪些 ActiveX 安装站点来安装 ActiveX 控件。启用此设置后，管理员可以创建由主机 URL 指定的批准 Activex 安装站点列表。
 
-批准的 ActiveX 安装站点的列表包含主机 URL 和每个主机 URL 的策略设置。不支持通配符。</string>
+如果启用此设置，则管理员可创建由主机 URL 指定的批准 Activex 安装站点列表。
+      
+如果禁用或未配置此策略设置，则系统不会在安装 ActiveX 控件前提示用户提供管理凭据。
+
+注意: 指定主机 URL 时，不能使用通配符。
+
+</string>
     </stringTable>
     <presentationTable>
       <presentation id="AxISURLZonePolicies">
@@ -38,7 +47,7 @@
       <presentation id="ApprovedActiveXInstallSites">
         <listBox refId="ApprovedActiveXInstallSiteslist">主机 URL</listBox>
         <text>包含主机 URL 的策略。</text>
-        <text>例如 </text>
+        <text>例如  </text>
         <text>主机名称: http://activex.microsoft.com</text>
         <text>值: 2,1,0,0</text>
         <text>每个主机 URL 的值是 CSV 格式的四种设置。</text>
@@ -48,7 +57,7 @@
         <text>0: 不安装 ActiveX 控件</text>
         <text>1: 提示用户安装 ActiveX 控件</text>
         <text>2: 将无提示安装 ActiveX 控件</text>
-        <text>由受信任发布者存储区中的证书签名的控件将不经提示即进行安装 </text>
+        <text>由受信任发布者存储区中的证书签名的控件将不经提示即进行安装  </text>
         <text>不支持无提示安装未签名的控件</text>
         <text></text>
         <text>策略中最右边的值是位掩码标志</text>

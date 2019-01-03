@@ -6,16 +6,18 @@
   <resources>
     <stringTable>
       <string id="NCSI_Category">网络连接状态指示器</string>
-      <string id="NCSI_CorpWebProbeUrl">企业网站探测 URL</string>
-      <string id="NCSI_CorpWebProbeUrl_Help">这是将用于执行主动探测的企业网站的 URL。</string>
-      <string id="NCSI_CorpDnsProbeHost">企业 DNS 探测主机名</string>
-      <string id="NCSI_CorpDnsProbeHost_Help">这是企业网络中已知 PC 的主机名。将此主机名成功解析到预期的地址可指示企业网络的连接性。</string>
-      <string id="NCSI_CorpDnsProbeContent">企业 DNS 探测主机地址</string>
-      <string id="NCSI_CorpDnsProbeContent_Help">这是用于执行 DNS 探测的主机名的预期地址。将主机名成功解析到此地址可指示企业网络的连接性。</string>
-      <string id="NCSI_CorpSitePrefixes">企业站点前缀列表</string>
-      <string id="NCSI_CorpSitePrefixes_Help">这是 IPv6 企业站点前缀的列表，应监测这些前缀以检测企业网络的连接性。使用任意这些前缀的地址的可访问性可指示企业网络的连接性。</string>
-      <string id="NCSI_DomainLocationDeterminationUrl">域位置确定 URL</string>
-      <string id="NCSI_DomainLocationDeterminationUrl_Help">这是用于确定当前域位置(如企业内或企业外)的企业网站的 HTTPS URL。可访问该 URL 指示该位置位于企业内，否则位于企业外。</string>
+      <string id="NCSI_CorpWebProbeUrl">指定企业网站探测 URL</string>
+      <string id="NCSI_CorpWebProbeUrl_Help">使用此策略设置，可以指定企业网站的 URL，活动的探测根据此 URL 进行执行。</string>
+      <string id="NCSI_CorpDnsProbeHost">指定企业 DNS 探测主机名</string>
+      <string id="NCSI_CorpDnsProbeHost_Help">使用此策略设置，可以指定企业网络中已知的计算机的主机名。将此主机名成功解析到预期的地址可指示企业网络的连接性。</string>
+      <string id="NCSI_CorpDnsProbeContent">指定企业 DNS 探测主机地址</string>
+      <string id="NCSI_CorpDnsProbeContent_Help">使用此策略设置，可以指定 DNS 探测使用的预期的主机名地址。将主机名成功解析到此地址可指示企业网络的连接性。</string>
+      <string id="NCSI_CorpSitePrefixes">指定企业站点前缀列表</string>
+      <string id="NCSI_CorpSitePrefixes_Help">使用此策略设置，可以指定 IPv6 企业站点前缀的列表，以监控企业网络的连接性。使用任意这些前缀的地址的可访问性可指示企业网络的连接性。</string>
+      <string id="NCSI_DomainLocationDeterminationUrl">指定域位置确定 URL</string>
+      <string id="NCSI_DomainLocationDeterminationUrl_Help">使用此策略设置，可以指定客户端用于确定当前域位置的企业网站的 HTTPS URL (如计算机是在企业网络中还是在企业网络外)。可访问该 URL 目标表明该客户端位置位于企业网络内；否则位于企业网络外。</string>
+      <string id="NCSI_PassivePolling">指定被动轮询</string>
+      <string id="NCSI_PassivePolling_Help">使用此策略设置，可以指定被动轮询行为。NCSI 通过网络堆栈频繁轮询各种度量标准，以确定网络连接是否已断开。 使用这些选项控制被动轮询行为。</string>
     </stringTable>
     <presentationTable>
       <presentation id="NCSI_CorpWebProbeUrl">
@@ -53,7 +55,7 @@
         <text>企业 IPv6 站点前缀的列表以检测</text>
         <text>企业网络的连接性。</text>
         <text>语法:</text>
-        <text>  该列表应采用逗号分隔格式，</text>
+        <text>    该列表应采用逗号分隔格式，</text>
         <text>  不能有空白。</text>
         <text>示例:</text>
         <text>  fe80::/9,fe81::/9</text>
@@ -66,6 +68,10 @@
         <text>确定位于域位置内部还是外部。</text>
         <text>示例:</text>
         <text>  https://nid.corp.microsoft.com/</text>
+      </presentation>
+      <presentation id="NCSI_PassivePolling">
+        <text>以下复选框禁用 NCSI 中的被动轮询机制。  这可以改善服务器上的 CPU 工作负荷或其网络连接处于静态状态的其他机器。</text>
+        <checkBox refId="NCSI_DisablePassivePolling_Checkbox">禁用被动轮询</checkBox>  
       </presentation>
     </presentationTable>
   </resources>

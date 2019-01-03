@@ -8,7 +8,17 @@
     <using prefix="server" namespace="Microsoft.Policies.Server" />
   </policyNamespaces>
   <resources minRequiredRevision="1.0" />
-  
+  <supportedOn>
+    <definitions>
+     <!-- Microsoft Windows Server 2008 and Windows Server 2008 R2 only -->
+     <definition name="SUPPORTED_WindowsServer2008OrWindowsServer2008R2Only" displayName="$(string.SUPPORTED_WindowsServer2008OrWindowsServer2008R2Only)">
+       <or>
+        <reference ref="products:WindowsServer2008R2"/>
+        <reference ref="products:WindowsServer2008"/>
+      </or>
+     </definition>
+    </definitions>
+  </supportedOn>
   <categories>
     <category name="ServerManager" displayName="$(string.ServerManager)">
       <parentCategory ref="windows:System" />
@@ -40,7 +50,7 @@
     </policy>
     <policy name="DoNotLaunchInitialConfigurationTasks" class="Machine" displayName="$(string.DoNotLaunchInitialConfigurationTasks)" explainText="$(string.DoNotLaunchInitialConfigurationTasksHelp)" key="Software\Policies\Microsoft\Windows\Server\InitialConfigurationTasks" valueName="DoNotOpenAtLogon">
       <parentCategory ref="ServerManager" />
-      <supportedOn ref="server:SUPPORTED_WindowsServer2008" />
+      <supportedOn ref="SUPPORTED_WindowsServer2008OrWindowsServer2008R2Only" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>

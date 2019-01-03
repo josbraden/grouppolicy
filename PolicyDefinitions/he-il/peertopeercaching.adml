@@ -2,64 +2,233 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
     <displayName>BranchCache</displayName>
-    <description>BranchCache מאפשר ללקוחות לאחזר תוכן בבטחה מהסניף במקום שיצטרכו לאחזר אותו מהשרת המארח את התוכן. בתלות במצב הפריסה, ניתן לאחזר את התוכן מלקוחות אחרים בסניף או משרת מטמון מתארח בענף. לקוח יכול לאחזר תוכן מתוך הענף רק אם השרת מרשה לו לעשות זאת. השימוש ב- BranchCache מפחית את העלויות בקישור של רשת התקשורת המרחבית (WAN) אשר מחבר את הסניפים שלך למרכז הנתונים או למטה ומגביר את מהירויות ההורדה של תוכן שכבר הורד לסניף.
+    <description>BranchCache enables clients to securely retrieve content from within the branch office instead of having to retrieve it from the server hosting the content. Depending on the deployment mode, the content can be retrieved from other clients in the branch office or from a hosted cache server in the branch. A client can only retrieve content from within the branch if it is authorized by the server to do so. The use of BranchCache reduces costs on the wide area network (WAN) link that connects your branch offices to the data center or headquarters and increases download speeds for content that has already been downloaded into the branch office.
     </description>
 
     <resources>
         <stringTable>
+            <!-- Supported Platforms -->
+            <string id="SUPPORTED_Windows7OrBITS4">At least Windows 7 or Windows Server 2008 R2*</string>
+            <!-- Supported Platforms -->
+
             <string id="WBC_Cat">BranchCache</string>
 
-            <string id="WBC_Enable">הפעל את BranchCache</string>
+            <string id="WBC_Enable">Turn on BranchCache</string>
 
-            <string id="WBC_Enable_Help">הגדרת מדיניות זו מציינת אם BranchCache זמין במחשב הלקוח. BranchCache מפחית את הניצול של קישורי רשת התקשורת המרחבית (WAN) המחברים סניפים למרכז הנתונים או למטה ומגביר את מהירויות הגישה לתוכן שכבר הורד לסניף. BranchCache עושה זאת על-ידי נתינת האפשרות למחשבים בסניף לאחסן במטמון קבצים ותעבורת HTTP משרתי אינטרא-נט שבהם BranchCache זמין, ולאחר מכן לשתף בבטחה את הקבצים עם מחשבים אחרים בסניף. למחשבים בסניף יש אפשרות לאחזר תוכן משרת מטמון מתארח בענף (בעת שימוש במצב מטמון מתארח), או ממחשבי לקוח אחרים בענף (בעת שימוש במצב מטמון מבוזר). כדי לגשת אל תוכן המאוחסן במטמון, למחשב נדרשות הרשאות גישה לתוכן בשרת המקור.
+            <string id="WBC_Enable_Help">This policy setting specifies whether BranchCache is enabled on client computers to which this policy is applied. In addition to this policy setting, you must specify whether the client computers are hosted cache mode or distributed cache mode clients. To do so, configure one of the following the policy settings: 
 
-הפוך הגדרת מדיניות זו לזמינה במחשבי לקוח בסניפים שבהם רוחב הפס של ה- WAN נמוך, ההשהיה גבוהה וישנם מספר מחשבי לקוח שעליהם לגשת אל אותם נתונים משרתים בסניף המרכזי.
+- Set BranchCache Distributed Cache mode
 
-אם תהפוך הגדרת מדיניות זו לזמינה, BranchCache יופעל. כדי שהגדרת מדיניות זו תיכנס לתוקף, עליך גם להתקין את התכונה BranchCache במחשב הלקוח.
+- Set BranchCache Hosted Cache mode
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או שלא תקבע את תצורתה, BranchCache יבוטל.
+- Configure Hosted Cache Servers
+
+Policy configuration
+
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache settings are not applied to client computers by this policy. In the circumstance where client computers are domain members but you do not want to enable BranchCache on all client computers, you can specify Not Configured for this domain Group Policy setting, and then configure local computer policy to enable BranchCache on individual client computers. Because the domain Group Policy setting is not configured, it will not over-write the enabled setting that you use on individual client computers where you want to enable BranchCache.
+
+- Enabled. With this selection, BranchCache is turned on for all client computers where the policy is applied. For example, if this policy is enabled in domain Group Policy, BranchCache is turned on for all domain member client computers to which the policy is applied.
+
+- Disabled. With this selection, BranchCache is turned off for all client computers where the policy is applied.
+
+* This policy setting is supported on computers that are running Windows Vista Business, Enterprise, and Ultimate editions with Background Intelligent Transfer Service (BITS) 4.0 installed.
             </string>
 
-            <string id="WBC_Cache_Percent">הגדר את אחוז שטח הדיסק המשמש עבור מטמון של מחשב לקוח</string>
+            <string id="WBC_Cache_Percent">Set percentage of disk space used for client computer cache</string>
 
-            <string id="WBC_Cache_Percent_Help">הגדרת מדיניות זו משנה את אחוז שטח הדיסק הכולל שיוקדש לאחסון במטמון של תוכן שאוחזר בעזרת BranchCache, שנקבע כברירת מחדל. תוכן זה זמין למחשבי לקוח אחרים שמעבירים בקשות, אם השרת מרשה להם לגשת לתוכן.
+            <string id="WBC_Cache_Percent_Help">This policy setting specifies the default percentage of total disk space that is allocated for the BranchCache disk cache on client computers.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, תוכל להגדיר את אחוז שטח הדיסק הכולל שיוקצה עבור המטמון.
+If you enable this policy setting, you can configure the percentage of total disk space to allocate for the cache.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או שלא תקבע את תצורתה, המטמון יוגדר כ- 5 אחוז משטח הדיסק הכולל במחשב הלקוח.
+If you disable or do not configure this policy setting, the cache is set to 5 percent of the total disk space on the client computer.
+
+Policy configuration
+
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache client computer cache settings are not applied to client computers by this policy. In the circumstance where client computers are domain members but you do not want to configure a BranchCache client computer cache setting on all client computers, you can specify Not Configured for this domain Group Policy setting, and then configure local computer policy to enable BranchCache client computer cache settings on individual client computers. Because the domain Group Policy setting is not configured, it will not over-write the client computer cache setting that you use on individual client computers.
+
+- Enabled. With this selection, the BranchCache client computer cache setting is enabled for all client computers where the policy is applied. For example, if Set percentage of disk space used for client computer cache is enabled in domain Group Policy, the BranchCache client computer cache setting that you specify in the policy is turned on for all domain member client computers to which the policy is applied.
+
+- Disabled. With this selection, BranchCache client computers use the default client computer cache setting of five percent of the total disk space on the client computer.
+
+In circumstances where this setting is enabled, you can also select and configure the following option:
+
+- Specify the percentage of total disk space allocated for the cache. Specifies an integer that is the percentage of total client computer disk space to use for the BranchCache client computer cache.
+
+* This policy setting is supported on computers that are running Windows Vista Business, Enterprise, and Ultimate editions with Background Intelligent Transfer Service (BITS) 4.0 installed.
             </string>
 
-            <string id="WBC_HostedCache_Location">הגדר מצב מטמון מתארח של BranchCache</string>
+            <string id="WBC_HostedCache_Location">Set BranchCache Hosted Cache mode</string>
 
-            <string id="WBC_HostedCache_Location_Help">הגדרת מדיניות זו מציינת אם מחשב הלקוח אמור להשתמש במצב מטמון מתארח, ובמקרה שכן, את הכתובת של השרת של BranchCache. מצב מטמון מתארח מאפשר למחשב לקוח לאחזר תוכן משרת BranchCache הפועל כמטמון המרכזי (מתארח) עבור סניף. בעת השימוש במצב תוכן מתארח, תוכן שהורידו מחשבי לקוח שבהם BranchCache זמין, נדחף אל שרת ה- BranchCache, אשר משמש כמטמון המרכזי עבור מחשבי לקוח אחרים בסניף שבהם BranchCache זמין. מחשבי לקוח משתמשים ב- Secure Sockets Layer‏ (SSL) כדי לקיים תקשורת עם שרת ה- BranchCache.
+            <string id="WBC_HostedCache_Location_Help">This policy setting specifies whether BranchCache hosted cache mode is enabled on client computers to which this policy is applied. In addition to this policy, you must use the policy "Turn on BranchCache" to enable BranchCache on client computers.
 
-כדי להשתמש בהגדרת מדיניות זו, עליך לציין את הכתובת של שרת ה- BranchCache, וכתובת זו חייבת להתאים לשם התחום המלא (FQDN) של השרת שצוין באישור עבור שרת ה- BranchCache . כמו כן, בסיס האישור עבור האישור של שרת BranchCache חייב להימצא במאגר הבסיס האמין של מחשב הלקוח.
+When a client computer is configured as a hosted cache mode client, it is able to download cached content from a hosted cache server that is located at the branch office. In addition, when the hosted cache client obtains content from a content server, the client can upload the content to the hosted cache server for access by other hosted cache clients at the branch office.
 
-אם תהפוך הגדרת מדיניות זו לזמינה ותציין מיקום חוקי של המטמון המתארח, מצב מטמון מתארח יופעל. כדי שהגדרת מדיניות זו תיכנס לתוקף, עליך גם להפוך לזמינה את הגדרת המדיניות "הפעל את BranchCache".
+Policy configuration
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או שלא תקבע את תצורתה, מצב המטמון המתארח יבוטל.
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache settings are not applied to client computers by this policy. In the circumstance where client computers are domain members but you do not want to enable BranchCache on all client computers, you can specify Not Configured for this domain Group Policy setting, and then configure local computer policy to enable BranchCache on individual client computers. Because the domain Group Policy setting is not configured, it will not over-write the enabled setting that you use on individual client computers where you want to enable BranchCache.
+
+- Enabled. With this selection, BranchCache hosted cache mode is enabled for all client computers where the policy is applied. For example, if this policy is enabled in domain Group Policy, BranchCache hosted cache mode is turned on for all domain member client computers to which the policy is applied.
+
+- Disabled. With this selection, BranchCache hosted cache mode is turned off for all client computers where the policy is applied.
+
+In circumstances where this setting is enabled, you can also select and configure the following option:
+
+- Type the name of the hosted cache server. Specifies the computer name of the hosted cache server. Because the hosted cache server name is also specified in the certificate enrolled to the hosted cache server, the name that you enter here must match the name of the hosted cache server that is specified in the server certificate. 
+
+Hosted cache clients must trust the server certificate that is issued to the hosted cache server. Ensure that the issuing CA certificate is installed in the Trusted Root Certification Authorities certificate store on all hosted cache client computers.
+
+* This policy setting is supported on computers that are running Windows Vista Business, Enterprise, and Ultimate editions with Background Intelligent Transfer Service (BITS) 4.0 installed.
             </string>
 
-            <string id="WBC_Distributed_Enable">הגדר מצב מטמון מבוזר של BranchCache</string>
+            <string id="WBC_Distributed_Enable">Set BranchCache Distributed Cache mode</string>
 
-            <string id="WBC_Distributed_Enable_Help">הגדרת מדיניות זו מציינת אם מחשב הלקוח אמור להשתמש במצב מטמון מבוזר. מצב זה של BranchCache מאפשר למחשב לקוח לאחזר תוכן שמחשבי לקוח אחרים בסניף הורידו ואחסנו במטמון. כדי לגשת אל תוכן המאוחסן במטמון ממחשבי לקוח אחרים בסניף, למחשב נדרשות הרשאות גישה לתוכן בשרת המקור.
+            <string id="WBC_Distributed_Enable_Help">This policy setting specifies whether BranchCache distributed cache mode is enabled on client computers to which this policy is applied. In addition to this policy, you must use the policy "Turn on BranchCache" to enable BranchCache on client computers.
 
-הגדרת מדיניות זו מציינת אם המערכת תשתמש במצב מטמון מבוזר. הפוך הגדרת מדיניות זו לזמינה בעת השימוש ב- BranchCache בסניפים שעבורם אין שרת המשמש כמטמון מתארח.
+In distributed cache mode, client computers download content from BranchCache-enabled main office content servers, cache the content locally, and serve the content to other BranchCache distributed cache mode clients in the branch office.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, המערכת תשתמש במצב מטמון מבוזר. כדי שהגדרת מדיניות זו תיכנס לתוקף, עליך גם להפוך לזמינה את הגדרת המדיניות "הפעל את BranchCache".
+Policy configuration
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או שלא תקבע את תצורתה, מצב המטמון המבוזר יבוטל.
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache settings are not applied to client computers by this policy. In the circumstance where client computers are domain members but you do not want to enable BranchCache on all client computers, you can specify Not Configured for this domain Group Policy setting, and then configure local computer policy to enable BranchCache on individual client computers. Because the domain Group Policy setting is not configured, it will not over-write the enabled setting that you use on individual client computers where you want to enable BranchCache.
+
+- Enabled. With this selection, BranchCache distributed cache mode is enabled for all client computers where the policy is applied. For example, if this policy is enabled in domain Group Policy, BranchCache distributed cache mode is turned on for all domain member client computers to which the policy is applied.
+
+- Disabled. With this selection, BranchCache distributed cache mode is turned off for all client computers where the policy is applied.
+
+* This policy setting is supported on computers that are running Windows Vista Business, Enterprise, and Ultimate editions with Background Intelligent Transfer Service (BITS) 4.0 installed.
             </string>
 
-            <string id="WBC_SMB_Enable">קבע תצורת BranchCache עבור קבצי רשת</string>
+            <string id="WBC_SMB_Enable">Configure BranchCache for network files</string>
 
-            <string id="WBC_SMB_Enable_Help">הגדרת מדיניות זו משנה את ברירת המחדל של ערך השהיית הרשת הלוך ושוב, אשר מעליו מחשבי הלקוח בענף יאחסנו במטמון קבצי רשת. BranchCache עבור קבצי רשת מאפשר למחשבים בסניף לאחסן במטמון נתונים משרתי אינטרא-נט שבהם BranchCache זמין, ולאחר מכן לשתף בבטחה את הקבצים עם מחשבים אחרים בסניף. אחד מסוגי התוכן שניתן לאחסן במטמון בסניף הוא קבצי רשת המשתמשים בפרוטוקול Server Message Block ‏(SMB).
+            <string id="WBC_SMB_Enable_Help">This policy setting is used only when you have deployed one or more BranchCache-enabled file servers at your main office. This policy setting specifies when client computers in branch offices start caching content from file servers based on the network latency - or delay - that occurs when the clients download content from the main office over a Wide Area Network (WAN) link.  When you configure a value for this setting, which is the maximum round trip network latency allowed before caching begins, clients do not cache content until the network latency reaches the specified value; when network latency is greater than the value, clients begin caching content after they receive it from the file servers.
 
-כברירת מחדל, קבצי רשת מאוחסנים במטמון בסניף כאשר השהיית הרשת הלוך ושוב של הקישור של רשת התקשורת המרחבית (WAN) גבוה מ- 80 אלפיות שניה. כדי לאחסן תמיד במטמון קבצי רשת אשר הורדו למחשבים בסניף, הגדר את ערך השהיית הרשת כ- 0. כדי להפוך את אחסון הענף בארכיון ללא זמין עבור קבצי רשת, הגדר את ערך ההשהיה לערך גבוה מאוד.
+Policy configuration
 
-אם תהפוך הגדרת מדיניות זו לזמינה, באפשרותך להגדיר את השהיית הרשת הלוך ושוב שמעליה מחשבי לקוח בסניף אמורים לאחסן קבצי רשת במטמון.
+Select one of the following:
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או שלא תקבע את תצורתה, מחשב הלקוח יאחסן במטמון קבצי רשת, אם השהיית הרשת הלוך ושוב של הקישור של רשת התקשורת המרחבית (WAN) תהיה גבוהה מ- 80 אלפיות שניה.
+- Not Configured. With this selection, BranchCache latency settings are not applied to client computers by this policy. In the circumstance where client computers are domain members but you do not want to configure a BranchCache latency setting on all client computers, you can specify Not Configured for this domain Group Policy setting, and then configure local computer policy to enable BranchCache latency settings on individual client computers. Because the domain Group Policy setting is not configured, it will not over-write the latency setting that you use on individual client computers.
+
+- Enabled. With this selection, the BranchCache maximum round trip latency setting is enabled for all client computers where the policy is applied. For example, if Configure BranchCache for network files is enabled in domain Group Policy, the BranchCache latency setting that you specify in the policy is turned on for all domain member client computers to which the policy is applied.
+
+- Disabled. With this selection, BranchCache client computers use the default latency setting of 80 milliseconds.
+
+In circumstances where this policy setting is enabled, you can also select and configure the following option:
+
+- Type the maximum round trip network latency (milliseconds) after which caching begins. Specifies the amount of time, in milliseconds, after which BranchCache client computers begin to cache content locally.
+            </string>
+
+            <string id="WBC_HostedCacheDiscovery_Enable">Enable Automatic Hosted Cache Discovery by Service Connection Point</string>
+
+            <string id="WBC_HostedCacheDiscovery_Enable_Help">This policy setting specifies whether client computers should attempt the automatic configuration of hosted cache mode by searching for hosted cache servers publishing service connection points that are associated with the client's current Active Directory site.  If you enable this policy setting, client computers to which the policy setting is applied search for hosted cache servers using Active Directory, and will prefer both these servers and hosted cache mode rather than manual BranchCache configuration or BranchCache configuration by other group policies.
+
+If you enable this policy setting in addition to the "Turn on BranchCache" policy setting, BranchCache clients attempt to discover hosted cache servers in the local branch office.  If client computers detect hosted cache servers, hosted cache mode is turned on.  If they do not detect hosted cache servers, hosted cache mode is not turned on, and the client uses any other configuration that is specified manually or by Group Policy.
+
+When this policy setting is applied, the client computer performs or does not perform automatic hosted cache server discovery under the following circumstances:
+
+If no other BranchCache mode-based policy settings are applied, the client computer performs automatic hosted cache server discovery. If one or more hosted cache servers is found, the client computer self-configures for hosted cache mode.
+
+If the policy setting "Set BranchCache Distributed Cache Mode" is applied in addition to this policy, the client computer performs automatic hosted cache server discovery. If one or more hosted cache servers are found, the client computer self-configures for hosted cache mode only.
+
+If the policy setting "Set BranchCache Hosted Cache Mode" is applied, the client computer does not perform automatic hosted cache discovery. This is also true in cases where the policy setting "Configure Hosted Cache Servers" is applied.
+
+This policy setting can only be applied to client computers that are running at least Windows 8.  This policy has no effect on computers that are running Windows 7 or Windows Vista.  
+
+If you disable, or do not configure this setting, a client will not attempt to discover hosted cache servers by service connection point.
+
+Policy configuration
+
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache settings are not applied to client computers by this policy setting, and client computers do not perform hosted cache server discovery.
+
+- Enabled. With this selection, the policy setting is applied to client computers, which perform automatic hosted cache server discovery and which are configured as hosted cache mode clients.
+
+- Disabled. With this selection, this policy is not applied to client computers.
+            </string>
+
+            <string id="WBC_HostedCache_MultipleServers">Configure Hosted Cache Servers</string>
+
+            <string id="WBC_HostedCache_MultipleServers_Help">This policy setting specifies whether client computers are configured to use hosted cache mode and provides the computer name of the hosted cache servers that are available to the client computers.  Hosted cache mode enables client computers in branch offices to retrieve content from one or more hosted cache servers that are installed in the same office location.  You can use this setting to automatically configure client computers that are configured for hosted cache mode with the computer names of the hosted cache servers in the branch office.
+
+If you enable this policy setting and specify valid computer names of hosted cache servers, hosted cache mode is enabled for all client computers to which the policy setting is applied. For this policy setting to take effect, you must also enable the "Turn on BranchCache" policy setting.
+
+This policy setting can only be applied to client computers that are running at least Windows 8.  This policy has no effect on computers that are running Windows 7 or Windows Vista.  Client computers to which this policy setting is applied, in addition to the "Set BranchCache Hosted Cache mode" policy setting, use the hosted cache servers that are specified in this policy setting and do not use the hosted cache server that is configured in the policy setting "Set BranchCache Hosted Cache Mode."
+
+If you do not configure this policy setting, or if you disable this policy setting, client computers that are configured with hosted cache mode still function correctly.
+
+Policy configuration
+
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache settings are not applied to client computers by this policy setting.
+
+- Enabled. With this selection, the policy setting is applied to client computers, which are configured as hosted cache mode clients that use the hosted cache servers that you specify in "Hosted cache servers."
+
+- Disabled. With this selection, this policy is not applied to client computers.
+
+In circumstances where this setting is enabled, you can also select and configure the following option:
+
+- Hosted cache servers. To add hosted cache server computer names to this policy setting, click Enabled, and then click Show. The Show Contents dialog box opens. Click Value, and then type the computer names of the hosted cache servers.
+            </string>
+
+            <string id="WBC_Downgrading">Configure Client BranchCache Version Support</string>
+
+            <string id="WBC_Downgrading_Help">This policy setting specifies whether BranchCache-capable client computers operate in a downgraded mode in order to maintain compatibility with previous versions of BranchCache.  If client computers do not use the same BranchCache version, cache efficiency might be reduced because client computers that are using different versions of BranchCache might store cache data in incompatible formats.
+
+If you enable this policy setting, all clients use the version of BranchCache that you specify in "Select from the following versions."
+
+If you do not configure this setting, all clients will use the version of BranchCache that matches their operating system.
+
+Policy configuration
+
+Select one of the following:
+
+- Not Configured. With this selection, this policy setting is not applied to client computers, and the clients run the version of BranchCache that is included with their operating system.
+
+- Enabled. With this selection, this policy setting is applied to client computers based on the value of the option setting "Select from the following versions" that you specify.
+
+- Disabled. With this selection, this policy setting is not applied to client computers, and the clients run the version of BranchCache that is included with their operating system.
+
+In circumstances where this setting is enabled, you can also select and configure the following option:
+
+Select from the following versions
+
+- Windows Vista with BITS 4.0 installed, Windows 7, or Windows Server 2008 R2. If you select this version, later versions of Windows run the version of BranchCache that is included in these operating systems rather than later versions of BranchCache.
+
+- Windows 8. If you select this version, Windows 8 will run the version of BranchCache that is included in the operating system.
+            </string>
+
+            <string id="WBC_Downgrading_Version_Win7">Windows Vista with BITS 4.0 installed, Windows 7, or Windows Server 2008 R2</string>
+            <string id="WBC_Downgrading_Version_Win8">Windows 8</string>
+
+            <string id="WBC_Cache_MaxAge">Set age for segments in the data cache</string>
+
+            <string id="WBC_Cache_MaxAge_Help">This policy setting specifies the default age in days for which segments are valid in the BranchCache data cache on client computers.
+
+If you enable this policy setting, you can configure the age for segments in the data cache.
+
+If you disable or do not configure this policy setting, the age is set to 28 days.
+
+Policy configuration
+
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache client computer cache age settings are not applied to client computers by this policy. In the circumstance where client computers are domain members but you do not want to configure a BranchCache client computer cache age setting on all client computers, you can specify Not Configured for this domain Group Policy setting, and then configure local computer policy to enable BranchCache client computer cache age settings on individual client computers. Because the domain Group Policy setting is not configured, it will not over-write the client computer cache age setting that you use on individual client computers.
+
+- Enabled. With this selection, the BranchCache client computer cache age setting is enabled for all client computers where the policy is applied. For example, if this policy setting is enabled in domain Group Policy, the BranchCache client computer cache age that you specify in the policy is turned on for all domain member client computers to which the policy is applied.
+
+- Disabled. With this selection, BranchCache client computers use the default client computer cache age setting of 28 days on the client computer.
+
+In circumstances where this setting is enabled, you can also select and configure the following option:
+
+- Specify the age in days for which segments in the data cache are valid.
             </string>
 
         </stringTable>
@@ -71,25 +240,41 @@
             </presentation>
 
             <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <text>Specify the percentage of total disk space allocated for the cache</text>
                 <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
                 </decimalTextBox>
             </presentation>
 
             <presentation id="WBC_Cache_Location_TextBox">
                 <textBox refId="WBC_Cache_TextBox">
-                    <label>הזן מיקום מטמון של מחשב לקוח</label>
+                    <label>Enter Client Computer Cache location</label>
                 </textBox>
             </presentation>
 
             <presentation id="WBC_Hosted_Cache_Location_TextBox">
                 <textBox refId="WBC_Cache_TextBox">
-                    <label>הזן את מיקום המטמון המתארח</label>
+                    <label>Type the name of the hosted cache server</label>
                 </textBox>
             </presentation>
 
             <presentation id="WBC_SMB_DecimalTextBox">
-              <text>הזן את ערך השהיית הרשת הלוך ושוב, באלפיות שניה, שמעליו קבצי רשת חייבים להיות מאוחסנים במטמון בסניף</text>  
+              <text>Type the maximum round trip network latency (milliseconds) after which caching begins</text>  
               <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_MultipleServers">
+              <text>Hosted cache servers</text>  
+              <listBox refId="WBC_MultipleServers_Listbox"/>
+            </presentation>
+
+            <presentation id="WBC_Downgrading_VersionSelection">
+              <dropdownList refId="Downgrading_Version" noSort="true" defaultItem="0">Select from the following versions:</dropdownList>
+            </presentation>
+
+            <presentation id="WBC_Cache_MaxAge_Presentation">
+                <text>Specify the age in days for which segments in the data cache are valid</text>
+                <decimalTextBox refId="WBC_Cache_MaxAge_dctxtbox" defaultValue="28" spinStep="5">
                 </decimalTextBox>
             </presentation>
 

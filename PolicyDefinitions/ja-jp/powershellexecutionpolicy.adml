@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" revision="1.0" schemaVersion="1.0" xmlns="http://www.microsoft.com/GroupPolicy/PolicyDefinitions">
+  <displayName>Windows PowerShell</displayName>
+  <description>このファイルには、Windows PowerShell の構成オプションが記載されています</description>
+  <resources>
+    <stringTable>
+      <string id="AllScripts">すべてのスクリプトを許可する</string>
+      <string id="AllScriptsSigned">署名済みスクリプトのみ許可する</string>
+      <string id="EnableScripts">スクリプトの実行を有効にする</string>
+      <string id="EnableScripts_Explain">このポリシー設定を使用すると、スクリプトの実行ポリシーを構成し、実行を許可するスクリプトを制御できます。
+
+このポリシー設定を有効にした場合、ドロップダウン リストで選択したスクリプトの実行が許可されます。
+
+[署名済みスクリプトのみ許可する] に設定した場合、信頼された発行元によって署名されたスクリプトのみ、実行が許可されます。
+
+[ローカル スクリプトおよびリモートの署名済みスクリプトを許可する] に設定した場合、すべてのローカル スクリプトの実行が許可されます。インターネットからダウンロードしたスクリプトは、信頼された発行元によって署名されている必要があります。
+
+[すべてのスクリプトを許可する] に設定した場合、すべてのスクリプトの実行が許可されます。
+
+このポリシー設定を無効にした場合、スクリプトの実行は一切許可されません。
+
+注: このポリシー設定は、ローカル グループ ポリシー エディターの [コンピューターの構成] と [ユーザーの構成] の両方の下にあります。[コンピューターの構成] は、[ユーザーの構成] よりも優先されます。
+
+このポリシー設定が無効な場合または構成されていない場合、コンピューターごとの設定に戻されます。構成されていない場合、既定でスクリプトは許可されません。</string>
+      <string id="PowerShell">Windows PowerShell</string>
+      <string id="RemoteSignedScripts">ローカル スクリプトおよびリモートの署名済みスクリプトを許可する</string>
+      <string id="SUPPORTED_WIN7">Windows 7 以降および Microsoft Windows Server 2008 ファミリ以降</string>
+       
+      <string id="EnableModuleLogging">モジュール ログを有効にする</string>
+      <string id="EnableModuleLogging_Explain">
+        
+        このポリシー設定は、Windows PowerShell モジュールのログを有効にします。
+
+        このポリシー設定を有効にした場合、指定されたモジュールのメンバーに関するパイプライン実行イベントがイベント ビューアーの Windows PowerShell ログに記録されます。あるモジュールについてこのポリシー設定を有効にすることと、そのモジュールの LogPipelineExecutionDetails プロパティを True に設定することは同じ意味を持ちます。
+
+        このポリシー設定を無効にした場合、Windows PowerShell のすべてのモジュールについて、実行イベントのログ記録が無効になります。あるモジュールについてこのポリシー設定を無効にすることと、そのモジュールの LogPipelineExecutionDetails プロパティを False に設定することは同じ意味を持ちます。
+
+        このポリシー設定が構成されていない場合、モジュールまたはスナップインの LogPipelineExecutionDetails プロパティの設定によって、そのモジュールまたはスナップインの実行イベントがログに記録されるかどうかが決定します。既定では、すべてのモジュールおよびスナップインの LogPipelineExecutionDetails プロパティは False に設定されます。
+
+        ポリシー設定の一覧にモジュールおよびスナップインを追加するには、[表示] をクリックし、一覧にモジュール名を入力します。一覧に記載されているモジュールおよびスナップインは、コンピューターにインストールされている必要があります。
+
+        注: このポリシー設定は、グループ ポリシー エディターの [コンピューターの構成] と [ユーザーの構成] の両方の下にあります。[コンピューターの構成] のポリシー設定は、[ユーザーの構成] のポリシー設定よりも優先されます。
+      
+      </string>
+      <string id="EnableUpdateHelpDefaultSourcePath">Update-Help の既定のソース パスを設定する</string>
+      <string id="EnableUpdateHelpDefaultSourcePath_Explain">このポリシー設定を使用すると、Update-Help コマンドレットの SourcePath パラメーターの既定値を設定できます。
+
+このポリシー設定を有効にすると、Update-Help コマンドレットでは、指定された値を SourcePath パラメーターの既定値として使用します。Update-Help コマンドレットの SourcePath パラメーターに別の値を指定すると、この既定値よりも優先されます。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、このポリシー設定によって Update-Help コマンドレットの SourcePath パラメーターの既定値は設定されません。
+
+注: このポリシー設定は、グループ ポリシー エディターの [コンピューターの構成] と [ユーザーの構成] の両方の下にあります。[コンピューターの構成] のポリシー設定は、[ユーザーの構成] のポリシー設定よりも優先されます。
+      
+      </string>
+      <!--<string id="PowerShell">Windows PowerShell</string>-->
+    </stringTable>
+    <presentationTable>
+      <presentation id="EnableScripts">
+        <dropdownList refId="ExecutionPolicy" noSort="true">実行ポリシー</dropdownList>
+      </presentation>
+      <presentation id="EnableModuleLogging">
+        <text>1 つ以上のモジュールのログを有効にするには、[表示] をクリックし、一覧にモジュール名を入力します。ワイルド カードがサポートされます。</text>
+        <listBox refId="Listbox_ModuleNames" required="false">モジュール名:  </listBox>
+        <text>Windows PowerShell のコア モジュールのログを有効にするには、一覧に次のモジュール名を入力します。</text>
+        <text>Microsoft.PowerShell.*</text>
+        <text>Microsoft.WSMan.Management</text>
+      </presentation>
+      <presentation id="EnableUpdateHelpDefaultSourcePath">
+        <textBox refId="SourcePathForUpdateHelp">
+          <label>既定のソース パス:  </label>
+        </textBox>
+      </presentation>
+    </presentationTable>    
+  </resources>
+
+</policyDefinitionResources>

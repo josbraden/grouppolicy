@@ -6,16 +6,18 @@
   <resources>
     <stringTable>
       <string id="NCSI_Category">Indikátor stavu připojení k síti</string>
-      <string id="NCSI_CorpWebProbeUrl">Zkušební adresa URL podnikového webu</string>
-      <string id="NCSI_CorpWebProbeUrl_Help">Jedná se o adresu URL podnikového webu, která bude použita k provedení aktivního testu.</string>
-      <string id="NCSI_CorpDnsProbeHost">Název hostitele zkušebního podnikového serveru DNS</string>
-      <string id="NCSI_CorpDnsProbeHost_Help">Toto je název hostitele počítače, o kterém se ví, že se nachází v podnikové síti. Úspěšné přeložení tohoto názvu hostitele na očekávanou adresu znamená úspěšné připojení k podnikové síti.</string>
-      <string id="NCSI_CorpDnsProbeContent">Adresa hostitele zkušebního podnikového serveru DNS</string>
-      <string id="NCSI_CorpDnsProbeContent_Help">Jedná se o očekávanou adresu názvu hostitele použitou pro otestování serveru DNS. Úspěšné přeložení názvu hostitele na tuto adresu znamená úspěšné připojení k podnikové síti.</string>
-      <string id="NCSI_CorpSitePrefixes">Seznam předpon podnikových webů</string>
-      <string id="NCSI_CorpSitePrefixes_Help">Jedná se o seznam předpon IPv6 podnikových webů, které je potřeba monitorovat z hlediska připojení k podnikové síti. Dostupnost adresy s kteroukoli z těchto předpon znamená úspěšné připojení k podnikové síti.</string>
-      <string id="NCSI_DomainLocationDeterminationUrl">Adresa URL určení umístění domény</string>
-      <string id="NCSI_DomainLocationDeterminationUrl_Help">Toto je adresa URL HTTPS podnikového webu, která bude použita k určení aktuálního umístění domény, například uvnitř nebo vně podnikové sítě. Dostupnost adresy URL označuje, že se umístění nachází uvnitř podnikové sítě. V opačném případě se nachází mimo síť.</string>
+      <string id="NCSI_CorpWebProbeUrl">Určit zkušební adresu URL podnikového webu</string>
+      <string id="NCSI_CorpWebProbeUrl_Help">Toto nastavení zásad umožňuje zadat adresu URL podnikového webu, jejímž prostřednictvím se provádí aktivní test.</string>
+      <string id="NCSI_CorpDnsProbeHost">Určit název hostitele zkušebního podnikového serveru DNS</string>
+      <string id="NCSI_CorpDnsProbeHost_Help">Toto nastavení zásad umožňuje určit název hostitele počítače, o kterém se ví, že se nachází v podnikové síti. Úspěšné přeložení tohoto názvu hostitele na očekávanou adresu znamená úspěšné připojení k podnikové síti.</string>
+      <string id="NCSI_CorpDnsProbeContent">Určit adresu hostitele zkušebního podnikového serveru DNS</string>
+      <string id="NCSI_CorpDnsProbeContent_Help">Toto nastavení zásad umožňuje určit očekávanou adresu názvu hostitele použitou pro otestování serveru DNS. Úspěšné přeložení názvu hostitele na tuto adresu znamená úspěšné připojení k podnikové síti.</string>
+      <string id="NCSI_CorpSitePrefixes">Určit seznam předpon podnikových webů</string>
+      <string id="NCSI_CorpSitePrefixes_Help">Toto nastavení zásad umožňuje zadat seznam předpon podnikových webů v protokolu IPv6 pro sledování připojení k podnikové síti. Dostupnost adresy s kteroukoli z těchto předpon znamená úspěšné připojení k podnikové síti.</string>
+      <string id="NCSI_DomainLocationDeterminationUrl">Určit adresu URL určení umístění podnikové domény</string>
+      <string id="NCSI_DomainLocationDeterminationUrl_Help">Toto nastavení zásad umožňuje zadat adresu URL podnikového webu v protokolu HTTPS, kterou klienti používají k určení aktuálního umístění domény (tzn. zda je daný počítač uvnitř nebo vně podnikové sítě). Dostupnost cílového místa adresy URL znamená, že se klient nachází uvnitř podnikové sítě; v opačném případě se nachází mimo síť.</string>
+      <string id="NCSI_PassivePolling">Určit pasivní dotazování</string>
+      <string id="NCSI_PassivePolling_Help">Toto nastavení zásad umožňuje určit chování při pasivním dotazování. Indikátor NCSI provádí v krátkých pravidelných intervalech různá měření v rámci celé sady síťových protokolů, aby se zjistilo, zda nedošlo ke ztrátě připojení k síti.  Prostřednictvím příslušných možností lze ovládat chování při pasivním dotazování.</string>
     </stringTable>
     <presentationTable>
       <presentation id="NCSI_CorpWebProbeUrl">
@@ -53,8 +55,8 @@
         <text>ke kontrole dostupnosti a detekování připojení</text>
         <text>k podnikové síti.</text>
         <text>Syntaxe:</text>
-        <text>  Položky v seznamu by měly být odděleny čárkou bez</text>
-        <text>  mezer.</text>
+        <text>    Položky v seznamu by měly být odděleny čárkou bez</text>
+        <text>    mezer.</text>
         <text>Příklad:</text>
         <text>  fe80::/9,fe81::/9</text>
       </presentation>
@@ -66,6 +68,10 @@
         <text>bude sloužit k určení vnitřního a vnějšího umístění domény.</text>
         <text>Příklad:</text>
         <text>  https://nid.corp.microsoft.com/</text>
+      </presentation>
+      <presentation id="NCSI_PassivePolling">
+        <text>Pokud je následující políčko zaškrtnuté, vypne se mechanismus pasivního dotazování v rámci NCSI.   Tím se může snížit zatížení CPU na serverech nebo jiných počítačích se statickým připojením k síti.</text>
+        <checkBox refId="NCSI_DisablePassivePolling_Checkbox">Zakázat pasivní dotazování</checkBox>  
       </presentation>
     </presentationTable>
   </resources>

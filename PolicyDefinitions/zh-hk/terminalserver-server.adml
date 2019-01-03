@@ -1,202 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>enter display name here</displayName>
-  <description>enter description here</description>
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
   <resources>
     <stringTable>
-      <string id="TS_APP_COMPATIBILITY">Application Compatibility</string>
-      <string id="TS_APP_COMPATIBILITY_Help">Controls application compatibility settings on an RD Session Host server</string>
-      <string id="TS_TIME_ZONE">Allow time zone redirection</string>
-      <string id="TS_TIME_ZONE_EXPLAIN">This policy setting allows you to specify whether the client computer redirects its time zone settings to the Remote Desktop Services session.
+      <string id="TS_APP_COMPATIBILITY">應用程式相容性</string>
+      <string id="TS_APP_COMPATIBILITY_Help">控制 RD 工作階段主機伺服器上的應用程式相容性設定</string>
+      <string id="TS_TIME_ZONE">允許時區重新導向</string>
+      <string id="TS_TIME_ZONE_EXPLAIN">這個原則設定可指定用戶端電腦是否將其時區設定重新導向至遠端桌面服務工作階段。
 
-If you enable this policy setting, clients that are capable of time zone redirection send their time zone information to the server. The server base time is then used to calculate the current session time (current session time = server base time + client time zone).
+如果啟用這個原則設定，能夠重新導向時區的用戶端會將其時區資訊傳送至伺服器。然後系統會使用伺服器基礎時間計算目前的工作階段時間 (目前的工作階段時間 = 伺服器基礎時間 + 用戶端時區)。
 
-If you disable or do not configure this policy setting, the client computer does not redirect its time zone information and the session time zone is the same as the server time zone.
+如果您停用或未設定這個原則設定，用戶端電腦將不會重新導向其時區資訊，工作階段時區會與伺服器時區相同。
 
-Note: Time zone redirection is possible only when connecting to at least a Microsoft Windows Server 2003 terminal server with a client using RDP 5.1 or later.
+注意: 只有當連線到至少為 Microsoft Windows Server 2003 版本的終端機伺服器，且用戶端使用 RDP 5.1 (含) 以後版本時，才會進行時區重新導向。
+      
       </string>
       
-      <string id="TS_CLIENT_CLIPBOARD">Do not allow clipboard redirection</string>
-      <string id="TS_CLIPBOARDMAP_EXPLAIN">This policy setting allows you to specify whether to prevent the sharing of clipboard contents (clipboard redirection) between a remote computer and a client computer during a Remote Desktop Services session. 
+      <string id="TS_CLIENT_CLIPBOARD">不允許剪貼簿重新導向</string>
+      <string id="TS_CLIPBOARDMAP_EXPLAIN">這個原則設定指定在遠端桌面服務工作階段期間，是否要防止在遠端電腦及用戶端電腦間共用剪貼簿內容 (剪貼簿重新導向)。
 
-You can use this setting to prevent users from redirecting clipboard data to and from the remote computer and the local computer. 
+此設定可防止使用者在遠端電腦及本機電腦間，相互重新導向剪貼簿資料。根據預設，遠端桌面服務允許剪貼簿重新導向。
 
-If you enable this policy setting, users cannot redirect clipboard data. 
+如果您啟用這個原則設定，使用者將無法重新導向剪貼簿資料。
 
-If you disable this policy setting, Remote Desktop Services always allows clipboard redirection. If you do not configure this policy setting, Remote Desktop Services allows clipboard redirection unless an administrator disables clipboard redirection by using the Remote Desktop Session Host Configuration tool.
+如果您停用這個原則設定，遠端桌面服務將永遠允許剪貼簿重新導向。
+
+如果您未設定這個原則設定，則不會在群組原則層級指定剪貼簿重新導向。
+  
+ </string>
+      
+      <string id="TS_DISABLE_REMOTE_DESKTOP_WALLPAPER">移除遠端桌面底色圖案</string>
+      <string id="TS_DISABLE_REMOTE_DESKTOP_WALLPAPER_EXPLAIN">這個原則設定可針對使用 RDP 連線至遠端伺服器的用戶端，指定是否顯示桌面的底色圖案。
+
+您可以使用這個設定，在遠端桌面服務工作階段期間，強制移除底色圖案。
+
+若啟用這個原則設定，遠端桌面服務工作階段中將不會顯示底色圖案。  
+
+若停用這個原則設定，遠端桌面服務工作階段將會依照用戶端設定，決定是否顯示底色圖案。 
+
+如果您未設定這個原則設定，Windows Vista 將依用戶端設定，決定是否對透過遠端桌面連線的遠端用戶端顯示底色圖案 (如需相關資訊，請參閱遠端桌面連線選項中的 [進階設定] 索引標籤)。執行 Windows Server 2008 的伺服器預設為不會對遠端桌面服務工作階段顯示底色圖案。
+      
       </string>
       
-      <string id="TS_DISABLE_REMOTE_DESKTOP_WALLPAPER">Remove remote desktop wallpaper</string>
-      <string id="TS_DISABLE_REMOTE_DESKTOP_WALLPAPER_EXPLAIN">This policy setting allows you to specify whether desktop wallpaper is displayed to clients when they are connected to a remote server using RDP. 
+      <string id="TS_TURNOFF_SINGLEAPP">連線時永遠顯示桌面</string>
+      <string id="TS_TURNOFF_SINGLEAPP_EXPLAIN">這個原則設定可指定在用戶端電腦連線到遠端電腦後，是否要顯示桌面，或是允許執行初始程式。即使已經在預設使用者設定檔、遠端桌面連線或已透過群組原則指定初始程式，仍可使用這個原則設定要求用戶端電腦在連線到遠端電腦後顯示桌面。
 
-You can use this setting to enforce the removal of wallpaper during a Remote Desktop Services session. 
+如果您啟用這個原則設定，用戶端連線到遠端電腦時，將會顯示桌面。這個原則設定會覆寫任何初始程式原則設定。
 
-If you enable this policy setting, wallpaper is not displayed in a Remote Desktop Services session.   
+如果您停用或未設定這個原則設定，則可指定用戶端連線到遠端電腦後，要在遠端電腦上執行的初始程式。如果未指定初始程式，用戶端連線到遠端電腦後，將會在遠端電腦上顯示桌面。
 
-If you disable this policy setting, wallpaper is displayed in a Remote Desktop Services session, depending on the client configuration.  
-
-If you do not configure this policy setting, Windows Vista displays wallpaper to remote clients connecting through Remote Desktop, depending on the client configuration (see the Experience tab in the Remote Desktop Connection options for more information). Servers running Windows Server 2008 do not display wallpaper by default to Remote Desktop Services sessions.
+注意: 如果啟用這個原則設定，則會略過 [連線時啟動程式] 原則設定。
+      
       </string>
       
-      <string id="TS_TURNOFF_SINGLEAPP">Always show desktop on connection</string>
-      <string id="TS_TURNOFF_SINGLEAPP_EXPLAIN">This policy setting allows you to specify whether the desktop is always displayed after a client connects to a remote computer or whether an initial program can run. It can require that the desktop be displayed after a client connects to a remote computer, even if an initial program is already specified in the default user profile, Remote Desktop Connection, or through Group Policy.
+      <string id="TS_ALLOW_APPS">允許從遠端啟動未列出的程式</string>
+      <string id="TS_ALLOW_APPS_EXPLAIN">這個原則設定可以讓您指定在遠端使用者啟動遠端桌面服務工作階段後，是否能在 RD 工作階段主機伺服器上啟動任何程式，或者只能啟動 RemoteApp 程式清單中所列的程式。
 
-If you enable this policy setting, the desktop is always displayed when a client connects to a remote computer. This policy setting overrides any initial program policy settings.
+您可以在 Windows Server 2008 R2 和 Windows Server 2008 使用 RemoteApp 管理員，控制 RD 工作階段主機伺服器上的哪些程式能夠從遠端啟動。如果您使用 Windows Server 2012 R2，可以使用伺服器管理員在 [集合] 屬性頁中設定此項目。
 
-If you disable or do not configure this policy setting, an initial program can be specified that runs on the remote computer after the client connects to the remote computer. If an initial program is not specified, the desktop is always displayed on the remote computer after the client connects to the remote computer.
+根據預設，使用者啟動遠端桌面服務工作階段時，只能啟動 RemoteApp 程式清單中的程式。
 
-Note: If this policy setting is enabled, then the "Start a program on connection" policy setting is ignored.
-      </string>
+如果您啟用這個原則設定，遠端使用者就可以在啟動遠端桌面服務工作階段後，啟動在 RD 工作階段主機伺服器上的任何程式。
+例如，遠端使用者可以使用 [遠端桌面連線] 用戶端，指定連線時程式的可執行檔路徑，來進行這項操作。
+
+如果您停用或未設定這個原則設定，則遠端使用者在啟動遠端桌面服務工作階段後，只能啟動 RemoteApp 程式清單中所列的程式。
+
+</string>
+
+      <string id="TS_ALLOW_DESKTOPCOMPOSITION">允許遠端桌面工作階段的桌面轉譯緩衝處理</string>
+      <string id="TS_ALLOW_DESKTOPCOMPOSITION_EXPLAIN">這個原則設定可以讓您指定是否允許遠端桌面工作階段的桌面轉譯緩衝處理。這個原則設定不適用於 RemoteApp 工作階段。
+
+桌面轉譯緩衝處理為遠端桌面工作階段提供 Windows Aero 的使用者介面元素，例如半透明視窗。由於 Windows Aero 需要額外的系統及頻寬資源，所以允許遠端桌面的桌面轉譯緩衝處理可能會降低連線效能 (尤其是透過慢速連結)，並且增加遠端電腦的負載。
+
+如果您啟用這個原則設定，將會允許遠端桌面工作階段的桌面轉譯緩衝處理。在用戶端電腦上，您可以在 [遠端桌面連線] (RDC) 的 [進階設定] 索引標籤上設定桌面轉譯緩衝處理，或者使用遠端桌面通訊協定 (.rdp) 檔案中的 [允許桌面轉譯緩衝處理] 設定。此外，用戶端電腦必須有支援 Windows Aero 功能的必要硬體。
+
+注意: 遠端電腦上可能還需要有其他設定才能讓 Windows Aero 功能在遠端桌面工作階段使用。例如，遠端電腦上必須安裝桌面體驗功能，而且遠端電腦上的最大色彩深度必須設定為每一像素 32 位元。而且，遠端電腦上也必須啟用佈景主題服務。
+
+如果您停用或未設定這個原則設定，即使在 RDC 或 .rdp 檔案中已啟用桌面轉譯緩衝處理，也不會允許遠端桌面的桌面轉譯緩衝處理。
       
-      <string id="TS_ALLOW_APPS">Allow remote start of unlisted programs</string>
-      <string id="TS_ALLOW_APPS_EXPLAIN">This policy setting allows you to specify whether remote users can start any program on the RD Session Host server when they start a Remote Desktop Services session, or whether they can only start programs that are listed in the RemoteApp Programs list.
-
-You can control which programs on an RD Session Host server can be started remotely by using the RemoteApp Manager tool to create a list of RemoteApp programs. By default, only programs in the RemoteApp Programs list can be started when a user starts a Remote Desktop Services session.
-
-If you enable this policy setting, remote users can start any program on the RD Session Host server when they start a Remote Desktop Services session. For example, a remote user can do this by specifying the program's executable path at connection time by using the Remote Desktop Connection client.
-
-If you disable or do not configure this policy setting, remote users can only start programs that are listed in the RemoteApp Programs list in RemoteApp Manager when they start a Remote Desktop Services session.
       </string>
 
-      <string id="TS_ALLOW_DESKTOPCOMPOSITION">Allow desktop composition for remote desktop sessions</string>
-      <string id="TS_ALLOW_DESKTOPCOMPOSITION_EXPLAIN">This policy setting allows you to specify whether desktop composition is allowed for remote desktop sessions. This policy setting does not apply to RemoteApp sessions.
+      <string id="TS_SB_LOAD_BALANCING">使用 RD 連線代理人負載平衡</string>
+      <string id="TS_SB_LOAD_BALANCING_EXPLAIN">這個原則設定可以指定是否要使用 RD 連線代理人負載平衡功能，來平衡 RD 工作階段主機伺服器陣列中的伺服器之間的負載。
 
-Desktop composition provides the user interface elements of Windows Aero, such as translucent windows, for remote desktop sessions. Because Windows Aero requires additional system and bandwidth resources, allowing desktop composition for remote desktop sessions can reduce connection performance, particularly over slow links, and increase the load on the remote computer. 
+如果您啟用這個原則設定，RD 連線代理人會將沒有現有工作階段的使用者，重新導向至伺服器陣列中最少工作階段的 RD 工作階段主機伺服器。重新導向行為將不會影響擁有現有工作階段的使用者。若設定伺服器使用 RD 連線代理人，會將擁有現有工作階段的使用者重新導向至使用者工作階段所在的 RD 工作階段主機伺服器。
 
-If you enable this policy setting, desktop composition will be allowed for remote desktop sessions. On the client computer, you can configure desktop composition on the Experience tab in Remote Desktop Connection (RDC) or by using the "allow desktop composition" setting in a Remote Desktop Protocol (.rdp) file. In addition, the client computer must have the necessary hardware to support Windows Aero features.
+如果您停用這個原則設定，沒有現有工作階段的使用者會登入連線的第一部 RD 工作階段主機伺服器。
 
-Note:  Additional configuration might be necessary on the remote computer to make Windows Aero features available for remote desktop sessions. For example, the Desktop Experience feature must be installed on the remote computer, and the maximum color depth on the remote computer must be set to 32 bits per pixel. Also, the Themes service must be started on the remote computer.
+如果您未設定這個原則設定，可使用遠端桌面工作階段主機設定工具或遠端桌面服務 WMI 提供者，設定 RD 工作階段主機伺服器參與 RD 連線代理人負載平衡功能。
 
-If you disable or do not configure this policy setting, desktop composition is not allowed for remote desktop sessions, even if desktop composition is enabled in RDC or in the .rdp file.
+注意: 如果您啟用這個原則設定，必須同時啟用 [加入 RD 連線代理人]、[設定 RD 連線代理人伺服陣列名稱] 及 [設定 RD 連線代理人伺服器名稱] 原則設定。
+       
       </string>
 
-      <string id="TS_SB_LOAD_BALANCING">Use RD Connection Broker load balancing</string>
-      <string id="TS_SB_LOAD_BALANCING_EXPLAIN">This policy setting allows you to specify whether to use the RD Connection Broker load balancing feature to balance the load between servers in an RD Session Host server farm. 
+      <string id="TS_REDIRECT_CLIENT_PRN_ONLY">只重新導向預設用戶端印表機</string>
+      <string id="TS_REDIRECT_CLIENT_PRN_ONLY_EXPLAIN">這個原則設定可讓您指定，預設用戶端印表機是否為遠端桌面服務工作階段中重新導向的唯一印表機。
 
-If you enable this policy setting, RD Connection Broker redirects users who do not have an existing session to the RD Session Host server in the farm with the fewest sessions. Redirection behavior for users with existing sessions is not affected. If the server is configured to use RD Connection Broker, users who have an existing session are redirected to the RD Session Host server where their session exists. 
+如果您啟用這個原則設定，則只有預設用戶端印表機才能在遠端桌面服務工作階段中重新導向。
 
-If you disable this policy setting, users who do not have an existing session log on to the first RD Session Host server to which they connect.
-
-If you do not configure this policy setting, you can configure the RD Session Host server to participate in RD Connection Broker load balancing by using the Remote Desktop Session Host Configuration tool or the Terminal Services WMI provider.
-
-Note: If you enable this policy setting, you must also enable the "Join RD Connection Broker", the "Configure RD Connection Broker farm name", and the "Configure RD Connection Broker server name" policy settings. 
-      </string>
-
-      <string id="TS_REDIRECT_CLIENT_PRN_ONLY">Redirect only the default client printer</string>
-      <string id="TS_REDIRECT_CLIENT_PRN_ONLY_EXPLAIN">This policy setting allows you to specify whether the default client printer is the only printer redirected in Remote Desktop Services sessions.
-
-If you enable this policy setting, only the default client printer is redirected in Remote Desktop Services sessions.
-
-If you disable or do not configure this policy setting, all client printers are redirected in Remote Desktop Services sessions.
+如果您停用或未設定這個原則設定，就可以在遠端桌面服務工作階段中重新導向所有用戶端印表機。
+	  
 	  </string>
 	  
-      <string id="TS_SESSIONS_RemoteApp_End_Timeout">Set time limit for logoff of RemoteApp sessions</string>
-      <string id="TS_SESSIONS_RemoteApp_End_Timeout_EXPLAIN">This policy setting allows you to specify how long a user's RemoteApp session will remain in a disconnected state before the session is logged off from the RD Session Host server.
+      <string id="TS_SESSIONS_RemoteApp_End_Timeout">設定登出 RemoteApp 工作階段的時間限制</string>
+      <string id="TS_SESSIONS_RemoteApp_End_Timeout_EXPLAIN">這個原則設定可讓您指定關閉所有 RemoteApp 程式之後，使用者的 RemoteApp 工作階段會處於中斷連線狀態多久的時間，工作階段才會從 RD 工作階段主機伺服器登出。
 
-By default, if a user closes a RemoteApp program, the session is disconnected from the RD Session Host server. 
+根據預設，如果使用者關閉 RemoteApp 程式，工作階段就會中斷與 RD 工作階段主機伺服器的連線，但不會登出。
 
-If you enable this policy setting, when a user closes a RemoteApp program, the RemoteApp session will remain in a disconnected state until the time limit that you specify is reached. When the time limit specified is reached, the RemoteApp session will be logged off from the RD Session Host server. If the user starts a RemoteApp program before the time limit is reached, the user will reconnect to the disconnected session on the RD Session Host server.
+如果您啟用這個原則設定，當使用者關閉最後一個與工作階段關聯的 RemoteApp 程式後，在達到您指定的時間限制之前，RemoteApp 工作階段會一直處於中斷連線狀態。在達到時間限制之後，RemoteApp 工作階段就會從 RD 工作階段主機伺服器登出。如果使用者在達到時間限制之前啟動 RemoteApp 程式，則使用者就會在 RD 工作階段主機伺服器上重新連線到已中斷連線的工作階段。
 
-If you disable or do not configure this policy setting, when a user closes a RemoteApp program, the session will be disconnected from the RD Session Host server.
+如果您停用或未設定這個原則設定，當使用者關閉最後一個 RemoteApp 程式時，工作階段就會與 RD 工作階段主機伺服器中斷連線，但不會登出。
 
-Note: This policy setting appears in both Computer Configuration and User Configuration. If both policy settings are configured, the Computer Configuration policy setting takes precedence.
+注意: 這個原則設定會顯示在 [電腦設定] 及 [使用者設定]。如果同時設定這兩個原則設定，則 [電腦設定] 原則設定的優先順序較高。
+      
       </string>
 
-      <string id="TS_TIME_1MIN">1 minute</string>
-      <string id="TS_TIME_5MIN">5 minutes</string>
-      <string id="TS_TIME_10MIN">10 minutes</string>
-      <string id="TS_TIME_15MIN">15 minutes</string>
-      <string id="TS_TIME_30MIN">30 minutes</string>
-      <string id="TS_TIME_1HR">1 hour</string>
-      <string id="TS_TIME_2HR">2 hours</string>
-      <string id="TS_TIME_3HR">3 hours</string>
-      <string id="TS_TIME_6HR">6 hours</string>
-      <string id="TS_TIME_8HR">8 hours</string>
-      <string id="TS_TIME_12HR">12 hours</string>
-      <string id="TS_TIME_16HR">16 hours</string>
-      <string id="TS_TIME_18HR">18 hours</string>
-      <string id="TS_TIME_1DAY">1 day</string>
-      <string id="TS_TIME_2DAY">2 days</string>
-      <string id="TS_TIME_3DAY">3 days</string>
-      <string id="TS_TIME_4DAY">4 days</string>
-      <string id="TS_TIME_5DAY">5 days</string>
-      <string id="TS_TIME_IMMEDIATE">Immediately</string>
+      <string id="TS_TIME_1MIN">1 分鐘</string>
+      <string id="TS_TIME_5MIN">5 分鐘</string>
+      <string id="TS_TIME_10MIN">10 分鐘</string>
+      <string id="TS_TIME_15MIN">15 分鐘</string>
+      <string id="TS_TIME_30MIN">30 分鐘</string>
+      <string id="TS_TIME_1HR">1 小時</string>
+      <string id="TS_TIME_2HR">2 小時</string>
+      <string id="TS_TIME_3HR">3 小時</string>
+      <string id="TS_TIME_6HR">6 小時</string>
+      <string id="TS_TIME_8HR">8 小時</string>
+      <string id="TS_TIME_12HR">12 小時</string>
+      <string id="TS_TIME_16HR">16 小時</string>
+      <string id="TS_TIME_18HR">18 小時</string>
+      <string id="TS_TIME_1DAY">1 天</string>
+      <string id="TS_TIME_2DAY">2 天</string>
+      <string id="TS_TIME_3DAY">3 天</string>
+      <string id="TS_TIME_4DAY">4 天</string>
+      <string id="TS_TIME_5DAY">5 天</string>
+      <string id="TS_TIME_IMMEDIATE">立即</string>
 	
-      <string id="TS_DISALLOW_FONT_SMOOTHING">Do not allow font smoothing</string>
-      <string id="TS_DISALLOW_FONT_SMOOTHING_EXPLAIN">This policy setting allows you to specify whether font smoothing is allowed for remote connections.
+      <string id="TS_DISALLOW_FONT_SMOOTHING">不允許字型平滑處理</string>
+      <string id="TS_DISALLOW_FONT_SMOOTHING_EXPLAIN">這個原則設定可以讓您指定是否允許遠端連線的字型平滑處理。
 
-Font smoothing provides ClearType functionality for a remote connection. ClearType is a technology for displaying computer fonts so that they appear clear and smooth, especially when you are using an LCD monitor. Because font smoothing requires additional bandwidth resources, not allowing font smoothing for remote connections can improve connection performance, particularly over slow links.
+字型平滑處理可提供遠端連線的 ClearType 功能。ClearType 是一種顯示電腦字型的技術，可以讓字型變得更清晰平順，尤其是在使用 LCD 監視器的時候。由於字型平滑處理需要額外的頻寬資源，不允許遠端連線的字型平滑處理可以增進連線效能，尤其是透過慢速連線時。
 		   
-By default, font smoothing is allowed for remote connections. You can configure font smoothing on the Experience tab in Remote Desktop Connection (RDC) or by using the "allow font smoothing" setting in a Remote Desktop Protocol (.rdp) file.
+根據預設，對遠端連線將允許字型平滑處理。您可以在 [遠端桌面連線] (RDC) 的 [進階設定] 標籤上設定字型平滑處理，或者使用遠端桌面通訊協定 (.rdp) 檔案中的 [允許字型平滑處理]。
 		   
-If you enable this policy setting, font smoothing will not be allowed for remote connections, even if font smoothing is enabled in RDC or in the .rdp file.   
+如果您啟用這個原則設定，即使已在 RDC 或 .rdp 檔案中啟用字型平滑處理，仍然不會允許遠端連線的字型平滑處理。  
 		   
-If you disable or do not configure this policy setting, font smoothing is allowed for remote connections.
+如果您停用或未設定這個原則設定，則會允許遠端連線的字型平滑處理。
+      
       </string>
 
-      <string id="TS_ENABLE_IP_VIRTUALIZATION">Turn on Remote Desktop IP Virtualization</string>
-      <string id="TS_ENABLE_IP_VIRTUALIZATION_EXPLAIN">This policy setting specifies whether Remote Desktop IP Virtualization is turned on. 
-By default, Remote Desktop IP Virtualization is turned off.
+      <string id="TS_ENABLE_IP_VIRTUALIZATION">開啟遠端桌面 IP 虛擬</string>
+      <string id="TS_ENABLE_IP_VIRTUALIZATION_EXPLAIN">這個原則設定指定是否開啟遠端桌面 IP 虛擬。
+根據預設，遠端桌面 IP 虛擬為關閉。
 
-If you enable this policy setting, Remote Desktop IP Virtualization is turned on. You can select the mode in which this setting is applied. If you are using Per Program mode, you must enter a list of programs to use virtual IP addresses. List each program on a separate line (do not enter any blank lines between programs). For example:	
+如果您啟用這個原則設定，遠端桌面 IP 虛擬便會開啟。您可以選取要套用這個設定的模式。如果要使用 [每一程式] 模式，您必須輸入要使用虛擬 IP 位址的程式清單。在不同的行中列出每一個程式 (在程式之間不可輸入空白行)。例如:	
 
 explorer.exe
 mstsc.exe
 
-If you disable or do not configure this policy setting, Remote Desktop IP Virtualization is turned off.
+如果您停用或未設定這個原則設定，遠端桌面 IP 虛擬將會關閉。
+      
       </string>
       
-      <string id="TS_ENABLE_SESSION_MODE_IP_VIRTUALIZATION">Per Session</string>
-      <string id="TS_ENABLE_PRPGRAM_MODE_IP_VIRTUALIZATION">Per Program</string>
-      <string id="TS_NET_ID_IP_VIRTUALIZATION">Select the network adapter to be used for Remote Desktop IP Virtualization</string>
-      <string id="TS_NET_ID_IP_VIRTUALIZATION_EXPLAIN">This policy setting specifies the IP address and network mask that corresponds to the network adapter used for virtual IP addresses. The IP address and network mask should be entered in Classless Inter-Domain Routing notation; for example, 192.0.2.96/24. 
+      <string id="TS_ENABLE_SESSION_MODE_IP_VIRTUALIZATION">每一工作階段</string>
+      <string id="TS_ENABLE_PRPGRAM_MODE_IP_VIRTUALIZATION">每一程式</string>
+      <string id="TS_NET_ID_IP_VIRTUALIZATION">選取要用於遠端桌面 IP 虛擬的網路介面卡</string>
+      <string id="TS_NET_ID_IP_VIRTUALIZATION_EXPLAIN">這個原則設定指定對應到使用於虛擬 IP 位址的網路介面卡的 IP 位址和網路遮罩。這個 IP 位址和網路遮罩應該以無類別網域間路由表示法輸入，例如 192.0.2.96/24。
 
-If you enable this policy setting, the specified IP address and network mask are used to select the network adapter used for the virtual IP addresses.
+如果您啟用這個原則設定，所指定的 IP 位址和網路遮罩會用來選取使用於虛擬 IP 位址的網路介面卡。
 
-If you disable or do not configure this policy setting, Remote Desktop IP Virtualization is turned off. A network adapter must be configured for Remote Desktop IP Virtualization to work.
+如果您停用或未設定這個原則設定，遠端桌面 IP 虛擬將會關閉。必須設定網路介面卡才能讓遠端桌面 IP 虛擬運作。
+      
       </string>
       
-      <string id="TS_NOT_USE_SERVER_IP_WITH_IP_VIRTUALIZATION">Do not use Remote Desktop Session Host server IP address when virtual IP address is not available</string>
-      <string id="TS_NOT_USE_SERVER_IP_WITH_IP_VIRTUALIZATION_EXPLAIN">This policy setting specifies whether a session uses the IP address of the Remote Desktop Session Host server if a virtual IP address is not available.
+      <string id="TS_NOT_USE_SERVER_IP_WITH_IP_VIRTUALIZATION">虛擬 IP 位址無法使用時，請勿使用遠端桌面工作階段主機伺服器 IP 位址</string>
+      <string id="TS_NOT_USE_SERVER_IP_WITH_IP_VIRTUALIZATION_EXPLAIN">這個原則設定指定如果虛擬 IP 位址無法使用時，工作階段是否要使用遠端桌面工作階段主機伺服器的 IP 位址。
 
-If you enable this policy setting, the IP address of the RD Session Host server is not used if a virtual IP is not available. The session will not have network connectivity.
+如果您啟用這個原則設定，如果虛擬 IP 無法使用時，將不使用 RD 工作階段主機伺服器的 IP 位址。工作階段將沒有網路連線。
 
-If you disable or do not configure this policy setting, the IP address of the RD Session Host server is used if a virtual IP is not available.
+如果您停用或未設定這個原則設定，如果虛擬 IP 位址無法使用時，便會使用 RD 工作階段主機伺服器的 IP 位址。
+      
       </string>
       
-      <string id="TS_ENABLE_DFSS">Turn off Fair Share CPU Scheduling</string>
-      <string id="TS_ENABLE_DFSS_EXPLAIN">Fair Share CPU Scheduling dynamically distributes processor time across all Remote Desktop Services sessions on the same RD Session Host server, based on the number of sessions and the demand for processor time within each session.
+      <string id="TS_ENABLE_DFSS">關閉公平共用 CPU 排程</string>
+      <string id="TS_ENABLE_DFSS_EXPLAIN">公平共用 CPU 排程會依據工作階段的數目以及每個工作階段中的處理器時間需求，以動態方式將處理器時間分配給同一個 RD 工作階段主機伺服器上的所有遠端桌面服務工作階段。
  
-If you enable this policy setting, Fair Share CPU Scheduling is turned off.
+如果您啟用這個原則設定，公平共用 CPU 排程將會關閉。
  
-If you disable or do not configure this policy setting, Fair Share CPU Scheduling is turned on.
+如果您停用或未設定這個原則設定，公平共用 CPU 排程將會開啟。
+      
       </string>
       
-      <string id="TS_DISABLE_MSI">Turn off Windows Installer RDS Compatibility</string>
-      <string id="TS_DISABLE_MSI_EXPLAIN">This policy setting specifies whether Windows Installer RDS Compatibility runs on a per user basis for fully installed applications. Windows Installer allows one instance of the msiexec process to run at a time. By default, Windows Installer RDS Compatibility is turned on.
+      <string id="TS_DISABLE_MSI">關閉 Windows Installer RDS 相容性</string>
+      <string id="TS_DISABLE_MSI_EXPLAIN">這個原則設定指定是否要對完全安裝的應用程式依每一使用者的方式執行 Windows Installer RDS 相容性。Windows Installer 一次只允許一個 msiexec 處理序的執行個體執行。根據預設，Windows Installer RDS 相容性將會開啟。
  
-If you enable this policy setting, Windows Installer RDS Compatibility is turned off, and only one instance of the msiexec process can run at a time.
+如果您啟用這個原則設定，Windows Installer RDS 相容性將會關閉，而且一次只允許一個 msiexec 處理序的執行個體執行。
  
-If you disable or do not configure this policy setting, Windows Installer RDS Compatibility is turned on, and multiple per user application installation requests are queued and handled by the msiexec process in the order in which they are received. 
+如果您停用或未設定這個原則設定，Windows Installer RDS 相容性將會開啟，多個依使用者為依據的應用程式安裝要求將會排入佇列，並且由 msiexec 處理序依照收到這些要求的順序處理。
+       
+      </string>
+
+      <string id="RDS_VM_HOST_Node">遠端桌面虛擬主機</string>
+      <string id="RDS_VM_HOST_Node_Help">控制 RD 虛擬主機伺服器的設定</string>
+      <string id="TS_DX_USE_FULL_HWGPU">針對所有遠端桌面服務工作階段使用硬體預設的圖形卡</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">這個原則設定可以讓系統管理員變更遠端桌面工作階段主機 (RD 工作階段主機) 伺服器上所有遠端桌面服務工作階段的圖形轉換。
+
+如果您啟用這個原則設定，RD 工作階段主機伺服器上的所有遠端桌面服務工作階段都會使用硬體圖形轉換器做為預設的介面卡，而不會使用 Microsoft 基本轉譯驅動程式。
+
+如果您停用或未設定這個原則設定，RD 工作階段主機伺服器上的所有遠端桌面服務工作階段都會使用 Microsoft 基本轉譯驅動程式做為預設的介面卡。
+
+注意: 這個原則設定僅會影響安裝了多個 GPU 的電腦上的預設圖形處理器 (GPU)。所有其他 GPU 會被視為次要介面卡，而且會做為硬體轉譯器。本機工作階段的 GPU 設定不會受到這個原則設定的影響。
+      
       </string>
    
    </stringTable>
 
    <presentationTable>
       <presentation id="TS_SESSIONS_RemoteApp_End_Timeout">
-        <dropdownList refId="TS_SESSIONS_RemoteApp_End_Timeout" noSort="true" defaultItem="0">RemoteApp session logoff delay:</dropdownList>
+        <dropdownList refId="TS_SESSIONS_RemoteApp_End_Timeout" noSort="true" defaultItem="0">RemoteApp 工作階段登出延遲:</dropdownList>
       </presentation>
       <presentation id="TS_NET_ID_IP_VIRTUALIZATION">
 	    <textBox refId="TS_NET_ID_IP_VIRTUALIZATION">
-	      <label>Define IP address and network mask corresponding to the network adapter to be used for Remote Desktop IP Virtualization:</label>
+	      <label>定義對應到用於遠端桌面 IP 虛擬之網路介面卡的 IP 位址和網路遮罩:</label>
 	    </textBox>
-    	<text>The format is [IP address]/[network mask]. For Example:192.0.2.96/24</text>
+    	<text>格式為 [IP 位址]/[網路遮罩]。例如: 192.0.2.96/24</text>
       </presentation>
       <presentation id="TS_ENABLE_IP_VIRTUALIZATION">
-        <dropdownList refId="TS_ENABLE_IP_VIRTUALIZATION" noSort="true" defaultItem="0">Turn on Remote Desktop IP Virtualization mode:</dropdownList>
-	    <multiTextBox refId="TS_ENABLE_IP_VIRTUALIZATION_EDIT">Assign virtual IP addresses to these programs:</multiTextBox>
-        <text>If you are listing more than one program,  list each program on a separate line (do not enter any blank lines between programs). For example:</text>
+        <dropdownList refId="TS_ENABLE_IP_VIRTUALIZATION" noSort="true" defaultItem="0">開啟遠端桌面 IP 虛擬模式:</dropdownList>
+	    <multiTextBox refId="TS_ENABLE_IP_VIRTUALIZATION_EDIT">指定虛擬 IP 位址給下列程式:</multiTextBox>
+        <text>如果要列出多個程式，請在不同的行中列出每一個程式 (在程式之間不可輸入空白行)。例如:</text>
         <text>explorer.exe
 mstsc.exe</text>
       </presentation>

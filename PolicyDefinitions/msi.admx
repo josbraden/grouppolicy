@@ -11,6 +11,13 @@
   
   <supportedOn>
     <definitions>
+      <!--Windows Installer v4.5-->
+      <definition name="SUPPORTED_MSI45" displayName="$(string.SUPPORTED_MSI45)">
+        <or>
+          <reference ref="products:WindowsInstaller45"/>
+        </or>
+      </definition>
+
       <!--Windows Installer v4.0-->
       <definition name="SUPPORTED_MSI40" displayName="$(string.SUPPORTED_MSI40)">
         <or>
@@ -224,16 +231,6 @@
         <decimal value="0" />
       </disabledValue>
     </policy>
-    <policy name="EnableAdminTSRemote" class="Machine" displayName="$(string.EnableAdminTSRemote)" explainText="$(string.EnableAdminTSRemote_Help)" key="Software\Policies\Microsoft\Windows\Installer" valueName="EnableAdminTSRemote">
-      <parentCategory ref="MSI" />
-      <supportedOn ref="windows:SUPPORTED_Win2k" />
-      <enabledValue>
-        <decimal value="1" />
-      </enabledValue>
-      <disabledValue>
-        <decimal value="0" />
-      </disabledValue>
-    </policy>
     <policy name="EnableUserControl" class="Machine" displayName="$(string.EnableUserControl)" explainText="$(string.EnableUserControl_Help)" key="Software\Policies\Microsoft\Windows\Installer" valueName="EnableUserControl">
       <parentCategory ref="MSI" />
       <supportedOn ref="windows:SUPPORTED_Win2k" />
@@ -330,6 +327,26 @@
     <policy name="TransformsSecure" class="Machine" displayName="$(string.TransformsSecure)" explainText="$(string.TransformsSecure_Help)" key="Software\Policies\Microsoft\Windows\Installer" valueName="TransformsSecure">
       <parentCategory ref="MSI" />
       <supportedOn ref="windows:SUPPORTED_Win2k" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>explainText="$(string.DisableSharedComponent_Help)" 
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="DisableSharedComponent" class="Machine" displayName="$(string.DisableSharedComponent)" explainText="$(string.DisableSharedComponent_Help)" key="Software\Policies\Microsoft\Windows\Installer" valueName="DisableSharedComponent">
+      <parentCategory ref="MSI" />
+      <supportedOn ref="windows:SUPPORTED_MSI45" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="MsiDisableEmbeddedUI" class="Machine" displayName="$(string.MsiDisableEmbeddedUI)" explainText="$(string.MsiDisableEmbeddedUI_Help)" key="Software\Policies\Microsoft\Windows\Installer" valueName="MsiDisableEmbeddedUI">
+      <parentCategory ref="MSI" />
+      <supportedOn ref="windows:SUPPORTED_MSI45" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>

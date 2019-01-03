@@ -18,16 +18,17 @@ This setting automatically extends the "make available offline" setting to all n
 If you enable this setting, when you make a folder available offline, all folders within that folder are also made available offline. Also, new folders that you create within a folder that is available offline are made available offline when the parent folder is synchronized.
 
 If you disable this setting or do not configure it, the system asks users whether they want subfolders to be made available offline when they make a parent folder available offline.</string>
-      <string id="Pol_AssignedOfflineFiles">Administratively assigned offline files</string>
-      <string id="Pol_AssignedOfflineFiles_Help">This policy setting lists network files and folders that are always available for offline use. This ensures that the the specified files and folders are available offline to users of the computer.
+      <string id="Pol_AssignedOfflineFiles">Specify administratively assigned Offline Files</string>
+      <string id="Pol_AssignedOfflineFiles_Help">This policy setting lists network files and folders that are always available for offline use. This ensures that the specified files and folders are available offline to users of the computer.
 
 If you enable this policy setting, the files you enter are always available offline to users of the computer. To specify a file or folder, click Show. In the Show Contents dialog box in the Value Name column, type the fully qualified UNC path to the file or folder. Leave the Value column field blank.
 
-If you disable this policy setting, the list of files or folders made always available offline (including those inherited from lower precedence GPOs) is deleted and no files or folders are made always available for offline use.
+If you disable this policy setting, the list of files or folders made always available offline (including those inherited from lower precedence GPOs) is deleted and no files or folders are made available for offline use by Group Policy (though users can still specify their own files and folders for offline use).
 
-If you do not configure this policy setting, no files or folders are made always available for offline use.
+If you do not configure this policy setting, no files or folders are made available for offline use by Group Policy.
 
-Note: This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the settings will be combined and all specified files will be available for offline use.</string>
+Note: This setting appears in the Computer Configuration and User Configuration folders. If both policy settings are configured, the policy settings will be combined and all specified files will be available for offline use.</string>
+      
       <string id="Pol_CustomGoOfflineActions">Non-default server disconnect actions</string>
       <string id="Pol_CustomGoOfflineActions_Help">Determines how computers respond when they are disconnected from particular offline file servers. This setting overrides the default response, a user-specified response, and the response specified in the "Action on server disconnect" setting.
 
@@ -52,34 +53,33 @@ If you disable this setting, the system limits the space that automatically cach
 If you do not configure this setting, disk space for automatically cached files is limited to 10 percent of the system drive by default, but users can change it.
 
 Tip: To change the amount of disk space used for automatic caching without specifying a setting, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, and then use the slider bar associated with the "Amount of disk space to use for temporary offline files" option.</string>
+
       <string id="Pol_Enabled">Allow or Disallow use of the Offline Files feature</string>
-      <string id="Pol_Enabled_Help">Determines whether the Offline Files feature is enabled.
+      <string id="Pol_Enabled_Help">This policy setting determines whether the Offline Files feature is enabled. Offline Files saves a copy of network files on the user's computer for use when the computer is not connected to the network.
 
-This setting also disables the "Enable Offline Files" option on the Offline Files tab. This prevents users from trying to change the option while a setting controls it.
+If you enable this policy setting, Offline Files is enabled and users cannot disable it.
 
-Offline Files saves a copy of network files on the user's computer for use when the computer is not connected to the network.
+If you disable this policy setting, Offline Files is disabled and users cannot enable it.
 
-If you enable this setting, Offline Files is enabled and users cannot disable it.
+If you do not configure this policy setting, Offline Files is enabled on Windows client computers, and disabled on computers running Windows Server, unless changed by the user.
 
-If you disable this setting, Offline Files is disabled and users cannot enable it.
+Note: Changes to this policy setting do not take effect until the affected computer is restarted.</string>
 
-By default, Offline Files is enabled on Windows 2000 Professional and Windows XP Professional and is disabled on Windows 2000 Server and also Windows Server 2003 family.
-
-Tip: To enable Offline Files without specifying a setting, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, and then click "Enable Offline Files."
-
-Note: To make changes to this setting effective, you must restart Windows.</string>
       <string id="Pol_EncryptOfflineFiles">Encrypt the Offline Files cache</string>
-      <string id="Pol_EncryptOfflineFiles_Help">This setting determines whether offline files are encrypted.
+      <string id="Pol_EncryptOfflineFiles_Help">This policy setting determines whether offline files are encrypted.
 
-Offline files reside on a user's hard drive, not the network, and they are stored in a local cache on the computer. Encrypting this cache enhances security on a local computer. If the cache on the local computer is not encrypted, any encrypted files cached from the network will not be encrypted on the local computer. This may pose a security risk in some environments.
+Offline files are locally cached copies of files from a network share. Encrypting this cache reduces the likelihood that a user could access files from the Offline Files cache without proper permissions.
 
-If you enable this setting, all files in the Offline Files cache are encrypted.  This includes existing files as well as files added later. The cached copy on the local computer is affected, but the associated network copy is not. The user cannot unencrypt Offline Files through the user interface.
+If you enable this policy setting, all files in the Offline Files cache are encrypted.  This includes existing files as well as files added later. The cached copy on the local computer is affected, but the associated network copy is not. The user cannot unencrypt Offline Files through the user interface.
 
-If you disable this setting, all files in the Offline Files cache are unencrypted. This includes existing files as well as files added later. The cached copy on the local computer is affected, but the associated network copy is not. The user cannot encrypt Offline Files through the user interface.
+If you disable this policy setting, all files in the Offline Files cache are unencrypted. This includes existing files as well as files added later, even if the files were stored using NTFS encryption or BitLocker Drive Encryption while on the server. The cached copy on the local computer is affected, but the associated network copy is not. The user cannot encrypt Offline Files through the user interface.
 
-If you do not configure this setting, encryption of the Offline Files cache is controlled by the user through the user interface. The current cache state is retained, and if the cache is only partially encrypted, the operation completes so that it is fully encrypted. The cache does not return to the unencrypted state. The user must be an administrator on the local computer to encrypt or decrypt the Offline Files cache.
+If you do not configure this policy setting, encryption of the Offline Files cache is controlled by the user through the user interface. The current cache state is retained, and if the cache is only partially encrypted, the operation completes so that it is fully encrypted. The cache does not return to the unencrypted state. The user must be an administrator on the local computer to encrypt or decrypt the Offline Files cache.
 
-Note: By default, this cache is protected on NTFS partitions by ACLs.</string>
+Note: By default, this cache is protected on NTFS partitions by ACLs.
+
+This setting is applied at user logon. If this setting is changed after user logon then user logoff and logon is required for this setting to take effect.</string>
+      
       <string id="Pol_EventLoggingLevel">Event logging level</string>
       <string id="Pol_EventLoggingLevel_Help">Determines which events the Offline Files feature records in the event log.
 
@@ -146,30 +146,38 @@ This is a comprehensive setting that locks down the configuration you establish 
 This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.
 
 Tip: This setting provides a quick method for locking down the default settings for Offline Files. To accept the defaults, just enable this setting. You do not have to disable any other settings in this folder.</string>
-      <string id="Pol_NoMakeAvailableOffline">Remove 'Make Available Offline'</string>
-      <string id="Pol_NoMakeAvailableOffline_Help">Prevents users from making network files and folders available offline.
+      <string id="Pol_NoMakeAvailableOffline">Remove "Make Available Offline" command</string>
+      <string id="Pol_NoMakeAvailableOffline_Help">This policy setting prevents users from making network files and folders available offline.
 
-This setting removes the "Make Available Offline" option from the File menu and from all context menus in Windows Explorer. As a result, users cannot designate files to be saved on their computer for offline use.
+If you enable this policy setting, users cannot designate files to be saved on their computer for offline use. However, Windows will still cache local copies of files that reside on network shares designated for automatic caching.
 
-However, this setting does not prevent the system from saving local copies of files that reside on network shares designated for automatic caching.
-
-This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration.</string>
-      <string id="Pol_NoPinFiles">Prohibit 'Make Available Offline' for these file and folders</string>
-      <string id="Pol_NoPinFiles_Help">This policy setting allows you to manage a list of files or folders for which you wish to prohibit the 'Make Available Offline' option.
-
-If you enable this policy setting, the 'Make Available Offline' option is not available for the files or folders you list. To specify these files or folders, click Show. In the Show Contents dialog box in the Value Name column box, type the fully qualified UNC path to the file or folder. Leave the Value column field blank.
-
-If you disable this policy setting, the list of files or folders for which the 'Make Available Offline' option is removed (including those inherited from lower precedence GPOs) is deleted.
-
-If you do not configure this policy setting, the 'Make Available Offline' option is available for all files or folders.
+If you disable or do not configure this policy setting, users can manually specify files and folders that they want to make available offline.
 
 Notes:
 
-This policy setting appears in the Computer Configuration and User Configuration folders. If both policy settings are configured, the policy settings are combined, and the 'Make Available Offline' option will be unavailable  for all specified files and folders.
+This policy setting appears in the Computer Configuration and User Configuration folders. If both policy settings are configured, the policy setting in Computer Configuration takes precedence.
 
-This policy setting does not prevent files from being automatically cached if the network share is configured for 'Automatic Caching'. It only affects the availability of the 'Make Available Offline' menu option in the user interface.
+The "Make Available Offline" command is called "Always available offline" on computers running Windows Server 2012, Windows Server 2008 R2, Windows Server 2008, Windows 8, Windows 7, or Windows Vista.
+      </string>
+      <string id="Pol_NoPinFiles">Remove "Make Available Offline" for these files and folders</string>
+      <string id="Pol_NoPinFiles_Help">This policy setting allows you to manage a list of files and folders for which you want to block the "Make Available Offline" command.
 
-If the 'Disable Make Available Offline' policy setting is enabled, this setting has no effect.</string>
+If you enable this policy setting, the "Make Available Offline" command is not available for the files and folders that you list. To specify these files and folders, click Show. In the Show Contents dialog box, in the Value Name column box, type the fully qualified UNC path to the file or folder. Leave the Value column field blank.
+
+If you disable this policy setting, the list of files and folders is deleted, including any lists inherited from lower precedence GPOs, and the "Make Available Offline" command is displayed for all files and folders.
+
+If you do not configure this policy setting, the "Make Available Offline" command is available for all files and folders.
+
+Notes:
+
+This policy setting appears in the Computer Configuration and User Configuration folders. If both policy settings are configured, the policy settings are combined, and the "Make Available Offline" command is unavailable  for all specified files and folders.
+
+The "Make Available Offline" command is called "Always available offline" on computers running Windows Server 2012, Windows Server 2008 R2, Windows Server 2008, Windows 8, Windows 7, or Windows Vista.
+
+This policy setting does not prevent files from being automatically cached if the network share is configured for "Automatic Caching." It only affects the display of the "Make Available Offline" command in File Explorer.
+
+If the "Remove 'Make Available Offline' command" policy setting is enabled, this setting has no effect.
+      </string>
       <string id="Pol_NoReminders">Turn off reminder balloons</string>
       <string id="Pol_NoReminders_Help">Hides or displays reminder balloons, and prevents users from changing the setting.
 
@@ -262,73 +270,86 @@ If you enable this setting, offline files are synchronized whenever the computer
 If you disable or do not configuring this setting, files are not synchronized when the computer is suspended.
 
 Note: If the computer is suspended by closing the display on a portable computer, files are not synchronized. If multiple users are logged on to the computer at the time the computer is suspended, a synchronization is not performed.</string>
+      
       <string id="Pol_QuickAdimPin">Turn on economical application of administratively assigned Offline Files</string>
       <string id="Pol_QuickAdimPin_Help">This policy setting allows you to turn on economical application of administratively assigned Offline Files.
 
 If you enable or do not configure this policy setting, only new files and folders in administratively assigned folders are synchronized at logon. Files and folders that are already available offline are skipped and are synchronized later.
 
-If you disable this policy setting, all administratively assigned folders are synchronized at logon.
+If you disable this policy setting, all administratively assigned folders are synchronized at logon.</string>
+
+      <string id="Pol_WorkOfflineDisabled">Remove "Work offline" command</string>
+      <string id="Pol_WorkOfflineDisabled_Help">This policy setting removes the "Work offline" command from Explorer, preventing users from manually changing whether Offline Files is in online mode or offline mode.
+
+If you enable this policy setting, the "Work offline" command is not displayed in File Explorer.
+
+If you disable or do not configure this policy setting, the "Work offline" command is displayed in File Explorer.
       </string>
-
       <string id="Pol_SlowLinkSettings">Configure slow-link mode</string>
-      <string id="Pol_SlowLinkSettings_Help">This policy setting enables computers running Windows Vista or Windows Server 2008 to use the slow-link mode of Offline Files (it is enabled by default for computers running Windows 7 or Windows Server 2008 R2). This policy also controls when client computers running Windows 7 or Windows Server 2008 R2 transition to the slow-link mode.
-
-When Offline Files is operating in the slow-link mode, all network file requests are satisfied from the Offline Files cache. This is similar to a user working offline. However, users can manually initiate synchronization by using Sync Center. After synchronization completes, computers running Windows Vista or Windows Server 2008 continue to operate in the slow-link mode until the user clicks the Work Online button on the toolbar in Windows Explorer. This transitions the shared folder to the online mode. While in the online mode, Windows periodically checks the connection to the server. If the connection is slow, Offline Files transitions the folder back to the slow-link mode.
-
-On client computers running Windows 7 or Windows Server 2008 R2, a shared folder automatically transitions to the slow-link mode if the round-trip latency of the network is greater than 80 milliseconds, or as configured by this policy. After transitioning a folder to the slow-link mode, Offline Files synchronizes the user's files in the background at regular intervals, or as configured by the 'Configure Background Sync' policy. While in slow-link mode, Windows periodically checks the connection to the folder and brings the folder back online if network speeds improve. 
+      <string id="Pol_SlowLinkSettings_Help">This policy setting controls the network latency and throughput thresholds that will cause a client computers to transition files and folders that are already available offline to the slow-link mode so that the user's access to this data is not degraded due to network slowness. When Offline Files is operating in the slow-link mode, all network file requests are satisfied from the Offline Files cache. This is similar to a user working offline.
 
 If you enable this policy setting, Offline Files uses the slow-link mode if the network throughput between the client and the server is below (slower than) the Throughput threshold parameter, or if the round-trip network latency is above (slower than) the Latency threshold parameter.
 
 You can configure the slow-link mode by specifying threshold values for Throughput (in bits per second) and/or Latency (in milliseconds) for specific UNC paths. We recommend that you always specify a value for Latency, since the round-trip network latency detection is faster. You can use wildcard characters (*) for specifying UNC paths. If you do not specify a Latency or Throughput value, computers running Windows Vista or Windows Server 2008 will not use the slow-link mode.
 
-If you do not configure this policy setting, computers running Windows Vista or Windows Server 2008 will not transition a shared folder to the slow-link mode. Computers running Windows 7 or Windows Server 2008 R2 will use the default latency value of 80 milliseconds when transitioning a folder to the slow-link mode. To prevent computers running Windows 7 or Windows Server 2008 R2 from using the slow-link mode, disable this policy.</string>
-      <string id="Pol_CacheSize">Limit disk space used by offline files</string>
-      <string id="Pol_CacheSize_Help">This policy limits the amount of the computer's disk space that can be used to store offline files.
+If you do not configure this policy setting, computers running Windows Vista or Windows Server 2008 will not transition a shared folder to the slow-link mode. Computers running Windows 7 or Windows Server 2008 R2 will use the default latency value of 80 milliseconds when transitioning a folder to the slow-link mode. Computers running Windows 8 or Windows Server 2012 will use the default latency value of 35 milliseconds when transitioning a folder to the slow-link mode. To avoid extra charges on cell phone or broadband plans, it may be necessary to configure the latency threshold to be lower than the round-trip network latency.
 
-Using this setting you can configure how much total disk space (in Megabytes) is used for storing offline files. This includes the space used by automatically cached files and files that are specifically made available offline. Files can be automatically cached if the user accesses a file on an automatic caching network share.
+In Windows Vista or Windows Server 2008, once transitioned to slow-link mode, users will continue to operate in slow-link mode until the user clicks the Work Online button on the toolbar in Windows Explorer. Data will only be synchronized to the server if the user manually initiates synchronization by using Sync Center.
+
+In Windows 7, Windows Server 2008 R2, Windows 8 or Windows Server 2012, when operating in slow-link mode Offline Files synchronizes the user's files in the background at regular intervals, or as configured by the "Configure Background Sync" policy. While in slow-link mode, Windows periodically checks the connection to the folder and brings the folder back online if network speeds improve.
+
+In Windows 8 or Windows Server 2012, set the Latency threshold to 1ms to keep users always working offline in slow-link mode.
+
+If you disable this policy setting, computers will not use the slow-link mode.</string>
+
+      <string id="Pol_CacheSize">Limit disk space used by Offline Files</string>
+      <string id="Pol_CacheSize_Help">This policy setting limits the amount of disk space that can be used to store offline files. This includes the space used by automatically cached files and files that are specifically made available offline. Files can be automatically cached if the user accesses a file on an automatic caching network share.
+
 This setting also disables the ability to adjust, through the Offline Files control panel applet, the disk space limits on the Offline Files cache. This prevents users from trying to change the option while a policy setting controls it.
 
-If you enable this policy setting, you can specify the disk space limit for offline files and also specify how much of that disk space can be used by automatically cached files.
+If you enable this policy setting, you can specify the disk space limit (in megabytes) for offline files and also specify how much of that disk space can be used by automatically cached files.
 
 If you disable this policy setting, the system limits the space that offline files occupy to 25 percent of the total space on the drive where the Offline Files cache is located.  The limit for automatically cached files is 100 percent of the total disk space limit.
 
-If you do not configure this policy setting, the system limits the space that offline files occupy to 25 percent of the total space on the drive where the Offline Files cache is located. The limit for automatically cached files is 100 percent of the total disk space limit.  However, the users can change these values using the Offline Files control applet. 
+If you do not configure this policy setting, the system limits the space that offline files occupy to 25 percent of the total space on the drive where the Offline Files cache is located. The limit for automatically cached files is 100 percent of the total disk space limit.  However, the users can change these values using the Offline Files control applet.
 
 If you enable this setting and specify a total size limit greater than the size of the drive hosting the Offline Files cache, and that drive is the system drive, the total size limit is automatically adjusted downward to 75 percent of the size of the drive.  If the cache is located on a drive other than the system drive, the limit is automatically adjusted downward to 100 percent of the size of the drive.
 
-If you enable this setting and specify a total size limit less than the amount of space currently used by the Offline Files cache, the total size limit is automatically adjusted upward to the amount of space currently used by offline files.  The cache is then considered "full".
+If you enable this setting and specify a total size limit less than the amount of space currently used by the Offline Files cache, the total size limit is automatically adjusted upward to the amount of space currently used by offline files.  The cache is then considered full.
 
 If you enable this setting and specify an auto-cached space limit greater than the total size limit, the auto-cached limit is automatically adjusted downward to equal the total size limit.
 
-
-This setting replaces the "Default Cache Size" setting used by pre-Windows Vista systems.</string>
+This setting replaces the Default Cache Size setting used by pre-Windows Vista systems.</string>
       <string id="Pol_BackgroundSyncSettings">Configure Background Sync</string>
-      <string id="Pol_BackgroundSyncSettings_Help">This is a machine-specific setting which applies to any user who logs onto the specified machine while this policy is in effect.
+      <string id="Pol_BackgroundSyncSettings_Help">This policy setting controls when background synchronization occurs while operating in slow-link mode, and applies to any user who logs onto the specified machine while this policy is in effect. To control slow-link mode, use the "Configure slow-link mode" policy setting.
 
-This policy is in effect when a network folder is determined, as specified by the “Configure slow-link mode” policy, to be in “slow-link” mode.
+If you enable this policy setting, you can control when Windows synchronizes in the background while operating in slow-link mode. Use  the 'Sync Interval' and 'Sync Variance' values to override the default sync interval and variance settings. Use 'Blockout Start Time' and 'Blockout Duration' to set a period of time where background sync is disabled. Use the 'Maximum Allowed Time Without A Sync' value to ensure that all  network folders on the machine are synchronized with the server on a regular basis.
 
-For network folders in "slow-link" mode, a sync will be initiated in the background on a regular basis, according to these settings, to synchronize the files in those shares/folders between the client and server.
+You can also configure Background Sync for network shares that are in user selected Work Offline mode. This mode is in effect when a user selects the Work Offline button for a specific share. When selected, all configured settings will apply to shares in user selected Work Offline mode as well.
 
-By default, network folders in the "slow-link" mode will be synchronized with the server every 360 minutes with the start of the sync varying between 0 and 60 additional minutes.
-
-You can override the default sync interval and variance by setting 'Sync Interval' and 'Sync Variance' values. You can also set a period of time where background sync is disabled by setting 'Blockout Start Time' and 'Blockout Duration'. To ensure that all the network folders on the machine are synchronized with the server on a regular basis, you may also set the 'Maximum Allowed Time Without A Sync'.
-
-You may also configure Background Sync for network shares that are in user selected "Work Offline" mode. This mode is in effect when a user selects the "Work Offline" button for a specific share. When selected, all configured settings will apply to shares in user selected "Work Offline" mode as well.
-
-If you disable this setting or do not configure it, the default behavior for Background Sync will apply.</string>
+If you disable or do not configure this policy setting, Windows performs a background sync of offline folders in the slow-link mode at a default interval with the start of the sync varying between 0 and 60 additional minutes. In Windows 7 and Windows Server 2008 R2, the default sync interval is 360 minutes. In Windows 8 and Windows Server 2012, the default sync interval is 120 minutes.</string>
       <string id="Pol_OnlineCachingSettings">Enable Transparent Caching</string>
-      <string id="Pol_OnlineCachingSettings_Help">Enabling this policy optimizes subsequent reads to network files by a user or an application. This is done by caching reads to remote files over a slow network in the Offline Files cache. Subsequent reads to the same file are then satisfied from the client after verifying the integrity of the cached copy. This policy not only yields improved end-user response times but also decreased bandwidth consumption over the WAN links to the server.
+      <string id="Pol_OnlineCachingSettings_Help">This policy setting controls whether files read from file shares over a slow network are transparently cached in the Offline Files cache for future reads. When a user tries to access a file that has been transparently cached, Windows reads from the cached copy after verifying its integrity. This improves end-user response times and decreases bandwidth consumption over WAN links.
 
 The cached files are temporary and are not available to the user when offline. The cached files are not kept in sync with the version on the server, and the most current version from the server is always available for subsequent reads.
 
-This policy is triggered by the configured round trip network latency value. We recommend using this policy when the network connection to the server is slow. For example, you can configure a value of 60 ms as the round trip latency of the network above which files should be transparently cached in the Offline Files cache. If the round trip latency of the network is less than 60ms, reads to remote files will not be cached.
+This policy setting is triggered by the configured round trip network latency value. We recommend using this policy  setting when the network connection to the server is slow. For example, you can configure a value of 60 ms as the round trip latency of the network above which files should be transparently cached in the Offline Files cache. If the round trip latency of the network is less than 60ms, reads to remote files will not be cached.
 
-If you do not configure this setting, remote files will be not be transparently cached on end-user clients.</string>
-      <string id="Pol_ExclusionListSettings">Exclude files from being cached </string>
-      <string id="Pol_ExclusionListSettings_Help">This policy enables administrators to exclude certain file types from being made available offline. 
+If you enable this policy setting, transparent caching is enabled and configurable.
 
-You need to specify file extensions of the file types that should be excluded. A user will then be unable to create a file of this type in the folders that have been made available offline. 
-      </string>
+If you disable or do not configure this policy setting, remote files will be not be transparently cached on client computers.</string>
+      <string id="Pol_ExclusionListSettings">Enable file screens</string>
+      <string id="Pol_ExclusionListSettings_Help">This policy setting enables administrators to block certain file types from being created in the folders that have been made available offline.
+
+If you enable this policy setting, a user will be unable to create files with the specified file extensions in any of the folders that have been made available offline.
+
+If you disable or do not configure this policy setting, a user can create a file of any type in the folders that have been made available offline.</string>
+      <string id="Pol_SyncOnCostedNetwork">Enable file synchronization on costed networks</string>
+      <string id="Pol_SyncOnCostedNetwork_Help">This policy setting determines whether offline files are synchronized in the background when it could result in extra charges on cell phone or broadband plans.
+
+If you enable this setting, synchronization can occur in the background when the user's network is roaming, near, or over the plan's data limit.  This may result in extra charges on cell phone or broadband plans.
+
+If this setting is disabled or not configured, synchronization will not run in the background on network folders when the user's network is roaming, near, or over the plan's data limit. The network folder must also be in "slow-link" mode, as specified by the "Configure slow-link mode" policy to avoid network usage.</string>
     </stringTable>
     <presentationTable>
       <presentation id="Pol_AlwaysPinSubFolders">
@@ -373,11 +394,6 @@ You need to specify file extensions of the file types that should be excluded. A
         <text> </text>
         <decimalTextBox refId="Lbl_DefCacheSizeSpin" defaultValue="1000" spinStep="100">Default cache size: </decimalTextBox>
       </presentation>
-      <presentation id="Pol_Enabled">
-        <text>When enabled, files from auto-cache shared folders are cached on</text>
-        <text>the local computer. Users can also select specific folders and</text>
-        <text>files to always be available when working offline.</text>
-      </presentation>
       <presentation id="Pol_EventLoggingLevel_1">
         <text> </text>
         <decimalTextBox refId="Lbl_EventLoggingLevelSpin" defaultValue="0">Enter [0-3]: </decimalTextBox>
@@ -399,7 +415,7 @@ You need to specify file extensions of the file types that should be excluded. A
       <presentation id="Pol_ExtExclusionList">
         <text>Files may be excluded from caching on auto-cache shared folders based</text>
         <text>on their extension. Enter a list of extensions to be excluded. Extensions</text>
-        <text>must be preceded by an asterisk and period. "e.g. *.dbf;*.ndx;*.lnk</text>
+        <text>must be preceded by an asterisk and period. e.g. "*.dbf;*.ndx;*.lnk"</text>
         <text> </text>
         <textBox refId="Lbl_ExtExclusionListEdit">
           <label>Extensions: </label>
@@ -537,7 +553,7 @@ You need to specify file extensions of the file types that should be excluded. A
       </presentation>
       <presentation id="Pol_ExclusionListSettings">
         <text>Enter semi-colon separated file extensions that you want to be excluded from being made available offline by Offline Files. </text>
-        <text>Extensions must be preceded by an asterisk and period. "e.g. *.dbf;*.jpg"</text>
+        <text>Extensions must be preceded by an asterisk and period. e.g. "*.dbf;*.jpg"</text>
         <text> </text>
         <textBox refId="Lbl_ExclusionListSettingsList">
           <label>Extensions: </label>

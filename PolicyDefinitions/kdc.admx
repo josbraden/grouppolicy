@@ -36,6 +36,63 @@
         <text id="ForestSearchList" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\KDC\Parameters" valueName="ForestSearchList" required="true" />
       </elements>
     </policy>
+    <policy name="CbacAndArmor" class="Machine" displayName="$(string.CbacAndArmor)" explainText="$(string.CbacAndArmor_explain)" presentation="$(presentation.CbacAndArmor)" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\KDC\Parameters" valueName="EnableCbacAndArmor">
+      <parentCategory ref="KDC" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+        <enum id="CbacAndArmor_Levels" valueName="CbacAndArmorLevel">
+          <item displayName="$(string.NoCbacAndArmor)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.MixModeCbacAndArmor)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+          <item displayName="$(string.FullModeCbacAndArmor)">
+            <value>
+              <decimal value="2" />
+            </value>
+          </item>
+          <item displayName="$(string.FullModeCbacAndRequireArmor)">
+            <value>
+              <decimal value="3" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="TicketSizeThreshold" class="Machine" displayName="$(string.TicketSizeThreshold)" explainText="$(string.TicketSizeThreshold_explain)" presentation="$(presentation.TicketSizeThreshold)" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\KDC\Parameters" valueName="EnableTicketSizeThreshold">
+      <parentCategory ref="KDC" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+        <decimal id="TicketSizeThreshold" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\KDC\Parameters" valueName="TicketSizeThreshold" required="true" minValue="12000" maxValue="2147483647"/>
+      </elements>
+    </policy>
+    <policy name="RequestCompoundId" class="Machine" displayName="$(string.RequestCompoundId)" explainText="$(string.RequestCompoundId_explain)" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\KDC\Parameters" valueName="RequestCompoundId">
+      <parentCategory ref="KDC" />
+      <supportedOn ref="windows:SUPPORTED_Windows_6_3" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
   </policies>
 
 </policyDefinitions>

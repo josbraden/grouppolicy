@@ -1,335 +1,419 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>הזן שם תצוגה כאן</displayName>
-  <description>הזן תיאור כאן</description>
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
   <resources>
     <stringTable>
       <string id="Netlogon">Net Logon</string>
-      <string id="Netlogon_AllowSingleLabelDnsDomain">מיקום בקרי התחום המארחים תחום עם שם DNS בעל תווית אחת</string>
-      <string id="Netlogon_AllowSingleLabelDnsDomain_Help">ציון אם המחשבים עליהם חלה הגדרה זו מנסים לזהות שם DNS של שמות תחומים בעלי תווית אחת.
+      <string id="Netlogon_AllowSingleLabelDnsDomain">Use DNS name resolution with a single-label domain name instead of NetBIOS name resolution to locate the DC</string>
+      <string id="Netlogon_AllowSingleLabelDnsDomain_Help">This policy setting specifies whether the computers to which this setting is applied attempt DNS name resolution of a single-label domain names.
 
-כברירת מחדל, כאשר מחשב (או מאתר בקר התחום הפועל במחשב, ליתר דיוק) צריך לאתר בקר תחום המארח תחום של Active Directory, עם שם בעל תווית אחת, המחשב משתמש באופן בלעדי בזיהוי שם NetBIOS, אך לא בזיהוי שם DNS, אלא אם המחשב מצורף ליער של Active Directory, בו לפחות לתחום אחת יש שם DNS בעל תווית אחת. 
+By default, the behavior specified in the AllowDnsSuffixSearch is used. If the AllowDnsSuffixSearch policy is disabled, then NetBIOS name resolution is used exclusively, to locate a domain controller hosting an Active Directory domain specified with a single-label name.
 
-אם תהפוך את ההגדרה לזמינה, מחשבים שעליהם היא חלה ינסו לאתר בקר תחום המארח תחום של Active Directory עם שם בעל תווית אחת, באמצעות זיהוי שם DNS.
+If you enable this policy setting, computers to which this policy is applied will attempt to locate a domain controller hosting an Active Directory domain specified with a single-label name using DNS name resolution.
 
-אם תהפוך את ההגדרה ללא זמינה, מחשבים שעליהם היא חלה, ינסו לאתר בקר תחום המארח תחום של Active Directory עם שם בעל תווית אחת, באמצעות זיהוי שם NetBIOS בלבד, אך לא באמצעות זיהוי שם DNS, אלא אם המחשב מחפש תחום עם שם DNS בעל תווית אחת הקיים ביער של Active Directory אשר אליו מצורף מחשב זה.
+If you disable this policy setting, computers to which this setting is applied will use the AllowDnsSuffixSearch policy, if it is not disabled or perform NetBIOS name resolution otherwise, to attempt to locate a domain controller that hosts an Active Directory domain specified with a single-label name. the computers will not the DNS name resolution in this case, unless the computer is searching for a domain with a single label DNS name that exists in the Active Directory forest to which this computer is joined.
 
-אם תצורתה של הגדרה זו לא נקבעה, היא לא תוחל על אף מחשב ומחשבים ישתמשו בהגדרות המקומיות שלהם.</string>
-      <string id="Netlogon_AutoSiteCoverage">כיסוי אוטומטי של אתר על-ידי רשומות מאתר בקר התחום של שרת שירות שמות התחום (DNS)</string>
-      <string id="Netlogon_AutoSiteCoverage_Help">קביעה אם בקרי תחום (DC) ירשמו באופן דינאמי רשומות SRV של מאתר בקר תחום ייחודיות לאתר עבור האתר הקרוב ביותר שבו לא קיים בקר תחום לתחום זהה (או לא קיים קטלוג כללי עבור אותו יער). רשומות ה- DNS של מאתר בקר התחום נרשמות באופן דינאמי על-ידי שירות Net Logon ומשמשות לאיתור בקר התחום.
+If you do not configure this policy setting, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="Netlogon_AllowDnsSuffixSearch">Use DNS name resolution when a single-label domain name is used, by appending different registered DNS suffixes, if the AllowSingleLabelDnsDomain setting is not enabled.</string>
+      <string id="Netlogon_AllowDnsSuffixSearch_Help">This policy setting specifies whether the computers to which this setting is applied attemps DNS name resolution of single-lablel domain names, by appending different registered DNS suffixes, and uses NetBIOS name resolution only if DNS name resolution fails. This policy, including the specified default behavior, is not used if the AllowSingleLabelDnsDomain policy setting is enabled.
 
-אם הגדרה זו זמינה, בקרי התחום (DC) עליהם היא חלה ירשמו באופן דינאמי רשומות SRV של מאתר בקר תחום ייחודיות לאתר עבור האתר הקרוב ביותר שבו לא קיים בקר תחום לתחום זהה (או לא קיים קטלוג כללי עבור אותו יער).
+By default, when no setting is specified for this policy, the behavior is the same as explicitly enabling this policy, unless the AllowSingleLabelDnsDomain policy setting is enabled.
 
-אם תהפוך הגדרה זו ללא זמינה, בקרי התחום לא ירשמו רשומות DNS SRV של מאתר בקר תחום ספציפי לאתר עבור כל אתר אחר, מלבד האתר שלהם עצמם.
+If you enable this policy setting, when the AllowSingleLabelDnsDomain policy is not enabled, computers to which this policy is applied, will locate a domain controller hosting an Active Directory domain specified with a single-label name, by appending different registered DNS suffixes to perform DNS name resolution. The single-label name is not used without appending DNS suffixes unless the computer is joined to a domain that has a single-label DNS name in the Active Directory forest. NetBIOS name resolution is performed on the single-label name only, in the event that DNS resolution fails.
 
-אם תצורתה של הגדרה זו לא נקבעה, היא לא תחול על בקרי תחום והם ישתמשו בתצורה המקומית שלהם.</string>
-      <string id="Netlogon_AvoidPdcOnWan">צור קשר עם בקר תחום ראשי (PDC) במקרה של כשל בכניסה למערכת</string>
-      <string id="Netlogon_AvoidPdcOnWan_Help">קביעה אם על בקר תחום (DC) לנסות לוודא עם ה- PDC את הסיסמה שסופקה על-ידי הלקוח, במידה שבקר התחום נכשל באימות הסיסמה.
+If you disable this policy setting, when the AllowSingleLabelDnsDomain policy is not enabled, computers to which this policy is applied, will only use NetBIOS name resolution to attempt to locate a domain controller hosting an Active Directory domain specified with a single-label name. The computers will not attempt DNS name resolution in this case, unless the computer is searching for a domain with a single label DNS name to which this computer is joined, in the Active Directory forest.
+</string>
+      <string id="Netlogon_AutoSiteCoverage">Use automated site coverage by the DC Locator DNS SRV Records</string>
+      <string id="Netlogon_AutoSiteCoverage_Help">This policy setting determines whether domain controllers (DC) will dynamically register DC Locator site-specific SRV records for the closest sites where no DC for the same domain exists (or no Global Catalog for the same forest exists). These DNS records are dynamically registered by the Net Logon service, and they are used to locate the DC.
 
-יצירת קשר עם בקר התחום הראשי (PDC) מועילה במקרה שסיסמת הלקוח שונתה לאחרונה וטרם הופצה אל בקר התחום. ייתכן שמשתמשים ירצו להפוך תכונה זו ללא זמינה אם ה- PDC ממוקם על חיבור WAN איטי.
+If you enable this policy setting, the DCs to which this setting is applied dynamically register DC Locator site-specific DNS SRV records for the closest sites where no DC for the same domain, or no Global Catalog for the same forest, exists.
 
-כדי להפוך תכונה זו לזמינה, לחץ על 'זמין'.
+If you disable this policy setting, the DCs will not register site-specific DC Locator DNS SRV records for any other sites but their own.
 
-כדי להפוך תכונה זו ללא זמינה, לחץ על 'לא זמין'.</string>
-      <string id="Netlogon_BackgroundRetryInitialPeriod">הגדרת ניסיון חוזר ראשון של 'גילוי DC' עבור מתקשרים ברקע</string>
-      <string id="Netlogon_BackgroundRetryInitialPeriod_Help">כאשר יישומים המבצעים חיפושים תקופתיים של בקרי תחום (DC) אינם מצליחים למצוא DC, הערך המוגדר בהגדרה זו קובע את מספר השניות שיחלוף בטרם הנסיון הראשון.
+If you do not configure this policy setting, it is not applied to any DCs, and DCs use their local configuration.</string>
+      <string id="Netlogon_AvoidPdcOnWan">Contact PDC on logon failure</string>
+      <string id="Netlogon_AvoidPdcOnWan_Help">This policy setting defines whether a domain controller (DC) should attempt to verify the password provided by a client with the PDC emulator if the DC failed to validate the password.
 
-ערך ברירת המחדל עבור הגדרה זו הוא 10 דקות (‎10*60). הערך המרבי עבור הגדרה זו הוא 49 ימים (0x49*24*60*60=4233600). הערך המזערי עבור הגדרה זו הוא 0.
+Contacting the PDC emulator is useful in case the client’s password was recently changed and did not propagate to the DC yet. Users may want to disable this feature if the PDC emulator is located over a slow WAN connection.
 
-הגדרה זו תקפה רק עבור מתקשרים של DsGetDcName אשר ציינו את הדגל DS_BACKGROUND_ONLY.
+If you enable this policy setting, the DCs to which this policy setting applies will attempt to verify a password with the PDC emulator if the DC fails to validate the password.
 
-אם הערך של ההגדרה קטן מהערך שצוין במפתח המשני NegativeCachePeriod, ייעשה שימוש בערך של המפתח המשני NegativeCachePeriod.
+If you disable this policy setting, the DCs will not attempt to verify any passwords with the PDC emulator. 
 
-אזהרה: אם הערך עבור ההגדרה גדול מדי, לקוחות לא ינסו למצוא בקרי תחום שלא היו זמינים תחילה. אם הערך שנקבע בהגדרה קטן מאוד ובקר התחום אינו זמין, התעבורה שתיגרם על-ידי חיפושי בקר תחום תקופתיים עשויה להיות חריגה.</string>
-      <string id="Netlogon_BackgroundRetryMaximumPeriod">הגדרת מרווח זמן מרבי בין נסיונות חוזרים של 'גילוי DC' עבור מתקשרים ברקע</string>
-      <string id="Netlogon_BackgroundRetryMaximumPeriod_Help">כאשר יישומים המבצעים חיפושים תקופתיים של בקרי תחום (DC) אינם מצליחים למצוא DC, הערך המוגדר בהגדרה זו קובע את מרווח הזמן המרבי המותר עבור ביצוע נסיונות חוזרים .
+If you do not configure this policy setting, it is not applied to any DCs.</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod">Use initial DC discovery retry setting for background callers</string>
+      <string id="Netlogon_BackgroundRetryInitialPeriod_Help">This policy setting determines the amount of time (in seconds) to wait before the first retry for applications that perform periodic searches for domain controllers (DC) that are unable to find a DC.
 
-לדוגמה, המרווחים בין נסיונות חוזרים יכול להיות 10 דקות, אחר כך 20 דקות ואחר כך 40 דקות, אולם כאשר המירווח מגיע לערך שנקבע בהגדרה, הוא הופך למרווח בין נסיונות חוזרים עבור כל הנסיונות החוזרים הבאים עד לערך שנקבע ב'הגדרת ניסיון חוזר אחרון של גילוי DC'.
+The default value for this setting is 10 minutes (10*60). The maximum value for this setting is 49 days (0x49*24*60*60=4233600). The minimum value for this setting is 0.
 
-ערך ברירת המחדל עבור הגדרה זו הוא 60 דקות (‎60*60). הערך המרבי עבור הגדרה זו הוא 49 ימים (0x49*24*60*60=4233600). הערך המזערי עבור הגדרה זו הוא 0.
+This setting is relevant only to those callers of DsGetDcName that have specified the DS_BACKGROUND_ONLY flag.
 
-אם הערך בהגדרה קטן מהערך שצוין עבור 'הגדרת ניסיון חוזר ראשון של גילוי DC', ייעשה שימוש ב'הגדרת ניסיון חוזר ראשון של גילוי DC'.
+If the value of this setting is less than the value specified in the NegativeCachePeriod subkey, the value in the NegativeCachePeriod subkey is used.
 
-אזהרה: אם הערך עבור הגדרה זו גדול מדי, משכי הזמן שיידרשו ללקוח כדי לנסות למצוא DC עשויים להיות ממושכות מאד.
+Warning: If the value for this setting is too large, a client will not attempt to find any DCs that were initially unavailable. If the value set in this setting is very small and the DC is not available, the traffic caused by periodic DC discoveries may be excessive.</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod">Use maximum DC discovery retry interval setting for background callers</string>
+      <string id="Netlogon_BackgroundRetryMaximumPeriod_Help">This policy setting determines  the maximum retry interval allowed when applications performing periodic searches for Domain Controllers (DCs) are unable to find a DC.
 
-אם הערך עבור הגדרה זו קטן מאוד ובקר התחום אינו זמין, הנסיונות החוזרים תכופים עשויים לגרום לתעבורת רשת חריגה.</string>
-      <string id="Netlogon_BackgroundRetryQuitTime">הגדרת ניסיון חוזר אחרון של גילוי תחום עבור מתקשרים ברקע</string>
-      <string id="Netlogon_BackgroundRetryQuitTime_Help">כאשר יישומים המבצעים חיפושים תקופתיים של בקרי תחום (DC) אינם מצליחים למצוא DC, הערך המוגדר בהגדרה זו קובע מתי נסיונות חוזרים אינם מותרים עוד. לדוגמה, אפשר לקבוע שנסיונות חוזרים יתרחשו על פי הערך שנקבע עבור 'מרווח מרבי בין נסיונות חוזרים של גילוי DC', אולם כאשר מושג הערך שנקבע בהגדרה לא יבוצעו נסיונות חוזרים נוספים. אם הערך עבור הגדרה זו קטן מהערך הקיים ב'הגדרת מרווח זמן מרבי בין נסיונות חוזרים של גילוי DC', ייעשה שימוש בערך המוגדר עבור 'הגדרת מרווח זמן מרבי בין נסיונות חוזרים של גילוי DC'.
+For example, the retry intervals may be set at 10 minutes, then 20 minutes and then 40 minutes, but when the interval reaches the value set in this setting, that value becomes the retry interval for all subsequent retries until the value set in Final DC Discovery Retry Setting is reached.
 
-ערך בירת המחדל עבור הגדרה זו הוא לא לחדול מנסיונות חוזרים (0). הערך המרבי עבור הגדרה זו הוא 49 ימים (0x49*24*60*60=4233600). הערך המזערי עבור הגדרה זו הוא 0.
+The default value for this setting is 60 minutes (60*60). The maximum value for this setting is 49 days (0x49*24*60*60=4233600). The minimum value for this setting is 0.
 
-אזהרה: אם הערך עבור הגדרה קטן מדי, לקוחות יפסיקו לנסות למצוא תחום מוקדם מדי.</string>
-      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod">רענון תקופתי חיובי של מטמון בקר תחום עבור מתקשרים ברקע</string>
-      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod_Help">קובע מתי על ערך מטמון DC מוצלח לבצע ריענון. ההגדרה חלה על תוכניות מתקשרות שמנסות לאתר DC באופן תקופתי, והיא מיושמת לפני החזרת פרטי ה-DC לתוכנית המתקשרת. ערך ברירת המחדל עבור ההגדרה הוא אינסופי (4294967200). הערך המרבי הוא (4294967200), והזמן המרבי שאינו נחשב כאינסופי הוא 49 ימים (49‎*24*60*60=4233600). כל ערך הגדול ממנו נחשב לאינסופי. הערך המרבי להגדרה הוא לרענן תמיד (0).</string>
-      <string id="Netlogon_DC_Locator_DNS_Records">שירות שמות תחום (DNS) של רשומות המאתר של בקר התחום</string>
-      <string id="Netlogon_DebugFlag">רמת פלט איתור הבאגים של קובץ יומן הרישום</string>
-      <string id="Netlogon_DebugFlag_Help">ציון רמת פלט איתור הבאגים עבור שירות Net Logon.
+If the value for this setting is smaller than the value specified for the Initial DC Discovery Retry Setting, the Initial DC Discovery Retry Setting is used.
 
-שירות Net Logon מעביר פלט של מידע איתור באגים לקובץ יומן הרישום netlogon.log בספריה ‎%windir%\debug. כברירת מחדל, לא נרשם מידע איתור באגים.
+Warning: If the value for this setting is too large, a client may take very long periods to try to find a DC.
 
-אם תנפוך הגדרה זו לזמינה ותציין ערך שונה מאפס, מידע איתור הבאגים יירשם בקובץ.  ערכים גבוהים יותר מביאים לרישום מפורט יותר; הערך 536936447 משמש בדרך כלל כהגדרה מיטבית.
+If the value for this setting is too small and the DC is not available, the frequent retries may produce excessive network traffic.</string>
+      <string id="Netlogon_BackgroundRetryQuitTime">Use final DC discovery retry setting for background callers</string>
+      <string id="Netlogon_BackgroundRetryQuitTime_Help">This policy setting determines when retries are no longer allowed for applications that perform periodic searches for domain controllers (DC) are unable to find a DC. For example, retires may be set to occur according to the Use maximum DC discovery retry interval policy setting, but when the value set in this policy setting is reached, no more retries occur. If a value for this policy setting is smaller than the value in the Use maximum DC discovery retry interval policy setting, the value for Use maximum DC discovery retry interval policy setting is used.
 
-אם תציין אפס עבור הגדרה זו, יתרחש אופן הפעולה המוגדר כברירת מחדל כמתואר לעיל.
+The default value for this setting is to not quit retrying (0). The maximum value for this setting is 49 days (0x49*24*60*60=4233600). The minimum value for this setting is 0.
 
-אם תהפוך הגדרה זו ללא זמינה או אם לא תקבע את תצורתה, יתרחש אופן הפעולה המוגדר כברירת מחדל כמתואר לעיל.</string>
-      <string id="Netlogon_DnsAvoidRegisterRecords">רשומות של שירות שמות התחום (DNS) של מאתר בקר התחום שלא נרשמו על-ידי בקרי התחום</string>
-      <string id="Netlogon_DnsAvoidRegisterRecords_Help">קובע אם רשומות שירות שמות התחום (DNS) של מאתר בקר התחום (DC) אינן נרשמות על-ידי שירות Netlogon.
+Warning: If the value for this setting is too small, a client will stop trying to find a DC too soon.</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod">Use positive periodic DC cache refresh for background callers</string>
+      <string id="Netlogon_BackgroundSuccessfulRefreshPeriod_Help">This policy setting determines when a successful DC cache entry is refreshed. This policy setting is applied to caller programs that periodically attempt to locate DCs, and it is applied before  returning the DC information to the caller program. The default value for this setting is infinite (4294967200). The maximum value for this setting is (4294967200), while the maximum that is not treated as infinity is 49 days (49*24*60*60=4233600). Any larger value is treated as infinity. The minimum value for this setting is to always refresh (0).</string>
+      <string id="Netlogon_DC_Locator_DNS_Records">DC Locator DNS Records</string>
+      <string id="Netlogon_DebugFlag">Specify log file debug output level</string>
+      <string id="Netlogon_DebugFlag_Help">This policy setting specifies the level of debug output for the Net Logon service.
 
-כדי להפוך את ההגדרה לזמינה, בחר באפשרות הפוך לזמין, וציין רשימת עזרי זכירה מופרדת על-ידי רווחים (הנחיות) עבור רשומות שירות שמות התחום (DNS) של מאתר בקר התחום, אשר לא יירשמו על-ידי בקרי התחום שעליהם חלה מדיניות זו.
+The Net Logon service outputs debug information to the log file netlogon.log in the directory %windir%\debug. By default, no debug information is logged.
 
-בחר אמצעי זכירה מתוך הרשימה הבאה:
+If you enable this policy setting and specify a non-zero value, debug information will be logged to the file.  Higher values result in more verbose logging; the value of 536936447 is commonly used as an optimal setting.
 
-אמצעי זכירה          סוג   רשומת DNS
+If you specify zero for this policy setting, the default behavior occurs as described above.
 
-LdapIpAddress    A     &lt;DnsDomainName&gt; Ldap             SRV   _ldap._tcp.&lt;DnsDomainName&gt; LdapAtSite       SRV   _ldap._tcp.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt; Pdc              SRV   _ldap._tcp.pdc._msdcs.&lt;DnsDomainName&gt; Gc               SRV   _ldap._tcp.gc._msdcs.&lt;DnsForestName&gt; GcAtSite         SRV   _ldap._tcp.&lt;SiteName&gt;._sites.gc._msdcs.&lt;DnsForestName&gt; DcByGuid         SRV   _ldap._tcp.&lt;DomainGuid&gt;.domains._msdcs.&lt;DnsForestName&gt; GcIpAddress      A     _gc._msdcs.&lt;DnsForestName&gt; DsaCname         CNAME &lt;DsaGuid&gt;._msdcs.&lt;DnsForestName&gt; Kdc              SRV   _kerberos._tcp.dc._msdcs.&lt;DnsDomainName&gt; KdcAtSite        SRV    _kerberos._tcp.dc._msdcs.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt; Dc               SRV   _ldap._tcp.dc._msdcs.&lt;DnsDomainName&gt; DcAtSite         SRV   _ldap._tcp.&lt;SiteName&gt;._sites.dc._msdcs.&lt;DnsDomainName&gt; Rfc1510Kdc       SRV   _kerberos._tcp.&lt;DnsDomainName&gt; Rfc1510KdcAtSite SRV   _kerberos._tcp.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt; GenericGc        SRV   _gc._tcp.&lt;DnsForestName&gt; GenericGcAtSite  SRV   _gc._tcp.&lt;SiteName&gt;._sites.&lt;DnsForestName&gt; Rfc1510UdpKdc    SRV   _kerberos._udp.&lt;DnsDomainName&gt; Rfc1510Kpwd      SRV   _kpasswd._tcp.&lt;DnsDomainName&gt; Rfc1510UdpKpwd   SRV   _kpasswd._udp.&lt;DnsDomainName&gt;
+If you disable this policy setting or do not configure it, the default behavior occurs as described above.</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords">Specify DC Locator DNS records not registered by the DCs</string>
+      <string id="Netlogon_DnsAvoidRegisterRecords_Help">This policy setting determines which DC Locator DNS records are not registered by the Net Logon service.
 
-אם הגדרה זו אינה זמינה, מחשבי בקר תחום שתצורתם נקבעה לבצע רישום דינאמי של רשומות שירות שמות התחום (DNS) של מאתר בקר התחום ירשמו את כל רשומות משאבי DNS של מאתר בקר התחום.
+If you enable this policy setting, select Enabled and specify a list of space-delimited mnemonics (instructions) for the DC Locator DNS records that will not be registered by the DCs to which this setting is applied.
 
-אם הגדרה זו לא תוחל על בקרי התחום, הם ישתמשו בתצורה המקומית שלהם.</string>
-      <string id="Netlogon_DnsRefreshInterval">רענן את המרווח של רשומות שירות שמות התחום (DNS) של מאתר בקר התחום</string>
-      <string id="Netlogon_DnsRefreshInterval_Help">ציון מרווח הזמן לרענון רשומות משאבי שירות שמות התחום (DNS) של מאתר בקר תחום עבור בקרי התחום שעליהם הגדרה זו חלה. רשומות DNS אלה נרשמות באופן דינאמי על-ידי שירות הכניסה לרשת ומשמשות את אלגוריתם המאתר כדי לאתר בקר תחום. ניתן להחיל הגדרה זו על בקרי תחום המשתמשים בעדכון דינאמי בלבד.
+Select the mnemonics from the following list:
 
-בקרי תחום שתצורתם נקבעה לבצע רישום דינאמי של רשומות משאבי DNS של מאתר בקר התחום, רושמים באופן תקופתי את הרשומות שלהם בשרתי DNS, גם אם נתוני הרשומות שלהם לא השתנו. אם תצורת שרתי שירות שמות התחום (DNS) מוסמכים נקבעה לבצע ניקוי של הרשומות הישנות, רישום זה נדרש כדי להורות לשרתי ה- DNS המוגדרים למחוק אוטומטית רשומות ישנות, שרשומות אלה תקפות ויש לשמור אותן במסד הנתונים.
+Mnemonic         Type  DNS Record
 
-אזהרה: אם רשומות המשאב שירות שמות התחום (DNS) רשומות באזורים שבהם מופעל ניקוי, אסור שהערך של הגדרה זו יהיה ארוך יותר ממרווח הרענון המוגדר עבור אזורים אלה. הגדרת מרווח רענון הרישום לערך ארוך יותר ממרווח הרענון של אזורי שירות שמות התחום (DNS) עלול לגרום למחיקה בלתי רצויה של רשומות משאבי A ו-PTR.
+LdapIpAddress    A     &lt;DnsDomainName&gt;
+Ldap             SRV   _ldap._tcp.&lt;DnsDomainName&gt;
+LdapAtSite       SRV   _ldap._tcp.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt;
+Pdc              SRV   _ldap._tcp.pdc._msdcs.&lt;DnsDomainName&gt;
+Gc               SRV   _ldap._tcp.gc._msdcs.&lt;DnsForestName&gt;
+GcAtSite         SRV   _ldap._tcp.&lt;SiteName&gt;._sites.gc._msdcs.&lt;DnsForestName&gt;
+DcByGuid         SRV   _ldap._tcp.&lt;DomainGuid&gt;.domains._msdcs.&lt;DnsForestName&gt;
+GcIpAddress      A     gc._msdcs.&lt;DnsForestName&gt;
+DsaCname         CNAME &lt;DsaGuid&gt;._msdcs.&lt;DnsForestName&gt;
+Kdc              SRV   _kerberos._tcp.dc._msdcs.&lt;DnsDomainName&gt;
+KdcAtSite        SRV   _kerberos._tcp.&lt;SiteName&gt;._sites.dc._msdcs.&lt;DnsDomainName&gt;
+Dc               SRV   _ldap._tcp.dc._msdcs.&lt;DnsDomainName&gt;
+DcAtSite         SRV   _ldap._tcp.&lt;SiteName&gt;._sites.dc._msdcs.&lt;DnsDomainName&gt;
+Rfc1510Kdc       SRV   _kerberos._tcp.&lt;DnsDomainName&gt;
+Rfc1510KdcAtSite SRV   _kerberos._tcp.&lt;SiteName&gt;._sites.&lt;DnsDomainName&gt;
+GenericGc        SRV   _gc._tcp.&lt;DnsForestName&gt;
+GenericGcAtSite  SRV   _gc._tcp.&lt;SiteName&gt;._sites.&lt;DnsForestName&gt;
+Rfc1510UdpKdc    SRV   _kerberos._udp.&lt;DnsDomainName&gt;
+Rfc1510Kpwd      SRV   _kpasswd._tcp.&lt;DnsDomainName&gt;
+Rfc1510UdpKpwd   SRV   _kpasswd._udp.&lt;DnsDomainName&gt;
 
-כדי לציין את מרווח רענון הרישום, לחץ על 'Enable' ולאחר מכן הזן ערך גדול מ- 1800. זכור, ערך זה מציין את מרווח רענון הרישום בשניות, לדוגמה, 3600 שניות הן 60 דקות.
+If you disable this policy setting, DCs configured to perform dynamic registration of DC Locator DNS records register all DC Locator DNS resource records.
 
-אם תצורתה של הגדרה זו לא נקבעה, היא לא תחול על בקרי תחום והם ישתמשו בתצורה המקומית שלהם.</string>
-      <string id="Netlogon_DnsTtl">קביעת ערך אורך חיים (TTL) ברשומות מאתר בקר התחום של שרת שירות שמות התחום (DNS)</string>
-      <string id="Netlogon_DnsTtl_Help">ציון הערך עבור השדה אורך חיים (TTL) ברשומות משאבי SRV שנרשמות על-ידי כניסה לרשת. רשומות ה- DNS של מאתר בקר התחום נרשמות באופן דינאמי על-ידי שירות Net Logon ומשמשות לאיתור בקר התחום.
+If you do not configure this policy setting, DCs use their local configuration.</string>
+      <string id="Netlogon_DnsRefreshInterval">Specify Refresh Interval of the DC Locator DNS records</string>
+      <string id="Netlogon_DnsRefreshInterval_Help">This policy setting specifies the Refresh Interval of the DC Locator DNS resource records for DCs to which this setting is applied. These DNS records are dynamically registered by the Net Logon service and are used by the DC Locator algorithm to locate the DC. This setting may be applied only to DCs using dynamic update.
 
-כדי לציין את ה- TTL עבור רשומות מאתר בקר התחום של שרת שירות שמות התחום (DNS), לחץ על זמין והזן ערך בשניות (לדוגמה, הערך "900" הוא 15 דקות).
+DCs configured to perform dynamic registration of the DC Locator DNS resource records periodically reregister their records with DNS servers, even if their records’ data has not changed. If authoritative DNS servers are configured to perform scavenging of the stale records, this reregistration is required to instruct the DNS servers configured to automatically remove (scavenge) stale records that these records are current and should be preserved in the database.
 
-אם תצורתה של הגדרה זו לא נקבעה, היא לא תחול על בקרי תחום והם ישתמשו בתצורה המקומית שלהם.</string>
-      <string id="Netlogon_ExpectedDialupDelay">השהיית החיוג הצפויה בכניסה</string>
-      <string id="Netlogon_ExpectedDialupDelay_Help">ציון הזמן הנוסף שעל המחשב להמתין לתגובת בקר התחום (DC) בעת כניסה לרשת.
+Warning: If the DNS resource records are registered in zones with scavenging enabled, the value of this setting should never be longer than the Refresh Interval configured for these zones. Setting the Refresh Interval of the DC Locator DNS records to longer than the Refresh Interval of the DNS zones may result in the undesired deletion of DNS resource records.
 
-כדי לציין את השהיית החיוג הצפויה בכניסה, לחץ על זמין והזן ערך בשניות (לדוגמה, הערך 60 הוא 1 דקות).
+To specify the Refresh Interval of the DC records, click Enabled, and then enter a value larger than 1800. This value specifies the Refresh Interval of the DC records in seconds (for example, the value 3600 is 60 minutes).
 
-אם תצורתה של הגדרה זו לא נקבעה, היא לא תוחל על אף מחשב ומחשבים ישתמשו בהגדרות המקומיות שלהם.</string>
-      <string id="Netlogon_GcSiteCoverage">אתרים המכוסים על-ידי רשומות מאתר הקטלוגים הכללים של שרת שירות שמות התחום (DNS)</string>
-      <string id="Netlogon_GcSiteCoverage_Help">הגדרת האתרים שעבורם הקטלוגים הכללים (GC) צריכים לרשום רשומות משאבי DNS SRV של מאתר קטלוגיים כלליים ספציפיות-לאתר. רשומות אלה נרשמות בנוסף לרשומות ה- SRV הספציפיות לאתר שנרשמו עבור האתר שבו נמצאים הקטלוגים הכללים, ורשומות שנרשמו על-ידי הקטלוגים הכלליים שהוגדרו לרשום רשומות DNS SRV של מאתר קטלוגים כלליים עבור אותם אתרים ללא קטלוגים כלליים שקרובים ביותר אליו. 
+If you do not configure this policy setting, it is not applied to any DCs, and DCs use their local configuration.</string>
+      <string id="Netlogon_DnsTtl">Set TTL  in the DC Locator DNS Records</string>
+      <string id="Netlogon_DnsTtl_Help">This policy setting specifies the value for the Time-To-Live (TTL) field in SRV resource records that are registered by the Net Logon service. These DNS records are dynamically registered, and they are used to locate the domain controller (DC).
 
-רשומות ה- DNS של מאתר הקטלוגים הכלליים ורשומות ה- SRV הספציפיות לאתר נרשמות באופן דינאמי על-ידי שירות הכניסה לרשת ומשמשות לאיתור הקטלוגים הכלליים. אתר Active Directory הוא רשת או רשתות משנה TCP/IP שמחוברות היטב, ומאפשרות למנהלי מערכת לקבוע את תצורת הגישה והשכפול של Active Directory. קטלוג כללי הוא בקר תחום שכולל עותק משוכפל חלקי של כל תחום ב- Active Directory.
+To specify the TTL for DC Locator DNS records, click Enabled, and then enter a value in seconds (for example, the value "900" is 15 minutes).
 
-כדי לציין את האתרים שמכוסים על-ידי רשומות ה- DNS SRV של מאתר הקטלוגים הכלליים, לחץ על זמין והזן את שמות האתרים בתבנית מופרדת באמצעות רווחים.
+If you do not configure this policy setting, it is not applied to any DCs, and DCs use their local configuration.</string>
+      <string id="Netlogon_ExpectedDialupDelay">Specify expected dial-up delay on logon</string>
+      <string id="Netlogon_ExpectedDialupDelay_Help">This policy setting specifies the additional time for the computer to wait for the domain controller’s (DC) response when logging on to the network.
 
-אם לא תצורתה של הגדרה זו לא נקבעה, היא לא תחול על מחשבי קטלוגים כלליים והם ישתמשו בתצורה המקומית שלהם.</string>
-      <string id="Netlogon_LdapSrvPriority">קביעת עדיפות ברשומות מאתר בקר התחום של שרת שירות שמות התחום (DNS)</string>
-      <string id="Netlogon_LdapSrvPriority_Help">ציון השדה עדיפות ברשומות משאבי ה- SRV שנרשמות על-ידי בקרי תחום (DC) שעליהם חלה הגדרה זו. רשומות ה- DNS של מאתר בקר התחום נרשמות באופן דינאמי על-ידי שירות Net Logon ומשמשות לאיתור בקר התחום.
+To specify the expected dial-up delay at logon, click Enabled, and then enter the desired value in seconds (for example, the value "60" is 1 minute).
 
-השדה עדיפות שברשומת ה- SRV קובע את ההעדפה עבור מארחי יעד (שצוינו בשדה יעד שברשומת ה- SRV). לקוחות DNS ששולחים שאילתה עבור רשומות משאבי SRV, מנסים להתחבר למארח הזמין הראשון עם מספר העדיפות הנמוך ביותר שצוין.
+If you do not confihgure this policy setting, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="Netlogon_GcSiteCoverage">Specify sites covered by the GC Locator DNS SRV Records</string>
+      <string id="Netlogon_GcSiteCoverage_Help">This policy setting specifies the sites for which the global catalogs (GC) should register site-specific GC locator DNS SRV resource records. These records are registered in addition to the site-specific SRV records registered for the site where the GC resides, and records registered by a GC configured to register GC Locator DNS SRV records for those sites without a GC that are closest to it. 
 
-כדי לציין את העדיפות ברשומות משאבי ה- DNS SRV של בקרי התחום, לחץ על זמין והזן ערך. טווח הערכים הוא 0 עד 65536.
+The GC Locator DNS records and the site-specific SRV records are dynamically registered by the Net Logon service, and they are used to locate the GC. An Active Directory site is one or more well-connected TCP/IP subnets that allow administrators to configure Active Directory access and replication. A GC is a domain controller that contains a partial replica of every domain in Active Directory.
 
-אם תצורתה של הגדרה זו לא נקבעה, היא לא תחול על בקרי תחום והם ישתמשו בתצורה המקומית שלהם.</string>
-      <string id="Netlogon_LdapSrvWeight">קביעת משקל ברשומות מאתר בקר התחום של שרת שירות שמות התחום (DNS)</string>
-      <string id="Netlogon_LdapSrvWeight_Help">ציון השדה משקל ברשומות משאבי SRV שנרשמות על-ידי בקרי תחום (DC) שעליהם חלה הגדרה זו. רשומות ה- DNS של מאתר בקר התחום נרשמות באופן דינאמי על-ידי שירות Net Logon ומשמשות לאיתור בקר התחום.
+To specify the sites covered by the GC Locator DNS SRV records, click Enabled, and enter the sites' names in a space-delimited format.
 
-ניתן להשתמש בשדה משקל שברשומת ה- SRV בנוסף לערך עדיפות כדי לספק מנגנון איזון עומס כאשר שרתים מרובים מצוינים בשדה יעד רשומות SRV ולכולם נקבעה עדיפות זהה. הסבירות שבה לקוח של שירות שמות התחום (DNS) יבחר אקראית את מארח היעד לחיבור, יחסית לשדה משקל שברשומת ה- SRV.
+If you do not configure this policy setting, it is not applied to any GCs, and GCs use their local configuration.</string>
+      <string id="Netlogon_LdapSrvPriority">Set Priority in the DC Locator DNS SRV records</string>
+      <string id="Netlogon_LdapSrvPriority_Help">This policy setting specifies the Priority field in the SRV resource records registered by domain controllers (DC) to which this setting is applied. These DNS records are dynamically registered by the Net Logon service and are used to locate the DC.
 
-כדי לציין את המשקל ברשומות ה- DNS SRV של מאתר בקר התחום, לחץ על זמין והזן ערך. טווח הערכים הוא 0 עד 65536.
+The Priority field in the SRV record sets the preference for target hosts (specified in the SRV record’s Target field). DNS clients that query for SRV resource records attempt to contact the first reachable host with the lowest priority number listed.
 
-אם תצורתה של הגדרה זו לא נקבעה, היא לא תחול על בקרי תחום והם ישתמשו בתצורה המקומית שלהם.</string>
-      <string id="Netlogon_MaximumLogFileSize">גודל מרבי של קובץ יומן רישום</string>
-      <string id="Netlogon_MaximumLogFileSize_Help">ציון הגודל המרבי, בבתים, של קובץ יומן הרישום netlogon.log בספריה ‎%windir%\debug כאשר הרישום זמין.
+To specify the Priority in the DC Locator DNS SRV resource records, click Enabled, and then enter a value. The range of values is from 0 to 65535.
 
-כברירת מחדל, הגודל המרבי של קובץ יומן הרישום הוא ‎20MB. אם מדיניות זו זמינה, הגודל המרבי של קובץ יומן הרישום מוגדר כגודל שצוין.  כאשר הקובץ מגיע לגודל זה, קובץ יומן הרישום נשמר ב- netlogon.bak ו- netlogon.log נחתך. יש לציין ערך סביר בהתאם לשטח האחסון הזמין.
+If you do not configure this policy setting, it is not applied to any DCs, and DCs use their local configuration.</string>
+      <string id="Netlogon_LdapSrvWeight">Set Weight in the DC Locator DNS SRV records</string>
+      <string id="Netlogon_LdapSrvWeight_Help">This policy setting specifies the Weight field in the SRV resource records registered by the domain controllers (DC) to which this setting is applied. These DNS records are dynamically registered by the Net Logon service, and they are used to locate the DC.
 
-אם הגדרה זו אינה זמינה או אם תצורתה לא נקבעה, אופן הפעולה המוגדר כברירת המחדל יהיה כפי שצוין לעיל.</string>
-      <string id="Netlogon_NdncSiteCoverage">אתרים שמכוסים על-ידי רשומות ה- DNS SRV של מאתר מחיצת ספריית היישום</string>
-      <string id="Netlogon_NdncSiteCoverage_Help">ציון האתרים שעבורם בקרי התחום (DC), שמאחסנים מחיצת ספריית יישום, צריכים לרשום את רשומות משאבי ה- DNS SRV של מאתר בקר התחום הייחודיות למחיצת ספריית היישום. רשומות אלה נרשמות בנוסף לרשומות ה- SRV הספציפיות לאתר שנרשמו עבור האתר שבו נמצא בקר התחום, ורשומות שנרשמו על-ידי בקר התחום שהוגדר לרשום רשומות DNS SRV של מאתר בקר תחום עבור אותם אתרים ללא בקר תחום שקרובים ביותר אליו. 
+The Weight field in the SRV record can be used in addition to the Priority value to provide a load-balancing mechanism where multiple servers are specified in the SRV records Target field and are all set to the same priority. The probability with which the DNS client randomly selects the target host to be contacted is proportional to the Weight field value in the SRV record.
 
-רשומות ה- DNS של מאתר מחיצת ספריית היישום ורשומות ה- SRV הספציפיות לאתר נרשמות באופן דינאמי על-ידי שירות הכניסה לרשת ומשמשות לאיתור בקר התחום הספציפי למחיצת ספריית היישום. אתר Active Directory הוא רשת או רשתות משנה TCP/IP שמחוברות היטב, ומאפשרות למנהלי מערכת לקבוע את תצורת הגישה והשכפול של Active Directory.
+To specify the Weight in the DC Locator DNS SRV records, click Enabled, and then enter a value. The range of values is from 0 to 65535.
 
-כדי לציין את האתרים שמכוסים על-ידי רשומות ה- DNS SRV הספציפיות למחיצת ספריית היישום של מאתר התחום, לחץ על זמין והזן את שמות האתרים בתבנית מופרדת ברווחים.
+If you do not configure this policy setting, it is not applied to any DCs, and DCs use their local configuration.</string>
+      <string id="Netlogon_MaximumLogFileSize">Specify maximum log file size</string>
+      <string id="Netlogon_MaximumLogFileSize_Help">This policy setting specifies the maximum size in bytes of the log file netlogon.log in the directory %windir%\debug when logging is enabled.
 
-אם לא נקבעה תצורתה של הגדרה זו, היא לא תחול על בקרי תחום והם ישתמשו בתצורה המקומית שלהם.</string>
-      <string id="Netlogon_NegativeCachePeriod">הגדרות מטמון גילוי שלילי של בקר התחוםי</string>
-      <string id="Netlogon_NegativeCachePeriod_Help">מגדיר את פרק הזמן (בשניות) שבו מאתר בקר התחום יזכור שבקר תחום לא נמצא בתחום. כאשר הניסיון הבא לאתר DC מתבצע בתוך פרק הזמן שנקבע בהגדרה, 'גילוי DC' ייכשל מיד מבלי לנסות למצוא את ה-DC.
+By default, the maximum size of the log file is 20MB. If you enable this policy setting, the maximum size of the log file is set to the specified size.  Once this size is reached the log file is saved to netlogon.bak and netlogon.log is truncated. A reasonable value based on available storage should be specified.
 
-ערך ברירת המחדל עבור ההגדרה הוא 45 שניות. הערך המרבי עבור הגדרה זו הוא 7 ימים (7‎*24*60*60). הערך המזערי עבור הגדרה זו הוא 0.
+If you disable or do not configure this policy setting, the default behavior occurs as indicated above.</string>
+      <string id="Netlogon_NdncSiteCoverage">Specify sites covered by the application directory partition DC Locator DNS SRV records</string>
+      <string id="Netlogon_NdncSiteCoverage_Help">This policy setting specifies the sites for which the domain controllers (DC) that host the application directory partition should register the site-specific, application directory partition-specific DC Locator DNS SRV resource records. These records are registered in addition to the site-specific SRV records registered for the site where the DC resides, and records registered by a DC configured to register DC Locator DNS SRV records for those sites without a DC that are closest to it. 
 
-אזהרה: אם הערך עבור ההגדרה גדול מדי, לקוחות לא ינסו למצוא בקרי תחום שלא היו זמינים תחילה. אם הערך עבור ההגדרה קטן מדי, לקוחות יחפשו קרי תחום גם אם אין כאלה זמינים.</string>
-      <string id="Netlogon_NetlogonShareCompatibilityMode">תאימות המיקום המשותף של Netlogon</string>
-      <string id="Netlogon_NetlogonShareCompatibilityMode_Help">הגדרה זו קובעת אם המיקום המשותף של Netlogon שנוצר על-ידי שירות Net Logon בבקר תחום צריך לתמוך בתאימות של סמנטיקת שיתוף קבצים עם יישומים קודמים.
+The application directory partition DC Locator DNS records and the site-specific SRV records are dynamically registered by the Net Logon service, and they are used to locate the application directory partition-specific DC. An Active Directory site is one or more well-connected TCP/IP subnets that allow administrators to configure Active Directory access and replication.
 
-כאשר הגדרה זו זמינה, המיקום המשותף של Netlogon יכבד סמנטיקת שיתוף קבצים הנענית לבקשות לגישת קריאה בלעדית לקבצים במיקום המשותף גם כאשר לגורם הקורא יש הרשאת קריאה בלבד.
+To specify the sites covered by the DC Locator application directory partition-specific DNS SRV records, click Enabled, and then enter the site names in a space-delimited format.
 
-כאשר הגדרה זו אינה זמינה או תצורתה לא נקבעה, המיקום המשותף של Netlogon יעניק גישת קריאה משותפת לקבצים במיקום המשותף כאשר מבוקשת גישה בלעדית ולגורם הקורא יש הרשאת קריאה בלבד.
+If you do not configure this policy setting, it is not applied to any DCs, and DCs use their local configuration.</string>
+      <string id="Netlogon_NegativeCachePeriod">Specify negative DC Discovery cache setting</string>
+      <string id="Netlogon_NegativeCachePeriod_Help">This policy setting specifies the amount of time (in seconds) the DC locator remembers that a domain controller (DC) could not be found in a domain. When a subsequent attempt to locate the DC occurs within the time set in this setting, DC Discovery immediately fails, without attempting to find the DC.
 
-כברירת מחדל, המיקום המשותף של Netlogon יעניק גישת קריאה משותפת לקבצים במיקום המשותף כאשר מבוקשת גישה בלעדית.
+The default value for this setting is 45 seconds. The maximum value for this setting is 7 days (7*24*60*60). The minimum value for this setting is 0.
 
-‏‏הערה: המיקום המשותף של Netlogon הוא מיקום משותף שנוצר על-ידי שירות Net Logon לשימוש מחשבי לקוח בתחום. אופן הפעולה המוגדר כברירת מחדל של המיקום המשותף של Netlogon מבטיח שאף יישום בעל הרשאת קריאה בלבד לקבצים במיקום המשותף של Netlogon לא יוכל לנעול את הקבצים על-ידי בקשת גישת קריאה בלעדית, דבר העלול למנוע את עדכון הגדרות המדיניות הקבוצתית במחשבי לקוח בתחום. כאשר הגדרה זו זמינה, יישום המסתמך על היכולת לנעול קבצים במיקום המשותף של Netlogon עם הרשאת קריאה בלבד יוכל למנוע מלקוחות המדיניות הקבוצתית לקרוא את הקבצים, ובאופן כללי תופחת זמינותו של המיקום המשותף של Netlogon בתחום.
+Warning: If the value for this setting is too large, a client will not attempt to find any DCs that were initially unavailable. If the value for this setting is too small, clients will attempt to find DCs even when none are available.</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode">Set Netlogon share compatibility</string>
+      <string id="Netlogon_NetlogonShareCompatibilityMode_Help">This policy setting controls whether or not the Netlogon share created by the Net Logon service on a domain controller (DC) should support compatibility in file sharing semantics with earlier applications.
 
-אם הגדרה זו זמינה, מנהלי תחומים צריכים לוודא שהיישומים היחידים המשתמשים ביכולת הקריאה הבלעדית בתחום הם אלה שאושרו על-ידי המנהל.</string>
-      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">רענון תקופתי חיובי של מטמון בקר תחום עבור מתקשרים שלא-ברקע</string>
-      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod_Help">קביעה מתי על ערך מטמון DC מוצלח לבצע ריענון. ההגדרה חלה על תוכניות מתקשרות שאינן מנסות לאתר DC באופן תקופתי, והיא מיושמת לפני החזרת פרטי ה-DC לתוכנית המתקשרת. הגדרה זו תקפה רק עבור מתקשרים של DsGetDcName אשר ציינו את הדגל DS_BACKGROUND_ONLY.
+If you enable this policy setting, the Netlogon share will honor file sharing semantics that grant requests for exclusive read access to files on the share even when the caller has only read permission.
 
-ערך ברירת המחדל עבור הגדרה זו הוא 30 דקות (1800). הערך המרבי הוא (4294967200), והזמן המרבי שאינו נחשב כאינסופי הוא 49 ימים (49‎*24*60*60=4233600). כל ערך הגדול ממנו נחשב כאינסופי. הערך המרבי להגדרה הוא לרענן תמיד (0).</string>
-      <string id="Netlogon_ScavengeInterval">מירווח בין פעולות ניקוי</string>
-      <string id="Netlogon_ScavengeInterval_Help">קובע את המירווח שבו שירות Netlogon מבצע את פעולות הניקוי הבאות:
+If you disable or do not configure this policy setting, the Netlogon share will grant shared read access to files on the share when exclusive access is requested and the caller has only read permission.
 
-- בודק אם יש לשנות סיסמה בערוץ המאובטח, ומשנה לפי הצורך.
+By default, the Netlogon share will grant shared read access to files on the share when exclusive access is requested.
 
-- בבקרי התחום (DC), מגלה תחום שלא נתגלה עדיין.
+Note: The Netlogon share is a share created by the Net Logon service for use by client machines in the domain. The default behavior of the Netlogon share ensures that no application with only read permission to files on the Netlogon share can lock the files by requesting exclusive read access, which might prevent Group Policy settings from being updated on clients in the domain. When this setting is enabled, an application that relies on the ability to lock files on the Netlogon share with only read permission will be able to deny Group Policy clients from reading the files, and in general the availability of the Netlogon share on the domain will be decreased.
 
-- בבקר תחום ראשי (PDC), מנסה להוסיף את שם NetBIOS &lt;שם_קבוצת_מחשבים&gt;[1B]  אם המערכת טרם הוסיפה אותו בהצלחה.
+If you enable this policy setting, domain administrators should ensure that the only applications using the exclusive read capability in the domain are those approved by the administrator.</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">Specify positive periodic DC Cache refresh for non-background callers</string>
+      <string id="Netlogon_NonBackgroundSuccessfulRefreshPeriod_Help">This policy setting determines when a successful DC cache entry is refreshed. This policy setting is applied to caller programs that do not periodically attempt to locate DCs, and it is applied before the returning the DC information to the caller program. This policy setting is relevant to only those callers of DsGetDcName that have not specified the DS_BACKGROUND_ONLY flag.
 
-כל הפעולות הללו אינן קריטיות. ערך של 15 דקות הוא מיטבי פרט למקרים קיצוניים. לדוגמה, אם DC מופרד מתחום באמצעות קו יקר (למשל ISDN), אפשר להתאים פרמטר זה כלפי מעלה כדי למנוע חיפוש אוטומטי תכוף של DC בתחום מהימנה.
+The default value for this setting is 30 minutes (1800). The maximum value for this setting is (4294967200), while the maximum that is not treated as infinity is 49 days (49*24*60*60=4233600). Any larger value will be treated as infinity. The minimum value for this setting is to always refresh (0).</string>
+      <string id="Netlogon_ScavengeInterval">Set scavenge interval</string>
+      <string id="Netlogon_ScavengeInterval_Help">This policy setting determines the interval at which Netlogon performs the following scavenging operations:
 
-להפעלת ההגדרה לחץ על זמין וציין את המירווח בשניות.</string>
-      <string id="Netlogon_SiteCoverage">אתרים המכוסים על-ידי רשומות מאתר בקר התחום של שרת שירות שמות התחום (DNS)</string>
-      <string id="Netlogon_SiteCoverage_Help">הגדרת האתרים שעבורם בקרי התחום (DC) רושמים את רשומות משאבי ה- DNS SRV של מאתר בקר התחום הספציפיות-לאתר. רשומות אלה נרשמות בנוסף לרשומות ה- SRV הספציפיות לאתר שנרשמו עבור האתר שבו נמצא בקר התחום, ורשומות שנרשמו על-ידי בקר התחום שהוגדר לרשום רשומות DNS SRV של מאתר בקר תחום עבור אותם אתרים ללא בקר תחום שקרובים ביותר אליו. 
+- Checks if a password on a secure channel needs to be modified, and modifies it if necessary.
 
-רשומות ה- DNS של מאתר בקר התחום נרשמות באופן דינאמי על-ידי שירות הכניסה לרשת ומשמשות לאיתור בקר התחום. אתר Active Directory הוא רשת או רשתות משנה TCP/IP שמחוברות היטב, ומאפשרות למנהלי מערכת לקבוע את תצורת הגישה והשכפול של Active Directory.
+- On the domain controllers (DC), discovers a DC that has not been discovered.
 
-כדי לציין את האתרים שמכוסים על-ידי רשומות ה- DNS SRV של מאתר הקטלוגים הכלליים, לחץ על זמין והזן את שמות האתרים בתבנית מופרדת באמצעות רווחים.
+- On the PDC, attempts to add the &lt;DomainName&gt;[1B] NetBIOS name if it hasn’t already been successfully added.
 
-אם לא נקבעה תצורתה של הגדרה זו, היא לא תחול על בקרי תחום והם ישתמשו בתצורה המקומית שלהם.</string>
-      <string id="Netlogon_SiteName">שם אתר</string>
-      <string id="Netlogon_SiteName_Help">ציון אתר Active Directory שאליו משתייכים מחשבים.
+None of these operations are critical. 15 minutes is optimal in all but extreme cases. For instance, if a DC is separated from a trusted domain by an expensive (e.g., ISDN) line, this parameter might be adjusted upward to avoid frequent automatic discovery of DCs in a trusted domain.
 
-אתר Active Directory הוא רשת או רשתות משנה TCP/IP שמחוברות היטב, ומאפשרות למנהלי מערכת לקבוע את תצורת הגישה והשכפול של Active Directory.
+To enable the setting, click Enabled, and then specify the interval in seconds.</string>
+      <string id="Netlogon_SiteCoverage">Specify sites covered by the DC Locator DNS SRV records</string>
+      <string id="Netlogon_SiteCoverage_Help">This policy setting specifies the sites for which the domain controllers (DC) register the site-specific DC Locator DNS SRV resource records. These records are registered in addition to the site-specific SRV records registered for the site where the DC resides, and records registered by a DC configured to register DC Locator DNS SRV records for those sites without a DC that are closest to it. 
 
-להפעלת ההגדרה לחץ על זמין וציין את שם האתר. כאשר לא צוין האתר שאליו שייך מחשב, המחשב מגלה באופן אוטומטי את האתר שלו מה- Active Directory.
+The DC Locator DNS records are dynamically registered by the Net Logon service, and they are used to locate the DC. An Active Directory site is one or more well-connected TCP/IP subnets that allow administrators to configure Active Directory access and replication.
 
-אם תצורתה של הגדרה זו לא נקבעה, היא לא תוחל על אף מחשב ומחשבים ישתמשו בהגדרות המקומיות שלהם.</string>
-      <string id="Netlogon_SysvolShareCompatibilityMode">תאימות המיקום המשותף של Sysvol</string>
-      <string id="Netlogon_SysvolShareCompatibilityMode_Help">הגדרה זו קובעת אם המיקום המשותף של Netlogon שנוצר על-ידי שירות Net Logon בבקר תחום צריך לתמוך בתאימות של סמנטיקת שיתוף קבצים עם יישומים קודמים.
+To specify the sites covered by the DC Locator DNS SRV records, click Enabled, and then enter the sites names in a space-delimited format.
 
-כאשר הגדרה זו זמינה, המיקום המשותף של Sysvol יכבד סמנטיקת שיתוף קבצים הנענית לבקשות לגישת קריאה בלעדית לקבצים במיקום המשותף גם כאשר לגורם הקורא יש הרשאת קריאה בלבד.
+If you do not configure this policy setting, it is not applied to any DCs, and DCs use their local configuration.</string>
+      <string id="Netlogon_SiteName">Specify site name</string>
+      <string id="Netlogon_SiteName_Help">This policy setting specifies the Active Directory site to which computers belong.
 
-כאשר הגדרה זו אינה זמינה או תצורתה לא נקבעה, המיקום המשותף של Sysvol יעניק גישת קריאה משותפת לקבצים במיקום המשותף כאשר מבוקשת גישה בלעדית ולגורם הקורא יש הרשאת קריאה בלבד.
+An Active Directory site is one or more well-connected TCP/IP subnets that allow administrators to configure Active Directory access and replication.
 
-כברירת מחדל, המיקום המשותף של Sysvol יעניק גישת קריאה משותפת לקבצים במיקום המשותף כאשר מבוקשת גישה בלעדית.
+To specify the site name for this setting, click Enabled, and then enter the site name. When the site to which a computer belongs is not specified, the computer automatically discovers its site from Active Directory.
 
-‏‏הערה: המיקום המשותף של Sysvol הוא מיקום משותף שנוצר על-ידי שירות Net Logon לשימוש על-ידי לקוחות מדיניות קבוצתית בתחום. אופן הפעולה המוגדר כברירת מחדל של המיקום המשותף של Sysvol מבטיח שאף יישום בעל הרשאת קריאה בלבד לקבצים במיקום המשותף של Sysvol לא יוכל לנעול את הקבצים על-ידי בקשת גישת קריאה בלעדית, דבר העלול למנוע את עדכון הגדרות המדיניות הקבוצתית במחשבי לקוח בתחום. כאשר הגדרה זו זמינה, יישום המסתמך על היכולת לנעול קבצים במיקום המשותף של Sysvol עם הרשאת קריאה בלבד יוכל למנוע מלקוחות המדיניות הקבוצתית לקרוא את הקבצים, ובאופן כללי תופחת זמינותו של המיקום המשותף של Netlogon בתחום.
+If you do not configure this policy setting, it is not applied to any computers, and computers use their local configuration.</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode">Set SYSVOL share compatibility</string>
+      <string id="Netlogon_SysvolShareCompatibilityMode_Help">This policy setting controls whether or not the SYSVOL share created by the Net Logon service on a domain controller (DC) should support compatibility in file sharing semantics with earlier applications.
 
-אם הגדרה זו זמינה, מנהלי תחומים צריכים לוודא שהיישומים היחידים המשתמשים ביכולת הקריאה הבלעדית בתחום הם אלה שאושרו על-ידי המנהל.</string>
-      <string id="Netlogon_UseDynamicDns">רישום דינאמי של רשומות שירות שמות התחום (DNS) של מאתר בקר התחום</string>
-      <string id="Netlogon_UseDynamicDns_Help">קביעה אם רישום דינאמי של מאתר בקר תחום (DC) של רשומות משאבי DNS יהיה זמין. רשומות DNS אלה נרשמות באופן דינאמי על-ידי שירות הכניסה לרשת ומשמשות את אלגוריתם המאתר כדי לאתר בקר תחום.
+When this setting is enabled, the SYSVOL share will honor file sharing semantics that grant requests for exclusive read access to files on the share even when the caller has only read permission.
 
-אם תהפוך הגדרה זו לזמינה, בקרי התחום שעליהם חלה הגדרה זו ירשמו באופן דינאמי את רשומות משאבי DNS של מאתר בקר התחום דרך חיבורי רשת שניתנים לעדכון של DNS דינאמי.
+When this setting is disabled or not configured, the SYSVOL share will grant shared read access to files on the share when exclusive access is requested and the caller has only read permission.
 
-אם תהפוך הגדרה זו ללא זמינה, בקרי התחום לא ירשמו רשומות משאבי DNS של מאתר בקר תחום.
+By default, the SYSVOL share will grant shared read access to files on the share when exclusive access is requested.
 
-אם לא נקבעה תצורתה של הגדרה זו, היא לא תחול על בקרי תחום והם ישתמשו בתצורה המקומית שלהם.</string>
-      <string id="Netlogon_TryNextClosestSite">נסה את האתר הבא הקרוב ביותר</string>
-      <string id="Netlogon_TryNextClosestSite_Help">השירות 'איתור בקר תחום (DC Locator) משמש לקוחות למציאת בקרי תחום עבור התחום שלהם ב- Active Directory. אופן הפעולה המהווה ברירת מחדל עבור שירות DC Locator הוא למצוא בקר תחום באותו אתר. אם לא נמצא כזה באותו אתר, ייתכן שה- DC Locator יחזיר בקר תחום הנמצא באתר אחר הנמצא במרחק של מספר דילוגי אתרים. קרבת אתר בין שני אתרים נמדדת לפי עלות קישורי האתר ביניהם. אתר ייחשב לקרוב יותר אם יש לו עלות קישור אתר נמוכה יותר מאתר אחר עם עלות קישור גבוהה יותר. התכונה 'נסה אתר הבא קרוב ביותר' מאפשרת ל- DC Locator לנסות לאתר בקר תחום באתר הקרוב ביותר על בסיס עלות קישור אתרים אם לא נמצא בקר תחום באותו אתר. בתרחישים מרובי אתרים, מעבר לתכונה 'נסה אתר הבא הקרוב ביותר' במהלך איתור בקר תחום גורמת לתעבורת הרשת לזרום בצורה חלקה יותר.
+Note: The SYSVOL share is a share created by the Net Logon service for use by Group Policy clients in the domain. The default behavior of the SYSVOL share ensures that no application with only read permission to files on the sysvol share can lock the files by requesting exclusive read access, which might prevent Group Policy settings from being updated on clients in the domain. When this setting is enabled, an application that relies on the ability to lock files on the SYSVOL share with only read permission will be able to deny Group Policy clients from reading the files, and in general the availability of the SYSVOL share on the domain will be decreased.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, תופעל התכונה 'נסה אתר הבא הקרוב ביותר' במחשב בין כל מתאמי הרשת הזמינים שלא נקבעה תצורתם.
+If you enable this policy setting, domain administrators should ensure that the only applications using the exclusive read capability in the domain are those approved by the administrator.</string>
+      <string id="Netlogon_UseDynamicDns">Specify dynamic registration of the DC Locator DNS Records</string>
+      <string id="Netlogon_UseDynamicDns_Help">This policy setting determines if dynamic registration of the domain controller (DC) locator DNS resource records is enabled. These DNS records are dynamically registered by the Net Logon service and are used by the Locator algorithm to locate the DC.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה, התכונה 'נסה אתר הבא הקרוב ביותר' לא תשמש ברירת מחדל במחשב בין כל מתאמי הרשת הזמינים שלא נקבעה תצורתם. עם זאת, אם קריאה של DC Locator מתבצעת באופן מפורש באמצעות הדגל DS_TRY_NEXTCLOSEST_SITE, המערכת לוקחת בחשבון את אופן הפעולה 'נסה אתר הבא הקרוב ביותר'.
+If you enable this policy setting, DCs to which this setting is applied dynamically register DC Locator DNS resource records through dynamic DNS update-enabled network connections.
 
-אם לא תקבע את תצורתה של הגדרת מדיניות זו, איתור באמצעות 'נסה אתר הבא הקרוב ביותר' לא תשמש ברירת מחדל במחשב בין כל מתאמי הרשת הזמינים שלא נקבעה תצורתם. אם נעשה שימוש מפורש בדגל DS_TRY_NEXTCLOSEST_SITE, ייעשה שימוש באופן הפעולה 'נסה אתר הבא הקרוב ביותר'.</string>
-      <string id="Netlogon_ForceRediscoveryInterval">כפה מרווח זמן לזיהוי מחדש</string>
-      <string id="Netlogon_ForceRediscoveryInterval_Help">השירות 'איתור בקר תחום (DC Locator) משמש לקוחות למציאת בקרי תחום עבור התחום שלהם ב- Active Directory. כאשר שירות DC Locator מוצא בקר תחום, הוא מאחסן בקרי תחום במטמון כדי לשפר את היעילות של אלגוריתם האיתור. כל עוד בקר בתחום המאוחסן במטמון עומד בדרישות ומופעל, DC Locator ימשיך להחזיר אותו.  אם מתווסף בקר תחום חדש, לקוחות קיימים יזהו אותו רק כאשר מתבצע זיהוי מחדש כפוי על-ידי DC Locator. כדי להתאים את עצמו לשינויים בתנאי הרשת, DC Locator כברירת מחדל יבצע זיהוי מחדש כפוי לפי מרווח זמן ספציפי וישמר איזון עומסים יעיל אל לקוחות בין כל בקרי התחום בכל התחומים או היערות. מרווח הזמן המהווה ברירת מחדל עבור זיהוי מחדש כפוי של DC Locator הוא 12 שעות. זיהוי מחדש כפוי יכול גם להיות מופעל עם קריאה ל- DC Locator משתמש בדגל DS_FORCE_REDISCOVERY. זיהוי מחדש מאפס את המונה בערכים של בקרי התחום המוזנים במטמון.
+If you disable this policy setting, DCs will not register DC Locator DNS resource records.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, DC Locator במחשב יבצע זיהוי מחדש כפוי בפרקי זמן קבועים לפי מרווח הזמן שהוגדר. מרווח הזמן המינימאלי הוא 3600 שניות (שעה 1) כדי להימנע מגרימת תעבורת רשת מוגברת כתוצאה מזיהוי מחדש. מרווח הזמן המרבי המותר הוא 4294967200 כאשר כל ערך הגדול מ- 4294967 (49 ימים לערך) ייחשב כאינסוף.
+If you do not configure this policy setting, it is not applied to any DCs, and DCs use their local configuration.</string>
+      <string id="Netlogon_TryNextClosestSite">Try Next Closest Site</string>
+      <string id="Netlogon_TryNextClosestSite_Help">This policy setting enables DC Locator to attempt to locate a DC in the nearest site based on the site link cost if a DC in same the site is not found. In scenarios with multiple sites, failing over to the try next closest site during DC Location streamlines network traffic more effectively.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה, זיהוי מחדש כפוי ישמש כברירת מחדל במחשב בפרקי זמן של כל 12 שעות.
+The DC Locator service is used by clients to find domain controllers for their Active Directory domain. The default behavior for DC Locator is to find a DC in the same site. If none are found in the same site, a DC in another site, which might be several site-hops away, could be returned by DC Locator. Site proximity between two sites is determined by the total site-link cost between them. A site is closer if it has a lower site link cost than another site with a higher site link cost. 
 
-אם לא תקבע את תצורתה של הגדרת מדיניות זו, זיהוי מחדש כפוי ישמש כברירת מחדל בפרקי זמן של 12 שעות, אלא אם כן הגדרת המחשב המקומית ברישום היא של ערך אחר.</string>
-      <string id="Netlogon_AddressTypeReturned">סוג כתובת בקר התחום המוחזרת</string>
-      <string id="Netlogon_AddressTypeReturned_Help">ה- API של שירות איתור בקרי תחום (DC Locator) מחזירים כתובת IP של בקר התחום יחד עם חלק המידע הנוסף. לפי שהחלה התמיכה ב- IPv6, כתובת ה- IP המוחזרת של בקרי התחום היתה IPv4. אולם, עם התמיכה ב- IPv6, ה- API של DC Locator יכולים להחזיר כתובת בקר תחום מסוג IPv6. ייתכן שכתובת בקר התחום IPv6 המוחזרת לא תהיה מטופלת כראוי על-ידי חלק מהיישומים הקיימים. מדיניות זו משמשת לתמיכה בתרחישים כאלה.
+If you enable this policy setting, Try Next Closest Site DC Location will be turned on for the computer.
 
-כברירת מחדל, API של DC Locator יכולים להחזיר כתובות בקר תחום IPv4/IPv6. אם חלק מהיישומים נפגמים עקב כתובת בקר התחום המוחזרת מסוג IPv6, מדיניות זו יכולה לשמש כדי להפוך את אופן הפעולה המהווה ברירת מחדל ללא זמין ולכפות החזרה של כתובות בקר תחום מסוג IPv4 בלבד. ברגע שהיישומים עוברים תיקון, מדיניות זו יכולה להפוך את אופן הפעולה המהווה ברירת מחדל לזמין.
+If you disable this policy setting, Try Next Closest Site DC Location will not be used by default for the computer. However, if a DC Locator call is made using the DS_TRY_NEXTCLOSEST_SITE flag explicitly, the Try Next Closest Site behavior is honored.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, API של DC Locator יכולים להחזיר כתובות בקר תחום IPv4/IPv6. זהו אופן הפעולה המהווה ברירת מחדל של DC Locator.
+If you do not configure this policy setting, Try Next Closest Site DC Location will not be used by default for the machine. If the DS_TRY_NEXTCLOSEST_SITE flag is used explicitly, the Next Closest Site behavior will be used.</string>
+      <string id="Netlogon_ForceRediscoveryInterval">Force Rediscovery Interval</string>
+      <string id="Netlogon_ForceRediscoveryInterval_Help">This policy setting determines the interval for when a Force Rediscovery is carried out by DC Locator.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה, API של DC Locator יכולים להחזיר כתובות בקר תחום מסוג IPv4 אם בכלל.  כלומר, אם בקר התחום תומך הן בכתובות IPv4 והן ב- IPv6, ‏API של DC Locator יחזירו כתובות מסוג IPv4. אם בקר התחום תומך רק בכתובות IPv6, ‏API של DC Locator יחווה כשל.
+The Domain Controller Locator (DC Locator) service is used by clients to find domain controllers for their Active Directory domain. When DC Locator finds a domain controller, it caches domain controllers to improve the efficiency of the location algorithm. As long as the cached domain controller meets the requirements and is running, DC Locator will continue to return it. If a new domain controller is introduced, existing clients will only discover it when a Force Rediscovery is carried out by DC Locator. To adapt to changes in network conditions DC Locator will by default carry out a Force Rediscovery according to a specific time interval and maintain efficient load-balancing of clients across all available domain controllers in all domains or forests. The default time interval for Force Rediscovery by DC Locator is 12 hours. Force Rediscovery can also be triggered if a call to DC Locator uses the DS_FORCE_REDISCOVERY flag. Rediscovery resets the timer on the cached domain controller entries.
 
-אם לא תקבע את תצורתה של הגדרת מדיניות זו, API של DC Locator יכולים להחזיר כתובות בקר תחום IPv4/IPv6. זהו אופן הפעולה המהווה ברירת מחדל של DC Locator.</string>
-      <string id="Netlogon_AllowNT4Crypto">אפשר אלגוריתמים של קריפטוגרפיה התואמים ל- Windows NT 4.0</string>
-      <string id="Netlogon_AllowNT4Crypto_Help">הגדרה זו קובעת אם שירות Net Logon יאפשר להשתמש באלגוריתמים ישנים יותר של קריפטוגרפיה הנמצאים בשימוש ב- Windows NT 4.0. האלגוריתמים של קריפטוגרפיה הנמצאים בשימוש ב- Windows NT 4.0 וגירסאות קודמות אינם מאובטחים כמו האלגוריתמים החדשים יותר הנמצאים בשימוש ב- Windows 2000,‏ Windows XP,‏ Windows Server 2003,‏ Windows Vista וגירסה זו של Windows.
+If you enable this policy setting, DC Locator on the machine will carry out Force Rediscovery periodically according to the configured time interval. The minimum time interval is 3600 seconds (1 hour) to avoid excessive network traffic from rediscovery. The maximum allowed time interval is 4294967200 seconds, while any value greater than 4294967 seconds (~49 days) will be treated as infinity.
 
-כברירת מחדל, Net Logon לא יאפשר שימוש באלגוריתמים הישנים יותר של קריפטוגרפיה ולא יכלול אותם במשא ומתן על אלגוריתמים של קריפטוגרפיה. לכן, למחשבים שבהם פועל Windows NT 4.0 לא תהיה אפשרות ליצור חיבור לבקר תחום זה.
+If you disable this policy setting, Force Rediscovery will be used by default for the machine at every 12 hour interval.
+
+If you do not configure this policy setting, Force Rediscovery will be used by default for the machine at every 12 hour interval, unless the local machine setting in the registry is a different value.</string>
+      <string id="Netlogon_AddressTypeReturned">Return domain controller address type</string>
+      <string id="Netlogon_AddressTypeReturned_Help">This policy setting detremines the type of IP address that is returned for a domain controller. The DC Locator APIs return the IP address of the DC with the other parts of information. Before the support of IPv6, the returned DC IP address was IPv4. But with the support of IPv6, the DC Locator APIs can return IPv6 DC address. The returned IPv6 DC address may not be correctly handled by some of the existing applications. So this policy is provided to support such scenarios.
+
+By default, DC Locator APIs can return IPv4/IPv6 DC address. But if some applications are broken due to the returned IPv6 DC address, this policy can be used to disable the default behavior and enforce to return only IPv4 DC address. Once applications are fixed, this policy can be used to enable the default behavior.
+
+If you enable this policy setting, DC Locator APIs can return IPv4/IPv6 DC address. This is the default behavior of the DC Locator.
+
+If you disable this policy setting, DC Locator APIs will ONLY return IPv4 DC address if any. So if the domain controller supports both IPv4 and IPv6 addresses, DC Locator APIs will return IPv4 address. But if the domain controller supports only IPv6 address, then DC Locator APIs will fail.
+
+If you do not configure this policy setting, DC Locator APIs can return IPv4/IPv6 DC address. This is the default behavior of the DC Locator.</string>
+      <string id="Netlogon_AllowNT4Crypto">Allow cryptography algorithms compatible with Windows NT 4.0</string>
+      <string id="Netlogon_AllowNT4Crypto_Help">This policy setting controls whether the Net Logon service will allow the use of older cryptography algorithms that are used in Windows NT 4.0. The cryptography algorithms used in Windows NT 4.0 and earlier are not as secure as newer algorithms used in Windows 2000 or later, including this version of Windows.
+
+By default, Net Logon will not allow the older cryptography algorithms to be used and will not include them in the negotiation of cryptography algorithms. Therefore, computers running Windows NT 4.0 will not be able to establish a connection to this domain controller.
  
-אם הגדרה זו תהפוך לזמינה, Net Logon יאפשר משא ומתן ושימוש באלגוריתמים ישנים יותר של קריפטוגרפיה התואמים ל- Windows NT 4.0. עם זאת, שימוש באלגוריתמים ישנים יותר מהווה סיכון אבטחה פוטנציאלי.</string>
-      <string id="Netlogon_IgnoreIncomingMailslotMessages">אל תעבד הודעות Mailslot נכנסות המשמשות לאיתור בקר תחום בהתבסס על שמות תחומים מסוג NetBIOS</string>
-      <string id="Netlogon_IgnoreIncomingMailslotMessages_Help">הגדרת מדיניות זו מאפשרת לך לשלוט בעיבוד של הודעות Mailslot נכנסות באמצעות בקר תחום (DC) מקומי.
+If you enable this policy setting, Net Logon will allow the negotiation and use of older cryptography algorithms compatible with Windows NT 4.0. However, using the older algorithms represents a potential security risk.
 
-הערה: כדי לאתר DC מרוחק בהתבסס על שם התחום שלו מסוג NetBIOS (תווית יחידה), מאתר בקר התחום מקבל תחילה את רשימת מחשבי ה- DC משרת WINS שתצורתו נקבעה בהגדרות הלקוח המקומיות שלו. מאתר בקר התחום שולח לאחר מכן הודעת Mailslot לכל DC מרוחק כדי לקבל מידע נוסף. איתור ה- DC מצליח רק אם DC מרוחק מגיב להודעת Mailslot.
+If you disable this policy setting, Net Logon will not allow the negotiation and use of older cryptography algorithms. 
 
-הגדרת מדיניות זו מומלצת כדי לצמצם את שטח התקיפה ב- DC, וניתן להשתמש בה בסביבה ללא WINS, בסביבה של IPv6 בלבד ובכל מצב שבו איתור DC בהתבסס על שם תחום מסוג NetBIOS אינו נדרש. הגדרת מדיניות זו אינה משפיעה על איתור DC בהתבסס על שמות DNS.
+If you do not configure this policy setting, Net Logon will not allow the negotiation and use of older cryptography algorithms.</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages">Do not process incoming mailslot messages used for domain controller location based on NetBIOS domain names</string>
+      <string id="Netlogon_IgnoreIncomingMailslotMessages_Help">This policy setting allows you to control the processing of incoming mailslot messages by a local domain controller (DC).
 
-אם תהפוך הגדרת מדיניות זו לזמינה, DC זה לא יעבד הודעות Mailslot נכנסות המשמשות לאיתור DC בהתבסס על שמות תחומים מסוג NetBIOS.
+Note: To locate a remote DC based on its NetBIOS (single-label) domain name, DC Locator first gets the list of DCs from a WINS server that is configured in its local client settings. DC Locator then sends a mailslot message to each remote DC to get more information. DC location succeeds only if a remote DC responds to the mailslot message.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, DC זה יעבד הודעות Mailslot נכנסות. זהו אופן הפעולה המהווה ברירת מחדל עבור מאתר בקר התחום.</string>
+This policy setting is recommended to reduce the attack surface on a DC, and can be used in an environment without WINS, in an IPv6-only environment, and whenever DC location based on a NetBIOS domain name is not required. This policy setting does not affect DC location based on DNS names.
+
+If you enable this policy setting, this DC does not process incoming mailslot messages that are used for NetBIOS domain name based DC location.
+
+If you disable or do not configure this policy setting, this DC processes incoming mailslot messages. This is the default behavior of DC Locator.</string>
+      <string id="Netlogon_AvoidFallbackNetbiosDiscovery">Do not use NetBIOS-based discovery for domain controller location when DNS-based discovery fails</string>
+      <string id="Netlogon_AvoidFallbackNetbiosDiscovery_Help">This policy setting allows you to control the domain controller (DC) location algorithm. By default, the DC location algorithm prefers DNS-based discovery if the DNS domain name is known. If DNS-based discovery fails and the NetBIOS domain name is known, the algorithm then uses NetBIOS-based discovery as a fallback mechanism.
+
+NetBIOS-based discovery uses a WINS server and mailslot messages but does not use site information. Hence it does not ensure that clients will discover the closest DC. It also allows a hub-site client to discover a branch-site DC even if the branch-site DC only registers site-specific DNS records (as recommended). For these reasons, NetBIOS-based discovery is not recommended.
+
+Note that this policy setting does not affect NetBIOS-based discovery for DC location if only the NetBIOS domain name is known.
+
+If you enable or do not configure this policy setting, the DC location algorithm does not use NetBIOS-based discovery as a fallback mechanism when DNS-based discovery fails. This is the default behavior.
+
+If you disable this policy setting, the DC location algorithm can use NetBIOS-based discovery as a fallback mechanism when DNS based discovery fails.</string>
+
+      <string id="Netlogon_AddressLookupOnPingBehavior">Specify address lookup behavior for DC locator ping</string>
+      <string id="Netlogon_AddressLookupOnPingBehavior_Help">This policy setting configures how a domain controller (DC) behaves when responding to a client whose IP address does not map to any configured site.
+
+Domain controllers use the client IP address during a DC locator ping request to compute which Active Directory site the client belongs to.   If no site mapping can be computed, the DC may do an address lookup on the client network name to discover other IP addresses which may then be used to compute a matching site for the client. 
+
+The allowable values for this setting result in the following behaviors:
+
+0 - DCs will never perform address lookups.
+1 - DCs will perform an exhaustive address lookup to discover additional client IP addresses.
+2 - DCs will perform a fast, DNS-only address lookup to discover additional client IP addresses.
+
+To specify this behavior in the DC Locator DNS SRV records, click Enabled, and then enter a value. The range of values is from 0 to 2.
+
+If you do not configure this policy setting, it is not applied to any DCs, and DCs use their local configuration.</string>
+
+      <string id="Netlogon_PingUrgencyMode">Use urgent mode when pinging domain controllers</string>
+      <string id="Netlogon_PingUrgencyMode_Help">This policy setting configures whether the computers to which this setting is applied are more aggressive when trying to locate a domain controller (DC).
+
+When an environment has a large number of DCs running both old and new operating systems, the default DC locator discovery behavior may be insufficient to find DCs running a newer operating system.  This policy setting can be enabled to configure DC locator to be more aggressive about trying to locate a DC in such an environment, by pinging DCs at a higher frequency.  Enabling this setting may result in additional network traffic and increased load on DCs.  You should disable this setting once all DCs are running the same OS version.
+
+The allowable values for this setting result in the following behaviors:
+
+1 - Computers will ping DCs at the normal frequency.
+2 - Computers will ping DCs at the higher frequency.
+
+To specify this behavior, click Enabled and then enter a value. The range of values is from 1 to 2.
+
+If you do not configure this policy setting, it is not applied to any computers, and computers use their local configuration.</string>
+
     </stringTable>
     <presentationTable>
       <presentation id="Netlogon_BackgroundRetryInitialPeriod">
-        <decimalTextBox refId="Netlogon_BackgroundRetryInitialPeriodLabel" defaultValue="600" spinStep="600">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_BackgroundRetryInitialPeriodLabel" defaultValue="600" spinStep="600">Seconds:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_BackgroundRetryMaximumPeriod">
-        <decimalTextBox refId="Netlogon_BackgroundRetryMaximumPeriodLabel" defaultValue="3600" spinStep="3600">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_BackgroundRetryMaximumPeriodLabel" defaultValue="3600" spinStep="3600">Seconds:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_BackgroundRetryQuitTime">
-        <decimalTextBox refId="Netlogon_BackgroundRetryQuitTimeLabel" defaultValue="0" spinStep="100">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_BackgroundRetryQuitTimeLabel" defaultValue="0" spinStep="100">Seconds:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_BackgroundSuccessfulRefreshPeriod">
-        <decimalTextBox refId="Netlogon_BackgroundSuccessfulRefreshPeriodLabel" defaultValue="4294967200" spinStep="1000">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_BackgroundSuccessfulRefreshPeriodLabel" defaultValue="4294967200" spinStep="1000">Seconds:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_DebugFlag">
-        <decimalTextBox refId="Netlogon_DebugFlagLabel" defaultValue="536936447">רמה:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_DebugFlagLabel" defaultValue="536936447">Level:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_DnsAvoidRegisterRecords">
         <textBox refId="Netlogon_DnsAvoidRegisterRecordsLabel">
-          <label>אמצעי זכירה:</label>
+          <label>Mnemonics:</label>
         </textBox>
       </presentation>
       <presentation id="Netlogon_DnsRefreshInterval">
-        <decimalTextBox refId="Netlogon_DnsRefreshIntervalLabel" defaultValue="1800" spinStep="100">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_DnsRefreshIntervalLabel" defaultValue="1800" spinStep="100">Seconds:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_DnsTtl">
-        <decimalTextBox refId="Netlogon_DnsTtlLabel" defaultValue="600" spinStep="100">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_DnsTtlLabel" defaultValue="600" spinStep="100">Seconds:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_ExpectedDialupDelay">
-        <decimalTextBox refId="Netlogon_ExpectedDialupDelayLabel" defaultValue="0" spinStep="100">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_ExpectedDialupDelayLabel" defaultValue="0" spinStep="100">Seconds:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_GcSiteCoverage">
         <textBox refId="Netlogon_GcSiteCoverageLabel">
-          <label>אתרים:</label>
+          <label>Sites:</label>
         </textBox>
       </presentation>
       <presentation id="Netlogon_LdapSrvPriority">
-        <decimalTextBox refId="Netlogon_LdapSrvPriorityLabel" defaultValue="0" spinStep="100">עדיפות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_LdapSrvPriorityLabel" defaultValue="0" spinStep="100">Priority:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_LdapSrvWeight">
-        <decimalTextBox refId="Netlogon_LdapSrvWeightLabel" defaultValue="100" spinStep="100">משקל:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_LdapSrvWeightLabel" defaultValue="100" spinStep="100">Weight:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_MaximumLogFileSize">
-        <decimalTextBox refId="Netlogon_MaximumLogFileSizeLabel" defaultValue="536936447">בתים:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_MaximumLogFileSizeLabel" defaultValue="536936447">Bytes:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_NdncSiteCoverage">
         <textBox refId="Netlogon_NdncSiteCoverageLabel">
-          <label>אתרים:</label>
+          <label>Sites:</label>
         </textBox>
       </presentation>
       <presentation id="Netlogon_NegativeCachePeriod">
-        <decimalTextBox refId="Netlogon_NegativeCachePeriodLabel" defaultValue="45" spinStep="60">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_NegativeCachePeriodLabel" defaultValue="45" spinStep="60">Seconds:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_NonBackgroundSuccessfulRefreshPeriod">
-        <decimalTextBox refId="Netlogon_NonBackgroundSuccessfulRefreshPeriodLabel" defaultValue="1800" spinStep="1000">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_NonBackgroundSuccessfulRefreshPeriodLabel" defaultValue="1800" spinStep="1000">Seconds:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_ScavengeInterval">
-        <decimalTextBox refId="Netlogon_ScavengeIntervalLabel" defaultValue="900" spinStep="900">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_ScavengeIntervalLabel" defaultValue="900" spinStep="900">Seconds:</decimalTextBox>
       </presentation>
       <presentation id="Netlogon_SiteCoverage">
         <textBox refId="Netlogon_SiteCoverageLabel">
-          <label>אתרים:</label>
+          <label>Sites:</label>
         </textBox>
       </presentation>
       <presentation id="Netlogon_SiteName">
         <textBox refId="Netlogon_SiteNameLabel">
-          <label>האתר:</label>
+          <label>Site:</label>
         </textBox>
       </presentation>
       <presentation id="Netlogon_ForceRediscoveryInterval">
-        <decimalTextBox refId="Netlogon_ForceRediscoveryIntervalLabel" defaultValue="43200" spinStep="100">שניות:</decimalTextBox>
+        <decimalTextBox refId="Netlogon_ForceRediscoveryIntervalLabel" defaultValue="43200" spinStep="100">Seconds:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_AddressLookupOnPingBehavior">
+        <decimalTextBox refId="Netlogon_AddressLookupOnPingBehaviorLabel" defaultValue="2" spinStep="1">Address lookup behavior:</decimalTextBox>
+      </presentation>
+      <presentation id="Netlogon_PingUrgencyMode">
+        <decimalTextBox refId="Netlogon_PingUrgencyModeLabel" defaultValue="2" spinStep="1">Ping urgency mode:</decimalTextBox>
       </presentation>
     </presentationTable>
   </resources>

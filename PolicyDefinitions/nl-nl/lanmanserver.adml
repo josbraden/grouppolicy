@@ -10,32 +10,70 @@
       <string id="Lbl_DisableOnAllShares">Hash-publicatie niet toestaan voor gedeelde mappen</string>
       <string id="Lbl_EnableOnAllShares">Hash-publicatie toestaan voor alle gedeelde mappen</string>
       <string id="Pol_HashPublication">Hash-publicatie voor BranchCache</string>
-      <string id="Pol_HashPublication_Help">Gebruik dit beleid om een service voor het genereren van hashes toestemming te geven hashes te genereren voor gegevens die zijn opgeslagen in gedeelde mappen, en deze hashes vervolgens aan te bieden aan clientcomputers waarop BranchCache is ingeschakeld. Hashes zijn mathematisch afgeleide, digitale vingerafdrukken van bestanden die een unieke identificatie van de inhoud van deze bestanden vormen. Deze digitale vingerafdrukken zijn erg klein, wat betekent dat Windows bestanden kan vergelijken zonder dat hiervoor erg veel bandbreedte van het WAN (Wide Area Network) nodig is.
+      <string id="Pol_HashPublication_Help">Deze beleidsinstelling geeft op of een service voor het genereren van hashes genereert, ook wel inhoudsgegevens genoemd, voor gegevens die in gedeelde mappen wordt opgeslagen. Deze beleidsinstelling moet toegepast worden op servercomputers waarop de functie Bestandsservices is geïnstalleerd, evenals de functieservices Bestandsserver en de BranchCache voor netwerkbestanden.
 
-Een clientcomputer in een filiaal kan via een WAN-verbinding een hash aanvragen voor een bestand als aan alle volgende voorwaarden wordt voldaan:  
-1) De gebruiker beschikt over toegangsmachtigingen voor het bestand.
-2) BranchCache is ingeschakeld op de clientcomputer.
-3) Hash-publicatie is toegestaan voor de gedeelde map die door de clientcomputer wordt geopend.
+Beleidsconfiguratie
 
-Als de hash wordt verzonden aan de clientcomputer, kan de computer vervolgens in de cache van andere computers in het filiaal zoeken naar een identieke versie van het bestand. Als een dergelijke versie wordt gevonden, wordt de kopie in de lokale cache gedownload en hoeft de clientcomputer het bestand niet te downloaden via de WAN-verbinding. 
+Selecteer een van de volgende:
 
-Als u dit beleid instelt op 'Hash-publicatie alleen toestaan voor gedeelde mappen waarvoor BranchCache is ingeschakeld' (waarde = 0), worden er alleen hashes gegenereerd voor gedeelde mappen waarvoor BranchCache is ingeschakeld. Dit gebeurt wanneer zich een van de volgende gebeurtenissen voordoet:
-1) Een bestand in een gedeelde map waarvoor BranchCache is ingeschakeld wordt geopend door een client waarvoor BranchCache-ondersteuning is ingeschakeld.
-2) Een beheerder genereert handmatig hashes via het opdrachtregelprogramma Hashgen.
- 
-Als u dit beleid instelt op 'Hash-publicatie niet toestaan voor gedeelde mappen' (waarde = 1), worden er nooit hashes gegenereerd of aangeboden door computers waarop dit beleid van toepassing is.
- 
-Als u dit beleid instelt op 'Hash-publicatie toestaan voor alle gedeelde mappen' (waarde = 2), worden er hashes gegenereerd voor alle gedeelde mappen op de server wanneer zich een van de volgende gebeurtenissen voordoet: 
-1) Een bestand in een gedeelde map waarvoor BranchCache is ingeschakeld wordt geopend door een client waarvoor BranchCache-ondersteuning is ingeschakeld.
-2) Een beheerder genereert handmatig hashes via het opdrachtregelprogramma Hashgen.</string>
-    </stringTable>
+- Niet geconfigureerd. Met deze selectie worden instellingen voor publicatie van hash niet op bestandsservers toegepast. In het geval waarin bestandsservers domeinleden zijn, maar u wilt niet op alle bestandsservers BranchCache inschakelen, kunt u Niet geconfigureerd opgeven voor deze domeininstelling voor groepsbeleid, en vervolgens het plaatselijke computerbeleid configureren om BranchCache op aparte bestandsservers in te schakelen. Omdat de domeininstelling voor het groepsbeleid niet geconfigureerd is, wordt de ingeschakelde instelling die u gebruikt op aparte servers waar u BranchCache wilt inschakelen niet overschreven.
+
+- Ingeschakeld. Met deze selectie wordt publicatie van hash ingeschakeld voor bestandsservers waaropgroepsbeleid wordt toegepast. Als bijvoorbeeld publicatie van hash voor BranchCache is ingeschakeld in het groepsbeleid voor het domein, wordt publicatie van hash ingeschakeld voor alle bestandsservers van domeinleden waarop het beleid van toepassing is. De bestandsservers zijn dan in staat om inhoudsinformatie te creëren voor alle inhoud die opgeslagen is in bestandsshares waarin BranchCache ingeschakeld is.
+
+- Uitgeschakeld. Met deze selectie wordt de publicatie van hash uitgeschakeld voor alle bestandsservers waarop groepsbeleid van toepassing is.
+
+In omstandigheden waarbij deze beleidsinstelling ingeschakeld is, kunt u ook de volgende configuratie-opties selecteren:
+
+- Hash-publicatie toestaan voor alle gedeelde mappen Met deze optie genereert BranchCache inhoudsinformatie voor alle inhoud in alle shares op de bestandsserver. 
+
+- Hash-publicatie alleen toestaan voor gedeelde mappen waarop BranchCache ingeschakeld is. Met deze optie wordt inhoudsinformatie alleen gegenereerd voor gedeelde mappen waarop  BranchCache ingeschakeld is. Als u deze instelling gebruikt, moet u BranchCache voor afzonderlijke shares inschakelen in Share- en opslagbeheer op de bestandsserver.
+
+- Hash-publicatie niet toestaan voor gedeelde mappen. Met deze optie genereert BranchCache geen contentinhoudsinformatie voor shares op de computer, en stuurt het geen inhoudsinformatie aan clientcomputers die inhoud aanvragen.
+      
+      </string>
+      <string id="Lbl_SupportV1">Ondersteunt alleen V1 hash-versie</string>
+      <string id="Lbl_SupportV2">Ondersteunt alleen V2 hash-versie</string>
+      <string id="Lbl_SupportV1andV2">Ondersteunt zowel de versie V1 als V2 </string>
+      <string id="Pol_HashSupportVersion">Ondersteuning hash-versie voor BranchCache</string>
+      <string id="Pol_HashSupportVersion_Help">Deze beleidsinstelling geeft op of de BranchCache-service voor genereren van hashes versie 1 (V1) hashes, versie 2 (V2) hashes, of zowel V1 als V2 hashes ondersteunt. Hashes, ook wel inhoudsinformatie genoemd, worden gecreëerd op basis van de gegevens in gedeelde mappen waarvoor BranchCache ingeschakeld is. 
+
+Als u slechts één versie opgeeft die wordt ondersteund, is inhoudsinformatie voor die versie het enige type dat door BranchCache gegenereerd wordt, en is het het enige type van inhoudsinformatie dat door clientcomputers kan worden opgehaald. Als u bijvoorbeeld ondersteuning voor V1 hashes inschakelt, genereert BranchCache alleen V1 hashes en client-computers kunnen dan alleen V1 hashes ophalen.
+
+Beleidsconfiguratie
+
+Selecteer een van de volgende:
+
+- Niet geconfigureerd. Met deze selectie worden BranchCache-instellingen niet toegepast op client-computers door deze beleidsinstelling. In deze omstandigheid (standaard) wordt zowel generatie van V1- en V2-hashes, als het ophalen daarvan ondersteund.
+
+- Ingeschakeld. Bij deze selectie wordt de beleidsinstelling toegepast en de hash-versie(s) die worden opgegeven in "Hash version supported" wordt(worden) gegenereerd en opgehaald.
+
+- Uitgeschakeld. Bij deze selectie worden zowel het genereren als het ophalen van V1 en V2 hash ondersteund.
+
+In omstandigheden waarbij deze instelling ingeschakeld is, kunt u ook de volgende optie selecteren en configureren:
+
+Hash-versie ondersteund:
+
+- Om alleen V1 inhoudsinformatie te ondersteunen, configureert u "Hash-versie ondersteund" met de waarde 1.
+
+- Om alleen V2 inhoudsinformatie te ondersteunen configureert u "Hash-versie ondersteund" met de waarde 2.
+
+- Om zowel V1 als V2 inhoudsinformatie te ondersteunen configureert u "Hash-versie ondersteund" met de waarde 3.</string>
+      </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
         <text>Waarden:</text>
         <text>0 = Hash-publicatie alleen toestaan voor gedeelde mappen waarvoor BranchCache is ingeschakeld</text>
         <text>1 = Hash-publicatie niet toestaan voor gedeelde mappen</text>
         <text>2 = Hash-publicatie toestaan voor alle gedeelde mappen</text>
-        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Acties bij hash-publicatie: </dropdownList>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">Acties bij hash-publicatie:  </dropdownList>
+        <text> </text>
+      </presentation>
+      <presentation id="Pol_HashSupportVersion">
+        <text>Waarden:</text>
+        <text>1 = Ondersteun V1-hashes</text>
+        <text>2 = Ondersteun V2-hashes</text>
+        <text>3 = Ondersteun V1- V2-hashes</text>
+        <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">Hash-versie ondersteund:  </dropdownList>
         <text> </text>
       </presentation>
     </presentationTable>

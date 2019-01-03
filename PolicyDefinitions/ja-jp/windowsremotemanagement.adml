@@ -5,7 +5,7 @@
   <description>説明をここに入力する</description>
   <resources>
     <stringTable>
-      <string id="AllowAutoConfig">リスナーの自動構成を許可する</string>
+      <string id="AllowAutoConfig">WinRM によるリモート サーバー管理を許可する</string>
       <string id="AllowBasic">基本認証を許可する</string>
       <string id="AllowBasicClientHelp">このポリシー設定を使用して、Windows リモート管理 (WinRM) クライアントで基本認証を使用するかどうかを管理できます。
 
@@ -14,9 +14,9 @@
 このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM クライアントで基本認証は使用されません。</string>
       <string id="AllowBasicServiceHelp">このポリシー設定を使用して、Windows リモート管理 (WinRM) サービスでリモート クライアントからの基本認証を受け付けるかどうかを管理できます。
 
-このポリシー設定を有効にすると、WinRM サービスはリモート クライアントからの基本認証を受け付けます。
+        このポリシー設定を有効にすると、WinRM サービスはリモート クライアントからの基本認証を受け付けます。
 
-このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM サービスはリモート クライアントからの基本認証を受け付けません。</string>
+        このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM サービスはリモート クライアントからの基本認証を受け付けません。</string>
       <string id="AllowUnencrypted">暗号化されていないトラフィックを許可する</string>
       <string id="AllowUnencryptedMessagesClientHelp">このポリシー設定を使用して、Windows リモート管理 (WinRM) クライアントで、暗号化されていないメッセージをネットワーク経由で送受信するかどうかを管理できます。
 
@@ -28,13 +28,21 @@
 このポリシー設定を有効にすると、WinRM クライアントは、暗号化されていないメッセージをネットワーク経由で送受信します。
 
 このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM クライアントは、暗号化されたメッセージのみをネットワーク経由で送受信します。</string>
+      <string id="DisableRunAs">WinRM で RunAs 資格情報の保存を許可しない</string>      
+      <string id="DisableRunAsMessagesServiceHelp">このポリシー設定を使用すると、Windows リモート管理 (WinRM) サービスでプラグインに対して RunAs 資格情報の保存を許可しないかどうかうかを管理できます。
+
+このポリシー設定を有効にする場合、WinRM サービスではプラグインに対して RunAsUser または RunAsPassword の構成値の設定を許可しません。 既にプラグインで RunAsUser および RunAsPassword の構成値を設定している場合、このコンピューターの資格情報ストアから RunAsPassword の構成値が消去されます。
+
+このポリシー設定を無効にする場合、または構成しない場合、WinRM サービスではプラグインに対して RunAsUser および RunAsPassword の構成値の設定を許可し、RunAsPassword 値が安全に保存されます。
+
+このポリシー設定を有効にした後、無効にした場合、それまでに RunAsPassword に構成済みの値があれば、リセットする必要があります。</string>
       <string id="AutoConfigHelp">このポリシー設定を使用すると、HTTP トランスポートに対する要求が、Windows リモート管理 (WinRM) サービスによって、既定の HTTP ポートを介してネットワークで自動的にリッスンされるかどうかを管理できます。
 
 このポリシー設定を有効にすると、そのネットワークでは、WinRM サービスによって、HTTP トランスポートに対する要求が既定の HTTP ポート経由で自動的にリッスンされます。
 
-このポリシー設定を無効にした場合、または構成しなかった場合は、そのネットワークでは、WinRM サービスによって要求が自動的にリッスンされません。したがって、各コンピューターにリスナーを手動で作成する必要があります。
-
 WinRM サービスがネットワーク経由で要求を受信できるようにするには、Windows ファイアウォール ポリシー設定で、ポート 5985 (HTTP の既定のポート) を例外として定義します。
+
+このポリシー設定を無効にするか、または構成しない場合、WinRM サービスは、WinRM リスナーが構成されているかどうかにかかわらず、リモート コンピューターからの要求に対して応答しません。
 
 WinRM サービスは、IPv4 フィルターおよび IPv6 フィルターで指定されたアドレスでリッスンします。IPv4 フィルターでは、IPv4 アドレスの範囲が 1 つ以上指定されます。IPv6 フィルターでは、IPv6 アドレスの範囲が 1 つ以上指定されます。フィルターが指定されている場合、WinRM サービスはコンピューターで使用可能な IP アドレスを列挙し、いずれかのフィルター範囲に属するアドレスのみを使用します。
 
@@ -47,51 +55,48 @@ WinRM サービスが、コンピューターで使用できるすべての IP �
 IPv4 フィルターの例: \n2.0.0.1-2.0.0.20, 24.0.0.1-24.0.0.22
 IPv6 フィルターの例: \n3FFE:FFFF:7654:FEDA:1245:BA98:0000:0000-3FFE:FFFF:7654:FEDA:1245:BA98:3210:4562</string>
       <string id="DisallowDigest">ダイジェスト認証を許可しない</string>
-      <string id="DisallowDigestClientHelp">このポリシー設定を使用すると、Windows リモート管理 (WinRM) クライアントでダイジェスト認証を使用しないようにするかどうかを管理できます。
+      <string id="DisallowDigestClientHelp">このポリシー設定を使用して、Windows リモート管理 (WinRM) クライアントでダイジェスト認証を使用するかどうかを管理できます。
 
 このポリシー設定を有効にすると、WinRM クライアントでダイジェスト認証は使用されません。
 
 このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM クライアントでダイジェスト認証が使用されます。</string>
       <string id="DisallowNegotiate">ネゴシエート認証を許可しない</string>
       <string id="DisallowKerberos">Kerberos 認証を許可しない</string>
-      <string id="DisallowNegotiateClientHelp">このポリシー設定を使用すると、Windows リモート管理 (WinRM) クライアントでネゴシエート認証を使用しないようにするかどうかを管理できます。
+      <string id="DisallowNegotiateClientHelp">このポリシー設定を使用して、Windows リモート管理 (WinRM) クライアントでネゴシエート認証を使用するかどうかを管理できます。
 
 このポリシー設定を有効にすると、WinRM クライアントでネゴシエート認証は使用されません。
 
 このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM クライアントでネゴシエート認証が使用されます。</string>
-      <string id="DisallowNegotiateServiceHelp">このポリシー設定を使用すると、Windows リモート管理 (WinRM) サービスでリモート クライアントからのネゴシエート認証を受け付けないようにするかどうかを管理できます。
+      <string id="DisallowNegotiateServiceHelp">このポリシー設定を使用して、Windows リモート管理 (WinRM) サービスでリモート クライアントからのネゴシエート認証を受け付けるかどうかを管理できます。
 
-このポリシー設定を有効にすると、WinRM サービスはリモート クライアントからのネゴシエート認証を受け付けません。
+        このポリシー設定を有効にすると、WinRM サービスはリモート クライアントからのネゴシエート認証を受け付けません。
 
-このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM サービスは、リモート クライアントからのネゴシエート認証を受け付けます。</string>
-      <string id="DisallowKerberosClientHelp">このポリシー設定を使用すると、Windows リモート管理 (WinRM) クライアントで Kerberos 認証を直接使用しないようにするかどうかを管理できます。
+        このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM サービスは、リモート クライアントからのネゴシエート認証を受け付けます。</string>
+      <string id="DisallowKerberosClientHelp">このポリシー設定を使用すると、Windows リモート管理 (WinRM) クライアントで Kerberos 認証を直接使用するかどうかを管理できます。
 
 このポリシー設定を有効にすると、Windows リモート管理 (WinRM) クライアントでは Kerberos 認証は直接使用されません。ただし、WinRM クライアントでネゴシエート認証が使用されており、Kerberos が選択されている場合は、Kerberos が使用される場合があります。
 
 このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM クライアントでは Kerberos 認証が直接使用されます。</string>
       <string id="DisallowKerberosServiceHelp">このポリシー設定を使用すると、Windows リモート管理 (WinRM) サービスで、Kerberos 資格情報をネットワーク経由で受け付けないようにするかどうかを管理できます。
 
-このポリシー設定を有効にすると、WinRM サービスは、ネットワーク経由で Kerberos 資格情報を受け付けません。
+        このポリシー設定を有効にすると、WinRM サービスは、ネットワーク経由で Kerberos 資格情報を受け付けません。
 
-このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM サービスは、リモート クライアントからの Kerberos 認証を受け付けます。</string>
+        このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM サービスは、リモート クライアントからの Kerberos 認証を受け付けます。</string>
       <string id="AllowCredSSP">CredSSP 認証を許可する</string>
-      <string id="AllowCredSSPClientHelp">
-        このポリシー設定を使用して、Windows リモート管理 (WinRM) クライアントで CredSSP 認証を使用するかどうかを管理できます。
+      <string id="AllowCredSSPClientHelp">このポリシー設定を使用して、Windows リモート管理 (WinRM) クライアントで CredSSP 認証を使用するかどうかを管理できます。
 
-        このポリシー設定を有効にすると、WinRM クライアントで CredSSP 認証が使用されます。
+このポリシー設定を有効にすると、WinRM クライアントで CredSSP 認証が使用されます。
 
-        このポリシー設定を無効にするか、または構成しない場合は、WinRM クライアントで CredSSP 認証は使用されません。
-      </string>
-      <string id="AllowCredSSPServiceHelp">
-        このポリシー設定を使用して、Windows リモート管理 (WinRM) サービスでリモート クライアントからの CredSSP 認証を受け付けるかどうかを管理できます。
+このポリシー設定を無効にした場合、または構成しなかった場合は、WinRM クライアントで CredSSP 認証は使用されません。</string>
+      <string id="AllowCredSSPServiceHelp">このポリシー設定を使用して、Windows リモート管理 (WinRM) サービスでリモート クライアントからの CredSSP 認証を受け付けるかどうかを管理できます。
 
         このポリシー設定を有効にすると、WinRM サービスはリモート クライアントからの CredSSP 認証を受け付けます。
 
         このポリシー設定を無効にするか、または構成しない場合は、WinRM サービスはリモート クライアントからの CredSSP 認証を受け付けません。
+      
       </string>
       <string id="CBTHardeningLevel">チャネル バインディング トークン強化機能レベルを指定する</string>
-      <string id="CBTHardeningLevelHelp">
-        このポリシー設定を使用すると、チャネル バインディング トークンに関する Windows リモート管理 (WinRM) サービスの強化機能レベルを設定できます。
+      <string id="CBTHardeningLevelHelp">このポリシー設定を使用すると、チャネル バインディング トークンに関する Windows リモート管理 (WinRM) サービスの強化機能レベルを設定できます。
 
         このポリシー設定を有効にすると、WinRM サービスは、強化機能レベルで指定されているレベルを使用し、指定されているチャネル バインディング トークンに基づいて、受信した要求を受け付けるかどうかを決定します。
 
@@ -99,9 +104,10 @@ IPv6 フィルターの例: \n3FFE:FFFF:7654:FEDA:1245:BA98:0000:0000-3FFE:FFFF:
 
         強化機能レベルを [厳密] に設定すると、有効なチャネル バインディング トークンが含まれていない要求はすべて拒否されます。
 
-        強化機能レベルを [緩和] (既定値) に設定すると、無効なチャネル バインディング トークンが含まれる要求はすべて拒否されますが、チャネル バインディング トークンが含まれていない要求は受け付けられます (ただし、資格情報転送攻撃からは保護されなくなります)。
+        強化機能レベルを [緩和] (既定値) に設定すると、無効なチャネル バインディング トークンが含まれる要求はすべて拒否されます。ただし、チャネル バインディング トークンが含まれていない要求は受け付けられます (資格情報転送攻撃からは保護されなくなります)。
 
         強化機能レベルを [なし] に設定すると、すべての要求が受け付けられます (ただし、資格情報転送攻撃からは保護されなくなります)。
+      
       </string>
         <string id="None">なし</string>
         <string id="Strict">厳密</string>
@@ -117,24 +123,24 @@ IPv6 フィルターの例: \n3FFE:FFFF:7654:FEDA:1245:BA98:0000:0000-3FFE:FFFF:
 このポリシー設定を無効にした場合、または構成しなかった場合で、WinRM クライアントで信頼されたホストの一覧を使用する必要があるときは、信頼されたホストの一覧を各コンピューターでローカルに構成する必要があります。</string>
       <string id="HttpCompatibilityListener">互換性の HTTP リスナーを有効にする</string>
       <string id="HttpsCompatibilityListener">互換性の HTTPS リスナーを有効にする</string>
-      <string id="HttpCompatibilityListenerHelp">このポリシー設定では、Windows リモート管理 (WinRM) サービスで下位互換性のために作成された HTTP リスナーを有効または無効にします。
-          
-          特定のポート 80 のリスナーが WinRM 2.0 に移行されると、リスナーのポート番号は 5985 に変更されます。
-          
-          下位互換性を確保するために、リスナーが自動的にポート 80 で作成される場合があります。
-          
-          この設定を有効にすると、このリスナーは常に表示されます。
-          
-          この設定を無効にすると、このリスナーは表示されません。</string>
-      <string id="HttpsCompatibilityListenerHelp">このポリシー設定では、Windows リモート管理 (WinRM) サービスで下位互換性のために作成された HTTPS リスナーを有効または無効にします。
-          
-          特定のポート 443 のリスナーが WinRM 2.0 に移行されると、リスナーのポート番号は 5986 に変更されます。
-          
-          下位互換性を確保するために、リスナーが自動的にポート 443 で作成される場合があります。
-          
-          この設定を有効にすると、このリスナーは常に表示されます。
-          
-          この設定を無効にすると、このリスナーは表示されません。</string>
+      <string id="HttpCompatibilityListenerHelp">このポリシー設定は、Windows リモート管理 (WinRM) サービスで下位互換性のために作成された HTTP リスナーを有効または無効にします。
+
+        このポリシー設定を有効にした場合、HTTP リスナーが常に表示されます。
+
+        このポリシー設定を無効にした場合、または構成しなかった場合、HTTP リスナーは表示されません。
+
+        ポート 80 の特定のリスナーを WinRM 2.0 に移行すると、リスナー ポート番号は 5985 に変わります。
+
+        下位互換性を確保するため、リスナーはポート 80 で自動的に作成されます。</string>
+      <string id="HttpsCompatibilityListenerHelp">このポリシー設定は、Windows リモート管理 (WinRM) サービスで下位互換性のために作成された HTTPS リスナーを有効または無効にします。
+
+        このポリシー設定を有効にした場合、HTTPS リスナーが常に表示されます。
+
+        このポリシー設定を無効にした場合、または構成しなかった場合、HTTPS リスナーは表示されません。
+
+        ポート 443 の特定のリスナーを WinRM 2.0 に移行すると、リスナー ポート番号は 5986 に変わります。
+
+        下位互換性を確保するため、リスナーはポート 443 で自動的に作成されます。</string>
     </stringTable>
     <presentationTable>
       <presentation id="AllowAutoConfig">
@@ -153,7 +159,7 @@ IPv6 フィルターの例: \n3FFE:FFFF:7654:FEDA:1245:BA98:0000:0000-3FFE:FFFF:
         <text>2.0.0.1-2.0.0.20, 24.0.0.1-24.0.0.22</text>
         <text>*</text>
         <text/>
-        <text>IPv6 フィルターの例: </text>
+        <text>IPv6 フィルターの例:</text>
         <text>3FFE:FFFF:7654:FEDA:1245:BA98:0000:0000-3FFE:FFFF:7654:FEDA:1245:BA98:3210:4562</text>
         <text>*</text>
       </presentation>

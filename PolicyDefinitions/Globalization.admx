@@ -13,6 +13,9 @@
     <category name="NlsManagementCat" displayName="$(string.NlsManagementCat)">
       <parentCategory ref="windows:System" />
     </category>
+    <category name="InputPersonalization" displayName="$(string.InputPersonalization)">
+      <parentCategory ref="RegionalOptions" />
+    </category>
   </categories>
   <policies>
     <policy name="CustomLocalesNoSelect_1" class="User" displayName="$(string.CustomLocalesNoSelect)" explainText="$(string.CustomLocalesNoSelect_Help)" key="Software\Policies\Microsoft\Control Panel\International" valueName="CustomLocalesNoSelect">
@@ -47,6 +50,16 @@
       <elements>
         <text id="AllowableSystemLocaleTagList" valueName="AllowableSystemLocaleTagList" maxLength="200" />
       </elements>
+    </policy>
+    <policy name="BlockUserInputMethodsForSignIn" class="Machine" displayName="$(string.BlockUserInputMethodsForSignIn)" explainText="$(string.BlockUserInputMethodsForSignIn_Help)" key="Software\Policies\Microsoft\Control Panel\International" valueName="BlockUserInputMethodsForSignIn">
+      <parentCategory ref="NlsManagementCat" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
     </policy>
     <policy name="LocaleUserRestrict_1" class="User" displayName="$(string.LocaleUserRestrict)" explainText="$(string.LocaleUserRestrict_Help)" presentation="$(presentation.LocaleUserRestrict_1)" key="Software\Policies\Microsoft\Control Panel\International" valueName="RestrictUserLocales">
       <parentCategory ref="NlsManagementCat" />
@@ -714,12 +727,118 @@
         </enum>
       </elements>
     </policy>
+    <policy name="TurnOffOfferTextPredictions" class="User" displayName="$(string.TurnOffOfferTextPredictions)" explainText="$(string.TurnOffOfferTextPredictions_Help)" key="Software\Policies\Microsoft\Control Panel\International" valueName="TurnOffOfferTextPredictions">
+      <parentCategory ref="RegionalOptions" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="TurnOffInsertSpace" class="User" displayName="$(string.TurnOffInsertSpace)" explainText="$(string.TurnOffInsertSpace_Help)" key="Software\Policies\Microsoft\Control Panel\International" valueName="TurnOffInsertSpace">
+      <parentCategory ref="RegionalOptions" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="TurnOffAutocorrectMisspelledWords" class="User" displayName="$(string.TurnOffAutocorrectMisspelledWords)" explainText="$(string.TurnOffAutocorrectMisspelledWords_Help)" key="Software\Policies\Microsoft\Control Panel\International" valueName="TurnOffAutocorrectMisspelledWords">
+      <parentCategory ref="RegionalOptions" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="TurnOffHighlightMisspelledWords" class="User" displayName="$(string.TurnOffHighlightMisspelledWords)" explainText="$(string.TurnOffHighlightMisspelledWords_Help)" key="Software\Policies\Microsoft\Control Panel\International" valueName="TurnOffHighlightMisspelledWords">
+      <parentCategory ref="RegionalOptions" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="BlockCleanupOfUnusedPreinstalledLangPacks" class="Machine" displayName="$(string.BlockCleanupOfUnusedPreinstalledLangPacks)" explainText="$(string.BlockCleanupOfUnusedPreinstalledLangPacks_Help)" key="Software\Policies\Microsoft\Control Panel\International" valueName="BlockCleanupOfUnusedPreinstalledLangPacks">
+      <parentCategory ref="RegionalOptions" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
     <policy name="Y2K" class="User" displayName="$(string.Y2K)" explainText="$(string.Y2K_Help)" presentation="$(presentation.Y2K)" key="Software\Policies\Microsoft\Control Panel\International\Calendars\TwoDigitYearMax">
       <parentCategory ref="windows:System" />
       <supportedOn ref="windows:SUPPORTED_Win2k" />
       <elements>
         <decimal id="Y2KYear" valueName="1" minValue="2001" maxValue="2099" storeAsText="true" />
       </elements>
+    </policy>
+    <policy name="ImplicitDataCollectionOff_1" class="User" displayName="$(string.ImplicitDataCollectionOff)" explainText="$(string.ImplicitDataCollectionOff_Help)" key="SOFTWARE\Policies\Microsoft\InputPersonalization">
+      <parentCategory ref="InputPersonalization" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledList>
+        <item key="SOFTWARE\Policies\Microsoft\InputPersonalization" valueName="RestrictImplicitTextCollection">
+          <value>
+            <decimal value="1" />
+          </value>
+        </item>
+        <item key="SOFTWARE\Policies\Microsoft\InputPersonalization" valueName="RestrictImplicitInkCollection">
+          <value>
+            <decimal value="1" />
+          </value>
+        </item>
+      </enabledList>
+      <disabledList>
+        <item key="SOFTWARE\Policies\Microsoft\InputPersonalization" valueName="RestrictImplicitTextCollection">
+          <value>
+            <decimal value="0" />
+          </value>
+        </item>
+        <item key="SOFTWARE\Policies\Microsoft\InputPersonalization" valueName="RestrictImplicitInkCollection">
+          <value>
+            <decimal value="0" />
+          </value>
+        </item>
+      </disabledList>
+    </policy>
+    <policy name="ImplicitDataCollectionOff_2" class="Machine" displayName="$(string.ImplicitDataCollectionOff)" explainText="$(string.ImplicitDataCollectionOff_Help)" key="SOFTWARE\Policies\Microsoft\InputPersonalization">
+      <parentCategory ref="InputPersonalization" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledList>
+        <item key="SOFTWARE\Policies\Microsoft\InputPersonalization" valueName="RestrictImplicitTextCollection">
+          <value>
+            <decimal value="1" />
+          </value>
+        </item>
+        <item key="SOFTWARE\Policies\Microsoft\InputPersonalization" valueName="RestrictImplicitInkCollection">
+          <value>
+            <decimal value="1" />
+          </value>
+        </item>
+      </enabledList>
+      <disabledList>
+        <item key="SOFTWARE\Policies\Microsoft\InputPersonalization" valueName="RestrictImplicitTextCollection">
+          <value>
+            <decimal value="0" />
+          </value>
+        </item>
+        <item key="SOFTWARE\Policies\Microsoft\InputPersonalization" valueName="RestrictImplicitInkCollection">
+          <value>
+            <decimal value="0" />
+          </value>
+        </item>
+      </disabledList>
     </policy>
   </policies>
 </policyDefinitions>

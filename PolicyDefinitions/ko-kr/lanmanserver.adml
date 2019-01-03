@@ -10,32 +10,70 @@
       <string id="Lbl_DisableOnAllShares">모든 공유 폴더에 대해 해시 게시 허용 안 함</string>
       <string id="Lbl_EnableOnAllShares">모든 공유 폴더에 대해 해시 게시 허용</string>
       <string id="Pol_HashPublication">BranchCache에 대한 해시 게시</string>
-      <string id="Pol_HashPublication_Help">이 정책은 해시 생성 서비스에서 공유 폴더에 저장된 데이터에 대해 해시를 생성한 다음 BranchCache를 사용하는 클라이언트 컴퓨터에 이러한 해시를 제공할 수 있도록 합니다. 해시는 파일에 대해 수학적 원리로 생성된 디지털 지문으로서 파일 콘텐츠를 고유하게 식별합니다. 이러한 디지털 지문은 크기가 매우 작으므로 Windows에서 WAN(광역 네트워크) 대역폭을 많이 사용하지 않고 파일을 비교할 수 있습니다.
+      <string id="Pol_HashPublication_Help">이 정책 설정은 해지 생성 서비스가 공유 폴더에 저장된 데이터에 대해 콘텐츠 정보라고도 하는 해시를 생성할지 여부를 지정합니다. 이 정책 설정은 파일 서비스 역할을 가지며 파일 서버 및 네트워크 파일용 BranchCache 역할 서비스가 둘 다 설치된 서버 컴퓨터에 적용되어야 합니다.
 
-지점의 클라이언트 컴퓨터는 다음 조건이 모두 충족될 경우 WAN 링크를 통해 파일에 대한 해시를 받을 수 있습니다.      
-1) 사용자에게 파일을 액세스할 수 있는 권한이 있는 경우
-2) 클라이언트 컴퓨터에서 BranchCache가 사용되는 경우
-3) 클라이언트 컴퓨터에서 액세스하는 공유 폴더에 대해 해시 게시가 허용되는 경우 
+정책 구성
 
-클라이언트 컴퓨터는 해시를 받으면 지점에 있는 다른 컴퓨터의 캐시에서 동일한 버전의 파일을 검색할 수 있습니다. 지점에서 동일한 버전의 파일이 검색되면 클라이언트 컴퓨터는 WAN 링크를 통해 파일을 다운로드하는 대신 로컬 캐시에 저장된 사본을 다운로드합니다. 
+다음 중 하나를 선택합니다.
 
-이 정책을 "BranchCache를 사용하는 공유 폴더에 대해서만 해시 게시 허용"(값 = 0)으로 설정하면 BranchCache를 사용하는 공유 폴더에 대해서만 해시가 생성됩니다. 이러한 공유 폴더에 대한 해시는 다음 이벤트 중 하나가 발생하면 생성됩니다.
-1) BranchCache 지원이 설정된 클라이언트에서 BranchCache를 사용하는 공유 폴더의 파일을 액세스하는 경우
-2) 관리자가 명령줄 도구인 Hashgen을 사용하여 수동으로 해시를 생성하는 경우
- 
-이 정책을 "모든 공유 폴더에 대해 해시 게시 허용 안 함"(값 = 1)으로 설정하면 이 정책이 적용되는 컴퓨터에서 해시를 생성하거나 제공하지 않습니다.
- 
-이 정책을 "모든 공유 폴더에 대해 해시 게시 허용"(값 = 2)으로 설정하면 다음 이벤트 중 하나가 발생할 때 서버의 모든 공유 폴더에 대해 해시가 생성됩니다. 
-1) BranchCache 지원이 설정된 클라이언트에서 서버의 공유 폴더에 있는 파일을 액세스하는 경우
-2) 관리자가 명령줄 도구인 Hashgen을 사용하여 수동으로 해시를 생성하는 경우</string>
-    </stringTable>
+- 구성되지 않음. 이 옵션을 선택하면 해시 게시 설정이 파일 서버에 적용되지 않습니다. 파일 서버가 도메인 구성원이지만 모든 파일 서버에서 BranchCache를 사용하지는 않으려는 경우, 이 도메인 그룹 정책 설정에 대해 구성되지 않음을 지정한 다음 개별 파일 서버에서 BranchCache를 사용하도록 로컬 컴퓨터 정책을 구성할 수 있습니다. 이 도메인 그룹 정책 설정이 구성되지 않으므로 BranchCache를 사용하도록 설정하려는 개별 서버에서 사용한 사용 설정이 덮어 쓰이지 않습니다.
+
+- 사용. 이 옵션을 선택하면 그룹 정책이 적용되는 모든 파일 서버에서 해시 게시가 켜집니다. 예를 들어 도메인 그룹 정책에서 BranchCache용 해시 게시가 사용하도록 설정되면 해당 정책이 적용되는 모든 도메인 구성원 파일 서버에 대해 해시 게시가 켜집니다. 따라서 파일 서버는 BranchCache 사용 가능 파일 공유에 저장된 모든 콘텐츠에 대한 콘텐츠 정보를 만들 수 있습니다.
+
+- 사용 안 함. 이 옵션을 선택하면 그룹 정책이 적용되는 모든 파일 서버에서 해시 게시가 꺼집니다.
+
+이 정책 설정이 사용하도록 설정된 경우에는 다음 구성 옵션도 선택할 수 있습니다.
+
+- 모든 공유 폴더에 대해 해시 게시 허용. 이 옵션을 선택하면 BranchCache는 파일 서버의 모든 공유에 있는 모든 콘텐츠에 대한 콘텐츠 정보를 생성합니다. 
+
+- BranchCache를 사용하는 공유 폴더에 대해서만 해시 게시 허용 이 옵션을 선택하면 BranchCache가 사용되도록 설정된 공유 폴더에 대해서만 콘텐츠 정보가 생성됩니다. 이 설정을 사용하는 경우 파일 서버의 공유 및 저장소 관리에서 개별 공유에 대해 BranchCache를 사용하도록 설정해야 합니다.
+
+- 모든 공유 폴더에 대해 해시 게시 허용 안 함 이 옵션을 선택하면 BranchCache는 컴퓨터의 어떤 공유에 대해서도 콘텐츠 정보를 생성하지 않으며 콘텐츠를 요청한 클라이언트 컴퓨터로 콘텐츠 정보를 보내지 않습니다.
+      
+      </string>
+      <string id="Lbl_SupportV1">V1 해시 버전만 지원</string>
+      <string id="Lbl_SupportV2">V2 해시 버전만 지원</string>
+      <string id="Lbl_SupportV1andV2">V1 및 V2 버전 모두 지원</string>
+      <string id="Pol_HashSupportVersion">BranchCache에 대한 해시 버전 지원</string>
+      <string id="Pol_HashSupportVersion_Help">이 정책 설정은 BranchCache 해시 생성 서비스가 V1(버전 1) 해시를 지원할지, V2(버전 2) 해시를 지원할지 아니면 V1 해시와 V2 해시를 모두 지원할지 지정합니다. 콘텐츠 정보라고도 하는 해시는 BranchCache가 사용하도록 설정된 공유 폴더의 데이터를 기반으로 만들어집니다. 
+
+지원되는 버전을 하나만 지정하면 해당 버전에 대한 콘텐츠 정보가 BranchCache에 의해 생성되는 유일한 유형이며 클라이언트 컴퓨터가 검색할 수 있는 유일한 콘텐츠 정보 유형이 됩니다. 예를 들어 V1 해시 지원을 사용하도록 설정하면 BranchCache는 V1 해시만 생성하며 클라이언트 컴퓨터는 V1 해시만 검색할 수 있습니다.
+
+정책 구성
+
+다음 중 하나를 선택합니다.
+
+- 구성되지 않음. 이 옵션을 선택하면 BranchCache 설정이 이 정책 설정에 의해 클라이언트 컴퓨터로 적용되지 않습니다. 이 기본값을 지정하면 V1 및 V2 해시 생성과 검색이 모두 지원됩니다.
+
+- 사용. 이 옵션을 선택하면 정책 설정이 적용되고 "지원되는 해시 버전"에 지정된 해시 버전이 생성되고 검색됩니다.
+
+- 사용 안 함. 이 옵션을 선택하면 V1 및 V2 해시 생성과 검색이 모두 지원됩니다.
+
+이 설정이 지정된 경우 다음 옵션도 선택하고 구성할 수 있습니다.
+
+지원되는 해시 버전:
+
+- V1 콘텐츠 정보만 지원하려면 "지원되는 해시 버전"을 값 1로 구성합니다.
+
+- V2 콘텐츠 정보만 지원하려면 "지원되는 해시 버전"을 값 2로 구성합니다.
+
+- V1 및 V2 콘텐츠 정보를 모두 지원하려면 "지원되는 해시 버전"을 값 3으로 구성합니다.</string>
+      </stringTable>
     <presentationTable>
       <presentation id="Pol_HashPublication">
         <text>값:</text>
         <text>0 = BranchCache를 사용하는 공유 폴더에 대해서만 해시 게시 허용</text>
         <text>1 = 모든 공유 폴더에 대해 해시 게시 허용 안 함</text>
-        <text>2 = 모든 공유 모든 폴더에 대해 해시 게시 허용</text>
-        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">해시 게시 동작: </dropdownList>
+        <text>2 = 모든 공유 폴더에 대해 해시 게시 허용</text>
+        <dropdownList refId="Lbl_HashPublicationActionCombo" defaultItem="0">해시 게시 동작:  </dropdownList>
+        <text> </text>
+      </presentation>
+      <presentation id="Pol_HashSupportVersion">
+        <text>값:</text>
+        <text>1 = V1 해시 지원</text>
+        <text>2 = V2 해시 지원</text>
+        <text>3 = V1 및 V2 해시 지원</text>
+        <dropdownList refId="Lbl_HashVersionSupportActionCombo" defaultItem="0">지원되는 해시 버전:  </dropdownList>
         <text> </text>
       </presentation>
     </presentationTable>

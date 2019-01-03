@@ -1,61 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>enter display name here</displayName>
-  <description>enter description here</description>
+  <displayName>在此輸入顯示名稱</displayName>
+  <description>在此輸入描述</description>
   <resources>
     <stringTable>
-      <string id="DisallowCpls">Hide specified Control Panel items</string>
-      <string id="DisallowCpls_Help">Hides specified Control Panel items.
+      <string id="DisallowCpls">隱藏指定的控制台項目</string>
+      <string id="DisallowCpls_Help">這個設定可以讓您在 [控制台] 視窗及 [開始] 畫面顯示或隱藏指定的控制台項目 (如滑鼠、系統或個人化)。這個設定會影響 [開始] 畫面與 [控制台] 視窗，以及存取 [控制台] 項目的其他途徑 (如 [說明及支援] 中的捷徑或使用 control.exe 的命令列)。這個原則對電腦設定中顯示的項目不會發生任何作用。
 
-This setting removes Control Panel items (such as "Mouse", "System" or "Personalization") from the Control Panel window and the Start menu.
+如果您啟用這個設定，您可以選取不要在 [控制台] 視窗及 [開始] 畫面顯示特定項目。
 
-To hide a Control Panel item, click Show. In the Show Contents dialog box in the Value column, enter the Control Panel item's canonical name (e.g. "Microsoft.Mouse", "Microsoft.System" or "Microsoft.Personalization").
+若要隱藏控制台項目，先啟用這個原則設定，然後按一下 [顯示] 以存取不允許的 [控制台] 項目清單。在 [顯示內容] 對話方塊的 [值] 欄中，輸入 [控制台] 項目的正式名稱。例如，輸入 Microsoft.Mouse、Microsoft.System 或 Microsoft.Personalization。
 
-Note: For Windows Vista, Windows Server 2008, and earlier versions of Windows, the module name (e.g. "timedate.cpl" or "inetcpl.cpl") should be entered. If a Control Panel item does not have a CPL file, or the CPL file contains multiple applets, then its module name and string resource identification number should be entered (e.g. "@systemcpl.dll,-1" for System or "@themecpl.dll,-1" for Personalization).
+注意: 若使用 Windows Vista、Windows Server 2008 及舊版 Windows，請輸入模組名稱 (例如 timedate.cpl 或 inetcpl.cpl)。如果 [控制台] 項目沒有 CPL 檔，或 CPL 檔包含多個小程式，則請輸入模組名稱和字串資源識別碼 (例如 @systemcpl.dll,-1 代表 [系統] 或 @themecpl.dll,-1 代表 [個人化])。在 MSDN 搜尋「控制台項目」，就可以找到正式名稱和模組名稱的完整清單。
 
-A complete list of canonical and module names of Control Panel items can be found in MSDN at http://go.microsoft.com/fwlink/?LinkId=122973.
+如果同時啟用 [隱藏指定的控制台項目] 設定和 [只顯示指定的控制台項目] 設定，就會略過 [只顯示指定的控制台項目] 設定。
 
-This setting affects the Start menu and Control Panel window, as well as other ways to access Control Panel items (such as shortcuts in Help and Support or command lines that use control.exe).
+注意: 使用這個設定無法隱藏 [桌面] 內容功能表上的 [顯示控制台] 項目。若要隱藏 [顯示控制台] 項目，並防止使用者修改電腦的顯示設定，請改用 [停用顯示控制台] 設定。</string>
+      <string id="ForceClassicControlPanel">開啟 [控制台] 時永遠開啟 [所有控制台項目]</string>
+      <string id="ForceClassicControlPanel_Help">這個原則設定可控制預設 [控制台] 檢視顯示為類別或圖示。
 
-If both the "Hide specified Control Panel items" setting and the "Show only specified Control Panel items" setting are enabled, the "Show only specified Control Panel items" setting is ignored.
+如果您啟用這個原則設定，[控制台] 會開啟圖示檢視。
 
-Note: The Display Control Panel item cannot be hidden in the Desktop context menu by using this setting. To hide the Display Control Panel item and prevent users from modifying the computer's display settings use the "Disable Display Control Panel" setting instead.</string>
-      <string id="ForceClassicControlPanel">Always open All Control Panel Items when opening Control Panel</string>
-      <string id="ForceClassicControlPanel_Help">Set All Control Panel Items as the default Control Panel view.
+如果您停用這個原則設定，[控制台] 會開啟類別檢視。
 
-If the policy is disabled, Control Panel Home is the default view.</string>
-      <string id="NoControlPanel">Prohibit access to the Control Panel</string>
-      <string id="NoControlPanel_Help">Disables all Control Panel programs.
+如果沒有設定這個原則設定，[控制台] 會開啟上一個 [控制台] 工作階段使用的檢視。
+注意: 圖示大小取決於使用者在上一個工作階段的設定。</string>
+      <string id="NoControlPanel">禁止存取 [控制台] 和電腦設定</string>
+      <string id="NoControlPanel_Help">停用所有 [控制台] 程式和電腦設定應用程式。
 
-This setting prevents Control.exe, the program file for Control Panel, from starting. As a result, users cannot start Control Panel or run any Control Panel items.
+這個設定可防止啟動 Control.exe 和 SystemSettings.exe (控制台和電腦設定的程式檔)。因此，使用者將無法啟動 [控制台] 或電腦設定，或執行其中的任何項目。
 
-This setting also removes Control Panel from the Start menu. This setting also removes the Control Panel folder from Windows Explorer.
+這個設定會移除下列位置的 [控制台]:
+[開始] 畫面
+[檔案總管]
 
-If users try to select a Control Panel item from the Properties item on a context menu, a message appears explaining that a setting prevents the action.</string>
-      <string id="RestrictCpls">Show only specified Control Panel items</string>
-      <string id="RestrictCpls_Help">Hides all Control Panel items and folders except those specified in this setting.
+這個設定會移除下列位置的電腦設定:
+[開始] 畫面
+設定快速鍵
+帳戶圖片
+搜尋結果
 
-This setting removes all Control Panel items (such as "Mouse", "System" or "Personalization") from the Control Panel window and the Start menu. The only items displayed in Control Panel are those you specify in this setting.
+如果使用者嘗試從內容功能表的 [內容] 項目選取 [控制台] 項目，會顯示訊息說明設定防止這個動作產生。</string>
+      <string id="RestrictCpls">只顯示指定的控制台項目</string>
+      <string id="RestrictCpls_Help">這個原則設定可控制要在 [控制台] 視窗及 [開始] 畫面顯示哪些控制台項目 (如滑鼠、系統或個人化)。只有這個設定中指定的項目會顯示在 [控制台] 中。這個設定會影響 [開始] 畫面與 [控制台]，以及存取 [控制台] 項目的其他途徑 (如 [說明及支援] 中的捷徑或使用 control.exe 的命令列)。這個原則對電腦設定中顯示的項目不會發生任何作用。
 
-To display a Control Panel item, click Show, In the Show Contents dialog box in the Value column, enter the Control Panel item's canonical name (e.g. "Microsoft.Mouse", "Microsoft.System" or "Microsoft.Personalization").
+若要顯示控制台項目，先啟用這個原則設定，然後按一下 [顯示] 以存取允許的控制台項目清單。在 [顯示內容] 對話方塊的 [值] 欄中，輸入 [控制台] 項目的正式名稱。例如，輸入 Microsoft.Mouse、Microsoft.System 或 Microsoft.Personalization。
 
-Note: For Windows Vista, Windows Server 2008, and earlier versions of Windows, the module name (e.g. "timedate.cpl" or "inetcpl.cpl") should be entered. If a Control Panel item does not have a CPL file, or the CPL file contains multiple applets, then its module name and string resource identification number should be entered (e.g. "@systemcpl.dll,-1" for System or "@themecpl.dll,-1" for Personalization).
+注意: 若使用 Windows Vista、Windows Server 2008 及舊版 Windows，請輸入模組名稱 (例如 timedate.cpl 或 inetcpl.cpl)。如果 [控制台] 的項目沒有 CPL 檔，或 CPL 檔包含多個小程式，則請輸入模組名稱和字串資源識別碼。例如，輸入 @systemcpl.dll,-1 代表 [系統]，或 @themecpl.dll,-1 代表 [個人化]。在 MSDN 搜尋「控制台項目」，就可以找到 [控制台] 項目正式名稱和模組名稱的完整清單。
 
-A complete list of canonical and module names of Control Panel items can be found in MSDN at http://go.microsoft.com/fwlink/?LinkId=122973.
+如果同時啟用 [隱藏指定的控制台項目] 設定和 [只顯示指定的控制台項目] 設定，就會略過 [只顯示指定的控制台項目] 設定。
 
-This setting affects the Start menu and Control Panel, as well as other ways to access Control Panel items (such as shortcuts in Help and Support or command lines that use control.exe).
-
-If both the "Hide specified Control Panel items" setting and the "Show only specified Control Panel items" setting are enabled, the "Show only specified Control Panel items" setting is ignored.
-
-Note: The Display Control Panel item cannot be hidden in the Desktop context menu by using this setting. To hide the Display Control Panel item and prevent users from modifying the computer's display settings use the "Disable Display Control Panel" setting instead.</string>
+注意: 使用這個設定無法隱藏 [桌面] 內容功能表上的 [顯示控制台] 項目。若要隱藏 [顯示控制台] 項目，並防止使用者修改電腦的顯示設定，請改用 [停用顯示控制台] 設定。</string>
     </stringTable>
     <presentationTable>
       <presentation id="DisallowCpls">
-        <listBox refId="DisallowCplsList">List of disallowed Control Panel items</listBox>
+        <listBox refId="DisallowCplsList">禁止使用的控制台項目清單</listBox>
       </presentation>
       <presentation id="RestrictCpls">
-        <listBox refId="RestrictCplsList">List of allowed Control Panel items</listBox>
+        <listBox refId="RestrictCplsList">允許執行的控制台項目清單</listBox>
       </presentation>
     </presentationTable>
   </resources>

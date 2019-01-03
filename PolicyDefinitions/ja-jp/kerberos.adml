@@ -29,18 +29,100 @@
 
 このポリシー設定を構成しないと、相互運用可能な Kerberos V5 設定がローカル レジストリで定義されている場合、その設定が使用されます。</string>
       <string id="ValidateKDC">KDC の厳密な検証を必須にする</string>
-      <string id="ValidateKDC_explain">このポリシー設定は、KDC 証明書検証時の Kerberos クライアントの動作を制御します。  
-      
-このポリシー設定を有効にした場合、KDC の X.509 証明書に拡張キー使用法 (EKU) 拡張子の KDC キー用オブジェクト識別子が含まれていること、および KDC の X.509 証明書にドメインの DNS 名と一致する dNSName subjectAltName (SAN) 拡張子が含まれていることが、Kerberos クライアントに必要です。コンピューターがドメインに参加している場合は、NTAUTH ストアの証明機関 (CA) によって KDC の X.509 証明書に署名が付加されていることが、Kerberos クライアントに必要です。コンピューターがドメインに参加していない場合、Kerberos クライアントにより、KDC の X.509 証明書のパス検証にスマート カードのルート CA 証明書が使用されることが許可されます。
+      <string id="ValidateKDC_explain">このポリシー設定は、スマート カードとシステム証明書によるログオンのための KDC 証明書検証時の Kerberos クライアントの動作を制御します。 
 
-このポリシー設定を無効にした場合、または構成しなかった場合、Kerberos クライアントに必要になるのは、KDC 証明書に EKU 拡張子のサーバー認証用オブジェクト識別子が含まれていることのみです。
+このポリシー設定を有効にした場合、KDC の X.509 証明書に拡張キー使用法 (EKU) 拡張子の KDC キー用オブジェクト識別子が含まれていること、および KDC の X.509 証明書にドメインの DNS 名と一致する dNSName subjectAltName (SAN) 拡張子が含まれていることが、Kerberos クライアントに必要です。コンピューターがドメインに参加している場合は、NTAuth ストアの証明機関 (CA) によって KDC の X.509 証明書に署名が付加されていることが、Kerberos クライアントに必要です。コンピューターがドメインに参加していない場合、Kerberos クライアントにより、KDC の X.509 証明書のパス検証にスマート カードのルート CA 証明書が使用されることが許可されます。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、Kerberos クライアントに必要になるのは、どのサーバーに対しても発行できる EKU 拡張子のサーバー認証用オブジェクト識別子が KDC 証明書に含まれていることのみです。
+
 </string>
       <string id="StrictTarget">リモート プロシージャ コールでターゲット SPN の厳密な一致を必須にする</string>
-      <string id="StrictTarget_explain">アプリケーションでサービス プリンシパル名 (SPN) の値を NULL にしてこのサーバーへのリモート プロシージャ コール (RPC) を実行しようとすると、Windows 7 を実行しているコンピューターでは SPN を生成することによって Kerberos を使用しようとします。このポリシー設定を使用すると、このシステムで生成された SPN を含むチケットの暗号化を Kerberos で解除できるようにこのサーバーを構成することができます。
-
+      <string id="StrictTarget_explain">  このポリシー設定を使用すると、このシステムで生成された SPN を含むチケットの暗号化を Kerberos で解除できるようにこのサーバーを構成することができます。アプリケーションで、サービス プリンシパル名 (SPN) の値が NULL の状態でこのサーバーへのリモート プロシージャ コール (RPC) が試行されると、Windows 7 以降が実行されているコンピューターでは SPN を生成して Kerberos の使用が試行されます。
+              
 このポリシー設定を有効にした場合、LocalSystem または NetworkService で実行中のサービスでのみこれらの接続の受け入れが許可され、LocalSystem または NetworkService 以外の識別情報で実行中のサービスでは認証に失敗する可能性があります。
 
-このポリシー設定を無効にした場合、または構成しなかった場合は、このシステムで生成された SPN を使用することによる着信接続の受け入れがすべてのサービスで許可されます。</string>
+このポリシー設定を無効にした場合または構成しなかった場合、このシステムで生成された SPN を使用することによって、着信接続の受け入れがすべてのサービスで許可されます。</string>
+      <string id="KdcProxyServer">Kerberos クライアントの KDC プロキシ サーバーを指定する</string>
+      <string id="KdcProxyServer_explain">このポリシー設定では、DNS サフィックス名に基づいて、ドメインの KDC プロキシ サーバーに対する Kerberos クライアントのマッピングを構成します。
+
+このポリシー設定を有効にすると、Kerberos クライアントは、構成済みのマッピングに基づくドメイン コントローラーが見つからない場合に、ドメインの KDC プロキシ サーバーを使用します。KDC プロキシ サーバーをドメインにマップするには、このポリシー設定を有効にして、[表示] をクリックします。その後、オプション ウィンドウで説明されている構文を使用して KDC プロキシ サーバー名をドメインの DNS 名にマップします。次に、[内容の表示] ダイアログ ボックスの [値の名前] 列に DNS サフィックス名を入力し、適切な構文形式を使用して [値] 列にプロキシ サーバーの一覧を入力します。マッピングの一覧を表示するには、このポリシー設定を有効にし、[表示] ボタンをクリックします。一覧からマッピングを削除するには、削除するマッピング エントリをクリックし、Del キーを押します。マッピングを編集するには、一覧から現在のエントリを削除し、異なるパラメーターを持つ新しいエントリを追加します。
+
+このポリシー設定を無効にした場合または構成しなかった場合、グループ ポリシーで定義されている KDC プロキシ サーバーは、Kerberos クライアントに設定されません。
+
+</string>
+      <string id="KdcProxyDisableServerRevocationCheck">KDC プロキシ サーバーの SSL 証明書の失効確認を無効にする</string>
+      <string id="KdcProxyDisableServerRevocationCheck_explain">このポリシー設定では、接続先 KDC プロキシ サーバーの SSL 証明書の失効確認を無効にできます。
+
+このポリシー設定を有効にすると、Kerberos クライアントは、KDC プロキシ サーバーの SSL 証明書の失効確認を無視します。このポリシー設定は KDC プロキシ接続のトラブルシューティングを行う場合にのみ使用してください。
+警告: 失効確認を無視すると、証明書によって表されるサーバーの有効性は保証されません。
+
+このポリシー設定を無効にした場合、または構成しなかった場合は、Kerberos クライアントが SSL 証明書の失効確認を実行します。失効確認に失敗した場合、KDC プロキシ サーバーへの接続は確立されません。
+
+</string>
+      <string id="ClientRequireFast">Kerberos 防御が使用できないときは認証要求を失敗とする</string>
+      <string id="ClientRequireFast_explain">このポリシー設定では、コンピューターがドメイン コントローラーと通信するときに、Kerberos メッセージ交換での防御の使用を要求するかどうかを制御します。
+
+警告: [ダイナミック アクセス制御と Kerberos 防御をサポートする] を有効にすることによって、ドメインで Kerberos 防御がサポートされていない場合、このポリシー設定が有効にされているコンピューターからのすべてのユーザー認証が失敗します。
+
+このポリシー設定を有効にすると、認証サービス (AS) およびチケット保証サービス (TGS) のメッセージがドメイン コントローラーと交換されるときに限り、ドメイン内のクライアント コンピューターは Kerberos 防御の使用を要求します。
+
+注: Kerberos 防御をサポートするには、Kerberos グループ ポリシーの [Kerberos クライアントで信頼性情報、複合認証、および Kerberos 防御をサポートする] も有効にする必要があります。
+
+このポリシー設定を無効にした場合または構成しなかった場合、ターゲット ドメインのサポート状況により可能であれば、そのドメイン内のクライアント コンピューターは Kerberos 防御を使用します。
+
+</string>
+      <string id="ServerAcceptsCompound">複合認証をサポートする</string>
+      <string id="ServerAcceptsCompound_explain">このポリシー設定は、デバイスの Active Directory アカウントを複合認証用に構成するかどうかを制御します。
+
+アクセス制御に使用する複合認証の提供をサポートするには、リソース アカウントのドメイン内に、要求に対応できる数のドメイン コントローラーが必要です。ドメイン管理者は、このポリシーをサポートするすべてのドメイン コントローラーに対して、[ダイナミック アクセス制御と Kerberos 防御をサポートする] ポリシーを構成する必要があります。
+
+このポリシー設定を有効にする場合、次のオプションを使用してデバイスの Active Directory アカウントを複合認証用に構成します。
+
+なし: このコンピューター アカウントに対して複合認証は提供されません。
+
+自動: 1 つ以上のアプリケーションがダイナミック アクセス制御に対応するように構成されている場合、このコンピューター アカウントに対して複合認証が提供されます。
+
+常時: このコンピューター アカウントに対して常に複合認証が提供されます。
+
+このポリシー設定を無効にすると、[なし] が使用されます。
+このポリシー設定を構成しない場合、[自動] が使用されます。
+
+</string>
+      <string id="CompoundIdEnable_No">なし</string>
+      <string id="CompoundIdEnable_Auto">自動</string>
+      <string id="CompoundIdEnable_Yes">常時</string>
+
+      <string id="MaxTokenSize">Kerberos SSPI コンテキスト トークンのバッファー サイズの最大値を設定する</string>
+      <string id="MaxTokenSize_explain">このポリシー設定では、SSPI コンテキスト トークンのバッファー サイズの最大値を要求するアプリケーションに返される値を設定できます。
+              
+コンテキスト トークンのバッファー サイズを使用して、アプリケーションでは SSPI コンテキスト トークン サイズの最大値を予測し、割り当てます。バッファーは、認証要求処理とグループ メンバーシップに応じて、SSPI コンテキスト トークンの実際のサイズより小さくなることがあります。
+
+このポリシー設定を有効にすると、Kerberos クライアントまたはサーバーは、構成された値とローカルで許容される最大値のうち、小さい方の値を使用します。
+
+このポリシー設定を無効にする場合または構成しない場合、Kerberos クライアントまたはサーバーは、ローカルで構成された値と既定値のどちらかを使用します。
+
+注: このポリシー設定では、HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\Kerberos\Parameters 内の既存の MaxTokenSize レジストリ値が構成されます。このレジストリ値は Windows XP と Windows Server 2003 から追加されたもので、既定値は 12,000 バイトです。Windows 8 以降の既定値は 48,000 バイトです。HTTP では認証コンテキスト トークンの base64 エンコーディングがあるため、この値を 48,000 バイト以上に設定しないことをお勧めします。
+
+
+
+</string>
+      <string id="EnableCbacAndArmor">Kerberos クライアントで信頼性情報、複合認証、および Kerberos 防御をサポートする</string>
+      <string id="EnableCbacAndArmor_explain">このポリシー設定では、これらの機能をサポートするドメインで Kerberos 認証を使用して、ダイナミック アクセス制御と Kerberos 防御で使用する信頼性情報および複合認証をデバイスが要求するかどうかを制御します。
+このポリシー設定を有効にした場合、クライアント コンピューターは、信頼性情報を要求し、ダイナミック アクセス制御と Kerberos 防御で使用する信頼性情報および複合認証をサポートするドメインで複合認証の作成と Kerberos メッセージの防御に必要な情報を提供します。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、クライアント デバイスは信頼性情報を要求しないため、複合認証の作成と Kerberos メッセージの防御に必要な情報が提供されません。デバイスでホストされているサービスは、Kerberos プロトコル遷移を使用してクライアントの信頼性情報を取得できなくなります。 
+  
+</string>
+      <string id="AlwaysSendCompoundId">常に複合認証を先に送信する</string>
+      <string id="AlwaysSendCompoundId_explain">このポリシー設定では、リソース ドメインにより複合 ID が要求されるときにデバイスが複合認証要求を常に送信するかどうかを制御します。
+
+注: ドメイン コントローラーが複合認証を要求するためには、"KDC で信頼性情報、複合認証、および Kerberos 防御をサポートする" ポリシーおよび "複合認証を要求する" ポリシーをリソース アカウント ドメインで構成して有効にする必要があります。
+
+このポリシー設定を有効にした場合、リソース ドメインにより複合認証が要求されると、複合認証をサポートするデバイスは常に複合認証要求を送信します。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、リソース ドメインにより複合認証が要求されると、デバイスは、先に非複合認証要求を送信し、その後、サービスによって複合認証が要求されるときに複合認証要求を送信します。
+
+</string>
     </stringTable>
     <presentationTable>
       <presentation id="hosttorealm">
@@ -48,41 +130,41 @@
         <text></text>
         <text>構文:</text>
         <text>Kerberos 領域名を値の名前として入力します。</text>
-        <text>Kerberos 領域にマップするホスト名と </text>
-        <text>DNS サフィックスを値として入力します。複数の名前を</text>
+        <text>Kerberos 領域にマップするホスト名と</text>
+        <text>DNS サフィックスを値として入力します。 複数の名前を</text>
         <text>追加するには、エントリを ";" で区切ります。</text>
         <text></text>
         <text>注: DNS サフィックスを指定するには、エントリの前に '.' ピリオドを付けます。</text>
         <text>ホスト名のエントリの場合は、先頭に '.' ピリオドを指定しないでください。</text>
         <text></text>
         <text>例:</text>
-        <text>値の名前 : MICROSOFT.COM</text>
-        <text>値 : .microsoft.com; .ms.com; computer1.fabrikam.com;</text>
+        <text>値の名前: MICROSOFT.COM</text>
+        <text>値: .microsoft.com; .ms.com; computer1.fabrikam.com;</text>
         <text></text>
-        <text>上の例では、*.microsoft.com または *.ms.com のいずれかの DNS サフィックス</text>
-        <text>を持つすべてのプリンシパルが MICROSOFT.COM Kerberos 領域に</text>
-        <text>マップされます。また、ホスト名</text>
-        <text>computer1.fabrikam.com も </text>
-        <text>MICROSOFT.COM Kerberos 領域にマップされます。</text>
+        <text>上の例の場合。DNS サフィックスが *.microsoft.com または</text>
+        <text>*.ms.com のプリンシパルは、MICROSOFT.COM Kerberos 領域に</text>
+        <text>マップされます。 また、ホスト名</text>
+        <text>computer1.fabrikam.com も MICROSOFT.COM Kerberos 領域に </text>
+        <text>マップされます。</text>
       </presentation>
       <presentation id="MitRealms">
-        <listBox refId="MitRealms">相互運用可能な Kerberos V5 領域設定を次のように定義する : </listBox>
+        <listBox refId="MitRealms">相互運用可能な Kerberos V5 領域設定を次のように定義する:</listBox>
         <text></text>
         <text>構文:</text>
         <text>相互運用可能な Kerberos V5 領域名を値の名前として入力します。</text>
         <text>領域のフラグと KDC のホスト名を</text>
-        <text>値として入力します。領域のフラグをタグ</text>
-        <text>&lt;f&gt; と &lt;/f&gt; で囲みます。KDC の一覧をタグ &lt;k&gt; と &lt;/k&gt; で囲みます。</text>
+        <text>値として入力します。 領域のフラグをタグ</text>
+        <text>&lt;f&gt; と &lt;/f&gt; で囲みます。 KDC の一覧をタグ &lt;k&gt; と &lt;/k&gt; で囲みます。</text>
         <text>複数の KDC 名を追加するには、エントリを</text>
         <text>セミコロン ";" で区切ります。</text>
         <text></text>
         <text>例:</text>
-        <text>値の名前 : TEST.COM</text>
-        <text>値 :&lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
+        <text>値の名前: TEST.COM</text>
+        <text>値: &lt;f&gt;0x00000004&lt;/f&gt;&lt;k&gt;kdc1.test.com; kdc2.test.com&lt;/k&gt;</text>
         <text></text>
-        <text>別の例 : </text>
-        <text>値の名前 : REALM.FABRIKAM.COM</text>
-        <text>値 : &lt;f&gt;0x0000000E&lt;/f&gt;</text>
+        <text>別の例:</text>
+        <text>値の名前: REALM.FABRIKAM.COM</text>
+        <text>値: &lt;f&gt;0x0000000E&lt;/f&gt;</text>
       </presentation>
       <presentation id="ValidateKDC">
         <dropdownList refId="ValidateKDCOp" noSort="true" defaultItem="0">モード:</dropdownList>
@@ -100,6 +182,39 @@
         <text>フォレスト内のすべてのドメインを個別に一覧に含める必要はありません。</text>
         <text>信頼する側のフォレストを一覧に含めると、フォレスト内のすべてのドメインが検索されます。</text>
         <text>最適なパフォーマンスを得るためには、一致する可能性が高い順序でフォレストを一覧に含めてください。 </text>
+      </presentation>
+      <presentation id="KdcProxyServer">
+        <listBox refId="KdcProxyServer">KDC プロキシ サーバーの設定を次のように定義する:</listBox>
+        <text></text>
+        <text>構文:</text>
+        <text></text>
+        <text>DNS サフィックス名を値の名前として入力します。</text>
+        <text>DNS サフィックス名では次の 3 つの形式を使用できます。優先順位が高い順に示します。</text>
+        <text>完全一致: host.contoso.com</text>
+        <text>サフィックス一致: .contoso.com</text>
+        <text>既定の一致: *</text>
+        <text></text>
+        <text>プロキシ サーバー名を値として入力します。</text>
+        <text>プロキシ サーバー名は、必ずタグ &lt;https /&gt; で囲みます。</text>
+        <text>複数のプロキシ サーバー名を追加するには、エントリをスペースまたはコンマ "," で区切ります。</text>
+        <text></text>
+        <text>例:</text>
+        <text>値の名前: .contoso.com</text>
+        <text>値: &lt;https proxy1.contoso.com proxy2.contoso.com /&gt;</text>
+        <text></text>
+        <text>別の例:</text>
+        <text>値の名前: *</text>
+        <text>値: &lt;https proxy.contoso.com /&gt;</text>
+      </presentation>
+      <presentation id="ClientRequireFast">
+      </presentation>
+      <presentation id="ServerAcceptsCompound">
+       <dropdownList refId="CompoundIdEnabled" noSort="true" defaultItem="2">クライアントのデバイス情報を使用する認証をサポートする:</dropdownList>  
+      </presentation>
+      <presentation id="MaxTokenSize">
+        <decimalTextBox refId="MaxTokenSize" defaultValue="48000" spinStep="1000">最大サイズ</decimalTextBox>
+      </presentation>
+      <presentation id="EnableCbacAndArmor">
       </presentation>
     </presentationTable>
   </resources>

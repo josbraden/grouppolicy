@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
+<!-- 
+  Note that white space is preserved as is in the text shown in the Group Policy UI.
+  Don't add extra line breaks at the beginning and end of text strings,
+  and make sure that lines of text start in the FIRST column.
+  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>tutaj wprowadź wyświetlaną nazwę</displayName>
+  <displayName>tutaj wprowadź nazwę wyświetlaną</displayName>
   <description>tutaj wprowadź opis</description>
   <resources>
     <stringTable>
+      <string id="WU_SUPPORTED_Windows7ToXPSP2">Windows 7, Windows Server 2008 R2, Windows Vista, Windows XP z dodatkiem SP2</string>
+      <string id="WU_SUPPORTED_Windows7_To_Win2kSP3_Or_XPSP1">Windows 7, Windows Server 2008 R2, Windows Vista, Windows Server 2003, Windows XP z dodatkiem SP2, Windows XP z dodatkiem SP1 , Windows 2000 z dodatkiem SP4, Windows 2000 z dodatkiem SP3</string>
+      <string id="WU_SUPPORTED_Win2kSP3_Or_XPSP1_NoWinRT">Przynajmniej system Windows XP Professional z dodatkiem Service Pack 1 lub Windows 2000 z dodatkiem Service Pack 3, oprócz systemu Windows RT</string>
+      <string id="WU_SUPPORTED_WindowsXPSP1_NoWinRT">Przynajmniej system Windows Server 2003 lub Windows XP Professional z dodatkiem SP1, oprócz systemu Windows RT</string>
       <string id="AUDontShowUasHelp">To ustawienie zasad umożliwia określenie, czy opcja „Zainstaluj aktualizacje i zamknij system” ma być wyświetlana w oknie dialogowym Zamykanie systemu Windows.
 
 Jeśli to ustawienie zasad zostanie włączone, opcja „Zainstaluj aktualizacje i zamknij system” nie będzie dostępna do wybrania w oknie dialogowym Zamykanie systemu Windows po wybraniu przez użytkownika opcji Zamknij w menu Start, nawet jeśli aktualizacje będą gotowe do instalacji.
@@ -29,7 +38,7 @@ Należy zauważyć, że to ustawienie zasad nie ma znaczenia, jeśli jest włąc
       <string id="RemoveWindowsUpdate">Usuń dostęp do używania wszystkich funkcji witryny Windows Update</string>
       <string id="RemoveWindowsUpdate_Help">To ustawienie pozwala na usunięcie dostępu do witryny Windows Update.
 
-Jeśli to ustawienie zostanie włączone, wszystkie funkcje witryny Windows Update zostaną usunięte. To oznacza zablokowanie użytkownikowi dostępu do witryny Windows Update w sieci Web uzyskiwanego za pomocą adresu http://windowsupdate.microsoft.com, hiperłącza Windows Update w menu Start oraz menu Narzędzia w programie Internet Explorer. Automatyczne aktualizowanie systemu Windows zostanie również wyłączone — użytkownik nie będzie otrzymywać powiadomień i krytycznych aktualizacji z witryny Windows Update. To ustawienie zapobiega również automatycznemu instalowaniu aktualizacji sterowników z witryny Windows Update w sieci Web za pomocą Menedżera urządzeń.
+Jeśli to ustawienie zostanie włączone, wszystkie funkcje witryny Windows Update zostaną usunięte. To oznacza zablokowanie użytkownikowi dostępu do witryny Windows Update w sieci Web uzyskiwanego za pomocą adresu http://windowsupdate.microsoft.com, hiperłącza Windows Update w menu Start oraz menu Narzędzia w programie Internet Explorer. Automatyczne aktualizowanie systemu Windows zostanie również wyłączone — użytkownik nie będzie otrzymywać powiadomień i krytycznych aktualizacji z usługi Windows Update. To ustawienie zapobiega również automatycznemu instalowaniu aktualizacji sterowników z witryny Windows Update w sieci Web za pomocą Menedżera urządzeń.
 
 Po włączeniu tego ustawienia można skonfigurować jedną z następujących opcji powiadamiania:
 
@@ -39,37 +48,42 @@ To ustawienie spowoduje usunięcie wszystkich możliwości dostępu do funkcji r
 
 1 = Pokaż powiadomienia o wymaganym ponownym uruchomieniu
 
-To ustawienie spowoduje pokazywanie powiadomień, gdy do zakończenia instalacji będzie wymagane ponowne uruchomienie systemu.</string>
+To ustawienie spowoduje pokazywanie powiadomień, gdy do zakończenia instalacji będzie wymagane ponowne uruchomienie systemu.
+
+Jeśli w systemach Windows 8 i Windows RT to ustawienie zasad jest włączone, wyświetlane będą tylko powiadomienia dotyczące ponownego uruchamiania i problemów z wykrywaniem aktualizacji. Opcje powiadamiania nie są obsługiwane. Powiadomienia na ekranie logowania będą zawsze wyświetlane.</string>
       <string id="RemoveWindowsUpdateModeAll">0 - Nie pokazuj żadnych powiadomień</string>
       <string id="RemoveWindowsUpdateModeReboot">1 - Pokaż powiadomienia o wymaganym ponownym uruchomieniu</string>
       <string id="AutoUpdateCfg">Konfigurowanie aktualizacji automatycznych</string>
       <string id="AutoUpdateCfg_Help">Określa, czy ten komputer będzie otrzymywać aktualizacje zabezpieczeń i inne istotne pliki do pobrania za pomocą usługi automatycznego aktualizowania systemu Windows.
 
-To ustawienie pozwala na określenie, czy automatyczne aktualizacje są włączone na tym komputerze. Jeżeli usługa jest włączona, należy wybrać jedną z czterech opcji w ustawieniu zasad grupy:
+Uwaga: ta zasada nie dotyczy systemu Windows RT.
 
-2 = Powiadom przed pobieraniem dowolnych aktualizacji i powiadom ponownie przed ich instalowaniem
+To ustawienie pozwala określić, czy automatyczne aktualizacje są włączone na tym komputerze. Jeżeli usługa jest włączona, należy wybrać jedną z czterech opcji w ustawieniu zasad grupy:
 
-Gdy system Windows znajdzie aktualizacje odpowiednie dla tego komputera, w obszarze stanu pojawia się ikona z komunikatem, że aktualizacje są już gotowe do pobrania. Kliknięcie ikony lub komunikatu udostępnia opcję wyboru określonych aktualizacji do pobrania. Następnie system Windows pobiera w tle wybrane aktualizacje. Gdy pobieranie jest ukończone, w obszarze stanu pojawia się ponownie ikona z powiadomieniem, że aktualizacje są gotowe do zainstalowania. Kliknięcie ikony lub komunikatu udostępnia opcję wyboru aktualizacji do zainstalowania.
+        2 = Powiadom przed pobieraniem i instalowaniem dowolnych aktualizacji.
 
-3 = (Ustawienie domyślne) Pobierz aktualizacje automatycznie i powiadom, gdy są gotowe do zainstalowania
+        Gdy system Windows znajdzie aktualizacje odpowiednie dla tego komputera, użytkownicy zostaną powiadomieni o tym, że aktualizacje są gotowe do pobrania. Po przejściu do usługi Windows Update będą mogli pobrać i zainstalować dostępne aktualizacje.
 
-System Windows znajduje aktualizacje odpowiednie dla tego komputera i pobiera je w tle (w trakcie tego procesu użytkownik nie jest powiadamiany i nie musi przerywać pracy). Gdy pobieranie jest ukończone, w obszarze stanu pojawia się ikona z powiadomieniem, że aktualizacje są gotowe do zainstalowania. Kliknięcie ikony lub komunikatu udostępnia opcję wyboru aktualizacji do zainstalowania.
+        3 = (Ustawienie domyślne) Pobierz aktualizacje automatycznie i powiadom, gdy są gotowe do zainstalowania
 
-4 = Automatycznie pobierz aktualizacje i zainstaluj je według harmonogramu określonego poniżej
+        System Windows znajduje aktualizacje odpowiednie dla tego komputera i pobiera je w tle (w trakcie tego procesu użytkownik nie jest powiadamiany i nie musi przerywać pracy). Po zakończeniu pobierania użytkownicy są powiadamiani o tym, że aktualizacje są gotowe do zainstalowania. Po przejściu do usługi Windows Update użytkownicy mogą je zainstalować.
 
-Należy określić harmonogram przy użyciu opcji w ustawieniu zasad grupy. Jeżeli nie określono żadnego harmonogramu, domyślny harmonogram dla wszystkich instalacji określa ich wykonywanie codziennie o godzinie 3:00. Jeżeli jakakolwiek aktualizacja wymaga ponownego uruchomienia komputera do zakończenia instalacji, system Windows automatycznie uruchomi ponownie komputer. (Jeżeli użytkownik zalogował się na komputerze, gdy system Windows jest gotowy do ponownego uruchomienia, zostanie powiadomiony i będzie mógł wybrać opcję późniejszego ponownego uruchomienia komputera).
+        4 = Automatycznie pobierz aktualizacje i zainstaluj je według harmonogramu określonego poniżej.
 
-5 = Zezwalaj administratorom lokalnym na wybranie trybu konfiguracji, w którym aktualizacje automatyczne powinny powiadamiać o aktualizacjach i je instalować
+        Należy określić harmonogram przy użyciu opcji w ustawieniu zasad grupy. Jeżeli nie określono żadnego harmonogramu, domyślny harmonogram dla wszystkich instalacji określa ich wykonywanie codziennie o godzinie 3:00. Jeśli jakakolwiek aktualizacja wymaga ponownego uruchomienia komputera do zakończenia instalacji, system Windows automatycznie uruchomi ponownie komputer. (Jeśli użytkownik zalogował się do komputera, gdy system Windows jest gotowy do ponownego uruchomienia, zostanie powiadomiony i będzie mógł wybrać opcję późniejszego ponownego uruchomienia komputera).
 
-Opcja ta pozwala administratorom lokalnym na używanie panelu sterowania aktualizacji automatycznych w celu wybrania żądanej opcji konfiguracji. Na przykład będą mogli wybrać własną godzinę zaplanowanej instalacji. Administratorzy lokalni nie będą mogli wyłączyć konfiguracji aktualizacji automatycznych.
+        W przypadku systemu Windows 8 lub nowszego można skonfigurować aktualizacje tak, aby były instalowane podczas automatycznej konserwacji zamiast zgodnie z określonym harmonogramem. Aktualizacje zostaną zainstalowane w ramach automatycznej konserwacji, gdy komputer nie będzie używany, lub nie będą instalowane, gdy komputer będzie zasilany z baterii. Jeśli w ramach automatycznej konserwacji nie będzie można zainstalować aktualizacji w ciągu 2 dni, usługa Windows Update zainstaluje aktualizacje natychmiast. Użytkownicy zostaną powiadomieni o ponownym uruchomieniu komputera. Komputer zostanie uruchomiony ponownie tylko wtedy, gdy nie ma ryzyka przypadkowej utraty danych.
 
-Aby użyć tego ustawienia, kliknij opcję Włączone i wybierz jedną z opcji (2, 3, 4 lub 5). Jeżeli zostanie wybrana opcja 4, można ustawić harmonogram cykliczny (jeżeli nie określono harmonogramu, wszystkie instalacje zostaną uruchomione o 3:00).
+        Automatyczną konserwację można dodatkowo skonfigurować za pomocą ustawień zasad grupy w następującej lokalizacji: Konfiguracja komputera -&gt; Szablony administracyjne -&gt; Składniki systemu Windows -&gt; Harmonogram konserwacji
 
-Jeżeli stan jest ustawiony jako Włączone, system Windows rozpoznaje, gdy komputer jest w trybie online i używa połączenia internetowego do wyszukiwania witryny usługi Windows Update, aby uzyskać aktualizacje odpowiednie dla tego komputera.
+        5 = Zezwalaj administratorom lokalnym na wybranie trybu konfiguracji, w ramach którego aktualizacje automatyczne powinny powiadamiać o aktualizacjach i instalować je.
 
-Jeżeli stan jest ustawiony jako Wyłączone, wszystkie aktualizacje dostępne w witrynie usługi Windows Update muszą być pobrane i zainstalowane ręczne. W tym celu przejdź do adresu http://windowsupdate.microsoft.com lub kliknij przycisk Start, kliknij pozycję Programy (lub Wszystkie programy), a następnie kliknij polecenie Windows Update.
+        Ta opcja pozwala administratorom lokalnym na używanie panelu sterowania usługi Windows Update w celu wybrania odpowiedniej opcji konfiguracji. Administratorzy lokalni nie będą mogli wyłączyć konfiguracji aktualizacji automatycznych.
 
-Jeżeli stan jest ustawiony na Nieskonfigurowane, użycie aktualizacji automatycznych nie jest określone na poziomie zasad grupy. Administrator może jednak nadal skonfigurować aktualizacje automatyczne przy użyciu Panelu sterowania.</string>
+Jeśli ta zasada zostanie wyłączona, wszystkie aktualizacje dostępne w usłudze Windows Update będą musiały być pobierane i instalowane ręczne. W tym celu należy wyszukać usługę Windows Update za pomocą menu Start.
+
+Jeśli ta zasada nie zostanie skonfigurowana, użycie aktualizacji automatycznych nie zostanie określone na poziomie zasad grupy. Administrator będzie jednak mógł nadal skonfigurować aktualizacje automatyczne przy użyciu Panelu sterowania.</string>
+      
       <string id="AutoUpdateModeAdminChooses">5 — Zezwalaj adm. lokalnym na wybier. ustawienia</string>
       <string id="AutoUpdateModeAuto">4 — Pobierz autom. i zaplanuj instal</string>
       <string id="AutoUpdateModeDownload">3 — Pobierz autom. i powiadom o instalacji</string>
@@ -117,7 +131,9 @@ Jeżeli stan jest ustawiony jako Włączone, klient aktualizacji automatycznych 
 
 Jeżeli stan jest ustawiony jako Wyłączone lub Nieskonfigurowane oraz aktualizacje automatyczne nie zostały wyłączone za pomocą zasad lub preferencji użytkownika, klient aktualizacji automatycznych łączy się bezpośrednio z witryną Windows Update w Internecie.
 
-Uwaga: Jeżeli zasada „Konfigurowanie aktualizacji automatycznych” jest wyłączona, wtedy ta zasada nie ma znaczenia.</string>
+Uwaga: Jeżeli zasada „Konfigurowanie aktualizacji automatycznych” jest wyłączona, wtedy ta zasada nie ma znaczenia.
+
+Uwaga: To ustawienie zasad nie jest obsługiwane w systemie Windows RT. Jego włączenie nie będzie miało żadnego efektu na komputerach z systemem Windows RT.</string>
       <string id="DetectionFrequency_Help">Określa liczbę godzin używaną przez system Windows do ustalenia okresu oczekiwania na sprawdzanie dostępnych aktualizacji. Dokładny czas jest ustalany przez pomniejszenie o wartość od zera do dwudziestu procent określonej tu liczby godzin. Na przykład, jeśli ta zasada jest używana do określenia częstotliwości wykrywania wynoszącej 20 godzin, wszyscy klienci, do których ta zasada ma zastosowanie, będą sprawdzać dostępne aktualizacje z częstotliwością od 16 do 20 godzin.
 
 Jeśli stan jest ustawiony jako Włączone, system Windows będzie sprawdzać dostępność aktualizacji, korzystając z określonego interwału.
@@ -126,7 +142,9 @@ Jeśli stan jest ustawiony jako Włączone lub Nieskonfigurowane, system Windows
 
 Uwaga: Ustawienie „Określ lokalizację intranetową usługi aktualizującej firmy Microsoft” musi być włączone, aby ta zasada miała znaczenie.
 
-Uwaga: jeśli zasada "Konfigurowanie aktualizacji automatycznych" jest wyłączona, wtedy ta zasada nie ma znaczenia.</string>
+Uwaga: jeśli zasada „Konfigurowanie aktualizacji automatycznych” jest wyłączona, wtedy ta zasada nie ma znaczenia.
+
+Uwaga: To ustawienie zasad nie jest obsługiwane w systemie Windows RT. Jego włączenie nie będzie miało żadnego efektu na komputerach z systemem Windows RT.</string>
       <string id="DetectionFrequency_Title">Częstotliwość wykrywania aktualizacji automatycznych</string>
       <string id="ElevateNonAdmins_Help">To ustawienie zasad umożliwia określenie, czy użytkownicy inni niż administratorzy mają otrzymywać powiadomienia dotyczące aktualizacji na podstawie ustawienia zasad „Konfigurowanie aktualizacji automatycznych”.
       
@@ -138,11 +156,13 @@ W systemie XP: Jeśli to ustawienie zasad zostanie włączone, użytkownicy nie 
 
 W systemie Vista: Jeśli to ustawienie zasad zostanie włączone, użytkownicy nie będą widzieli okna Kontrola konta użytkownika ani potrzebowali podniesionych uprawnień do wykonywania tych zadań. Jeśli to ustawienie zasad nie zostanie włączone, użytkownicy zawsze będą widzieli okno Kontrola konta użytkownika i potrzebowali podniesionych uprawnień do wykonywania tych zadań.
 
-W systemie Windows 7: To ustawienie zasad nie odnosi żadnego skutku. Użytkownicy zawsze będą widzieli okno Kontrola konta użytkownika i potrzebowali podniesionych uprawnień do wykonywania tych zadań.
+W systemie Windows 7: to ustawienie zasad nie ma żadnego skutku. Użytkownicy zawsze będą widzieli okno Kontrola konta użytkownika i potrzebowali podniesionych uprawnień do wykonywania tych zadań.
 
-Jeśli to ustawienie zasad zostanie wyłączone lub pozostanie nieskonfigurowane, wówczas tylko administratorzy będą otrzymywali powiadomienia dotyczące aktualizacji.
+W systemie Windows 8 i Windows RT: to ustawienie zasad nie ma żadnego skutku. Użytkownicy zawsze będą widzieli okno Kontrola konta użytkownika i potrzebowali podniesionych uprawnień do wykonywania tych zadań.
 
-Domyślnie to ustawienie zasad jest wyłączone.
+Jeśli to ustawienie zasad zostanie wyłączone, tylko administratorzy będą otrzymywali powiadomienia dotyczące aktualizacji.
+
+Uwaga: w systemie Windows 8 i Windows RT to ustawienie zasad jest domyślnie włączone. We wszystkich wcześniejszych wersjach systemu Windows jest ono domyślnie wyłączone.
 
 Jeśli ustawienie zasad „Konfigurowanie aktualizacji automatycznych” jest wyłączone lub nie jest skonfigurowane, wówczas ustawienie zasad Podnieś uprawnienia użytkowników innych niż administratorzy nie ma znaczenia.</string>
       <string id="ElevateNonAdmins_Title">Zezwalaj, aby użytkownicy inni niż administratorzy otrzymywali powiadomienia aktualizacji</string>
@@ -152,7 +172,7 @@ Jeśli stan jest ustawiony jako Włączone, aktualizacje automatyczne będą nat
 
 Jeśli stan jest ustawiony jako Wyłączone, takie aktualizacje nie będą natychmiast instalowane.
 
-Uwaga: jeśli zasada "Konfigurowanie aktualizacji automatycznych" jest wyłączona, wtedy ta zasada nie ma znaczenia.</string>
+Uwaga: jeśli zasada „Konfigurowanie aktualizacji automatycznych” jest wyłączona, wtedy ta zasada nie ma znaczenia.</string>
       <string id="ImmediateInstall_Title">Zezwalaj na natychmiastową instalację aktualizacji automatycznych</string>
       <string id="IncludeRecommendedUpdates_Help">Określa, czy aktualizacje automatyczne mają dostarczać zarówno ważne, jak i zalecane aktualizacje z usługi aktualizującej Windows Update.
 
@@ -173,6 +193,7 @@ Domyślnie to ustawienie zasad jest wyłączone.
 Ustawienie zasad Powiadomienia o oprogramowaniu nie odnosi żadnego skutku, jeśli nie jest używana usługa Microsoft Update.
 
 Ustawienie zasad Powiadomienia o oprogramowaniu nie ma również żadnego znaczenia w przypadku wyłączenia lub nieskonfigurowania ustawienia zasad „Konfigurowanie aktualizacji automatycznych”.
+      
       </string>
       <string id="FeaturedSoftwareNotification_Title">Włącz powiadomienia o oprogramowaniu</string>
       <string id="AUPowerManagement_Help">Określa, czy program Windows Update ma używać Opcji zasilania systemu Windows w celu automatycznego wznawiania systemu po hibernacji, jeśli dostępne są aktualizacje do zainstalowania.
@@ -191,8 +212,17 @@ Należy pamiętać, że komputer musi zostać uruchomiony ponownie, aby aktualiz
 
 Jeśli stan jest ustawiony na Wyłączone lub Nieskonfigurowane, aktualizacje automatyczne powiadomią użytkownika, że komputer zostanie automatycznie uruchomiony ponownie w ciągu 5 minut od ukończenia instalacji.
 
-Uwaga: Ta zasada ma zastosowanie tylko wtedy, gdy aktualizacje automatyczne są skonfigurowane do wykonywania zaplanowanych instalacji aktualizacji. jeśli zasada "Konfigurowanie aktualizacji automatycznych" jest wyłączona, wtedy ta zasada nie ma znaczenia.</string>
+Uwaga: Ta zasada ma zastosowanie tylko wtedy, gdy aktualizacje automatyczne są skonfigurowane do wykonywania zaplanowanych instalacji aktualizacji. jeśli zasada „Konfigurowanie aktualizacji automatycznych” jest wyłączona, wtedy ta zasada nie ma znaczenia.</string>
       <string id="NoAutoRebootWithLoggedOnUsers_Title">Bez automatycznego uruchamiania ponownego dla zaplanowanych instalacji aktualizacji automatycznych przy zalogowanych użytkownikach</string>
+      <string id="AlwaysAutoRebootAtScheduledTime_Title">Zawsze automatycznie ponownie uruchamiaj w zaplanowanym czasie</string>
+      <string id="AlwaysAutoRebootAtScheduledTime_Help">Jeśli ta zasada zostanie włączona, po zainstalowaniu ważnych aktualizacji za pomocą usługi Windows Update zawsze będzie uruchamiany czasomierz ponownego uruchomienia zamiast uprzedniego powiadamiania użytkowników na ekranie logowania przez co najmniej dwa dni.
+
+Czasomierz ponownego uruchomienia można skonfigurować tak, aby był uruchamiany na 15–180 minut. Po zakończeniu odliczania komputer zostanie ponownie uruchomiony nawet wtedy, gdy są na nim zalogowani użytkownicy.
+
+Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, zachowanie usługi Windows Update związane z ponownym uruchamianiem nie zmieni się.
+
+Jeśli zasada „Bez automatycznego uruchamiania ponownego dla zaplanowanych instalacji aktualizacji automatycznych przy zalogowanych użytkownikach” jest włączona, ta zasada nie jest stosowana.</string>
+
       <string id="NoAutoUpdate">Automatyczne aktualizacje systemu Windows</string>
       <string id="NoAutoUpdate_Help">To ustawienie steruje automatycznymi aktualizacjami na komputerze użytkownika.
 
@@ -207,13 +237,15 @@ Uwaga: Witryna Windows Update stanowi dostępny w trybie online katalog zawieraj
 Zobacz także ustawienie „Usuń łącza i wyłącz dostęp do witryny Windows Update”. Jeżeli ustawienie „Usuń łącza i wyłącz dostęp do witryny Windows Update” zostanie włączone, łącza do witryny Windows Update w menu Start także zostaną usunięte.
 
 Uwaga: Jeśli zainstalowano system Windows XP z dodatkiem Service Pack 1 lub aktualizacje automatyczne udostępnione po wydaniu systemu Windows XP, należy użyć nowych ustawień aktualizacji automatycznych znajdujących się w: Konfiguracja komputera/Szablony administracyjne/Windows Update.</string>
-      <string id="RebootRelaunchTimeout_Help">Określa czas, przez który aktualizacje automatyczne będą oczekiwać przed ponownym monitowaniem o przeprowadzenie zaplanowanego ponownego uruchomienia komputera.
+      <string id="RebootRelaunchTimeout_Help">
+        
+        Określa czas, przez który aktualizacje automatyczne będą oczekiwać przed ponownym monitowaniem o przeprowadzenie zaplanowanego ponownego uruchomienia komputera.
 
-Jeśli stan jest ustawiony jako Włączone, zaplanowane ponowne uruchomienie komputera zostanie przeprowadzone po upływie określonej liczby minut od czasu odłożenia poprzedniego monitu o przeprowadzenie ponownego uruchomienia komputera.
+        Jeśli stan jest ustawiony jako Włączone, zaplanowane ponowne uruchomienie komputera zostanie przeprowadzone po upływie określonej liczby minut od czasu odłożenia poprzedniego monitu o przeprowadzenie ponownego uruchomienia komputera.
 
-Jeśli stan jest ustawiony jako Wyłączone lub Nieskonfigurowane, domyślny interwał wynosi 10 minut.
+        Jeśli stan jest ustawiony jako Wyłączone lub Nieskonfigurowane, domyślny interwał wynosi 10 minut.
 
-Uwaga: Ta zasada ma zastosowanie tylko wtedy, gdy aktualizacje automatyczne są skonfigurowane do wykonywania zaplanowanych instalacji aktualizacji. jeśli zasada "Konfigurowanie aktualizacji automatycznych" jest wyłączona, wtedy ta zasada nie ma znaczenia.</string>
+        Uwaga: Ta zasada ma zastosowanie tylko wtedy, gdy aktualizacje automatyczne są skonfigurowane do wykonywania zaplanowanych instalacji aktualizacji. jeśli zasada „Konfigurowanie aktualizacji automatycznych” jest wyłączona, wtedy ta zasada nie ma znaczenia. To ustawienie zasad nie dotyczy systemu Windows RT</string>
       <string id="RebootRelaunchTimeout_Title">Ponów monit o ponowne uruchomienie komputera z zaplanowanymi instalacjami</string>
       <string id="RebootWarningTimeout_Help">Określa czas, przez jaki aktualizacje automatyczne będą oczekiwać przed przeprowadzeniem zaplanowanego ponownego uruchomienia komputera.
 
@@ -221,7 +253,7 @@ Jeśli stan jest ustawiony jako Włączone, zaplanowane ponowne uruchomienie kom
 
 Jeśli stan jest ustawiony jako Wyłączone lub Nieskonfigurowane, domyślny czas oczekiwania wynosi 15 minut.
 
-Uwaga: Ta zasada ma zastosowanie tylko wtedy, gdy aktualizacje automatyczne są skonfigurowane do wykonywania zaplanowanych instalacji aktualizacji. Jeśli zasada "Konfigurowanie aktualizacji automatycznych" jest wyłączona, wówczas ta zasada nie ma znaczenia.</string>
+Uwaga: Ta zasada ma zastosowanie tylko wtedy, gdy aktualizacje automatyczne są skonfigurowane do wykonywania zaplanowanych instalacji aktualizacji. Jeśli zasada „Konfigurowanie aktualizacji automatycznych” jest wyłączona, wówczas ta zasada nie ma znaczenia.</string>
       <string id="RebootWarningTimeout_Title">Opóźniaj ponowne uruchomienie komputera dla zaplanowanych instalacji</string>
       <string id="RescheduleWaitTime_Help">Określa czas, przez który aktualizacje automatyczne po uruchomieniu systemu będą oczekiwać przed kontynuowaniem zaplanowanej instalacji, która została uprzednio pominięta.
 
@@ -231,7 +263,7 @@ Jeśli stan jest ustawiony na Wyłączone, pominięta zaplanowana instalacja zos
 
 Jeśli stan jest ustawiony jako Nieskonfigurowane, pominięta zaplanowana instalacja zostanie przeprowadzona po upływie jednej minuty po następnym uruchomieniu komputera.
 
-Uwaga: Ta zasada ma zastosowanie tylko wtedy, gdy aktualizacje automatyczne są skonfigurowane do wykonywania zaplanowanych instalacji aktualizacji. jeśli zasada "Konfigurowanie aktualizacji automatycznych" jest wyłączona, wtedy ta zasada nie ma znaczenia.</string>
+Uwaga: Ta zasada ma zastosowanie tylko wtedy, gdy aktualizacje automatyczne są skonfigurowane do wykonywania zaplanowanych instalacji aktualizacji. jeśli zasada „Konfigurowanie aktualizacji automatycznych” jest wyłączona, wtedy ta zasada nie ma znaczenia.</string>
       <string id="RescheduleWaitTime_Title">Zaplanuj ponownie zaplanowane instalacje aktualizacji automatycznych</string>
       <string id="TargetGroup_Help">Określa nazwę grupy docelowej, która powinna być używana do otrzymywania aktualizacji z intranetowej usługi aktualizującej firmy Microsoft.
 
@@ -241,17 +273,25 @@ Jeśli intranetowa usługa aktualizacji firmy Microsoft obsługuje wiele grup do
 
 Jeśli stan jest ustawiony jako Wyłączone lub Nieskonfigurowane, żadne informacje o grupie docelowej nie będą wysyłane do intranetowej usługi aktualizującej firmy Microsoft.
 
-Uwaga: Ta zasada ma zastosowanie tylko wtedy, gdy usługa aktualizująca firmy Microsoft, do której jest kierowany ten komputer, jest skonfigurowana do obsługi funkcji konfigurowania docelowej strony klienta. Jeśli zasada „Określ lokalizację intranetową usługi aktualizującej firmy Microsoft” jest wyłączona lub nieskonfigurowana, ta zasada nie ma znaczenia.</string>
+Uwaga: Ta zasada ma zastosowanie tylko wtedy, gdy usługa aktualizująca firmy Microsoft, do której jest kierowany ten komputer, jest skonfigurowana do obsługi funkcji konfigurowania docelowej strony klienta. Jeśli zasada „Określ lokalizację intranetową usługi aktualizującej firmy Microsoft” jest wyłączona lub nieskonfigurowana, ta zasada nie ma znaczenia.
+Uwaga: To ustawienie zasad nie jest obsługiwane w systemie Windows RT. Jego włączenie nie będzie miało żadnego efektu na komputerach z systemem Windows RT.</string>
       <string id="TargetGroup_Title">Włącz konfigurowanie docelowej strony klienta</string>
       <string id="WindowsUpdateCat">Usługa Windows Update</string>
-      <string id="TrustedPublisher_Title">Zezwalaj na podpisane aktualizacje z intranetowej lokalizacji usługi aktualizacji firmy Microsoft </string>
-      <string id="TrustedPublisher_Help">To ustawienie zasad umożliwia określenie, czy funkcja Aktualizacje automatyczne powinna akceptować aktualizacje podpisane przez jednostki inne niż firma Microsoft, gdy aktualizacja pochodzi z intranetowej lokalizacji usługi aktualizacji firmy Microsoft.
+      <string id="TrustedPublisher_Title">Zezwalaj na podpisane aktualizacje z intranetowej lokalizacji usługi aktualizacji firmy Microsoft  </string>
+      <string id="TrustedPublisher_Help">To ustawienie zasad umożliwia określenie, czy funkcja Aktualizacje automatyczne powinna akceptować aktualizacje podpisane przez jednostki inne niż firma Microsoft, gdy aktualizacja pochodzi z intranetowej lokalizacji usługi aktualizacji firmy Microsoft. 
 
 Jeśli to ustawienie zasad zostanie włączone, funkcja Aktualizacje automatyczne zaakceptuje aktualizacje otrzymane z intranetowej lokalizacji usługi aktualizacji firmy Microsoft, gdy są one podpisane za pomocą certyfikatu znajdującego się w magazynie certyfikatów „Zaufani wydawcy”.
 
 Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, aktualizacje pochodzące z intranetowej lokalizacji usługi aktualizacji firmy Microsoft muszą być podpisane przez firmę Microsoft.
 
-Uwaga: Aktualizacje pochodzące z usług innych niż intranetowa usługa aktualizacji firmy Microsoft muszą być zawsze podpisane przez firmę Microsoft i to ustawienie zasad ich nie dotyczy.</string>
+Uwaga: Aktualizacje pochodzące z usług innych niż intranetowa usługa aktualizacji firmy Microsoft muszą być zawsze podpisane przez firmę Microsoft i to ustawienie zasad ich nie dotyczy.
+Uwaga: To ustawienie zasad nie jest obsługiwane w systemie Windows RT. Jego włączenie nie będzie miało żadnego efektu na komputerach z systemem Windows RT.</string>
+      <string id="DoNotConnectToWindowsUpdateInternetLocations_Title">Nie nawiązuj połączenia z żadną lokalizacją internetową usługi Windows Update</string>
+      <string id="DoNotConnectToWindowsUpdateInternetLocations_Help">Nawet jeśli usługa Windows Update zostanie skonfigurowana w celu odbierania aktualizacji z intranetowej usługi aktualizacji, będzie okresowo pobierać informacje z publicznej usługi Windows Update, aby umożliwić nawiązywanie w przyszłości połączeń z usługą Windows Update i innymi usługami, takimi jak Microsoft Update lub Sklep Windows.
+
+Włączenie tej zasady spowoduje wyłączenie tej funkcji i może uniemożliwić nawiązywanie połączeń z usługami publicznymi, takimi jak Sklep Windows.
+
+Uwaga: ta usługa jest stosowana tylko wtedy, gdy komputer jest skonfigurowany w celu nawiązywania połączenia z intranetową usługą aktualizacji przy użyciu zasady „Określ lokalizację intranetowej usługi aktualizującej firmy Microsoft”.</string>
     </stringTable>
     <presentationTable>
       <presentation id="RemoveWindowsUpdate">
@@ -259,9 +299,9 @@ Uwaga: Aktualizacje pochodzące z usług innych niż intranetowa usługa aktuali
       </presentation>
       <presentation id="AutoUpdateCfg">
         <dropdownList refId="AutoUpdateMode" defaultItem="1">Konfigurowanie automatycznego aktualizowania:</dropdownList>
-        <text>Następujące ustawienia są wymagane i stosowane</text>
-        <text>tylko wtedy, gdy została wybrana opcja 4.</text>
-        <dropdownList refId="AutoUpdateSchDay" defaultItem="0">Planowany dzień instalacji: </dropdownList>
+        <text>Następujące ustawienia są wymagane i stosowane tylko wtedy, gdy została wybrana opcja 4.</text>
+        <checkBox refId="AutoUpdateAutomaticMaintenanceEnabled" defaultChecked="false">Instaluj podczas automatycznej konserwacji</checkBox>          
+        <dropdownList refId="AutoUpdateSchDay" defaultItem="0">Planowany dzień instalacji:  </dropdownList>
         <dropdownList refId="AutoUpdateSchTime" defaultItem="3">Planowany czas instalacji:</dropdownList>
       </presentation>
       <presentation id="CorpWuURL">
@@ -275,26 +315,36 @@ Uwaga: Aktualizacje pochodzące z usług innych niż intranetowa usługa aktuali
       </presentation>
       <presentation id="DetectionFrequency_Title">
         <text>Sprawdzaj, czy są aktualizacje przy użyciu następującego</text>
-        <decimalTextBox refId="DetectionFrequency_Hour2" defaultValue="22">interwału (godziny): </decimalTextBox>
+        <decimalTextBox refId="DetectionFrequency_Hour2" defaultValue="22">interwału (godziny):  </decimalTextBox>
       </presentation>
       <presentation id="RebootRelaunchTimeout_Title">
         <text>Czekaj przez następujący okres przed</text>
         <text>ponownym monitem o zaplanowane</text>
-        <decimalTextBox refId="RebootRelaunchTimeout_Minutes3" defaultValue="10">ponownego uruchomienia komputera (minuty): </decimalTextBox>
+        <decimalTextBox refId="RebootRelaunchTimeout_Minutes3" defaultValue="10">ponownego uruchomienia komputera (minuty):  </decimalTextBox>
       </presentation>
       <presentation id="RebootWarningTimeout_Title">
         <text>Czekaj przez następujący okres przed</text>
         <text>przeprowadzeniem zaplanowanego</text>
-        <decimalTextBox refId="RebootWarningTimeout_Minutes3" defaultValue="5">ponownego uruchomienia komputera (minuty): </decimalTextBox>
+        <decimalTextBox refId="RebootWarningTimeout_Minutes3" defaultValue="5">ponownego uruchomienia komputera (minuty):  </decimalTextBox>
       </presentation>
       <presentation id="RescheduleWaitTime_Title">
         <text>Czekaj po uruchomieniu</text>
-        <decimalTextBox refId="RescheduleWaitTime_Minutes2">systemu (minuty): </decimalTextBox>
+        <decimalTextBox refId="RescheduleWaitTime_Minutes2">systemu (minuty):  </decimalTextBox>
       </presentation>
       <presentation id="TargetGroup_Title">
         <textBox refId="TargetGroup_Name">
           <label>Nazwa grupy docelowej dla tego komputera</label>
         </textBox>
+      </presentation>
+      <presentation id="IdleShutdownTimerDuration_Title">
+        <text>Czekaj przez następujący okres przed</text>
+        <text>zamknięciem usługi, gdy jest</text>
+        <decimalTextBox refId="IdleShutdownTimerDuration_Minutes" defaultValue="10">bezczynna przez (liczba minut):  </decimalTextBox>
+      </presentation>
+      <presentation id="AlwaysAutoRebootAtScheduledTime_Presentation">       
+        <text>Czasomierz ponownego uruchomienia pozwala użytkownikom</text>
+        <text>na zapisanie pracy przez następującą</text>
+        <decimalTextBox refId="AlwaysAutoRebootAtScheduledTime_Minutes" defaultValue="15">liczbę minut:  </decimalTextBox>
       </presentation>
     </presentationTable>
   </resources>

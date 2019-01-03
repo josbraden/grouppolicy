@@ -1,28 +1,36 @@
 <?xml version="1.0"?>
 <policyDefinitionResources revision="1.0" schemaVersion="1.0">
-	<displayName>Eseménytovábbítás</displayName>
+	<displayName>Event Forwarding</displayName>
 
-	<description>Házirend-definíciók az eseménytovábbításhoz</description>
+	<description>Policy Definitions For Event Forwarding</description>
 
 	<resources>
 
 		<stringTable>
 
-			<string id="EventForwarding">Eseménytovábbítás</string>
+			<string id="EventForwarding">Event Forwarding</string>
 
-                        <string id="ForwarderResourceUsage">ForwarderResourceUsage</string>
-                        <string id="ForwarderResourceUsage_Help">A továbbító erőforrás-felhasználását irányítja. Minden beállítás a továbbító összes előfizetésére érvényes.</string>
+                        <string id="ForwarderResourceUsage">Configure forwarder resource usage</string>
+                        <string id="ForwarderResourceUsage_Help">This policy setting controls resource usage for the forwarder (source computer) by controlling the events/per second sent to the Event Collector.
+
+If you enable this policy setting, you can control the volume of events sent to the Event Collector by the source computer. This may be required in high volume environments.
+
+If you disable or do not configure this policy setting, forwarder resource usage is not specified.
+
+This setting applies across all subscriptions for the forwarder (source computer).</string>
  
-			<string id="SubscriptionManager">A célul szolgáló előfizetés-kezelő kiszolgálócímének, frissítési időközének és kibocsátói hitelesítési hatóságának konfigurálása</string>
+			<string id="SubscriptionManager">Configure target Subscription Manager</string>
 
-			<string id="Subscription_Help">Ezzel a házirend-beállítással konfigurálhatja a célul szolgáló előfizetés-kezelő kiszolgálócímét, frissítési időközét és kibocsátó hitelesítésszolgáltatóját. Az előfizetés-kezelő az a számítógép, amelyre a rendszer az eseményeket továbbítja.
+			<string id="Subscription_Help">This policy setting allows you to configure the server address, refresh interval, and issuer certificate authority (CA) of a target Subscription Manager.
 
-Szintaxis: Kapcsoló=Érték[,Kapcsoló=Érték]*
-Kapcsolók:
-Server (kötelező) - Annak a számítógépnek a címe, amelyre a rendszer az eseményeket továbbítja. Ha a kiszolgáló az alapértelmezett átviteli módot (HTTP) és portot (5985) használja, adja meg a „Server=&lt;FQDN&gt;” parancsot, ahol az &lt;FQDN&gt; a kiszolgáló teljes tartományneve. Egyéb esetben a teljes URL-címet meg kell adni. A HTTPS protokoll használata esetén például: „Server=https://&lt;FQDN&gt;:5986/wsman/elofizeteskezelo/WEC”
-</string>
+If you enable this policy setting, you can configure the Source Computer to contact a specific FQDN (Fully Qualified Domain Name) or IP Address and request subscription specifics.
 
-			<string id="SubscriptionManager_Listbox">Előfizetés-kezelők</string>
+Use the following syntax when using the HTTPS protocol:
+Server=https://&lt;FQDN of the collector&gt;:5986/wsman/SubscriptionManager/WEC,Refresh=&lt;Refresh interval in seconds&gt;,IssuerCA=&lt;Thumb print of the client authentication certificate&gt;. When using the HTTP protocol, use port 5985.
+
+If you disable or do not configure this policy setting, the Event Collector computer will not be specified.</string>
+
+			<string id="SubscriptionManager_Listbox">SubscriptionManagers</string>
 		</stringTable>
 
 	
@@ -30,13 +38,13 @@ Server (kötelező) - Annak a számítógépnek a címe, amelyre a rendszer az e
 
 			<presentation id="SubscriptionManager">
                                 
-				<listBox refId="SubscriptionManager_Listbox">Előfizetés-kezelők</listBox>
+				<listBox refId="SubscriptionManager_Listbox">SubscriptionManagers</listBox>
 
 			</presentation>
 
                         <presentation id="ForwarderResourceUsage">
 
-                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">A továbbító számára megengedett maximális továbbítási sebesség (esemény/mp): </decimalTextBox>
+                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">The maximum forwarding rate ( events/sec ) allowed for the forwarder: </decimalTextBox>
 
                         </presentation>
 

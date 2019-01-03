@@ -10,17 +10,25 @@
 
 			<string id="EventForwarding">Reencaminhamento de Eventos</string>
 
-                        <string id="ForwarderResourceUsage">ForwarderResourceUsage</string>
-                        <string id="ForwarderResourceUsage_Help">Controla a utilização de recursos para o reencaminhador. Cada definição é aplicada em todas as subscrições do reencaminhador.</string>
+                        <string id="ForwarderResourceUsage">Configurar utilização do recurso do reencaminhador</string>
+                        <string id="ForwarderResourceUsage_Help">Esta definição de política controla a utilização do recurso do reencaminhador (computador de origem) controlando os eventos/por segundo enviadas para o Recoletor de Eventos.
+
+Se ativar esta definição de política, pode controlar o volume de eventos enviados para o Recoletor de Eventos pelo computador de origem. Isto poderá ser necessário em ambientes de elevado volume.
+
+Se desativar ou não configurar esta definição de política, a utilização do recurso do reencaminhador não é especificada.
+
+Esta definição é aplicada em todas as subscrições do reencaminhador (computador de origem).</string>
  
-			<string id="SubscriptionManager">Configurar endereço de servidor, intervalo de actualização e autoridade de certificação do emissor de um Gestor de Subscrições de destino</string>
+			<string id="SubscriptionManager">Configurar Gestor de Subscrições de destino</string>
 
-			<string id="Subscription_Help">Esta definição de política permite-lhe configurar o endereço de servidor, o intervalo de actualização e a autoridade de certificação (AC) do emissor de um Gestor de Subscrições de destino. O Gestor de Subscrições é o computador para o qual são reencaminhados os eventos.
+			<string id="Subscription_Help">Esta definição de política permite configurar o endereço de servidor, o intervalo de atualização e a autoridade de certificação (AC) do emissor de um Gestor de Subscrições de destino.
 
-Sintaxe: Option=Valor[,Option=Valor]*
-Opções:
-Server (obrigatório) - Endereço do computador para o qual devem ser reencaminhados os eventos. Quando o servidor utilizar o protocolo de transporte (HTTP) e a porta (5985) predefinidos, utilize "Server=&lt;FQDN&gt;" em que &lt;FQDN&gt; é o nome de domínio completamente qualificado do servidor. Caso contrário, especifique o URL completo. Por exemplo, ao utilizar o protocolo HTTPS, "Server=https://&lt;FQDN&gt;:5986/wsman/SubscriptionManager/WEC"
-</string>
+Se ativar esta definição de política, pode configurar o Computador de Origem para contactar um FQDN (Nome de Domínio Completamente Qualificado) específico ou Endereço IP e pedir especificações da subscrição.
+
+Utilize a seguinte sintaxe quando utilizar o protocolo HTTPS:
+Server=https://&lt;FQDN do coletor&gt;:5986/wsman/SubscriptionManager/WEC,Refresh=&lt;Intervalo de atualização em segundos&gt;,IssuerCA=&lt;Impressão digital do certificado de autenticação do cliente&gt;. Quando utilizar o protocolo HTTP, utilize a porta 5985.
+
+Se desativar ou não configurar esta definição de política, não será especificado o computador Coletor de Eventos.</string>
 
 			<string id="SubscriptionManager_Listbox">SubscriptionManagers</string>
 		</stringTable>
@@ -36,7 +44,7 @@ Server (obrigatório) - Endereço do computador para o qual devem ser reencaminh
 
                         <presentation id="ForwarderResourceUsage">
 
-                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">A taxa de reencaminhamento máxima (eventos/seg) permitida para o reencaminhador: </decimalTextBox>
+                                <decimalTextBox refId="MaxForwardingRate" spinStep="100">A taxa de reencaminhamento máxima (eventos/seg) permitida para o reencaminhador:  </decimalTextBox>
 
                         </presentation>
 

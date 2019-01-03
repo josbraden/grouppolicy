@@ -1,193 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>הזן שם תצוגה כאן</displayName>
-  <description>הזן תיאור כאן</description>
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
   <resources>
     <stringTable>
-      <string id="AllowDefaultCredentials">אפשר הקצאת אישורי ברירת מחדל</string>
-      <string id="AllowDefaultCredentials_Explain">הגדרת מדיניות זו חלה על יישומים העושים שימוש ברכיב Cred SSP (לדוגמה: שרת מסוף).
+      <string id="AllowDefaultCredentials">Allow delegating default credentials</string>
+      <string id="AllowDefaultCredentials_Explain">This policy setting applies to applications using the Cred SSP component (for example: Remote Desktop Connection).
 
-מדיניות זו חלה כאשר הושג אימות שרת דרך אישור X509 מהימן או Kerberos.
+This policy setting applies when server authentication was achieved by using a trusted X509 certificate or Kerberos.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, באפשרותך לציין את השרתים שאליהם ניתן להקצות את אישורי ברירת המחדל של המשתמש (אישורי ברירת מחדל הם אלה שבהם אתה משתמש בעת כניסה ראשונית ל- Windows).
+If you enable this policy setting, you can specify the servers to which the user's default credentials can be delegated (default credentials are those that you use when first logging on to Windows).
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה (כברירת מחדל), הקצאת אישורי ברירת מחדל לא תותר באף מחשב.
+The policy becomes effective the next time the user signs on to a computer running Windows.
 
-הערה: ניתן להגדיר את ההגדרה "אפשר הקצאת אישורי ברירת מחדל" לשם ראשי של שירות (SPN) אחד או יותר.   ה- SPN מייצג את שרת היעד אליו ניתן להקצות את אישורי המשתמשים.   השימוש בתו כללי בודד מותר בעת ציון ה- SPN.
+If you disable or do not configure (by default) this policy setting, delegation of default credentials is not permitted to any computer. Applications depending upon this delegation behavior might fail authentication. For more information, see KB.
 
-לדוגמה:
-שרת המסוף TERMSRV/host.humanresources.fabrikam.com הפועל במחשב host.humanresources.fabrikam.com
-שרת מסוף TERMSRV/* הפועל בכל המחשבים.
-שרת מסוף TERMSRV/*.humanresources.fabrikam.com הפועל בכל המחשבים ב- .‎humanresources.fabrikam.com</string>
-      <string id="AllowDefCredentialsWhenNTLMOnly">אפשר הקצאת אישורי ברירת מחדל עם אימות שרת מסוג NTLM בלבד</string>
-      <string id="AllowDefCredentialsWhenNTLMOnly_Explain">הגדרת מדיניות זו חלה על יישומים העושים שימוש ברכיב Cred SSP (לדוגמה: שרת מסוף).
+FWlink for KB:
+http://go.microsoft.com/fwlink/?LinkId=301508
 
-מדיניות זו חלה כאשר הושג אימות שרת דרך NTLM.
+Note: The "Allow delegating default credentials" policy setting can be set to one or more Service Principal Names (SPNs).  The SPN represents the target server to which the user credentials can be delegated.  The use of a single wildcard character is permitted when specifying the SPN.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, באפשרותך לציין את השרתים אליהם ניתן להקצות את אישורי ברירת המחדל של המשתמש (אישורי ברירת מחדל הם אלה בהם אתה משתמש בעת כניסה ראשונית ל- Windows).
+For Example:
+TERMSRV/host.humanresources.fabrikam.com Remote Desktop Session Host running on host.humanresources.fabrikam.com machine
+TERMSRV/* Remote Desktop Session Host running on all machines.
+TERMSRV/*.humanresources.fabrikam.com Remote Desktop Session Host running on all machines in .humanresources.fabrikam.com</string>
+      <string id="AllowDefCredentialsWhenNTLMOnly">Allow delegating default credentials with NTLM-only server authentication</string>
+      <string id="AllowDefCredentialsWhenNTLMOnly_Explain">This policy setting applies to applications using the Cred SSP component (for example: Remote Desktop Connection).
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה (כברירת מחדל), הקצאת אישורי ברירת מחדל לא תותר לאף מחשב.
+This policy setting applies when server authentication was achieved via NTLM.
 
-הערה: ניתן להגדיר את ההגדרה "אפשר הקצאת אישורי ברירת מחדל עם אימות שרת דרך NTLM בלבד" לשם ראשי של שירות (SPN) אחד או יותר.  ה- SPN מייצג את שרת היעד אליו ניתן להקצות את אישורי המשתמש.  מותר שימוש בתו כללי בודד בעת ציון ה- SPN.
+If you enable this policy setting, you can specify the servers to which the user's default credentials can be delegated (default credentials are those that you use when first logging on to Windows).
 
-לדוגמה:
-TERMSRV/host.humanresources.fabrikam.com הוא שרת מסוף הפועל במחשב host.humanresources.fabrikam.com
-TERMSRV/*‎ הוא שרת מסוף הפועל בכל המחשבים.
-TERMSRV/*.humanresources.fabrikam.com הוא שרת מסוף הפועל בכל המחשבים בתחום ‎.humanresources.fabrikam.com</string>
-      <string id="AllowFreshCredentials">אפשר הקצאת אישורים חדשים</string>
-      <string id="AllowFreshCredentials_Explain">הגדרת מדיניות זו חלה על יישומים העושים שימוש ברכיב Cred SSP (לדוגמה: שרת מסוף).
+If you disable or do not configure (by default) this policy setting, delegation of default credentials is not permitted to any machine.
 
-מדיניות זו חלה כאשר הושג אימות שרת דרך אישור X509 מהימן או Kerberos.
+Note: The "Allow delegating default credentials with NTLM-only server authentication" policy setting can be set to one or more Service Principal Names (SPNs). The SPN represents the target server to which the user credentials can be delegated.  The use of a single wildcard character is permitted when specifying the SPN.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, באפשרותך לציין את השרתים שאליהם ניתן להקצות את האישורים החדשים של המשתמשים (אישורים חדשים הם אלה שהתבקשת לספק בעת הפעלת היישום).
+For Example:
+TERMSRV/host.humanresources.fabrikam.com Remote Desktop Session Host running on host.humanresources.fabrikam.com machine
+TERMSRV/* Remote Desktop Session Host running on all machines.
+TERMSRV/*.humanresources.fabrikam.com Remote Desktop Session Host running on all machines in .humanresources.fabrikam.com</string>
+      <string id="AllowFreshCredentials">Allow delegating fresh credentials</string>
+      <string id="AllowFreshCredentials_Explain">This policy setting applies to applications using the Cred SSP component (for example: Remote Desktop Connection).
 
-אם לא תקבע את תצורתה (כברירת מחדל) של הגדרת מדיניות זו, לאחר אימות הדדי תקין, הקצאת אישורים חדשים מותרת לשרת מסוף הפועל בכל מחשב (TERMSRV/*‎).
+This policy setting applies when server authentication was achieved via a trusted X509 certificate or Kerberos.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה, הקצאת אישורים חדשים לא תותר לאף מחשב.
+If you enable this policy setting, you can specify the servers to which the user's fresh credentials can be delegated (fresh credentials are those that you are prompted for when executing the application).
 
-הערה: ניתן לקבוע את ההגדרה "אפשר הקצאת אישורים חדשים" לשם ראשי של שירות (SPN) אחד או יותר.  ה- SPN מייצג את שרת היעד שאליו ניתן להקצות את אישורי המשתמש.  השימוש בתו כללי בודד מותר בעת ציון ה- SPN.
+If you do not configure (by default) this policy setting, after proper mutual authentication, delegation of fresh credentials is permitted to Remote Desktop Session Host running on any machine (TERMSRV/*).
 
-לדוגמה:
+If you disable this policy setting, delegation of fresh credentials is not permitted to any machine.
+
+Note: The "Allow delegating fresh credentials" policy setting can be set to one or more Service Principal Names (SPNs). The SPN represents the target server to which the user credentials can be delegated. The use of a single wildcard is permitted when specifying the SPN.
+
+For Example:
 TERMSRV/host.humanresources.fabrikam.com
-שרת מסוף הפועל במחשב host.humanresources.fabrikam.com
-TERMSRV/* שרת מסוף הפועל בכל המחשבים.
-שרת מסוף TERMSRV/*.humanresources.fabrikam.com הפועל בכל המחשבים ב- .‎humanresources.fabrikam.com</string>
-      <string id="AllowFreshCredentialsWhenNTLMOnly">אפשר הקצאת אישורים חדשים עם אימות שרת מסוג NTLM בלבד</string>
-      <string id="AllowFreshCredentialsWhenNTLMOnly_Explain">הגדרת מדיניות זו חלה על יישומים העושים שימוש ברכיב Cred SSP (לדוגמה: שרת מסוף).
+Remote Desktop Session Host running on host.humanresources.fabrikam.com machine
+TERMSRV/* Remote Desktop Session Host running on all machines.
+TERMSRV/*.humanresources.fabrikam.com Remote Desktop Session Host running on all machines in .humanresources.fabrikam.com</string>
+      <string id="AllowFreshCredentialsWhenNTLMOnly">Allow delegating fresh credentials with NTLM-only server authentication</string>
+      <string id="AllowFreshCredentialsWhenNTLMOnly_Explain">This policy setting applies to applications using the Cred SSP component (for example: Remote Desktop Connection).
 
-מדיניות זו חלה כאשר הושג אימות שרת דרך NTLM.
+This policy setting applies when server authentication was achieved via NTLM.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, באפשרותך לציין את השרתים שאליהם ניתן להקצות את האישורים החדשים של המשתמשים (אישורים חדשים הם אלה שהתבקשת לספק בעת הפעלת היישום).
+If you enable this policy setting, you can specify the servers to which the user's fresh credentials can be delegated (fresh credentials are those that you are prompted for when executing the application).
 
-אם לא תקבע את תצורתה (כברירת מחדל) של הגדרת מדיניות זו, לאחר אימות הדדי תקין, הקצאת אישורים חדשים מותרת לשרת מסוף הפועל בכל מחשב (TERMSRV/*‎).
+If you do not configure (by default) this policy setting, after proper mutual authentication, delegation of fresh credentials is permitted to Remote Desktop Session Host running on any machine (TERMSRV/*).
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה, הקצאת אישורים חדשים אינה מותרת לאף מחשב.
+If you disable this policy setting, delegation of fresh credentials is not permitted to any machine.
 
-הערה: ניתן לקבוע את ההגדרה "אפשר הקצאת אישורים חדשים עם אימות שרת דרך NTLM בלבד" לשם ראשי של שירות (SPN) אחד או יותר.  ה- SPN מייצג את שרת היעד שאליו ניתן להקצות את אישורי המשתמשים.  מותר שימוש בתו כללי בודד בעת ציון ה- SPN.
+Note: The "Allow delegating fresh credentials with NTLM-only server authentication" policy setting can be set to one or more Service Principal Names (SPNs). The SPN represents the target server to which the user credentials can be delegated. The use of a single wildcard character is permitted when specifying the SPN.
 
-לדוגמה:
-TERMSRV/host.humanresources.fabrikam.com הוא שרת מסוף הפועל במחשב host.humanresources.fabrikam.com
-TERMSRV/*‎ הוא שרת מסוף הפועל בכל המחשבים.
-TERMSRV/*.humanresources.fabrikam.com הוא שרת מסוף הפועל בכל המחשבים בתחום ‎.humanresources.fabrikam.com</string>
-      <string id="AllowSavedCredentials">אפשר הקצאת אישורים שנשמרו</string>
-      <string id="AllowSavedCredentials_Explain">הגדרת מדיניות זו חלה על יישומים העושים שימוש ברכיב Cred SSP (לדוגמה: שרת מסוף).
+For Example:
+TERMSRV/host.humanresources.fabrikam.com Remote Desktop Session Host running on host.humanresources.fabrikam.com machine
+TERMSRV/* Remote Desktop Session Host running on all machines.
+TERMSRV/*.humanresources.fabrikam.com Remote Desktop Session Host running on all machines in humanresources.fabrikam.com</string>
+      <string id="AllowSavedCredentials">Allow delegating saved credentials</string>
+      <string id="AllowSavedCredentials_Explain">This policy setting applies to applications using the Cred SSP component (for example: Remote Desktop Connection).
 
-מדיניות זו חלה כאשר הושג אימות שרת דרך אישור X509 מהימן או Kerberos.
+This policy setting applies when server authentication was achieved via a trusted X509 certificate or Kerberos.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, באפשרותך לציין את השרתים אליהם ניתן להקצות את האישורים של המשתמש שנשמרו (אישורים שנשמרו הם אלה שבחרת לשמור או לזכור באמצעות מנהל האישורים של Windows).
+If you enable this policy setting, you can specify the servers to which the user's saved credentials can be delegated (saved credentials are those that you elect to save/remember using the Windows credential manager).
 
-אם לא תקבע את תצורתה (כברירת מחדל) של הגדרת מדיניות זו, לאחר אימות הדדי תקין, הקצאת אישורים שנשמרו מותרת לשרת מסוף הפועל בכל מחשב (TERMSRV/*‎).
+If you do not configure (by default) this policy setting, after proper mutual authentication, delegation of saved credentials is permitted to Remote Desktop Session Host running on any machine (TERMSRV/*).
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה, הקצאת אישורים שנשמרו לא תותר לאף מחשב.
+If you disable this policy setting, delegation of saved credentials is not permitted to any machine.
 
-הערה: ניתן להגדיר את הגדרת המדיניות "אפשר הקצאת אישורים שנשמרו" לשם מנהל שירות (SPN) אחד או יותר.  ה- SPN מייצג את שרת היעד שאליו ניתן להקצות את אישורי המשתמש.  מותר שימוש בתו כללי בודד בעת ציון ה- SPN.
+Note: The "Allow delegating saved credentials" policy setting can be set to one or more Service Principal Names (SPNs). The SPN represents the target server to which the user credentials can be delegated. The use of a single wildcard character is permitted when specifying the SPN.
 
-לדוגמה:
-TERMSRV/host.humanresources.fabrikam.com הוא שרת מסוף הפועל במחשב host.humanresources.fabrikam.com
-TERMSRV/*‎ הוא שרת מסוף הפועל בכל המחשבים.
-TERMSRV/*.humanresources.fabrikam.com הוא שרת מסוף הפועל בכל המחשבים בתחום ‎.humanresources.fabrikam.com</string>
-      <string id="AllowSavedCredentialsWhenNTLMOnly">אפשר הקצאת אישורים שנשמרו עם אימות שרת מסוג NTLM בלבד</string>
-      <string id="AllowSavedCredentialsWhenNTLMOnly_Explain">הגדרת מדיניות זו חלה על יישומים העושים שימוש ברכיב Cred SSP (לדוגמה: שרת מסוף).
+For Example:
+TERMSRV/host.humanresources.fabrikam.com Remote Desktop Session Host running on host.humanresources.fabrikam.com machine
+TERMSRV/* Remote Desktop Session Host running on all machines.
+TERMSRV/*.humanresources.fabrikam.com Remote Desktop Session Host running on all machines in humanresources.fabrikam.com</string>
+      <string id="AllowSavedCredentialsWhenNTLMOnly">Allow delegating saved credentials with NTLM-only server authentication</string>
+      <string id="AllowSavedCredentialsWhenNTLMOnly_Explain">This policy setting applies to applications using the Cred SSP component (for example: Remote Desktop Connection).
 
-מדיניות זו חלה כאשר הושג אימות שרת דרך NTLM.
+This policy setting applies when server authentication was achieved via NTLM.
 
-אם תהפוך הגדרת מדיניות זו לזמינה, באפשרותך לציין את השרתים אליהם ניתן להקצות את האישורים של המשתמש שנשמרו (אישורים שנשמרו הם אלה שבחרת לשמור או לזכור באמצעות מנהל האישורים של Windows).
+If you enable this policy setting, you can specify the servers to which the user's saved credentials can be delegated (saved credentials are those that you elect to save/remember using the Windows credential manager).
 
-אם לא תקבע את תצורתה (כברירת מחדל) של הגדרת מדיניות זו, לאחר אימות הדדי תקין, הקצאת אישורים שנשמרו מותרת לשרת מסוף הפועל בכל מחשב (TERMSRV/*‎) אם מחשב הלקוח אינו שייך לתחום כלשהו. אם הלקוח מחובר לתחום, לא תורשה הקצאה של אישורים שמורים באף מחשב, כברירת מחדל.
+If you do not configure (by default) this policy setting, after proper mutual authentication, delegation of saved credentials is permitted to Remote Desktop Session Host running on any machine (TERMSRV/*) if the client machine is not a member of any domain. If the client is domain-joined, by default the delegation of saved credentials is not permitted to any machine.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה, הקצאת אישורים שנשמרו לא תותר לאף מחשב.
+If you disable this policy setting, delegation of saved credentials is not permitted to any machine.
 
-הערה: ניתן לקבוע את ההגדרה "אפשר הקצאת אישורים שנשמרו עם אימות שרת דרך NTLM בלבד" לשם ראשי של שירות (SPN) אחד או יותר.  ה- SPN מייצג את שרת היעד שאליו ניתן להקצות את אישורי המשתמש.  השימוש בתו כללי בודד מותר בעת ציון ה- SPN.
+Note: The "Allow delegating saved credentials with NTLM-only server authentication" policy setting can be set to one or more Service Principal Names (SPNs). The SPN represents the target server to which the user credentials can be delegated. The use of a single wildcard character is permitted when specifying the SPN.
 
-לדוגמה:
-TERMSRV/host.humanresources.fabrikam.com הוא שרת מסוף הפועל במחשב host.humanresources.fabrikam.com
-TERMSRV/*‎ הוא שרת מסוף הפועל בכל המחשבים.
-TERMSRV/*.humanresources.fabrikam.com הוא שרת מסוף הפועל בכל המחשבים בתחום ‎.humanresources.fabrikam.com</string>
-      <string id="CredentialsDelegation">הקצאת אישורים</string>
-      <string id="DenyDefaultCredentials">מנע הקצאה של אישורי ברירת מחדל</string>
-      <string id="DenyDefaultCredentials_Explain">הגדרת מדיניות זו חלה על יישומים העושים שימוש ברכיב Cred SSP (לדוגמה: שרת מסוף).
+For Example:
+TERMSRV/host.humanresources.fabrikam.com Remote Desktop Session Host running on host.humanresources.fabrikam.com machine
+TERMSRV/* Remote Desktop Session Host running on all machines.
+TERMSRV/*.humanresources.fabrikam.com Remote Desktop Session Host running on all machines in humanresources.fabrikam.com</string>
+      <string id="CredentialsDelegation">Credentials Delegation</string>
+      <string id="DenyDefaultCredentials">Deny delegating default credentials</string>
+      <string id="DenyDefaultCredentials_Explain">This policy setting applies to applications using the Cred SSP component (for example: Remote Desktop Connection).
 
-אם תהפוך הגדרת מדיניות זו לזמינה, באפשרותך לציין את השרתים אליהם ניתן להקצות את אישורי ברירת המחדל של המשתמש (אישורי ברירת מחדל הם אלה בהם אתה משתמש בעת כניסה ראשונית ל- Windows).
+If you enable this policy setting, you can specify the servers to which the user's default credentials cannot be delegated (default credentials are those that you use when first logging on to Windows).
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה (כברירת מחדל), הגדרה זו לא תציין כל שרת.
+If you disable or do not configure (by default) this policy setting, this policy setting does not specify any server.
 
-הערה: ניתן לקבוע את ההגדרה "מנע הקצאה של אישורי ברירת מחדל" לשם ראשי של שירות (SPN) אחד או יותר.  ה- SPN מייצג את שרת היעד שאליו לא ניתן להקצות את אישורי המשתמש.  השימוש בתו כללי בודד מותר בעת ציון ה- SPN.
+Note: The "Deny delegating default credentials" policy setting can be set to one or more Service Principal Names (SPNs). The SPN represents the target server to which the user credentials cannot be delegated. The use of a single wildcard character is permitted when specifying the SPN.
 
-לדוגמה:
-TERMSRV/host.humanresources.fabrikam.com הוא שרת מסוף הפועל במחשב host.humanresources.fabrikam.com
-TERMSRV/*‎ הוא שרת מסוף הפועל בכל המחשבים.
-TERMSRV/*.humanresources.fabrikam.com הוא שרת מסוף הפועל בכל המחשבים ב- .humanresources.fabrikam.com
+For Example:
+TERMSRV/host.humanresources.fabrikam.com Remote Desktop Session Host running on host.humanresources.fabrikam.com machine
+TERMSRV/* Remote Desktop Session Host running on all machines.
+TERMSRV/*.humanresources.fabrikam.com Remote Desktop Session Host running on all machines in .humanresources.fabrikam.com
 
-ניתן להשתמש בהגדרה זו בשילוב עם "אפשר הקצאת אישורי ברירת מחדל" כדי להגדיר יוצאים מן הכלל לשרתים מסוימים, שבמקרה אחר היו מותרים בעת שימוש בתווים כלליים ברשימת השרתים "אפשר הקצאת אישורי ברירת מחדל".</string>
-      <string id="DenyFreshCredentials">מנע הקצאה של אישורים חדשים</string>
-      <string id="DenyFreshCredentials_Explain">הגדרת מדיניות זו חלה על יישומים העושים שימוש ברכיב Cred SSP (לדוגמה: שרת מסוף).
+This policy setting can be used in combination with the "Allow delegating default credentials" policy setting to define exceptions for specific servers that are otherwise permitted when using wildcard characters in the "Allow delegating default credentials" server list.</string>
+      <string id="DenyFreshCredentials">Deny delegating fresh credentials</string>
+      <string id="DenyFreshCredentials_Explain">This policy setting applies to applications using the Cred SSP component (for example: Remote Desktop Connection).
 
-אם תהפוך הגדרת מדיניות זו לזמינה, באפשרותך לציין את השרתים אליהם לא ניתן להקצות את האישורים החדשים של המשתמשים (אישורים חדשים הם אלה שהתבקשת לספק בעת הפעלת היישום).
+If you enable this policy setting, you can specify the servers to which the user's fresh credentials cannot be delegated (fresh credentials are those that you are prompted for when executing the application).
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה (כברירת מחדל), הגדרה זו לא תציין כל שרת.
+If you disable or do not configure (by default) this policy setting, this policy setting does not specify any server.
 
-הערה: ניתן לקבוע את ההגדרה "מנע הקצאה של אישורים חדשים" לשם ראשי של שירות (SPN) אחד או יותר.  ה- SPN מייצג את שרת היעד שאליו לא ניתן להקצות את אישורי המשתמש.  השימוש בתו כללי בודד מותר בעת ציון ה- SPN.
+Note: The "Deny delegating fresh credentials" policy setting can be set to one or more Service Principal Names (SPNs). The SPN represents the target server to which the user credentials cannot be delegated. The use of a single wildcard character is permitted when specifying the SPN.
 
-לדוגמה:
-TERMSRV/host.humanresources.fabrikam.com הוא שרת מסוף הפועל במחשב host.humanresources.fabrikam.com
-TERMSRV/*‎ הוא שרת מסוף הפועל בכל המחשבים.
-TERMSRV/*.humanresources.fabrikam.com הוא שרת מסוף הפועל בכל המחשבים בתחום ‎.humanresources.fabrikam.com
+For Example:
+TERMSRV/host.humanresources.fabrikam.com Remote Desktop Session Host running on host.humanresources.fabrikam.com machine
+TERMSRV/* Remote Desktop Session Host running on all machines.
+TERMSRV/*.humanresources.fabrikam.com Remote Desktop Session Host running on all machines in .humanresources.fabrikam.com
 
-ניתן להשתמש בהגדרה זו בשילוב עם ההגדרה "אפשר הקצאה של אישורים שנשמרו" כדי להגדיר יוצאים מן הכלל לשרתים מסוימים, שבמקרה אחר היו מותרים בעת שימוש בתווים כלליים ברשימת השרתים "אפשר הקצאה של אישורים שנשמרו".</string>
-      <string id="DenySavedCredentials">מנע הקצאת אישורים שנשמרו</string>
-      <string id="DenySavedCredentials_Explain">הגדרת מדיניות זו חלה על יישומים העושים שימוש ברכיב Cred SSP (לדוגמה: שרת מסוף).
+This policy setting can be used in combination with the "Allow delegating fresh credentials" policy setting to define exceptions for specific servers that are otherwise permitted when using wildcard characters in the "Allow delegating fresh credentials" server list.</string>
+      <string id="DenySavedCredentials">Deny delegating saved credentials</string>
+      <string id="DenySavedCredentials_Explain">This policy setting applies to applications using the Cred SSP component (for example: Remote Desktop Connection).
 
-אם תהפוך הגדרת מדיניות זו לזמינה, באפשרותך לציין את השרתים אליהם לא ניתן להקצות את האישורים של המשתמש שנשמרו (אישורים שנשמרו הם אלה שבחרת לשמור או לזכור באמצעות מנהל האישורים של Windows).
+If you enable this policy setting, you can specify the servers to which the user's saved credentials cannot be delegated (saved credentials are those that you elect to save/remember using the Windows credential manager).
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה (כברירת מחדל), הגדרה זו לא תציין כל שרת.
+If you disable or do not configure (by default) this policy setting, this policy setting does not specify any server.
 
-הערה: ניתן לקבוע את ההגדרה "מנע הקצאה של אישורים שנשמרו" לשם ראשי של שירות (SPN) אחד או יותר.   ה- SPN מייצג את שרת היעד שאליו לא ניתן להקצות את אישורי המשתמש.  השימוש בתו כללי בודד מותר בעת ציון ה- SPN.
+Note: The "Deny delegating saved credentials" policy setting can be set to one or more Service Principal Names (SPNs). The SPN represents the target server to which the user credentials cannot be delegated. The use of a single wildcard character is permitted when specifying the SPN.
 
-לדוגמה:
-TERMSRV/host.humanresources.fabrikam.com הוא שרת מסוף הפועל במחשב host.humanresources.fabrikam.com
-TERMSRV/*‎ הוא שרת מסוף הפועל בכל המחשבים.
-TERMSRV/*.humanresources.fabrikam.com הוא שרת מסוף הפועל בכל המחשבים ב- ‎.humanresources.fabrikam.com
+For Example:
+TERMSRV/host.humanresources.fabrikam.com Remote Desktop Session Host running on host.humanresources.fabrikam.com machine
+TERMSRV/* Remote Desktop Session Host running on all machines.
+TERMSRV/*.humanresources.fabrikam.com Remote Desktop Session Host running on all machines in .humanresources.fabrikam.com
 
-ניתן להשתמש בהגדרה זו בשילוב עם "אפשר הקצאת אישורי ברירת מחדל" כדי להגדיר יוצאים מן הכלל לשרתים מסוימים, שבמקרה אחר היו מותרים בעת שימוש בתווים כלליים ברשימת השרתים "אפשר הקצאת אישורי ברירת מחדל".</string>
+This policy setting can be used in combination with the "Allow delegating saved credentials" policy setting to define exceptions for specific servers that are otherwise permitted when using wildcard characters in the "Allow delegating saved credentials" server list.</string>
+      <string id="RestrictedRemoteAdministration">Restrict delegation of credentials to remote servers</string>
+      <string id="RestrictedRemoteAdministration_Explain">When running in restricted mode, participating apps do not expose credentials to remote computers (regardless of the delegation method). Restricted mode may limit access to resources located on other servers or networks beyond the target computer because credentials are not delegated.
+
+Participating apps:
+Remote Desktop Client
+
+If you enable this policy setting, restricted mode is enforced and participating apps will not delegate credentials to remote computers.
+
+If you disable or do not configure this policy setting, restricted mode is not enforced and participating apps can delegate credentials to remote computers.
+
+Note: To disable most credential delegation, it may be sufficient to deny delegation in Credential Security Support Provider (CredSSP) by modifying Administrative template settings (located at Computer Configuration\Administrative Templates\System\Credentials Delegation).</string>
       <string id="SUPPORTED_VISTA">Windows Vista</string>
     </stringTable>
     <presentationTable>
       <presentation id="AllowDefaultCredentials">
-        <listBox refId="AllowDefaultCredentials_Name">הוסף שרתים לרשימה:</listBox>
-        <checkBox refId="ConcatenateDefaults_ADC" defaultChecked="true">שרשור ברירות מחדל של מערכת הפעלה עם הקלט שלעיל</checkBox>
+        <listBox refId="AllowDefaultCredentials_Name">Add servers to the list:</listBox>
+        <checkBox refId="ConcatenateDefaults_ADC" defaultChecked="true">Concatenate OS defaults with input above</checkBox>
       </presentation>
       <presentation id="AllowDefCredentialsWhenNTLMOnly">
-        <listBox refId="AllowDefCredentialsWhenNTLMOnly_Name">הוסף שרתים לרשימה:</listBox>
-        <checkBox refId="ConcatenateDefaults_ADCN" defaultChecked="true">שרשור ברירות מחדל של מערכת הפעלה עם הקלט שלעיל</checkBox>
+        <listBox refId="AllowDefCredentialsWhenNTLMOnly_Name">Add servers to the list:</listBox>
+        <checkBox refId="ConcatenateDefaults_ADCN" defaultChecked="true">Concatenate OS defaults with input above</checkBox>
       </presentation>
       <presentation id="AllowFreshCredentials">
-        <listBox refId="AllowFreshCredentials_Name">הוסף שרתים לרשימה:</listBox>
-        <checkBox refId="ConcatenateDefaults_AFC" defaultChecked="true">שרשור ברירות מחדל של מערכת הפעלה עם הקלט שלעיל</checkBox>
+        <listBox refId="AllowFreshCredentials_Name">Add servers to the list:</listBox>
+        <checkBox refId="ConcatenateDefaults_AFC" defaultChecked="true">Concatenate OS defaults with input above</checkBox>
       </presentation>
       <presentation id="AllowFreshCredentialsWhenNTLMOnly">
-        <listBox refId="AllowFreshCredentialsWhenNTLMOnly_Name">הוסף שרתים לרשימה:</listBox>
-        <checkBox refId="ConcatenateDefaults_AFCN" defaultChecked="true">שרשור ברירות מחדל של מערכת הפעלה עם הקלט שלעיל</checkBox>
+        <listBox refId="AllowFreshCredentialsWhenNTLMOnly_Name">Add servers to the list:</listBox>
+        <checkBox refId="ConcatenateDefaults_AFCN" defaultChecked="true">Concatenate OS defaults with input above</checkBox>
       </presentation>
       <presentation id="AllowSavedCredentials">
-        <listBox refId="AllowSavedCredentials_Name">הוסף שרתים לרשימה:</listBox>
-        <checkBox refId="ConcatenateDefaults_ASC" defaultChecked="true">שרשור ברירות מחדל של מערכת הפעלה עם הקלט שלעיל</checkBox>
+        <listBox refId="AllowSavedCredentials_Name">Add servers to the list:</listBox>
+        <checkBox refId="ConcatenateDefaults_ASC" defaultChecked="true">Concatenate OS defaults with input above</checkBox>
       </presentation>
       <presentation id="AllowSavedCredentialsWhenNTLMOnly">
-        <listBox refId="AllowSavedCredentialsWhenNTLMOnly_Name">הוסף שרתים לרשימה:</listBox>
-        <checkBox refId="ConcatenateDefaults_ASCN" defaultChecked="true">שרשור ברירות מחדל של מערכת הפעלה עם הקלט שלעיל</checkBox>
+        <listBox refId="AllowSavedCredentialsWhenNTLMOnly_Name">Add servers to the list:</listBox>
+        <checkBox refId="ConcatenateDefaults_ASCN" defaultChecked="true">Concatenate OS defaults with input above</checkBox>
       </presentation>
       <presentation id="DenyDefaultCredentials">
-        <listBox refId="DenyDefaultCredentials_Name">הוסף שרתים לרשימה:</listBox>
-        <checkBox refId="ConcatenateDefaults_DDC" defaultChecked="true">שרשור ברירות מחדל של מערכת הפעלה עם הקלט שלעיל</checkBox>
+        <listBox refId="DenyDefaultCredentials_Name">Add servers to the list:</listBox>
+        <checkBox refId="ConcatenateDefaults_DDC" defaultChecked="true">Concatenate OS defaults with input above</checkBox>
       </presentation>
       <presentation id="DenyFreshCredentials">
-        <listBox refId="DenyFreshCredentials_Name">הוסף שרתים לרשימה:</listBox>
-        <checkBox refId="ConcatenateDefaults_DFC" defaultChecked="true">שרשור ברירות מחדל של מערכת הפעלה עם הקלט שלעיל</checkBox>
+        <listBox refId="DenyFreshCredentials_Name">Add servers to the list:</listBox>
+        <checkBox refId="ConcatenateDefaults_DFC" defaultChecked="true">Concatenate OS defaults with input above</checkBox>
       </presentation>
       <presentation id="DenySavedCredentials">
-        <listBox refId="DenySavedCredentials_Name">הוסף שרתים לרשימה:</listBox>
-        <checkBox refId="ConcatenateDefaults_DSC" defaultChecked="true">שרשור ברירות מחדל של מערכת הפעלה עם הקלט שלעיל</checkBox>
+        <listBox refId="DenySavedCredentials_Name">Add servers to the list:</listBox>
+        <checkBox refId="ConcatenateDefaults_DSC" defaultChecked="true">Concatenate OS defaults with input above</checkBox>
       </presentation>
     </presentationTable>
   </resources>

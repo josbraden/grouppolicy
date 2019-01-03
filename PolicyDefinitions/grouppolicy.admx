@@ -12,7 +12,88 @@
     </category>
   </categories>
   <policies>
-    <policy name="DisableLGPOProcessing" class="Machine" displayName="$(string.DisableLGPOProcessing)" explainText="$(string.DisableLGPOProcessing_Help)" key="Software\Policies\Microsoft\Windows\System" valueName="DisableLGPOProcessing">
+    <policy name="EnableLogonOptimization" class="Machine" displayName="$(string.EnableLogonOptimization)" explainText="$(string.EnableLogonOptimization_Help)" presentation="$(presentation.SyncModeThreshold)" key="Software\Policies\Microsoft\Windows\System" valueName="EnableLogonOptimization">
+      <parentCategory ref="PolicyPolicies" />
+      <supportedOn ref="windows:SUPPORTED_Windows_6_3" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+        <decimal id="SyncModeSlowLinkThreshold1" valueName="SyncModeSlowLinkThreshold" maxValue="300000" />
+        <decimal id="SyncModeNoDCThreshold1" valueName="SyncModeNoDCThreshold" maxValue="600000" />
+      </elements>
+    </policy>
+    <policy name="EnableLogonOptimizationOnServerSKU" class="Machine" displayName="$(string.EnableLogonOptimizationOnServerSKU)" explainText="$(string.EnableLogonOptimizationOnServerSKU_Help)" presentation="$(presentation.SyncModeThreshold)" key="Software\Policies\Microsoft\Windows\System" valueName="EnableLogonOptimizationOnServerSKU">
+      <parentCategory ref="PolicyPolicies" />
+      <supportedOn ref="windows:SUPPORTED_Windows_6_3" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+        <decimal id="SyncModeSlowLinkThreshold1" valueName="SyncModeSlowLinkThresholdOnServerSKU" maxValue="300000" />
+        <decimal id="SyncModeNoDCThreshold1" valueName="SyncModeNoDCThresholdOnServerSKU" maxValue="600000" />
+      </elements>
+    </policy>
+    <policy name="LogonScriptDelay" class="Machine" displayName="$(string.LogonScriptDelay)" explainText="$(string.LogonScriptDelay_Help)" presentation="$(presentation.LogonScriptDelay)" key="Software\Policies\Microsoft\Windows\System" valueName="EnableLogonScriptDelay">
+      <parentCategory ref="PolicyPolicies" />
+      <supportedOn ref="windows:SUPPORTED_Windows_6_3" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+        <decimal id="AsyncScriptDelay1" valueName="AsyncScriptDelay" maxValue="1000" />
+      </elements>
+    </policy>
+    <policy name="ResetDfsClientInfoDuringRefreshPolicy" class="Machine" displayName="$(string.ResetDfsClientInfoDuringRefreshPolicy)" explainText="$(string.ResetDfsClientInfoDuringRefreshPolicy_Help)" key="Software\Policies\Microsoft\Windows\System" valueName="ResetDfsClientInfoDuringRefreshPolicy">
+      <parentCategory ref="PolicyPolicies" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="DisableAOACProcessing" class="Machine" displayName="$(string.DisableAOACProcessing)" explainText="$(string.DisableAOACProcessing_Help)" key="Software\Policies\Microsoft\Windows\System" valueName="DisableAOACProcessing">
+      <parentCategory ref="PolicyPolicies" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+      <policy name="SlowLinkDefaultForDirectAccess" class="Machine" displayName="$(string.SlowLinkDefaultForDirectAccess)" explainText="$(string.SlowLinkDefaultForDirectAccess_Help)" key="Software\Policies\Microsoft\Windows\System" valueName="SlowLinkDefaultForDirectAccess">
+          <parentCategory ref="PolicyPolicies" />
+          <supportedOn ref="windows:SUPPORTED_Windows8" />
+          <enabledValue>
+              <decimal value="1" />
+          </enabledValue>
+          <disabledValue>
+              <decimal value="0" />
+          </disabledValue>
+      </policy>
+      <policy name="SlowlinkDefaultToAsync" class="Machine" displayName="$(string.SlowlinkDefaultToAsync)" explainText="$(string.SlowlinkDefaultToAsync_Help)" key="Software\Policies\Microsoft\Windows\System" valueName="SlowlinkDefaultToAsync">
+          <parentCategory ref="PolicyPolicies" />
+          <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+          <enabledValue>
+              <decimal value="1" />
+          </enabledValue>
+          <disabledValue>
+              <decimal value="0" />
+          </disabledValue>
+      </policy>
+      <policy name="DisableLGPOProcessing" class="Machine" displayName="$(string.DisableLGPOProcessing)" explainText="$(string.DisableLGPOProcessing_Help)" key="Software\Policies\Microsoft\Windows\System" valueName="DisableLGPOProcessing">
       <parentCategory ref="PolicyPolicies" />
       <supportedOn ref="windows:SUPPORTED_WindowsVista" />
       <enabledValue>
@@ -414,13 +495,21 @@
       <supportedOn ref="windows:SUPPORTED_Win2k" />
       <elements>
         <decimal id="TransferRateOp2" valueName="GroupPolicyMinTransferRate" maxValue="4294967200" />
+        <boolean id="CSE_3G_DEFAULT_TO_SLOWLINK_COMPUTER" valueName="SlowLinkDefaultFor3G">
+          <trueValue>
+            <decimal value="1" />
+          </trueValue>
+          <falseValue>
+            <decimal value="0" />
+          </falseValue>
+        </boolean>
       </elements>
     </policy>
     <policy name="GroupPolicyRefreshRate" class="Machine" displayName="$(string.GroupPolicyRefreshRate)" explainText="$(string.GroupPolicyRefreshRate_Help)" presentation="$(presentation.GroupPolicyRefreshRate)" key="Software\Policies\Microsoft\Windows\System">
       <parentCategory ref="PolicyPolicies" />
       <supportedOn ref="windows:SUPPORTED_Win2k" />
       <elements>
-        <decimal id="GPRefreshRate1" valueName="GroupPolicyRefreshTime" required="true" maxValue="64800" />
+        <decimal id="GPRefreshRate1" valueName="GroupPolicyRefreshTime" required="true" maxValue="44640" />
         <decimal id="GPRefreshRateOffset1" valueName="GroupPolicyRefreshTimeOffset" required="true" maxValue="1440" />
       </elements>
     </policy>
@@ -428,7 +517,7 @@
       <parentCategory ref="PolicyPolicies" />
       <supportedOn ref="windows:SUPPORTED_Win2k" />
       <elements>
-        <decimal id="GPRefreshRate2" valueName="GroupPolicyRefreshTimeDC" required="true" maxValue="64800" />
+        <decimal id="GPRefreshRate2" valueName="GroupPolicyRefreshTimeDC" required="true" maxValue="44640" />
         <decimal id="GPRefreshRateOffset2" valueName="GroupPolicyRefreshTimeOffsetDC" required="true" maxValue="1440" />
       </elements>
     </policy>
@@ -436,7 +525,7 @@
       <parentCategory ref="PolicyPolicies" />
       <supportedOn ref="windows:SUPPORTED_Win2k" />
       <elements>
-        <decimal id="GPRefreshRate3" valueName="GroupPolicyRefreshTime" required="true" maxValue="64800" />
+        <decimal id="GPRefreshRate3" valueName="GroupPolicyRefreshTime" required="true" maxValue="44640" />
         <decimal id="GPRefreshRateOffset3" valueName="GroupPolicyRefreshTimeOffset" required="true" maxValue="1440" />
       </elements>
     </policy>
@@ -487,6 +576,13 @@
             </value>
           </item>
         </enum>
+      </elements>
+    </policy>
+    <policy name="CorpConnSyncWaitTime" class="Machine" displayName="$(string.CorpConnSyncWaitTime)" explainText="$(string.CorpConnSyncWaitTime_Help)" presentation="$(presentation.CorpConnSyncWaitTime)" key="Software\Policies\Microsoft\Windows\System">
+      <parentCategory ref="PolicyPolicies" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <elements>
+        <decimal id="CorpConnSyncWaitTime_Seconds" valueName="CorpConnStartTimeoutPolicyValue" minValue="1" maxValue="600" />
       </elements>
     </policy>
   </policies>

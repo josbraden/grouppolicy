@@ -17,92 +17,34 @@
 
 
       <!-- Individual scenario text -->
+      <string id="DetectBlockedDriversText">通知被阻止的驱动程序</string>
+      <string id="DetectDeprecatedComponentFailuresText">检测由不推荐使用的 Windows DLL 引起的应用程序故障</string>
+      <string id="DetectDeprecatedCOMComponentFailuresText">检测由不推荐使用的 COM 对象引起的应用程序故障</string> 
       <string id="DetectInstallFailuresText">检测应用程序安装故障</string>
       <string id="DetectUpdateFailuresText">检测那些无法在 UAC 下启动安装程序的应用程序</string>
-      <string id="DetectDeprecatedComponentFailuresText">检测由不推荐使用的 Windows DLL 引起的应用程序故障</string>
-      <string id="DetectDeprecatedCOMComponentFailuresText">检测由不推荐使用的 COM 对象引起的应用程序故障</string>
       <string id="DetectUndetectedInstallersText">检测那些需要以管理员身份运行的应用程序安装程序</string>
-      <string id="DetectBlockedDriversText">通知被阻止的驱动程序</string>
+      <string id="DisablePcaUIText">检测应用程序和驱动程序的兼容性问题</string>      
       <!-- End individual scenario text -->
 
+      <!-- Start detailed explain text -->
+      <string id="DetectBlockedDriversExplain">此设置的存在仅是为了实现后向兼容性，对此 Windows 版本无效。若要配置程序兼容性助手，请使用“计算机配置\管理模板\Windows 组件\应用程序兼容性”下的“关闭程序兼容性助手”设置。</string>
+      <string id="DetectDeprecatedComponentFailuresExplain">此设置的存在仅是为了实现后向兼容性，对此 Windows 版本无效。若要配置程序兼容性助手，请使用“计算机配置\管理模板\Windows 组件\应用程序兼容性”下的“关闭程序兼容性助手”设置。</string>
+      <string id="DetectDeprecatedCOMComponentFailuresExplain">此设置的存在仅是为了实现后向兼容性，对此 Windows 版本无效。若要配置程序兼容性助手，请使用“计算机配置\管理模板\Windows 组件\应用程序兼容性”下的“关闭程序兼容性助手”设置。</string>
+      <string id="DetectInstallFailuresExplain">此设置的存在仅是为了实现后向兼容性，对此 Windows 版本无效。若要配置程序兼容性助手，请使用“计算机配置\管理模板\Windows 组件\应用程序兼容性”下的“关闭程序兼容性助手”设置。</string>
+      <string id="DetectUpdateFailuresExplain">此设置的存在仅是为了实现后向兼容性，对此 Windows 版本无效。若要配置程序兼容性助手，请使用“计算机配置\管理模板\Windows 组件\应用程序兼容性”下的“关闭程序兼容性助手”设置。</string>
+      <string id="DetectUndetectedInstallersExplain">此设置的存在仅是为了实现后向兼容性，对此 Windows 版本无效。若要配置程序兼容性助手，请使用“计算机配置\管理模板\Windows 组件\应用程序兼容性”下的“关闭程序兼容性助手”设置。</string>
 
-      <!-- Begin install failure scenario description -->
-      <string id="DetectInstallFailuresExplain">此策略设置将程序兼容性助手(PCA)配置为诊断应用程序安装的故障。
+      <string id="DisablePcaUIExplain">此策略设置将程序兼容性助手(PCA)配置为诊断应用程序和驱动程序兼容性的故障。
 
-如果启用此策略设置，则 PCA 将配置为通过启发式检测的方式检测执行应用程序安装程序过程中的故障。如果检测到潜在的故障，则 PCA 将为用户提供使用 Microsoft Windows XP 兼容性模式重新启动安装程序的选项。
+如果启用此策略设置，则系统将 PCA 配置为在以下情况下检测故障: 应用程序安装期间故障、应用程序运行时故障以及驱动程序由于兼容性问题而被阻止。检测到故障后，PCA 将提供以下选择: 在兼容性模式下运行该应用程序或通过 Microsoft 网站获得在线帮助。
 
-如果禁用此策略设置，则 PCA 将不会配置为检测执行程序安装程序过程中的故障。
+如果禁用此策略设置，则 PCA 将不会检测应用程序和驱动程序的兼容性问题。
 
-如果不配置此策略设置，则默认情况下 PCA 将启用此诊断方案。
+如果未配置此策略设置，则系统将 PCA 配置为在以下情况中检测故障: 应用程序安装期间故障、应用程序运行时故障以及驱动程序由于兼容性问题而被阻止。
 
-注意: 禁用“关闭程序兼容性助手”策略设置将导致此策略设置无效。必须运行诊断策略服务(DPS)和程序兼容性助手服务，才能执行 PCA。可以使用服务管理单元将这些服务配置到 Microsoft 管理控制台。</string>
-      <!-- End install failure scenario description -->
+注意: 如果启用“关闭程序兼容性助手”策略设置，则此策略设置无效。必须首先运行诊断策略服务(DPS)和程序兼容性助手服务后才能运行 PCA。可以使用服务管理单元将这些服务配置到 Microsoft 管理控制台。</string>
+      <!-- End detailed explain text -->
       
-
-      <!-- Begin update failure scenario description -->
-      <string id="DetectUpdateFailuresExplain">此策略设置将程序兼容性助手(PCA)配置为在用户帐户控制(UAC)下诊断程序的故障。
-
-如果启用此策略设置，则 PCA 将检测无法启动属于安装程序(通常为更新程序)的子进程的程序。如果检测到此故障，则 PCA 将应用 ELEVATECREATEPROCESS 兼容性模式，使程序在下次运行时能够以管理员权限成功启动安装程序。
-
-如果禁用此策略设置，则 PCA 将不会检测无法在 UAC 下启动安装程序的应用程序。
-
-如果不配置此策略设置，则 PCA 将检测无法启动属于安装程序(通常为更新程序)的子进程的程序。
-
-注意: 禁用“关闭程序兼容性助手”策略设置将导致此策略设置无效。必须运行诊断策略服务(DPS)和程序兼容性助手服务，才能执行 PCA。可以使用服务管理单元将这些服务配置到 Microsoft 管理控制台。</string>
-      <!-- End update failure scenario description -->
-      
-
-      <!-- Begin deprecated component failure scenario description -->
-      <string id="DetectDeprecatedComponentFailuresExplain">此策略设置确定程序兼容性助手(PCA)是否诊断程序中的 DLL 加载故障。
-
-如果启用此策略设置，则 PCA 将检测那些尝试加载此版本的 Windows 中已删除的旧 Microsoft Windows DLL 的程序。如果检测到此故障，则终止程序后，PCA 会将此问题通知用户，并提供查看 Microsoft 网站以获取解决方案的选项。
-
-如果禁用此策略设置，则 PCA 将不会检测那些尝试加载旧的 Windows DLL 的程序。
-
-如果不配置此策略设置，则 PCA 将会检测那些尝试加载旧的 Windows DLL 的程序。
-
-注意: 禁用“关闭程序兼容性助手”策略设置将导致此策略设置无效。必须运行诊断策略服务(DPS)和程序兼容性助手服务，才能执行 PCA。可以使用服务管理单元将这些服务配置到 Microsoft 管理控制台。</string>
-      <!-- End deprecated component failure scenario description -->
-
-
-      <!-- Begin deprecated COM component failure scenario description -->
-      <string id="DetectDeprecatedCOMComponentFailuresExplain">此策略设置确定程序兼容性助手(PCA)是否诊断程序中的 DLL 加载或 COM 对象的创建故障。
-
-如果启用此策略设置，则 PCA 将检测那些尝试创建此版本的 Windows 中已删除的旧 COM 对象的程序。如果检测到此故障，则终止程序后，PCA 会将此问题通知用户，并提供查看 Microsoft 网站以获取解决方案的选项。
-
-如果禁用此策略设置，则 PCA 将不会检测那些尝试创建旧的 COM 对象的程序。
-
-如果不配置此策略设置，则 PCA 将会检测那些尝试创建旧的 COM 对象的程序。
-
-注意: 禁用“关闭程序兼容性助手”策略设置将导致此策略设置无效。必须运行诊断策略服务(DPS)和程序兼容性助手服务，才能执行 PCA。可以使用服务管理单元将这些服务配置到 Microsoft 管理控制台。</string>
-      <!-- End deprecated COM component failure scenario description -->
-
-
-      <!-- Begin undetected installer failure scenario description -->
-      <string id="DetectUndetectedInstallersExplain">此策略设置确定程序兼容性助手(PCA)是否诊断那些未检测到以管理员身份运行的应用程序安装程序的故障。
-
-如果启用此策略设置，则 PCA 将配置为检测那些没有权限通过用户访问控制(UAC)以管理员身份运行的应用程序安装程序。如果检测到潜在的故障，则 PCA 将为用户提供以管理员身份重新启动安装程序的选项。
-
-如果禁用此策略设置，则 PCA 将不会检测那些没有权限通过 UAC 以管理员身份运行的应用程序安装程序。
-
-如果不配置此策略设置，则 PCA 将配置为检测没有权限通过 UAC 以管理员身份运行的应用程序安装程序。
-
-
-注意: 禁用“关闭程序兼容性助手”策略设置将导致此策略设置无效。必须运行诊断策略服务(DPS)和程序兼容性助手服务，才能执行 PCA。可以使用服务管理单元将这些服务配置到 Microsoft 管理控制台。</string>
-      <!-- End undetected installer failure scenario description -->
-
-
-      <!-- Begin blocked drivers scenario description -->
-      <string id="DetectBlockedDriversExplain">此策略设置确定程序兼容性助手(PCA)是否诊断因兼容性问题而被阻止的驱动程序。
-
-如果启用此策略设置，则 PCA 会通知用户驱动程序被阻止的问题，并提供查看 Microsoft 网站以获取解决方案的选项。
-
-如果禁用此策略设置，则 PCA 不会通知用户驱动程序被阻止的问题。注意: 如果此策略设置处于禁用状态，则不会为用户提供驱动程序被阻止问题的解决方案。
-
-如果不配置此策略设置，则 PCA 会通知用户驱动程序被阻止的问题，并提供查看 Microsoft 网站以获取解决方案的选项。
-
-注意: 禁用“关闭程序兼容性助手”策略设置将导致此策略设置无效。必须运行诊断策略服务(DPS)和程序兼容性助手服务，才能执行 PCA。可以使用服务管理单元将这些服务配置到 Microsoft 管理控制台。</string>
-      <!-- End blocked drivers scenario description -->
     </stringTable>
 
     <presentationTable>

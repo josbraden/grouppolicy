@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" revision="1.0" schemaVersion="1.0" xmlns="http://www.microsoft.com/GroupPolicy/PolicyDefinitions">
+  <displayName>Windows PowerShell</displayName>
+  <description>Este arquivo contém as opções de configurações do Windows PowerShell</description>
+  <resources>
+    <stringTable>
+      <string id="AllScripts">Permitir todos os scripts</string>
+      <string id="AllScriptsSigned">Permitir apenas scripts assinados</string>
+      <string id="EnableScripts">Habilitar Execução de Scripts</string>
+      <string id="EnableScripts_Explain">Essa configuração de política permite definir a política de execução de script, controlando quais scripts podem ser executados.
+
+Se você habilitar essa configuração de política, os scripts selecionados na lista suspensa poderão ser executados.
+
+A configuração de política "Permitir apenas scripts assinados" permite que os scripts sejam executados somente se forem assinados por um fornecedor confiável.
+
+A configuração de política "Permitir scripts locais e scripts remotos assinados" permite que qualquer scrip local seja executado; os scripts originados da Internet precisam ser assinados por um fornecedor confiável.
+
+A configuração de política "Permitir todos os scripts" permite que todos os scripts sejam executados.
+
+Se você desabilitar essa configuração de política, nenhum script poderá ser executado.
+
+Observação: essa configuração de política existe em "Configuração do Computador" e "Configuração do Usuário" no Editor de Política de Grupo Local. A "Configuração do Computador" prevalece sobre a "Configuração do Usuário."
+
+Se você desabilitar ou não definir essa configuração de política, ela será revertida para uma configuração de preferência por computador. O padrão, quando ela não está definida, é "Nenhum script permitido".</string>
+      <string id="PowerShell">Windows PowerShell</string>
+      <string id="RemoteSignedScripts">Permitir scripts locais e scripts remotos assinados</string>
+      <string id="SUPPORTED_WIN7">Pelo menos o Microsoft Windows 7 ou a família Windows Server 2008</string>
+       
+      <string id="EnableModuleLogging">Habilitar o Log de Módulo</string>
+      <string id="EnableModuleLogging_Explain">
+        
+        Essa configuração de política permite habilitar o log nos módulos do Windows PowerShell.
+
+        Se você habilitar essa configuração de política, os eventos de execução no pipeline para os membros dos módulos especificados serão gravados no log do Windows PowerShell no Visualizador de Eventos. A habilitação dessa configuração de política em um módulo equivale a configurar a propriedade LogPipelineExecutionDetails do módulo para True.
+
+        Se você desabilitar essa configuração de política, o log de eventos de execução será desabilitado em todos os módulos do Windows PowerShell. A desabilitação dessa configuração de política em um módulo equivale a configurar a propriedade LogPipelineExecutionDetails do módulo para False.
+
+        Se essa configuração de política não estiver definida, a propriedade LogPipelineExecutionDetails de um módulo ou snap-in determinará se os eventos de execução de um módulo ou snap-in serão gravados em log. Por padrão, a propriedade LogPipelineExecutionDetails de todos os módulos e snap-ins é definida como False.
+
+        Para adicionar módulos e snap-ins à lista dessa configuração de política, clique em Mostrar e digite os nomes dos módulos na lista. Os módulos e snap-ins na lista devem ser instalados no computador.
+
+        Observação: essa configuração de política existe em Configuração do Computador e em Configuração do Usuário no Editor de Política de Grupo. A configuração de política em Configuração do Computador prevalece sobre a configuração de política em Configuração do Usuário.
+      
+      </string>
+      <string id="EnableUpdateHelpDefaultSourcePath">Definir o caminho de origem padrão para Atualização-Ajuda</string>
+      <string id="EnableUpdateHelpDefaultSourcePath_Explain">Esta configuração de política permite que você defina o valor padrão do parâmetro SourcePath no cmdlet Atualização-Ajuda.
+
+Se você ativar esta configuração de política, o cmdlet Atualização-Ajuda usará o valor especificado como padrão para o parâmetro SourcePath. Este valor padrão pode ser substituído, especificando um valor diferente com o parâmetro SourcePath no cmdlet Atualização-Ajuda.
+
+Se esta configuração de política estiver desativada ou não configurada, ela não definirá um valor padrão para o parâmetro SourcePath do cmdlet Atualização-Ajuda.
+
+Observação: essa configuração de política existe em Configuração do Computador e em Configuração do Usuário no Editor de Política de Grupo. A configuração de política em Configuração do Computador prevalece sobre a configuração de política em Configuração do Usuário.
+      
+      </string>
+      <!--<string id="PowerShell">Windows PowerShell</string>-->
+    </stringTable>
+    <presentationTable>
+      <presentation id="EnableScripts">
+        <dropdownList refId="ExecutionPolicy" noSort="true">Política de execução</dropdownList>
+      </presentation>
+      <presentation id="EnableModuleLogging">
+        <text>Para habilitar o log de um ou mais módulos, clique em Mostrar e digite os nomes dos módulos na lista. Podem ser usados caracteres curingas.</text>
+        <listBox refId="Listbox_ModuleNames" required="false">Nomes dos Módulos:  </listBox>
+        <text>Para habilitar os log nos módulos principais do Windows PowerShell, digite os seguintes nomes dos módulos na lista:</text>
+        <text>Microsoft.PowerShell.*</text>
+        <text>Microsoft.WSMan.Management</text>
+      </presentation>
+      <presentation id="EnableUpdateHelpDefaultSourcePath">
+        <textBox refId="SourcePathForUpdateHelp">
+          <label>Caminho de origem padrão  </label>
+        </textBox>
+      </presentation>
+    </presentationTable>    
+  </resources>
+
+</policyDefinitionResources>

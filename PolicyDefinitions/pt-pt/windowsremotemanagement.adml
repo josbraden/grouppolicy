@@ -1,40 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>introduzir o nome a apresentar aqui</displayName>
-  <description>introduzir a descrição aqui</description>
+  <displayName>introduza o nome a apresentar aqui</displayName>
+  <description>introduza a descrição aqui</description>
   <resources>
     <stringTable>
-      <string id="AllowAutoConfig">Permitir a configuração automática de serviços de escuta</string>
+      <string id="AllowAutoConfig">Permitir gestão de servidores remota através do WinRM</string>
       <string id="AllowBasic">Permitir Autenticação básica</string>
       <string id="AllowBasicClientHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) utiliza a Autenticação básica.
 
-Se activar esta definição de política, o cliente WinRM utilizará a Autenticação básica. Se WinRM estiver configurado para utilizar o transporte HTTP, então o nome de utilizador e a palavra-passe serão enviados pela rede como texto simples.
+Se ativar esta definição de política, o cliente WinRM utilizará a Autenticação básica. Se o WinRM estiver configurado para utilizar transporte HTTP, o nome de utilizador e a palavra-passe serão enviados pela rede como texto simples.
 
-Se desactivar ou não configurar esta definição de política, então o cliente WinRM não vai utilizar a Autenticação básica.</string>
+Se desativar ou não configurar esta definição de política, o cliente WinRM não utilizará a Autenticação básica.</string>
       <string id="AllowBasicServiceHelp">Esta definição de política permite-lhe gerir se o serviço de Gestão Remota do Windows (WinRM) aceita a Autenticação básica a partir de um cliente remoto.
 
-Se activar esta definição de política, o serviço WinRM vai aceitar a Autenticação básica a partir de um cliente remoto.
+        Se ativar esta definição de política, o serviço WinRM aceitará a Autenticação básica a partir de um cliente remoto.
 
-Se desactivar ou não configurar esta definição de política, o serviço WinRM não vai aceitar a Autenticação básica a partir de um cliente remoto.</string>
+        Se desativar ou não configurar esta definição de política, o serviço WinRM não aceitará a Autenticação básica a partir de um cliente remoto.</string>
       <string id="AllowUnencrypted">Permitir tráfego sem encriptação</string>
-      <string id="AllowUnencryptedMessagesClientHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) envia e recebe mensagens sem encriptação pela rede. 
+      <string id="AllowUnencryptedMessagesClientHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) envia e recebe mensagens sem encriptação pela rede.
 
-Se activar esta definição de política, então o cliente WinRM envia e recebe mensagens sem encriptação pela rede.
+Se ativar esta definição de política, o cliente WinRM enviará e receberá mensagens sem encriptação pela rede.
 
-Se desactivar ou não configurar esta definição de política, o cliente WinRM envia e recebe apenas mensagens encriptadas pela rede.</string>
-      <string id="AllowUnencryptedMessagesServiceHelp">Esta definição de política permite-lhe gerir se o serviço de Gestão Remota do Windows (WinRM) envia e recebe mensagens sem encriptação pela rede. 
+Se desativar ou não configurar esta definição de política, o cliente WinRM enviará e receberá apenas mensagens encriptadas pela rede.</string>
+      <string id="AllowUnencryptedMessagesServiceHelp">Esta definição de política permite-lhe gerir se o serviço de Gestão Remota do Windows (WinRM) envia e recebe mensagens sem encriptação pela rede.
 
-Se activar esta definição de política, então o cliente WinRM envia e recebe mensagens sem encriptação pela rede.
+Se ativar esta definição de política, o cliente WinRM enviará e receberá mensagens sem encriptação pela rede.
 
-Se desactivar ou não configurar esta definição de política, o cliente WinRM envia e recebe apenas mensagens encriptadas pela rede.</string>
+Se desativar ou não configurar esta definição de política, o cliente WinRM enviará e receberá apenas mensagens encriptadas pela rede.</string>
+      <string id="DisableRunAs">Não permitir que o WinRM armazene credenciais RunAs</string>      
+      <string id="DisableRunAsMessagesServiceHelp">Esta definição de política permite-lhe gerir se o serviço de Gestão Remota do Windows (WinRM) não permitirá que as credenciais RunAs sejam armazenadas para plug-ins.
+
+Se ativar esta definição de política, o serviço WinRM não permitirá que os valores de configuração RunAsUser ou RunAsPassword sejam definidos para plug-ins.  Se um plug-in já tiver definido os valores de configuração RunAsUser e RunAsPassword, o valor de configuração RunAsPassword será apagado do arquivo de credenciais neste computador.
+
+Se desativar ou não configurar esta definição de política, o serviço WinRM permitirá que os valores de configuração RunAsUser e RunAsPassword sejam definidos para plug-ins e o valor RunAsPassword será armazenado de forma segura.
+
+Se ativar e, em seguida, desativar esta definição de política, todos os valores que tenham sido anteriormente configurados para RunAsPassword terão de ser repostos.</string>
       <string id="AutoConfigHelp">Esta definição de política permite-lhe gerir se o serviço Gestão Remota do Windows (WinRM) escuta automaticamente na rede a existência de pedidos no transporte HTTP através da porta HTTP predefinida.
 
-Se activar esta definição de política, o serviço WinRM escutará automaticamente na rede a existência de pedidos no transporte HTTP através da porta HTTP predefinida.
+Se ativar esta definição de política, o serviço WinRM escutará automaticamente na rede a existência de pedidos no transporte HTTP através da porta HTTP predefinida.
 
-Se desactivar ou não configurar esta definição de política, o serviço WinRM não escutará automaticamente na rede e o utilizador terá de criar manualmente serviços de escuta em cada computador.
+Para permitir que o serviço WinRM receba pedidos através da rede, configure a definição de política da Firewall do Windows com exceções para a Porta 5985 (a porta predefinida para HTTP).
 
-Para permitir que o serviço WinRM receba pedidos através da rede, configure a definição de política da Firewall do Windows com excepções para a Porta 5985 (a porta predefinida para HTTP).
+Se desativar ou não configurar esta definição de política, o serviço WinRM não responderá a pedidos de um computador remoto, independentemente de estarem ou não configurados serviços de escuta WinRM.
 
 O serviço escuta nos endereços especificados pelos filtros IPv4 e IPv6. O filtro IPv4 especifica um ou mais intervalos de endereços IPv4 e o filtro IPv6 especifica um ou mais intervalos de endereços IPv6. Se especificado, o serviço enumera os endereços IP disponíveis no computador e utiliza apenas endereços que correspondam a um dos intervalos do filtro.
 
@@ -47,94 +55,92 @@ Os intervalos são especificados utilizando a sintaxe IP1-IP2. Múltiplos interv
 Filtros IPv4 de exemplo:\n2.0.0.1-2.0.0.20, 24.0.0.1-24.0.0.22
 Filtros IPv6 de exemplo:\n3FFE:FFFF:7654:FEDA:1245:BA98:0000:0000-3FFE:FFFF:7654:FEDA:1245:BA98:3210:4562</string>
       <string id="DisallowDigest">Não permitir Autenticação de texto implícita</string>
-      <string id="DisallowDigestClientHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) não vai utilizar a Autenticação de texto implícita.
+      <string id="DisallowDigestClientHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) utiliza a Autenticação de texto implícita.
 
-Se activar esta definição de política, o cliente WinRM não utilizará a Autenticação de texto implícita.
+Se ativar esta definição de política, o cliente WinRM não utilizará a Autenticação de texto implícita.
 
-Se desactivar ou não configurar esta definição de política, o cliente WinRM vai utilizar a Autenticação de texto implícita.</string>
+Se desativar ou não configurar esta definição de política, o cliente WinRM utilizará a Autenticação de texto implícita.</string>
       <string id="DisallowNegotiate">Não permitir Autenticação negociada</string>
       <string id="DisallowKerberos">Não permitir Autenticação Kerberos</string>
-      <string id="DisallowNegotiateClientHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) não vai utilizar a Autenticação negociada.
+      <string id="DisallowNegotiateClientHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) utiliza a Autenticação Negotiate.
 
-Se activar esta definição de política, o cliente WinRM não utilizará a Autenticação negociada.
+Se ativar esta definição de política, o cliente WinRM não utilizará a Autenticação Negotiate.
 
-Se desactivar ou não configurar esta definição de política, o cliente WinRM vai utilizar a Autenticação negociada.</string>
-      <string id="DisallowNegotiateServiceHelp">Esta definição de política permite-lhe gerir se o serviço de Gestão Remota do Windows (WinRM) não aceitará a Autenticação negociada a partir de um cliente remoto.
+Se desativar ou não configurar esta definição de política, o cliente WinRM utilizará a Autenticação Negotiate.</string>
+      <string id="DisallowNegotiateServiceHelp">Esta definição de política permite-lhe gerir se o serviço de Gestão Remota do Windows (WinRM) aceita a autenticação Negotiate a partir de um cliente remoto.
 
-Se activar esta definição de política, o serviço WinRM não vai aceitar a Autenticação negociada a partir de um cliente remoto.
+        Se ativar esta definição de política, o serviço WinRM não aceitará a Autenticação Negotiate a partir de um cliente remoto.
 
-Se desactivar ou não configurar esta definição de política, o serviço WinRM vai aceitar a Autenticação negociada a partir de um cliente remoto.</string>
-      <string id="DisallowKerberosClientHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) não vai utilizar a Autenticação Kerberos directamente.
+        Se desativar ou não configurar esta definição de política, o serviço WinRM aceitará a Autenticação Negotiate a partir de um cliente remoto.</string>
+      <string id="DisallowKerberosClientHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) utiliza diretamente a Autenticação Kerberos.
 
-Se activar esta definição de política, o cliente de Gestão Remota do Windows (WinRM) não vai utilizar directamente a Autenticação Kerberos. Kerberos poderá ainda ser utilizado se o cliente WinRM estiver a utilizar a Autenticação negociada e Kerberos estiver seleccionado.
+Se ativar esta definição de política, o cliente de Gestão Remota do Windows (WinRM) não utilizará diretamente a Autenticação Kerberos. Kerberos pode ainda ser utilizado se o cliente WinRM estiver a utilizar a Autenticação Negotiate e Kerberos estiver selecionado.
 
-Se desactivar ou não configurar esta definição de política, o cliente WinRM vai utilizar directamente a Autenticação Kerberos.</string>
-      <string id="DisallowKerberosServiceHelp">Esta definição de política permite-lhe gerir se o serviço de Gestão Remota do Windows (WinRM) não vai aceitar as credenciais Kerberos pela rede.
+Se desativar ou não configurar esta definição de política, o cliente WinRM utilizará diretamente a Autenticação Kerberos.</string>
+      <string id="DisallowKerberosServiceHelp">Esta definição de política permite-lhe gerir se o serviço de Gestão Remota do Windows (WinRM) aceitará credenciais Kerberos pela rede.
 
-Se activar esta definição de política, o serviço WinRM não vai aceitar as credenciais de Kerberos pela rede.
+        Se ativar esta definição de política, o serviço WinRM não aceitará credenciais Kerberos pela rede.
 
-Se desactivar ou não configurar esta definição de política, então o serviço WinRM vai aceitar a Autenticação Kerberos a partir de um cliente remoto.</string>
+        Se desativar ou não configurar esta definição de política, o serviço WinRM aceitará a Autenticação Kerberos a partir de um cliente remoto.</string>
       <string id="AllowCredSSP">Permitir autenticação CredSSP</string>
-      <string id="AllowCredSSPClientHelp">
-        Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) utiliza a autenticação de CredSSP.
+      <string id="AllowCredSSPClientHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) utiliza a autenticação de CredSSP.
 
-        Se activar esta definição de política, o cliente WinRM utilizará a autenticação de CredSSP. 
+Se ativar esta definição de política, o cliente WinRM utilizará a Autenticação CredSSP.
 
-        Se desactivar ou não configurar esta definição de política, o cliente WinRM não utilizará a autenticação de CredSSP.
+Se desativar ou não configurar esta definição de política, o cliente WinRM não utilizará a Autenticação CredSSP.</string>
+      <string id="AllowCredSSPServiceHelp">Esta definição de política permite-lhe gerir se o serviço de Gestão Remota do Windows (WinRM) aceita a autenticação de CredSSP a partir de um cliente remoto.
+
+        Se ativar esta definição de política, o serviço WinRM aceitará a Autenticação CredSSP a partir de um cliente remoto.
+
+        Se desativar ou não configurar esta definição de política, o serviço WinRM não aceitará a Autenticação CredSSP a partir de um cliente remoto.
+      
       </string>
-      <string id="AllowCredSSPServiceHelp">
-        Esta definição de política permite-lhe gerir se o serviço de Gestão Remota do Windows (WinRM) aceita a autenticação de CredSSP a partir de um cliente remoto.
+      <string id="CBTHardeningLevel">Especificar nível de proteção de token de enlace de canal</string>
+      <string id="CBTHardeningLevelHelp">Esta definição de política permite-lhe definir o nível de proteção do serviço de Gestão Remota do Windows (WinRM) relativamente a tokens de enlace de canal.
 
-        Se activar esta definição de política, o serviço WinRM vai aceitar a autenticação de CredSSP a partir de um cliente remoto.
+        Se ativar esta definição de política, o serviço WinRM utilizará o nível especificado em HardeningLevel para determinar se deverá ou não aceitar um pedido recebido, com base num token de enlace de canal fornecido.
 
-        Se desactivar ou não configurar esta definição de política, o serviço WinRM não vai aceitar a autenticação de CredSSP a partir de um cliente remoto.
+        Se desativar ou não configurar esta definição de política, poderá configurar o nível de proteção localmente em cada computador.
+
+        Se HardeningLevel for definido como Strict, qualquer pedido que não contenha um token de enlace de canal válido será rejeitado.
+
+        Se HardeningLevel for definido como Relaxed (valor predefinido), qualquer pedido que contenha um token de enlace de canal inválido será rejeitado. No entanto, um pedido que não contenha nenhum token de enlace de canal será aceite (embora não fique protegido contra ataques de reencaminhamento de credenciais).
+
+        Se HardeningLevel for definido como None, todos os pedidos serão aceites (embora não fiquem protegidos contra ataques de reencaminhamento de credenciais).
+      
       </string>
-      <string id="CBTHardeningLevel">Especificar nível de protecção de token de enlaces de canal</string>
-      <string id="CBTHardeningLevelHelp">
-        Esta definição de política permite-lhe definir a protecção do serviço de Gestão Remota do Windows (WinRM) relativamente a tokens de enlaces de canal.
-
-        Se activar esta definição de política, o serviço WinRM utiliza o nível especificado em HardeningLevel para determinar se deverá aceitar um pedido recebido, com base num token de enlaces de canal fornecido.
-
-        Se desactivar ou não configurar esta definição de política, poderá configurar o nível de protecção localmente em cada computador.
-
-       Se o HardeningLevel for definido para Restrito, qualquer pedido que não contenha um token de enlaces de canal válido será rejeitado.
-
-        Se o HardeningLevel for definido para Impreciso (valor predefinido), qualquer pedido que contenha um token de enlaces de canal inválido será rejeitado. No entanto, um pedido que não contenha nenhum token de enlaces de canal será aceite (embora não fique protegido contra ataques de reencaminhamento de credenciais).
-
-        Se o HardeningLevel for definido para Nenhum, todos os pedidos serão aceites (embora não fiquem protegidos contra ataques de reencaminhamento de credenciais).
-      </string>
-        <string id="None">Nenhum</string>
-        <string id="Strict">Restrito</string>
-        <string id="Relaxed">Imprecisas</string>
+        <string id="None">None</string>
+        <string id="Strict">Strict</string>
+        <string id="Relaxed">Relaxed</string>
         <string id="WinRM">Gestão Remota do Windows (WinRM)</string>
       <string id="WinRMClient">Cliente WinRM</string>
       <string id="WinRMService">Serviço WinRM</string>
       <string id="TrustedHosts">Anfitriões Fidedignos</string>
       <string id="TrustedHostsHelp">Esta definição de política permite-lhe gerir se o cliente de Gestão Remota do Windows (WinRM) utiliza a lista especificada em TrustedHostsList para determinar se o anfitrião de destino é uma entidade fidedigna.
 
-Se activar esta definição de política, o cliente WinRM utiliza a lista especificada em TrustedHostsList para determinar se o anfitrião de destino é uma entidade fidedigna. O cliente WinRM utiliza esta lista quando nem HTTPS nem Kerberos são utilizados para autenticar a identidade do anfitrião.
+Se ativar esta definição de política, o cliente WinRM utilizará a lista especificada em TrustedHostsList para determinar se o anfitrião de destino é uma entidade fidedigna. O cliente WinRM utiliza esta lista quando nem HTTPS nem Kerberos são utilizados para autenticar a identidade do anfitrião.
 
-Se desactivar ou não configurar esta definição de política e o cliente WinRM necessitar de utilizar a lista de anfitriões fidedignos, terá de configurar a lista de anfitriões fidedignos localmente em cada computador.</string>
-      <string id="HttpCompatibilityListener">Activar o Serviço de Escuta de HTTP de Compatibilidade</string>
-      <string id="HttpsCompatibilityListener">Activar o Serviço de Escuta de HTTPS de Compatibilidade</string>
-      <string id="HttpCompatibilityListenerHelp">Esta definição de política activa ou desactiva um serviço de escuta de HTTP criado para efeitos de retro-compatibilidade no serviço Gestão Remota do Windows (WinRM).
-          
-          Quando determinados serviços de escuta da porta 80 são migrados para o WinRM 2.0, o número de porta do serviço de escuta é alterado para 5985.
-          
-          Poderá ser automaticamente criado um serviço de escuta na porta 80 para garantir retro-compatibilidade.
-          
-          Quando esta definição está activada, este serviço de escuta aparece sempre.
-          
-          Quando esta definição está desactivada, este serviço de escuta nunca aparece.</string>
-      <string id="HttpsCompatibilityListenerHelp">Esta definição de política activa ou desactiva um serviço de escuta de HTTPS criado para efeitos de retro-compatibilidade no serviço Gestão Remota do Windows (WinRM).
-          
-          Quando determinados serviços de escuta da porta 443 são migrados para o WinRM 2.0, o número de porta do serviço de escuta é alterado para 5986.
-          
-          Poderá ser automaticamente criado um serviço de escuta na porta 443 para garantir retro-compatibilidade.
-          
-          Quando esta definição está activada, este serviço de escuta aparece sempre.
-          
-          Quando esta definição está desactivada, este serviço de escuta nunca aparece.</string>
+Se desativar ou não configurar esta definição de política e o cliente WinRM necessitar de utilizar a lista de anfitriões fidedignos, terá de configurar a lista de anfitriões fidedignos localmente em cada computador.</string>
+      <string id="HttpCompatibilityListener">Ativar o Serviço de Escuta de HTTP de Compatibilidade</string>
+      <string id="HttpsCompatibilityListener">Ativar o Serviço de Escuta de HTTPS de Compatibilidade</string>
+      <string id="HttpCompatibilityListenerHelp">Esta definição de política ativa ou desativa um serviço de escuta de HTTP criado para efeitos de retrocompatibilidade no serviço de Gestão Remota do Windows (WinRM).
+
+        Se ativar esta definição de política, o serviço de escuta de HTTP será sempre apresentado.
+
+        Se desativar ou não configurar esta definição de política, o serviço de escuta de HTTP nunca será apresentado.
+
+        Quando determinados serviços de escuta da porta 80 são migrados para o WinRM 2.0, o número de porta do serviço de escuta é alterado para 5985.
+
+        Poderá ser criado automaticamente um serviço de escuta na porta 80 para garantir retrocompatibilidade.</string>
+      <string id="HttpsCompatibilityListenerHelp">Esta definição de política ativa ou desativa um serviço de escuta de HTTPS criado para efeitos de retrocompatibilidade no serviço de Gestão Remota do Windows (WinRM).
+
+        Se ativar esta definição de política, o serviço de escuta de HTTPS será sempre apresentado.
+
+        Se desativar ou não configurar esta definição de política, o serviço de escuta de HTTPS nunca será apresentado.
+
+        Quando determinados serviços de escuta da porta 443 são migrados para o WinRM 2.0, o número de porta do serviço de escuta é alterado para 5986.
+
+        Poderá ser criado automaticamente um serviço de escuta na porta 443 para garantir retrocompatibilidade.</string>
     </stringTable>
     <presentationTable>
       <presentation id="AllowAutoConfig">
@@ -146,7 +152,7 @@ Se desactivar ou não configurar esta definição de política e o cliente WinRM
         </textBox>
         <text>Sintaxe:</text>
         <text>Escreva "*" para permitir mensagens de qualquer endereço IP ou deixe o</text>
-        <text>campo vazio para não efectuar a escuta em nenhum endereço IP. Pode especificar um</text>
+        <text>campo vazio para não escutar em nenhum endereço IP. Pode especificar um</text>
         <text>ou mais intervalos de endereços IP.</text>
         <text/>
         <text>Filtros IPv4 de exemplo:</text>
@@ -163,8 +169,8 @@ Se desactivar ou não configurar esta definição de política e o cliente WinRM
         </textBox>
         <text>Sintaxe:</text>
         <text>Configure os anfitriões fidedignos através de uma lista separada por vírgulas</text>
-        <text>de nomes de anfitrião. Pode utilizar caracteres universais (*) mas só é permitido</text>
-        <text>um carácter universal num padrão de nome de anfitrião.</text>
+        <text>de nomes de anfitrião. Pode utilizar carateres universais (*), mas só é permitido</text>
+        <text>um caráter universal num padrão de nome de anfitrião.</text>
         <text>Utilize "&lt;local&gt;" (não sensível a maiúsculas e minúsculas) para indicar</text>
         <text>todos os nomes de anfitrião que não contêm um ponto (.).</text>
         <text>A lista pode estar vazia para indicar que nenhum anfitrião é fidedigno.</text>
@@ -174,10 +180,10 @@ Se desactivar ou não configurar esta definição de política e o cliente WinRM
         <text/>
         <text>Exemplos:</text>
         <text>*.meudomínio.com indica que todos os computadores no meudomínio.com são fidedignos</text>
-        <text>2.0.* indica que todos os endereços IP que começam por 2.0 são fidedignos</text>
+        <text>2.0.* indica que todos os endereços IP que começam por 2.0. são fidedignos</text>
       </presentation>
         <presentation id="CBTHardeningLevel">
-            <dropdownList refId="HardeningLevelCombo" defaultItem="1">Nível de Protecção:</dropdownList>
+            <dropdownList refId="HardeningLevelCombo" defaultItem="1">Nível de Proteção:</dropdownList>
         </presentation>
     </presentationTable>
   </resources>

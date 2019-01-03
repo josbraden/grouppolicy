@@ -1,338 +1,385 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.2" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>הזן שם תצוגה כאן</displayName>
-  <description>הזן תיאור כאן</description>
+  <displayName>enter display name here</displayName>
+  <description>enter description here</description>
   <resources>
     <stringTable>
       <!-- Supported Platforms -->
-      <string id="SUPPORTED_WindowsXPSP2WindowsNETSP1orBITS20">Windows XP SP2 או Windows Server 2003 SP1 או מחשבים בהם מותקן BITS 2.0.</string>
-      <string id="SUPPORTED_WindowsXPWindowsNETorBITS15">Windows XP או Windows Server 2003 או מחשבים בהם מותקן BITS 1.5.</string>
-      <string id="SUPPORTED_Windows7OrBITS35">Windows 7 או מחשבים בהם מותקן BITS 3.5.</string>
+      <string id="SUPPORTED_WindowsXPSP2WindowsNETSP1orBITS20">Windows XP SP2 or Windows Server 2003 SP1, or computers with BITS 2.0 installed.</string>
+      <string id="SUPPORTED_WindowsXPWindowsNETorBITS15">Windows XP or Windows Server 2003, or computers with BITS 1.5 installed.</string>
+      <string id="SUPPORTED_Windows7OrBITS35">Windows 7 or computers with BITS 3.5 installed.</string>
+      <string id="SUPPORTED_Windows8OrBITS5">Windows 8 or Windows Server 2012 or Windows RT or computers with BITS 5 installed.</string>
       <!-- Supported Platforms -->
 
       <!-- Component name -->
-      <string id="BITS">שירות העברה חכמה ברקע (BITS)</string>
+      <string id="BITS">Background Intelligent Transfer Service (BITS)</string>
       <!-- Component name -->
 
 <!-- inactive job timeout -->      
-      <string id="BITS_Job_Timeout">זמן קצוב עבור משימות BITS שאינן פעילות</string>
-      <string id="BITS_Job_Timeout_Help">הגדרה זו מציינת את מספר הימים בו משימת BITS בהמתנה יכולה להישאר במצב לא פעיל לפני שהמשימה נחשבת כנטושה. כברירת מחדל, BITS ימתין 90 יום לפני שיחשיב משימה לא פעילה כנטושה. ברגע שמשימה נחשבת כנטושה, המשימה נמחקת מ- BITS וכל קבצי הורדה עבור המשימה נמחקים מהדיסק.
-הערה: כל שינוי במאפייני המשימה או פעולת הורדה שהושלמה יאפסו את מונה הזמן הקצוב.
+      <string id="BITS_Job_Timeout">Timeout for inactive BITS jobs</string>
+      <string id="BITS_Job_Timeout_Help">This policy setting specifies the number of days a pending BITS job can remain inactive before the job is considered abandoned. By default BITS will wait 90 days before considering an inactive job abandoned. After a job is determined to be abandoned, the job is deleted from BITS and any downloaded files for the job are deleted from the disk.
+          Note: Any property changes to the job or any successful download action will reset this timeout.
 
-שקול להגדיל את ערך הזמן הקצוב אם מחשבים נוטים להישאר במצב בלתי מקוון לתקופות זמן ארוכות ועדיין מכילים משימות בהמתנה.
-שקול להקטין ערך זה אם אינך מעונין שמשימות ללא בעלים יתפסו שטח בדיסק.
+          Consider increasing the timeout value if computers tend to stay offline for a long period of time and still have pending jobs. 
+          Consider decreasing this value if you are concerned about orphaned jobs occupying disk space.
 
-אם תהפוך הגדרה זו לזמינה, באפשרותך לקבוע את פסק הזמן של העבודה הלא פעילה כמספר הימים שצוין.
+          If you enable this policy setting, you can configure the inactive job timeout to specified number of days.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, ערך ברירת המחדל של 90 (יום) ישמש עבור הזמן הקצוב למשימות לא פעילות.</string>
+          If you disable or do not configure this policy setting, the default value of 90 (days) will be used for the inactive job timeout.</string>
 
 <!-- inactive job timeout -->
 
 <!-- max job download time -->
-      <string id="BITS_MaxDownloadTime">הגבל את זמן ההורדה המרבי למשימות BITS</string>
-      <string id="BITS_MaxDownloadTimeText">הגדרת מדיניות זו מגבילה את משך הזמן בו שירות ההעברה החכמה ברקע (BITS) יוריד קבצים במשימת BITS.
+      <string id="BITS_MaxDownloadTime">Limit the maximum BITS job download time</string>
+      <string id="BITS_MaxDownloadTimeText">This policy setting limits the amount of time that Background Intelligent Transfer Service (BITS) will take to download the files in a BITS job.
 
-מגבלת הזמן חלה רק על פרק הזמן שבו BITS מבצע הורדה פעילה של קבצים. כאשר זמן ההורדה המצטבר חורג ממגבלה זו, המשימה מועברת למצב שגיאה.
+          The time limit applies only to the time that BITS is actively downloading files. When the cumulative download time exceeds this limit, the job is placed in the error state.
 
-כברירת מחדל, BITS משתמש בזמן הורדה מרבי של 90 ימים (7,776,000 שניות).
+          By default BITS uses a maximum download time of 90 days (7,776,000 seconds).
 
-אם תהפוך הגדרת מדיניות זו לזמינה, תוכל לקבוע את זמן הורדת המשימות המרבי למספר שניות שצוין.
+          If you enable this policy setting, you can set the maximum job download time to a specified number of seconds.
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, המערכת תשתמש בערך ברירת המחדל של 90 ימים (7,776,000 שניות).</string>
+          If you disable or do not configure this policy setting, the default value of 90 days (7,776,000 seconds) will be used.</string>
 
 <!-- max job download time -->
 
 <!-- max bandwidth -->
-      <string id="BITS_MaxBandwidth">הגבל את רוחב הפס המרבי ברשת עבור העברות ברקע של BITS</string>
-      <string id="BITS_MaxBandwidth_Help">הגדרת מדיניות זו מגבילה את רוחב הפס המשמש את שירות ההעברה החכמה ברקע (BITS) להעברות ברקע. (הגדרה זו אינה משפיעה על העברות בחזית.)
+      <string id="BITS_MaxBandwidth">Limit the maximum network bandwidth for BITS background transfers</string>
+      <string id="BITS_MaxBandwidth_Help">This policy setting limits the network bandwidth that Background Intelligent Transfer Service (BITS) uses for background transfers. (This policy setting does not affect foreground transfers.)
 
-        באפשרותך לציין מגבלה לשימוש במרווח זמן ספציפי ומגבלה לשימוש בכל זמן אחר. לדוגמה, הגבל את השימוש ברוחב פס ברשת ל- ‎10 Kbps בין השעות 8 לפנה"צ ו- 5 אחה"צ, והשתמש בכל רוחב הפס הזמין שאינו בשימוש בשאר שעות היום.
+          You can specify a limit to use during a specific time interval and at all other times. For example, limit the use of network bandwidth to 10 Kbps from 8:00 A.M. to 5:00 P.M., and use all available unused bandwidth the rest of the day's hours.
 
-        אם תהפוך הגדרת מדיניות זו לזמינה, BITS יגביל את שימוש רוחב הפס שלו לערכים שצוינו. באפשרותך לציין את המגבלה בקילו-סיביות לשניה (Kbps). אם תציין ערך הנמוך משני קילו-סיביות, BITS ימשיך להשתמש בשני קילו-סיביות לערך. כדי למנוע העברות BITS, ציין מגבלה של 0.
+          If you enable this policy setting, BITS will limit its bandwidth usage to the specified values. You can specify the limit in kilobits per second (Kbps). If you specify a value less than 2 kilobits, BITS will continue to use approximately 2 kilobits. To prevent BITS transfers from occurring, specify a limit of 0.
 
-        אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, BITS ישתמש בכל רוחב הפס הזמין שאינו בשימוש.
+          If you disable or do not configure this policy setting, BITS uses all available unused bandwidth.
 
-        הערה: עליך לבסס את המגבלה על מהירות קישור הרשת ולא על כרטיס ממשק הרשת (NIC) של המחשב. הגדרת מדיניות זו אינה משפיעה על העברות Peercaching בין מחשבים עמיתים (היא כן משפיעה על העברות משרת המקור); הגדרת המדיניות "הגבל את רוחב הפס המרבי המשמש ל- Peercaching" אמורה לשמש למטרה זו.
+          Note: You should base the limit on the speed of the network link, not the computer's network interface card (NIC). This policy setting does not affect Peercaching transfers between peer computers (it does affect transfers from the origin server); the "Limit the maximum network bandwidth used for Peercaching" policy setting should be used for that purpose.
 
-        שקול שימוש בהגדרה זו כדי למנוע מהעברות BITS להתחרות על רוחב פס כאשר ברשות הלקוח כרטיס רשת מהיר (10Mbs), אך הוא מחובר לרשת דרך קישור איטי (56Kbs).</string>
+          Consider using this setting to prevent BITS transfers from competing for network bandwidth when the client computer has a fast network card (10Mbs), but is connected to the network via a slow link (56Kbs).</string>
 
-      <string id="BITS_MaxBandwidthTime10AM">10 לפני הצהריים</string>
-      <string id="BITS_MaxBandwidthTime10PM">10 בלילה</string>
-      <string id="BITS_MaxBandwidthTime11AM">11 לפני הצהריים</string>
-      <string id="BITS_MaxBandwidthTime11PM">11 בלילה</string>
-      <string id="BITS_MaxBandwidthTime12AM">חצות</string>
-      <string id="BITS_MaxBandwidthTime12PM">12 בצהריים</string>
-      <string id="BITS_MaxBandwidthTime1AM">1 לפנות בוקר</string>
-      <string id="BITS_MaxBandwidthTime1PM">1 אחרי הצהריים</string>
-      <string id="BITS_MaxBandwidthTime2AM">2 לפנות בוקר</string>
-      <string id="BITS_MaxBandwidthTime2PM">2 אחרי הצהריים</string>
-      <string id="BITS_MaxBandwidthTime3AM">3 לפנות בוקר</string>
-      <string id="BITS_MaxBandwidthTime3PM">3 אחרי הצהריים</string>
-      <string id="BITS_MaxBandwidthTime4AM">4 לפנות בוקר</string>
-      <string id="BITS_MaxBandwidthTime4PM">4 אחרי הצהריים</string>
-      <string id="BITS_MaxBandwidthTime5AM">5 לפנות בוקר</string>
-      <string id="BITS_MaxBandwidthTime5PM">5 אחרי הצהריים</string>
-      <string id="BITS_MaxBandwidthTime6AM">6 בבוקר</string>
-      <string id="BITS_MaxBandwidthTime6PM">6 אחרי הצהריים</string>
-      <string id="BITS_MaxBandwidthTime7AM">7 בבוקר</string>
-      <string id="BITS_MaxBandwidthTime7PM">7 בערב</string>
-      <string id="BITS_MaxBandwidthTime8AM">8 בבוקר</string>
-      <string id="BITS_MaxBandwidthTime8PM">8 בערב</string>
-      <string id="BITS_MaxBandwidthTime9AM">9 בבוקר</string>
-      <string id="BITS_MaxBandwidthTime9PM">9 בערב</string>
+      <string id="BITS_MaxBandwidthTime10AM">10 AM</string>
+      <string id="BITS_MaxBandwidthTime10PM">10 PM</string>
+      <string id="BITS_MaxBandwidthTime11AM">11 AM</string>
+      <string id="BITS_MaxBandwidthTime11PM">11 PM</string>
+      <string id="BITS_MaxBandwidthTime12AM">12 AM</string>
+      <string id="BITS_MaxBandwidthTime12PM">12 PM</string>
+      <string id="BITS_MaxBandwidthTime1AM">1 AM</string>
+      <string id="BITS_MaxBandwidthTime1PM">1 PM</string>
+      <string id="BITS_MaxBandwidthTime2AM">2 AM</string>
+      <string id="BITS_MaxBandwidthTime2PM">2 PM</string>
+      <string id="BITS_MaxBandwidthTime3AM">3 AM</string>
+      <string id="BITS_MaxBandwidthTime3PM">3 PM</string>
+      <string id="BITS_MaxBandwidthTime4AM">4 AM</string>
+      <string id="BITS_MaxBandwidthTime4PM">4 PM</string>
+      <string id="BITS_MaxBandwidthTime5AM">5 AM</string>
+      <string id="BITS_MaxBandwidthTime5PM">5 PM</string>
+      <string id="BITS_MaxBandwidthTime6AM">6 AM</string>
+      <string id="BITS_MaxBandwidthTime6PM">6 PM</string>
+      <string id="BITS_MaxBandwidthTime7AM">7 AM</string>
+      <string id="BITS_MaxBandwidthTime7PM">7 PM</string>
+      <string id="BITS_MaxBandwidthTime8AM">8 AM</string>
+      <string id="BITS_MaxBandwidthTime8PM">8 PM</string>
+      <string id="BITS_MaxBandwidthTime9AM">9 AM</string>
+      <string id="BITS_MaxBandwidthTime9PM">9 PM</string>
 
-      <string id="BITS_MaxBandwidthDaysSunday">יום ראשון</string>
-      <string id="BITS_MaxBandwidthDaysMonday">יום שני</string>
-      <string id="BITS_MaxBandwidthDaysTuesday">יום שלישי</string>
-      <string id="BITS_MaxBandwidthDaysWednesday">יום רביעי</string>
-      <string id="BITS_MaxBandwidthDaysThursday">יום חמישי</string>
-      <string id="BITS_MaxBandwidthDaysFriday">יום שישי</string>
-      <string id="BITS_MaxBandwidthDaysSaturday">יום שבת</string>
+      <string id="BITS_MaxBandwidthDaysSunday">Sunday</string>
+      <string id="BITS_MaxBandwidthDaysMonday">Monday</string>
+      <string id="BITS_MaxBandwidthDaysTuesday">Tuesday</string>
+      <string id="BITS_MaxBandwidthDaysWednesday">Wednesday</string>
+      <string id="BITS_MaxBandwidthDaysThursday">Thursday</string>
+      <string id="BITS_MaxBandwidthDaysFriday">Friday</string>
+      <string id="BITS_MaxBandwidthDaysSaturday">Saturday</string>
 
       <string id="BITS_MaxBandwidthLimitKbps">Kbps</string>
       <string id="BITS_MaxBandwidthLimitMbps">Mbps</string>
-      <string id="BITS_MaxBandwidthLimitUnlimited">לא מוגבל</string>
+      <string id="BITS_MaxBandwidthLimitUnlimited">Unlimited</string>
 
-      <string id="BITS_MaxBandwidthV2_Work">הגדר לוח זמני עבודה להגבלת רוחב הפס המרבי המשמש להעברות ברקע של BITS</string>
-      <string id="BITS_MaxBandwidthV2_Work_Help">הגדרת מדיניות זו מגבילה את רוחב הפס ברשת שבו משתמש שירות ההעברה החכמה ברקע (BITS) לשם העברות ברקע במהלך הימים והשעות של העבודה ושמחוץ למסגרת העבודה. לוח זמני העבודה מוגדר על-ידי לוח שנה שבועי, אשר מורכב מימי השבוע ומשעות היום. כל השעות והימים שאינם מוגדרים בלוח זמני עבודה נחשבים כשעות שמחוץ למסגרת העבודה.
+      <string id="BITS_MaxBandwidthV2_Work">Set up a work schedule to limit the maximum network bandwidth used for BITS background transfers</string>
+      <string id="BITS_MaxBandwidthV2_Work_Help">This policy setting limits the network bandwidth that Background Intelligent Transfer Service (BITS) uses for background transfers during the work and nonwork days and hours. The work schedule is defined using a weekly calendar, which consists of days of the week and hours of the day. All hours and days that are not defined in a work schedule are considered non-work hours.
 
-          אם תהפוך הגדרה זו לזמינה, תוכל להגדיר לוח זמנים להגבלת רוחב הפס ברשת הן בשעות העבודה והן בשעות שמחוץ לשעות העבודה. לאחר הגדרת לוח זמני העבודה, תוכל להגדיר את מגבלות השימוש בפס רחב עבור כל אחת משלוש רמות עדיפות הרקע של BITS: גבוהה, רגילה ונמוכה.
+          If you enable this policy setting, you can set up a schedule for limiting network bandwidth during both work and nonwork hours. After the work schedule is defined, you can set the bandwidth usage limits for each of the three BITS background priority levels: high, normal, and low.
 
-          באפשרותך לציין מגבלה שתשמש עבור משימות ברקע במהלך לוח זמני עבודה. לדוגמה, באפשרותך להגביל את רוחב הפס עבור משימות בעדיפות נמוכה ל- 128 Kbps מ- 8 בבוקר עד 5 אחר הצהריים מיום ראשון עד יום חמישי, ולאחר מכן להגדיר את המגבלה ל- 512 Kbps לשעות שמחוץ לשעות העבודה.
+          You can specify a limit to use for background jobs during a work schedule. For example, you can limit the network bandwidth of low priority jobs to 128 Kbps from 8:00 A.M. to 5:00 P.M. on Monday through Friday, and then set the limit to 512 Kbps for nonwork hours.
 
-          אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, BITS ישתמש בכל רוחב הפס הזמין שאינו נמצא בשימוש להעברות של משימות ברקע.
+          If you disable or do not configure this policy setting, BITS uses all available unused bandwidth for background job transfers.
       </string>
 
-      <string id="BITS_MaxBandwidthV2_Maintenance">הגדר לוח זמני תחזוקה להגבלת רוחב הפס המרבי המשמש להעברות ברקע של BITS</string>
-      <string id="BITS_MaxBandwidthV2_Maintenance_Help">הגדרת מדיניות זו מגבילה את רוחב הפס שבו משתמש שירות ההעברה החכמה ברקע (BITS) לשם העברות ברקע במהלך ימי ושעות התחזוקה. לוחות זמני התחזוקה מגבילים עוד יותר את רוחב הפס המשמש להעברות ברקע.
+      <string id="BITS_MaxBandwidthV2_Maintenance">Set up a maintenance schedule to limit the maximum network bandwidth used for BITS background transfers</string>
+      <string id="BITS_MaxBandwidthV2_Maintenance_Help">This policy setting limits the network bandwidth that Background Intelligent Transfer Service (BITS) uses for background transfers during the maintenance days and hours. Maintenance schedules further limit the network bandwidth that is used for background transfers.
 
-          אם תהפוך הגדרה זו לזמינה, תוכל להגדיר מערכת נפרדת של מגבלות רוחב פס ולקבוע לוח זמנים לתקופת התחזוקה.
+          If you enable this policy setting, you can define a separate set of network bandwidth limits and set up a schedule for the maintenance period.
 
-          באפשרותך לציין מגבלה שתשמש עבור משימות ברקע במהלך לוח זמני תחזוקה. לדוגמה, אם משימות בעלות עדיפות רגילה מוגבלות כעת ל- 256 Kbps בלוח זמני העבודה, באפשרותך להגביל עוד יותר את רוחב הפס של משימות בעלות עדיפות רגילה ל- 0 Kbps מ- 8 לפני הצהריים עד 10 לפני הצהריים בלוח זמני תחזוקה.
+          You can specify a limit to use for background jobs during a maintenance schedule. For example, if normal priority jobs are currently limited to 256 Kbps on a work schedule, you can further limit the network bandwidth of normal priority jobs to 0 Kbps from 8:00 A.M. to 10:00 A.M. on a maintenance schedule.
 
-          אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, המערכת תשתמש במגבלות שהוגדרו עבור לוחות זמנים לעבודה ומחוץ לשעות העבודה.
+          If you disable or do not configure this policy setting, the limits defined for work or nonwork schedules will be used.
 
-          הערה:  מגבלות רוחב הפס שהוגדרו עבור תקופת התחזוקה יחליפו את כל המגבלות שהוגדרו עבור לוחות זמני עבודה ולוחות זמנים אחרים.
+          Note:  The bandwidth limits that are set for the maintenance period supersede any limits defined for work and other schedules.
       </string>
 
       <!-- max bandwidth -->
 
-      <!-- enable peercaching -->      
-      <string id="BITS_EnablePeercaching">אפשר BITS Peercaching</string>
-      <string id="BITS_EnablePeercachingText">הגדרת מדיניות זו קובעת אם התכונה Peercaching של שירות ההעברה החכמה ברקע (BITS) זמינה במחשב ספציפי. כברירת מחדל, הקבצים במשימת BITS יורדים רק מהשרת המקורי שצוין על-ידי הבעלים של המשימה.  
 
-אם BITS Peercaching זמין, BITS יאחסן קבצים שהורדו במטמון ויהפוך אותם לזמינים לעמיתי BITS אחרים. בעת העברת משימת הורדה, BITS יבקש תחילה את הקבצים עבור המשימה מהעמיתים הממוקמים באותה רשת משנה של IP. אם הקבצים הדרושים אינם נמצאים אצל אף לא אחד מהעמיתים ברשת המשנה, BITS יוריד אותם מהשרת המקורי.
+      <!-- cost transfer policies -->
+      <string id="BITS_SetTransferPolicyOnCostedNetwork">Set default download behavior for BITS jobs on costed networks</string>
+      <string id="BITS_SetTransferPolicyOnCostedNetwork_Help">
+          This policy setting defines the default behavior that the Background Intelligent Transfer Service (BITS) uses for background transfers when the system is connected to a costed network (3G, etc.). Download behavior policies further limit the network usage of background transfers.
+
+          If you enable this policy setting, you can define a default download policy for each BITS job priority. This setting does not override a download policy explicitly configured by the application that created the BITS job, but does apply to jobs that are created by specifying only a priority.
+
+          For example, you can specify that background jobs are by default to transfer only when on uncosted network connections, but foreground jobs should proceed only when not roaming. The values that can be assigned are:
+          -         Always transfer
+          -         Transfer unless roaming
+          -         Transfer unless surcharge applies (when not roaming or overcap)
+          -         Transfer unless nearing limit (when not roaming or nearing cap)
+          -         Transfer only if unconstrained
+          -         Custom--allows you to specify a bitmask, in which the bits describe cost states allowed or disallowed for this priority: (bits described here)
+          0x1 - The cost is unknown or the connection is unlimited and is considered to be unrestricted of usage charges and capacity constraints.
+          0x2 - The usage of this connection is unrestricted up to a certain data limit
+          0x4 - The usage of this connection is unrestricted up to a certain data limit and plan usage is less than 80 percent of the limit.
+          0x8 - Usage of this connection is unrestricted up to a certain data limit and plan usage is between 80 percent and 100 percent of the limit.
+          0x10 - Usage of this connection is unrestricted up to a certain data limit, which has been exceeded. Surcharge applied or unknown.
+          0x20 - Usage of this connection is unrestricted up to a certain data limit, which has been exceeded. No surcharge applies, but speeds are likely reduced.
+          0x40 - The connection is costed on a per-byte basis.
+          0x80 - The connection is roaming.
+          0x80000000 - Ignore congestion.
+      </string>
+      <string id="BITS_TransferPolicyAlwaysTransfer">Always transfer</string>
+      <string id="BITS_TransferPolicyNotRoamingTransfer">Transfer unless roaming</string>
+      <string id="BITS_TransferPolicyNoSurcharge">Transfer unless surcharge applies (when not roaming or overcap)</string>
+      <string id="BITS_TransferPolicyStandard">Transfer unless nearing limit (when not roaming or nearing cap)</string>
+      <string id="BITS_TransferPolicyUnrestricted">Transfer only if unconstrained</string>
+      <string id="BITS_Custom">Custom</string>
       
-אם תהפוך הגדרת מדיניות זו לזמינה, BITS יוריד קבצים מעמיתים, יאחסן אותם במטמון ויגיב לבקשות תוכן מעמיתים. באמצעות הגדרות המדיניות 'אל תאפשר למחשב לתפקד כשרת BITS Peercaching' ו'אל תאפשר למחשב לתפקד כלקוח BITS Peercaching', ניתן לשלוט בפונקציונליות של BITS Peercaching ברמת פירוט גבוהה יותר. עם זאת, יש לציין שהגדרת המדיניות "אפשר BITS Peercaching" חייבת להיות זמינה כדי שלשתי הגדרות המדיניות תהיה השפעה כלשהי.   
+      <!-- cost transfer policies -->
 
-אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, התכונה Peercaching תהיה לא זמינה, ו- BITS יוריד קבצים ישירות משרת המקור.</string>
+      <!-- enable peercaching -->      
+      <string id="BITS_EnablePeercaching">Allow BITS Peercaching</string>
+      <string id="BITS_EnablePeercachingText">This policy setting determines if the Background Intelligent Transfer Service (BITS) peer caching feature is enabled on a specific computer.  By default, the files in a BITS job are downloaded only from the origin server specified by the job's owner.
+
+          If BITS peer caching is enabled, BITS caches downloaded files and makes them available to other BITS peers. When transferring a download job, BITS first requests the files for the job from its peers in the same IP subnet. If none of the peers in the subnet have the requested files, BITS downloads them from the origin server.
+
+          If you enable this policy setting, BITS downloads files from peers, caches the files, and responds to content requests from peers.  Using the "Do not allow the computer to act as a BITS peer caching server" and "Do not allow the computer to act as a BITS peer caching client" policy settings, it is possible to control BITS peer caching functionality at a more detailed level. However, it should be noted that the "Allow BITS peer caching" policy setting must be enabled for the other two policy settings to have any effect.
+
+          If you disable or do not configure this policy setting, the BITS peer caching feature will be disabled, and BITS will download files directly from the origin server.</string>
 <!-- enable peercaching -->
 
 
 <!-- peercache size limit -->
-      <string id="BITS_MaxCacheSize">הגבל את הגודל של BITS Peercaching</string>
-      <string id="BITS_MaxCacheSizeText">הגדרת מדיניות זו מגבילה את שטח הדיסק המרבי בו ניתן להשתמש עבור מטמון העמית של BITS, כאחוז מגודל הדיסק הכולל במערכת. BITS יוסיף קבצים למטמון העמית ויהפוך קבצים אלה לזמינים עבור עמיתים, עד שתוכן המטמון יגיע לגודל המטמון שצוין. כברירת מחדל, BITS ישתמש ב- 1% משטח הדיסק הכולל עבור מטמון העמית.
+      <string id="BITS_MaxCacheSize">Limit the BITS Peercache size</string>
+      <string id="BITS_MaxCacheSizeText">This policy setting limits the maximum amount of disk space that can be used for the BITS peer cache, as a percentage of the total system disk size. BITS will add files to the peer cache and make those files available to peers until the cache content reaches the specified cache size. By default, BITS will use 1 percent of the total system disk for the peercache.
 
-        אם תהפוך הגדרה זו לזמינה, באפשרותך להזין את אחוז שטח הדיסק שישמש עבור מטמון העמית של BITS. באפשרותך להזין ערך בין 1% ל- 80%.
+          If you enable this policy setting, you can enter the percentage of disk space to be used for the BITS peer cache. You can enter a value between 1 percent and 80 percent.
 
-        אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, גודל ברירת המחדל של מטמון העמית של BITS יהיה 1% משטח הדיסק הכולל במערכת.
+          If you disable or do not configure this policy setting, the default size of the BITS peer cache is 1 percent of the total system disk size.
 
-        הערה: להגדרה זו אין כל השפעה אם ההגדרה 'אפשר BITS Peercaching' אינה זמינה או לא נקבעה תצורתה.</string>
+          Note: This policy setting has no effect if the "Allow BITS peer caching" setting is disabled or not configured.</string>
 <!-- peercache size limit -->
       
 
 <!-- max peercaching content age limit-->      
-      <string id="BITS_MaxContentAge">הגבל את גיל הקבצים במטמון העמית של BITS</string>
-      <string id="BITS_MaxContentAgeText">הגדרת מדיניות זו מגבילה את הגיל המרבי של קבצים במטמון העמית של שירות ההעברה החכמה ברקע (BITS). כדי לנצל את שטח הדיסק בצורה היעילה ביותר, כברירת מחדל, BITS מסיר כל קובץ ממטמון העמית שאיש לא ניגש אליו במהלך 90 הימים האחרונים.
+      <string id="BITS_MaxContentAge">Limit the age of files in the BITS Peercache</string>
+      <string id="BITS_MaxContentAgeText">This policy setting limits the maximum age of files in the Background Intelligent Transfer Service (BITS) peer cache. In order to make the most efficient use of disk space, by default BITS removes any files in the peer cache that have not been accessed in the past 90 days.
 
-        אם תהפוך הגדרת מדיניות זו לזמינה, תוכל לציין את גיל הקבצים המרבי במטמון בימים. באפשרותך להזין ערך בין 1 ל- 120 ימים.
+          If you enable this policy setting, you can specify in days the maximum age of files in the cache. You can enter a value between 1 and 120 days.
 
-        אם תהפוך הגדרת מדיניות זו ללא זמינה או לא תקבע את תצורתה, קבצים שאיש לא ניגש אליהם במהלך 90 הימים האחרונים יוסרו ממטמון העמית.
+          If you disable or do not configure this policy setting, files that have not been accessed for the past 90 days will be removed from the peer cache.
 
-        הערה: להגדרה זו אין כל השפעה אם ההגדרה 'אפשר BITS Peercaching' אינה זמינה או לא נקבעה תצורתה.</string>
+          Note: This policy setting has no effect if the "Allow BITS Peercaching" policy setting is disabled or not configured.</string>
 
 <!-- max peercaching content age limit-->
       
 <!-- disable peercache client-->
-      <string id="BITS_DisablePeercachingClient">אל תאפשר למחשב לתפקד כלקוח BITS Peercaching</string>
-      <string id="BITS_DisablePeercachingClientText">הגדרה זו מציינת אם המחשב יפעל כלקוח BITS Peercaching. כברירת מחדל, כאשר BITS Peercaching זמין, המחשב מתפקד הן כשרת של מטמון עמית (מציע קבצים לעמיתים) והן כלקוח מטמון עמית (מוריד קבצים מעמיתים).
+      <string id="BITS_DisablePeercachingClient">Do not allow the computer to act as a BITS Peercaching client</string>
+      <string id="BITS_DisablePeercachingClientText">This policy setting specifies whether the computer will act as a BITS peer caching client. By default, when BITS peer caching is enabled, the computer acts as both a peer caching server (offering files to its peers) and a peer caching client (downloading files from its peers).
 
-אם תהפוך הגדרה זו לזמינה, המחשב לא ישתמש יותר בתכונה BITS Peercaching כדי להוריד קבצים; קבצים יורדו אך ורק מהשרת המקורי. עם זאת, המחשב עדיין יהפוך קבצים לזמינים עבור עמיתים שלו. 
+          If you enable this policy setting, the computer will no longer use the BITS peer caching feature to download files; files will be downloaded only from the origin server. However, the computer will still make files available to its peers.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, המחשב ינסה להוריד משימות המותאמות לשימוש בעמית של BITS ממחשבי עמית לפני שהוא חוזר לשרת המקורי.
+          If you disable or do not configure this policy setting, the computer attempts to download peer-enabled BITS jobs from peer computers before reverting to the origin server.
 
-הערה: להגדרה זו אין כל השפעה אם ההגדרה 'אפשר BITS Peercaching' אינה זמינה או לא נקבעה תצורתה.</string>
+          Note: This policy setting has no effect if the "Allow BITS peer caching" policy setting is disabled or not configured.</string>
 <!-- disable peercache client-->
 
       
 <!-- disable peercache server-->
-      <string id="BITS_DisablePeercachingServer">אל תאפשר למחשב לתפקד כשרת BITS Peercaching</string>
-      <string id="BITS_DisablePeercachingServerText">הגדרה זו מציינת אם המחשב יפעל כשרת BITS Peercaching. כברירת מחדל, כאשר BITS Peercaching זמין, המחשב מתפקד הן כשרת של מטמון עמית (מציע קבצים לעמיתים) והן כלקוח מטמון עמית (מוריד קבצים מעמיתים).
+      <string id="BITS_DisablePeercachingServer">Do not allow the computer to act as a BITS Peercaching server</string>
+      <string id="BITS_DisablePeercachingServerText">This policy setting specifies whether the computer will act as a BITS peer caching server. By default, when BITS peer caching is enabled, the computer acts as both a peer caching server (offering files to its peers) and a peer caching client (downloading files from its peers).
 
-אם תהפוך הגדרה זו לזמינה, המחשב לא יאחסן עוד קבצים שהורדו ולא יציע אותם לעמיתים. עם זאת, המחשב עדיין יוריד קבצים מעמיתים.
+          If you enable this policy setting, the computer will no longer cache downloaded files and offer them to its peers. However, the computer will still download files from peers.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, המחשב יציע לעמיתים קבצים שהורדו ואוחסנו במטמון.
+          If you disable or do not configure this policy setting, the computer will offer downloaded and cached files to its peers.
 
-הערה: להגדרה זו אין כל השפעה אם ההגדרה 'אפשר BITS Peercaching' אינה זמינה או לא נקבעה תצורתה.</string>
+          Note: This setting has no effect if the "Allow BITS peer caching" setting is disabled or not configured.</string>
 <!-- disable peercache server-->
 
       
 <!-- limit peercache bandwidth-->
-      <string id="BITS_MaxBandwidthServedForPeers">הגבל את רוחב הפס המרבי המשמש ל- Peercaching</string>
-      <string id="BITS_MaxBandwidthServedForPeersText">הגדרה זו מגבילה את רוחב הפס המשמש את BITS עבור העברות עמית (הגדרה זו אינה משפיעה על העברות מהשרת המקורי).
-כדי להימנע ממצבים בהם מתן שירות לעמיתים אחרים משפיע לרעה על המחשב, כברירת מחדל, BITS יעשה שימוש בעד 30% מרוחב הפס של ממשק הרשת האיטי ביותר. לדוגמה, אם למחשב יש כרטיס רשת של ‎100Mbps ומודם של ‎56 Kbps ושניהם פעילים, BITS ישתמש בגודל מרבי של 30% מ- 56Kbps.
-באפשרותך לשנות את אופן הפעולה המהווה ברירת מחדל של BITS ולציין רוחב פס מרבי קבוע שישמש את BITS עבור אחסון במטמון עמית.
+      <string id="BITS_MaxBandwidthServedForPeers">Limit the maximum network bandwidth used for Peercaching</string>
+      <string id="BITS_MaxBandwidthServedForPeersText">This policy setting limits the network bandwidth that BITS uses for peer cache transfers (this setting does not affect transfers from the origin server).
+          To prevent any negative impact to a computer caused by serving other peers, by default BITS will use up to 30 percent of the bandwidth of the slowest active network interface. For example, if a computer has both a 100 Mbps network card and a 56 Kbps modem, and both are active, BITS will use a maximum of 30 percent of 56 Kbps. 
+          You can change the default behavior of BITS, and specify a fixed maximum bandwidth that BITS will use for peer caching.
 
-אם תהפוך הגדרה זו לזמינה, תוכל להזין ערך בסיביות לשניה (bps) בין 1048576 לבין 4294967200 שישמש כרוחב הפס המרבי ברשת המשמש לאחסון במטמון עמית.
+          If you enable this policy setting, you can enter a value in bits per second (bps) between 1048576 and 4294967200 to use as the maximum network bandwidth used for peer caching.
 
-אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, המערכת תשתמש בערך ברירת המחדל 30% מממשק הרשת הפעיל האיטי ביותר.
+          If you disable this policy setting or do not configure it, the default value of 30 percent of the slowest active network interface will be used.
 
-הערה: להגדרה זו אין כל השפעה אם ההגדרה 'אפשר BITS Peercaching' אינה זמינה או לא נקבעה תצורתה.</string>
+          Note: This setting has no effect if the "Allow BITS peer caching" policy setting is disabled or not configured.</string>
 <!-- limit peercache bandwidth-->
       
       
 <!-- max jobs per computer -->    
-      <string id="BITS_MaxJobsPerMachine">הגבל את המספר המרבי של משימות BITS עבור מחשב זה</string>
-      <string id="BITS_MaxJobsPerMachineText">הגדרת מדיניות זו מגבילה את המספר המרבי של משימות BITS שניתן ליצור עבור כל המשתמשים במחשב. כברירת מחדל, BITS מגביל את מספר המשימות הכולל במחשב ל- 300 משימות. באפשרותך להשתמש בהגדרה זו כדי להגדיל או להקטין את המספר המרבי של משימות BITS של משתמשים.
+      <string id="BITS_MaxJobsPerMachine">Limit the maximum number of BITS jobs for this computer</string>
+      <string id="BITS_MaxJobsPerMachineText">This policy setting limits the number of BITS jobs that can be created for all users of the computer. By default, BITS limits the total number of jobs that can be created on the computer to 300 jobs. You can use this policy setting to raise or lower the maximum number of user BITS jobs.
 
-        אם תהפוך הגדרה זו לזמינה, BITS יגביל את מספר המשימות למספר שצוין.
+          If you enable this policy setting, BITS will limit the maximum number of BITS jobs to the specified number.
 
-        אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, BITS ישתמש במגבלת ברירת המחדל של 300 משימות.
+          If you disable or do not configure this policy setting, BITS will use the default BITS job limit of 300 jobs.
 
-        הערה: משימות BITS שנוצרו על-ידי שירותים או חשבון מנהל המערכת המקומי אינן נחשבות בחישוב מגבלה זו.</string>
+          Note: BITS jobs created by services and the local administrator account do not count toward this limit.</string>
 
 <!-- max jobs per computer -->
 
 <!-- max jobs per user -->
-      <string id="BITS_MaxJobsPerUser">הגבל את המספר המרבי של משימות BITS עבור כל משתמש</string>
-      <string id="BITS_MaxJobsPerUserText">הגדרת מדיניות זו מגבילה את המספר המרבי של משימות BITS שכל משתמש יכול ליצור. כברירת מחדל, BITS מגביל את מספר המשימות לכל משתמש ל- 60 משימות. באפשרותך להשתמש בהגדרה זו כדי להגדיל או להקטין את המספר המרבי של משימות BITS לכל משתמש.
+      <string id="BITS_MaxJobsPerUser">Limit the maximum number of BITS jobs for each user</string>
+      <string id="BITS_MaxJobsPerUserText">This policy setting limits the number of BITS jobs that can be created by a user. By default, BITS limits the total number of jobs that can be created by a user to 60 jobs. You can use this setting to raise or lower the maximum number of BITS jobs a user can create.
 
-        אם תהפוך הגדרה זו לזמינה, BITS יגביל את המספר המרבי של משימות לכל משתמש למספר שצוין.
+          If you enable this policy setting, BITS will limit the maximum number of BITS jobs a user can create to the specified number.
 
-        אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, BITS ישתמש במגבלת ברירת המחדל של 300 משימות.
+          If you disable or do not configure this policy setting, BITS will use the default user BITS job limit of 300 jobs.
 
-        הערה: המגבלה חייבת להיות נמוכה מהמגבלה שצוינה בהגדרה 'מספר כולל של משימות BITS במחשב זה' או נמוכה מ- 300 אם לא נקבעה התצורה של ההגדרה 'מספר כולל של משימות BITS במחשב זה'. משימות BITS שנוצרו על-ידי שירותים או חשבון מנהל המערכת המקומי אינן נחשבות בחישוב מגבלה זו.</string>
+          Note: This limit must be lower than the setting specified in the "Maximum number of BITS jobs for this computer" policy setting, or 300 if the "Maximum number of BITS jobs for this computer" policy setting is not configured. BITS jobs created by services and the local administrator account do not count toward this limit.</string>
 
 <!-- max jobs per computer -->
 
 <!-- max files per job -->
-      <string id="BITS_MaxFilesPerJob">הגבל את המספר הכולל של קבצים המותרים במשימת BITS</string>
-      <string id="BITS_MaxFilesPerJobText">הגדרת מדיניות זו מגבילה את המספר המרבי של קבצים שמשימות BITS יכולות להכיל. כברירת מחדל, משימות BITS מוגבלות ל- 200 קבצים. באפשרותך להשתמש בהגדרה זו כדי להגדיל או להקטין את המספר המרבי של קבצים שמשימות BITS יכולות להכיל.
+      <string id="BITS_MaxFilesPerJob">Limit the maximum number of files allowed in a BITS job</string>
+      <string id="BITS_MaxFilesPerJobText">This policy setting limits the number of files that a BITS job can contain. By default, a BITS job is limited to 200 files. You can use this setting to raise or lower the maximum number of files a BITS jobs can contain.
 
-        אם תהפוך הגדרה זו לזמינה, BITS יגביל את המספר המרבי של קבצים למשימה למספר שצוין.
+          If you enable this policy setting, BITS will limit the maximum number of files a job can contain to the specified number.
 
-        אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, BITS ישתמש בערך ברירת המחדל של 200 עבור מספר הקבצים למשימה.
+          If you disable or do not configure this policy setting, BITS will use the default value of 200 for the maximum number of files a job can contain.
 
-        הערה: משימות BITS שנוצרו על-ידי שירותים או חשבון מנהל המערכת המקומי אינן נחשבות בחישוב מגבלה זו.</string>
+          Note: BITS Jobs created by services and the local administrator account do not count toward this limit.</string>
 <!-- max files per job -->
 
 <!-- max ranges per file -->      
-      <string id="BITS_MaxRangesPerFile">הגבל את מספר הטווחים המרבי שניתן להוסיף לקובץ במשימת BITS</string>
-      <string id="BITS_MaxRangesPerFileText">הגדרת מדיניות זו מגבילה את מספר הטווחים המרבי שניתן להוסיף לקובץ במשימת BITS. כברירת מחדל, קבצים במשימת BITS מוגבלים ל- 500 טווחים בקובץ. באפשרותך להשתמש בהגדרה זו כדי להגדיל או להקטין את המספר המרבי של טווחים בקובץ.
+      <string id="BITS_MaxRangesPerFile">Limit the maximum number of ranges that can be added to the file in a BITS job</string>
+      <string id="BITS_MaxRangesPerFileText">This policy setting limits the number of ranges that can be added to a file in a BITS job. By default, files in a BITS job are limited to 500 ranges per file. You can use this setting to raise or lower the maximum number ranges per file.
 
-        אם תהפוך הגדרה זו לזמינה, BITS יגביל את מספר הטווחים המרבי שניתן להוסיף לקובץ למספר שצוין.
+          If you enable this policy setting, BITS will limit the maximum number of ranges that can be added to a file to the specified number.
 
-        אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, BITS יגביל את הטווחים ל- 500 טווחים לקובץ.
+          If you disable or do not configure this policy setting, BITS will limit ranges to 500 ranges per file.
 
-        הערה: משימות BITS שנוצרו על-ידי שירותים או חשבון מנהל המערכת המקומי אינן נחשבות בבקרה על מגבלה זו.</string>
+          Note: BITS Jobs created by services and the local administrator account do not count toward this limit.</string>
 <!-- max ranges per file -->
 
 <!-- disable branch cache-->
-      <string id="BITS_DisableBranchCache">אל תאפשר ללקוח ה- BITS להשתמש במטמון ענף של Windows</string>
-      <string id="BITS_DisableBranchCacheText">הגדרה זו קובעת אם לקוח BITS יורשה להשתמש במטמון הענף של Windows Branch Cache. אם רכיב מטמון הענף של Windows מותקן וזמין במחשב, למשימות BITS במחשב תהיה אפשרות להשתמש במטמון הענף של Windows כברירת מחדל.
+      <string id="BITS_DisableBranchCache">Do not allow the BITS client to use Windows Branch Cache</string>
+      <string id="BITS_DisableBranchCacheText">This setting affects whether the BITS client is allowed to use Windows Branch Cache. If the Windows Branch Cache component is installed and enabled on a computer, BITS jobs on that computer can use Windows Branch Cache by default.
 
-          אם תהפוך הגדרה זו לזמינה, לקוח BITS לא ישתמש במטמון הענף של Windows.
+          If you enable this policy setting, the BITS client does not use Windows Branch Cache.
 
-          אם תהפוך הגדרה זו ללא זמינה או לא תקבע את תצורתה, לקוח BITS ישתמש במטמון הענף של Windows.
+          If you disable or do not configure this policy setting, the BITS client uses Windows Branch Cache.
 
-          הערה: להגדרה זו אין השפעה על השימוש שיישומים אחרים, פרט ל- BITS, עושים במטמון הענף של Windows. מדיניות זו אינה חלה על העברות ב- SMB. להגדרה זו אין השפעה אם הגדרות הניהול של המחשב עבור מטמון הענף של Windows הופכות את השימוש בו ללא זמין לחלוטין.
+          Note: This policy setting does not affect the use of Windows Branch Cache by applications other than BITS. This policy setting does not apply to BITS transfers over SMB. This setting has no effect if the computer's administrative settings for Windows Branch Cache disable its use entirely.
       </string>
 <!-- disable branch cache-->
 
     </stringTable>
     <presentationTable>
       <presentation id="BITS_Job_Timeout">
-        <decimalTextBox refId="BITS_Job_Timeout_Time" defaultValue="90">זמן קצוב למשימה לא פעילה בימים:</decimalTextBox>
+        <decimalTextBox refId="BITS_Job_Timeout_Time" defaultValue="90">Inactive Job Timeout in Days:</decimalTextBox>
       </presentation>
       <presentation id="BITS_MaxDownloadTime">
-          <decimalTextBox refId="BITS_MaxDownloadSeconds" defaultValue="54000">זמן קצוב למשימה פעילה בשניות:</decimalTextBox>
+          <decimalTextBox refId="BITS_MaxDownloadSeconds" defaultValue="54000">Active Job Timeout in seconds:</decimalTextBox>
       </presentation>
       <presentation id="BITS_MaxBandwidth">
-        <decimalTextBox refId="BITS_MaxTransferRateText" defaultValue="10" spinStep="10">הגבל קצב העברה ברקע (Kbps) ל:</decimalTextBox>
-        <dropdownList refId="BITS_BandwidthLimitSchedFrom" noSort="true" defaultItem="8">מ-</dropdownList>
-        <dropdownList refId="BITS_BandwidthLimitSchedTo" noSort="true" defaultItem="17">עד</dropdownList>
-        <text>בכל זמן אחר</text>
-        <checkBox refId="BITS_UseSystemMaximum" defaultChecked="true">השתמש בכל רוחב הפס הזמין שאינו בשימוש</checkBox>
-        <text>לחלופין</text>
-        <decimalTextBox refId="BITS_MaxTransferRateText_1" defaultValue="20" spinStep="10">הגבל קצב העברה ברקע (Kbps) ל:</decimalTextBox>
+        <decimalTextBox refId="BITS_MaxTransferRateText" defaultValue="10" spinStep="10">Limit background transfer rate (Kbps) to:</decimalTextBox>
+        <dropdownList refId="BITS_BandwidthLimitSchedFrom" noSort="true" defaultItem="8">From</dropdownList>
+        <dropdownList refId="BITS_BandwidthLimitSchedTo" noSort="true" defaultItem="17">to</dropdownList>
+        <text>At all other times</text>
+        <checkBox refId="BITS_UseSystemMaximum" defaultChecked="true">Use all available unused bandwidth</checkBox>
+        <text>OR</text>
+        <decimalTextBox refId="BITS_MaxTransferRateText_1" defaultValue="20" spinStep="10">Limit background transfer rate (Kbps) to:</decimalTextBox>
       </presentation>
       <presentation id="BITS_MaxContentAge">
-        <decimalTextBox refId="BITS_MaxContentAgeList" defaultValue="90">מספר ימים:</decimalTextBox>
+        <decimalTextBox refId="BITS_MaxContentAgeList" defaultValue="90">Number of days:</decimalTextBox>
       </presentation>
       <presentation id="BITS_MaxCacheSize">
-        <decimalTextBox refId="BITS_MaxSize" defaultValue="5">אחוז שטח הדיסק שישמש למטמון עמית של BITS:</decimalTextBox>
+        <decimalTextBox refId="BITS_MaxSize" defaultValue="5">Percentage of disk space to be used for the BITS peercache:</decimalTextBox>
       </presentation>
       <presentation id="BITS_MaxBandwidthServedForPeers">
-        <decimalTextBox refId="BITS_MaxBandwidthServedForPeersList" defaultValue="1048576">רוחב הפס המרבי המשמש ל- Peercaching ‏(BPS):</decimalTextBox>
+        <decimalTextBox refId="BITS_MaxBandwidthServedForPeersList" defaultValue="1048576">Maximum network bandwidth used for Peercaching (bps):</decimalTextBox>
       </presentation>
 
       <presentation id="BITS_MaxJobsPerMachine">
-        <decimalTextBox refId="BITS_MaxJobsPerMachineList" defaultValue="300">מספר מרבי של משימות BITS עבור מחשב זה:</decimalTextBox>
+        <decimalTextBox refId="BITS_MaxJobsPerMachineList" defaultValue="300">Maximum number of BITS jobs for this computer:</decimalTextBox>
       </presentation>
       <presentation id="BITS_MaxJobsPerUser">
-        <decimalTextBox refId="BITS_MaxJobsPerUserList" defaultValue="60">מספר מרבי של משימות BITS עבור כל משתמש:</decimalTextBox>
+        <decimalTextBox refId="BITS_MaxJobsPerUserList" defaultValue="60">Maximum number of BITS jobs for each user:</decimalTextBox>
       </presentation>
       <presentation id="BITS_MaxFilesPerJob">
-        <decimalTextBox refId="BITS_MaxFilesPerJobList" defaultValue="200">מספר מרבי של קבצים המותרים במשימת BITS:</decimalTextBox>
+        <decimalTextBox refId="BITS_MaxFilesPerJobList" defaultValue="200">Maximum number of files allowed in a BITS job:</decimalTextBox>
       </presentation>
       <presentation id="BITS_MaxRangesPerFile">
-        <decimalTextBox refId="BITS_MaxRangesPerFileList" defaultValue="500">מספר טווחים מרבי שניתן להוסיף לקובץ במשימת BITS:</decimalTextBox>
+        <decimalTextBox refId="BITS_MaxRangesPerFileList" defaultValue="500">Maximum number of ranges that can be added to the file in a BITS job:</decimalTextBox>
       </presentation>
 
       <presentation id="BITS_MaxBandwidthV2_Work">
-        <checkBox refId="BITS_IgnoreLimitsOnLan" defaultChecked="false">התעלם ממגבלות רוחב הפס אם המקור והיעד נמצאים באותה רשת משנה.</checkBox>
-        <text>ימי עבודה</text>
-        <dropdownList refId="BITS_WorkDaysFrom" noSort="true" defaultItem="1">מאת</dropdownList>
-        <dropdownList refId="BITS_WorkDaysTo" noSort="true" defaultItem="5">אל</dropdownList>
+        <checkBox refId="BITS_IgnoreLimitsOnLan" defaultChecked="false">Ignore bandwidth limits if the source and the destination are on the same subnet.</checkBox>
+        <text>Work Days</text>
+        <dropdownList refId="BITS_WorkDaysFrom" noSort="true" defaultItem="1">From</dropdownList>
+        <dropdownList refId="BITS_WorkDaysTo" noSort="true" defaultItem="5">To</dropdownList>
         <text> </text>
-        <text>שעות עבודה ביום</text>
-        <dropdownList refId="BITS_WorkHoursFrom" noSort="true" defaultItem="8">מאת</dropdownList>
-        <dropdownList refId="BITS_WorkHoursTo" noSort="true" defaultItem="17">אל</dropdownList>
+        <text>Daily Work Hours</text>
+        <dropdownList refId="BITS_WorkHoursFrom" noSort="true" defaultItem="8">From</dropdownList>
+        <dropdownList refId="BITS_WorkHoursTo" noSort="true" defaultItem="17">To</dropdownList>
         <text> </text>
-        <text>מגבלות רוחב פס במהלך שעות העבודה</text>
-        <decimalTextBox refId="BITS_WorkHighPriorityLimit" defaultValue="0">מגבלת עדיפות גבוהה:</decimalTextBox>
-        <dropdownList refId="BITS_WorkHighPriorityUnit" noSort="true" defaultItem="2">יחידת עדיפות גבוהה:</dropdownList>
-        <decimalTextBox refId="BITS_WorkNormalPriorityLimit" defaultValue="0">מגבלת עדיפות רגילה:</decimalTextBox>
-        <dropdownList refId="BITS_WorkNormalPriorityUnit" noSort="true" defaultItem="2">יחידת עדיפות רגילה:</dropdownList>
-        <decimalTextBox refId="BITS_WorkLowPriorityLimit" defaultValue="0">מגבלת עדיפות נמוכה:</decimalTextBox>
-        <dropdownList refId="BITS_WorkLowPriorityUnit" noSort="true" defaultItem="2">יחידת עדיפות נמוכה:</dropdownList>
+        <text>Bandwidth Limits During Work Hours</text>
+        <decimalTextBox refId="BITS_WorkHighPriorityLimit" defaultValue="0">High Priority Limit:</decimalTextBox>
+        <dropdownList refId="BITS_WorkHighPriorityUnit" noSort="true" defaultItem="2">High Priority Unit:</dropdownList>
+        <decimalTextBox refId="BITS_WorkNormalPriorityLimit" defaultValue="0">Normal Priority Limit:</decimalTextBox>
+        <dropdownList refId="BITS_WorkNormalPriorityUnit" noSort="true" defaultItem="2">Normal Priority Unit:</dropdownList>
+        <decimalTextBox refId="BITS_WorkLowPriorityLimit" defaultValue="0">Low Priority Limit:</decimalTextBox>
+        <dropdownList refId="BITS_WorkLowPriorityUnit" noSort="true" defaultItem="2">Low Priority Unit:</dropdownList>
         <text> </text>
-        <text>מגבלת רוחב פס מחוץ לשעות העבודה</text>
-        <decimalTextBox refId="BITS_NonWorkHighPriorityLimit" defaultValue="0">מגבלת עדיפות גבוהה:</decimalTextBox>
-        <dropdownList refId="BITS_NonWorkHighPriorityUnit" noSort="true" defaultItem="2">יחידת עדיפות גבוהה:</dropdownList>
-        <decimalTextBox refId="BITS_NonWorkNormalPriorityLimit" defaultValue="0">מגבלת עדיפות רגילה:</decimalTextBox>
-        <dropdownList refId="BITS_NonWorkNormalPriorityUnit" noSort="true" defaultItem="2">יחידת עדיפות רגילה:</dropdownList>
-        <decimalTextBox refId="BITS_NonWorkLowPriorityLimit" defaultValue="0">מגבלת עדיפות נמוכה:</decimalTextBox>
-        <dropdownList refId="BITS_NonWorkLowPriorityUnit" noSort="true" defaultItem="2">יחידת עדיפות נמוכה:</dropdownList>
+        <text>Bandwidth Limits During Non-Work Hours</text>
+        <decimalTextBox refId="BITS_NonWorkHighPriorityLimit" defaultValue="0">High Priority Limit:</decimalTextBox>
+        <dropdownList refId="BITS_NonWorkHighPriorityUnit" noSort="true" defaultItem="2">High Priority Unit:</dropdownList>
+        <decimalTextBox refId="BITS_NonWorkNormalPriorityLimit" defaultValue="0">Normal Priority Limit:</decimalTextBox>
+        <dropdownList refId="BITS_NonWorkNormalPriorityUnit" noSort="true" defaultItem="2">Normal Priority Unit:</dropdownList>
+        <decimalTextBox refId="BITS_NonWorkLowPriorityLimit" defaultValue="0">Low Priority Limit:</decimalTextBox>
+        <dropdownList refId="BITS_NonWorkLowPriorityUnit" noSort="true" defaultItem="2">Low Priority Unit:</dropdownList>
       </presentation>
 
+      <presentation id="BITS_SetTransferPolicyOnCostedNetwork">
+        <text>Set default transfer behaviour for BITS jobs on costed network</text>
+        <dropdownList refId="BITS_TransferPolicyForegroundPriorityValue" noSort="true" defaultItem="0">Foreground </dropdownList>
+        <decimalTextBox refId="BITS_TransferPolicyForegroundPriorityValueCustom" defaultValue="255">Foreground (Custom)</decimalTextBox>
+        <dropdownList refId="BITS_TransferPolicyHighPriorityValue" noSort="true" defaultItem="0">High </dropdownList>
+        <decimalTextBox refId="BITS_TransferPolicyHighPriorityValueCustom" defaultValue="255">High (Custom)</decimalTextBox>
+        <dropdownList refId="BITS_TransferPolicyNormalPriorityValue" noSort="true" defaultItem="0">Normal </dropdownList>
+        <decimalTextBox refId="BITS_TransferPolicyNormalPriorityValueCustom" defaultValue="255">Normal  (Custom)</decimalTextBox>
+        <dropdownList refId="BITS_TransferPolicyLowPriorityValue" noSort="true" defaultItem="0">Low </dropdownList>
+        <decimalTextBox refId="BITS_TransferPolicyLowPriorityValueCustom" defaultValue="255">Low (Custom)</decimalTextBox>
+      </presentation>
+      
       <presentation id="BITS_MaxBandwidthV2_Maintenance">
-        <text>ימי תחזוקה</text>
-        <dropdownList refId="BITS_MaintenanceDaysFrom" noSort="true" defaultItem="1">מאת</dropdownList>
-        <dropdownList refId="BITS_MaintenanceDaysTo" noSort="true" defaultItem="5">אל</dropdownList>
+        <text>Maintenance Days</text>
+        <dropdownList refId="BITS_MaintenanceDaysFrom" noSort="true" defaultItem="1">From</dropdownList>
+        <dropdownList refId="BITS_MaintenanceDaysTo" noSort="true" defaultItem="5">To</dropdownList>
         <text> </text>
-        <text>שעות תחזוקה ביום</text>
-        <dropdownList refId="BITS_MaintenanceHoursFrom" noSort="true" defaultItem="20">מאת</dropdownList>
-        <dropdownList refId="BITS_MaintenanceHoursTo" noSort="true" defaultItem="22">אל</dropdownList>
+        <text>Daily Maintenance Hours</text>
+        <dropdownList refId="BITS_MaintenanceHoursFrom" noSort="true" defaultItem="20">From</dropdownList>
+        <dropdownList refId="BITS_MaintenanceHoursTo" noSort="true" defaultItem="22">To</dropdownList>
         <text> </text>
-        <text>מגבלות רוחב פס במהלך שעות התחזוקה</text>
-        <decimalTextBox refId="BITS_MaintenanceHighPriorityLimit" defaultValue="0">מגבלת עדיפות גבוהה:</decimalTextBox>
-        <dropdownList refId="BITS_MaintenanceHighPriorityUnit" noSort="true" defaultItem="2">יחידת עדיפות גבוהה:</dropdownList>
-        <decimalTextBox refId="BITS_MaintenanceNormalPriorityLimit" defaultValue="0">מגבלת עדיפות רגילה:</decimalTextBox>
-        <dropdownList refId="BITS_MaintenanceNormalPriorityUnit" noSort="true" defaultItem="2">יחידת עדיפות רגילה:</dropdownList>
-        <decimalTextBox refId="BITS_MaintenanceLowPriorityLimit" defaultValue="0">מגבלת עדיפות נמוכה:</decimalTextBox>
-        <dropdownList refId="BITS_MaintenanceLowPriorityUnit" noSort="true" defaultItem="2">יחידת עדיפות נמוכה:</dropdownList>
+        <text>Bandwidth Limits During Maintenance Hours</text>
+        <decimalTextBox refId="BITS_MaintenanceHighPriorityLimit" defaultValue="0">High Priority Limit:</decimalTextBox>
+        <dropdownList refId="BITS_MaintenanceHighPriorityUnit" noSort="true" defaultItem="2">High Priority Unit:</dropdownList>
+        <decimalTextBox refId="BITS_MaintenanceNormalPriorityLimit" defaultValue="0">Normal Priority Limit:</decimalTextBox>
+        <dropdownList refId="BITS_MaintenanceNormalPriorityUnit" noSort="true" defaultItem="2">Normal Priority Unit:</dropdownList>
+        <decimalTextBox refId="BITS_MaintenanceLowPriorityLimit" defaultValue="0">Low Priority Limit:</decimalTextBox>
+        <dropdownList refId="BITS_MaintenanceLowPriorityUnit" noSort="true" defaultItem="2">Low Priority Unit:</dropdownList>
       </presentation>
 
     </presentationTable>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
-  <displayName>ange ett visningsnamn här</displayName>
-  <description>ange en beskrivning här</description>
+  <displayName>ange visningsnamn här</displayName>
+  <description>ange beskrivning här</description>
   <resources>
     <stringTable>
       <string id="TS_APP_COMPATIBILITY">Programkompatibilitet</string>
@@ -10,33 +10,38 @@
       <string id="TS_TIME_ZONE">Tillåt omdirigering av tidszon</string>
       <string id="TS_TIME_ZONE_EXPLAIN">Den här principinställningen avgör om klientdatorns tidszonsinställningar dirigeras om till sessionen med Fjärrskrivbordstjänster.
 
-Om du aktiverar den här principinställningen kan klienter med stöd för omdirigering av tidszon skicka sin tidszonsinformation till servern. Serverns bastid används sedan för att beräkna den tid som används i sessionen (aktuell sessionstid = serverns bastid + klientens tidszon).
+Om du aktiverar den här principinställningen kan klienter med möjlighet till omdirigering av tidszon skicka sin tidszonsinformation till servern. Serverns bastid används sedan för att beräkna den tid som används i sessionen (aktuell sessionstid = serverns bastid + klientens tidszon).
 
 Om du inaktiverar den här principinställningen eller låter bli att konfigurera den dirigerar inte klientdatorn om sin tidszonsinformation, utan sessionens tidszon är densamma som serverns tidszon.
 
 Obs! Omdirigering av tidszon är bara möjligt när du ansluter med en RDP 5.1-klient eller senare till en Microsoft Windows Server 2003-terminalserver eller senare.
+      
       </string>
       
       <string id="TS_CLIENT_CLIPBOARD">Tillåt inte omdirigering av Urklipp</string>
-      <string id="TS_CLIPBOARDMAP_EXPLAIN">Med hjälp av den här principinställningen anger du om delning av innehåll i Urklipp (omdirigering av Urklipp) ska förhindras mellan en fjärrdator och en klientdator under en session med Fjärrskrivbordstjänster. 
+      <string id="TS_CLIPBOARDMAP_EXPLAIN">Den här principinställningen bestämmer om innehållet i Urklipp (omdirigering av Urklipp) kan delas mellan en fjärrdator och en klientdator under en fjärrskrivbordstjänstsession eller inte.
 
-Du kan använda den här inställningen för att förhindra att användare omdirigerar data i Urklipp till och från fjärrdatorn och den lokala datorn.  
+Du kan använda den här inställningen för att hindra användare från att omdirigera data i Urklipp till och från en fjärrdator och en lokal dator. Som standard tillåts omdirigering av Urklipp i Fjärrskrivbordstjänster.
 
-Om du aktiverar den här principinställningen kan inte användarna omdirigera data i Urklipp. 
+Om du aktiverar den här principinställningen kan användarna inte omdirigera data i Urklipp.
 
-Om du inaktiverar den här principinställningen tillåter Fjärrskrivbordstjänster alltid omdirigering av data i Urklipp. Om du inte konfigurerar den här principinställningen tillåter Fjärrskrivbordstjänster alltid omdirigering av data i Urklipp såvida inte en administratör inaktiverar omdirigering av Urklipp med hjälp av konfigurationsverktyget Värddator för fjärrskrivbordssession.
-      </string>
+Om du inaktiverar den här principinställningen tillåts omdirigering av Urklipp alltid i Fjärrskrivbordstjänster.
+
+Om du inte konfigurerar den här principinställningen är omdirigering av Urklipp inte angivet på grupprincipnivå. 
+  
+ </string>
       
       <string id="TS_DISABLE_REMOTE_DESKTOP_WALLPAPER">Ta bort skrivbordsunderlägg för fjärrskrivbord</string>
       <string id="TS_DISABLE_REMOTE_DESKTOP_WALLPAPER_EXPLAIN">Med hjälp av den här principinställningen kan du ange om skrivbordsunderlägg ska visas för klienter som ansluter till en fjärrserver via RDP (Remote Desktop Protocol). 
 
-Du kan använda den här inställningen för att se till att skrivbordsunderlägg inte visas under sessioner med Fjärrskrivbordstjänster.
+Du kan använda den här inställningen för att se till att skrivbordsunderlägg inte visas under en session med Fjärrskrivbordstjänster. 
 
-Om du aktiverar den här principinställningen visas inte skrivbordsunderlägg i sessioner med Fjärrskrivbordstjänster. 
+Om du aktiverar den här principinställningen visas inte skrivbordsunderlägg i sessioner med Fjärrskrivbordstjänster.   
 
-Om du inaktiverar den här principinställningen visas skrivbordsunderlägg i sessioner med Fjärrskrivbordstjänster, beroende på klientens konfiguration. 
+Om du inaktiverar den här principinställningen visas skrivbordsunderlägg i sessioner med Fjärrskrivbordstjänster, beroende på klientens konfiguration.  
 
 Om du inte konfigurerar den här principinställningen visar Windows Vista skrivbordsunderlägg för fjärrklienter som ansluter genom Fjärrskrivbord beroende på klientens konfiguration (information om detta finns på fliken Prestanda i dialogrutan Anslutning till fjärrskrivbord). Servrar med Windows Server 2008 visar som standard inte skrivbordsunderlägg i sessioner med Fjärrskrivbordstjänster.
+      
       </string>
       
       <string id="TS_TURNOFF_SINGLEAPP">Visa alltid skrivbordet när en anslutning upprättas</string>
@@ -47,28 +52,34 @@ Om du aktiverar den här principinställningen visas alltid skrivbordet när en 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan du ange ett startprogram som körs på fjärrdatorn efter att klienten ansluter till fjärrdatorn. Om inget startprogram anges visas alltid skrivbordet när klienten har anslutit till fjärrdatorn.
 
 Obs! Om den här inställningen är aktiverad åsidosätts inställningen Starta ett program när anslutning upprättas.
+      
       </string>
       
       <string id="TS_ALLOW_APPS">Tillåt att olistade program startas</string>
-      <string id="TS_ALLOW_APPS_EXPLAIN">Med hjälp av den här principinställningen kan du ange om fjärranvändare kan starta valfritt program på värdservern för fjärrskrivbordssessioner när de startar en session med Fjärrskrivbordstjänster eller om de är begränsade till programmen i listan RemoteApp-program.
+      <string id="TS_ALLOW_APPS_EXPLAIN">Med den här principinställningen kan du ange om fjärranvändare får starta ett valfritt program på värdservern för fjärrskrivbordssessioner när de startar en session med Fjärrskrivbordstjänster, eller om de bara kan starta program i listan RemoteApp-program.
 
-Du kan avgöra vilka program som kan fjärrstartas på en värdserver för fjärrskrivbordssessioner genom att skapa en lista med RemoteApp-program i verktyget RemoteApp Manager. Som standard kan bara program i listan RemoteApp-program startas när en användare startar en session med Fjärrskrivbordstjänster.
+Du kan bestämma vilka program på en värdserver för fjärrskrivbordssessioner som kan fjärrstartas genom att använda RemoteApp-hanteraren i Windows Server 2008 R2 och i Windows Server 2008. Om du använder Windows Server 2012 R2 kan du ställa in detta på egenskapssidan Samling i Serverhanteraren.
 
-Om du aktiverar den här principinställningen kan fjärranvändare starta valfritt program på värdservern för fjärrskrivbordssessioner när de startar en session med Fjärrskrivbordstjänster. Med hjälp av klienten Anslutning till fjärrskrivbord kan en fjärranvändare vid anslutning till exempel ange sökvägen till ett programs körbara fil.
+Som standard kan bara program i listan RemoteApp-program startas när en användare startar en session med Fjärrskrivbordstjänster.
 
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan fjärranvändare bara starta program i listan med RemoteApp-program i RemoteApp Manager när de startar en session med Fjärrskrivbordstjänster.
-      </string>
+Om du aktiverar den här principinställningen kan fjärranvändare starta valfritt program på värdservern för fjärrskrivbordssessioner när de startar en session med Fjärrskrivbordstjänster. 
+Med hjälp av klienten Anslutning till fjärrskrivbord kan en fjärranvändare vid anslutning till exempel ange sökvägen till ett programs körbara fil.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan fjärranvändare bara starta program i listan RemoteApp-program när de startar en session med Fjärrskrivbordstjänster.
+
+</string>
 
       <string id="TS_ALLOW_DESKTOPCOMPOSITION">Tillåt skrivbordssammansättning för fjärrskrivbordssessioner</string>
       <string id="TS_ALLOW_DESKTOPCOMPOSITION_EXPLAIN">Med hjälp av den här principinställningen kan du ange om skrivbordssammansättning ska tillåtas för fjärrskrivbordssessioner. Den här inställningen gäller inte för RemoteApp-sessioner.
 
-Skrivbordssammansättning tillhandahåller gränssnittselementen för Windows Aero, t.ex. halvgenomskinliga fönster vid fjärrskrivbordssessioner. Eftersom Windows Aero kräver ytterligare systemresurser och bandbredd kan anslutningsprestanda försämras om skrivbordssammansättning tillåts för fjärrskrivbordssessioner, särskilt över långsammare länkar. Det kan också öka belastningen på fjärrdatorn. 
+Skrivbordssammansättning tillhandahåller gränssnittselementen för Windows Aero, t.ex. halvgenomskinliga fönster vid fjärrskrivbordssessioner. Eftersom Windows Aero kräver ytterligare systemresurser och bandbredd kan anslutningsprestanda försämras om skrivbordssammansättning tillåts för fjärrskrivbordssessioner, särskilt över långsammare länkar.Det kan också öka belastningen på fjärrdatorn. 
 
 Om den här inställningen aktiveras tillåts skrivbordssammansättning för fjärrskrivbordssessioner. Du konfigurerar skrivbordssammansättning på klientdatorn på fliken Prestanda i Anslutning till fjärrskrivbord eller med inställningen Tillåt skrivbordssammansättning i en RDP-fil (Remote Desktop Protocol). Dessutom måste klientdatorn ha nödvändig maskinvara som stöder funktionerna i Windows Aero.
 
 Obs! Det kan behöva utföras ytterligare konfiguration på fjärrdatorn om funktionerna i Windows Aero ska vara tillgängliga för fjärrskrivbordssessioner. Exempelvis måste fjärrdatorn ha funktionen Skrivbordsmiljö installerad och högsta tillåtna färgdjup måste vara 32 bitar per bildpunkt på fjärrdatorn. Dessutom måste tjänsten Teman köras på fjärrdatorn.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen tillåts inte skrivbordssammansättning för fjärrskrivbordssessioner även om skrivbordssammansättning är aktiverat i Anslutning till fjärrskrivbord eller i RDP-filen.
+      
       </string>
 
       <string id="TS_SB_LOAD_BALANCING">Använd belastningsutjämning med Anslutningsutjämning för fjärrskrivbord</string>
@@ -78,9 +89,10 @@ Om du aktiverar den här principinställningen kommer användare som inte har n�
 
 Om du inaktiverar den här principinställningen loggar användare utan någon befintlig session in på den värdserver för fjärrskrivbordssessioner de först ansluter till.
 
-Om du inte konfigurerar den här principinställningen kan du konfigurera värdservern för fjärrskrivbordssessioner att delta i belastningsutjämning med Anslutningsutjämning för fjärrskrivbord med hjälp av konfigurationsverktyget Värddator för fjärrskrivbordssession eller WMI-providern för Terminal Services.
+Om du inte konfigurerar den här principinställningen kan du ställa in värdservern för fjärrskrivbordssessioner att delta i belastningsutjämningen för Anslutningsutjämning för fjärrskrivbord genom att använda verktyget Konfiguration av värdserver för fjärrskrivbordssession eller WMI-providern för Fjärrskrivbordstjänster.
 
 Obs! Om du aktiverar den här principinställningen måste du även aktivera principinställningarna Anslut till Anslutningsutjämning för fjärrskrivbord, Konfigurera namn på servergrupp för Anslutningsutjämning för fjärrskrivbord och Konfigurera namn på server för Anslutningsutjämning för fjärrskrivbord. 
+       
       </string>
 
       <string id="TS_REDIRECT_CLIENT_PRN_ONLY">Dirigera bara om klientens standardskrivare</string>
@@ -88,19 +100,21 @@ Obs! Om du aktiverar den här principinställningen måste du även aktivera pri
 
 Om du aktiverar den här principinställningen dirigeras bara klientens standardskrivare om under sessioner med Fjärrskrivbordstjänster.
 
-Om du inaktiverar eller inte konfigurerar den här principinställningen, dirigeras alla klientskrivare om under sessioner med Fjärrskrivbordstjänster.
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen, dirigeras alla klientskrivare om under sessioner med Fjärrskrivbordstjänster.
+	  
 	  </string>
 	  
       <string id="TS_SESSIONS_RemoteApp_End_Timeout">Ange tidsgräns för utloggning från RemoteApp-sessioner</string>
-      <string id="TS_SESSIONS_RemoteApp_End_Timeout_EXPLAIN">Med hjälp av den här principinställningen kan du ange hur länge en användares RemoteApp-session kan vara i frånkopplat läge utan att sessionen loggas ut från värdservern för fjärrskrivbordssessioner.
+      <string id="TS_SESSIONS_RemoteApp_End_Timeout_EXPLAIN">Med hjälp av den här principinställningen kan du ange hur länge en användares RemoteApp-session kan vara i frånkopplat läge efter att alla RemoteApp-program har stängts innan sessionen loggas ut från värdservern för fjärrskrivbordssessioner.
 
-Som standard kopplas sessionen bort från värdservern för fjärrskrivbordssessioner om en användare stänger ett RemoteApp-program. 
+Som standard kopplas sessionen bort från värdservern för fjärrskrivbordssessioner om en användare stänger ett RemoteApp-program, men den loggas inte ut.
 
-Om du aktiverar den här principinställningen och en användare stänger ett RemoteApp-program, kommer RemoteApp-programsessionen att förbli i frånkopplat läge tills den tidsgräns du anger har uppnåtts. När tidsgränsen uppnås loggas RemoteApp-programsessionen ut från värdservern för fjärrskrivbordssessioner. Om användaren startar ett RemoteApp-program innan tidsgränsen har uppnåtts, återansluts användaren till den frånkopplade sessionen på värdservern för fjärrskrivbordssessioner.
+Om du aktiverar den här principinställningen och en användare stänger det senast körda RemoteApp-programmet som är associerat med en session, kommer RemoteApp-sessionen att förbli i frånkopplat läge tills den tidsgräns du anger har uppnåtts. När tidsgränsen uppnås loggas RemoteApp-programsessionen ut från värdservern för fjärrskrivbordssessioner. Om användaren startar ett RemoteApp-program innan tidsgränsen har uppnåtts, återansluts användaren till den frånkopplade sessionen på värdservern för fjärrskrivbordssessioner.
 
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen kopplas sessionen bort från värdservern för fjärrskrivbordssessioner när användaren stänger RemoteApp-programmet.
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen kopplas den sessionen bort från värdservern för fjärrskrivbordssessioner när användaren stänger det sista RemoteApp-programmet, men den loggas inte ut.
 
 Obs! Den här principinställningen är tillgänglig i både Datorkonfiguration och Användarkonfiguration. Om båda principinställningarna konfigureras har inställningarna i Datorkonfiguration högst prioritet.
+      
       </string>
 
       <string id="TS_TIME_1MIN">1 minut</string>
@@ -133,6 +147,7 @@ Teckensnittsutjämning är som standard tillåtet för fjärranslutningar. Du ko
 Om du aktiverar den här principinställningen tillåts inte teckensnittsutjämning för fjärranslutningar även om det är aktiverat i RDC eller i RDP-filen.   
 		   
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen tillåts teckensnittsutjämning för fjärranslutningar.
+      
       </string>
 
       <string id="TS_ENABLE_IP_VIRTUALIZATION">Aktivera IP-virtualisering för fjärrskrivbord</string>
@@ -145,6 +160,7 @@ explorer.exe
 mstsc.exe
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen är IP-virtualisering för fjärrskrivbord inaktiverat.
+      
       </string>
       
       <string id="TS_ENABLE_SESSION_MODE_IP_VIRTUALIZATION">Per session</string>
@@ -155,6 +171,7 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
 Om du aktiverar den här principinställningen anger den angivna IP-adressen och nätverksmasken det nätverkskort som ska användas för virtuella IP-adresser.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen är IP-virtualisering för fjärrskrivbord inaktiverat. IP-virtualisering för fjärrskrivbord fungerar inte förrän ett nätverkskort har konfigurerats.
+      
       </string>
       
       <string id="TS_NOT_USE_SERVER_IP_WITH_IP_VIRTUALIZATION">Använd inte IP-adressen till värdservern för fjärrskrivbordssessioner om ingen virtuell IP-adress är tillgänglig</string>
@@ -163,6 +180,7 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
 Om du aktiverar den här principinställningen används inte IP-adressen till värdservern för fjärrskrivbordssessioner om det inte finns någon virtuell IP-adress tillgänglig. Sessionen har då ingen nätverksanslutning.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen används IP-adressen till värdservern för fjärrskrivbordssessioner om det inte finns någon virtuell IP-adress tillgänglig.
+      
       </string>
       
       <string id="TS_ENABLE_DFSS">Inaktivera schemaläggning av fördelning av CPU-tid</string>
@@ -171,6 +189,7 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
 Om du aktiverar den här principinställningen inaktiveras schemaläggning av fördelning av CPU-tid.
  
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen är schemaläggning av fördelning av CPU-tid aktiverat.
+      
       </string>
       
       <string id="TS_DISABLE_MSI">Inaktivera RDS-kompatibilitet för Windows Installer</string>
@@ -179,6 +198,20 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
 Om du aktiverar den här principinställningen är RDS-kompatibilitet för Windows Installer inaktiverat och bara en instans av processen msiexec kan köras på datorn vid en given tidpunkt.
  
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen är RDS-kompatibilitet för Windows Installer aktiverat vilket innebär att begäranden om flera programinstallationer per användare ställs i kö och hanteras av processen msiexec i den ordning som de mottogs. 
+       
+      </string>
+
+      <string id="RDS_VM_HOST_Node">Virtualiseringsvärd för fjärrskrivbord</string>
+      <string id="RDS_VM_HOST_Node_Help">Bestämmer konfigurationen av en värdserver för fjärrskrivbordssessioner</string>
+      <string id="TS_DX_USE_FULL_HWGPU">Använd maskinvarans standardgrafikkort för alla fjärrskrivbordssessioner</string>
+      <string id="TS_DX_USE_FULL_HWGPU_EXPLAIN">Med den här principinställningen kan systemadministratörer ändra grafikrenderingen för alla sessioner i Fjärrskrivbordstjänster på en värdserver för fjärrskrivbordssessioner.
+
+Om du aktiverar den här principinställningen används maskinvarugrafikrenderaren för alla sessioner i Fjärrskrivbordstjänster på värdservern för fjärrskrivbordssessioner i stället för Microsofts grundläggande renderingsdrivrutin som standardadapter.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen används Microsofts grundläggande renderingsdrivrutin som standardadapter för sessioner i Fjärrskrivbordstjänster på värdservern för fjärrskrivbordssessioner.
+
+Obs! Den här principinställningen påverkar bara standardgrafikprocessorn på en dator med mer än en grafikprocessor. Alla övriga grafikprocessorer betraktas som sekundära adaptrar och används som maskinvarurenderare. Den lokala sessionens grafikprocessorkonfiguration påverkas inte av den här principinställningen.
+      
       </string>
    
    </stringTable>
@@ -191,14 +224,13 @@ Om du inaktiverar eller låter bli att konfigurera den här principinställninge
 	    <textBox refId="TS_NET_ID_IP_VIRTUALIZATION">
 	      <label>Definiera IP-adress och nätverksmask som matchar nätverkskortet som ska användas för IP-virtualisering för fjärrskrivbord:</label>
 	    </textBox>
-    	<text>Formatet är [IP-adress]/[nätverksmask]. Till exempel: 192.0.2.96/24</text>
+    	<text>Formatet är [IP-adress]/[nätverksmask]. Exempel: 192.0.2.96/24</text>
       </presentation>
       <presentation id="TS_ENABLE_IP_VIRTUALIZATION">
         <dropdownList refId="TS_ENABLE_IP_VIRTUALIZATION" noSort="true" defaultItem="0">Aktivera läge för IP-virtualisering för fjärrskrivbord:</dropdownList>
 	    <multiTextBox refId="TS_ENABLE_IP_VIRTUALIZATION_EDIT">Tilldela följande program virtuella IP-adresser:</multiTextBox>
-        <text>Om du anger mer än ett program i listan anger du dem på separata rader (lämna inga tomma rader mellan programmen). Till exempel:</text>
-        <text>explorer.exe
-mstsc.exe</text>
+        <text>Om du anger mer än ett program i listan anger du dem på separata rader (lämna inga tomma rader mellan programmen). Exempel:</text>
+        <text>explorer.exe mstsc.exe</text>
       </presentation>
     </presentationTable>
   </resources>

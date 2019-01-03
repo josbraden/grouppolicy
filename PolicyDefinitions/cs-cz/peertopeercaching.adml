@@ -2,64 +2,240 @@
 <!--  (c) 2006 Microsoft Corporation  -->
 <policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
     <displayName>BranchCache</displayName>
-    <description>Pobočková mezipaměť (BranchCache) umožňuje klientům bezpečně načítat obsah v rámci pobočky místo toho, aby jej museli načítat ze serveru hostujícího obsah. V závislosti na režimu nasazení lze obsah načíst z jiných klientů v pobočce nebo ze severu hostované mezipaměti v pobočce. Klient může načíst obsah z pobočky, pouze pokud má od serveru autorizaci. Používání pobočkové mezipaměti (BranchCache) snižuje náklady na připojení k síti WAN, které připojuje pobočky k datovým centrům nebo k ústředím, a zvyšuje rychlost stahování u obsahu, který již byl stažen do pobočky.
+    <description>Pobočková mezipaměť (BranchCache) umožňuje klientům bezpečně načítat obsah v rámci pobočky místo toho, aby jej museli načítat ze serveru hostujícího obsah. V závislosti na režimu nasazení lze obsah načíst z jiných klientů v pobočce nebo ze serveru hostované mezipaměti v pobočce. Klient může načíst obsah z pobočky, pouze pokud má od serveru autorizaci. Používání pobočkové mezipaměti (BranchCache) snižuje náklady na připojení k síti WAN, které připojuje pobočky k datovým centrům nebo k ústředím, a zvyšuje rychlost stahování u obsahu, který již byl stažen do pobočky.
+    
     </description>
 
     <resources>
         <stringTable>
+            <!-- Supported Platforms -->
+            <string id="SUPPORTED_Windows7OrBITS4">Minimálně systém Windows 7 nebo Windows Server 2008 R2*</string>
+            <!-- Supported Platforms -->
+
             <string id="WBC_Cat">BranchCache</string>
 
             <string id="WBC_Enable">Zapnout funkci BranchCache</string>
 
-            <string id="WBC_Enable_Help">Nastavení této zásady určuje, zda je v klientském počítači povolena pobočková mezipaměť BranchCache. BranchCache snižuje využití připojení WAN (wide area network) připojující pobočky k datovým centrům nebo centrálám a zvyšuje přístupové rychlosti pro obsah, který již byl stažen do pobočky. BranchCache to umožňuje tím, že povolí počítačům v pobočce ukládat do mezipaměti soubory a datový přenos HTTP z intranetových serverů, na kterých je mezipaměť BranchCache povolena, a následně bezpečně sdílet soubory s ostatními počítači v pobočce. Počítače v pobočkách mohou načítat obsah ze serveru hostované mezipaměti v pobočce (při používání režimu hostované mezipaměti) nebo z jiných klientských počítačů v pobočce (při používání režimu distribuované mezipaměti). Aby bylo možné získat přístup k obsahu v mezipaměti, musí mít počítač oprávnění pro přístup k obsahu na zdrojovém serveru.
+            <string id="WBC_Enable_Help">This policy setting specifies whether BranchCache is enabled on client computers to which this policy is applied. In addition to this policy setting, you must specify whether the client computers are hosted cache mode or distributed cache mode clients. To do so, configure one of the following the policy settings: 
 
-Nastavení této zásady povolte v klientských počítačích v pobočkách s nízkou šířkou pásma sítě WAN, s vysokou latencí a velkým počtem klientských počítačů, které využívají stejná data ze serverů v centrále.
+- Set BranchCache Distributed Cache mode
 
-Pokud nastavení této zásady povolíte, je mezipaměť BranchCache zapnuta. Aby se nastavení této zásady projevilo, je nutné také nainstalovat funkci BranchCache v klientském počítači.
+- Set BranchCache Hosted Cache mode
 
-Pokud nastavení této zásady zakážete nebo nenakonfigurujete, bude funkce BranchCache vypnuta.
+- Configure Hosted Cache Servers
+
+Policy configuration
+
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache settings are not applied to client computers by this policy. In the circumstance where client computers are domain members but you do not want to enable BranchCache on all client computers, you can specify Not Configured for this domain Group Policy setting, and then configure local computer policy to enable BranchCache on individual client computers. Because the domain Group Policy setting is not configured, it will not over-write the enabled setting that you use on individual client computers where you want to enable BranchCache.
+
+- Enabled. With this selection, BranchCache is turned on for all client computers where the policy is applied. For example, if this policy is enabled in domain Group Policy, BranchCache is turned on for all domain member client computers to which the policy is applied.
+
+- Disabled. With this selection, BranchCache is turned off for all client computers where the policy is applied.
+
+* This policy setting is supported on computers that are running Windows Vista Business, Enterprise, and Ultimate editions with Background Intelligent Transfer Service (BITS) 4.0 installed.
             </string>
 
             <string id="WBC_Cache_Percent">Nastavit procentuální místo na disku využívané pro mezipaměť klientského počítače</string>
 
-            <string id="WBC_Cache_Percent_Help">Nastavení této zásady změní výchozí procentuální hodnotu celkového místa na disku, které má být vyhrazeno pro ukládání načteného obsahu do pobočkové mezipaměti (BranchCache). Tento obsah je zpřístupněn pro další požadující klientské počítače, pokud mají od serveru autorizaci získat k obsahu přístup.
+            <string id="WBC_Cache_Percent_Help">This policy setting specifies the default percentage of total disk space that is allocated for the BranchCache disk cache on client computers.
 
-Pokud nastavení této zásady povolíte, můžete nakonfigurovat procentuální hodnotu celkového místa na disku, které má být vyhrazeno pro mezipaměť.
+If you enable this policy setting, you can configure the percentage of total disk space to allocate for the cache.
 
-Pokud nastavení této zásady zakážete nebo nenakonfigurujete, je mezipaměť nastavena na 5 procent celkového místa na disku klientského počítače.
+If you disable or do not configure this policy setting, the cache is set to 5 percent of the total disk space on the client computer.
+
+Policy configuration
+
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache client computer cache settings are not applied to client computers by this policy. In the circumstance where client computers are domain members but you do not want to configure a BranchCache client computer cache setting on all client computers, you can specify Not Configured for this domain Group Policy setting, and then configure local computer policy to enable BranchCache client computer cache settings on individual client computers. Because the domain Group Policy setting is not configured, it will not over-write the client computer cache setting that you use on individual client computers.
+
+- Enabled. With this selection, the BranchCache client computer cache setting is enabled for all client computers where the policy is applied. For example, if Set percentage of disk space used for client computer cache is enabled in domain Group Policy, the BranchCache client computer cache setting that you specify in the policy is turned on for all domain member client computers to which the policy is applied.
+
+- Disabled. With this selection, BranchCache client computers use the default client computer cache setting of five percent of the total disk space on the client computer.
+
+In circumstances where this setting is enabled, you can also select and configure the following option:
+
+- Specify the percentage of total disk space allocated for the cache. Specifies an integer that is the percentage of total client computer disk space to use for the BranchCache client computer cache.
+
+* This policy setting is supported on computers that are running Windows Vista Business, Enterprise, and Ultimate editions with Background Intelligent Transfer Service (BITS) 4.0 installed.
             </string>
 
             <string id="WBC_HostedCache_Location">Nastavit režim hostované mezipaměti BranchCache</string>
 
-            <string id="WBC_HostedCache_Location_Help">Nastavení této zásady určuje, zda má klientský počítač používat režim hostované mezipaměti, a pokud ano, jaká je adresa serveru BranchCache. Režim hostované mezipaměti umožňuje klientskému počítači načítat obsah ze serveru BranchCache, který funguje jako centrální (hostovaná) pobočková mezipaměť. Při používání režimu hostované mezipaměti je obsah stažený klientskými počítači s podporou mezipaměti BranchCache nabízen serveru BranchCache, který potom slouží jako centralizovaná mezipaměť pro další klienty s podporou mezipaměti BranchCache v pobočce. Klientské počítače používají ke komunikaci se serverem BranchCache protokol Secure Sockets Layer (SSL).
+            <string id="WBC_HostedCache_Location_Help">This policy setting specifies whether BranchCache hosted cache mode is enabled on client computers to which this policy is applied. In addition to this policy, you must use the policy "Turn on BranchCache" to enable BranchCache on client computers.
 
-Chcete-li použít nastavení této zásady, je nutné zadat adresu serveru BranchCache a tato adresa se musí shodovat s plně kvalifikovaným názvem domény na serveru zadaném v certifikátu pro server BranchCache. Navíc musí být hlavní certifikační autorita pro certifikát serveru BranchCache v důvěryhodném kořenovém úložišti klientského počítače.
+When a client computer is configured as a hosted cache mode client, it is able to download cached content from a hosted cache server that is located at the branch office. In addition, when the hosted cache client obtains content from a content server, the client can upload the content to the hosted cache server for access by other hosted cache clients at the branch office.
 
-Pokud nastavení této zásady povolíte a zadáte platné umístění hostované mezipaměti, je zapnut režim hostované mezipaměti. Aby bylo nastavení této zásady platné, je nutné povolit nastavení zásady Zapnout funkci BranchCache.
+Policy configuration
 
-Pokud nastavení této zásady zakážete nebo nenakonfigurujete, je režim hostované mezipaměti vypnutý.
+Select one of the following:
+
+- Not Configured. With this selection, BranchCache settings are not applied to client computers by this policy. In the circumstance where client computers are domain members but you do not want to enable BranchCache on all client computers, you can specify Not Configured for this domain Group Policy setting, and then configure local computer policy to enable BranchCache on individual client computers. Because the domain Group Policy setting is not configured, it will not over-write the enabled setting that you use on individual client computers where you want to enable BranchCache.
+
+- Enabled. With this selection, BranchCache hosted cache mode is enabled for all client computers where the policy is applied. For example, if this policy is enabled in domain Group Policy, BranchCache hosted cache mode is turned on for all domain member client computers to which the policy is applied.
+
+- Disabled. With this selection, BranchCache hosted cache mode is turned off for all client computers where the policy is applied.
+
+In circumstances where this setting is enabled, you can also select and configure the following option:
+
+- Type the name of the hosted cache server. Specifies the computer name of the hosted cache server. Because the hosted cache server name is also specified in the certificate enrolled to the hosted cache server, the name that you enter here must match the name of the hosted cache server that is specified in the server certificate. 
+
+Hosted cache clients must trust the server certificate that is issued to the hosted cache server. Ensure that the issuing CA certificate is installed in the Trusted Root Certification Authorities certificate store on all hosted cache client computers.
+
+* This policy setting is supported on computers that are running Windows Vista Business, Enterprise, and Ultimate editions with Background Intelligent Transfer Service (BITS) 4.0 installed.
             </string>
 
             <string id="WBC_Distributed_Enable">Nastavit režim distribuované mezipaměti BranchCache</string>
 
-            <string id="WBC_Distributed_Enable_Help">Nastavení této zásady určuje, zda by měl klientský počítač používat režim distribuované mezipaměti. Tento režim pobočkové mezipaměti (BranchCache) umožňuje klientskému počítači načíst obsah, který byl stažen a uložen do mezipaměti jinými klientskými počítači v pobočce. Chcete-li získat přístup k obsahu uloženému v mezipaměti z jiných klientských počítačů v pobočce, musí mít počítač oprávnění získat přístup k obsahu na zdrojovém serveru.
+            <string id="WBC_Distributed_Enable_Help">Toto nastavení zásad určuje, zda je v klientských počítačích, na které se tyto zásady vztahují, povolen režim distribuované pobočkové mezipaměti. Aby byla pobočková mezipaměť povolena v klientských počítačích, je nutno kromě těchto zásad použít také zásady Zapnout funkci BranchCache.
 
-Nastavení této zásady určuje, zda je použit režim distribuované mezipaměti. Nastavení této zásady povolte v případě, že používáte pobočkovou mezipaměť BranchCache v pobočkách, pro které není nakonfigurován žádný server fungující jako hostovaná mezipaměť.
+V režimu distribuované mezipaměti klientské počítače stahují obsah ze serverů s obsahem v hlavní kanceláři, které mají povolenou pobočkovou mezipaměť, ukládají obsah místně do mezipaměti a poskytují jej jiným klientským počítačům v pobočce pracujícím v režimu distribuované pobočkové mezipaměti.
 
-Pokud nastavení této zásady povolíte, je použit režim distribuované mezipaměti. Aby bylo nastavení této zásady platné, je nutné povolit nastavení zásady Zapnout funkci BranchCache.
+Konfigurace zásad
 
-Pokud nastavení této zásady zakážete nebo nenakonfigurujete, je režim distribuované mezipaměti vypnutý.
+Zvolte jednu z těchto možností:
+
+- Není nakonfigurováno. Při zvolení této možnosti zásady neuplatní v klientských počítačích nastavení pobočkové mezipaměti. V případě, že klientské počítače jsou členy domény, ale nechcete povolit pobočkovou mezipaměť ve všech klientských počítačích, můžete pro toto nastavení zásad skupiny pro danou doménu zvolit možnost Není nakonfigurováno a nakonfigurovat zásady místního počítače, čímž povolíte pobočkovou mezipaměť v jednotlivých klientských počítačích. Jelikož nastavení zásad skupiny pro danou doménu není nakonfigurováno, nepřepíše se povolené nastavení, které používáte v jednotlivých klientských počítačích, kde chcete pobočkovou mezipaměť povolit.
+
+- Povoleno. Při zvolení této možnosti se režim distribuované mezipaměti BranchCache zapne pro všechny klientské počítače, na které se tyto zásady vztahují. Jestliže jsou například tyto zásady povoleny v zásadách skupiny pro danou doménu, režim distribuované mezipaměti BranchCache se zapne pro všechny klientské počítače, které jsou členy domény a na které se tyto zásady vztahují.
+
+- Zakázáno. Při zvolení této možnosti se režim distribuované mezipaměti BranchCache vypne pro všechny klientské počítače, na které se tyto zásady vztahují.
+
+* Toto nastavení zásad je podporováno v počítačích se systémem Windows Vista Business, Enterprise a Ultimate s nainstalovanou Službou inteligentního přenosu na pozadí (BITS) verze 4.0.
+            
             </string>
 
             <string id="WBC_SMB_Enable">Konfigurovat pobočkovou mezipaměť (BranchCache) pro síťové soubory</string>
 
-            <string id="WBC_SMB_Enable_Help">Nastavení této zásady změní výchozí hodnotu latence sítě pro přijetí odezvy, nad kterou budou síťové soubory ukládány klientskými počítači v pobočce. BranchCache pro síťové soubory umožňuje počítačům v pobočce ukládat do mezipaměti data z intranetových serverů, na kterých je mezipaměť BranchCache povolena, a následně bezpečně sdílet soubory s ostatními počítači v pobočce. Jedním z typů obsahu, které lze ukládat do pobočkové mezipaměti, jsou síťové soubory využívající protokol SMB (Server Message Block).
+            <string id="WBC_SMB_Enable_Help">Toto nastavení zásad se používá pouze tehdy, pokud máte v hlavní kanceláři nasazen jeden nebo více souborových serverů s podporou mezipaměti BranchCache. Toto nastavení zásad určuje, kdy začnou klientské počítače v pobočkách ukládat do mezipaměti obsah ze souborových serverů na základě latence – neboli zpoždění – sítě, jež se vyskytne, když klientské počítače stahují obsah z hlavní kanceláře prostřednictvím připojení k síti WAN (Wide Area Network).  Když pro toto nastavení nakonfigurujete určitou hodnotu, která představuje maximální povolenou latenci sítě pro přijetí odezvy, než začne ukládání do mezipaměti, klientské počítače neukládají obsah do mezipaměti, dokud latence sítě nedosáhne zadané hodnoty; pokud je latence sítě vyšší než tato hodnota, klientské počítače začnou obsah ukládat do mezipaměti poté, co jej obdrží ze souborových serverů.
 
-Ve výchozím nastavení jsou síťové soubory ukládány do pobočkové mezipaměti, pokud je hodnota latence sítě WAN (wide area network) pro přijetí odezvy vyšší než 80 ms. Chcete-li do mezipaměti síťové soubory stažené do počítačů v pobočce ukládat vždy, nastavte hodnotu latence sítě na hodnotu 0. Chcete-li ukládání síťových souborů do pobočkové mezipaměti zakázat, nastavte hodnotu latence na velmi vysokou hodnotu.
+Konfigurace zásad
 
-Pokud nastavení této zásady povolíte, můžete nakonfigurovat hodnotu latence sítě pro přijetí odezvy, nad kterou mají být síťové soubory ukládány klientskými počítači do pobočkové mezipaměti.
+Zvolte jednu z těchto možností:
 
-Pokud nastavení této zásady zakážete nebo nenakonfigurujete, bude klientský počítač ukládat síťové soubory do mezipaměti v případě, že je hodnota latence sítě WAN pro přijetí odezvy vyšší než 80 ms.
+- Není nakonfigurováno. Při zvolení této možnosti zásady neuplatní v klientských počítačích nastavení latence pobočkové mezipaměti. V případě, že klientské počítače jsou členy domény, ale nechcete nastavení latence pobočkové mezipaměti nakonfigurovat ve všech klientských počítačích, můžete pro toto nastavení zásad skupiny pro danou doménu zvolit možnost Není nakonfigurováno a pak nakonfigurovat zásady místního počítače, čímž povolíte nastavení latence pobočkové mezipaměti v jednotlivých klientských počítačích. Jelikož nastavení zásad skupiny pro danou doménu není nakonfigurováno, nepřepíše se nastavení latence, které používáte v jednotlivých klientských počítačích.
+
+- Povoleno. Při zvolení této možnosti se nastavení mezipaměti BranchCache, které určuje maximální latenci sítě pro přijetí odezvy, zapne pro všechny klientské počítače, na které se tyto zásady vztahují. Pokud jsou například zásady Konfigurovat pobočkovou mezipaměť (BranchCache) pro síťové soubory povoleny v zásadách skupiny pro danou doménu, nastavení latence pobočkové mezipaměti, které zadáte v těchto zásadách, se zapne pro všechny klientské počítače, které jsou členy domény a na které se tyto zásady vztahují.
+
+- Zakázáno. Při zvolení této možnosti používají klientské počítače s podporou pobočkové mezipaměti výchozí nastavení latence 80 milisekund.
+
+Pokud je toto nastavení zásad povoleno, můžete rovněž zvolit a nakonfigurovat tuto možnost:
+
+- Zadat maximální latenci sítě pro přijetí odezvy (v milisekundách), po níž začne ukládání do mezipaměti. Tato položka určuje dobu v milisekundách, po jejímž uplynutí začnou klientské počítače podporující pobočkovou mezipaměť ukládat obsah do lokální mezipaměti.
+            
+            </string>
+
+            <string id="WBC_HostedCacheDiscovery_Enable">Povolit automatické zjišťování hostované mezipaměti podle spojovacího bodu služby</string>
+
+            <string id="WBC_HostedCacheDiscovery_Enable_Help">Toto nastavení zásad určuje, zda by se klientské počítače měly pokusit o automatické nakonfigurování režimu hostované mezipaměti vyhledáním serverů hostované mezipaměti publikujících spojovací body služby, které souvisejí s aktuální lokalitou služby Active Directory daného klientského počítače.  Pokud toto nastavení zásad povolíte, klientské počítače, na které se toto nastavení zásad vztahuje, vyhledají servery hostované mezipaměti využívající službu Active Directory a tyto servery spolu s režimem hostované mezipaměti upřednostní před manuálním nakonfigurováním pobočkové mezipaměti nebo jejím nakonfigurováním prostřednictvím jiných zásad skupiny.
+
+Pokud povolíte toto nastavení zásad spolu s nastavením zásad Zapnout funkci BranchCache, klientské počítače s podporou pobočkové mezipaměti se pokusí nalézt servery hostované mezipaměti v místní pobočce.  Pokud klientské počítače naleznou servery hostované mezipaměti, zapne se režim hostované mezipaměti.  Pokud klientské počítače nenaleznou servery hostované mezipaměti, režim hostované mezipaměti se nezapne a klient použije jakoukoli jinou konfiguraci, která je určena manuálně nebo pomocí zásad skupiny.
+
+Při použití tohoto nastavení zásad klientský počítač provádí nebo neprovádí automatické zjišťování serverů hostované mezipaměti za těchto okolností:
+
+Pokud nejsou uplatněna žádná jiná nastavení zásad na základě režimu pobočkové mezipaměti, klientský počítač provádí automatické zjišťování serverů hostované mezipaměti. Pokud je nalezen jeden nebo více serverů hostované mezipaměti, klientský počítač se sám nakonfiguruje pro režim hostované mezipaměti.
+
+Pokud spolu s těmito zásadami použijete nastavení zásad Nastavit režim distribuované mezipaměti BranchCache, klientský počítač provádí automatické zjišťování serverů hostované mezipaměti. Pokud je nalezen jeden nebo více serverů hostované mezipaměti, klientský počítač se sám nakonfiguruje pouze pro režim hostované mezipaměti.
+
+Při použití nastavení zásad Nastavit režim hostované mezipaměti BranchCache klientský počítač automatické zjišťování serverů hostované mezipaměti neprovádí. To platí také v případě použití nastavení zásad Konfigurovat servery hostované mezipaměti.
+
+Toto nastavení zásad lze uplatnit jen v klientských počítačích se systémem Windows 8 nebo novějším.  V počítačích se systémem Windows 7 nebo Windows Vista nemají tyto zásady žádný účinek.  
+
+Pokud toto nastavení zakážete nebo nenakonfigurujete, klient se nebude pokoušet nalézt servery hostované mezipaměti podle spojovacího bodu služby.
+
+Konfigurace zásad
+
+Zvolte jednu z těchto možností:
+
+- Není nakonfigurováno. Při zvolení této možnosti toto nastavení zásad neuplatní v klientských počítačích nastavení pobočkové mezipaměti, a klientské počítače tudíž neprovádějí zjišťování serverů hostované mezipaměti.
+
+- Povoleno. Při zvolení této možnosti se nastavení zásad uplatní v klientských počítačích, které budou provádět automatické zjišťování serverů hostované mezipaměti a které jsou nakonfigurovány jako klientské počítače pracující v režimu hostované mezipaměti.
+
+- Zakázáno. Při zvolení této možnosti se tyto zásady v klientských počítačích neuplatní.
+            
+            </string>
+
+            <string id="WBC_HostedCache_MultipleServers">Konfigurovat servery hostované mezipaměti</string>
+
+            <string id="WBC_HostedCache_MultipleServers_Help">Toto nastavení zásad určuje, zda jsou klientské počítače nakonfigurovány pro použití režimu hostované mezipaměti, a poskytuje název počítače jednotlivých serverů hostované mezipaměti, které jsou klientským počítačům k dispozici.  Režim hostované mezipaměti umožňuje klientským počítačům v pobočkách načítat obsah z jednoho nebo více serverů hostované mezipaměti, které jsou nainstalovány ve stejném umístění kanceláře.  Toto nastavení lze použít k automatickému nakonfigurování klientských počítačů pro režim hostované mezipaměti při použití názvů počítačů jednotlivých serverů hostované mezipaměti v pobočce.
+
+Pokud toto nastavení zásad povolíte a zadáte platné názvy počítačů pro jednotlivé servery hostované mezipaměti, povolí se režim hostované mezipaměti pro všechny klientské počítače, na které se toto nastavení zásad vztahuje. Aby se toto nastavení zásad projevilo, je nutné povolit rovněž nastavení zásad Zapnout funkci BranchCache.
+
+Toto nastavení zásad lze uplatnit jen v klientských počítačích se systémem Windows 8 nebo novějším.  V počítačích se systémem Windows 7 nebo Windows Vista nemají tyto zásady žádný účinek.  Klientské počítače, ve kterých se toto nastavení zásad spolu s nastavením zásad Nastavit režim hostované mezipaměti BranchCache uplatní, používají servery hostované mezipaměti, které jsou uvedeny v tomto nastavení zásad, a nepoužívají server hostované mezipaměti, který je nakonfigurován v nastavení zásad Nastavit režim hostované mezipaměti BranchCache.
+
+Pokud toto nastavení zásad nenakonfigurujete nebo pokud je zakážete, klientské počítače, které jsou nakonfigurovány s režimem hostované mezipaměti, budou i nadále fungovat správně.
+
+Konfigurace zásad
+
+Zvolte jednu z těchto možností:
+
+- Není nakonfigurováno. Při zvolení této možnosti toto nastavení zásad neuplatní v klientských počítačích nastavení pobočkové mezipaměti.
+
+- Povoleno. Při zvolení této možnosti se nastavení zásad uplatní v klientských počítačích, které jsou nakonfigurovány jako klientské počítače pracující v režimu hostované mezipaměti a používají servery hostované mezipaměti uvedené v seznamu Servery hostované mezipaměti.
+
+- Zakázáno. Při zvolení této možnosti se toto nastavení zásad neuplatní v klientských počítačích.
+
+Pokud je toto nastavení povoleno, můžete rovněž zvolit a nakonfigurovat tuto možnost:
+
+- Servery hostované mezipaměti. Chcete-li do tohoto nastavení zásad přidat názvy počítačů jednotlivých serverů hostované mezipaměti, klikněte na možnost Povoleno a poté klikněte na tlačítko Zobrazit. Otevře se dialogové okno Zobrazit obsah. Klikněte na možnost Hodnota a zadejte názvy počítačů jednotlivých serverů hostované mezipaměti.
+            
+            </string>
+
+            <string id="WBC_Downgrading">Konfigurovat podporu verzí mezipaměti BranchCache v klientském počítači</string>
+
+            <string id="WBC_Downgrading_Help">Toto nastavení zásad určuje, zda klientské počítače s podporou mezipaměti BranchCache pracují v režimu nižší verze za účelem zachování kompatibility s předchozími verzemi mezipaměti BranchCache.  Pokud klientské počítače nepoužívají stejnou verzi mezipaměti BranchCache, může být účinnost vyrovnávací paměti snížena, protože klientské počítače, které používají různé verze mezipaměti BranchCache, by mohly ukládat data do vyrovnávací paměti v navzájem nekompatibilních formátech.
+
+Pokud toto nastavení zásady povolíte, všechny klientské počítače budou používat verzi mezipaměti BranchCache, kterou zadáte v položce Vybrat z těchto verzí.
+
+Pokud toto nastavení nenakonfigurujete, všechny klientské počítače budou používat verzi mezipaměti BranchCache, která odpovídá jejich operačnímu systému.
+
+Konfigurace zásad
+
+Zvolte jednu z těchto možností:
+
+- Není nakonfigurováno. Při zvolení této možnosti se toto nastavení zásad neuplatní v klientských počítačích, takže ty budou používat verzi mezipaměti BranchCache, která je součástí jejich operačního systému.
+
+- Povoleno. Při zvolení této možnosti se toto nastavení zásad uplatní v klientských počítačích podle hodnoty, kterou nastavíte pro položku Vybrat z těchto verzí.
+
+- Zakázáno. Při zvolení této možnosti se toto nastavení zásad neuplatní v klientských počítačích, takže ty budou používat verzi mezipaměti BranchCache, která je součástí jejich operačního systému.
+
+Pokud je toto nastavení povoleno, můžete rovněž zvolit a nakonfigurovat tuto možnost:
+
+Vybrat z těchto verzí
+
+- Windows Vista s nainstalovanou službou BITS 4.0, Windows 7 nebo Windows Server 2008 R2. Zvolíte-li tuto verzi, novější verze systému Windows budou namísto novější verze mezipaměti BranchCache používat verzi mezipaměti BranchCache, která je součástí těchto operačních systémů.
+
+- Windows 8. Zvolíte-li tuto verzi, bude systém Windows 8 používat verzi mezipaměti BranchCache, která je součástí tohoto operačního systému.
+            
+            </string>
+
+            <string id="WBC_Downgrading_Version_Win7">Windows Vista s nainstalovanou službou BITS 4.0, Windows 7 nebo Windows Server 2008 R2.</string>
+            <string id="WBC_Downgrading_Version_Win8">Windows 8</string>
+
+            <string id="WBC_Cache_MaxAge">Nastavit stáří pro segmenty v datové mezipaměti</string>
+
+            <string id="WBC_Cache_MaxAge_Help">Toto nastavení zásad určuje výchozí stáří vyjádřené počtem dní, po které jsou segmenty platné v datové mezipaměti BranchCache v klientských počítačích.
+
+Pokud toto nastavení zásad povolíte, můžete nakonfigurovat stáří pro segmenty v datové mezipaměti.
+
+Pokud toto nastavení zásad zakážete nebo nenakonfigurujete, nastaví se stáří na 28 dní.
+
+Konfigurace zásad
+
+Zvolte jednu z těchto možností:
+
+- Není nakonfigurováno. Při zvolení této možnosti zásady neuplatní v klientských počítačích nastavení stáří pobočkové mezipaměti klientských počítačů. V případě, že klientské počítače jsou členy domény, ale nechcete nastavení stáří pobočkové mezipaměti klientských počítačů nakonfigurovat ve všech klientských počítačích, můžete pro toto nastavení zásady skupiny pro danou doménu zvolit možnost Není nakonfigurováno a pak nakonfigurovat zásadu místního počítače, čímž povolíte nastavení stáří pobočkové mezipaměti klientských počítačů v jednotlivých klientských počítačích. Jelikož nastavení zásad skupiny pro danou doménu není nakonfigurováno, nepřepíše se nastavení stáří mezipaměti klientských počítačů, které používáte v jednotlivých klientských počítačích.
+
+- Povoleno. Při zvolení této možnosti se nastavení stáří pobočkové mezipaměti klientských počítačů zapne pro všechny klientské počítače, na které se tyto zásady vztahují. Pokud je například toto nastavení zásad povoleno v zásadách skupiny pro danou doménu, nastavení stáří pobočkové mezipaměti klientských počítačů, které zadáte v této zásadě, se zapne pro všechny klientské počítače, které jsou členy domény a na které se tyto zásady vztahují.
+
+- Zakázáno. Při zvolení této možnosti se pro nastavení pobočkové mezipaměti klientských počítačů použije výchozí nastavení stáří mezipaměti klientských počítačů v délce 28 dní.
+
+Pokud je toto nastavení povoleno, můžete rovněž zvolit a nakonfigurovat tuto možnost:
+
+- Určit stáří vyjádřené počtem dní, po které jsou segmenty v datové mezipaměti platné.
+            
             </string>
 
         </stringTable>
@@ -71,6 +247,7 @@ Pokud nastavení této zásady zakážete nebo nenakonfigurujete, bude klientsk�
             </presentation>
 
             <presentation id="WBC_Cache_Size_Percent_Presentation">
+                <text>Určit procentuální hodnotu celkového místa na disku vyhrazeného pro mezipaměť</text>
                 <decimalTextBox refId="WBC_Cache_Size_Percent_dctxtbox" defaultValue="5" spinStep="5">
                 </decimalTextBox>
             </presentation>
@@ -83,13 +260,28 @@ Pokud nastavení této zásady zakážete nebo nenakonfigurujete, bude klientsk�
 
             <presentation id="WBC_Hosted_Cache_Location_TextBox">
                 <textBox refId="WBC_Cache_TextBox">
-                    <label>Zadat umístění hostované mezipaměti</label>
+                    <label>Zadat název serveru hostované mezipaměti</label>
                 </textBox>
             </presentation>
 
             <presentation id="WBC_SMB_DecimalTextBox">
-              <text>Zadat hodnotu latence sítě pro přijetí odezvy v milisekundách, nad kterou budou muset být síťové soubory ukládány do pobočkové mezipaměti</text>  
+              <text>Zadat maximální latenci sítě pro přijetí odezvy (v milisekundách), po níž začne ukládání do mezipaměti</text>  
               <decimalTextBox refId="WBC_SMBLatency_DecimalTextBox" defaultValue="80" spinStep="20">
+                </decimalTextBox>
+            </presentation>
+
+            <presentation id="WBC_MultipleServers">
+              <text>Servery hostované mezipaměti</text>  
+              <listBox refId="WBC_MultipleServers_Listbox"/>
+            </presentation>
+
+            <presentation id="WBC_Downgrading_VersionSelection">
+              <dropdownList refId="Downgrading_Version" noSort="true" defaultItem="0">Vybrat z těchto verzí:</dropdownList>
+            </presentation>
+
+            <presentation id="WBC_Cache_MaxAge_Presentation">
+                <text>Určit stáří vyjádřené počtem dní, po které jsou segmenty v datové mezipaměti platné</text>
+                <decimalTextBox refId="WBC_Cache_MaxAge_dctxtbox" defaultValue="28" spinStep="5">
                 </decimalTextBox>
             </presentation>
 

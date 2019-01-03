@@ -1,138 +1,134 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--  (c) 2006 Microsoft Corporation  -->
-<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+<policyDefinitionResources xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0">
   <displayName>请在此处输入显示名称</displayName>
   <description>请在此处输入描述</description>
   <resources>
     <stringTable>
-      <string id="AllowWebPrinting">基于 Web 的打印</string>
-      <string id="AllowWebPrinting_Help">确定是否在此服务器上激活 Internet 打印。
+      <string id="AllowWebPrinting">激活 Internet 打印</string>
+      <string id="AllowWebPrinting_Help">使用 Internet 打印，可以在 Web 页面上显示打印机，以便通过 Internet 或 Intranet 查看、管理和使用打印机。
 
-Internet 打印允许在 Web 页面上显示打印机，以便通过 Internet 或 Intranet 查看、管理和使用打印机。
+          如果启用此策略设置，则系统将激活此服务器上的 Internet 打印。
 
-Internet 打印是 Internet 信息服务 (IIS) 的扩展。若要使用 Internet 打印，必须安装 IIS，并且必须启用打印支持和此设置。
+          如果禁用或未配置此策略设置，则 Internet 打印不可用。
 
-注意: 此设置仅影响 Internet 打印的服务器端，并不阻止计算机上的打印客户端通过 Internet 打印。
+          Internet 打印是 Internet 信息服务(IIS)的扩展。若要使用 Internet 打印，则必须安装 IIS，并且必须启用打印支持和此设置。
 
-还可参阅此文件夹内的“在‘打印机’文件夹的左窗格中自定义支持 URL”设置和“用户配置\管理模板\控制台\打印机” 中的“浏览共用网站以查找打印机”设置。</string>
-      <string id="AutoPublishing">自动在 Active Directory 上公布新的打印机</string>
-      <string id="AutoPublishing_Help">确定添加打印机向导是否在 Active Directory 中自动发布计算机的共享打印机。
+          注意: 此设置仅影响 Internet 打印的服务器端，而不会阻止计算机上的打印客户端通过 Internet 打印。
 
-如果启用或未配置此设置，添加打印机向导将自动发布所有共享打印机。
+          另请参阅此文件夹中的“在‘打印机’文件夹的左窗格中自定义支持 URL”设置和“用户配置\管理模板\控制面板\打印机”中的“浏览共用网站以查找打印机”设置。</string>
+      <string id="ApplicationDriverIsolation">将打印驱动程序和应用程序隔离</string>
+      <string id="ApplicationDriverIsolation_Help">确定打印驱动程序组件是否与应用程序隔离，而不是像平时一样将其加载到应用程序。隔离打印驱动程序会显著降低打印驱动程序故障引起应用程序崩溃的风险。
 
-如果禁用此设置，添加打印机向导不会自动发布打印机。 但是，可以手动发布共享打印机。
+不是所有的应用程序都支持驱动程序隔离。默认情况下，Microsoft Excel 2007、Excel 2010、Word 2007、Word 2010 以及某些其他应用程序经过配置可支持应用程序隔离。其他应用程序也可隔离打印驱动程序，具体取决于是否经过配置。
 
-默认行为是在 Active Directory 中自动发布共享打印机。
+如果启用或未配置此策略设置，则配置为支持驱动程序隔离的应用程序也会被隔离。
 
-注意: 如果禁用“允许发布打印机”设置，将忽略此设置。</string>
+如果禁用此策略设置，则系统将在所有相关应用程序进程中加载打印驱动程序。
+
+注意:
+- 此策略设置仅适用于被选择隔离的应用程序。
+- 此策略设置仅适用于由应用程序加载的打印驱动程序。由后台处理程序加载的打印驱动程序不受影响。
+- 此策略设置仅在进程生存期间检查一次。更改策略后，必须重新启动正在运行的应用程序才能使设置生效。</string>
       <string id="CplPrinters">打印机</string>
       <string id="CplPrinters_Help">管理网络打印机配置和发布选项。</string>
       <string id="CustomizedSupportUrl">在“打印机”文件夹的左窗格中自定义支持 URL</string>
-      <string id="CustomizedSupportUrl_Help">在“打印机”文件夹中添加自定义的网页链接。
+      <string id="CustomizedSupportUrl_Help">默认情况下，“打印机”文件夹包含名为“获取有关打印的帮助”的 Microsoft 支持网页链接。还包含由当前所选打印机的供应商提供的网页链接。
 
-在默认情况下，“打印机”文件夹包含连接到 Microsoft 支持网页“获得打印帮助”的链接，还包括由当前选中打印机的供应商提供的网页链接。
+          如果启用此策略设置，则可以将“获取有关打印的帮助”的默认链接替换为所在企业的自定义网页链接。
 
-可以使用这个设置将“获得打印帮助”的默认链接替换成企业的自定义网页链接。
+          如果禁用或未配置此策略设置，或者没有输入备用 Internet 地址，则默认链接会显示在“打印机”文件夹中。
 
-如果禁用或未配置此设置，或者没有输入另一个 Internet 地址，则默认的链接会出现在“打印机”文件夹中。
+          注意: 启用 Web 视图后，网页链接仅显示在“打印机”文件夹中。如果禁用 Web 视图，则该设置无效。(若要启用 Web 视图，请打开“打印机”文件夹，在“工具”菜单上单击“文件夹选项”，再单击“常规”选项卡，然后单击“启用文件夹中的 Web 内容”。)
 
-注意: 启用 Web 查看后，网页链接仅出现在“打印机”文件夹中。如果禁用 Web 查看，该设置不会生效。(若要启用 Web 查看，打开“打印机”文件夹并且从“工具”菜单中单击“文件夹选项”，单击“常规”选项卡，然后单击“启用文件夹中的 Web 内容”。)
+          另请参阅此设置文件夹中的“激活 Internet 打印”设置和“用户配置\管理模板\控制面板\打印机”中的“浏览共用网站以查找打印机”设置。
 
-还可参阅此文件夹中的“基于 Web 的打印”设置和“用户配置\管理模板\控制面板\打印机”中的“浏览共用网站以查找打印机”设置。
+          影响 Web 视图的设置有“用户配置\管理模板\Windows 组件\Windows Explorer”中“启用经典 shell”和“不允许通过彩带的‘视图’选项卡上的‘选项’按钮打开的文件夹选项”设置，以及“用户配置\管理模板\桌面\Active Desktop”中的“启用 Active Desktop”设置。</string>
+      <string id="DomainDisplayPrinters_Help">如果启用此策略设置，则该策略设置添加打印机向导将在托管网络(计算机可以到达域控制器时，例如企业网络中加入到域的便携式计算机)中的计算机上显示的打印机(各种类型)最大数目。
 
-影响 Web 查看的设置有“用户配置\管理模板\Windows 组件\Windows 资源管理器”中的“启用经典外观”和“从‘工具’菜单中删除‘文件夹选项’菜单”设置，以及“用户配置\管理模板\桌面\Active Desktop”中的“启用 Active Desktop”设置。</string>
-      <string id="DomainDisplayPrinters_Help">此策略设置添加打印机向导将在托管网络(计算机可以到达域控制器时，例如企业网络中加入到域的便携式计算机)中的计算机上显示的打印机(各种类型)最大数目。
+          如果禁用此策略设置，则将不会显示网络扫描页。
 
-若要查看网络上可用的 Web 服务打印机，请确保已启用网络发现。若要启用网络发现，请依次单击“开始”、“控制面板”和“网络和 Internet”。在“网络和 Internet”页上，单击“网络和共享中心”。在“网络和共享中心”页上，单击“更改高级共享设置”。在“高级共享设置”页上，单击“域”箭头旁的箭头，单击“启用网络发现”，然后单击“保存更改”。
+          如果未配置此策略设置，则添加打印机向导将显示各种类型打印机的默认数目:
+          目录打印机: 20
+          TCP/IP 打印机: 0
+          Web 服务打印机: 0
+          Bluetooth 打印机: 10
+          共享打印机: 0
 
-如果禁用此设置，将不会显示网络扫描页。
+          若要查看网络中可用的 Web 服务打印机，请确保启用网络发现。若要启用网络发现，请依次单击“开始”、“控制面板”和“网络和 Internet”。在“网络和 Internet”页上，单击“网络和共享中心”。在“网络和共享中心”页上，单击“更改高级共享设置”。在“高级共享设置”页上，单击“域”箭头旁的箭头，单击“启用网络发现”，然后单击“保存更改”。
 
-如果未配置此设置，则添加打印机向导将显示每种类型打印机的默认数目:
-目录打印机: 20
-TCP/IP 打印机: 0
-Web 服务打印机: 0
-Bluetooth 打印机: 10
-共享打印机: 0
-
-如果希望不显示特定类型的打印机，请启用此策略并将显示的打印机数目设置为 0。
-</string>
-      <string id="DomainPrinters">添加打印机向导 — 网络扫描页(受管理网络)</string>
+          如果希望不显示特定类型的打印机，请启用此策略并将显示的打印机数目设置为 0。</string>
+      <string id="DomainPrinters">添加打印机向导 — 网络扫描页(托管网络)</string>
       <string id="DownlevelBrowse">浏览网络以便查找打印机</string>
       <string id="DownlevelBrowse_Help">允许用户使用添加打印机向导来搜索网络上共享的打印机。
 
 如果启用或未配置此设置，当用户通过在添加打印机向导的第二页上选择“网络打印机，或者在另一台计算机上的打印机”选项来添加网络打印机后，选中添加打印机向导第三页上的“连接到此打印机(或浏览打印机，选择此选项并单击‘下一步’)”选项，并且没有在旁边的“名称”编辑框中指定打印机名称，则添加打印机向导会显示网络上共享的打印机列表，可从显示的列表中选择打印机。
 
-如果禁用此设置，网络打印机浏览页将从添加打印机向导中删除，这样用户将无法搜索网络打印机，必须键入打印机名称。
+如果禁用此设置，则网络打印机浏览页将从添加打印机向导中删除，从而用户将无法搜索网络打印机，但必须键入打印机名称。
 
-注意: 此设置仅影响添加打印机向导，不会阻止用户使用其他程序来搜索共享的打印机或连接到网络打印机。</string>
+注意: 此设置仅影响添加打印机向导，但不会妨碍用户使用其他程序搜索共享的打印机或连接到网络打印机。</string>
       <string id="EMFDespooling">始终在服务器上呈现打印作业</string>
-      <string id="EMFDespooling_Help">通过打印服务器打印时，此设置将确定客户端上的后台打印程序是自己处理打印作业，还是将打印作业传递到服务器，由服务器来完成打印。
+      <string id="EMFDespooling_Help">通过打印服务器打印时，此设置将确定客户端上的后台处理程序是自己处理打印作业，还是将打印作业传递到服务器，由服务器来完成打印。
 
 此设置仅影响到 Windows 打印服务器的打印。
 
-如果在客户端计算机上启用此策略设置，则在将打印作业发送到打印服务器之后，客户端后台打印程序才开始处理打印作业。这将减少客户端上的工作量，但会增加服务器上的负载。
+如果在客户端计算机上启用此策略设置，则在将打印作业发送到打印服务器之后，客户端后台处理程序才开始处理打印作业。这将减少客户端上的工作量，但会增加服务器上的负载。
 
-如果在客户端计算机上禁用此策略设置，客户端自己会将打印作业处理为打印机设备命令。然后，这些命令会发送到打印服务器，打印服务器则只是简单地将命令传递到打印机。这将增加客户端上的工作量，但会减少服务器上的负载。
+如果在客户端计算机上禁用此策略设置，则客户端自己会将打印作业处理为打印机设备命令。然后，这些命令会发送到打印服务器，打印服务器则只是简单地将命令传递到打印机。这将增加客户端上的工作量，但会减少服务器上的负载。
 
 如果不启用此策略设置，其行为等同于禁用。
 
-注意: 此策略并不确定客户端是否可以脱机打印。未连接到打印服务器时，客户端后台打印程序始终会将打印作业添加到队列。当重新连接到服务器时，客户端将提交所有待完成的打印作业。
+注意: 此策略并不确定客户端是否可以脱机打印。未连接到打印服务器时，客户端后台处理程序始终会将打印作业添加到队列。当重新连接到服务器时，客户端将提交所有待完成的打印作业。
 
-注意: 某些打印机驱动程序要求自定义打印处理器。在某些情况下，客户端计算机上可能未安装自定义打印处理器，例如在打印服务器不支持在指向并打印期间传输打印处理器时。当打印处理器不匹配时，客户后台打印程序始终将作业发送至打印服务器用于呈现作业。禁用上述策略设置并不会抑制此行为。
+注意: 某些打印机驱动程序要求自定义打印处理器。在某些情况下，客户端计算机上可能未安装自定义打印处理器，例如在打印服务器不支持在指向并打印期间传输打印处理器时。当打印处理器不匹配时，客户后台处理程序始终将作业发送至打印服务器用于呈现作业。禁用上述策略设置并不会抑制此行为。
 
 注意: 如果客户端打印驱动程序与服务器打印驱动程序不匹配(连接不匹配)，则无论此策略的设置如何，客户端始终会处理打印作业。</string>
-      <string id="ImmortalPrintQueue">允许修剪已公布的打印机</string>
-      <string id="ImmortalPrintQueue_Help">确定域控制器是否可以修剪(从 Active Directory 删除)这台计算机发布的打印机。
+      <string id="ForceSWRas">始终使用软件光栅器来光栅化要打印的内容</string>
+      <string id="ForceSWRas_Help">确定是否强制 XPS 光栅化服务或 XPS-to-GDI 转换(XGC)使用软件光栅器来代替图形处理软件(GPU)来光栅化页面。
 
-在默认情况下，如果发布打印机的计算机不响应连接请求，域控制器上的修剪服务则从 Active Directory 修剪打印机对象。发布打印机的计算机重新启动时，会重新发布已删除的打印机对象。
-
-如果启用或未配置这个设置，当计算机不响应时，域控制器会修剪这台计算机的打印机。
-
-如果禁用这个设置，域控制器不会修剪这台计算机的打印机。这个设置是用于当计算机与网络的连接临时中断时防止修剪打印机。
-
-注意: 可以使用“目录修剪间隔”和“目录修剪重试”设置来调整连接间隔和连接次数。</string>
+在具有相对强大 CPU 的计算机上，与安装的图形处理软件相比，此设置能够提高计算机上 XPS 光栅化服务或 XPS-to-GDI 转换(XGC)的性能。</string>
       <string id="IntranetPrintersUrl">浏览共用网站以查找打印机</string>
       <string id="IntranetPrintersUrl_Help">将连接 Internet 或 Intranet 网页的链接添加到添加打印机向导中。
 
-可以使用这个设置将用户引导到可安装打印机的网页。
+          可以使用此设置将用户引导到可安装打印机的网页。
 
-如果启用这个设置，并在文字框中键入 Internet 或 Intranet 地址，系统会将“浏览”按钮加到添加打印机向导的“指定打印机”页中。“浏览”按钮会出现在“连接到在 Internet 或家庭或办公室网络上的打印机”选项旁边。当用户单击“浏览”，系统会打开 Internet 浏览器并跳到指定的 URL 地址来显示可用打印机。
+          如果启用此设置，并在文字框中键入 Internet 或 Intranet 地址，则系统会将“浏览”按钮加到添加打印机向导中的“指定打印机”页中。“浏览”按钮会显示在“连接到在 Internet 或家庭或办公室网络上的打印机”选项旁边。当用户单击“浏览”时，系统会打开 Internet 浏览器并跳到指定的 URL 地址来显示可用打印机。
 
-这个设置可以快速找到要添加的打印机。
+          这个设置可以快速找到要添加的打印机。
 
-请参阅“计算机配置\管理模板\打印机”中的“在‘打印机’文件夹的左窗格中自定义支持 URL”和“基于 Web 的打印”设置。</string>
+          另请参阅“计算机配置\管理模板\打印机”中的“在‘打印机’文件夹的左窗格中自定义支持 URL”和“激活 Internet 打印”设置。</string>
       <string id="KMPrintersAreBlocked">不允许安装使用内核模式驱动程序的打印机</string>
-      <string id="KMPrintersAreBlocked_Help">确定使用内核模式驱动程序的打印机是否可以安装在本地计算机上。  内核模式驱动程序可以访问系统范围的内存，因此编写不当的内核模式驱动程序可能造成停止错误。
+      <string id="KMPrintersAreBlocked_Help">确定使用内核模式驱动程序的打印机是否可以安装在本地计算机上。 内核模式驱动程序可以访问系统范围的内存，因此编写不当的内核模式驱动程序可能造成停止错误。
 
 如果禁用或未配置此设置，则使用内核模式驱动程序的打印机可以安装在运行 Windows XP Home Edition 和 Windows XP Professional 的本地计算机上。
 
-如果在 Windows Server 2003 系列产品上没有配置此设置，将阻止安装内核模式打印机驱动程序。
+如果在 Windows Server 2003 系列产品上没有配置此设置，则将阻止安装内核模式打印机驱动程序。
 
-如果启用此设置，将不允许安装使用内核模式驱动程序的打印机。
+如果启用此设置，则将不允许安装使用内核模式驱动程序的打印机。
 
-注意: 应用此策略后，当安装 Service Pack 或重新安装 Windows XP 操作系统时会禁用现有的内核模式驱动程序。 此策略不适用于 64 位内核模式打印机驱动程序，因为这些驱动程序无法安装且不能与打印队列关联。</string>
+注意: 应用此策略后，当安装 Service Pack 或重新安装 Windows XP 操作系统时会禁用现有的内核模式驱动程序。此策略不适用于 64 位内核模式打印机驱动程序，因为这些驱动程序无法安装且不能与打印队列关联。</string>
       <string id="NoAddPrinter">阻止添加打印机</string>
-      <string id="NoAddPrinter_Help">防止用户使用常见方法添加本地打印机及网络打印机。
+      <string id="NoAddPrinter_Help">阻止用户使用常见方法添加本地打印机及网络打印机。
 
-这个设置会从“开始”菜单中删除“添加打印机”选项。(若要找到“添加打印机”选项，单击“开始”，单击“打印机”，然后单击“添加打印机”。)此设置还将从“控制面板”中的“打印机”文件夹中删除“添加打印机”。
+          如果启用此策略设置，则该设置将从“开始”菜单中删除“添加打印机”选项。(若要查找“添加打印机”选项，请依次单击“开始”、“打印机”和“添加打印机”。)此设置还将从“控制面板”中的“打印机”文件夹中删除“添加打印机”。
 
-用户同样不能通过将打印机图标拖放到“打印机”文件夹的方式来添加打印机。如果这样做，会显示一条消息，说明该设置禁止执行此操作。
+          用户同样不能通过将打印机图标拖放到“打印机”文件夹的方式来添加打印机。如果这样做，会显示一条消息，说明该设置禁止执行此操作。
 
-但是，这个设置无法阻止用户使用“添加硬件向导”添加打印机，也无法组织用户通过运行其他程序添加打印机。
+          但是，此设置不会阻止用户使用添加硬件向导来添加打印机，也不会阻止用户运行其他程序来添加打印机。
 
-这个设置不会删除已添加的打印机。但是，如果用户在应用该设置后添加打印机，则无法打印。
+          此设置不会删除已添加的打印机。但是，如果用户在应用该设置后添加打印机，则无法打印。
 
-注意: 可以使用打印机权限在不指定设置的情况下限制打印机的使用。在“打印机”文件夹中，用鼠标右键单击打印机，单击“属性”，然后单击“安全”选项卡。
+          注意: 可以使用打印机权限在不指定设置的情况下限制打印机的使用。在“打印机”文件夹中，右键单击某个打印机，再单击“属性”，然后单击“安全”选项卡。
 
-如果禁用或未配置此策略，用户可以使用上述方法添加打印机。</string>
-      <string id="NoDeletePrinter">防止删除打印机</string>
-      <string id="NoDeletePrinter_Help">防止用户删除本地打印机和网络打印机。
+          如果禁用或未配置此策略，则用户可以使用上述方法添加打印机。</string>
+      <string id="NoDeletePrinter">阻止删除打印机</string>
+      <string id="NoDeletePrinter_Help">如果启用此策略设置，则将阻止用户删除本地和网络打印机。
 
-如果用户试图删除打印机，例如使用“控制面板”中“打印机”中的“删除”选项来删除打印机，会显示一条消息，说明该设置组织执行此操作。
+          如果用户试图删除打印机，例如使用“控制面板”中“打印机”中的“删除”选项来删除打印机，则会显示一条消息，说明该设置阻止执行此操作。
 
-这个设置无法阻止用户使用其他程序删除打印机。
+          这个设置无法阻止用户使用其他程序删除打印机。
 
-如果禁用或未配置此策略，用户可以使用上述方法删除打印机。</string>
+          如果禁用或未配置此策略，则用户可以使用上述方法删除打印机。</string>
       <string id="NonDomainDisplayPrinters_Help">此策略可设置添加打印机向导将在非托管网络(当计算机可以连接域控制器时，如家庭网络中加入到域的便携式计算机)中的计算机上显示的打印机(各种类型)最大数目。
 
 如果禁用此设置，将不会显示网络扫描页。
@@ -148,283 +144,156 @@ Bluetooth 打印机: 10
       <string id="PackagePointAndPrintOnly">仅使用程序包指向并打印</string>
       <string id="PackagePointAndPrintOnly_Help">此策略限制客户端计算机仅使用程序包指向并打印。
 
-如果启用此设置，则用户将只能指向并打印到使用有程序包意识的驱动程序的打印机。 使用程序包指向并打印时，客户端计算机将检查从打印机服务器下载的所有驱动程序的驱动程序签名。
+如果启用此设置，则用户将只能指向并打印到使用有程序包意识的驱动程序的打印机。使用程序包指向并打印时，客户端计算机将检查从打印机服务器下载的所有驱动程序的驱动程序签名。
 
-如果禁用或未配置此设置，则不会将用户限制为只能有程序包意识的指向并打印。
-</string>
-
+如果禁用或未配置此设置，则不会将用户限制为只能有程序包意识的指向并打印。</string>
       <string id="SUPPORTED_XPSP1_through_Server_2008_RTM">支持 Windows XP SP1 至 Windows Server 2008 RTM</string>
       <string id="PackagePointAndPrintServerList">程序包指向并打印 — 批准的服务器</string>
       <string id="PackagePointAndPrintServerList_Help">限制程序包指向并打印到批准的服务器。
 
 此策略设置将程序包指向和打印连接限制到批准的服务器。此设置仅适用于程序包指向和打印连接，它完全独立于“指向和打印限制”策略，该策略用于控制非程序包指向和打印连接的行为。
 
-在程序包指向和打印连接失败时，Windows Vista 和更高版本的客户端将尝试建立非程序包指向和打印连接，包括由此策略阻止的尝试。管理员可能需要同时设置两个策略，以阻止所有到特定打印服务器的打印连接。
+在程序包指向和打印机连接失败时，Windows Vista 和更高版本的客户端将尝试建立非程序包指向和打印连接，包括由此策略阻止的尝试。管理员可能需要同时设置两个策略，以阻止所有到特定打印服务器的打印连接。
 
-如果启用此设置，则用户只能将程序包指向并打印到由网络管理员批准的打印服务器。使用程序包指向和打印时，客户端计算机将检查从打印机服务器下载的所有驱动程序的驱动程序签名。
+如果启用此设置，则用户只能将程序包指向并打印到由网络管理员批准的打印服务器。使用程序包指向并打印时，客户端计算机将检查从打印机服务器下载的所有驱动程序的驱动程序签名。
 
 如果禁用或未配置此设置，则不会将程序包指向和打印限制到特定打印服务器。</string>
       <string id="PhysicalLocation">计算机的位置</string>
-      <string id="PhysicalLocation_Help">指定搜索打印机时使用的默认位置条件。
+      <string id="PhysicalLocation_Help">如果启用此策略设置，则该设置将指定搜索打印机时使用的默认位置条件。
 
-这个设置是 Windows 打印机的位置跟踪功能的一个组件。 若要使用这个设置，通过启用“预设打印机搜索位置文本”设置来启用位置跟踪。
+          这个设置是 Windows 打印机的位置跟踪功能的一个组件。若要使用此设置，请通过启用“预设打印机搜索位置文本”设置来启用位置跟踪。
 
-启用位置跟踪后，系统会将指定的位置用作用户搜索打印机时的条件。 在此处键入的值会替代执行搜索的计算机的实际位置。
+          启用位置跟踪后，系统会将指定的位置用作用户搜索打印机时的条件。在此处键入的值会替代执行搜索的计算机的实际位置。
 
-键入用户计算机的位置。 用户搜索打印机时，系统使用指定的位置(和其他搜索标准)查找附近的打印机。 也可以使用这个设置将用户指引到希望他们使用的特定打印机或打印机组。
+          键入用户计算机的位置。用户搜索打印机时，系统使用指定的位置(和其他搜索标准)查找附近的打印机。也可以使用此设置将用户指引到希望他们使用的特定打印机或打印机组。
 
-如果禁用或未配置这个设置，且用户没有键入位置作为搜索标准，则系统根据用户计算机的 IP 地址和子网掩码来搜索附近的打印机。
-      </string>
+          如果禁用或未配置此设置，且用户没有键入位置作为搜索标准，则系统根据用户计算机的 IP 地址和子网掩码来搜索附近的打印机。</string>
       <string id="PhysicalLocationSupport">预设打印机搜索位置文本</string>
       <string id="PhysicalLocationSupport_Help">启用 Windows 打印机的物理位置跟踪设置。
 
 使用位置跟踪可以为企业设计位置方案并将计算机和打印机分配到方案中的位置。位置跟踪会替代用于定位和关联计算机与打印机的标准方法。该标准方法使用打印机的 IP 地址和子网掩码来评估其物理位置以及与计算机的相邻关系。
 
-如果启用此设置，用户可以在不知道打印机的位置或位置命名方案的情况下，根据位置浏览打印机。如果启用位置跟踪，则将在添加打印机向导的“打印机名称和共享位置”屏幕以及打印机“属性”对话框中的“常规”选项卡上添加“浏览”按钮。如果启用组策略计算机位置设置，在默认情况下，输入的默认位置会显示在“位置”字段中。
+如果启用此设置，则用户可以在不知道打印机的位置或位置命名方案的情况下，根据位置浏览打印机。如果启用位置跟踪，则将在添加打印机向导的“打印机名称和共享位置”屏幕以及打印机“属性”对话框中的“常规”选项卡上添加“浏览”按钮。如果启用组策略计算机位置设置，则在默认情况下，输入的默认位置会显示在“位置”字段中。
 
-如果禁用或未配置这个设置，位置跟踪将禁用。打印机的相邻关系是使用标准方法(即，根据 IP 地址和子网掩码)估计的。
-        </string>
-        <string id="PointAndPrint_Restrictions">指向并打印限制</string>
-      <string id="PointAndPrint_Restrictions_Help">
+如果禁用或未配置此设置，则将禁用位置跟踪。打印机的相邻关系是使用标准方法(即，根据 IP 地址和子网掩码)估计的。</string>
+      <string id="PointAndPrint_Restrictions">指向并打印限制</string>
+      <string id="PointAndPrint_Restrictions_Help">此策略设置控制客户端指向和打印行为，包括 Windows Vista 计算机的安全提示。此策略设置仅适用于非打印管理员客户端，并且仅适用于域成员计算机。
 
-此策略设置可控制客户端指向和打印行为，包括 Windows Vista 计算机的安全提示。此策略设置仅适用于非打印管理员客户端，并且仅适用于域成员计算机。
+          如果启用此策略设置:
+          - Windows XP 及更高版本的客户端将仅从显式命名的服务器列表中下载打印驱动器组件。如果客户端有兼容的打印驱动程序，则建立打印机连接。如果客户端没有兼容的打印驱动程序，则不建立任何连接。
+          - 可以配置 Windows Vista 客户端，以便在用户指向和打印时或打印机连接驱动程序需要更新时，不会出现安全警告和提升的命令提示符。
 
-启用此策略设置时:
--Windows XP 和更高版本的客户端将仅从显式命名的服务器的列表中下载打印驱动程序组件。如果客户端有兼容的打印驱动程序，则建立打印机连接。如果客户端没有兼容的打印驱动程序，则不建立任何连接。
--您可以配置 Windows Vista 客户端，以便在用户指向和打印时或打印机连接驱动程序需要更新时，不会出现安全警告和提升的命令提示符。
+          如果未配置此策略设置:
+          - Windows Vista 客户端计算机可以指向和打印到任意服务器。
+          - 当用户使用指向和打印创建到任意服务器的打印机连接时，Windows Vista 计算机将显示警告和提升的命令提示符。
+          - 当现有的打印机连接驱动程序需要更新时，Windows Vista 计算机将显示警告和提升的命令提示符。
+          - Windows Server 2003 和 Windows XP 客户端计算机可以使用指向和打印创建到其林中任意服务器的打印机连接。
 
-未配置此策略设置时:
--Windows Vista 客户端计算机可指向和打印到任意服务器。
--当用户使用指向和打印创建到任意服务器的打印机连接时，Windows Vista 计算机将显示警告和提升的命令提示符。
--当现有的打印机连接驱动程序需要更新时，Windows Vista 计算机将显示警告和提升的命令提示符。
--Windows Server 2003 和 Windows XP 客户端计算机可以使用指向和打印创建到其林中任意服务器的打印机连接。
-
-禁用此策略设置时:
--Windows Vista 客户端计算机可以使用指向和打印创建到任意服务器的打印机连接。
--当用户使用指向和打印创建到任意服务器的打印机连接时，Windows Vista 计算机将不显示警告或提升的命令提示符。
--当现有的打印机连接驱动程序需要更新时，Windows Vista 计算机将不显示警告或提升的命令提示符。
--Windows Server 2003 和 Windows XP 客户端计算机可以使用指向和打印创建到任意服务器的打印机连接。
--“用户只能指向和打印到其林中的计算机”设置仅适用于 Windows Server 2003 和 Windows XP SP1 (以及更高版本的 Service Pack)。
-</string>
+          如果禁用此策略设置:
+          - Windows Vista 客户端计算机可以使用指向和打印创建到任意服务器的打印机连接。
+          - 当用户使用指向和打印创建到任意服务器的打印机连接时，Windows Vista 计算机将不显示警告或提升的命令提示符。
+          - 当现有的打印机连接驱动程序需要更新时，Windows Vista 计算机将不显示警告或提升的命令提示符。
+          - Windows Server 2003 和 Windows XP 客户端计算机可以使用指向和打印创建到任意服务器的打印机连接。
+          -“用户只能指向和打印到其林中的计算机”设置仅适用于 Windows Server 2003 和 Windows XP SP1 (以及更高版本的 Service Pack)。</string>
       <string id="WarnAndElevateOnUpdate">显示警告和提升提示</string>
       <string id="NoWarningNoElevationOnUpdate">不显示警告或提升提示</string>
       <string id="WarningNoElevationOnUpdate">仅显示警告</string>
       <string id="PrinterDirectorySearchScope">在搜索打印机时使用默认 Active Directory 路径</string>
       <string id="PrinterDirectorySearchScope_Help">指定开始搜索打印机的 Active Directory 位置。
 
-添加打印机向导为用户提供通过搜索 Active Directory 来寻找共享打印机的选项。如果启用这个设置，则在“默认 Active Directory 路径”框中指定的位置开始进行搜索。否则，会从 Active Directory 的根目录开始搜索。
+          添加打印机向导为用户提供通过搜索 Active Directory 来寻找共享打印机的选项。
 
-这个设置只提供一个 Active Directory 作为搜索打印机的起点，不会限制用户在 Active Directory 上的搜索操作。</string>
+          如果启用此策略设置，则在“默认 Active Directory 路径”框中指定的位置开始进行搜索。否则，会从 Active Directory 的根目录开始搜索。
+
+          此设置仅提供从 Active Directory 搜索打印机的开始位置。它不限制用户在 Active Directory 中的搜索。</string>
       <string id="PrinterServerThread">打印机浏览</string>
       <string id="PrinterServerThread_Help">向域的打印浏览主服务器发布共享打印机。
 
 在具有 Active Directory 的域上，共享打印机资源可以在 Active Directory 中使用，但不会公布。
 
-如果启用这个设置，打印后台处理程序向打印浏览主服务器公布共享打印机。
+如果启用这个设置，则打印后台处理程序向打印浏览主服务器公布共享打印机。
 
-如果禁用这个设置，即使 Active Directory 不能使用，也不会向打印浏览主服务器公布共享打印机。
+如果禁用此设置，则即使 Active Directory 不能使用，也不会向打印浏览主服务器公布共享打印机。
 
-如果未配置这个设置，只有在 Active Directory 不能使用时才向打印浏览主服务器公布共享打印机。
+如果未配置此设置，则只有在 Active Directory 不能使用时才向打印浏览主服务器公布共享打印机。
 
 注意: 每次客户端计算机向域上的打印浏览主服务器公布打印机时都会使用客户端许可证。</string>
-      <string id="PruneDownlevel">修剪不自动重新发布的打印机</string>
-      <string id="PruneDownlevel_Found">只有在找到打印服务器时</string>
-      <string id="PruneDownlevel_Help">确定域控制器上的修剪服务是否像对待 Windows 2000 打印机那样，在主计算机没有响应时修剪未自动重新发布的打印机对象。此设置适用于运行于非 Windows 2000 操作系统的打印机，以及适用于在非 Windows 2000 林之外发布的 Windows 2000 打印机。
+      <string id="PrintDriverIsolationExecutionPolicy">在隔离的进程中执行打印驱动程序</string>
+      <string id="PrintDriverIsolationExecutionPolicy_Help">此策略设置用于确定后台处理程序将在隔离的进程还是单独的进程中执行打印驱动程序。在隔离的进程中加载打印驱动程序时，打印驱动程序故障将不会导致后台处理程序服务出现故障。
 
-Windows 修剪服务在发布它们的计算机不响应连接请求时从 Active Directory 修剪打印机对象。重新加入网络后，运行 Windows 2000 Professional 的计算机检测并重新发布已删除的打印机对象。但是，由于非 Windows 2000 计算机和在其他域中的计算机无法自动在 Active Directory 中重新发布打印机，所以在默认的情况下，系统永远不会修剪打印机对象。
+如果启用或未配置此策略设置，则在默认情况下，后台处理程序将在隔离的进程中执行打印驱动程序。
 
-可以启用此设置来更改默认行为。若要使用此设置，从“修剪不重新发布的打印机”框中选择下列选项之一: 
-
--- “从不”指定从不修剪未自动重新发布的打印机对象。“从不”为默认值。
-
--- “只有在找到打印服务器时”只有当打印服务器响应但打印机不可用时，修剪未自动重新发布的打印机对象。
-
--- “当找不到打印机时”就像对待 Windows 2000 打印机那样，在主计算机没有响应时修剪未自动重新发布的打印机对象。
-
-注意: 此设置适用于使用 Active Directory 用户和计算机或 Pubprn.vbs 发布的打印机，不适用于通过“控制面板”中的“打印机”发布的打印机。
-
-提示: 如果禁用自动修剪，请记住无论何时删除打印机或打印服务器时都要手动删除打印机对象。</string>
-      <string id="PruneDownlevel_Never">从不</string>
-      <string id="PruneDownlevel_NotFound">当找不到打印机时</string>
-      <string id="Pruning10Minutes">10 分钟</string>
-      <string id="Pruning12Hours">12 小时</string>
-      <string id="Pruning1Day">1 天</string>
-      <string id="Pruning1Hour">1 小时</string>
-      <string id="Pruning1Week">1 周</string>
-      <string id="Pruning2Days">2 天</string>
-      <string id="Pruning2Weeks">2 周</string>
-      <string id="Pruning30Minutes">30 分钟</string>
-      <string id="Pruning3Days">3 天</string>
-      <string id="Pruning3Weeks">3 周</string>
-      <string id="Pruning4Days">4 天</string>
-      <string id="Pruning4Hours">4 小时</string>
-      <string id="Pruning4Weeks">4 周</string>
-      <string id="Pruning5Days">5 天</string>
-      <string id="Pruning5Weeks">5 周</string>
-      <string id="Pruning6Days">6 天</string>
-      <string id="Pruning6Weeks">6 周</string>
-      <string id="Pruning7Weeks">7 周</string>
-      <string id="Pruning8Hours">8 小时</string>
-      <string id="PruningImmediately">连续的</string>
-      <string id="PruningInterval">目录修剪间隔</string>
-      <string id="PruningInterval_Help">指定域控制器上的修剪服务为了验证打印机是否可以使用而与计算机连接的频率。
-
-修剪服务定期与已发布打印机的计算机连接。如果计算机不响应连接消息(或者重复尝试连接后)，修剪服务则开始修剪(从 Active Directory 删除)计算机发布的打印机对象。
-
-在默认情况下，修剪服务每隔八小时与计算机连接一次，尝试两次连接后才从 Active Directory 删除打印机。
-
-如果启用这个设置，可以更改尝试连接的间隔。
-
-如果没有配置或禁用这个设置，则使用默认值。
-
-注意: 这个设置仅在域控制器上使用。</string>
-      <string id="PruningNever">无限的</string>
-      <string id="PruningPriority">目录修剪优先级</string>
-      <string id="PruningPriority_Help">设定修剪线程的优先级。
-
-只在域控制器上运行的修剪线程会在发布对象的打印机没有响应连接时从 Active Directory 删除打印机对象。这样，Active Directory 中的打印机信息总是最新的。
-
-线程优先级影响线程接收处理器时间的顺序，并确定由较高优先级线程抢先的可能性。
-
-在默认情况下，修剪线程的优先级为一般。但是，可以调整优先级来提高此服务的性能。
-
-注意: 这个设置仅在域控制器上使用。</string>
-      <string id="PruningRetries">目录修剪重试</string>
-      <string id="PruningRetries_Help">指定域控制器上的修剪服务在修剪计算机的打印机之前与计算机连接的次数。
-
-修剪服务定期与已发布打印机的计算机连接，以确认这些打印机是否仍在使用中。如果计算机不响应连接消息，会按指定次数重复此消息。如果计算机仍无法响应，则修剪服务开始修剪(从 Active Directory 删除)计算机发布的打印机对象。
-
-在默认情况下，修剪服务每隔八小时与计算机连接一次，尝试两次后才从 Active Directory 上删除打印机。可以用此设置更改重试次数。
-
-如果启用这个设置，可以更改重试间隔。
-
-如果没有配置或禁用这个设置，则使用默认值。
-
-注意: 这个设置仅在域控制器上使用。</string>
-      <string id="PruningRetries0">不能重试</string>
-      <string id="PruningRetries1">1 次重试</string>
-      <string id="PruningRetries2">2 次重试</string>
-      <string id="PruningRetries3">3 次重试</string>
-      <string id="PruningRetries4">4 次重试</string>
-      <string id="PruningRetries5">5 次重试</string>
-      <string id="PruningRetries6">6 次重试</string>
-      <string id="PruningRetryLog">记录目录修剪重试事件</string>
-      <string id="PruningRetryLog_Help">指定当域控制器上的修剪服务在修剪计算机的打印机之前与计算机连接时是否记录事件。
-
-修剪服务定期与已发布打印机的计算机连接，以确认这些打印机是否仍在使用中。如果计算机没有响应连接尝试，尝试会按照指定间隔和指定次数重试。“目录修剪重试”设置确定重试次数；默认值为重试两次。“目录修剪间隔”设置确定重试间隔；默认值为每八小时。如果计算机在最后一次连接尝试时没有响应，则从目录中修剪其打印机。
-
-如果启用“记录目录修剪重试事件”设置，则连接事件会记录在事件日志中。如果没有配置或禁用这个设置，连接事件不会记录在事件日志中。
-
-注意: 这个设置不会影响修剪事件的日志记录；实际的打印机修剪总是会记录下来的。
-
-注意: 这个设置仅在域控制器上使用。</string>
-      <string id="PublishPrinters">允许发布打印机</string>
-      <string id="PublishPrinters_Help">确定是否可以在 Active Directory 中发布计算机的共享打印机。
-
-如果启用或未配置这个设置，用户可以使用“打印机属性”中“共享”选项卡上的“在目录中列出”选项在 Active Directory 中发布共享打印机。
-
-如果禁用这个设置，这台计算机的共享打印机无法在 Active Directory 中发布，并且“在目录中列出”选项也不可用。
-
-注意: 这个配置优先于“自动在 Active Directory 上发布新的打印机”设置。</string>
-      <string id="RegisterSpoolerRemoteRpcEndPoint">允许打印后台处理程序接受客户端连接</string>
-      <string id="RegisterSpoolerRemoteRpcEndPoint_Help">此策略控制后台打印程序是否接受客户端连接。
-
-如果未配置此策略，则在用户共享本地打印机或打开打印机连接上的打印队列之前，后台打印程序不接受客户端连接。之后，后台打印程序才开始自动接受客户端连接。
-
-启用此策略后，后台打印程序始终接受客户端连接。
-
-禁用此策略后，后台打印程序既不接受客户端连接也不允许用户共享打印机。当前共享的所有打印机将继续保持共享。
-
-必须重新启动后台打印程序，对此策略的更改才能生效。</string>
-<string id="PrintDriverIsolationExecutionPolicy">在隔离的进程中执行打印驱动程序</string>
-<string id="PrintDriverIsolationExecutionPolicy_Help">
-此策略设置可确定后台打印程序将在隔离的进程还是单独的进程中执行打印驱动程序。在隔离的进程中加载打印驱动程序时，打印驱动程序故障将不会导致后台打印程序服务出现故障。
-
-如果启用或未配置此策略设置，在默认情况下，后台打印程序将在隔离的进程中执行打印驱动程序。
-
-如果禁用此策略设置，后台打印程序将在后台打印程序进程中执行打印驱动程序。
+如果禁用此策略设置，则后台处理程序将在后台处理程序进程中执行打印驱动程序。
 
 
 注意:
--其他系统或驱动程序策略设置可能会改变在其中执行打印驱动程序的进程。
--此策略设置仅适用于由后台打印程序加载的打印驱动程序。由应用程序加载的打印驱动程序不受影响。
--无需重新启动后台打印程序服务，此策略设置即可生效。
-</string>
-<string id="PrintDriverIsolationOverrideCompat">覆盖由打印驱动程序报告的打印驱动程序执行兼容性设置</string>
-<string id="PrintDriverIsolationOverrideCompat_Help">
-此策略设置可确定后台打印程序是否覆盖由打印驱动程序报告的驱动程序隔离兼容性。这样，即使驱动程序没有报告兼容性，也可以在隔离的进程中执行打印驱动程序。
+- 其他系统或驱动程序策略设置可能会改变在其中执行打印驱动程序的进程。
+- 此策略设置仅适用于由后台处理程序加载的打印驱动程序。由应用程序加载的打印驱动程序不受影响。
+- 无需重新启动后台处理程序服务，此策略设置即可生效。</string>
+      <string id="PrintDriverIsolationOverrideCompat">覆盖由打印驱动程序报告的打印驱动程序执行兼容性设置</string>
+      <string id="PrintDriverIsolationOverrideCompat_Help">此策略设置用于确定后台处理程序是否覆盖由打印驱动程序报告的驱动程序隔离兼容性。这样，即使驱动程序没有报告兼容性，也可以在隔离的进程中执行打印驱动程序。
 
-如果启用此策略设置，后台打印程序将忽略由打印驱动程序报告的驱动程序隔离兼容性标记值。
+如果启用此策略设置，打印后台处理程序将隔离所有未明确选择不使用“驱动程序隔离”的打印驱动程序。
 
-如果禁用或未配置此策略设置，后台打印程序将使用由打印驱动程序报告的驱动程序隔离兼容性标记值。
+如果禁用或未配置此策略设置，后台处理程序将使用由打印驱动程序报告的驱动程序隔离兼容性标记值。
 
 注意:
--其他系统或驱动程序策略设置可能会改变在其中执行打印驱动程序的进程。
--此策略设置仅适用于由后台打印程序加载的打印驱动程序。由应用程序加载的打印驱动程序不受影响。
--无需重新启动后台打印程序服务，此策略设置即可生效。
-</string>
-      <string id="ThreadAboveNormal">高于正常</string>
-      <string id="ThreadBelowNormal">低于正常</string>
-      <string id="ThreadHighest">最高</string>
-      <string id="ThreadLowest">最低</string>
-      <string id="ThreadNormal">一般</string>
-      <string id="VerifyPublishedState">检查发布状态</string>
-      <string id="VerifyPublishedState_Help">指示系统定期验证这台计算机发布的打印机是否仍在 Active Directory 中。  同时，这个设置指定系统重复验证的频率。
-
-在默认情况下，系统仅在启动时验证发布的打印机。 这个设置允许在计算机运行期间定期验证。
-
-若要启用这个额外验证，先启用这个设置，然后选择验证间隔。
-
-若要禁用验证，可以禁用此设置，或者启用此设置并选择验证间隔为“从不”。
-
-</string>
-      <string id="VerifyPublishedState12Hours">12 小时</string>
-      <string id="VerifyPublishedState1Day">1 天</string>
-      <string id="VerifyPublishedState1Hour">1 小时</string>
-      <string id="VerifyPublishedState30Minutes">30 分钟</string>
-      <string id="VerifyPublishedState4Hours">4 小时</string>
-      <string id="VerifyPublishedState8Hours">8 小时</string>
-      <string id="VerifyPublishedStateNever">从不</string>
-      <string id="DoNotInstallCompatibleDriverFromWindowsUpdate">扩展指向和打印连接以搜索 Windows Update</string>
+- 其他系统或驱动程序策略设置可能会改变在其中执行打印驱动程序的进程。
+- 此策略设置仅适用于由后台处理程序加载的打印驱动程序。由应用程序加载的打印驱动程序不受影响。
+- 无需重新启动后台处理程序服务，此策略设置即可生效。</string>
+      <string id="DoNotInstallCompatibleDriverFromWindowsUpdate">扩展指向和打印连接以搜索 Windows 更新</string>
       <string id="DoNotInstallCompatibleDriverFromWindowsUpdate_Help">使用此策略设置可以管理客户端计算机搜索指向和打印机驱动程序的位置。
 
-如果启用此策略设置，则客户端计算机在本地驱动程序存储和服务器驱动程序缓存中未找到兼容的驱动程序时，将继续从 Windows Update 搜索兼容的指向和打印驱动程序。
+如果启用此策略设置，则客户端计算机在本地驱动程序存储和服务器驱动程序缓存中未找到兼容的驱动程序时，将继续从 Windows 更新搜索兼容的指向和打印驱动程序。
 
 如果禁用此策略设置，客户端计算机将仅在本地驱动程序存储和服务器驱动程序缓存中搜索兼容的指向和打印驱动程序。如果无法找到兼容的驱动程序，则指向和打印连接将失败。
 
 默认情况下，此策略设置为未配置状态，具体行为取决于所使用的 Windows 版本。
-默认情况下，如有必要，Windows Ultimate、Professional 和 Home SKU 会继续从 Windows Update 搜索兼容的指向和打印驱动程序。但是，对于其他版本的 Windows (例如 Windows Enterprise 以及所有版本的 Windows Server 2008 R2)，必须显式启用此策略设置才会具有相同的行为。
-</string>
+默认情况下，如有必要，Windows Ultimate、Professional 和 Home SKU 会继续从 Windows 更新搜索兼容的指向和打印驱动程序。但是，对于其他版本的 Windows（例如 Windows 企业版及所有版本的 Windows Server 2008 R2 或更高版本），必须显式启用此策略设置才会具有相同的行为。</string>
+      <string id="V4DriverDisallowPrinterExtension">不允许 v4 打印机驱动程序显示打印机扩展</string>
+      <string id="V4DriverDisallowPrinterExtension_Help">此策略确定是否允许 v4 打印机驱动程序运行打印机扩展。
+
+        V4 打印机驱动程序可包含可选的自定义用户界面，称为打印机扩展。这些扩展可提供对更多设备功能的访问，但是可能不适用于所有企业。
+
+        如果启用此策略设置，则系统将不允许运行任何打印机扩展。
+
+        如果禁用或未配置此策略设置，则系统将允许运行所有已安装的打印机扩展。</string>
+      <string id="MXDWUseLegacyOutputFormatMSXPS">将 Microsoft XPS 文档写入程序(MXDW)默认输出格式更改为旧版 Microsoft XPS 格式(*.xps)</string>
+      <string id="MXDWUseLegacyOutputFormatMSXPS_Help">Microsoft XPS 文档写入程序 (MXDW) 在 Windows 8.1、Windows RT 8.1 和 Windows Server 2012 R2 中默认生成 OpenXPS (*.oxps) 文件。
+
+          如果启用此组策略设置，则默认 MXDW 输出格式为旧版 Microsoft XPS (*.xps)。
+
+          如果禁用或未配置此策略设置，则默认 MXDW 输出格式为 OpenXPS (*.oxps)。</string>
     </stringTable>
     <presentationTable>
       <presentation id="CustomizedSupportUrl">
-        <text>指定 URL。例如，URL: http://www.microsoft.com/china/support</text>
+        <text>指定 URL。例如，该 URL 可以是 http://www.microsoft.com/china/support</text>
         <textBox refId="CustomizedSupportUrl_Link">
           <label>URL</label>
         </textBox>
       </presentation>
       <presentation id="DomainPrinters">
-        <decimalTextBox refId="ADprinters" defaultValue="20">目录打印机的数目</decimalTextBox>
-        <decimalTextBox refId="IPprinters" defaultValue="0">TCP/IP 打印机的数目</decimalTextBox>
-        <decimalTextBox refId="WSDprinters" defaultValue="0">Web 服务打印机的数目</decimalTextBox>
-        <decimalTextBox refId="Bluetoothprinters" defaultValue="10">Bluetooth 打印机的数目</decimalTextBox>
-        <decimalTextBox refId="Shareprinters" defaultValue="0">共享打印机的数目</decimalTextBox>
+        <decimalTextBox defaultValue="20" refId="ADprinters">目录打印机的数目</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="IPprinters">TCP/IP 打印机的数目</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="WSDprinters">Web 服务打印机的数目</decimalTextBox>
+        <decimalTextBox defaultValue="10" refId="Bluetoothprinters">Bluetooth 打印机的数目</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="Shareprinters">共享打印机的数目</decimalTextBox>
       </presentation>
       <presentation id="IntranetPrintersUrl">
-        <text>启用此选项在“添加打印机向导”中添加 Internet 打印机 </text>
-        <text>的浏览按钮。 使用此设置以允许用户浏览 </text>
-        <text>公司的 Intranet 以查找打印机。 例如，可以 </text>
-        <text>指定如下的 URL: http://www.company.com/printers。 </text>
-        <text>若要启用这个选项，下面的编辑框不能为空白。</text>
+        <text>启用此选项在添加打印机向导中添加 Internet 打印机</text>
+        <text>的浏览按钮。使用此设置以允许用户浏览</text>
+        <text>公司的 Intranet 以查找打印机。例如，可以</text>
+        <text>指定如下的 URL: http://www.company.com/printers。</text>
+        <text>若要启用此选项，则以下编辑框不能为空白。</text>
         <textBox refId="IntranetPrintersUrl_Link">
           <label>打印机页 URL</label>
         </textBox>
       </presentation>
       <presentation id="NonDomainPrinters">
-        <decimalTextBox refId="IPprinters" defaultValue="50">TCP/IP 打印机的数目</decimalTextBox>
-        <decimalTextBox refId="WSDprinters" defaultValue="50">Web 服务打印机的数目</decimalTextBox>
-        <decimalTextBox refId="Bluetoothprinters" defaultValue="10">Bluetooth 打印机的数目</decimalTextBox>
-        <decimalTextBox refId="Shareprinters" defaultValue="50">共享打印机的数目</decimalTextBox>
+        <decimalTextBox defaultValue="50" refId="IPprinters">TCP/IP 打印机的数目</decimalTextBox>
+        <decimalTextBox defaultValue="50" refId="WSDprinters">Web 服务打印机的数目</decimalTextBox>
+        <decimalTextBox defaultValue="10" refId="Bluetoothprinters">Bluetooth 打印机的数目</decimalTextBox>
+        <decimalTextBox defaultValue="50" refId="Shareprinters">共享打印机的数目</decimalTextBox>
       </presentation>
       <presentation id="PackagePointAndPrintServerList">
         <listBox refId="PackagePointAndPrintServerList_Edit">输入完全限定的服务器名</listBox>
@@ -442,10 +311,10 @@ Windows 修剪服务在发布它们的计算机不响应连接请求时从 Activ
           <label>输入完全限定的服务器名称，以分号分隔</label>
         </textBox>
         <checkBox refId="PointAndPrint_TrustedForest_Chk">用户只能指向并打印到其林中的计算机</checkBox>
-        <text> </text>
+        <text/>
         <text>安全提示:</text>
-        <dropdownList refId="PointAndPrint_NoWarningNoElevationOnInstall_Enum" noSort="true">安装新连接的驱动程序时:</dropdownList>
-        <dropdownList refId="PointAndPrint_NoWarningNoElevationOnUpdate_Enum" noSort="true">更新现有连接的驱动程序时:</dropdownList>
+        <dropdownList noSort="true" refId="PointAndPrint_NoWarningNoElevationOnInstall_Enum">安装新连接的驱动程序时:</dropdownList>
+        <dropdownList noSort="true" refId="PointAndPrint_NoWarningNoElevationOnUpdate_Enum">更新现有连接的驱动程序时:</dropdownList>
         <text>此设置仅适用于:</text>
         <text>Windows Vista 及更高版本</text>
       </presentation>
@@ -454,26 +323,6 @@ Windows 修剪服务在发布它们的计算机不响应连接请求时从 Activ
           <label>默认 Active Directory 路径</label>
         </textBox>
         <text>示例 --&gt; LDAP://DC=Domain1,DC=MyCompany,DC=com。</text>
-      </presentation>
-      <presentation id="PruneDownlevel">
-        <text>选择修剪非重新发布的打印机的方法。</text>
-        <dropdownList refId="PruneDownlevelTitle" noSort="true" defaultItem="0">修剪非重新发布的打印机:</dropdownList>
-      </presentation>
-      <presentation id="PruningInterval">
-        <text>“修剪间隔”决定修剪操作器在两次检测废弃打印队列之间的 </text>
-        <text>睡眠时间段。</text>
-        <dropdownList refId="PruningIntervalTitle" noSort="true" defaultItem="5">间隔:</dropdownList>
-      </presentation>
-      <presentation id="PruningPriority">
-        <text>使用这个设置更改修剪线程的优先顺序。</text>
-        <dropdownList refId="PriorityLevel" noSort="true" defaultItem="2">优先级:</dropdownList>
-      </presentation>
-      <presentation id="PruningRetries">
-        <dropdownList refId="PruningRetriesTitle" noSort="true" defaultItem="2">重试次数:</dropdownList>
-      </presentation>
-      <presentation id="VerifyPublishedState">
-        <text>验证 Active Directory 中所有发布的打印机。</text>
-        <dropdownList refId="VerifyPublishedStateTitle" noSort="true" defaultItem="6">发布状态检查间隔:</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

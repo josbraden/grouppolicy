@@ -1,66 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--  (c) 2006 Microsoft Corporation  -->
-<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+<policyDefinitionResources xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0">
   <displayName>ange visningsnamn här</displayName>
   <description>ange beskrivning här</description>
   <resources>
     <stringTable>
-      <string id="AllowWebPrinting">Webbaserad utskrift</string>
-      <string id="AllowWebPrinting_Help">Avgör huruvida Internetutskrifter är aktiverade på den här servern.
+      <string id="AllowWebPrinting">Aktivera Internetutskrift</string>
+      <string id="AllowWebPrinting_Help">Med Internetutskrift kan du visa skrivare på webbsidor så att de kan ses, hanteras och användas över Internet eller på intranätet.
 
-Internetutskrifter innebär att du kan visa skrivare på webbsidor, så att du kan se, hantera och använda dem via Internet eller ett intranät.
+          Om du aktiverar den här principinställningen aktiveras Internetutskrift på den här servern.
 
-Internetutskrifter är ett tillägg till Internet Information Services (IIS). Om du vill använda Internetutskrifter måste IIS vara installerat. Dessutom måste utskriftsstöd och den här inställningen vara aktiverat.
+          Om du inaktiverar den här principinställningen, eller låter bli att konfigurera den, aktiveras inte Internetutskrift.
 
-Obs! Den här inställningen påverkar endast servern vid Internetutskrifter. Den hindrar inte utskriftsklienten på datorn från att skriva ut via Internet.
+          Internetutskrift är ett tillägg till IIS (Internet Information Services). Om du vill använda Internetutskrift måste du installera IIS. Utskriftsstöd och den här inställningen måste ha aktiverats.
 
-Se även inställningen "Anpassad support-URL till vänster i mappen Skrivare" i den här mappen och inställningen "Sök efter skrivare på en gemensam webbplats" i "Användarkonfiguration\Administrativa mallar\Kontrollpanelen\Skrivare".</string>
-      <string id="AutoPublishing">Publicera nya skrivare i Active Directory automatiskt</string>
-      <string id="AutoPublishing_Help">Avgör om guiden Lägg till skrivare publicerar datorns delade skrivare automatiskt i Active Directory.
+          Obs! Den här inställningen påverkar bara Internetutskrift från serversidan. Den hindrar inte utskriftsklienten på datorn från att skriva ut över Internet.
 
-Om du aktiverar eller inte konfigurerar den här inställningen publicerar guiden Lägg till skrivare automatiskt alla delade skrivare.
+          Se även inställningen "Anpassad support-URL till vänster i mappen Skrivare" och inställningen "Sök efter skrivare på en gemensam webbplats" i Användarkonfiguration\Administrativa mallar\Kontrollpanelen\Skrivare.</string>
+      <string id="ApplicationDriverIsolation">Isolera skrivardrivrutiner från program</string>
+      <string id="ApplicationDriverIsolation_Help">Avgör om komponenter i skrivardrivrutiner har isolerats från programmen istället för att bli inlästa i programmen som vanligt. Om du isolerar skrivardrivrutinerna minskas risken att programmet kraschar p.g.a. fel på skrivardrivrutinen.
 
-Om du inaktiverar den här inställningen publicerar guiden Lägg till skrivare inte skrivare automatiskt. Du kan emellertid publicerade delade skrivare manuellt.
+Det är inte alla program som stöder isolering av skrivardrivrutiner. Microsoft Excel 2007, Excel 2010, Word 2007, Word 2010 och vissa andra program konfigureras för att stöda det som standard. I andra program kan du kanske också isolera skrivardrivrutiner. Det beror på om de har konfigurerats för det.
 
-Standardfunktionen är att delade skrivare publiceras automatiskt i Active Directory.
+Om du aktiverar eller låter bli att konfigurera den här principinställningen isoleras de program som konfigurerats för isolering av skrivardrivrutiner.
 
-Obs! Den här inställningen har ingen inverkan om inställningen Tillåt att skrivare publiceras är inaktiverad.</string>
+Om du inaktiverar den här principinställningen blir skrivardrivrutinerna inlästa inom alla associerade programprocesser.
+
+Anmärkningar:
+– Den här principinställningen gäller bara för program där isolering tillåts.
+– Den här principinställningen gäller bara för skrivardrivrutiner som är inlästa av program. Skrivardrivrutiner som är inlästa av utskriftshanteraren påverkas inte.
+– Den här principinställningen kontrolleras bara en gång under processens gång. Om principen ändras måste ett pågående program starta igen innan inställningarna kan börja gälla.</string>
       <string id="CplPrinters">Skrivare</string>
       <string id="CplPrinters_Help">Hanterar konfigurations- och publiceringsalternativ för skrivare.</string>
       <string id="CustomizedSupportUrl">Anpassad support-URL till vänster i mappen Skrivare</string>
-      <string id="CustomizedSupportUrl_Help">Lägger till en anpassad länk till en webbsida i mappen Skrivare.
+      <string id="CustomizedSupportUrl_Help">Om inget annat anges finns det en länk till sidan "Få utskriftshjälp" på Microsofts supportwebbplats i mappen Skrivare. Där kan även finnas en länk till en webbsida som tillverkaren av den valda skrivaren har angett.
 
-Om inget annat anges finns det en länk till sidan "Få utskriftshjälp" på Microsofts supportwebbplats i mappen Skrivare. Där kan även finnas en länk till en webbsida som tillverkaren av den valda skrivaren har angett.
+          Om du aktiverar den här principinställningen byter du ut standardlänken i "Få utskriftshjälp" mot en länk till en webbsida som är anpassad till ditt företag.
 
-Du kan använda den här inställningen för att byta ut standardlänken i "Få utskriftshjälp" mot en länk till en webbsida som är anpassad till ditt företag.
+          Om du inaktiverar eller låter bli att konfigurera den här inställningen eller inte anger en alternativ Internetadress, visas standardlänken i mappen Skrivare.
 
-Om du inaktiverar eller inte konfigurerar den här inställningen eller inte anger en alternativ Internetadress, visas standardlänken i mappen Skrivare.
+          Obs! Länkar till webbsidor i mappen Skrivare visas endast om webbvyn är aktiverad. Om webbvyn är inaktiverad har den här inställningen ingen inverkan. (Du kan aktivera webbvyn genom att öppna mappen Skrivare, klicka på Verktyg-menyn, välja "Mappalternativ", klicka på fliken "Allmänt" och sedan klicka på "Aktivera webbinnehåll i mappar".
 
-Obs! Länkar till webbsidor i mappen Skrivare visas endast om webbvyn är aktiverad. Om webbvyn är inaktiverad har den här inställningen ingen inverkan. (Du kan aktivera webbwyn genom att öppna mappen Skrivare, klicka på "Verktyg"-menyn, välja "Mappalternativ", klicka på fliken "Allmänt" och sedan klicka på "Aktivera webbinnehåll i mappar".
+          Se även inställningen "Aktivera Internetutskrift" i den här mappen och inställningen "Sök efter skrivare på en gemensam webbplats" i Användarkonfiguration\Administrativa mallar\Kontrollpanelen\Skrivare.
 
-Se även inställningen "Webbaserad utskrift" i den här mappen och inställningen "Sök efter skrivare på en gemensam webbplats" i "Användarkonfiguration\Administrativa mallar\Kontrollpanelen\Skrivare".
+          Webbvyn påverkas av inställningarna Aktivera klassiskt gränssnitt och Tillåt inte Mappalternativ att öppnas från knappen Alternativ på fliken Visa i menyfliksområdet i Användarkonfiguration\Administrativa mallar\Windows-komponenter\Utforskaren och inställningen Aktivera Active Desktop i Användarkonfiguration\Administrativa mallar\Skrivbord\Active Desktop.</string>
+      <string id="DomainDisplayPrinters_Help">Om du aktiverar den här principinställningen anger den maximalt antal skrivare (av varje typ) som guiden Lägg till skrivare ska visa på en dator i ett hanterat nätverk (när datorn kan kontakta en domänkontrollant, t.ex. en domänansluten bärbar dator i ett företagsnätverk).
 
-Webbwyn påverkas av inställningarna "Aktivera klassiskt gränssnitt" och "Ta bort Mappalternativ från Verktyg-menyn" i "Användarkonfiguration\Administrativa mallar\Windows-komponenter\Utforskaren" och inställningen "Aktivera Active Desktop" i "Användarkonfiguration\Administrativa mallar\Skrivbord\Active Desktop".</string>
-      <string id="DomainDisplayPrinters_Help">Den här principen anger maximalt antal skrivare (av varje typ) som guiden Lägg till skrivare visar på en dator i ett hanterat nätverk (när datorn kan kontakta en domänkontrollant, till exempel en domänansluten bärbar dator i ett företagsnätverk.)
+          Om du inaktiverar den här principinställningen visas inte sidan för nätverkssökning.
 
-Nätverksidentifiering måste vara aktiverat för att du ska kunna visa tillgängliga webbtjänstskrivare i nätverket. Du aktiverar nätverksidentifiering genom att klicka på Start, klicka på Kontrollpanelen och sedan klicka på Nätverk och Internet. Klicka på Nätverks- och delningscenter på sidan Nätverk och Internet och klicka sedan på Ändra avancerade delningsinställningar. Klicka på pilen bredvid Domän på sidan Avancerade delningsinställningar, klicka på Aktivera nätverksidentifiering och klicka sedan på Spara ändringarna.
+          Om du inte konfigurerar den här principinställningen visar guiden Lägg till skrivare standardantalet skrivare av varje typ:
+          Katalogskrivare: 20
+          TCP/IP-skrivare: 0
+          Webbtjänstskrivare: 0
+          Bluetooth-skrivare: 10
+          Delade skrivare: 0
 
-Om du inaktiverar den här inställningen visas inte sidan för nätverkssökning.
+          Om du vill visa tillgängliga webbtjänstskrivare i nätverket ska du se till att du aktiverar nätverksidentifiering. Om du vill aktivera nätverksidentifiering ska du klicka på Start och Kontrollpanelen. Sedan klickar du på "Nätverk och Internet". På sidan "Nätverk och Internet" klickar du på "Nätverks- och delningscenter". På sidan "Nätverks- och delningscenter" klickar du på "Ändra avancerade delningsinställningar". På sidan "Avancerade delningsinställningar" klickar du på pilen bredvid pilen Domän, sedan på "Aktivera nätverksidentifiering" och sist på Spara ändringar.
 
-Om den här inställningen inte konfigureras visar guiden Lägg till skrivare standardantalet skrivare av varje typ:
-Katalogskrivare: 20
-TCP/IP-skrivare: 0
-Webbtjänstskrivare: 0
-Bluetooth-skrivare: 10
-Delade skrivare: 0
-
-Om du inte vill visa skrivare av en viss typ aktiverar du den här principen och anger antalet skrivare som ska visas till 0.
-</string>
+          Om du inte vill visa en viss typ av skrivare aktiverar du principen och ställer in antalet skrivare till 0.</string>
       <string id="DomainPrinters">Guiden Lägg till skrivare - sidan för nätverkssökning (hanterat nätverk)</string>
       <string id="DownlevelBrowse">Bläddra i nätverket för att hitta skrivare</string>
       <string id="DownlevelBrowse_Help">Ger användarna möjlighet att söka igenom nätverket efter delade skrivare med guiden Lägg till skrivare.
 
-Om du aktiverar eller inte konfigurerar den här inställningen visar guiden Lägg till skrivare en lista med delade skrivare i nätverket och låter användaren välja en skrivare i den, under följande förutsättningar: Användaren väljer att lägga till en nätverksskrivare genom att markera alternativknappen "En nätverksskrivare eller skrivare som är ansluten till en annan dator" på den andra sidan i guiden Lägg till skrivare, markerar dessutom alternativknappen "Anslut till den här skrivaren (välj detta alternativ och klicka på Nästa om du vill bläddra)" på den tredje sidan i guiden och anger inte något skrivarnamn i textrutan "Namn".
+Om du aktiverar eller låter bli att konfigurera den här inställningen visar guiden Lägg till skrivare en lista med delade skrivare i nätverket och låter användaren välja en skrivare i den, under följande förutsättningar:Användaren väljer att lägga till en nätverksskrivare genom att markera alternativknappen "En nätverksskrivare eller skrivare som är ansluten till en annan dator" på den andra sidan i guiden Lägg till skrivare, markerar dessutom alternativknappen "Anslut till den här skrivaren (välj detta alternativ och klicka på Nästa om du vill bläddra)" på den tredje sidan i guiden och anger inte något skrivarnamn i textrutan "Namn".
 
 Om du inaktiverar den här inställningen, tas sidan där det är möjligt att bläddra efter nätverksskrivare bort från guiden Lägg till skrivare och användarna kan inte söka igenom nätverket, utan måste ange skrivarens namn.
 
@@ -72,7 +74,7 @@ Den här principinställningen påverkar endast utskrifter till en Windows-utskr
 
 Om du aktiverar den här principinställningen på en klientdator, behandlar utskriftshanteraren på klientdatorn inte utskrifterna innan de skickas till utskriftsservern. Detta minskar arbetsbelastningen på klienten men arbetsbelastningen på servern ökar.
 
-Om du inaktiverar den här principinställningen på en klientdator, omvandlar utskriftshanteraren på kilentdatorn själv utskrifterna till kommandon till skrivarenheten. Dessa kommandon skickas sedan till utskriftsservern, som bara vidarebefordrar kommandona till skrivaren. Detta ökar arbetsbelastningen på klienten men minskar belastningen på servern.
+Om du inaktiverar den här principinställningen på en klientdator, omvandlar utskriftshanteraren på klientdatorn själv utskrifterna till kommandon till skrivarenheten. Dessa kommandon skickas sedan till utskriftsservern, som bara vidarebefordrar kommandona till skrivaren. Detta ökar arbetsbelastningen på klienten men minskar belastningen på servern.
 
 Om du inte aktiverar den här principinställningen blir effekten densamma som om den inaktiveras.
 
@@ -81,28 +83,22 @@ Obs! Den här principen avgör inte huruvida klienten kan använda offlineutskri
 Obs! Vissa skrivardrivrutiner kräver en särskild utskriftsprocessor. I vissa fall kanske den särskilda utskriftsprocessorn inte är installerad på klientdatorn, till exempel om utskriftsservern inte stödjer överföring av utskriftsprocessorer då funktionen Peka och skriv ut används. Om utskriftsprocessorerna inte stämmer överens, skickar utskriftshanteraren alltid jobben till utskriftshanteraren för behandling. Om den ovanstående principinställningen inaktiveras ändras inte detta förhållande.
 
 Obs! Om klientskrivaren inte matchar serverns skrivardrivrutin (felmatchad anslutning), bearbetar klienten alltid utskriftsjobbet oavsett inställningen i den här principen.</string>
-      <string id="ImmortalPrintQueue">Tillåt att publicerade skrivare rensas</string>
-      <string id="ImmortalPrintQueue_Help">Avgör huruvida domänkontrollanten kan rensa skrivarna (ta bort dem från Active Directory) som den här datorn har publicerat.
+      <string id="ForceSWRas">Rastrera alltid innehåll för utskrift med hjälp av ett rasterprogram.</string>
+      <string id="ForceSWRas_Help">Avgör om XPS-rastertjänsten eller XGC (XPS-till-GDI-omvandlingen) måste använda ett rasterprogram istället för en grafikprocessor (GPU) för att rastrera sidor.
 
-Om inget annat anges tar rensningstjänsten på domänkontrollanten bort skrivarobjekt från Active Directory om datorn som har publicerat dem inte svarar vid kontaktförsök. När datorn som publicerade skrivarna startas om igen, publiceras eventuellt borttagna skrivarobjekt igen.
-
-Om du aktiverar eller inte konfiguerar den här inställningen, rensar domänkontrollanten den här datorns skrivare då den inte svarar.
-
-Om du inaktiverar den här inställningen, rensar domänkontrollanten inte bort den här datorns skrivare. Den här inställningen är till för att förhindra att skrivare rensas när datorn är tillfälligt bortkopplad från nätverket.
-
-Obs! Du kan använda inställningarna "Intervall för katalogrensning" och "Återförsök för katalogrensning" för att justera kontaktintervallet och antalet kontaktförsök som görs innan rensning sker.</string>
+Inställningen kan komma att förbättra XPS-rastertjänsten eller XGC (XPS-till-GDI-omvandlingen) på de maskiner som har kraftfullare processorer (CPU:er) än grafikprocessorer (GPU:er).</string>
       <string id="IntranetPrintersUrl">Sök efter skrivare på en gemensam webbplats</string>
-      <string id="IntranetPrintersUrl_Help">Lägger till en länk till en webbsida på Internet eller i intranätet till guiden Lägg till skrivare.
+      <string id="IntranetPrintersUrl_Help">Lägger till en länk på en Internet- eller intranätswebbsida i guiden Lägg till skrivare.
 
-Du kan använda den här inställningen för att hänvisa användarna till en webbsida där de kan installera skrivare.
+          Du kan använda den här inställningen för att hänvisa användare till den webbsida där de kan installera skrivare.
 
-Om du aktiverar den här inställningen och anger en Internet- eller intranätadress i textrutan, lägger systemet till knappen "Bläddra" på sidan "Ange en skrivare" i guiden Lägg till skrivare. Knappen "Bläddra" finns bredvid alternativet "Anslut till en skrivare på Internet eller i hem- eller kontorsnätverket". När användarna klickar på "Bläddra", öppnar systemet en webbläsare och går till den angivna adressen. De tillgängliga skrivarna visas.
+          Om du aktiverar den här inställningen, och anger en Internet- eller intranätadress i textrutan, läggs knappen Bläddra till på sidan "Ange skrivare" i guiden Lägg till skrivare. Knappen Bläddra visas bredvid alternativet "Anslut till skrivare på Internet eller i ett hem- eller kontorsnätverk". När användarna klickar på Bläddra öppnas en webbläsare med den angivna URL-adressen så att tillgängliga skrivare visas.
 
-Den här inställningen innebär att användarna enkelt kan hitta de skrivare som du vill att de ska lägga till.
+          Inställningen gör det enkelt för användarna att hitta de skrivare som du vill att de ska lägga till.
 
-Se dessutom inställningarna "Anpassad support-URL till vänster i mappen Skrivare" och "Webbaserad utskrift" i "Datorkonfiguration\Administrativa mallar\Skrivare".</string>
+          Se även inställningarna "Anpassad support-URL till vänster i mappen Skrivare" och "Aktivera Internetutskrift" i "Datorkonfiguration\Administrativa mallar\Skrivare".</string>
       <string id="KMPrintersAreBlocked">Tillåt inte installation av skrivare som använder drivrutiner i kernelläge</string>
-      <string id="KMPrintersAreBlocked_Help">Avgör om skrivare som använder drivrutiner i kernelläge får installeras på den lokala datorn. Drivrutiner i kernelläge har tillgång till allt systemminne och är de dåligt skrivna kan de orsaka stoppfel.
+      <string id="KMPrintersAreBlocked_Help">Avgör om skrivare som använder drivrutiner i kernelläge får installeras på den lokala datorn.  Drivrutiner i kernelläge har tillgång till allt systemminne och är de dåligt skrivna kan de orsaka stoppfel.
 
 Om du inaktiverar eller låter bli att konfigurera den här inställningen kan skrivare som använder drivrutiner i kernelläge installeras på lokala datorer som kör Windows XP Home Edition eller Windows XP Professional.
 
@@ -114,45 +110,43 @@ Obs! Om den här principen aktiveras, inaktiveras befintliga drivrutiner i kerne
       <string id="NoAddPrinter">Förhindra att skrivare läggs till</string>
       <string id="NoAddPrinter_Help">Hindrar användare från att använda välbekanta metoder att lägga till lokala skrivare och nätverksskrivare.
 
-Den här inställningen gör att alternativet "Lägg till skrivare" tas bort från "Start"-menyn. (Alternativet "Lägg till skrivare" hittar du om du klickar på "Start", klickar på "Skrivare" och sedan på "Lägg till skrivare".) Den här inställningen gör även att "Lägg till skrivare" tas bort från mappen "Skrivare" på Kontrollpanelen.
+          Om du har aktiverat den här principinställningen tas alternativet Lägg till skrivare bort från Start-menyn. (Alternativet Lägg till skrivare hittar du om du klickar på Start, Skrivare och sedan på Lägg till skrivare.) Den här inställningen gör även att Lägg till skrivare tas bort från mappen Skrivare på Kontrollpanelen.
 
-Användarna kan dessutom inte lägga till skrivare genom att dra en skrivarikon till mappen "Skrivare". Gör de det visas ett meddelande som förklarar att inställningen förbjuder åtgärden.
+          Användarna kan dessutom inte lägga till skrivare genom att dra en skrivarikon till mappen Skrivare. Gör de det visas ett meddelande som förklarar att inställningen förbjuder åtgärden.
 
-Det här inställningen hindrar emellertid inte användarna från att använda guiden Lägg till maskinvara för att lägga till en skrivare. De hindras inte heller från att köra andra program för att lägga till skrivare.
+          Det här inställningen hindrar emellertid inte användarna från att använda guiden Lägg till maskinvara för att lägga till en skrivare. De hindras inte heller från att köra andra program för att lägga till skrivare.
 
-Den här inställningen tar inte bort skrivare som användarna redan har lagt till. Har användarna inte lagt till någon skrivare när den här inställningen aktiveras, kan de inte skriva ut.
+          Den här inställningen tar inte bort skrivare som användarna redan har lagt till. Har användarna inte lagt till någon skrivare när den här inställningen aktiveras, kan de inte skriva ut.
 
-Obs! Du kan använda skrivarbehörigheter för att begränsa bruket av skrivare utan att ange en inställning. Högerklicka på en skrivare i mappen "Skrivare", välj "Egenskaper" och klicka sedan på fliken "Säkerhet".
+          Obs! Du kan använda skrivarbehörigheter för att begränsa bruket av skrivare utan att ange en inställning. Högerklicka på en skrivare i mappen Skrivare, välj Egenskaper och klicka sedan på fliken Säkerhet.
 
-Om den här principen är inaktiverad eller inte konfigueras, kan användarna lägga till skrivare med de metoder som beskrivs här ovan.</string>
+          Om den här principen är inaktiverad eller inte konfigureras, kan användarna lägga till skrivare med de metoder som beskrivs här ovan.</string>
       <string id="NoDeletePrinter">Förhindra borttagning av skrivare</string>
-      <string id="NoDeletePrinter_Help">Hindrar användarna från att ta bort lokala skrivare och nätverksskrivare.
+      <string id="NoDeletePrinter_Help">Om du har aktiverat den här principinställningen hindras användare från att ta bort lokala skrivare och nätverksskrivare.
 
-Om en användare försöker ta bort en skrivare, till exempel genom att använda alternativet "Ta bort" i "Skrivare" på Kontrollpanelen, visas ett meddelande som förklarar att en inställning förbjuder åtgärden.
+          Om en användare försöker ta bort en skrivare, till exempel genom att använda alternativet "Ta bort" i "Skrivare" på Kontrollpanelen, visas ett meddelande som förklarar att en inställning förbjuder åtgärden.
 
-Den här inställningen hindrar inte inte användarna från att köra andra program för att ta bort en skrivare.
+          Den här inställningen hindrar inte användarna från att köra andra program för att ta bort en skrivare.
 
-Om den här principen är inaktiverad eller inte konfigueras, kan användarna ta bort skrivare med de metoder som beskrivs här ovan.</string>
+          Om den här principen är inaktiverad eller inte konfigureras, kan användarna ta bort skrivare med de metoder som beskrivs här ovan.</string>
       <string id="NonDomainDisplayPrinters_Help">Den här principen anger maximalt antal skrivare (av varje typ) som guiden Lägg till skrivare ska visa på en dator i ett ohanterat nätverk (när datorn inte kan kontakta en domänkontrollant, till exempel en domänansluten bärbar dator i ett hemnätverk).
 
 Om den här inställningen är inaktiverad, visas inte sidan för nätverkssökning.
 
-Om den här inställningen inte konfigureras visar guiden Lägg till skrivare standardantalet skrivare av varje typ:
+Om du inte har konfigurerat den här inställningen visas standardantalet skrivare av varje typ i guiden Lägg till skrivare:
 TCP/IP-skrivare: 50
 Webbtjänstskrivare: 50
 Bluetooth-skrivare: 10
 Delade skrivare: 50
 
-Om du inte vill visa skrivare av en viss typ aktiverar du den här inställningen och anger antalet skrivare som ska visas till 0.</string>
+Om du inte vill visa skrivare av en viss typ aktiverar du den här principen och anger antalet skrivare som ska visas till 0.</string>
       <string id="NonDomainPrinters">Guiden Lägg till skrivare - sidan för nätverkssökning (ohanterat nätverk)</string>
       <string id="PackagePointAndPrintOnly">Använd endast paketering av Peka och skriv ut</string>
       <string id="PackagePointAndPrintOnly_Help">Den här principen gör att klientdatorer endast kan använda paketering av Peka och skriv ut.
 
-Om du aktiverar den här inställningen kan användarna bara använda Peka och skriv på skrivare som använder paketeringsanpassade drivrutiner. När paketering av Peka och skriv ut används, kontrollerar klientdatorerna drivrutinssignaturen för alla drivrutiner som hämtas från utskriftsservrar.
+Om du aktiverar den här inställningen kan användarna bara använda Peka och skriv på skrivare som använder paketeringsanpassade drivrutiner. När paketering av Peka och skriv ut används kontrollerar klientdatorerna drivrutinssignaturen för alla drivrutiner som hämtas från utskriftsservrar.
 
-Om du inaktiverar eller låter bli att konfigurera den här principinställningen är användarna inte begränsade till att endast använda anpassad paketering av Peka och skriv ut.
-</string>
-
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen är användarna inte begränsade till att endast använda anpassad paketering av Peka och skriv ut.</string>
       <string id="SUPPORTED_XPSP1_through_Server_2008_RTM">Stöds i Windows XP SP1 till Windows Server 2008 RTM</string>
       <string id="PackagePointAndPrintServerList">Paketering av Peka och skriv ut - godkända servrar</string>
       <string id="PackagePointAndPrintServerList_Help">Begränsar paketering av Peka och skriv ut till godkända servrar.
@@ -165,16 +159,15 @@ Om du aktiverar den här inställningen kan användarna bara använda Peka och s
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen är paketering av Peka och skriv ut inte begränsad till specifika utskriftsservrar.</string>
       <string id="PhysicalLocation">Datorns plats</string>
-      <string id="PhysicalLocation_Help">Anger kriterier för standardplatsen vid sökning efter skrivare.
+      <string id="PhysicalLocation_Help">Om du har aktiverat den här principinställningen anges de standardplatskriterier som används när sökning efter skrivare sker.
 
-Den här inställningen ingår i funktionen Platsspårning för Windows-skrivare. Aktivera Platsspårning genom att aktivera inställningen Fyll i sökplats för skrivare i förväg om du vill använda den här inställningen.
+          Den här inställningen ingår i funktionen Platsspårning för Windows-skrivare. Aktivera Platsspårning genom att aktivera inställningen Fyll i sökplats för skrivare i förväg om du vill använda den här inställningen.
 
-När platsspårning är aktiverad använder systemet den angivna platsen som ett kriterium när användarna söker efter skrivare. Värdet du anger här åsidosätter den plats där datorn som söker finns.
+          När platsspårning är aktiverad använder systemet den angivna platsen som ett kriterium när användarna söker efter skrivare. Värdet du anger här åsidosätter den plats där datorn som söker finns.
 
-Ange var användarens dator finns. När användare söker efter skrivare används den angivna platsen (och andra sökvillkor) för att hitta en skrivare i närheten. Du kan även använda den här inställningen för att hänvisa användarna till en särskild skrivare eller grupp av skrivare som du vill att de ska använda.
+          Ange var användarens dator finns. När användare söker efter skrivare används den angivna platsen (och andra sökvillkor) för att hitta en skrivare i närheten. Du kan även använda den här inställningen för att hänvisa användarna till en särskild skrivare eller grupp av skrivare som du vill att de ska använda.
 
-Om du inaktiverar eller låter bli att konfigurera den här inställningen och användaren inte anger en plats som sökkriterium, söker systemet efter en skrivare i närheten baserat på datorns IP-adress och nätmask.
-      </string>
+          Om du inaktiverar eller låter bli att konfigurera den här inställningen och användaren inte anger en plats som sökkriterium, söker systemet efter en skrivare i närheten baserat på datorns IP-adress och nätmask.</string>
       <string id="PhysicalLocationSupport">Fyll i sökplats för skrivare i förväg</string>
       <string id="PhysicalLocationSupport_Help">Aktiverar funktionen för fysisk platsspårning av Windows-skrivare.
 
@@ -182,39 +175,37 @@ Platsspårning innebär att du kan upprätta ett platsschema för företaget och
 
 Om du aktiverar den här inställningen kan användare bläddra efter skrivare utifrån var de befinner sig och utan att behöva känna till var skrivarna är eller vilken metod som används för att namnge dem. Om du aktiverar Platsspårning läggs knappen Bläddra till på sidan för skrivarnamn och delningsplats i guiden Lägg till skrivare, på fliken Allmänt i dialogrutan Skrivaregenskaper. Om du aktiverar platsinställningen för Datorgrupprincip visas den standardplats du anger i fältet Plats som standard.
 
-Om du inaktiverar eller låter bli att konfigurera den här inställningen är platsspårning inaktiverat. Skrivarens närhet bedöms med hjälp av standardmetoden (med hjälp av IP-adress och nätmask).
-        </string>
-        <string id="PointAndPrint_Restrictions">Begränsningar för funktionen Peka och skriv ut</string>
-      <string id="PointAndPrint_Restrictions_Help">
+Om du inaktiverar eller låter bli att konfigurera den här inställningen är platsspårning inaktiverat. Skrivarens närhet bedöms med hjälp av standardmetoden (med hjälp av IP-adress och nätmask).</string>
+      <string id="PointAndPrint_Restrictions">Begränsningar för funktionen Peka och skriv ut</string>
+      <string id="PointAndPrint_Restrictions_Help">Den här principinställningen kontrollerar klientens beteende vid Peka och skriv ut, inklusive säkerhetsmeddelanden för datorer som kör Windows Vista. Principinställningen gäller enbart klienter som inte är ansvariga för utskrift och enbart datorer som är medlemmar av en domän.
 
-Den här principinställningen kontrollerar klientens beteende vid Peka och skriv ut, inklusive säkerhetsmeddelanden för datorer som kör Windows Vista. Principinställningen gäller enbart klienter som inte är ansvariga för utskrift och enbart datorer som är medlemmar av en domän.
+          Om du aktiverar den här principinställningen:
+          – Klienter som kör Windows XP och senare hämtar bara skrivardrivrutiner från en lista med uttryckligt namngivna servrar. Om en kompatibel skrivardrivrutin är tillgänglig på klienten upprättas en skrivaranslutning. Om det inte finns någon kompatibel skrivardrivrutin på klienten upprättas ingen skrivaranslutning.
+          -Du kan konfigurera Windows Vista-klienter så att säkerhetsvarningar och utökade kommandotolkar inte visas när användare pekar och skriver ut eller när skrivaranslutningar behöver uppdateras.
 
-När principinställningen är aktiverad:
--Klienter som kör Windows XP och senare hämtar bara skrivardrivrutiner från en lista med uttryckligt namngivna servrar. Om en kompatibel skrivardrivrutin är tillgänglig på klienten upprättas en skrivaranslutning. Om det inte finns någon kompatibel skrivardrivrutin på klienten upprättas ingen skrivaranslutning.
--Du kan konfigurera Windows Vista-klienter så att säkerhetsvarningar och utökade kommandotolkar inte visas när användare pekar och skriver ut eller när skrivaranslutningar behöver uppdateras.
+          Om du inte konfigurerar den här principinställningen:
+         – Klientdatorer som kör Windows Vista kan peka och skriva ut på vilken server som helst.
+          -Datorer som kör Windows Vista visar en varning och en utökad kommandotolk när en användare upprättar en skrivaranslutning till en server med hjälp av Peka och skriv ut.
+          -Datorer som kör Windows Vista visar en varning och en utökad kommandotolk när en befintlig skrivaranslutning behöver uppdateras.
+          -Klientdatorer som kör Windows Server 2003 och Windows XP kan upprätta en skrivaranslutning till vilken server som helst i deras egen skog med hjälp av Peka och skriv ut.
 
-När principinställningen inte är konfigurerad:
--Kientdatorer som kör Windows Vista kan peka och skriva ut på vilken server som helst.
--Datorer som kör Windows Vista visar en varning och en utökad kommandotolk när en användare upprättar en skrivaranslutning till en server med hjälp av Peka och skriv ut.
--Datorer som kör Windows Vista visar en varning och en utökad kommandotolk när en befintlig skrivaranslutning behöver uppdateras.
--Klientdatorer som kör Windows Server 2003 och Windows XP kan upprätta en skrivaranslutning till vilken server som helst i deras egen skog med hjälp av Peka och skriv ut.
-
-När principinställningen är inaktiverad:
--Klientdatorer som kör Windows Vista kan upprätta en skrivaranslutning till vilken server som helt med hjälp av Peka och skriv ut.
--Datorer som kör Windows Vista visar ingen varning eller utökad kommandotolk när en användare upprättar en skrivaranslutning till en server med hjälp av Peka och skriv ut.
--Datorer som kör Windows Vista visar ingen varning eller utökad kommandotolk när en befintlig skrivaranslutning behöver uppdateras.
--Klientdatorer som kör Windows Server 2003 och Windows XP kan upprätta skrivaranslutning till vilken server som helst med hjälp av Peka och skriv ut.
--Inställningen Användare kan bara peka och skriva ut på datorer i sin egen skog gäller bara för Windows Server 2003 och Windows XP SP1 (och senare service pack).
-</string>
+          Om du inaktiverar den här principinställningen:
+         – Klientdatorer som kör Windows Vista kan upprätta en skrivaranslutning till vilken server som helst med hjälp av Peka och skriv ut.
+          -Datorer som kör Windows Vista visar ingen varning eller utökad kommandotolk när en användare upprättar en skrivaranslutning till en server med hjälp av Peka och skriv ut.
+          -Datorer som kör Windows Vista visar ingen varning eller utökad kommandotolk när en befintlig skrivaranslutning behöver uppdateras.
+          -Klientdatorer som kör Windows Server 2003 och Windows XP kan upprätta skrivaranslutning till vilken server som helst med hjälp av Peka och skriv ut.
+          -Inställningen Användare kan bara peka och skriva ut på datorer i sin egen skog gäller bara för Windows Server 2003 och Windows XP SP1 (och senare service pack).</string>
       <string id="WarnAndElevateOnUpdate">Visa varnings- och aviseringsmeddelande</string>
       <string id="NoWarningNoElevationOnUpdate">Visa inte varnings- eller aviseringsmeddelande</string>
       <string id="WarningNoElevationOnUpdate">Visa endast varning</string>
       <string id="PrinterDirectorySearchScope">Standardsökväg i Active Directory vid sökning efter skrivare</string>
       <string id="PrinterDirectorySearchScope_Help">Anger var i Active Directory sökningen efter skrivare inleds.
 
-I guiden Lägg till skrivare kan användare söka igenom Active Directory efter en delad skrivare. Om den här inställningen aktiveras, inleds dessa sökningar på den plats som anges i rutan "Standardsökväg i Active Directory". I annat fall inleds sökningarna i roten i Active Directory.
+          I guiden Lägg till skrivare kan användare söka igenom Active Directory efter en delad skrivare.
 
-Den här inställningen anger endast startpunkten för sökningar efter skrivare i Active Directory. Den begränsar inte hur användare kan söka i Active Directory.</string>
+          Om du aktiverar den här principinställningen börjar sökningarna på den plats som du anger i rutan "Standardsökväg i Active Directory". I annat fall inleds sökningarna i roten i Active Directory.
+
+          Den här inställningen anger endast startpunkten för sökningar efter skrivare i Active Directory. Den begränsar inte hur användare kan söka i Active Directory.</string>
       <string id="PrinterServerThread">Sökning efter skrivare</string>
       <string id="PrinterServerThread_Help">Meddelar domänens huvudutskriftsservrar att det finns delade skrivare.
 
@@ -227,204 +218,92 @@ Om du inaktiverar den här inställningen meddelas inte huvudutskriftsservrarna 
 Om du inte konfigurerar den här inställningen skickas meddelanden om delade skrivare till huvudutskriftsservrarna enbart om Active Directory inte är tillgängligt.
 
 Obs! En klientlicens används varje gång en klientdator skickar meddelande om en skrivare till en huvudutskriftsserver i domänen.</string>
-      <string id="PruneDownlevel">Rensa skrivare som inte ompubliceras automatiskt</string>
-      <string id="PruneDownlevel_Found">Endast om utskriftsservern hittas</string>
-      <string id="PruneDownlevel_Help">Den här inställningen avgör huruvida rensningstjänsten på en domänkontrollant rensar bort skrivarobjekt som inte automatiskt ompubliceras när värddatorn inte svarar, precis så som sker med skrivare i Windows 2000. Den här inställningen gäller skrivare med andra operativsystem än Windows 2000 och Windows 2000-skrivare som publiceras utanför sin skog.
-
-Windows rensningstjänst rensar bort skrivarobjekt från Active Directory om datorn som har publicerat dem inte svarar vid kontaktförsök. Datorer som kör Windows 2000 Professional upptäcker och ompublicerar borttagna skrivarobjekt när de återansluts till nätverket. Eftersom datorer som inte kör Windows 2000 och datorer i andra domäner inte kan ompublicera skrivare i Active Directory automatiskt, rensar systemet aldrig bort skrivarobjekt, om inget annat anges.
-
-Du kan aktivera den här inställningen för att ändra standardbeteendet. Om du vill använda den här inställningen ska du välja något av följande alternativ i rutan "Rensa skrivare som inte ompubliceras":
-
-- "Aldrig" innebär att skrivarobjekt som inte ompubliceras automatiskt aldrig rensas bort. "Aldrig" är standard.
-
-- "Endast om utskriftsservern hittas" innebär att skrivarobjekt som inte automatiskt publiceras om rensas bort endast om utskriftsservern svarar men skrivaren inte är tillgänglig.
-
-- "Alltid när skrivare inte hittas" innebär att skrivarobjekt som inte automatiskt publiceras om när värddatorn inte svarar tas bort, precis så som är fallet med skrivare i Windows 2000.
-
-Obs! Den här inställningen gäller skrivare som publiceras genom att Active Directory - användare och datorer eller Pubprn.vbs används. Den gäller inte skrivare som publiceras genom Skrivare på Kontrollpanelen.
-
-Tips! Om du inaktiverar automatisk rensning måste du även ta bort skrivarobjekt manuellt när du tar bort en skrivare eller en utskriftsserver.</string>
-      <string id="PruneDownlevel_Never">Aldrig</string>
-      <string id="PruneDownlevel_NotFound">Alltid när skrivare inte hittas</string>
-      <string id="Pruning10Minutes">10 minuter</string>
-      <string id="Pruning12Hours">12 timmar</string>
-      <string id="Pruning1Day">1 dag</string>
-      <string id="Pruning1Hour">1 timme</string>
-      <string id="Pruning1Week">1 vecka</string>
-      <string id="Pruning2Days">2 dagar</string>
-      <string id="Pruning2Weeks">2 veckor</string>
-      <string id="Pruning30Minutes">30 minuter</string>
-      <string id="Pruning3Days">3 dagar</string>
-      <string id="Pruning3Weeks">3 veckor</string>
-      <string id="Pruning4Days">4 dagar</string>
-      <string id="Pruning4Hours">4 timmar</string>
-      <string id="Pruning4Weeks">4 veckor</string>
-      <string id="Pruning5Days">5 dagar</string>
-      <string id="Pruning5Weeks">5 veckor</string>
-      <string id="Pruning6Days">6 dagar</string>
-      <string id="Pruning6Weeks">6 veckor</string>
-      <string id="Pruning7Weeks">7 veckor</string>
-      <string id="Pruning8Hours">8 timmar</string>
-      <string id="PruningImmediately">Oavbrutet</string>
-      <string id="PruningInterval">Intervall för katalogrensning</string>
-      <string id="PruningInterval_Help">Anger hur ofta rensningstjänsten på en domänkontrollant kontaktar datorer för att kontrollera att deras skrivare är i drift.
-
-Rensningstjänsten kontaktar periodvis datorer som har publicerat skrivare. Om en dator inte svarar på ett kontaktförsök (eventuellt efter flera försök), rensar rensningstjänsten bort skrivarobjekt som datorn har publicerat (tar bort dem från Active Directory).
-
-Om inget annat anges kontaktar rensningstjänsten datorerna var åttonde timme och gör ytterligare två kontaktförsök innan skrivarna tas bort från Active Directory.
-
-Om du aktiverar den här inställningen kan du ändra intervallet mellan kontaktförsöken.
-
-Om du inte konfigurerar eller inaktiverar den här inställningen används standardvärdena.
-
-Obs! Den här inställningen används endast på domänkontrollanter.</string>
-      <string id="PruningNever">Oändlig</string>
-      <string id="PruningPriority">Prioritet för katalogrensning</string>
-      <string id="PruningPriority_Help">Anger rensningstrådens prioritet.
-
-Rensningstråden, som endast körs på domänkontrollanter, tar bort skrivarobjekt från Active Directory om det inte går att kontakta den skrivare som publicerade objektet. Den här processen ser till att uppgifterna om skrivare i Active Directory hålls aktuella.
-
-Trådens prioritet påverkar i vilken ordning tråden får tillgång till processortid och avgör hur troligt det är att den stoppas tillfälligt av trådar med högre prioritet.
-
-Om inget annat anges körs rensningstråden med normal prioritet. Du kan emellertid ändra prioriteten för att förbättra tjänstens prestanda.
-
-Obs! Den här inställningen används endast på domänkontrollanter.</string>
-      <string id="PruningRetries">Återförsök för rensning</string>
-      <string id="PruningRetries_Help">Anger hur många gånger rensningstjänsten på en domänkontrollant försöker kontakta en dator innan dess skrivare rensas bort.
-
-Rensningstjänsten tar periodvis kontakt med datorer som har publicerat skrivare för att kontrollera att de fortfarande är tillgängliga. Om en dator inte besvarar kontaktförsöket, upprepas meddelandet det angivna antalet gånger. Om datorn aldrig svarar rensar rensningstjänsten bort skrivarobjekten som datorn har publicerat (tar bort dem från Active Directory).
-
-Om inget annat anges kontaktar rensningstjänsten datorerna var åttonde timme och gör ytterligare två kontaktförsök innan skrivarna tas bort från Active Directory. Du kan ändra antalet försök med den här inställningens hjälp.
-
-Om du aktiverar den här inställningen kan du ändra intervallet mellan kontaktförsöken.
-
-Om du inte konfigurerar eller inaktiverar den här inställningen används standardvärdena.
-
-Obs! Den här inställningen används endast på domänkontrollanter.</string>
-      <string id="PruningRetries0">Inga återförsök</string>
-      <string id="PruningRetries1">1 återförsök</string>
-      <string id="PruningRetries2">2 återförsök</string>
-      <string id="PruningRetries3">3 återförsök</string>
-      <string id="PruningRetries4">4 återförsök</string>
-      <string id="PruningRetries5">5 återförsök</string>
-      <string id="PruningRetries6">6 återförsök</string>
-      <string id="PruningRetryLog">Logga försök till katalogrensning</string>
-      <string id="PruningRetryLog_Help">Anger huruvida händelser ska loggas eller inte när rensningstjänsten på en domänkontrollant försöker kontakta en dator innan dess skrivare rensas bort.
-
-Rensningstjänsten tar periodvis kontakt med datorer som har publicerat skrivare för att kontrollera att de fortfarande är tillgängliga. Om datorn inte besvarar kontaktförsöket, görs nya försök det angivna antalet gånger efter det intervall som anges. Inställningen "Nya försök för katalogrensning" bestämmer hur många gånger som kontaktförsöket ska utföras. Standardvärdet är två gånger. Inställningen "Återförsök för rensning" bestämmer tidsintervallet mellan försök. Standardvärdet är var åttonde timme. Om datorn inte svarar på det sista kontaktförsöket, rensas dess skrivare bort från katalogen.
-
-Om inställningen "Logga försök till katalogrensning" är aktiverad, sparas uppgifter om kontakthändelser i händelseloggen. Om den här inställningen är inaktiverad eller inte konfigurerad, loggas inte kontaktförsöken i händelseloggen.
-
-Obs! Den här inställningen påverkar inte loggningen av rensningshändelser. Uppgifter sparas alltid i loggboken när en skrivare rensas bort.
-
-Obs! Den här inställningen används endast på domänkontrollanter.</string>
-      <string id="PublishPrinters">Tillåt att skrivare publiceras</string>
-      <string id="PublishPrinters_Help">Den här inställningen avgör hurudvida datorns delade skrivare kan publiceras i Active Directory.
-
-Om du aktiverar eller inte konfiguerar den här inställningen, kan användarna använda alternativet "Visa i katalogen" på fliken "Delning" i skrivarens egenskaper för att publicera delade skrivare i Active Directory.
-
-Om du inaktiverar den här inställningen, kan den här datorns delade skrivare inte publiceras i Active Directory och alternativet "Visa i katalogen" är inte tillgängligt.
-
-Obs! Den här inställningen har högre prioritet än inställningen "Publicera automatiskt nya skrivare i Active Directory".</string>
-      <string id="RegisterSpoolerRemoteRpcEndPoint">Låt bufferthanteraren acceptera klientanslutningar</string>
-      <string id="RegisterSpoolerRemoteRpcEndPoint_Help">Den här principen bestämmer om utskriftshanteraren ska ta emot klientanslutningar.
-
-När den här principen inte är konfigurerad tar utskriftshanteraren inte emot klientanslutningar förrän en användare delar ut en lokal skrivare eller öppnar utskriftskön för en skrivaranslutning, så att utskriftshanteraren kan ta emot klientanslutningar automatiskt. 
-
-När den här principen är aktiverad tar utskriftshanteraren alltid emot klientanslutningar.
-
-När den här principen är inaktiverad tar utskriftshanteraren inte emot klientanslutningar och tillåter inte heller delning av skrivare. Alla skrivare som för närvarande är delade är det även i fortsättningen.
-
-Utskriftshanteraren måste startas om innan ändringar av den här principen börjar gälla.</string>
-<string id="PrintDriverIsolationExecutionPolicy">Kör skrivardrivrutiner i isolerade processer</string>
-<string id="PrintDriverIsolationExecutionPolicy_Help">
-Den här principinställningen avgör om utskriftshanteraren kör skrivardrivrutiner i en isolerad eller en separat process. När skrivardrivrutiner läses in i en isolerad process (eller i isolerade processer) orsakar inte ett fel på skrivardrivrutiner att utskriftshanteraren misslyckas.
+      <string id="PrintDriverIsolationExecutionPolicy">Kör skrivardrivrutiner i isolerade processer</string>
+      <string id="PrintDriverIsolationExecutionPolicy_Help">Den här principinställningen avgör om utskriftshanteraren kör skrivardrivrutiner i en isolerad eller en separat process. När skrivardrivrutiner läses in i en isolerad process (eller i isolerade processer) orsakar inte ett fel på skrivardrivrutiner att utskriftshanteraren misslyckas.
 
 Om du aktiverar eller låter bli att konfigurera den här principinställningen kör utskriftshanteraren som standard skrivardrivrutiner i en isolerad process.
 
 Om du inaktiverar den här principinställningen kör utskriftshanteraren skrivardrivrutiner i utskriftshanterarprocessen.
 
 
-Kommentarer:
--Andra principinställningar för systemet eller drivrutiner kan ändra på den process som en skrivardrivrutin körs i.
+Anmärkningar:
+– Andra principinställningar för systemet eller drivrutiner kan ändra på den process som en skrivardrivrutin körs i.
 -Den här principinställningen gäller bara för skrivardrivrutiner som är inlästa av utskriftshanteraren. Skrivardrivrutiner som är inlästa av program påverkas inte.
--Den här principinställningen börja gälla utan att tjänsten utskriftshanterare startas om.
-</string>
-<string id="PrintDriverIsolationOverrideCompat">Åsidosätt kompatibilitetsinställningar för körning av skrivardrivrutiner som rapporteras av skrivardrivrutinen</string>
-<string id="PrintDriverIsolationOverrideCompat_Help">
-Den här principinställningen avgör om utskriftshanteraren ska åsidosätta den kompatibilitet för drivrutinsisolering som rapporteras av skrivardrivrutinen. Detta möjliggör körning av skrivardrivrutiner i en isolerad process även om drivrutinen inte rapporterar kompatibilitet.
+-Den här principinställningen börja gälla utan att tjänsten utskriftshanterare startas om.</string>
+      <string id="PrintDriverIsolationOverrideCompat">Åsidosätt kompatibilitetsinställningar för körning av skrivardrivrutiner som rapporteras av skrivardrivrutinen</string>
+      <string id="PrintDriverIsolationOverrideCompat_Help">Den här principinställningen avgör om utskriftshanteraren ska åsidosätta den kompatibilitet för drivrutinsisolering som rapporteras av skrivardrivrutinen. Detta möjliggör körning av skrivardrivrutiner i en isolerad process även om drivrutinen inte rapporterar kompatibilitet.
 
-Om du aktiverar den här principinställningen ignorerar utskriftshanteraren kompatibilitetsflaggvärdet för drivrutinsisolering som rapporteras av skrivardrivrutinen.
+Om du aktiverar den här principinställningen isolerar utskriftshanteraren alla skrivardrivrutiner som inte uttryckligen väljer bort drivrutinsisolering.
 
 Om du inaktiverar eller låter bli att konfigurera den här principinställningen använder utskriftshanteraren den kompatibilitetsflagga för drivrutinsisolering som rapporteras av skrivardrivrutinen.
 
-Kommentarer:
--Andra principinställningar för systemet eller drivrutiner kan ändra på den process som en skrivardrivrutin körs i.
+Anmärkningar:
+– Andra principinställningar för systemet eller drivrutiner kan ändra på den process som en skrivardrivrutin körs i.
 -Den här principinställningen gäller bara för skrivardrivrutiner som är inlästa av utskriftshanteraren. Skrivardrivrutiner som är inlästa av program påverkas inte.
--Den här principinställningen börja gälla utan att tjänsten utskriftshanterare startas om.
-</string>
-      <string id="ThreadAboveNormal">Högre än normal</string>
-      <string id="ThreadBelowNormal">Lägre än normal</string>
-      <string id="ThreadHighest">Högsta</string>
-      <string id="ThreadLowest">Lägsta</string>
-      <string id="ThreadNormal">Normal</string>
-      <string id="VerifyPublishedState">Kontrollera att skrivare är publicerade</string>
-      <string id="VerifyPublishedState_Help">Gör att systemet regelbundet kontrollerar att de skrivare som är publicerade av den här datorn fortfarande finns i Active Directory. Den här inställningen bestämmer även hur ofta systemet utför kontrollen.
+-Den här principinställningen börja gälla utan att tjänsten utskriftshanterare startas om.</string>
+      <string id="ShowJobTitleInEventLogs">Allow job name in event logs</string>
+      <string id="ShowJobTitleInEventLogs_Help">
+        This policy controls whether the print job name will be included in print event logs.
 
-Om inget annat anges kontrollerar systemet bara publicerade skrivare när datorn startas. Den här inställningen medger återkommande kontroller medan datorn används.
+        If you disable or do not configure this policy setting, the print job name will not be included.
 
-Om du vill göra ytterligare kontroller aktiverar du den här inställningen och väljer sedan ett kontrollintervall.
+        If you enable this policy setting, the print job name will be included in new log entries.
 
-Om du vill stänga av kontrollen inaktiverar du den här inställningen eller också aktiverar du den och väljer Aldrig som kontrollintervall.
-
-</string>
-      <string id="VerifyPublishedState12Hours">12 timmar</string>
-      <string id="VerifyPublishedState1Day">1 dag</string>
-      <string id="VerifyPublishedState1Hour">1 timme</string>
-      <string id="VerifyPublishedState30Minutes">30 minuter</string>
-      <string id="VerifyPublishedState4Hours">4 timmar</string>
-      <string id="VerifyPublishedState8Hours">8 timmar</string>
-      <string id="VerifyPublishedStateNever">Aldrig</string>
+        Note: This setting does not apply to Branch Office Direct Printing jobs.
+      </string>
       <string id="DoNotInstallCompatibleDriverFromWindowsUpdate">Utöka Peka och skriv ut-anslutningen att söka på Windows Update</string>
       <string id="DoNotInstallCompatibleDriverFromWindowsUpdate_Help">Du kan använda den här inställningen för att kontrollera var klientdatorer söker efter Peka och skriv ut-drivrutiner.
 
-Om du aktiverar den här principinställningen fortsätter klientdatorn att söka på Windows Update efter kompatibla drivrutiner för Peka och skriv ut när kompatibla drivrutiner inte hittas i det lokala drivrutinsarkivet eller i serverns drivrutinscache. 
+Om du aktiverar den här principinställningen fortsätter klientdatorn att söka på Windows Update efter kompatibla drivrutiner för Peka och skriv ut när kompatibla drivrutiner inte hittas i det lokala drivrutinsarkivet eller i serverns drivrutinscache.
 
 Om du inaktiverar den här principinställningen söker klientdatorerna bara i det lokala drivrutinsarkivet och i serverns drivrutinscache. Om inte klientdatorn hittar en kompatibel drivrutin misslyckas Peka och skriv ut-anslutningen.
 
-Den här principinställningen är inte konfigurerad som standard och dess funktion beror på vilken version av Windows som används. 
-Som standard fortsätter Windows Ultimate, Professional och Home att söka efter kompatibla Peka och skriv ut-drivrutiner på Windows Update om det behövs. Däremot måste du aktivera den här principinställningen om du vill ha samma funktion på andra Windows-versioner (t.ex. på Windows Enterprise och alla versioner av Windows Server 2008 R2).
-</string>
+Den här principinställningen är inte konfigurerad som standard och dess funktion beror på vilken version av Windows som används.
+Som standard fortsätter Windows Ultimate, Professional och Home att söka efter kompatibla Peka och skriv ut-drivrutiner på Windows Update om det behövs. Däremot måste du aktivera den här principinställningen om du vill ha samma funktion på andra Windows-versioner (t.ex. på Windows Enterprise och alla versioner av Windows Server 2008 R2 och senare).</string>
+      <string id="V4DriverDisallowPrinterExtension">Tillåt inte att v4-skrivardrivrutiner visar tillägg för skrivare</string>
+      <string id="V4DriverDisallowPrinterExtension_Help">Den här principen anger om v4-skrivardrivrutiner får lov att köra tillägg för skrivare.
+
+        I v4-skrivardrivrutiner kan ett valfritt, anpassat användargränssnitt ingå, ett s.k. tillägg för skrivare. De här tilläggen kan ge åtkomst till fler enhetsfunktioner, men det kanske inte är lämpligt för alla företag.
+
+        Om du aktiverar den här principinställningen får inte alla tillägg för skrivare lov att köras.
+
+        Om du inaktiverar eller låter bli att konfigurera den här principinställningen får alla tillägg för skrivare som installerats lov att köras.</string>
+      <string id="MXDWUseLegacyOutputFormatMSXPS">Ändra formatet för standardutdata i MXDW (Microsoft XPS Document Writer) så att det överensstämmer med det äldre Microsoft XPS-formatet (*.xps)</string>
+      <string id="MXDWUseLegacyOutputFormatMSXPS_Help">MXDW (Microsoft XPS Document Writer) genererar OpenXPS-filer (*.oxps) som standard i Windows 8.1, Windows RT 8.1 och Windows Server 2012 R2.
+
+          Om du aktiverar den här grupprincipinställningen blir formatet för standardutdata i MXDW det äldre Microsoft XPS (*.xps).
+
+          Om du inaktiverar eller låter bli att konfigurera den här principinställningen blir formatet för standardutdata i MXDW OpenXPS (*.oxps).</string>
     </stringTable>
     <presentationTable>
       <presentation id="CustomizedSupportUrl">
-        <text>Ange URL. Adressen skulle till exempel kunna vara  http://www.microsoft.com/sverige/support</text>
+        <text>Ange URL. Adressen skulle till exempel kunna vara http://www.microsoft.com/sverige/support</text>
         <textBox refId="CustomizedSupportUrl_Link">
           <label>URL</label>
         </textBox>
       </presentation>
       <presentation id="DomainPrinters">
-        <decimalTextBox refId="ADprinters" defaultValue="20">Antal katalogskrivare</decimalTextBox>
-        <decimalTextBox refId="IPprinters" defaultValue="0">Antal TCP/IP-skrivare</decimalTextBox>
-        <decimalTextBox refId="WSDprinters" defaultValue="0">Antal webbtjänstskrivare</decimalTextBox>
-        <decimalTextBox refId="Bluetoothprinters" defaultValue="10">Antal Bluetooth-skrivare</decimalTextBox>
-        <decimalTextBox refId="Shareprinters" defaultValue="0">Antal delade skrivare</decimalTextBox>
+        <decimalTextBox defaultValue="20" refId="ADprinters">Antal katalogskrivare</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="IPprinters">Antal TCP/IP-skrivare</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="WSDprinters">Antal webbtjänstskrivare</decimalTextBox>
+        <decimalTextBox defaultValue="10" refId="Bluetoothprinters">Antal Bluetooth-skrivare</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="Shareprinters">Antal delade skrivare</decimalTextBox>
       </presentation>
       <presentation id="IntranetPrintersUrl">
-        <text>Aktivera det här alternativet om du vill lägga till knappen Bläddra i guiden </text>
-        <text>Lägg till skrivare. Använd den här inställningen om du vill att användare </text>
-        <text>ska kunna söka efter skrivare i organisationens intranät. Du kan ange </text>
-        <text>en URL av den här typen: http://www.organisation.se/skrivare. </text>
+        <text>Aktivera det här alternativet om du vill lägga till knappen Bläddra i guiden</text>
+        <text>Lägg till skrivare. Använd den här inställningen om du vill att användare</text>
+        <text>ska kunna söka efter skrivare i organisationens intranät. Du kan ange</text>
+        <text>en URL av den här typen: http://www.organisation.se/skrivare.</text>
         <text>Om detta alternativ ska aktiveras, bör inte rutan nedan vara tom.</text>
         <textBox refId="IntranetPrintersUrl_Link">
           <label>URL till skrivarsida</label>
         </textBox>
       </presentation>
       <presentation id="NonDomainPrinters">
-        <decimalTextBox refId="IPprinters" defaultValue="50">Antal TCP/IP-skrivare</decimalTextBox>
-        <decimalTextBox refId="WSDprinters" defaultValue="50">Antal webbtjänstskrivare</decimalTextBox>
-        <decimalTextBox refId="Bluetoothprinters" defaultValue="10">Antal Bluetooth-skrivare</decimalTextBox>
-        <decimalTextBox refId="Shareprinters" defaultValue="50">Antal delade skrivare</decimalTextBox>
+        <decimalTextBox defaultValue="50" refId="IPprinters">Antal TCP/IP-skrivare</decimalTextBox>
+        <decimalTextBox defaultValue="50" refId="WSDprinters">Antal webbtjänstskrivare</decimalTextBox>
+        <decimalTextBox defaultValue="10" refId="Bluetoothprinters">Antal Bluetooth-skrivare</decimalTextBox>
+        <decimalTextBox defaultValue="50" refId="Shareprinters">Antal delade skrivare</decimalTextBox>
       </presentation>
       <presentation id="PackagePointAndPrintServerList">
         <listBox refId="PackagePointAndPrintServerList_Edit">Ange fullt kvalificerade servernamn</listBox>
@@ -442,10 +321,10 @@ Som standard fortsätter Windows Ultimate, Professional och Home att söka efter
           <label>Ange fullkvalificerade servernamn, avgränsade med semikolon</label>
         </textBox>
         <checkBox refId="PointAndPrint_TrustedForest_Chk">Användare kan bara peka och skriva ut på datorer i sin egen skog</checkBox>
-        <text> </text>
+        <text/>
         <text>Säkerhetsmeddelanden:</text>
-        <dropdownList refId="PointAndPrint_NoWarningNoElevationOnInstall_Enum" noSort="true">Vid installation av drivrutiner för ett nytt meddelande:</dropdownList>
-        <dropdownList refId="PointAndPrint_NoWarningNoElevationOnUpdate_Enum" noSort="true">Vid uppdatering av drivrutiner för en befintlig anslutning:</dropdownList>
+        <dropdownList noSort="true" refId="PointAndPrint_NoWarningNoElevationOnInstall_Enum">Vid installation av drivrutiner för ett nytt meddelande:</dropdownList>
+        <dropdownList noSort="true" refId="PointAndPrint_NoWarningNoElevationOnUpdate_Enum">Vid uppdatering av drivrutiner för en befintlig anslutning:</dropdownList>
         <text>Den här inställningen gäller enbart:</text>
         <text>Windows Vista och senare</text>
       </presentation>
@@ -454,26 +333,6 @@ Som standard fortsätter Windows Ultimate, Professional och Home att söka efter
           <label>Standardsökväg i Active Directory</label>
         </textBox>
         <text>exempel --&gt; LDAP://DC=Doman1,DC=MinFirma,DC=com.</text>
-      </presentation>
-      <presentation id="PruneDownlevel">
-        <text>Välj enligt vilken metod skrivare som inte ompubliceras ska rensas.</text>
-        <dropdownList refId="PruneDownlevelTitle" noSort="true" defaultItem="0">Rensa skrivare som inte ompubliceras:</dropdownList>
-      </presentation>
-      <presentation id="PruningInterval">
-        <text>Rensningsintervallet bestämmer hur länge rensningsfunktionen </text>
-        <text>väntar mellan kontroller av övergivna utskriftsköer.</text>
-        <dropdownList refId="PruningIntervalTitle" noSort="true" defaultItem="5">Intervall:</dropdownList>
-      </presentation>
-      <presentation id="PruningPriority">
-        <text>Använd den här inställningen om du vill ändra rensningstrådens prioritet.</text>
-        <dropdownList refId="PriorityLevel" noSort="true" defaultItem="2">Prioritetsnivå:</dropdownList>
-      </presentation>
-      <presentation id="PruningRetries">
-        <dropdownList refId="PruningRetriesTitle" noSort="true" defaultItem="2">Återförsök:</dropdownList>
-      </presentation>
-      <presentation id="VerifyPublishedState">
-        <text>Kontrollera att alla publicerade skrivare finns i Active Directory.</text>
-        <dropdownList refId="VerifyPublishedStateTitle" noSort="true" defaultItem="6">Kontrollintervall:</dropdownList>
       </presentation>
     </presentationTable>
   </resources>

@@ -6,23 +6,25 @@
   <resources>
     <stringTable>
       <string id="NCSI_Category">Statusindikator for nettverkstilkobling</string>
-      <string id="NCSI_CorpWebProbeUrl">URL-adresse til firmawebområde for gransking</string>
-      <string id="NCSI_CorpWebProbeUrl_Help">Dette er URL-adressen til firmawebområdet som det skal utføres en aktiv gransking mot.</string>
-      <string id="NCSI_CorpDnsProbeHost">Vertsnavn for gransking av firma-DNS</string>
-      <string id="NCSI_CorpDnsProbeHost_Help">Dette er vertsnavnet til en PC det er kjent finnes på firmanettverket. Vellykket løsing av dette vertsnavnet til den forventede adressen indikerer at firmaet er koblet til.</string>
+      <string id="NCSI_CorpWebProbeUrl">Angi URL-adresse til firmanettsted for gransking</string>
+      <string id="NCSI_CorpWebProbeUrl_Help">Med denne policyinnstillingen kan du angi URL-adressen til firmanettstedet som det skal utføres aktiv gransking mot.</string>
+      <string id="NCSI_CorpDnsProbeHost">Angi vertsnavn for gransking av firma-DNS</string>
+      <string id="NCSI_CorpDnsProbeHost_Help">Med denne policyinnstillingen kan du angi vertsnavnet til en datamaskin som du vet er på firmanettverket. Vellykket løsing av dette vertsnavnet til den forventede adressen indikerer at firmaet er koblet til.</string>
       <string id="NCSI_CorpDnsProbeContent">Vertsadresse for gransking av firma-DNS</string>
-      <string id="NCSI_CorpDnsProbeContent_Help">Dette er den forventede adressen til vertsnavnet som brukes for DNS-granskingen. Vellykket løsing av vertsnavnet til denne adressen indikerer at firmaet er koblet til.</string>
-      <string id="NCSI_CorpSitePrefixes">Prefiksliste for firmaområde</string>
-      <string id="NCSI_CorpSitePrefixes_Help">Dette er listen over prefikser for IPv6-firmaområder som skal overvåkes for firmatilkobling. Hvis adresser med noen av disse prefiksene kan nås, indikerer dette firmatilkobling.</string>
-      <string id="NCSI_DomainLocationDeterminationUrl">URL-adresse for å fastslå domeneplassering</string>
-      <string id="NCSI_DomainLocationDeterminationUrl_Help">Dette er HTTPS URL-adressen til firmawebområdet som skal brukes til å fastslå den gjeldende domeneplasseringen, dvs. innenfor eller utenfor firmaet. Hvis URL-adressen kan nås, indikerer det at plasseringen er innenfor firmaet, og ellers er den utenfor.</string>
+      <string id="NCSI_CorpDnsProbeContent_Help">Med denne policyinnstillingen kan du angi den forventede adressen til vertsnavnet som skal brukes for DNS-gransking. Vellykket løsing av vertsnavnet til denne adressen indikerer at firmaet er koblet til.</string>
+      <string id="NCSI_CorpSitePrefixes">Angi prefiksliste for firmaområde</string>
+      <string id="NCSI_CorpSitePrefixes_Help">Med denne policyinnstillingen kan du angi listen over prefikser for IPv6-firmaområder som skal overvåkes for firmatilkobling. Hvis adresser med noen av disse prefiksene kan nås, indikerer dette firmatilkobling.</string>
+      <string id="NCSI_DomainLocationDeterminationUrl">Angi URL-adresse for å fastslå firmadomeneplassering</string>
+      <string id="NCSI_DomainLocationDeterminationUrl_Help">Med denne policyinnstillingen kan du angi HTTPS URL-adressen til firmanettstedet som klienter skal bruke til å fastslå gjeldende domeneplassering (det vil si om datamaskinen er innenfor eller utenfor firmanettverket). Hvis URL-adressen kan nås, indikerer det at klienten er plassert innenfor firmanettverket. Hvis ikke, er den utenfor nettverket.</string>
+      <string id="NCSI_PassivePolling">Angi passiv avspørring</string>
+      <string id="NCSI_PassivePolling_Help">Med denne policyinnstillingen kan du angi virkemåte for passiv avspørring. NCSI utfører hyppige spørringer etter ulike mål i nettverksstakken for å kontrollere om nettverkstilkoblingen er brutt.  Bruk alternativene til å angi virkemåten for passiv avspørring.</string>
     </stringTable>
     <presentationTable>
       <presentation id="NCSI_CorpWebProbeUrl">
         <textBox refId="NCSI_CorpWebProbeUrlBox">
-          <label>URL-adresse til firmawebområde for gransking:</label>
+          <label>URL-adresse til firmanettsted for gransking:</label>
         </textBox>
-        <text>Angi URL-adressen til firmawebområdet som skal</text>
+        <text>Angi URL-adressen til firmanettstedet som skal</text>
         <text>brukes til gransking av firmatilkobling.</text>
         <text>Eksempel:</text>
         <text>  http://ncsi.corp.microsoft.com/</text>
@@ -49,12 +51,12 @@
         <textBox refId="NCSI_CorpSitePrefixesBox">
           <label>Prefiksliste for firmaområde:</label>
         </textBox>
-        <text>Angi listen over prefikser for IPv6-firmaområder</text>
+        <text>Angi listen over prefikser for IPv6-firmaområdene</text>
         <text>som skal kontrolleres om de kan nås, for å oppdage</text>
         <text>firmatilkobling.</text>
         <text>Syntaks:</text>
-        <text>  Listen må være skilt med komma uten</text>
-        <text>  ekstra mellomrom.</text>
+        <text>    Listen må være kommadelt, uten</text>
+        <text>    ekstra mellomrom.</text>
         <text>Eksempel:</text>
         <text>  fe80::/9,fe81::/9</text>
       </presentation>
@@ -62,10 +64,14 @@
         <textBox refId="NCSI_DomainLocationDeterminationUrlBox">
           <label>URL-adresse for å fastslå firmadomeneplassering:</label>
         </textBox>
-        <text>Angi HTTPS URL-adressen til firmawebområdet som skal</text>
+        <text>Angi HTTPS URL-adressen til firmanettstedet som skal</text>
         <text>brukes til å fastslå om domeneplasseringen er innenfor eller utenfor.</text>
         <text>Eksempel:</text>
         <text>  https://nid.corp.microsoft.com/</text>
+      </presentation>
+      <presentation id="NCSI_PassivePolling">
+        <text>Følgende avmerkingsboks deaktiverer mekanismen for passiv avspørring i NCSI.   Dette kan redusere prosessorbelastningen på servere eller andre maskiner med statisk nettverkstilkobling.</text>
+        <checkBox refId="NCSI_DisablePassivePolling_Checkbox">Deaktiver passiv avspørring</checkBox>  
       </presentation>
     </presentationTable>
   </resources>

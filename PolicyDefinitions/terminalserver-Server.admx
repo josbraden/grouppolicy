@@ -5,11 +5,15 @@
     <target prefix="terminalserver-Server" namespace="Microsoft.Policies.TerminalServer-Server" />
     <using prefix="terminalserver" namespace="Microsoft.Policies.TerminalServer" />
     <using prefix="server" namespace="Microsoft.Policies.Server" />
+    <using prefix="windows" namespace="Microsoft.Policies.Windows" />
   </policyNamespaces>
   <resources minRequiredRevision="1.0" />
 <categories>
     <category name="TS_APP_COMPATIBILITY" displayName="$(string.TS_APP_COMPATIBILITY)" explainText="$(string.TS_APP_COMPATIBILITY_Help)">
       <parentCategory ref="terminalserver:TS_TERMINAL_SERVER" />
+    </category>
+    <category name="RDS_VM_HOST_Node" displayName="$(string.RDS_VM_HOST_Node)" explainText="$(string.RDS_VM_HOST_Node_Help)">
+      <parentCategory ref="terminalserver:TS_GP_NODE" />
     </category>
  </categories>
   <policies>
@@ -65,7 +69,7 @@
     </policy>
     <policy name="TS_ALLOW_DESKTOPCOMPOSITION" class="Machine" displayName="$(string.TS_ALLOW_DESKTOPCOMPOSITION)" explainText="$(string.TS_ALLOW_DESKTOPCOMPOSITION_EXPLAIN)" key="SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" valueName="fAllowDesktopCompositionOnServer">
       <parentCategory ref="terminalserver:TS_SESSIONS" />
-      <supportedOn ref="terminalserver:TS_SUPPORTED_Windows7_Server" />
+      <supportedOn ref="terminalserver:TS_SUPPORTED_WindowsServer2008R2_Only" />
       <enabledValue>
         <decimal value="1" />
       </enabledValue>
@@ -350,14 +354,14 @@
 			<decimal value="0" />
 		</disabledValue>
 	</policy>
-	<policy name="TS_ENABLE_DFSS" class="Machine" displayName="$(string.TS_ENABLE_DFSS)" explainText="$(string.TS_ENABLE_DFSS_EXPLAIN)" key="SOFTWARE\Policies\Microsoft\Windows\SessionManager\DFSS" valueName="EnableDFSS">
+	<policy name="TS_ENABLE_DFSS" class="Machine" displayName="$(string.TS_ENABLE_DFSS)" explainText="$(string.TS_ENABLE_DFSS_EXPLAIN)" key="SOFTWARE\Policies\Microsoft\Windows\Session Manager\Quota System" valueName="EnableCpuQuota">
 		<parentCategory ref="terminalserver:TS_CONNECTIONS" />
 		<supportedOn ref="terminalserver:TS_SUPPORTED_Windows7_Server" />
 		<enabledValue>
-			<decimal value="1" />
+			<decimal value="0" />
 		</enabledValue>
 		<disabledValue>
-			<decimal value="0" />
+			<decimal value="1" />
 		</disabledValue>
 	</policy>
 	<policy name="TS_DISABLE_MSI" class="Machine" displayName="$(string.TS_DISABLE_MSI)" explainText="$(string.TS_DISABLE_MSI_EXPLAIN)" key="SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\TSAppSrv\TSMSI" valueName="Enable">
@@ -395,5 +399,16 @@
            <multiText id="TS_ENABLE_IP_VIRTUALIZATION_EDIT" valueName="PerApp"/>
 		</elements>
     </policy>
+    <policy name="TS_DX_USE_FULL_HWGPU" class="Machine" displayName="$(string.TS_DX_USE_FULL_HWGPU)" explainText="$(string.TS_DX_USE_FULL_HWGPU_EXPLAIN)" key="SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" valueName="bEnumerateHWBeforeSW">
+        <parentCategory ref="terminalserver:TS_SESSIONS" />
+        <supportedOn ref="terminalserver:TS_SUPPORTED_Windows8_Server_With_RDSH" />
+        <enabledValue>
+            <decimal value="1" />
+        </enabledValue>
+        <disabledValue>
+            <decimal value="0" />
+        </disabledValue>
+    </policy>
+
   </policies>
 </policyDefinitions>

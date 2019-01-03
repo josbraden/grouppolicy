@@ -10,74 +10,92 @@
       <string id="RpcEEInfoOffWithExc">Poissa käytöstä poikkeuksin</string>
       <string id="RpcEEInfoOn">Käytössä</string>
       <string id="RpcEEInfoOnWithExc">Käytössä poikkeuksin</string>
-      <string id="RpcEnableAuthEpResolution">RPC-päätepistekartoituksen asiakkaan todentaminen</string>
-      <string id="RpcEnableAuthEpResolution_Help">Jos asetus otetaan käyttöön, päätepistekartoituspalveluun yhteyden tarvitsevat RPC-asiakkaat ohjataan todennettaviksi, kunhan sillä RPC-kutsulla, jonka päätepiste on määritettävä, on todentamistiedot.
+      <string id="RpcEnableAuthEpResolution">Ota käyttöön RPC-päätepistekartoituksen asiakkaan todentaminen</string>
+      <string id="RpcEnableAuthEpResolution_Help">Tämä käytäntöasetus ohjaa sitä, tapahtuuko RPC-asiakkaiden todentaminen päätepistekartoituspalvelussa, kun asiakkaan kutsu sisältää todentamistiedot.   Windows NT4 -tietokoneiden (koskee kaikkia service pack -tasoja) päätepistekartoituspalvelu ei pysty käsittelemään tällä tavalla annettuja todentamistietoja. 
 
-Jos tämä asetus poistetaan käytöstä, päätepistekartoituspalveluun yhteyden tarvitsevia RPC-asiakkaita ei todenneta. Windows NT4 (kaikki Service Pack -pakkaukset) -tietokoneessa toimiva päätepistekartoituspalvelu ei voi käsitellä tällä tavalla toimitettuja todentamistietoja. Näin ollen tämän asetuksen käyttöönottaminen asiakaskoneessa estää asiakasta muodostamasta yhteyttä Windows NT4 -palvelimeen RPC-palvelun avulla, jos päätepistemääritystä tarvitaan.
+Jos poistat käytöstä tämän käytäntöasetuksen, RPC-asiakkaita ei todenneta päätepistekartoituspalvelussa, mutta ne pystyvät viestimään Windows NT4 Server -tietokoneessa olevan päätepistekartoituspalvelun kanssa.
 
-Oletusarvon mukaan RPC-asiakkaat eivät käytä todentamista muodostaakseen yhteyden RPC-palvelimen päätepistekartoituspalveluun, kun ne pyytävät palvelimen päätepistettä.
+Jos otat käyttöön tämän käytäntöasetuksen, RPC-asiakkaiden todentaminen tapahtuu päätepistekartoituspalvelussa kutsuissa, jotka sisältävät todentamistiedot.  Tällaisia kutsuja lähettävät asiakkaat eivät voi viestiä Windows NT4 Server -tietokoneiden päätepistekartoituspalvelun kanssa.
 
-Huomautus: Tätä käytäntöä ei oteta käyttöön, ennen kuin järjestelmä on käynnistetty uudelleen. </string>
-      <string id="RpcExtendedErrorInformation">Laajennettujen virhetietojen välitys</string>
-      <string id="RpcExtendedErrorInformation_Help">Määrittää RPC-palvelun luomaan laajennetut virhetiedot, jos järjestelmässä ilmenee virhe.
+Jos et määritä tätä käytäntöasetusta, se pysyy poissa käytöstä.  RPC-asiakkaita ei todenneta päätepistekartoituspalvelussa, mutta ne pystyvät viestimään Windows NT4 Server -käyttöjärjestelmän päätepistekartoituspalvelun kanssa.
+
+Huomautus: Tätä käytäntöä ei oteta käyttöön, ennen kuin järjestelmä on käynnistetty uudelleen.</string>
+      <string id="RpcExtendedErrorInformation">Välitä laajennetut virhetiedot</string>
+      <string id="RpcExtendedErrorInformation_Help">Tämä käytäntöasetus ohjaa sitä, luoko RPC-palvelu laajennetut virhetiedot, jos järjestelmässä tapahtuu virhe.
 
 Laajennetut virhetiedot sisältävät virheen paikallisen tapahtumisajan, RPC-versiotiedot sekä sen tietokoneen nimen, jossa virhe tapahtui tai josta se välitettiin. Ohjelmat voivat noutaa laajennetut virhetiedot Windowsin normaalien API-liittymien avulla.
 
-Jos poistat tämän asetuksen käytöstä tai et määritä sitä, RPC-palvelu luo ainoastaan virhetilanteesta ilmoittavan tilakoodin.
+Jos poistat käytöstä tämän käytäntöasetuksen tai jätät sen määrittämättä, RPC-palvelu luo ainoastaan virhetilannetta ilmaisevan tilakoodin.
 
-Jos haluat määrittää RPC-palvelun luomaan laajennetut tilatiedot, ota tämä asetus käyttöön ja valitse avattavasta luettelosta haluamasi kaltainen virhetietojen käsittely.
+Jos et määritä tätä käytäntöasetusta, se pysyy poissa käytöstä.  Tällöin palvelu luo ainoastaan virhetilannetta ilmaisevan tilakoodin.
+
+Jos otat käyttöön tämän käytäntöasetuksen, RPC-palvelu laajennetut virhetiedot.  Avattavasta valikosta on valittava virhevastaustyyppi.
 
 --  Ei käytössä -asetus poistaa kaikkien prosessien kaikki laajennetut virhetiedot käytöstä. Tällöin RPC luo ainoastaan virhekoodin.
 
--- Käytössä poikkeuksin -asetus ottaa laajennetut virhetiedot käyttöön, mutta sisältää mahdollisuuden poistaa ne käytöstä määritettyjen prosessien osalta. Laajennetut virhetiedot poistetaan käytöstä tietyn prosessin osalta tämän asetuksen ollessa käytössä, jos prosessin aloittava komento alkaa jollakin Laajennettujen virhetietojen poikkeukset -kenttään määritetyistä merkkijonoista.
+– Käytössä poikkeuksin -asetus ottaa laajennetut virhetiedot käyttöön, mutta antaa poistaa ne käytöstä tietyistä prosesseista. Laajennetut virhetiedot poistetaan käytöstä tietystä prosessista tämän asetuksen ollessa käytössä, jos prosessin aloittava komento alkaa jollakin Laajennettujen virhetietojen poikkeukset -kenttään määritetyistä merkkijonoista.
 
--- Poissa käytöstä poikkeuksin -asetus poistaa laajennetut virhetiedot käytöstä, mutta sisältää mahdollisuuden ottaa ne käyttöön määritettyjen prosessien osalta. Laajennetut virhetiedot otetaan käyttöön tietyn prosessin osalta tämän asetuksen ollessa käytössä, jos prosessin aloittava komento alkaa jollakin Laajennettujen virhetietojen poikkeukset -kenttään määritetyistä merkkijonoista.
+– Poissa käytöstä poikkeuksin -asetus poistaa laajennetut virhetiedot käytöstä, mutta antaa ottaa ne käyttöön tietyille prosesseille. Laajennetut virhetiedot otetaan käyttöön tietylle prosessille tämän asetuksen ollessa käytössä, jos prosessin aloittava komento alkaa jollakin Laajennettujen virhetietojen poikkeukset -kenttään määritetyistä merkkijonoista.
 
 --  Käytössä-asetus ottaa laajennetut virhetiedot käyttöön kaikille prosesseille.
 
-Huomautus: Lisätietoja Laajennettujen virhetietojen poikkeukset -kentästä on Windows 2000:n Software Development Kit (SDK) -oppaassa.
+Huomautus: Lisätietoja Laajennettujen virhetietojen poikkeukset -kentästä on Windows Software Development Kit (SDK) -oppaassa.
 
 Huomautus: Laajennetut virhetiedot on muotoiltu yhteensopivuuden takaamiseksi toisten käyttöjärjestelmien ja vanhempien Microsoftin käyttöjärjestelmien kanssa, mutta ainoastaan uudet Microsoftin käyttöjärjestelmät pystyvät lukemaan ja vastaamaan niiden tietoihin.
 
-Huomautus: Oletusasetus Ei käytössä on tarkoitettu käytettäväksi järjestelmissä, joiden virhetietoja ei tulisi luovuttaa etäjärjestelmiin vaan tulisi käsitellä luottamuksellisesti.
+Huomautus: Oletusasetus Ei käytössä on tarkoitettu käytettäväksi järjestelmissä, joiden laajennettuja virhetietoja tulisi käsitellä luottamuksellisina eikä luovuttaa etäjärjestelmien käyttöön.
 
 Huomautus: Tätä käytäntöasetusta ei oteta käyttöön, ennen kuin järjestelmä on käynnistetty uudelleen.</string>
       <string id="RpcIDFOff">Poissa käytöstä</string>
       <string id="RpcIDFOn">Käytössä</string>
       <string id="RpcIgnoreDelegationFailure">Ohita delegointivirhe</string>
-      <string id="RpcIgnoreDelegationFailure_Help">Määrittää, että RPC-palvelu ohittaa delegointivirheen, jos delegointia pyydetään.
+      <string id="RpcIgnoreDelegationFailure_Help">Tämä käytäntöasetus ohjaa sitä, ohittaako RPC-palvelu delegointia pyydettäessä delegointivirheet.
 
-Windows Server 2003 -tuoteperheessä voidaan käyttää myös uutta rajoitettua delegointimallia. Tätä mallia käytettäessä suojausjärjestelmä ei ilmoita suojauskontekstissa, että delegointi on otettu käyttöön, kun asiakas muodostaa yhteyden palvelimeen. RPC- ja COM-palvelujen käyttäjien kannattaa käyttää lippua RPC_C_QOS_CAPABILITIES_IGNORE_DELEGATE_FAILURE. Sovellukset, jotka on suunniteltu käyttämään aiempaa delegointimallia, eivät välttämättä voi käyttää tätä lippua. Nämä sovellukset saattavat palauttaa virheen RPC_S_SEC_PKG_ERROR muodostaessaan yhteyttä palvelimeen, joka käyttää rajoitettua delegointia.
+Windows Server 2003 -käyttöjärjestelmässä käyttöön otettu rajoitetun delegoinnin malli ei raportoi suojauskontekstissa käyttöön otetusta delegoinnista, kun asiakas muodostaa yhteyden palvelimeen. RPC- ja COM-palvelujen käyttäjien kannattaa käyttää lippua RPC_C_QOS_CAPABILITIES_IGNORE_DELEGATE_FAILURE. Jotkin sovellukset, jotka on suunniteltu käyttämään Windows Server 2003 -käyttöjärjestelmää aiempaa delegointimallia, eivät välttämättä voi käyttää tätä lippua. Ne saattavat palauttaa virheen RPC_S_SEC_PKG_ERROR muodostaessaan yhteyttä palvelimeen, joka käyttää rajoitettua delegointia.
 
-Jos poistat tämän asetuksen käytöstä, et määritä sitä tai määrität sen arvoksi Poissa käytöstä, RPC-palvelu palauttaa RPC_S_SEC_PKG_ERROR-virheitä rajoitettua delegointia käyttäviin palvelimiin yhteyden muodostaville sovelluksille, jotka pyytävät delegointia. Jos määrität tämän asetuksen arvoksi Käytössä, RPC-palvelu hyväksyy sekä delegointia tukevat suojauskontekstit että suojauskontekstit, jotka eivät tue delegointia.
+Jos poistat käytöstä tämän käytäntöasetuksen, RPC-palvelu palauttaa RPC_S_SEC_PKG_ERROR-virheitä delegointia pyytäville sovelluksille, jotka muodostavat yhteyden rajoitettua delegointia käyttäviin palvelimiin. 
 
--- Arvo Ei käytössä ohjaa RPC-palvelun luomaan RPC_S_SEC_PKG_ERROR-virheen, jos asiakas pyytää delegointia, mutta luotu suojauskonteksti ei tue sitä.
+Jos et määritä tätä käytäntöasetusta, se pysyy poissa käytöstä ja palauttaa RPC_S_SEC_PKG_ERROR-virheitä delegointia pyytäville sovelluksille, jotka muodostavat yhteyden rajoitettua delegointia käyttäviin palvelimiin. 
 
--- Arvo Käytössä ohjaa RPC-palvelun hyväksymään suojauskontekstit, jotka eivät tue delegointia, vaikka delegointia olisi pyydetty.
+Jos otat käyttöön tämän käytäntöasetuksen:
 
-Huomautus: Tätä käytäntöasetusta ei oteta käyttöön, ennen kuin järjestelmä on käynnistetty uudelleen.</string>
-      <string id="RpcMinimumHttpConnectionTimeout">RPC/HTTP-yhteyksien pienin sallittu käyttämättömän yhteyden aikakatkaisuarvo</string>
-      <string id="RpcMinimumHttpConnectionTimeout_Help">Määrittää, että RPC-palvelu käyttää määritettyä käyttämättömän yhteyden aikakatkaisuarvoa, vaikka RPC HTTP -välityspalvelinta suorittavaan IIS-palvelimeen olisi määritetty suurempi aikakatkaisuarvo. Jos RPC HTTP -välityspalvelinta suorittavaan IIS-palvelimeen on määritetty pienempi käyttämättömän yhteyden aikakatkaisuarvo, käytetään IIS-palvelimen aikakatkaisuarvoa. Aikakatkaisuarvo määritetään sekunteina.
+– Arvo Ei käytössä ohjaa RPC-palvelun luomaan RPC_S_SEC_PKG_ERROR-virheen, jos asiakas pyytää delegointia, mutta luotu suojauskonteksti ei tue sitä.
 
-Tästä asetuksesta on hyötyä, jos verkkoagentti, kuten HTTP-välityspalvelin tai reititin, käyttää pienempää käyttämättömän yhteyden aikakatkaisuarvoa kuin RPC HTTP -välityspalvelinta suorittava IIS-palvelin. Tällaisissa tapauksissa RPC-palvelua HTTP-yhteyden kautta käyttävät asiakkaat saattavat havaita virheitä, koska yhteydet aikakatkaistaan odotettua nopeammin. Tämän asetuksen avulla voit pakottaa RPC-palvelun ja RPC-välityspalvelimen käyttämään pienempää yhteyden aikakatkaisuarvoa.
-
-Tätä asetusta voi käyttää vain, kun RPC-asiakas, RPC-palvelin ja RPC HTTP -välityspalvelin käyttävät Windows Server 2003 -tuoteperheen käyttöjärjestelmää, Windows XP SP1 -käyttöjärjestelmää tai uudempaa versiota.  Jos RPC-asiakas, RPC-palvelin tai RPC HTTP -välityspalvelin käyttää vanhempaa Windows-versiota, tämä asetus ohitetaan.
-
-Asetuksen vähimmäisarvo on 90 sekuntia. Enimmäisarvo on 7200 (2 tuntia).
-
-Jos poistat tämän asetuksen käytöstä tai et määritä sitä, käytetään RPC HTTP -välityspalvelinta suorittavan IIS-palvelimen käyttämättömän yhteyden aikakatkaisuarvoa.
+– Arvo Käytössä ohjaa RPC-palvelun hyväksymään suojauskontekstit, jotka eivät tue delegointia, vaikka delegointia olisi pyydetty.
 
 Huomautus: Tätä käytäntöasetusta ei oteta käyttöön, ennen kuin järjestelmä on käynnistetty uudelleen.</string>
-      <string id="RpcRestrictRemoteClients">Vahvistamattomien RPC-asiakkaiden rajoitukset</string>
-      <string id="RpcRestrictRemoteClients_Help">Jos asetus otetaan käyttöön, se ohjaa RPC-palvelimen RPC-palvelun rajoittamaan vahvistamattomia RPC-asiakkaita, jotka muodostavat yhteyden tietokoneen RPC-palvelimiin. Asiakasta pidetään vahvistamattomana, jos se käyttää nimettyä putkea tiedonvälitykseen palvelimen kanssa tai jos se käyttää RPC-suojausta. Jos RPC-liittymä on erikseen pyytänyt, että vahvistamattomat asiakkaat voivat käsitellä sitä, käytännölle valitun arvon mukaan tällaiset liittymät saattavat olla poikkeuksia tästä rajoituksesta.
+      <string id="RpcMinimumHttpConnectionTimeout">Määritä RPC/HTTP-yhteyksien pienin sallittu käyttämättömän yhteyden aikakatkaisuarvo</string>
+      <string id="RpcMinimumHttpConnectionTimeout_Help">Tämä käytäntöasetus ohjaa käyttämättömien RPC/HTTP-yhteyksien aikakatkaisua.  
 
-Jos asetus poistetaan käytöstä tai sitä ei määritetä, Windows XP saa arvon Vahvistettu ja tätä käytäntöasetusta tukevat palvelimen SKU-merkinnät saavat arvon Ei mitään. Jos asetus otetaan käyttöön, seuraavat arvot ovat käytettävissä:
+Tästä käytäntöasetuksesta on hyötyä, jos verkkoagentti, kuten HTTP-välityspalvelin tai reititin, käyttää pienempää käyttämättömän yhteyden aikakatkaisuarvoa kuin RPC/HTTP-välityspalvelinta suorittava IIS-palvelin. Tällaisissa tapauksissa RPC/HTTP-asiakkaat saattavat havaita virheitä, koska yhteydet aikakatkaistaan odotettua nopeammin. Tämän käytäntöasetuksen avulla voit pakottaa RPC-palvelun ja RPC/HTTP-välityspalvelimen käyttämään lyhyempää yhteyden aikakatkaisua.
 
--- Ei mitään -arvo sallii kaikkien RPC-asiakkaiden muodostaa yhteyksiä siinä tietokoneessa toimiviin RPC-palvelimiin, jossa käytäntöä käytetään.
+Tätä käytäntöasetusta voi käyttää vain, kun RPC-asiakas, RPC-palvelin ja RPC HTTP -välityspalvelin käyttävät Windows Server 2003 -tuoteperheen käyttöjärjestelmää, Windows XP SP1 -käyttöjärjestelmää tai näitä uudempaa versiota. Jos RPC-asiakas, RPC-palvelin tai RPC HTTP -välityspalvelin käyttää vanhempaa Windows-versiota, tämä käytäntöasetus ohitetaan.
 
--- Vahvistettu-arvo sallii vain vahvistettujen RPC-asiakkaiden (määritelmä edellä) muodostavan yhteyden siinä tietokoneessa suoritettaviin RPC-palvelimiin, jossa käytäntöä käytetään. Poikkeuksina käsitellään liittymiä, jotka ovat pyytäneet poikkeusta rajoituksesta.
+Käytäntöasetuksen vähimmäisarvo on 90 sekuntia. Enimmäisarvo on 7 200 sekuntia (2 tuntia).
 
--- Vahvistettu ilman poikkeuksia -arvo sallii vain vahvistettujen RPC-asiakkaiden (määritelmä edellä) muodostavan yhteyden siinä tietokoneessa suoritettaviin RPC-palvelimiin, jossa käytäntöä käytetään. Poikkeuksia ei sallita.
+Jos poistat käytöstä tämän käytäntöasetuksen, käytetään RPC HTTP -välityspalvelinta suorittavan IIS-palvelimen käyttämättömän yhteyden aikakatkaisuarvoa.
+
+Jos et määritä tätä käytäntöasetusta, se pysyy poissa käytöstä.  Tällöin käytetään RPC HTTP -välityspalvelinta suorittavan IIS-palvelimen käyttämättömän yhteyden aikakatkaisuarvoa.
+
+Jos otat käyttöön tämän käytäntöasetuksen ja RPC HTTP -välityspalvelinta suorittavaan IIS-palvelimeen on määritetty pienempi käyttämättömän yhteyden aikakatkaisuarvo, käytetään IIS-palvelimen aikakatkaisuarvoa. Muutoin käytetään annettua aikakatkaisuarvoa.  Aikakatkaisuarvo määritetään sekunteina.
+
+Huomautus: Tätä käytäntöasetusta ei oteta käyttöön, ennen kuin järjestelmä on käynnistetty uudelleen.</string>
+      <string id="RpcRestrictRemoteClients">Rajoita todentamattomia RCP-asiakkaita</string>
+      <string id="RpcRestrictRemoteClients_Help">Tämä käytäntöasetus ohjaa sitä, miten RPC-palvelinpalvelu käsittelee RCP-palvelimiin yhteyttä muodostavia todentamattomia RPC-asiakkaita.
+
+Tämä käytäntöasetus vaikuttaa kaikkiin RPC-sovelluksiin.  Toimialueympäristössä tätä käytäntöasetusta tulee käyttää harkiten, sillä se voi vaikuttaa moniin toimintoihin, myös itse ryhmäkäytäntökäsittelyyn.  Tähän käytäntöasetukseen tehdyn muutoksen peruuttaminen saattaa edellyttää manuaalisia toimia jokaisessa koneessa, johon muutos vaikuttaa.  Tätä käytäntöasetusta ei tule koskaan soveltaa toimialueen ohjauskoneeseen.
+
+Jos poistat käytöstä tämän käytäntöasetuksen, RPC-palvelinpalvelu käyttää Windows-asiakkaalle arvoa Vahvistettu sekä tätä käytäntöasetusta tukeville Windows Server -versioille arvoa Ei mitään. 
+
+Jos et määritä tätä käytäntöasetusta, se pysyy poissa käytöstä.  RPC-palvelinpalvelu toimii kuin asetus olisi käytössä ja käyttää Windows-asiakkaalle arvoa Vahvistettu sekä tätä käytäntöasetusta tukeville palvelimen SKU:ille arvoa Ei mitään. 
+
+Jos otat käyttöön tämän käytäntöasetuksen, se ohjaa RPC-palvelinpalvelun rajoittamaan todentamattomia RPC-asiakkaita, jotka muodostavat yhteyden tietokoneen RPC-palvelimiin. Asiakasta pidetään vahvistamattomana, jos se käyttää nimettyä putkea tiedonvälitykseen palvelimen kanssa tai jos se käyttää RPC-suojausta. Jos RPC-liittymät ovat erikseen pyytäneet, että todentamattomat asiakkaat voivat käyttää niitä, tällaiset liittymät saattavat olla poikkeuksia rajoituksesta sen perusteella, mikä arvo käytäntöasetukselle on valittu.
+
+– Ei mitään -arvo sallii kaikkien RPC-asiakkaiden muodostaa yhteyden siinä tietokoneessa suoritettaviin RPC-palvelimiin, jossa käytäntöasetus on voimassa.
+
+– Vahvistettu-arvo sallii vain todennettujen RPC-asiakkaiden (määritelmä edellä)muodostaa yhteyden siinä tietokoneessa suoritettaviin RPC-palvelimiin, jossa käytäntöasetus on voimassa. Poikkeuslupia myönnetään niitä pyytäneille liittymille.
+
+– Vahvistettu ilman poikkeuksia -arvo sallii vain todennettujen RPC-asiakkaiden (määritelmä edellä) muodostaa yhteyden siinä tietokoneessa suoritettaviin RPC-palvelimiin, jossa käytäntöä käytetään.  Poikkeuksia ei sallita.
 
 Huomautus: Tätä käytäntöasetusta ei oteta käyttöön, ennen kuin järjestelmä on käynnistetty uudelleen.</string>
       <string id="RpcRestrictRemoteClientsAuth">Vahvistettu</string>
@@ -87,14 +105,16 @@ Huomautus: Tätä käytäntöasetusta ei oteta käyttöön, ennen kuin järjeste
       <string id="RpcStateInfoAuto2">Auto2</string>
       <string id="RpcStateInfoBoth">Täysi</string>
       <string id="RpcStateInfoNone">Ei mitään</string>
-      <string id="RpcStateInformation">Etäproseduurikutsujen (RPC) vianmäärityksen tilatiedot</string>
-      <string id="RpcStateInformation_Help">
+      <string id="RpcStateInformation">Ylläpidä etäproseduurikutsujen (RPC) vianmäärityksen tilatietoja</string>
+      <string id="RpcStateInformation_Help">Tämä käytäntöasetus määrittää, ylläpitääkö RPC-palvelu tietoja järjestelmän etäproseduurikutsujen tilasta, sekä sen, miten paljon tietoja sisällytetään. Etäproseduurikutsujen ongelmien vianmääritys edellyttää perustilatietoja, jotka sisältävät ainoastaan yleisimmin tarvitut tilatiedot.
 
-Määrittää, ylläpitääkö RPC-palvelu tietoja järjestelmän etäproseduurikutsujen tilasta sekä sen, miten paljon tietoja sisällytetään. Etäproseduurikutsujen ongelmien vianmääritys edellyttää perustilatietoja, jotka sisältävät ainoastaan yleisimmin tarvitut tilatiedot.
+Jos poistat käytöstä tämän käytäntöasetuksen, RPC-palvelu käyttää oletustasoa Auto2.
 
-Jos otat tämän asetuksen käyttöön, voit määrittää avattavan valikon avulla järjestelmät, jotka ylläpitävät etäproseduurikutsujen tilatietoja. Jos asetus on poistettu käytöstä, tai sitä ei ole määritetty, etäproseduurikutsu käyttää asetusta Auto2.
+Jos et määritä tätä käytäntöasetusta, RPC-palvelu käyttää oletustasoa Auto2. 
 
--- Ei mitään -asetus ilmaisee, että järjestelmä ei ylläpidä etäproseduurikutsujen tilatietoja. Huomautus: Koska perustilatietojen ylläpitäminen vianmääritystä varten vaikuttaa järjestelmän suorituskykyyn hyvin vähän ja varaa vain noin neljä kilotavua muistia, tämän asetuksen käyttäminen ei ole suositeltavaa useimmissa asennuksissa.
+Jos otat käyttöön tämän käytäntöasetuksen, voit määrittää avattavan valikon avulla järjestelmät, jotka ylläpitävät etäproseduurikutsujen tilatietoja.
+
+– Ei mitään -asetus ilmaisee, että järjestelmä ei ylläpidä etäproseduurikutsujen tilatietoja. Huomautus: Koska perustilatietojen ylläpitäminen vianmääritystä varten vaikuttaa järjestelmän suorituskykyyn hyvin vähän ja varaa vain noin neljä kilotavua muistia, tämän asetuksen käyttäminen ei ole suositeltavaa useimmissa asennuksissa.
 
 -- Auto1-asetuksen valitseminen määrittää, että etäproseduurikutsujen perustilatietoja ylläpidetään vain siinä tapauksessa, että tietokoneessa on vähintään 64 megatavua muistia.
 
@@ -102,11 +122,11 @@ Jos otat tämän asetuksen käyttöön, voit määrittää avattavan valikon avu
 
 -- Palvelin-asetus määrittää, että RPC-palvelu ylläpitää tietokoneessa perustilatietoja tietokoneen kapasiteetista riippumatta.
 
--- Täysi-asetus määrittää, että RPC-palvelu ylläpitää järjestelmän etäproseduurikutsujen täydellisiä tilatietoja riippumatta tietokoneen kapasiteetista. Tämä asetus voi heikentää järjestelmän suorituskykyä, joten Microsoft suosittelee sen käyttämistä vain tutkittaessa RPC-ongelmia.
+– Täysi-asetus määrittää, että RPC-palvelu ylläpitää järjestelmän etäproseduurikutsujen täydellisiä tilatietoja riippumatta siitä, mikä tietokoneen kapasiteetti on. Tämä asetus voi heikentää järjestelmän suorituskykyä, joten sen käyttäminen on suositeltavaa vain tutkittaessa RPC-ongelmia.
 
 Huomautus: Etäproseduurikutsujen tilatietojen noutaminen niitä ylläpitävästä järjestelmästä edellyttää virheenetsintätyökalun käyttämistä.
 
-Huomautus: Tätä käytäntöä ei oteta käyttöön, ennen kuin järjestelmä on käynnistetty uudelleen.</string>
+Huomautus: Tätä käytäntöasetusta ei oteta käyttöön, ennen kuin järjestelmä on käynnistetty uudelleen.</string>
       <string id="RpcStateInfoServer">Palvelin</string>
     </stringTable>
     <presentationTable>

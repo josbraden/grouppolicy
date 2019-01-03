@@ -59,6 +59,94 @@
         <decimal value="0" />
       </disabledValue>
     </policy>
+    <policy name="KdcProxyServer" class="Machine" displayName="$(string.KdcProxyServer)" explainText="$(string.KdcProxyServer_explain)" presentation="$(presentation.KdcProxyServer)" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos" valueName="KdcProxyServer_Enabled">
+      <parentCategory ref="kerberos" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <elements>
+        <list id="KdcProxyServer" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\KdcProxy\ProxyServers" additive="true" explicitValue="true" />
+      </elements>
+    </policy>
+    <policy name="KdcProxyDisableServerRevocationCheck" class="Machine" displayName="$(string.KdcProxyDisableServerRevocationCheck)" explainText="$(string.KdcProxyDisableServerRevocationCheck_explain)" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters" valueName="NoRevocationCheck">
+      <parentCategory ref="kerberos" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="ClientRequireFast" class="Machine" displayName="$(string.ClientRequireFast)" explainText="$(string.ClientRequireFast_explain)" presentation="$(presentation.ClientRequireFast)" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters" valueName="RequireFast">
+      <parentCategory ref="kerberos" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="ServerAcceptsCompound" class="Machine" displayName="$(string.ServerAcceptsCompound)" explainText="$(string.ServerAcceptsCompound_explain)" presentation="$(presentation.ServerAcceptsCompound)" key="Software\Policies\Microsoft\Netlogon\Parameters" valueName="CompoundIdDisabled">
+      <parentCategory ref="kerberos" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="0" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="1" />
+      </disabledValue>
+      <elements>
+        <enum id="CompoundIdEnabled" key="Software\Policies\Microsoft\Netlogon\Parameters" valueName="CompoundIdEnabled" required="true">
+          <item displayName="$(string.CompoundIdEnable_No)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.CompoundIdEnable_Auto)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+          <item displayName="$(string.CompoundIdEnable_Yes)">
+            <value>
+              <decimal value="2" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="MaxTokenSize" class="Machine" displayName="$(string.MaxTokenSize)" explainText="$(string.MaxTokenSize_explain)" presentation="$(presentation.MaxTokenSize)" key="System\CurrentControlSet\Control\Lsa\Kerberos\Parameters" valueName="EnableMaxTokenSize">
+      <parentCategory ref="kerberos" />
+      <supportedOn ref="windows:SUPPORTED_WindowsXP" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+        <decimal id="MaxTokenSize" key="System\CurrentControlSet\Control\Lsa\Kerberos\Parameters" valueName="MaxTokenSize" required="true" minValue="12000" maxValue="2147483647"/>
+      </elements>
+    </policy>
+    <policy name="EnableCbacAndArmor" class="Machine" displayName="$(string.EnableCbacAndArmor)" explainText="$(string.EnableCbacAndArmor_explain)" presentation="$(presentation.EnableCbacAndArmor)" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters" valueName="EnableCbacAndArmor">
+      <parentCategory ref="kerberos" />
+      <supportedOn ref="windows:SUPPORTED_Windows8" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="AlwaysSendCompoundId" class="Machine" displayName="$(string.AlwaysSendCompoundId)" explainText="$(string.AlwaysSendCompoundId_explain)" key="Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters" valueName="AlwaysSendCompoundId">
+      <parentCategory ref="kerberos" />
+      <supportedOn ref="windows:SUPPORTED_Windows_6_3" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
   </policies>
-
 </policyDefinitions>
