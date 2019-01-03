@@ -12,4 +12,4 @@ To take advantage of the benefits of .admx files, you must create a Central Stor
 
 To create a Central Store for .admx and .adml files, create a new folder that is named PolicyDefinitions in the following location (for example) on the domain controller:
 
-\\contoso.com\SYSVOL\contoso.com\policies\PolicyDefinitions
+`\\contoso.com\SYSVOL\contoso.com\policies\PolicyDefinitions`
